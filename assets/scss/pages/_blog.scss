@@ -1,5 +1,5 @@
 #blog {
-  background: #F4F4F4;
+  background: #FFF;
 }
 
 .blog__header {
@@ -416,7 +416,7 @@
   margin: 10px;
   border-bottom-width: 5px;
   border-bottom-style: solid;
-  min-height: 500px;
+  min-height: 310px;
 
   @include grid-media-query('palm') {
     border-bottom-width: 0;
@@ -467,8 +467,8 @@
     }
 
     .article__thumb__excerpt {
-      display: none;
-      margin-bottom: 60px;
+      margin-bottom: 10px;
+      line-height: 1.2;
     }
 
     .article__thumb__author {
