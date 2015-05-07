@@ -1,0 +1,57 @@
+@each $colour in $colours {
+  $name: nth($colour, 1);
+  $hex:  unquote(nth($colour, 2));
+
+  .u-bg-#{$name} {
+    background: $hex;
+  }
+
+  .u-text-#{$name} {
+    color: $hex;
+  }
+
+  .u-link-#{$name}--coloured {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      color: $hex;
+    }
+  }
+
+  .u-link-#{$name}--full {
+    color: $hex;
+    text-decoration: none;
+
+    &:hover,
+    &.active {
+      color: darken($hex, 10);
+    }
+  }
+
+  .u-link-#{$name} {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &.active {
+      color: $hex;
+    }
+  }
+
+  .u-bar-after--#{$name} {
+    position: relative;
+    margin-bottom: 30px;
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 1px;
+      bottom: -10px;
+      height: 2px;
+      width: 15px;
+      background: $hex;
+    }
+  }
+}

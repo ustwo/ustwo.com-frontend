@@ -1,0 +1,38 @@
+<li class="blog__articles__item {{extraClasses}}">
+        <article class="article__thumb article__thumb--{{layout.categoryClass}}">
+          <a href="{{link}}">
+            <!-- Article Image -->
+            <div class="article__thumb__img">
+            {{thumbnail}} 
+              <div class="article__thumb__img__clip" style="background-image: url({{thumbnail}});"></div>
+              <i class="article__thumb__img__mask"></i>
+            </div>
+            <!-- /Article Image -->
+
+            <!-- Article Content -->
+            <div class="article__thumb__content">
+              <h2 class="h3 u-margin-bXs article__thumb__title">{{title}}</h2>
+              <h3 class="h6 article__thumb__author">
+                By {{author.name}} in <span class="article__thumb__category">{{category}}</span> <span class="article__thumb__date">{{date}}</span>
+              </h3>
+
+              <p class="article__thumb__excerpt">{{excerpt}}</p>
+
+              <ul class="article__thumb__meta">
+               <!--
+                <li class="article__thumb__meta__item article__thumb__meta__item--views">
+                  301
+                </li>
+                -->
+                <li class="article__thumb__meta__item article__thumb__meta__item--twitter">
+                  {{social.total}}
+                </li>
+                <li class="article__thumb__meta__item article__thumb__meta__item--comments">
+                  {{comments.count}}
+                </li>
+              </ul>
+            </div>
+            <!-- /Article Content -->
+          </a>
+        </article>
+      </li>

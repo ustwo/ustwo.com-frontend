@@ -1,0 +1,70 @@
+.section-title {
+  display: block;
+  position: relative;
+  z-index: 10;
+  font-family: $Futura;
+  font-size: 26px;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 30px;
+
+  @include grid-media-query('palm') {
+    font-size: 16px;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 15px;
+    height: 2px;
+    background: $paleGrey;
+    -webkit-transform: translateX(-50%);
+       -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+         -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
+
+.section-title--about .section-title__span {
+  padding-top: 0;
+}
+
+.section-title--clients {
+  padding-top: 40px;
+  background: #F8F8F8;
+}
+
+.section-title--work {
+  padding-top: 40px;
+
+  @include grid-media-query('upToTablet') {
+    padding-top: 40px;
+    padding-bottom: 0;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.section-title--thoughts {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+       -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.section-title__span {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #FFF;
+  border-radius: 3px;
+}

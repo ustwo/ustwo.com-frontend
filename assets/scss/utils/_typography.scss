@@ -1,0 +1,185 @@
+body {
+  font-family: $PxGroteskRegular;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+}
+
+// * {
+//   -webkit-hypens: manual;
+//      -moz-hypens: manual;
+//       -ms-hypens: manual;
+//           hypens: manual;
+// }
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+.u-text-light {
+  font-family: $PxGroteskLight;
+}
+
+.u-text-lowercase {
+  text-transform: lowercase;
+}
+
+.u-text-none {
+  text-transform: none;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-bar-after {
+  position: relative;
+  margin-bottom: 30px;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 1px;
+    bottom: -10px;
+    height: 2px;
+    width: 15px;
+    background: #FFF;
+  }
+}
+
+.u-link-block {
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: normal;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  font-family: $Futura;
+  text-transform: uppercase;
+  line-height: 0.85em;
+  width: 100%;
+}
+
+h4, .h4,
+h5, .h5,
+h6, .h6,
+p, .p {
+  font-family: $PxGroteskRegular;
+  line-height: 1.75em;
+}
+
+p {
+  margin-bottom: 0;
+}
+p+p {
+  margin-top: 20px;
+}
+
+h2, .h2         { font-size: 32px; }
+h3, .h3         { font-size: 26px; }
+h4, .h4         { font-size: 20px; }
+h5, .h5         { font-size: 20px; }
+h6, .h6         { font-size: 13px; }
+p, .p           { font-size: 16px; }
+.p--small       { font-size: 14px; }
+.p--address {
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+// $PALMSMALL
+@media only screen
+and (max-width: 640px) {
+  h5, .h5       { font-weight: 400; }
+  .hero h2      { font-size: 40px; }
+}
+
+// $PALM
+@media only screen
+and (min-width: 321px)
+and (max-width: 640px) {
+  h2, .h2       { font-size: 42px; }
+  h3, .h3       { font-size: 32px; }
+  h4, .h4       { font-size: 22px; }
+  h5, .h5       { font-size: 22px; }
+  p, .p         { font-size: 18px; }
+  .p--address,
+  .p--small   { font-size: 15px; }
+  .hero h2      { font-size: 60px; }
+}
+
+// $TABLETSMALL
+@media only screen
+and (min-width: 641px)
+and (max-width: 768px) {
+  h2, .h2       { font-size: 48px; }
+  h3, .h3       { font-size: 48px; }
+  h4, .h4       { font-size: 20px; }
+  h5, .h5       { font-size: 24px; }
+  p, .p         { font-size: 18px; }
+  .p--address,
+  .p--small   { font-size: 17px; }
+  .hero h2      { font-size: 80px; }
+}
+
+// $TABLET
+@media only screen and (min-width: 769px) {
+  h2, .h2       { font-size: 48px; }
+  h3, .h3       { font-size: 26px; }
+  h4, .h4       { font-size: 24px; }
+  h5, .h5       { font-size: 24px; }
+  p, .p         { font-size: 16px; }
+  .p--address,
+  .p--small   { font-size: 15px; }
+  .hero h2      { font-size: 60px; }
+}
+
+// $PORTABLE
+@media only screen and (min-width: 1024px) {
+  h2, .h2       { font-size: 48px; }
+  h3, .h3       { font-size: 30px; }
+  h4, .h4       { font-size: 24px; }
+  h5, .h5       { font-size: 24px; }
+  p, .p         { font-size: 18px; }
+  .p--address,
+  .p--small   { font-size: 15px; }
+  .hero h2      { font-size: 70px; }
+}
+
+// $DESK
+@media only screen and (min-width: 1224px) {
+  h2, .h2       { font-size: 56px; }
+  h3, .h3       { font-size: 36px; }
+  h4, .h4       { font-size: 24px; }
+  h5, .h5       { font-size: 24px; }
+  p, .p         { font-size: 18px; }
+  .p--address,
+  .p--small   { font-size: 15px; }
+  .hero h2      { font-size: 90px; }
+}
+
+// $HUGE
+@media only screen
+and (min-width : 1824px) {
+  h2, .h2       { font-size: 68px; }
+  h3, .h3       { font-size: 48px; }
+  h4, .h4       { font-size: 28px; }
+  h5, .h5       { font-size: 28px; }
+  p, .p         { font-size: 20px; }
+  .p--address,
+  .p--small   { font-size: 16px; }
+  .hero h2      { font-size: 120px; }
+}

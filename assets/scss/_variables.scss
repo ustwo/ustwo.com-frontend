@@ -1,0 +1,96 @@
+/* ------------------------------------------------------------ *\
+|* Typography
+\* ------------------------------------------------------------ */
+
+$PxGroteskLight: "PxGrotesk-Light", "Arial", sans-serif;
+$PxGroteskRegular: "PxGrotesk-Regular", "Arial", sans-serif;
+$Futura: "FuturaPTExtraBold-Reg", sans-serif;
+
+
+/* ------------------------------------------------------------ *\
+|* Colours
+\* ------------------------------------------------------------ */
+
+$nonBlack: #333333;
+$paleGrey: #eee;
+$passion: #E60C29;
+$midGrey: #BFBFBF;
+
+$colours: (
+  'piglet'            #ED0082,
+  'softPiglet'        #FFA5BE,
+  'passion'           #E60C29,
+  'softPassion'       #FA7D78,
+  'ohra'              #FF5519,
+  'honey'             #FFBF02,
+  'softHoney'         #F5E664,
+  'jeezz'             #96CC29,
+  'pot'               #14C04D,
+  'softPot'           #A5FAAF,
+  'mare'              #16D6D9,
+  'softMare'          #A5FAFA,
+  'blu'               #009CF3,
+  'navy'              #143FCC,
+  'rain'              #6114CC,
+  'four'              #171D27,
+  'white'             #FFFFFF,
+  'grey'              #212121,
+  'nonBlack'          $nonBlack,
+  'landingOrange'     #FF4F2D,
+  'midGrey'           #BFBFBF,
+  'paleGrey'          #DFDFDF,
+  'pale-turquoise'    #7ECACA,
+  'pink'              #DF498C,
+  'new-blue'          #28a9e2
+);
+
+$categories: (
+  'ux'            #14C04D,
+  'development'   #FF5519,
+  'culture'       #FFBF02,
+  'design'        #96CC29,
+  'process'       #16D6D9,
+  'business'      #009CF3,
+  'malmo'         #FF5519,
+  'london'        #16D6D9,
+  'new-york'      #ED0082
+);
+
+
+/* ------------------------------------------------------------ *\
+|* Breakpoints (csswizardry.grids)
+\* ------------------------------------------------------------ */
+
+$breakpoints: (
+    'palm' '(max-width: 480px)',
+    'largePalm' '(min-width: 481px) and (max-width: 680px)',
+    'tablet' '(min-width: 481px) and (max-width: 768px)',
+    'upToTablet' '(max-width: 768px)',
+    'lap' '(min-width: 769px)',
+    'desk' '(min-width: 1024px)',
+    'large' '(min-width: 1280px)',
+    'huge' '(min-width: 1440px)'
+)!default;
+
+$breakpoint-has-widths: ('palm', 'largePalm', 'tablet', 'upToTablet', 'lap', 'desk', 'large', 'huge')!default;
+$breakpoint-has-push:   ('palm', 'largePalm', 'tablet', 'lap', 'desk', 'large', 'huge')!default;
+$breakpoint-has-pull:   ('palm', 'largePalm', 'tablet', 'lap', 'desk', 'large', 'huge')!default;
+
+
+/* ------------------------------------------------------------ *\
+|* Spacing (csswizardry.grids)
+\* ------------------------------------------------------------ */
+
+$spacing: (
+  'Xxxxxxl' 500,
+  'Xxxxxl' 300,
+  'Xxxxl' 150,
+  'Xxxl' 100,
+  'Xxl' 80,
+  'Xl' 60,
+  'L'  40,
+  'M'  30,
+  'S'  20,
+  'Xs' 10,
+  'N'  0
+);

@@ -1,0 +1,47 @@
+{
+  "name": "ustwo-com-prototype",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "watch": "gulp watch"
+  },
+  "dependencies": {
+    "gsap": "*",
+    "page": "*",
+    "handlebars": "*",
+    "merge-stream": "*",
+    "gulp-handlebars": "*",
+    "gulp-wrap": "*",
+    "gulp-declare": "*",
+    "gulp-concat": "*",
+
+    "gulp": "*",
+    "gulp-util": "*",
+    "gulp-if": "*",
+    "del": "*",
+    "gulp-notify": "*",
+    "vinyl-buffer": "*",
+    "yargs": "*",
+
+    "gulp-imagemin": "*",
+
+    "gulp-compile-handlebars": "*",
+    "sc5-styleguide": "*",
+
+    "autoprefixer-core": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-postcss": "*",
+    "gulp-ruby-sass": "0.7.1",
+    "gulp-scss-lint": "*",
+
+    "gulp-uglify": "*",
+    "watchify": "*",
+    "browserify": "*",
+    "vinyl-source-stream": "*",
+    "gulp-jshint": "*",
+    "jshint-stylish": "*",
+    "gulp-mocha": "*",
+
+    "browser-sync": "*"
+  }
+}

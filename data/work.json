@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "title": "ustwo - work"
+  },
+  "isPpp": false,
+  "urls": {
+    "site": "http://ustwo.co.uk",
+    "cdn": "http://cdn.ustwo.com",
+    "page": "/work/",
+    "full": "http://ustwo.co.uk/work/",
+    "theme": "http://ustwo.com/wordpress/wp-content/themes/ustwo.com-wp",
+    "ajax": "http://ustwo.com/wordpress/wp-content/themes/ustwo.com-wp/ajax",
+    "css": "http://ustwo.com/wordpress/wp-content/themes/ustwo.com-wp/css",
+    "js": "http://ustwo.com/wordpress/wp-content/themes/ustwo.com-wp/js",
+    "images": "http://ustwo.com/wordpress/wp-content/themes/ustwo.com-wp/images"
+  }
+}

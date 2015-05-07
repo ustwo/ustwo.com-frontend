@@ -1,0 +1,69 @@
+    <nav class="nav">
+  <!-- Toggle Switch -->
+  <button class="nav__toggle">
+    <span class="toggle__bar"></span>
+    <span class="toggle__bar"></span>
+    <span class="toggle__bar"></span>
+  </button>
+  <!-- End Switch -->
+
+  <div class="nav__inner">
+    <a href="/" class="nav__logo">ustwo</a>
+
+    <ul class="nav__menu">
+      <li class="nav__menu__item">
+          <a href="/studios/" class="u-link-ohra">Studios</a>
+      </li>
+
+      <li class="nav__menu__item">
+          <a href="/work/" class="u-link-mare">Work</a>
+      </li>
+
+      <li class="nav__menu__item">
+          <a href="/play/" class="u-link-honey">Play</a>
+      </li>
+
+      <li class="nav__menu__item">
+          <a href="/venture/" class="u-link-passion {{#if isPpp}}active{{/if}}">Venture</a>
+      </li>
+
+      <li class="nav__menu__item">
+          <a href="/blog/" class="u-link-piglet {{#if isBlog}}active{{/if}}">Blog</a>
+      </li>
+
+      <li class="nav__menu__item nav__menu__item--with-label">
+          <a href="/find-us/" class="u-link-rain">
+            <span class="link__label">Find us</span>
+            <span class="link__desc">London, Malmö, New York</span>
+          </a>
+      </li>
+
+      <li class="nav__menu__item nav__menu__item--with-label">
+          <a href="/join-us/" class="u-link-pot">
+            <span class="link__label">Join us</span>
+            <span class="link__desc">See open positions</span>
+          </a>
+      </li>
+
+      <li class="nav__menu__contact">
+        <ul class="nav__menu__contact__list">
+          <li class="nav__menu__contact__list__item">
+            <a href="mailto:hello@ustwo.com" class="u-link-rain">hello@ustwo.com</a>
+          </li>
+
+          <li class="nav__menu__contact__list__item nav__menu__contact__list__item--studio" data-studio="nyc">
+            <a href="tel:+1(212)518-4900">+1 (212) 518-4900</a>
+          </li>
+
+          <li class="nav__menu__contact__list__item nav__menu__contact__list__item--studio" data-studio="malmo">
+            <a href="tel:+46(0)40330480">+46 (0) 40 330 480</a>
+          </li>
+
+          <li class="nav__menu__contact__list__item nav__menu__contact__list__item--studio" data-studio="london">
+            <a href="tel:+44(0)2076130433">+44 (0) 207 613 0433</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

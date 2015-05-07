@@ -1,0 +1,325 @@
+.block {
+  display: block;
+  position: relative;
+}
+
+.block--clear {
+  @extend %clearfix;
+}
+
+.block--ratio {
+  @include ratio-box(16/6);
+
+  @include grid-media-query('palm') {
+    @include ratio-box(4/3);
+  }
+}
+
+.block--slide-ratio {
+  @extend .block--ratio;
+
+  @include grid-media-query('tablet') {
+    @include ratio-box(6/4);
+  }
+}
+
+.block--square {
+  @include ratio-box(16/6);
+
+  @include grid-media-query('palm') {
+    @include ratio-box(1/1);
+  }
+}
+
+.block--with-triangles {
+  position: relative;
+  padding: 20px 0;
+
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: -5%;
+    width: 106%;
+    height: 90px;
+    background: #FFF;
+    -webkit-transform: rotate(-3deg);
+       -moz-transform: rotate(-3deg);
+        -ms-transform: rotate(-3deg);
+         -o-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -5%;
+    width: 106%;
+    height: 90px;
+    background: #FFF;
+    -webkit-transform: rotate(-3deg);
+       -moz-transform: rotate(-3deg);
+        -ms-transform: rotate(-3deg);
+         -o-transform: rotate(-3deg);
+            transform: rotate(-3deg);
+  }
+}
+
+.block--overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.block--hero {
+  margin-top: 68px;
+}
+
+.block--hero,
+.block--heroish,
+.block--ratio,
+.block--square {
+  color: #FFF;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+      -ms-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+}
+
+.block--ratio {
+  overflow: visible;
+}
+
+.fadeIn {
+  -webkit-animation-delay: 0.5s;
+     -moz-animation-delay: 0.5s;
+      -ms-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+  -webkit-animation-duration: 0.5s;
+     -moz-animation-duration: 0.5s;
+      -ms-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+     -moz-animation-fill-mode: both;
+      -ms-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+     -moz-animation-name: fadeIn;
+      -ms-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+   @-moz-keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+    @-ms-keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+     @-o-keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+.block--text {}
+
+.block--triangle {
+  position: relative;
+  @extend %triangle;
+}
+
+.block__inner--swipe {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+}
+
+.block__inner,
+.footer__inner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  z-index: 10;
+
+  @extend %u-palm-padding-lrM;
+  @extend %u-tablet-padding-lrM;
+  @extend %u-lap-padding-lrXxl;
+
+  @include grid-media-query('desk') {
+    max-width: 1020px;
+  }
+
+  @include grid-media-query('large') {
+    max-width: 1120px;
+  }
+
+  @include grid-media-query('huge') {
+    max-width: 1280px;
+  }
+}
+
+.block__inner--about-us {
+  @extend %u-padding-tL;
+  @extend %u-padding-bXl;
+}
+
+.blog__inner,
+.footer__inner--blog {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  z-index: 10;
+
+  @extend %u-palm-padding-lrXs;
+  @extend %u-tablet-padding-lrM;
+  @extend %u-lap-padding-lrM;
+
+  @include grid-media-query('desk') {
+    max-width: 960px;
+  }
+}
+
+.block__inner--text {
+  @extend %clearfix;
+  @extend %u-palm-padding-tbL;
+  @extend %u-tablet-padding-tbXl;
+  @extend %u-lap-padding-tbXxxl;
+  @extend %u-desk-padding-tbXxxl;
+  @extend %u-huge-padding-tbXxxxl;
+}
+
+.block__inner--text p:first-child{
+  margin-top:0;
+}
+
+
+.block__inner__btns {
+  @extend %u-palm-padding-tM;
+  @extend %u-tablet-padding-tM;
+  @extend %u-lap-padding-tM;
+  @extend %u-desk-padding-tL;
+  @extend %u-huge-padding-tXl;
+}
+
+
+.block--mosaic {}
+
+.mosaic__image {
+  @extend %grid__item;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+      -ms-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+}
+
+.mosaic__image--whole {
+  @extend %one-whole;
+  @include ratio-box(16/6);
+
+  @include grid-media-query('palm') {
+    @include ratio-box(4/3);
+  }
+}
+
+.mosaic__image--half {
+  @extend %one-half;
+  @extend %lap--one-half;
+  @extend %palm--one-whole;
+  @include ratio-box(4/3);
+}
+
+.mosaic__image--third {
+  @extend %one-third;
+  @include ratio-box(4/4.5);
+
+  @include grid-media-query('upToTablet') {
+    display: none;
+  }
+}
+
+.block__table {
+  display: table;
+  width: 100%;
+}
+
+.block__table__split {
+  display: table-cell;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  vertical-align: top;
+
+  @include grid-media-query('upToTablet') {
+    display: block;
+    width: 100%;
+
+    &.block--heroish {
+      position: static;
+      @include ratio-box(16/9);
+    }
+  }
+
+  @include grid-media-query('palm') {
+    &.block--heroish {
+      @include ratio-box(4/3)
+    }
+  }
+}
+
+.block__inner--split {
+  @extend %u-palm-padding-tbL;
+  @extend %u-tablet-padding-tbXl;
+  @extend %u-lap-padding-tbXxxl;
+  @extend %u-desk-padding-tbXxxl;
+  @extend %u-huge-padding-tbXxxxl;
+  @extend %u-lap-padding-lrM;
+  @extend %u-desk-padding-lrXxl;
+  @extend %u-large-padding-lrXxxl;
+  @extend %u-huge-padding-lrXxxxl;
+}
+
+.block__triangle {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 20px solid #FFF;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -15px;
+  z-index: 10;
+  -webkit-animation: bounceTriangle 2.5s 1 ease-in-out;
+          animation: bounceTriangle 2.5s 1 ease-in-out;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+
+@-webkit-keyframes bounceTriangle {
+  0% { -webkit-transform: translateY(0px); opacity: 1; }
+  20% { -webkit-transform: translateY(-10px); opacity: 1; }
+  40% { -webkit-transform: translateY(0px); opacity: 1; }
+  60% { -webkit-transform: translateY(-10px); opacity: 1; }
+  80% { -webkit-transform: translateY(0px); opacity: 1; }
+  100% { opacity: 0 }
+}
+
+@keyframes bounceTriangle {
+  0% { transform: translateY(0px); opacity: 1; }
+  20% { transform: translateY(-10px); opacity: 1; }
+  40% { transform: translateY(0px); opacity: 1; }
+  60% { transform: translateY(-10px); opacity: 1; }
+  80% { transform: translateY(0px); opacity: 1; }
+  100% { opacity: 0 }
+}

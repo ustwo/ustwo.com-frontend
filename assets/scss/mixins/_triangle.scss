@@ -1,0 +1,18 @@
+%triangle {
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    bottom: -14px;
+    left: 50%;
+    margin-left: -16px;
+    z-index: 10;
+    background: inherit;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}

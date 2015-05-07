@@ -1,0 +1,265 @@
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.swipe-controls__wrapper {
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+
+  @include grid-media-query('upToTablet') {
+    display: none;
+  }
+}
+
+
+.swipe-pagination {
+  @include clearfix;
+  display: none;
+  text-align: center;
+  padding: 0;
+  margin: 40px 0 0;
+
+  @include grid-media-query('upToTablet') {
+    display: block;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+       -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+   z-index: 300;
+  }
+}
+
+.swipe-pagination--twitter {
+  margin-bottom: 30px;
+  margin-top: -30px;
+}
+
+.swipe-pagination__item {
+  display: inline-block;
+  list-style: none;
+  width: 10px;
+  height: 10px;
+  margin: 0 7px;
+  background: $nonBlack;
+  -webkit-transform: rotate(45deg);
+     -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+       -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+@each $colour in $colours {
+  $name: nth($colour, 1);
+  $hex: nth($colour, 2);
+
+  .swipe-pagination__item--#{$name} {
+    &.is-active,
+    &:hover {
+      cursor: pointer;
+      background: $hex;
+    }
+  }
+
+}
+
+.twitter-block .swipe-controls__wrapper {
+  top: 45%;
+}
+
+.swipe-controls {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  z-index: 10;
+
+  @extend %u-palm-padding-lrM;
+  @extend %u-tablet-padding-lrM;
+  @extend %u-lap-padding-lrXxl;
+
+  @include grid-media-query('desk') {
+    max-width: 1020px;
+  }
+
+  @include grid-media-query('large') {
+    max-width: 1120px;
+  }
+
+  @include grid-media-query('huge') {
+    max-width: 1280px;
+  }
+}
+
+.swipe-controls__item {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #FFF;
+  overflow: hidden;
+  border: 0;
+  outline: 0;
+  border-radius: 3px;
+  text-indent: -1000px;
+
+  &:hover {
+    background: $nonBlack;
+
+    &:before {
+      border-right: 3px solid #FFF;
+      border-top: 3px solid #FFF;
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 23px;
+    width: 23px;
+    border-right: 3px solid #333;
+    border-top: 3px solid #333;
+    overflow: hidden;
+    text-indent: -1000px;
+  }
+}
+
+.swipe-controls__item--prev {
+  left: 20px;
+
+  &:before {
+    top: 19px;
+    left: 22px;
+    -webkit-transform: rotate(-135deg);
+       -moz-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+  }
+}
+
+.swipe-controls__item--next {
+  right: 20px;
+
+  &:before {
+    top: 19px;
+    left: 13px;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+
+
+.tesco-phones {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 60%;
+  -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+       -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 30;
+
+  @include grid-media-query('tablet') {
+    top: 55%;
+    width: 90%;
+  }
+
+  @include grid-media-query('palm') {
+    top: 55%;
+    width: 120%;
+  }
+}
+
+.dice-phones {
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  width: 50%;
+  -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+       -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 30;
+
+  @include grid-media-query('tablet') {
+    top: 23%;
+    width: 90%;
+  }
+  @include grid-media-query('palm') {
+    width: 95%;
+  }
+}
+
+
+.sony-phones {
+  position: absolute;
+  top: 7.5%;
+  left: 50%;
+  width: 50%;
+  -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+       -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 30;
+
+  @include grid-media-query('tablet') {
+    top: 27%;
+    width: 70%;
+  }
+
+  @include grid-media-query('palm') {
+    top: 16.7%;
+    width: 90%;
+  }
+}
+
+.monument-phones {
+  position: absolute;
+  top: 7.5%;
+  left: 50%;
+  width: 26%;
+  -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+       -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 30;
+
+  @include grid-media-query('tablet') {
+    top: 16.75%;
+    width: 40%;
+  }
+
+  @include grid-media-query('palm') {
+    top: 18.5%;
+    width: 44%;
+  }
+}

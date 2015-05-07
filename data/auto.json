@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "title": "ustwo - auto"
+  },
+  "isPpp": false,
+  "urls": {
+    "site": "http://ustwo.com",
+    "cdn": "http://cdn.ustwo.com",
+    "page": "/auto/",
+    "full": "http://ustwo.com/auto/",
+    "theme": "http://ustwo.com/wordpress/wp-content/themes/ustwo.com-wp",
+    "ajax": "http://ustwo.com/wordpress/wp-content/themes/ustwo.com-wp/ajax",
+    "css": "http://ustwo.com/wordpress/wp-content/themes/ustwo.com-wp/css",
+    "js": "http://ustwo.com/wordpress/wp-content/themes/ustwo.com-wp/js",
+    "images": "http://ustwo.com/wordpress/wp-content/themes/ustwo.com-wp/images"
+  }
+}

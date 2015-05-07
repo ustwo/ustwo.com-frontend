@@ -1,0 +1,257 @@
+.nav {
+  @extend %clearfix;
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 68px;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 40;
+}
+
+.nav__logo {
+  display: block;
+  float: left;
+  height: 68px;
+  width: 84px;
+  margin-left: 30px;
+  overflow: hidden;
+  text-indent: -1000px;
+  background: url(../images/shared/logo@2x.png) center center no-repeat;
+  -webkit-background-size: 84px 24px;
+     -moz-background-size: 84px 24px;
+      -ms-background-size: 84px 24px;
+       -o-background-size: 84px 24px;
+          background-size: 84px 24px;
+}
+
+.nav__menu,
+.nav__menu__contact__list {
+  @extend %clearfix;
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__menu__item {
+  display: block;
+  font-family: $PxGroteskRegular;
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-transition: background linear 50ms;
+     -moz-transition: background linear 50ms;
+      -ms-transition: background linear 50ms;
+       -o-transition: background linear 50ms;
+          transition: background linear 50ms;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.nav__toggle {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding-right: 20px;
+  background: none;
+  outline: 0;
+  border: 0;
+
+  .toggle__bar {
+    display: block;
+    height: 4px;
+    width: 26px;
+    margin: 0 auto 4px 0;
+    background: #333;
+    -webkit-transform: skew(-30deg);
+       -moz-transform: skew(-30deg);
+        -ms-transform: skew(-30deg);
+            transform: skew(-30deg);
+  }
+
+  .toggle__bar:last-child {
+    margin-bottom: 0;
+  }
+
+  @each $colour in $colours {
+    $name: nth($colour, 1);
+    $hex:  unquote(nth($colour, 2));
+
+    .toggle__bar.u-bg-#{$name} {
+      background: $hex;
+    }
+  }
+}
+
+// Palm
+@include grid-media-query('palm') {
+  .is-open .nav__logo {
+    -webkit-transform: translate3d(-70px,0,0);
+    -webkit-transition: -webkit-transform ease-in-out .3s;
+    -moz-transform: translate3d(-70px,0,0);
+    -moz-transition: -moz-transform ease-in-out .3s;
+    -ms-transform: translate3d(-70px,0,0);
+    -ms-transition: -ms-transform ease-in-out .3s;
+    transform: translate3d(-70px,0,0);
+    transition: transform ease-in-out .3s;
+  }
+
+  .is-closed .nav__logo {
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transition: -webkit-transform ease-in-out .3s;
+    -moz-transform: translate3d(0,0,0);
+    -moz-transition: -moz-transform ease-in-out .3s;
+    -ms-transform: translate3d(0,0,0);
+    -ms-transition: -ms-transform ease-in-out .3s;
+    transform: translate3d(0,0,0);
+    transition: transform ease-in-out .3s;
+  }
+}
+
+// Tablet Styles
+@include grid-media-query('upToTablet') {
+  .nav { position: fixed; }
+  .nav__toggle { display: block; }
+
+  .nav__menu {
+    position: fixed;
+    width: 215px;
+    top: 0;
+    right: -215px;
+    bottom: 0;
+    z-index: 20;
+    color: #FFF;
+    overflow-y: scroll;
+    overflow-x: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav__menu__item {
+    font-size: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+    &:nth-child(5) {
+      border-bottom: 2px solid #FFF;
+    }
+
+    a {
+      display: block;
+      padding: 22px 20px;
+      color: #FFF;
+
+      &:hover,
+      &.active {
+        color: #FFF;
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+
+  .nav__menu__item--with-label a {
+    height: 68px;
+    padding: 12px 20px;
+
+    .link__desc {
+      display: block;
+      font-size: 13px;
+    }
+  }
+
+  .nav__menu__contact {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .nav__menu__contact__list {
+    padding: 10px 0;
+  }
+
+  .nav__menu__contact__list__item {
+    a, span {
+      display: block;
+      font-size: 15px;
+      padding: 10px 20px;
+      margin: 0;
+      -webkit-appearance: none;
+
+      &:hover,
+      &.active {
+        color: #FFF;
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+
+  .nav__menu__contact__list__item--studio { display: none; }
+
+  .is-open .nav__menu {
+    -webkit-transform: translate3d(-215px,0,0);
+    -webkit-transition: -webkit-transform ease-in-out .3s;
+    -moz-transform: translate3d(-215px,0,0);
+    -moz-transition: -moz-transform ease-in-out .3s;
+    -ms-transform: translate(-215px,0);
+    -ms-transition: -ms-transform ease-in-out .3s;
+    transform: translate3d(-215px,0,0);
+    transition: transform ease-in-out .3s;
+  }
+
+  .is-closed .nav__menu {
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transition: -webkit-transform ease-in-out .3s;
+    -moz-transform: translate3d(0,0,0);
+    -moz-transition: -moz-transform ease-in-out .3s;
+    -ms-transform: translate(0,0);
+    -ms-transition: -ms-transform ease-in-out .3s;
+    transform: translate3d(0,0,0);
+    transition: transform ease-in-out .3s;
+  }
+
+  .is-open .nav__toggle {
+    -webkit-transform: translate3d(-215px,0,0);
+    -webkit-transition: -webkit-transform ease-in-out .3s;
+    -moz-transform: translate3d(-215px,0,0);
+    -moz-transition: -moz-transform ease-in-out .3s;
+    -ms-transform: translate(-215px,0);
+    -ms-transition: -ms-transform ease-in-out .3s;
+    transform: translate3d(-215px,0,0);
+    transition: transform ease-in-out .3s;
+  }
+
+  .is-closed .nav__toggle {
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transition: -webkit-transform ease-in-out .3s;
+    -moz-transform: translate3d(0, 0, 0);
+    -moz-transition: -moz-transform ease-in-out .3s;
+    -ms-transform: translate(0, 0);
+    -ms-transition: -ms-transform ease-in-out .3s;
+    transform: translate3d(0, 0, 0);
+    transition: transform ease-in-out .3s;
+  }
+}
+
+// Lap Styles
+@include grid-media-query('lap') {
+  .nav__menu__contact { display: none; }
+
+  .nav__menu {
+    position: static;
+    float: right;
+    margin-right: 30px;
+  }
+
+  .nav__menu__item {
+    display: inline-block;
+    height: 68px;
+    line-height: 68px;
+    margin-left: 40px;
+    &:first-child {
+      margin-left: 0;
+    }
+
+    .link__desc { display: none; }
+  }
+}

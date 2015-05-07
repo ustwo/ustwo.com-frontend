@@ -1,0 +1,56 @@
+@each $space in $spacing {
+  $size:  nth($space, 1);
+  $value: nth($space, 2);
+
+  %u-padding-a#{$size} {
+    padding-top: #{$value}px;
+    padding-right: #{$value}px;
+    padding-left: #{$value}px;
+    padding-bottom: #{$value}px;
+  }
+  %u-padding-t#{$size} { padding-top: #{$value}px; }
+  %u-padding-b#{$size} { padding-bottom: #{$value}px; }
+  %u-padding-l#{$size} { padding-left: #{$value}px; }
+  %u-padding-r#{$size} { padding-right: #{$value}px; }
+  %u-padding-lr#{$size} {
+    padding-left: #{$value}px;
+    padding-right: #{$value}px;
+  }
+  %u-padding-tb#{$size} {
+    padding-top: #{$value}px;
+    padding-bottom: #{$value}px;
+  }
+  .u-margin-b#{$size} { margin-bottom: #{$value}px; }
+  .u-margin-t#{$size} { margin-top: #{$value}px; }
+}
+
+@each $name in $breakpoint-has-widths {
+  @include grid-media-query($name) {
+    @each $space in $spacing {
+      $size:  nth($space, 1);
+      $value: nth($space, 2);
+
+      %u-#{$name}-padding-a#{$size} {
+        padding-top: #{$value}px;
+        padding-right: #{$value}px;
+        padding-left: #{$value}px;
+        padding-bottom: #{$value}px;
+      }
+      %u-#{$name}-padding-t#{$size} { padding-top: #{$value}px; }
+      %u-#{$name}-padding-b#{$size} { padding-bottom: #{$value}px; }
+      %u-#{$name}-padding-l#{$size} { padding-left: #{$value}px; }
+      %u-#{$name}-padding-r#{$size} { padding-right: #{$value}px; }
+      %u-#{$name}-padding-lr#{$size} {
+        padding-left: #{$value}px;
+        padding-right: #{$value}px;
+      }
+      %u-#{$name}-padding-tb#{$size} {
+        padding-top: #{$value}px;
+        padding-bottom: #{$value}px;
+      }
+
+      .u-#{$name}-margin-b#{$size} { margin-bottom: #{$value}px; }
+      .u-#{$name}-margin-t#{$size} { margin-top: #{$value}px; }
+    }
+  }
+}
