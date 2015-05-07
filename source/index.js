@@ -3,30 +3,39 @@ var page = require('page');
 var hbtemplates = require('./templates.js');
 var indexData = null;
 var overlay = document.querySelector('#overlay');
+var baseURL = document.domain === 'ustwo.com' ? '/2015' : '';
 
-console.log('I\'m alive!');
+console.log('I\'m alive!', document.domain);
 
 page('/', function(context){
   console.log(context);
 
-  if(context.hash === '') {
-    if (!indexData) {
-      loadJSON('data/index.json', function(response) {
-          indexData = JSON.parse(response);
-          document.querySelector('.blog__inner').insertAdjacentHTML('beforeend', hbtemplates.templates.blocks(indexData));
-      });
-    } else {
-      TweenLite.to(overlay, 0.5, {autoAlpha:0, ease:Circ.easeIn});
-    }
-  } else if(context.hash === 'what-we-do') {
-    TweenLite.from(overlay, 0.7, {left:'300px', right:'300px', top:'400px', height:'310px', ease:Circ.easeOut});
-    TweenLite.to(overlay, 0.5, {autoAlpha:1, ease:Circ.easeOut});
+  if (!indexData) {
+    loadJSON(baseURL + '/data/index.json', function(response) {
+        indexData = JSON.parse(response);
+        document.querySelector('.blog__inner').insertAdjacentHTML('beforeend', hbtemplates.templates.blocks(indexData));
+    });
   }
+
+  TweenLite.to(overlay, 0.5, {autoAlpha:0, ease:Circ.easeIn});
 });
 
-page.start();
+page('/what-we-do', function(context){
+  console.log(context);
 
+  TweenLite.from(overlay, 0.7, {left:'300px', right:'300px', top:'400px', height:'310px', ease:Circ.easeOut});
+  TweenLite.to(overlay, 0.5, {autoAlpha:1, ease:Circ.easeOut});
+});
 
+page('*', function(context){
+  console.log('where am i?', context);
+});
+
+page.start({hashbang: true});
+
+if(baseURL === '/2015') {
+  page.redirect('/');
+}
 
 // helper for blocks on home page
 function loadJSON(file, callback) {

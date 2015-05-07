@@ -24,7 +24,7 @@
         "excerpt": "Together we build, measure and learn.",
         "content": "",
         "date": "12 March 2015",
-        "link": "#how-we-work",
+        "link": "how-we-work",
         "category": "Design",
         "thumbnail": "http://ustwo.com/wordpress/wp-content/uploads/1984/03/ui_evolution2.png",
         "author": {
@@ -53,7 +53,7 @@
         "excerpt": "Client work, games, ventures and experimentation form our main pillars.",
         "content": "",
         "date": "4 March 2015",
-        "link": "#what-we-do",
+        "link": "what-we-do",
         "category": "Design",
         "thumbnail": "http://ustwo.com/wordpress/wp-content/uploads/2015/03/ferrari.png",
         "author": {
@@ -82,7 +82,7 @@
         "excerpt": "Creating an environment for great people to produce exceptional things",
         "content": "",
         "date": "3 March 2015",
-        "link": "#our-culture",
+        "link": "our-culture",
         "category": "Culture",
         "thumbnail": "http://ustwo.com/wordpress/wp-content/uploads/2015/02/996916_10151798757071815_1972679799_n.jpg",
         "author": {

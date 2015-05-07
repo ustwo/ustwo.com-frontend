@@ -6,7 +6,7 @@ yellow='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo -e "${green}Pushing files to Hector...${NC}"
-rsync -avz ./public/ -e ssh ustwoweb:~/public_html/2015/
+rsync -avz --delete ./public/ -e ssh ustwoweb:~/public_html/2015/
 # ssh ustwoweb "cd ~/public_html/wordpress/wp-content/themes/ustwo.com-wp; git status; git pull origin master; git status"
 if [ "$?" = "0" ]; then
 	echo -e "${green}Great success!${NC}"
