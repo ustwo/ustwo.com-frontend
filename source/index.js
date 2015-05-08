@@ -40,14 +40,13 @@ if(baseURL === '/2015') {
 }
 
 function openHomeOverlay(elementRect) {
-  TweenLite.set(overlay, {top:0, left:0, width:'auto', height:'auto'});
-  TweenLite.from(overlay, 0.45, {left:`${Math.round(elementRect.left)}px`, width:`${Math.round(elementRect.width)}px`, top:`${Math.round(elementRect.top)-68}px`, ease:Circ.easeInOut});
+  TweenLite.from(overlay, 0.45, {transformOrigin:'0% 0%', scale:elementRect.width / overlay.offsetWidth, x:`${elementRect.left}px`, y:`${elementRect.top-68}px`, ease:Circ.easeInOut});
   TweenLite.to(overlay, 0.35, {autoAlpha:1, ease:Circ.easeOut});
   homeOverlayOpen = true;
 }
 
 function closeHomeOverlay() {
-  TweenLite.to(overlay, 0.3, {autoAlpha:0, top:'100px', ease:Circ.easeIn});
+  TweenLite.to(overlay, 0.3, {autoAlpha:0, y:'100px', ease:Circ.easeIn, onComplete:() => TweenLite.set(overlay, {y:0})});
   homeOverlayOpen = false;
 }
 
