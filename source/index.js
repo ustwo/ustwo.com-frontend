@@ -5,6 +5,7 @@ let hbtemplates = require('./templates.js');
 let indexData = null;
 let overlay = document.querySelector('#overlay');
 let baseURL = document.domain === 'ustwo.com' ? '/2015' : '';
+let homeOverlayOpen = false;
 
 console.log('I\'m alive!', document.domain);
 
@@ -18,24 +19,36 @@ page('/', function(context){
     });
   }
 
-  TweenLite.to(overlay, 0.5, {autoAlpha:0, ease:Circ.easeIn});
+  if (homeOverlayOpen) {
+    closeHomeOverlay();
+  }
 });
 
-page('/what-we-do', function(context){
-  console.log(context);
-
-  TweenLite.from(overlay, 0.7, {left:'300px', right:'300px', top:'400px', height:'310px', ease:Circ.easeOut});
-  TweenLite.to(overlay, 0.5, {autoAlpha:1, ease:Circ.easeOut});
+page('/overlay_(.+)', function(context){
+  console.log('overlay', context);
+  openHomeOverlay(document.querySelector(`.blog__articles__item a[href*=${context.path.match(/\/(.+)/)[1]}]`).parentNode.getBoundingClientRect());
 });
 
 page('*', function(context){
-  console.log('where am i?', context);
+  console.warn('Where am I?', context);
 });
 
 page.start({hashbang: true});
 
 if(baseURL === '/2015') {
   page.redirect('/');
+}
+
+function openHomeOverlay(elementRect) {
+  TweenLite.set(overlay, {top:0, left:0, width:'auto', height:'auto'});
+  TweenLite.from(overlay, 0.45, {left:`${Math.round(elementRect.left)}px`, width:`${Math.round(elementRect.width)}px`, top:`${Math.round(elementRect.top)-68}px`, ease:Circ.easeInOut});
+  TweenLite.to(overlay, 0.35, {autoAlpha:1, ease:Circ.easeOut});
+  homeOverlayOpen = true;
+}
+
+function closeHomeOverlay() {
+  TweenLite.to(overlay, 0.3, {autoAlpha:0, top:'100px', ease:Circ.easeIn});
+  homeOverlayOpen = false;
 }
 
 // helper for blocks on home page

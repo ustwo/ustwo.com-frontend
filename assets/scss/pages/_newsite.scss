@@ -19,10 +19,15 @@
   background-color: $rain;
   z-index: 100;
   position: absolute;
-  top: $nav-height;
+  top: 0;
+  margin-top: $nav-height;
   left: 0;
   right: 0;
   height: 2000px;
-  opacity: 0;
+  opacity: 0.5;
   visibility: hidden;
+
+  img {
+    width: 100%
+  }
 }
