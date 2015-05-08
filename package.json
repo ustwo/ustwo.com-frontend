@@ -8,7 +8,7 @@
   "dependencies": {
     "gsap": "*",
     "page": "*",
-    "handlebars": "*",
+    "handlebars": "^3.0.0",
     "merge-stream": "*",
     "gulp-handlebars": "*",
     "gulp-wrap": "*",
@@ -34,6 +34,7 @@
     "gulp-ruby-sass": "0.7.1",
     "gulp-scss-lint": "*",
 
+    "babelify": "*",
     "gulp-uglify": "*",
     "watchify": "*",
     "browserify": "*",

@@ -1,9 +1,10 @@
-var gsap = require('gsap');
-var page = require('page');
-var hbtemplates = require('./templates.js');
-var indexData = null;
-var overlay = document.querySelector('#overlay');
-var baseURL = document.domain === 'ustwo.com' ? '/2015' : '';
+let gsap = require('gsap');
+let page = require('page');
+let hb = require('handlebars');
+let hbtemplates = require('./templates.js');
+let indexData = null;
+let overlay = document.querySelector('#overlay');
+let baseURL = document.domain === 'ustwo.com' ? '/2015' : '';
 
 console.log('I\'m alive!', document.domain);
 
@@ -13,7 +14,7 @@ page('/', function(context){
   if (!indexData) {
     loadJSON(baseURL + '/data/index.json', function(response) {
         indexData = JSON.parse(response);
-        document.querySelector('.blog__inner').insertAdjacentHTML('beforeend', hbtemplates.templates.blocks(indexData));
+        document.querySelector('.blog__inner').insertAdjacentHTML('beforeend', hb.templates.blocks(indexData));
     });
   }
 
@@ -39,7 +40,7 @@ if(baseURL === '/2015') {
 
 // helper for blocks on home page
 function loadJSON(file, callback) {
-  var xobj = new XMLHttpRequest();
+  let xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
   xobj.open('GET', file, true); // Replace 'my_data' with the path to your file
   xobj.onreadystatechange = function () {

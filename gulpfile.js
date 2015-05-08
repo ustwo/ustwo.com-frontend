@@ -24,6 +24,7 @@ var browserSync = require('browser-sync');
 var watchify = require('watchify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var babel = require('babelify');
 // image optimization
 var imagemin = require('gulp-imagemin');
 // linting
@@ -133,6 +134,7 @@ var tasks = {
       .pipe(handlebars())
       .pipe(wrap('Handlebars.template(<%= contents %>)'))
       .pipe(declare({
+        root: 'Handlebars',
         namespace: 'templates',
         noRedeclare: true // Avoid duplicate declarations
       }));
@@ -220,7 +222,7 @@ var tasks = {
     var bundler = browserify('./source/index.js', {
       debug: !production,
       cache: {}
-    });
+    }).transform(babel);
     // determine if we're doing a build
     // and if so, bypass the livereload
     var build = argv._.length ? argv._[0] === 'build' : false;
@@ -244,7 +246,7 @@ var tasks = {
   lintjs: function() {
     return gulp.src([
         './source/index.js'
-      ]).pipe(jshint())
+      ]).pipe(jshint({esnext: true}))
       .pipe(jshint.reporter(stylish))
       .on('error', function() {
         beep();
@@ -337,7 +339,7 @@ gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'browserify
   // --------------------------
   // watch:assets
   // --------------------------
-  gulp.watch('./assets/static/img/*.{gif,jpg,png,svg}', ['assets']);
+  gulp.watch('./assets/static/img/**/*.{gif,jpg,png,svg}', ['assets']);
 
   // --------------------------
   // watch:sass
