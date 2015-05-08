@@ -9,15 +9,25 @@ let homeOverlayOpen = false;
 
 console.log('I\'m alive!', document.domain);
 
+//////////////////////////////////////////////////////////////////////
+// Setup
+//////////////////////////////////////////////////////////////////////
+if (!indexData) {
+  loadJSON(baseURL + '/data/index.json', function(response) {
+      indexData = JSON.parse(response);
+      document.querySelector('.blog__inner').insertAdjacentHTML('beforeend', hb.templates.blocks(indexData));
+  });
+}
+
+if(baseURL === '/2015') {
+  page.redirect('/');
+}
+
+//////////////////////////////////////////////////////////////////////
+// Routing
+//////////////////////////////////////////////////////////////////////
 page('/', function(context){
   console.log(context);
-
-  if (!indexData) {
-    loadJSON(baseURL + '/data/index.json', function(response) {
-        indexData = JSON.parse(response);
-        document.querySelector('.blog__inner').insertAdjacentHTML('beforeend', hb.templates.blocks(indexData));
-    });
-  }
 
   if (homeOverlayOpen) {
     closeHomeOverlay();
@@ -35,10 +45,9 @@ page('*', function(context){
 
 page.start({hashbang: true});
 
-if(baseURL === '/2015') {
-  page.redirect('/');
-}
-
+//////////////////////////////////////////////////////////////////////
+// Overlay functions
+//////////////////////////////////////////////////////////////////////
 function openHomeOverlay(elementRect) {
   TweenLite.from(overlay, 0.45, {transformOrigin:'0% 0%', scale:elementRect.width / overlay.offsetWidth, x:`${elementRect.left}px`, y:`${elementRect.top-68}px`, ease:Circ.easeInOut});
   TweenLite.to(overlay, 0.35, {autoAlpha:1, ease:Circ.easeOut});
@@ -50,7 +59,9 @@ function closeHomeOverlay() {
   homeOverlayOpen = false;
 }
 
-// helper for blocks on home page
+//////////////////////////////////////////////////////////////////////
+// Helper functions
+//////////////////////////////////////////////////////////////////////
 function loadJSON(file, callback) {
   let xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
