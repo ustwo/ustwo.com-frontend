@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "postinstall": "cd node_modules/sc5-styleguide && npm install"
   },
   "dependencies": {
     "gsap": "*",

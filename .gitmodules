@@ -1,0 +1,3 @@
+[submodule "node_modules/sc5-styleguide"]
+	path = node_modules/sc5-styleguide
+	url = git@github.com:ustwo/ustwo.com-styleguide.git

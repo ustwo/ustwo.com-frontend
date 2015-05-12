@@ -84,7 +84,34 @@ var handleError = function(task) {
 // Handlebars template config
 // ----------------------------
 var HBtemplateData = {
-  title: 'ustwo'
+  title: 'ustwo',
+  colours: {
+    'piglet'            :'#ED0082',
+    'softPiglet'        :'#FFA5BE',
+    'passion'           :'#E60C29',
+    'softPassion'       :'#FA7D78',
+    'ohra'              :'#FF5519',
+    'honey'             :'#FFBF02',
+    'softHoney'         :'#F5E664',
+    'jeezz'             :'#96CC29',
+    'pot'               :'#14C04D',
+    'softPot'           :'#A5FAAF',
+    'mare'              :'#16D6D9',
+    'softMare'          :'#A5FAFA',
+    'blu'               :'#009CF3',
+    'navy'              :'#143FCC',
+    'rain'              :'#6114CC',
+    'four'              :'#171D27',
+    'white'             :'#FFFFFF',
+    'grey'              :'#212121',
+    'nonBlack'          :'#333333',
+    'landingOrange'     :'#FF4F2D',
+    'midGrey'           :'#BFBFBF',
+    'paleGrey'          :'#DFDFDF',
+    'pale-turquoise'    :'#7ECACA',
+    'pink'              :'#DF498C',
+    'new-blue'          :'#28A9E2'
+  }
 };
 var HBoptions = {
   ignorePartials: true,
@@ -192,15 +219,19 @@ var tasks = {
   //
   // --------------------------
   styleguideGenerate: function(cb) {
-    return gulp.src('./assets/scss/**/*.scss')
+    return gulp.src([
+      'assets/scss/ustwo.scss',
+      'assets/scss/_variables.scss',
+      'assets/scss/utils/_typography.scss',
+      ])
       .pipe(compilehandlebars(HBtemplateData, HBoptions))
       .pipe(styleguide.generate({
-          title: 'Style Guide',
+          extraHead: '<link href="http://fnt.webink.com/wfs/webink.css/?project=2E393BD8-E94E-41FF-AF6F-074C1F2B6AF9&amp;fonts=A662D665-BC20-B3FD-B44C-A57A206F328C:f=PxGrotesk-Light,933D8DC6-8EC9-A6BD-33DE-EB816A44105A:f=PxGrotesk-Screen,93F90203-3D60-8B7B-9F87-7B585880EEF9:f=PxGrotesk-Regular,8F3750F8-E299-7CFD-2069-7AA8125652CE:f=PxGrotesk-RegularIta,1AEC341F-67D1-6F1C-2974-B45A4BD3C837:f=PxGrotesk-LightIta,B0CBCA70-418F-4482-421C-88B41ECCD5FA:f=PxGrotesk-Bold,F06E7859-C7AE-7BC9-DA36-BA8CCFC1BFEC:f=PxGrotesk-BoldIta,9E4A67B1-52AA-088D-2F00-62815998F7EA:f=FuturaPTExtraBold-Reg" rel="stylesheet" type="text/css" />',
+          title: 'ustwo style guide',
           server: true,
-          commonClass: 'font',
           port: 3002,
           rootPath: styleGuideOutputPath,
-          overviewPath: 'README.md'
+          overviewPath: 'STYLEGUIDE.md'
         }))
       .pipe(gulp.dest(styleGuideOutputPath));
   },
@@ -208,10 +239,8 @@ var tasks = {
   //
   // --------------------------
   styleguideApply: function(cb) {
-    return gulp.src('./assets/scss/**/*.scss')
-      .pipe(sass({
-        errLogToConsole: true
-      }))
+    return gulp.src('./assets/scss/ustwo.scss')
+      .pipe(rubysass({bundleExec: true}))
       .pipe(styleguide.applyStyles())
       .pipe(gulp.dest(styleGuideOutputPath));
   },
@@ -263,7 +292,7 @@ var tasks = {
         // png optimization
         optimizationLevel: production ? 3 : 1
       }))
-      //.pipe(gulp.dest('public/styleguide/assets/img'))
+      .pipe(gulp.dest(styleGuideOutputPath+'/images'))
       .pipe(gulp.dest('public/images'));
   },
   // --------------------------
@@ -297,7 +326,7 @@ gulp.task('browser-sync', function() {
 // gulp.task('reload-sass', ['sass'], function(){
 //   browserSync.reload();
 // });
-gulp.task('reload-sass', ['rubysass'], function(){
+gulp.task('reload-sass', ['rubysass', 'styleguideGenerate', 'styleguideApply'], function(){
   browserSync.reload();
 });
 gulp.task('reload-data', ['data'], function(){
@@ -306,7 +335,7 @@ gulp.task('reload-data', ['data'], function(){
 gulp.task('reload-js', ['browserify'], function(){
   browserSync.reload();
 });
-gulp.task('reload-templates', ['templates', 'handlebars'], function(){
+gulp.task('reload-templates', ['templates', 'handlebars', 'styleguideGenerate', 'styleguideApply'], function(){
   browserSync.reload();
 });
 
@@ -333,8 +362,7 @@ gulp.task('styleguideApply', tasks.styleguideApply);
 // --------------------------
 // DEV/WATCH TASK
 // --------------------------
-//gulp.task('watch', ['assets', 'templates', 'sass', 'browserify', 'browser-sync', 'styleguideGenerate', 'styleguideApply'], function() {
-gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'browserify', 'data', 'browser-sync'], function() {
+gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'browserify', 'data', 'styleguideGenerate', 'styleguideApply', 'browser-sync'], function() {
 
   // --------------------------
   // watch:assets
@@ -344,7 +372,6 @@ gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'browserify
   // --------------------------
   // watch:sass
   // --------------------------
-  //gulp.watch('./assets/scss/**/*.scss', ['styleguideGenerate', 'styleguideApply', 'reload-sass']);
   gulp.watch('./assets/scss/**/*.scss', ['reload-sass']);
 
   // --------------------------

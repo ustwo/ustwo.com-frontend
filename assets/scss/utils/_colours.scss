@@ -54,4 +54,8 @@
       background: $hex;
     }
   }
+
+  .#{$name} .swatch {
+    background-color: $hex;
+  }
 }
