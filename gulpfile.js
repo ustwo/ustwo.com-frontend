@@ -50,7 +50,7 @@ var production = !!argv.production;
 var build = argv._.length ? argv._[0] === 'build' : false;
 var watch = argv._.length ? argv._[0] === 'watch' : true;
 
-var styleGuideOutputPath = './public/styleguide';
+var styleGuideOutputPath = './public/2015/styleguide';
 
 // ----------------------------
 // Error notification methods
@@ -228,9 +228,8 @@ var tasks = {
       .pipe(styleguide.generate({
           extraHead: '<link href="http://fnt.webink.com/wfs/webink.css/?project=2E393BD8-E94E-41FF-AF6F-074C1F2B6AF9&amp;fonts=A662D665-BC20-B3FD-B44C-A57A206F328C:f=PxGrotesk-Light,933D8DC6-8EC9-A6BD-33DE-EB816A44105A:f=PxGrotesk-Screen,93F90203-3D60-8B7B-9F87-7B585880EEF9:f=PxGrotesk-Regular,8F3750F8-E299-7CFD-2069-7AA8125652CE:f=PxGrotesk-RegularIta,1AEC341F-67D1-6F1C-2974-B45A4BD3C837:f=PxGrotesk-LightIta,B0CBCA70-418F-4482-421C-88B41ECCD5FA:f=PxGrotesk-Bold,F06E7859-C7AE-7BC9-DA36-BA8CCFC1BFEC:f=PxGrotesk-BoldIta,9E4A67B1-52AA-088D-2F00-62815998F7EA:f=FuturaPTExtraBold-Reg" rel="stylesheet" type="text/css" />',
           title: 'ustwo style guide',
-          server: true,
-          port: 3002,
           rootPath: styleGuideOutputPath,
+          appRoot: '/2015/styleguide',
           overviewPath: 'STYLEGUIDE.md'
         }))
       .pipe(gulp.dest(styleGuideOutputPath));
