@@ -188,9 +188,13 @@ var tasks = {
   // --------------------------
   styleguideGenerate: function(cb) {
     return gulp.src([
-      'assets/scss/ustwo.scss',
-      'assets/scss/_variables.scss',
-      'assets/scss/utils/_typography.scss',
+      'assets/scss/**/*.scss',
+      '!assets/scss/font.scss',
+      '!assets/scss/lib/*.scss',
+      '!assets/scss/pages/*.scss',
+      '!assets/scss/utils/_colours.scss',
+      '!assets/scss/utils/_spacing.scss',
+      '!assets/scss/mixins/*.scss'
       ])
       .pipe(compilehandlebars(HBtemplateData, HBoptions))
       .pipe(styleguide.generate({
@@ -265,8 +269,7 @@ var tasks = {
         // png optimization
         optimizationLevel: production ? 3 : 1
       }))
-      .pipe(gulp.dest('public/styleguide/images'))
-      .pipe(gulp.dest('public/2015/styleguide/images'))
+      .pipe(gulp.dest('public/2015/images'))
       .pipe(gulp.dest('public/images'));
   },
   // --------------------------

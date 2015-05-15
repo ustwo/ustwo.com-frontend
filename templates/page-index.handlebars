@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <div id="bgLogo"></div>
+  <div id="blog">
+    <div class="blog__inner">
+      <header class="blog__header">
+        <h2 class="home__headline">ustwo is a <span class="highlight">global design studio</span> creating</br>digital products that make a difference.</h2>
+      </header>
+      <ul class="blog__articles">
+        {{#each blocks.items}}
+          {{> index-blocks-item this}}
+        {{/each}}
+        </ul>
+    </div>
+  </div>
+</div>
+
+<div id="overlay">
+  <a href="/"><img src="images/prototype/What-We-Do.png"></img></a>
+</div>

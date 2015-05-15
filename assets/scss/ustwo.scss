@@ -3,12 +3,12 @@
 /*
 Atoms
 
-These are the smallest components to be used as building blocks for larger components.
+These are the smallest elements to be used as building blocks for larger components.
 
 Styleguide 1.0
 */
 
-@import "variables";
+@import "utils/variables";
 
 @import "mixins/clearfix";
 @import "mixins/triangle";
@@ -25,7 +25,7 @@ Styleguide 1.0
 @import "utils/typography";
 
 /*
-Molecules
+Components
 
 These are groups of atoms combined together, with their own properties.
 
@@ -47,9 +47,9 @@ Styleguide 2.0
 @import "components/youtube-embed";
 
 /*
-Organisms
+Modules
 
-These are the most complex components. Organisms are groups of molecules joined together to form a relatively complex, distinct section of an interface.
+These are the most complex components. Modules are groups of components joined together to form a relatively complex, distinct section of an interface.
 
 Styleguide 3.0
 */
@@ -59,7 +59,7 @@ Styleguide 3.0
 /*
 Templates
 
-These show how groups of organisms are laid out to create a page.
+These show how groups of modules are laid out to create a page or larger sections.
 
 Styleguide 4.0
 */

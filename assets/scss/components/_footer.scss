@@ -1,3 +1,13 @@
+/*
+Footer
+
+Site footer.
+
+markup:
+{{>site-footer}}
+
+Styleguide 3.2
+*/
 .footer {
   color: #FFF;
   background: #252525;
@@ -85,7 +95,7 @@
 @include grid-media-query('large') {
   .footer__contact__item {
     margin-bottom: 0;
-  } 
+  }
 }
 
 

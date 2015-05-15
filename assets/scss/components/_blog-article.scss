@@ -1,3 +1,13 @@
+/*
+Blog post
+
+Single blog article.
+
+markup:
+{{>blogpost}}
+
+Styleguide 4.1
+*/
 .blog-article__wrapper {
   @extend %u-padding-tL;
   @extend %u-palm-padding-tS;
