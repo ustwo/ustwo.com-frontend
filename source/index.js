@@ -4,6 +4,7 @@ let hb = require('handlebars');
 let hbtemplates = require('./templates.js');
 let indexData = null;
 let overlay = document.querySelector('#overlay');
+let localfont = require('./localfont.js');
 let baseURL = document.domain === 'ustwo.com' ? '/2015' : '';
 let homeOverlayOpen = false;
 
