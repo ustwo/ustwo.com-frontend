@@ -43,6 +43,9 @@ var concat = require('gulp-concat');
 var compilehandlebars = require('gulp-compile-handlebars');
 var styleguide = require('sc5-styleguide');
 
+// Handlebars template data for styleguide
+var HBtemplateData = require('./data/gulpdata.json');
+
 // gulp build --production
 var production = !!argv.production;
 // determine if we're doing a build
@@ -78,39 +81,6 @@ var handleError = function(task) {
   };
 };
 
-// ----------------------------
-// Handlebars template config
-// ----------------------------
-var HBtemplateData = {
-  title: 'ustwo',
-  colours: {
-    'piglet'            :'#ED0082',
-    'softPiglet'        :'#FFA5BE',
-    'passion'           :'#E60C29',
-    'softPassion'       :'#FA7D78',
-    'ohra'              :'#FF5519',
-    'honey'             :'#FFBF02',
-    'softHoney'         :'#F5E664',
-    'jeezz'             :'#96CC29',
-    'pot'               :'#14C04D',
-    'softPot'           :'#A5FAAF',
-    'mare'              :'#16D6D9',
-    'softMare'          :'#A5FAFA',
-    'blu'               :'#009CF3',
-    'navy'              :'#143FCC',
-    'rain'              :'#6114CC',
-    'four'              :'#171D27',
-    'white'             :'#FFFFFF',
-    'grey'              :'#212121',
-    'nonBlack'          :'#333333',
-    'landingOrange'     :'#FF4F2D',
-    'midGrey'           :'#BFBFBF',
-    'paleGrey'          :'#DFDFDF',
-    'pale-turquoise'    :'#7ECACA',
-    'pink'              :'#DF498C',
-    'new-blue'          :'#28A9E2'
-  }
-};
 var HBoptions = {
   ignorePartials: true,
   batch: ['templates'],
