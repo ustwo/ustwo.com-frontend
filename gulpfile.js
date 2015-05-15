@@ -136,13 +136,13 @@ var tasks = {
   // --------------------------
   // html templates (when using the connect server)
   templates: function() {
-    return gulp.src('./templates/*.{html,handlebars}')
+    return gulp.src('templates/*.{html,handlebars}')
       .pipe(compilehandlebars(HBtemplateData, HBoptions))
       .pipe(gulp.dest('public/'));
   },
 
   handlebars: function() {
-    var partials = gulp.src(['./templates/_*.handlebars'])
+    var partials = gulp.src(['templates/_*.handlebars'])
       .pipe(handlebars())
       .pipe(wrap('Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));', {}, {
         imports: {
@@ -155,7 +155,7 @@ var tasks = {
       }))
       .pipe(wrap('var Handlebars = require(\'handlebars\');<%= contents %>'));
 
-    var templates = gulp.src('./templates/**/[^_]*.handlebars')
+    var templates = gulp.src('templates/**/[^_]*.handlebars')
       .pipe(handlebars())
       .pipe(wrap('Handlebars.template(<%= contents %>)'))
       .pipe(declare({
@@ -176,7 +176,7 @@ var tasks = {
   // SASS (libsass)
   // --------------------------
   sass: function() {
-    return gulp.src('./assets/scss/*.scss')
+    return gulp.src('assets/scss/*.scss')
       .pipe(scsslint())
       // sourcemaps + sass + error handling
       .pipe(gulpif(!production, sourcemaps.init()))
@@ -208,7 +208,7 @@ var tasks = {
   // SASS (libsass)
   // --------------------------
   rubysass: function() {
-      return gulp.src('./assets/scss/ustwo.scss')
+      return gulp.src('assets/scss/*.scss')
       .pipe(rubysass({bundleExec: true}))
       .on('error', function (err) { console.log(err.message); })
       .pipe(gulp.dest('public/css'));
@@ -248,7 +248,7 @@ var tasks = {
   // Browserify
   // --------------------------
   browserify: function() {
-    var bundler = browserify('./source/index.js', {
+    var bundler = browserify('source/index.js', {
       debug: !production,
       cache: {}
     }).transform(babel);
@@ -274,7 +274,7 @@ var tasks = {
   // --------------------------
   lintjs: function() {
     return gulp.src([
-        './source/index.js'
+        'source/index.js'
       ]).pipe(jshint({esnext: true}))
       .pipe(jshint.reporter(stylish))
       .on('error', function() {
@@ -285,7 +285,7 @@ var tasks = {
   // Optimize asset images
   // --------------------------
   optimize: function() {
-    return gulp.src('./assets/static/img/**/*.{gif,jpg,png,svg}')
+    return gulp.src('assets/static/img/**/*.{gif,jpg,png,svg}')
       .pipe(imagemin({
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
@@ -300,7 +300,7 @@ var tasks = {
   // Testing with mocha
   // --------------------------
   test: function() {
-    return gulp.src('./source/**/*test.js', {read: false})
+    return gulp.src('source/**/*test.js', {read: false})
       .pipe(mocha({
         'ui': 'bdd',
         'reporter': 'spec'
@@ -308,7 +308,7 @@ var tasks = {
     );
   },
   data: function() {
-    return gulp.src('./data/**/*.json')
+    return gulp.src('data/**/*.json')
       .pipe(gulp.dest('public/data')
     );
   },
@@ -317,7 +317,7 @@ var tasks = {
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
-            baseDir: "./public"
+            baseDir: "public"
         },
         open: false,
         port: process.env.PORT || 3000
@@ -368,24 +368,24 @@ gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'browserify
   // --------------------------
   // watch:assets
   // --------------------------
-  gulp.watch('./assets/static/img/**/*.{gif,jpg,png,svg}', ['assets']);
+  gulp.watch('assets/static/img/**/*.{gif,jpg,png,svg}', ['assets']);
 
   // --------------------------
   // watch:sass
   // --------------------------
-  gulp.watch('./assets/scss/**/*.scss', ['reload-sass']);
+  gulp.watch('assets/scss/**/*.scss', ['reload-sass']);
 
   // --------------------------
   // watch:js
   // --------------------------
-  gulp.watch('./source/**/*.js', ['lint:js', 'reload-js']);
+  gulp.watch('source/**/*.js', ['lint:js', 'reload-js']);
 
   // --------------------------
   // watch:html
   // --------------------------
-  gulp.watch('./templates/**/*.{html,handlebars}', ['reload-templates']);
+  gulp.watch('templates/**/*.{html,handlebars}', ['reload-templates']);
 
-  gulp.watch('./data/**/*.json', ['reload-data']);
+  gulp.watch('data/**/*.json', ['reload-data']);
 
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });

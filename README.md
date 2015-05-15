@@ -12,7 +12,6 @@ To update content, have a look in `/data` folder!
 
     $ bundle install
     $ npm install
-    $ npm run bower
 
 ## Develop
 
