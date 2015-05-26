@@ -18,6 +18,7 @@
 
     "gulp": "*",
     "gulp-util": "*",
+    "gulp-rename": "*",
     "gulp-if": "*",
     "del": "*",
     "gulp-notify": "*",

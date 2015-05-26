@@ -1,6 +1,7 @@
 'use strict';
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var rename = require('gulp-rename');
 var del = require('del');
 var uglify = require('gulp-uglify');
 var gulpif = require('gulp-if');
@@ -191,11 +192,14 @@ var tasks = {
       'assets/scss/**/*.scss',
       '!assets/scss/font.scss',
       '!assets/scss/lib/*.scss',
-      '!assets/scss/pages/*.scss',
+      '!assets/scss/pages/_blog.scss',
       '!assets/scss/utils/_colours.scss',
       '!assets/scss/utils/_spacing.scss',
       '!assets/scss/mixins/*.scss'
       ])
+      // .pipe(rename(function(filepath) {
+      //   gutil.log(filepath.basename);
+      // }))
       .pipe(compilehandlebars(HBtemplateData, HBoptions))
       .pipe(styleguide.generate({
           extraHead: '',
@@ -263,12 +267,12 @@ var tasks = {
   // --------------------------
   optimize: function() {
     return gulp.src('assets/static/img/**/*.{gif,jpg,png,svg}')
-      .pipe(imagemin({
-        progressive: true,
-        svgoPlugins: [{removeViewBox: false}],
-        // png optimization
-        optimizationLevel: production ? 3 : 1
-      }))
+      // .pipe(imagemin({
+      //   progressive: true,
+      //   svgoPlugins: [{removeViewBox: false}],
+      //   // png optimization
+      //   optimizationLevel: production ? 3 : 1
+      // }))
       .pipe(gulp.dest('public/2015/images'))
       .pipe(gulp.dest('public/images'));
   },
