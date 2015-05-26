@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div id="work">
+    <div class="blog__inner">
+      <header class="blog__header">
+        <h1 class="h2">
+          <span class="u-text-piglet">Mother always<br/>told me</span>
+        </h1>
+      </header>
+      <ul class="blog__articles">
+        {{#each work.items}}
+        {{!-- TODO: need to find a way to make partials without underscores work with gulp-handlebars-compile --}}
+        {{> _work-blocks-item this}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="overlay">
+  <a href="/blog/"><img src="/2015/images/prototype/What-We-Do.png"></img></a>
+</div>

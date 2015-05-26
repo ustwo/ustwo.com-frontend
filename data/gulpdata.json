@@ -54,5 +54,96 @@
     "layout": {
       "categoryClass": "development"
     }
+  },
+  "work": {
+    "items": [
+      {
+        "id": 7780,
+        "title": "How we work",
+        "excerpt": "Together we build, measure and learn.",
+        "content": "",
+        "date": "12 March 2015",
+        "link": "/index/overlay_how-we-work",
+        "category": "Design",
+        "thumbnail": "http://ustwo.com/wordpress/wp-content/uploads/1984/03/ui_evolution2.png",
+        "author": {
+          "name": "Eugeniu",
+          "avatar": "<img alt='' src='http://1.gravatar.com/avatar/9e370532d91b590b86dcf32ce571e960?s=110&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D110&amp;r=X' class='avatar avatar-110 photo' height='110' width='110' />",
+          "description": "Eugeniu Clim is an icon/interface designer at ustwo, always in search of the ideal icon motif or interface layout. You can follow him on Twitter @pickuniquename."
+        },
+        "comments": {
+          "items": [],
+          "count": 0
+        },
+        "social": {
+          "tweets": "13",
+          "facebook": "12",
+          "plus": "1",
+          "total": 26
+        },
+        "layout": {
+          "categoryClass": "design"
+        },
+        "extraClasses": ""
+      },
+      {
+        "id": 7291,
+        "title": "What we do",
+        "excerpt": "Client work, games, ventures and experimentation form our main pillars.",
+        "content": "",
+        "date": "4 March 2015",
+        "link": "/index/overlay_what-we-do",
+        "category": "Design",
+        "thumbnail": "http://ustwo.com/wordpress/wp-content/uploads/2015/03/ferrari.png",
+        "author": {
+          "name": "ustwo auto",
+          "avatar": "<img alt='' src='http://0.gravatar.com/avatar/eea15c940cc47105a4ef573f6a2eccd6?s=110&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D110&amp;r=X' class='avatar avatar-110 photo' height='110' width='110' />",
+          "description": "This series of automotive posts has been carefully researched and written by a team of passionate designers as well as petrol heads comprising of Tim Smith, Harsha Vardhan and David Mingay."
+        },
+        "comments": {
+          "items": [],
+          "count": 0
+        },
+        "social": {
+          "tweets": "664",
+          "facebook": "465",
+          "plus": "67",
+          "total": 1196
+        },
+        "layout": {
+          "categoryClass": "business"
+        },
+        "extraClasses": ""
+      },
+      {
+        "id": 7329,
+        "title": "Our culture",
+        "excerpt": "Creating an environment for great people to produce exceptional things",
+        "content": "",
+        "date": "3 March 2015",
+        "link": "/index/overlay_our-culture",
+        "category": "Culture",
+        "thumbnail": "http://ustwo.com/wordpress/wp-content/uploads/2015/02/996916_10151798757071815_1972679799_n.jpg",
+        "author": {
+          "name": "Adam Taylor",
+          "avatar": "<img alt='' src='http://1.gravatar.com/avatar/1ad33659fc1f37d8ec0cb7e4dc82a142?s=110&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D110&amp;r=X' class='avatar avatar-110 photo' height='110' width='110' />",
+          "description": "Adam is an Agile Coach at ustwo London. He's passionate about helping teams build products, and he really loves cricket."
+        },
+        "comments": {
+          "items": [],
+          "count": 0
+        },
+        "social": {
+          "tweets": "18",
+          "facebook": "26",
+          "plus": "1",
+          "total": 45
+        },
+        "layout": {
+          "categoryClass": "culture"
+        },
+        "extraClasses": ""
+      }
+    ]
   }
 }

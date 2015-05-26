@@ -31,3 +31,33 @@
     width: 100%
   }
 }
+
+/*
+Work page
+
+Work index page.
+
+markup:
+{{>page-work}}
+
+Styleguide 4.2
+*/
+
+#work {
+
+}
+
+/*
+Work block
+
+Work item block.
+
+markup:
+{{>_work-blocks-item}}
+
+Styleguide 3.3
+*/
+
+.work__block__item {
+
+}

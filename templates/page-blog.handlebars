@@ -18,19 +18,16 @@
           </div>
         </form>
       </div>
-
       <header class="blog__header">
         <h1 class="h2">
           <span class="u-text-piglet">Thinking</span><br/>and<br/><span class="u-text-piglet">Sharing</span>
         </h1>
       </header>
-
       <ul class="blog__articles">
         {{#each posts.items}}
         {{> blog-articles-item this}}
         {{/each}}
       </ul>
-
       <div class="blog__pagination">
         <div class="spinner__wrapper spinner__wrapper--pagination">
           <div class="spinner">
@@ -43,7 +40,6 @@
     </div>
   </div>
 </div>
-
 <div id="overlay">
   <a href="/blog/"><img src="/2015/images/prototype/What-We-Do.png"></img></a>
 </div>
