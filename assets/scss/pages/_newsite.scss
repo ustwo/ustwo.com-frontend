@@ -48,12 +48,60 @@ Styleguide 4.2
 }
 
 /*
+Bold page header
+
+Big and bold header to start pages on the right foot.
+
+markup:
+{{>bold-page-header}}
+
+Styleguide 2.1
+*/
+
+.bold-page-header {
+  text-align: center;
+
+  @extend %u-palm-padding-tbL;
+  @extend %u-tablet-padding-tbL;
+  @extend %u-lap-padding-tbXl;
+  @extend %u-desk-padding-tbXl;
+  @extend %u-huge-padding-tbXl;
+  @extend %u-palm-padding-lrS;
+
+  padding: 40px 0;
+
+  h1 {
+    line-height: 1em;
+
+    @include grid-media-query('lap') {
+      font-size: 80px;
+    }
+
+    @include grid-media-query('tablet') {
+      font-size: 62px;
+    }
+
+    @include grid-media-query('palm') {
+      font-size: 42px;
+    }
+  }
+
+  hr {
+    width: 40px;
+    height: 3px;
+    background-color: $mare;
+    border: none;
+    margin: 30px auto;
+  }
+}
+
+/*
 Work block
 
 Work item block.
 
 markup:
-{{>_work-blocks-item}}
+{{>work-blocks-item}}
 
 Styleguide 3.3
 */

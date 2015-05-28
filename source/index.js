@@ -48,8 +48,8 @@ page.exit('/blog/(.+)', function(context, next){
   closeHomeOverlay(next);
 });
 
-page('/work', function(context){
-  //loadPage('work');
+page('/work', function(context, next){
+  loadPage('work', next);
 });
 
 page('*', function(context){
@@ -109,7 +109,7 @@ function showPage(pageName, next) {
         TweenLite.set(pageWrapper, {x:0, y:0});
         TweenLite.from(pageWrapper, 0.35, {x:`-${window.innerWidth}px`, ease:Circ.easeOut});
       }});
-    } else if(pageName === 'blog') {
+    } else if(pageName === 'blog' || pageName === 'work') {
       TweenLite.to(pageWrapper, 0.35, {x:`-${window.innerWidth}px`, ease:Circ.easeIn, onComplete:() => {
         renderPage(pageName, next);
         pageWrapper = pageContent.querySelector('.wrapper');

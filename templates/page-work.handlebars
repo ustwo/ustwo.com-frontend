@@ -1,20 +1,13 @@
 <div class="wrapper">
   <div id="work">
-    <div class="blog__inner">
-      <header class="blog__header">
-        <h1 class="h2">
-          <span class="u-text-piglet">Mother always<br/>told me</span>
-        </h1>
-      </header>
-      <ul class="blog__articles">
-        {{#each work.items}}
-        {{!-- TODO: need to find a way to make partials without underscores work with gulp-handlebars-compile --}}
-        {{> _work-blocks-item this}}
-        {{/each}}
-      </ul>
-    </div>
+    {{> bold-page-header bold-page-header__extraClass='work__header' bold-page-header__colour='marshPassion' bold-page-header__content='Mother always<br/>told me' bold-page-header__secondary-content='It’s not what you say, it’s what you do'}}
+    <ul class="blog__articles">
+      {{#each work.items}}
+      {{> work-blocks-item this}}
+      {{/each}}
+    </ul>
   </div>
 </div>
 <div id="overlay">
-  <a href="/blog/"><img src="/2015/images/prototype/What-We-Do.png"></img></a>
+  <a href="/work/"><img src="/2015/images/prototype/What-We-Do.png"></img></a>
 </div>

@@ -25,8 +25,11 @@
     "paleGrey"          :"#DFDFDF",
     "pale-turquoise"    :"#7ECACA",
     "pink"              :"#DF498C",
+    "marshPassion"      :"#F9615B",
     "new-blue"          :"#28A9E2"
   },
+  "bold-page-header__content": "I'm a bold<br/>page header",
+  "bold-page-header__secondary-content": "And this is my awesome secondary line",
   "pages": [
     {
       "title": "Work",
