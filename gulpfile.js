@@ -99,6 +99,7 @@ var tasks = {
   // --------------------------
   clean: function(cb) {
     del(['public/'], cb);
+    // TODO: put .gitignore back
   },
   // --------------------------
   // HTML
@@ -107,6 +108,9 @@ var tasks = {
   templates: function() {
     return gulp.src('templates/*.{html,handlebars}')
       .pipe(compilehandlebars(JSON.parse(fs.readFileSync('./data/gulpdata.json')), HBoptions))
+      .pipe(rename(function(path) {
+          path.extname = '.html';
+      }))
       .pipe(gulp.dest('public/'));
   },
 
