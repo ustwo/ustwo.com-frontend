@@ -27,6 +27,38 @@
     "pink"              :"#DF498C",
     "new-blue"          :"#28A9E2"
   },
+  "pages": [
+    {
+      "title": "Work",
+      "url": "/work/",
+      "colour": "ohra"
+    },
+    {
+      "title": "Approach",
+      "url": "/approach/",
+      "colour": "ohra"
+    },
+    {
+      "title": "Studios",
+      "url": "/studios/",
+      "colour": "ohra"
+    },
+    {
+      "title": "Learn + Share",
+      "url": "/learn-share/",
+      "colour": "ohra"
+    },
+    {
+      "title": "Blog",
+      "url": "/blog/",
+      "colour": "ohra"
+    },
+    {
+      "title": "Join us",
+      "url": "/join-us/",
+      "colour": "ohra"
+    }
+  ],
   "post": {
     "id": 3286,
     "title": "MIDI controller to Philips Hue",
