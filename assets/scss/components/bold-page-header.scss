@@ -1,0 +1,27 @@
+/*
+Bold page header
+
+Big and bold header to start pages on the right foot.
+
+markup:
+{{>bold-page-header}}
+
+Styleguide 2.1
+*/
+
+.bold-page-header {
+  padding: 40px 0;
+
+  h1 {
+    line-height: 1em;
+    font-size: 80px;
+  }
+
+  hr {
+    width: 40px;
+    height: 3px;
+    background-color: $mare;
+    border: none;
+    margin: 30px auto;
+  }
+}

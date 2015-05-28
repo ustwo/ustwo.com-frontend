@@ -4,6 +4,7 @@
     "piglet"            :"#ED0082",
     "softPiglet"        :"#FFA5BE",
     "passion"           :"#E60C29",
+    "marshPassion"      :"#F9615B",
     "softPassion"       :"#FA7D78",
     "ohra"              :"#FF5519",
     "honey"             :"#FFBF02",
@@ -18,18 +19,18 @@
     "rain"              :"#6114CC",
     "four"              :"#171D27",
     "white"             :"#FFFFFF",
+    "offWhite"          :"#F8F8F8",
     "grey"              :"#212121",
     "nonBlack"          :"#333333",
-    "landingOrange"     :"#FF4F2D",
-    "midGrey"           :"#BFBFBF",
-    "paleGrey"          :"#DFDFDF",
-    "pale-turquoise"    :"#7ECACA",
-    "pink"              :"#DF498C",
-    "marshPassion"      :"#F9615B",
-    "new-blue"          :"#28A9E2"
+    "midGrey"           :"#BFBFBF"
   },
   "bold-page-header__content": "I'm a bold<br/>page header",
   "bold-page-header__secondary-content": "And this is my awesome secondary line",
+  "work__block__link": "best-work-ever/",
+  "work__block__image": "/images/work/work-dice.png",
+  "work__block__category": "Venture",
+  "work__block__title": "DICE",
+  "work__block__blurb": "Our newest venture, DICE, a smart music ticketing app with No Booking Fees, is different in that we’ve worked directly with a partner to start a new business and raise funding.",
   "pages": [
     {
       "title": "Work",
@@ -62,6 +63,38 @@
       "colour": "ohra"
     }
   ],
+  "work": {
+    "items" : [
+      {
+        "work__block__link": "best-work-ever/",
+        "work__block__image": "/images/work/work-dice.png",
+        "work__block__category": "Venture",
+        "work__block__title": "DICE",
+        "work__block__blurb": "Our newest venture, DICE, a smart music ticketing app with No Booking Fees, is different in that we’ve worked directly with a partner to start a new business and raise funding."
+      },
+      {
+        "work__block__link": "best-work-ever/",
+        "work__block__image": "/images/work/work-dice.png",
+        "work__block__category": "Client work",
+        "work__block__title": "Google Wear",
+        "work__block__blurb": "Our NYC studio has built some of the first official Google Android Wear watch faces, and they’re now available for download from Google Play."
+      },
+      {
+        "work__block__link": "best-work-ever/",
+        "work__block__image": "/images/work/work-dice.png",
+        "work__block__category": "ustwo games",
+        "work__block__title": "Monument Valley",
+        "work__block__blurb": "Apple iPad game of the year 2014, Monument Valley is an illusory adventure of impossible architecture and forgiveness by ustwo games."
+      },
+      {
+        "work__block__link": "best-work-ever/",
+        "work__block__image": "/images/work/work-dice.png",
+        "work__block__category": "Client work",
+        "work__block__title": "Lush",
+        "work__block__blurb": "Get the in-store experience on the go - shop by scent and mood with the new Lush Fresh Handmade Cosmetics app. It’s like having Lush in your pocket."
+      }
+    ]
+  },
   "post": {
     "id": 3286,
     "title": "MIDI controller to Philips Hue",
@@ -89,96 +122,5 @@
     "layout": {
       "categoryClass": "development"
     }
-  },
-  "work": {
-    "items": [
-      {
-        "id": 7780,
-        "title": "How we work",
-        "excerpt": "Together we build, measure and learn.",
-        "content": "",
-        "date": "12 March 2015",
-        "link": "/index/overlay_how-we-work",
-        "category": "Design",
-        "thumbnail": "http://ustwo.com/wordpress/wp-content/uploads/1984/03/ui_evolution2.png",
-        "author": {
-          "name": "Eugeniu",
-          "avatar": "<img alt='' src='http://1.gravatar.com/avatar/9e370532d91b590b86dcf32ce571e960?s=110&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D110&amp;r=X' class='avatar avatar-110 photo' height='110' width='110' />",
-          "description": "Eugeniu Clim is an icon/interface designer at ustwo, always in search of the ideal icon motif or interface layout. You can follow him on Twitter @pickuniquename."
-        },
-        "comments": {
-          "items": [],
-          "count": 0
-        },
-        "social": {
-          "tweets": "13",
-          "facebook": "12",
-          "plus": "1",
-          "total": 26
-        },
-        "layout": {
-          "categoryClass": "design"
-        },
-        "extraClasses": ""
-      },
-      {
-        "id": 7291,
-        "title": "What we do",
-        "excerpt": "Client work, games, ventures and experimentation form our main pillars.",
-        "content": "",
-        "date": "4 March 2015",
-        "link": "/index/overlay_what-we-do",
-        "category": "Design",
-        "thumbnail": "http://ustwo.com/wordpress/wp-content/uploads/2015/03/ferrari.png",
-        "author": {
-          "name": "ustwo auto",
-          "avatar": "<img alt='' src='http://0.gravatar.com/avatar/eea15c940cc47105a4ef573f6a2eccd6?s=110&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D110&amp;r=X' class='avatar avatar-110 photo' height='110' width='110' />",
-          "description": "This series of automotive posts has been carefully researched and written by a team of passionate designers as well as petrol heads comprising of Tim Smith, Harsha Vardhan and David Mingay."
-        },
-        "comments": {
-          "items": [],
-          "count": 0
-        },
-        "social": {
-          "tweets": "664",
-          "facebook": "465",
-          "plus": "67",
-          "total": 1196
-        },
-        "layout": {
-          "categoryClass": "business"
-        },
-        "extraClasses": ""
-      },
-      {
-        "id": 7329,
-        "title": "Our culture",
-        "excerpt": "Creating an environment for great people to produce exceptional things",
-        "content": "",
-        "date": "3 March 2015",
-        "link": "/index/overlay_our-culture",
-        "category": "Culture",
-        "thumbnail": "http://ustwo.com/wordpress/wp-content/uploads/2015/02/996916_10151798757071815_1972679799_n.jpg",
-        "author": {
-          "name": "Adam Taylor",
-          "avatar": "<img alt='' src='http://1.gravatar.com/avatar/1ad33659fc1f37d8ec0cb7e4dc82a142?s=110&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D110&amp;r=X' class='avatar avatar-110 photo' height='110' width='110' />",
-          "description": "Adam is an Agile Coach at ustwo London. He's passionate about helping teams build products, and he really loves cricket."
-        },
-        "comments": {
-          "items": [],
-          "count": 0
-        },
-        "social": {
-          "tweets": "18",
-          "facebook": "26",
-          "plus": "1",
-          "total": 45
-        },
-        "layout": {
-          "categoryClass": "culture"
-        },
-        "extraClasses": ""
-      }
-    ]
   }
 }

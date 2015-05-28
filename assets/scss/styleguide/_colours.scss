@@ -1,0 +1,32 @@
+/*
+Colours
+
+Colours being used in the project.
+
+markup:
+{{>styleguide/colours}}
+
+Styleguide 1.1
+*/
+
+.colour-container {
+  .colour {
+    width: 150px;
+    float: left;
+    margin: 0 6px 10px 0;
+  }
+
+  .swatch {
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    font-weight: 300;
+    color: #fff;
+    background-color: #eee;
+    margin-bottom: 2px;
+  }
+
+  .name {
+    text-align: center;
+  }
+}

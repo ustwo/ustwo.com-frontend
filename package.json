@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "gulp": "gulp",
     "watch": "gulp watch",
     "postinstall": "cd node_modules/sc5-styleguide && npm install"
   },
@@ -33,6 +34,7 @@
     "autoprefixer-core": "*",
     "gulp-sourcemaps": "*",
     "gulp-postcss": "*",
+    "gulp-sass": "*",
     "gulp-ruby-sass": "0.7.1",
     "gulp-scss-lint": "*",
 

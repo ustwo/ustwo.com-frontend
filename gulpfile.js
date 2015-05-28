@@ -13,7 +13,7 @@ var notify = require('gulp-notify');
 var buffer = require('vinyl-buffer');
 var argv = require('yargs').argv;
 // sass
-// var sass = require('gulp-sass');
+var sass = require('gulp-sass');
 var rubysass = require('gulp-ruby-sass');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer-core');
@@ -149,8 +149,8 @@ var tasks = {
   // SASS (libsass)
   // --------------------------
   sass: function() {
-    return gulp.src('assets/scss/*.scss')
-      .pipe(scsslint())
+    return gulp.src('assets/scss/ustwo.scss')
+      //.pipe(scsslint())
       // sourcemaps + sass + error handling
       .pipe(gulpif(!production, sourcemaps.init()))
       .pipe(sass({
@@ -178,10 +178,10 @@ var tasks = {
       .pipe(gulp.dest('public/css'));
   },
   // --------------------------
-  // SASS (libsass)
+  // SASS (ruby-sass)
   // --------------------------
   rubysass: function() {
-      return gulp.src('assets/scss/*.scss')
+      return gulp.src('assets/scss/_old/*.scss')
       .pipe(rubysass({bundleExec: true}))
       .on('error', function (err) { console.log(err.message); })
       .pipe(gulp.dest('public/css'));
@@ -193,15 +193,8 @@ var tasks = {
     return gulp.src([
       'assets/scss/**/*.scss',
       '!assets/scss/font.scss',
-      '!assets/scss/lib/*.scss',
-      '!assets/scss/pages/_blog.scss',
-      '!assets/scss/utils/_colours.scss',
-      '!assets/scss/utils/_spacing.scss',
-      '!assets/scss/mixins/*.scss'
+      '!assets/scss/_old/**/*.scss'
       ])
-      // .pipe(rename(function(filepath) {
-      //   gutil.log(filepath.basename);
-      // }))
       .pipe(compilehandlebars(JSON.parse(fs.readFileSync('./data/gulpdata.json')), HBoptions))
       .pipe(styleguide.generate({
           extraHead: '',
@@ -222,7 +215,10 @@ var tasks = {
       'assets/scss/font.scss',
       'assets/scss/ustwo.scss'
       ])
-      .pipe(rubysass({bundleExec: true}))
+      .pipe(sass({
+        sourceComments: !production,
+        outputStyle: production ? 'compressed' : 'nested'
+      }))
       .pipe(styleguide.applyStyles())
       .pipe(gulp.dest('public/styleguide'))
       .pipe(gulp.dest('public/2015/styleguide'));
@@ -309,7 +305,7 @@ gulp.task('browser-sync', function() {
 // gulp.task('reload-sass', ['sass'], function(){
 //   browserSync.reload();
 // });
-gulp.task('reload-sass', ['rubysass', 'styleguideGenerate', 'styleguideApply'], function(){
+gulp.task('reload-sass', ['rubysass', 'sass', 'styleguideGenerate', 'styleguideApply'], function(){
   browserSync.reload();
 });
 gulp.task('reload-data', ['data', 'templates', 'styleguideGenerate'], function(){
@@ -345,7 +341,7 @@ gulp.task('styleguideApply', tasks.styleguideApply);
 // --------------------------
 // DEV/WATCH TASK
 // --------------------------
-gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'browserify', 'data', 'styleguideGenerate', 'styleguideApply', 'browser-sync'], function() {
+gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'sass', 'browserify', 'data', 'styleguideGenerate', 'styleguideApply', 'browser-sync'], function() {
 
   // --------------------------
   // watch:assets

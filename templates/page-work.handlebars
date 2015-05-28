@@ -1,13 +1,10 @@
 <div class="wrapper">
   <div id="work">
-    {{> bold-page-header bold-page-header__extraClass='work__header' bold-page-header__colour='marshPassion' bold-page-header__content='Mother always<br/>told me' bold-page-header__secondary-content='It’s not what you say, it’s what you do'}}
+    {{> bold-page-header bold-page-header__colour='marshPassion' bold-page-header__content='Mother always<br/>told me' bold-page-header__secondary-content='It’s not what you say, it’s what you do'}}
     <ul class="blog__articles">
       {{#each work.items}}
-      {{> work-blocks-item this}}
+      {{> work-block this}}
       {{/each}}
     </ul>
   </div>
-</div>
-<div id="overlay">
-  <a href="/work/"><img src="/2015/images/prototype/What-We-Do.png"></img></a>
 </div>

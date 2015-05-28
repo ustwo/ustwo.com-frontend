@@ -1,0 +1,92 @@
+/* ------------------------------------------------------------ *\
+|* Typography
+\* ------------------------------------------------------------ */
+
+$PxGroteskLight: "PxGrotesk-Light", "Arial", sans-serif;
+$PxGroteskLightItalic: "PxGrotesk-LightItalic", "Arial", sans-serif;
+$PxGroteskRegular: "PxGrotesk-Regular", "Arial", sans-serif;
+$PxGroteskRegularItalic: "PxGrotesk-RegularItalic", "Arial", sans-serif;
+$PxGroteskBold: "PxGrotesk-Bold", "Arial", sans-serif;
+$PxGroteskBoldItalic: "PxGrotesk-BoldItalic", "Arial", sans-serif;
+$Futura: "FuturaPTExtraBold-Reg", sans-serif;
+
+
+/* ------------------------------------------------------------ *\
+|* Colours
+\* ------------------------------------------------------------ */
+
+// TODO: refactor
+
+$piglet      : #ED0082;
+$softPiglet  : #FFA5BE;
+$passion     : #E60C29;
+$marshPassion: #F9615B;
+$softPassion : #FA7D78;
+$ohra        : #FF5519;
+$honey       : #FFBF02;
+$softHoney   : #F5E664;
+$jeezz       : #96CC29;
+$pot         : #14C04D;
+$softPot     : #A5FAAF;
+$mare        : #16D6D9;
+$softMare    : #A5FAFA;
+$blu         : #009CF3;
+$navy        : #143FCC;
+$rain        : #6114CC;
+$four        : #171D27;
+$white       : #FFFFFF;
+$offWhite    : #F8F8F8;
+$grey        : #212121;
+$nonBlack    : #333333;
+$midGrey     : #BFBFBF;
+
+$colours: (
+  'piglet'            $piglet      ,
+  'softPiglet'        $softPiglet  ,
+  'passion'           $passion     ,
+  'marshPassion'      $marshPassion,
+  'softPassion'       $softPassion ,
+  'ohra'              $ohra        ,
+  'honey'             $honey       ,
+  'softHoney'         $softHoney   ,
+  'jeezz'             $jeezz       ,
+  'pot'               $pot         ,
+  'softPot'           $softPot     ,
+  'mare'              $mare        ,
+  'softMare'          $softMare    ,
+  'blu'               $blu         ,
+  'navy'              $navy        ,
+  'rain'              $rain        ,
+  'four'              $four        ,
+  'white'             $white       ,
+  'offWhite'          $offWhite    ,
+  'grey'              $grey        ,
+  'nonBlack'          $nonBlack    ,
+  'midGrey'           $midGrey
+);
+
+$categories: (
+  'ux'            $pot,
+  'development'   $ohra,
+  'culture'       $honey,
+  'design'        $jeezz,
+  'process'       $mare,
+  'business'      $blu,
+
+  'malmo'         $ohra,
+  'london'        $mare,
+  'new-york'      $piglet
+);
+
+
+/* ------------------------------------------------------------ *\
+|* Breakpoints
+\* ------------------------------------------------------------ */
+
+
+
+/* ------------------------------------------------------------ *\
+|* Misc
+\* ------------------------------------------------------------ */
+
+$nav-height: 68px;
