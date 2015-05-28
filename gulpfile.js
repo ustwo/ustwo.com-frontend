@@ -149,7 +149,7 @@ var tasks = {
   // SASS (libsass)
   // --------------------------
   sass: function() {
-    return gulp.src('assets/scss/ustwo.scss')
+    return gulp.src('assets/scss/[^_]*.scss')
       //.pipe(scsslint())
       // sourcemaps + sass + error handling
       .pipe(gulpif(!production, sourcemaps.init()))
