@@ -27,7 +27,7 @@
 
     "gulp-imagemin": "*",
 
-    "gulp-compile-handlebars": "*",
+    "gulp-compile-handlebars": "daaain/gulp-compile-handlebars",
     "sc5-styleguide": "*",
 
     "autoprefixer-core": "*",
