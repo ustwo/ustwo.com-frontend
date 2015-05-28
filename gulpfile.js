@@ -6,6 +6,7 @@ var del = require('del');
 var uglify = require('gulp-uglify');
 var gulpif = require('gulp-if');
 var exec = require('child_process').exec;
+var fs = require('fs');
 
 var notify = require('gulp-notify');
 
@@ -43,9 +44,6 @@ var concat = require('gulp-concat');
 
 var compilehandlebars = require('gulp-compile-handlebars');
 var styleguide = require('sc5-styleguide');
-
-// Handlebars template data for styleguide
-var HBtemplateData = require('./data/gulpdata.json');
 
 // gulp build --production
 var production = !!argv.production;
@@ -108,7 +106,7 @@ var tasks = {
   // html templates (when using the connect server)
   templates: function() {
     return gulp.src('templates/*.{html,handlebars}')
-      .pipe(compilehandlebars(HBtemplateData, HBoptions))
+      .pipe(compilehandlebars(JSON.parse(fs.readFileSync('./data/gulpdata.json')), HBoptions))
       .pipe(gulp.dest('public/'));
   },
 
@@ -200,7 +198,7 @@ var tasks = {
       // .pipe(rename(function(filepath) {
       //   gutil.log(filepath.basename);
       // }))
-      .pipe(compilehandlebars(HBtemplateData, HBoptions))
+      .pipe(compilehandlebars(JSON.parse(fs.readFileSync('./data/gulpdata.json')), HBoptions))
       .pipe(styleguide.generate({
           extraHead: '',
           title: 'ustwo style guide',
@@ -310,7 +308,7 @@ gulp.task('browser-sync', function() {
 gulp.task('reload-sass', ['rubysass', 'styleguideGenerate', 'styleguideApply'], function(){
   browserSync.reload();
 });
-gulp.task('reload-data', ['data'], function(){
+gulp.task('reload-data', ['data', 'templates', 'styleguideGenerate'], function(){
   browserSync.reload();
 });
 gulp.task('reload-js', ['browserify'], function(){
