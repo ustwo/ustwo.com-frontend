@@ -25,8 +25,8 @@ These are groups of atoms combined together, with their own properties.
 
 Styleguide 2.0
 */
+
 @import "components/bold-page-header";
-@import "components/work-block";
 
 /*
 Modules
@@ -36,6 +36,8 @@ These are the most complex components. Modules are groups of components joined t
 Styleguide 3.0
 */
 
+@import "modules/work-block";
+@import "modules/navigation";
 
 /*
 Templates
@@ -44,6 +46,7 @@ These show how groups of modules are laid out to create a page or larger section
 
 Styleguide 4.0
 */
+
 @import "templates/work";
 
 

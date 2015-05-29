@@ -16,4 +16,14 @@
       {{/each}}
     </ul>
   </div>
+  <div class="nav__overlay u-text-center">
+    <button class="nav__overlay-close"><span>X</span></button>
+    <ul class="nav__overlay__menu">
+      {{#each pages}}
+        <li class="h3 nav__overlay__menu__item">
+            <a href="{{url}}" class="u-link-{{colour}}">{{title}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 </nav>
