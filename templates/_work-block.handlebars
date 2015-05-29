@@ -1,13 +1,15 @@
 <li class="work__block">
   <article>
     <a href="{{work__block__link}}">
-      <img src="{{work__block__image}}"></img>
+      <img class="work__block__image" src="{{work__block__image}}"></img>
     </a>
-    <div class="work__block__content">
-      <span>{{work__block__category}}</span>
-      <h3>{{work__block__title}}</h3>
-      <p>{{work__block__blurb}}</p>
-      <a href="{{work__block__link}}">Read more</a>
+    <div class="work__block__content-wrapper">
+      <div class="work__block__content">
+        <h5 class="work__block__category">{{work__block__category}}</h5>
+        <h3>{{work__block__title}}</h3>
+        <p>{{work__block__blurb}}</p>
+        <a class="u-bar-after--mare block-link" href="{{work__block__link}}">Read more</a>
+      </div>
     </div>
   </article>
 </li>

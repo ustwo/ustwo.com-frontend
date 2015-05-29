@@ -8,6 +8,15 @@ markup:
 
 Styleguide 1.2
 */
+
+$PxGroteskLight: "PxGrotesk-Light", "Arial", sans-serif;
+$PxGroteskLightItalic: "PxGrotesk-LightItalic", "Arial", sans-serif;
+$PxGroteskRegular: "PxGrotesk-Regular", "Arial", sans-serif;
+$PxGroteskRegularItalic: "PxGrotesk-RegularItalic", "Arial", sans-serif;
+$PxGroteskBold: "PxGrotesk-Bold", "Arial", sans-serif;
+$PxGroteskBoldItalic: "PxGrotesk-BoldItalic", "Arial", sans-serif;
+$Futura: "FuturaPTExtraBold-Reg", sans-serif;
+
 body {
   font-family: $PxGroteskRegular;
   color: #333;
@@ -17,6 +26,8 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  font-size: 20px;
+  font-family: $PxGroteskBold;
 
   &:hover {
     cursor: pointer;
@@ -26,8 +37,9 @@ a {
   }
 }
 
-.u-text-light {
-  font-family: $PxGroteskLight;
+.block-link {
+  display: inline-block;
+  margin-top: 24px;
 }
 
 .u-text-lowercase {
@@ -58,10 +70,14 @@ h3, .h3 {
 
 h4, .h4,
 h5, .h5,
-h6, .h6,
-p, .p {
+h6, .h6 {
   font-family: $PxGroteskRegular;
   line-height: 1.75em;
+}
+
+p, .p {
+  font-family: $PxGroteskLight;
+  line-height: 1.5em;
 }
 
 p {
@@ -75,7 +91,7 @@ h2, .h2       { font-size: 56px; }
 h3, .h3       { font-size: 36px; }
 h4, .h4       { font-size: 24px; }
 h5, .h5       { font-size: 24px; }
-p, .p         { font-size: 18px; }
+p, .p         { font-size: 20px; }
 .p--small     { font-size: 14px; }
 .p--address {
   font-size: 14px;

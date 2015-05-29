@@ -22,7 +22,8 @@
     "offWhite"          :"#F8F8F8",
     "grey"              :"#212121",
     "nonBlack"          :"#333333",
-    "midGrey"           :"#BFBFBF"
+    "midGrey"           :"#BFBFBF",
+    "lightGrey"         :"#E8E8E8"
   },
   "bold-page-header__content": "I'm a bold<br/>page header",
   "bold-page-header__secondary-content": "And this is my awesome secondary line",

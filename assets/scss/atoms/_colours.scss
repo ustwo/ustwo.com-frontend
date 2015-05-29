@@ -1,3 +1,66 @@
+$piglet      : #ED0082;
+$softPiglet  : #FFA5BE;
+$passion     : #E60C29;
+$marshPassion: #F9615B;
+$softPassion : #FA7D78;
+$ohra        : #FF5519;
+$honey       : #FFBF02;
+$softHoney   : #F5E664;
+$jeezz       : #96CC29;
+$pot         : #14C04D;
+$softPot     : #A5FAAF;
+$mare        : #16D6D9;
+$softMare    : #A5FAFA;
+$blu         : #009CF3;
+$navy        : #143FCC;
+$rain        : #6114CC;
+$four        : #171D27;
+$white       : #FFFFFF;
+$offWhite    : #F8F8F8;
+$grey        : #212121;
+$nonBlack    : #333333;
+$midGrey     : #BFBFBF;
+$lightGrey   : #E8E8E8;
+
+$colours: (
+  'piglet'            $piglet      ,
+  'softPiglet'        $softPiglet  ,
+  'passion'           $passion     ,
+  'marshPassion'      $marshPassion,
+  'softPassion'       $softPassion ,
+  'ohra'              $ohra        ,
+  'honey'             $honey       ,
+  'softHoney'         $softHoney   ,
+  'jeezz'             $jeezz       ,
+  'pot'               $pot         ,
+  'softPot'           $softPot     ,
+  'mare'              $mare        ,
+  'softMare'          $softMare    ,
+  'blu'               $blu         ,
+  'navy'              $navy        ,
+  'rain'              $rain        ,
+  'four'              $four        ,
+  'white'             $white       ,
+  'offWhite'          $offWhite    ,
+  'grey'              $grey        ,
+  'nonBlack'          $nonBlack    ,
+  'midGrey'           $midGrey     ,
+  'lightGrey'         $lightGrey   ,
+);
+
+$categories: (
+  'ux'            $pot,
+  'development'   $ohra,
+  'culture'       $honey,
+  'design'        $jeezz,
+  'process'       $mare,
+  'business'      $blu,
+
+  'malmo'         $ohra,
+  'london'        $mare,
+  'new-york'      $piglet,
+);
+
 @each $colour in $colours {
   $name: nth($colour, 1);
   $hex:  unquote(nth($colour, 2));
@@ -41,16 +104,16 @@
 
   .u-bar-after--#{$name} {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 
     &:after {
       content: "";
       display: block;
       position: absolute;
       left: 1px;
-      bottom: -10px;
+      right: 1px;
+      bottom: 0px;
       height: 2px;
-      width: 15px;
       background: $hex;
     }
   }

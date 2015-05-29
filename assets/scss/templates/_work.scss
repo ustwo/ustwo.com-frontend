@@ -10,5 +10,8 @@ Styleguide 4.2
 */
 
 #work {
-
+  background-color: $offWhite;
+  .work__blocks {
+    padding: 0;
+  }
 }

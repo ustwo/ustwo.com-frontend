@@ -10,5 +10,58 @@ Styleguide 2.2
 */
 
 .work__block {
+  background-color: $white;
   list-style: none;
+
+  border-bottom: 4px solid $lightGrey;
+  margin-bottom: 40px;
+  @include container(4);
+  @include nested(4) {
+    .work__block__image {
+      @include span(4);
+    }
+    .work__block__content-wrapper {
+      @include span(4) {
+        .work__block__content {
+          margin-top: 35px;
+          @include squish(20px);
+        }
+      }
+    }
+  }
+
+  @include susy-breakpoint($bp-large, $susy) {
+    border-bottom: 0px;
+    margin-bottom: 60px;
+    @include container(16);
+    @include nested(16) {
+      .work__block__image {
+        @include span(10 first);
+      }
+      .work__block__content-wrapper {
+        @include span(6 nest last) {
+          .work__block__content {
+            margin-top: 85px;
+            @include pre(1);
+            @include span(4);
+          }
+        }
+      }
+    }
+  }
+
+  .work__block__category {
+    font-family: $PxGroteskLightItalic;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+}
+
+.work__block:nth-of-type(even) {
+  .work__block__image {
+    @include last;
+  }
+  .work__block__content-wrapper {
+    @include first;
+  }
 }
