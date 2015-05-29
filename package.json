@@ -5,7 +5,6 @@
   "scripts": {
     "gulp": "gulp",
     "watch": "gulp watch",
-    "postinstall": "cd node_modules/sc5-styleguide && npm install"
     "bower": "bower install"
   },
   "dependencies": {

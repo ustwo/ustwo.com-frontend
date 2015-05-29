@@ -99,7 +99,9 @@ var tasks = {
   // --------------------------
   clean: function(cb) {
     del(['public/'], cb);
-    // TODO: put .gitignore back
+    return gulp.src('node_modules/.gitignore')
+      .pipe(gulp.dest('public/')
+    );
   },
   // --------------------------
   // HTML
@@ -305,7 +307,10 @@ gulp.task('browser-sync', function() {
 // gulp.task('reload-sass', ['sass'], function(){
 //   browserSync.reload();
 // });
-gulp.task('reload-sass', ['rubysass', 'sass', 'styleguideGenerate', 'styleguideApply'], function(){
+gulp.task('reload-ruby-sass', ['rubysass'], function(){
+  browserSync.reload();
+});
+gulp.task('reload-sass', ['sass', 'styleguideGenerate', 'styleguideApply'], function(){
   browserSync.reload();
 });
 gulp.task('reload-data', ['data', 'templates', 'styleguideGenerate'], function(){
@@ -351,7 +356,8 @@ gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'sass', 'br
   // --------------------------
   // watch:sass
   // --------------------------
-  gulp.watch('assets/scss/**/*.scss', ['reload-sass']);
+  gulp.watch(['assets/scss/**/*.scss', '!assets/scss/_old/**/*.scss'], ['reload-sass']);
+  gulp.watch('assets/scss/_old/**/*.scss', ['reload-ruby-sass']);
 
   // --------------------------
   // watch:js
