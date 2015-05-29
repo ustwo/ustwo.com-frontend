@@ -6,3 +6,4 @@ npm-debug.log
 public/*
 !public/.gitignore
 templates.js
+bower_components
