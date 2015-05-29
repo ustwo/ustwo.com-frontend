@@ -199,7 +199,7 @@ var tasks = {
       ])
       .pipe(compilehandlebars(JSON.parse(fs.readFileSync('./data/gulpdata.json')), HBoptions))
       .pipe(styleguide.generate({
-          extraHead: '',
+          extraHead: '<style type="text/css">.sg.wrapper { max-width:3000px !important; }</style>',
           title: 'ustwo style guide',
           rootPath: 'public/styleguide',
           appRoot: '/2015/styleguide',
