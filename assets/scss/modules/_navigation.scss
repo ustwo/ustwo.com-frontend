@@ -30,6 +30,10 @@ Styleguide 3.1
   z-index: 40;
 }
 
+.nav__inner {
+  position: relative;
+}
+
 .nav__logo {
   display: block;
   float: left;
@@ -39,11 +43,7 @@ Styleguide 3.1
   overflow: hidden;
   text-indent: -1000px;
   background: url(../images/shared/logo@2x.png) center center no-repeat;
-  -webkit-background-size: 84px 24px;
-     -moz-background-size: 84px 24px;
-      -ms-background-size: 84px 24px;
-       -o-background-size: 84px 24px;
-          background-size: 84px 24px;
+  background-size: 84px 24px;
 }
 
 .nav__menu {
@@ -59,15 +59,29 @@ Styleguide 3.1
   font-family: $PxGroteskRegular;
   font-size: 16px;
   line-height: 24px;
-  -webkit-transition: background linear 50ms;
-     -moz-transition: background linear 50ms;
-      -ms-transition: background linear 50ms;
-       -o-transition: background linear 50ms;
-          transition: background linear 50ms;
+}
+
+.nav__menu__item__link {
+  &:after {
+    bottom: -2.5px;
+    opacity: 0;
+  }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    &:after {
+      opacity: 0.4;
+    }
   }
+}
+
+.nav__underline {
+  position: absolute;
+  top: 35px;
+  width: 0px;
+  height: 2px;
+  background-color: $grey;
+  border: none;
+  opacity: 0;
 }
 
 .nav__toggle {
@@ -76,34 +90,6 @@ Styleguide 3.1
   right: 0;
   bottom: 0;
   padding-right: 20px;
-  background: none;
-  outline: 0;
-  border: 0;
-
-  .toggle__bar {
-    display: block;
-    height: 4px;
-    width: 26px;
-    margin: 0 auto 4px 0;
-    background: #333;
-    -webkit-transform: skew(-30deg);
-       -moz-transform: skew(-30deg);
-        -ms-transform: skew(-30deg);
-            transform: skew(-30deg);
-  }
-
-  .toggle__bar:last-child {
-    margin-bottom: 0;
-  }
-
-  @each $colour in $colours {
-    $name: nth($colour, 1);
-    $hex:  unquote(nth($colour, 2));
-
-    .toggle__bar.u-bg-#{$name} {
-      background: $hex;
-    }
-  }
 }
 
 .nav__overlay {
@@ -116,8 +102,37 @@ Styleguide 3.1
   background-color: rgba($marshPassion, 0.95);
 }
 
+.nav__overlay__close {
+  display: inline-block;
+  margin-top: 15px;
+  width: 70px;
+  height: 70px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;
+  color: $white;
+
+}
+
+.nav__overlay__close__bar {
+  display: block;
+  margin: auto;
+  width: 23px;
+  height: 3px;
+  background-color: $white;
+  &.horizontal {
+    transform: rotate(-45deg);
+  }
+  &.vertical {
+    transform: translateY(-3px) rotate(-135deg);
+  }
+}
+
 .nav__overlay__menu {
   list-style: none;
+  padding: 0;
+  margin: 15px 0;
 }
 
 .nav__overlay__menu__item {
@@ -125,29 +140,6 @@ Styleguide 3.1
   font-size: 24px;
   line-height: 2.5em;
 }
-
-.is-open .nav__logo {
-  -webkit-transform: translate3d(-70px,0,0);
-  -webkit-transition: -webkit-transform ease-in-out .3s;
-  -moz-transform: translate3d(-70px,0,0);
-  -moz-transition: -moz-transform ease-in-out .3s;
-  -ms-transform: translate3d(-70px,0,0);
-  -ms-transition: -ms-transform ease-in-out .3s;
-  transform: translate3d(-70px,0,0);
-  transition: transform ease-in-out .3s;
-}
-
-.is-closed .nav__logo {
-  -webkit-transform: translate3d(0,0,0);
-  -webkit-transition: -webkit-transform ease-in-out .3s;
-  -moz-transform: translate3d(0,0,0);
-  -moz-transition: -moz-transform ease-in-out .3s;
-  -ms-transform: translate3d(0,0,0);
-  -ms-transition: -ms-transform ease-in-out .3s;
-  transform: translate3d(0,0,0);
-  transition: transform ease-in-out .3s;
-}
-
 
 @include susy-breakpoint($bp-large, $susy) {
   .nav__toggle,
@@ -164,13 +156,10 @@ Styleguide 3.1
 
   .nav__menu__item {
     display: inline-block;
-    height: 68px;
-    line-height: 68px;
+    line-height: $nav-height;
     margin-left: 40px;
     &:first-child {
       margin-left: 0;
     }
-
-    .link__desc { display: none; }
   }
 }

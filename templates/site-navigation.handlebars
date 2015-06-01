@@ -1,27 +1,27 @@
 <nav class="nav">
   <!-- Toggle Switch -->
-  <button class="nav__toggle">
-    <span class="toggle__bar"></span>
-    <span class="toggle__bar"></span>
-    <span class="toggle__bar"></span>
-  </button>
+  <button class="nav__toggle">O</button>
   <!-- End Switch -->
   <div class="nav__inner">
     <a href="/" class="nav__logo">ustwo</a>
     <ul class="nav__menu">
       {{#each pages}}
         <li class="nav__menu__item">
-            <a href="{{url}}" class="u-link-{{colour}}">{{title}}</a>
+          <a href="{{url}}" class="nav__menu__item__link u-bar-after--{{colour}}">{{title}}</a>
         </li>
       {{/each}}
     </ul>
+    <hr class="nav__underline"/>
   </div>
   <div class="nav__overlay u-text-center">
-    <button class="nav__overlay-close"><span>X</span></button>
+    <button class="nav__overlay__close">
+      <span class="nav__overlay__close__bar horizontal"></span>
+      <span class="nav__overlay__close__bar vertical"></span>
+    </button>
     <ul class="nav__overlay__menu">
       {{#each pages}}
         <li class="h3 nav__overlay__menu__item">
-            <a href="{{url}}" class="u-link-{{colour}}">{{title}}</a>
+            <a href="{{url}}" class="">{{title}}</a>
         </li>
       {{/each}}
     </ul>
