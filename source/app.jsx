@@ -33,6 +33,6 @@ const App = React.createClass({
 export default App;
 
 React.render(
-  <App url="../data/gulpdata.json" />,
+  <App url="data/gulpdata.json" />,
   document.getElementById('pageContent')
 );

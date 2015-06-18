@@ -84,6 +84,6 @@ const Styleguide = React.createClass({
 export default Styleguide;
 
 React.render(
-  <Styleguide url="../data/gulpdata.json" />,
+  <Styleguide url="data/gulpdata.json" />,
   document.getElementById('pageContent')
 );
