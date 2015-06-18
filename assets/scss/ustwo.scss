@@ -13,12 +13,6 @@ These are the smallest elements to be used as building blocks for larger compone
 
 Styleguide 1.0
 */
-
-// TODO: find a way to exclude styleguide code from production builds
-@import "../../node_modules/react-style-guide/react-style-guide";
-@import "_styleguide/util";
-@import "_styleguide/colours";
-
 @import "atoms/colours";
 @import "atoms/typography";
 @import "atoms/navigation-link";

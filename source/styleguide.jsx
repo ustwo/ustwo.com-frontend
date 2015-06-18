@@ -45,8 +45,7 @@ const Styleguide = React.createClass({
       let classes = colour + ' colour';
       return (
         <article key={colour} className={classes}>
-          <section className="swatch">{renderData.colours[colour]}</section>
-          <section className="name">{colour}</section>
+          <section className="swatch">{renderData.colours[colour]}<br/>{colour}</section>
         </article>
       );
     });

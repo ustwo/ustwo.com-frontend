@@ -19,16 +19,12 @@ Styleguide 1.1
   }
 
   .swatch {
-    height: 150px;
-    line-height: 150px;
+    height: 100px;
+    padding-top: 50px;
     text-align: center;
     font-weight: 300;
     color: #fff;
-    background-color: #eee;
     margin-bottom: 2px;
-  }
-
-  .name {
-    text-align: center;
+    text-shadow: 0px 0px 2px black;
   }
 }
