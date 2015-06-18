@@ -5,6 +5,8 @@ import '../node_modules/whatwg-fetch/fetch.js';
 // TODO: see if there's a better way to get fonts in
 import './localfont.js';
 
+import StyleGuideItem from 'react-style-guide';
+
 // Atoms
 import NavigationLink from './atoms/navigation-link.jsx';
 import NavigationOverlayLink from './atoms/navigation-overlay-link.jsx';
@@ -45,30 +47,34 @@ const Styleguide = React.createClass({
     });
     return (
       <section className="styleguide__container">
-        <h1>Styleguide</h1>
+        <h1>Styleguide – ustwo.com</h1>
         <h2>Atoms</h2>
-        <h3>Colours</h3>
-        <section className="colour-container">
-          {colourSwatches}
-        </section>
-        <h3>Typography</h3>
-        <section>
-          <h1>First level heading</h1>
-          <h2>Second level heading</h2>
-          <h3>Third level heading</h3>
-          <h4>Fourth level heading</h4>
-          <h5>Fifth level heading</h5>
-          <h6>Sixth level heading</h6>
-          <p>Paragraph: Appropriately enable scalable best practices and flexible niches. Dramatically mesh economically sound deliverables with out-of-the-box niche markets. Appropriately exploit multimedia based bandwidth whereas backward-compatible innovation.<br/>Rapidiously utilize just in time supply chains whereas intermandated leadership. Energistically formulate optimal users before resource-leveling testing procedures. Authoritatively optimize cost effective networks after covalent quality vectors.</p>
-        </section>
-        <h3>NavigationLink</h3>
-        <NavigationLink url="" colour="marshPassion">Link</NavigationLink>
+        <StyleGuideItem title="Colours" description="Colours being used in the project.">
+          <section className="colour-container">
+            {colourSwatches}
+          </section>
+        </StyleGuideItem>
+        <StyleGuideItem title="Typography" description="Typography being used in the project.">
+          <section>
+            <h1>First level heading</h1>
+            <h2>Second level heading</h2>
+            <h3>Third level heading</h3>
+            <h4>Fourth level heading</h4>
+            <h5>Fifth level heading</h5>
+            <h6>Sixth level heading</h6>
+            <p>Paragraph: Appropriately enable scalable best practices and flexible niches. Dramatically mesh economically sound deliverables with out-of-the-box niche markets. Appropriately exploit multimedia based bandwidth whereas backward-compatible innovation.<br/>Rapidiously utilize just in time supply chains whereas intermandated leadership. Energistically formulate optimal users before resource-leveling testing procedures. Authoritatively optimize cost effective networks after covalent quality vectors.</p>
+          </section>
+        </StyleGuideItem>
+        <StyleGuideItem title="Navigation Link" description="Link item for large screen navigation.">
+          <NavigationLink url="" colour="marshPassion">Link</NavigationLink>
+        </StyleGuideItem>
         <h2>Components</h2>
         <h2>Modules</h2>
-        <h3>Navigation</h3>
-        <div className="fix---nav">
-          <Navigation data={renderData.pages} />
-        </div>
+        <StyleGuideItem title="Navigation" description="Site navigation.">
+          <div className="fix---nav">
+            <Navigation data={renderData.pages} />
+          </div>
+        </StyleGuideItem>
         <h2>Templates</h2>
       </section>
     );

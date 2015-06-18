@@ -15,6 +15,7 @@ Styleguide 1.0
 */
 
 // TODO: find a way to exclude styleguide code from production builds
+@import "../../node_modules/react-style-guide/react-style-guide";
 @import "_styleguide/util";
 @import "_styleguide/colours";
 

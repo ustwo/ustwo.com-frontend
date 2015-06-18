@@ -10,7 +10,7 @@
   "dependencies": {
     "bower": "*",
 
-    "react": "*",
+    "react": "^0.13",
     "gsap": "*",
     "page": "*",
     "handlebars": "^3.0.0",
@@ -33,6 +33,7 @@
 
     "gulp-compile-handlebars": "daaain/gulp-compile-handlebars",
     "sc5-styleguide": "*",
+    "react-style-guide": "*",
 
     "autoprefixer-core": "*",
     "gulp-sourcemaps": "*",
