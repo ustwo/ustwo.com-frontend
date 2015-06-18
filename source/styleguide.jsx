@@ -30,9 +30,14 @@ const Styleguide = React.createClass({
       return response.json();
     }).then((json) => {
       this.setState({data: json});
+      this.refs.closeButton.anim();
     }).catch(function(ex) {
       console.warn('Styleguide data JSON parsing failed:', ex);
     });
+  },
+  animateCloseButton(event) {
+    this.refs.closeButton.resetAnim();
+    this.refs.closeButton.anim();
   },
   render() {
     const renderData = this.state.data;
@@ -65,8 +70,23 @@ const Styleguide = React.createClass({
             <p>Paragraph: Appropriately enable scalable best practices and flexible niches. Dramatically mesh economically sound deliverables with out-of-the-box niche markets. Appropriately exploit multimedia based bandwidth whereas backward-compatible innovation.<br/>Rapidiously utilize just in time supply chains whereas intermandated leadership. Energistically formulate optimal users before resource-leveling testing procedures. Authoritatively optimize cost effective networks after covalent quality vectors.</p>
           </section>
         </StyleGuideItem>
-        <StyleGuideItem title="Navigation Link" description="Link item for large screen navigation.">
+        <StyleGuideItem title="Navigation link" description="Link item for large screen navigation.">
           <NavigationLink url="" colour="marshPassion">Link</NavigationLink>
+        </StyleGuideItem>
+        <StyleGuideItem title="Navigation overlay link" description="Link item for small screen navigation.">
+          <section className="dark__styleguideitem__container">
+            <NavigationOverlayLink url="">Link</NavigationOverlayLink>
+          </section>
+        </StyleGuideItem>
+        <StyleGuideItem title="Navigation open overlay button" description="Menu overlay opening button for small screns.">
+          <div className="openbutton__container">
+            <NavigationOpenOverlayButton />
+          </div>
+        </StyleGuideItem>
+        <StyleGuideItem title="Navigation overlay close button" description="Fancy animated close button.">
+          <section className="dark__styleguideitem__container">
+            <NavigationOverlayCloseButton ref="closeButton" onClose={this.animateCloseButton} />
+          </section>
         </StyleGuideItem>
         <h2>Components</h2>
         <h2>Modules</h2>

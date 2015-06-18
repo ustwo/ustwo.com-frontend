@@ -49,7 +49,7 @@ const Navigation = React.createClass({
                 <svg className="nav__logo__graphic" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
               </a>
             </div>
-            <NavigationOpenOverlayButton onOpen={this.openOverlay}>O</NavigationOpenOverlayButton>
+            <NavigationOpenOverlayButton onOpen={this.openOverlay} />
             <div className="nav__inner">
               <ul className="nav__menu">
                 {navigationLinks}

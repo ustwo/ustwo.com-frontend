@@ -309,7 +309,8 @@ var tasks = {
     })
     .require(require.resolve('./source/styleguide.jsx'), { entry: true })
     .transform(babel)
-    .transform(reactify);
+    .transform(reactify)
+    .external('react');
 
     var rebundle = function() {
       return bundler.bundle()

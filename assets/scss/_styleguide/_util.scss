@@ -6,6 +6,20 @@
     margin: 50px;
   }
 }
+
+.dark__styleguideitem__container {
+  background-color: #444;
+}
+
+.openbutton__container {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  .nav__open__overlay__button {
+    display: block;
+  }
+}
+
 .fix---nav {
   position: relative;
 
