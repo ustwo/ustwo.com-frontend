@@ -9,7 +9,7 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[**.{js,json}]
+[**.{js,jsx,json}]
 indent_style = space
 indent_size = 2
 
@@ -17,6 +17,6 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 
-[**.{html,handlebars}]
+[**.{html,handlebars,svg}]
 indent_style = space
 indent_size = 2

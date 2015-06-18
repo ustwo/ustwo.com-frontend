@@ -1,0 +1,15 @@
+.styleguide__container {
+  > h1,
+  > h2,
+  > h3,
+  > section {
+    margin: 50px;
+  }
+}
+.fix---nav {
+  position: relative;
+
+  .nav {
+    position: static;
+  }
+}

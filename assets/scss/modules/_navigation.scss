@@ -30,20 +30,22 @@ Styleguide 3.1
   z-index: 40;
 }
 
-.nav__inner {
-  position: relative;
-}
-
 .nav__logo {
   display: block;
   float: left;
-  height: 68px;
-  width: 84px;
   margin-left: 30px;
   overflow: hidden;
-  text-indent: -1000px;
-  background: url(../images/shared/logo@2x.png) center center no-repeat;
-  background-size: 84px 24px;
+  width: 100px;
+  height: $nav-height;
+}
+
+.nav__logo__graphic {
+  width: 100px;
+  height: $nav-height;
+}
+
+.nav__inner {
+  position: relative;
 }
 
 .nav__menu {
@@ -52,26 +54,6 @@ Styleguide 3.1
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.nav__menu__item {
-  display: block;
-  font-family: $PxGroteskRegular;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.nav__menu__item__link {
-  &:after {
-    bottom: -2.5px;
-    opacity: 0;
-  }
-
-  &:hover {
-    &:after {
-      opacity: 0.4;
-    }
-  }
 }
 
 .nav__underline {
@@ -84,17 +66,9 @@ Styleguide 3.1
   opacity: 0;
 }
 
-.nav__toggle {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  padding-right: 20px;
-}
-
 .nav__overlay {
   display: block;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -102,31 +76,12 @@ Styleguide 3.1
   background-color: rgba($marshPassion, 0.95);
 }
 
-.nav__overlay__close {
-  display: inline-block;
-  margin-top: 15px;
-  width: 70px;
-  height: 70px;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  outline: none;
-  color: $white;
-
+.nav__overlay-open {
+  visibility: visible;
 }
 
-.nav__overlay__close__bar {
-  display: block;
-  margin: auto;
-  width: 23px;
-  height: 3px;
-  background-color: $white;
-  &.horizontal {
-    transform: rotate(-45deg);
-  }
-  &.vertical {
-    transform: translateY(-3px) rotate(-135deg);
-  }
+.nav__overlay-closed {
+  visibility: hidden;
 }
 
 .nav__overlay__menu {
@@ -135,14 +90,8 @@ Styleguide 3.1
   margin: 15px 0;
 }
 
-.nav__overlay__menu__item {
-  color: $white;
-  font-size: 24px;
-  line-height: 2.5em;
-}
-
 @include susy-breakpoint($bp-large, $susy) {
-  .nav__toggle,
+  .nav__open__overlay__button,
   .nav__overlay {
     display: none;
   }

@@ -10,6 +10,7 @@
   "dependencies": {
     "bower": "*",
 
+    "react": "*",
     "gsap": "*",
     "page": "*",
     "handlebars": "^3.0.0",
@@ -41,9 +42,11 @@
     "gulp-scss-lint": "*",
 
     "babelify": "*",
+    "whatwg-fetch": "*",
     "gulp-uglify": "*",
     "watchify": "*",
     "browserify": "*",
+    "reactify": "*",
     "vinyl-source-stream": "*",
     "gulp-jshint": "*",
     "jshint-stylish": "*",

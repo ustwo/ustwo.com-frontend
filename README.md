@@ -1,10 +1,11 @@
 # ustwo.com-prototype
 
   * Building using Gulp
-  * CSS stolen from live ustwo site
-  * Routing using Page.js
-  * Templating using Handlebars.js
-  * Animations via GreenSock.js
+  * UI using React.js
+  * CSS via LibSass + Susy
+  * Dynamic animations via GreenSock.js
+  * Web fonts using Localfont.js
+  * Icons via SVG spritemap – might need to use SVG4everybody
 
 To update content, have a look in `/data` folder!
 

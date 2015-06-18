@@ -4,6 +4,7 @@
 @import '../../bower_components/susy/sass/susy';
 
 @import "variables";
+@import "shared";
 
 /*
 Atoms
@@ -14,9 +15,15 @@ Styleguide 1.0
 */
 
 // TODO: find a way to exclude styleguide code from production builds
-@import "styleguide/colours";
+@import "_styleguide/util";
+@import "_styleguide/colours";
+
 @import "atoms/colours";
 @import "atoms/typography";
+@import "atoms/navigation-link";
+@import "atoms/navigation-overlay-link";
+@import "atoms/navigation-open-overlay-button";
+@import "atoms/navigation-overlay-close-button";
 
 /*
 Components
@@ -53,10 +60,6 @@ Styleguide 4.0
 /* ------------------------------------------------------------ *\
 |* Prototype code
 \* ------------------------------------------------------------ */
-
-#bgLogo {
-  // TODO: add big ustwo logo as background
-}
 
 .home__headline {
   font-family: $PxGroteskRegular;

@@ -27,6 +27,7 @@ var watchify = require('watchify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var babel = require('babelify');
+var reactify = require('reactify');
 // image optimization
 var imagemin = require('gulp-imagemin');
 // linting
@@ -71,12 +72,14 @@ var handleError = function(task) {
   return function(err) {
     beep();
 
-      notify.onError({
-        message: task + ' failed, check the logs..',
-        sound: false
-      })(err);
+    notify.onError({
+      message: task + ' failed, check the logs..',
+      sound: false
+    })(err);
 
     gutil.log(gutil.colors.bgRed(task + ' error:'), gutil.colors.red(err));
+
+    this.emit('end');
   };
 };
 
@@ -251,6 +254,81 @@ var tasks = {
     return rebundle();
   },
   // --------------------------
+  // Reactify
+  // --------------------------
+  reactify: function() {
+    // Create a separate vendor bundler that will only run when starting gulp
+    var vendorBundler = browserify({
+      debug: !production // Sourcemapping
+    })
+    .require('react');
+
+    var bundler = browserify({
+      debug: !production, // Sourcemapping
+      cache: {},
+      packageCache: {},
+      fullPaths: false
+    })
+    .require(require.resolve('./source/app.jsx'), { entry: true })
+    .transform(babel)
+    .transform(reactify)
+    .external('react');
+
+    var rebundle = function() {
+      return bundler.bundle()
+        .on('error', handleError('Browserify'))
+        .pipe(source('app.js'))
+        .pipe(buffer())
+        .pipe(gulpif(production, uglify()))
+        .pipe(gulpif(!production, sourcemaps.init({loadMaps: true})))
+        .pipe(gulpif(!production, sourcemaps.write('./')))
+        .pipe(gulp.dest('public/js/'));
+    };
+
+    if (watch) {
+      bundler = watchify(bundler);
+      bundler.on('update', rebundle);
+    }
+
+    vendorBundler.bundle()
+    .pipe(source('vendors.js'))
+    .pipe(gulpif(production, uglify()))
+    .pipe(gulp.dest('public/js/'));
+
+    return rebundle();
+  },
+  // --------------------------
+  // React style guide
+  // --------------------------
+  reactstyleguide: function() {
+    var bundler = browserify({
+      debug: true,
+      cache: {},
+      packageCache: {},
+      fullPaths: false
+    })
+    .require(require.resolve('./source/styleguide.jsx'), { entry: true })
+    .transform(babel)
+    .transform(reactify);
+
+    var rebundle = function() {
+      return bundler.bundle()
+        .on('error', handleError('Browserify'))
+        .pipe(source('styleguide.js'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('public/js/'));
+    };
+
+    if (watch) {
+      bundler = watchify(bundler);
+      bundler.on('update', rebundle);
+    }
+
+    return rebundle();
+  },
+  // --------------------------
   // linting
   // --------------------------
   lintjs: function() {
@@ -304,9 +382,6 @@ gulp.task('browser-sync', function() {
     });
 });
 
-// gulp.task('reload-sass', ['sass'], function(){
-//   browserSync.reload();
-// });
 gulp.task('reload-ruby-sass', ['rubysass'], function(){
   browserSync.reload();
 });
@@ -317,6 +392,9 @@ gulp.task('reload-data', ['data', 'templates', 'styleguideGenerate'], function()
   browserSync.reload();
 });
 gulp.task('reload-js', ['browserify'], function(){
+  browserSync.reload();
+});
+gulp.task('reload-jsx', ['reactify', 'reactstyleguide'], function(){
   browserSync.reload();
 });
 gulp.task('reload-templates', ['templates', 'handlebars', 'styleguideGenerate', 'styleguideApply'], function(){
@@ -336,6 +414,8 @@ gulp.task('assets', req, tasks.optimize);
 gulp.task('sass', req, tasks.sass);
 gulp.task('rubysass', req, tasks.rubysass);
 gulp.task('browserify', req, tasks.browserify);
+gulp.task('reactify', req, tasks.reactify);
+gulp.task('reactstyleguide', req, tasks.reactstyleguide);
 gulp.task('lint:js', tasks.lintjs);
 gulp.task('optimize', tasks.optimize);
 gulp.task('test', tasks.test);
@@ -346,7 +426,7 @@ gulp.task('styleguideApply', tasks.styleguideApply);
 // --------------------------
 // DEV/WATCH TASK
 // --------------------------
-gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'sass', 'browserify', 'data', 'styleguideGenerate', 'styleguideApply', 'browser-sync'], function() {
+gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'sass', 'reactify', 'reactstyleguide', 'browserify', 'data', 'styleguideGenerate', 'styleguideApply', 'browser-sync'], function() {
 
   // --------------------------
   // watch:assets
@@ -363,6 +443,7 @@ gulp.task('watch', ['assets', 'templates', 'handlebars', 'rubysass', 'sass', 'br
   // watch:js
   // --------------------------
   gulp.watch('source/**/*.js', ['lint:js', 'reload-js']);
+  gulp.watch('source/**/*.jsx', ['lint:js', 'reload-jsx']);
 
   // --------------------------
   // watch:html

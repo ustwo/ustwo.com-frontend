@@ -10,6 +10,8 @@ Styleguide 1.1
 */
 
 .colour-container {
+  overflow: auto;
+
   .colour {
     width: 150px;
     float: left;
