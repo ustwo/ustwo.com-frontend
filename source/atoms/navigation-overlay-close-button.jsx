@@ -3,6 +3,7 @@
 import React from 'react';
 
 const NavigationOverlayCloseButton = React.createClass({
+  displayName: 'NavigationOverlayCloseButton',
   getInitialState() {
     return {
       fps: 25,

@@ -3,6 +3,7 @@
 import React from 'react';
 
 const NavigationLink = React.createClass({
+  displayName: 'NavigationLink',
   render() {
     const classes = 'nav__menu__item__link u-bar-after--' + this.props.colour;
     return (

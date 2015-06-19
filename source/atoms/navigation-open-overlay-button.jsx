@@ -3,6 +3,7 @@
 import React from 'react';
 
 const NavigationOpenOverlayButton = React.createClass({
+  displayName: 'NavigationOpenOverlayButton',
   render() {
     const svgContent = '<use xlink:href="images/spritemap.svg#menuopen" />';
     return (

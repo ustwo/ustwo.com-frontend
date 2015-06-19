@@ -3,6 +3,7 @@
 import React from 'react';
 
 const NavigationOverlayLink = React.createClass({
+  displayName: 'NavigationOverlayLink',
   render() {
     return (
       <li className="h3 nav__overlay__menu__item">
