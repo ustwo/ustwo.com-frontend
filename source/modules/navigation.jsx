@@ -64,7 +64,7 @@ const Navigation = React.createClass({
             </div>
           </nav>
         </section>
-    </header>
+      </header>
     );
   }
 });

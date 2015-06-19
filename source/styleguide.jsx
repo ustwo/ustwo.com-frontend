@@ -13,8 +13,14 @@ import NavigationOverlayLink from './atoms/navigation-overlay-link.jsx';
 import NavigationOpenOverlayButton from './atoms/navigation-open-overlay-button.jsx';
 import NavigationOverlayCloseButton from './atoms/navigation-overlay-close-button.jsx';
 
+// Components
+import BoldHeader from './components/bold-header.jsx';
+
 // Modules
 import Navigation from './modules/navigation.jsx';
+
+// Templates
+import PageHome from './templates/page-home.jsx';
 
 const Styleguide = React.createClass({
   displayName: 'Styleguide',
@@ -88,6 +94,9 @@ const Styleguide = React.createClass({
           </section>
         </StyleGuideItem>
         <h2>Components</h2>
+        <StyleGuideItem title="Bold page header" description="Big and bold header to start pages on the right foot.">
+          <BoldHeader subtitle="And this is my awesome secondary line" colour="marshPassion">I'm a bold<br/>page header</BoldHeader>
+        </StyleGuideItem>
         <h2>Modules</h2>
         <StyleGuideItem title="Navigation" description="Site navigation.">
           <div className="fix---nav">
@@ -95,6 +104,9 @@ const Styleguide = React.createClass({
           </div>
         </StyleGuideItem>
         <h2>Templates</h2>
+          <StyleGuideItem title="Home page" description="The homiest pages of them all.">
+            <PageHome/>
+          </StyleGuideItem>
       </section>
     );
   }
