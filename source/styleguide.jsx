@@ -15,6 +15,8 @@ import NavigationOverlayCloseButton from './atoms/navigation-overlay-close-butto
 
 // Components
 import BoldHeader from './components/bold-header.jsx';
+import ScreenBlock from './components/screen-block.jsx';
+import HomeTextBlock from './components/home-text-block.jsx';
 
 // Modules
 import Navigation from './modules/navigation.jsx';
@@ -96,6 +98,25 @@ const Styleguide = React.createClass({
         <h2>Components</h2>
         <StyleGuideItem title="Bold page header" description="Big and bold header to start pages on the right foot.">
           <BoldHeader subtitle="And this is my awesome secondary line" colour="marshPassion">I'm a bold<br/>page header</BoldHeader>
+          <BoldHeader colour="jeezz">I work without<br/>a subtitle too!</BoldHeader>
+        </StyleGuideItem>
+        <StyleGuideItem title="Screen block" description="Container block which takes up the full viewport.">
+          <ScreenBlock colour="marshPassion">
+            <p>Globally fabricate front-end products before technically sound opportunities. Credibly enable plug-and-play alignments for exceptional infomediaries. Intrinsicly productize leading-edge convergence vis-a-vis backend scenarios.</p>
+            <p>Phosfluorescently network process-centric innovation rather than timely metrics. Seamlessly expedite economically sound resources before 2.0 sources. Rapidiously provide access to inexpensive schemas vis-a-vis enterprise-wide infrastructures.</p>
+          </ScreenBlock>
+          <ScreenBlock colour="jeezz">
+            <p><img src="https://placekitten.com/g/200/300"/></p>
+          </ScreenBlock>
+        </StyleGuideItem>
+        <StyleGuideItem title="Home text block" description="Text block for home page.">
+          <div className="u-bg-rain" style={{padding: 20}}>
+            <HomeTextBlock title="Award winning own IP">
+              <p>With a cherry on top!</p>
+              <p>Globally fabricate front-end products before technically sound opportunities. Credibly enable plug-and-play alignments for exceptional infomediaries. Intrinsicly productize leading-edge convergence vis-a-vis backend scenarios.</p>
+              <p>Phosfluorescently network process-centric innovation rather than timely metrics. Seamlessly expedite economically sound resources before 2.0 sources. Rapidiously provide access to inexpensive schemas vis-a-vis enterprise-wide infrastructures.</p>
+            </HomeTextBlock>
+          </div>
         </StyleGuideItem>
         <h2>Modules</h2>
         <StyleGuideItem title="Navigation" description="Site navigation.">
