@@ -1,4 +1,5 @@
-.nav__open__overlay__button {
+.nav__open-overlay-button {
+  @extend .button__bare;
   position: absolute;
   top: 0;
   right: 0;

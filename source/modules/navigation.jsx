@@ -38,32 +38,30 @@ const Navigation = React.createClass({
         </NavigationOverlayLink>
       );
     });
-    const overlayClasses = this.state.overlayOpen ? 'nav__overlay u-text-center nav__overlay-open' : 'nav__overlay u-text-center nav__overlay-closed';
+    const overlayClasses = this.state.overlayOpen ? 'nav__overlay nav__overlay-open' : 'nav__overlay nav__overlay-closed';
     const svgContent = '<use xlink:href="images/spritemap.svg#ustwologo" />';
     return (
-      <header className="nav">
-        <section>
-          <nav className="nav">
-            <div className="nav__logo">
-              <a className="nav__logo__link" href="/">
-                <svg className="nav__logo__graphic" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
-              </a>
-            </div>
-            <NavigationOpenOverlayButton onOpen={this.openOverlay} />
-            <div className="nav__inner">
-              <ul className="nav__menu">
-                {navigationLinks}
-              </ul>
-              <hr className="nav__underline"/>
-            </div>
-            <div className={overlayClasses}>
-              <NavigationOverlayCloseButton ref="closeButton" onClose={this.closeOverlay} />
-              <ul className="nav__overlay__menu">
-                {navigationOverlayLinks}
-              </ul>
-            </div>
-          </nav>
-        </section>
+      <header>
+        <nav className="nav">
+          <div className="nav__logo">
+            <a className="nav__logo__link" href="/">
+              <svg className="nav__logo__graphic" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
+            </a>
+          </div>
+          <NavigationOpenOverlayButton onOpen={this.openOverlay} />
+          <div className="nav__inner">
+            <ul className="nav__menu">
+              {navigationLinks}
+            </ul>
+            <hr className="nav__underline"/>
+          </div>
+          <div className={overlayClasses}>
+            <NavigationOverlayCloseButton ref="closeButton" onClose={this.closeOverlay} />
+            <ul className="nav__overlay__menu">
+              {navigationOverlayLinks}
+            </ul>
+          </div>
+        </nav>
       </header>
     );
   }

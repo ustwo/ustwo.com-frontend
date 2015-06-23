@@ -57,6 +57,7 @@ Styleguide 3.2
   }
 
   .work__block__link {
+    @extend .link__block;
     margin-top: 24px;
   }
 }

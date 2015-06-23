@@ -73,6 +73,7 @@ Styleguide 3.1
   right: 0;
   bottom: 0;
   left: 0;
+  text-align: center;
   background-color: rgba($marshPassion, 0.95);
   z-index: 100;
 }
@@ -92,7 +93,7 @@ Styleguide 3.1
 }
 
 @include susy-breakpoint($bp-large, $susy) {
-  .nav__open__overlay__button,
+  .nav__open-overlay-button,
   .nav__overlay {
     display: none;
   }

@@ -35,22 +35,10 @@ a {
   }
 }
 
-.block-link {
+.link__block {
   display: inline-block;
   font-family: $PxGroteskBold;
   font-size: 20px;
-}
-
-.u-text-lowercase {
-  text-transform: lowercase;
-}
-
-.u-text-none {
-  text-transform: none;
-}
-
-.u-text-center {
-  text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -91,8 +79,4 @@ h3, .h3       { font-size: 36px; }
 h4, .h4       { font-size: 24px; }
 h5, .h5       { font-size: 24px; }
 p, .p         { font-size: 20px; }
-.p--small     { font-size: 14px; }
-.p--address {
-  font-size: 14px;
-  line-height: 1.4em;
-}
+.p__small     { font-size: 14px; }
