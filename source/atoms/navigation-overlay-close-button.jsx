@@ -3,24 +3,25 @@
 import React from 'react';
 
 export default class NavigationOverlayCloseButton extends React.Component {
-  getInitialState() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       fps: 25,
       currentFrame: 1,
       totalFrames: 0
     };
   }
-  hideAllFrames() {
+  hideAllFrames = () => {
     let svg = React.findDOMNode(this.refs.animsvg);
     for (var index = 0; index < svg.children.length; index++) {
       svg.children[index].style.display = 'none';
     }
   }
-  resetAnim() {
+  resetAnim = () => {
     this.hideAllFrames();
     this.setState({currentFrame: 1});
   }
-  anim() {
+  anim = () => {
     setTimeout(() => {
       this.hideAllFrames();
       React.findDOMNode(this.refs.animsvg).getElementById("Frame"+this.state.currentFrame).style.display = 'inline-block';

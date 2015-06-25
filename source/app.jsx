@@ -8,8 +8,13 @@ import './localfont.js';
 import Navigation from './modules/navigation.jsx';
 
 export default class App extends React.Component {
-  getInitialState() {
-    return {data: {pages: []}};
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        pages: []
+      }
+    }
   }
   componentDidMount() {
     fetch(this.props.url)

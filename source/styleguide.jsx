@@ -25,11 +25,14 @@ import Navigation from './modules/navigation.jsx';
 import PageHome from './templates/page-home.jsx';
 
 export default class Styleguide extends React.Component {
-  getInitialState() {
-    return {data: {
-      colours: {},
-      pages: []
-    }};
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        colours: {},
+        pages: []
+      }
+    }
   }
   componentDidMount() {
     fetch(this.props.url)
@@ -42,7 +45,7 @@ export default class Styleguide extends React.Component {
       console.warn('Styleguide data JSON parsing failed:', ex);
     });
   }
-  animateCloseButton(event) {
+  animateCloseButton = (event) => {
     this.refs.closeButton.resetAnim();
     this.refs.closeButton.anim();
   }

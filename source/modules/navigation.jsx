@@ -8,17 +8,18 @@ import NavigationOpenOverlayButton from '../atoms/navigation-open-overlay-button
 import NavigationOverlayCloseButton from '../atoms/navigation-overlay-close-button.jsx';
 
 export default class Navigation extends React.Component {
-  getInitialState() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       data: {},
       overlayOpen: false
-    };
+    }
   }
-  openOverlay(event) {
+  openOverlay = (event) => {
     this.setState({overlayOpen: true});
     this.refs.closeButton.anim();
   }
-  closeOverlay(event) {
+  closeOverlay = (event) => {
     this.setState({overlayOpen: false});
     this.refs.closeButton.resetAnim();
   }

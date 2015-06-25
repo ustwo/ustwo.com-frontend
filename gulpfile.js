@@ -26,7 +26,7 @@ var browserSync = require('browser-sync');
 var watchify = require('watchify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
-var babel = require('babelify');
+var babelify = require('babelify');
 var reactify = require('reactify');
 // image optimization
 var imagemin = require('gulp-imagemin');
@@ -145,7 +145,9 @@ var tasks = {
       fullPaths: false
     })
     .require(require.resolve('./source/app.jsx'), { entry: true })
-    .transform(babel)
+    .transform(babelify.configure({
+        optional: ["es7.classProperties"]
+    }))
     .transform(reactify, {"es6": true})
     .external('react');
 
@@ -183,7 +185,9 @@ var tasks = {
       fullPaths: false
     })
     .require(require.resolve('./source/styleguide.jsx'), { entry: true })
-    .transform(babel)
+    .transform(babelify.configure({
+        optional: ["es7.classProperties"]
+    }))
     .transform(reactify, {"es6": true})
     .external('react');
 
