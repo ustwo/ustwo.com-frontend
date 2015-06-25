@@ -19,6 +19,7 @@ Styleguide 1.0
 @import "atoms/navigation-overlay-link";
 @import "atoms/navigation-open-overlay-button";
 @import "atoms/navigation-overlay-close-button";
+@import "atoms/down-chevron";
 
 /*
 Components
@@ -50,7 +51,7 @@ These show how groups of modules are laid out to create a page or larger section
 Styleguide 4.0
 */
 
-
+@import "templates/page-home";
 
 /* ------------------------------------------------------------ *\
 |* Prototype code

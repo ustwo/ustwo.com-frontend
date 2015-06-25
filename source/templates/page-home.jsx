@@ -2,16 +2,26 @@
 
 import React from 'react';
 
+import DownChevron from '../atoms/down-chevron.jsx';
+
 import BoldHeader from '../components/bold-header.jsx';
 import HomeTextBlock from '../components/home-text-block.jsx';
 import ScreenBlock from '../components/screen-block.jsx';
 
 export default class PageHome extends React.Component {
+  animateChevron = (event) => {
+    this.refs.downChevron.resetAnim();
+    this.refs.downChevron.anim();
+  }
+  componentDidMount() {
+    this.animateChevron();
+  }
   render() {
     return (
       <article className="page__home">
         <ScreenBlock colour="rain">
           <BoldHeader colour="white">We're a digital product studio</BoldHeader>
+          <DownChevron ref="downChevron" onClick={this.animateChevron}/>
         </ScreenBlock>
         <ScreenBlock hexColour="#6A86EC">
           <p><img src="https://placekitten.com/g/200/300"/></p>

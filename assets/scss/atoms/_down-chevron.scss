@@ -1,0 +1,7 @@
+.down-chevron {
+  @extend .button__bare;
+  display: inline-block;
+  width: 150px;
+  height: 75px;
+  color: $white;
+}

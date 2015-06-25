@@ -87,7 +87,7 @@ export default class Styleguide extends React.Component {
             <NavigationOverlayLink url="">Link</NavigationOverlayLink>
           </section>
         </StyleGuideItem>
-        <StyleGuideItem title="Navigation open overlay button" description="Menu overlay opening button for small screns.">
+        <StyleGuideItem title="Navigation open overlay button" description="Menu overlay opening button for small screens.">
           <div className="openbutton__container">
             <NavigationOpenOverlayButton />
           </div>
