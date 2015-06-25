@@ -24,14 +24,13 @@ import Navigation from './modules/navigation.jsx';
 // Templates
 import PageHome from './templates/page-home.jsx';
 
-const Styleguide = React.createClass({
-  displayName: 'Styleguide',
+export default class Styleguide extends React.Component {
   getInitialState() {
     return {data: {
       colours: {},
       pages: []
     }};
-  },
+  }
   componentDidMount() {
     fetch(this.props.url)
     .then((response) => {
@@ -42,11 +41,11 @@ const Styleguide = React.createClass({
     }).catch(function(ex) {
       console.warn('Styleguide data JSON parsing failed:', ex);
     });
-  },
+  }
   animateCloseButton(event) {
     this.refs.closeButton.resetAnim();
     this.refs.closeButton.anim();
-  },
+  }
   render() {
     const renderData = this.state.data;
     const colourSwatches = Object.keys(renderData.colours).map(function (colour, index) {
@@ -98,6 +97,7 @@ const Styleguide = React.createClass({
         <h2>Components</h2>
         <StyleGuideItem title="Bold page header" description="Big and bold header to start pages on the right foot.">
           <BoldHeader subtitle="And this is my awesome secondary line" colour="marshPassion">I'm a bold<br/>page header</BoldHeader>
+          <hr/>
           <BoldHeader colour="jeezz">I work without<br/>a subtitle too!</BoldHeader>
         </StyleGuideItem>
         <StyleGuideItem title="Screen block" description="Container block which takes up the full viewport.">
@@ -131,9 +131,7 @@ const Styleguide = React.createClass({
       </section>
     );
   }
-});
-
-export default Styleguide;
+};
 
 React.render(
   <Styleguide url="data/gulpdata.json" />,

@@ -2,8 +2,7 @@
 
 import React from 'react';
 
-const HomeTextBlock = React.createClass({
-  displayName: 'HomeTextBlock',
+export default class HomeTextBlock extends React.Component {
   render() {
     return (
       <section className="home-text-block">
@@ -13,6 +12,4 @@ const HomeTextBlock = React.createClass({
       </section>
     );
   }
-});
-
-export default HomeTextBlock;
+};

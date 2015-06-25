@@ -2,8 +2,7 @@
 
 import React from 'react';
 
-const BoldHeaderSubtitle = React.createClass({
-  displayName: 'BoldHeaderSubtitle',
+export default class BoldHeaderSubtitle extends React.Component {
   render() {
     return (
       <section>
@@ -12,6 +11,4 @@ const BoldHeaderSubtitle = React.createClass({
       </section>
     );
   }
-});
-
-export default BoldHeaderSubtitle;
+};

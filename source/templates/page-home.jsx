@@ -6,8 +6,7 @@ import BoldHeader from '../components/bold-header.jsx';
 import HomeTextBlock from '../components/home-text-block.jsx';
 import ScreenBlock from '../components/screen-block.jsx';
 
-const PageHome = React.createClass({
-  displayName: 'PageHome',
+export default class PageHome extends React.Component {
   render() {
     return (
       <article className="page__home">
@@ -35,6 +34,4 @@ const PageHome = React.createClass({
       </article>
     );
   }
-});
-
-export default PageHome;
+};

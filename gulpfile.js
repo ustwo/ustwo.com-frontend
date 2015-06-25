@@ -146,7 +146,7 @@ var tasks = {
     })
     .require(require.resolve('./source/app.jsx'), { entry: true })
     .transform(babel)
-    .transform(reactify)
+    .transform(reactify, {"es6": true})
     .external('react');
 
     var rebundle = function() {
@@ -184,7 +184,7 @@ var tasks = {
     })
     .require(require.resolve('./source/styleguide.jsx'), { entry: true })
     .transform(babel)
-    .transform(reactify)
+    .transform(reactify, {"es6": true})
     .external('react');
 
     var rebundle = function() {

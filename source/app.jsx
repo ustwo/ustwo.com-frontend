@@ -7,11 +7,10 @@ import './localfont.js';
 
 import Navigation from './modules/navigation.jsx';
 
-const App = React.createClass({
-  displayName: 'App',
+export default class App extends React.Component {
   getInitialState() {
     return {data: {pages: []}};
-  },
+  }
   componentDidMount() {
     fetch(this.props.url)
     .then((response) => {
@@ -21,16 +20,14 @@ const App = React.createClass({
     }).catch(function(ex) {
       console.warn('App data JSON parsing failed:', ex);
     });
-  },
+  }
   render() {
     const renderData = this.state.data;
     return (
       <Navigation data={renderData.pages} />
     );
   }
-});
-
-export default App;
+};
 
 React.render(
   <App url="data/gulpdata.json" />,

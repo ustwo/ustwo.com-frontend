@@ -4,8 +4,7 @@ import React from 'react';
 
 import BoldHeaderSubtitle from '../atoms/bold-header-subtitle.jsx';
 
-const BoldHeader = React.createClass({
-  displayName: 'BoldPageHeader',
+export default class BoldHeader extends React.Component {
   render() {
     const titleClass = `u-text-${this.props.colour}`;
     let subtitleMarkup = '';
@@ -19,6 +18,4 @@ const BoldHeader = React.createClass({
       </header>
     );
   }
-});
-
-export default BoldHeader;
+};

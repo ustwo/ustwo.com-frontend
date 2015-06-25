@@ -2,8 +2,7 @@
 
 import React from 'react';
 
-const NavigationOverlayLink = React.createClass({
-  displayName: 'NavigationOverlayLink',
+export default class NavigationOverlayLink extends React.Component {
   render() {
     return (
       <li className="h3 nav__overlay__menu__item">
@@ -11,6 +10,4 @@ const NavigationOverlayLink = React.createClass({
       </li>
     );
   }
-});
-
-export default NavigationOverlayLink;
+};

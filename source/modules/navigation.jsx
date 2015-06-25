@@ -7,22 +7,21 @@ import NavigationOverlayLink from '../atoms/navigation-overlay-link.jsx';
 import NavigationOpenOverlayButton from '../atoms/navigation-open-overlay-button.jsx';
 import NavigationOverlayCloseButton from '../atoms/navigation-overlay-close-button.jsx';
 
-const Navigation = React.createClass({
-  displayName: 'Navigation',
+export default class Navigation extends React.Component {
   getInitialState() {
     return {
       data: {},
       overlayOpen: false
     };
-  },
+  }
   openOverlay(event) {
     this.setState({overlayOpen: true});
     this.refs.closeButton.anim();
-  },
+  }
   closeOverlay(event) {
     this.setState({overlayOpen: false});
     this.refs.closeButton.resetAnim();
-  },
+  }
   render() {
     const navigationLinks = this.props.data.map(function (link) {
       return (
@@ -65,6 +64,4 @@ const Navigation = React.createClass({
       </header>
     );
   }
-});
-
-export default Navigation;
+};

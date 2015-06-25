@@ -2,8 +2,7 @@
 
 import React from 'react';
 
-const ScreenBlock = React.createClass({
-  displayName: 'ScreenBlock',
+export default class ScreenBlock extends React.Component {
   render() {
     const classes = this.props.hexColour ? 'screen-block' : `screen-block u-bg-${this.props.colour}`;
     const hexBackground = this.props.hexColour ? {backgroundColor: this.props.hexColour} : {};
@@ -13,6 +12,4 @@ const ScreenBlock = React.createClass({
       </section>
     );
   }
-});
-
-export default ScreenBlock;
+};

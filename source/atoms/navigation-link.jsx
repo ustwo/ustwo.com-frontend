@@ -2,8 +2,7 @@
 
 import React from 'react';
 
-const NavigationLink = React.createClass({
-  displayName: 'NavigationLink',
+export default class NavigationLink extends React.Component {
   render() {
     const classes = `nav__menu__item__link u-bar-after--${this.props.colour}`;
     return (
@@ -12,6 +11,4 @@ const NavigationLink = React.createClass({
       </li>
     );
   }
-});
-
-export default NavigationLink;
+};

@@ -2,25 +2,24 @@
 
 import React from 'react';
 
-const NavigationOverlayCloseButton = React.createClass({
-  displayName: 'NavigationOverlayCloseButton',
+export default class NavigationOverlayCloseButton extends React.Component {
   getInitialState() {
     return {
       fps: 25,
       currentFrame: 1,
       totalFrames: 0
     };
-  },
+  }
   hideAllFrames() {
     let svg = React.findDOMNode(this.refs.animsvg);
     for (var index = 0; index < svg.children.length; index++) {
       svg.children[index].style.display = 'none';
     }
-  },
+  }
   resetAnim() {
     this.hideAllFrames();
     this.setState({currentFrame: 1});
-  },
+  }
   anim() {
     setTimeout(() => {
       this.hideAllFrames();
@@ -30,11 +29,11 @@ const NavigationOverlayCloseButton = React.createClass({
         window.requestAnimationFrame(this.anim);
       }
     }, 1000/this.state.fps);
-  },
+  }
   componentDidMount() {
     this.setState({totalFrames: React.findDOMNode(this.refs.animsvg).children.length});
     this.resetAnim();
-  },
+  }
   render() {
     const svgContent = '<use xlink:href="images/spritemap.svg#menuclose" />';
     return (
@@ -92,6 +91,4 @@ const NavigationOverlayCloseButton = React.createClass({
       </button>
     );
   }
-});
-
-export default NavigationOverlayCloseButton;
+};
