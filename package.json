@@ -11,6 +11,7 @@
     "bower": "*",
 
     "react": "^0.13",
+    "imager.jsx": "*",
     "gsap": "*",
     "page": "*",
     "handlebars": "^3.0.0",

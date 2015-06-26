@@ -1,4 +1,6 @@
 .screen-block {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }

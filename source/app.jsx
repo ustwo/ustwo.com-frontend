@@ -6,6 +6,7 @@ import '../node_modules/whatwg-fetch/fetch.js';
 import './localfont.js';
 
 import Navigation from './modules/navigation.jsx';
+import PageHome from './templates/page-home.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class App extends React.Component {
     }
   }
   componentDidMount() {
+    // This is currently broken in IE11: https://github.com/github/fetch/issues/114
     fetch(this.props.url)
     .then((response) => {
       return response.json();
@@ -29,7 +31,10 @@ export default class App extends React.Component {
   render() {
     const renderData = this.state.data;
     return (
+      <div>
         <Navigation data={renderData.pages} customClass="transparent-white" />
+        <PageHome/>
+      </div>
     );
   }
 };

@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import Imager from 'imager.jsx';
 
 import DownChevron from '../atoms/down-chevron.jsx';
 
@@ -17,29 +18,36 @@ export default class PageHome extends React.Component {
     this.animateChevron();
   }
   render() {
+    const HeadlineBackground = Imager({});
+    const HarveyNicksDevice = Imager({});
+    const MonumentDevice = Imager({});
     return (
       <article className="page__home">
-        <ScreenBlock colour="rain">
-          <BoldHeader colour="white">We're a digital product studio</BoldHeader>
+        <ScreenBlock customClass="page__home-block-welcome" colour="rain">
+          <HeadlineBackground className="page__home-headline-background" src="images/home/Homepage-Hero.png"/>
+          <BoldHeader colour="white">We're a digital<br/>product studio</BoldHeader>
           <DownChevron ref="downChevron" onClick={this.animateChevron}/>
         </ScreenBlock>
-        <ScreenBlock hexColour="#6A86EC">
-          <p><img src="https://placekitten.com/g/200/300"/></p>
+        <ScreenBlock customClass="page__home-block-client-work" hexColour="#6A86EC">
+          <HarveyNicksDevice className="page__home-harvey-nicks-device" src="images/home/Homepage-Harvey-Phone.png"/>
           <HomeTextBlock title="Innovative client work">
             <p>Investing into passion projects has something something something something something something something something something 2 Baftas, a few D&AD pencils and other heavy metal things.</p>
           </HomeTextBlock>
         </ScreenBlock>
-        <ScreenBlock hexColour="#3F63D9">
+        <ScreenBlock customClass="page__home-block-own-ip" hexColour="#3F63D9">
           <HomeTextBlock title="Award winning own IP">
             <p>Investing into passion projects has something something something something something something something something something 2 Baftas, a few D&AD pencils and other heavy metal things.</p>
           </HomeTextBlock>
-          <p><img src="https://placekitten.com/g/200/300"/></p>
+          <MonumentDevice className="page__home-monument-device" src="images/home/Homepage-Games-Ipad.png"/>
         </ScreenBlock>
-        <ScreenBlock colour="blu">
-          <p><img src="https://placekitten.com/g/200/300"/></p>
+        <ScreenBlock customClass="page__home-block-ventures" colour="navy">
+          <img src="https://placekitten.com/g/200/300"/>
           <HomeTextBlock title="Launching new ventures">
             <p>Investing into passion projects has something something something something something something something something something 2 Baftas, a few D&AD pencils and other heavy metal things.</p>
           </HomeTextBlock>
+        </ScreenBlock>
+        <ScreenBlock customClass="page__home-block-studio" colour="honey">
+          <img src="https://placekitten.com/g/200/300"/>
         </ScreenBlock>
       </article>
     );
