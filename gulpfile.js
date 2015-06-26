@@ -142,7 +142,7 @@ var tasks = {
       debug: !production, // Sourcemapping
       cache: {},
       packageCache: {},
-      fullPaths: false
+      fullPaths: watch
     })
     .require(require.resolve('./source/app.jsx'), { entry: true })
     .transform(babelify.configure({
@@ -150,6 +150,10 @@ var tasks = {
     }))
     .transform(reactify, {"es6": true})
     .external('react');
+
+    if (watch) {
+      bundler = watchify(bundler);
+    }
 
     var rebundle = function() {
       return bundler.bundle()
@@ -163,7 +167,6 @@ var tasks = {
     };
 
     if (watch) {
-      bundler = watchify(bundler);
       bundler.on('update', rebundle);
     }
 
@@ -182,7 +185,7 @@ var tasks = {
       debug: true,
       cache: {},
       packageCache: {},
-      fullPaths: false
+      fullPaths: watch
     })
     .require(require.resolve('./source/styleguide.jsx'), { entry: true })
     .transform(babelify.configure({
@@ -190,6 +193,10 @@ var tasks = {
     }))
     .transform(reactify, {"es6": true})
     .external('react');
+
+    if (watch) {
+      bundler = watchify(bundler);
+    }
 
     var rebundle = function() {
       return bundler.bundle()
@@ -202,7 +209,6 @@ var tasks = {
     };
 
     if (watch) {
-      bundler = watchify(bundler);
       bundler.on('update', rebundle);
     }
 
