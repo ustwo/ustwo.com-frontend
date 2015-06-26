@@ -10,8 +10,6 @@
 Atoms
 
 These are the smallest elements to be used as building blocks for larger components.
-
-Styleguide 1.0
 */
 @import "atoms/colours";
 @import "atoms/typography";
@@ -25,8 +23,6 @@ Styleguide 1.0
 Components
 
 These are groups of atoms combined together, with their own properties.
-
-Styleguide 2.0
 */
 
 @import "components/bold-page-header";
@@ -37,8 +33,6 @@ Styleguide 2.0
 Modules
 
 These are the most complex components. Modules are groups of components joined together to form a relatively complex, distinct section of an interface.
-
-Styleguide 3.0
 */
 
 @import "modules/navigation";
@@ -47,42 +41,6 @@ Styleguide 3.0
 Templates
 
 These show how groups of modules are laid out to create a page or larger sections.
-
-Styleguide 4.0
 */
 
 @import "templates/page-home";
-
-/* ------------------------------------------------------------ *\
-|* Prototype code
-\* ------------------------------------------------------------ */
-
-.home__headline {
-  font-family: $PxGroteskRegular;
-  text-transform: none;
-  font-size: 40px;
-  line-height: 1.3;
-  margin: 80px 0 100px;
-
-  span.highlight {
-    color: $rain;
-  }
-}
-
-#overlay {
-  display: block;
-  background-color: $rain;
-  z-index: 100;
-  position: absolute;
-  top: 0;
-  margin-top: $nav-height;
-  left: 0;
-  right: 0;
-  height: 2000px;
-  opacity: 0.5;
-  visibility: hidden;
-
-  img {
-    width: 100%
-  }
-}
