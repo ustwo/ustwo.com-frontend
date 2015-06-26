@@ -6,40 +6,48 @@ export default class SVGSequenceAnimation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fps: 25,
-      currentFrame: 1,
-      totalFrames: 0,
-      fadeInDuration: 0
+      currentFrame: 0,
+      fadeInDuration: 0,
+      totalFrames: 0
     };
   }
   static defaultProps = {
+    fps: 25,
     frameName: "Frame"
   }
   hideAllFrames = () => {
     let svg = React.findDOMNode(this.refs.animsvg);
-    for (let index = 0; index < svg.children.length; index++) {
-      svg.children[index].style.display = 'none';
+    for (let i = 0; i < svg.children.length; i++) {
+      svg.children[i].style.display = 'none';
     }
+  }
+  goToFrame = (frameNumber) => {
+    this.hideAllFrames();
+    React.findDOMNode(this.refs.animsvg).getElementById(this.props.frameName+frameNumber).style.display = 'inline-block';
+    this.setState({currentFrame: frameNumber});
   }
   resetAnim = () => {
     this.hideAllFrames();
-    this.setState({currentFrame: 1});
+    this.setState({currentFrame: 0});
+    // TODO: remove setTimeout() / requestAnimationFrame()
   }
   anim = () => {
     setTimeout(() => {
-      this.hideAllFrames();
-      let currentFrameElement = React.findDOMNode(this.refs.animsvg).getElementById(this.props.frameName+this.state.currentFrame);
-      currentFrameElement.style.display = 'inline-block';
-      // TODO: add tween function support
-      if(this.state.fadeInDuration > 0) currentFrameElement.style.opacity = this.state.currentFrame / this.state.fadeInDuration;
-      this.setState({currentFrame: this.state.currentFrame + 1});
-      if (this.state.currentFrame <= this.state.totalFrames) {
+      this.goToFrame(this.state.currentFrame+1);
+      if (this.state.currentFrame < this.state.totalFrames) {
         window.requestAnimationFrame(this.anim);
       }
-    }, 1000/this.state.fps);
+    }, 1000/this.props.fps);
   }
   componentDidMount() {
-    this.setState({totalFrames: React.findDOMNode(this.refs.animsvg).children.length});
+    let svgElement = React.findDOMNode(this.refs.animsvg);
+    this.setState({totalFrames: svgElement.children.length});
+    if(this.state.fadeInDuration > 0) {
+      for(let i = 1; i <= this.state.fadeInDuration; i++) {
+        // TODO: add tween function support
+        svgElement.getElementById(this.props.frameName+i).style.opacity = i / this.state.fadeInDuration;
+      }
+    }
     this.resetAnim();
   }
   render() {
