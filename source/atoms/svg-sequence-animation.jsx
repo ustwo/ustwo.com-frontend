@@ -17,8 +17,8 @@ export default class SVGSequenceAnimation extends React.Component {
   }
   hideAllFrames = () => {
     let svg = React.findDOMNode(this.refs.animsvg);
-    for (let i = 0; i < svg.children.length; i++) {
-      svg.children[i].style.display = 'none';
+    for (let i = 0; i < svg.childNodes.length; i++) {
+      svg.childNodes[i].style.display = 'none';
     }
   }
   goToFrame = (frameNumber) => {
@@ -41,7 +41,7 @@ export default class SVGSequenceAnimation extends React.Component {
   }
   componentDidMount() {
     let svgElement = React.findDOMNode(this.refs.animsvg);
-    this.setState({totalFrames: svgElement.children.length});
+    this.setState({totalFrames: svgElement.childNodes.length});
     if(this.state.fadeInDuration > 0) {
       for(let i = 1; i <= this.state.fadeInDuration; i++) {
         // TODO: add tween function support
