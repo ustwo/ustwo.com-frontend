@@ -28,6 +28,14 @@ Styleguide 3.1
   height: $nav-height;
   background: rgba(255, 255, 255, 0.95);
   z-index: 40;
+  &.transparent-white {
+    background: transparent;
+    color: $white;
+
+    .nav__logo__graphic {
+      fill: $white;
+    }
+  }
 }
 
 .nav__logo {
@@ -42,6 +50,7 @@ Styleguide 3.1
 .nav__logo__graphic {
   width: 100px;
   height: $nav-height;
+  fill: $nonBlack;
 }
 
 .nav__inner {

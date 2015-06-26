@@ -5,4 +5,11 @@
   right: 0;
   bottom: 0;
   padding-right: 20px;
+  fill: $nonBlack;
+}
+
+.transparent-white {
+  .nav__open-overlay-button {
+    fill: $white;
+  }
 }

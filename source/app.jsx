@@ -29,7 +29,7 @@ export default class App extends React.Component {
   render() {
     const renderData = this.state.data;
     return (
-      <Navigation data={renderData.pages} />
+        <Navigation data={renderData.pages} customClass="transparent-white" />
     );
   }
 };

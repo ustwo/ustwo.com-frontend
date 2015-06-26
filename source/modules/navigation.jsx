@@ -39,10 +39,11 @@ export default class Navigation extends React.Component {
       );
     });
     const overlayClasses = this.state.overlayOpen ? 'nav__overlay nav__overlay-open' : 'nav__overlay nav__overlay-closed';
+    const classes = `nav ${this.props.customClass}`;
     const svgContent = '<use xlink:href="images/spritemap.svg#ustwologo" />';
     return (
       <header>
-        <nav className="nav">
+        <nav className={classes}>
           <div className="nav__logo">
             <a className="nav__logo__link" href="/">
               <svg className="nav__logo__graphic" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
