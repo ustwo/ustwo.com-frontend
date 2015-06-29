@@ -7,25 +7,25 @@
 @import "utils";
 
 /*
-Atoms
+Elements
 
 These are the smallest elements to be used as building blocks for larger components.
 */
-@import "atoms/colours";
-@import "atoms/typography";
-@import "atoms/navigation-link";
-@import "atoms/navigation-overlay-link";
-@import "atoms/navigation-open-overlay-button";
-@import "atoms/navigation-overlay-close-button";
-@import "atoms/down-chevron";
+@import "elements/colours";
+@import "elements/typography";
+@import "elements/navigation-link";
+@import "elements/navigation-overlay-link";
+@import "elements/navigation-open-overlay-button";
+@import "elements/navigation-overlay-close-button";
+@import "elements/down-chevron";
 
 /*
 Components
 
-These are groups of atoms combined together, with their own properties.
+These are groups of elements combined together, with their own properties.
 */
 
-@import "components/bold-page-header";
+@import "components/bold-header";
 @import "components/home-text-block";
 @import "components/screen-block";
 

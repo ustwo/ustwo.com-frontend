@@ -1,9 +1,9 @@
-.page__home {
-  .page__home-block-welcome {
+.page-home {
+  .page-home__screen-block--welcome {
     display: flex;
     align-items: center;
 
-    .page__home-headline-background {
+    .page-home__headline-background {
       position: absolute;
       margin: auto;
       left: 0;
@@ -15,8 +15,8 @@
       height: auto;
     }
 
-    .bold-page-header {
       margin: auto;
+    .bold-header {
       position: relative;
     }
 
@@ -29,13 +29,13 @@
     }
   }
 
-  .page__home-block-client-work {
+  .page-home__screen-block--client {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-wrap: wrap;
 
-    .page__home-harvey-nicks-device {
+    .page-home__harvey-nicks-device {
       width: auto;
       max-height: 70vh;
     }
@@ -46,7 +46,7 @@
     }
   }
 
-  .page__home-block-own-ip {
+  .page-home__screen-block--own-ip {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -57,13 +57,13 @@
       margin: auto 5%;
     }
 
-    .page__home-monument-device {
+    .page-home__monument-device {
       max-width: 50%;
       max-height: 90vh;
     }
   }
 
-  .page__home-block-ventures {
+  .page-home__screen-block--ventures {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -80,7 +80,7 @@
     }
   }
 
-  .page__home-block-studio {
+  .page-home__screen-block--studio {
     display: flex;
     align-items: center;
 

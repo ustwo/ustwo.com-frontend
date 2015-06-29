@@ -2,10 +2,10 @@
 
 import React from 'react';
 
-import NavigationLink from '../atoms/navigation-link.jsx';
-import NavigationOverlayLink from '../atoms/navigation-overlay-link.jsx';
-import NavigationOpenOverlayButton from '../atoms/navigation-open-overlay-button.jsx';
-import NavigationOverlayCloseButton from '../atoms/navigation-overlay-close-button.jsx';
+import NavigationLink from '../elements/navigation-link.jsx';
+import NavigationOverlayLink from '../elements/navigation-overlay-link.jsx';
+import NavigationOpenOverlayButton from '../elements/navigation-open-overlay-button.jsx';
+import NavigationOverlayCloseButton from '../elements/navigation-overlay-close-button.jsx';
 
 export default class Navigation extends React.Component {
   constructor(props) {

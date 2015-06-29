@@ -7,11 +7,11 @@ import './localfont.js';
 
 import StyleGuideItem from 'react-style-guide';
 
-// Atoms
-import NavigationLink from './atoms/navigation-link.jsx';
-import NavigationOverlayLink from './atoms/navigation-overlay-link.jsx';
-import NavigationOpenOverlayButton from './atoms/navigation-open-overlay-button.jsx';
-import NavigationOverlayCloseButton from './atoms/navigation-overlay-close-button.jsx';
+// Elements
+import NavigationLink from './elements/navigation-link.jsx';
+import NavigationOverlayLink from './elements/navigation-overlay-link.jsx';
+import NavigationOpenOverlayButton from './elements/navigation-open-overlay-button.jsx';
+import NavigationOverlayCloseButton from './elements/navigation-overlay-close-button.jsx';
 
 // Components
 import BoldHeader from './components/bold-header.jsx';
@@ -62,13 +62,14 @@ export default class Styleguide extends React.Component {
     return (
       <section className="styleguide__container">
         <h1>Styleguide – ustwo.com</h1>
-        <h2>Atoms</h2>
-        <StyleGuideItem title="Colours" description="Colours being used in the project.">
+        {/* ELEMENTS ------------------------------------------------------------------------------------------------------- */}
+        <h2>1. Elements</h2>
+        <StyleGuideItem title="1.1. Colours" description="Colours being used in the project.">
           <section className="colour-container">
             {colourSwatches}
           </section>
         </StyleGuideItem>
-        <StyleGuideItem title="Typography" description="Typography being used in the project.">
+        <StyleGuideItem title="1.2. Typography" description="Typography being used in the project.">
           <section>
             <h1>First level heading</h1>
             <h2>Second level heading</h2>
@@ -79,31 +80,32 @@ export default class Styleguide extends React.Component {
             <p>Paragraph: Appropriately enable scalable best practices and flexible niches. Dramatically mesh economically sound deliverables with out-of-the-box niche markets. Appropriately exploit multimedia based bandwidth whereas backward-compatible innovation.<br/>Rapidiously utilize just in time supply chains whereas intermandated leadership. Energistically formulate optimal users before resource-leveling testing procedures. Authoritatively optimize cost effective networks after covalent quality vectors.</p>
           </section>
         </StyleGuideItem>
-        <StyleGuideItem title="Navigation link" description="Link item for large screen navigation.">
+        <StyleGuideItem title="1.3. Navigation link" description="Link item for large screen navigation.">
           <NavigationLink url="" colour="marshPassion">Link</NavigationLink>
         </StyleGuideItem>
-        <StyleGuideItem title="Navigation overlay link" description="Link item for small screen navigation.">
+        <StyleGuideItem title="1.4. Navigation overlay link" description="Link item for small screen navigation.">
           <section className="dark__styleguideitem__container">
             <NavigationOverlayLink url="">Link</NavigationOverlayLink>
           </section>
         </StyleGuideItem>
-        <StyleGuideItem title="Navigation open overlay button" description="Menu overlay opening button for small screens.">
+        <StyleGuideItem title="1.5. Navigation open overlay button" description="Menu overlay opening button for small screens.">
           <div className="openbutton__container">
             <NavigationOpenOverlayButton />
           </div>
         </StyleGuideItem>
-        <StyleGuideItem title="Navigation overlay close button" description="Fancy animated close button.">
+        <StyleGuideItem title="1.6. Navigation overlay close button" description="Fancy animated close button.">
           <section className="dark__styleguideitem__container">
             <NavigationOverlayCloseButton ref="closeButton" onClose={this.animateCloseButton} />
           </section>
         </StyleGuideItem>
-        <h2>Components</h2>
-        <StyleGuideItem title="Bold page header" description="Big and bold header to start pages on the right foot.">
+        {/* COMPONENTS ------------------------------------------------------------------------------------------------------- */}
+        <h2>2. Components</h2>
+        <StyleGuideItem title="2.1. Bold header" description="Big and bold header to start pages on the right foot.">
           <BoldHeader subtitle="And this is my awesome secondary line" colour="marshPassion">I'm a bold<br/>page header</BoldHeader>
           <hr/>
           <BoldHeader colour="jeezz">I work without<br/>a subtitle too!</BoldHeader>
         </StyleGuideItem>
-        <StyleGuideItem title="Screen block" description="Container block which takes up the full viewport.">
+        <StyleGuideItem title="2.2. Screen block" description="Container block which takes up the full viewport.">
           <ScreenBlock colour="marshPassion">
             <p>Globally fabricate front-end products before technically sound opportunities. Credibly enable plug-and-play alignments for exceptional infomediaries. Intrinsicly productize leading-edge convergence vis-a-vis backend scenarios.</p>
             <p>Phosfluorescently network process-centric innovation rather than timely metrics. Seamlessly expedite economically sound resources before 2.0 sources. Rapidiously provide access to inexpensive schemas vis-a-vis enterprise-wide infrastructures.</p>
@@ -112,7 +114,7 @@ export default class Styleguide extends React.Component {
             <p><img src="https://placekitten.com/g/200/300"/></p>
           </ScreenBlock>
         </StyleGuideItem>
-        <StyleGuideItem title="Home text block" description="Text block for home page.">
+        <StyleGuideItem title="2.3. Home text block" description="Text block for home page.">
           <div className="u-bg-rain" style={{padding: 20}}>
             <HomeTextBlock title="Award winning own IP">
               <p>With a cherry on top!</p>
@@ -121,14 +123,16 @@ export default class Styleguide extends React.Component {
             </HomeTextBlock>
           </div>
         </StyleGuideItem>
-        <h2>Modules</h2>
-        <StyleGuideItem title="Navigation" description="Site navigation.">
+        {/* MODULES ------------------------------------------------------------------------------------------------------- */}
+        <h2>3. Modules</h2>
+        <StyleGuideItem title="3.1. Navigation" description="Site navigation.">
           <div className="fix---nav">
             <Navigation data={renderData.pages} />
           </div>
         </StyleGuideItem>
-        <h2>Templates</h2>
-          <StyleGuideItem title="Home page" description="The homiest pages of them all.">
+        {/* TEMPLATES ------------------------------------------------------------------------------------------------------- */}
+        <h2>4. Templates</h2>
+          <StyleGuideItem title="4.1. Home page" description="The homiest pages of them all.">
             <PageHome/>
           </StyleGuideItem>
       </section>

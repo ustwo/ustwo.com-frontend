@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import BoldHeaderSubtitle from '../atoms/bold-header-subtitle.jsx';
+import BoldHeaderSubtitle from '../elements/bold-header-subtitle.jsx';
 
 export default class BoldHeader extends React.Component {
   render() {
@@ -12,7 +12,7 @@ export default class BoldHeader extends React.Component {
       subtitleMarkup = <BoldHeaderSubtitle>{this.props.subtitle}</BoldHeaderSubtitle>
     }
     return (
-      <header className="bold-page-header">
+      <header className="bold-header">
         <h1 className={titleClass}>{this.props.children}</h1>
         {subtitleMarkup}
       </header>

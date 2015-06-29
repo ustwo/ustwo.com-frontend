@@ -13,7 +13,7 @@ export default class SVGSequenceAnimation extends React.Component {
   }
   static defaultProps = {
     fps: 25,
-    frameName: "Frame"
+    frameName: 'Frame',
   }
   hideAllFrames = () => {
     let svg = React.findDOMNode(this.refs.animsvg);
