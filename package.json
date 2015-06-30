@@ -9,51 +9,42 @@
   },
   "dependencies": {
     "bower": "*",
-
     "react": "^0.13",
     "imager.jsx": "*",
     "gsap": "*",
-    "page": "*",
-    "handlebars": "^3.0.0",
-    "merge-stream": "*",
-    "gulp-handlebars": "*",
-    "gulp-wrap": "*",
-    "gulp-declare": "*",
-    "gulp-concat": "*",
+    "react-style-guide": "*",
+    "whatwg-fetch": "*",
 
     "gulp": "*",
     "gulp-util": "*",
-    "gulp-rename": "*",
     "gulp-if": "*",
     "del": "*",
     "gulp-notify": "*",
     "vinyl-buffer": "*",
     "yargs": "*",
+    "merge-stream": "*",
+    "gulp-wrap": "*",
+    "gulp-declare": "*",
+    "gulp-concat": "*",
+    "vinyl-source-stream": "*",
+    "gulp-sourcemaps": "*",
+
+    "browser-sync": "*",
 
     "gulp-imagemin": "*",
 
-    "gulp-compile-handlebars": "daaain/gulp-compile-handlebars",
-    "sc5-styleguide": "*",
-    "react-style-guide": "*",
-
     "autoprefixer-core": "*",
-    "gulp-sourcemaps": "*",
     "gulp-postcss": "*",
     "gulp-sass": "*",
-    "gulp-ruby-sass": "0.7.1",
     "gulp-scss-lint": "*",
 
     "babelify": "*",
-    "whatwg-fetch": "*",
     "gulp-uglify": "*",
     "watchify": "*",
     "browserify": "*",
     "reactify": "*",
-    "vinyl-source-stream": "*",
     "gulp-jshint": "*",
     "jshint-stylish": "*",
-    "gulp-mocha": "*",
-
-    "browser-sync": "*"
+    "gulp-mocha": "*"
   }
 }

@@ -1,46 +1,40 @@
 'use strict';
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var rename = require('gulp-rename');
 var del = require('del');
 var uglify = require('gulp-uglify');
 var gulpif = require('gulp-if');
 var exec = require('child_process').exec;
-var fs = require('fs');
-
 var notify = require('gulp-notify');
-
 var buffer = require('vinyl-buffer');
 var argv = require('yargs').argv;
+var sourcemaps = require('gulp-sourcemaps');
+
 // sass
 var sass = require('gulp-sass');
-var rubysass = require('gulp-ruby-sass');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer-core');
-var sourcemaps = require('gulp-sourcemaps');
 var scsslint = require('gulp-scss-lint');
 
 // BrowserSync
 var browserSync = require('browser-sync');
+
 // js
 var watchify = require('watchify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var babelify = require('babelify');
 var reactify = require('reactify');
+
 // image optimization
 var imagemin = require('gulp-imagemin');
+
 // linting
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
-// testing/mocha
-var mocha = require('gulp-mocha');
 
-var path = require('path');
-var merge = require('merge-stream');
-var wrap = require('gulp-wrap');
-var declare = require('gulp-declare');
-var concat = require('gulp-concat');
+// testing
+var mocha = require('gulp-mocha');
 
 // gulp build --production
 var production = !!argv.production;

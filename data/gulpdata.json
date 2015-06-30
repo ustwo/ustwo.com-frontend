@@ -25,13 +25,6 @@
     "midGrey"           :"#BFBFBF",
     "lightGrey"         :"#E8E8E8"
   },
-  "bold-page-header__content": "I'm a bold<br/>page header",
-  "bold-page-header__secondary-content": "And this is my awesome secondary line",
-  "work__block__link": "best-work-ever/",
-  "work__block__image": "../images/work/work-dice.png",
-  "work__block__category": "Venture",
-  "work__block__title": "DICE",
-  "work__block__blurb": "Our newest venture, DICE, a smart music ticketing app with No Booking Fees, is different in that we’ve worked directly with a partner to start a new business and raise funding.",
   "pages": [
     {
       "title": "Stuff we make",
