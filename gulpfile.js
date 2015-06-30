@@ -254,7 +254,8 @@ var tasks = {
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
-            baseDir: "public"
+            baseDir: 'public',
+            injectChanges: true
         },
         open: false,
         port: process.env.PORT || 3000
