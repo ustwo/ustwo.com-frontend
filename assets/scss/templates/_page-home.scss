@@ -1,23 +1,27 @@
 .page-home {
+  .page-home__image-wrapper {
+    position: relative;
+  }
+
   .page-home__screen-block--welcome {
-    display: flex;
-    align-items: center;
+    .bold-header {
+      position: relative;
+      h1 {
+        width: 80%;
+        margin: auto;
+      }
+    }
 
     .page-home__headline-background {
       position: absolute;
       margin: auto;
       left: 0;
       right: 0;
-      top: 10%;
+      top: 0;
       bottom: 0;
       width: 45%;
-      min-width: 300px;
+      min-width: 280px;
       height: auto;
-    }
-
-      margin: auto;
-    .bold-header {
-      position: relative;
     }
 
     .down-chevron {
@@ -30,59 +34,134 @@
   }
 
   .page-home__screen-block--client {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
 
-    .page-home__harvey-nicks-device {
-      width: auto;
-      max-height: 70vh;
+    .page-home__image-margin-container {
+      position: relative;
+      // fixing unexplained horizontal scrollbar
+      max-width: 99%;
     }
 
-    .home-text-block {
-      width: 30%;
-      margin: auto 5%;
+    .page-home__harvey-nicks-shape {
+      fill: $white;
+      position: absolute;
+    }
+
+    .page-home__harvey-nicks-shape-3 {
+      top: 58%;
+      left: 10%;
+      width: 15%;
+      height: 18%;
+    }
+
+    .page-home__harvey-nicks-shape-4 {
+      top: 20%;
+      right: 22%;
+      width: 15%;
+      height: 18%;
+    }
+
+    .page-home__harvey-nicks-device {
+      margin: 5vh 10vw 7.5vh 6vw;
+      width: span(84%);
+      position: relative;
+    }
+
+    .page-home__harvey-nicks-shape-1 {
+      top: 0;
+      left: 10%;
+      width: 15%;
+      height: 18%;
+    }
+
+    .page-home__harvey-nicks-shape-2 {
+      top: 63%;
+      right: 6%;
+      width: 15%;
+      height: 15%;
+    }
+
+    .page-home__text-block-vertical-centerer {
+      @include span(87.5%);
+      @include squish(6.25%);
+    }
+
+    @include susy-breakpoint($bp-large, $susy) {
+      @include container(16);
+      @include nested(16) {
+        .page-home__image-margin-container {
+          @include span(9 first);
+        }
+        .page-home__text-block-vertical-centerer {
+          margin-left: 0;
+          display: table;
+          height: 100%;
+          @include span(7 nest last) {
+            .home-text-block {
+              display: table-cell;
+              vertical-align: middle;
+              >* {
+                @include squish(1);
+                width: span(5);
+              }
+            }
+          }
+        }
+      }
     }
   }
 
   .page-home__screen-block--own-ip {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-
-    .home-text-block {
-      width: 30%;
-      margin: auto 5%;
+    .page-home__monument-device {
+      margin: 0 6.25% 7.5vh 6.25%;
+      @include span(87.5%);
     }
 
-    .page-home__monument-device {
-      max-width: 50%;
-      max-height: 90vh;
+    .page-home__text-block-vertical-centerer {
+      @include span(87.5%);
+      @include squish(6.25%);
+    }
+
+    @include susy-breakpoint($bp-large, $susy) {
+      @include container(16);
+      @include nested(16) {
+        .page-home__text-block-vertical-centerer {
+          margin-left: 0;
+          display: table;
+          height: 100%;
+          @include span(7 nest first) {
+            .home-text-block {
+              display: table-cell;
+              vertical-align: middle;
+              >* {
+                @include squish(1);
+                width: span(5);
+              }
+            }
+          }
+        }
+
+        .page-home__monument-device {
+          margin: 0 -10% 0 0;
+          @include span(9 last);
+        }
+      }
     }
   }
 
   .page-home__screen-block--ventures {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-
     img {
-      width: auto;
-      max-height: 70vh;
+      margin: 0 12% 7.5vh 12%;
+      @include span(76%);
     }
 
     .home-text-block {
-      width: 30%;
-      margin: auto 5%;
+      @include span(87.5%);
+      @include squish(6.25%);
     }
   }
 
   .page-home__screen-block--studio {
-    display: flex;
-    align-items: center;
+    text-align: center;
 
     img {
       margin: auto;

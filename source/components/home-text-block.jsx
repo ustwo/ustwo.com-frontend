@@ -7,7 +7,7 @@ export default class HomeTextBlock extends React.Component {
     return (
       <section className="home-text-block">
         <hr/>
-        <h2 className="h3">{this.props.title}</h2>
+        <h2>{this.props.title}</h2>
         {this.props.children}
       </section>
     );

@@ -3,15 +3,16 @@
 \* ------------------------------------------------------------ */
 
 $susy: (
-  columns: 16,
-  container: 1440px,
   global-box-sizing: border-box,
   // debug: (
   //   image: show,
   //   color: rgba(#AAA, .25),
   //   output: background,
-  //   toggle: top right,
   // ),
+);
+
+$susy-mobile-layout: (
+  columns: 4
 );
 
 $bp-small: 400px;
