@@ -12,6 +12,7 @@ import NavigationLink from './elements/navigation-link.jsx';
 import NavigationOverlayLink from './elements/navigation-overlay-link.jsx';
 import NavigationOpenOverlayButton from './elements/navigation-open-overlay-button.jsx';
 import NavigationOverlayCloseButton from './elements/navigation-overlay-close-button.jsx';
+import DownChevron from './elements/down-chevron.jsx';
 
 // Components
 import BoldHeader from './components/bold-header.jsx';
@@ -41,6 +42,7 @@ export default class Styleguide extends React.Component {
     }).then((json) => {
       this.setState({data: json});
       this.refs.closeButton.anim();
+      this.refs.downChevron.anim();
     }).catch(function(ex) {
       console.warn('Styleguide data JSON parsing failed:', ex);
     });
@@ -48,6 +50,10 @@ export default class Styleguide extends React.Component {
   animateCloseButton = (event) => {
     this.refs.closeButton.resetAnim();
     this.refs.closeButton.anim();
+  }
+  animateDownChevron = (event) => {
+    this.refs.downChevron.resetAnim();
+    this.refs.downChevron.anim();
   }
   render() {
     const renderData = this.state.data;
@@ -96,6 +102,11 @@ export default class Styleguide extends React.Component {
         <StyleGuideItem title="1.6. Navigation overlay close button" description="Fancy animated close button.">
           <section className="dark__styleguideitem__container">
             <NavigationOverlayCloseButton ref="closeButton" onClose={this.animateCloseButton} />
+          </section>
+        </StyleGuideItem>
+        <StyleGuideItem title="1.7. Down chevron" description="Fancy animated down chevron.">
+          <section className="dark__styleguideitem__container">
+            <DownChevron ref="downChevron" onClick={this.animateDownChevron} />
           </section>
         </StyleGuideItem>
         {/* COMPONENTS ------------------------------------------------------------------------------------------------------- */}
