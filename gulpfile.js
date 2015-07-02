@@ -80,8 +80,9 @@ var tasks = {
   // --------------------------
   // Delete build folder
   // --------------------------
-  clean: function(cb) {
-    del(['public/'], cb);
+  clean: function() {
+    del(['public']);
+
     return gulp.src('node_modules/.gitignore')
       .pipe(gulp.dest('public/')
     );
@@ -249,6 +250,11 @@ var tasks = {
       .pipe(gulp.dest('public/data')
     );
   },
+  html: function() {
+    return gulp.src('templates/**/*.html')
+      .pipe(gulp.dest('public')
+    );
+  },
 };
 
 gulp.task('browser-sync', function() {
@@ -287,11 +293,12 @@ gulp.task('lint:js', tasks.lintjs);
 gulp.task('optimize', tasks.optimize);
 gulp.task('test', tasks.test);
 gulp.task('data', tasks.data);
+gulp.task('html', tasks.html);
 
 // --------------------------
 // DEV/WATCH TASK
 // --------------------------
-gulp.task('watch', ['assets', 'sass', 'reactify', 'reactstyleguide', 'data', 'browser-sync'], function() {
+gulp.task('watch', ['assets', 'html', 'sass', 'reactify', 'reactstyleguide', 'data', 'browser-sync'], function() {
   // TODO: make watch restart on error, see: https://github.com/appium/DynamicApp/blob/master/injector/gulpfile.js
 
   // --------------------------
@@ -313,6 +320,11 @@ gulp.task('watch', ['assets', 'sass', 'reactify', 'reactstyleguide', 'data', 'br
   // watch:data
   // --------------------------
   gulp.watch('data/**/*.json', ['reload-data']);
+
+  // --------------------------
+  // watch:html
+  // --------------------------
+  gulp.watch('templates/**/*.html', ['reload-html']);
 
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
