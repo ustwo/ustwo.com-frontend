@@ -137,7 +137,7 @@ export default class Styleguide extends React.Component {
         {/* MODULES ------------------------------------------------------------------------------------------------------- */}
         <h2>3. Modules</h2>
         <StyleGuideItem title="3.1. Navigation" description="Site navigation.">
-          <div className="fix---nav">
+          <div className="fix-nav">
             <Navigation data={renderData.pages} />
           </div>
         </StyleGuideItem>
