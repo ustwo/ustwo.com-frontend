@@ -42,7 +42,7 @@ export default class Navigation extends React.Component {
     const classes = `nav ${this.props.customClass}`;
     const svgContent = '<use xlink:href="images/spritemap.svg#ustwologo" />';
     return (
-      <header>
+      <header className="header">
         <nav className={classes}>
           <div className="nav__logo">
             <a className="nav__logo__link" href="/">

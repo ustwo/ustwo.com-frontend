@@ -9,30 +9,36 @@ import 'Tween';
 import 'Timeline';
 import 'TweenLite-ScrollToPlugin';
 import 'TweenLite-EasePack';
+import assign from 'lodash/object/assign';
+import 'browsernizr/test/history';
 
+import Router from './flux/router';
+import Store from './flux/store';
 import Navigation from './modules/navigation.jsx';
-import PageHome from './templates/page-home.jsx';
 import EntranceAnimation from './elements/entrance-animation.jsx';
+
+const pageMap = {
+  home: require('./templates/page-home.jsx'),
+  work: require('./templates/page-work.jsx')
+};
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: {
-        pages: []
-      }
-    }
+    this.state = Store.getData();
+    this.onStoreChange = this.onStoreChange.bind(this);
+  }
+  componentWillMount() {
+    Router.init(this.props.initialUrl);
   }
   componentDidMount() {
-    // This is currently broken in IE11: https://github.com/github/fetch/issues/114
-    fetch(this.props.url)
-    .then((response) => {
-      return response.json();
-    }).then((json) => {
-      this.setState({data: json});
-    }).catch(function(ex) {
-      console.warn('App data JSON parsing failed:', ex);
-    });
+    Store.addChangeListener(this.onStoreChange);
+  }
+  componentWillUnmount() {
+    Store.removeChangeListener(this.onStoreChange);
+  }
+  onStoreChange() {
+    this.setState(Store.getData());
   }
   render() {
     const renderData = this.state.data;
@@ -41,18 +47,29 @@ export default class App extends React.Component {
       y: -68,
       clearProps: 'transform'
     };
-    return (
-      <div>
-        <EntranceAnimation delay={1} duration={0.3} options={animationOptions} findElement={element => element.children[0]}>
-          <Navigation data={renderData.pages} customClass="transparent-white" />
-        </EntranceAnimation>
-        <PageHome/>
-      </div>
-    );
+    let app;
+    if(this.state.page === 'notfound') {
+      app = <p>404</p>
+    } else {
+      app = (
+        <div>
+          <EntranceAnimation delay={1} duration={0.3} options={animationOptions} findElement={element => element.children[0]}>
+            <Navigation data={renderData.pages} customClass="transparent-white" />
+          </EntranceAnimation>
+          {this.getPage(this.state.page)}
+        </div>
+      );
+    }
+    return app;
+  }
+  getPage(pageId) {
+    return React.createElement(pageMap[pageId], assign({
+      key: pageId
+    }, this.state));
   }
 };
 
 React.render(
-  <App url="data/gulpdata.json" />,
+  <App />,
   document.getElementById('pageContent')
 );

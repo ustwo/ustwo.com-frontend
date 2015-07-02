@@ -327,7 +327,7 @@ gulp.task('watch', ['assets', 'html', 'sass', 'reactify', 'reactstyleguide', 'da
   // --------------------------
   // watch:html
   // --------------------------
-  gulp.watch('templates/**/*.html', ['reload-html']);
+  // gulp.watch('templates/**/*.html', ['reload-html']);
 
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
