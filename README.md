@@ -26,8 +26,8 @@ Main motivation to have a SPA is to have nice between page transitions like on h
 
 ## Setup
 
-    $ bundle install
     $ npm install
+    $ npm run bower
 
 ## Develop
 
