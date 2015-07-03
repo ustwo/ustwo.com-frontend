@@ -49,6 +49,7 @@
     "react-style-guide": "*",
     "react-transition-manager": "^1.2.0",
     "reactify": "*",
+    "scrollmagic": "*",
     "vinyl-buffer": "*",
     "vinyl-source-stream": "*",
     "watchify": "*",

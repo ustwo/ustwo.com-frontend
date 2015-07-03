@@ -49,7 +49,6 @@
   }
 
   .page-home__screen-block--client {
-
     .page-home__image-margin-container {
       position: relative;
       // fixing unexplained horizontal scrollbar
@@ -125,7 +124,7 @@
     }
   }
 
-  .page-home__screen-block--own-ip {
+  .page-home__screen-block--own-stuff {
     .page-home__monument-device {
       margin: 0 6.25% 7.5vh 6.25%;
       @include span(87.5%);
@@ -164,14 +163,41 @@
   }
 
   .page-home__screen-block--ventures {
-    img {
-      margin: 0 12% 7.5vh 12%;
+    .page-home__image-margin-container {
       @include span(76%);
+      .page-home__dice-device {
+        padding: 0 12% 7.5vh 12%;
+        width: 100%;
+      }
     }
 
-    .home-text-block {
+    .page-home__text-block-vertical-centerer {
       @include span(87.5%);
       @include squish(6.25%);
+    }
+
+    @include susy-breakpoint($bp-large, $susy) {
+      @include container(16);
+      @include nested(16) {
+        .page-home__image-margin-container {
+          @include span(9 first);
+        }
+        .page-home__text-block-vertical-centerer {
+          margin-left: 0;
+          display: table;
+          height: 100%;
+          @include span(7 nest last) {
+            .home-text-block {
+              display: table-cell;
+              vertical-align: middle;
+              >* {
+                @include squish(1);
+                width: span(5);
+              }
+            }
+          }
+        }
+      }
     }
   }
 
