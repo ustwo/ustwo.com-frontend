@@ -12,6 +12,7 @@
     "react": "^0.13",
     "imager.jsx": "*",
     "gsap": "*",
+    "scrollmagic": "*",
     "react-style-guide": "*",
     "whatwg-fetch": "*",
 

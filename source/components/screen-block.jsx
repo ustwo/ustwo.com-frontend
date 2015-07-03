@@ -4,10 +4,9 @@ import React from 'react';
 
 export default class ScreenBlock extends React.Component {
   render() {
-    const classes = this.props.hexColour ? `screen-block ${this.props.customClass}` : `screen-block ${this.props.customClass} u-bg-${this.props.colour}`;
-    const hexBackground = this.props.hexColour ? {backgroundColor: this.props.hexColour} : {};
+    const classes = `screen-block ${this.props.customClass}`;
     return (
-      <section className={classes} style={hexBackground}>
+      <section className={classes}>
         <div className="screen-block__vertical-center">
           {this.props.children}
         </div>
