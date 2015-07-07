@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import Router from '../flux/router';
 import NavigationLink from '../elements/navigation-link.jsx';
 import NavigationOverlayLink from '../elements/navigation-overlay-link.jsx';
 import NavigationOpenOverlayButton from '../elements/navigation-open-overlay-button.jsx';
@@ -45,7 +46,7 @@ export default class Navigation extends React.Component {
       <header className="header">
         <nav className={classes}>
           <div className="nav__logo">
-            <a className="nav__logo__link" href="/">
+            <a className="nav__logo__link" href="/" onClick={Router.override('/')}>
               <svg className="nav__logo__graphic" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
             </a>
           </div>

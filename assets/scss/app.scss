@@ -1,0 +1,37 @@
+html,
+body,
+#pageContent,
+.app,
+.app > div,
+.app__stage,
+.app__stage__page-container {
+  height: 100%;
+  width: 100%;
+}
+
+
+.app {
+
+  &__stage {
+
+    &__page-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow-y: scroll;
+      overflow-x: hidden;
+
+      &.add {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+
+        &.show {
+          opacity: 1;
+        }
+        &.hide {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}

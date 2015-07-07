@@ -3,13 +3,13 @@
 import 'babelify/polyfill';
 import React from 'react';
 import 'Fetch';
+import TransitionManager from 'react-transition-manager';
 // TODO: see if there's a better way to get fonts in
 import './localfont.js';
 import 'Tween';
 import 'Timeline';
 import 'TweenLite-ScrollToPlugin';
 import 'TweenLite-EasePack';
-import assign from 'lodash/object/assign';
 import 'browsernizr/test/history';
 
 import Router from './flux/router';
@@ -47,29 +47,26 @@ export default class App extends React.Component {
       y: -68,
       clearProps: 'transform'
     };
-    let app;
+    let content;
     if(this.state.page === 'notfound') {
-      app = <p>404</p>
+      content = <div className="app">404</div>;
     } else {
-      app = (
-        <div>
+      content = (
+        <div className="app">
           <EntranceAnimation delay={1} duration={0.3} options={animationOptions} findElement={element => element.children[0]}>
             <Navigation data={renderData.pages} customClass="transparent-white" />
           </EntranceAnimation>
-          {this.getPage(this.state.page)}
+          <TransitionManager component="div" className="app__stage" duration="500">
+            <div className="app__stage__page-container" key={this.state.page}>
+              {this.getPage(this.state.page)}
+            </div>
+          </TransitionManager>
         </div>
       );
     }
-    return app;
+    return content;
   }
   getPage(pageId) {
-    return React.createElement(pageMap[pageId], assign({
-      key: pageId
-    }, this.state));
+    return React.createElement(pageMap[pageId], this.state);
   }
 };
-
-React.render(
-  <App />,
-  document.getElementById('pageContent')
-);

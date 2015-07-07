@@ -5,6 +5,7 @@
   "scripts": {
     "gulp": "gulp",
     "watch": "gulp watch",
+    "start": "babel-node server",
     "bower": "bower install"
   },
   "browser": {

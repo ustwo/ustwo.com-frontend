@@ -28,32 +28,32 @@
   "pages": [
     {
       "title": "Stuff we make",
-      "url": "/work/",
+      "url": "/work",
       "colour": "marshPassion"
     },
     {
       "title": "Approach",
-      "url": "/approach/",
+      "url": "/approach",
       "colour": "blu"
     },
     {
       "title": "Studios",
-      "url": "/studios/",
+      "url": "/studios",
       "colour": "honey"
     },
     {
       "title": "Learn + Share",
-      "url": "/learn-share/",
+      "url": "/learn-share",
       "colour": "rain"
     },
     {
       "title": "Blog",
-      "url": "/blog/",
+      "url": "/blog",
       "colour": "jeezz"
     },
     {
       "title": "Join us",
-      "url": "/join-us/",
+      "url": "/join-us",
       "colour": "mare"
     }
   ],

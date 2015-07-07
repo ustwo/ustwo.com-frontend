@@ -1,14 +1,14 @@
 import express from 'express';
+import React from 'react';
 
 let router = express.Router();
 
 router.get('/*', (req, res) => {
-  // const App = React.createFactory(require('../src/components/app/view.jsx'));
+  // const App = React.createFactory(require('../source/app.jsx'));
   res.render('index', {
     title: "ustwo",
     // app: React.renderToString(App({
-    //   initialUrl: req.protocol + '://' + req.hostname + req.originalUrl,
-    //   data: JSON.parse(data)
+    //   initialUrl: req.protocol + '://' + req.hostname + req.originalUrl
     // }))
   });
 });

@@ -140,7 +140,7 @@ var tasks = {
       packageCache: {},
       fullPaths: watch
     })
-    .require(require.resolve('./source/app.jsx'), { entry: true })
+    .require(require.resolve('./source/index.jsx'), { entry: true })
     .transform(babelify.configure({
         optional: ["es7.classProperties"]
     }))
@@ -301,7 +301,7 @@ gulp.task('html', tasks.html);
 // --------------------------
 // DEV/WATCH TASK
 // --------------------------
-gulp.task('watch', ['assets', 'html', 'sass', 'reactify', 'reactstyleguide', 'data', 'browser-sync'], function() {
+gulp.task('watch', ['assets'/*, 'html'*/, 'sass', 'reactify', 'reactstyleguide', 'data', 'browser-sync'], function() {
   // TODO: make watch restart on error, see: https://github.com/appium/DynamicApp/blob/master/injector/gulpfile.js
 
   // --------------------------

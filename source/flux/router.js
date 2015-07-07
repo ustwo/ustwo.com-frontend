@@ -33,7 +33,6 @@ function setUrl (url, replace) {
   const name = manifest.name;
   vurl.href = url;
 
-  console.log('Setting url', url);
   if (replace) {
     window.history.replaceState(null, name, url);
   } else {
@@ -71,9 +70,17 @@ function notfound (url) {
   Actions.goTo('notfound');
 }
 
+function override (url) {
+  return (e) => {
+    e.preventDefault();
+    navigate(url);
+  };
+}
+
 const Router = {
   init: init,
-  navigate: navigate
+  navigate: navigate,
+  override: override
 };
 
 window.Router = Router;
