@@ -7,6 +7,14 @@
     "watch": "gulp watch",
     "bower": "bower install"
   },
+  "browser": {
+    "Fetch": "whatwg-fetch/fetch.js",
+    "ScrollMagic": "scrollmagic/scrollmagic/uncompressed/ScrollMagic.js",
+    "ScrollMagic-Indicators": "scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js",
+    "TweenMax": "gsap/src/uncompressed/TweenLite.js",
+    "TweenLite-EasePack": "gsap/src/uncompressed/easing/EasePack.js",
+    "TweenLite-ScrollToPlugin": "gsap/src/uncompressed/plugins/ScrollToPlugin.js"
+  },
   "dependencies": {
     "bower": "*",
     "react": "^0.13",

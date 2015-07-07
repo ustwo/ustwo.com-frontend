@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react';
-import '../node_modules/whatwg-fetch/fetch.js';
+import 'Fetch';
 // TODO: see if there's a better way to get fonts in
 import './localfont.js';
 
