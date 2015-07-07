@@ -4,7 +4,7 @@ import React from 'react';
 import Imager from 'imager.jsx';
 
 import DownChevron from '../elements/down-chevron.jsx';
-
+import WordAnimator from '../elements/word-animator.jsx';
 import BoldHeader from '../components/bold-header.jsx';
 import HomeTextBlock from '../components/home-text-block.jsx';
 import ScreenBlock from '../components/screen-block.jsx';
@@ -29,7 +29,7 @@ export default class PageHome extends React.Component {
       <article className="page-home">
         <ScreenBlock customClass="page-home__screen-block--welcome" colour="rain">
           <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage-Hero.png"/>
-          <BoldHeader colour="white">We're a digital<br/>product studio</BoldHeader>
+          <BoldHeader colour="white"><WordAnimator>We're a digital<br/>product studio</WordAnimator></BoldHeader>
           <DownChevron ref="downChevron" onClick={this.animateChevron}/>
         </ScreenBlock>
         <ScreenBlock customClass="page-home__screen-block--client" hexColour="#6A86EC">

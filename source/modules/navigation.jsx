@@ -66,4 +66,7 @@ export default class Navigation extends React.Component {
       </header>
     );
   }
+  componentDidMount() {
+    
+  }
 };
