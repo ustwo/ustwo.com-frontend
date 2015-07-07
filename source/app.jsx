@@ -26,7 +26,6 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = Store.getData();
-    this.onStoreChange = this.onStoreChange.bind(this);
   }
   componentWillMount() {
     Router.init(this.props.initialUrl);
@@ -37,7 +36,7 @@ export default class App extends React.Component {
   componentWillUnmount() {
     Store.removeChangeListener(this.onStoreChange);
   }
-  onStoreChange() {
+  onStoreChange = () => {
     this.setState(Store.getData());
   }
   render() {

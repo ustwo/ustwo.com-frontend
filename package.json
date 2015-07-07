@@ -38,6 +38,7 @@
     "gulp-imagemin": "*",
     "gulp-jshint": "*",
     "gulp-mocha": "*",
+    "gulp-nodemon": "^2.0.3",
     "gulp-notify": "*",
     "gulp-postcss": "*",
     "gulp-sass": "*",

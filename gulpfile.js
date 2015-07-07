@@ -25,6 +25,7 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var babelify = require('babelify');
 var reactify = require('reactify');
+var nodemon = require('gulp-nodemon');
 
 // image optimization
 var imagemin = require('gulp-imagemin');
@@ -260,15 +261,29 @@ var tasks = {
   },
 };
 
+gulp.task('start', function (cb) {
+	var started = false;
+	return nodemon({
+    script: 'server/index.js',
+    env: { 'NODE_ENV': 'development' }
+	}).on('start', function () {
+		// to avoid nodemon being started multiple times
+		// thanks @matthisk
+		if (!started) {
+			cb();
+			started = true;
+		}
+	});
+});
+
 gulp.task('browser-sync', function() {
-    browserSync({
-        server: {
-            baseDir: 'public',
-            injectChanges: true
-        },
-        open: false,
-        port: process.env.PORT || 3000
-    });
+  browserSync(null, {
+    proxy: "http://localhost:3333",
+    open: false,
+    ghostMode: {
+      scroll: true
+    }
+  });
 });
 
 gulp.task('reload-sass', ['sass'], function(){
@@ -342,7 +357,7 @@ gulp.task('build', [
   'reactstyleguide'
 ]);
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['start', 'watch']);
 
 // gulp (watch) : for development and livereload
 // gulp build : for a one off development build

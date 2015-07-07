@@ -11,7 +11,7 @@ import manifest from '../package.json';
 import routes from './routes.js';
 
 let app = express();
-let buildPath = path.join(__dirname, '../public');
+let publicPath = path.join(__dirname, '../public');
 let dataPath = path.join(__dirname, '../data');
 
 app.set('port', process.env.PORT || 3333);
@@ -21,7 +21,7 @@ app.engine('html', cons.handlebars);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, '../templates'));
 
-app.use(express.static(buildPath));
+app.use(express.static(publicPath));
 app.use(express.static(dataPath));
 app.use('/', routes);
 
