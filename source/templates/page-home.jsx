@@ -19,6 +19,7 @@ export default class PageHome extends React.Component {
     this.refs.downChevron.anim();
   }
   setupScrollMagic = () => {
+    let scrollController = new ScrollMagic.Controller();
     let blocks = [
       {
         blockReference: React.findDOMNode(this.refs.blockClient),
@@ -28,21 +29,23 @@ export default class PageHome extends React.Component {
       {
         blockReference: React.findDOMNode(this.refs.blockOwnStuff),
         hexColour1: '6A86EC',
-        hexColour2: '3F63D9'
+        hexColour2: 'FFBF02'
       },
       {
         blockReference: React.findDOMNode(this.refs.blockVenture),
-        hexColour1: '3F63D9',
-        hexColour2: '143FCC'
+        hexColour1: 'FFBF02',
+        hexColour2: 'F8F8F8'
       },
       {
         blockReference: React.findDOMNode(this.refs.blockStudio),
-        hexColour1: '143FCC',
-        hexColour2: 'FFBF02'
+        hexColour1: 'F8F8F8',
+        hexColour2: 'F9615B'
       },
     ];
 
-    let scrollController = new ScrollMagic.Controller();
+    let pageReference = React.findDOMNode(this.refs.page);
+    // set initial colour – we need to do this due to having an offset
+    pageReference.style.backgroundColor = '#' + blocks[0].hexColour1;
 
     let blockWelcome = React.findDOMNode(this.refs.blockWelcome);
     let scrollSceneWelcome = new ScrollMagic.Scene({
@@ -55,7 +58,6 @@ export default class PageHome extends React.Component {
         if (progressRatio > 0) this.refs.downChevron.goToProgressRatio(0.91 - progressRatio * 0.9);
     });
 
-    let pageReference = React.findDOMNode(this.refs.page);
     for (let block of blocks) {
       this.createColourBlockScene(scrollController, pageReference, block.blockReference, block.hexColour1, block.hexColour2);
     }
@@ -64,7 +66,8 @@ export default class PageHome extends React.Component {
     return new ScrollMagic.Scene({
         triggerElement: blockReference,
         triggerHook: 'onEnter',
-        duration: () => {return blockReference.offsetHeight}
+        offset: blockReference.offsetHeight * 0.25,
+        duration: () => {return blockReference.offsetHeight * 0.5}
       })
       .addTo(scrollController)
       // .addIndicators() // add indicators (requires plugin)
@@ -159,7 +162,7 @@ export default class PageHome extends React.Component {
         <ScreenBlock ref="blockOwnStuff" customClass="page-home__screen-block--own-stuff">
           <MonumentDevice className="page-home__screen-block--own-stuff__monument-device" src="images/home/Homepage-Games-Ipad.png"/>
           <div className="page-home__screen-block--own-stuff__text-block-vertical-centerer">
-            <HomeTextBlock title="Award-winning own products and games">
+            <HomeTextBlock title="Award-winning own products and games" colour="nonBlack" childColour="nonBlack">
               <p>We understand that the best way to learn is by doing. We invest time and money to create our own products, testing ideas and concepts all the way from initial ideas to launch and beyond – learning and improving at every stage. With hugely successful, award-winning games like Monument Valley and innovative, problem-solving products like Wayfindr, we’ve proven that we can deliver. </p>
             </HomeTextBlock>
           </div>
@@ -169,7 +172,7 @@ export default class PageHome extends React.Component {
             <DiceDevice className="page-home__screen-block--ventures__image-margin-container__dice-device" src="https://placekitten.com/g/200/300"/>
           </div>
           <div className="page-home__screen-block--ventures__text-block-vertical-centerer">
-            <HomeTextBlock title="Launching new ventures">
+            <HomeTextBlock title="Launching new ventures" colour="marshPassion" childColour="nonBlack">
               <p>Collaboration is key. What excites us is working with people who know their industry inside out to create new and disruptive businesses. If we’re not starting a joint venture, then we’re finding and investing time and money in the most exciting ideas and startups.</p>
             </HomeTextBlock>
           </div>

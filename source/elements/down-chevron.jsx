@@ -8,6 +8,7 @@ export default class DownChevron extends SVGSequenceAnimation {
   constructor(props) {
     super(props);
     this.state.fadeInDuration = 20;
+    this.state.fps = 30;
   }
   render() {
     const classes = `down-chevron ${this.props.customClass}`;
