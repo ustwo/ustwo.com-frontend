@@ -1,18 +1,11 @@
+%harvey-nicks-shape {
+  fill: $white;
+  position: absolute;
+}
+
 .page-home {
-  .page-home__image-wrapper {
-    position: relative;
-  }
-
-  .page-home__screen-block--welcome {
-    .bold-header {
-      position: relative;
-      h1 {
-        width: 11em;
-        margin: auto;
-      }
-    }
-
-    .page-home__headline-background {
+  &__screen-block--welcome {
+    &__headline-background {
       position: absolute;
       margin: auto;
       left: 0;
@@ -39,7 +32,15 @@
       }
     }
 
-    .down-chevron {
+    &__bold-header {
+      position: relative;
+      h1 {
+        width: 11em;
+        margin: auto;
+      }
+    }
+
+    &__down-chevron {
       position: absolute;
       left: 0;
       right: 0;
@@ -48,50 +49,48 @@
     }
   }
 
-  .page-home__screen-block--client {
-    .page-home__image-margin-container {
+  &__screen-block--client {
+    &__image-margin-container {
       position: relative;
       // fixing unexplained horizontal scrollbar
       max-width: 99%;
-    }
+      &__harvey-nicks-shape-3 {
+        @extend %harvey-nicks-shape;
+        top: 58%;
+        left: 10%;
+        width: 15%;
+        height: 18%;
+      }
 
-    .page-home__harvey-nicks-shape {
-      fill: $white;
-      position: absolute;
-    }
+      &__harvey-nicks-shape-4 {
+        @extend %harvey-nicks-shape;
+        top: 20%;
+        right: 22%;
+        width: 15%;
+        height: 18%;
+      }
 
-    .page-home__harvey-nicks-shape-3 {
-      top: 58%;
-      left: 10%;
-      width: 15%;
-      height: 18%;
-    }
+      &__harvey-nicks-device {
+        margin: 5vh 10vw 7.5vh 6vw;
+        width: span(84%);
+        position: relative;
+      }
 
-    .page-home__harvey-nicks-shape-4 {
-      top: 20%;
-      right: 22%;
-      width: 15%;
-      height: 18%;
-    }
+      &__harvey-nicks-shape-1 {
+        @extend %harvey-nicks-shape;
+        top: 0;
+        left: 10%;
+        width: 15%;
+        height: 18%;
+      }
 
-    .page-home__harvey-nicks-device {
-      margin: 5vh 10vw 7.5vh 6vw;
-      width: span(84%);
-      position: relative;
-    }
-
-    .page-home__harvey-nicks-shape-1 {
-      top: 0;
-      left: 10%;
-      width: 15%;
-      height: 18%;
-    }
-
-    .page-home__harvey-nicks-shape-2 {
-      top: 63%;
-      right: 6%;
-      width: 15%;
-      height: 15%;
+      &__harvey-nicks-shape-2 {
+        @extend %harvey-nicks-shape;
+        top: 63%;
+        right: 6%;
+        width: 15%;
+        height: 15%;
+      }
     }
 
     .page-home__text-block-vertical-centerer {
@@ -102,17 +101,15 @@
     @include susy-breakpoint($bp-large, $susy) {
       @include container(16);
       @include nested(16) {
-        .page-home__image-margin-container {
+        &__image-margin-container {
           @include span(9 first);
         }
-        .page-home__text-block-vertical-centerer {
+        &__text-block-vertical-centerer {
           margin-left: 0;
-          display: table;
-          height: 100%;
+          @extend %vertically-centering-parent;
           @include span(7 nest last) {
             .home-text-block {
-              display: table-cell;
-              vertical-align: middle;
+              @extend %vertically-centred-element;
               >* {
                 @include squish(1);
                 width: span(5);
@@ -124,13 +121,13 @@
     }
   }
 
-  .page-home__screen-block--own-stuff {
-    .page-home__monument-device {
+  &__screen-block--own-stuff {
+    &__monument-device {
       margin: 0 6.25% 7.5vh 6.25%;
       @include span(87.5%);
     }
 
-    .page-home__text-block-vertical-centerer {
+    &__text-block-vertical-centerer {
       @include span(87.5%);
       @include squish(6.25%);
     }
@@ -138,14 +135,12 @@
     @include susy-breakpoint($bp-large, $susy) {
       @include container(16);
       @include nested(16) {
-        .page-home__text-block-vertical-centerer {
+        &__text-block-vertical-centerer {
           margin-left: 0;
-          display: table;
-          height: 100%;
+          @extend %vertically-centering-parent;
           @include span(7 nest first) {
             .home-text-block {
-              display: table-cell;
-              vertical-align: middle;
+              @extend %vertically-centred-element;
               >* {
                 @include squish(1);
                 width: span(5);
@@ -154,7 +149,7 @@
           }
         }
 
-        .page-home__monument-device {
+        &__monument-device {
           margin: 0 -10% 0 0;
           @include span(9 last);
         }
@@ -162,16 +157,16 @@
     }
   }
 
-  .page-home__screen-block--ventures {
-    .page-home__image-margin-container {
+  &__screen-block--ventures {
+    &__image-margin-container {
       @include span(76%);
-      .page-home__dice-device {
+      &__dice-device {
         padding: 0 12% 7.5vh 12%;
         width: 100%;
       }
     }
 
-    .page-home__text-block-vertical-centerer {
+    &__text-block-vertical-centerer {
       @include span(87.5%);
       @include squish(6.25%);
     }
@@ -179,17 +174,15 @@
     @include susy-breakpoint($bp-large, $susy) {
       @include container(16);
       @include nested(16) {
-        .page-home__image-margin-container {
+        &__image-margin-container {
           @include span(9 first);
         }
-        .page-home__text-block-vertical-centerer {
+        &__text-block-vertical-centerer {
           margin-left: 0;
-          display: table;
-          height: 100%;
+          @extend %vertically-centering-parent;
           @include span(7 nest last) {
             .home-text-block {
-              display: table-cell;
-              vertical-align: middle;
+              @extend %vertically-centred-element;
               >* {
                 @include squish(1);
                 width: span(5);
@@ -201,7 +194,7 @@
     }
   }
 
-  .page-home__screen-block--studio {
+  &__screen-block--studio {
     text-align: center;
 
     img {

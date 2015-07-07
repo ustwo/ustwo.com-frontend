@@ -10,8 +10,9 @@ export default class DownChevron extends SVGSequenceAnimation {
     this.state.fadeInDuration = 20;
   }
   render() {
+    const classes = `down-chevron ${this.props.customClass}`;
     return (
-      <button onClick={this.props.onClick} className="down-chevron">
+      <button onClick={this.props.onClick} className={classes}>
         <svg ref="animsvg" title="Down arrow" role="img" viewBox="0 0 400 200">
           <g id="Frame1">
             <path d="M374.975 79.667c-.444-6.223 9.778-11.556 14.223-7.11.888 6.22-9.78 11.11-14.223 7.11z"/>

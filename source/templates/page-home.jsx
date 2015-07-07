@@ -125,7 +125,7 @@ export default class PageHome extends React.Component {
       <article ref="page" className="page-home">
         <ScreenBlock ref="blockWelcome" customClass="page-home__screen-block--welcome">
           <EntranceAnimation delay={2} duration={1} options={headlineBackgroundAnimationOptions}>
-            <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage_hero_00.png"/>
+            <HeadlineBackground className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_00.png"/>
             <Rotator delay={2800} duration={2000} interval={4000} keep={3}>
               <HeadlineBackground key="image1" className="page-home__headline-background" src="images/home/Homepage_hero_01.png"/>
               <HeadlineBackground key="image2" className="page-home__headline-background" src="images/home/Homepage_hero_02.png"/>
@@ -135,40 +135,40 @@ export default class PageHome extends React.Component {
               <HeadlineBackground key="image6" className="page-home__headline-background" src="images/home/Homepage_hero_06.png"/>
             </Rotator>
           </EntranceAnimation>
-          <BoldHeader colour="white">
+          <BoldHeader customClass="page-home__screen-block--welcome__bold-header" colour="white">
             <WordAnimation delay={1.3} duration={0.4} options={headlineWordsAnimationOptions}>
               We're a digital product studio
             </WordAnimation>
           </BoldHeader>
-          <DownChevron ref="downChevron" onClick={this.animateChevron}/>
+          <DownChevron customClass="page-home__screen-block--welcome__down-chevron" ref="downChevron" onClick={this.animateChevron}/>
         </ScreenBlock>
         <ScreenBlock ref="blockClient" customClass="page-home__screen-block--client">
-          <div className="page-home__image-margin-container">
-            <svg className="page-home__harvey-nicks-shape-3 page-home__harvey-nicks-shape" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape3 }} />
-            <svg className="page-home__harvey-nicks-shape-4 page-home__harvey-nicks-shape" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape4 }} />
-            <HarveyNicksDevice className="page-home__harvey-nicks-device" src="images/home/Homepage-Harvey-Phone.png"/>
-            <svg className="page-home__harvey-nicks-shape-1 page-home__harvey-nicks-shape" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape1 }} />
-            <svg className="page-home__harvey-nicks-shape-2 page-home__harvey-nicks-shape" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape2 }} />
+          <div className="page-home__screen-block--client__image-margin-container">
+            <svg className="page-home__screen-block--client__image-margin-container__harvey-nicks-shape-3" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape3 }} />
+            <svg className="page-home__screen-block--client__image-margin-container__harvey-nicks-shape-4" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape4 }} />
+            <HarveyNicksDevice className="page-home__screen-block--client__image-margin-container__harvey-nicks-device" src="images/home/Homepage-Harvey-Phone.png"/>
+            <svg className="page-home__screen-block--client__image-margin-container__harvey-nicks-shape-1" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape1 }} />
+            <svg className="page-home__screen-block--client__image-margin-container__harvey-nicks-shape-2" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape2 }} />
           </div>
-          <div className="page-home__text-block-vertical-centerer">
+          <div className="page-home__screen-block--client__text-block-vertical-centerer">
             <HomeTextBlock title="Innovative client work">
               <p>We work as partners with the world’s best businesses to help them build successful, innovative digital products for a complex and evolving marketplace.</p>
             </HomeTextBlock>
           </div>
         </ScreenBlock>
         <ScreenBlock ref="blockOwnStuff" customClass="page-home__screen-block--own-stuff">
-          <MonumentDevice className="page-home__monument-device" src="images/home/Homepage-Games-Ipad.png"/>
-          <div className="page-home__text-block-vertical-centerer">
+          <MonumentDevice className="page-home__screen-block--own-stuff__monument-device" src="images/home/Homepage-Games-Ipad.png"/>
+          <div className="page-home__screen-block--own-stuff__text-block-vertical-centerer">
             <HomeTextBlock title="Award-winning own products and games">
               <p>We understand that the best way to learn is by doing. We invest time and money to create our own products, testing ideas and concepts all the way from initial ideas to launch and beyond – learning and improving at every stage. With hugely successful, award-winning games like Monument Valley and innovative, problem-solving products like Wayfindr, we’ve proven that we can deliver. </p>
             </HomeTextBlock>
           </div>
         </ScreenBlock>
         <ScreenBlock ref="blockVenture" customClass="page-home__screen-block--ventures">
-          <div className="page-home__image-margin-container">
-            <DiceDevice className="page-home__dice-device" src="https://placekitten.com/g/200/300"/>
+          <div className="page-home__screen-block--ventures__image-margin-container">
+            <DiceDevice className="page-home__screen-block--ventures__image-margin-container__dice-device" src="https://placekitten.com/g/200/300"/>
           </div>
-          <div className="page-home__text-block-vertical-centerer">
+          <div className="page-home__screen-block--ventures__text-block-vertical-centerer">
             <HomeTextBlock title="Launching new ventures">
               <p>Collaboration is key. What excites us is working with people who know their industry inside out to create new and disruptive businesses. If we’re not starting a joint venture, then we’re finding and investing time and money in the most exciting ideas and startups.</p>
             </HomeTextBlock>
