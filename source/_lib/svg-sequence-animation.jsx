@@ -8,12 +8,10 @@ export default class SVGSequenceAnimation extends React.Component {
     this.state = {
       currentFrame: 0,
       fadeInDuration: 0,
+      fps: 25,
+      frameName: 'Frame',
       totalFrames: 0
     };
-  }
-  static defaultProps = {
-    fps: 25,
-    frameName: 'Frame',
   }
   hideAllFrames = () => {
     let svg = React.findDOMNode(this.refs.animsvg);
@@ -23,8 +21,11 @@ export default class SVGSequenceAnimation extends React.Component {
   }
   goToFrame = (frameNumber) => {
     this.hideAllFrames();
-    React.findDOMNode(this.refs.animsvg).getElementById(this.props.frameName+frameNumber).style.display = 'inline-block';
+    React.findDOMNode(this.refs.animsvg).getElementById(this.state.frameName+frameNumber).style.display = 'inline-block';
     this.setState({currentFrame: frameNumber});
+  }
+  goToProgressRatio = (progressRatio) => {
+    this.goToFrame(Math.ceil(this.state.totalFrames * progressRatio));
   }
   resetAnim = () => {
     this.hideAllFrames();
@@ -37,7 +38,7 @@ export default class SVGSequenceAnimation extends React.Component {
       if (this.state.currentFrame < this.state.totalFrames) {
         window.requestAnimationFrame(this.anim);
       }
-    }, 1000/this.props.fps);
+    }, 1000/this.state.fps);
   }
   componentDidMount() {
     let svgElement = React.findDOMNode(this.refs.animsvg);
@@ -45,7 +46,7 @@ export default class SVGSequenceAnimation extends React.Component {
     if(this.state.fadeInDuration > 0) {
       for(let i = 1; i <= this.state.fadeInDuration; i++) {
         // TODO: add tween function support
-        svgElement.getElementById(this.props.frameName+i).style.opacity = i / this.state.fadeInDuration;
+        svgElement.getElementById(this.state.frameName+i).style.opacity = i / this.state.fadeInDuration;
       }
     }
     this.resetAnim();

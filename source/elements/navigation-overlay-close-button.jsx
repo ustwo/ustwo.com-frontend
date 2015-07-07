@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import SVGSequenceAnimation from './svg-sequence-animation.jsx';
+import SVGSequenceAnimation from '../_lib/svg-sequence-animation.jsx';
 
 export default class NavigationOverlayCloseButton extends SVGSequenceAnimation {
   constructor(props) {
