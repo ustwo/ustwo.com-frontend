@@ -11,7 +11,9 @@
     "Fetch": "whatwg-fetch/fetch.js",
     "ScrollMagic": "scrollmagic/scrollmagic/uncompressed/ScrollMagic.js",
     "ScrollMagic-Indicators": "scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js",
-    "TweenMax": "gsap/src/uncompressed/TweenLite.js",
+    "Tween": "gsap/src/uncompressed/TweenMax.js",
+    "TweenMax": "gsap/src/uncompressed/TweenMax.js",
+    "Timeline": "gsap/src/uncompressed/TimelineLite.js",
     "TweenLite-EasePack": "gsap/src/uncompressed/easing/EasePack.js",
     "TweenLite-ScrollToPlugin": "gsap/src/uncompressed/plugins/ScrollToPlugin.js"
   },

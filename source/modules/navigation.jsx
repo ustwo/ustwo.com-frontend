@@ -1,6 +1,8 @@
 'use strict';
 
 import React from 'react';
+import TweenMax from 'gsap/src/uncompressed/TweenMax';
+import Timeline from 'gsap/src/uncompressed/TimelineLite';
 
 import NavigationLink from '../elements/navigation-link.jsx';
 import NavigationOverlayLink from '../elements/navigation-overlay-link.jsx';
@@ -67,6 +69,13 @@ export default class Navigation extends React.Component {
     );
   }
   componentDidMount() {
-    
+    const element = React.findDOMNode(this).children[0];
+    const entranceDelay = 1;
+    const entranceDuration = 0.3;
+    const entranceTimeline = new Timeline({delay: entranceDelay});
+    entranceTimeline.add(TweenMax.from(element, entranceDuration, {
+      ease: Power2.easeOut,
+      y: element.clientHeight * -1
+    }));
   }
 };

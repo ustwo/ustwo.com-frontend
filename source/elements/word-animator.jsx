@@ -2,7 +2,7 @@
 
 import React from 'react';
 import flatten from 'lodash/array/flatten';
-import Tween from 'gsap/src/uncompressed/TweenMax';
+import TweenMax from 'gsap/src/uncompressed/TweenMax';
 import Timeline from 'gsap/src/uncompressed/TimelineLite';
 
 export default class WordAnimator extends React.Component {
@@ -11,11 +11,11 @@ export default class WordAnimator extends React.Component {
     return <span className="word-animator">{text}</span>;
   }
   componentDidMount() {
-    const chunkDelay = 0.3;
-    const chunkDuration = 1.05 - chunkDelay;
+    const chunkDelay = 1.3;
+    const chunkDuration = 0.75;
     const chunks = [].filter.call(React.findDOMNode(this).children, element => element.tagName === "SPAN");
     const chunksTimeline = new Timeline({delay: chunkDelay});
-    chunksTimeline.add(Tween.staggerFrom(chunks, chunkDuration, {
+    chunksTimeline.add(TweenMax.staggerFrom(chunks, chunkDuration, {
       ease: Power2.easeOut,
       opacity: 0,
       y: 30
