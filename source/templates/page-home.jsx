@@ -26,17 +26,26 @@ export default class PageHome extends React.Component {
     const HarveyNicksShape3 = '<use xlink:href="images/spritemap.svg#HarveyShape3" />';
     const HarveyNicksShape4 = '<use xlink:href="http://localhost:3000/images/spritemap.svg#HarveyShape4" />';
     const MonumentDevice = Imager({});
-    const animationOptions = {
+    const headlineBackgroundAnimationOptions = {
       ease: Power2.easeOut,
       opacity: 0
+    };
+    const headlineWordsAnimationOptions = {
+      ease: Power2.easeOut,
+      opacity: 0,
+      y: 30
     };
     return (
       <article className="page-home">
         <ScreenBlock customClass="page-home__screen-block--welcome" colour="rain">
-          <EntranceAnimation delay={2.05} duration={1} options={animationOptions}>
+          <EntranceAnimation delay={2.05} duration={1} options={headlineBackgroundAnimationOptions}>
             <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage-Hero.png"/>
           </EntranceAnimation>
-          <BoldHeader colour="white"><WordAnimation>We're a digital<br/>product studio</WordAnimation></BoldHeader>
+          <BoldHeader colour="white">
+            <WordAnimation delay={1.3} duration={0.75} options={headlineWordsAnimationOptions}>
+              We're a digital<br/>product studio
+            </WordAnimation>
+          </BoldHeader>
           <DownChevron ref="downChevron" onClick={this.animateChevron}/>
         </ScreenBlock>
         <ScreenBlock customClass="page-home__screen-block--client" hexColour="#6A86EC">
