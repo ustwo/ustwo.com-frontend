@@ -6,6 +6,7 @@
   .page-home__screen-block--welcome {
     .bold-header {
       position: relative;
+      top: 220px;
       h1 {
         width: 80%;
         margin: auto;
@@ -22,6 +23,16 @@
       width: 45%;
       min-width: 280px;
       height: auto;
+      display: none;
+    }
+
+    .video-container {
+      height: 0;
+      margin-top: -330px;
+
+      video {
+        width: 100%;
+      }
     }
 
     .down-chevron {
