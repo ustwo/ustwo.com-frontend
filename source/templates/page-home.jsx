@@ -16,7 +16,12 @@ export default class PageHome extends React.Component {
     this.refs.downChevron.anim();
   }
   componentDidMount() {
-    this.animateChevron();
+    this.animTimeout = setTimeout(() => {
+      this.animateChevron();
+    }, 2140);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.animTimeout);
   }
   render() {
     const HeadlineBackground = Imager({});
