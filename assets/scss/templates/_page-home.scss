@@ -22,6 +22,19 @@
       width: 45%;
       min-width: 280px;
       height: auto;
+      transition: opacity 1s ease-in-out;
+      transform: scale(2);
+      display: block;
+
+      &.add {
+        opacity: 0;
+      }
+      &.show {
+        opacity: 1;
+      }
+      &.hide {
+        opacity: 0;
+      }
     }
 
     .down-chevron {

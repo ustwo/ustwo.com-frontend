@@ -9,6 +9,7 @@ import BoldHeader from '../components/bold-header.jsx';
 import HomeTextBlock from '../components/home-text-block.jsx';
 import ScreenBlock from '../components/screen-block.jsx';
 import EntranceAnimation from '../elements/entrance-animation.jsx';
+import Rotator from '../elements/rotator.jsx';
 
 export default class PageHome extends React.Component {
   animateChevron = (event) => {
@@ -44,7 +45,15 @@ export default class PageHome extends React.Component {
       <article className="page-home">
         <ScreenBlock customClass="page-home__screen-block--welcome" colour="rain">
           <EntranceAnimation delay={1.8} duration={1} options={headlineBackgroundAnimationOptions}>
-            <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage-Hero.png"/>
+            <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage_hero_00.png"/>
+            <Rotator duration={1000} interval={2000} keep={3}>
+              <HeadlineBackground key="image1" className="page-home__headline-background" src="images/home/Homepage_hero_01.png"/>
+              <HeadlineBackground key="image2" className="page-home__headline-background" src="images/home/Homepage_hero_02.png"/>
+              <HeadlineBackground key="image3" className="page-home__headline-background" src="images/home/Homepage_hero_03.png"/>
+              <HeadlineBackground key="image4" className="page-home__headline-background" src="images/home/Homepage_hero_04.png"/>
+              <HeadlineBackground key="image5" className="page-home__headline-background" src="images/home/Homepage_hero_05.png"/>
+              <HeadlineBackground key="image6" className="page-home__headline-background" src="images/home/Homepage_hero_06.png"/>
+            </Rotator>
           </EntranceAnimation>
           <BoldHeader colour="white">
             <WordAnimation delay={1.3} duration={0.4} options={headlineWordsAnimationOptions}>
