@@ -29,6 +29,12 @@ export default class PageHome extends React.Component {
       <article className="page-home">
         <ScreenBlock customClass="page-home__screen-block--welcome" colour="rain">
           <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage-Hero.png"/>
+          <div className="video-container">
+            <video autoPlay loop>
+              <source src="videos/watches_test.mp4" type='video/mp4' />
+              <p>This is fallback content</p>
+            </video>
+          </div>
           <BoldHeader colour="white">We're a digital<br/>product studio</BoldHeader>
           <DownChevron ref="downChevron" onClick={this.animateChevron}/>
         </ScreenBlock>
