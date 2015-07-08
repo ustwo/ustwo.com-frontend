@@ -18,7 +18,7 @@ export default class PageHome extends React.Component {
   componentDidMount() {
     this.animTimeout = setTimeout(() => {
       this.animateChevron();
-    }, 2140);
+    }, 3140);
   }
   componentWillUnmount() {
     clearTimeout(this.animTimeout);
@@ -43,11 +43,11 @@ export default class PageHome extends React.Component {
     return (
       <article className="page-home">
         <ScreenBlock customClass="page-home__screen-block--welcome" colour="rain">
-          <EntranceAnimation delay={2.05} duration={1} options={headlineBackgroundAnimationOptions}>
+          <EntranceAnimation delay={1.8} duration={1} options={headlineBackgroundAnimationOptions}>
             <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage-Hero.png"/>
           </EntranceAnimation>
           <BoldHeader colour="white">
-            <WordAnimation delay={1.3} duration={0.75} options={headlineWordsAnimationOptions}>
+            <WordAnimation delay={1.3} duration={0.4} options={headlineWordsAnimationOptions}>
               We're a digital<br/>product studio
             </WordAnimation>
           </BoldHeader>
