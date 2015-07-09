@@ -6,7 +6,7 @@ import Timeline from 'gsap/src/uncompressed/TimelineLite';
 
 export default class WordAnimator extends React.Component {
   render() {
-    return <span className="entrance-animation">{this.props.children}</span>;
+    return <div className="entrance-animation">{this.props.children}</div>;
   }
   componentDidMount() {
     let element = React.findDOMNode(this);
