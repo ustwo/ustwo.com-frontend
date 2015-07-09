@@ -93,7 +93,7 @@
       }
     }
 
-    .page-home__text-block-vertical-centerer {
+    &__text-block-vertical-centerer {
       @include span(87.5%);
       @include squish(6.25%);
     }
@@ -106,10 +106,10 @@
         }
         &__text-block-vertical-centerer {
           margin-left: 0;
-          @extend %vertically-centering-parent;
+          @include vertically-centering-parent;
           @include span(7 nest last) {
             .home-text-block {
-              @extend %vertically-centred-element;
+              @include vertically-centred-element;
               >* {
                 @include squish(1);
                 width: span(5);
@@ -123,7 +123,7 @@
 
   &__screen-block--own-stuff {
     &__monument-device {
-      margin: 0 6.25% 7.5vh 6.25%;
+      margin: 0 6.25%;
       @include span(87.5%);
     }
 
@@ -137,10 +137,10 @@
       @include nested(16) {
         &__text-block-vertical-centerer {
           margin-left: 0;
-          @extend %vertically-centering-parent;
+          @include vertically-centering-parent;
           @include span(7 nest first) {
             .home-text-block {
-              @extend %vertically-centred-element;
+              @include vertically-centred-element;
               >* {
                 @include squish(1);
                 width: span(5);
@@ -179,10 +179,10 @@
         }
         &__text-block-vertical-centerer {
           margin-left: 0;
-          @extend %vertically-centering-parent;
+          @include vertically-centering-parent;
           @include span(7 nest last) {
             .home-text-block {
-              @extend %vertically-centred-element;
+              @include vertically-centred-element;
               >* {
                 @include squish(1);
                 width: span(5);

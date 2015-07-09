@@ -13,12 +13,12 @@ html {
   padding: 0;
 }
 
-%vertically-centering-parent {
+@mixin vertically-centering-parent {
   display: table;
   height: 100%;
 }
 
-%vertically-centred-element {
+@mixin vertically-centred-element {
   display: table-cell;
   vertical-align: middle;
 }
