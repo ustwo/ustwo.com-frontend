@@ -5,11 +5,14 @@ import 'Fetch';
 // TODO: see if there's a better way to get fonts in
 import './localfont.js';
 import 'TweenMax';
+import 'Tween';
+import 'Timeline';
 import 'TweenLite-ScrollToPlugin';
 import 'TweenLite-EasePack';
 
 import Navigation from './modules/navigation.jsx';
 import PageHome from './templates/page-home.jsx';
+import EntranceAnimation from './elements/entrance-animation.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -33,9 +36,15 @@ export default class App extends React.Component {
   }
   render() {
     const renderData = this.state.data;
+    const animationOptions = {
+      ease: Power2.easeOut,
+      y: -68
+    };
     return (
       <div>
-        <Navigation data={renderData.pages} customClass="transparent-white" />
+        <EntranceAnimation delay={1} duration={0.3} options={animationOptions} findElement={element => element.children[0]}>
+          <Navigation data={renderData.pages} customClass="transparent-white" />
+        </EntranceAnimation>
         <PageHome/>
       </div>
     );

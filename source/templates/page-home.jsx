@@ -4,10 +4,11 @@ import React from 'react';
 import Imager from 'imager.jsx';
 
 import DownChevron from '../elements/down-chevron.jsx';
-
+import WordAnimation from '../elements/word-animation.jsx';
 import BoldHeader from '../components/bold-header.jsx';
 import HomeTextBlock from '../components/home-text-block.jsx';
 import ScreenBlock from '../components/screen-block.jsx';
+import EntranceAnimation from '../elements/entrance-animation.jsx';
 
 export default class PageHome extends React.Component {
   animateChevron = (event) => {
@@ -15,7 +16,12 @@ export default class PageHome extends React.Component {
     this.refs.downChevron.anim();
   }
   componentDidMount() {
-    this.animateChevron();
+    this.animTimeout = setTimeout(() => {
+      this.animateChevron();
+    }, 3140);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.animTimeout);
   }
   render() {
     const HeadlineBackground = Imager({});
@@ -25,11 +31,26 @@ export default class PageHome extends React.Component {
     const HarveyNicksShape3 = '<use xlink:href="images/spritemap.svg#HarveyShape3" />';
     const HarveyNicksShape4 = '<use xlink:href="http://localhost:3000/images/spritemap.svg#HarveyShape4" />';
     const MonumentDevice = Imager({});
+    const headlineBackgroundAnimationOptions = {
+      ease: Power2.easeOut,
+      opacity: 0
+    };
+    const headlineWordsAnimationOptions = {
+      ease: Power2.easeOut,
+      opacity: 0,
+      y: 30
+    };
     return (
       <article className="page-home">
         <ScreenBlock customClass="page-home__screen-block--welcome" colour="rain">
-          <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage-Hero.png"/>
-          <BoldHeader colour="white">We're a digital<br/>product studio</BoldHeader>
+          <EntranceAnimation delay={1.8} duration={1} options={headlineBackgroundAnimationOptions}>
+            <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage-Hero.png"/>
+          </EntranceAnimation>
+          <BoldHeader colour="white">
+            <WordAnimation delay={1.3} duration={0.4} options={headlineWordsAnimationOptions}>
+              We're a digital<br/>product studio
+            </WordAnimation>
+          </BoldHeader>
           <DownChevron ref="downChevron" onClick={this.animateChevron}/>
         </ScreenBlock>
         <ScreenBlock customClass="page-home__screen-block--client" hexColour="#6A86EC">
