@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Imager from 'imager.jsx';
-import ScrollMagic from '../../node_modules/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js';
-import '../../node_modules/scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js';
+import ScrollMagic from 'ScrollMagic';
+import 'ScrollMagic-Indicators';
 
 import DownChevron from '../elements/down-chevron.jsx';
 import WordAnimation from '../elements/word-animation.jsx';
@@ -97,9 +97,9 @@ export default class PageHome extends React.Component {
     return intToHex(rgbColour3[0]) + intToHex(rgbColour3[1]) + intToHex(rgbColour3[2]);
   }
   componentDidMount() {
+    this.setupScrollMagic();
     this.animTimeout = setTimeout(() => {
       this.animateChevron();
-      this.setupScrollMagic();
     }, 3140);
   }
   componentWillUnmount() {
