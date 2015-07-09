@@ -2,7 +2,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
-import TransitionManager from '../tm/index';
+import TransitionManager from 'react-transition-manager';
 
 export default class Rotator extends React.Component {
   static defaultProps = {

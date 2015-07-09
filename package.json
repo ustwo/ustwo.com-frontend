@@ -47,7 +47,7 @@
     "merge-stream": "*",
     "react": "^0.13",
     "react-style-guide": "*",
-    "react-transition-manager": "^1.1.2",
+    "react-transition-manager": "^1.2.0",
     "reactify": "*",
     "vinyl-buffer": "*",
     "vinyl-source-stream": "*",
