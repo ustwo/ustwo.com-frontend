@@ -265,6 +265,7 @@ gulp.task('start', function (cb) {
 	var started = false;
 	return nodemon({
     script: 'server/index.js',
+    exec: './node_modules/.bin/babel-node',
     env: { 'NODE_ENV': 'development' }
 	}).on('start', function () {
 		// to avoid nodemon being started multiple times
