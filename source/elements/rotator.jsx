@@ -6,6 +6,7 @@ import TransitionManager from 'react-transition-manager';
 
 export default class Rotator extends React.Component {
   static defaultProps = {
+    delay: 0,
     interval: 1000,
     duration: 300,
     keep: 1
@@ -15,7 +16,9 @@ export default class Rotator extends React.Component {
     this.state = {
       index: 0
     };
-    this.interval = setInterval(this.tick, this.props.interval);
+    this.timeout = setTimeout(() => {
+      this.interval = setInterval(this.tick, this.props.interval);
+    }, this.props.delay);
   }
   tick = () => {
     this.setState({
@@ -28,8 +31,8 @@ export default class Rotator extends React.Component {
   render = () => {
     const classes = classnames('rotator', this.props.className);
     let indices = [];
-    for (let i = 0; i < this.props.keep; i++) {
-      indices.push(this.normaliseIndex(this.state.index + i));
+    for (let i = this.props.keep; i > 0 ; i--) {
+      indices.push(this.normaliseIndex(this.state.index + i - 1));
     }
     return (
       <TransitionManager component="div" className={classes} {...this.props}>
@@ -38,6 +41,7 @@ export default class Rotator extends React.Component {
     );
   }
   componentWillUnmount = () => {
+    clearTimeout(this.timeout);
     clearInterval(this.interval);
   }
 };

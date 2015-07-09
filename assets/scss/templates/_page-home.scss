@@ -7,7 +7,7 @@
     .bold-header {
       position: relative;
       h1 {
-        width: 80%;
+        width: 11em;
         margin: auto;
       }
     }
@@ -23,8 +23,10 @@
       min-width: 280px;
       height: auto;
       transition: opacity 1s ease-in-out;
-      transform: scale(2);
+      backface-visibility: hidden;
+      transform: translateZ(0) scale(2.0, 2.0);
       display: block;
+      opacity: 1;
 
       &.add {
         opacity: 0;

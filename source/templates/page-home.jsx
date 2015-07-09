@@ -11,6 +11,10 @@ import ScreenBlock from '../components/screen-block.jsx';
 import EntranceAnimation from '../elements/entrance-animation.jsx';
 import Rotator from '../elements/rotator.jsx';
 
+const HeadlineBackground = Imager({});
+const HarveyNicksDevice = Imager({});
+const MonumentDevice = Imager({});
+
 export default class PageHome extends React.Component {
   animateChevron = (event) => {
     this.refs.downChevron.resetAnim();
@@ -25,13 +29,10 @@ export default class PageHome extends React.Component {
     clearTimeout(this.animTimeout);
   }
   render() {
-    const HeadlineBackground = Imager({});
-    const HarveyNicksDevice = Imager({});
     const HarveyNicksShape1 = '<use xlink:href="images/spritemap.svg#HarveyShape1" />';
     const HarveyNicksShape2 = '<use xlink:href="images/spritemap.svg#HarveyShape2" />';
     const HarveyNicksShape3 = '<use xlink:href="images/spritemap.svg#HarveyShape3" />';
     const HarveyNicksShape4 = '<use xlink:href="http://localhost:3000/images/spritemap.svg#HarveyShape4" />';
-    const MonumentDevice = Imager({});
     const headlineBackgroundAnimationOptions = {
       ease: Power2.easeOut,
       opacity: 0
@@ -46,7 +47,7 @@ export default class PageHome extends React.Component {
         <ScreenBlock customClass="page-home__screen-block--welcome" colour="rain">
           <EntranceAnimation delay={1.8} duration={1} options={headlineBackgroundAnimationOptions}>
             <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage_hero_00.png"/>
-            <Rotator duration={1000} interval={2000} keep={3}>
+            <Rotator delay={2800} duration={2000} interval={4000} keep={3}>
               <HeadlineBackground key="image1" className="page-home__headline-background" src="images/home/Homepage_hero_01.png"/>
               <HeadlineBackground key="image2" className="page-home__headline-background" src="images/home/Homepage_hero_02.png"/>
               <HeadlineBackground key="image3" className="page-home__headline-background" src="images/home/Homepage_hero_03.png"/>
@@ -57,7 +58,7 @@ export default class PageHome extends React.Component {
           </EntranceAnimation>
           <BoldHeader colour="white">
             <WordAnimation delay={1.3} duration={0.4} options={headlineWordsAnimationOptions}>
-              We're a digital<br/>product studio
+              We're a digital product studio
             </WordAnimation>
           </BoldHeader>
           <DownChevron ref="downChevron" onClick={this.animateChevron}/>
