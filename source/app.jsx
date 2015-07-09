@@ -4,7 +4,6 @@ import React from 'react';
 import 'Fetch';
 // TODO: see if there's a better way to get fonts in
 import './localfont.js';
-import 'TweenMax';
 import 'Tween';
 import 'Timeline';
 import 'TweenLite-ScrollToPlugin';
