@@ -11,10 +11,6 @@ import ScreenBlock from '../components/screen-block.jsx';
 import EntranceAnimation from '../elements/entrance-animation.jsx';
 import Rotator from '../elements/rotator.jsx';
 
-const HeadlineBackground = Imager({});
-const HarveyNicksDevice = Imager({});
-const MonumentDevice = Imager({});
-
 export default class PageHome extends React.Component {
   animateChevron = (event) => {
     this.refs.downChevron.resetAnim();
@@ -29,6 +25,9 @@ export default class PageHome extends React.Component {
     clearTimeout(this.animTimeout);
   }
   render() {
+    const HeadlineBackground = Imager({});
+    const HarveyNicksDevice = Imager({});
+    const MonumentDevice = Imager({});
     const HarveyNicksShape1 = '<use xlink:href="images/spritemap.svg#HarveyShape1" />';
     const HarveyNicksShape2 = '<use xlink:href="images/spritemap.svg#HarveyShape2" />';
     const HarveyNicksShape3 = '<use xlink:href="images/spritemap.svg#HarveyShape3" />';
@@ -45,7 +44,7 @@ export default class PageHome extends React.Component {
     return (
       <article className="page-home">
         <ScreenBlock customClass="page-home__screen-block--welcome" colour="rain">
-          <EntranceAnimation delay={1.8} duration={1} options={headlineBackgroundAnimationOptions}>
+          <EntranceAnimation delay={2} duration={1} options={headlineBackgroundAnimationOptions}>
             <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage_hero_00.png"/>
             <Rotator delay={2800} duration={2000} interval={4000} keep={3}>
               <HeadlineBackground key="image1" className="page-home__headline-background" src="images/home/Homepage_hero_01.png"/>
