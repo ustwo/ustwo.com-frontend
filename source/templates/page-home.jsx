@@ -114,6 +114,9 @@ export default class PageHome extends React.Component {
     const HarveyNicksShape3 = '<use xlink:href="images/spritemap.svg#HarveyShape3" />';
     const HarveyNicksShape4 = '<use xlink:href="images/spritemap.svg#HarveyShape4" />';
     const MonumentDevice = Imager({});
+    const MonumentAward1 = '<use xlink:href="images/spritemap.svg#MonumentAward1" />';
+    const DiceBackground = Imager({});
+    const DiceScreenAnim = Imager({});
     const DiceDevice = Imager({});
     const headlineBackgroundAnimationOptions = {
       ease: Power2.easeOut,
@@ -138,20 +141,24 @@ export default class PageHome extends React.Component {
               <HeadlineBackground key="image6" className="page-home__headline-background" src="images/home/Homepage_hero_06.png"/>
             </Rotator>
           </EntranceAnimation>
-          <BoldHeader customClass="page-home__screen-block--welcome__bold-header" colour="white">
-            <WordAnimation delay={1.3} duration={0.4} options={headlineWordsAnimationOptions}>
-              We're a digital product studio
-            </WordAnimation>
-          </BoldHeader>
+          <div className="page-home__screen-block--welcome__header-vertical-centerer">
+            <BoldHeader customClass="page-home__screen-block--welcome__header-vertical-centerer__bold-header" colour="white">
+              <WordAnimation delay={1.3} duration={0.4} options={headlineWordsAnimationOptions}>
+                We're a digital product studio
+              </WordAnimation>
+            </BoldHeader>
+          </div>
           <DownChevron customClass="page-home__screen-block--welcome__down-chevron" ref="downChevron" onClick={this.animateChevron}/>
         </ScreenBlock>
         <ScreenBlock ref="blockClient" customClass="page-home__screen-block--client">
-          <div className="page-home__screen-block--client__image-margin-container">
-            <svg className="page-home__screen-block--client__image-margin-container__harvey-nicks-shape-3" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape3 }} />
-            <svg className="page-home__screen-block--client__image-margin-container__harvey-nicks-shape-4" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape4 }} />
-            <HarveyNicksDevice className="page-home__screen-block--client__image-margin-container__harvey-nicks-device" src="images/home/Homepage-Harvey-Phone.png"/>
-            <svg className="page-home__screen-block--client__image-margin-container__harvey-nicks-shape-1" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape1 }} />
-            <svg className="page-home__screen-block--client__image-margin-container__harvey-nicks-shape-2" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape2 }} />
+          <div className="page-home__screen-block--client__image-vertical-centerer">
+            <div className="page-home__screen-block--client__image-vertical-centerer__image-margin-container">
+              <svg className="page-home__screen-block--client__image-vertical-centerer__image-margin-container__harvey-nicks-shape-3" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape3 }} />
+              <svg className="page-home__screen-block--client__image-vertical-centerer__image-margin-container__harvey-nicks-shape-4" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape4 }} />
+              <HarveyNicksDevice className="page-home__screen-block--client__image-vertical-centerer__image-margin-container__harvey-nicks-device" src="images/home/Homepage-Harvey-Phone.png"/>
+              <svg className="page-home__screen-block--client__image-vertical-centerer__image-margin-container__harvey-nicks-shape-1" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape1 }} />
+              <svg className="page-home__screen-block--client__image-vertical-centerer__image-margin-container__harvey-nicks-shape-2" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape2 }} />
+            </div>
           </div>
           <div className="page-home__screen-block--client__text-block-vertical-centerer">
             <HomeTextBlock title="Innovative client work">
@@ -160,7 +167,12 @@ export default class PageHome extends React.Component {
           </div>
         </ScreenBlock>
         <ScreenBlock ref="blockOwnStuff" customClass="page-home__screen-block--own-stuff">
-          <MonumentDevice className="page-home__screen-block--own-stuff__monument-device" src="images/home/Homepage-Games-Ipad.png"/>
+          <div className="page-home__screen-block--own-stuff__image-vertical-centerer">
+            <div className="page-home__screen-block--own-stuff__image-vertical-centerer__image-layer-container">
+              <svg className="page-home__screen-block--own-stuff__image-vertical-centerer__image-layer-container__monument-award-1" role="presentation" dangerouslySetInnerHTML={{__html: MonumentAward1 }} />
+              <MonumentDevice className="page-home__screen-block--own-stuff__image-vertical-centerer__image-layer-container__monument-device" src="images/home/Homepage-Games-Ipad.png"/>
+            </div>
+          </div>
           <div className="page-home__screen-block--own-stuff__text-block-vertical-centerer">
             <HomeTextBlock title="Award-winning own products and games" colour="nonBlack" childColour="nonBlack">
               <p>We understand that the best way to learn is by doing. We invest time and money to create our own products, testing ideas and concepts all the way from initial ideas to launch and beyond – learning and improving at every stage. With hugely successful, award-winning games like Monument Valley and innovative, problem-solving products like Wayfindr, we’ve proven that we can deliver. </p>
@@ -168,8 +180,12 @@ export default class PageHome extends React.Component {
           </div>
         </ScreenBlock>
         <ScreenBlock ref="blockVenture" customClass="page-home__screen-block--ventures">
-          <div className="page-home__screen-block--ventures__image-margin-container">
-            <DiceDevice className="page-home__screen-block--ventures__image-margin-container__dice-device" src="https://placekitten.com/g/200/300"/>
+          <div className="page-home__screen-block--ventures__image-vertical-centerer">
+            <DiceBackground className="page-home__screen-block--ventures__image-vertical-centerer__dice-background" src="images/home/Homepage_Dice_Bg.png"/>
+            <div className="page-home__screen-block--ventures__image-vertical-centerer__image-layer-container">
+              <DiceScreenAnim className="page-home__screen-block--ventures__image-vertical-centerer__image-layer-container__dice-screen-anim" src="images/home/Homepage_Dice_Motion.gif"/>
+              <DiceDevice className="page-home__screen-block--ventures__image-vertical-centerer__image-layer-container__dice-device" src="images/home/Homepage_Dice_Mask.png"/>
+            </div>
           </div>
           <div className="page-home__screen-block--ventures__text-block-vertical-centerer">
             <HomeTextBlock title="Launching new ventures" colour="marshPassion" childColour="nonBlack">

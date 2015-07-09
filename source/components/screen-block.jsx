@@ -7,9 +7,7 @@ export default class ScreenBlock extends React.Component {
     const classes = `screen-block ${this.props.customClass}`;
     return (
       <section className={classes}>
-        <div className="screen-block__vertical-center">
-          {this.props.children}
-        </div>
+        {this.props.children}
       </section>
     );
   }

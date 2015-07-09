@@ -1,4 +1,4 @@
-%harvey-nicks-shape {
+%svg-shape {
   fill: $white;
   position: absolute;
 }
@@ -32,11 +32,16 @@
       }
     }
 
-    &__bold-header {
-      position: relative;
-      h1 {
-        width: 11em;
-        margin: auto;
+    &__header-vertical-centerer {
+      @include vertically-centering-parent(90vh);
+      width: 100%;
+      &__bold-header {
+        @include vertically-centred-element;
+        position: relative;
+        h1 {
+          width: 11em;
+          margin: auto;
+        }
       }
     }
 
@@ -50,46 +55,48 @@
   }
 
   &__screen-block--client {
-    &__image-margin-container {
-      position: relative;
-      // fixing unexplained horizontal scrollbar
-      max-width: 99%;
-      &__harvey-nicks-shape-3 {
-        @extend %harvey-nicks-shape;
-        top: 58%;
-        left: 10%;
-        width: 15%;
-        height: 18%;
-      }
-
-      &__harvey-nicks-shape-4 {
-        @extend %harvey-nicks-shape;
-        top: 20%;
-        right: 22%;
-        width: 15%;
-        height: 18%;
-      }
-
-      &__harvey-nicks-device {
-        margin: 5vh 10vw 7.5vh 6vw;
-        width: span(84%);
+    &__image-vertical-centerer {
+      &__image-margin-container {
         position: relative;
-      }
+        // fixing unexplained horizontal scrollbar
+        max-width: 99%;
+        &__harvey-nicks-shape-3 {
+          @extend %svg-shape;
+          top: 58%;
+          left: 10%;
+          width: 15%;
+          height: 18%;
+        }
 
-      &__harvey-nicks-shape-1 {
-        @extend %harvey-nicks-shape;
-        top: 0;
-        left: 10%;
-        width: 15%;
-        height: 18%;
-      }
+        &__harvey-nicks-shape-4 {
+          @extend %svg-shape;
+          top: 20%;
+          right: 22%;
+          width: 15%;
+          height: 18%;
+        }
 
-      &__harvey-nicks-shape-2 {
-        @extend %harvey-nicks-shape;
-        top: 63%;
-        right: 6%;
-        width: 15%;
-        height: 15%;
+        &__harvey-nicks-device {
+          margin: 5vh 10vw 7.5vh 6vw;
+          width: span(84%);
+          position: relative;
+        }
+
+        &__harvey-nicks-shape-1 {
+          @extend %svg-shape;
+          top: 0;
+          left: 10%;
+          width: 15%;
+          height: 18%;
+        }
+
+        &__harvey-nicks-shape-2 {
+          @extend %svg-shape;
+          top: 63%;
+          right: 6%;
+          width: 15%;
+          height: 15%;
+        }
       }
     }
 
@@ -101,12 +108,16 @@
     @include susy-breakpoint($bp-large, $susy) {
       @include container(16);
       @include nested(16) {
-        &__image-margin-container {
+        &__image-vertical-centerer {
           @include span(9 first);
+          @include vertically-centering-parent(90vh);
+          &__image-margin-container {
+            @include vertically-centred-element;
+          }
         }
         &__text-block-vertical-centerer {
           margin-left: 0;
-          @include vertically-centering-parent;
+          @include vertically-centering-parent(90vh);
           @include span(7 nest last) {
             .home-text-block {
               @include vertically-centred-element;
@@ -122,9 +133,22 @@
   }
 
   &__screen-block--own-stuff {
-    &__monument-device {
+    &__image-vertical-centerer {
       margin: 0 6.25%;
       @include span(87.5%);
+      &__image-layer-container {
+        position: relative;
+        &__monument-award-1 {
+          @extend %svg-shape;
+          top: 58%;
+          left: 10%;
+          width: 15%;
+          height: 18%;
+        }
+        &__monument-device {
+          width: 100%;
+        }
+      }
     }
 
     &__text-block-vertical-centerer {
@@ -137,32 +161,50 @@
       @include nested(16) {
         &__text-block-vertical-centerer {
           margin-left: 0;
-          @include vertically-centering-parent;
-          @include span(7 nest first) {
+          @include vertically-centering-parent(90vh);
+          @include span(6 nest first) {
             .home-text-block {
               @include vertically-centred-element;
               >* {
-                @include squish(1);
+                @include pre(1);
                 width: span(5);
               }
             }
           }
         }
 
-        &__monument-device {
-          margin: 0 -10% 0 0;
-          @include span(9 last);
+        &__image-vertical-centerer {
+          @include span(10 last);
+          @include vertically-centering-parent(90vh);
+          margin: 0 -7% 0 0;
+          &__image-layer-container {
+            @include vertically-centred-element;
+            padding-left: 7%;
+          }
         }
       }
     }
   }
 
   &__screen-block--ventures {
-    &__image-margin-container {
-      @include span(76%);
-      &__dice-device {
-        padding: 0 12% 7.5vh 12%;
-        width: 100%;
+    &__image-vertical-centerer {
+      &__dice-background {
+        display: none;
+      }
+      &__image-layer-container {
+        position: relative;
+        &__dice-screen-anim {
+          position: absolute;
+          width: 36.5%;
+          right: 9%;
+          top: 0;
+          bottom: 6.85%;
+          margin: auto;
+        }
+        &__dice-device {
+          position: relative;
+          width: 100%;
+        }
       }
     }
 
@@ -174,12 +216,30 @@
     @include susy-breakpoint($bp-large, $susy) {
       @include container(16);
       @include nested(16) {
-        &__image-margin-container {
+        &__image-vertical-centerer {
           @include span(9 first);
+          @include vertically-centering-parent(90vh);
+          position: relative;
+          padding-right: 5%;
+          &__dice-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            display: block;
+          }
+          &__image-layer-container {
+            @include vertically-centred-element;
+            width: 80%;
+            &__dice-screen-anim {
+              bottom: 3vw;
+            }
+          }
         }
         &__text-block-vertical-centerer {
+          position: relative;
           margin-left: 0;
-          @include vertically-centering-parent;
+          @include vertically-centering-parent(90vh);
           @include span(7 nest last) {
             .home-text-block {
               @include vertically-centred-element;
@@ -195,9 +255,14 @@
   }
 
   &__screen-block--studio {
-    text-align: center;
+    position: relative;
 
     img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       margin: auto;
     }
   }

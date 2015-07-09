@@ -13,9 +13,9 @@ html {
   padding: 0;
 }
 
-@mixin vertically-centering-parent {
+@mixin vertically-centering-parent($height: 100%) {
   display: table;
-  height: 100%;
+  height: $height;
 }
 
 @mixin vertically-centred-element {

@@ -1,12 +1,6 @@
 .screen-block {
-  height: 100vh;
-  display: table;
+  min-height: 100vh;
   width: 100%;
-
-  .screen-block__vertical-center {
-    display: table-cell;
-    vertical-align: middle;
-    position: relative;
-    padding: 5vh 0;
-  }
+  padding: 5vh 0;
+  overflow: hidden;
 }
