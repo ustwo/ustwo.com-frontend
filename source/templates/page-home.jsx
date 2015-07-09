@@ -9,6 +9,7 @@ import BoldHeader from '../components/bold-header.jsx';
 import HomeTextBlock from '../components/home-text-block.jsx';
 import ScreenBlock from '../components/screen-block.jsx';
 import EntranceAnimation from '../elements/entrance-animation.jsx';
+import Rotator from '../elements/rotator.jsx';
 
 export default class PageHome extends React.Component {
   animateChevron = (event) => {
@@ -26,11 +27,11 @@ export default class PageHome extends React.Component {
   render() {
     const HeadlineBackground = Imager({});
     const HarveyNicksDevice = Imager({});
+    const MonumentDevice = Imager({});
     const HarveyNicksShape1 = '<use xlink:href="images/spritemap.svg#HarveyShape1" />';
     const HarveyNicksShape2 = '<use xlink:href="images/spritemap.svg#HarveyShape2" />';
     const HarveyNicksShape3 = '<use xlink:href="images/spritemap.svg#HarveyShape3" />';
     const HarveyNicksShape4 = '<use xlink:href="http://localhost:3000/images/spritemap.svg#HarveyShape4" />';
-    const MonumentDevice = Imager({});
     const headlineBackgroundAnimationOptions = {
       ease: Power2.easeOut,
       opacity: 0
@@ -43,12 +44,20 @@ export default class PageHome extends React.Component {
     return (
       <article className="page-home">
         <ScreenBlock customClass="page-home__screen-block--welcome" colour="rain">
-          <EntranceAnimation delay={1.8} duration={1} options={headlineBackgroundAnimationOptions}>
-            <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage-Hero.png"/>
+          <EntranceAnimation delay={2} duration={1} options={headlineBackgroundAnimationOptions}>
+            <HeadlineBackground className="page-home__headline-background" src="images/home/Homepage_hero_00.png"/>
+            <Rotator delay={2800} duration={2000} interval={4000} keep={3}>
+              <HeadlineBackground key="image1" className="page-home__headline-background" src="images/home/Homepage_hero_01.png"/>
+              <HeadlineBackground key="image2" className="page-home__headline-background" src="images/home/Homepage_hero_02.png"/>
+              <HeadlineBackground key="image3" className="page-home__headline-background" src="images/home/Homepage_hero_03.png"/>
+              <HeadlineBackground key="image4" className="page-home__headline-background" src="images/home/Homepage_hero_04.png"/>
+              <HeadlineBackground key="image5" className="page-home__headline-background" src="images/home/Homepage_hero_05.png"/>
+              <HeadlineBackground key="image6" className="page-home__headline-background" src="images/home/Homepage_hero_06.png"/>
+            </Rotator>
           </EntranceAnimation>
           <BoldHeader colour="white">
             <WordAnimation delay={1.3} duration={0.4} options={headlineWordsAnimationOptions}>
-              We're a digital<br/>product studio
+              We're a digital product studio
             </WordAnimation>
           </BoldHeader>
           <DownChevron ref="downChevron" onClick={this.animateChevron}/>
