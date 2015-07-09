@@ -14,7 +14,7 @@ let app = express();
 let publicPath = path.join(__dirname, '../public');
 let dataPath = path.join(__dirname, '../data');
 
-app.set('port', process.env.PORT || 3333);
+app.set('port', process.env.PORT || 8888);
 app.set('host', process.env.VIRTUAL_HOST || ('http://localhost:' + app.get('port') + '/'));
 app.set('x-powered-by', false);
 app.engine('html', cons.handlebars);

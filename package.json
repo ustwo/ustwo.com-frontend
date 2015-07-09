@@ -1,12 +1,14 @@
 {
   "name": "ustwo-com-prototype",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "gulp": "gulp",
     "watch": "gulp watch",
-    "start": "babel-node server",
-    "bower": "bower install"
+    "bower": "bower install --allow-root",
+    "compile": "gulp build",
+    "production": "gulp build --production",
+    "start": "babel-node server"
   },
   "browser": {
     "Fetch": "whatwg-fetch/fetch.js",

@@ -316,7 +316,7 @@ gulp.task('html', tasks.html);
 // --------------------------
 // DEV/WATCH TASK
 // --------------------------
-gulp.task('watch', ['assets'/*, 'html'*/, 'sass', 'reactify', 'reactstyleguide', 'data', 'browser-sync'], function() {
+gulp.task('watch', ['assets', 'sass', 'reactify', 'reactstyleguide', 'data', 'browser-sync'], function() {
   // TODO: make watch restart on error, see: https://github.com/appium/DynamicApp/blob/master/injector/gulpfile.js
 
   // --------------------------
@@ -351,10 +351,10 @@ gulp.task('watch', ['assets'/*, 'html'*/, 'sass', 'reactify', 'reactstyleguide',
 gulp.task('build', [
   'clean',
   'assets',
-  'data',
   'sass',
   'reactify',
-  'reactstyleguide'
+  'reactstyleguide',
+  'data'
 ]);
 
 gulp.task('default', ['start', 'watch']);
