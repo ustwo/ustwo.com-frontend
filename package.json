@@ -24,6 +24,7 @@
     "gsap": "*",
     "react-style-guide": "*",
     "whatwg-fetch": "*",
+    "lodash": "^3.10.0",
 
     "gulp": "*",
     "gulp-util": "*",
