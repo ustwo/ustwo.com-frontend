@@ -108,7 +108,6 @@ export default class PageHome extends React.Component {
   render() {
     const HeadlineBackground = Imager({});
     const HarveyNicksDevice = Imager({});
-    const MonumentDevice = Imager({});
     const HarveyNicksShape1 = '<use xlink:href="images/spritemap.svg#HarveyShape1" />';
     const HarveyNicksShape2 = '<use xlink:href="images/spritemap.svg#HarveyShape2" />';
     const HarveyNicksShape3 = '<use xlink:href="images/spritemap.svg#HarveyShape3" />';
@@ -133,12 +132,12 @@ export default class PageHome extends React.Component {
           <EntranceAnimation delay={2} duration={1} options={headlineBackgroundAnimationOptions}>
             <HeadlineBackground className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_00.png"/>
             <Rotator delay={2800} duration={2000} interval={4000} keep={3}>
-              <HeadlineBackground key="image1" className="page-home__headline-background" src="images/home/Homepage_hero_01.png"/>
-              <HeadlineBackground key="image2" className="page-home__headline-background" src="images/home/Homepage_hero_02.png"/>
-              <HeadlineBackground key="image3" className="page-home__headline-background" src="images/home/Homepage_hero_03.png"/>
-              <HeadlineBackground key="image4" className="page-home__headline-background" src="images/home/Homepage_hero_04.png"/>
-              <HeadlineBackground key="image5" className="page-home__headline-background" src="images/home/Homepage_hero_05.png"/>
-              <HeadlineBackground key="image6" className="page-home__headline-background" src="images/home/Homepage_hero_06.png"/>
+              <HeadlineBackground key="image1" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_01.png"/>
+              <HeadlineBackground key="image2" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_02.png"/>
+              <HeadlineBackground key="image3" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_03.png"/>
+              <HeadlineBackground key="image4" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_04.png"/>
+              <HeadlineBackground key="image5" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_05.png"/>
+              <HeadlineBackground key="image6" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_06.png"/>
             </Rotator>
           </EntranceAnimation>
           <div className="page-home__screen-block--welcome__header-vertical-centerer">

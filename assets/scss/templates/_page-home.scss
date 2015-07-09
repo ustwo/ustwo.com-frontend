@@ -41,6 +41,10 @@
         h1 {
           width: 11em;
           margin: auto;
+          .word {
+            display: inline-block;
+            white-space: pre;
+          }
         }
       }
     }
@@ -265,10 +269,5 @@
       right: 0;
       margin: auto;
     }
-  }
-
-  .word {
-    display: inline-block;
-    white-space: pre;
   }
 }
