@@ -5,10 +5,20 @@ html {
   box-sizing: inherit;
 }
 
-.button__bare {
+%button__bare {
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
   outline: none;
   padding: 0;
+}
+
+@mixin vertically-centering-parent($height: 100%) {
+  display: table;
+  height: $height;
+}
+
+@mixin vertically-centred-element {
+  display: table-cell;
+  vertical-align: middle;
 }

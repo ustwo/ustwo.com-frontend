@@ -11,9 +11,12 @@ export default class BoldHeader extends React.Component {
     if (this.props.subtitle) {
       subtitleMarkup = <BoldHeaderSubtitle>{this.props.subtitle}</BoldHeaderSubtitle>
     }
+    const classes = `bold-header ${this.props.customClass}`;
     return (
-      <header className="bold-header">
-        <h1 className={titleClass} ref="title">{this.props.children}</h1>
+      <header className={classes}>
+        <h1 className={titleClass} ref="title">
+          {this.props.children}
+        </h1>
         {subtitleMarkup}
       </header>
     );
