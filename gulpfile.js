@@ -131,6 +131,7 @@ var tasks = {
     var vendorBundler = browserify({
       debug: !production // Sourcemapping
     })
+    .require('babelify/polyfill')
     .require('react');
 
     var bundler = browserify({
