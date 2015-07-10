@@ -37,7 +37,8 @@ export default class App extends React.Component {
     const renderData = this.state.data;
     const animationOptions = {
       ease: Power2.easeOut,
-      y: -68
+      y: -68,
+      clearProps: 'transform'
     };
     return (
       <div>
