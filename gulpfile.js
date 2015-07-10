@@ -145,6 +145,7 @@ var tasks = {
         optional: ["es7.classProperties"]
     }))
     .transform(reactify, {"es6": true})
+    .external('babelify/polyfill')
     .external('react');
 
     if (watch) {

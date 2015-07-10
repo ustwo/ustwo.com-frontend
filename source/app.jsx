@@ -1,5 +1,6 @@
 'use strict'
 
+import 'babelify/polyfill';
 import React from 'react';
 import 'Fetch';
 // TODO: see if there's a better way to get fonts in
