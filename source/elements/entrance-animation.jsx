@@ -4,7 +4,11 @@ import React from 'react';
 import TweenMax from 'gsap/src/uncompressed/TweenMax';
 import Timeline from 'gsap/src/uncompressed/TimelineLite';
 
-export default class WordAnimator extends React.Component {
+export default class EntranceAnimation extends React.Component {
+  static defaultProps = {
+    duration: 1,
+    delay: 0
+  }
   render() {
     return <div className="entrance-animation">{this.props.children}</div>;
   }

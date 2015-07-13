@@ -12,6 +12,7 @@ import HomeTextBlock from '../components/home-text-block.jsx';
 import ScreenBlock from '../components/screen-block.jsx';
 import EntranceAnimation from '../elements/entrance-animation.jsx';
 import Rotator from '../elements/rotator.jsx';
+import EntranceTransition from '../elements/entrance-transition';
 
 export default class PageHome extends React.Component {
   animateChevron = (event) => {
@@ -129,7 +130,7 @@ export default class PageHome extends React.Component {
     return (
       <article ref="page" className="page-home">
         <ScreenBlock ref="blockWelcome" customClass="page-home__screen-block--welcome">
-          <EntranceAnimation delay={2} duration={1} options={headlineBackgroundAnimationOptions}>
+          <EntranceTransition className="entrance">
             <HeadlineBackground className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_00.png"/>
             <Rotator delay={2800} duration={2000} interval={4000} keep={3}>
               <HeadlineBackground key="image1" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_01.png"/>
@@ -139,7 +140,7 @@ export default class PageHome extends React.Component {
               <HeadlineBackground key="image5" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_05.png"/>
               <HeadlineBackground key="image6" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_06.png"/>
             </Rotator>
-          </EntranceAnimation>
+          </EntranceTransition>
           <div className="page-home__screen-block--welcome__header-vertical-centerer">
             <BoldHeader customClass="page-home__screen-block--welcome__header-vertical-centerer__bold-header" colour="white">
               <WordAnimation delay={1.3} duration={0.4} options={headlineWordsAnimationOptions}>

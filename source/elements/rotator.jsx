@@ -10,7 +10,7 @@ export default class Rotator extends React.Component {
     interval: 1000,
     duration: 300,
     keep: 1
-  };
+  }
   constructor(props) {
     super(props);
     this.state = {

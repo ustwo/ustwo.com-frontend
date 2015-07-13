@@ -308,7 +308,6 @@ gulp.task('assets', req, tasks.assets);
 gulp.task('sass', req, tasks.sass);
 gulp.task('reactify', req, tasks.reactify);
 gulp.task('reactstyleguide', req, tasks.reactstyleguide);
-gulp.task('lint:js', tasks.lintjs);
 gulp.task('optimize', tasks.optimize);
 gulp.task('test', tasks.test);
 gulp.task('data', tasks.data);
@@ -317,7 +316,7 @@ gulp.task('html', tasks.html);
 // --------------------------
 // DEV/WATCH TASK
 // --------------------------
-gulp.task('watch', ['assets', 'sass', 'reactify', 'reactstyleguide', 'data', 'browser-sync'], function() {
+gulp.task('watch', ['assets', 'sass', 'reactify', 'reactstyleguide', 'data'], function() {
   // TODO: make watch restart on error, see: https://github.com/appium/DynamicApp/blob/master/injector/gulpfile.js
 
   // --------------------------
@@ -333,17 +332,12 @@ gulp.task('watch', ['assets', 'sass', 'reactify', 'reactstyleguide', 'data', 'br
   // --------------------------
   // watch:js
   // --------------------------
-  gulp.watch('source/**/*.jsx', ['lint:js', 'reload-jsx']);
+  gulp.watch('source/**/*.jsx', ['reload-jsx']);
 
   // --------------------------
   // watch:data
   // --------------------------
   gulp.watch('data/**/*.json', ['reload-data']);
-
-  // --------------------------
-  // watch:html
-  // --------------------------
-  // gulp.watch('templates/**/*.html', ['reload-html']);
 
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });

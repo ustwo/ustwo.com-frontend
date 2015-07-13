@@ -8,7 +8,7 @@ function wrapWords (word, index, array) {
   return word === '<br/>' ? word : <span key={`word${index}`} className="word">{index === array.length - 1 ? word : `${word} `}</span>;
 }
 
-export default class WordAnimator extends React.Component {
+export default class WordAnimation extends React.Component {
   render() {
     const text = this.props.children.split(' ').map(wrapWords);
     return <span className="word-animator">{text}</span>;
