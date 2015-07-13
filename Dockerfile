@@ -10,11 +10,7 @@ WORKDIR /usr/local/src
 ENV TERM=xterm-256color
 ENV NODE_ENV=production
 
-COPY assets /usr/local/src/assets
-COPY data /usr/local/src/data
-COPY server /usr/local/src/server
-COPY source /usr/local/src/source
-COPY templates /usr/local/src/templates
+COPY src /usr/local/src/src
 
 COPY package.json /usr/local/src/package.json
 COPY bower.json /usr/local/src/bower.json

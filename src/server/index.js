@@ -7,11 +7,11 @@ import path from 'path';
 import camelCase from 'lodash/string/camelCase';
 import capitalize from 'lodash/string/capitalize';
 
-import manifest from '../package.json';
+import manifest from '../../package.json';
 import routes from './routes.js';
 
 let app = express();
-let publicPath = path.join(__dirname, '../public');
+let publicPath = path.join(__dirname, '../../public');
 let dataPath = path.join(__dirname, '../data');
 
 app.set('port', process.env.PORT || 8888);

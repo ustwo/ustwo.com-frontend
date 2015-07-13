@@ -14,7 +14,6 @@ var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer-core');
-var scsslint = require('gulp-scss-lint');
 
 // BrowserSync
 var browserSync = require('browser-sync');
@@ -26,13 +25,6 @@ var source = require('vinyl-source-stream');
 var babelify = require('babelify');
 var reactify = require('reactify');
 var nodemon = require('gulp-nodemon');
-
-// image optimization
-var imagemin = require('gulp-imagemin');
-
-// linting
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
 
 // testing
 var mocha = require('gulp-mocha');
@@ -92,8 +84,7 @@ var tasks = {
   // SASS (libsass)
   // --------------------------
   sass: function() {
-    return gulp.src('assets/scss/[^_]*.scss')
-      //.pipe(scsslint())
+    return gulp.src('src/assets/scss/[^_]*.scss')
       // sourcemaps + sass + error handling
       .pipe(gulpif(!production, sourcemaps.init()))
       .pipe(sass({
@@ -141,7 +132,7 @@ var tasks = {
       packageCache: {},
       fullPaths: watch
     })
-    .require(require.resolve('./source/index.jsx'), { entry: true })
+    .require(require.resolve('./src/node_modules/index.jsx'), { entry: true })
     .transform(babelify.configure({
         optional: ["es7.classProperties"]
     }))
@@ -185,7 +176,7 @@ var tasks = {
       packageCache: {},
       fullPaths: watch
     })
-    .require(require.resolve('./source/styleguide.jsx'), { entry: true })
+    .require(require.resolve('./src/node_modules/styleguide.jsx'), { entry: true })
     .transform(babelify.configure({
         optional: ["es7.classProperties"]
     }))
@@ -214,35 +205,17 @@ var tasks = {
     return rebundle();
   },
   // --------------------------
-  // linting
-  // --------------------------
-  lintjs: function() {
-    return gulp.src([
-        'source/index.js'
-      ]).pipe(jshint({esnext: true}))
-      .pipe(jshint.reporter(stylish))
-      .on('error', function() {
-        beep();
-      });
-  },
-  // --------------------------
   // Optimize asset images
   // --------------------------
   assets: function() {
-    return gulp.src('assets/images/**/*.{gif,jpg,png,svg}')
-      // .pipe(imagemin({
-      //   progressive: true,
-      //   svgoPlugins: [{removeViewBox: false}],
-      //   // png optimization
-      //   optimizationLevel: production ? 3 : 1
-      // }))
+    return gulp.src('src/assets/images/**/*.{gif,jpg,png,svg}')
       .pipe(gulp.dest('public/images'));
   },
   // --------------------------
   // Testing with mocha
   // --------------------------
   test: function() {
-    return gulp.src('source/**/*test.js', {read: false})
+    return gulp.src('src/node_modules/**/*test.js', {read: false})
       .pipe(mocha({
         'ui': 'bdd',
         'reporter': 'spec'
@@ -250,12 +223,12 @@ var tasks = {
     );
   },
   data: function() {
-    return gulp.src('data/**/*.json')
+    return gulp.src('src/data/**/*.json')
       .pipe(gulp.dest('public/data')
     );
   },
   html: function() {
-    return gulp.src('templates/**/*.html')
+    return gulp.src('src/templates/**/*.html')
       .pipe(gulp.dest('public')
     );
   },
@@ -264,7 +237,7 @@ var tasks = {
 gulp.task('start', function (cb) {
 	var started = false;
 	return nodemon({
-    script: 'server/index.js',
+    script: 'src/server/index.js',
     exec: './node_modules/.bin/babel-node',
     env: { 'NODE_ENV': 'development' }
 	}).on('start', function () {
@@ -308,7 +281,6 @@ gulp.task('assets', req, tasks.assets);
 gulp.task('sass', req, tasks.sass);
 gulp.task('reactify', req, tasks.reactify);
 gulp.task('reactstyleguide', req, tasks.reactstyleguide);
-gulp.task('optimize', tasks.optimize);
 gulp.task('test', tasks.test);
 gulp.task('data', tasks.data);
 gulp.task('html', tasks.html);
@@ -322,22 +294,22 @@ gulp.task('watch', ['assets', 'sass', 'reactify', 'reactstyleguide', 'data'], fu
   // --------------------------
   // watch:assets
   // --------------------------
-  gulp.watch('assets/images/**/*.{gif,jpg,png,svg}', ['assets']);
+  gulp.watch('src/assets/images/**/*.{gif,jpg,png,svg}', ['assets']);
 
   // --------------------------
   // watch:sass
   // --------------------------
-  gulp.watch(['assets/scss/**/*.scss', '!assets/scss/_old/**/*.scss'], ['reload-sass']);
+  gulp.watch(['src/assets/scss/**/*.scss'], ['reload-sass']);
 
   // --------------------------
   // watch:js
   // --------------------------
-  gulp.watch('source/**/*.jsx', ['reload-jsx']);
+  gulp.watch('src/node_modules/**/*.jsx', ['reload-jsx']);
 
   // --------------------------
   // watch:data
   // --------------------------
-  gulp.watch('data/**/*.json', ['reload-data']);
+  gulp.watch('src/data/**/*.json', ['reload-data']);
 
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });

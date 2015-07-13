@@ -2,8 +2,8 @@
 .sass-cache
 node_modules/*
 !node_modules/.gitignore
+!src/node_modules/
 npm-debug.log
 public/*
 !public/.gitignore
-templates.js
 bower_components

@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "gulp": "gulp",
-    "watch": "gulp watch",
     "bower": "bower install --allow-root",
-    "compile": "gulp build",
-    "production": "gulp build --production",
+    "watch": "npm run gulp watch",
+    "compile": "npm run gulp build",
+    "production": "npm run gulp build --production",
     "start": "babel-node server"
   },
   "browser": {
@@ -37,14 +37,11 @@
     "gulp-concat": "*",
     "gulp-declare": "*",
     "gulp-if": "*",
-    "gulp-imagemin": "*",
-    "gulp-jshint": "*",
     "gulp-mocha": "*",
     "gulp-nodemon": "^2.0.3",
     "gulp-notify": "*",
     "gulp-postcss": "*",
     "gulp-sass": "*",
-    "gulp-scss-lint": "*",
     "gulp-sourcemaps": "*",
     "gulp-uglify": "*",
     "gulp-util": "*",
