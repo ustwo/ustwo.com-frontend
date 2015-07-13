@@ -2,7 +2,6 @@ html,
 body,
 #pageContent,
 .app,
-.app > div,
 .app__stage,
 .app__stage__page-container {
   height: 100%;
@@ -15,6 +14,7 @@ body,
   .nav-wrapper {
     header {
       transition: transform 0.3s ease-in-out;
+      transition-delay: 0.1s;
       transform: translateY(-68px);
     }
     &.show header {

@@ -118,10 +118,6 @@ export default class PageHome extends React.Component {
     const DiceBackground = Imager({});
     const DiceScreenAnim = Imager({});
     const DiceDevice = Imager({});
-    const headlineBackgroundAnimationOptions = {
-      ease: Power2.easeOut,
-      opacity: 0
-    };
     const headlineWordsAnimationOptions = {
       ease: Power2.easeOut,
       opacity: 0,
@@ -143,7 +139,7 @@ export default class PageHome extends React.Component {
           </EntranceTransition>
           <div className="page-home__screen-block--welcome__header-vertical-centerer">
             <BoldHeader customClass="page-home__screen-block--welcome__header-vertical-centerer__bold-header" colour="white">
-              <WordAnimation delay={1} duration={0.4} options={headlineWordsAnimationOptions}>
+              <WordAnimation delay={0.6} duration={0.4} options={headlineWordsAnimationOptions}>
                 We're a digital product studio
               </WordAnimation>
             </BoldHeader>
