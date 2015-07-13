@@ -20,7 +20,7 @@ COPY package.json /usr/local/src/package.json
 COPY bower.json /usr/local/src/bower.json
 COPY gulpfile.js /usr/local/src/gulpfile.js
 
-RUN npm install && npm run bower && npm run compile
+RUN npm install --production && npm run bower && npm run compile
 
 VOLUME /usr/local/src/logs
 

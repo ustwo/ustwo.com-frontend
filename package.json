@@ -66,5 +66,7 @@
     "watchify": "*",
     "whatwg-fetch": "*",
     "yargs": "*"
+  },
+  "devDependencies": {
   }
 }
