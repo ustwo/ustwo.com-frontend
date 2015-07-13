@@ -132,7 +132,7 @@ export default class PageHome extends React.Component {
         <ScreenBlock ref="blockWelcome" customClass="page-home__screen-block--welcome">
           <EntranceTransition className="entrance">
             <HeadlineBackground className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_00.png"/>
-            <Rotator delay={2800} duration={2000} interval={4000} keep={3}>
+            <Rotator delay={1000} duration={2000} interval={4000} keep={3}>
               <HeadlineBackground key="image1" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_01.png"/>
               <HeadlineBackground key="image2" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_02.png"/>
               <HeadlineBackground key="image3" className="page-home__screen-block--welcome__headline-background" src="images/home/Homepage_hero_03.png"/>
@@ -143,7 +143,7 @@ export default class PageHome extends React.Component {
           </EntranceTransition>
           <div className="page-home__screen-block--welcome__header-vertical-centerer">
             <BoldHeader customClass="page-home__screen-block--welcome__header-vertical-centerer__bold-header" colour="white">
-              <WordAnimation delay={1.3} duration={0.4} options={headlineWordsAnimationOptions}>
+              <WordAnimation delay={1} duration={0.4} options={headlineWordsAnimationOptions}>
                 We're a digital product studio
               </WordAnimation>
             </BoldHeader>

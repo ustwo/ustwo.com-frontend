@@ -15,7 +15,7 @@ import 'browsernizr/test/history';
 import Router from './flux/router';
 import Store from './flux/store';
 import Navigation from './modules/navigation.jsx';
-import EntranceAnimation from './elements/entrance-animation.jsx';
+import EntranceTransition from './elements/entrance-transition';
 
 const pageMap = {
   home: require('./templates/page-home.jsx'),
@@ -52,9 +52,9 @@ export default class App extends React.Component {
     } else {
       content = (
         <div className="app">
-          <EntranceAnimation delay={1} duration={0.3} options={animationOptions} findElement={element => element.children[0]}>
+          <EntranceTransition className="nav-wrapper">
             <Navigation data={renderData.pages} customClass="transparent-white" />
-          </EntranceAnimation>
+          </EntranceTransition>
           <TransitionManager component="div" className="app__stage" duration="500">
             <div className="app__stage__page-container" key={this.state.page}>
               {this.getPage(this.state.page)}

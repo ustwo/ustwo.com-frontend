@@ -12,6 +12,16 @@ body,
 
 .app {
 
+  .nav-wrapper {
+    header {
+      transition: transform 0.3s ease-in-out;
+      transform: translateY(-68px);
+    }
+    &.show header {
+      transform: translateY(0px);
+    }
+  }
+
   &__stage {
 
     &__page-container {
