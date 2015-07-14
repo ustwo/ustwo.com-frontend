@@ -3,19 +3,15 @@ image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
 image = $(image_name):$(tag)
-.PHONY : build create env ip restart rm run
+.PHONY : restart rm run
 
 # Build container
 build :
 	docker build -t $(image) .
 
-# Create host
+# Create Docker host
 create :
-	docker-machine create --driver virtualbox --virtualbox-cpu-count "2" --virtualbox-memory "2048" $(vm)
-
-# Set up Docker environment
-env :
-	docker-machine env $(vm)
+	docker-machine create --driver virtualbox --virtualbox-memory "2048" $(vm)
 
 # Get container host IP
 ip :
@@ -24,6 +20,10 @@ ip :
 # Tail container output
 log :
 	docker logs -f $(container)
+
+# Open app in browser
+open :
+	open http://$$(docker-machine ip $(vm)):8888
 
 # Pull container from hub
 pull :
@@ -42,10 +42,7 @@ rm :
 
 # Run container
 run :
-	docker run -d -p 8888:8888 --name $(container) -v $(shell pwd)/src:/usr/local/src/src -v $(shell pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run dev
-
-# Bootstrap setup
-setup : create env build run ip
+	docker run -d -p 8888:8888 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run dev
 
 # Open container shell
 ssh :
