@@ -132,7 +132,7 @@ var tasks = {
       packageCache: {},
       fullPaths: watch
     })
-    .require(require.resolve('./src/node_modules/index.jsx'), { entry: true })
+    .require(require.resolve('./src/node_modules/index.js'), { entry: true })
     .transform(babelify.configure({
         optional: ["es7.classProperties"]
     }))
@@ -176,7 +176,7 @@ var tasks = {
       packageCache: {},
       fullPaths: watch
     })
-    .require(require.resolve('./src/node_modules/styleguide.jsx'), { entry: true })
+    .require(require.resolve('./src/node_modules/styleguide.js'), { entry: true })
     .transform(babelify.configure({
         optional: ["es7.classProperties"]
     }))
@@ -238,6 +238,7 @@ gulp.task('start', function (cb) {
 	var started = false;
 	return nodemon({
     script: 'src/server/index.js',
+    watch: ['src/server'],
     exec: './node_modules/.bin/babel-node',
     env: { 'NODE_ENV': 'development' }
 	}).on('start', function () {
@@ -304,7 +305,7 @@ gulp.task('watch', ['assets', 'sass', 'reactify', 'reactstyleguide', 'data'], fu
   // --------------------------
   // watch:js
   // --------------------------
-  gulp.watch('src/node_modules/**/*.jsx', ['reload-jsx']);
+  gulp.watch('src/node_modules/**/*.js', ['reload-jsx']);
 
   // --------------------------
   // watch:data
