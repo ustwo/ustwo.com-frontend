@@ -50,7 +50,7 @@
         @include vertically-centred-element;
         position: relative;
         h1 {
-          width: 11em;
+          max-width: 11em;
           margin: auto;
           .word {
             display: inline-block;
@@ -130,7 +130,6 @@
     }
 
     @include susy-breakpoint($bp-large, $susy) {
-      @include container(16);
       @include nested(16) {
         background: none;
 
@@ -185,7 +184,6 @@
     }
 
     @include susy-breakpoint($bp-large, $susy) {
-      @include container(16);
       @include nested(16) {
         background: none;
 
@@ -246,7 +244,6 @@
     }
 
     @include susy-breakpoint($bp-large, $susy) {
-      @include container(16);
       @include nested(16) {
         background: none;
 

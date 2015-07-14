@@ -41,6 +41,7 @@ h3, .h3 {
   font-family: $Futura;
   text-transform: uppercase;
   width: 100%;
+  line-height: 1.1;
 }
 
 h4, .h4,
@@ -73,13 +74,13 @@ p, .p            { font-size: 16px; }
 
 @include susy-breakpoint($bp-small, $susy) {
   h1, .h1          { font-size: 60px; }
-  h2, .h2          { font-size: 50px; }
+  h2, .h2          { font-size: 40px; }
   h3, .h3          { font-size: 36px; }
-  h4, .h4          { font-size: 30px; }
-  h5, .h5          { font-size: 26px; }
-  h6, .h6          { font-size: 24px; }
+  h4, .h4          { font-size: 28px; }
+  h5, .h5          { font-size: 24px; }
+  h6, .h6          { font-size: 22px; }
   p, .p            { font-size: 18px; }
-  .p__small        { font-size: 16px; }
+  .p__small        { font-size: 15px; }
   .p__super-small  { font-size: 14px; }
 }
 
