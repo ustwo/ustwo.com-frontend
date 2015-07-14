@@ -125,12 +125,32 @@
       @include squish(6.25%);
     }
 
+    @include susy-breakpoint($bp-medium, $susy) {
+      @include nested(8) {
+        &__image-vertical-centerer {
+          @include span(6 first);
+          @include squish(1);
+        }
+        &__text-block-vertical-centerer {
+          @include span(8 nest last) {
+            .home-text-block {
+              >* {
+                @include squish(1);
+                width: span(6);
+              }
+            }
+          }
+        }
+      }
+    }
+
     @include susy-breakpoint($bp-large, $susy) {
       @include nested(16) {
         background: none;
 
         &__image-vertical-centerer {
           @include span(9 first);
+          margin-left: 0;
           @include vertically-centering-parent(90vh);
           &__image-margin-container {
             @include vertically-centred-element;
@@ -177,6 +197,25 @@
     &__text-block-vertical-centerer {
       @include span(87.5%);
       @include squish(6.25%);
+    }
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      @include nested(8) {
+        &__text-block-vertical-centerer {
+          @include span(8 nest last) {
+            .home-text-block {
+              >* {
+                @include squish(1);
+                width: span(6);
+              }
+            }
+          }
+        }
+        &__image-vertical-centerer {
+          @include span(6 first);
+          @include squish(1);
+        }
+      }
     }
 
     @include susy-breakpoint($bp-large, $susy) {
@@ -237,6 +276,36 @@
       @include squish(6.25%);
     }
 
+    @include susy-breakpoint($bp-medium, $susy) {
+      @include nested(8) {
+        &__image-vertical-centerer {
+          @include span(6 first);
+          @include squish(1);
+          &__image-layer-container {
+            &__dice-screen-anim {
+              bottom: 3.5vw;
+              width: 28%;
+              right: 20.9%;
+            }
+            &__dice-device {
+              width: 100%;
+              margin: auto;
+            }
+          }
+        }
+        &__text-block-vertical-centerer {
+          @include span(8 nest last) {
+            .home-text-block {
+              >* {
+                @include squish(1);
+                width: span(6);
+              }
+            }
+          }
+        }
+      }
+    }
+
     @include susy-breakpoint($bp-large, $susy) {
       @include nested(16) {
         background: none;
@@ -245,16 +314,14 @@
           @include span(9 first);
           @include vertically-centering-parent(90vh);
           position: relative;
+          margin-left: 0;
           &__image-layer-container {
             @include vertically-centred-element;
             width: 80%;
             &__dice-screen-anim {
               bottom: 1.9vw;
               width: 28%;
-              right: 30.9%;
-            }
-            &__dice-device {
-              width: 100%;
+              right: 20.9%;
             }
           }
         }
