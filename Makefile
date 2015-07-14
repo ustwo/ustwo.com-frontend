@@ -30,7 +30,7 @@ rm :
 
 # Run container
 run :
-	docker run -d -p 8888:8888 --name $(container) -v $(shell pwd)/src:/usr/local/src/src -v $(shell pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run gulp
+	docker run -d -p 8888:8888 --name $(container) -v $(shell pwd)/src:/usr/local/src/src -v $(shell pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run dev
 
 # Open container shell
 ssh :
