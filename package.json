@@ -3,12 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "gulp": "gulp",
     "bower": "bower install --allow-root",
-    "watch": "npm run gulp watch",
-    "compile": "npm run gulp build",
-    "production": "npm run gulp build --production",
-    "start": "babel-node server"
+    "compile": "gulp production",
+    "start": "babel-node src/server",
+    "dev": "gulp"
   },
   "browser": {
     "Fetch": "whatwg-fetch/fetch.js",

@@ -29,8 +29,9 @@ var nodemon = require('gulp-nodemon');
 // testing
 var mocha = require('gulp-mocha');
 
-// gulp build --production
-var production = !!argv.production;
+// production flag
+var production;
+
 // determine if we're doing a build
 // and if so, bypass the livereload
 var build = argv._.length ? argv._[0] === 'build' : false;
@@ -74,7 +75,7 @@ var tasks = {
   // Delete build folder
   // --------------------------
   clean: function() {
-    del(['public']);
+    del.sync(['public']);
 
     return gulp.src('node_modules/.gitignore')
       .pipe(gulp.dest('public/')
@@ -160,9 +161,10 @@ var tasks = {
     }
 
     vendorBundler.bundle()
-    .pipe(source('vendors.js'))
-    .pipe(gulpif(production, uglify()))
-    .pipe(gulp.dest('public/js/'));
+      .pipe(source('vendors.js'))
+      .pipe(buffer())
+      .pipe(gulpif(production, uglify()))
+      .pipe(gulp.dest('public/js/'));
 
     return rebundle();
   },
@@ -171,7 +173,7 @@ var tasks = {
   // --------------------------
   reactstyleguide: function() {
     var bundler = browserify({
-      debug: true,
+      debug: !production,
       cache: {},
       packageCache: {},
       fullPaths: watch
@@ -193,8 +195,9 @@ var tasks = {
         .on('error', handleError('Browserify'))
         .pipe(source('styleguide.js'))
         .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(sourcemaps.write('./'))
+        .pipe(gulpif(production, uglify()))
+        .pipe(gulpif(!production, sourcemaps.init({loadMaps: true})))
+        .pipe(gulpif(!production, sourcemaps.write('./')))
         .pipe(gulp.dest('public/js/'));
     };
 
@@ -227,29 +230,27 @@ var tasks = {
       .pipe(gulp.dest('public/data')
     );
   },
-  html: function() {
-    return gulp.src('src/templates/**/*.html')
-      .pipe(gulp.dest('public')
-    );
+  serve: function(cb) {
+  	var started = false;
+  	return nodemon({
+      script: 'src/server/index.js',
+      watch: ['src/server'],
+      exec: './node_modules/.bin/babel-node',
+      env: { 'NODE_ENV': 'development' }
+  	}).on('start', function () {
+  		// to avoid nodemon being started multiple times
+  		// thanks @matthisk
+  		if (!started) {
+  			cb();
+  			started = true;
+  		}
+  	});
   },
+  setProduction: function () {
+    production = true;
+  }
 };
 
-gulp.task('start', function (cb) {
-	var started = false;
-	return nodemon({
-    script: 'src/server/index.js',
-    watch: ['src/server'],
-    exec: './node_modules/.bin/babel-node',
-    env: { 'NODE_ENV': 'development' }
-	}).on('start', function () {
-		// to avoid nodemon being started multiple times
-		// thanks @matthisk
-		if (!started) {
-			cb();
-			started = true;
-		}
-	});
-});
 
 gulp.task('browser-sync', function() {
   browserSync(null, {
@@ -275,21 +276,33 @@ gulp.task('reload-jsx', ['reactify', 'reactstyleguide'], function(){
 // CUSTOMS TASKS
 // --------------------------
 gulp.task('clean', tasks.clean);
-// for production we require the clean method on every individual task
-var req = build ? ['clean'] : [];
-// individual tasks
-gulp.task('assets', req, tasks.assets);
-gulp.task('sass', req, tasks.sass);
-gulp.task('reactify', req, tasks.reactify);
-gulp.task('reactstyleguide', req, tasks.reactstyleguide);
-gulp.task('test', tasks.test);
+gulp.task('assets', tasks.assets);
+gulp.task('sass', tasks.sass);
+gulp.task('reactify', tasks.reactify);
+gulp.task('reactstyleguide', tasks.reactstyleguide);
 gulp.task('data', tasks.data);
-gulp.task('html', tasks.html);
+gulp.task('test', tasks.test);
+gulp.task('serve', ['build'], tasks.serve);
+gulp.task('start', ['clean', 'serve']);
+
+// build task
+gulp.task('build', [
+  'assets',
+  'sass',
+  'reactify',
+  'reactstyleguide',
+  'data'
+]);
+
+gulp.task('setProduction', tasks.setProduction);
+
+// production build task
+gulp.task('production', ['setProduction', 'build']);
 
 // --------------------------
 // DEV/WATCH TASK
 // --------------------------
-gulp.task('watch', ['assets', 'sass', 'reactify', 'reactstyleguide', 'data'], function() {
+gulp.task('default', ['start'], function() {
   // TODO: make watch restart on error, see: https://github.com/appium/DynamicApp/blob/master/injector/gulpfile.js
 
   // --------------------------
@@ -315,18 +328,5 @@ gulp.task('watch', ['assets', 'sass', 'reactify', 'reactstyleguide', 'data'], fu
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
 
-// build task
-gulp.task('build', [
-  'clean',
-  'assets',
-  'sass',
-  'reactify',
-  'reactstyleguide',
-  'data'
-]);
-
-gulp.task('default', ['start', 'watch']);
-
-// gulp (watch) : for development and livereload
 // gulp build : for a one off development build
 // gulp build --production : for a minified production build
