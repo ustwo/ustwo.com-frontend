@@ -30,6 +30,7 @@ body,
       left: 0;
       overflow-y: scroll;
       overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
 
       &.add {
         opacity: 0;
