@@ -50,8 +50,8 @@ Commands below assume OS X and preference to install binaries via Homebrew and C
     # Tail Gulp watch output
     $ make log
 
-    # In case Gulp exits with an error restart
-    $ make run
+    # In case Gulp exits with an error, restart container
+    $ make start
 
 ## Style guide
 
