@@ -10,13 +10,15 @@ WORKDIR /usr/local/src
 ENV TERM=xterm-256color
 ENV NODE_ENV=production
 
-COPY src /usr/local/src/src
-
 COPY package.json /usr/local/src/package.json
-COPY bower.json /usr/local/src/bower.json
-COPY gulpfile.js /usr/local/src/gulpfile.js
+RUN npm install --production
 
-RUN npm install --production && npm run bower && npm run compile
+COPY bower.json /usr/local/src/bower.json
+RUN npm run bower
+
+COPY gulpfile.js /usr/local/src/gulpfile.js
+COPY src /usr/local/src/src
+RUN npm run compile
 
 VOLUME /usr/local/src/logs
 
