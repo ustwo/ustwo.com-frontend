@@ -214,22 +214,20 @@
     background: #F9615B;
 
     &__image-vertical-centerer {
-      &__dice-background {
-        display: none;
-      }
       &__image-layer-container {
         position: relative;
         &__dice-screen-anim {
           position: absolute;
-          width: 36.5%;
-          right: 9%;
-          top: 0;
-          bottom: 6.85%;
+          width: 35%;
+          right: 11%;
+          top: 0px;
+          bottom: 5.1vw;
           margin: auto;
         }
         &__dice-device {
           position: relative;
-          width: 100%;
+          width: 125%;
+          margin: 0 -10%;
         }
       }
     }
@@ -247,19 +245,16 @@
           @include span(9 first);
           @include vertically-centering-parent(90vh);
           position: relative;
-          padding-right: 5%;
-          &__dice-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            display: block;
-          }
           &__image-layer-container {
             @include vertically-centred-element;
             width: 80%;
             &__dice-screen-anim {
-              bottom: 3vw;
+              bottom: 1.9vw;
+              width: 28%;
+              right: 30.9%;
+            }
+            &__dice-device {
+              width: 100%;
             }
           }
         }

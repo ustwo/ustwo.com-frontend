@@ -5,4 +5,9 @@
   max-width: 1800px;
   position: relative;
   margin: auto;
+  &:after {
+    content: " ";
+    clear: both;
+    display: block;
+  }
 }
