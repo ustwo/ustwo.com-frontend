@@ -1,4 +1,4 @@
-tag ?= 0.0.1
+tag ?= 0.0.2
 image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
@@ -43,6 +43,10 @@ rm :
 # Run container
 run :
 	docker run -d -p 8888:8888 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/bower.json:/usr/local/src/bower.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run dev
+
+# Run container with watcher
+watch :
+	docker run -d -p 8888:8888 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/bower.json:/usr/local/src/bower.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run dev watch
 
 # Open container shell
 ssh :
