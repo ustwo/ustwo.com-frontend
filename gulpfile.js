@@ -234,7 +234,7 @@ var tasks = {
   	var started = false;
   	return nodemon({
       script: 'src/server/index.js',
-      watch: ['src/server'],
+      watch: ['src/server', 'src/templates'],
       exec: './node_modules/.bin/babel-node',
       env: { 'NODE_ENV': 'development' }
   	}).on('start', function () {
@@ -302,7 +302,7 @@ gulp.task('production', ['setProduction', 'build']);
 // --------------------------
 // DEV/WATCH TASK
 // --------------------------
-gulp.task('default', ['start'], function() {
+gulp.task('watch', ['start'], function() {
   // TODO: make watch restart on error, see: https://github.com/appium/DynamicApp/blob/master/injector/gulpfile.js
 
   // --------------------------
@@ -327,6 +327,8 @@ gulp.task('default', ['start'], function() {
 
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
+
+gulp.task('default', ['start']);
 
 // gulp build : for a one off development build
 // gulp build --production : for a minified production build
