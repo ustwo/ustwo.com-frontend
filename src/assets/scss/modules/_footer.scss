@@ -1,0 +1,131 @@
+.footer {
+  font-family: PxGrotesk-Regular, Arial, sans-serif;
+  background: #252525;
+  color: #fff;
+
+  .content {
+    max-width: 1800px;
+    padding: 60px 30px;
+  }
+  .general {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    position: relative;
+    height: 170px;
+
+    .title {
+      font-size: 24px;
+      font-family: PxGrotesk-Regular, Arial, sans-serif;
+      margin: 0 0 30px;
+      text-transform: capitalize;
+    }
+    .email-cta {
+      font-size: 20px;
+      border-bottom: 1px solid #F9615B;
+    }
+    .social {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      bottom: 0;
+
+      .channel {
+        display: block;
+        float: left;
+        background: #fff;
+        margin-right: 5px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+        a {
+          display: block;
+          width: 20px;
+          height: 20px;
+        }
+        .name {
+          display: none;
+        }
+        .facebook {
+
+        }
+        .twitter {
+
+        }
+        .linkedin {
+
+        }
+      }
+    }
+  }
+  .studios {
+    display: inline-block;
+    vertical-align: top;
+    width: 75%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .studio {
+      display: inline-block;
+      vertical-align: top;
+      width: 25%;
+      position: relative;
+      height: 170px;
+
+      .title {
+        font-size: 24px;
+        font-family: PxGrotesk-Regular, Arial, sans-serif;
+        margin: 0 0 30px;
+        text-transform: capitalize;
+      }
+      .vcard {
+
+        .adr {
+
+          p {
+            font-size: 14px;
+            margin: 0;
+          }
+          .street-address {
+
+          }
+          .locality {
+
+          }
+          .region {
+
+          }
+          .postal-code {
+
+          }
+          .country-name {
+
+          }
+        }
+      }
+      .map {
+        font-size: 14px;
+        margin-top: 30px;
+        display: block;
+        border-bottom: 1px solid #646464;
+        position: absolute;
+        bottom: 0;
+      }
+      .london {
+
+      }
+      .newyork {
+
+      }
+      .malmo {
+
+      }
+      .sydney {
+
+      }
+    }
+  }
+}
