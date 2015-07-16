@@ -53,11 +53,19 @@ Commands below assume OS X and preference to install binaries via Homebrew and C
     # In case Gulp exits with an error, restart container
     $ make start
 
-## Style guide
+## Style guide (WIP)
+
+Use [EditorConfig](http://editorconfig.org/)!
 
 JS: [Airbnb ES6 style guide](https://github.com/airbnb/javascript) as a starting point + which JSX one?  
 Should we enforce with [JSCS](http://jscs.info/) (see [Airbnb's settings](https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json))?
 
 CSS: [BEM](http://getbem.com/introduction/)
 
-Use EditorConfig!
+Components / HTML: [Atomic design](http://bradfrost.com/blog/post/atomic-web-design/) – we're using the ideas from Atomic design, but with different naming convention for component hierarchy levels (from simple to complex):
+  * Elements instead of Atoms
+  * Components instead of Molecules
+  * Modules instead of Organisms
+  * Templates
+
+If you find yourself with very long class names due to BEM, it's probably a sign that you should have broken some pieces out to smaller components!
