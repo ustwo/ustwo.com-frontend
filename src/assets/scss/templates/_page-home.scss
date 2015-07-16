@@ -5,8 +5,6 @@
 
 .page-home {
   &__screen-block--welcome {
-    background: #6114CC;
-
     .entrance {
       transition: opacity 1s ease-in-out;
       transition-delay: 1.2s;
@@ -174,8 +172,6 @@
   }
 
   &__screen-block--own-stuff {
-    background: #FFBF02;
-
     &__image-vertical-centerer {
       margin: 0 6.25%;
       @include span(87.5%);
@@ -250,8 +246,6 @@
   }
 
   &__screen-block--ventures {
-    background: #F9615B;
-
     &__image-vertical-centerer {
       &__image-layer-container {
         position: relative;
@@ -339,27 +333,6 @@
             }
           }
         }
-      }
-    }
-  }
-
-  &__screen-block--studio {
-    background: #F9615B;
-    position: relative;
-
-    img {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
-
-    @include susy-breakpoint($bp-large, $susy) {
-      @include container(16);
-      @include nested(16) {
-        background: none;
       }
     }
   }
