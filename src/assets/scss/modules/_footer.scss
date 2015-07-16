@@ -1,7 +1,7 @@
 .footer {
   font-family: PxGrotesk-Regular, Arial, sans-serif;
   background: #252525;
-  color: #f8f8f8;
+  color: $offWhite;
 
   .content {
     max-width: 1800px;
@@ -17,17 +17,17 @@
         text-transform: capitalize;
       }
       .contact-divider {
-        border: 1px solid #f8f8f8;
+        border: 1px solid $offWhite;
         margin: 15px 0;
         width: 16px;
       }
       .email-cta {
         font-size: 20px;
         margin: 0;
-        border-bottom: 1px solid #F9615B;
+        border-bottom: 1px solid $marshPassion;
 
         &:hover {
-          border-bottom-color: #f8f8f8;
+          border-bottom-color: $offWhite;
         }
       }
       .social {
@@ -51,10 +51,13 @@
             height: 43px;
           }
           .logo {
-            fill: #f8f8f8;
+            fill: $offWhite;
           }
           .name {
             display: none;
+          }
+          a:hover .logo {
+            fill: $mare;
           }
         }
       }

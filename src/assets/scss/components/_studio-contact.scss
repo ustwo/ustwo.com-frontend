@@ -1,5 +1,5 @@
 .studio {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid $nonBlack;
   position: relative;
   transition: background-color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
 
@@ -17,7 +17,7 @@
       position: absolute;
       top: 6px;
       right: 6.25%;
-      color: #f8f8f8;
+      color: $offWhite;
       font-size: 45px;
     }
   }
@@ -47,7 +47,7 @@
         border-bottom: 1px solid #646464;
 
         &:hover {
-          border-bottom-color: #f8f8f8;
+          border-bottom-color: $offWhite;
         }
       }
     }
@@ -60,24 +60,24 @@
       height: 140px;
 
       .map {
-        border-bottom-color: #f8f8f8;
+        border-bottom-color: $offWhite;
       }
     }
     &.london {
-      background-color: #143FCC;
-      border-bottom-color: #143FCC;
+      background-color: $navy;
+      border-bottom-color: $navy;
     }
     &.newyork {
-      background-color: #FF5519;
-      border-bottom-color: #FF5519;
+      background-color: $ohra;
+      border-bottom-color: $ohra;
     }
     &.malmo {
-      background-color: #ED0082;
-      border-bottom-color: #ED0082;
+      background-color: $piglet;
+      border-bottom-color: $piglet;
     }
     &.sydney {
-      background-color: #6114CC;
-      border-bottom-color: #6114CC;
+      background-color: $rain;
+      border-bottom-color: $rain;
     }
   }
 
