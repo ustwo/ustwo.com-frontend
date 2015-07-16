@@ -3,6 +3,12 @@ import React from 'react';
 
 let router = express.Router();
 
+router.get('/styleguide', (req, res) => {
+  res.render('styleguide', {
+    title: "ustwo styleguide"
+  });
+});
+
 router.get('/*', (req, res) => {
   // const App = React.createFactory(require('../source/app.jsx'));
   res.render('index', {
