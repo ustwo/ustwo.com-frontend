@@ -1,125 +1,144 @@
 .footer {
   font-family: PxGrotesk-Regular, Arial, sans-serif;
   background: #252525;
-  color: #fff;
+  color: #f8f8f8;
 
   .content {
     max-width: 1800px;
     padding: 100px 0;
     overflow: auto;
 
-    @include susy-breakpoint(650px, $susy) {
-      padding-bottom: 50px;
-    }
-    @include susy-breakpoint($bp-large, $susy) {
-      padding-bottom: 100px;
-    }
-  }
-  .general {
-    padding: 0 6.25%;
+    .general {
+      padding: 0 6.25%;
 
-    .contact-title {
-      font-size: 24px;
-      font-family: PxGrotesk-Regular, Arial, sans-serif;
-      text-transform: capitalize;
-    }
-    .contact-divider {
-      border: 1px solid #fff;
-      margin: 15px 0;
-      width: 16px;
-    }
-    .email-cta {
-      font-size: 20px;
-      margin: 0;
-      border-bottom: 1px solid #F9615B;
-
-      &:hover {
-        border-bottom-color: #fff;
+      .contact-title {
+        font-size: 24px;
+        font-family: PxGrotesk-Regular, Arial, sans-serif;
+        text-transform: capitalize;
       }
-    }
-    .social {
-      list-style: none;
-      padding: 0;
-      margin: 45px 0;
-      overflow: auto;
+      .contact-divider {
+        border: 1px solid #f8f8f8;
+        margin: 15px 0;
+        width: 16px;
+      }
+      .email-cta {
+        font-size: 20px;
+        margin: 0;
+        border-bottom: 1px solid #F9615B;
 
-      .channel {
-        display: block;
-        float: left;
-        margin-right: 21px;
-
-        &:last-child {
-          margin-right: 0;
-        }
-        a,
-        .logo {
-          display: block;
-          width: 43px;
-          height: 43px;
-        }
-        .logo {
-          fill: #fff;
-        }
-        .name {
-          display: none;
+        &:hover {
+          border-bottom-color: #f8f8f8;
         }
       }
-    }
-
-    @include susy-breakpoint(650px, $susy) {
-      @include nested(16) {
-        @include pre(1 of 16);
-        @include span(5);
-        vertical-align: top;
-        position: relative;
-        height: 150px;
+      .social {
+        list-style: none;
         padding: 0;
+        margin: 45px 0;
+        overflow: auto;
 
-        .contact-title {
-          margin-bottom: 15px;
-        }
-        .contact-divider {
-          display: none;
-        }
-        .social {
-          .channel {
-            margin-right: 15px;
-            a,
-            .logo {
-              height: 35px;
-              width: 35px;
-            }
+        .channel {
+          display: block;
+          float: left;
+          margin-right: 21px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+          a,
+          .logo {
+            display: block;
+            width: 43px;
+            height: 43px;
+          }
+          .logo {
+            fill: #f8f8f8;
+          }
+          .name {
+            display: none;
           }
         }
       }
     }
-    @include susy-breakpoint($bp-large, $susy) {
-      @include nested(16) {
-        @include span(3);
-        height: 150px;
+    .studios {
+      list-style: none;
+      padding: 0;
+      margin-top: 30px;
+      border-top: 1px solid #333;
+    }
+    .copyright {
+      padding: 0 6.25%;
+      margin-top: 50px;
+      color: #999;
+      font-size: 12px;
+    }
+  }
+
+  @include susy-breakpoint(650px, $susy) {
+    .content {
+      padding-bottom: 50px;
+
+      .general {
+        @include nested(16) {
+          @include pre(1 of 16);
+          @include span(5);
+          vertical-align: top;
+          position: relative;
+          height: 150px;
+          padding: 0;
+
+          .contact-title {
+            margin-bottom: 15px;
+          }
+          .contact-divider {
+            display: none;
+          }
+          .social {
+            .channel {
+              margin-right: 15px;
+              a,
+              .logo {
+                height: 35px;
+                width: 35px;
+              }
+            }
+          }
+        }
+      }
+      .studios {
+        @include nested(16) {
+          @include span(10);
+          @include last;
+          margin-top: 0;
+          display: inline-block;
+          vertical-align: top;
+          border-top: none;
+        }
+      }
+      .copyright {
+        @include nested(16) {
+          @include pre(1 of 16);
+          @include span(5);
+          padding: 0;
+          margin-top: 50px;
+        }
       }
     }
   }
-  .studios {
-    list-style: none;
-    padding: 0;
-    margin-top: 30px;
-    border-top: 1px solid #333;
+  @include susy-breakpoint($bp-large, $susy) {
+    .content {
+      padding-bottom: 100px;
 
-    @include susy-breakpoint(650px, $susy) {
-      @include nested(16) {
-        @include span(10);
-        @include last;
-        margin-top: 0;
-        display: inline-block;
-        vertical-align: top;
-        border-top: none;
+      .general {
+        @include nested(16) {
+          @include span(3);
+          height: 150px;
+        }
       }
-    }
-    @include susy-breakpoint($bp-large, $susy) {
-      @include nested(16) {
-        @include span(12);
-        @include last;
+      .studios {
+        @include nested(16) {
+          @include span(12);
+          @include last;
+        }
       }
     }
   }

@@ -17,7 +17,7 @@
       position: absolute;
       top: 6px;
       right: 6.25%;
-      color: #fff;
+      color: #f8f8f8;
       font-size: 45px;
     }
   }
@@ -47,7 +47,7 @@
         border-bottom: 1px solid #646464;
 
         &:hover {
-          border-bottom-color: #fff;
+          border-bottom-color: #f8f8f8;
         }
       }
     }
@@ -60,7 +60,7 @@
       height: 140px;
 
       .map {
-        border-bottom-color: #fff;
+        border-bottom-color: #f8f8f8;
       }
     }
     &.london {
@@ -82,7 +82,6 @@
   }
 
   @include susy-breakpoint(650px, $susy) {
-    @include container(10);
     @include nested(10) {
       @include gallery(5 of 10);
       vertical-align: top;
@@ -126,7 +125,6 @@
     }
   }
   @include susy-breakpoint($bp-large, $susy) {
-    @include container(12);
     @include nested(12) {
       @include gallery(3 of 12);
       height: 150px;
