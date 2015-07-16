@@ -3,7 +3,7 @@ image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
 image = $(image_name):$(tag)
-.PHONY : restart rm run
+.PHONY : restart rm watch
 
 # Build container
 build :
@@ -34,7 +34,7 @@ push :
 	docker push $(image)
 
 # Restart container
-restart : rm run
+restart : rm watch
 
 # Remove container
 rm :
