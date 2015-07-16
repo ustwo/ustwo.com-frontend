@@ -67,6 +67,13 @@
       bottom: 40px;
       margin: 0 auto;
     }
+
+    @include susy-breakpoint($bp-large, $susy) {
+      @include container(16);
+      @include nested(16) {
+        background: none;
+      }
+    }
   }
 
   &__screen-block--client {
@@ -125,6 +132,8 @@
     @include susy-breakpoint($bp-large, $susy) {
       @include container(16);
       @include nested(16) {
+        background: none;
+
         &__image-vertical-centerer {
           @include span(9 first);
           @include vertically-centering-parent(90vh);
@@ -178,6 +187,8 @@
     @include susy-breakpoint($bp-large, $susy) {
       @include container(16);
       @include nested(16) {
+        background: none;
+
         &__text-block-vertical-centerer {
           margin-left: 0;
           @include vertically-centering-parent(90vh);
@@ -237,6 +248,8 @@
     @include susy-breakpoint($bp-large, $susy) {
       @include container(16);
       @include nested(16) {
+        background: none;
+
         &__image-vertical-centerer {
           @include span(9 first);
           @include vertically-centering-parent(90vh);
@@ -286,6 +299,13 @@
       left: 0;
       right: 0;
       margin: auto;
+    }
+
+    @include susy-breakpoint($bp-large, $susy) {
+      @include container(16);
+      @include nested(16) {
+        background: none;
+      }
     }
   }
 }
