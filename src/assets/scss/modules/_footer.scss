@@ -5,126 +5,121 @@
 
   .content {
     max-width: 1800px;
-    padding: 60px 30px;
+    padding: 100px 0;
+    overflow: auto;
+
+    @include susy-breakpoint(650px, $susy) {
+      padding-bottom: 50px;
+    }
+    @include susy-breakpoint($bp-large, $susy) {
+      padding-bottom: 100px;
+    }
   }
   .general {
-    display: inline-block;
-    vertical-align: top;
-    width: 25%;
-    position: relative;
-    height: 170px;
+    padding: 0 6.25%;
 
-    .title {
+    .contact-title {
       font-size: 24px;
       font-family: PxGrotesk-Regular, Arial, sans-serif;
-      margin: 0 0 30px;
       text-transform: capitalize;
+    }
+    .contact-divider {
+      border: 1px solid #fff;
+      margin: 15px 0;
+      width: 16px;
     }
     .email-cta {
       font-size: 20px;
+      margin: 0;
       border-bottom: 1px solid #F9615B;
+
+      &:hover {
+        border-bottom-color: #fff;
+      }
     }
     .social {
       list-style: none;
       padding: 0;
-      margin: 0;
-      position: absolute;
-      bottom: 0;
+      margin: 45px 0;
+      overflow: auto;
 
       .channel {
         display: block;
         float: left;
-        background: #fff;
-        margin-right: 5px;
+        margin-right: 21px;
 
         &:last-child {
           margin-right: 0;
         }
-        a {
+        a,
+        .logo {
           display: block;
-          width: 20px;
-          height: 20px;
+          width: 43px;
+          height: 43px;
+        }
+        .logo {
+          fill: #fff;
         }
         .name {
           display: none;
         }
-        .facebook {
+      }
+    }
 
-        }
-        .twitter {
+    @include susy-breakpoint(650px, $susy) {
+      @include nested(16) {
+        @include pre(1 of 16);
+        @include span(5);
+        vertical-align: top;
+        position: relative;
+        height: 150px;
+        padding: 0;
 
+        .contact-title {
+          margin-bottom: 15px;
         }
-        .linkedin {
-
+        .contact-divider {
+          display: none;
         }
+        .social {
+          .channel {
+            margin-right: 15px;
+            a,
+            .logo {
+              height: 35px;
+              width: 35px;
+            }
+          }
+        }
+      }
+    }
+    @include susy-breakpoint($bp-large, $susy) {
+      @include nested(16) {
+        @include span(3);
+        height: 150px;
       }
     }
   }
   .studios {
-    display: inline-block;
-    vertical-align: top;
-    width: 75%;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin-top: 30px;
+    border-top: 1px solid #333;
 
-    .studio {
-      display: inline-block;
-      vertical-align: top;
-      width: 25%;
-      position: relative;
-      height: 170px;
-
-      .title {
-        font-size: 24px;
-        font-family: PxGrotesk-Regular, Arial, sans-serif;
-        margin: 0 0 30px;
-        text-transform: capitalize;
+    @include susy-breakpoint(650px, $susy) {
+      @include nested(16) {
+        @include span(10);
+        @include last;
+        margin-top: 0;
+        display: inline-block;
+        vertical-align: top;
+        border-top: none;
       }
-      .vcard {
-
-        .adr {
-
-          p {
-            font-size: 14px;
-            margin: 0;
-          }
-          .street-address {
-
-          }
-          .locality {
-
-          }
-          .region {
-
-          }
-          .postal-code {
-
-          }
-          .country-name {
-
-          }
-        }
-      }
-      .map {
-        font-size: 14px;
-        margin-top: 30px;
-        display: block;
-        border-bottom: 1px solid #646464;
-        position: absolute;
-        bottom: 0;
-      }
-      .london {
-
-      }
-      .newyork {
-
-      }
-      .malmo {
-
-      }
-      .sydney {
-
+    }
+    @include susy-breakpoint($bp-large, $susy) {
+      @include nested(16) {
+        @include span(12);
+        @include last;
       }
     }
   }

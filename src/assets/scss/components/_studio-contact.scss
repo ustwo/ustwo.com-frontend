@@ -1,0 +1,141 @@
+.studio {
+  border-bottom: 1px solid #333;
+  position: relative;
+  transition: background-color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
+
+  .studio-title {
+    font-size: 24px;
+    font-family: PxGrotesk-Regular, Arial, sans-serif;
+    padding: 20px 6.25%;
+    margin: 0;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    &::after {
+      content: '+';
+      display: block;
+      position: absolute;
+      top: 6px;
+      right: 6.25%;
+      color: #fff;
+      font-size: 45px;
+    }
+  }
+  .studio-details {
+    height: 0;
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+    padding: 0 6.25%;
+
+    .vcard {
+      padding: 0;
+
+      .adr {
+
+        p {
+          font-size: 14px;
+          margin: 0;
+        }
+        abbr {
+          border-bottom: 0;
+        }
+      }
+      .map {
+        font-size: 14px;
+        margin-top: 20px;
+        display: inline-block;
+        border-bottom: 1px solid #646464;
+
+        &:hover {
+          border-bottom-color: #fff;
+        }
+      }
+    }
+  }
+  &.open {
+    .studio-title::after {
+      content: '\2013';
+    }
+    .studio-details {
+      height: 140px;
+
+      .map {
+        border-bottom-color: #fff;
+      }
+    }
+    &.london {
+      background-color: #143FCC;
+      border-bottom-color: #143FCC;
+    }
+    &.newyork {
+      background-color: #FF5519;
+      border-bottom-color: #FF5519;
+    }
+    &.malmo {
+      background-color: #ED0082;
+      border-bottom-color: #ED0082;
+    }
+    &.sydney {
+      background-color: #6114CC;
+      border-bottom-color: #6114CC;
+    }
+  }
+
+  @include susy-breakpoint(650px, $susy) {
+    @include container(10);
+    @include nested(10) {
+      @include gallery(5 of 10);
+      vertical-align: top;
+      height: 200px;
+      border-bottom: none;
+      transition-duration: 0s;
+
+      &.open {
+        &.london,
+        &.newyork,
+        &.malmo,
+        &.sydney {
+          background-color: inherit;
+          border-bottom-color: inherit;
+        }
+        .studio-details .map {
+          border-bottom-color: #646464;
+        }
+      }
+      .studio-title {
+        padding: 0 0 15px;
+        cursor: auto;
+
+        &::after {
+          display: none;
+        }
+      }
+      .studio-details {
+        height: auto;
+        padding: 0;
+
+        .vcard {
+          padding: 0;
+        }
+        .map {
+          margin-top: 0;
+          position: absolute;
+          bottom: 50px;
+        }
+      }
+    }
+  }
+  @include susy-breakpoint($bp-large, $susy) {
+    @include container(12);
+    @include nested(12) {
+      @include gallery(3 of 12);
+      height: 150px;
+
+      .studio-details {
+        .map {
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
