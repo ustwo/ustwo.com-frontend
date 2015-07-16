@@ -6,7 +6,7 @@
 .page-home {
   &__screen-block--welcome {
     .entrance {
-      transition: opacity 1s ease-in-out;
+      transition: opacity 0.8s ease-in-out;
       transition-delay: 1.2s;
       opacity: 0;
       &.show {
@@ -14,7 +14,7 @@
       }
     }
 
-    &__headline-background {
+    &__headline-background-image {
       position: absolute;
       margin: auto;
       left: 0;
@@ -22,12 +22,11 @@
       top: 0;
       bottom: 0;
       width: 45%;
-      min-width: 280px;
-      height: auto;
-      transition: opacity 1s ease-in-out;
+      // FIXME: this should be 280px, but we have shedloads of transparent pixels around the image :(
+      min-width: 220px;
+      transition: opacity 0.8s ease-in-out;
       backface-visibility: hidden;
       transform: translateZ(0) scale(2.0, 2.0);
-      display: block;
       opacity: 1;
 
       &.add {
@@ -71,49 +70,47 @@
   }
 
   &__screen-block--client {
-    background: #6A86EC;
-
-    &__image-vertical-centerer {
-      &__image-margin-container {
-        position: relative;
-        // fixing unexplained horizontal scrollbar
-        max-width: 99%;
-        &__harvey-nicks-shape-3 {
-          @extend %svg-shape;
-          top: 58%;
-          left: 10%;
-          width: 15%;
-          height: 18%;
-        }
-
-        &__harvey-nicks-shape-4 {
-          @extend %svg-shape;
-          top: 20%;
-          right: 22%;
-          width: 15%;
-          height: 18%;
-        }
-
-        &__harvey-nicks-device {
-          margin: 5vh 10vw 7.5vh 6vw;
-          width: span(84%);
+    &__image-vertical-centerer-parent {
+      &__image-vertical-centerer-child {
+        &__image-margin-container {
           position: relative;
-        }
+          &__harvey-nicks-shape-3 {
+            @extend %svg-shape;
+            top: 58%;
+            left: 10%;
+            width: 15%;
+            height: 18%;
+          }
 
-        &__harvey-nicks-shape-1 {
-          @extend %svg-shape;
-          top: 0;
-          left: 10%;
-          width: 15%;
-          height: 18%;
-        }
+          &__harvey-nicks-shape-4 {
+            @extend %svg-shape;
+            top: 20%;
+            right: 23%;
+            width: 15%;
+            height: 18%;
+          }
 
-        &__harvey-nicks-shape-2 {
-          @extend %svg-shape;
-          top: 63%;
-          right: 6%;
-          width: 15%;
-          height: 15%;
+          &__harvey-nicks-device {
+            margin: 7% 10% 9% 6%;
+            width: span(84%);
+            position: relative;
+          }
+
+          &__harvey-nicks-shape-1 {
+            @extend %svg-shape;
+            top: 0;
+            left: 10%;
+            width: 15%;
+            height: 18%;
+          }
+
+          &__harvey-nicks-shape-2 {
+            @extend %svg-shape;
+            top: 63%;
+            right: 6%;
+            width: 15%;
+            height: 15%;
+          }
         }
       }
     }
@@ -125,7 +122,7 @@
 
     @include susy-breakpoint($bp-medium, $susy) {
       @include nested(8) {
-        &__image-vertical-centerer {
+        &__image-vertical-centerer-parent {
           @include span(6 first);
           @include squish(1);
         }
@@ -144,13 +141,11 @@
 
     @include susy-breakpoint($bp-large, $susy) {
       @include nested(16) {
-        background: none;
-
-        &__image-vertical-centerer {
+        &__image-vertical-centerer-parent {
           @include span(9 first);
           margin-left: 0;
           @include vertically-centering-parent(90vh);
-          &__image-margin-container {
+          &__image-vertical-centerer-child {
             @include vertically-centred-element;
           }
         }
@@ -172,20 +167,39 @@
   }
 
   &__screen-block--own-stuff {
-    &__image-vertical-centerer {
+    &__image-vertical-centerer-parent {
       margin: 0 6.25%;
       @include span(87.5%);
-      &__image-layer-container {
-        position: relative;
-        &__monument-award-1 {
-          @extend %svg-shape;
-          top: 58%;
-          left: 10%;
-          width: 15%;
-          height: 18%;
-        }
-        &__monument-device {
-          width: 100%;
+      &__image-vertical-centerer-child {
+        &__image-layer {
+          position: relative;
+          text-align: center;
+          &__monument-award-1 {
+            @extend %svg-shape;
+            top: 0%;
+            left: 23%;
+            width: 27%;
+            height: 16%;
+          }
+          &__monument-award-2 {
+            @extend %svg-shape;
+            top: 12%;
+            left: 11%;
+            width: 27%;
+            height: 16%;
+          }
+          &__monument-award-3 {
+            @extend %svg-shape;
+            top: 24%;
+            left: -2%;
+            width: 27%;
+            height: 16%;
+          }
+          &__monument-device {
+            width: 95%;
+            position: relative;
+            margin: 10% 0;
+          }
         }
       }
     }
@@ -207,7 +221,7 @@
             }
           }
         }
-        &__image-vertical-centerer {
+        &__image-vertical-centerer-parent {
           @include span(6 first);
           @include squish(1);
         }
@@ -216,8 +230,6 @@
 
     @include susy-breakpoint($bp-large, $susy) {
       @include nested(16) {
-        background: none;
-
         &__text-block-vertical-centerer {
           margin-left: 0;
           @include vertically-centering-parent(90vh);
@@ -232,13 +244,12 @@
           }
         }
 
-        &__image-vertical-centerer {
+        &__image-vertical-centerer-parent {
           @include span(10 last);
           @include vertically-centering-parent(90vh);
           margin: 0 -7% 0 0;
-          &__image-layer-container {
+          &__image-vertical-centerer-child {
             @include vertically-centred-element;
-            padding-left: 7%;
           }
         }
       }
@@ -246,21 +257,23 @@
   }
 
   &__screen-block--ventures {
-    &__image-vertical-centerer {
-      &__image-layer-container {
-        position: relative;
-        &__dice-screen-anim {
-          position: absolute;
-          width: 35%;
-          right: 11%;
-          top: 0px;
-          bottom: 5.1vw;
-          margin: auto;
-        }
-        &__dice-device {
+    &__image-vertical-centerer-parent {
+      &__image-vertical-centerer-child {
+        &__image-layer {
           position: relative;
-          width: 125%;
-          margin: 0 -10%;
+          &__dice-screen-anim {
+            position: absolute;
+            width: 34.8%;
+            right: 11%;
+            top: 0px;
+            bottom: 4.5%;
+            margin: auto;
+          }
+          &__dice-device {
+            position: relative;
+            width: 125%;
+            margin: 0 -10%;
+          }
         }
       }
     }
@@ -272,18 +285,19 @@
 
     @include susy-breakpoint($bp-medium, $susy) {
       @include nested(8) {
-        &__image-vertical-centerer {
+        &__image-vertical-centerer-parent {
           @include span(6 first);
           @include squish(1);
-          &__image-layer-container {
-            &__dice-screen-anim {
-              bottom: 3.5vw;
-              width: 28%;
-              right: 20.9%;
-            }
-            &__dice-device {
-              width: 100%;
-              margin: auto;
+          &__image-vertical-centerer-child {
+            &__image-layer {
+              &__dice-screen-anim {
+                width: 27.7%;
+                right: 20.9%;
+              }
+              &__dice-device {
+                width: 100%;
+                margin: auto;
+              }
             }
           }
         }
@@ -302,20 +316,14 @@
 
     @include susy-breakpoint($bp-large, $susy) {
       @include nested(16) {
-        background: none;
-
-        &__image-vertical-centerer {
+        &__image-vertical-centerer-parent {
           @include span(9 first);
           @include vertically-centering-parent(90vh);
-          position: relative;
           margin-left: 0;
-          &__image-layer-container {
+          &__image-vertical-centerer-child {
             @include vertically-centred-element;
-            width: 80%;
-            &__dice-screen-anim {
-              bottom: 1.9vw;
-              width: 28%;
-              right: 20.9%;
+            &__image-layer {
+              width: 80%;
             }
           }
         }
