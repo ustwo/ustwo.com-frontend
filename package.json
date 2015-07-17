@@ -6,7 +6,8 @@
     "compile": "gulp build",
     "start": "babel-node src/server",
     "dev": "gulp start --dev",
-    "watch": "gulp watch --dev"
+    "watch": "gulp watch --dev",
+    "browsersync": "gulp watch --browsersync --dev"
   },
   "browser": {
     "Fetch": "whatwg-fetch/fetch.js",

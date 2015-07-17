@@ -34,14 +34,20 @@ var syncbrowser = argv.browsersync;
 var build = argv._.length ? argv._[0] === 'build' : false;
 var watch = argv._.length ? argv._[0] === 'watch' : true;
 
-gutil.log(gutil.colors.bgGreen('Flags:', 'production:', production, 'build:', build, 'watch:', watch));
+gutil.log(gutil.colors.bgGreen('Flags:', 'production:', production, 'build:', build, 'watch:', watch, "syncbrowser:", syncbrowser));
 
 if (watch) {
   var watchify = require('watchify');
 }
 
 if (syncbrowser) {
-  var browserSync = require('browser-sync');
+  var browserSync = require('browser-sync').create();
+}
+
+var reloadbrowsersync = function() {
+  if (syncbrowser) {
+    browserSync.reload();
+  }
 }
 
 // ----------------------------
@@ -81,8 +87,7 @@ var tasks = {
         outputStyle: production ? 'compressed' : 'nested'
       }))
       .on('error', function(err) {
-        sass.logError(err);
-        if (watch) this.emit('end'); //continue the process in dev
+        sass.logError.bind(this, err)();
       })
       // generate .maps
       .pipe(gulpif(!production, sourcemaps.write({
@@ -133,7 +138,7 @@ var tasks = {
     }
 
     var rebundle = function() {
-      return bundler.bundle()
+      var result = bundler.bundle()
         .on('error', handleError('Browserify'))
         .pipe(source('app.js'))
         .pipe(buffer())
@@ -141,6 +146,12 @@ var tasks = {
         .pipe(gulpif(!production, sourcemaps.init({loadMaps: true})))
         .pipe(gulpif(!production, sourcemaps.write('./')))
         .pipe(gulp.dest('public/js/'));
+
+      if(syncbrowser) {
+        return result.pipe(browserSync.reload({stream:true, once: true}));
+      }
+
+      return result;
     };
 
     if (watch) {
@@ -212,46 +223,47 @@ var tasks = {
   serve: function(cb) {
     var started = false;
 
-    if (syncbrowser) {
-      browserSync(null, {
-        proxy: "http://localhost:3333",
-        open: false,
-        ghostMode: {
-          scroll: false
-        }
-      });
-    }
-
     return nodemon({
       script: 'src/server/index.js',
       watch: ['src/server', 'src/templates'],
       exec: './node_modules/.bin/babel-node',
-      env: { 'NODE_ENV': 'development' }
+      ext: 'js html',
+      env: {
+        'NODE_ENV': 'development',
+        'PORT': syncbrowser ? 8887 : 8888
+      }
     }).on('start', function () {
-      // to avoid nodemon being started multiple times
-      // thanks @matthisk
+      gutil.log(gutil.colors.bgGreen('Nodemon start...'));
       if (!started) {
-        cb();
         started = true;
+        cb();
+        if (syncbrowser) {
+          browserSync.init(null, {
+            port: 8888,
+            proxy: {
+              target: 'localhost:8887'
+            },
+            open: false,
+            ghostMode: false,
+            // logLevel: 'debug',
+            notify: false
+          });
+        }
+      } else {
+        setTimeout(reloadbrowsersync, 4000);
       }
     });
   }
 };
 
 gulp.task('reload-assets', ['assets'], function(){
-  if (syncbrowser) {
-    browserSync.reload();
-  }
+  reloadbrowsersync();
 });
 gulp.task('reload-sass', ['sass'], function(){
-  if (syncbrowser) {
-    browserSync.reload();
-  }
+  reloadbrowsersync();
 });
 gulp.task('reload-data', ['data'], function(){
-  if (syncbrowser) {
-    browserSync.reload();
-  }
+  reloadbrowsersync();
 });
 
 // --------------------------

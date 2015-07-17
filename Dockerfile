@@ -19,6 +19,6 @@ RUN npm run compile
 
 VOLUME /usr/local/src/logs
 
-EXPOSE 8888
+EXPOSE 8888 3001
 
 CMD ["npm", "start"]
