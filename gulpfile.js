@@ -5,7 +5,6 @@ var del = require('del');
 var uglify = require('gulp-uglify');
 var gulpif = require('gulp-if');
 var exec = require('child_process').exec;
-var notify = require('gulp-notify');
 var buffer = require('vinyl-buffer');
 var argv = require('yargs').argv;
 var sourcemaps = require('gulp-sourcemaps');
@@ -15,11 +14,7 @@ var sass = require('gulp-sass');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer-core');
 
-// BrowserSync
-var browserSync = require('browser-sync');
-
 // js
-var watchify = require('watchify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var babelify = require('babelify');
@@ -30,39 +25,31 @@ var nodemon = require('gulp-nodemon');
 var mocha = require('gulp-mocha');
 
 // production flag
-var production;
+var production = !argv.dev;
+
+var syncbrowser = argv.browsersync;
 
 // determine if we're doing a build
 // and if so, bypass the livereload
 var build = argv._.length ? argv._[0] === 'build' : false;
 var watch = argv._.length ? argv._[0] === 'watch' : true;
 
+gutil.log(gutil.colors.bgGreen('Flags:', 'production:', production, 'build:', build, 'watch:', watch));
+
+if (watch) {
+  var watchify = require('watchify');
+}
+
+if (syncbrowser) {
+  var browserSync = require('browser-sync');
+}
+
 // ----------------------------
 // Error notification methods
 // ----------------------------
-var beep = function() {
-  var os = require('os');
-  var file = 'gulp/error.wav';
-  if (os.platform() === 'linux') {
-    // linux
-    exec("aplay " + file);
-  } else {
-    // mac
-    console.log("afplay " + file);
-    exec("afplay " + file);
-  }
-};
 var handleError = function(task) {
   return function(err) {
-    beep();
-
-    notify.onError({
-      message: task + ' failed, check the logs..',
-      sound: false
-    })(err);
-
     gutil.log(gutil.colors.bgRed(task + ' error:'), gutil.colors.red(err));
-
     if (watch) this.emit('end');
   };
 };
@@ -125,6 +112,9 @@ var tasks = {
       debug: !production // Sourcemapping
     })
     .require('babelify/polyfill')
+    .require('Fetch')
+    .require('ScrollMagic')
+    .require('TimelineLite')
     .require('react');
 
     var bundler = browserify({
@@ -139,6 +129,9 @@ var tasks = {
     }))
     .transform(reactify, {"es6": true})
     .external('babelify/polyfill')
+    .external('Fetch')
+    .external('ScrollMagic')
+    .external('TimelineLite')
     .external('react');
 
     if (watch) {
@@ -158,6 +151,7 @@ var tasks = {
 
     if (watch) {
       bundler.on('update', rebundle);
+      bundler.on('log', gutil.log);
     }
 
     vendorBundler.bundle()
@@ -246,30 +240,30 @@ var tasks = {
   		}
   	});
   },
-  setProduction: function () {
-    production = true;
+  browserSync: function () {
+
   }
 };
 
-
-gulp.task('browser-sync', function() {
-  browserSync(null, {
-    proxy: "http://localhost:3333",
-    open: false,
-    ghostMode: {
-      scroll: true
-    }
-  });
+gulp.task('reload-assets', ['assets'], function(){
+  if (syncbrowser) {
+    browserSync.reload();
+  }
 });
-
 gulp.task('reload-sass', ['sass'], function(){
-  browserSync.reload();
+  if (syncbrowser) {
+    browserSync.reload();
+  }
 });
 gulp.task('reload-data', ['data'], function(){
-  browserSync.reload();
+  if (syncbrowser) {
+    browserSync.reload();
+  }
 });
-gulp.task('reload-jsx', ['reactify', 'reactstyleguide'], function(){
-  browserSync.reload();
+gulp.task('reload-jsx', ['reactify'], function(){
+  if (syncbrowser) {
+    browserSync.reload();
+  }
 });
 
 // --------------------------
@@ -284,6 +278,7 @@ gulp.task('data', tasks.data);
 gulp.task('test', tasks.test);
 gulp.task('serve', ['build'], tasks.serve);
 gulp.task('start', ['clean', 'serve']);
+gulp.task('browserSync', tasks.browserSync);
 
 // build task
 gulp.task('build', [
@@ -294,10 +289,6 @@ gulp.task('build', [
   'data'
 ]);
 
-gulp.task('setProduction', tasks.setProduction);
-
-// production build task
-gulp.task('production', ['setProduction', 'build']);
 
 // --------------------------
 // DEV/WATCH TASK
@@ -308,7 +299,7 @@ gulp.task('watch', ['start'], function() {
   // --------------------------
   // watch:assets
   // --------------------------
-  gulp.watch('src/assets/images/**/*.{gif,jpg,png,svg}', ['assets']);
+  gulp.watch('src/assets/images/**/*.{gif,jpg,png,svg}', ['reload-assets']);
 
   // --------------------------
   // watch:sass
@@ -330,5 +321,12 @@ gulp.task('watch', ['start'], function() {
 
 gulp.task('default', ['start']);
 
-// gulp build : for a one off development build
-// gulp build --production : for a minified production build
+if (syncbrowser) {
+  browserSync(null, {
+    proxy: "http://localhost:3333",
+    open: false,
+    ghostMode: {
+      scroll: false
+    }
+  });
+}

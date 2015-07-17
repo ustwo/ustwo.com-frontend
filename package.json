@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "private": true,
   "scripts": {
-    "compile": "gulp production",
+    "compile": "gulp build",
     "start": "babel-node src/server",
     "dev": "gulp"
   },
@@ -33,7 +33,6 @@
     "gulp-if": "*",
     "gulp-mocha": "*",
     "gulp-nodemon": "^2.0.3",
-    "gulp-notify": "*",
     "gulp-postcss": "*",
     "gulp-sass": "*",
     "gulp-sourcemaps": "*",
@@ -42,7 +41,6 @@
     "gulp-wrap": "*",
     "handlebars": "^3.0.3",
     "imager.jsx": "*",
-    "jshint-stylish": "*",
     "lodash": "^3.10.0",
     "merge-stream": "*",
     "normalize-libsass": "^1.0.3",
@@ -56,11 +54,11 @@
     "urllite": "^0.5.0",
     "vinyl-buffer": "*",
     "vinyl-source-stream": "*",
-    "watchify": "*",
     "whatwg-fetch": "*",
     "yargs": "*"
   },
   "devDependencies": {
     "browser-sync": "*",
+    "watchify": "*"
   }
 }
