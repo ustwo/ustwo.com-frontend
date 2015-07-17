@@ -122,7 +122,7 @@
         @include nested(16) {
           @include pre(1 of 16);
           @include span(5);
-          padding: 0;
+          padding: 0 30px 0 0;
           margin-top: 50px;
         }
       }
