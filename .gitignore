@@ -6,4 +6,3 @@ node_modules/*
 npm-debug.log
 public/*
 !public/.gitignore
-bower_components

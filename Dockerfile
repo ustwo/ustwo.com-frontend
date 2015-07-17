@@ -13,9 +13,6 @@ ENV NODE_ENV=production
 COPY package.json /usr/local/src/package.json
 RUN npm install --production
 
-COPY bower.json /usr/local/src/bower.json
-RUN npm run bower
-
 COPY gulpfile.js /usr/local/src/gulpfile.js
 COPY src /usr/local/src/src
 RUN npm run compile

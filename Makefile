@@ -42,11 +42,11 @@ rm :
 
 # Run container
 run :
-	docker run -d -p 8888:8888 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/bower.json:/usr/local/src/bower.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run dev
+	docker run -d -p 8888:8888 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run dev
 
 # Run container with watcher
 watch :
-	docker run -d -p 8888:8888 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/bower.json:/usr/local/src/bower.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run dev watch
+	docker run -d -p 8888:8888 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run dev watch
 
 # Open container shell
 ssh :
@@ -62,4 +62,4 @@ stop :
 
 # Update packages inside container
 update :
-	docker exec $(container) npm install && npm run bower
+	docker exec $(container) npm install
