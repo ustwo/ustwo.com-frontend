@@ -107,6 +107,13 @@ var tasks = {
   // Reactify
   // --------------------------
   reactify: function() {
+    // Create a separate vendor bundler that will only run when starting gulp
+    var vendorBundler = browserify({
+      debug: !production // Sourcemapping
+    })
+    .require('babelify/polyfill')
+    .require('react');
+
     var bundler = browserify({
       debug: !production, // Sourcemapping
       cache: {},
@@ -118,6 +125,8 @@ var tasks = {
         optional: ["es7.classProperties"]
     }))
     .transform(reactify, {"es6": true})
+    .external('babelify/polyfill')
+    .external('react');
 
     if (watch) {
       bundler = watchify(bundler, {poll: true});
@@ -141,6 +150,12 @@ var tasks = {
       });
     }
 
+    vendorBundler.bundle()
+      .pipe(source('vendors.js'))
+      .pipe(buffer())
+      .pipe(gulpif(production, uglify()))
+      .pipe(gulp.dest('public/js/'));
+
     return rebundle();
   },
   // --------------------------
@@ -155,6 +170,8 @@ var tasks = {
         optional: ["es7.classProperties"]
     }))
     .transform(reactify, {"es6": true})
+    .external('babelify/polyfill')
+    .external('react');
 
     var rebundle = function() {
       return bundler.bundle()
