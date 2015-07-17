@@ -322,9 +322,6 @@
           margin-left: 0;
           &__image-vertical-centerer-child {
             @include vertically-centred-element;
-            &__image-layer {
-              width: 80%;
-            }
           }
         }
         &__text-block-vertical-centerer {
