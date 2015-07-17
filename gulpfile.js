@@ -107,16 +107,6 @@ var tasks = {
   // Reactify
   // --------------------------
   reactify: function() {
-    // Create a separate vendor bundler that will only run when starting gulp
-    var vendorBundler = browserify({
-      debug: !production // Sourcemapping
-    })
-    .require('babelify/polyfill')
-    .require('Fetch')
-    .require('ScrollMagic')
-    .require('TimelineLite')
-    .require('react');
-
     var bundler = browserify({
       debug: !production, // Sourcemapping
       cache: {},
@@ -128,14 +118,9 @@ var tasks = {
         optional: ["es7.classProperties"]
     }))
     .transform(reactify, {"es6": true})
-    .external('babelify/polyfill')
-    .external('Fetch')
-    .external('ScrollMagic')
-    .external('TimelineLite')
-    .external('react');
 
     if (watch) {
-      bundler = watchify(bundler);
+      bundler = watchify(bundler, {poll: true});
     }
 
     var rebundle = function() {
@@ -151,14 +136,10 @@ var tasks = {
 
     if (watch) {
       bundler.on('update', rebundle);
-      bundler.on('log', gutil.log);
+      bundler.on('log', function (msg) {
+        gutil.log('Reactify rebundle:', msg);
+      });
     }
-
-    vendorBundler.bundle()
-      .pipe(source('vendors.js'))
-      .pipe(buffer())
-      .pipe(gulpif(production, uglify()))
-      .pipe(gulp.dest('public/js/'));
 
     return rebundle();
   },
@@ -167,22 +148,13 @@ var tasks = {
   // --------------------------
   reactstyleguide: function() {
     var bundler = browserify({
-      debug: !production,
-      cache: {},
-      packageCache: {},
-      fullPaths: watch
+      debug: !production
     })
     .require(require.resolve('./src/node_modules/styleguide.js'), { entry: true })
     .transform(babelify.configure({
         optional: ["es7.classProperties"]
     }))
     .transform(reactify, {"es6": true})
-    .external('babelify/polyfill')
-    .external('react');
-
-    if (watch) {
-      bundler = watchify(bundler);
-    }
 
     var rebundle = function() {
       return bundler.bundle()
@@ -194,10 +166,6 @@ var tasks = {
         .pipe(gulpif(!production, sourcemaps.write('./')))
         .pipe(gulp.dest('public/js/'));
     };
-
-    if (watch) {
-      bundler.on('update', rebundle);
-    }
 
     return rebundle();
   },
@@ -225,23 +193,31 @@ var tasks = {
     );
   },
   serve: function(cb) {
-  	var started = false;
-  	return nodemon({
+    var started = false;
+
+    if (syncbrowser) {
+      browserSync(null, {
+        proxy: "http://localhost:3333",
+        open: false,
+        ghostMode: {
+          scroll: false
+        }
+      });
+    }
+
+    return nodemon({
       script: 'src/server/index.js',
       watch: ['src/server', 'src/templates'],
       exec: './node_modules/.bin/babel-node',
       env: { 'NODE_ENV': 'development' }
-  	}).on('start', function () {
-  		// to avoid nodemon being started multiple times
-  		// thanks @matthisk
-  		if (!started) {
-  			cb();
-  			started = true;
-  		}
-  	});
-  },
-  browserSync: function () {
-
+    }).on('start', function () {
+      // to avoid nodemon being started multiple times
+      // thanks @matthisk
+      if (!started) {
+        cb();
+        started = true;
+      }
+    });
   }
 };
 
@@ -260,11 +236,6 @@ gulp.task('reload-data', ['data'], function(){
     browserSync.reload();
   }
 });
-gulp.task('reload-jsx', ['reactify'], function(){
-  if (syncbrowser) {
-    browserSync.reload();
-  }
-});
 
 // --------------------------
 // CUSTOMS TASKS
@@ -278,7 +249,6 @@ gulp.task('data', tasks.data);
 gulp.task('test', tasks.test);
 gulp.task('serve', ['build'], tasks.serve);
 gulp.task('start', ['clean', 'serve']);
-gulp.task('browserSync', tasks.browserSync);
 
 // build task
 gulp.task('build', [
@@ -307,11 +277,6 @@ gulp.task('watch', ['start'], function() {
   gulp.watch(['src/assets/scss/**/*.scss'], ['reload-sass']);
 
   // --------------------------
-  // watch:js
-  // --------------------------
-  gulp.watch('src/node_modules/**/*.js', ['reload-jsx']);
-
-  // --------------------------
   // watch:data
   // --------------------------
   gulp.watch('src/data/**/*.json', ['reload-data']);
@@ -320,13 +285,3 @@ gulp.task('watch', ['start'], function() {
 });
 
 gulp.task('default', ['start']);
-
-if (syncbrowser) {
-  browserSync(null, {
-    proxy: "http://localhost:3333",
-    open: false,
-    ghostMode: {
-      scroll: false
-    }
-  });
-}
