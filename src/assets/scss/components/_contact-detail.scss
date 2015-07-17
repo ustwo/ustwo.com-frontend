@@ -1,0 +1,24 @@
+.contact-detail {
+  padding: 0 6.25%;
+  margin: 50px 0 30px;
+  overflow: auto;
+
+  &__title {
+    color: $offWhite;
+    font-size: 18px;
+    font-family: "PxGrotesk-Regular", "Arial", sans-serif;
+    text-transform: none;
+  }
+
+  &__description {
+    display: none;
+  }
+
+  &__link {
+    border-bottom: 1px solid $offWhite;
+    margin-top: 18px;
+    display: block;
+    float: left;
+    clear: left;
+  }
+}
