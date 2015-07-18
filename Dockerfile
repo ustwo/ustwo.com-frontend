@@ -21,4 +21,4 @@ VOLUME /usr/local/src/logs
 
 EXPOSE 8888 3001
 
-CMD ["npm", "start"]
+CMD ["node", "/usr/local/src/node_modules/babel/lib/_babel-node", "src/server"]
