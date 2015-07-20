@@ -50,11 +50,11 @@
         @include span(12);
         @include pre(2);
         @include post(2);
-        .contact-detail {
-          padding: 0;
-          @include nested(12) {
-            @include span(5);
-            @include pre(1);
+        @include nested(12) {
+          .contact-detail {
+            padding: 0;
+            @include gallery(6 of 12);
+            @include prefix(1);
           }
         }
       }
