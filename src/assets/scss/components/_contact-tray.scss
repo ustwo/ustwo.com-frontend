@@ -47,14 +47,15 @@
     @include nested(16) {
       &__content {
         padding: 0 0 30px;
-        @include span(12);
-        @include pre(2);
-        @include post(2);
-        @include nested(12) {
+        @include span(14);
+        @include pre(1);
+        @include post(1);
+        @include nested(14) {
           .contact-detail {
             padding: 0;
-            @include gallery(6 of 12);
+            @include gallery(7 of 14);
             @include prefix(1);
+            @include suffix(1);
           }
         }
       }
