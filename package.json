@@ -49,7 +49,7 @@
     "normalize-libsass": "^1.0.3",
     "react": "^0.13",
     "react-style-guide": "*",
-    "react-transition-manager": "^1.2.0",
+    "react-transition-manager": "1.2.2",
     "reactify": "*",
     "route-pattern": "0.0.6",
     "scrollmagic": "*",
