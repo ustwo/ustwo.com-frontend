@@ -30,28 +30,31 @@ The project is wrapped into a Docker container so the only dependencies are Dock
 
 Commands below assume OS X and preference to install binaries via Homebrew and Cask. You can of course install Docker Machine and Virtualbox in any other way you want, or what is appropriate to your environment.
 
-    # 1. Install Docker Machine
+    # 1. Install [Docker Machine](https://docs.docker.com/machine/#installation)
     $ brew install docker-machine
-    # 2. Install Virtualbox
+    # 2. Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
     $ brew cask install virtualbox
-    # 3. Create Docker host
+    # 3. Create Docker host VM
     $ make create
-    # 4. Set up Docker environment
+    # 4. Set up Docker environment to VM – needs to be done for every new shell session
     $ eval "$(docker-machine env dev)"
-    # 5. Build container
+    # 5. Build container – you can also do a `pull` instead to download a prebuilt image if you're on a fast connection
     $ make build
-    # 6. Build container
+    # 6. Run container – below is for a single build, can also use `watch` or `browsersync` to recompile on changes
     $ make run
     # 7. Open app in browser
     $ make open
 
 ## Develop
 
-    # Tail Gulp watch output
+    # Kick off file system watching – alternatively you can also use `browsersync` if you want automatic browser reloads
+    $ make watch
+
+    # Tail Gulp's output
     $ make log
 
-    # In case Gulp exits with an error, restart container
-    $ make start
+    # In case Gulp exits with an error, restart container – or it's `restartbs` if you're using `browsersync`
+    $ make restart
 
 ## Style guide (WIP)
 
