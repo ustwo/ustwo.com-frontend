@@ -19,6 +19,6 @@ RUN npm run compile
 
 VOLUME /usr/local/src/logs
 
-EXPOSE 8888 3001
+EXPOSE 8888
 
 CMD ["node", "/usr/local/src/node_modules/babel/lib/_babel-node", "src/server"]
