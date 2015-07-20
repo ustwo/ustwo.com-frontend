@@ -21,4 +21,15 @@
     float: left;
     clear: left;
   }
+
+  @include susy-breakpoint($bp-large, $susy) {
+    &__link {
+      float: right;
+      clear: none;
+
+      &:first-of-type {
+        float: left;
+      }
+    }
+  }
 }

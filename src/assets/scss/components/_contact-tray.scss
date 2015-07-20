@@ -19,17 +19,23 @@
     &::after {
       content: 'x';
     }
+    &:focus {
+      -webkit-focus-ring-color: rgba(0,0,0,0);
+    }
   }
   &__content {
     padding-bottom: 30px;
   }
 
   @include susy-breakpoint(650px, $susy) {
-    @include nested(8) {
-      &__content {
-        @include span(8);
+    &__content {
+      overflow: auto;
+      padding-left: 6.25%;
+      padding-right: 6.25%;
+      @include nested(8) {
         .contact-detail {
           @include gallery(4 of 8);
+          padding: 0;
 
           &__description {
             display: block;
@@ -41,12 +47,16 @@
   @include susy-breakpoint($bp-large, $susy) {
     @include nested(16) {
       &__content {
+        padding: 0 0 30px;
         @include span(12);
         @include pre(2);
         @include post(2);
         .contact-detail {
-          @include span(5);
-          @include pre(1);
+          padding: 0;
+          @include nested(12) {
+            @include span(5);
+            @include pre(1);
+          }
         }
       }
     }
