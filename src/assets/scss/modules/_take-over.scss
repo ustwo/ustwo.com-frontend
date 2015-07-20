@@ -1,0 +1,26 @@
+.take-over {
+  padding: 0 6.25%;
+  width: 100%;
+  height: 100%;
+  background: $offWhite;
+  text-align: center;
+
+  &__close {
+    width: 50px;
+    height: 50px;
+    display: block;
+    border: 0;
+    background: none;
+    margin: 0 auto;
+
+    svg {
+      width: 50px;
+      height: 50px;
+      fill: $nonBlack;
+    }
+    &:focus {
+      -webkit-focus-ring-color: rgba(0,0,0,0);
+      outline: none;
+    }
+  }
+}
