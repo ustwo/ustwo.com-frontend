@@ -30,31 +30,58 @@ The project is wrapped into a Docker container so the only dependencies are Dock
 
 Commands below assume OS X and preference to install binaries via Homebrew and Cask. You can of course install Docker Machine and Virtualbox in any other way you want, or what is appropriate to your environment.
 
-    # 1. Install [Docker Machine](https://docs.docker.com/machine/#installation)
-    $ brew install docker-machine
-    # 2. Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
-    $ brew cask install virtualbox
-    # 3. Create Docker host VM
-    $ make create
-    # 4. Set up Docker environment to VM – needs to be done for every new shell session
-    $ eval "$(docker-machine env dev)"
-    # 5. Build container – you can also do a `pull` instead to download a prebuilt image if you're on a fast connection
-    $ make build
-    # 6. Run container – below is for a single build, can also use `watch` or `browsersync` to recompile on changes
-    $ make run
-    # 7. Open app in browser
-    $ make open
+1. Install [Docker Machine](https://docs.docker.com/machine/#installation)
+
+`$ brew install docker-machine`
+
+2. Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+
+`$ brew cask install virtualbox`
+
+3. Create Docker host VM
+
+`$ make create`
+
+4. Set up Docker environment to VM – needs to be done for every new shell session
+
+`$ eval "$(docker-machine env dev)"`
+
+5. Build container – you can also do a `pull` instead to download a prebuilt image if you're on a fast connection
+
+`$ make build`
+
+6. Run container – below is for a single build, can also use `watch` or `browsersync` to recompile on changes
+
+`$ make run`
+
+7. Open app in browser
+
+`$ make open`
 
 ## Develop
 
-    # Kick off file system watching – alternatively you can also use `browsersync` if you want automatic browser reloads
-    $ make watch
+1. Kick off file system watching – alternatively you can also use `browsersync` if you want automatic browser reloads
 
-    # Tail Gulp's output
-    $ make log
+`$ make watch`
 
-    # In case Gulp exits with an error, restart container – or it's `restartbs` if you're using `browsersync`
-    $ make restart
+2. Tail Gulp's output
+
+`$ make log`
+
+3. In case Gulp exits with an error, restart container – or it's `restartbs` if you're using `browsersync`
+
+`$ make restart`
+
+## Release
+
+1. Increment version in `Makefile` and `package.json`.
+2. Build fresh Docker image – `make build`
+3. Push image to Docker Hub – `make push`
+4. Log in to server – ssh://luis.ustwo.com:2222
+5. See what's running – `su && docker ps`
+6. Pull new image – `docker pull ustwo/ustwo.com-frontend:x.x.x`
+7. Remove running image – `docker rm -f us2`
+8. Fire up new image – `docker run -d -p 127.0.0.1:7777:8888 --name us2 -e VIRTUAL_HOST=staging.ustwo.com ustwo/ustwo.com-frontend:x.x.x`
 
 ## Style guide (WIP)
 
