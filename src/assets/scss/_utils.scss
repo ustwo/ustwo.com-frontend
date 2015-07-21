@@ -7,6 +7,15 @@ html {
   box-sizing: inherit;
 }
 
+// Remove tap highlight on iOS
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 %button__bare {
   background-color: transparent;
   background-repeat: no-repeat;
