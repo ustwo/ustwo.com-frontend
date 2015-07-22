@@ -11,11 +11,11 @@
     top: calc(50% - 50px);
     left: calc(50% - 50px);
     text-align: center;
+    transition: opacity 0.5s ease-in-out;
 
     &__animation {
       width: 100px;
       height: 100px;
-      transition: opacity 0.5s ease-in-out;
       fill: $marshPassion;
       display: inline-block;
       margin: 0 auto;
@@ -29,14 +29,12 @@
 
     &.add {
       opacity: 0;
-
-      &.show {
-        opacity: 1;
-
-        &.hide {
-          opacity: 0;
-        }
-      }
+    }
+    &.show {
+      opacity: 1;
+    }
+    &.hide {
+      opacity: 0;
     }
   }
   &__content-wrapper {
@@ -47,14 +45,6 @@
     transition: opacity 0.5s ease-in-out;
     max-width: 700px;
     margin: 0 auto;
-
-    &.add {
-      opacity: 0;
-
-      &.show {
-        opacity: 1;
-      }
-    }
 
     &__close {
       width: 50px;
@@ -95,6 +85,53 @@
       bottom: 0;
       left: -30%;
       width: 160%;
+    }
+
+    &__title,
+    &__description,
+    &__link {
+      transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+      transition-delay: 0s;
+    }
+    &__description,
+    &__link {
+      transition-delay: 0.35s;
+    }
+    &.add {
+      opacity: 0;
+
+      .take-over__content {
+        &__title,
+        &__description,
+        &__link {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+      }
+    }
+    &.show {
+      opacity: 1;
+
+      .take-over__content {
+        &__title,
+        &__description,
+        &__link {
+          opacity: 1;
+          transform: translateY(0px);
+        }
+      }
+    }
+    &.hide {
+      opacity: 0;
+
+      .take-over__content {
+        &__title,
+        &__description,
+        &__link {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+      }
     }
   }
 
