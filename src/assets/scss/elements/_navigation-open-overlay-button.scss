@@ -10,6 +10,11 @@
 
 .transparent-white {
   .nav__open-overlay-button {
-    fill: $white;
+    fill: $offWhite;
+  }
+}
+.takeover {
+  .nav__open-overlay-button {
+    fill: $nonBlack;
   }
 }
