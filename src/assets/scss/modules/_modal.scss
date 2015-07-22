@@ -9,6 +9,10 @@
   transition: opacity 0.5s ease-in-out;
   cursor: pointer;
 
+  &.below-header {
+    z-index: 30;
+  }
+
   &.add {
     opacity: 0;
 

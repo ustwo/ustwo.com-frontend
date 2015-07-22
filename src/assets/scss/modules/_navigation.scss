@@ -17,6 +17,16 @@
   }
 }
 
+.header {
+  &.takeover nav {
+    color: $nonBlack;
+
+    .nav__logo__graphic {
+      fill: $nonBlack;
+    }
+  }
+}
+
 .nav__logo {
   display: block;
   float: left;
