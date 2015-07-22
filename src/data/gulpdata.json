@@ -1,5 +1,8 @@
 {
   "title": "ustwo",
+  "takeover": {
+    "id": "moodnotes-launch"
+  },
   "colours": {
     "piglet"            :"#ED0082",
     "softPiglet"        :"#FFA5BE",
