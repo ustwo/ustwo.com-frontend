@@ -1,4 +1,4 @@
-tag ?= 0.0.7
+tag ?= 0.0.8
 image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
@@ -54,6 +54,14 @@ run :
 # Run container with watcher
 watch :
 	docker run -d -p 8888:8888 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run watch
+
+# Run staging container
+staging :
+	docker run -d -p 127.0.0.1:7777:8888 --name $(container) -e VIRTUAL_HOST=staging.ustwo.com $(image)
+
+# Run prod container
+prod :
+	docker run -d -p 0.0.0.0:80:8888 --name $(container) $(image)
 
 # Open container shell
 ssh :
