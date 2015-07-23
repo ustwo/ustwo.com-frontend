@@ -3,6 +3,7 @@ image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
 image = $(image_name):$(tag)
+mount = -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js
 .PHONY : browsersync restart rm watch
 
 # Build container
@@ -11,7 +12,7 @@ build :
 
 # Run container with watcher and browsersync
 browsersync :
-	docker run -d -p 8888:8888 -p 3001:3001 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run browsersync
+	docker run -d -p 8888:8888 -p 3001:3001 --name $(container) $(mount) $(image) npm run browsersync
 
 # Create Docker host
 create :
@@ -49,11 +50,11 @@ rm :
 
 # Run container
 run :
-	docker run -d -p 8888:8888 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run dev
+	docker run -d -p 8888:8888 --name $(container) $(mount) $(image) npm run dev
 
 # Run container with watcher
 watch :
-	docker run -d -p 8888:8888 --name $(container) -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js $(image) npm run watch
+	docker run -d -p 8888:8888 --name $(container) $(mount) $(image) npm run watch
 
 # Run staging container
 staging :
@@ -77,4 +78,8 @@ stop :
 
 # Update packages inside container
 update :
-	docker exec $(container) npm install
+	docker exec $(container) npm run update
+
+# Check if there are updates to packages inside container
+updatecheck :
+	docker exec $(container) npm run updatecheck
