@@ -19,10 +19,13 @@
 
 .header {
   &.takeover nav {
-    color: $nonBlack;
-
     .nav__logo__graphic {
       fill: $nonBlack;
+    }
+    .nav__open-overlay-button,
+    .nav__inner,
+    .nav__underline {
+      display: none;
     }
   }
 }

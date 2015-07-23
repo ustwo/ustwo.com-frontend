@@ -1,5 +1,5 @@
 .take-over {
-  padding: 60px 6.25% 0;
+  padding: 68px 6.25% 0;
   width: 100%;
   height: 100%;
   background: $offWhite;
@@ -37,65 +37,82 @@
       opacity: 0;
     }
   }
-  &__content-wrapper {
-    height: 100%;
-  }
   &__content {
     height: 100%;
     transition: opacity 0.5s ease-in-out;
-    max-width: 700px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
 
-    &__close {
-      width: 50px;
-      height: 50px;
-      display: block;
-      border: 0;
-      background: none;
+    &__message {
+      flex: 2;
+      max-width: 700px;
       margin: 0 auto;
-      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-      svg {
+      &__close {
         width: 50px;
         height: 50px;
-        fill: $nonBlack;
-      }
-      &:focus {
-        -webkit-focus-ring-color: rgba(0,0,0,0);
-        outline: none;
-      }
-    }
-    &__title {
-      color: $marshPassion;
-      margin-top: 30px;
-      font-size: 32px;
-    }
-    &__link {
-      border-bottom: 2px solid $mare;
-      margin-top: 50px;
-      margin-left: 35px;
-      display: inline-block;
+        display: block;
+        border: 0;
+        background: none;
+        margin: 0 auto;
+        padding: 0;
 
-      &:first-of-type {
-        margin-left: 0;
+        svg {
+          width: 50px;
+          height: 50px;
+          fill: $nonBlack;
+        }
+        &:focus {
+          -webkit-focus-ring-color: rgba(0,0,0,0);
+          outline: none;
+        }
+      }
+      &__title {
+        color: $marshPassion;
+        margin-top: 3%;
+        font-size: 32px;
+      }
+      &__description {
+        margin-top: 3%;
+      }
+      &__links {
+        display: flex;
+        flex-direction: column;
+
+        &__link {
+          border-bottom: 2px solid $mare;
+          margin-top: 5%;
+
+
+          &:first-of-type {
+            margin-left: 0;
+          }
+        }
+      }
+
+      &__title,
+      &__description,
+      &__links {
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+        transition-delay: 0s;
+      }
+      &__description,
+      &__links {
+        transition-delay: 0.35s;
       }
     }
     &__image {
-      position: absolute;
-      bottom: 0;
-      left: -30%;
-      width: 160%;
-    }
-
-    &__title,
-    &__description,
-    &__link {
-      transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-      transition-delay: 0s;
-    }
-    &__description,
-    &__link {
-      transition-delay: 0.35s;
+      flex: 1;
+      background: url('/images/home/moodnotes_takeover_image.png');
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-clip: content-box;
+      background-size: contain;
     }
     &.add {
       opacity: 0;
@@ -103,7 +120,7 @@
       .take-over__content {
         &__title,
         &__description,
-        &__link {
+        &__links {
           opacity: 0;
           transform: translateY(30px);
         }
@@ -115,7 +132,7 @@
       .take-over__content {
         &__title,
         &__description,
-        &__link {
+        &__links {
           opacity: 1;
           transform: translateY(0px);
         }
@@ -127,7 +144,7 @@
       .take-over__content {
         &__title,
         &__description,
-        &__link {
+        &__links {
           opacity: 0;
           transform: translateY(30px);
         }
@@ -136,21 +153,40 @@
   }
 
   @include susy-breakpoint($bp-large, $susy) {
-    padding-top: 100px;
-
-    &__content {
+    &__content__message {
       &__title {
-        margin-top: 50px;
+        margin-top: 5%;
         font-size: 40px;
       }
-      &__link {
-        margin-left: 50px;
+      &__links__link {
+        flex-direction: row;
       }
       &__image {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+        // position: absolute;
+        // bottom: 0;
+        // left: 0;
+        // width: 100%;
+      }
+    }
+  }
+  @include susy-media(max-height 500px) {
+    &__content__message {
+      &__title,
+      &__description,
+      &__links__link {
+        margin-top: 2%;
+      }
+      &__title {
+        font-size: 25px;
+      }
+      // &__links {
+      //   margin-left: 50px;
+      // }
+      &__image {
+        // position: absolute;
+        // bottom: 0;
+        // left: 0;
+        // width: 100%;
       }
     }
   }
