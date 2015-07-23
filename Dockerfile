@@ -11,6 +11,7 @@ ENV TERM=xterm-256color
 ENV NODE_ENV=production
 
 COPY package.json /usr/local/src/package.json
+COPY npm-shrinkwrap.json /usr/local/src/npm-shrinkwrap.json
 RUN npm install --production
 
 COPY gulpfile.js /usr/local/src/gulpfile.js

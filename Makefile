@@ -3,7 +3,7 @@ image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
 image = $(image_name):$(tag)
-mount = -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js
+mount = -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/npm-shrinkwrap.json:/usr/local/src/npm-shrinkwrap.json -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js
 .PHONY : browsersync restart rm watch
 
 # Build container
