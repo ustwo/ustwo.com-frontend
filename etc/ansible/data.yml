@@ -1,0 +1,60 @@
+---
+- hosts: ustwosite
+# - hosts: 52.18.119.52
+  vars:
+    owner: ubuntu
+    group: ubuntu
+  tasks:
+    - name: create nginx content structure
+      file:
+        path: /home/ubuntu/share/nginx/html
+        state: directory
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+    - name: copy nginx error page
+      copy:
+        src: ../../shared/nginx/html/50x.html
+        dest: /home/ubuntu/share/nginx/html/50x.html
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0644
+    - name: create nginx config structure
+      file:
+        path: /home/ubuntu/etc/nginx/conf.d
+        state: directory
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+    - name: copy main nginx config
+      copy:
+        src: ../nginx/nginx.conf
+        dest: /home/ubuntu/etc/nginx/nginx.conf
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0644
+    - name: copy staging nginx config
+      copy:
+        src: ../nginx/conf.d/staging.conf
+        dest: /home/ubuntu/etc/nginx/conf.d/staging.conf
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0644
+    - name: create nginx config structure
+      file:
+        path: /home/ubuntu/etc/nginx/ssl
+        state: directory
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+    - name: copy ssl cert
+      copy:
+        src: ../nginx/ssl/ustwo.com.chained.cert
+        dest: /home/ubuntu/etc/nginx/ssl/ustwo.com.chained.cert
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0644
+    - name: copy ssl key
+      copy:
+        src: ../nginx/ssl/ustwo.com.key
+        dest: /home/ubuntu/etc/nginx/ssl/ustwo.com.key
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0644

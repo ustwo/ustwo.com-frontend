@@ -83,3 +83,55 @@ update :
 # Check if there are updates to packages inside container
 updatecheck :
 	docker exec $(container) npm run updatecheck
+
+
+
+## Vault tasks ################################################################
+BASE_PATH ?= $$(pwd)
+VAULT_IMAGE ?= busybox
+VAULT_NAME ?= vault_staging
+vault.build :
+	docker build -t $(VAULT_IMAGE) -f $(VAULT_FILE) ./vaults
+
+vault.rm :
+	docker rm $(VAULT_NAME)
+
+vault.create :
+	docker run \
+		--name $(VAULT_NAME) \
+		-v $(BASE_PATH)/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
+		-v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro \
+		-v $(BASE_PATH)/etc/nginx/ssl:/etc/nginx/ssl:ro \
+		-v $(BASE_PATH)/share/nginx/html:/usr/share/nginx/html \
+		$(VAULT_IMAGE) echo "Be careful with me"
+
+## Proxy tasks ################################################################
+PROXY_HTTP_PORT ?= 9080
+PROXY_HTTPS_PORT ?= 9443
+PROXY_NAME ?= proxy_staging
+
+proxy.rm :
+	docker rm -f $(PROXY_NAME)
+
+proxy.create :
+	docker run -d \
+		--name $(PROXY_NAME) \
+		-p $(PROXY_HTTPS_PORT):443 \
+		--volumes-from $(VAULT_NAME) \
+		nginx
+
+# Provisioning with Ansible ###################################################
+# Better using ssh agent:
+#    $ ssh-agent bash # if not already running
+#    $ ssh-add ~/.docker/machine/machines/caretool/id_rsa
+#
+# Alternatively, an ad-hoc command can be triggered via
+#
+#    $ ansible $(docker-machine ip caretool) -a "ls -la"
+#    $ ansible $(docker-machine ip caretool) -m copy -a "src=./foo.txt dest=/home/ubuntu/foo.txt"
+#
+# Which avoids the need of configuring the host in /etc/ansible/hosts
+provision.data:
+	ansible-playbook -b -v \
+		--private-key=~/.docker/machine/machines/ustwosite/id_rsa \
+		etc/ansible/data.yml
