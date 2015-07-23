@@ -14,13 +14,11 @@ Currently used:
   * Dynamic animations: [GreenSock.js](http://greensock.com/get-started-js) + [bezier easing](https://github.com/gre/bezier-easing)
   * Routing: Express + Flux Routes
   * Scroll triggered animations: [ScrollMagic](http://janpaepke.github.io/ScrollMagic/)
+  * Data: using Flux Store to cache stuff loaded using Isomorpic-Fetch via WP API
 
 Upcoming:
 
- * Data: right now only loading some local JSON with [Fetch](https://github.com/github/fetch) promises, should move to proper Flux Store via WP API
  * Tests
-
-To update content, have a look in the `/data` folder (it's only gulpdata.json at this point though...)!
 
 Main motivation to have a SPA is to have nice between page transitions like on http://www.google.com/design/articles/ :)
 
@@ -30,47 +28,51 @@ The project is wrapped into a Docker container so the only dependencies are Dock
 
 Commands below assume OS X and preference to install binaries via Homebrew and Cask. You can of course install Docker Machine and Virtualbox in any other way you want, or what is appropriate to your environment.
 
-1. Install [Docker Machine](https://docs.docker.com/machine/#installation)
+  * Install [Docker Machine](https://docs.docker.com/machine/#installation)
 
-`$ brew install docker-machine`
+  `$ brew install docker-machine`
 
-2. Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+  * Install [Docker Engine](https://docs.docker.com/installation/binaries/)
 
-`$ brew cask install virtualbox`
+  `$ brew install docker`
 
-3. Create Docker host VM
+  * Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
-`$ make create`
+  `$ brew cask install virtualbox`
 
-4. Set up Docker environment to VM – needs to be done for every new shell session
+  * Create Docker host VM
 
-`$ eval "$(docker-machine env dev)"`
+  `$ make create`
 
-5. Build container – you can also do a `pull` instead to download a prebuilt image if you're on a fast connection
+  * Set up Docker environment to VM – needs to be done for every new shell session
 
-`$ make build`
+  `$ eval "$(docker-machine env dev)"`
 
-6. Run container – below is for a single build, can also use `watch` or `browsersync` to recompile on changes
+  * Build container – you can also do a `pull` instead to download a prebuilt image if you're on a fast connection and have a Docker Hub account added to the ustwo organisation
 
-`$ make run`
+  `$ make build`
 
-7. Open app in browser
+  * Run container – below is for a single build, can also use `watch` or `browsersync` to recompile on changes
 
-`$ make open`
+  `$ make run`
+
+  * Open app in browser
+
+  `$ make open`
 
 ## Develop
 
-1. Kick off file system watching – alternatively you can also use `browsersync` if you want automatic browser reloads
+  * Kick off file system watching – alternatively you can also use `browsersync` if you want automatic browser reloads
 
-`$ make watch`
+  `$ make watch`
 
-2. Tail Gulp's output
+  * Tail Gulp's output
 
-`$ make log`
+  `$ make log`
 
-3. In case Gulp exits with an error, restart container – or it's `restartbs` if you're using `browsersync`
+  * In case Gulp exits with an error, restart container – or it's `restartbs` if you're using `browsersync`
 
-`$ make restart`
+  `$ make restart`
 
 ## Release
 
@@ -82,6 +84,8 @@ Commands below assume OS X and preference to install binaries via Homebrew and C
 6. Pull new image – `docker pull ustwo/ustwo.com-frontend:x.x.x`
 7. Remove running image – `docker rm -f us2`
 8. Fire up new image – `docker run -d -p 127.0.0.1:7777:8888 --name us2 -e VIRTUAL_HOST=staging.ustwo.com ustwo/ustwo.com-frontend:x.x.x`
+
+TODO: make this happen just by using docker-machine targets!
 
 ## Style guide (WIP)
 
