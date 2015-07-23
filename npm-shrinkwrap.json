@@ -4558,6 +4558,11 @@
         }
       }
     },
+    "es6-promise": {
+      "version": "2.3.0",
+      "from": "es6-promise@*",
+      "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-2.3.0.tgz"
+    },
     "express": {
       "version": "4.13.1",
       "from": "express@4.13.1",
@@ -7858,6 +7863,37 @@
         }
       }
     },
+    "isomorphic-fetch": {
+      "version": "2.1.1",
+      "from": "isomorphic-fetch@*",
+      "resolved": "https://registry.npmjs.org/isomorphic-fetch/-/isomorphic-fetch-2.1.1.tgz",
+      "dependencies": {
+        "node-fetch": {
+          "version": "1.3.2",
+          "from": "node-fetch@>=1.0.1 <2.0.0",
+          "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.3.2.tgz",
+          "dependencies": {
+            "encoding": {
+              "version": "0.1.11",
+              "from": "encoding@>=0.1.11 <0.2.0",
+              "resolved": "https://registry.npmjs.org/encoding/-/encoding-0.1.11.tgz",
+              "dependencies": {
+                "iconv-lite": {
+                  "version": "0.4.11",
+                  "from": "iconv-lite@>=0.4.4 <0.5.0",
+                  "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.11.tgz"
+                }
+              }
+            }
+          }
+        },
+        "whatwg-fetch": {
+          "version": "0.8.2",
+          "from": "whatwg-fetch@>=0.8.2 <0.9.0",
+          "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-0.8.2.tgz"
+        }
+      }
+    },
     "lodash": {
       "version": "3.10.0",
       "from": "lodash@3.10.0",
@@ -9871,11 +9907,6 @@
           "resolved": "https://registry.npmjs.org/xtend/-/xtend-4.0.0.tgz"
         }
       }
-    },
-    "whatwg-fetch": {
-      "version": "0.9.0",
-      "from": "whatwg-fetch@0.9.0",
-      "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-0.9.0.tgz"
     },
     "yargs": {
       "version": "3.15.0",
