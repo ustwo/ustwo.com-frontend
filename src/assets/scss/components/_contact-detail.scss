@@ -1,11 +1,11 @@
 .contact-detail {
   padding: 0 6.25%;
-  margin: 50px 0 30px;
+  margin: 30px 0;
   overflow: auto;
 
   &__title {
-    color: $offWhite;
-    font-size: 18px;
+    color: $marshPassion;
+    font-size: 22px;
     font-family: "PxGrotesk-Regular", "Arial", sans-serif;
     text-transform: none;
   }
@@ -15,11 +15,12 @@
   }
 
   &__link {
-    border-bottom: 1px solid $offWhite;
-    margin-top: 18px;
+    border-bottom: 2px solid $mare;
+    margin-top: 15px;
     display: block;
     float: left;
     clear: left;
+    font-size: 18px;
   }
 
   @include susy-breakpoint($bp-large, $susy) {
