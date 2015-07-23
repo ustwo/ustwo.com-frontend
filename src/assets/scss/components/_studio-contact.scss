@@ -5,7 +5,7 @@
 
   .studio-title {
     font-size: 24px;
-    font-family: PxGrotesk-Regular, Arial, sans-serif;
+    font-family: $PxGroteskRegular;
     padding: 20px 6.25%;
     margin: 0;
     text-transform: capitalize;
@@ -90,10 +90,10 @@
       transition-duration: 0s;
 
       &.open {
-        &.london,
+        &.London,
         &.newyork,
-        &.malmo,
-        &.sydney {
+        &.Malmö,
+        &.Sydney {
           background-color: inherit;
           border-bottom-color: inherit;
         }
