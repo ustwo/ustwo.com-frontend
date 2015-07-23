@@ -6,3 +6,4 @@ node_modules/*
 npm-debug.log
 public/*
 !public/.gitignore
+etc/nginx/ssl
