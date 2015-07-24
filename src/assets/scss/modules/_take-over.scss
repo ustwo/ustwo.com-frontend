@@ -86,12 +86,8 @@
 
         &__link {
           border-bottom: 2px solid $mare;
-          margin-top: 5%;
-
-
-          &:first-of-type {
-            margin-left: 0;
-          }
+          display: inline-block;
+          margin: 3% auto 0;
         }
       }
 
@@ -158,14 +154,18 @@
         margin-top: 5%;
         font-size: 40px;
       }
-      &__links__link {
+      &__links {
         flex-direction: row;
-      }
-      &__image {
-        // position: absolute;
-        // bottom: 0;
-        // left: 0;
-        // width: 100%;
+        justify-content: center;
+
+        &__link {
+          margin-left: 30px;
+          margin-right: 0;
+
+          &:first-of-type {
+            margin-left: 0;
+          }
+        }
       }
     }
   }
@@ -178,15 +178,6 @@
       }
       &__title {
         font-size: 25px;
-      }
-      // &__links {
-      //   margin-left: 50px;
-      // }
-      &__image {
-        // position: absolute;
-        // bottom: 0;
-        // left: 0;
-        // width: 100%;
       }
     }
   }
