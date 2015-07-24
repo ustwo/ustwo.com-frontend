@@ -63,22 +63,6 @@
         border-bottom-color: $offWhite;
       }
     }
-    &.London {
-      background-color: $navy;
-      border-bottom-color: $navy;
-    }
-    &.newyork {
-      background-color: $ohra;
-      border-bottom-color: $ohra;
-    }
-    &.Malmö {
-      background-color: $piglet;
-      border-bottom-color: $piglet;
-    }
-    &.Sydney {
-      background-color: $rain;
-      border-bottom-color: $rain;
-    }
   }
 
   @include susy-breakpoint(650px, $susy) {
@@ -90,13 +74,8 @@
       transition-duration: 0s;
 
       &.open {
-        &.London,
-        &.newyork,
-        &.Malmö,
-        &.Sydney {
-          background-color: inherit;
-          border-bottom-color: inherit;
-        }
+        background-color: inherit;
+        border-bottom-color: inherit;
         .studio-details .map {
           border-bottom-color: #646464;
         }
