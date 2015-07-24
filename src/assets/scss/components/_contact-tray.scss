@@ -26,6 +26,8 @@
   }
   &__content {
     padding-bottom: 30px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 
   @include susy-breakpoint(650px, $susy) {
@@ -61,6 +63,13 @@
           }
         }
       }
+    }
+  }
+  @include susy-media(max-height 500px) {
+    height: 100%;
+
+    &__content {
+      height: calc(100% - 60px);
     }
   }
 }
