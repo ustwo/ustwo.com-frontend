@@ -9,7 +9,8 @@
     "watch": "gulp watch --dev",
     "update": "ncu -u && npm install",
     "updatecheck": "ncu",
-    "browsersync": "gulp watch --browsersync --dev"
+    "browsersync": "gulp watch --browsersync --dev",
+    "styleguide": "gulp watch --browsersync --styleguide --dev"
   },
   "browser": {
     "Fetch": "isomorphic-fetch/fetch-npm-browserify.js",

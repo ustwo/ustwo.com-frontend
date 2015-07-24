@@ -15,15 +15,16 @@ function readData (cb) {
 }
 
 router.get('/styleguide', (req, res) => {
-  res.render('styleguide', {
-    title: "ustwo styleguide"
-  });
+  readData(data => res.render('styleguide', {
+    title: 'ustwo styleguide',
+    data: data
+  }));
 });
 
 router.get('/*', (req, res) => {
   // const App = React.createFactory(require('../source/app.jsx'));
   readData(data => res.render('index', {
-    title: "ustwo",
+    title: 'ustwo',
     data: data
     // app: React.renderToString(App({
     //   initialUrl: req.protocol + '://' + req.hostname + req.originalUrl

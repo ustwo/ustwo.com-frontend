@@ -28,13 +28,14 @@ var mocha = require('gulp-mocha');
 var production = !argv.dev;
 
 var syncbrowser = argv.browsersync;
+var styleguide = argv.styleguide;
 
 // determine if we're doing a build
 // and if so, bypass the livereload
 var build = argv._.length ? argv._[0] === 'build' : false;
 var watch = argv._.length ? argv._[0] === 'watch' : true;
 
-gutil.log(gutil.colors.bgGreen('Flags:', 'production:', production, 'build:', build, 'watch:', watch, "syncbrowser:", syncbrowser));
+gutil.log(gutil.colors.bgGreen('Flags:', 'production:', production, 'build:', build, 'watch:', watch, "syncbrowser:", syncbrowser, "styleguide:", styleguide));
 
 if (watch) {
   var watchify = require('watchify');
@@ -174,7 +175,10 @@ var tasks = {
   // --------------------------
   reactstyleguide: function() {
     var bundler = browserify({
-      debug: !production
+      debug: !production, // Sourcemapping
+      cache: {},
+      packageCache: {},
+      fullPaths: watch && styleguide
     })
     .require(require.resolve('./src/node_modules/styleguide.js'), { entry: true })
     .transform(babelify.configure({
@@ -184,8 +188,12 @@ var tasks = {
     .external('babelify/polyfill')
     .external('react');
 
+    if (watch && styleguide) {
+      bundler = watchify(bundler, {poll: true});
+    }
+
     var rebundle = function() {
-      return bundler.bundle()
+      var result = bundler.bundle()
         .on('error', handleError('Browserify'))
         .pipe(source('styleguide.js'))
         .pipe(buffer())
@@ -193,7 +201,20 @@ var tasks = {
         .pipe(gulpif(!production, sourcemaps.init({loadMaps: true})))
         .pipe(gulpif(!production, sourcemaps.write('./')))
         .pipe(gulp.dest('public/js/'));
+
+      if(syncbrowser) {
+        return result.pipe(browserSync.reload({stream:true, once: true}));
+      }
+
+      return result;
     };
+
+    if (watch && styleguide) {
+      bundler.on('update', rebundle);
+      bundler.on('log', function (msg) {
+        gutil.log('Reactify styleguide rebundle:', msg);
+      });
+    }
 
     return rebundle();
   },
