@@ -1,5 +1,4 @@
-.header,
-.nav {
+.header {
   display: block;
   position: fixed;
   top: 0;
@@ -7,18 +6,76 @@
   left: 0;
   height: $nav-height;
   z-index: 40;
-  &.transparent-white {
-    background: transparent;
-    color: $white;
+  .nav {
+    &__logo {
+      display: block;
+      float: left;
+      margin-left: 30px;
+      overflow: hidden;
+      width: 100px;
+      height: $nav-height;
+      &__graphic {
+        width: 100px;
+        height: $nav-height;
+        fill: $nonBlack;
+      }
+    }
+    &__inner {
+      position: relative;
+      .nav__menu {
+        @extend %clearfix;
+        display: none;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
 
-    .nav__logo__graphic {
-      fill: $white;
+      .nav__underline {
+        position: absolute;
+        top: 35px;
+        width: 0px;
+        height: 2px;
+        background-color: $grey;
+        border: none;
+        opacity: 0;
+      }
+    }
+    &__overlay {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      text-align: center;
+      background-color: rgba($marshPassion, 0.95);
+      z-index: 100;
+      height: 100%;
+      &__close-button {
+        fill: $offWhite;
+      }
+      &__menu {
+        list-style: none;
+        padding: 0;
+        margin: 15px 0;
+      }
+      &.nav__overlay-open {
+        visibility: visible;
+      }
+      &.nav__overlay-closed {
+        visibility: hidden;
+      }
+    }
+    &.transparent-white {
+      background: transparent;
+      color: $white;
+
+      .nav__logo__graphic {
+        fill: $white;
+      }
     }
   }
-}
-
-.header {
-  &.takeover nav {
+  &.takeover .nav {
     .nav__logo__graphic {
       fill: $nonBlack;
     }
@@ -30,92 +87,31 @@
   }
 }
 
-.nav__logo {
-  display: block;
-  float: left;
-  margin-left: 30px;
-  overflow: hidden;
-  width: 100px;
-  height: $nav-height;
-}
-
-.nav__logo__graphic {
-  width: 100px;
-  height: $nav-height;
-  fill: $nonBlack;
-}
-
-.nav__inner {
-  position: relative;
-}
-
-.nav__menu {
-  @extend %clearfix;
-  display: none;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.nav__underline {
-  position: absolute;
-  top: 35px;
-  width: 0px;
-  height: 2px;
-  background-color: $grey;
-  border: none;
-  opacity: 0;
-}
-
-.nav__overlay {
-  display: block;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  background-color: rgba($marshPassion, 0.95);
-  z-index: 100;
-  height: 100%;
-}
-.nav__overlay__close-button {
-  fill: $offWhite;
-}
-
-.nav__overlay-open {
-  visibility: visible;
-}
-
-.nav__overlay-closed {
-  visibility: hidden;
-}
-
-.nav__overlay__menu {
-  list-style: none;
-  padding: 0;
-  margin: 15px 0;
-}
-
 @include susy-breakpoint($bp-large, $susy) {
-  .nav__open-overlay-button,
-  .nav__overlay {
-    display: none;
-  }
+  .header {
+    .nav {
+      .nav__open-overlay-button,
+      .nav__overlay {
+        display: none;
+      }
 
-  .nav__menu {
-    display: block;
-    position: static;
-    float: right;
-    margin-right: 30px;
-  }
+      &__inner {
+        .nav__menu {
+          display: block;
+          position: static;
+          float: right;
+          margin-right: 30px;
+        }
+      }
 
-  .nav__menu__item {
-    display: inline-block;
-    line-height: $nav-height;
-    margin-left: 40px;
-    &:first-child {
-      margin-left: 0;
+      .nav__menu__item {
+        display: inline-block;
+        line-height: $nav-height;
+        margin-left: 40px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
     }
   }
 }
