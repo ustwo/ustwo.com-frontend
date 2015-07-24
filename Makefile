@@ -3,7 +3,7 @@ image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
 image = $(image_name):$(tag)
-mount = -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/npm-shrinkwrap.json:/usr/local/src/npm-shrinkwrap.json -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js
+mount = -v $$(pwd)/node_modules:/usr/local/src/node_modules -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/npm-shrinkwrap.json:/usr/local/src/npm-shrinkwrap.json -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js
 .PHONY : browsersync restart rm styleguide watch
 
 # Build container
@@ -82,6 +82,10 @@ start :
 # Stop container
 stop :
 	docker stop $(container)
+
+# Update packages inside container
+install :
+	docker run -p 8888:8888 --name $(container) $(mount) $(image) npm install
 
 # Update packages inside container
 update :
