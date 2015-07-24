@@ -4,7 +4,7 @@ container ?= us2
 vm ?= dev
 image = $(image_name):$(tag)
 mount = -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/npm-shrinkwrap.json:/usr/local/src/npm-shrinkwrap.json -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js
-.PHONY : browsersync restart rm watch
+.PHONY : browsersync restart rm styleguide watch
 
 # Build container
 build :
@@ -41,8 +41,11 @@ push :
 # Restart container
 restart : rm watch
 
-# Restart container
+# Restart container with browsersync
 restartbs : rm browsersync
+
+# Restart container with styleguide
+restartsg : rm styleguide
 
 # Remove container
 rm :
@@ -51,6 +54,10 @@ rm :
 # Run container
 run :
 	docker run -d -p 8888:8888 --name $(container) $(mount) $(image) npm run dev
+
+# Run container with watcher (including styleguide) and browsersync
+styleguide :
+	docker run -d -p 8888:8888 -p 3001:3001 --name $(container) $(mount) $(image) npm run styleguide
 
 # Run container with watcher
 watch :

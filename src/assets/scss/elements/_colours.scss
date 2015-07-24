@@ -49,19 +49,6 @@ $colours: (
   'lightGrey'         $lightGrey   ,
 );
 
-$categories: (
-  'ux'            $pot,
-  'development'   $ohra,
-  'culture'       $honey,
-  'design'        $jeezz,
-  'process'       $mare,
-  'business'      $blu,
-
-  'malmo'         $ohra,
-  'london'        $mare,
-  'new-york'      $piglet,
-);
-
 @each $colour in $colours {
   $name: nth($colour, 1);
   $hex:  unquote(nth($colour, 2));

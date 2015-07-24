@@ -5,7 +5,7 @@
 
   .studio-title {
     font-size: 24px;
-    font-family: PxGrotesk-Regular, Arial, sans-serif;
+    font-family: $PxGroteskRegular;
     padding: 20px 6.25%;
     margin: 0;
     text-transform: capitalize;
@@ -63,22 +63,6 @@
         border-bottom-color: $offWhite;
       }
     }
-    &.london {
-      background-color: $navy;
-      border-bottom-color: $navy;
-    }
-    &.newyork {
-      background-color: $ohra;
-      border-bottom-color: $ohra;
-    }
-    &.malmo {
-      background-color: $piglet;
-      border-bottom-color: $piglet;
-    }
-    &.sydney {
-      background-color: $rain;
-      border-bottom-color: $rain;
-    }
   }
 
   @include susy-breakpoint(650px, $susy) {
@@ -90,13 +74,8 @@
       transition-duration: 0s;
 
       &.open {
-        &.london,
-        &.newyork,
-        &.malmo,
-        &.sydney {
-          background-color: inherit;
-          border-bottom-color: inherit;
-        }
+        background-color: inherit;
+        border-bottom-color: inherit;
         .studio-details .map {
           border-bottom-color: #646464;
         }
