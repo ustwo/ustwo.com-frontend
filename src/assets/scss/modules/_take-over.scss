@@ -83,11 +83,16 @@
       &__links {
         display: flex;
         flex-direction: column;
+        list-style: none;
+        padding: 0;
 
-        &__link {
-          border-bottom: 2px solid $mare;
-          display: inline-block;
-          margin: 3% auto 0;
+        &__link-item {
+          margin-top: 3%;
+          text-align: center;
+
+          &__link {
+            border-bottom: 2px solid $mare;
+          }
         }
       }
 
@@ -158,7 +163,7 @@
         flex-direction: row;
         justify-content: center;
 
-        &__link {
+        &__link-item {
           margin-left: 30px;
           margin-right: 0;
 
@@ -173,8 +178,11 @@
     &__content__message {
       &__title,
       &__description,
-      &__links__link {
+      &__links__link-item {
         margin-top: 2%;
+      }
+      &__links {
+        margin: 0 0 20px;
       }
       &__title {
         font-size: 25px;
