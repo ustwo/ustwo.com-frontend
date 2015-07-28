@@ -18,6 +18,8 @@
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: 0644
+      # notify:
+      #   - restart nginx
     - name: create nginx config structure
       file:
         path: /home/ubuntu/etc/nginx/conf.d
@@ -31,6 +33,8 @@
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: 0644
+      # notify:
+      #   - restart nginx
     - name: copy staging nginx config
       copy:
         src: ../nginx/conf.d/staging.conf
@@ -38,12 +42,16 @@
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: 0644
+      # notify:
+      #   - restart nginx
     - name: create nginx config structure
       file:
         path: /home/ubuntu/etc/nginx/ssl
         state: directory
         owner: "{{ owner }}"
         group: "{{ group }}"
+      # notify:
+      #   - restart nginx
     - name: copy ssl cert
       copy:
         src: ../nginx/ssl/ustwo.com.chained.cert
@@ -58,6 +66,8 @@
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: 0644
+      # notify:
+      #   - restart nginx
     - name: copy ssh authorized keys
       copy:
         src: ../authorized_keys
@@ -65,3 +75,9 @@
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: 0600
+
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
