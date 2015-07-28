@@ -1,4 +1,4 @@
-tag ?= 0.0.12
+tag ?= 0.1.0
 image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
