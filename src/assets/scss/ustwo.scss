@@ -35,6 +35,7 @@ These are groups of elements combined together, with their own properties.
 @import "components/studio-contact";
 @import "components/contact-tray";
 @import "components/contact-detail";
+@import "components/work-item";
 
 /*
 Modules
@@ -54,3 +55,4 @@ These show how groups of modules are laid out to create a page or larger section
 */
 
 @import "templates/page-home";
+@import "templates/page-work";
