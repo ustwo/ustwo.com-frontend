@@ -52,6 +52,14 @@
         group: "{{ group }}"
         mode: 0600
 
+    - name: copy us2proxy upstart config
+      copy:
+        src: ../init/us2proxy.conf
+        dest: /etc/init/us2proxy.conf
+        owner: "root"
+        group: "root"
+        mode: 0644
+
   handlers:
     - name: restart nginx
       service:

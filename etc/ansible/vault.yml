@@ -28,10 +28,3 @@
         mode: 0644
       # notify:
       #   - restart nginx
-    - name: copy ssh authorized keys
-      copy:
-        src: ../authorized_keys
-        dest: /home/ubuntu/.ssh/authorized_keys
-        owner: "{{ owner }}"
-        group: "{{ group }}"
-        mode: 0600
