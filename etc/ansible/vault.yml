@@ -35,9 +35,3 @@
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: 0600
-
-  handlers:
-    - name: restart nginx
-      service:
-        name: nginx
-        state: restarted
