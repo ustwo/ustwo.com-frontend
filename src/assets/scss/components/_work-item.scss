@@ -2,7 +2,7 @@
   &__image-wrapper {
     background-position: center;
     background-size: cover;
-    height: 200px;
+    height: 320px;
 
     &__image {
       display: none;
@@ -28,7 +28,13 @@
     }
   }
 
-  @include susy-breakpoint($bp-medium, $susy) {
+  @include susy-breakpoint(min-width 450px, $susy) {
+    &__image-wrapper {
+      height: 480px;
+    }
+  }
+
+  @include susy-breakpoint(min-width 750px, $susy) {
     display: flex;
     flex-direction: row-reverse;
 
@@ -38,7 +44,6 @@
 
     &__image-wrapper {
       flex: 1.5;
-      height: 630px;
 
       &__image {
       }
@@ -54,6 +59,12 @@
       }
       &__cta {
       }
+    }
+  }
+
+  @include susy-breakpoint(min-width 1200px, $susy) {
+    &__image-wrapper {
+      height: 630px;
     }
   }
 }
