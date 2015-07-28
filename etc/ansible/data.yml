@@ -44,30 +44,6 @@
         mode: 0644
       # notify:
       #   - restart nginx
-    - name: create nginx config structure
-      file:
-        path: /home/ubuntu/etc/nginx/ssl
-        state: directory
-        owner: "{{ owner }}"
-        group: "{{ group }}"
-      # notify:
-      #   - restart nginx
-    - name: copy ssl cert
-      copy:
-        src: ../nginx/ssl/ustwo.com.chained.cert
-        dest: /home/ubuntu/etc/nginx/ssl/ustwo.com.chained.cert
-        owner: "{{ owner }}"
-        group: "{{ group }}"
-        mode: 0644
-    - name: copy ssl key
-      copy:
-        src: ../nginx/ssl/ustwo.com.key
-        dest: /home/ubuntu/etc/nginx/ssl/ustwo.com.key
-        owner: "{{ owner }}"
-        group: "{{ group }}"
-        mode: 0644
-      # notify:
-      #   - restart nginx
     - name: copy ssh authorized keys
       copy:
         src: ../authorized_keys

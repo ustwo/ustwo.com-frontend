@@ -149,3 +149,10 @@ provision.data:
 	ansible-playbook -b -v \
 		--private-key=~/.docker/machine/machines/ustwosite/id_rsa \
 		etc/ansible/data.yml
+
+# *WARNING* This task requires files that are intentionally left out the git
+# repository.  If you need to run it ask #devops.
+provision.vault:
+	ansible-playbook -b -v \
+		--private-key=~/.docker/machine/machines/ustwosite/id_rsa \
+		etc/ansible/vault.yml
