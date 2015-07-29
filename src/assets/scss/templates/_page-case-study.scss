@@ -55,8 +55,21 @@
     }
   }
   &__quote-block {
-    padding: 80px 6.25%;
+    padding: 140px 6.25% 80px;
 
+    &__quote-mark {
+      max-width: 680px;
+      margin: 0 auto;
+      transform: translate(-50px, -80px);
+
+      &__quote {
+        fill: #fff;
+        height: 140px;
+        width: 193px;
+        position: absolute;
+        z-index: 1;
+      }
+    }
     &__quote {
       color: $offWhite;
       text-align: left;
@@ -64,12 +77,8 @@
       max-width: 680px;
       margin: 0 auto;
       line-height: 1.3em;
-
-      &::before {
-        content: '"';
-        font-size: 100px;
-        color: $offWhite;
-      }
+      position: relative;
+      z-index: 2;
     }
     &__source {
       font-size: 16px;
