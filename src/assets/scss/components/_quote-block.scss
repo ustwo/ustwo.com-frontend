@@ -1,23 +1,24 @@
 .quote-block {
-  padding: 140px 6.25% 80px;
+  padding: 90px 6.25% 50px;
 
   &__quote-mark {
     max-width: 680px;
     margin: 0 auto;
-    transform: translate(-50px, -80px);
+    transform: translate(-10px, -90px);
 
     &__quote {
-      fill: #fff;
+      fill: $offWhite;
       height: 140px;
-      width: 193px;
+      width: 120px;
       position: absolute;
       z-index: 1;
+      opacity: 0.3;
     }
   }
   &__quote {
     color: $offWhite;
     text-align: left;
-    font-size: 50px;
+    font-size: 30px;
     max-width: 680px;
     margin: 0 auto;
     line-height: 1.3em;
@@ -35,5 +36,23 @@
     &__date {
       font-family: $PxGroteskRegular;
     }
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    padding: 140px 6.25% 80px;
+
+    &__quote-mark {
+      transform: translate(-50px, -80px);
+
+      &__quote {
+        width: 193px;
+      }
+    }
+    &__quote {
+      font-size: 50px;
+    }
+  }
+  @include susy-breakpoint($bp-large, $susy) {
+
   }
 }
