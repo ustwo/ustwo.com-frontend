@@ -1,5 +1,11 @@
 .page-case-study {
 
+  a {
+    font-family: $PxGroteskBold;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+  }
+
   &__intro {
     padding: 168px 6.25% 100px;
     display: flex;
