@@ -26,27 +26,9 @@
       margin-right: auto;
     }
   }
-  &__full-image {
-    height: 320px;
-    background-position: center;
-    background-size: cover;
 
-    &__image {
-      display: none;
-    }
-  }
+  @include susy-breakpoint($bp-medium, $susy) {
 
-  @include susy-breakpoint(min-width 570px, $susy) {
-    &__full-image {
-      height: auto;
-      background-image: none;
-
-      &__image {
-        display: block;
-        height: auto;
-        width: 100%;
-      }
-    }
   }
   @include susy-breakpoint($bp-large, $susy) {
 

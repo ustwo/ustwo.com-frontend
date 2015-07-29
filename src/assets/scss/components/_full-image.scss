@@ -1,0 +1,20 @@
+.full-image {
+  height: 320px;
+  background-position: center;
+  background-size: cover;
+
+  &__image {
+    display: none;
+  }
+
+  @include susy-breakpoint(min-width 570px, $susy) {
+    height: auto;
+    background-image: none;
+
+    &__image {
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+  }
+}
