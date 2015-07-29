@@ -1,0 +1,21 @@
+.single-column {
+  padding: 50px 6.25%;
+
+  &__content {
+    max-width: 680px;
+    margin: 0 auto;
+
+    &__heading {
+      color: $marshPassion;
+      text-align: center;
+    }
+    &__rule {
+      border: 2px solid $mare;
+      width: 120px;
+      margin: 30px auto;
+    }
+    &__para {
+      text-align: left;
+    }
+  }
+}

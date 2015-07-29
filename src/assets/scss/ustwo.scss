@@ -36,6 +36,9 @@ These are groups of elements combined together, with their own properties.
 @import "components/contact-tray";
 @import "components/contact-detail";
 @import "components/work-item";
+@import "components/single-column";
+@import "components/quote-block";
+@import "components/full-image";
 
 /*
 Modules
@@ -56,3 +59,4 @@ These show how groups of modules are laid out to create a page or larger section
 
 @import "templates/page-home";
 @import "templates/page-work";
+@import "templates/page-case-study";

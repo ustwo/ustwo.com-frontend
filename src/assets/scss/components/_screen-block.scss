@@ -11,3 +11,7 @@
     display: block;
   }
 }
+
+.iPhone .screen-block {
+  min-height: calc(90vh - 69px);
+}

@@ -50,6 +50,7 @@
     "lodash": "3.10.0",
     "normalize-libsass": "1.0.3",
     "npm-check-updates": "2.0.0-alpha.15",
+    "pluralize": "1.1.2",
     "react": "0.13.3",
     "react-style-guide": "1.1.5",
     "react-transition-manager": "1.2.2",

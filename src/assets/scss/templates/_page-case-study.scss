@@ -1,0 +1,44 @@
+.page-case-study {
+
+  a {
+    font-family: $PxGroteskBold;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+  }
+
+  &__intro {
+    padding: 168px 6.25% 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__title {
+      color: $marshPassion;
+      text-align: center;
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    &__rule {
+      border: 2px solid $mare;
+      width: 120px;
+      margin: 30px auto;
+    }
+    &__para {
+      text-align: center;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+
+  }
+  @include susy-breakpoint($bp-large, $susy) {
+
+  }
+}
+.iPhone .page-case-study__intro {
+  min-height: calc(100vh - 69px);
+}
