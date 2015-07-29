@@ -35,25 +35,6 @@
       display: none;
     }
   }
-  &__single-column {
-    padding: 50px 6.25%;
-
-    &__heading {
-      color: $marshPassion;
-      text-align: center;
-    }
-    &__rule {
-      border: 2px solid $mare;
-      width: 120px;
-      margin: 30px auto;
-    }
-    &__para {
-      text-align: left;
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
   &__quote-block {
     padding: 140px 6.25% 80px;
 
