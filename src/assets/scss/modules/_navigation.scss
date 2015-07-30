@@ -85,6 +85,11 @@
       display: none;
     }
   }
+  &.case-study {
+    .nav__logo__graphic {
+      fill: $nonBlack;
+    }
+  }
 }
 
 @include susy-breakpoint($bp-large, $susy) {
