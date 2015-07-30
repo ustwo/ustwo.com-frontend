@@ -1,4 +1,4 @@
-tag ?= 0.1.1
+tag ?= 0.1.2
 image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
@@ -69,7 +69,7 @@ staging :
 
 # Run prod container
 prod :
-	docker run -d -p 0.0.0.0:80:8888 --name $(container) $(image)
+	docker run -d --name $(container)staging $(image)
 
 # Open container shell
 ssh :
@@ -117,8 +117,8 @@ vault.create :
 		$(VAULT_IMAGE) echo "Be careful with me"
 
 ## Proxy tasks ################################################################
-PROXY_HTTP_PORT ?= 9080
-PROXY_HTTPS_PORT ?= 9443
+PROXY_HTTP_PORT ?= 80
+PROXY_HTTPS_PORT ?= 443
 PROXY_NAME ?= proxy_staging
 PROXY_LINK ?= us2staging
 
