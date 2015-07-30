@@ -80,5 +80,6 @@
   transform: translateY(0%);
 }
 .hide > .contact-tray {
+  transition-timing-function: ease-in;
   transform: translateY(100%);
 }

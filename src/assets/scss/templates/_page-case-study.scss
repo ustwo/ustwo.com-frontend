@@ -7,7 +7,7 @@
   }
 
   &__intro {
-    padding: 168px 6.25% 100px;
+    padding: 118px 6.25% 55px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,13 +32,12 @@
     }
   }
 
-  @include susy-breakpoint($bp-medium, $susy) {
-
+  @include susy-breakpoint($bp-small, $susy) {
+    &__intro {
+      padding: 168px 6.25% 100px;
+    }
   }
   @include susy-breakpoint($bp-large, $susy) {
 
   }
-}
-.iPhone .page-case-study__intro {
-  min-height: calc(100vh - 69px);
 }

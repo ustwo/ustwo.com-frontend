@@ -16,6 +16,19 @@
     &__image {
       display: none;
     }
+    &__down-chevron {
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+
+      svg {
+        width: 100px;
+        height: 50px;
+      }
+    }
   }
   &__intro {
     padding: 50px 6.25%;

@@ -30,34 +30,9 @@
   },
   "pages": [
     {
-      "title": "Stuff we make",
-      "url": "/work",
+      "title": "What we do",
+      "url": "/what-we-do",
       "colour": "marshPassion"
-    },
-    {
-      "title": "Approach",
-      "url": "/approach",
-      "colour": "blu"
-    },
-    {
-      "title": "Studios",
-      "url": "/studios",
-      "colour": "honey"
-    },
-    {
-      "title": "Learn + Share",
-      "url": "/learn-share",
-      "colour": "rain"
-    },
-    {
-      "title": "Blog",
-      "url": "/blog",
-      "colour": "jeezz"
-    },
-    {
-      "title": "Join us",
-      "url": "/join-us",
-      "colour": "mare"
     }
   ]
 }

@@ -1,8 +1,9 @@
 .work-item {
-  &__image-wrapper {
+  &__image-link {
     background-position: center;
     background-size: cover;
     height: 320px;
+    display: block;
 
     &__image {
       display: none;
@@ -29,7 +30,7 @@
   }
 
   @include susy-breakpoint(min-width 450px, $susy) {
-    &__image-wrapper {
+    &__image-link {
       height: 480px;
     }
   }
@@ -42,7 +43,7 @@
       flex-direction: row;
     }
 
-    &__image-wrapper {
+    &__image-link {
       flex: 1.5;
 
       &__image {
@@ -63,7 +64,7 @@
   }
 
   @include susy-breakpoint(min-width 1200px, $susy) {
-    &__image-wrapper {
+    &__image-link {
       height: 630px;
     }
   }

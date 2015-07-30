@@ -43,6 +43,7 @@
     &__header-vertical-centerer {
       @include vertically-centering-parent(80vh);
       width: 100%;
+      margin-top: 5vh;
       &__bold-header {
         @include vertically-centred-element;
         position: relative;
