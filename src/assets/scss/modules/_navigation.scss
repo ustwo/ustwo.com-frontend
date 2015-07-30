@@ -86,7 +86,8 @@
     }
   }
   &.case-study {
-    .nav__logo__graphic {
+    .nav__logo__graphic,
+    .nav__logo__graphic.transparent-white {
       fill: $nonBlack;
     }
   }
