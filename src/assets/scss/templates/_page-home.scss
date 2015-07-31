@@ -275,6 +275,13 @@
             width: 125%;
             margin: 0 -10%;
           }
+          &__dice-logo {
+            @extend %svg-shape;
+            top: -10%;
+            left: 57%;
+            width: 32%;
+            height: 32%;
+          }
         }
       }
     }
