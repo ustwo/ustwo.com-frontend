@@ -74,8 +74,8 @@
       transition-duration: 0s;
 
       &.open {
-        background-color: inherit;
-        border-bottom-color: inherit;
+        background-color: transparent !important;
+        border-bottom-color: transparent !important;
         .studio-details .map {
           border-bottom-color: #646464;
         }
