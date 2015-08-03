@@ -4,8 +4,12 @@
   top: 0;
   right: 0;
   bottom: 0;
-  padding-right: 20px;
   fill: $nonBlack;
+  width: 68px;
+
+  svg {
+    width: 40px;
+  }
 }
 
 .transparent-white {

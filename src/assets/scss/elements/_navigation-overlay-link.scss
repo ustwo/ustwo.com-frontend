@@ -1,5 +1,12 @@
 .nav__overlay__menu__item {
-  color: $white;
+  color: $nonBlack;
   font-size: 24px;
   line-height: 2.5em;
+
+  .nav__overlay__menu__item__link {
+    @extend .h3;
+  }
+  &.selected .nav__overlay__menu__item__link {
+    border-bottom: 4px solid $nonBlack;
+  }
 }
