@@ -1,6 +1,7 @@
 .page-work {
 
   &__hero {
+    height: 100vh; // This is for IE as content doesn't center
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -19,6 +20,7 @@
     &__down-chevron {
       position: absolute;
       bottom: 40px;
+      left: 0;
       width: 100%;
       height: 50px;
       display: flex;
