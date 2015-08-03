@@ -43,11 +43,12 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     &__message {
       flex: 2;
       max-width: 700px;
-      margin: 0 auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -107,6 +108,7 @@
       }
     }
     &__image {
+      width: 100%;
       flex: 1;
       background: url('/images/home/moodnotes_takeover_image.png');
       background-repeat: no-repeat;
