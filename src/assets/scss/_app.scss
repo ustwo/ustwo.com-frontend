@@ -1,14 +1,3 @@
-html,
-body,
-#pageContent,
-.app,
-.app__stage,
-.app__stage__page-container {
-  height: 100%;
-  width: 100%;
-}
-
-
 .app {
 
   .nav-wrapper {
@@ -30,29 +19,6 @@ body,
       left: 0;
       height: 100%;
       width: 100%;
-
-      &.add {
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-
-        &.show {
-          opacity: 1;
-        }
-        &.hide {
-          opacity: 0;
-        }
-      }
-    }
-  }
-  &__stage {
-
-    &__page-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
 
       &.add {
         opacity: 0;
