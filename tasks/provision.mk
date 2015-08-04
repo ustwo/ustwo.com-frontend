@@ -1,6 +1,10 @@
 # Provisioning with Ansible ###################################################
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
-ANSIBLE.c = ansible-playbook -b -v --private-key=$(IDENTITY_FILE)
+ANSIBLE_INVENTORY ?= /etc/ansible/hosts
+ANSIBLE.c = ansible-playbook -b -v \
+	--private-key=$(IDENTITY_FILE) \
+	--inventory-file=$(ANSIBLE_INVENTORY)
+
 #
 # Better using ssh agent:
 #    $ ssh-agent bash # if not already running
