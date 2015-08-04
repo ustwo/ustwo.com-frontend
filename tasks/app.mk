@@ -11,16 +11,25 @@ ifeq ($(TIER), dev)
     -v $(BASE_PATH)/node_modules:/usr/local/src/node_modules \
     -v $(BASE_PATH)/package.json:/usr/local/src/package.json \
     -v $(BASE_PATH)/src:/usr/local/src/src
+  app_cmd = npm run dev
 endif
 
 app-rm:
 	docker rm -f $(app_name)
 
 app-create:
+	@echo \
 	docker run -d \
 		--name $(app_name) \
 		$(app_volumes) \
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
 		--label version=$(app_version) \
-		$(app_image)
+		$(app_image) \
+		$(app_cmd)
+
+app-log:
+	docker logs -f $(app_name)
+
+app-sh:
+	docker exec -it $(app_name) /bin/bash
