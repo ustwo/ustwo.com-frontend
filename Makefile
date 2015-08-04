@@ -63,6 +63,10 @@ styleguide :
 watch :
 	docker run -d -p 8888:8888 --name $(container) $(mount) $(image) npm run watch
 
+# Run container with css only compile
+css :
+	docker exec $(container) npm run css
+
 # Run staging container
 staging :
 	docker run -d --name us2staging $(image)

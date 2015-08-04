@@ -7,6 +7,7 @@
     "start": "babel-node src/server",
     "dev": "gulp start --dev",
     "watch": "gulp watch --dev",
+    "css": "gulp css --dev",
     "update": "ncu -u && npm install",
     "updatecheck": "ncu",
     "browsersync": "gulp watch --browsersync --dev",

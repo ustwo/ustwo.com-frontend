@@ -336,4 +336,18 @@ gulp.task('watch', ['start'], function() {
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
 
+
+// --------------------------
+// CSS ONLY WATCH TASK
+// --------------------------
+gulp.task('css', function() {
+
+  // --------------------------
+  // watch:sass
+  // --------------------------
+  gulp.watch(['src/assets/scss/**/*.scss'], ['reload-sass']);
+
+  gutil.log(gutil.colors.bgGreen('Watching for changes...'));
+});
+
 gulp.task('default', ['start']);
