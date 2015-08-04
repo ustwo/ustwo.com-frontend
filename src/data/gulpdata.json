@@ -34,6 +34,12 @@
       "title": "What we do",
       "url": "/what-we-do",
       "colour": "marshPassion"
+    },
+    {
+      "id": "blog",
+      "title": "Blog",
+      "url": "/blog",
+      "colour": "marshPassion"
     }
   ],
   "work": [{

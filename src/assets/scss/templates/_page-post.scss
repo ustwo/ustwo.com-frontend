@@ -1,0 +1,113 @@
+.page-post {
+  .hero-image {
+    background-size: cover;
+    height: 620px;
+
+    img {
+      display: none;
+    }
+  }
+  .content-container {
+    background: #fff;
+    margin: -175px auto 0;
+    padding: 70px 50px 50px;
+    position: relative;
+
+    .title,
+    .excerpt,
+    .meta,
+    .rule,
+    .content,
+    .author {
+      margin: 0 auto;
+      max-width: 676px;
+    }
+    .title,
+    .excerpt,
+    .meta,
+    .rule,
+    .author {
+      text-align: center;
+    }
+
+    .title {
+      font-size: 40px;
+    }
+    .excerpt {
+      font-size: 30px;
+      font-family: $PxGroteskBold;
+      max-width: 450px;
+
+      p {
+        margin-top: 10px;
+      }
+    }
+    .meta {
+      color: #646464;
+      font-size: 18px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+
+      .date {
+        color: #969696;
+      }
+    }
+    .rule {
+      border: 2px solid $pot;
+      width: 184px;
+      margin-bottom: 50px;
+    }
+    .content {
+      margin-bottom: 50px;
+
+      p {
+        font-size: 20px;
+
+        &:first-child {
+          font-family: $PxGroteskBold;
+          font-size: 26px;
+        }
+      }
+      a {
+        font-family: $PxGroteskBold;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+      }
+    }
+    .author {
+      .mugshot {
+        width: 90px;
+        height: 90px;
+        border-radius: 45px;
+        margin-bottom: 20px;
+      }
+      .title {
+        font-family: $PxGroteskBold;
+        font-size: 20px;
+      }
+      .links {
+        list-style: none;
+        margin: 30px 0;
+        padding: 0;
+
+        .link a {
+          border-bottom: 2px solid $pot;
+          font-family: $PxGroteskBold;
+        }
+      }
+    }
+  }
+  @include susy-breakpoint($bp-medium, $susy) {
+    .content-container {
+      margin-left: 80px;
+      margin-right: 80px;
+    }
+  }
+  @include susy-breakpoint($bp-huge, $susy) {
+    .content-container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
