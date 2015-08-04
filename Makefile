@@ -3,7 +3,7 @@ image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
 image = $(image_name):$(tag)
-mount = -v $$(pwd)/node_modules:/usr/local/src/node_modules -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js
+mount = -v $$(pwd)/node_modules:/usr/local/src/node_modules -v $$(pwd)/src:/usr/local/src/src -v $$(pwd)/npm-shrinkwrap.json:/usr/local/src/npm-shrinkwrap.json -v $$(pwd)/package.json:/usr/local/src/package.json -v $$(pwd)/gulpfile.js:/usr/local/src/gulpfile.js
 .PHONY : browsersync restart rm styleguide watch
 
 # Build container
@@ -73,7 +73,7 @@ staging :
 
 # Run prod container
 prod :
-	docker run -d --name $(container)staging $(image)
+	docker run -d -p 0.0.0.0:80:8888 --name $(container) $(image)
 
 # Open container shell
 ssh :
@@ -99,64 +99,6 @@ update :
 updatecheck :
 	docker exec $(container) npm run updatecheck
 
-
-
-## Vault tasks ################################################################
-BASE_PATH ?= $$(pwd)
-VAULT_IMAGE ?= busybox
-VAULT_NAME ?= vault_staging
-vault.build :
-	docker build -t $(VAULT_IMAGE) -f $(VAULT_FILE) ./vaults
-
-vault.rm :
-	docker rm $(VAULT_NAME)
-
-vault.create :
-	docker run \
-		--name $(VAULT_NAME) \
-		-v $(BASE_PATH)/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
-		-v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro \
-		-v $(BASE_PATH)/etc/nginx/ssl:/etc/nginx/ssl:ro \
-		-v $(BASE_PATH)/share/nginx/html:/usr/share/nginx/html \
-		$(VAULT_IMAGE) echo "Be careful with me"
-
-## Proxy tasks ################################################################
-PROXY_HTTP_PORT ?= 80
-PROXY_HTTPS_PORT ?= 443
-PROXY_NAME ?= proxy_staging
-PROXY_LINK ?= us2staging
-
-proxy.rm :
-	docker rm -f $(PROXY_NAME)
-
-proxy.create :
-	docker run -d \
-		--name $(PROXY_NAME) \
-		-p $(PROXY_HTTPS_PORT):443 \
-		-p $(PROXY_HTTP_PORT):80 \
-		--link $(PROXY_LINK) \
-		--volumes-from $(VAULT_NAME) \
-		nginx
-
-# Provisioning with Ansible ###################################################
-# Better using ssh agent:
-#    $ ssh-agent bash # if not already running
-#    $ ssh-add ~/.docker/machine/machines/caretool/id_rsa
-#
-# Alternatively, an ad-hoc command can be triggered via
-#
-#    $ ansible $(docker-machine ip caretool) -a "ls -la"
-#    $ ansible $(docker-machine ip caretool) -m copy -a "src=./foo.txt dest=/home/ubuntu/foo.txt"
-#
-# Which avoids the need of configuring the host in /etc/ansible/hosts
-provision.data:
-	ansible-playbook -b -v \
-		--private-key=~/.docker/machine/machines/ustwosite/id_rsa \
-		etc/ansible/data.yml
-
-# *WARNING* This task requires files that are intentionally left out the git
-# repository.  If you need to run it ask #devops.
-provision.vault:
-	ansible-playbook -b -v \
-		--private-key=~/.docker/machine/machines/ustwosite/id_rsa \
-		etc/ansible/vault.yml
+include tasks/provision.mk
+include tasks/proxy.mk
+include tasks/vault.mk
