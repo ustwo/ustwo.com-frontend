@@ -118,7 +118,8 @@ var tasks = {
       debug: !production // Sourcemapping
     })
     .require('babelify/polyfill')
-    .require('react');
+    .require('react')
+    .require('svg4everybody');
 
     var bundler = browserify({
       debug: !production, // Sourcemapping
@@ -132,7 +133,8 @@ var tasks = {
     }))
     .transform(reactify, {"es6": true})
     .external('babelify/polyfill')
-    .external('react');
+    .external('react')
+    .external('svg4everybody');
 
     if (watch) {
       bundler = watchify(bundler, {poll: true});
@@ -305,7 +307,7 @@ gulp.task('build', [
   'assets',
   'sass',
   'reactify',
-  'reactstyleguide',
+  // 'reactstyleguide',
   'data'
 ]);
 
