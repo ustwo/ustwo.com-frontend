@@ -13,7 +13,6 @@ ifeq ($(TIER), dev)
     -v $(BASE_PATH)/src:/usr/local/src/src
 endif
 
-
 app-rm:
 	docker rm -f $(app_name)
 

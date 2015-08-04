@@ -13,6 +13,14 @@ mount = -v $(BASE_PATH)/node_modules:/usr/local/src/node_modules \
 build :
 	docker build -t $(image) .
 
+# Pull container from hub
+pull :
+	docker pull $(image)
+
+# Push container to hub
+push :
+	docker push $(image)
+
 # Run container with watcher and browsersync
 browsersync :
 	docker run -d -p 8888:8888 -p 3001:3001 --name $(container) $(mount) $(image) npm run browsersync
@@ -32,14 +40,6 @@ log :
 # Open app in browser
 open :
 	open http://$$(docker-machine ip $(vm)):8888
-
-# Pull container from hub
-pull :
-	docker pull $(image)
-
-# Push container to hub
-push :
-	docker push $(image)
 
 # Restart container
 restart : rm watch
