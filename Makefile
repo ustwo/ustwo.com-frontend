@@ -1,4 +1,4 @@
-tag ?= 0.2.0
+tag ?= 0.2.1
 image_name ?= ustwo/ustwo.com-frontend
 container ?= us2
 vm ?= dev
@@ -65,7 +65,7 @@ watch :
 
 # Run staging container
 staging :
-	docker run -d -p 127.0.0.1:7777:8888 --name $(container) -e VIRTUAL_HOST=staging.ustwo.com $(image)
+	docker run -d --name us2staging $(image)
 
 # Run prod container
 prod :
