@@ -4,7 +4,6 @@ vm = dev
 image = $(image_name):$(TAG)
 mount = -v $(BASE_PATH)/node_modules:/usr/local/src/node_modules \
 	-v $(BASE_PATH)/src:/usr/local/src/src \
-	-v $(BASE_PATH)/npm-shrinkwrap.json:/usr/local/src/npm-shrinkwrap.json \
 	-v $(BASE_PATH)/package.json:/usr/local/src/package.json \
 	-v $(BASE_PATH)/gulpfile.js:/usr/local/src/gulpfile.js
 

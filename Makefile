@@ -1,14 +1,15 @@
-TIER ?= staging
-BASE_PATH ?= $$(pwd)
-TAG ?= 0.2.1
+TIER := staging
+BASE_PATH := $(PWD)
+TAG := 0.2.1
 
-project_name = ustwosite
+project_name := ustwosite
 
 include tasks/app.mk
 include tasks/build.mk
 include tasks/provision.mk
 include tasks/proxy.mk
 include tasks/vault.mk
+
 
 all: vault-create app-create proxy-create
 all-rm: vault-rm app-rm proxy-rm
