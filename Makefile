@@ -89,7 +89,7 @@ stop :
 
 # Update packages inside container
 install :
-	docker run -p 8888:8888 --name $(container) $(base_mount) $(image) npm install
+	docker run -p 8888:8888 --name $(container) $(mount) $(image) npm install
 
 # Update packages inside container
 update :
