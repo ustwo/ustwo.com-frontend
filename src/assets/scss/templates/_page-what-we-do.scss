@@ -1,37 +1,5 @@
 .page-work {
 
-  &__hero {
-    height: 100vh; // This is for IE as content doesn't center
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-position: center;
-    background-size: cover;
-
-    &__title {
-      text-align: center;
-      color: $offWhite;
-    }
-    &__image {
-      display: none;
-    }
-    &__down-chevron {
-      position: absolute;
-      bottom: 40px;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      display: flex;
-      justify-content: center;
-
-      svg {
-        width: 100px;
-        height: 50px;
-      }
-    }
-  }
   &__intro {
     padding: 50px 6.25%;
 
