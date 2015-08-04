@@ -1,7 +1,5 @@
 ## Vault tasks ################################################################
-BASE_PATH ?= $$(pwd)
-VAULT_IMAGE ?= busybox
-VAULT_NAME ?= vault_staging
+VAULT_NAME = $(PROJECT_NAME)_$(TIER)_vault
 
 vault-rm:
 	docker rm $(VAULT_NAME)
@@ -13,4 +11,6 @@ vault-create:
 		-v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro \
 		-v $(BASE_PATH)/etc/nginx/ssl:/etc/nginx/ssl:ro \
 		-v $(BASE_PATH)/share/nginx/html:/usr/share/nginx/html \
-		$(VAULT_IMAGE) echo "Be careful with me"
+		--label project_name=$(PROJECT_NAME) \
+		--label tier=$(TIER) \
+		busybox echo "Be careful with me"
