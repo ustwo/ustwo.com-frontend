@@ -18,7 +18,6 @@ app-rm:
 	docker rm -f $(app_name)
 
 app-create:
-	@echo \
 	docker run -d \
 		--name $(app_name) \
 		$(app_volumes) \
