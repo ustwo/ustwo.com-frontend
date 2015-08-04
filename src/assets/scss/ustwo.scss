@@ -39,6 +39,7 @@ These are groups of elements combined together, with their own properties.
 @import "components/single-column";
 @import "components/quote-block";
 @import "components/full-image";
+@import "components/page-hero";
 
 /*
 Modules
@@ -61,3 +62,4 @@ These show how groups of modules are laid out to create a page or larger section
 @import "templates/page-what-we-do";
 @import "templates/page-case-study";
 @import "templates/page-post";
+@import "templates/page-blog";
