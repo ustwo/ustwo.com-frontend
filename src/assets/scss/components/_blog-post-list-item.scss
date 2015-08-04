@@ -1,0 +1,15 @@
+.bold-header {
+  text-align: center;
+
+  h1 {
+    line-height: 1.2;
+  }
+
+  hr {
+    width: 40px;
+    height: 3px;
+    background-color: $mare;
+    border: none;
+    margin: 30px auto;
+  }
+}
