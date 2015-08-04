@@ -4,6 +4,8 @@
 }
 
 .page-home {
+  transform: translateZ(0); // hardware accelerate background-color change on scroll
+
   &__screen-block--welcome {
     .entrance {
       transition: opacity 0.8s ease-in-out;
