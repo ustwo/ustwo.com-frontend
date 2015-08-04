@@ -2,4 +2,8 @@
   .hero {
     background-color: $blu;
   }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    
+  }
 }

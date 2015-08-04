@@ -1,15 +1,99 @@
-.bold-header {
-  text-align: center;
+.blog-post-list-item {
 
-  h1 {
-    line-height: 1.2;
+  $padding: 20px;
+  $category-height: 22px;
+
+  background-color: #eaeaea;
+  padding: 10px 10px 0 10px;
+
+  &:last-of-type {
+    padding-bottom: 10px;
   }
 
-  hr {
-    width: 40px;
-    height: 3px;
-    background-color: $mare;
-    border: none;
-    margin: 30px auto;
+  .image {
+    height: 245px;
+    background-position: center;
+    background-size: cover;
+
+    img {
+      display: none;
+    }
   }
+
+  .content {
+    padding: 0 20px 20px 20px;
+    background-color: #f8f8f8;
+  }
+
+  .category {
+    display: inline-block;
+    height: $category-height;
+    padding: 0 5px;
+    transform: translateY(- $category-height * .5);
+    color: #fff;
+    font-size: 12px;
+    line-height: $category-height;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: $pot;
+  }
+
+  h2 {
+    margin-bottom: 5px;
+    font-size: 30px;
+  }
+
+  .credits {
+    margin-bottom: 20px;
+    color: #646464;
+
+    .by {
+      font-weight: bold;
+    }
+  }
+
+  p {
+    display: none;
+  }
+
+  .tail {
+    position: relative;
+    text-align: right;
+
+    a {
+      display: inline-block;
+      float: left;
+      text-align: left;
+      border-bottom: 3px solid;
+    }
+
+    .social {
+      > div {
+        display: inline-block;
+        padding-left: 20px;
+      }
+    }
+  }
+
+
+  // Category colours
+  @each $category, $colour in $blog-categories {
+    &.#{$category} {
+      .category {
+        content: "test2";
+        background-color: #{$colour};
+      }
+      .tail a {
+        border-color: #{$colour};
+      }
+    }
+  }
+
+
+  // Hero/featured blog post
+  &.featured {
+    padding: 0;
+  }
+
+
 }

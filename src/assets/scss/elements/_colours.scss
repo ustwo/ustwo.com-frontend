@@ -49,6 +49,12 @@ $colours: (
   'lightGrey'         $lightGrey   ,
 );
 
+$blog-categories: (
+  design: $pot,
+  business: $piglet,
+  development: $blu,
+);
+
 @each $colour in $colours {
   $name: nth($colour, 1);
   $hex:  unquote(nth($colour, 2));
