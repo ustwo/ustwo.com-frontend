@@ -1,15 +1,17 @@
 ## App tasks ##################################################################
-APP_IMAGE = $(image) # Clean me
-APP_VERSION = $(tag)
-APP_NAME = $(PROJECT_NAME)_$(TIER)_app
+app_image = $(image) # Clean me
+app_version = $(tag)
+app_name = $(project_name)_$(TIER)_app
+
+.PHONY: app-rm app-create
 
 app-rm:
-	docker rm -f $(APP_NAME)
+	docker rm -f $(app_name)
 
 app-create:
 	docker run -d \
-		--name $(APP_NAME) \
-		--label project_name=$(PROJECT_NAME) \
+		--name $(app_name) \
+		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
-		--label version=$(APP_VERSION) \
-		$(APP_IMAGE)
+		--label version=$(app_version) \
+		$(app_image)

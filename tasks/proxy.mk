@@ -2,18 +2,20 @@
 PROXY_HTTP_PORT ?= 9080
 PROXY_HTTPS_PORT ?= 9443
 
-PROXY_NAME = $(PROJECT_NAME)_$(TIER)_proxy
+proxy_name = $(project_name)_$(TIER)_proxy
+
+.PHONY: proxy-rm proxy-create
 
 proxy-rm:
-	docker rm -f $(PROXY_NAME)
+	docker rm -f $(proxy_name)
 
 proxy-create:
 	docker run -d \
-		--name $(PROXY_NAME) \
+		--name $(proxy_name) \
 		-p $(PROXY_HTTPS_PORT):443 \
 		-p $(PROXY_HTTP_PORT):80 \
-		--link $(APP_NAME):app \
-		--volumes-from $(VAULT_NAME) \
-		--label project_name=$(PROJECT_NAME) \
+		--link $(app_name):app \
+		--volumes-from $(vault_name) \
+		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
 		nginx
