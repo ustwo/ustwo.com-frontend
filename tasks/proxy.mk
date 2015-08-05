@@ -22,7 +22,7 @@ proxy-create:
 		--restart always \
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
-		$(proxy_image)
+		nginx
 
 proxy-build: app-assets
 	docker build \

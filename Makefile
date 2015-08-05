@@ -20,12 +20,30 @@ ps:
 		--filter 'label=project_name=$(project_name)' \
 		--filter 'label=tier=$(TIER)'
 
+static_name := $(project_name)_$(TIER)_static
+static-create:
+	@echo "Creating $(static_name)"
+	@docker run -d \
+		--name $(static_name) \
+		-p $(PROXY_HTTPS_PORT):443 \
+		-p $(PROXY_HTTP_PORT):80 \
+		--restart always \
+		--label project_name=$(project_name) \
+		--label tier=$(TIER) \
+		$(proxy_image)
+static-rm:
+	@echo "Removing $(static_name)"
+	@docker rm -f $(static_name)
+
+
+rm-production:
+	$(MAKE) static-rm TIER=production
+
 init-production:
-	$(MAKE) init \
+	$(MAKE) static-create \
 		TIER=production \
 		PROXY_HTTP_PORT=80 \
-		PROXY_HTTPS_PORT=443 \
-		BASE_PATH=/home/ubuntu
+		PROXY_HTTPS_PORT=443
 
 
 deploy-production:

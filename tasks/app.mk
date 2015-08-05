@@ -42,5 +42,6 @@ app-compile:
 	docker exec -t $(app_name) npm run compile
 
 app-assets: app-compile
+	rm -rf share/nginx/public
 	docker cp $(app_name):/usr/local/src/public share/nginx/
-	mv share/nginx/public share/nginx/assets/
+	cp src/templates/index.html share/nginx/html/index.html
