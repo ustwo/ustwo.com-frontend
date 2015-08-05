@@ -1,0 +1,26 @@
+.page-privacy {
+  .hero-image {
+    background-size: cover;
+    height: 620px;
+
+    img {
+      display: none;
+    }
+  }
+
+  .content-container {
+    background: #fff;
+    margin: $blog-margin-offset auto 0;
+    padding: 70px 50px 50px;
+    position: relative;
+    max-width: 1200px;
+
+    h2, h3 {
+      margin-top: 40px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
