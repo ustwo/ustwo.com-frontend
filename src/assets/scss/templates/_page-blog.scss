@@ -58,6 +58,31 @@
     .blog-post-list {
       margin-top: $blog-margin-offset;
       padding: 0 $blog-gutter-large;
+
+
+      .blog-post-list-item:not(.featured) {
+        display: inline-block;
+        width: calc(50% - (#{$blog-gutter-large} / 2));
+        margin-right: $blog-gutter-large;
+
+        &:nth-child(2n + 1) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  @include susy-breakpoint($bp-large, $susy) {
+    .blog-post-list {
+      .blog-post-list-item:not(.featured) {
+        width: calc(33.333% - (#{$blog-gutter-large} * 2 / 3));
+
+        &:nth-child(2n + 1) {
+          margin-right: $blog-gutter-large;
+        }
+        &:nth-child(3n + 4) {
+          margin-right: 0;
+        }
+      }
     }
   }
 }
