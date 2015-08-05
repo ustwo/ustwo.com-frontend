@@ -1,4 +1,4 @@
-TIER := staging
+TIER := dev
 BASE_PATH := $(PWD)
 TAG := 0.2.1
 
@@ -19,3 +19,9 @@ ps:
 	@docker ps -a \
 		--filter 'label=project_name=$(project_name)' \
 		--filter 'label=tier=$(TIER)'
+
+deploy-production:
+	$(MAKE) deploy TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+
+deploy-staging:
+	$(MAKE) deploy TIER=staging
