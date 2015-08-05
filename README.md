@@ -96,6 +96,8 @@ Clean the environment:
 5. Deploy
 
         $ make deploy TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+        # or
+        $ make deploy-production
 
 *Note*: If there is no previous release you must use
 
@@ -106,6 +108,9 @@ Clean the environment:
 
 * `make init` — Starts vault, app and proxy in this order.
 * `make init-rm` — Removes all containers.
+* `make deploy` — Recreates app and proxy.
+* `make deploy-production` — Equivalent to `make deploy TIER=production`.
+* `make deploy-staging` — Equivalent to `make deploy TIER=staging`.
 * `make ps` —  Lists all relevant containers (running and stopped).
 * `make app-create` — Creates the app.
 * `make app-rm` — Removes the app.
