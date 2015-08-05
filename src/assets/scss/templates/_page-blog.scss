@@ -1,5 +1,44 @@
 // Shared blog styles
 
+.blog-category {
+  display: inline-block;
+  height: $blog-category-height;
+  padding: 0 5px;
+  transform: translateY(- $blog-category-height * .5);
+  color: #fff;
+  font-size: 12px;
+  line-height: $blog-category-height;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #aaa; // fallback
+}
+
+// Category colours
+@each $category, $colour in $blog-categories {
+  &.blog-label-#{$category} {
+
+    // Shared
+    .blog-category {
+      background-color: #{$colour};
+    }
+
+    // Landing page
+    .tail a {
+      border-color: #{$colour};
+    }
+
+    // Post page
+    &.page-post {
+      .content-container {
+        .rule,
+        .content a,
+        .author .link a {
+          border-color: #{$colour};
+        }
+      }
+    }
+  }
+}
 
 
 // Blog landing page layout

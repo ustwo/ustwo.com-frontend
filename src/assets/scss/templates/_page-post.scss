@@ -7,6 +7,7 @@
       display: none;
     }
   }
+
   .content-container {
     background: #fff;
     margin: $blog-margin-offset auto 0;
@@ -28,6 +29,13 @@
     .rule,
     .author {
       text-align: center;
+    }
+
+    .blog-category {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, (- $blog-category-height * .5));
     }
 
     .title {
@@ -53,7 +61,7 @@
       }
     }
     .rule {
-      border: 2px solid $pot;
+      border: 2px solid;
       width: 184px;
       margin-bottom: 50px;
     }
@@ -70,8 +78,7 @@
       }
       a {
         font-family: $PxGroteskBold;
-        border-bottom-width: 2px;
-        border-bottom-style: solid;
+        border-bottom: 2px solid;
       }
     }
     .author {
@@ -91,7 +98,7 @@
         padding: 0;
 
         .link a {
-          border-bottom: 2px solid $pot;
+          border-bottom: 2px solid;
           font-family: $PxGroteskBold;
         }
       }
