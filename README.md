@@ -81,15 +81,26 @@ Clean the environment:
 ## Release
 
 1. Increment version in `Makefile` and `package.json`.
-2. Build fresh Docker image – `make build`
-3. Push image to Docker Hub – `make push`
-4. Log in to server – ssh://luis.ustwo.com:2222
-5. See what's running – `su && docker ps`
-6. Pull new image – `docker pull ustwo/ustwo.com-frontend:x.x.x`
-7. Remove running image – `docker rm -f us2`
-8. Fire up new image – `docker run -d -p 127.0.0.1:7777:8888 --name us2 -e VIRTUAL_HOST=staging.ustwo.com ustwo/ustwo.com-frontend:x.x.x`
+2. Build fresh Docker image
 
-TODO: make this happen just by using docker-machine targets!
+        $ make build
+
+3. Push image to Docker Hub
+
+        $ make push`
+
+4. Set the right environment
+
+        $ eval $(docker-machine env ustwosite)
+
+5. Deploy
+
+        $ make deploy TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+
+*Note*: If there is no previous release you must use
+
+      $ make init TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+
 
 ## Style guide (WIP)
 
