@@ -1,0 +1,7 @@
+FROM nginx
+
+MAINTAINER Arnau Siches <arnau@ustwo.com>
+
+ENV TERM=xterm-256color
+
+COPY share/nginx/assets /usr/share/nginx/assets
