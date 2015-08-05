@@ -18,6 +18,7 @@ proxy-create:
 		-p $(PROXY_HTTP_PORT):80 \
 		--link $(app_name):app \
 		--volumes-from $(vault_name) \
+		--restart always \
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
 		nginx

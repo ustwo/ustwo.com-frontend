@@ -22,6 +22,7 @@ app-create:
 	@docker run -d \
 		--name $(app_name) \
 		$(app_volumes) \
+		--restart always \
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
 		--label version=$(app_version) \
