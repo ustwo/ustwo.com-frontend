@@ -36,8 +36,11 @@ app-sh:
 	docker exec -it $(app_name) /bin/bash
 
 css:
-	docker exec -it $(app_name) npm run css
+	docker exec -t $(app_name) npm run css
 
-app-assets:
+app-compile:
+	docker exec -t $(app_name) npm run compile
+
+app-assets: app-compile
 	docker cp $(app_name):/usr/local/src/public share/nginx/
-	mv share/nginx/public share/nginx/assets
+	mv share/nginx/public share/nginx/assets/

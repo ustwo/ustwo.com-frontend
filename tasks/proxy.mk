@@ -5,7 +5,7 @@ PROXY_HTTPS_PORT ?= 9443
 proxy_image := ustwo/ustwo.com-proxy:$(TAG)
 proxy_name := $(project_name)_$(TIER)_proxy
 
-.PHONY: proxy-rm proxy-create
+.PHONY: proxy-rm proxy-create proxy-push proxy-pull
 
 proxy-rm:
 	@echo "Removing $(proxy_name)"
@@ -22,7 +22,7 @@ proxy-create:
 		--restart always \
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
-		nginx
+		$(proxy_image)
 
 proxy-build: app-assets
 	docker build \
