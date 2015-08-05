@@ -1,4 +1,4 @@
-# ustwo.com-prototype
+# ustwo.com website
 
 Currently used:
 
@@ -42,7 +42,7 @@ Commands below assume OS X and preference to install binaries via Homebrew and C
 
   * Create Docker host VM
 
-  `$ make create`
+  `$ docker-machine create --driver virtualbox dev`
 
   * Set up Docker environment to VM – needs to be done for every new shell session
 
@@ -52,46 +52,77 @@ Commands below assume OS X and preference to install binaries via Homebrew and C
 
   `$ make build`
 
-  * Run container – below is for a single build, can also use `watch` or `browsersync` to recompile on changes
-
-  `$ make run`
-
-  * Open app in browser
-
-  `$ make open`
-
 ## Develop
 
-  * Kick off file system watching – alternatively you can also use `browsersync` if you want automatic browser reloads
+First thing, request to the team maintainer the ustwo SSL certificates and put
+them into `./etc/nginx/ssl`.
 
-  `$ make watch`
+Bootstrap a new environment:
 
-  * Tail Gulp's output
+    $ make init TIER=dev
 
-  `$ make log`
+Deploy app:
 
-  * In case Gulp exits with an error, restart container – or it's `restartbs` if you're using `browsersync`
+    $ make deploy TIER=dev
 
-  `$ make restart`
+*Note*: Deploy recreates the app and the proxy but keeps the vault.
+
+It is recommended to add a new entry to your `/etc/hosts` with an ustwo
+subdomain so the SSL certificate works without warnings:
+
+    # Assuming 192.168.99.100 is your dev environment.
+    192.168.99.100 local.ustwo.com
+
+Clean the environment:
+
+    $ make init-rm TIER=dev
+
 
 ## Release
 
 1. Increment version in `Makefile` and `package.json`.
-2. Build fresh Docker image – `make build`
-3. Push image to Docker Hub – `make push`
-4. Log in to server – ssh://luis.ustwo.com:2222
-5. See what's running – `su && docker ps`
-6. Pull new image – `docker pull ustwo/ustwo.com-frontend:x.x.x`
-7. Remove running image – `docker rm -f us2`
-8. Fire up new image – `docker run -d -p 127.0.0.1:7777:8888 --name us2 -e VIRTUAL_HOST=staging.ustwo.com ustwo/ustwo.com-frontend:x.x.x`
+2. Build fresh Docker image
 
-TODO: make this happen just by using docker-machine targets!
+        $ make build
+
+3. Push image to Docker Hub
+
+        $ make push`
+
+4. Set the right environment
+
+        $ eval $(docker-machine env ustwosite)
+
+5. Deploy
+
+        $ make deploy TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+
+*Note*: If there is no previous release you must use
+
+      $ make init TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+
+
+## Make tasks
+
+* `make init` — Starts vault, app and proxy in this order.
+* `make init-rm` — Removes all containers.
+* `make ps` —  Lists all relevant containers (running and stopped).
+* `make app-create` — Creates the app.
+* `make app-rm` — Removes the app.
+* `make app-log` — Tails the app log.
+* `make app-sh` — Opens a shell inside the app container.
+* `make proxy-create` — Creates the proxy (requires vault and app).
+* `make proxy-rm` — Removes the proxy.
+* `make vault-create` — Creates the vault *WARNING*: as said in the README it requires the SSL certs.
+* `make vault-rm` — Removes the vault.
+* `make provision-data` — Provisions the remote server.
+* `make provision-vault` — Provisions the remote server with sensitive data.
 
 ## Style guide (WIP)
 
 Use [EditorConfig](http://editorconfig.org/)!
 
-JS: [Airbnb ES6 style guide](https://github.com/airbnb/javascript) as a starting point + which JSX one?  
+JS: [Airbnb ES6 style guide](https://github.com/airbnb/javascript) as a starting point + which JSX one?
 Should we enforce with [JSCS](http://jscs.info/) (see [Airbnb's settings](https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json))?
 
 CSS: [BEM](http://getbem.com/introduction/)

@@ -5,8 +5,9 @@
     group: ubuntu
   tasks:
     - name: add htop
-      pkg: htop
-      state: latest
+      apt:
+        pkg: htop
+        state: latest
     - name: create nginx config structure
       file:
         path: /home/ubuntu/etc/nginx/ssl
