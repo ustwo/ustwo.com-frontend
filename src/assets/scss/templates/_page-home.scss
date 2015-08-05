@@ -266,16 +266,27 @@
           position: relative;
           &__dice-screen-anim {
             position: absolute;
-            width: 34.8%;
-            right: 11%;
+            width: 27.8%;
+            right: 21%;
             top: 0px;
             bottom: 4.5%;
             margin: auto;
+
+            @include susy-breakpoint($bp-large, $susy) {
+              width: 34.8%;
+              right: 11%;
+            }
           }
           &__dice-device {
             position: relative;
-            width: 125%;
-            margin: 0 -10%;
+            width: 100%;
+            margin: 0;
+
+
+            @include susy-breakpoint($bp-large, $susy) {
+              margin: 0 -10%;
+              width: 125%;
+            }
           }
           &__dice-logo {
             @extend %svg-shape;

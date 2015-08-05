@@ -18,7 +18,7 @@
     &__logo {
       display: block;
       float: left;
-      margin-left: 30px;
+      margin-left: 20px;
       overflow: hidden;
       width: 100px;
       height: $nav-height;
@@ -26,6 +26,10 @@
         width: 100px;
         height: $nav-height;
         fill: $nonBlack;
+      }
+
+      @include susy-breakpoint($bp-large, $susy) {
+        margin-left: 30px;
       }
     }
     &__inner {
