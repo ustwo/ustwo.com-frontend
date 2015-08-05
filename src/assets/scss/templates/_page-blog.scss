@@ -43,11 +43,21 @@
 
 // Blog landing page layout
 .page-blog {
+  background-color: #eaeaea;
+
   .hero {
     background-color: $blu;
   }
 
-  @include susy-breakpoint($bp-medium, $susy) {
+  .blog-post-list {
+    max-width: 1380px;
+    margin: 0 auto;
+  }
 
+  @include susy-breakpoint($bp-medium, $susy) {
+    .blog-post-list {
+      margin-top: $blog-margin-offset;
+      padding: 0 $blog-gutter-large;
+    }
   }
 }

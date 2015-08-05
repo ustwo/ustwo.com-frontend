@@ -1,6 +1,8 @@
 .blog-post-list-item {
 
   $padding: 20px;
+  $padding-large: 45px;
+
 
   background-color: #eaeaea;
   padding: 10px 10px 0 10px;
@@ -20,7 +22,7 @@
   }
 
   .content {
-    padding: 0 20px 20px 20px;
+    padding: 0 $padding $padding $padding;
     background-color: #f8f8f8;
   }
 
@@ -30,7 +32,7 @@
   }
 
   .meta {
-    margin-bottom: 20px;
+    margin-bottom: $padding;
     color: #646464;
     font-family: $PxGroteskBold;
 
@@ -51,7 +53,7 @@
       display: inline-block;
       float: left;
       text-align: left;
-      border-bottom: 3px solid;
+      border-bottom: 2px solid;
     }
 
     .social {
@@ -66,6 +68,42 @@
   // Hero/featured blog post
   &.featured {
     padding: 0;
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    padding: 0 0 $blog-gutter-large;
+
+    &:last-of-type {
+      padding-bottom: $blog-gutter-large;
+    }
+
+    .excerpt {
+      display: block;
+      margin-bottom: $blog-gutter-large;
+      font-size: 16px;
+    }
+
+    .content {
+      padding: $padding-large;
+    }
+
+    &.featured {
+      position: relative;
+      height: 720px;
+      padding-bottom: 0;
+      margin-bottom: $blog-gutter-large;
+
+      .image {
+        height: 100%;
+      }
+
+      .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 530px;
+      }
+    }
   }
 
 
