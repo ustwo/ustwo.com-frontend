@@ -20,6 +20,14 @@ ps:
 		--filter 'label=project_name=$(project_name)' \
 		--filter 'label=tier=$(TIER)'
 
+init-production:
+	$(MAKE) init \
+		TIER=production \
+		PROXY_HTTP_PORT=80 \
+		PROXY_HTTPS_PORT=443 \
+		BASE_PATH=/home/ubuntu
+
+
 deploy-production:
 	$(MAKE) deploy TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
 

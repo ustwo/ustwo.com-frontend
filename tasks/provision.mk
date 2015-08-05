@@ -2,8 +2,8 @@
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
 ANSIBLE_INVENTORY ?= /etc/ansible/hosts
 ANSIBLE.c = ansible-playbook -b -v \
-	--private-key=$(IDENTITY_FILE) \
-	--inventory-file=$(ANSIBLE_INVENTORY)
+	--private-key=$(IDENTITY_FILE)
+# --inventory-file=$(ANSIBLE_INVENTORY)
 
 #
 # Better using ssh agent:
