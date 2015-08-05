@@ -34,3 +34,6 @@ app-log:
 
 app-sh:
 	docker exec -it $(app_name) /bin/bash
+
+css:
+	docker exec -it $(app_name) npm run css

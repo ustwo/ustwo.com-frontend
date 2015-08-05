@@ -38,21 +38,22 @@
     background-color: $pot;
   }
 
-  h2 {
+  .title {
     margin-bottom: 5px;
     font-size: 30px;
   }
 
-  .credits {
+  .meta {
     margin-bottom: 20px;
     color: #646464;
+    font-weight: bold;
 
-    .by {
-      font-weight: bold;
+    .date {
+      font-weight: normal;
     }
   }
 
-  p {
+  .excerpt {
     display: none;
   }
 

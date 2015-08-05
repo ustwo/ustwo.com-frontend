@@ -1,9 +1,14 @@
+// Shared blog styles
+
+
+
+// Blog landing page layout
 .page-blog {
   .hero {
     background-color: $blu;
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
-    
+
   }
 }
