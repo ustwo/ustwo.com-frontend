@@ -1,4 +1,11 @@
 .page-post {
+
+  a {
+    font-family: $PxGroteskBold;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+  }
+
   .hero-image {
     background-size: cover;
     height: 620px;
