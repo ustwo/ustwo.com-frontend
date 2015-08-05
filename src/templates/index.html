@@ -3,7 +3,7 @@
   <!-- Oh hey there, we're always on the lookout for curious and talented developers, get in touch! :) -->
   <head>
     <meta charset="utf-8">
-    <title>{{title}}</title>
+    <title>ustwo</title>
     <meta name="author" content="ustwo">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="msapplication-tap-highlight" content="no" />
@@ -18,12 +18,39 @@
       ga('create', 'UA-7940378-36', 'auto');
       ga('send', 'pageview');
     </script>
-    <script type="text/javascript">
-      window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
-      heap.load("3402326673");
-    </script>
     <script>
-      window.data = {{{data}}};
+      window.data = {
+        "takeover": {
+          "id": "moodnotes-launch"
+        },
+        "pages": [
+          {
+            "id": "home",
+            "ga": "home",
+            "title": "Home",
+            "url": "/"
+          },
+          {
+            "id": "what-we-do",
+            "ga": "what_we_do",
+            "title": "What we do",
+            "url": "/what-we-do"
+          },
+          {
+            "id": "blog",
+            "ga": "blog",
+            "title": "Blog",
+            "url": "/blog"
+          },
+          {
+            "id": "join-us",
+            "id": "join_us",
+            "title": "Join us",
+            "url": "http://ustwo.workable.com/",
+            "external": true
+          }
+        ]
+      };
       if(!!navigator.userAgent.match(/(iPhone)/g)) {
         document.documentElement.className += " iPhone";
       }
