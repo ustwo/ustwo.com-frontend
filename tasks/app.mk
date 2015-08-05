@@ -8,7 +8,6 @@ app_name = $(project_name)_$(TIER)_app
 ifeq ($(TIER), dev)
   app_volumes = \
     -v $(BASE_PATH)/gulpfile.js:/usr/local/src/gulpfile.js \
-    -v $(BASE_PATH)/node_modules:/usr/local/src/node_modules \
     -v $(BASE_PATH)/package.json:/usr/local/src/package.json \
     -v $(BASE_PATH)/src:/usr/local/src/src
   app_cmd = npm run dev
