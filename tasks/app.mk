@@ -15,10 +15,12 @@ ifeq ($(TIER), dev)
 endif
 
 app-rm:
-	docker rm -f $(app_name)
+	@echo "Removing $(app_name)"
+	@docker rm -f $(app_name)
 
 app-create:
-	docker run -d \
+	@echo "Creating $(app_name)"
+	@docker run -d \
 		--name $(app_name) \
 		$(app_volumes) \
 		--label project_name=$(project_name) \

@@ -11,6 +11,7 @@ include tasks/proxy.mk
 include tasks/vault.mk
 
 
-all: vault-create app-create proxy-create
-all-rm: vault-rm app-rm proxy-rm
+init: vault-create app-create proxy-create
+init-rm: vault-rm app-rm proxy-rm
+deploy: app-rm proxy-rm app-create proxy-create
 # make all TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443

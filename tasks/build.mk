@@ -1,5 +1,5 @@
-image_name = ustwo/ustwo.com-frontend
-image = $(image_name):$(TAG)
+image_name := ustwo/ustwo.com-frontend
+image := $(image_name):$(TAG)
 
 .PHONY: build pull push
 

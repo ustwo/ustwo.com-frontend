@@ -7,10 +7,12 @@ proxy_name = $(project_name)_$(TIER)_proxy
 .PHONY: proxy-rm proxy-create
 
 proxy-rm:
-	docker rm -f $(proxy_name)
+	@echo "Removing $(proxy_name)"
+	@docker rm -f $(proxy_name)
 
 proxy-create:
-	docker run -d \
+	@echo "Creating $(proxy_name)"
+	@docker run -d \
 		--name $(proxy_name) \
 		-p $(PROXY_HTTPS_PORT):443 \
 		-p $(PROXY_HTTP_PORT):80 \

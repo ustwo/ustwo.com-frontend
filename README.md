@@ -1,4 +1,4 @@
-# ustwo.com-prototype
+# ustwo.com website
 
 Currently used:
 
@@ -42,7 +42,7 @@ Commands below assume OS X and preference to install binaries via Homebrew and C
 
   * Create Docker host VM
 
-  `$ make create`
+  `$ docker-machine create --driver virtualbox dev`
 
   * Set up Docker environment to VM – needs to be done for every new shell session
 
@@ -52,27 +52,31 @@ Commands below assume OS X and preference to install binaries via Homebrew and C
 
   `$ make build`
 
-  * Run container – below is for a single build, can also use `watch` or `browsersync` to recompile on changes
-
-  `$ make run`
-
-  * Open app in browser
-
-  `$ make open`
-
 ## Develop
 
-  * Kick off file system watching – alternatively you can also use `browsersync` if you want automatic browser reloads
+First thing, request to the team maintainer the ustwo SSL certificates and put
+them into `./etc/nginx/ssl`.
 
-  `$ make watch`
+Bootstrap a new environment:
 
-  * Tail Gulp's output
+    $ make init TIER=dev
 
-  `$ make log`
+Deploy app:
 
-  * In case Gulp exits with an error, restart container – or it's `restartbs` if you're using `browsersync`
+    $ make deploy TIER=dev
 
-  `$ make restart`
+*Note*: Deploy recreates the app and the proxy but keeps the vault.
+
+It is recommended to add a new entry to your `/etc/hosts` with an ustwo
+subdomain so the SSL certificate works without warnings:
+
+    # Assuming 192.168.99.100 is your dev environment.
+    192.168.99.100 local.ustwo.com
+
+Clean the environment:
+
+    $ make init-rm TIER=dev
+
 
 ## Release
 
@@ -91,7 +95,7 @@ TODO: make this happen just by using docker-machine targets!
 
 Use [EditorConfig](http://editorconfig.org/)!
 
-JS: [Airbnb ES6 style guide](https://github.com/airbnb/javascript) as a starting point + which JSX one?  
+JS: [Airbnb ES6 style guide](https://github.com/airbnb/javascript) as a starting point + which JSX one?
 Should we enforce with [JSCS](http://jscs.info/) (see [Airbnb's settings](https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json))?
 
 CSS: [BEM](http://getbem.com/introduction/)
