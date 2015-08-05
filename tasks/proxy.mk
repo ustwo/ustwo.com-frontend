@@ -2,7 +2,8 @@
 PROXY_HTTP_PORT ?= 9080
 PROXY_HTTPS_PORT ?= 9443
 
-proxy_name = $(project_name)_$(TIER)_proxy
+proxy_image := ustwo/ustwo.com-proxy:$(TAG)
+proxy_name := $(project_name)_$(TIER)_proxy
 
 .PHONY: proxy-rm proxy-create
 
@@ -22,3 +23,14 @@ proxy-create:
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
 		nginx
+
+proxy-build: app-assets
+	docker build \
+		-t $(proxy_image) \
+		-f Dockerfile.proxy .
+
+proxy-push:
+	docker push $(proxy_image)
+
+proxy-pull:
+	docker pull $(proxy_image)
