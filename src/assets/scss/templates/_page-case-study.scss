@@ -11,6 +11,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+
+    .single-column__content {
+      margin: 0;
+    }
 
     .single-column__content__heading {
       color: $marshPassion;
