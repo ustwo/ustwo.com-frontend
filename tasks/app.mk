@@ -3,7 +3,7 @@ app_image = $(image)
 app_version = $(TAG)
 app_name = $(project_name)_$(TIER)_app
 
-.PHONY: app-rm app-create
+.PHONY: app-rm app-create app-log app-sh
 
 ifeq ($(TIER), dev)
   app_volumes = \
