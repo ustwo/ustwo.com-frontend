@@ -30,16 +30,19 @@
   },
   "pages": [
     {
+      "id": "home",
+      "title": "Home",
+      "url": "/"
+    },
+    {
       "id": "what-we-do",
       "title": "What we do",
-      "url": "/what-we-do",
-      "colour": "marshPassion"
+      "url": "/what-we-do"
     },
     {
       "id": "blog",
       "title": "Blog",
-      "url": "/blog",
-      "colour": "marshPassion"
+      "url": "/blog"
     }
   ],
   "work": [{
