@@ -6,8 +6,15 @@
   left: 0;
   height: $nav-height;
   z-index: 40;
-  
+
   .nav {
+    background: transparent;
+    color: $white;
+
+    .nav__logo__graphic {
+      fill: $white;
+    }
+
     &__logo {
       display: block;
       float: left;
@@ -71,14 +78,6 @@
         visibility: hidden;
       }
     }
-    &.transparent-white {
-      background: transparent;
-      color: $white;
-
-      .nav__logo__graphic {
-        fill: $white;
-      }
-    }
   }
   &.takeover .nav {
     .nav__logo__graphic {
@@ -91,6 +90,9 @@
     }
   }
   &.case-study {
+    .nav {
+      color: $nonBlack;
+    }
     .nav__logo__graphic,
     .nav__logo__graphic.transparent-white {
       fill: $nonBlack;
