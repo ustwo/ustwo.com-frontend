@@ -23,13 +23,17 @@
       right: 0;
       top: 0;
       bottom: 0;
-      width: 45%;
-      // FIXME: this should be 280px, but we have shedloads of transparent pixels around the image :(
-      min-width: 220px;
+      width: 100%;
       transition: opacity 0.8s ease-in-out;
       backface-visibility: hidden;
-      transform: translateZ(0) scale(2.0, 2.0);
       opacity: 1;
+
+      @include susy-breakpoint($bp-large, $susy) {
+        width: 45%;
+        // FIXME: this should be 280px, but we have shedloads of transparent pixels around the image :(
+        min-width: 220px;
+        transform: translateZ(0) scale(1.4);
+      }
 
       &.add {
         opacity: 0;
