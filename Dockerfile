@@ -18,6 +18,7 @@ COPY src /usr/local/src/src
 RUN npm run compile
 
 VOLUME /usr/local/src/logs
+VOLUME /usr/local/src/public
 
 EXPOSE 8888
 
