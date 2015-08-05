@@ -1,3 +1,12 @@
+body.nav-open {
+  height: 100vh;
+  overflow: auto;
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+}
+
 .app {
 
   .nav-wrapper {
