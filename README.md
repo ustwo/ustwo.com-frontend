@@ -102,6 +102,22 @@ Clean the environment:
       $ make init TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
 
 
+## Make tasks
+
+* `make init` — Starts vault, app and proxy in this order.
+* `make init-rm` — Removes all containers.
+* `make ps` —  Lists all relevant containers (running and stopped).
+* `make app-create` — Creates the app.
+* `make app-rm` — Removes the app.
+* `make app-log` — Tails the app log.
+* `make app-sh` — Opens a shell inside the app container.
+* `make proxy-create` — Creates the proxy (requires vault and app).
+* `make proxy-rm` — Removes the proxy.
+* `make vault-create` — Creates the vault *WARNING*: as said in the README it requires the SSL certs.
+* `make vault-rm` — Removes the vault.
+* `make provision-data` — Provisions the remote server.
+* `make provision-vault` — Provisions the remote server with sensitive data.
+
 ## Style guide (WIP)
 
 Use [EditorConfig](http://editorconfig.org/)!
