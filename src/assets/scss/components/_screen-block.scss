@@ -5,13 +5,15 @@
   max-width: 1800px;
   position: relative;
   margin: auto;
+  overflow-x: hidden;
+
   &:after {
     content: " ";
     clear: both;
     display: block;
   }
-}
 
-.iPhone .screen-block {
-  min-height: calc(90vh - 69px);
+  @include susy-breakpoint($bp-huge, $susy) {
+    overflow-x: auto;
+  }
 }
