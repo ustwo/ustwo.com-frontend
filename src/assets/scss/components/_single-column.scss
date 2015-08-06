@@ -1,21 +1,26 @@
 .single-column {
-  padding: 50px 6.25%;
+  padding: 0 6.25%;
+  margin: 30px 0;
 
   &__content {
     max-width: 680px;
     margin: 0 auto;
 
     &__heading {
-      color: $marshPassion;
       text-align: center;
     }
     &__rule {
-      border: 2px solid $mare;
+      border: 2px solid $nonBlack;
       width: 120px;
-      margin: 30px auto;
+      margin: 20px auto;
     }
     &__para {
       text-align: left;
     }
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
 }

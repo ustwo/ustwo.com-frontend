@@ -4,7 +4,7 @@
   display: inline-block;
   height: $blog-category-height;
   padding: 0 5px;
-  transform: translateY(- $blog-category-height * .5);
+  transform: translateY(-12px);
   color: #fff;
   font-size: 12px;
   line-height: $blog-category-height;
@@ -55,6 +55,9 @@
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
+    .blog-category {
+      transform: translateY(-21px);
+    }
     .blog-post-list {
       margin-top: $blog-margin-offset;
       padding: 0 $blog-gutter-large;

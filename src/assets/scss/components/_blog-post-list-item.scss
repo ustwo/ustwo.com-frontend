@@ -1,11 +1,12 @@
 .blog-post-list-item {
 
   $padding: 20px;
-  $padding-large: 45px;
+  $padding-large: 10px 30px 30px;
 
 
   background-color: #eaeaea;
   padding: 10px 10px 0 10px;
+  vertical-align: top;
 
   &:last-of-type {
     padding-bottom: 10px;
@@ -28,13 +29,15 @@
 
   .title {
     margin-bottom: 5px;
-    font-size: 30px;
+    font-size: 24px;
   }
 
   .meta {
     margin-bottom: $padding;
+    margin-top: 5px;
     color: #646464;
     font-family: $PxGroteskBold;
+    font-size: 16px;
 
     .date {
       font-family: $PxGroteskRegular;
@@ -48,6 +51,7 @@
   .tail {
     position: relative;
     text-align: right;
+    overflow: auto;
 
     a {
       display: inline-block;
@@ -68,6 +72,14 @@
   // Hero/featured blog post
   &.featured {
     padding: 0;
+
+    .content {
+      padding: 30px 40px 40px;
+
+      .blog-category {
+        transform: translateY(-12px);
+      }
+    }
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
@@ -80,7 +92,6 @@
     .excerpt {
       display: block;
       margin-bottom: $blog-gutter-large;
-      font-size: 16px;
     }
 
     .content {
