@@ -50,9 +50,13 @@ $colours: (
 );
 
 $blog-categories: (
+  business: $blu,
+  culture: $piglet,
   design: $pot,
-  business: $piglet,
-  development: $blu,
+  development: $ohra,
+  process: $mare,
+  ux: $jeezz,
+  apps: $rain
 );
 
 @each $colour in $colours {
