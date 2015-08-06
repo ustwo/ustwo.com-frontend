@@ -32,4 +32,4 @@ deploy-production:
 	$(MAKE) deploy TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
 
 deploy-staging:
-	$(MAKE) deploy TIER=staging
+	$(MAKE) deploy TIER=staging PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
