@@ -70,16 +70,15 @@
       border-top: 1px solid #333;
     }
     .copyright {
-      margin-top: 60px;
+      padding-top: 60px;
       color: #999;
-      border-top: 1px solid #333;
-
       text-align: center;
       clear: both;
       font-size: 12px;
 
       ul {
         padding: 30px 0;
+        border-top: 1px solid #333;
 
         li {
           display: block;
@@ -136,7 +135,9 @@
         }
       }
       .copyright {
-
+        ul {
+          margin: 0 6%;
+        }
       }
     }
   }
