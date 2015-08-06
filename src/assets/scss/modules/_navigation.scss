@@ -105,6 +105,14 @@
     .nav__open-overlay-button {
       fill: $nonBlack;
     }
+    .nav__menu__item__link {
+      &:hover {
+        border-bottom: 2px solid $nonBlack;
+      }
+    }
+    .nav__menu__item.selected .nav__menu__item__link {
+      border-bottom: 2px solid $nonBlack;
+    }
   }
 }
 
