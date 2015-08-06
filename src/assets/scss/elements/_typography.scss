@@ -84,7 +84,7 @@ p, .p            { font-size: 16px; }
 }
 
 @include susy-breakpoint($bp-small, $susy) {
-  h1, .h1          { font-size: 60px; }
+  h1, .h1          { font-size: 46px; }
   h2, .h2          { font-size: 40px; }
   h3, .h3          { font-size: 36px; }
   h4, .h4          { font-size: 28px; }
