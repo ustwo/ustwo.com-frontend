@@ -1,0 +1,11 @@
+User-agent: *
+Disallow:
+
+User-agent: litefinder
+Disallow: /
+
+User-agent: Slurp
+Disallow: /
+
+User-agent: Baidu
+Disallow: /
