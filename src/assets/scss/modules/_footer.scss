@@ -5,7 +5,7 @@
 
   .content {
     max-width: 1800px;
-    padding: 100px 0;
+    padding: 100px 0 0 0;
     overflow: auto;
     margin: auto;
 
@@ -70,16 +70,33 @@
       border-top: 1px solid #333;
     }
     .copyright {
-      padding: 0 6.25%;
-      margin-top: 50px;
+      margin-top: 60px;
       color: #999;
+      border-top: 1px solid #333;
+
+      text-align: center;
+      clear: both;
       font-size: 12px;
+
+      ul {
+        padding: 30px 0;
+
+        li {
+          display: block;
+          list-style-type: none;
+
+          a {
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 
+
   @include susy-breakpoint(650px, $susy) {
     .content {
-      padding-bottom: 50px;
+      padding-bottom: 0;
 
       .general {
         @include nested(16) {
@@ -119,18 +136,13 @@
         }
       }
       .copyright {
-        @include nested(16) {
-          @include pre(1 of 16);
-          @include span(5);
-          padding: 0 30px 0 0;
-          margin-top: 50px;
-        }
+
       }
     }
   }
   @include susy-breakpoint($bp-large, $susy) {
     .content {
-      padding-bottom: 100px;
+      padding-bottom: 0;
 
       .general {
         @include nested(16) {
@@ -145,7 +157,12 @@
         }
       }
       .copyright {
-        width: auto;
+        ul {
+          li {
+            width: 33%;
+            display: inline-block;
+          }
+        }
       }
     }
   }
