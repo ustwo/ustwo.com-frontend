@@ -135,6 +135,10 @@
     }
   }
 
+  [id*="attachment_"] {
+    width: 100% !important;
+  }
+
   ol {
     li {
       padding: 8px 0;
