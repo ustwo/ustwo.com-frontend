@@ -6,6 +6,17 @@
 .page-home {
   transform: translateZ(0); // hardware accelerate background-color change on scroll
 
+  .screen-block {
+    h2 {
+      margin-bottom: 10px;
+
+      @include susy-breakpoint($bp-large, $susy) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+
   &__screen-block--welcome {
     .entrance {
       transition: opacity 0.8s ease-in-out;

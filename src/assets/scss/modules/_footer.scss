@@ -157,6 +157,10 @@
           @include last;
         }
       }
+    }
+  }
+  @include susy-breakpoint($bp-larger, $susy) {
+    .content {
       .copyright {
         ul {
           li {
