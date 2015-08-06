@@ -56,7 +56,9 @@ $blog-categories: (
   development: $ohra,
   process: $mare,
   ux: $jeezz,
-  apps: $rain
+  apps: $rain,
+  product: $navy,
+  innovation: $passion
 );
 
 @each $colour in $colours {
