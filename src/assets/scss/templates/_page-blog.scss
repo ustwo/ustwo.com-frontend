@@ -47,6 +47,10 @@
 
   .hero {
     background-color: $blu;
+
+    &__title {
+      margin-top: $blog-margin-offset * .5;
+    }
   }
 
   .blog-post-list {

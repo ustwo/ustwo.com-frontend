@@ -54,8 +54,9 @@
         @include vertically-centred-element;
         position: relative;
         h1 {
-          max-width: 11em;
+          max-width: 15em;
           margin: auto;
+          padding: 0 20px;
         }
       }
     }
@@ -68,10 +69,27 @@
       margin: 0 auto;
     }
 
+    @include susy-breakpoint($bp-medium, $susy) {
+      &__header-vertical-centerer {
+        &__bold-header {
+          h1 {
+            padding: 0 40px;
+          }
+        }
+      }
+    }
+
     @include susy-breakpoint($bp-large, $susy) {
       @include container(16);
       @include nested(16) {
         background: none;
+      }
+      &__header-vertical-centerer {
+        &__bold-header {
+          h1 {
+            padding: 0 80px;
+          }
+        }
       }
     }
   }

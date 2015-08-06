@@ -113,6 +113,34 @@
       }
     }
   }
+
+  iframe {
+    width: 100%;
+  }
+
+  h3 {
+    position: relative;
+    padding: 30px 0 54px;
+    text-align: center;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 27px;
+      width: 120px;
+      height: 4px;
+      background: $nonBlack;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  ol {
+    li {
+      padding: 8px 0;
+    }
+  }
+
   @include susy-breakpoint($bp-medium, $susy) {
     .hero-image {
       height: 450px;
@@ -121,6 +149,12 @@
       margin-top: -70px;
       margin-left: 80px;
       margin-right: 80px;
+    }
+
+    h3 {
+      &:after {
+        width: 184px;
+      }
     }
   }
   @include susy-breakpoint($bp-huge, $susy) {
