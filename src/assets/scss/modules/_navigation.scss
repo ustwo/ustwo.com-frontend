@@ -1,3 +1,25 @@
+.neg-nav {
+  .nav {
+    color: $nonBlack;
+
+    .nav__logo__graphic,
+    .nav__logo__graphic.transparent-white {
+      fill: $nonBlack;
+    }
+    .nav__open-overlay-button {
+      fill: $nonBlack;
+    }
+    .nav__menu__item__link {
+      &:hover {
+        border-bottom: 2px solid $nonBlack;
+      }
+    }
+    .nav__menu__item.selected .nav__menu__item__link {
+      border-bottom: 2px solid $nonBlack;
+    }
+  }
+}
+
 .header {
   display: block;
   position: absolute;
@@ -95,25 +117,11 @@
     }
   }
   &.case-study {
-    .nav {
-      color: $nonBlack;
-    }
-    .nav__logo__graphic,
-    .nav__logo__graphic.transparent-white {
-      fill: $nonBlack;
-    }
-    .nav__open-overlay-button {
-      fill: $nonBlack;
-    }
-    .nav__menu__item__link {
-      &:hover {
-        border-bottom: 2px solid $nonBlack;
-      }
-    }
-    .nav__menu__item.selected .nav__menu__item__link {
-      border-bottom: 2px solid $nonBlack;
-    }
+    @extend .neg-nav;
   }
+}
+.app-404 .header {
+  @extend .neg-nav;
 }
 
 @include susy-breakpoint($bp-large, $susy) {
