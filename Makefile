@@ -1,6 +1,6 @@
 TIER := dev
 BASE_PATH := $(PWD)
-TAG := 0.2.5
+TAG := 0.2.6
 
 project_name := ustwosite
 

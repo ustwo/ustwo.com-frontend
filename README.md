@@ -80,7 +80,7 @@ Clean the environment:
 
 ## Release
 
-1. Increment version in `Makefile` and `package.json`.
+1. Increment version in `Makefile`.
 2. Build fresh Docker image
 
         $ make build
