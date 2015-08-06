@@ -78,7 +78,7 @@
       }
     }
   }
-  @include susy-breakpoint($bp-large, $susy) {
+  @include susy-breakpoint($bp-larger, $susy) {
     .blog-post-list {
       .blog-post-list-item:not(.featured) {
         width: calc(33.333% - (#{$blog-gutter-large} * 2 / 3));

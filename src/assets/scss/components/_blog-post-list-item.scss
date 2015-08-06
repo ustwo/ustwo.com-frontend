@@ -91,11 +91,27 @@
 
     .excerpt {
       display: block;
-      margin-bottom: $blog-gutter-large;
+      display: -webkit-box;
+      height: 76.2px;
+      margin: 0 auto;
+      font-size: 26px;
+      line-height: 1.4;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 10px;
+
+      p {
+        padding: 0;
+        margin: 0;
+      }
     }
+
 
     .content {
       padding: $padding-large;
+      height: 320px;
     }
 
     &.featured {
@@ -114,6 +130,12 @@
         left: 0;
         width: 530px;
       }
+    }
+  }
+
+  @include susy-breakpoint($bp-large, $susy) {
+    .excerpt {
+      height: 84.2px;
     }
   }
 
