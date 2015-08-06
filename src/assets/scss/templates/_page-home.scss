@@ -80,10 +80,21 @@
       margin: 0 auto;
     }
 
+    @include susy-breakpoint($bp-small, $susy) {
+      &__header-vertical-centerer {
+        &__bold-header {
+          h1 {
+            font-size: 46px;
+          }
+        }
+      }
+    }
+
     @include susy-breakpoint($bp-medium, $susy) {
       &__header-vertical-centerer {
         &__bold-header {
           h1 {
+            font-size: 46px;
             padding: 0 40px;
           }
         }
