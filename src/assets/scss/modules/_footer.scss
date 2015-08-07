@@ -3,9 +3,27 @@
   background: #252525;
   color: $offWhite;
 
+  .feedback {
+    background: #000;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+
+    a {
+      border-bottom: 2px solid $jeezz;
+    }
+
+    @include susy-breakpoint($bp-large, $susy) {
+      height: 90px;
+      line-height: 90px;
+      font-size: 26px;
+    }
+  }
+
   .content {
     max-width: 1800px;
-    padding: 100px 0 0 0;
+    padding: 50px 0 0 0;
     overflow: auto;
     margin: auto;
 
@@ -95,6 +113,7 @@
 
   @include susy-breakpoint(650px, $susy) {
     .content {
+      padding: 100px 0 0 0;
       padding-bottom: 0;
 
       .general {
