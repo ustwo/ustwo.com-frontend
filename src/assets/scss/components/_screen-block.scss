@@ -2,7 +2,7 @@
   min-height: 100vh;
   width: 100%;
   padding: 5vh 0;
-  max-width: 1800px;
+  max-width: 1800px; // this relates to the breakpoint below
   position: relative;
   margin: auto;
   overflow-x: hidden;
@@ -13,7 +13,7 @@
     display: block;
   }
 
-  @include susy-breakpoint($bp-huge, $susy) {
+  @include susy-breakpoint($bp-gargantuan, $susy) {
     overflow-x: auto;
   }
 }
