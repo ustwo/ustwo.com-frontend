@@ -36,11 +36,38 @@ static-rm:
 	@docker rm -f $(static_name)
 
 
+static-iid:
+	ansible $$(docker-machine ip $(MACHINE_ALIAS)) \
+		--become \
+		-m shell \
+		-a "docker inspect -f {{'{{'}}.Image{{'}}'}} $(static_name) > static.iid"
+
+iid-production:
+	$(MAKE) static-iid TIER=production MACHINE_ALIAS=ustwositepro
+
 rm-production:
-	$(MAKE) static-rm TIER=production
+	$(MAKE) static-iid static-rm \
+		TIER=production \
+		MACHINE_ALIAS=ustwositepro
 
 init-production:
 	$(MAKE) static-create \
+		TIER=production \
+		PROXY_HTTP_PORT=80 \
+		PROXY_HTTPS_PORT=443
+
+rollback-template:
+	@echo docker run -d \
+		--name $(static_name) \
+		-p $(PROXY_HTTPS_PORT):443 \
+		-p $(PROXY_HTTP_PORT):80 \
+		--restart always \
+		--label project_name=$(project_name) \
+		--label tier=$(TIER) \
+		$(proxy_image)
+
+rollback-production:
+	@$(MAKE) rollback-template \
 		TIER=production \
 		PROXY_HTTP_PORT=80 \
 		PROXY_HTTPS_PORT=443
