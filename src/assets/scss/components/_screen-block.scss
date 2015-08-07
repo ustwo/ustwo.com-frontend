@@ -5,7 +5,7 @@
   max-width: 1800px; // this relates to the breakpoint below
   position: relative;
   margin: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 
   &:after {
     content: " ";
