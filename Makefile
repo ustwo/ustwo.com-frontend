@@ -40,7 +40,6 @@ ANSIBLE.shell = $(ANSIBLE) \
 ###############################################################################
 
 include tasks/app.mk
-include tasks/build.mk
 include tasks/provision.mk
 include tasks/proxy.mk
 include tasks/static.mk
