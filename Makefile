@@ -29,8 +29,7 @@ ANSIBLE_PLAY := ansible-playbook -b -v --private-key=$(IDENTITY_FILE)
 
 ###############################################################################
 
-# Make sure there is no default task
-all:
+default:
 	@echo "$(.VARIABLES)" | tr ' ' "\n" | sort -
 
 include tasks/*.mk
