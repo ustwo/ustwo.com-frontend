@@ -4,6 +4,7 @@ TAG ?= 0.3.3
 MACHINE_ALIAS ?= ustwosite
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
 ANSIBLE_INVENTORY ?= /etc/ansible/hosts
+GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 project_name := ustwosite
 # project_name := usweb
@@ -82,3 +83,13 @@ deploy-staging: TIER := staging
 deploy-staging: PROXY_HTTP_PORT := 80
 deploy-staging: PROXY_HTTPS_PORT := 443
 deploy-staging: deploy
+
+
+absorb:
+	git checkout master
+	git pull --rebase origin master
+	git checkout $(GIT_BRANCH)
+	git rebase master
+	git checkout master
+	echo $(GIT_BRANCH)
+	# git merge --no-ff $(GIT_BRANCH)
