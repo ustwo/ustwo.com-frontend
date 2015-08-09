@@ -5,11 +5,11 @@ vault_name = $(project_name)_$(TIER)_vault
 
 vault-rm:
 	@echo "Removing $(vault_name)"
-	@docker rm $(vault_name)
+	@$(DOCKER.rm) $(vault_name)
 
 vault-create:
 	@echo "Creating $(vault_name)"
-	@docker run \
+	@$(DOCKER.volume) \
 		--name $(vault_name) \
 		-v $(BASE_PATH)/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
 		-v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro \

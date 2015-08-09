@@ -78,16 +78,16 @@ Clean the environment:
     $ make init-rm TIER=dev
 
 
-## Release
+## Release staging
 
 1. Increment version in `Makefile`.
-2. Build fresh Docker image
+2. Build a fresh Docker image
 
         $ make build
 
-3. Push image to Docker Hub
+3. Push image to the Docker Hub
 
-        $ make push`
+        $ make push
 
 4. Set the right environment
 
@@ -95,13 +95,42 @@ Clean the environment:
 
 5. Deploy
 
-        $ make deploy TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+        $ make deploy TIER=staging PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
         # or
-        $ make deploy-production
+        $ make deploy-staging
 
 *Note*: If there is no previous release you must use
 
-      $ make init TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+      $ make init TIER=staging PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+
+
+## Release production
+
+1. Deploy the latest version in your dev environment.
+2. Build a fresh Docker image
+
+      $ make proxy-build
+
+3. Test container
+
+      $ make static-create
+      $ open https://local.ustwo.com:10443
+
+3. Push image to the Docker Hub
+
+      $ make proxy-push
+
+4. Set the right environment
+
+      $ eval $(docker-machine env ustwositepro)
+
+5. Deploy
+
+      $ make proxy-pull rm-production init-production
+      # or
+      $ make deploy-production
+
+*Note*: If there is no previous release don't run `rm-production`.
 
 
 ## Make tasks
@@ -122,6 +151,12 @@ Clean the environment:
 * `make vault-rm` — Removes the vault.
 * `make provision-data` — Provisions the remote server.
 * `make provision-vault` — Provisions the remote server with sensitive data.
+* `make proxy-build` — Builds the static proxy.
+* `make proxy-push` — Pushes the static proxy to the Docker Hub.
+* `make proxy-pull` — Pulls the static proxy from the Docker Hub.
+* `make static-create` — Creates the static proxy.
+* `make static-rm` — Removes the static proxy.
+
 
 ## Style guide (WIP)
 
