@@ -21,7 +21,7 @@ proxy-pull:
 
 static-create:
 	@echo "Creating $(static_name)"
-	@$(DOCKER.run) \
+	@$(DOCKER_RUN) \
 		--name $(static_name) \
 		-p $(STATIC_HTTPS_PORT):443 \
 		-p $(STATIC_HTTP_PORT):80 \
@@ -32,14 +32,14 @@ static-create:
 
 static-rm:
 	@echo "Removing $(static_name)"
-	@$(DOCKER.rm) $(static_name)
+	@$(DOCKER_RM) $(static_name)
 
 static-iid:
-	$(ANSIBLE.shell) \
+	$(ANSIBLE_SHELL) \
 		-a "docker inspect -f {{'{{'}}.Image{{'}}'}} $(static_name) > static.iid"
 
 rollback-template:
-	@echo $(DOCKER.run) \
+	@echo $(DOCKER_RUN) \
 		--name $(static_name) \
 		-p $(PROXY_HTTPS_PORT):443 \
 		-p $(PROXY_HTTP_PORT):80 \
