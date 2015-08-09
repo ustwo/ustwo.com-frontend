@@ -15,9 +15,7 @@
 #
 # * data
 # * vault
+
 provision-%: etc/ansible/%.yml
-	@echo "*********************************************************************"
-	@echo "*WARNING* This task may require files intentionally left out the git"
-	@echo "          repository"
-	@echo "*********************************************************************"
+	$(call warn, "This task may require files intentionally left out the git repository")
 	$(ANSIBLE_PLAY) $<
