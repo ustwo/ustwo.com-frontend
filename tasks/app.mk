@@ -1,9 +1,10 @@
 ## App tasks ##################################################################
-app_image = $(image)
+image_name := ustwo/ustwo.com-frontend
+app_image := $(image_name):$(TAG)
 app_version = $(TAG)
 app_name = $(project_name)_$(TIER)_app
 
-.PHONY: app-rm app-create app-log app-sh
+.PHONY: app-rm app-create app-log app-sh build pull push
 
 ifeq ($(TIER), dev)
   app_volumes = \
@@ -13,6 +14,15 @@ ifeq ($(TIER), dev)
   app_cmd = npm run dev
 endif
 # app_volumes := $(if $(TIER), "x", "y")
+
+build:
+	$(DOCKER) build -t $(app_image) .
+
+pull:
+	$(DOCKER) pull $(app_image)
+
+push:
+	$(DOCKER) push $(app_image)
 
 app-rm:
 	@echo "Removing $(app_name)"
