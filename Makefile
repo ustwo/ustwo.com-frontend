@@ -51,7 +51,7 @@ init-rm: vault-rm app-rm proxy-rm
 deploy: app-rm proxy-rm app-create proxy-create
 
 ps:
-	@echo $(DOCKER) ps -a \
+	@$(DOCKER) ps -a \
 		--filter 'label=project_name=$(project_name)' \
 		--filter 'label=tier=$(TIER)'
 
