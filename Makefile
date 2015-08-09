@@ -1,7 +1,7 @@
-TIER := dev
-BASE_PATH := $(PWD)
-TAG := 0.3.3
-MACHINE_ALIAS := ustwosite
+TIER ?= dev
+BASE_PATH ?= $(PWD)
+TAG ?= 0.3.3
+MACHINE_ALIAS ?= ustwosite
 
 project_name := ustwosite
 # project_name := usweb
@@ -12,17 +12,21 @@ CP := cp
 DOCKER := docker
 DOCKER.cp := $(DOCKER) cp
 DOCKER.exec := $(DOCKER) exec -it
-DOCKER.rm := $(DOCKER) rm -rf
+DOCKER.rm := $(DOCKER) rm -f
 DOCKER.run := $(DOCKER) run -d
 DOCKER.volume := $(DOCKER) run
 DOCKER.task := $(DOCKER) run --rm -it
 DOCKER_MACHINE := docker-machine
+MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
 ANSIBLE := ansible
 ANSIBLE.play := ansible-playbook
-ANSIBLE.shell = $(ANSIBLE) \
-	$$(docker-machine ip $(MACHINE_ALIAS)) \
-	--become -m shell
+ANSIBLE.shell = $(ANSIBLE) $(MACHINE_IP) --become -m shell
 ###############################################################################
+
+# Make sure there is no default task
+all:
+
+include tasks/*.mk
 
 ## Automatic variables ########################################################
 #
@@ -39,12 +43,6 @@ ANSIBLE.shell = $(ANSIBLE) \
 #
 ###############################################################################
 
-include tasks/app.mk
-include tasks/provision.mk
-include tasks/proxy.mk
-include tasks/static.mk
-include tasks/vault.mk
-
 
 init: vault-create app-create proxy-create
 init-rm: vault-rm app-rm proxy-rm
@@ -55,27 +53,27 @@ ps:
 		--filter 'label=project_name=$(project_name)' \
 		--filter 'label=tier=$(TIER)'
 
-iid-production:
-	$(MAKE) static-iid TIER=production MACHINE_ALIAS=ustwositepro
+iid-production: TIER := production
+iid-production: MACHINE_ALIAS := ustwositepro
+iid-production: static-iid
 
-rm-production:
-	$(MAKE) static-iid static-rm \
-		TIER=production \
-		MACHINE_ALIAS=ustwositepro
+rm-production: TIER := production
+rm-production: static-rm
 
-init-production:
-	$(MAKE) static-create \
-		TIER=production \
-		STATIC_HTTP_PORT=80 \
-		STATIC_HTTPS_PORT=443
+init-production: TIER := production
+init-production: MACHINE_ALIAS := ustwositepro
+init-production: STATIC_HTTP_PORT := 80
+init-production: STATIC_HTTPS_PORT := 443
+init-production: static-create static-iid
 
-rollback-production:
-	@$(MAKE) rollback-template \
-		TIER=production \
-		PROXY_HTTP_PORT=80 \
-		PROXY_HTTPS_PORT=443
+rollback-production: TIER := production
+rollback-production: STATIC_HTTP_PORT := 80
+rollback-production: STATIC_HTTPS_PORT := 443
+rollback-production: rollback-template
 
 deploy-production: proxy-pull rm-production init-production
 
-deploy-staging:
-	$(MAKE) deploy TIER=staging PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+deploy-staging: TIER := staging
+deploy-staging: PROXY_HTTP_PORT := 80
+deploy-staging: PROXY_HTTPS_PORT := 443
+deploy-staging: deploy
