@@ -2,6 +2,8 @@ TIER ?= dev
 BASE_PATH ?= $(PWD)
 TAG ?= 0.3.3
 MACHINE_ALIAS ?= ustwosite
+IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
+ANSIBLE_INVENTORY ?= /etc/ansible/hosts
 
 project_name := ustwosite
 # project_name := usweb
@@ -10,21 +12,25 @@ project_name := ustwosite
 RM := rm -rf
 CP := cp
 DOCKER := docker
-DOCKER.cp := $(DOCKER) cp
-DOCKER.exec := $(DOCKER) exec -it
-DOCKER.rm := $(DOCKER) rm -f
-DOCKER.run := $(DOCKER) run -d
-DOCKER.volume := $(DOCKER) run
-DOCKER.task := $(DOCKER) run --rm -it
+DOCKER_CP := $(DOCKER) cp
+DOCKER_EXEC := $(DOCKER) exec -it
+DOCKER_RM := $(DOCKER) rm -f
+DOCKER_RUN := $(DOCKER) run -d
+DOCKER_VOLUME := $(DOCKER) run
+DOCKER_TASK := $(DOCKER) run --rm -it
 DOCKER_MACHINE := docker-machine
 MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
 ANSIBLE := ansible
-ANSIBLE.play := ansible-playbook
-ANSIBLE.shell = $(ANSIBLE) $(MACHINE_IP) --become -m shell
+ANSIBLE_SHELL = $(ANSIBLE) $(MACHINE_IP) --become -m shell
+ANSIBLE_PLAY := ansible-playbook -b -v --private-key=$(IDENTITY_FILE)
+# --inventory-file=$(ANSIBLE_INVENTORY)
+
+
 ###############################################################################
 
 # Make sure there is no default task
 all:
+	@echo "$(.VARIABLES)" | tr ' ' "\n" | sort -
 
 include tasks/*.mk
 

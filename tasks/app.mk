@@ -26,11 +26,11 @@ push:
 
 app-rm:
 	@echo "Removing $(app_name)"
-	@$(DOCKER.rm) $(app_name)
+	@$(DOCKER_RM) $(app_name)
 
 app-create:
 	@echo "Creating $(app_name)"
-	@$(DOCKER.run) \
+	@$(DOCKER_RUN) \
 		--name $(app_name) \
 		$(app_volumes) \
 		--restart always \
@@ -44,16 +44,16 @@ app-log:
 	$(DOCKER) logs -f $(app_name)
 
 app-sh:
-	$(DOCKER.exec) $(app_name) /bin/bash
+	$(DOCKER_EXEC) $(app_name) /bin/bash
 
 css:
-	$(DOCKER.exec) $(app_name) npm run css
+	$(DOCKER_EXEC) $(app_name) npm run css
 
 app-compile:
-	$(DOCKER.exec) $(app_name) npm run compile
+	$(DOCKER_EXEC) $(app_name) npm run compile
 
 app-assets: app-compile
 	$(RM) share/nginx/public
-	$(DOCKER.cp) $(app_name):/usr/local/src/public share/nginx/
+	$(DOCKER_CP) $(app_name):/usr/local/src/public share/nginx/
 	$(CP) src/templates/index.html share/nginx/html/index.html
 	$(CP) src/assets/favicon.* share/nginx/public/
