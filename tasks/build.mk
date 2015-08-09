@@ -1,13 +1,13 @@
 image_name := ustwo/ustwo.com-frontend
-image := $(image_name):$(TAG)
+app_image := $(image_name):$(TAG)
 
 .PHONY: build pull push
 
 build:
-	docker build -t $(image) .
+	$(DOCKER) build -t $(app_image) .
 
 pull:
-	docker pull $(image)
+	$(DOCKER) pull $(app_image)
 
 push:
-	docker push $(image)
+	$(DOCKER) push $(app_image)

@@ -10,10 +10,11 @@ project_name := ustwosite
 RM := rm -rf
 CP := cp
 DOCKER := docker
-DOCKER.cp := $(DOCKER) exec -it
+DOCKER.cp := $(DOCKER) cp
 DOCKER.exec := $(DOCKER) exec -it
 DOCKER.rm := $(DOCKER) rm -rf
 DOCKER.run := $(DOCKER) run -d
+DOCKER.volume := $(DOCKER) run
 DOCKER.task := $(DOCKER) run --rm -it
 DOCKER_MACHINE := docker-machine
 ANSIBLE := ansible
@@ -66,8 +67,8 @@ rm-production:
 init-production:
 	$(MAKE) static-create \
 		TIER=production \
-		PROXY_HTTP_PORT=80 \
-		PROXY_HTTPS_PORT=443
+		STATIC_HTTP_PORT=80 \
+		STATIC_HTTPS_PORT=443
 
 rollback-production:
 	@$(MAKE) rollback-template \
@@ -75,8 +76,7 @@ rollback-production:
 		PROXY_HTTP_PORT=80 \
 		PROXY_HTTPS_PORT=443
 
-deploy-production:
-	$(MAKE) deploy TIER=production PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+deploy-production: proxy-pull rm-production init-production
 
 deploy-staging:
 	$(MAKE) deploy TIER=staging PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443

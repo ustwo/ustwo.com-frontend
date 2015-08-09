@@ -13,7 +13,7 @@ proxy-build: app-assets
 		-t $(proxy_image) \
 		-f Dockerfile.proxy .
 
-static-push:
+proxy-push:
 	$(DOCKER) push $(proxy_image)
 
 proxy-pull:
