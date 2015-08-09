@@ -12,14 +12,15 @@ ifeq ($(TIER), dev)
     -v $(BASE_PATH)/src:/usr/local/src/src
   app_cmd = npm run dev
 endif
+# app_volumes := $(if $(TIER), "x", "y")
 
 app-rm:
 	@echo "Removing $(app_name)"
-	@docker rm -f $(app_name)
+	@$(DOCKER.rm) $(app_name)
 
 app-create:
 	@echo "Creating $(app_name)"
-	@docker run -d \
+	@$(DOCKER.run) \
 		--name $(app_name) \
 		$(app_volumes) \
 		--restart always \
@@ -30,19 +31,19 @@ app-create:
 		$(app_cmd)
 
 app-log:
-	docker logs -f $(app_name)
+	$(DOCKER) logs -f $(app_name)
 
 app-sh:
-	docker exec -it $(app_name) /bin/bash
+	$(DOCKER.exec) $(app_name) /bin/bash
 
 css:
-	docker exec -t $(app_name) npm run css
+	$(DOCKER.exec) $(app_name) npm run css
 
 app-compile:
-	docker exec -t $(app_name) npm run compile
+	$(DOCKER.exec) $(app_name) npm run compile
 
 app-assets: app-compile
-	rm -rf share/nginx/public
-	docker cp $(app_name):/usr/local/src/public share/nginx/
-	cp src/templates/index.html share/nginx/html/index.html
-	cp src/assets/favicon.* share/nginx/public/
+	$(RM) share/nginx/public
+	$(DOCKER.cp) $(app_name):/usr/local/src/public share/nginx/
+	$(CP) src/templates/index.html share/nginx/html/index.html
+	$(CP) src/assets/favicon.* share/nginx/public/
