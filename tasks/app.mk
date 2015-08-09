@@ -13,7 +13,6 @@ ifeq ($(TIER), dev)
     -v $(BASE_PATH)/src:/usr/local/src/src
   app_cmd = npm run dev
 endif
-# app_volumes := $(if $(TIER), "x", "y")
 
 build:
 	$(DOCKER) build -t $(app_image) .
