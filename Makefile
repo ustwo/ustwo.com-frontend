@@ -1,6 +1,6 @@
 TIER := dev
 BASE_PATH := $(PWD)
-TAG := 0.3.0
+TAG := 0.3.3
 MACHINE_ALIAS := ustwosite
 
 project_name := ustwosite
