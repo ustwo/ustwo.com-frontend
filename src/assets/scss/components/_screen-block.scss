@@ -14,6 +14,6 @@
   }
 
   @include susy-breakpoint($bp-gargantuan, $susy) {
-    overflow-x: auto;
+    overflow: visible;
   }
 }
