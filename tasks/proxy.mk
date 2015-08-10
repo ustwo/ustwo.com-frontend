@@ -10,6 +10,9 @@ proxy-rm:
 	@echo "Removing $(proxy_name)"
 	@$(DOCKER_RM) $(proxy_name)
 
+proxy-log:
+	$(DOCKER) logs -f $(proxy_name)
+
 proxy-create:
 	@echo "Creating $(proxy_name)"
 	@$(DOCKER_RUN) \
