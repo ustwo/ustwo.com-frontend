@@ -8,11 +8,14 @@ proxy_name = $(project_name)_$(TIER)_proxy
 
 proxy-rm:
 	@echo "Removing $(proxy_name)"
-	@docker rm -f $(proxy_name)
+	@$(DOCKER_RM) $(proxy_name)
+
+proxy-log:
+	$(DOCKER) logs -f $(proxy_name)
 
 proxy-create:
 	@echo "Creating $(proxy_name)"
-	@docker run -d \
+	@$(DOCKER_RUN) \
 		--name $(proxy_name) \
 		-p $(PROXY_HTTPS_PORT):443 \
 		-p $(PROXY_HTTP_PORT):80 \

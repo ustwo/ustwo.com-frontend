@@ -1,9 +1,10 @@
 ## App tasks ##################################################################
-app_image = $(image)
+image_name := ustwo/ustwo.com-frontend
+app_image := $(image_name):$(TAG)
 app_version = $(TAG)
 app_name = $(project_name)_$(TIER)_app
 
-.PHONY: app-rm app-create app-log app-sh
+.PHONY: app-rm app-create app-log app-sh build pull push
 
 ifeq ($(TIER), dev)
   app_volumes = \
@@ -13,13 +14,22 @@ ifeq ($(TIER), dev)
   app_cmd = npm run dev
 endif
 
+build:
+	$(DOCKER) build -t $(app_image) .
+
+pull:
+	$(DOCKER) pull $(app_image)
+
+push:
+	$(DOCKER) push $(app_image)
+
 app-rm:
 	@echo "Removing $(app_name)"
-	@docker rm -f $(app_name)
+	@$(DOCKER_RM) $(app_name)
 
 app-create:
 	@echo "Creating $(app_name)"
-	@docker run -d \
+	@$(DOCKER_RUN) \
 		--name $(app_name) \
 		$(app_volumes) \
 		--restart always \
@@ -30,10 +40,19 @@ app-create:
 		$(app_cmd)
 
 app-log:
-	docker logs -f $(app_name)
+	$(DOCKER) logs -f $(app_name)
 
 app-sh:
-	docker exec -it $(app_name) /bin/bash
+	$(DOCKER_EXEC) $(app_name) /bin/bash
 
 css:
-	docker exec -it $(app_name) npm run css
+	$(DOCKER_EXEC) $(app_name) npm run css
+
+app-compile:
+	$(DOCKER_EXEC) $(app_name) npm run compile
+
+app-assets: app-compile
+	$(RM) share/nginx/public
+	$(DOCKER_CP) $(app_name):/usr/local/src/public share/nginx/
+	$(CP) src/templates/index.html share/nginx/html/index.html
+	$(CP) src/assets/favicon.* share/nginx/public/

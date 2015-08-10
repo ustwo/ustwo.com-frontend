@@ -1,10 +1,4 @@
 # Provisioning with Ansible ###################################################
-IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
-ANSIBLE_INVENTORY ?= /etc/ansible/hosts
-ANSIBLE.c = ansible-playbook -b -v \
-	--private-key=$(IDENTITY_FILE)
-# --inventory-file=$(ANSIBLE_INVENTORY)
-
 #
 # Better using ssh agent:
 #    $ ssh-agent bash # if not already running
@@ -21,9 +15,7 @@ ANSIBLE.c = ansible-playbook -b -v \
 #
 # * data
 # * vault
+
 provision-%: etc/ansible/%.yml
-	@echo "*********************************************************************"
-	@echo "*WARNING* This task may require files intentionally left out the git"
-	@echo "          repository"
-	@echo "*********************************************************************"
-	$(ANSIBLE.c) $<
+	$(call warn, "This task may require files intentionally left out the git repository")
+	$(ANSIBLE_PLAY) $<
