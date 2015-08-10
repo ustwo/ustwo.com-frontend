@@ -54,6 +54,7 @@
     "npm-check-updates": "2.0.0-alpha.15",
     "pluralize": "1.1.2",
     "react": "0.13.3",
+    "react-helmet": "1.1.0",
     "react-style-guide": "1.1.5",
     "react-transition-manager": "1.2.3",
     "reactify": "1.1.1",
