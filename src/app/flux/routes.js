@@ -84,6 +84,17 @@ const routes = {
     pattern: '/404',
     statusCode: 404,
     data: () => []
+  },
+  joinUs: {
+    id: 'joinUs',
+    pattern: '/join-us',
+    status: 200,
+    data: () => [{
+      namespace: 'wp/v2/',
+      type: 'pages',
+      id: '?name=join-us&_embed=true',
+      get: data => data[0]
+    }]
   }
 };
 
