@@ -118,7 +118,8 @@
       display: none;
     }
   }
-  &.case-study {
+  &.case-study,
+  &.join-us {
     @extend .neg-nav;
   }
 }

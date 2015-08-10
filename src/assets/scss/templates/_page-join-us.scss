@@ -1,3 +1,14 @@
 .page-join-us {
 
+  .hero {
+    background-color: $honey;
+    background-image: none !important; // TEMP
+
+    h1 {
+      color: $nonBlack;
+    }
+  }
+  .hero__down-chevron svg {
+    fill: $nonBlack;
+  }
 }
