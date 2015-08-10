@@ -33,7 +33,8 @@ const pageMap = {
   'blog': require('./templates/page-blog'),
   'blog/post': require('./templates/page-post'),
   'legal': require('./templates/page-legal'),
-  'privacy': require('./templates/page-privacy')
+  'privacy': require('./templates/page-privacy'),
+  'join-us': require('./templates/page-join-us')
 };
 
 function renderTitle(state) {
