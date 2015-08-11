@@ -16,6 +16,7 @@ var autoprefixer = require('autoprefixer-core');
 
 // js
 var browserify = require('browserify');
+var aliasify = require('aliasify');
 var source = require('vinyl-source-stream');
 var babelify = require('babelify');
 var reactify = require('reactify');
@@ -127,10 +128,11 @@ var tasks = {
       packageCache: {},
       fullPaths: watch
     })
-    .require(require.resolve('./src/node_modules/index.js'), { entry: true })
+    .require(require.resolve('./src/app/index.js'), { entry: true })
     .transform(babelify.configure({
         optional: ["es7.classProperties"]
     }))
+    .transform(aliasify, require('./package.json').aliasify)
     .transform(reactify, {"es6": true})
     .external('babelify/polyfill')
     .external('react')
@@ -141,7 +143,7 @@ var tasks = {
     }
 
     var rebundle = function() {
-      var result = bundler.bundle()
+      return bundler.bundle()
         .on('error', handleError('Browserify'))
         .pipe(source('app.js'))
         .pipe(buffer())
@@ -149,12 +151,6 @@ var tasks = {
         .pipe(gulpif(!production, sourcemaps.init({loadMaps: true})))
         .pipe(gulpif(!production, sourcemaps.write('./')))
         .pipe(gulp.dest('public/js/'));
-
-      if(syncbrowser) {
-        return result.pipe(browserSync.reload({stream:true, once: true}));
-      }
-
-      return result;
     };
 
     if (watch) {
@@ -182,7 +178,7 @@ var tasks = {
       packageCache: {},
       fullPaths: watch && styleguide
     })
-    .require(require.resolve('./src/node_modules/styleguide.js'), { entry: true })
+    .require(require.resolve('./src/app/styleguide.js'), { entry: true })
     .transform(babelify.configure({
         optional: ["es7.classProperties"]
     }))
@@ -231,7 +227,7 @@ var tasks = {
   // Testing with mocha
   // --------------------------
   test: function() {
-    return gulp.src('src/node_modules/**/*test.js', {read: false})
+    return gulp.src('src/app/**/*test.js', {read: false})
       .pipe(mocha({
         'ui': 'bdd',
         'reporter': 'spec'
@@ -246,35 +242,40 @@ var tasks = {
   serve: function(cb) {
     var started = false;
 
-    return nodemon({
-      script: 'src/server/index.js',
-      watch: ['src/server', 'src/templates'],
-      exec: './node_modules/.bin/babel-node',
-      ext: 'js html',
-      env: {
-        'NODE_ENV': 'development',
-        'PORT': syncbrowser ? 8887 : 8888
-      }
-    }).on('start', function () {
-      gutil.log(gutil.colors.bgGreen('Nodemon start...'));
-      if (!started) {
-        started = true;
-        cb();
-        if (syncbrowser) {
-          browserSync.init(null, {
-            port: 8888,
-            proxy: {
-              target: 'localhost:8887'
-            },
-            open: false,
-            ghostMode: false,
-            // logLevel: 'debug',
-            notify: false
-          });
-        }
-      } else {
-        setTimeout(reloadbrowsersync, 4000);
-      }
+    // return nodemon({
+    //   script: 'src/server/index.js',
+    //   watch: ['src/server', 'src/templates'],
+    //   exec: './node_modules/.bin/babel-node',
+    //   ext: 'js html',
+    //   env: {
+    //     'NODE_ENV': 'development',
+    //     'PORT': syncbrowser ? 8887 : 8888
+    //   }
+    // }).on('start', function () {
+    //   gutil.log(gutil.colors.bgGreen('Nodemon start...'));
+    //   if (!started) {
+    //     started = true;
+    //     cb();
+    //     if (syncbrowser) {
+    //       browserSync.init(null, {
+    //         port: 8888,
+    //         proxy: {
+    //           target: 'localhost:8887'
+    //         },
+    //         open: false,
+    //         ghostMode: false,
+    //         // logLevel: 'debug',
+    //         notify: false
+    //       });
+    //     }
+    //   } else {
+    //     setTimeout(reloadbrowsersync, 4000);
+    //   }
+    // });
+    return exec('./node_modules/.bin/babel-node src/server/index.js', function (err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      cb(err);
     });
   }
 };
@@ -300,7 +301,7 @@ gulp.task('reactstyleguide', tasks.reactstyleguide);
 gulp.task('data', tasks.data);
 gulp.task('test', tasks.test);
 gulp.task('serve', ['build'], tasks.serve);
-gulp.task('start', ['clean', 'serve']);
+gulp.task('start', ['clean', 'build']);
 
 // build task
 gulp.task('build', [

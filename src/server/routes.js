@@ -22,14 +22,27 @@ router.get('/styleguide', (req, res) => {
 });
 
 router.get('/*', (req, res) => {
-  // const App = React.createFactory(require('../source/app.jsx'));
-  readData(data => res.render('index', {
-    title: 'ustwo',
-    data: data
-    // app: React.renderToString(App({
-    //   initialUrl: req.protocol + '://' + req.hostname + req.originalUrl
-    // }))
-  }));
+  readData(data => {
+    function callback (statusCode, state) {
+      const App = React.createFactory(require('../app/app'));
+      res.render('index', {
+        title: 'ustwo',
+        data: JSON.stringify(fullData),
+        app: React.renderToString(App({
+          initialUrl: req.protocol + '://' + req.hostname + req.originalUrl,
+          data: state
+        }))
+      });
+    }
+    const Flux = require('../app/flux');
+    Flux.init(req.protocol + '://' + req.hostname + req.originalUrl);
+    
+    // React.renderToString(App({
+    //   initialUrl: req.protocol + '://' + req.hostname + req.originalUrl,
+    //   data: JSON.parse(data),
+    //   callback: callback
+    // }));
+  });
 });
 
 export default router;
