@@ -78,11 +78,12 @@ rollback-production: rollback-template
 
 deploy-production: proxy-pull rm-production init-production
 
-deploy-staging: TIER := staging
-deploy-staging: PROXY_HTTP_PORT := 80
-deploy-staging: PROXY_HTTPS_PORT := 443
-deploy-staging: deploy
-
+# deploy-staging: TIER := staging
+# deploy-staging: PROXY_HTTP_PORT := 80
+# deploy-staging: PROXY_HTTPS_PORT := 443
+# deploy-staging: deploy
+deploy-staging:
+	$(MAKE) deploy TIER=staging PROXY_HTTPS_PORT=443 PROXY_HTTP_PORT=80
 
 absorb:
 	git checkout master
