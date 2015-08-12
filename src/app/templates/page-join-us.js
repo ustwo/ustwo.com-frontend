@@ -24,13 +24,51 @@ export default class PageJoinUs extends React.Component {
     return (
       <article className="page-join-us">
 
-        <section className="hero" style={{backgroundImage: "url('/images/whatwedo/header/image_1.jpg')"}}>
+        <section className="hero">
           <h1 className="hero__title">{get(pageData, 'page_builder.0.attr.heading.value')}</h1>
-          <img className="hero__image" src="/images/whatwedo/header/image_1.jpg" />
+          <img className="hero__image" src="/images/home/Homepage_Games_Ipad.png"/>
           <DownChevron customClass="hero__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />
         </section>
 
+        <section className="introduction">
+          <h2>Get to know ustwo</h2>
+          <p>Cheesy feet paneer who moved my cheese. Fromage frais halloumi queso cheese triangles feta boursin port-salut macaroni cheese. Mozzarella smelly cheese cheese triangles rubber cheese ricotta the big cheese ricotta melted cheese. Chalk and cheese stinking bishop.</p>
+        </section>
 
+        <section className="features-grid">
+
+          <div className="video"></div>
+
+          <div className="slide slide-1">
+            <div className="card card-1"></div>
+            <div className="card card-2"></div>
+          </div>
+          <div className="slide slide-2">
+            <div className="card card-3"></div>
+            <div className="card card-4"></div>
+          </div>
+          <div className="slide slide-3">
+            <div className="card card-5"></div>
+            <div className="card card-6"></div>
+          </div>
+          <div className="slide slide-4">
+            <div className="card card-7"></div>
+            <div className="card card-8"></div>
+          </div>
+          <div className="slide slide-5">
+            <div className="card card-9"></div>
+            <div className="card card-10"></div>
+          </div>
+          <div className="slide slide-6">
+            <div className="card card-11"></div>
+            <div className="card card-12"></div>
+          </div>
+          <div className="slide slide-7">
+            <div className="card card-13"></div>
+            <div className="card card-14"></div>
+          </div>
+
+        </section>
 
       </article>
     );

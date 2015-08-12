@@ -1,14 +1,78 @@
+// END TEMP
+.page-join-us {
+  .features-grid {
+    margin-top: 80px;
+    .slide {
+      background: red;
+      &:nth-child(2n+1) {
+        background: green;
+      }
+      .card {
+        opacity: .2;
+        background: black;
+        &:last-child {
+          opacity: .1;
+        }
+      }
+    }
+  }
+}
+// END TEMP
+
+
+
+
+
 .page-join-us {
 
   .hero {
     background-color: $honey;
-    background-image: none !important; // TEMP
 
     h1 {
+      position: relative;
+      z-index: 2;
       color: $nonBlack;
+    }
+
+    .hero__image {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 92%;
+      opacity: .6;
     }
   }
   .hero__down-chevron svg {
     fill: $nonBlack;
+  }
+
+
+
+  .features-grid {
+    $card-height-mobile: 270px;
+    $image-height-mobile: 208px;
+    $slide-height: 156px;
+
+    .video {
+      position: absolute;
+      display: none;
+    }
+
+    .card {
+      // Card
+      height: $card-height-mobile;
+
+      &:nth-child(2n+1) {
+        // Image
+        height: $image-height-mobile;
+      }
+    }
+
+    @include susy-breakpoint($bp-medium, $susy) {
+
+    }
+
   }
 }
