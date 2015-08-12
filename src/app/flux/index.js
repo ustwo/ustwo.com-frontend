@@ -76,7 +76,7 @@ const Flux = Object.assign(
         return Flux.navigate(vurl.original, false, false, true, true);
       } else {
         setUrl(vurl.original, true);
-        return Routes.home.handler(vurl.searchObject);
+        return getRouteHandler(Routes.home.id, Routes.home.data(), Routes.home.statusCode || 200);
       }
     },
     navigate(urlString, history, ignoreUrl, replaceState, force) {
