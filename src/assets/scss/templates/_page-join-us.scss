@@ -1,25 +1,25 @@
 // END TEMP
 .page-join-us {
   .features-grid {
-    margin-top: 80px;
     .slide {
       background: red;
       &:nth-child(2n+1) {
         background: green;
       }
       .card {
-        opacity: .2;
+        opacity: .3;
         background: black;
         &:last-child {
           opacity: .1;
         }
       }
     }
+    .video {
+      background: blue;
+    }
   }
 }
 // END TEMP
-
-
 
 
 
@@ -41,6 +41,7 @@
       transform: translate(-50%, -50%);
       display: block;
       width: 92%;
+      max-width: 800px;
       opacity: .6;
     }
   }
@@ -49,30 +50,101 @@
   }
 
 
-
   .features-grid {
     $card-height-mobile: 270px;
     $image-height-mobile: 208px;
-    $slide-height: 156px;
+    $slide-height: 312px; // default on tablet+
+    $video-height-mobile: 310px;
+    $video-height: 620px;
+
+    position: relative;
+    height: $card-height-mobile + $image-height-mobile + $video-height-mobile;
+    overflow: hidden;
+    padding-top: $video-height-mobile;
+
+    &:before,
+    &:after {
+      content: "";
+      display: table;
+    }
+
+    &:after {
+      clear: both;
+    }
 
     .video {
       position: absolute;
-      display: none;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: $video-height-mobile;
     }
 
     .card {
-      // Card
-      height: $card-height-mobile;
+      // Image
+      height: $image-height-mobile;
 
-      &:nth-child(2n+1) {
-        // Image
-        height: $image-height-mobile;
+      &:last-child {
+        // Card
+        height: $card-height-mobile;
       }
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
+      height: auto;
+      overflow: visible;
+      padding-top: 0;
 
+      .slide {
+        display: inline-block;
+        float: left;
+        width: 50%;
+
+        // Reverse order of card and image every other slide
+        &:nth-child(2n+1) {
+          position: relative;
+
+          .card:first-child {
+            margin-top: $slide-height;
+          }
+          .card:last-child {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        // Create gap after first line of slides to position video
+        &:nth-child(3), &:nth-child(4) {
+          margin-top: $video-height;
+        }
+      }
+
+      .card,
+      .card:last-child {
+        height: $slide-height;
+      }
+
+      .video {
+        top: $slide-height * 2;
+        height: $video-height;
+      }
+
+    }
+    @include susy-breakpoint($bp-large, $susy) {
+      .slide {
+        width: 33.3333%;
+
+        // Create gap after first line of slides to position video
+        &:nth-child(4), &:nth-child(5), &:nth-child(6) {
+          margin-top: $video-height;
+        }
+        &:nth-child(3) {
+          margin-top: 0;
+        }
+      }
     }
 
   }
+
 }
