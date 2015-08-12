@@ -47,32 +47,40 @@ export default class PageJoinUs extends React.Component {
 
         <section className="features-grid">
 
-          <div className="slide slide-1">
-            <div className="card card-1"></div>
-            <div className="card card-2"></div>
-          </div>
-          <div className="slide slide-2">
-            <div className="card card-3"></div>
-            <div className="card card-4"></div>
-          </div>
-          <div className="slide slide-3">
-            <div className="card card-5"></div>
-            <div className="card card-6"></div>
-          </div>
-          <div className="slide slide-4">
-            <div className="card card-7"></div>
-            <div className="card card-8"></div>
-          </div>
-          <div className="slide slide-5">
-            <div className="card card-9"></div>
-            <div className="card card-10"></div>
-          </div>
-          <div className="slide slide-6">
-            <div className="card card-11"></div>
-            <div className="card card-12"></div>
-          </div>
-
           <div className="video"></div>
+
+          <div className="slides">
+
+            <div className="slide">
+              <div className="card">This is the card</div>
+              <div className="card"></div>
+            </div>
+            <div className="slide">
+              <div className="card">This is the card</div>
+              <div className="card"></div>
+            </div>
+            <div className="slide">
+              <div className="card">This is the card</div>
+              <div className="card"></div>
+            </div>
+            <div className="slide">
+              <div className="card">This is the card</div>
+              <div className="card"></div>
+            </div>
+            <div className="slide">
+              <div className="card">This is the card</div>
+              <div className="card"></div>
+            </div>
+            <div className="slide">
+              <div className="card">This is the card</div>
+              <div className="card"></div>
+            </div>
+            <div className="slide">
+              <div className="card">This is the card</div>
+              <div className="card"></div>
+            </div>
+
+          </div>
 
         </section>
 
