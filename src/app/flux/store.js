@@ -46,9 +46,12 @@ function applyData(type, data) {
 }
 
 export default {
-  setPage(newPage, statusCode, itemsToLoad) {
+  setPage(newPage, statusCode) {
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
+    return Promise.resolve(_state);
+  },
+  loadData(itemsToLoad) {
     return DataLoader(itemsToLoad, applyData).then(() => _state);
   },
   showContacts() {

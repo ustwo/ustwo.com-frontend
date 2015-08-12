@@ -32,7 +32,6 @@ router.get('/*', (req, res) => {
           title: 'ustwo',
           state: JSON.stringify(state),
           app: React.renderToString(App({
-            initialUrl: req.protocol + '://' + req.hostname + req.originalUrl,
             state: state
           }))
         });

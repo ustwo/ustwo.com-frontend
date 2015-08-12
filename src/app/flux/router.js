@@ -30,18 +30,6 @@ function init (initialUrl, navigator) {
   }
 }
 
-function setUrl (url, replace) {
-  const vurl = virtualUrl(url);
-  const name = manifest.name;
-  vurl.href = url;
-
-  if (replace) {
-    window.history.replaceState(null, name, url);
-  } else {
-    window.history.pushState(null, name, url);
-  }
-}
-
 function navigate (urlString, history, ignoreUrl, replaceState, force) {
   const vurl = virtualUrl(urlString);
   const pathname = vurl.pathname;
@@ -66,6 +54,18 @@ function navigate (urlString, history, ignoreUrl, replaceState, force) {
     window.document.body.scrollTop = 0;
   }
   return action.apply(this, params);
+}
+
+function setUrl (url, replace) {
+  const vurl = virtualUrl(url);
+  const name = manifest.name;
+  vurl.href = url;
+
+  if (replace) {
+    window.history.replaceState(null, name, url);
+  } else {
+    window.history.pushState(null, name, url);
+  }
 }
 
 function notfound (url) {

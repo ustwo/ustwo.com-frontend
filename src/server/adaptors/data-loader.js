@@ -4,7 +4,7 @@ import Pluralize from 'pluralize';
 import fetcher from '../../app/_lib/fetcher';
 
 export default function (requiredData, apply) {
-  console.log(requiredData, arguments);
+  console.log('requiredData', requiredData);
   return Promise.all(requiredData.map((params) => {
     console.log('Loading...', params.type, (params.id || ''));
     return fetcher({

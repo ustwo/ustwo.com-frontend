@@ -1,8 +1,11 @@
 import Store from './store';
 
 const Actions = {
-  goTo(pageId, statusCode, itemsToLoad) {
-    return Store.setPage(pageId, statusCode, itemsToLoad || []);
+  goTo(pageId, statusCode) {
+    return Store.setPage(pageId, statusCode);
+  },
+  loadData(itemsToLoad) {
+    return Store.loadData(itemsToLoad || []);
   },
   showContacts() {
     return Store.showContacts();
