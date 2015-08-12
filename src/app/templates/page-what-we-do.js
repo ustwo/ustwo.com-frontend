@@ -18,10 +18,10 @@ export default class PageWork extends React.Component {
           <img className="hero__image" src="/images/whatwedo/header/image_1.jpg" />
           <DownChevron customClass="hero__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />
         </section>
-        <section className="page-work__intro">
-          <h2 className="page-work__intro__title">{get(pageData, 'page_builder.1.attr.heading.value')}</h2>
-          <hr className="page-work__intro__rule" />
-          <div className="page-work__intro__para" dangerouslySetInnerHTML={{__html: get(pageData, 'page_builder.1.attr.body.value')}} />
+        <section className="intro">
+          <h2 className="intro__title">{get(pageData, 'page_builder.1.attr.heading.value')}</h2>
+          <hr className="intro__rule" />
+          <div className="intro__para" dangerouslySetInnerHTML={{__html: get(pageData, 'page_builder.1.attr.body.value')}} />
         </section>
         <ul className="page-work__list">
           {get(pageData, 'page_builder.2.attr.case_studies.value', '').split(',').map(caseStudyName => {

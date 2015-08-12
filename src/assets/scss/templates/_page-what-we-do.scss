@@ -1,21 +1,5 @@
 .page-work {
 
-  &__intro {
-    padding: 50px 6.25%;
-
-    &__title {
-      color: $marshPassion;
-      text-align: center;
-    }
-    &__rule {
-      border: 2px solid $mare;
-      width: 120px;
-      margin: 30px auto;
-    }
-    &__para {
-      text-align: center;
-    }
-  }
   &__list {
     list-style: none;
     padding: 0;
@@ -29,24 +13,6 @@
         max-width: 850px;
       }
       &__image {
-      }
-    }
-    &__intro {
-      padding-top: 100px;
-      padding-bottom: 100px;
-
-      &__title {
-        max-width: 768px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      &__rule {
-        width: 180px;
-      }
-      &__para {
-        max-width: 620px;
-        margin-left: auto;
-        margin-right: auto;
       }
     }
     &__list {
