@@ -18,6 +18,15 @@ export default class PageJoinUs extends React.Component {
             "value": "Do the best work of your life"
           }
         }
+      }, {
+        "attr": {
+          "heading": {
+            "value": "Get to know ustwo"
+          },
+          "body": {
+            "value": "<p>Cheesy feet paneer who moved my cheese. Fromage frais halloumi queso cheese triangles feta boursin port-salut macaroni cheese. Mozzarella smelly cheese cheese triangles rubber cheese ricotta the big cheese ricotta melted cheese. Chalk and cheese stinking bishop.</p>"
+          }
+        }
       }]
     };
 
@@ -30,14 +39,13 @@ export default class PageJoinUs extends React.Component {
           <DownChevron customClass="hero__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />
         </section>
 
-        <section className="introduction">
-          <h2>Get to know ustwo</h2>
-          <p>Cheesy feet paneer who moved my cheese. Fromage frais halloumi queso cheese triangles feta boursin port-salut macaroni cheese. Mozzarella smelly cheese cheese triangles rubber cheese ricotta the big cheese ricotta melted cheese. Chalk and cheese stinking bishop.</p>
+        <section className="intro">
+          <h2 className="intro__title">{get(pageData, 'page_builder.1.attr.heading.value')}</h2>
+          <hr className="intro__rule" />
+          <div className="intro__para" dangerouslySetInnerHTML={{__html: get(pageData, 'page_builder.1.attr.body.value')}} />
         </section>
 
         <section className="features-grid">
-
-          <div className="video"></div>
 
           <div className="slide slide-1">
             <div className="card card-1"></div>
@@ -63,10 +71,8 @@ export default class PageJoinUs extends React.Component {
             <div className="card card-11"></div>
             <div className="card card-12"></div>
           </div>
-          <div className="slide slide-7">
-            <div className="card card-13"></div>
-            <div className="card card-14"></div>
-          </div>
+
+          <div className="video"></div>
 
         </section>
 
