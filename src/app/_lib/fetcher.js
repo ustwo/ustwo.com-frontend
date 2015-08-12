@@ -12,7 +12,7 @@ let defaultConfig = {
   headers: {
     'Origin': window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '')
   },
-  baseurl: `https://proxy.ustwo.com:${process.env.PROXY_HTTPS_PORT}/api/wp-json/`
+  baseurl: require('../../server/adaptors/proxy-url')
 }
 
 function fetcher (config) {

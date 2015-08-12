@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Actions from '../flux/actions';
+import Flux from '../flux';
 import ContactDetail from '../components/contact-detail';
 import CloseButton from '../elements/close-button';
 import {onClickContent} from '../modules/modal';
@@ -18,6 +18,6 @@ export default class ContactTray extends React.Component {
     );
   }
   onClickClose() {
-    Actions.closeModal();
+    Flux.closeModal();
   }
 }

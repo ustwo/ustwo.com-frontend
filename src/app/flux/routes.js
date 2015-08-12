@@ -10,24 +10,24 @@ var globalLoads = [{
 
 const handlers = {
   home() {
-    Actions.goTo('home', 200, globalLoads);
+    return Actions.goTo('home', 200, globalLoads);
   },
   whatWeDo() {
-    Actions.goTo('what-we-do', 200, [].concat(globalLoads, {
+    return Actions.goTo('what-we-do', 200, [].concat(globalLoads, {
       namespace: 'wp/v2/',
       type: 'pages',
       id: '66?_embed'
     }));
   },
   caseStudy(cid) {
-    Actions.goTo('what-we-do/case-study', 200, [].concat(globalLoads, {
+    return Actions.goTo('what-we-do/case-study', 200, [].concat(globalLoads, {
       namespace: 'ustwo/v1/',
       type: 'case-studies',
       id: cid
     }));
   },
   blog() {
-    Actions.goTo('blog', 200, [].concat(globalLoads, {
+    return Actions.goTo('blog', 200, [].concat(globalLoads, {
       namespace: 'wp/v2/',
       type: 'pages',
       id: '?name=blog&_embed=true',
@@ -35,7 +35,7 @@ const handlers = {
     }));
   },
   post(pid) {
-    Actions.goTo('blog/post', 200, [].concat(globalLoads, {
+    return Actions.goTo('blog/post', 200, [].concat(globalLoads, {
       namespace: 'wp/v2/',
       type: 'posts',
       id: `?name=${pid}&_embed=true`,
@@ -43,7 +43,7 @@ const handlers = {
     }));
   },
   legal() {
-    Actions.goTo('legal', 200, [].concat(globalLoads, {
+    return Actions.goTo('legal', 200, [].concat(globalLoads, {
       namespace: 'wp/v2/',
       type: 'pages',
       id: '?name=legal&_embed=true',
@@ -51,7 +51,7 @@ const handlers = {
     }));
   },
   privacy() {
-    Actions.goTo('privacy', 200, [].concat(globalLoads, {
+    return Actions.goTo('privacy', 200, [].concat(globalLoads, {
       namespace: 'wp/v2/',
       type: 'pages',
       id: '?name=privacy&_embed=true',

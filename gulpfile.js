@@ -138,10 +138,6 @@ var tasks = {
     .external('react')
     .external('svg4everybody');
 
-    if (watch) {
-      bundler = watchify(bundler, {poll: true});
-    }
-
     var rebundle = function() {
       return bundler.bundle()
         .on('error', handleError('Browserify'))
@@ -152,13 +148,6 @@ var tasks = {
         .pipe(gulpif(!production, sourcemaps.write('./')))
         .pipe(gulp.dest('public/js/'));
     };
-
-    if (watch) {
-      bundler.on('update', rebundle);
-      bundler.on('log', function (msg) {
-        gutil.log('Reactify rebundle:', msg);
-      });
-    }
 
     vendorBundler.bundle()
       .pipe(source('vendors.js'))
@@ -220,8 +209,10 @@ var tasks = {
   // Optimize asset images
   // --------------------------
   assets: function() {
-    return gulp.src('src/assets/images/**/*.{gif,jpg,png,svg}')
+    gulp.src('src/assets/images/**/*.{gif,jpg,png,svg}')
       .pipe(gulp.dest('public/images'));
+    gulp.src('src/assets/favicon.{png,ico}')
+        .pipe(gulp.dest('public'));
   },
   // --------------------------
   // Testing with mocha

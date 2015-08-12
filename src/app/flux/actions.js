@@ -2,29 +2,22 @@ import Store from './store';
 
 const Actions = {
   goTo(pageId, statusCode, itemsToLoad) {
-    itemsToLoad && Store.loadData(itemsToLoad);
-    Store.setPage(pageId, statusCode);
-    Store.emitChange();
+    return Store.setPage(pageId, statusCode, itemsToLoad || []);
   },
   showContacts() {
-    Store.showContacts();
-    Store.emitChange();
+    return Store.showContacts();
   },
   openNav() {
-    Store.openNav();
-    Store.emitChange();
+    return Store.openNav();
   },
   closeNav() {
-    Store.closeNav();
-    Store.emitChange();
+    return Store.closeNav();
   },
   closeTakeover() {
-    Store.closeTakeover();
-    Store.emitChange();
+    return Store.closeTakeover();
   },
   closeModal() {
-    Store.closeModal();
-    Store.emitChange();
+    return Store.closeModal();
   }
 };
 

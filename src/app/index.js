@@ -9,7 +9,9 @@ window.env = Env;
 
 React.initializeTouchEvents(true);
 
-React.render(
-  <App data={data} />,
-  document.body
-);
+Flux.init(window.location.pathname).then(state => {
+  React.render(
+    <App state={state} />,
+    document.body
+  );
+});

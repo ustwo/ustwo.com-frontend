@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import Actions from '../flux/actions';
+import Flux from '../flux';
 
 class Modal extends React.Component {
   render() {
@@ -14,7 +14,7 @@ class Modal extends React.Component {
     );
   }
   onClick() {
-    Actions.closeModal();
+    Flux.closeModal();
   }
 };
 Modal.onClickContent = (e) => {

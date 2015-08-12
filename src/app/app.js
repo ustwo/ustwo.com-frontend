@@ -4,6 +4,7 @@
 import React from 'react';
 import Meta from "react-helmet";
 import TransitionManager from 'react-transition-manager';
+import classnames from 'classnames';
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
 
@@ -16,8 +17,7 @@ import 'gsap/src/uncompressed/easing/EasePack.js';
 
 import Tracking from '../server/adaptors/tracking';
 import window from '../server/adaptors/window';
-import Router from './flux/router';
-import Store from './flux/store';
+import Flux from './flux';
 import Nulls from './flux/nulls';
 import Navigation from './modules/navigation';
 import Footer from './modules/footer';
@@ -59,22 +59,21 @@ function renderTitle(state) {
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    Store.init(this.props.data, this.props.callback);
-    this.state = Store.getData();
+    this.state = props.state;
   }
-  onStoreChange = () => {
-    this.setState(Store.getData());
+  onFlux = (state) => {
+    console.log('new state', state);
+    this.setState(state);
   }
   componentWillMount() {
-    Router.init(this.props.initialUrl);
     // window.Tracking = new Tracking();
   }
   componentDidMount() {
-    Store.addChangeListener(this.onStoreChange);
+    Flux.addChangeListener(this.onFlux);
     this.state.showNav && window.document.body.classList.add('nav-open');
   }
   componentWillUnmount() {
-    Store.removeChangeListener(this.onStoreChange);
+    Flux.removeChangeListener(this.onFlux);
     // window.Tracking = null;
   }
   render() {
@@ -85,6 +84,12 @@ export default class App extends React.Component {
       clearProps: 'transform'
     };
     const headerDelay = 0.5 + (state.takeover !== Nulls.takeover ? 2 : 0);
+    const appClasses = classnames('app', {
+      'app-404': state.currentPage === 'notfound'
+    });
+    const contentClasses = classnames('app__content', {
+      takeover: state.currentPage === 'home' && state.takeover !== Nulls.takeover
+    });
     let content;
     if(this.state.showNav) {
       window.document.body.classList.add('nav-open');
@@ -92,14 +97,14 @@ export default class App extends React.Component {
       window.document.body.classList.remove('nav-open');
     }
     if(state.currentPage === 'notfound') {
-      content = <div className="app app-404">
+      content = <div className={appClasses}>
         <Navigation pages={state.pages} section={this.state.currentPage.split('/')[0]} page={this.state.currentPage.split('/')[1]} takeover={this.state.takeover !== Nulls.takeover} open={this.state.showNav} />
         <FourOhFour {...this.state} />
       </div>;
     } else {
       content = (
-        <div className="app">
-          <Meta
+        <div className={appClasses}>
+          {/*<Meta
             title={renderTitle(state)}
             meta={[{
               name: "description",
@@ -108,14 +113,14 @@ export default class App extends React.Component {
               name: "keywords",
               content: `ustwo`
             }]}
-          />
+          />*/}
           <EntranceAnimation className="nav-wrapper" delay={headerDelay} duration={0.5} options={animationOptions} findElement={element => element.children[0]}>
             <Navigation pages={state.pages} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={state.takeover !== Nulls.takeover} open={state.showNav} />
           </EntranceAnimation>
-          <TransitionManager component="div" className="app__content" duration="500">
-            <div className="app__stage__page-container" key={this.state.currentPage}>
-              {this.getPage(this.state.currentPage)}
-              <Footer data={this.state.footer} studios={this.state.studios} />
+          <TransitionManager component="div" className={contentClasses} duration="500">
+            <div className="app__stage__page-container" key={state.currentPage}>
+              {this.getPage(state.currentPage)}
+              <Footer data={state.footer} studios={state.studios} />
             </div>
           </TransitionManager>
           <TransitionManager component="div" className="app__modal" duration="500">
@@ -131,7 +136,7 @@ export default class App extends React.Component {
     const modalType = this.state.modal;
     let modal;
     if(this.state.takeover !== Nulls.takeover && this.state.currentPage === 'home') {
-      modal = <TakeOver takeover={takeover} />;
+      modal = <TakeOver key="takeover" takeover={takeover} />;
     } else if(modalType) {
       let content;
       let className;

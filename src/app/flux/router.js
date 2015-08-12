@@ -11,7 +11,7 @@ import Actions from '../flux/actions';
 import virtualUrl from '../flux/virtualurl';
 import routes from '../flux/routes.js';
 
-function init (initialUrl) {
+function init (initialUrl, navigator) {
   const vurl = virtualUrl(initialUrl || window.location.href);
 
   window.onpopstate = () => {
@@ -19,14 +19,14 @@ function init (initialUrl) {
     if(window.location.href.indexOf('#') > -1) {
       url = window.location.hash.substr(1);
     }
-    Router.navigate(url, true, true);
+    navigator(url, true, true);
   };
 
   if (!RoutePattern.fromString(routes.home.pattern).matches(vurl.pathname)) {
-    Router.navigate(vurl.original, false, false, true, true);
+    return navigator(vurl.original, false, false, true, true);
   } else {
     setUrl(vurl.original, true);
-    routes.home.handler(vurl.searchObject);
+    return routes.home.handler(vurl.searchObject);
   }
 }
 
@@ -65,27 +65,17 @@ function navigate (urlString, history, ignoreUrl, replaceState, force) {
   if(!history) {
     window.document.body.scrollTop = 0;
   }
-  if(force || Modernizr.history) {
-    action.apply(this, params);
-  }
+  return action.apply(this, params);
 }
 
 function notfound (url) {
   console.log('notfound', url);
-  Actions.goTo('notfound', 404);
-}
-
-function override (url) {
-  return (e) => {
-    e.preventDefault();
-    navigate(url);
-  };
+  return Actions.goTo('notfound', 404);
 }
 
 const Router = {
   init: init,
-  navigate: navigate,
-  override: override
+  navigate: navigate
 };
 
 export default Router;

@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import TransitionManager from 'react-transition-manager';
 
-import Actions from '../flux/actions';
+import Flux from '../flux';
 
 import CloseButton from '../elements/close-button';
 import NewsFlash from '../elements/news-flash';
@@ -58,7 +58,7 @@ export default class TakeOver extends React.Component {
       );
     }
     return (
-      <TransitionManager className="take-over" component="div" duration={800} onClick={onClickContent}>
+      <TransitionManager className={`take-over ${this.props.className}`} component="div" duration={800} onClick={onClickContent}>
         {content}
       </TransitionManager>
     );
@@ -92,7 +92,7 @@ export default class TakeOver extends React.Component {
       'eventAction': 'click_takeover_x',  // Required.
       'eventLabel': takeover.name // Name of the takeover as set in WordPress
     });
-    Actions.closeTakeover();
+    Flux.closeTakeover();
   }
   onClickLink(index) {
     return (e) => {

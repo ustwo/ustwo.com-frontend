@@ -3,7 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import Router from '../flux/router';
+import Flux from '../flux';
 
 export default class NavigationOverlayLink extends React.Component {
   render() {
@@ -36,7 +36,7 @@ export default class NavigationOverlayLink extends React.Component {
         'eventAction': 'click_nav_link',     // Required.
         'eventLabel': this.props.gaId, // TODO: Remove once GA has been hooked into router
       });
-      Router.navigate(this.props.url);
+      Flux.navigate(this.props.url);
     }
   }
 }

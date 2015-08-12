@@ -3,7 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import Router from '../flux/router';
+import Flux from '../flux';
 import Nulls from '../flux/nulls';
 
 import NavigationLink from '../elements/navigation-link';
@@ -13,11 +13,11 @@ import CloseButton from '../elements/close-button';
 
 export default class Navigation extends React.Component {
   openOverlay = (event) => {
-    Actions.openNav();
+    Flux.openNav();
     this.refs.closeButton.anim();
   }
   closeOverlay = (event) => {
-    Actions.closeNav();
+    Flux.closeNav();
     this.refs.closeButton.resetAnim();
   }
   onClickLogo = (event) => {
@@ -30,8 +30,7 @@ export default class Navigation extends React.Component {
         'eventLabel': this.props.takeover.name // Name of the takeover as set in WordPress
       });
     }
-    Actions.closeTakeover();
-    Router.navigate('/');
+    Flux.navigate('/');
   }
   render() {
     const navigationLinks = this.props.pages.map((link) => {

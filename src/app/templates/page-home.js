@@ -48,7 +48,7 @@ export default class PageHome extends React.Component {
     let pageElement = React.findDOMNode(this);
     // Tracking.addPageScrollTracking('home', pageElement);
 
-    if (!env.modernizr.touchevents && window.innerWidth > 480) {
+    if (!env.Modernizr.touchevents && window.innerWidth > 480) {
       // let scrollController = Tracking.scrollController;
       let scrollController;
       let blockWelcome = this.state.blocks[0].blockReference();
@@ -79,7 +79,7 @@ export default class PageHome extends React.Component {
   teardownScrollMagic = () => {
     // Tracking.removePageScrollTracking();
 
-    if (!env.modernizr.touchevents) {
+    if (!env.Modernizr.touchevents) {
       this.scrollSceneChevron.remove();
       this.colourBlockScenes.forEach((scene) => {
         scene.remove();

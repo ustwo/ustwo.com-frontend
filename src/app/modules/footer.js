@@ -3,7 +3,7 @@
 import React from 'react';
 import get from 'lodash/object/get';
 
-import Actions from '../flux/actions';
+import Flux from '../flux';
 import StudioContact from '../components/studio-contact';
 
 export default class Footer extends React.Component {
@@ -15,7 +15,7 @@ export default class Footer extends React.Component {
       'eventAction': 'click_contact_footer',     // Required.
       'eventLabel': 'home' // TODO: Remove once GA has been hooked into router
     });
-    Actions.showContacts();
+    Flux.showContacts();
   }
   onClickSocial(social) {
     return (e) => {

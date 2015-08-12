@@ -4,8 +4,7 @@ import find from 'lodash/collection/find';
 import moment from 'moment';
 import classnames from 'classnames';
 
-import Actions from '../flux/actions';
-import Router from '../flux/router';
+import Flux from '../flux';
 
 export default class BlogPostListItem extends React.Component {
   render() {
@@ -20,7 +19,7 @@ export default class BlogPostListItem extends React.Component {
     const uri = `/blog/${get(post, 'slug')}`;
     return (
       <article className={classes}>
-        <div className="image" style={{backgroundImage: `url(${get(attachments, '1.source_url')})`}} onClick={Router.override(uri)}>
+        <div className="image" style={{backgroundImage: `url(${get(attachments, '1.source_url')})`}} onClick={Flux.override(uri)}>
           <img src={get(attachments, '1.source_url')} />
         </div>
         <div className="content">
@@ -29,7 +28,7 @@ export default class BlogPostListItem extends React.Component {
           <p className="meta">By {get(post, '_embedded.author.0.first_name')} {get(post, '_embedded.author.0.last_name')} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
           <div className="excerpt" dangerouslySetInnerHTML={{ __html: get(post, 'excerpt.rendered')}} />
           <div className="tail">
-            <a href={uri} onClick={Router.override(uri)}>Read more</a>
+            <a href={uri} onClick={Flux.override(uri)}>Read more</a>
             {/*<div className="social">
               <div className="twitter">120</div>
               <div className="comments">43</div>
