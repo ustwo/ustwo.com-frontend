@@ -52,32 +52,46 @@ export default class PageJoinUs extends React.Component {
           <div className="slides">
 
             <div className="slide">
-              <div className="card">This is the card</div>
-              <div className="card"></div>
+              <div className="card feature">
+                <h2>A Place that makes you smile</h2>
+                <p>Croque monsieur bocconcini say cheese. When the cheese comes out everybodys happy ricotta smelly cheese.</p>
+              </div>
+              <div className="card image" style={{backgroundImage: "url('/images/photo.jpg')"}}></div>
             </div>
             <div className="slide">
-              <div className="card">This is the card</div>
-              <div className="card"></div>
+              <div className="card feature">
+                <h2>Personal training budget</h2>
+                <p>Croque monsieur bocconcini say cheese. When the cheese comes out everybodys happy ricotta smelly cheese.</p>
+              </div>
+              <div className="card image" style={{backgroundImage: "url('/images/photo.jpg')"}}></div>
             </div>
             <div className="slide">
-              <div className="card">This is the card</div>
-              <div className="card"></div>
+              <div className="card feature">
+                <h2>Private medical care</h2>
+                <p>Croque monsieur bocconcini say cheese. When the cheese comes out everybodys happy ricotta smelly cheese.</p>
+              </div>
+              <div className="card image" style={{backgroundImage: "url('/images/photo.jpg')"}}></div>
             </div>
             <div className="slide">
-              <div className="card">This is the card</div>
-              <div className="card"></div>
+              <div className="card feature">
+                <h2>Wellness</h2>
+                <p>Croque monsieur bocconcini say cheese. When the cheese comes out everybodys happy ricotta smelly cheese.</p>
+              </div>
+              <div className="card image" style={{backgroundImage: "url('/images/photo.jpg')"}}></div>
             </div>
             <div className="slide">
-              <div className="card">This is the card</div>
-              <div className="card"></div>
+              <div className="card feature">
+                <h2>Life assurance</h2>
+                <p>Croque monsieur bocconcini say cheese. When the cheese comes out everybodys happy ricotta smelly cheese.</p>
+              </div>
+              <div className="card image" style={{backgroundImage: "url('/images/photo.jpg')"}}></div>
             </div>
             <div className="slide">
-              <div className="card">This is the card</div>
-              <div className="card"></div>
-            </div>
-            <div className="slide">
-              <div className="card">This is the card</div>
-              <div className="card"></div>
+              <div className="card feature">
+                <h2>Flexible Bonuses</h2>
+                <p>Croque monsieur bocconcini say cheese. When the cheese comes out everybodys happy ricotta smelly cheese.</p>
+              </div>
+              <div className="card image" style={{backgroundImage: "url('/images/photo.jpg')"}}></div>
             </div>
 
           </div>

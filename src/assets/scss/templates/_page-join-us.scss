@@ -4,15 +4,14 @@
     .slides {
       .card {
         background: #aaa;
-        &:last-child {
-          background: url("/images/photo.jpg") no-repeat 50% 50%;
+        &.image {
           background-position: center;
           background-size: cover;
         }
       }
     }
     .video {
-      background: blue;
+      background: #ccc;
     }
   }
 }
@@ -48,8 +47,11 @@
     fill: $nonBlack;
   }
 
-
-
+  .intro {
+    .intro__rule {
+      border-color: $honey;
+    }
+  }
 
 
   .features-grid {
@@ -58,6 +60,8 @@
     $slide-height: 310px; // default on tablet+
     $video-height-mobile: 310px;
     $video-height: $slide-height * 2;
+    $feature-card-padding-mobile: 25px;
+    $feature-card-padding: 50px;
 
     position: relative;
     height: $card-height-mobile + $image-height-mobile + $video-height-mobile;
@@ -87,23 +91,52 @@
       position: relative;
     }
     .slide {
-      height: $image-height-mobile + $card-height-mobile
+      height: $image-height-mobile + $card-height-mobile;
+
+      $ustwo-colors-list: $piglet $softPiglet,
+                          $navy $softNavy,
+                          $pot $softPot,
+                          $honey $softHoney,
+                          $ohra $softOhra,
+                          $blu $softBlu;
+      @each $color in $ustwo-colors-list {
+        $i: index($ustwo-colors-list, $color);
+        $wow: nth($color, 1);
+        $softy: nth($color, 2);
+        &:nth-child(#{$i}) {
+          .card.feature {
+            background-color: rgba($softy, .3);
+            h2 {
+              color: $wow;
+            }
+          }
+        }
+      }
     }
 
     .card {
       width: 100%;
 
-      // Card
-      &:first-child {
-        height: $card-height-mobile;
+      // Layout
+      &.feature {
+        height: $card-height-mobile - $feature-card-padding-mobile;
         box-sizing: content-box;
-        padding-top: $image-height-mobile;
+        padding-top: $image-height-mobile + $feature-card-padding-mobile;
+        padding-left: $feature-card-padding-mobile;
+        padding-right: $feature-card-padding-mobile;
       }
-      // Image
-      &:last-child {
+      &.image {
         position: absolute;
         top: 0;
         height: $image-height-mobile;
+      }
+
+      // Style
+      &.feature {
+        h2 {
+          font-size: 30px;
+          margin-bottom: 30px;
+        }
       }
     }
 
@@ -132,7 +165,8 @@
       .card:last-child {
         position: relative;
         top: auto;
-        padding: 0;
+        box-sizing: border-box;
+        padding: $feature-card-padding;
         height: $slide-height;
         float: left;
         width: 50%;
@@ -169,6 +203,11 @@
         &:nth-of-type(3) {
           .card:first-child {
             margin-left: 66.6666%;
+          }
+        }
+        &:last-of-type {
+          .card:last-child {
+            display: none;
           }
         }
 
