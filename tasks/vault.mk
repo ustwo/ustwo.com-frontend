@@ -16,6 +16,7 @@ vault-create:
 		-v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro \
 		-v $(BASE_PATH)/etc/nginx/ssl:/etc/nginx/ssl:ro \
 		-v $(BASE_PATH)/share/nginx/html:/usr/share/nginx/html \
+		--net none \
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
 		busybox true
