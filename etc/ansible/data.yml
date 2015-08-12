@@ -1,6 +1,5 @@
 ---
 - hosts: ustwosite
-# - hosts: 52.18.119.52
   vars:
     owner: ubuntu
     group: ubuntu

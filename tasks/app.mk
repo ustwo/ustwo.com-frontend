@@ -33,6 +33,8 @@ app-create:
 		--name $(app_name) \
 		$(app_volumes) \
 		--restart always \
+		-p 8888:8888 \
+		--add-host docker:$(DOCKER_IP) \
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
 		--label version=$(app_version) \

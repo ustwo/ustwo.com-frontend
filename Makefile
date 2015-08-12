@@ -2,8 +2,13 @@ TIER ?= dev
 BASE_PATH ?= $(PWD)
 TAG ?= 0.3.4
 MACHINE_ALIAS ?= ustwosite
+# FIXME: This feels weak and wrong and it is.
+DOCKER_IP ?= 172.17.42.1
+
+ANSIBLE_CONFIG ?= $(PWD)/etc/ansible/ansible.cfg
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
-ANSIBLE_INVENTORY ?= /etc/ansible/hosts
+ANSIBLE_INVENTORY ?= $(PWD)/etc/ansible/hosts
+
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 project_name := ustwosite
@@ -23,8 +28,10 @@ DOCKER_MACHINE := docker-machine
 MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
 ANSIBLE := ansible
 ANSIBLE_SHELL = $(ANSIBLE) $(MACHINE_IP) --become -m shell
-ANSIBLE_PLAY := ansible-playbook -b -v --private-key=$(IDENTITY_FILE)
-# --inventory-file=$(ANSIBLE_INVENTORY)
+ANSIBLE_PLAY := ansible-playbook \
+	--become \
+	--private-key=$(IDENTITY_FILE) \
+	--inventory-file=$(ANSIBLE_INVENTORY)
 
 
 ###############################################################################
@@ -93,3 +100,6 @@ absorb:
 	git checkout master
 	echo $(GIT_BRANCH)
 	# git merge --no-ff $(GIT_BRANCH)
+
+uptime:
+	$(ANSIBLE) usweb -i $(ANSIBLE_INVENTORY) -m command -a uptime

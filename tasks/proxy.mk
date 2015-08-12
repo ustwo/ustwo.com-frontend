@@ -19,8 +19,8 @@ proxy-create:
 		--name $(proxy_name) \
 		-p $(PROXY_HTTPS_PORT):443 \
 		-p $(PROXY_HTTP_PORT):80 \
-		--link $(app_name):app \
 		--volumes-from $(vault_name) \
+		--add-host docker:$(DOCKER_IP) \
 		--restart always \
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
