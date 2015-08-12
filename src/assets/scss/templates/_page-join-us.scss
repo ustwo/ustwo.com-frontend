@@ -1,16 +1,13 @@
 // END TEMP
 .page-join-us {
   .features-grid {
-    .slide {
-      background: red;
-      &:nth-child(2n+1) {
-        background: green;
-      }
+    .slides {
       .card {
-        opacity: .3;
-        background: black;
+        background: #aaa;
         &:last-child {
-          opacity: .1;
+          background: url("/images/photo.jpg") no-repeat 50% 50%;
+          background-position: center;
+          background-size: cover;
         }
       }
     }
@@ -20,6 +17,8 @@
   }
 }
 // END TEMP
+
+
 
 
 
@@ -50,12 +49,15 @@
   }
 
 
+
+
+
   .features-grid {
     $card-height-mobile: 270px;
-    $image-height-mobile: 208px;
-    $slide-height: 312px; // default on tablet+
+    $image-height-mobile: 210px;
+    $slide-height: 310px; // default on tablet+
     $video-height-mobile: 310px;
-    $video-height: 620px;
+    $video-height: $slide-height * 2;
 
     position: relative;
     height: $card-height-mobile + $image-height-mobile + $video-height-mobile;
@@ -80,13 +82,28 @@
       height: $video-height-mobile;
     }
 
-    .card {
-      // Image
-      height: $image-height-mobile;
+    .slides,
+    .slide {
+      position: relative;
+    }
+    .slide {
+      height: $image-height-mobile + $card-height-mobile
+    }
 
-      &:last-child {
-        // Card
+    .card {
+      width: 100%;
+
+      // Card
+      &:first-child {
         height: $card-height-mobile;
+        box-sizing: content-box;
+        padding-top: $image-height-mobile;
+      }
+      // Image
+      &:last-child {
+        position: absolute;
+        top: 0;
+        height: $image-height-mobile;
       }
     }
 
@@ -96,52 +113,72 @@
       padding-top: 0;
 
       .slide {
-        display: inline-block;
-        float: left;
-        width: 50%;
-
-        // Reverse order of card and image every other slide
-        &:nth-child(2n+1) {
-          position: relative;
-
-          .card:first-child {
-            margin-top: $slide-height;
-          }
-          .card:last-child {
-            position: absolute;
-            top: 0;
-            left: 0;
-          }
-        }
+        display: inline;
 
         // Create gap after first line of slides to position video
-        &:nth-child(3), &:nth-child(4) {
-          margin-top: $video-height;
+        &:nth-of-type(2) {
+          .card {
+            margin-top: $video-height;
+          }
+        }
+        &:nth-of-type(2n+2) {
+          .card:first-child {
+            float: right;
+          }
         }
       }
 
-      .card,
+      .card:first-child,
       .card:last-child {
+        position: relative;
+        top: auto;
+        padding: 0;
         height: $slide-height;
+        float: left;
+        width: 50%;
       }
 
+      // .card:first-child {
+      //   position: relative;
+      //   bottom: auto;
+      // }
+
       .video {
-        top: $slide-height * 2;
+        top: $slide-height;
         height: $video-height;
       }
 
     }
     @include susy-breakpoint($bp-large, $susy) {
       .slide {
-        width: 33.3333%;
 
-        // Create gap after first line of slides to position video
-        &:nth-child(4), &:nth-child(5), &:nth-child(6) {
-          margin-top: $video-height;
+        &:nth-of-type(2n+2) {
+          .card:first-child {
+            float: left;
+          }
         }
-        &:nth-child(3) {
-          margin-top: 0;
+        &:nth-of-type(2) {
+          .card:first-child {
+            margin-top: 0;
+          }
+          .card:last-child {
+            margin-top: 0;
+            margin-left: 66.6666%;
+          }
         }
+        &:nth-of-type(3) {
+          .card:first-child {
+            margin-left: 66.6666%;
+          }
+        }
+
+        .card,
+        .card:last-child {
+          width: 33.3333%;
+        }
+      }
+      .video {
+        width: 66.6666%;
       }
     }
 
