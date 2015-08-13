@@ -1,26 +1,3 @@
-// END TEMP
-.page-join-us {
-  .features-grid {
-    .slides {
-      .card {
-        background: #aaa;
-        &.image {
-          background-position: center;
-          background-size: cover;
-        }
-      }
-    }
-    .video {
-      background: #ccc;
-    }
-  }
-}
-// END TEMP
-
-
-
-
-
 .page-join-us {
 
   .hero {
@@ -54,19 +31,11 @@
   }
 
 
-  .features-grid {
-    $card-height-mobile: 270px;
-    $image-height-mobile: 210px;
-    $slide-height: 310px; // default on tablet+
-    $video-height-mobile: 310px;
-    $video-height: $slide-height * 2;
-    $feature-card-padding-mobile: 25px;
-    $feature-card-padding: 50px;
-
+  .why-ustwo {
     position: relative;
-    height: $card-height-mobile + $image-height-mobile + $video-height-mobile;
+    height: $jobs-card-height-mobile + $jobs-image-height-mobile + $jobs-video-height-mobile;
     overflow: hidden;
-    padding-top: $video-height-mobile;
+    padding-top: $jobs-video-height-mobile;
 
     &:before,
     &:after {
@@ -83,55 +52,12 @@
       left: 0;
       top: 0;
       width: 100%;
-      height: $video-height-mobile;
+      height: $jobs-video-height-mobile;
+      background: #ccc;
     }
 
-    .slides,
-    .slide {
+    .slides {
       position: relative;
-    }
-    .slide {
-      height: $image-height-mobile + $card-height-mobile;
-
-      @each $colour in $feature-card-colours {
-        $i: index($feature-card-colours, $colour);
-        $wow: nth($colour, 1);
-        $softy: nth($colour, 2);
-        &:nth-child(#{$i}) {
-          .card.feature {
-            background-color: rgba($softy, .3);
-            h2 {
-              color: $wow;
-            }
-          }
-        }
-      }
-    }
-
-    .card {
-
-      // Layout
-      &.feature {
-        height: $card-height-mobile - $feature-card-padding-mobile;
-        box-sizing: content-box;
-        padding-top: $image-height-mobile + $feature-card-padding-mobile;
-        padding-left: $feature-card-padding-mobile;
-        padding-right: $feature-card-padding-mobile;
-      }
-      &.image {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: $image-height-mobile;
-      }
-
-      // Style
-      &.feature {
-        h2 {
-          font-size: 30px;
-          margin-bottom: 30px;
-        }
-      }
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
@@ -139,77 +65,13 @@
       overflow: visible;
       padding-top: 0;
 
-      .slide {
-        display: inline;
-
-        // Create gap after first line of slides to position video
-        &:nth-of-type(2) {
-          .card {
-            margin-top: $video-height;
-          }
-        }
-        &:nth-of-type(2n+2) {
-          .card:first-child {
-            float: right;
-          }
-        }
-      }
-
-      .card:first-child,
-      .card:last-child {
-        position: relative;
-        top: auto;
-        box-sizing: border-box;
-        padding: $feature-card-padding;
-        height: $slide-height;
-        float: left;
-        width: 50%;
-      }
-
-      // .card:first-child {
-      //   position: relative;
-      //   bottom: auto;
-      // }
-
       .video {
-        top: $slide-height;
-        height: $video-height;
+        top: $jobs-slide-height;
+        height: $jobs-video-height;
       }
 
     }
     @include susy-breakpoint($bp-large, $susy) {
-      .slide {
-
-        &:nth-of-type(2n+2) {
-          .card:first-child {
-            float: left;
-          }
-        }
-        &:nth-of-type(2) {
-          .card:first-child {
-            margin-top: 0;
-          }
-          .card:last-child {
-            margin-top: 0;
-            margin-left: 66.6666%;
-          }
-        }
-        &:nth-of-type(3) {
-          .card:first-child {
-            margin-left: 66.6666%;
-          }
-        }
-        &:last-of-type {
-          .card:last-child {
-            display: none;
-          }
-        }
-
-        .card,
-        .card:last-child {
-          width: 33.3333%;
-        }
-      }
       .video {
         width: 66.6666%;
       }

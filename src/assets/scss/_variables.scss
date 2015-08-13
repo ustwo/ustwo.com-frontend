@@ -37,3 +37,15 @@ $nav-height: 68px;
 $blog-margin-offset: -20vh;
 $blog-category-height: 22px;
 $blog-gutter-large: 30px;
+
+/* ------------------------------------------------------------ *\
+|* Jobs
+\* ------------------------------------------------------------ */
+
+$jobs-card-height-mobile: 270px;
+$jobs-image-height-mobile: 210px;
+$jobs-slide-height: 310px; // default on tablet+
+$jobs-video-height-mobile: 310px;
+$jobs-video-height: $jobs-slide-height * 2;
+$jobs-feature-card-padding-mobile: 25px;
+$jobs-feature-card-padding: 50px;
