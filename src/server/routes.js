@@ -27,7 +27,8 @@ router.get('/*', (req, res) => {
     Flux.init(req.protocol + '://' + req.hostname + req.originalUrl)
       .then((state) => {
         const App = React.createFactory(require('../app/app'));
-        res.render('index', {
+        console.log('status', state, state.statusCode);
+        res.status(state.statusCode).render('index', {
           title: 'ustwo',
           state: JSON.stringify(state),
           app: React.renderToString(App({

@@ -47,6 +47,7 @@ export default {
   setPage(newPage, statusCode) {
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
+    console.log('setPage', newPage, statusCode);
     return Promise.resolve(_state);
   },
   loadData(itemsToLoad) {
