@@ -22,14 +22,21 @@ router.get('/styleguide', (req, res) => {
 });
 
 router.get('/*', (req, res) => {
-  // const App = React.createFactory(require('../source/app.jsx'));
-  readData(data => res.render('index', {
-    title: 'ustwo',
-    data: data
-    // app: React.renderToString(App({
-    //   initialUrl: req.protocol + '://' + req.hostname + req.originalUrl
-    // }))
-  }));
+  readData(data => {
+    const Flux = require('../app/flux');
+    Flux.init(req.protocol + '://' + req.hostname + req.originalUrl)
+      .then((state) => {
+        const App = React.createFactory(require('../app/app'));
+        res.render('index', {
+          title: 'ustwo',
+          state: JSON.stringify(state),
+          app: React.renderToString(App({
+            state: state
+          }))
+        });
+      })
+      .catch(error => console.log('server route error', error, error.stack));
+  });
 });
 
 export default router;

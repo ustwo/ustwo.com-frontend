@@ -19,44 +19,15 @@
       ga('send', 'pageview');
     </script>
     <script>
-      window.data = {
-        "takeover": {
-          "id": "moodnotes-launch"
-        },
-        "pages": [
-          {
-            "id": "home",
-            "ga": "home",
-            "title": "Home",
-            "url": "/"
-          },
-          {
-            "id": "what-we-do",
-            "ga": "what_we_do",
-            "title": "What we do",
-            "url": "/what-we-do"
-          },
-          {
-            "id": "blog",
-            "ga": "blog",
-            "title": "Blog",
-            "url": "/blog"
-          },
-          {
-            "id": "join-us",
-            "id": "join_us",
-            "title": "Join us",
-            "url": "http://ustwo.workable.com/",
-            "external": true
-          }
-        ]
-      };
+      window.state = <%= state %>;
+      document.documentElement.className += " js";
       if(!!navigator.userAgent.match(/(iPhone)/g)) {
         document.documentElement.className += " iPhone";
       }
     </script>
   </head>
   <body>
+    <%= app %>
   </body>
   <script src="/js/vendors.js"></script>
   <script src="/js/app.js"></script>

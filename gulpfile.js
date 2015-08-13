@@ -16,40 +16,18 @@ var autoprefixer = require('autoprefixer-core');
 
 // js
 var browserify = require('browserify');
-var source = require('vinyl-source-stream');
 var babelify = require('babelify');
-var reactify = require('reactify');
-var nodemon = require('gulp-nodemon');
+var aliasify = require('aliasify');
+var source = require('vinyl-source-stream');
 
 // testing
 var mocha = require('gulp-mocha');
 
 // production flag
 var production = !argv.dev;
-
-var syncbrowser = argv.browsersync;
 var styleguide = argv.styleguide;
 
-// determine if we're doing a build
-// and if so, bypass the livereload
-var build = argv._.length ? argv._[0] === 'build' : false;
-var watch = argv._.length ? argv._[0] === 'watch' : true;
-
-gutil.log(gutil.colors.bgGreen('Flags:', 'production:', production, 'build:', build, 'watch:', watch, "syncbrowser:", syncbrowser, "styleguide:", styleguide));
-
-if (watch) {
-  var watchify = require('watchify');
-}
-
-if (syncbrowser) {
-  var browserSync = require('browser-sync').create();
-}
-
-var reloadbrowsersync = function() {
-  if (syncbrowser) {
-    browserSync.reload();
-  }
-}
+gutil.log(gutil.colors.bgGreen('Flags:', 'production:', production, "styleguide:", styleguide));
 
 // ----------------------------
 // Error notification methods
@@ -57,7 +35,6 @@ var reloadbrowsersync = function() {
 var handleError = function(task) {
   return function(err) {
     gutil.log(gutil.colors.bgRed(task + ' error:'), gutil.colors.red(err));
-    if (watch) this.emit('end');
   };
 };
 
@@ -124,24 +101,19 @@ var tasks = {
     var bundler = browserify({
       debug: !production, // Sourcemapping
       cache: {},
-      packageCache: {},
-      fullPaths: watch
+      packageCache: {}
     })
-    .require(require.resolve('./src/node_modules/index.js'), { entry: true })
+    .require(require.resolve('./src/app/index.js'), { entry: true })
     .transform(babelify.configure({
         optional: ["es7.classProperties"]
     }))
-    .transform(reactify, {"es6": true})
+    .transform(aliasify, require('./package.json').aliasify)
     .external('babelify/polyfill')
     .external('react')
     .external('svg4everybody');
 
-    if (watch) {
-      bundler = watchify(bundler, {poll: true});
-    }
-
-    var rebundle = function() {
-      var result = bundler.bundle()
+    var bundle = function() {
+      return bundler.bundle()
         .on('error', handleError('Browserify'))
         .pipe(source('app.js'))
         .pipe(buffer())
@@ -149,20 +121,7 @@ var tasks = {
         .pipe(gulpif(!production, sourcemaps.init({loadMaps: true})))
         .pipe(gulpif(!production, sourcemaps.write('./')))
         .pipe(gulp.dest('public/js/'));
-
-      if(syncbrowser) {
-        return result.pipe(browserSync.reload({stream:true, once: true}));
-      }
-
-      return result;
     };
-
-    if (watch) {
-      bundler.on('update', rebundle);
-      bundler.on('log', function (msg) {
-        gutil.log('Reactify rebundle:', msg);
-      });
-    }
 
     vendorBundler.bundle()
       .pipe(source('vendors.js'))
@@ -170,7 +129,7 @@ var tasks = {
       .pipe(gulpif(production, uglify()))
       .pipe(gulp.dest('public/js/'));
 
-    return rebundle();
+    return bundle();
   },
   // --------------------------
   // React style guide
@@ -179,23 +138,17 @@ var tasks = {
     var bundler = browserify({
       debug: !production, // Sourcemapping
       cache: {},
-      packageCache: {},
-      fullPaths: watch && styleguide
+      packageCache: {}
     })
-    .require(require.resolve('./src/node_modules/styleguide.js'), { entry: true })
+    .require(require.resolve('./src/app/styleguide.js'), { entry: true })
     .transform(babelify.configure({
         optional: ["es7.classProperties"]
     }))
-    .transform(reactify, {"es6": true})
     .external('babelify/polyfill')
     .external('react');
 
-    if (watch && styleguide) {
-      bundler = watchify(bundler, {poll: true});
-    }
-
-    var rebundle = function() {
-      var result = bundler.bundle()
+    var bundle = function() {
+      return bundler.bundle()
         .on('error', handleError('Browserify'))
         .pipe(source('styleguide.js'))
         .pipe(buffer())
@@ -203,35 +156,24 @@ var tasks = {
         .pipe(gulpif(!production, sourcemaps.init({loadMaps: true})))
         .pipe(gulpif(!production, sourcemaps.write('./')))
         .pipe(gulp.dest('public/js/'));
-
-      if(syncbrowser) {
-        return result.pipe(browserSync.reload({stream:true, once: true}));
-      }
-
-      return result;
     };
 
-    if (watch && styleguide) {
-      bundler.on('update', rebundle);
-      bundler.on('log', function (msg) {
-        gutil.log('Reactify styleguide rebundle:', msg);
-      });
-    }
-
-    return rebundle();
+    return bundle();
   },
   // --------------------------
   // Optimize asset images
   // --------------------------
   assets: function() {
-    return gulp.src('src/assets/images/**/*.{gif,jpg,png,svg}')
+    gulp.src('src/assets/images/**/*.{gif,jpg,png,svg}')
       .pipe(gulp.dest('public/images'));
+    gulp.src('src/assets/favicon.{png,ico}')
+        .pipe(gulp.dest('public'));
   },
   // --------------------------
   // Testing with mocha
   // --------------------------
   test: function() {
-    return gulp.src('src/node_modules/**/*test.js', {read: false})
+    return gulp.src('src/app/**/*test.js', {read: false})
       .pipe(mocha({
         'ui': 'bdd',
         'reporter': 'spec'
@@ -244,50 +186,13 @@ var tasks = {
     );
   },
   serve: function(cb) {
-    var started = false;
-
-    return nodemon({
-      script: 'src/server/index.js',
-      watch: ['src/server', 'src/templates'],
-      exec: './node_modules/.bin/babel-node',
-      ext: 'js html',
-      env: {
-        'NODE_ENV': 'development',
-        'PORT': syncbrowser ? 8887 : 8888
-      }
-    }).on('start', function () {
-      gutil.log(gutil.colors.bgGreen('Nodemon start...'));
-      if (!started) {
-        started = true;
-        cb();
-        if (syncbrowser) {
-          browserSync.init(null, {
-            port: 8888,
-            proxy: {
-              target: 'localhost:8887'
-            },
-            open: false,
-            ghostMode: false,
-            // logLevel: 'debug',
-            notify: false
-          });
-        }
-      } else {
-        setTimeout(reloadbrowsersync, 4000);
-      }
+    return exec('./node_modules/.bin/babel-node src/server/index.js', function (err, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      cb(err);
     });
   }
 };
-
-gulp.task('reload-assets', ['assets'], function(){
-  reloadbrowsersync();
-});
-gulp.task('reload-sass', ['sass'], function(){
-  reloadbrowsersync();
-});
-gulp.task('reload-data', ['data'], function(){
-  reloadbrowsersync();
-});
 
 // --------------------------
 // CUSTOMS TASKS
@@ -300,7 +205,7 @@ gulp.task('reactstyleguide', tasks.reactstyleguide);
 gulp.task('data', tasks.data);
 gulp.task('test', tasks.test);
 gulp.task('serve', ['build'], tasks.serve);
-gulp.task('start', ['clean', 'serve']);
+gulp.task('start', ['clean', 'build']);
 
 // build task
 gulp.task('build', [
@@ -310,32 +215,6 @@ gulp.task('build', [
   // 'reactstyleguide',
   'data'
 ]);
-
-
-// --------------------------
-// DEV/WATCH TASK
-// --------------------------
-gulp.task('watch', ['start'], function() {
-  // TODO: make watch restart on error, see: https://github.com/appium/DynamicApp/blob/master/injector/gulpfile.js
-
-  // --------------------------
-  // watch:assets
-  // --------------------------
-  gulp.watch('src/assets/images/**/*.{gif,jpg,png,svg}', ['reload-assets']);
-
-  // --------------------------
-  // watch:sass
-  // --------------------------
-  gulp.watch(['src/assets/scss/**/*.scss'], ['reload-sass']);
-
-  // --------------------------
-  // watch:data
-  // --------------------------
-  gulp.watch('src/data/**/*.json', ['reload-data']);
-
-  gutil.log(gutil.colors.bgGreen('Watching for changes...'));
-});
-
 
 // --------------------------
 // CSS ONLY WATCH TASK
