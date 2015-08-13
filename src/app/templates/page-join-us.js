@@ -3,8 +3,8 @@
 import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
-
 import DownChevron from '../elements/down-chevron';
+import StudioJobs from '../components/studio-jobs';
 
 
 
@@ -104,68 +104,11 @@ export default class PageJoinUs extends React.Component {
         </div>
 
         <section className="jobs">
-          <div className="jobs-studio jobs-all">
-            <ul className="jobs-list">
-              <li>Job1</li>
-              <li>Job2</li>
-              <li>Job3</li>
-              <li>Job4</li>
-              <li>Job5</li>
-              <li>Job6</li>
-              <li>Job7</li>
-            </ul>
-          </div>
-          <div className="jobs-studio jobs-london">
-            <h3>London</h3>
-            <div className="studio-info">
-              <p className="excerpt">Join our flagship studio in Shoreditch</p>
-              <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
-            </div>
-            <ul className="jobs-list">
-              <li>Job1</li>
-              <li>Job2</li>
-              <li>Job3</li>
-              <li>Job4</li>
-            </ul>
-          </div>
-          <div className="jobs-studio jobs-malmo">
-            <h3>Malmö</h3>
-            <div className="studio-info">
-              <p className="excerpt">Join our Nordic warren of cretivity &amp; strategy</p>
-              <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
-            </div>
-            <ul className="jobs-list">
-              <li>Job1</li>
-              <li>Job2</li>
-            </ul>
-          </div>
-          <div className="jobs-studio jobs-newyork">
-            <h3>New York</h3>
-            <div className="studio-info">
-              <p className="excerpt">Work in Manhatten with the best of the US.</p>
-              <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
-            </div>
-            <ul className="jobs-list">
-              <li>Job1</li>
-              <li>Job2</li>
-              <li>Job3</li>
-            </ul>
-          </div>
-          <div className="jobs-studio jobs-sydney">
-            <h3>Sydney</h3>
-            <div className="studio-info">
-              <p className="excerpt">Join ustwo's newest and smallest chapter.</p>
-              <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
-            </div>
-            <ul className="jobs-list">
-
-            </ul>
-            <div className="jobs-none">
-              <p>We don't have any openings currently. However we're always looking for talented individuals to join the ustwo family.</p>
-              <a href="#">Get in touch</a>
-            </div>
-          </div>
-
+          <StudioJobs studio="all" />
+          <StudioJobs studio="london" />
+          <StudioJobs studio="malmo" />
+          <StudioJobs studio="newyork" />
+          <StudioJobs studio="sydney" />
         </section>
 
       </article>
