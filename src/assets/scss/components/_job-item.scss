@@ -1,0 +1,42 @@
+.job-item {
+  margin-top: 5px;
+  background: #fff;
+  overflow: hidden;
+
+  h4 {
+    position: relative;
+    height: 50px;
+    padding: 0 15px;
+    line-height: 50px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      height: 3px;
+      width: 15px;
+      right: 15px;
+      top: 50%;
+      margin-top: -1px;
+      transform-origin: 50% 50%;
+      background: #ccc;
+    }
+    &:after {
+      transform: rotate(-90deg);
+    }
+  }
+
+  .job-description {
+    height: 0;
+    transition: height .32s ease-in-out;
+    padding: 0 15px;
+  }
+
+  &.open {
+    .job-description {
+      height: 300px;
+    }
+  }
+}
