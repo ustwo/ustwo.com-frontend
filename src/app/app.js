@@ -98,7 +98,7 @@ export default class App extends React.Component {
     } else {
       content = (
         <div className={appClasses}>
-          {/*<Meta
+          <Meta
             title={renderTitle(state)}
             meta={[{
               name: "description",
@@ -107,7 +107,7 @@ export default class App extends React.Component {
               name: "keywords",
               content: `ustwo`
             }]}
-          />*/}
+          />
           <EntranceAnimation className="nav-wrapper" delay={headerDelay} duration={0.5} options={animationOptions} findElement={element => element.children[0]}>
             <Navigation pages={state.pages} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={state.takeover !== Nulls.takeover} open={state.showNav} />
           </EntranceAnimation>

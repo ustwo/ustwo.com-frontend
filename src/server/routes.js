@@ -2,6 +2,7 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
+import Helmet from 'react-helmet';
 
 let router = express.Router();
 
@@ -27,13 +28,16 @@ router.get('/*', (req, res) => {
     Flux.init(req.protocol + '://' + req.hostname + req.originalUrl)
       .then((state) => {
         const App = React.createFactory(require('../app/app'));
-        console.log('status', state, state.statusCode);
+        const AppString = React.renderToString(App({
+          state: state
+        }));
+        const head = Helmet.rewind();
         res.status(state.statusCode).render('index', {
-          title: 'ustwo',
+          title: head.title,
+          meta: head.meta,
+          link: head.link,
           state: JSON.stringify(state),
-          app: React.renderToString(App({
-            state: state
-          }))
+          app: AppString
         });
       })
       .catch(error => console.log('server route error', error, error.stack));
