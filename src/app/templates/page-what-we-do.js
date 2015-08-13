@@ -34,10 +34,10 @@ export default class PageWork extends React.Component {
     );
   }
   componentDidMount() {
-    // setTimeout(() => {
-    //   this.refs.downChevron.resetAnim();
-    //   this.refs.downChevron.anim();
-    // }, 500);
+    setTimeout(() => {
+      this.refs.downChevron.resetAnim();
+      this.refs.downChevron.anim();
+    }, 500);
   }
   onClickDownChevron() {
     Track('send', {
