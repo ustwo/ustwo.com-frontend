@@ -65,6 +65,20 @@ $blog-categories: (
   innovation: $passion
 );
 
+$feature-card-colours:  $piglet $softPiglet,
+                        $navy $softNavy,
+                        $pot $softPot,
+                        $honey $softHoney,
+                        $ohra $softOhra,
+                        $blu $softBlu;
+
+$studio-colours: (
+  london: $navy,
+  malmo: $piglet,
+  newyork: $ohra,
+  sydney: $rain
+);
+
 @each $colour in $colours {
   $name: nth($colour, 1);
   $hex:  unquote(nth($colour, 2));
