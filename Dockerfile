@@ -22,4 +22,4 @@ VOLUME /usr/local/src/public
 
 EXPOSE 8888
 
-CMD ["node", "/usr/local/src/node_modules/babel/lib/_babel-node", "src/server"]
+CMD ["node", "/usr/local/src/node_modules/babel/lib/_babel-node", "--optional", "es7.classProperties", "src/server"]
