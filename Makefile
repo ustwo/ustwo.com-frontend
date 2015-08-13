@@ -71,11 +71,6 @@ init-production: STATIC_HTTP_PORT := 80
 init-production: STATIC_HTTPS_PORT := 443
 init-production: static-create static-iid
 
-rollback-production: TIER := production
-rollback-production: STATIC_HTTP_PORT := 80
-rollback-production: STATIC_HTTPS_PORT := 443
-rollback-production: rollback-template
-
 deploy-production: proxy-pull rm-production init-production
 
 # deploy-staging: TIER := staging
