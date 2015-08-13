@@ -13,10 +13,10 @@ import Routes from './routes';
 import Actions from './actions';
 
 const globalLoads = [{
-  namespace: 'ustwo/v1/',
+  url: 'ustwo/v1/studios',
   type: 'studios'
 }, {
-  namespace: 'ustwo/v1/',
+  url: 'ustwo/v1/footer',
   type: 'footer'
 }];
 
