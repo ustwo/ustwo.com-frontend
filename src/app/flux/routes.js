@@ -78,6 +78,12 @@ const routes = {
       id: '?name=privacy&_embed=true',
       get: data => data[0]
     }]
+  },
+  notfound: {
+    id: 'notfound',
+    pattern: '/404',
+    status: 404,
+    data: () => []
   }
 };
 

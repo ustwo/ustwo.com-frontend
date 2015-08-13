@@ -2,8 +2,6 @@ import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
 import Nulls from '../flux/nulls';
 
-console.log("Store detecting window.state", window.state);
-
 const _state = Object.assign({
   currentPage: Nulls.page,
   showNav: false,

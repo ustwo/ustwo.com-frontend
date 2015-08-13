@@ -20,11 +20,8 @@ const globalLoads = [{
 }];
 
 function emitify(fn) {
-  console.log('setting up emitify 1');
   return function() {
-    console.log('calling emitified fn', fn.toString(), arguments);
     return fn.apply(null, arguments).then(state => {
-      console.log('about to emit', state);
       Flux.emit('change', state);
       return Promise.resolve(state);
     });
@@ -36,7 +33,6 @@ function getRouteHandler(name, itemsToLoad, statusCode) {
     Flux.goTo(name, statusCode || 200),
     Flux.loadData([].concat(globalLoads, itemsToLoad))
   ]).then((responses) => {
-    console.log('getRouteHandler', arguments);
     return responses[1];
   });
 }
@@ -50,11 +46,6 @@ function setUrl(url, replace) {
   } else {
     window.history.pushState(null, null, url);
   }
-}
-
-function notfound (url) {
-  console.log('notfound', url);
-  return Flux.goTo('notfound', 404);
 }
 
 const Flux = Object.assign(
@@ -76,35 +67,29 @@ const Flux = Object.assign(
         return Flux.navigate(vurl.original, false, false, true, true);
       } else {
         setUrl(vurl.original, true);
-        return getRouteHandler(Routes.home.id, Routes.home.data(), Routes.home.statusCode || 200);
+        return getRouteHandler(Routes.home.id, Routes.home.data(), Routes.home.statusCode);
       }
     },
     navigate(urlString, history, ignoreUrl, replaceState, force) {
       const vurl = virtualUrl(urlString);
       const pathname = vurl.pathname;
-      let action;
-      let params;
       let route = find(Routes, (route) => {
         return RoutePattern.fromString(route.pattern).matches(pathname);
       });
 
-      if (route) {
-        params = RoutePattern.fromString(route.pattern).match(pathname).params;
-        action = getRouteHandler(route.id, route.data.apply(null, params), route.statusCode || 200);
-      } else {
-        action = notfound;
-        params = [pathname];
+      if (!route) {
+        route = Routes.notfound;
       }
+      let params = RoutePattern.fromString(route.pattern).match(pathname).params;
+      let action = getRouteHandler(route.id, route.data.apply(null, params), route.statusCode);
+
       if (!ignoreUrl) {
         setUrl(urlString, replaceState);
       }
       if(!history) {
         window.document.body.scrollTop = 0;
       }
-      console.log('matched route', route);
-      console.log('itemsToLoad', route.data.apply(null, params));
       return action.then(state => {
-        console.log('about to emit', state);
         Flux.emit('change', state);
         return Promise.resolve(state);
       });

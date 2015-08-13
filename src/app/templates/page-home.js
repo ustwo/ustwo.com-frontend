@@ -3,6 +3,7 @@
 import React from 'react';
 
 import ScrollMagic from '../../server/adaptors/scroll-magic';
+import Tracking from '../../server/adaptors/tracking';
 import window from '../../server/adaptors/window';
 
 import DownChevron from '../elements/down-chevron';
@@ -46,11 +47,10 @@ export default class PageHome extends React.Component {
   }
   setupScrollMagic = () => {
     let pageElement = React.findDOMNode(this);
-    // Tracking.addPageScrollTracking('home', pageElement);
+    this.Tracking.addPageScrollTracking('home', pageElement);
 
     if (!env.Modernizr.touchevents && window.innerWidth > 480) {
-      // let scrollController = Tracking.scrollController;
-      let scrollController;
+      let scrollController = this.Tracking.scrollController;
       let blockWelcome = this.state.blocks[0].blockReference();
       // set initial colour – we need to do this due to having an offset
       pageElement.style.backgroundColor = '#' + this.state.blocks[0].hexColour;
@@ -60,7 +60,7 @@ export default class PageHome extends React.Component {
           triggerHook: 'onLeave',
           duration: () => {return blockWelcome.clientHeight * 0.7}
         })
-        // .addTo(scrollController)
+        .addTo(scrollController)
         .on('progress', (e) => {
           if (e.progress > 0) {
             this.refs.downChevron.goToProgressRatio(0.91 - e.progress * 0.9);
@@ -77,7 +77,7 @@ export default class PageHome extends React.Component {
     }
   }
   teardownScrollMagic = () => {
-    // Tracking.removePageScrollTracking();
+    this.Tracking.removePageScrollTracking();
 
     if (!env.Modernizr.touchevents) {
       this.scrollSceneChevron.remove();
@@ -93,7 +93,7 @@ export default class PageHome extends React.Component {
         offset: blockReference.clientHeight * 0.25,
         duration: () => {return blockReference.clientHeight * 0.5}
       })
-      // .addTo(scrollController)
+      .addTo(scrollController)
       // .addIndicators() // add indicators (requires plugin)
       .on('progress', (e) => {
         window.requestAnimationFrame(() => {
@@ -121,6 +121,9 @@ export default class PageHome extends React.Component {
     ];
 
     return intToHex(rgbColour3[0]) + intToHex(rgbColour3[1]) + intToHex(rgbColour3[2]);
+  }
+  componentWillMount() {
+    this.Tracking = new Tracking();
   }
   componentDidMount() {
     this.setupScrollMagic();

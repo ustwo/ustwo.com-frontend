@@ -26,7 +26,6 @@ router.get('/*', (req, res) => {
     const Flux = require('../app/flux');
     Flux.init(req.protocol + '://' + req.hostname + req.originalUrl)
       .then((state) => {
-        console.log("node server", state);
         const App = React.createFactory(require('../app/app'));
         res.render('index', {
           title: 'ustwo',
@@ -36,7 +35,7 @@ router.get('/*', (req, res) => {
           }))
         });
       })
-      .catch(error => console.log(error));
+      .catch(error => console.log('server route error', error, error.stack));
   });
 });
 

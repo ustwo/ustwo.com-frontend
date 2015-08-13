@@ -15,7 +15,6 @@ import 'gsap/src/uncompressed/TimelineLite.js';
 import '../server/adaptors/scroll-to-plugin';
 import 'gsap/src/uncompressed/easing/EasePack.js';
 
-import Tracking from '../server/adaptors/tracking';
 import window from '../server/adaptors/window';
 import Flux from './flux';
 import Nulls from './flux/nulls';
@@ -62,11 +61,7 @@ export default class App extends React.Component {
     this.state = props.state;
   }
   onFlux = (state) => {
-    console.log('new state', state);
     this.setState(state);
-  }
-  componentWillMount() {
-    // window.Tracking = new Tracking();
   }
   componentDidMount() {
     Flux.addChangeListener(this.onFlux);
@@ -74,7 +69,6 @@ export default class App extends React.Component {
   }
   componentWillUnmount() {
     Flux.removeChangeListener(this.onFlux);
-    // window.Tracking = null;
   }
   render() {
     const state = this.state;

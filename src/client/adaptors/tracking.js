@@ -1,6 +1,6 @@
 'use strict';
 
-import ScrollMagic from 'ScrollMagic';
+import ScrollMagic from '../../server/adaptors/scroll-magic';
 
 let pageScrollInitialState = {
   top: false,

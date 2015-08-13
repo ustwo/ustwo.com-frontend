@@ -10,5 +10,5 @@ export default function (requiredData, apply) {
         apply(CamelCase(params.id ? Pluralize(params.type, 1) : params.type), params.get ? params.get(data) : data);
       }
     });
-  })).catch(error => console.log('Fetch error', error));
+  })).catch(error => console.log('Fetch error', error, error.stack));
 }

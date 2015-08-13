@@ -20,6 +20,7 @@
     </script>
     <script>
       window.state = <%= state %>;
+      document.documentElement.className += " js";
       if(!!navigator.userAgent.match(/(iPhone)/g)) {
         document.documentElement.className += " iPhone";
       }
