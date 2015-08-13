@@ -80,7 +80,6 @@ const Flux = Object.assign(
       if (!route) {
         route = Routes.notfound;
       }
-      console.log(urlString, route, pathname, vurl);
       let paramsSearch = RoutePattern.fromString(route.pattern).match(pathname);
       let params = paramsSearch ? paramsSearch.params : [];
       let action = getRouteHandler(route.id, route.data.apply(null, params), route.statusCode);
