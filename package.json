@@ -6,12 +6,8 @@
     "compile": "gulp build",
     "start": "babel-node --optional es7.classProperties src/server",
     "dev": "gulp start --dev && npm run start",
-    "watch": "gulp watch --dev",
-    "css": "gulp css --dev",
-    "update": "ncu -u && npm install",
-    "updatecheck": "ncu",
-    "browsersync": "gulp watch --browsersync --dev",
-    "styleguide": "gulp watch --browsersync --styleguide --dev"
+    "styleguide": "gulp start --styleguide --dev && npm run start",
+    "css": "gulp css --dev"
   },
   "aliasify": {
     "aliases": {

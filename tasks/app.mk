@@ -36,7 +36,7 @@ app-create:
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
 		--label version=$(app_version) \
-		--add-host proxy.ustwo.com:192.168.99.100 \
+		--add-host proxy.ustwo.com:172.17.42.1 \
 		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \
 		$(app_image) \
 		$(app_cmd)
