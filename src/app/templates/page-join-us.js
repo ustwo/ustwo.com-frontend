@@ -4,7 +4,7 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 
-import DownChevron from 'elements/down-chevron';
+import DownChevron from '../elements/down-chevron';
 
 
 
@@ -98,72 +98,74 @@ export default class PageJoinUs extends React.Component {
 
         </section>
 
+        <div className="hero-image" style={{backgroundImage: "url(/images/photo.jpg)"}}>
+          <svg className="ustwo-logo" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
+          <h2>Current Openings</h2>
+        </div>
+
         <section className="jobs">
-          <div className="hero-image" style={{backgroundImage: "url(/images/photo.jpg)"}}>
-            <svg className="ustwo-logo" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
-            <h2>Current Openings</h2>
-          </div>
-          <div className="main">
-            <ul className="tabs">
-              <li><a href="#">All Studios</a></li>
-              <li><a href="#">London</a></li>
-              <li><a href="#">Malmö</a></li>
-              <li><a href="#">New York</a></li>
-              <li><a href="#">Sydney</a></li>
+          <div className="jobs-studio jobs-all">
+            <ul className="jobs-list">
+              <li>Job1</li>
+              <li>Job2</li>
+              <li>Job3</li>
+              <li>Job4</li>
+              <li>Job5</li>
+              <li>Job6</li>
+              <li>Job7</li>
             </ul>
-            <div className="tab-container">
-              <div className="tab-content tab-all">
-                <ul className="job-list">
-                  <li>Job1</li>
-                  <li>Job2</li>
-                  <li>Job3</li>
-                  <li>Job4</li>
-                  <li>Job5</li>
-                  <li>Job6</li>
-                  <li>Job7</li>
-                </ul>
-              </div>
-              <div className="tab-content tab-london">
-                <h3>London</h3>
-                <div className="studio-info">
-                  <p className="excerpt">Join our flagship studio in Shoreditch</p>
-                  <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
-                </div>
-                <ul className="job-list">
-                  <li>Job1</li>
-                  <li>Job2</li>
-                  <li>Job3</li>
-                  <li>Job4</li>
-                </ul>
-              </div>
-              <div className="tab-content tab-malmo">
-                <h3>Malmö</h3>
-                <ul className="job-list">
-                  <li>Job1</li>
-                  <li>Job2</li>
-                </ul>
-              </div>
-              <div className="tab-content tab-newyork">
-                <h3>New York</h3>
-                <ul className="job-list">
-                  <li>Job1</li>
-                  <li>Job2</li>
-                  <li>Job3</li>
-                </ul>
-              </div>
-              <div className="tab-content tab-sydney">
-                <h3>Sydney</h3>
-                <ul className="job-list">
+          </div>
+          <div className="jobs-studio jobs-london">
+            <h3>London</h3>
+            <div className="studio-info">
+              <p className="excerpt">Join our flagship studio in Shoreditch</p>
+              <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
+            </div>
+            <ul className="jobs-list">
+              <li>Job1</li>
+              <li>Job2</li>
+              <li>Job3</li>
+              <li>Job4</li>
+            </ul>
+          </div>
+          <div className="jobs-studio jobs-malmo">
+            <h3>Malmö</h3>
+            <div className="studio-info">
+              <p className="excerpt">Join our Nordic warren of cretivity &amp; strategy</p>
+              <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
+            </div>
+            <ul className="jobs-list">
+              <li>Job1</li>
+              <li>Job2</li>
+            </ul>
+          </div>
+          <div className="jobs-studio jobs-newyork">
+            <h3>New York</h3>
+            <div className="studio-info">
+              <p className="excerpt">Work in Manhatten with the best of the US.</p>
+              <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
+            </div>
+            <ul className="jobs-list">
+              <li>Job1</li>
+              <li>Job2</li>
+              <li>Job3</li>
+            </ul>
+          </div>
+          <div className="jobs-studio jobs-sydney">
+            <h3>Sydney</h3>
+            <div className="studio-info">
+              <p className="excerpt">Join ustwo's newest and smallest chapter.</p>
+              <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
+            </div>
+            <ul className="jobs-list">
 
-                </ul>
-                <div className="no-jobs">
-                  <p>We don't have any openings currently. However we're always looking for talented individuals to join the ustwo family.</p>
-                  <a href="#">Get in touch</a>
-                </div>
-
-              </div>
+            </ul>
+            <div className="jobs-none">
+              <p>We don't have any openings currently. However we're always looking for talented individuals to join the ustwo family.</p>
+              <a href="#">Get in touch</a>
             </div>
           </div>
+
         </section>
 
       </article>

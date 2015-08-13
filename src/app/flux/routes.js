@@ -86,15 +86,10 @@ const routes = {
     data: () => []
   },
   joinUs: {
-    id: 'joinUs',
+    id: 'join-us',
     pattern: '/join-us',
     status: 200,
-    data: () => [{
-      namespace: 'wp/v2/',
-      type: 'pages',
-      id: '?name=join-us&_embed=true',
-      get: data => data[0]
-    }]
+    data: () => []
   }
 };
 

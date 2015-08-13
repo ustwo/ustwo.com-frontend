@@ -93,16 +93,10 @@
     .slide {
       height: $image-height-mobile + $card-height-mobile;
 
-      $ustwo-colors-list: $piglet $softPiglet,
-                          $navy $softNavy,
-                          $pot $softPot,
-                          $honey $softHoney,
-                          $ohra $softOhra,
-                          $blu $softBlu;
-      @each $color in $ustwo-colors-list {
-        $i: index($ustwo-colors-list, $color);
-        $wow: nth($color, 1);
-        $softy: nth($color, 2);
+      @each $colour in $feature-card-colours {
+        $i: index($feature-card-colours, $colour);
+        $wow: nth($colour, 1);
+        $softy: nth($colour, 2);
         &:nth-child(#{$i}) {
           .card.feature {
             background-color: rgba($softy, .3);
@@ -115,7 +109,6 @@
     }
 
     .card {
-      width: 100%;
 
       // Layout
       &.feature {
@@ -128,6 +121,7 @@
       &.image {
         position: absolute;
         top: 0;
+        width: 100%;
         height: $image-height-mobile;
       }
 
@@ -223,44 +217,103 @@
 
   }
 
+  .hero-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 210px;
 
+    .ustwo-logo {
+      fill: #fff;
+      height: 26px;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      color: #fff;
+      font-size: 36px;
+      line-height: 1.2;
+    }
+  }
 
   .jobs {
+    background: $honey;
+    padding: 10px 15px;
 
-    .hero-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      flex-direction: column;
-      height: 210px;
+    .jobs-studio {
 
-      .ustwo-logo {
-        fill: #fff;
-        height: 30px;
-        margin-bottom: 5px;
+      h3 {
+        margin-top: 25px;
+        margin-bottom: 15px;
+        text-align: center;
+        font-size: 26px;
       }
 
-      h2 {
-        color: #fff;
-        font-size: 46px;
-        line-height: 1.2;
+      .studio-info {
+        p {
+          margin: 0;
+        }
+        .excerpt {
+          padding: 10px 15px;
+          color: #fff;
+          font-size: 22px;
+          line-height: 1.2;
+        }
+
+        .content {
+          display: none;
+        }
+      }
+
+      .jobs-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          height: 50px;
+          line-height: 50px;
+          padding: 0 15px;
+          margin-top: 5px;
+          background: #fff;
+        }
+      }
+
+      .jobs-none {
+        padding: 20px;
+        margin-top: 5px;
+        background: #fff;
+
+        a {
+          display: inline-block;
+          color: #fff;
+          font-size: 18px;
+          padding: 0 30px 0 15px;
+          height: 40px;
+          line-height: 40px;
+        }
+      }
+
+      &.jobs-all {
+        display: none;
       }
     }
 
-    .main {
-      background: $honey;
-      padding: 15px;
-    }
-
-    .tabs {
-      display: none;
+    @each $studio, $colour in $studio-colours {
+      .jobs-studio {
+        &.jobs-#{$studio} {
+          .excerpt,
+          .jobs-none a {
+            background: $colour;
+          }
+        }
+      }
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
-      .tabs {
-        display: block;
-      }
+
     }
 
   }

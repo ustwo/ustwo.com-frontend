@@ -224,7 +224,7 @@ gulp.task('css', function() {
   // --------------------------
   // watch:sass
   // --------------------------
-  gulp.watch(['src/assets/scss/**/*.scss'], ['reload-sass']);
+  gulp.watch(['src/assets/scss/**/*.scss'], ['sass']);
 
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
