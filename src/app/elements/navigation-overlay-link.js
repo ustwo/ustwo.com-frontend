@@ -3,6 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import Track from '../../server/adaptors/track';
 import Flux from '../flux';
 
 export default class NavigationOverlayLink extends React.Component {
@@ -20,7 +21,7 @@ export default class NavigationOverlayLink extends React.Component {
     e.preventDefault();
     this.props.onClick();
     if(this.props.external) {
-      ga('send', {
+      Track('send', {
         'hitType': 'event',          // Required.
         'eventCategory': 'nav',   // Required.
         'eventAction': 'click_nav_link',     // Required.
@@ -30,7 +31,7 @@ export default class NavigationOverlayLink extends React.Component {
         }
       });
     } else {
-      ga('send', {
+      Track('send', {
         'hitType': 'event',          // Required.
         'eventCategory': 'nav',   // Required.
         'eventAction': 'click_nav_link',     // Required.

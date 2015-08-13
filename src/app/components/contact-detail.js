@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Track from '../../server/adaptors/track';
+
 export default class ContactDetail extends React.Component {
   render() {
     const detail = this.props.detail;
@@ -18,7 +20,7 @@ export default class ContactDetail extends React.Component {
       if(isLink) {
         e.preventDefault();
       }
-      ga('send', {
+      Track('send', {
         'hitType': 'event',          // Required.
         'eventCategory': 'contact',   // Required.
         'eventAction': 'click_' + contactType + '_' + link.type,   // Required.

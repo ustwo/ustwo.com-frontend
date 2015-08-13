@@ -4,6 +4,7 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 
+import Track from '../../server/adaptors/track';
 import WorkItem from '../components/work-item';
 import DownChevron from '../elements/down-chevron';
 
@@ -39,7 +40,7 @@ export default class PageWork extends React.Component {
     // }, 500);
   }
   onClickDownChevron() {
-    ga('send', {
+    Track('send', {
       'hitType': 'event',
       'eventCategory': 'hub_page',
       'eventAction': 'click_animated_chevron',

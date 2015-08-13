@@ -1,6 +1,7 @@
 'use strict';
 
 import ScrollMagic from '../../server/adaptors/scroll-magic';
+import Track from '../../server/adaptors/track';
 
 let pageScrollInitialState = {
   top: false,
@@ -56,7 +57,7 @@ export default class Tracking {
 
   trackEvent(category, action, label) {
     // Google Analytics – for more options see: https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference
-    ga('send', {
+    Track('send', {
       'hitType': 'event',          // Required.
       'eventCategory': category,   // Required.
       'eventAction': action,      // Required.

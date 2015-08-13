@@ -4,6 +4,7 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 
+import Track from '../../server/adaptors/track';
 import DownChevron from '../elements/down-chevron';
 import BlogPostListItem from '../components/blog-post-list-item';
 
@@ -577,7 +578,7 @@ export default class PageBlog extends React.Component {
     );
   }
   onClickDownChevron() {
-    ga('send', {
+    Track('send', {
       'hitType': 'event',
       'eventCategory': 'hub_page',
       'eventAction': 'click_animated_chevron',

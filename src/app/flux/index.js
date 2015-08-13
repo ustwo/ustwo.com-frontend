@@ -5,6 +5,7 @@ import mapValues from 'lodash/object/mapValues';
 import camelCase from 'lodash/string/camelCase';
 
 import {Modernizr} from '../../server/adaptors/env';
+import Track from '../../server/adaptors/track';
 import window from '../../server/adaptors/window';
 
 import virtualUrl from './virtualurl';
@@ -66,6 +67,8 @@ const Flux = Object.assign(
       if (!RoutePattern.fromString(Routes.home.pattern).matches(vurl.pathname)) {
         return Flux.navigate(vurl.original, false, false, true, true);
       } else {
+        Track('set', 'page', '/');
+        Track('send', 'pageview');
         setUrl(vurl.original, true);
         return getRouteHandler(Routes.home.id, Routes.home.data(), Routes.home.statusCode);
       }
@@ -90,6 +93,8 @@ const Flux = Object.assign(
       if(!history) {
         window.document.body.scrollTop = 0;
       }
+      Track('set', 'page', pathname);
+      Track('send', 'pageview');
       return action.then(state => {
         Flux.emit('change', state);
         return Promise.resolve(state);

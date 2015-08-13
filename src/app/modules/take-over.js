@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import TransitionManager from 'react-transition-manager';
 
+import Track from '../../server/adaptors/track';
 import Flux from '../flux';
 
 import CloseButton from '../elements/close-button';
@@ -86,7 +87,7 @@ export default class TakeOver extends React.Component {
     clearTimeout(this.contentTimeout);
   }
   onClickClose() {
-    ga('send', {
+    Track('send', {
       'hitType': 'event',          // Required.
       'eventCategory': 'takeover',   // Required.
       'eventAction': 'click_takeover_x',  // Required.
@@ -98,7 +99,7 @@ export default class TakeOver extends React.Component {
     return (e) => {
       const target = e.currentTarget;
       e.preventDefault();
-      ga('send', {
+      Track('send', {
         'hitType': 'event',          // Required.
         'eventCategory': 'takeover',   // Required.
         'eventAction': 'click_link_' + index+1,  // Required.

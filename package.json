@@ -15,6 +15,7 @@
   },
   "aliasify": {
     "aliases": {
+      "../../server/adaptors/track": "./src/client/adaptors/track",
       "../server/adaptors/tween-max": "./src/client/adaptors/tween-max",
       "../../server/adaptors/tween-max": "./src/client/adaptors/tween-max",
       "../server/adaptors/scroll-to-plugin": "./src/client/adaptors/scroll-to-plugin",

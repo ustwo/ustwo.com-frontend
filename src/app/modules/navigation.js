@@ -6,6 +6,7 @@ import classnames from 'classnames';
 import Flux from '../flux';
 import Nulls from '../flux/nulls';
 
+import Track from '../../server/adaptors/track';
 import NavigationLink from '../elements/navigation-link';
 import NavigationOverlayLink from '../elements/navigation-overlay-link';
 import NavigationOpenOverlayButton from '../elements/navigation-open-overlay-button';
@@ -23,7 +24,7 @@ export default class Navigation extends React.Component {
   onClickLogo = (event) => {
     event.preventDefault();
     if (this.props.takeover !== Nulls.takeover) {
-      ga('send', {
+      Track('send', {
         'hitType': 'event',          // Required.
         'eventCategory': 'takeover',   // Required.
         'eventAction': 'click_ustwo_logo',  // Required.

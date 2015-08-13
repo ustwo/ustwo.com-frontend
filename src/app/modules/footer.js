@@ -3,13 +3,14 @@
 import React from 'react';
 import get from 'lodash/object/get';
 
+import Track from '../../server/adaptors/track';
 import Flux from '../flux';
 import StudioContact from '../components/studio-contact';
 
 export default class Footer extends React.Component {
   onClickShowContacts(e) {
     e.preventDefault();
-    ga('send', {
+    Track('send', {
       'hitType': 'event',          // Required.
       'eventCategory': 'contact',   // Required.
       'eventAction': 'click_contact_footer',     // Required.
@@ -21,7 +22,7 @@ export default class Footer extends React.Component {
     return (e) => {
       const target = e.currentTarget;
       e.preventDefault();
-      ga('send', {
+      Track('send', {
         'hitType': 'event',          // Required.
         'eventCategory': 'contact',   // Required.
         'eventAction': 'click_social_' + social,     // Required.

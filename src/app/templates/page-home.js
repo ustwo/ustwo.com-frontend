@@ -5,6 +5,7 @@ import React from 'react';
 import ScrollMagic from '../../server/adaptors/scroll-magic';
 import Tracking from '../../server/adaptors/tracking';
 import window from '../../server/adaptors/window';
+import Track from '../../server/adaptors/track';
 
 import DownChevron from '../elements/down-chevron';
 import WordAnimation from '../elements/word-animation';
@@ -240,7 +241,7 @@ export default class PageHome extends React.Component {
     );
   }
   onClickDownChevron() {
-    ga('send', {
+    Track('send', {
       'hitType': 'event',
       'eventCategory': 'hub_page',
       'eventAction': 'click_animated_chevron',
