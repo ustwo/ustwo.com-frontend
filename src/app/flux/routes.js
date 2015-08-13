@@ -12,13 +12,13 @@ const routes = {
   home: {
     id: 'home',
     pattern: '/',
-    status: 200,
+    statusCode: 200,
     data: () => []
   },
   work: {
     id: 'what-we-do',
     pattern: '/what-we-do',
-    status: 200,
+    statusCode: 200,
     data: () => [{
       namespace: 'wp/v2/',
       type: 'pages',
@@ -28,7 +28,7 @@ const routes = {
   caseStudy: {
     id: 'what-we-do/case-study',
     pattern: '/what-we-do/:cid',
-    status: 200,
+    statusCode: 200,
     data: cid => [{
       namespace: 'ustwo/v1/',
       type: 'case-studies',
@@ -38,7 +38,7 @@ const routes = {
   blog: {
     id: 'blog',
     pattern: '/blog',
-    status: 200,
+    statusCode: 200,
     data: () => [{
       namespace: 'wp/v2/',
       type: 'pages',
@@ -49,7 +49,7 @@ const routes = {
   post: {
     id: 'blog/post',
     pattern: '/blog/:pid',
-    status: 200,
+    statusCode: 200,
     data: pid => [{
       namespace: 'wp/v2/',
       type: 'posts',
@@ -60,7 +60,7 @@ const routes = {
   legal: {
     id: 'legal',
     pattern: '/legal',
-    status: 200,
+    statusCode: 200,
     data: () => [{
       namespace: 'wp/v2/',
       type: 'pages',
@@ -71,7 +71,7 @@ const routes = {
   privacy: {
     id: 'privacy',
     pattern: '/privacy',
-    status: 200,
+    statusCode: 200,
     data: () => [{
       namespace: 'wp/v2/',
       type: 'pages',
@@ -82,7 +82,7 @@ const routes = {
   notfound: {
     id: 'notfound',
     pattern: '/404',
-    status: 404,
+    statusCode: 404,
     data: () => []
   }
 };

@@ -19,8 +19,8 @@ export default class WorkItem extends React.Component {
     });
     return (
       <li className={classnames(this.props.className, 'work-item')} style={{backgroundColor: get(data, 'colors.bg')}}>
-        <a href={link} onClick={Flux.override(link)} className="work-item__image-link" style={{backgroundImage: `url('${get(image, 'source_url')}')`}}>
-          <img className="work-item__image-link__image" src={get(image, 'source_url')} />
+        <a href={link} onClick={Flux.override(link)} className="work-item__image-link" style={{backgroundImage: `url('${get(image, 'source_url') || ''}')`}}>
+          <img className="work-item__image-link__image" src={get(image, 'source_url') || ''} />
         </a>
         <div className="work-item__details">
           <p className="work-item__details__type" style={{borderColor: get(data, 'colors.secondary')}}>{get(data, 'type')}</p>
