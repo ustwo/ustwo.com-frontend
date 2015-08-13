@@ -223,4 +223,46 @@
 
   }
 
+
+
+  .jobs {
+
+    .hero-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      height: 210px;
+
+      .ustwo-logo {
+        fill: #fff;
+        height: 30px;
+        margin-bottom: 5px;
+      }
+
+      h2 {
+        color: #fff;
+        font-size: 46px;
+        line-height: 1.2;
+      }
+    }
+
+    .main {
+      background: $honey;
+      padding: 15px;
+    }
+
+    .tabs {
+      display: none;
+    }
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      .tabs {
+        display: block;
+      }
+    }
+
+  }
+
 }
