@@ -36,25 +36,6 @@ const pageMap = {
   'privacy': require('./templates/page-privacy')
 };
 
-function renderTitle(state) {
-  let title = [];
-  switch(state.currentPage) {
-    case 'home':
-      break;
-    case 'what-we-do/case-study':
-      title.push(get(state, 'caseStudy.name'));
-      break;
-    case 'blog/post':
-      title.push(get(state, 'post.title.rendered'));
-      break;
-    default:
-      title.push(find(state.pages, 'id', state.currentPage).title);
-      break;
-  }
-  title.push('ustwo');
-  return title.join(' | ');
-}
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -99,19 +80,19 @@ export default class App extends React.Component {
       content = (
         <div className={appClasses}>
           <Meta
-            title={renderTitle(state)}
+            title={`${get(state, 'page.seo.title') ? get(state, 'page.seo.title') + ' | ' : ''}ustwo`}
             meta={[{
               name: "description",
-              content: `ustwo website, ${state.currentPage} page`
+              content: get(state, 'page.seo.desc')
             }, {
               name: "keywords",
-              content: `ustwo`
+              content: get(state, 'page.seo.keywords')
             }]}
           />
           <EntranceAnimation className="nav-wrapper" delay={headerDelay} duration={0.5} options={animationOptions} findElement={element => element.children[0]}>
             <Navigation pages={state.pages} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={state.takeover !== Nulls.takeover} open={state.showNav} />
           </EntranceAnimation>
-          <TransitionManager component="div" className={contentClasses} duration="500">
+          <TransitionManager component="div" className={contentClasses} duration="0">
             <div className="app__stage__page-container" key={state.currentPage}>
               {this.getPage(state.currentPage)}
               <Footer data={state.footer} studios={state.studios} />

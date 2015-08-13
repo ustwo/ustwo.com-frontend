@@ -5,7 +5,7 @@ import ModuleRenderer from '../_lib/module-renderer';
 
 export default class PageCaseStudy extends React.Component {
   render() {
-    const caseStudy = this.props.caseStudy;
+    const caseStudy = this.props.page;
     return (
       <article className="page-case-study">
         <style>{`

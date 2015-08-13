@@ -20,9 +20,9 @@ const routes = {
     pattern: '/what-we-do',
     statusCode: 200,
     data: () => [{
-      namespace: 'wp/v2/',
-      type: 'pages',
-      id: '66?_embed'
+      url: 'wp/v2/pages/66?_embed',
+      type: 'page',
+      id: 'what-we-do'
     }]
   },
   caseStudy: {
@@ -30,8 +30,8 @@ const routes = {
     pattern: '/what-we-do/:cid',
     statusCode: 200,
     data: cid => [{
-      namespace: 'ustwo/v1/',
-      type: 'case-studies',
+      url: `ustwo/v1/case-studies/${cid}`,
+      type: 'page',
       id: cid
     }]
   },
@@ -40,9 +40,9 @@ const routes = {
     pattern: '/blog',
     statusCode: 200,
     data: () => [{
-      namespace: 'wp/v2/',
-      type: 'pages',
-      id: '?name=blog&_embed=true',
+      url: 'wp/v2/pages?name=blog&_embed=true',
+      type: 'page',
+      id: 'blog',
       get: data => data[0]
     }]
   },
@@ -51,9 +51,9 @@ const routes = {
     pattern: '/blog/:pid',
     statusCode: 200,
     data: pid => [{
-      namespace: 'wp/v2/',
-      type: 'posts',
-      id: `?name=${pid}&_embed=true`,
+      url: `wp/v2/posts?name=${pid}&_embed=true`,
+      type: 'page',
+      id: pid,
       get: data => data[0]
     }]
   },
@@ -62,9 +62,9 @@ const routes = {
     pattern: '/legal',
     statusCode: 200,
     data: () => [{
-      namespace: 'wp/v2/',
-      type: 'pages',
-      id: '?name=legal&_embed=true',
+      url: 'wp/v2/pages?name=legal&_embed=true',
+      type: 'page',
+      id: 'legal',
       get: data => data[0]
     }]
   },
@@ -73,9 +73,9 @@ const routes = {
     pattern: '/privacy',
     statusCode: 200,
     data: () => [{
-      namespace: 'wp/v2/',
-      type: 'pages',
-      id: '?name=privacy&_embed=true',
+      url: 'wp/v2/pages?name=privacy&_embed=true',
+      type: 'page',
+      id: 'privacy',
       get: data => data[0]
     }]
   },

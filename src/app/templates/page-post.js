@@ -7,7 +7,7 @@ import ModuleRenderer from '../_lib/module-renderer';
 
 export default class PagePost extends React.Component {
   render() {
-    const post = this.props.post;
+    const post = this.props.page;
     const terms = (post && post._embedded && post._embedded['http://v2.wp-api.org/term']) || [];
     const category = get(terms, '0.0');
     const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'category')}`);
