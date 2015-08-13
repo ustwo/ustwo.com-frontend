@@ -83,10 +83,10 @@ export default class App extends React.Component {
             title={`${get(state, 'page.seo.title') ? get(state, 'page.seo.title') + ' | ' : ''}ustwo`}
             meta={[{
               name: "description",
-              content: get(state, 'page.seo.desc')
+              content: get(state, 'page.seo.desc') || ''
             }, {
               name: "keywords",
-              content: get(state, 'page.seo.keywords')
+              content: get(state, 'page.seo.keywords') || ''
             }]}
           />
           <EntranceAnimation className="nav-wrapper" delay={headerDelay} duration={0.5} options={animationOptions} findElement={element => element.children[0]}>

@@ -22,17 +22,17 @@ const routes = {
     data: () => [{
       url: 'wp/v2/pages/66?_embed',
       type: 'page',
-      id: 'what-we-do'
+      slug: 'what-we-do'
     }]
   },
   caseStudy: {
     id: 'what-we-do/case-study',
     pattern: '/what-we-do/:cid',
     statusCode: 200,
-    data: cid => [{
-      url: `ustwo/v1/case-studies/${cid}`,
+    data: slug => [{
+      url: `ustwo/v1/case-studies/${slug}`,
       type: 'page',
-      id: cid
+      slug: slug
     }]
   },
   blog: {
@@ -42,7 +42,7 @@ const routes = {
     data: () => [{
       url: 'wp/v2/pages?name=blog&_embed=true',
       type: 'page',
-      id: 'blog',
+      slug: 'blog',
       get: data => data[0]
     }]
   },
@@ -53,7 +53,7 @@ const routes = {
     data: pid => [{
       url: `wp/v2/posts?name=${pid}&_embed=true`,
       type: 'page',
-      id: pid,
+      slug: pid,
       get: data => data[0]
     }]
   },
@@ -64,7 +64,7 @@ const routes = {
     data: () => [{
       url: 'wp/v2/pages?name=legal&_embed=true',
       type: 'page',
-      id: 'legal',
+      slug: 'legal',
       get: data => data[0]
     }]
   },
@@ -75,7 +75,7 @@ const routes = {
     data: () => [{
       url: 'wp/v2/pages?name=privacy&_embed=true',
       type: 'page',
-      id: 'privacy',
+      slug: 'privacy',
       get: data => data[0]
     }]
   },

@@ -4,7 +4,7 @@ import fetcher from '../../app/_lib/fetcher';
 
 export default function (requiredData, apply) {
   return Promise.all(requiredData.map(params => {
-    console.log('Loading...', params.type, (params.id || ''));
+    console.log('Loading...', params.type, (params.slug || ''));
     return fetcher({
       url: params.url
     });

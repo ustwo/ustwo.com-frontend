@@ -1,3 +1,5 @@
+import reject from 'lodash/collection/reject';
+
 import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
 import Nulls from '../flux/nulls';
@@ -45,12 +47,19 @@ function applyData(type, data) {
 
 export default {
   setPage(newPage, statusCode) {
+    const newPageIdArray = newPage.split('/');
+    const slug = newPageIdArray[newPageIdArray.length - 1];
+    if(_state.page && _state.page.slug !== slug) {
+      _state.page = null;
+    }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
-    _state.page = null;
     return Promise.resolve(_state);
   },
   loadData(itemsToLoad) {
+    itemsToLoad = reject(itemsToLoad, item => {
+      return (!item.slug && _state[item.type]) || (_state[item.type] && _state[item.type].slug === item.slug);
+    });
     return DataLoader(itemsToLoad, applyData).then(() => _state);
   },
   showContacts() {
