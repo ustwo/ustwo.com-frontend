@@ -87,6 +87,4 @@ absorb:
 	git pull --rebase origin master
 	git checkout $(GIT_BRANCH)
 	git rebase master
-	git checkout master
-	echo $(GIT_BRANCH)
 	# git merge --no-ff $(GIT_BRANCH)
