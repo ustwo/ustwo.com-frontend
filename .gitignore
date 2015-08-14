@@ -7,4 +7,4 @@ npm-debug.log
 public/*
 !public/.gitignore
 etc/nginx/ssl
-share/nginx/public
+share/nginx/assets

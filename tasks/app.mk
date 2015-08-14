@@ -36,7 +36,8 @@ app-create:
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
 		--label version=$(app_version) \
-		--add-host proxy.ustwo.com:172.17.42.1 \
+		-p 8888:8888 \
+		--add-host docker.ustwo.com:172.17.42.1 \
 		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \
 		$(app_image) \
 		$(app_cmd)
@@ -53,8 +54,10 @@ css:
 app-compile:
 	$(DOCKER_EXEC) $(app_name) npm run compile
 
-app-assets: app-compile
-	$(RM) share/nginx/public
-	$(DOCKER_CP) $(app_name):/usr/local/src/public share/nginx/
-	$(CP) src/templates/index.html share/nginx/html/index.html
-	$(CP) src/assets/favicon.* share/nginx/public/
+app-assets:
+	@echo "Compile assets to share/nginx/assets"
+	@$(DOCKER_TASK) \
+		$(app_volumes) \
+		-v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
+		$(app_image) \
+		npm run compile

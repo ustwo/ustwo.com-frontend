@@ -3,7 +3,7 @@ BASE_PATH ?= $(PWD)
 TAG ?= 0.3.8
 MACHINE_ALIAS ?= ustwosite
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
-ANSIBLE_INVENTORY ?= /etc/ansible/hosts
+ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 project_name := ustwosite
@@ -23,8 +23,9 @@ DOCKER_MACHINE := docker-machine
 MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
 ANSIBLE := ansible
 ANSIBLE_SHELL = $(ANSIBLE) $(MACHINE_IP) --become -m shell
-ANSIBLE_PLAY := ansible-playbook -b -v --private-key=$(IDENTITY_FILE)
-# --inventory-file=$(ANSIBLE_INVENTORY)
+ANSIBLE_PLAY := ansible-playbook -b -v \
+	--private-key=$(IDENTITY_FILE) \
+	--inventory-file=$(ANSIBLE_INVENTORY)
 
 
 ###############################################################################
@@ -49,47 +50,42 @@ include tasks/*.mk
 #
 ###############################################################################
 
-init: vault-create app-create proxy-create
+init: pull proxy-pull vault-create app-create proxy-create
 init-rm: vault-rm app-rm proxy-rm
-deploy: app-rm proxy-rm app-create proxy-create
+deploy: init-rm init
 
 ps:
 	@$(DOCKER) ps -a \
 		--filter 'label=project_name=$(project_name)' \
 		--filter 'label=tier=$(TIER)'
 
-iid-production: TIER := production
-iid-production: MACHINE_ALIAS := ustwositepro
-iid-production: static-iid
-
 rm-production: TIER := production
-rm-production: static-rm
+rm-production: init-rm
 
 init-production: TIER := production
 init-production: MACHINE_ALIAS := ustwositepro
 init-production: STATIC_HTTP_PORT := 80
 init-production: STATIC_HTTPS_PORT := 443
-init-production: static-create static-iid
-
-rollback-production: TIER := production
-rollback-production: STATIC_HTTP_PORT := 80
-rollback-production: STATIC_HTTPS_PORT := 443
-rollback-production: rollback-template
+init-production: BASE_PATH := /home/ubuntu
+init-production: init
 
 deploy-production: proxy-pull rm-production init-production
+
 
 # deploy-staging: TIER := staging
 # deploy-staging: PROXY_HTTP_PORT := 80
 # deploy-staging: PROXY_HTTPS_PORT := 443
 # deploy-staging: deploy
 deploy-staging:
-	$(MAKE) deploy TIER=staging PROXY_HTTPS_PORT=443 PROXY_HTTP_PORT=80
+	$(MAKE) deploy \
+		BASE_PATH=/home/ubuntu \
+		TIER=staging \
+		PROXY_HTTPS_PORT=443 \
+		PROXY_HTTP_PORT=80
 
 absorb:
 	git checkout master
 	git pull --rebase origin master
 	git checkout $(GIT_BRANCH)
 	git rebase master
-	git checkout master
-	echo $(GIT_BRANCH)
 	# git merge --no-ff $(GIT_BRANCH)

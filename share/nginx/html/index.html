@@ -3,10 +3,12 @@
   <!-- Oh hey there, we're always on the lookout for curious and talented developers, get in touch! :) -->
   <head>
     <meta charset="utf-8">
-    <title>ustwo</title>
+    <title><%= title %></title>
     <meta name="author" content="ustwo">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="msapplication-tap-highlight" content="no" />
+    <%= meta %>
+    <%= link %>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="stylesheet" href="/css/ustwo.css">
@@ -16,47 +18,17 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-7940378-1', 'auto');
-      ga('send', 'pageview');
     </script>
     <script>
-      window.data = {
-        "takeover": {
-          "id": "moodnotes-launch"
-        },
-        "pages": [
-          {
-            "id": "home",
-            "ga": "home",
-            "title": "Home",
-            "url": "/"
-          },
-          {
-            "id": "what-we-do",
-            "ga": "what_we_do",
-            "title": "What we do",
-            "url": "/what-we-do"
-          },
-          {
-            "id": "blog",
-            "ga": "blog",
-            "title": "Blog",
-            "url": "/blog"
-          },
-          {
-            "id": "join-us",
-            "id": "join_us",
-            "title": "Join us",
-            "url": "http://ustwo.workable.com/",
-            "external": true
-          }
-        ]
-      };
+      window.state = <%= state %>;
+      document.documentElement.className += " js";
       if(!!navigator.userAgent.match(/(iPhone)/g)) {
         document.documentElement.className += " iPhone";
       }
     </script>
   </head>
   <body>
+    <%= app %>
   </body>
   <script src="/js/vendors.js"></script>
   <script src="/js/app.js"></script>
