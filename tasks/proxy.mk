@@ -37,4 +37,4 @@ proxy-create:
 		--restart always \
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
-		nginx
+		$(proxy_image)

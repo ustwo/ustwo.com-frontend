@@ -54,8 +54,10 @@ css:
 app-compile:
 	$(DOCKER_EXEC) $(app_name) npm run compile
 
-app-assets: app-compile
-	$(RM) share/nginx/public
-	$(DOCKER_CP) $(app_name):/usr/local/src/public share/nginx/
-	$(CP) src/templates/index.html share/nginx/html/index.html
-	$(CP) src/assets/favicon.* share/nginx/public/
+app-assets:
+	@echo "Compile assets to share/nginx/assets"
+	@$(DOCKER_TASK) \
+		$(app_volumes) \
+		-v $(BASE_PATH)/share/nginx/public:/usr/local/src/public \
+		$(app_image) \
+		npm run compile
