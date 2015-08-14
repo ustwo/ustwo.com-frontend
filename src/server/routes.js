@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import React from 'react';
 import Helmet from 'react-helmet';
+import omit from 'lodash/object/omit';
 
 let router = express.Router();
 
@@ -29,7 +30,7 @@ router.get('/*', (req, res) => {
       .then((state) => {
         const App = React.createFactory(require('../app/app'));
         const AppString = React.renderToString(App({
-          state: state
+          state: omit(state, 'takeover')
         }));
         const head = Helmet.rewind();
         res.status(state.statusCode).render('index', {

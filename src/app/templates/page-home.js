@@ -174,16 +174,18 @@ export default class PageHome extends React.Component {
     return (
       <article className="page-home">
         <ScreenBlock ref="blockWelcome" customClass="page-home__screen-block--welcome" hexColour={'#' + this.state.blocks[0].hexColour}>
-          <EntranceTransition className="entrance">
+          <EntranceTransition className="image-entrance">
             {Watches}
           </EntranceTransition>
-          <div className="page-home__screen-block--welcome__header-vertical-centerer">
-            <BoldHeader customClass="page-home__screen-block--welcome__header-vertical-centerer__bold-header" colour="white">
-              <WordAnimation delay={1} duration={0.4} options={headlineWordsAnimationOptions}>
-                We're a digital product studio
-              </WordAnimation>
-            </BoldHeader>
-          </div>
+          <EntranceTransition className="title-entrance">
+            <div className="page-home__screen-block--welcome__header-vertical-centerer">
+              <BoldHeader customClass="page-home__screen-block--welcome__header-vertical-centerer__bold-header" colour="white">
+                <WordAnimation delay={1} duration={0.4} options={headlineWordsAnimationOptions}>
+                  We're a digital product studio
+                </WordAnimation>
+              </BoldHeader>
+            </div>
+          </EntranceTransition>
           {Chevron}
         </ScreenBlock>
         <ScreenBlock ref="blockClient" customClass="page-home__screen-block--client" hexColour={'#' + this.state.blocks[1].hexColour}>

@@ -9,9 +9,7 @@ const _state = Object.assign({
   showNav: false,
   modal: Nulls.modal,
   colours: Nulls.colours,
-  takeover: {
-    id: "moodnotes-launch"
-  },
+  takeover: null,
   pages: [{
     id: "home",
     ga: "home",
@@ -36,8 +34,8 @@ const _state = Object.assign({
   }],
   caseStudy: Nulls.caseStudy
 }, window.state);
-if(window.localStorage.getItem('takeover-'+_state.takeover.id)) {
-  _state.takeover = Nulls.takeover;
+if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
+  _state.takeover.seen = true;
 }
 
 function applyData(type, data) {
@@ -75,8 +73,10 @@ export default {
     return Promise.resolve(_state);
   },
   closeTakeover() {
-    window.localStorage.setItem('takeover-'+_state.takeover.id, true);
-    _state.takeover = Nulls.takeover;
+    if(_state.takeover) {
+      window.localStorage.setItem('takeover-'+_state.takeover.id, true);
+      _state.takeover = Nulls.takeover;
+    }
     return Promise.resolve(_state);
   },
   closeModal() {

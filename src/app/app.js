@@ -53,12 +53,6 @@ export default class App extends React.Component {
   }
   render() {
     const state = this.state;
-    const animationOptions = {
-      ease: Power2.easeOut,
-      y: -68,
-      clearProps: 'transform'
-    };
-    const headerDelay = 0.5 + (state.takeover !== Nulls.takeover ? 2 : 0);
     const appClasses = classnames('app', {
       'app-404': state.currentPage === 'notfound'
     });
@@ -127,7 +121,7 @@ export default class App extends React.Component {
   }
   showTakeover() {
     const state = this.state;
-    return state.currentPage === 'home' && state.takeover !== Nulls.takeover;
+    return state.currentPage === 'home' && state.takeover && !state.takeover.seen;
   }
   getPage(pageId) {
     return React.createElement(pageMap[pageId], this.state);

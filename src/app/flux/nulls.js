@@ -1,9 +1,7 @@
 export default {
   page: null,
   modal: null,
-  takeover: {
-    "id": null
-  },
+  takeover: null,
   caseStudy: {
     "name": null,
     "link": null,
