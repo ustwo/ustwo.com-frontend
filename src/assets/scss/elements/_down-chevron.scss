@@ -4,4 +4,14 @@
   width: 100px;
   height: 50px;
   fill: $white;
+
+  g:not(:last-child) {
+    display: none;
+  }
+}
+.js .down-chevron g {
+  display: inline;
+  &:not(:first-child) {
+    display: none;
+  }
 }
