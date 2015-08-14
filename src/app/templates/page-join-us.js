@@ -66,11 +66,11 @@ export default class PageJoinUs extends React.Component {
 
         <section className="jobs">
           <nav className="jobs-studio-tabs">
-            <label for="all-jobs">All studios</label>
-            <label for="london-jobs">London</label>
-            <label for="malmo-jobs">Malmö</label>
-            <label for="newyork-jobs">New York</label>
-            <label for="sydney-jobs">Sydney</label>
+            <label htmlFor="tab-all">All studios</label>
+            <label htmlFor="tab-london">London</label>
+            <label htmlFor="tab-malmo">Malmö</label>
+            <label htmlFor="tab-newyork">New York</label>
+            <label htmlFor="tab-sydney">Sydney</label>
           </nav>
           <StudioJobs studio="all" />
           <StudioJobs studio="london" />
