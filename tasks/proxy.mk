@@ -42,5 +42,11 @@ proxy-create:
 # 	$(ANSIBLE_SHELL) \
 # 		-a "docker inspect -f {{'{{'}}.Image{{'}}'}} $(proxy_name) > proxy.iid"
 
-# x:
-# 	docker $(docker-machine config a) save IMAGE | docker $(docker-machine config b) load
+
+
+# docker $(docker-machine config a) save IMAGE | docker $(docker-machine config b) load
+save:
+	$(DOCKER) save --output=spa.$(TAG).tar $(proxy_image)
+
+load:
+	$(DOCKER) load --input=spa.$(TAG).tar

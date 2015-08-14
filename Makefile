@@ -24,9 +24,8 @@ MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
 ANSIBLE := ansible
 ANSIBLE_SHELL = $(ANSIBLE) $(MACHINE_IP) --become -m shell
 ANSIBLE_PLAY := ansible-playbook -b -v \
-	--private-key=$(IDENTITY_FILE) \
+--private-key=$(IDENTITY_FILE) \
 	--inventory-file=$(ANSIBLE_INVENTORY)
-
 ###############################################################################
 
 default:
