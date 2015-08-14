@@ -61,12 +61,7 @@ export default class PageHome extends React.Component {
           triggerHook: 'onLeave',
           duration: () => {return blockWelcome.clientHeight * 0.7}
         })
-        .addTo(scrollController)
-        .on('progress', (e) => {
-          if (e.progress > 0) {
-            this.refs.downChevron.goToProgressRatio(0.91 - e.progress * 0.9);
-          }
-      });
+        .addTo(scrollController);
 
       this.colourBlockScenes = [];
       this.state.blocks.forEach((block, index) => {
