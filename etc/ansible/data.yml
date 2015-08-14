@@ -19,16 +19,17 @@
         mode: 0644
       # notify:
       #   - restart nginx
-    - name: create nginx config structure
-      file:
-        path: /home/ubuntu/etc/nginx/conf.d
-        state: directory
-        owner: "{{ owner }}"
-        group: "{{ group }}"
     - name: copy main nginx config
       copy:
         src: ../nginx/nginx.conf
         dest: /home/ubuntu/etc/nginx/nginx.conf
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0644
+    - name: copy main nginx config
+      copy:
+        src: ../nginx/ssl.conf
+        dest: /home/ubuntu/etc/nginx/ssl.conf
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: 0644
@@ -37,10 +38,10 @@
     - name: copy nginx config
       copy:
         src: ../nginx/conf.d
-        dest: /home/ubuntu/etc/nginx/conf.d
+        dest: /home/ubuntu/etc/nginx/
         owner: "{{ owner }}"
         group: "{{ group }}"
-        mode: 0644
+        mode: 0755
       # notify:
       #   - restart nginx
     - name: copy ssh authorized keys

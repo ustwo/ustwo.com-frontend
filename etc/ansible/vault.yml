@@ -1,5 +1,5 @@
 ---
-- hosts: ustwosite
+- hosts: usweb.all
   vars:
     owner: ubuntu
     group: ubuntu
