@@ -24,7 +24,6 @@ MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
 ANSIBLE := ansible
 ANSIBLE_SHELL = $(ANSIBLE) $(MACHINE_IP) --become -m shell
 ANSIBLE_PLAY := ansible-playbook -b -v \
-	--check \
 	--private-key=$(IDENTITY_FILE) \
 	--inventory-file=$(ANSIBLE_INVENTORY)
 
@@ -60,18 +59,15 @@ ps:
 		--filter 'label=project_name=$(project_name)' \
 		--filter 'label=tier=$(TIER)'
 
-iid-production: TIER := production
-iid-production: MACHINE_ALIAS := ustwositepro
-iid-production: static-iid
-
 rm-production: TIER := production
-rm-production: static-rm
+rm-production: init-rm
 
 init-production: TIER := production
 init-production: MACHINE_ALIAS := ustwositepro
 init-production: STATIC_HTTP_PORT := 80
 init-production: STATIC_HTTPS_PORT := 443
-init-production: static-create static-iid
+init-production: BASE_PATH := /home/ubuntu
+init-production: init
 
 deploy-production: proxy-pull rm-production init-production
 

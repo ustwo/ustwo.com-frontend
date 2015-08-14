@@ -38,3 +38,10 @@ proxy-create:
 		--label project_name=$(project_name) \
 		--label tier=$(TIER) \
 		$(proxy_image)
+
+# proxy-iid:
+# 	$(ANSIBLE_SHELL) \
+# 		-a "docker inspect -f {{'{{'}}.Image{{'}}'}} $(proxy_name) > proxy.iid"
+
+# x:
+# 	docker $(docker-machine config a) save IMAGE | docker $(docker-machine config b) load

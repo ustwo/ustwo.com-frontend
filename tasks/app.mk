@@ -58,6 +58,6 @@ app-assets:
 	@echo "Compile assets to share/nginx/assets"
 	@$(DOCKER_TASK) \
 		$(app_volumes) \
-		-v $(BASE_PATH)/share/nginx/public:/usr/local/src/public \
+		-v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
 		$(app_image) \
 		npm run compile
