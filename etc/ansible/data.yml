@@ -12,8 +12,15 @@
         group: "{{ group }}"
     - name: copy nginx error page
       copy:
-        src: ../../shared/nginx/html/50x.html
+        src: ../../share/nginx/html/50x.html
         dest: /home/ubuntu/share/nginx/html/50x.html
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0644
+    - name: copy robots.txt
+      copy:
+        src: ../../share/nginx/html/robots.txt
+        dest: /home/ubuntu/share/nginx/html/robots.txt
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: 0644
