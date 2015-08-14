@@ -35,7 +35,7 @@ app-create:
 		--restart always \
 		$(project_labels) \
 		-p 8888:8888 \
-		--add-host docker.ustwo.com:172.17.42.1 \
+		$(docker_host) \
 		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \
 		$(app_image) \
 		$(app_cmd)

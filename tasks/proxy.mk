@@ -32,7 +32,7 @@ proxy-create:
 		--name $(proxy_name) \
 		-p $(PROXY_HTTPS_PORT):443 \
 		-p $(PROXY_HTTP_PORT):80 \
-		--add-host docker.ustwo.com:172.17.42.1 \
+		$(docker_host) \
 		--volumes-from $(vault_name) \
 		--restart always \
 		$(project_labels) \

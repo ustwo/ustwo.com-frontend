@@ -1,3 +1,6 @@
+define docker_host
+	--add-host docker.ustwo.com:172.17.42.1
+endef
 
 define project_labels
 	--label project_name=$(project_name) \
