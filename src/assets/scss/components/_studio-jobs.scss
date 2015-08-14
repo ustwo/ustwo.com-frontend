@@ -55,12 +55,12 @@
     }
   }
 
-  &.all {
+  &.all-jobs {
     display: none;
   }
 
   @each $studio, $colour in $studio-colours {
-    &.#{$studio} {
+    &.#{$studio}-jobs {
       .excerpt,
       .jobs-none a {
         background: $colour;
@@ -75,6 +75,14 @@
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
+
+
+    &.all-jobs {
+      display: block;
+    }
+    h3 {
+      display: none;
+    }
 
   }
 

@@ -4,7 +4,7 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import DownChevron from '../elements/down-chevron';
-import FeatureSlide from '../components/feature-slide';
+import Slide from '../components/slide';
 import StudioJobs from '../components/studio-jobs';
 
 export default class PageJoinUs extends React.Component {
@@ -65,6 +65,13 @@ export default class PageJoinUs extends React.Component {
         </div>
 
         <section className="jobs">
+          <nav className="jobs-studio-tabs">
+            <label for="all-jobs">All studios</label>
+            <label for="london-jobs">London</label>
+            <label for="malmo-jobs">Malmö</label>
+            <label for="newyork-jobs">New York</label>
+            <label for="sydney-jobs">Sydney</label>
+          </nav>
           <StudioJobs studio="all" />
           <StudioJobs studio="london" />
           <StudioJobs studio="malmo" />

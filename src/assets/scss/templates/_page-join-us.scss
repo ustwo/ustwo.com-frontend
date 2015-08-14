@@ -76,7 +76,6 @@
         width: 66.6666%;
       }
     }
-
   }
 
   .hero-image {
@@ -101,8 +100,32 @@
   }
 
   .jobs {
+    position: relative;
     background: $honey;
     padding: 10px 15px;
+
+    @include susy-breakpoint($bp-medium, $susy) {
+
+    }
+  }
+
+  .jobs-studio-tabs {
+    display: none;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+
+    label {
+      margin: 0 20px 10px 20px;
+      cursor: pointer;
+      font-family: $Futura;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      display: block;
+    }
   }
 
 }
