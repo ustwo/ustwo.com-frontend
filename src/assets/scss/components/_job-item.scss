@@ -1,7 +1,9 @@
 .job-item {
   margin-top: 5px;
   background: #fff;
+  height: 50px;
   overflow: hidden;
+  transition: height .6s ease-in-out;
 
   h4 {
     position: relative;
@@ -29,14 +31,10 @@
   }
 
   .job-description {
-    height: 0;
-    transition: height .32s ease-in-out;
     padding: 0 15px;
   }
 
   &.open {
-    .job-description {
-      height: 300px;
-    }
+    
   }
 }
