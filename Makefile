@@ -27,7 +27,6 @@ ANSIBLE_PLAY := ansible-playbook -b -v \
 	--private-key=$(IDENTITY_FILE) \
 	--inventory-file=$(ANSIBLE_INVENTORY)
 
-
 ###############################################################################
 
 default:
@@ -55,19 +54,17 @@ init-rm: vault-rm app-rm proxy-rm
 deploy: init-rm init
 
 ps:
-	@$(DOCKER) ps -a \
-		--filter 'label=project_name=$(project_name)' \
-		--filter 'label=tier=$(TIER)'
+	@$(DOCKER) ps -a $(project_filters)
 
 rm-production: TIER := production
 rm-production: init-rm
 
-# init-production: TIER := production
-# init-production: MACHINE_ALIAS := ustwositepro
-# init-production: PROXY_HTTP_PORT := 80
-# init-production: PROXY_HTTPS_PORT := 443
-# init-production: BASE_PATH := /home/ubuntu
-# init-production: init
+deploy-production: TIER := production
+deploy-production: MACHINE_ALIAS := ustwositepro
+deploy-production: STATIC_HTTP_PORT := 80
+deploy-production: STATIC_HTTPS_PORT := 443
+deploy-production: BASE_PATH := /home/ubuntu
+deploy-production: pull proxy-pull deploy
 
 # deploy-production: pull proxy-pull rm-production init-production
 # robots.txt

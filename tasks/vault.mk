@@ -26,6 +26,5 @@ vault-create:
 		$(nginx_config) \
 		-v $(BASE_PATH)/etc/nginx/ssl:/etc/nginx/ssl:ro \
 		-v $(BASE_PATH)/share/nginx/html:/usr/share/nginx/html \
-		--label project_name=$(project_name) \
-		--label tier=$(TIER) \
+		$(project_labels) \
 		busybox true

@@ -33,9 +33,7 @@ app-create:
 		--name $(app_name) \
 		$(app_volumes) \
 		--restart always \
-		--label project_name=$(project_name) \
-		--label tier=$(TIER) \
-		--label version=$(app_version) \
+		$(project_labels) \
 		-p 8888:8888 \
 		--add-host docker.ustwo.com:172.17.42.1 \
 		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \

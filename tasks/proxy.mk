@@ -35,8 +35,7 @@ proxy-create:
 		--add-host docker.ustwo.com:172.17.42.1 \
 		--volumes-from $(vault_name) \
 		--restart always \
-		--label project_name=$(project_name) \
-		--label tier=$(TIER) \
+		$(project_labels) \
 		$(proxy_image)
 
 # proxy-iid:
