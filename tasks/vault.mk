@@ -3,7 +3,7 @@ vault_name = $(project_name)_$(TIER)_vault
 
 .PHONY: vault-rm vault-create
 
-nginx_config := default.conf
+nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
 
 ifeq ($(TIER), dev)
   nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/dev.conf:/etc/nginx/conf.d/default.conf:ro
