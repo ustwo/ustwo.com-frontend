@@ -50,7 +50,7 @@ include tasks/*.mk
 #
 ###############################################################################
 
-init: pull proxy-pull vault-create app-create proxy-create
+init: vault-create app-create proxy-create
 init-rm: vault-rm app-rm proxy-rm
 deploy: init-rm init
 
@@ -69,7 +69,7 @@ init-production: STATIC_HTTPS_PORT := 443
 init-production: BASE_PATH := /home/ubuntu
 init-production: init
 
-deploy-production: proxy-pull rm-production init-production
+deploy-production: pull proxy-pull rm-production init-production
 
 
 # deploy-staging: TIER := staging
@@ -77,7 +77,7 @@ deploy-production: proxy-pull rm-production init-production
 # deploy-staging: PROXY_HTTPS_PORT := 443
 # deploy-staging: deploy
 deploy-staging:
-	$(MAKE) deploy \
+	$(MAKE) pull proxy-pull deploy \
 		BASE_PATH=/home/ubuntu \
 		TIER=staging \
 		PROXY_HTTPS_PORT=443 \
