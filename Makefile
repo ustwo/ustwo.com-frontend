@@ -3,7 +3,7 @@ BASE_PATH ?= $(PWD)
 TAG ?= 0.3.8
 MACHINE_ALIAS ?= ustwosite
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
-ANSIBLE_INVENTORY ?= /etc/ansible/hosts
+ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 project_name := ustwosite
@@ -23,8 +23,10 @@ DOCKER_MACHINE := docker-machine
 MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
 ANSIBLE := ansible
 ANSIBLE_SHELL = $(ANSIBLE) $(MACHINE_IP) --become -m shell
-ANSIBLE_PLAY := ansible-playbook -b -v --private-key=$(IDENTITY_FILE)
-# --inventory-file=$(ANSIBLE_INVENTORY)
+ANSIBLE_PLAY := ansible-playbook -b -v \
+	--check \
+	--private-key=$(IDENTITY_FILE) \
+	--inventory-file=$(ANSIBLE_INVENTORY)
 
 
 ###############################################################################

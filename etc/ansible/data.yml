@@ -1,6 +1,5 @@
 ---
-- hosts: ustwosite
-# - hosts: 52.18.119.52
+- hosts: usweb.all
   vars:
     owner: ubuntu
     group: ubuntu
@@ -37,8 +36,8 @@
       #   - restart nginx
     - name: copy staging nginx config
       copy:
-        src: ../nginx/conf.d/staging.conf
-        dest: /home/ubuntu/etc/nginx/conf.d/staging.conf
+        src: ../nginx/conf.d/default.conf
+        dest: /home/ubuntu/etc/nginx/conf.d/default.conf
         owner: "{{ owner }}"
         group: "{{ group }}"
         mode: 0644
