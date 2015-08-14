@@ -1,3 +1,21 @@
+// HERE BE DRAGONS
+.page-post {
+  a {
+    position: relative;
+    display: inline-block;
+
+    &:after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      background: white;
+      position: absolute;
+      bottom: -2px;
+    }
+  }
+}
+// NO MORE DRAGONS
+
 .page-post {
 
   a {
