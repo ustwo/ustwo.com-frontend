@@ -75,7 +75,7 @@ export default {
   closeTakeover() {
     if(_state.takeover) {
       window.localStorage.setItem('takeover-'+_state.takeover.id, true);
-      _state.takeover = Nulls.takeover;
+      _state.takeover.seen = true;
     }
     return Promise.resolve(_state);
   },
