@@ -52,7 +52,7 @@ include tasks/*.mk
 
 init: vault-create app-create proxy-create
 init-rm: vault-rm app-rm proxy-rm
-deploy: app-rm proxy-rm app-create proxy-create
+deploy: init-rm init
 
 ps:
 	@$(DOCKER) ps -a \
@@ -77,7 +77,11 @@ deploy-production: proxy-pull rm-production init-production
 # deploy-staging: PROXY_HTTPS_PORT := 443
 # deploy-staging: deploy
 deploy-staging:
-	$(MAKE) deploy TIER=staging PROXY_HTTPS_PORT=443 PROXY_HTTP_PORT=80
+	$(MAKE) deploy \
+		BASE_PATH=/home/ubuntu \
+		TIER=staging \
+		PROXY_HTTPS_PORT=443 \
+		PROXY_HTTP_PORT=80
 
 absorb:
 	git checkout master

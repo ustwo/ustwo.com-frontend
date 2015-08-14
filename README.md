@@ -84,10 +84,12 @@ Clean the environment:
 2. Build a fresh Docker image
 
         $ make build
+        $ make proxy-build
 
 3. Push image to the Docker Hub
 
         $ make push
+        $ make proxy-push
 
 4. Set the right environment
 
@@ -95,8 +97,6 @@ Clean the environment:
 
 5. Deploy
 
-        $ make deploy TIER=staging PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
-        # or
         $ make deploy-staging
 
 *Note*: If there is no previous release you must use
