@@ -9,8 +9,11 @@ export default class EntranceTransition extends React.Component {
     return <div className={classes}>{this.props.children}</div>;
   }
   componentDidMount() {
-    this.heroTimeout = setTimeout(() => {
+    this.timeout = setTimeout(() => {
       React.findDOMNode(this).classList.add('show');
     }, 100);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
   }
 };

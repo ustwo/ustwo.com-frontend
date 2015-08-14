@@ -108,16 +108,16 @@
       }
     }
   }
-  &.takeover .nav {
-    .nav__logo__graphic {
-      fill: $nonBlack;
-    }
-    .nav__open-overlay-button,
-    .nav__inner,
-    .nav__underline {
-      display: none;
-    }
-  }
+  // &.takeover .nav {
+  //   .nav__logo__graphic {
+  //     fill: $nonBlack;
+  //   }
+  //   .nav__open-overlay-button,
+  //   .nav__inner,
+  //   .nav__underline {
+  //     display: none;
+  //   }
+  // }
   &.case-study {
     @extend .neg-nav;
   }
@@ -133,7 +133,6 @@
       .nav__overlay {
         display: none;
       }
-
 
       &__inner {
         .nav__menu {
