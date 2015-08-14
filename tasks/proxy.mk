@@ -38,6 +38,19 @@ proxy-create:
 		$(project_labels) \
 		$(proxy_image)
 
+spa-create:
+	@echo "Creating $(proxy_name)"
+	@$(DOCKER_RUN) \
+		--name $(proxy_name) \
+		-p $(PROXY_HTTPS_PORT):443 \
+		-p $(PROXY_HTTP_PORT):80 \
+		$(docker_host) \
+		--volumes-from usweb_data \
+		--restart always \
+		$(project_labels) \
+		nginx
+
+
 # proxy-iid:
 # 	$(ANSIBLE_SHELL) \
 # 		-a "docker inspect -f {{'{{'}}.Image{{'}}'}} $(proxy_name) > proxy.iid"
