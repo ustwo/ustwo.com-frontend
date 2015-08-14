@@ -108,14 +108,15 @@
       }
     }
   }
-  &.takeover .nav {
-    .nav__logo__graphic {
-      fill: $nonBlack;
-    }
-    .nav__open-overlay-button,
-    .nav__inner,
-    .nav__underline {
-      display: none;
+  &.takeover {
+    @extend .neg-nav;
+
+    .nav {
+      .nav__open-overlay-button,
+      .nav__inner,
+      .nav__underline {
+        display: none;
+      }
     }
   }
   &.case-study {
@@ -125,6 +126,18 @@
 .app-404 .header {
   @extend .neg-nav;
 }
+.js .nav-wrapper {
+  .header {
+    transform: translateY(-68px);
+  }
+
+  &.show {
+    .header {
+      transition: transform 0.5s ease-out;
+      transform: translateY(0px);
+    }
+  }
+}
 
 @include susy-breakpoint($bp-large, $susy) {
   .header {
@@ -133,7 +146,6 @@
       .nav__overlay {
         display: none;
       }
-
 
       &__inner {
         .nav__menu {

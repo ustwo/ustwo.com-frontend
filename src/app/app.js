@@ -21,7 +21,7 @@ import Nulls from './flux/nulls';
 import Navigation from './modules/navigation';
 import Footer from './modules/footer';
 import Modal from './modules/modal';
-import EntranceAnimation from './elements/entrance-animation';
+import EntranceTransition from './elements/entrance-transition';
 import ContactTray from './components/contact-tray';
 import TakeOver from './modules/take-over';
 import FourOhFour from './templates/page-404';
@@ -63,7 +63,7 @@ export default class App extends React.Component {
       'app-404': state.currentPage === 'notfound'
     });
     const contentClasses = classnames('app__content', {
-      takeover: state.currentPage === 'home' && state.takeover !== Nulls.takeover
+      takeover: this.showTakeover()
     });
     let content;
     if(this.state.showNav) {
@@ -73,7 +73,7 @@ export default class App extends React.Component {
     }
     if(state.currentPage === 'notfound') {
       content = <div className={appClasses}>
-        <Navigation pages={state.pages} section={this.state.currentPage.split('/')[0]} page={this.state.currentPage.split('/')[1]} takeover={this.state.takeover !== Nulls.takeover} open={this.state.showNav} />
+        <Navigation pages={state.pages} section={this.state.currentPage.split('/')[0]} page={this.state.currentPage.split('/')[1]} takeover={this.showTakeover()} open={this.state.showNav} />
         <FourOhFour {...this.state} />
       </div>;
     } else {
@@ -89,9 +89,9 @@ export default class App extends React.Component {
               content: get(state, 'page.seo.keywords') || ''
             }]}
           />
-          <EntranceAnimation className="nav-wrapper" delay={headerDelay} duration={0.5} options={animationOptions} findElement={element => element.children[0]}>
-            <Navigation pages={state.pages} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={state.takeover !== Nulls.takeover} open={state.showNav} />
-          </EntranceAnimation>
+          <EntranceTransition className="nav-wrapper">
+            <Navigation pages={state.pages} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={this.showTakeover()} open={state.showNav} />
+          </EntranceTransition>
           <TransitionManager component="div" className={contentClasses} duration="0">
             <div className="app__stage__page-container" key={state.currentPage}>
               {this.getPage(state.currentPage)}
@@ -110,7 +110,7 @@ export default class App extends React.Component {
     const takeover = this.state.takeover;
     const modalType = this.state.modal;
     let modal;
-    if(this.state.takeover !== Nulls.takeover && this.state.currentPage === 'home') {
+    if(this.showTakeover()) {
       modal = <TakeOver key="takeover" takeover={takeover} />;
     } else if(modalType) {
       let content;
@@ -124,6 +124,10 @@ export default class App extends React.Component {
       modal = <Modal key={this.state.modal} className={className}>{content}</Modal>;
     }
     return modal;
+  }
+  showTakeover() {
+    const state = this.state;
+    return state.currentPage === 'home' && state.takeover !== Nulls.takeover;
   }
   getPage(pageId) {
     return React.createElement(pageMap[pageId], this.state);

@@ -13,17 +13,6 @@ body {
 
 .app {
 
-  .nav-wrapper {
-    header {
-      transition: transform 0.3s ease-in-out;
-      transition-delay: 0.1s;
-      transform: translateY(-68px);
-    }
-    &.show header {
-      transform: translateY(0px);
-    }
-  }
-
   &__content {
 
     &__container {
