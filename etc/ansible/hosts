@@ -1,0 +1,11 @@
+test ansible_ssh_user=ubuntu
+
+[usweb.canary]
+2015.ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222
+
+[usweb.all]
+2015.ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222
+ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222
+
+[usweb]
+ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222

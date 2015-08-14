@@ -50,7 +50,7 @@ include tasks/*.mk
 #
 ###############################################################################
 
-init: vault-create app-create proxy-create
+init: pull proxy-pull vault-create app-create proxy-create
 init-rm: vault-rm app-rm proxy-rm
 deploy: init-rm init
 
