@@ -41,7 +41,7 @@
         dest: /home/ubuntu/etc/nginx/
         owner: "{{ owner }}"
         group: "{{ group }}"
-        mode: 0755
+        mode: 0644
       # notify:
       #   - restart nginx
     - name: copy ssh authorized keys
