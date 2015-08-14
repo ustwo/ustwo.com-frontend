@@ -75,29 +75,15 @@
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
+    display: none;
 
-    &.all-jobs {
+    &.selected {
       display: block;
     }
+
     h3 {
       display: none;
     }
-    input[type=radio] {
-      display:none;
-    }
-    .tab-content {
-      // opacity: 0;
-      // height: 0;
-      // transition: height 0s linear .2s, opacity .2s ease-in-out;
-      display: none;
-    }
-    [id^=tab]:checked ~ div[id^=tab-content] {
-      // opacity: 1;
-      // height: auto;
-      // transition-delay: 0s;
-      display: block;
-    }
-
   }
 
 
