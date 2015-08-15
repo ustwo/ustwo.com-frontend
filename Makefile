@@ -55,7 +55,8 @@ deploy: init-rm init
 ps:
 	@$(DOCKER) ps -a $(project_filters)
 
-quiet_ps := $(shell $(DOCKER) ps -aq $(project_filters))
+
+stats: quiet_ps := $(shell $(DOCKER) ps -aq $(project_filters))
 stats:
 	@$(if $(quiet_ps), \
 		$(DOCKER) stats --no-stream $(quiet_ps), \
