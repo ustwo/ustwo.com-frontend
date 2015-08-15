@@ -55,8 +55,11 @@ deploy: init-rm init
 ps:
 	@$(DOCKER) ps -a $(project_filters)
 
+quiet_ps := $(shell $(DOCKER) ps -aq $(project_filters))
 stats:
-	@$(DOCKER) stats --no-stream $(shell $(DOCKER) ps -aq $(project_filters))
+	@$(if $(quiet_ps), \
+		$(DOCKER) stats --no-stream $(quiet_ps), \
+		echo "No containers for $(TIER)")
 
 rm-production: TIER := production
 rm-production: init-rm
