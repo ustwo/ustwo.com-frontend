@@ -91,7 +91,7 @@ deploy-staging:
 
 absorb:
 	git checkout master
-	git pull --rebase origin master
+	git pull --rebase=preserve origin master
 	git checkout $(GIT_BRANCH)
 	git rebase master
 	# git merge --no-ff $(GIT_BRANCH)
