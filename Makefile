@@ -55,18 +55,19 @@ deploy: init-rm init
 ps:
 	@$(DOCKER) ps -a $(project_filters)
 
+stats:
+	@$(DOCKER) stats --no-stream $(shell $(DOCKER) ps -aq $(project_filters))
+
 rm-production: TIER := production
 rm-production: init-rm
 
-deploy-production: TIER := production
-deploy-production: MACHINE_ALIAS := ustwositepro
-deploy-production: STATIC_HTTP_PORT := 80
-deploy-production: STATIC_HTTPS_PORT := 443
-deploy-production: BASE_PATH := /home/ubuntu
-deploy-production: pull proxy-pull deploy
+# deploy-production: TIER := production
+# deploy-production: STATIC_HTTP_PORT := 80
+# deploy-production: STATIC_HTTPS_PORT := 443
+# deploy-production: BASE_PATH := /home/ubuntu
+# deploy-production: pull proxy-pull deploy
+# deploy-production: deploy
 
-# deploy-production: pull proxy-pull rm-production init-production
-# robots.txt
 deploy-production:
 	$(MAKE) deploy \
 		BASE_PATH=/home/ubuntu \
