@@ -69,7 +69,6 @@ rm-production: init-rm
 # deploy-production: STATIC_HTTP_PORT := 80
 # deploy-production: STATIC_HTTPS_PORT := 443
 # deploy-production: BASE_PATH := /home/ubuntu
-# deploy-production: pull proxy-pull deploy
 # deploy-production: deploy
 
 deploy-production:
