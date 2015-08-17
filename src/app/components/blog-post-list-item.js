@@ -15,12 +15,13 @@ export default class BlogPostListItem extends React.Component {
       featured: this.props.featured
     });
     const attachments = (post && post._embedded && post._embedded['http://v2.wp-api.org/attachment']) || [];
+    const imageURL = get(attachments, '1.source_url');
     const featuredImage = find(attachments, 'id', get(post, 'featured_image'));
     const uri = `/blog/${get(post, 'slug')}`;
     return (
       <article className={classes}>
-        <div className="image" style={{backgroundImage: `url(${get(attachments, '1.source_url')})`}} onClick={Flux.override(uri)}>
-          <a href={uri} onClick={Flux.override(uri)}><img src={get(attachments, '1.source_url')} /></a>
+        <div className="image" style={{backgroundImage: `url(${imageURL})`}} onClick={Flux.override(uri)}>
+          <a href={uri} onClick={Flux.override(uri)}><img src={imageURL} /></a>
         </div>
         <div className="content">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
