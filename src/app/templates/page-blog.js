@@ -7,6 +7,8 @@ import get from 'lodash/object/get';
 import Track from '../../server/adaptors/track';
 import DownChevron from '../elements/down-chevron';
 import BlogPostListItem from '../components/blog-post-list-item';
+import BlogControls from '../components/blog-controls';
+
 
 const posts = [{
     "id": 8524,
@@ -564,6 +566,7 @@ export default class PageBlog extends React.Component {
       <article className="page-blog">
         <section className="hero">
           <h1 className="hero__title">Think. Share. Learn.</h1>
+          <BlogControls />
           <DownChevron customClass="hero__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />
         </section>
         <section className="blog-post-list">
