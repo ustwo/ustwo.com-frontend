@@ -79,16 +79,24 @@ const routes = {
       get: data => data[0]
     }]
   },
-  notfound: {
-    id: 'notfound',
-    pattern: '/404',
-    statusCode: 404,
-    data: () => []
-  },
   joinUs: {
     id: 'join-us',
     pattern: '/join-us',
     status: 200,
+    data: () => [{
+      url: 'wp/v2/pages?name=join-us&_embed=true',
+      type: 'page',
+      slug: 'join-us',
+      get: data => data[0]
+    }, {
+      url: 'ustwo/v1/jobs',
+      type: 'jobs'
+    }]
+  },
+  notfound: {
+    id: 'notfound',
+    pattern: '/404',
+    statusCode: 404,
     data: () => []
   }
 };

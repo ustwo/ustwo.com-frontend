@@ -126,7 +126,7 @@ export default class PageJoinUs extends React.Component {
       'hitType': 'event',
       'eventCategory': 'hub_page',
       'eventAction': 'click_animated_chevron',
-      'eventLabel': 'what-we-do'
+      'eventLabel': 'join-us'
     });
   }
 }
