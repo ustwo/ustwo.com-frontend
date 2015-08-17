@@ -7,8 +7,8 @@ const Actions = {
   loadData(itemsToLoad) {
     return Store.loadData(itemsToLoad || []);
   },
-  setSearchQuery(params) {
-    return Store.setSearchQuery(params);
+  setSearchQueryTo(string) {
+    return Store.setSearchQueryTo(string);
   },
   showContacts() {
     return Store.showContacts();

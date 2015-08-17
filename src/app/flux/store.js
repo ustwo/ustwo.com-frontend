@@ -64,8 +64,8 @@ export default {
     });
     return DataLoader(itemsToLoad, applyData).then(() => _state);
   },
-  setSearchQuery(params) {
-    _state.searchQuery = params;
+  setSearchQueryTo(string) {
+    _state.searchQuery = string;
     return Promise.resolve(_state);
   },
   showContacts() {
