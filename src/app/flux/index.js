@@ -18,6 +18,10 @@ const globalLoads = [{
 }, {
   url: 'ustwo/v1/footer',
   type: 'footer'
+}, {
+  url: 'ustwo/v1/takeovers',
+  type: 'takeover',
+  get: data => data[0]
 }];
 
 function emitify(fn) {

@@ -24,7 +24,7 @@ export default class WorkItem extends React.Component {
         </a>
         <div className="work-item__details">
           <p className="work-item__details__type" style={{borderColor: get(data, 'colors.secondary')}}>{get(data, 'type')}</p>
-          <h3 className="work-item__details__title" style={{color: get(data, 'colors.primary')}}>{get(data, 'name')}</h3>
+          <h3 className="work-item__details__title" style={{color: get(data, 'colors.primary')}}><a href={link} onClick={Flux.override(link)}>{get(data, 'name')}</a></h3>
           <div className="work-item__details__desc" dangerouslySetInnerHTML={{__html: get(data, 'excerpt')}} />
           <a className="work-item__details__cta" href={link} style={{borderColor: get(data, 'colors.secondary')}} onClick={Flux.override(link)}>Read more</a>
         </div>

@@ -1,6 +1,6 @@
 TIER ?= dev
 BASE_PATH ?= $(PWD)
-TAG ?= 0.3.8
+TAG ?= 0.4.0
 MACHINE_ALIAS ?= ustwosite
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
 ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
@@ -62,15 +62,21 @@ ps:
 rm-production: TIER := production
 rm-production: init-rm
 
-init-production: TIER := production
-init-production: MACHINE_ALIAS := ustwositepro
-init-production: STATIC_HTTP_PORT := 80
-init-production: STATIC_HTTPS_PORT := 443
-init-production: BASE_PATH := /home/ubuntu
-init-production: init
+# init-production: TIER := production
+# init-production: MACHINE_ALIAS := ustwositepro
+# init-production: PROXY_HTTP_PORT := 80
+# init-production: PROXY_HTTPS_PORT := 443
+# init-production: BASE_PATH := /home/ubuntu
+# init-production: init
 
-deploy-production: pull proxy-pull rm-production init-production
-
+# deploy-production: pull proxy-pull rm-production init-production
+# robots.txt
+deploy-production:
+	$(MAKE) deploy \
+		BASE_PATH=/home/ubuntu \
+		TIER=production \
+		PROXY_HTTPS_PORT=443 \
+		PROXY_HTTP_PORT=80
 
 # deploy-staging: TIER := staging
 # deploy-staging: PROXY_HTTP_PORT := 80
