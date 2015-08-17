@@ -1,5 +1,3 @@
-import Actions from '../flux/actions';
-
 /**
   Example route definitions
   {
@@ -44,6 +42,22 @@ const routes = {
       type: 'page',
       slug: 'blog'
     }]
+  },
+  searchResults: {
+    id: 'blog/search-results',
+    pattern: '/blog/search?q=:query',
+    status: 200,
+    data: query => [{
+      url: `wp/v2/posts?s=${query}&_embed=true`,
+      type: 'page',
+      slug: 'search'
+    }]
+  },
+  search: {
+    id: 'blog/search',
+    pattern: '/blog/search',
+    status: 200,
+    data: () => []
   },
   post: {
     id: 'blog/post',

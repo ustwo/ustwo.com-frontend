@@ -37,15 +37,12 @@ function getRouteHandler(name, itemsToLoad, statusCode) {
   return Promise.all([
     Flux.goTo(name, statusCode || 200),
     Flux.loadData([].concat(globalLoads, itemsToLoad))
-  ]).then((responses) => {
+  ]).then(responses => {
     return responses[1];
   });
 }
 
 function setUrl(url, replace) {
-  const vurl = virtualUrl(url);
-  vurl.href = url;
-
   if (replace) {
     window.history.replaceState(null, null, url);
   } else {
@@ -79,25 +76,25 @@ const Flux = Object.assign(
     },
     navigate(urlString, history, ignoreUrl, replaceState, force) {
       const vurl = virtualUrl(urlString);
-      const pathname = vurl.pathname;
-      let route = find(Routes, (route) => {
-        return RoutePattern.fromString(route.pattern).matches(pathname);
+      const path = vurl.pathname + vurl.search;
+      let route = find(Routes, route => {
+        return RoutePattern.fromString(route.pattern).matches(path);
       });
 
       if (!route) {
         route = Routes.notfound;
       }
-      let paramsSearch = RoutePattern.fromString(route.pattern).match(pathname);
+      let paramsSearch = RoutePattern.fromString(route.pattern).match(path);
       let params = paramsSearch ? paramsSearch.params : [];
       let action = getRouteHandler(route.id, route.data.apply(null, params), route.statusCode);
 
       if (!ignoreUrl) {
         setUrl(urlString, replaceState);
       }
-      if(!history) {
+      if (!history) {
         window.document.body.scrollTop = 0;
       }
-      Track('set', 'page', pathname);
+      Track('set', 'page', path);
       Track('send', 'pageview');
       return action.then(state => {
         Flux.emit('change', state);
