@@ -8,8 +8,8 @@ export default class PageSearch extends React.Component {
   render() {
     return (
       <article className="page-search">
-        <form onSubmit={this.onSubmit}>
-          <input type='text' placeholder='Search' onChange={this.onChange} />
+        <form method='POST' action='/blog/search' onSubmit={this.onSubmit}>
+          <input name='q' type='text' placeholder='Search' onChange={this.onChange} />
         </form>
       </article>
     );
