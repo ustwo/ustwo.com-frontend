@@ -3,17 +3,27 @@
 import React from 'react';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
+import times from 'lodash/utility/times';
 import Flux from '../flux';
 import JobItem from '../components/job-item';
 
 export default class StudioJobs extends React.Component {
   render() {
-    const classes = classnames('studio-jobs', `${this.props.studio}-jobs`);
+    const studio = this.props.studio;
+    const classes = classnames('studio-jobs', `${studio}-jobs`, {
+      selected: this.props.selected
+    });
+    const jobCount = {
+      all: 12,
+      london: 4,
+      malmo: 3,
+      newyork: 2,
+      sydney: 3
+    }
     return (
       <div className={classes}>
-        <h3>{this.props.studio}</h3>
-        <input type="radio" name="tabs" id={`tab-${this.props.studio}`} />
-        <div className="tab-content" id={`tab-content-${this.props.studio}`}>
+        <h3>{studio}</h3>
+        <div className="tab-content" id={`tab-content-${studio}`}>
           <div className="studio-info">
             <p className="excerpt">Join our flagship studio in Shoreditch</p>
             <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
@@ -22,9 +32,7 @@ export default class StudioJobs extends React.Component {
             </div>
           </div>
           <ul className="jobs-list">
-            <JobItem />
-            <JobItem />
-            <JobItem />
+            {times(jobCount[studio], this.renderJobItem)}
           </ul>
           <div className="jobs-none">
             <p>We don't have any openings currently. However we're always looking for talented individuals to join the ustwo family.</p>
@@ -33,5 +41,8 @@ export default class StudioJobs extends React.Component {
         </div>
       </div>
     );
+  }
+  renderJobItem() {
+    return <JobItem />;
   }
 }

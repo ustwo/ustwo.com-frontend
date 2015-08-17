@@ -115,7 +115,8 @@
     line-height: 80px;
     text-align: center;
 
-    label {
+    li {
+      display: inline-block;
       margin: 0 20px 10px 20px;
       cursor: pointer;
       font-family: $Futura;

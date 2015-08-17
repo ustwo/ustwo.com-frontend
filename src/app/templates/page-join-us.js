@@ -2,12 +2,27 @@
 
 import React from 'react';
 import find from 'lodash/collection/find';
+import map from 'lodash/collection/map';
 import get from 'lodash/object/get';
 import DownChevron from '../elements/down-chevron';
 import Slide from '../components/slide';
 import StudioJobs from '../components/studio-jobs';
 
+const studios = {
+  all: "All studios",
+  london: "London",
+  malmo: "Malmö",
+  newyork: "New York",
+  sydney: "Sydney"
+}
+
 export default class PageJoinUs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      studio: Object.keys(studios)[0]
+    }
+  }
   render() {
     // const pageData = this.props.page;
     const pageData = {
@@ -28,6 +43,7 @@ export default class PageJoinUs extends React.Component {
         }
       }]
     };
+
     const svgContent = '<use xlink:href="/images/spritemap.svg#ustwologo" />';
     return (
       <article className="page-join-us">
@@ -66,21 +82,38 @@ export default class PageJoinUs extends React.Component {
 
         <section className="jobs">
           <nav className="jobs-studio-tabs">
-            <label htmlFor="tab-all">All studios</label>
-            <label htmlFor="tab-london">London</label>
-            <label htmlFor="tab-malmo">Malmö</label>
-            <label htmlFor="tab-newyork">New York</label>
-            <label htmlFor="tab-sydney">Sydney</label>
+            {this.renderStudioTabs()}
           </nav>
-          <StudioJobs studio="all" />
-          <StudioJobs studio="london" />
-          <StudioJobs studio="malmo" />
-          <StudioJobs studio="newyork" />
-          <StudioJobs studio="sydney" />
+          <div className="jobs-container">
+            {this.renderStudioJobs()}
+          </div>
         </section>
 
       </article>
     );
+  }
+  renderStudioTabs = () => {
+    return map(studios, (name, id) => {
+      return <li ref={`tab-${id}`} onClick={this.generateOnClickStudioHandler(id)} aria-selected={this.state.studio === id}>{name}</li>;
+    });
+  }
+  generateOnClickStudioHandler = (studio) => {
+    return () => {
+      const el = React.findDOMNode(this.refs[`tab-${studio}`]);
+      const tabs = Object.keys(studios).map(studio => {
+        return React.findDOMNode(this.refs[`tab-${studio}`]);
+      });
+      tabs.forEach(tab => tab.setAttribute('aria-selected', false));
+      el.setAttribute('aria-selected', true);
+      this.setState({
+        studio: studio
+      });
+    }
+  }
+  renderStudioJobs = () => {
+    return map(studios, (name, id) => {
+      return <StudioJobs studio={id} selected={this.state.studio === id} />;
+    });
   }
   componentDidMount() {
     setTimeout(() => {

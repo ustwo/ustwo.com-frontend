@@ -90,6 +90,12 @@ const routes = {
     pattern: '/join-us',
     status: 200,
     data: () => []
+  },
+  joinUs: {
+    id: 'join-us',
+    pattern: '/join-us',
+    status: 200,
+    data: () => []
   }
 };
 
