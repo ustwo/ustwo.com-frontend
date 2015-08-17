@@ -22,12 +22,13 @@ export default class JobItem extends React.Component {
     });
   }
   render() {
+    const job = this.props.job;
     const classes = classnames('job-item', {
       open: this.state.open
     });
     return (
       <li className={classes} onClick={this.onClickJobItem}>
-        <h4>Lead Visual Designer</h4>
+        <h4>{get(job, 'title')}</h4>
         <div ref='description' className="job-description">
           <p>Emmental cheeseburger pepper jack. Everyone loves blue castello smelly cheese swiss pecorino cheese strings who moved my cheese cheese on toast. Melted cheese cheese triangles cheese on toast goat red leicester emmental boursin cheese on toast. Jarlsberg who moved my cheese parmesan smelly cheese cauliflower cheese mozzarella.</p>
           <a href="/">Read full description</a>

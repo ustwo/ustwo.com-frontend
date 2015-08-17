@@ -41,7 +41,9 @@ if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id
 }
 
 function applyData(type, data) {
-  _state[type] = Object.assign(_state[type] || {}, data);
+  const changeSet = {};
+  changeSet[type] = data;
+  Object.assign(_state, changeSet);
   console.log('Loaded', type, _state[type]);
 }
 
