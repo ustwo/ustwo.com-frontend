@@ -21,7 +21,7 @@ export default class SearchResultListItem extends React.Component {
         </div>
         <div className='content'>
           <div className='blog-category'>{category}</div>
-          <h1 className='title'><a href={uri} onClick={Flux.override(uri)}>{get(post, 'title.rendered')}</a></h1>
+          <h2 className='title'><a href={uri} onClick={Flux.override(uri)}>{get(post, 'title.rendered')}</a></h2>
           <p className='meta'>By {get(post, '_embedded.author.0.first_name')} {get(post, '_embedded.author.0.last_name')} - <span className='date'>{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
           <div className='tail'>
             <a href={uri} onClick={Flux.override(uri)}>Read more</a>
