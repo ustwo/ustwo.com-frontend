@@ -39,7 +39,6 @@
 
     &__logo {
       display: block;
-      float: left;
       margin-left: 20px;
       overflow: hidden;
       width: 100px;
@@ -55,7 +54,11 @@
       }
     }
     &__inner {
-      position: relative;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+
       .nav__menu {
         @extend %clearfix;
         display: none;
@@ -152,7 +155,6 @@
         .nav__menu {
           display: block;
           position: static;
-          float: right;
           margin-right: 30px;
         }
       }
