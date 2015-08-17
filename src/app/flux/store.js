@@ -6,10 +6,11 @@ import Nulls from '../flux/nulls';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
+  searchQuery: Nulls.searchQuery,
   showNav: false,
   modal: Nulls.modal,
   colours: Nulls.colours,
-  takeover: null,
+  takeover: Nulls.takeover,
   pages: [{
     id: "home",
     ga: "home",
@@ -50,6 +51,9 @@ export default {
     if(_state.page && _state.page.slug !== slug) {
       _state.page = null;
     }
+    if(newPage !== 'blog/search-results') {
+      _state.searchQuery = null;
+    }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
     return Promise.resolve(_state);
@@ -59,6 +63,10 @@ export default {
       return (!item.slug && _state[item.type]) || (_state[item.type] && _state[item.type].slug === item.slug);
     });
     return DataLoader(itemsToLoad, applyData).then(() => _state);
+  },
+  setSearchQuery(params) {
+    _state.searchQuery = params;
+    return Promise.resolve(_state);
   },
   showContacts() {
     _state.modal = 'contacts';

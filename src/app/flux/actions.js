@@ -7,6 +7,9 @@ const Actions = {
   loadData(itemsToLoad) {
     return Store.loadData(itemsToLoad || []);
   },
+  setSearchQuery(params) {
+    return Store.setSearchQuery(params);
+  },
   showContacts() {
     return Store.showContacts();
   },
