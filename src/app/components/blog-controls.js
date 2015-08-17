@@ -1,7 +1,10 @@
 'use strict';
 
 import React from 'react';
+import classnames from 'classnames';
 import map from 'lodash/collection/map';
+
+import Flux from '../flux';
 
 const blogCategories = {
   all: "All Categories",
@@ -17,25 +20,50 @@ const blogCategories = {
 }
 
 export default class BlogControls extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+    }
+  }
   render() {
     const searchIcon = '<use xlink:href="/images/spritemap.svg#search" />';
+    const searchURL = '/blog/search';
     return (
       <div className="blog-controls">
-        <a href="/" className="blog-search-button">
+        <a href={searchURL} onClick={Flux.override(searchURL)} className="blog-search-button">
           <svg className="search-icon" role="img" dangerouslySetInnerHTML={{__html: searchIcon }} />
         </a>
-        <div className="blog-filter">
-          <div className="selected">All Categories</div>
+        <div className={classnames("blog-filter", { open: this.state.open })}>
+          <div className="selected" onClick={this.onClickSelectedCategory}>{blogCategories[this.props.blogCategory]}</div>
           <ul className="dropdown">
-            {this.renderBlogCateories()}
+            {this.renderBlogCategories()}
           </ul>
         </div>
       </div>
     );
   }
-  renderBlogCateories = () => {
+  renderBlogCategories = () => {
     return map(blogCategories, (name, id) => {
-      return <li className={id}>{name}</li>;
+      const uri = (id === 'all') ? '/blog' : `/blog?category=${id}`;
+      return (
+        <li className={id}>
+          <a href={uri} onClick={this.getOnClickBlogCategoryHandler(uri)}>{name}</a>
+        </li>
+      );
     });
+  }
+  onClickSelectedCategory = () => {
+    this.setState({
+      open: true
+    });
+  }
+  getOnClickBlogCategoryHandler = (uri) => {
+    return (e) => {
+      Flux.override(uri)(e);
+      this.setState({
+        open: false
+      });
+    }
   }
 };

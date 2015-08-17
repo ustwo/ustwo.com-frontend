@@ -7,6 +7,9 @@ const Actions = {
   loadData(itemsToLoad) {
     return Store.loadData(itemsToLoad || []);
   },
+  setBlogCategoryTo(id) {
+    return Store.setBlogCategoryTo(id);
+  },
   setSearchQueryTo(string) {
     return Store.setSearchQueryTo(string);
   },

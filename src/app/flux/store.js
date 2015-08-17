@@ -6,6 +6,7 @@ import Nulls from '../flux/nulls';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
+  blogCategory: 'all',
   searchQuery: Nulls.searchQuery,
   showNav: false,
   modal: Nulls.modal,
@@ -54,6 +55,9 @@ export default {
     if(newPage !== 'blog/search-results') {
       _state.searchQuery = null;
     }
+    if(newPage !== 'blog/category') {
+      _state.blogCategory = 'all';
+    }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
     return Promise.resolve(_state);
@@ -63,6 +67,10 @@ export default {
       return (!item.slug && _state[item.type]) || (_state[item.type] && _state[item.type].slug === item.slug);
     });
     return DataLoader(itemsToLoad, applyData).then(() => _state);
+  },
+  setBlogCategoryTo(id) {
+    _state.blogCategory = id;
+    return Promise.resolve(_state);
   },
   setSearchQueryTo(string) {
     _state.searchQuery = string;
