@@ -31,9 +31,9 @@ export default class BlogControls extends React.Component {
     const searchURL = '/blog/search';
     return (
       <div className="blog-controls">
-        <a href={searchURL} onClick={Flux.override(searchURL)} className="blog-search-button">
+        <button onClick={this.onClickSearch} className="blog-search-button">
           <svg className="search-icon" role="img" dangerouslySetInnerHTML={{__html: searchIcon }} />
-        </a>
+        </button>
         <div className={classnames("blog-filter", { open: this.state.open })}>
           <div className="selected" onClick={this.onClickSelectedCategory}>{blogCategories[this.props.blogCategory]}</div>
           <ul className="dropdown">
@@ -52,6 +52,10 @@ export default class BlogControls extends React.Component {
         </li>
       );
     });
+  }
+  onClickSearch = (event) => {
+    event.preventDefault();
+    Flux.showSearch();
   }
   onClickSelectedCategory = () => {
     this.setState({

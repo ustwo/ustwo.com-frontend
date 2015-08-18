@@ -21,6 +21,8 @@
     align-items: center;
     height: $line-height;
     width: $search-width;
+    background: transparent;
+    border: 0;
 
     .search-icon {
       fill: #fff;

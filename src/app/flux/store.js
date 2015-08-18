@@ -122,5 +122,9 @@ export default {
       }], applyJobDetailData).then(() => _state);
     }
     return promise;
-  }
+  },
+  showSearch() {
+    _state.modal = 'search';
+    return Promise.resolve(_state);
+  },
 };

@@ -30,6 +30,9 @@ const Actions = {
   },
   getJobDetails(jid) {
     return Store.getJobDetails(jid);
+  },
+  showSearch() {
+    return Store.showSearch();
   }
 };
 
