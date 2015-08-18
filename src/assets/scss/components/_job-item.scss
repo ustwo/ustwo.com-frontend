@@ -1,3 +1,12 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .job-item {
   margin-top: 5px;
   background: #fff;
@@ -5,36 +14,92 @@
   overflow: hidden;
   transition: height .6s ease-in-out;
 
-  h4 {
+  .title {
     position: relative;
     height: 50px;
     padding: 0 15px;
     line-height: 50px;
     font-size: 16px;
     cursor: pointer;
+    display: flex;
 
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      height: 3px;
-      width: 15px;
-      right: 15px;
-      top: 50%;
-      margin-top: -1px;
-      transform-origin: 50% 50%;
-      background: #ccc;
+
+    .title-text {
+
     }
-    &:after {
-      transform: rotate(-90deg);
+    .status {
+      position: absolute;
+      right: 15px;
+
+      .status-text {
+        margin-right: 10px;
+        display: none;
+      }
+      .icon {
+        padding-left: 15px;
+        transform-origin: 100% 100%;
+
+        .horiz,
+        .vert {
+          content: "";
+          position: absolute;
+          height: 3px;
+          width: 15px;
+          top: 50%;
+          right: 0;
+          margin-top: -1px;
+          transform-origin: 50% 50%;
+          background: #ccc;
+        }
+        .vert {
+          transform: rotate(-90deg);
+        }
+      }
     }
   }
 
   .job-description {
-    padding: 0 15px;
+    padding: 0 15px 15px;
+  }
+
+  .link {
+    border-bottom: 2px solid #777;
   }
 
   &.open {
-    
+    .title {
+      .status {
+        .icon {
+          .vert {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &.loading {
+      .title {
+        .status {
+          .icon {
+            animation: spin 1000ms infinite linear;
+
+            .vert {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+
+    .title {
+      .status {
+        .status-text {
+          display: block;
+        }
+      }
+    }
   }
 }

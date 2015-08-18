@@ -1,4 +1,6 @@
 import reject from 'lodash/collection/reject';
+import findIndex from 'lodash/array/findIndex';
+import find from 'lodash/collection/find';
 
 import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
@@ -40,10 +42,19 @@ if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id
   _state.takeover.seen = true;
 }
 
-function applyData(type, data) {
-  _state[type] = Object.assign(_state[type] || {}, data);
+function applyData(data, type) {
+  const changeSet = {};
+  changeSet[type] = data;
+  Object.assign(_state, changeSet);
   console.log('Loaded', type, _state[type]);
 }
+function applyJobDetailData(job) {
+  const index = findIndex(_state.jobs, 'shortcode', job.shortcode);
+  _state.jobs[index] = job;
+  console.log('Added job details', job);
+}
+
+window._state = _state;
 
 export default {
   setPage(newPage, statusCode) {
@@ -98,5 +109,18 @@ export default {
   closeModal() {
     _state.modal = Nulls.modal;
     return Promise.resolve(_state);
+  },
+  getJobDetails(jid) {
+    let promise;
+    const job = find(_state.jobs, 'shortcode', jid);
+    if(job.description) {
+      promise = Promise.resolve(_state);
+    } else {
+     promise = DataLoader([{
+        url: `ustwo/v1/jobs/${jid}`,
+        type: 'job'
+      }], applyJobDetailData).then(() => _state);
+    }
+    return promise;
   }
 };

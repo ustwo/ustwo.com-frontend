@@ -27,6 +27,9 @@ const Actions = {
   },
   closeModal() {
     return Store.closeModal();
+  },
+  getJobDetails(jid) {
+    return Store.getJobDetails(jid);
   }
 };
 

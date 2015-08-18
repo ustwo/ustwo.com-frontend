@@ -3,53 +3,38 @@
 import React from 'react';
 import find from 'lodash/collection/find';
 import map from 'lodash/collection/map';
+import filter from 'lodash/collection/filter';
 import get from 'lodash/object/get';
 
 import Hero from '../components/hero';
+import kebabCase from 'lodash/string/kebabCase';
+import DownChevron from '../elements/down-chevron';
 import Slide from '../components/slide';
 import StudioJobs from '../components/studio-jobs';
-
-const studios = {
-  all: "All studios",
-  london: "London",
-  malmo: "Malmö",
-  newyork: "New York",
-  sydney: "Sydney"
-}
 
 export default class PageJoinUs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      studio: Object.keys(studios)[0]
+      studio: 'all-studios'
     }
   }
   render() {
-    // const pageData = this.props.page;
-    const pageData = {
-      "page_builder": [{
-        "attr": {
-          "heading": {
-            "value": "Do the best work of your life"
-          }
-        }
-      }, {
-        "attr": {
-          "heading": {
-            "value": "Get to know ustwo"
-          },
-          "body": {
-            "value": "<p>Cheesy feet paneer who moved my cheese. Fromage frais halloumi queso cheese triangles feta boursin port-salut macaroni cheese. Mozzarella smelly cheese cheese triangles rubber cheese ricotta the big cheese ricotta melted cheese. Chalk and cheese stinking bishop.</p>"
-          }
-        }
-      }]
-    };
+    const pageData = this.props.page;
+    const imageId = get(pageData, 'featured_image');
+    const attachments = (pageData && pageData._embedded && pageData._embedded['http://v2.wp-api.org/attachment'][0]) || [];
+    let image;
+    attachments.forEach(item => {
+      if(item.id === imageId) {
+        image = item;
+      }
+    });
 
     const svgContent = '<use xlink:href="/images/spritemap.svg#ustwologo" />';
     return (
       <article className="page-join-us">
 
-        <Hero title={get(pageData, 'page_builder.0.attr.heading.value')} imageURL='/images/home/Homepage_Games_Ipad.png' backgroundTint={true} eventLabel='join-us' />
+        <Hero title={get(pageData, 'page_builder.0.attr.heading.value')} imageURL={get(image, 'source_url', '')} backgroundTint={true} eventLabel='join-us' />
 
         <section className="intro">
           <h2 className="intro__title">{get(pageData, 'page_builder.1.attr.heading.value')}</h2>
@@ -89,16 +74,24 @@ export default class PageJoinUs extends React.Component {
       </article>
     );
   }
+  getStudios = () => {
+    return [{
+      name: "All studios"
+    }].concat(this.props.studios);
+  }
   renderStudioTabs = () => {
-    return map(studios, (name, id) => {
+    return map(this.getStudios(), studio => {
+      const id = kebabCase(studio.name);
+      const name = studio.name;
       return <li ref={`tab-${id}`} onClick={this.generateOnClickStudioHandler(id)} aria-selected={this.state.studio === id}>{name}</li>;
     });
   }
   generateOnClickStudioHandler = (studio) => {
     return () => {
       const el = React.findDOMNode(this.refs[`tab-${studio}`]);
-      const tabs = Object.keys(studios).map(studio => {
-        return React.findDOMNode(this.refs[`tab-${studio}`]);
+      const tabs = this.getStudios().map(studio => {
+        const id = kebabCase(studio.name);
+        return React.findDOMNode(this.refs[`tab-${id}`]);
       });
       tabs.forEach(tab => tab.setAttribute('aria-selected', false));
       el.setAttribute('aria-selected', true);
@@ -108,8 +101,12 @@ export default class PageJoinUs extends React.Component {
     }
   }
   renderStudioJobs = () => {
-    return map(studios, (name, id) => {
-      return <StudioJobs studio={id} selected={this.state.studio === id} />;
+    const jobs = this.props.jobs;
+    return map(this.getStudios(), studio => {
+      const id = kebabCase(studio.name);
+      const name = studio.name;
+      const studioJobs = filter(jobs, job => get(job, 'location.city', '') === name || (get(job, 'location.region') || '').includes(name));
+      return <StudioJobs studio={id} jobs={id === 'all-studios' ? jobs : studioJobs} selected={this.state.studio === id} colour={studio.color} />;
     });
   }
 }
