@@ -5,11 +5,9 @@ import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import filter from 'lodash/collection/filter';
 
-import Track from '../../server/adaptors/track';
-import DownChevron from '../elements/down-chevron';
+import Hero from '../components/hero';
 import BlogPostListItem from '../components/blog-post-list-item';
 import BlogControls from '../components/blog-controls';
-
 
 const pageData = [{
     "id": 8524,
@@ -569,11 +567,11 @@ export default class PageBlog extends React.Component {
     });
     return (
       <article className="page-blog">
-        <section className="hero">
-          <h1 className="hero__title">Think. Share. Learn.</h1>
+
+        <Hero title='Think. Share. Learn.' backgroundTint={true} eventLabel='blog'>
           <BlogControls blogCategory={props.blogCategory}/>
-          <DownChevron customClass="hero__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />
-        </section>
+        </Hero>
+
         <section className="blog-post-list">
           {/*get(pageData, '_embedded.ustwo:posts.0', []).map((postData, index) => {
             return <BlogPostListItem key={get(postData, 'slug')} className="blog-post-list-item" featured={index === 0} data={postData} />;
@@ -584,22 +582,5 @@ export default class PageBlog extends React.Component {
         </section>
       </article>
     );
-  }
-  onClickDownChevron() {
-    Track('send', {
-      'hitType': 'event',
-      'eventCategory': 'hub_page',
-      'eventAction': 'click_animated_chevron',
-      'eventLabel': 'blog'
-    });
-  }
-  componentDidMount() {
-    this.animTimeout = setTimeout(() => {
-      this.refs.downChevron.resetAnim();
-      this.refs.downChevron.anim();
-    }, 1000);
-  }
-  componentWillUnmount() {
-    clearTimeout(this.animTimeout);
   }
 }

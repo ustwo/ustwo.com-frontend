@@ -4,7 +4,8 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import map from 'lodash/collection/map';
 import get from 'lodash/object/get';
-import DownChevron from '../elements/down-chevron';
+
+import Hero from '../components/hero';
 import Slide from '../components/slide';
 import StudioJobs from '../components/studio-jobs';
 
@@ -48,11 +49,7 @@ export default class PageJoinUs extends React.Component {
     return (
       <article className="page-join-us">
 
-        <section className="hero">
-          <h1 className="hero__title">{get(pageData, 'page_builder.0.attr.heading.value')}</h1>
-          <img className="hero__image" src="/images/home/Homepage_Games_Ipad.png"/>
-          <DownChevron customClass="hero__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />
-        </section>
+        <Hero title={get(pageData, 'page_builder.0.attr.heading.value')} imageURL='/images/home/Homepage_Games_Ipad.png' backgroundTint={true} eventLabel='join-us' />
 
         <section className="intro">
           <h2 className="intro__title">{get(pageData, 'page_builder.1.attr.heading.value')}</h2>
@@ -113,20 +110,6 @@ export default class PageJoinUs extends React.Component {
   renderStudioJobs = () => {
     return map(studios, (name, id) => {
       return <StudioJobs studio={id} selected={this.state.studio === id} />;
-    });
-  }
-  componentDidMount() {
-    setTimeout(() => {
-      this.refs.downChevron.resetAnim();
-      this.refs.downChevron.anim();
-    }, 500);
-  }
-  onClickDownChevron() {
-    ga('send', {
-      'hitType': 'event',
-      'eventCategory': 'hub_page',
-      'eventAction': 'click_animated_chevron',
-      'eventLabel': 'join-us'
     });
   }
 }
