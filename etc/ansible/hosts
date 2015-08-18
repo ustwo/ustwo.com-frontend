@@ -1,4 +1,5 @@
-test ansible_ssh_user=ubuntu
+[test]
+52.18.236.160 ansible_ssh_user=ubuntu
 
 [usweb.canary]
 2015.ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222

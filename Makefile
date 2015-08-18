@@ -24,10 +24,8 @@ MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
 ANSIBLE := ansible
 ANSIBLE_SHELL = $(ANSIBLE) $(MACHINE_IP) --become -m shell
 ANSIBLE_PLAY := ansible-playbook -b -v \
-	--private-key=$(IDENTITY_FILE) \
+--private-key=$(IDENTITY_FILE) \
 	--inventory-file=$(ANSIBLE_INVENTORY)
-
-
 ###############################################################################
 
 default:
@@ -55,22 +53,24 @@ init-rm: vault-rm app-rm proxy-rm
 deploy: init-rm init
 
 ps:
-	@$(DOCKER) ps -a \
-		--filter 'label=project_name=$(project_name)' \
-		--filter 'label=tier=$(TIER)'
+	@$(DOCKER) ps -a $(project_filters)
+
+
+stats: quiet_ps := $(shell $(DOCKER) ps -aq $(project_filters))
+stats:
+	@$(if $(quiet_ps), \
+		$(DOCKER) stats --no-stream $(quiet_ps), \
+		echo "No containers for $(TIER)")
 
 rm-production: TIER := production
 rm-production: init-rm
 
-# init-production: TIER := production
-# init-production: MACHINE_ALIAS := ustwositepro
-# init-production: PROXY_HTTP_PORT := 80
-# init-production: PROXY_HTTPS_PORT := 443
-# init-production: BASE_PATH := /home/ubuntu
-# init-production: init
+# deploy-production: TIER := production
+# deploy-production: STATIC_HTTP_PORT := 80
+# deploy-production: STATIC_HTTPS_PORT := 443
+# deploy-production: BASE_PATH := /home/ubuntu
+# deploy-production: deploy
 
-# deploy-production: pull proxy-pull rm-production init-production
-# robots.txt
 deploy-production:
 	$(MAKE) deploy \
 		BASE_PATH=/home/ubuntu \
@@ -91,7 +91,7 @@ deploy-staging:
 
 absorb:
 	git checkout master
-	git pull --rebase origin master
+	git pull --rebase=preserve origin master
 	git checkout $(GIT_BRANCH)
 	git rebase master
 	# git merge --no-ff $(GIT_BRANCH)
