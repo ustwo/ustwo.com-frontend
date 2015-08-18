@@ -124,7 +124,8 @@
   }
   &.case-study,
   &.join-us,
-  &.search {
+  &.search,
+  &.search-results {
     @extend .neg-nav;
   }
 }

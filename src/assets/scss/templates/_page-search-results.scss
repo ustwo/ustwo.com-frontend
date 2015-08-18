@@ -1,0 +1,32 @@
+.page-search-results {
+  padding-top: 100px;
+  background-color: #eaeaea;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .clear-search {
+    text-align: center;
+
+    a {
+      display: inline-block;
+    }
+  }
+
+  ul {
+    padding: 45px 0;
+    list-style-type: none;
+    margin: 0 10px;
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    padding-top: 170px;
+
+    ul {
+      padding: 110px 0;
+      margin: 0 30px;
+    }
+  }
+}

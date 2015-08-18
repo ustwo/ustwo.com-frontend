@@ -1,0 +1,42 @@
+.search-result-list-item {
+  position: relative;
+  margin-bottom: 10px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .image {
+    display: none;
+  }
+
+  .content {
+    padding: 20px;
+    background: #fff;
+  }
+
+  .blog-category {
+    transform: none;
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    height: $search-result-height-desktop;
+
+    .image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      height: $search-result-height-desktop;
+      width: $search-result-height-desktop;
+      background-size: cover;
+
+      img {
+        display: none;
+      }
+    }
+    .content {
+      padding-left: $search-result-height-desktop + 20px;
+    }
+  }
+}

@@ -29,7 +29,9 @@ export default class PageSearchResults extends React.Component {
     return (
       <article className="page-search-results">
         <h1>{outcomeText}</h1>
-        <a href={searchURL} onClick={Flux.override(searchURL)}>{searchText}</a>
+        <div className="clear-search">
+          <a href={searchURL} onClick={Flux.override(searchURL)}>{searchText}</a>
+        </div>
         <ul>{this.renderSearchResults(props.page)}</ul>
       </article>
     );
