@@ -34,7 +34,6 @@
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
-    height: $search-result-height-desktop;
 
     .image {
       position: absolute;
@@ -51,6 +50,19 @@
     }
     .content {
       padding-left: $search-result-height-desktop + 20px;
+      padding-bottom: 0;
+      height: $search-result-height-desktop;
+
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .tail {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
     }
   }
 }
