@@ -7,13 +7,15 @@ function wrapWords (word, index, array) {
 }
 
 export default class WordAnimation extends React.Component {
-  render() {
-    const text = this.props.children.split(' ').map(wrapWords);
-    return <span className="word-animator">{text}</span>;
-  }
   componentDidMount() {
+    const props = this.props;
     const words = [].filter.call(React.findDOMNode(this).children, element => element.className === "word");
-    const timeline = new TimelineLite({delay: this.props.delay});
-    timeline.add(TweenMax.staggerFrom(words, this.props.duration, this.props.options, this.props.duration / words.length));
+    const timeline = new TimelineLite({delay: props.delay});
+    timeline.add(TweenMax.staggerFrom(words, props.duration, props.options, props.duration / words.length));
+  }
+  render() {
+    const children = this.props.children;
+    const text = children && children.split(' ').map(wrapWords);
+    return <span className="word-animator">{text}</span>;
   }
 };
