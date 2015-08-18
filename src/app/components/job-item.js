@@ -13,10 +13,7 @@ export default class JobItem extends React.Component {
     }
   }
   onClickJobItem = () => {
-    const el = React.findDOMNode(this);
-    const description = React.findDOMNode(this.refs.description);
-    const newHeight = this.state.open ? (el.clientHeight - description.clientHeight) : (el.clientHeight + description.clientHeight);
-    el.style.height = `${newHeight}px`;
+    Flux.getJobDetails(this.props.job.shortcode);
     this.setState({
       open: !this.state.open
     });
@@ -24,16 +21,38 @@ export default class JobItem extends React.Component {
   render() {
     const job = this.props.job;
     const classes = classnames('job-item', {
-      open: this.state.open
+      open: this.state.open,
+      loading: this.state.open && !this.getLoadedState()
     });
     return (
-      <li className={classes} onClick={this.onClickJobItem}>
-        <h4>{get(job, 'title')}</h4>
+      <li className={classes}>
+        <h4 ref='title' className="title" onClick={this.onClickJobItem}>{get(job, 'title')} {this.renderStatus()}</h4>
         <div ref='description' className="job-description">
-          <p>Emmental cheeseburger pepper jack. Everyone loves blue castello smelly cheese swiss pecorino cheese strings who moved my cheese cheese on toast. Melted cheese cheese triangles cheese on toast goat red leicester emmental boursin cheese on toast. Jarlsberg who moved my cheese parmesan smelly cheese cauliflower cheese mozzarella.</p>
-          <a href="/">Read full description</a>
+          <p className="description-text">{get(job, 'description')}</p>
+          <a href={get(job, 'url')}>Read full description</a>
         </div>
       </li>
     );
+  }
+  getLoadedState = () => {
+    return get(this.props.job, 'description');
+  }
+  renderStatus = () => {
+    const loaded = this.getLoadedState();
+    return (
+      <span className="status">
+        {loaded ? 'Hide info' : 'More info'}
+        <span className="horiz"></span>
+        <span className="vert"></span>
+      </span>
+    );
+  }
+  componentDidUpdate() {
+    const job = this.props.job;
+    const el = React.findDOMNode(this);
+    const title = React.findDOMNode(this.refs.title);
+    const description = React.findDOMNode(this.refs.description);
+    const newHeight = this.state.open && this.getLoadedState() ? (title.clientHeight + description.clientHeight) : title.clientHeight;
+    el.style.height = `${newHeight}px`;
   }
 }
