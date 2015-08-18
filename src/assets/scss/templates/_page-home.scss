@@ -390,13 +390,6 @@
 }
 .js .page-home {
   &__screen-block--welcome {
-    .image-entrance,
-    .title-entrance {
-      opacity: 0;
-      &.show {
-        opacity: 1;
-      }
-    }
     .image-entrance.show {
       transition: opacity 0.8s ease-in-out;
       transition-delay: 1.2s;
