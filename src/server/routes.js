@@ -18,7 +18,7 @@ function readData (cb) {
 }
 
 function renderApp(req, res) {
-  readData(data => {
+  if (isomorphic) {
     const Flux = require('../app/flux');
     Flux.init(req.protocol + '://' + req.hostname + req.originalUrl)
       .then((state) => {
@@ -36,7 +36,15 @@ function renderApp(req, res) {
         });
       })
       .catch(error => console.log('server route error', error, error.stack));
-  });
+  } else {
+    res.render('index', {
+      title: '',
+      meta: '',
+      link: '',
+      state: '""',
+      app: ''
+    });
+  }
 }
 
 router.get('/styleguide', (req, res) => {
@@ -47,18 +55,6 @@ router.get('/styleguide', (req, res) => {
 });
 
 router.post('/blog/search', renderApp);
-router.get('/*', (req, res) => {
-  if (isomorphic) {
-    renderApp(req, res);
-  } else {
-    res.render('index', {
-      title: '',
-      meta: '',
-      link: '',
-      state: '""',
-      app: ''
-    });
-  }
-});
+router.get('/*', renderApp);
 
 export default router;
