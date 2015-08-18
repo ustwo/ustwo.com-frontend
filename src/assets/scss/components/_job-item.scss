@@ -36,8 +36,12 @@
         display: none;
       }
       .icon {
+        position: relative;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
         padding-left: 15px;
-        transform-origin: 100% 100%;
+        line-height: 1;
 
         .horiz,
         .vert {
@@ -47,7 +51,6 @@
           width: 15px;
           top: 50%;
           right: 0;
-          margin-top: -1px;
           transform-origin: 50% 50%;
           background: #ccc;
         }
@@ -57,6 +60,7 @@
       }
     }
   }
+
 
   .job-description {
     padding: 0 15px 15px;
@@ -97,7 +101,7 @@
     .title {
       .status {
         .status-text {
-          display: block;
+          display: inline-block;
         }
       }
     }

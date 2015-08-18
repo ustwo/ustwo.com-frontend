@@ -41,15 +41,15 @@ export default class JobItem extends React.Component {
   renderStatus = () => {
     const loaded = this.getLoadedState();
     return (
-      <span className="status">
-        <span className="status-text">
+      <div className="status">
+        <div className="status-text">
           {this.state.open && loaded ? 'Hide info' : 'More info'}
-        </span>
-        <span className="icon">
-          <span className="horiz" style={{ backgroundColor: this.props.colour }}></span>
-          <span className="vert" style={{ backgroundColor: this.props.colour }}></span>
-        </span>
-      </span>
+        </div>
+        <div className="icon">
+          <div className="horiz" style={{ backgroundColor: this.props.colour }}></div>
+          <div className="vert" style={{ backgroundColor: this.props.colour }}></div>
+        </div>
+      </div>
     );
   }
   componentDidUpdate() {
