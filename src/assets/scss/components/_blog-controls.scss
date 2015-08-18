@@ -8,10 +8,10 @@
   $search-margin: 20px;
   $dropdown-offset: $line-height * 3;
 
+  z-index: 1;
+  bottom: calc(52px + 9vh);
   position: absolute;
   left: 50%;
-  z-index: 1;
-  bottom: calc(52px - #{$blog-margin-offset});
   transform: translateX(-50%);
 
   .blog-search-button {
@@ -31,10 +31,10 @@
   }
 
   .blog-filter {
-    position: relative;
     margin-left: $search-width + $search-margin;
 
     .selected {
+      width: $item-width;
       padding: 0 $horizontal-padding;
 
       &:after {
@@ -52,12 +52,12 @@
     .selected,
     .dropdown li {
       cursor: pointer;
-      width: $item-width;
       height: $line-height;
       line-height: $line-height;
       background-color: #fff;
     }
     .dropdown li {
+      width: auto;
       &:hover {
         background-color: $nonBlack;
         color: #fff;
@@ -76,9 +76,10 @@
       }
     }
     .dropdown {
-      position: absolute;
+      position: fixed;
+      top: 0;
       left: 0;
-      top: -$dropdown-offset;
+      right: 0;
       z-index: 1;
       margin: 0;
       padding: 0;
@@ -132,4 +133,27 @@
       display: block;
     }
   }
+
+
+  @include susy-breakpoint($bp-medium, $susy) {
+
+    bottom: calc(52px - #{$blog-margin-offset});
+
+    .blog-filter {
+      position: relative;
+
+      .selected,
+      .dropdown li {
+        width: $item-width;
+      }
+
+      .dropdown {
+        position: absolute;
+        left: 0;
+        right: auto;
+        top: -$dropdown-offset;
+      }
+    }
+  }
+
 }
