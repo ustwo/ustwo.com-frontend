@@ -38,7 +38,7 @@ const routes = {
     pattern: '/blog?category=:category',
     status: 200,
     data: () => [{
-      url: 'wp/v2/pages?name=blog&_embed=true',
+      url: 'ustwo/v1/pages?name=blog',
       type: 'page',
       slug: 'blog',
       get: data => data[0]
@@ -59,7 +59,7 @@ const routes = {
     pattern: '/blog/search?q=:query',
     status: 200,
     data: query => [{
-      url: `wp/v2/posts?s=${query}&_embed=true`,
+      url: `ustwo/v1/posts?search=${query}`,
       type: 'page',
       slug: 'search'
     }]
