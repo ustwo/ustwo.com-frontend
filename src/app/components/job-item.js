@@ -26,7 +26,8 @@ export default class JobItem extends React.Component {
     });
     return (
       <li className={classes}>
-        <h4 ref='title' className="title" onClick={this.onClickJobItem}>{get(job, 'title')} {this.renderStatus()}</h4>
+        <h4 ref='title' className="title" onClick={this.onClickJobItem}>
+          <span className="title-text">{get(job, 'title')}</span> {this.renderStatus()}</h4>
         <div ref='description' className="job-description">
           <p className="description-text">{get(job, 'description')}</p>
           <a href={get(job, 'url')}>Read full description</a>
@@ -41,9 +42,13 @@ export default class JobItem extends React.Component {
     const loaded = this.getLoadedState();
     return (
       <span className="status">
-        {loaded ? 'Hide info' : 'More info'}
-        <span className="horiz"></span>
-        <span className="vert"></span>
+        <span className="status-text">
+          {this.state.open && loaded ? 'Hide info' : 'More info'}
+        </span>
+        <span className="icon">
+          <span className="horiz"></span>
+          <span className="vert"></span>
+        </span>
       </span>
     );
   }
