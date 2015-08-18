@@ -1,0 +1,135 @@
+.blog-controls {
+
+  $line-height: 50px;
+  $horizontal-padding: 15px;
+  $tag-size: 21px;
+  $item-width: 190px;
+  $search-width: 50px;
+  $search-margin: 20px;
+  $dropdown-offset: $line-height * 3;
+
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+  bottom: calc(52px - #{$blog-margin-offset});
+  transform: translateX(-50%);
+
+  .blog-search-button {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    height: $line-height;
+    width: $search-width;
+
+    .search-icon {
+      fill: #fff;
+      width: $line-height;
+      height: $line-height;
+      margin: 0 auto;
+    }
+  }
+
+  .blog-filter {
+    position: relative;
+    margin-left: $search-width + $search-margin;
+
+    .selected {
+      padding: 0 $horizontal-padding;
+
+      &:after {
+        position: absolute;
+        right: $horizontal-padding;
+        top: 50%;
+        content: "";
+        display: block;
+        width: 13px;
+        height: 10px;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10"><path d="M 0 0 L 7 10 L 13 0 Z" fill="#333333" /></svg>');
+        transform: translateY(-50%);
+      }
+    }
+    .selected,
+    .dropdown li {
+      cursor: pointer;
+      width: $item-width;
+      height: $line-height;
+      line-height: $line-height;
+      background-color: #fff;
+    }
+    .dropdown li {
+      &:hover {
+        background-color: $nonBlack;
+        color: #fff;
+      }
+
+      &:after {
+        position: absolute;
+        right: $horizontal-padding;
+        top: 50%;
+        content: "";
+        display: block;
+        width: $tag-size;
+        height: $tag-size;
+        border-radius: 50%;
+        margin-top: -($tag-size * .5)
+      }
+    }
+    .dropdown {
+      position: absolute;
+      left: 0;
+      top: -$dropdown-offset;
+      z-index: 1;
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+
+      li {
+        position: relative;
+
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: 0 $horizontal-padding;
+        }
+
+        &:after {
+          position: absolute;
+          right: $horizontal-padding;
+          top: 50%;
+          content: "";
+          display: block;
+          width: $tag-size;
+          height: $tag-size;
+          border-radius: 50%;
+          margin-top: -($tag-size * .5)
+        }
+
+        @each $category, $colour in $blog-categories {
+          &.#{$category} {
+            &:after {
+              background-color: #{$colour};
+            }
+          }
+        }
+
+        &.all {
+          &:after {
+            background-color: $nonBlack;
+          }
+          &:hover:after {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+
+    .dropdown {
+      display: none;
+    }
+    &.open .dropdown {
+      display: block;
+    }
+  }
+}

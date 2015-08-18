@@ -22,6 +22,7 @@ These are the smallest elements to be used as building blocks for larger compone
 @import "elements/down-chevron";
 @import "elements/rotator";
 @import "elements/word-animation";
+@import "elements/entrance-transition";
 
 /*
 Components
@@ -45,6 +46,8 @@ These are groups of elements combined together, with their own properties.
 @import "components/slide";
 @import "components/studio-jobs";
 @import "components/job-item";
+@import "components/blog-controls";
+@import "components/search-result-list-item";
 
 /*
 Modules
@@ -72,3 +75,5 @@ These show how groups of modules are laid out to create a page or larger section
 @import "templates/page-privacy";
 @import "templates/page-404";
 @import "templates/page-join-us";
+@import "templates/page-search";
+@import "templates/page-search-results";

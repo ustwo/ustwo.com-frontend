@@ -17,15 +17,8 @@ function readData (cb) {
   });
 }
 
-router.get('/styleguide', (req, res) => {
-  readData(data => res.render('styleguide', {
-    title: 'ustwo styleguide',
-    data: data
-  }));
-});
-
-router.get('/*', (req, res) => {
-  if(isomorphic) {
+function renderApp(req, res) {
+  if (isomorphic) {
     const Flux = require('../app/flux');
     Flux.init(req.protocol + '://' + req.hostname + req.originalUrl)
       .then((state) => {
@@ -52,6 +45,16 @@ router.get('/*', (req, res) => {
       app: ''
     });
   }
+}
+
+router.get('/styleguide', (req, res) => {
+  readData(data => res.render('styleguide', {
+    title: 'ustwo styleguide',
+    data: data
+  }));
 });
+
+router.post('/blog/search', renderApp);
+router.get('/*', renderApp);
 
 export default router;
