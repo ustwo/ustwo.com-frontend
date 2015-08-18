@@ -123,7 +123,8 @@
     }
   }
   &.case-study,
-  &.join-us {
+  &.join-us,
+  &.search {
     @extend .neg-nav;
   }
 }
