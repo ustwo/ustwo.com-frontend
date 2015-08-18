@@ -13,16 +13,15 @@ export default class PageSearchResults extends React.Component {
     let outcomeText;
     let searchText;
 
+    outcomeText = props.searchQuery;
+
     if (props.page) {
       if (Object.keys(props.page).length) {
-        outcomeText = props.searchQuery;
         searchText = 'Clear search';
       } else {
         outcomeText = `No results found for ${props.searchQuery}`;
         searchText = 'Search again';
       }
-    } else {
-      outcomeText = 'Searching...';
     }
 
     return (

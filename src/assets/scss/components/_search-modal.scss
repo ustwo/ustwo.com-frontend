@@ -25,14 +25,14 @@
   transition: transform 0.5s ease-out;
 
   .close-button {
-    height: 100%;
     position: absolute;
     top: 0;
-    right: 9px;
-    display: block;
+    right: 0;
+    display: flex;
     border: 0;
     padding: 0;
-    background: transparent;    
+    background: transparent;
+    line-height: 50px;
 
     svg {
       width: 50px;
