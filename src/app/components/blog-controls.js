@@ -28,7 +28,6 @@ export default class BlogControls extends React.Component {
   }
   render() {
     const searchIcon = '<use xlink:href="/images/spritemap.svg#search" />';
-    const searchURL = '/blog/search';
     return (
       <div className="blog-controls">
         <button onClick={this.onClickSearch} className="blog-search-button">
