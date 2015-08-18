@@ -2,12 +2,15 @@
 
   $height: 30px;
   $font-size: 36px;
+  $icon-size: 28px;
 
   $height-tablet: 50px;
   $font-size-tablet: 60px;
+  $icon-size-tablet: 44px;
 
   $height-desktop: 75px;
   $font-size-desktop: 90px;
+  $icon-size-desktop: 61px;
 
   height: 100vh;
   display: flex;
@@ -34,67 +37,62 @@
       text-transform: uppercase;
       font-family: $Futura;
       display: inline-block;
-      height: $height;
-      line-height: $height;
-      min-width: 10px;
+      line-height: 1.1;
       white-space: nowrap;
       overflow: hidden;
       outline: 0;
+
+      &:before {
+        content: "SEARCH";
+        color: $blu;
+        cursor: text;
+      }
     }
 
-    .editable-div:not(:empty) + .placeholder {
+    .editable-div:not(:empty):before {
       display: none;
-    }
-
-    .placeholder {
-      font-size: $font-size;
-      height: $height;
-      line-height: $height;
-      text-transform: uppercase;
-      font-family: $Futura;
-      color: $blu;
     }
 
     .submit {
       border: none;
       background: transparent;
       width: auto;
-      margin-left: 5px;
-      margin-top: 5px;
+      margin-left: 10px;
       outline: 0;
+      height: $icon-size;
+      width: $icon-size;
+      padding: 0;
 
       svg {
-        width: 28px;
-        height: 28px;
+        width: $icon-size;
+        height: $icon-size;
         fill: $blu;
       }
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
-      .editable-div,
-      .placeholder {
+      .editable-div {
         font-size: $font-size-tablet;
-        height: $height-tablet;
-        line-height: $height-tablet;
       }
       .submit {
+        height: $icon-size-tablet;
+        width: $icon-size-tablet;
         svg {
-          width: 44px;
-          height: 44px;
+          height: $icon-size-tablet;
+          width: $icon-size-tablet;
         }
       }
     }
     @include susy-breakpoint($bp-large, $susy) {
-      .editable-div,
-      .placeholder {
+      .editable-div {
         font-size: $font-size-desktop;
-        height: $height-desktop;
-        line-height: $height-desktop;
       }
       .submit {
+        height: $icon-size-desktop;
+        width: $icon-size-desktop;
         svg {
-          width: 61px;
-          height: 61px;
+          height: $icon-size-desktop;
+          width: $icon-size-desktop;
         }
       }
     }
