@@ -19,6 +19,20 @@
     transform: none;
   }
 
+  .title {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  .tail {
+    margin-top: 10px;
+    text-align: right;
+
+    a {
+      font-family: $PxGroteskBold;
+      border-bottom: 2px solid $pot;
+    }
+  }
+
   @include susy-breakpoint($bp-medium, $susy) {
     height: $search-result-height-desktop;
 

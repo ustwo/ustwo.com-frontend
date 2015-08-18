@@ -1,4 +1,4 @@
-// Shared blog styles
+// SHARED STYLES ACROSS ALL BLOG COMPONENTS
 
 .blog-category {
   display: inline-block;
@@ -35,6 +35,12 @@
         .author .link a {
           border-color: #{$colour};
         }
+      }
+    }
+
+    &.search-result-list-item {
+      .tail a {
+        border-color: #{$colour};
       }
     }
   }

@@ -5,6 +5,7 @@
   h1 {
     text-align: center;
     margin-bottom: 10px;
+    font-size: 32px;
   }
 
   .clear-search {
@@ -12,6 +13,8 @@
 
     a {
       display: inline-block;
+      font-family: $PxGroteskBold;
+      border-bottom: 2px solid $blu;
     }
   }
 
