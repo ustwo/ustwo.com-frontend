@@ -1,7 +1,13 @@
 .page-search {
 
-  $height: 75px;
-  $font-size: 90px;
+  $height: 30px;
+  $font-size: 36px;
+
+  $height-tablet: 50px;
+  $font-size-tablet: 60px;
+
+  $height-desktop: 75px;
+  $font-size-desktop: 90px;
 
   height: 100vh;
   display: flex;
@@ -55,11 +61,41 @@
       width: auto;
       margin-left: 5px;
       margin-top: 5px;
+      outline: 0;
 
       svg {
-        width: 61px;
-        height: 61px;
+        width: 28px;
+        height: 28px;
         fill: $blu;
+      }
+    }
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      .editable-div,
+      .placeholder {
+        font-size: $font-size-tablet;
+        height: $height-tablet;
+        line-height: $height-tablet;
+      }
+      .submit {
+        svg {
+          width: 44px;
+          height: 44px;
+        }
+      }
+    }
+    @include susy-breakpoint($bp-large, $susy) {
+      .editable-div,
+      .placeholder {
+        font-size: $font-size-desktop;
+        height: $height-desktop;
+        line-height: $height-desktop;
+      }
+      .submit {
+        svg {
+          width: 61px;
+          height: 61px;
+        }
       }
     }
   }
