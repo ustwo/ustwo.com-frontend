@@ -55,7 +55,7 @@ export default class StudioJobs extends React.Component {
     }
     return list;
   }
-  renderJobItem(job) {
-    return <JobItem job={job} />;
+  renderJobItem = (job) => {
+    return <JobItem job={job} colour={this.props.colour} />;
   }
 }

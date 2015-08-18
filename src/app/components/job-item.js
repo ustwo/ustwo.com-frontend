@@ -30,7 +30,7 @@ export default class JobItem extends React.Component {
           <span className="title-text">{get(job, 'title')}</span> {this.renderStatus()}</h4>
         <div ref='description' className="job-description">
           <p className="description-text">{get(job, 'description')}</p>
-          <a href={get(job, 'url')}>Read full description</a>
+          <a className="link" href={get(job, 'url')} style={{ borderBottomColor: this.props.colour }}>Read full description</a>
         </div>
       </li>
     );
@@ -46,8 +46,8 @@ export default class JobItem extends React.Component {
           {this.state.open && loaded ? 'Hide info' : 'More info'}
         </span>
         <span className="icon">
-          <span className="horiz"></span>
-          <span className="vert"></span>
+          <span className="horiz" style={{ backgroundColor: this.props.colour }}></span>
+          <span className="vert" style={{ backgroundColor: this.props.colour }}></span>
         </span>
       </span>
     );

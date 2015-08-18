@@ -1,9 +1,9 @@
 @keyframes spin {
   from {
-    transform:rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-    transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -33,6 +33,7 @@
 
       .status-text {
         margin-right: 10px;
+        display: none;
       }
       .icon {
         padding-left: 15px;
@@ -61,6 +62,10 @@
     padding: 0 15px 15px;
   }
 
+  .link {
+    border-bottom: 2px solid #777;
+  }
+
   &.open {
     .title {
       .status {
@@ -82,6 +87,17 @@
               display: block;
             }
           }
+        }
+      }
+    }
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+
+    .title {
+      .status {
+        .status-text {
+          display: block;
         }
       }
     }
