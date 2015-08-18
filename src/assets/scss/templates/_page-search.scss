@@ -60,7 +60,7 @@
       margin-left: 10px;
       outline: 0;
       height: $icon-size;
-      width: $icon-size;
+      width: $icon-size + 1px;
       padding: 0;
 
       svg {
@@ -76,7 +76,7 @@
       }
       .submit {
         height: $icon-size-tablet;
-        width: $icon-size-tablet;
+        width: $icon-size-tablet + 1px;
         svg {
           height: $icon-size-tablet;
           width: $icon-size-tablet;
@@ -89,7 +89,7 @@
       }
       .submit {
         height: $icon-size-desktop;
-        width: $icon-size-desktop;
+        width: $icon-size-desktop + 1px;
         svg {
           height: $icon-size-desktop;
           width: $icon-size-desktop;
