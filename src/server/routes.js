@@ -5,6 +5,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import omit from 'lodash/object/omit';
 
+const isomorphic = true;
 let router = express.Router();
 
 function readData (cb) {
@@ -24,7 +25,7 @@ router.get('/styleguide', (req, res) => {
 });
 
 router.get('/*', (req, res) => {
-  readData(data => {
+  if(isomorphic) {
     const Flux = require('../app/flux');
     Flux.init(req.protocol + '://' + req.hostname + req.originalUrl)
       .then((state) => {
@@ -42,7 +43,15 @@ router.get('/*', (req, res) => {
         });
       })
       .catch(error => console.log('server route error', error, error.stack));
-  });
+  } else {
+    res.render('index', {
+      title: '',
+      meta: '',
+      link: '',
+      state: '""',
+      app: ''
+    });
+  }
 });
 
 export default router;

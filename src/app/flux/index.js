@@ -16,10 +16,10 @@ const globalLoads = [{
   url: 'ustwo/v1/studios',
   type: 'studios'
 }, {
-  url: 'ustwo/v1/footer',
+  url: 'ustwo/v1/global/footer',
   type: 'footer'
 }, {
-  url: 'ustwo/v1/takeovers',
+  url: 'ustwo/v1/takeovers?embed',
   type: 'takeover',
   get: data => data[0]
 }];

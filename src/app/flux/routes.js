@@ -20,7 +20,7 @@ const routes = {
     pattern: '/what-we-do',
     statusCode: 200,
     data: () => [{
-      url: 'wp/v2/pages/66?_embed',
+      url: 'ustwo/v1/pages/what-we-do',
       type: 'page',
       slug: 'what-we-do'
     }]
@@ -40,10 +40,9 @@ const routes = {
     pattern: '/blog',
     statusCode: 200,
     data: () => [{
-      url: 'wp/v2/pages?name=blog&_embed=true',
+      url: 'ustwo/v1/pages/blog',
       type: 'page',
-      slug: 'blog',
-      get: data => data[0]
+      slug: 'blog'
     }]
   },
   post: {
@@ -51,10 +50,9 @@ const routes = {
     pattern: '/blog/:pid',
     statusCode: 200,
     data: pid => [{
-      url: `wp/v2/posts?name=${pid}&_embed=true`,
+      url: `ustwo/v1/posts/${pid}`,
       type: 'page',
-      slug: pid,
-      get: data => data[0]
+      slug: pid
     }]
   },
   legal: {
@@ -62,10 +60,9 @@ const routes = {
     pattern: '/legal',
     statusCode: 200,
     data: () => [{
-      url: 'wp/v2/pages?name=legal&_embed=true',
+      url: 'ustwo/v1/pages/legal',
       type: 'page',
-      slug: 'legal',
-      get: data => data[0]
+      slug: 'legal'
     }]
   },
   privacy: {
@@ -73,10 +70,9 @@ const routes = {
     pattern: '/privacy',
     statusCode: 200,
     data: () => [{
-      url: 'wp/v2/pages?name=privacy&_embed=true',
+      url: 'ustwo/v1/pages/privacy',
       type: 'page',
-      slug: 'privacy',
-      get: data => data[0]
+      slug: 'privacy'
     }]
   },
   joinUs: {
@@ -84,10 +80,9 @@ const routes = {
     pattern: '/join-us',
     status: 200,
     data: () => [{
-      url: 'wp/v2/pages?name=join-us&_embed=true',
+      url: 'ustwo/v1/pages/join-us',
       type: 'page',
-      slug: 'join-us',
-      get: data => data[0]
+      slug: 'join-us'
     }, {
       url: 'ustwo/v1/jobs',
       type: 'jobs'
