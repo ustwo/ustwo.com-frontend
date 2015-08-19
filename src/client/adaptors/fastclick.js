@@ -1,0 +1,3 @@
+import 'fastclick';
+
+export default {};

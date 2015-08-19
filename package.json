@@ -23,7 +23,9 @@
       "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
       "../../server/adaptors/window": "./src/client/adaptors/window",
       "../../server/adaptors/scroll-magic": "./src/client/adaptors/scroll-magic",
-      "../../server/adaptors/proxy-url": "./src/client/adaptors/proxy-url"
+      "../../server/adaptors/proxy-url": "./src/client/adaptors/proxy-url",
+      "../server/adaptors/svg4everybody": "./src/client/adaptors/svg4everybody",
+      "../server/adaptors/fastclick": "./src/client/adaptors/fastclick"
     }
   },
   "dependencies": {
@@ -38,6 +40,7 @@
     "del": "1.2.0",
     "es6-promise": "2.3.0",
     "express": "4.13.1",
+    "fastclick": "1.0.6",
     "gsap": "1.17.0",
     "gulp": "3.9.0",
     "gulp-if": "1.2.5",
