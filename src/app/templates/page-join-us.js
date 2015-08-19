@@ -57,7 +57,7 @@ export default class PageJoinUs extends React.Component {
 
         </section>
 
-        <div className="hero-image" style={{backgroundImage: "url(/images/photo.jpg)"}}>
+        <div className="hero-image" style={{backgroundImage: "url(/images/joinus/current_openings.jpg)"}}>
           <svg className="ustwo-logo" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
           <h2>Current Openings</h2>
         </div>

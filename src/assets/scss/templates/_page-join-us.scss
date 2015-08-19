@@ -54,7 +54,8 @@
       top: 0;
       width: 100%;
       height: $jobs-video-height-mobile;
-      background: #ccc;
+      background: url("/images/joinus/join_us_image.jpg");
+      background-size: cover;
     }
 
     .slides {
