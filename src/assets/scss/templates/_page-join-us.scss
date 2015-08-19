@@ -112,8 +112,7 @@
 
   .jobs-studio-tabs {
     display: none;
-    height: 80px;
-    line-height: 80px;
+    margin: 30px 0;
     text-align: center;
 
     li {
@@ -123,10 +122,22 @@
       font-family: $Futura;
       font-size: 24px;
       text-transform: uppercase;
+
+      &[aria-selected="true"] {
+        border-bottom: 4px solid;
+      }
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
       display: block;
+    }
+
+    @include susy-breakpoint($bp-large, $susy) {
+      margin: 55px 0;
+
+      li {
+        font-size: 30px;
+      }
     }
   }
 

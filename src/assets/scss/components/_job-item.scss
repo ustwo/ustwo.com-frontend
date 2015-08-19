@@ -37,8 +37,9 @@
       .status-text {
         display: none;
         margin-right: 10px;
-        width: 77px;
+        width: 100px;
         text-align: right;
+        line-height: 1;
       }
       .icon {
         position: relative;
@@ -114,9 +115,10 @@
       padding: 0 30px;
       height: 70px;
       line-height: 70px;
+      font-size: 18px;
 
       .title-text {
-        font-size: 18px;
+        font-size: 20px;
       }
       .location {
         display: block;
@@ -138,7 +140,18 @@
       }
     }
     .job-description {
-      padding: 0 30px 30px;
+      position: relative;
+      padding: 30px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 22px;
+        height: 2px;
+        background: $nonBlack;
+        top: 0;
+        left: 30px;
+      }
     }
   }
 
