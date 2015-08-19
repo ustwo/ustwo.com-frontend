@@ -64,12 +64,6 @@ const routes = {
       slug: 'search'
     }]
   },
-  search: {
-    id: 'blog/search',
-    pattern: '/blog/search',
-    status: 200,
-    data: () => []
-  },
   post: {
     id: 'blog/post',
     pattern: '/blog/:pid',

@@ -25,6 +25,7 @@ import EntranceTransition from './elements/entrance-transition';
 import ContactTray from './components/contact-tray';
 import TakeOver from './modules/take-over';
 import FourOhFour from './templates/page-404';
+import SearchModal from './components/search-modal';
 
 const pageMap = {
   'home': require('./templates/page-home'),
@@ -33,7 +34,6 @@ const pageMap = {
   'blog': require('./templates/page-blog'),
   'blog/category': require('./templates/page-blog'),
   'blog/post': require('./templates/page-post'),
-  'blog/search': require('./templates/page-search'),
   'blog/search-results': require('./templates/page-search-results'),
   'legal': require('./templates/page-legal'),
   'privacy': require('./templates/page-privacy'),
@@ -118,6 +118,10 @@ export default class App extends React.Component {
           className = 'tray';
           content = <ContactTray contacts={this.state.footer.contacts} />;
         break;
+        case 'search':
+          className = 'search';
+          content = <SearchModal searchQuery={this.state.searchQuery} />;
+          break;
       }
       modal = <Modal key={this.state.modal} className={className}>{content}</Modal>;
     }
