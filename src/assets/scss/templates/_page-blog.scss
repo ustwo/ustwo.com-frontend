@@ -55,7 +55,23 @@
     background-color: $blu;
 
     &__title {
-      margin-top: $blog-margin-offset * .5;
+      margin-top: $blog-margin-offset * .75;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__image {
+      position: absolute;
+      left: 50%;
+      top: 42%;
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 92%;
+      max-width: 450px;
+      opacity: .4;
     }
   }
 

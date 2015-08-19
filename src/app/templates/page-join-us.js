@@ -21,20 +21,14 @@ export default class PageJoinUs extends React.Component {
   }
   render() {
     const pageData = this.props.page;
-    const imageId = get(pageData, 'featured_image');
     const attachments = (pageData && pageData._embedded && pageData._embedded['http://v2.wp-api.org/attachment'][0]) || [];
-    let image;
-    attachments.forEach(item => {
-      if(item.id === imageId) {
-        image = item;
-      }
-    });
-
+    const image = find(attachments, item => item.id === get(pageData, 'featured_image'));
     const svgContent = '<use xlink:href="/images/spritemap.svg#ustwologo" />';
+
     return (
       <article className="page-join-us">
 
-        <Hero title={get(pageData, 'page_builder.0.attr.heading.value')} imageURL={get(image, 'source_url', '')} backgroundTint={true} eventLabel='join-us' />
+        <Hero title={get(pageData, 'page_builder.0.attr.heading.value')} imageURL={get(image, 'source_url')} backgroundTint={true} eventLabel='join-us' />
 
         <section className="intro">
           <h2 className="intro__title">{get(pageData, 'page_builder.1.attr.heading.value')}</h2>
