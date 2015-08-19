@@ -11,7 +11,11 @@ const routes = {
     id: 'home',
     pattern: '/',
     statusCode: 200,
-    data: () => []
+    data: () => [{
+      url: 'ustwo/v1/pages/home',
+      type: 'page',
+      slug: 'home'
+    }]
   },
   work: {
     id: 'what-we-do',
