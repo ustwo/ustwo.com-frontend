@@ -1,5 +1,5 @@
 ## Assets tasks ###############################################################
-assets_image = ustwo/usweb-assets
+assets_image = ustwo/usweb-assets:$(TAG)
 assets_name = $(project_name)_$(TIER)_assets
 
 .PHONY: \
