@@ -12,7 +12,7 @@ export default class SearchModal extends React.Component {
     input.focus();
     input.addEventListener('keyup', this.onKeyup);
     input.addEventListener('keydown', this.onKeydown);
-    window.addEventListener('keydown', this.onEscKeydown);
+    window.addEventListener('keydown', this.onKeydown);
   }
   componentWillUnmount() {
     const input = React.findDOMNode(this.refs.input);
@@ -48,22 +48,27 @@ export default class SearchModal extends React.Component {
     event.preventDefault();
     Flux.navigate('/');
   }
-  onEscKeydown = (event) => {
-    if (event.keyCode === 27) {
-      Flux.closeModal();
-    }
-  }
   onKeydown = (event) => {
-    if (event.keyCode === 13) {
-      this.onSubmit(event);
+    switch(event.keyCode) {
+      case 13: // enter
+        this.onSubmit(event);
+        break;
+      case 27: // esc
+        Flux.closeModal();
+        break;
     }
   }
   onKeyup = (event) => {
-    Flux.setSearchQueryTo(event.target.innerHTML);
+    const value = event.target.innerHTML;
+    if (value) {
+      Flux.setSearchQueryTo(value);
+    }
   }
   onSubmit = (event) => {
     event.preventDefault();
-    Flux.closeModal();
-    Flux.navigate(`/blog/search?q=${this.props.searchQuery}`);
+    if (this.props.searchQuery) {
+      Flux.closeModal();
+      Flux.navigate(`/blog/search?q=${this.props.searchQuery}`);
+    }
   }
 }
