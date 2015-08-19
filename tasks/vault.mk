@@ -34,7 +34,7 @@ vault-create:
 vault-build:
 	$(DOCKER) build -t $(vault_image) -f Dockerfile.vault .
 
-vault-save: vault.tar
+vault-save: vault-$(TAG).tar
 
-vault.tar:
-	$(DOCKER) save -o vault.tar $(vault_image)
+vault-$(TAG).tar:
+	$(DOCKER) save -o $@ $(vault_image)
