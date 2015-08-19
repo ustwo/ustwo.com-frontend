@@ -1,0 +1,101 @@
+.blog-categories-container {
+
+  $line-height: 50px;
+  $horizontal-padding: 15px;
+  $tag-size: 21px;
+  $item-width: 190px;
+  $dropdown-offset: $line-height * 3;
+
+  background: $offWhite;
+  height: 100%;
+
+  .close-button {
+    width: 100%;
+    height: 60px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+
+    svg {
+      width: 50px;
+      height: 50px;
+      fill: $nonBlack;
+    }
+
+    &:focus {
+      -webkit-focus-ring-color: rgba(0,0,0,0);
+      outline: none;
+      outline: 0;
+    }
+  }
+
+  .blog-categories {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      height: $line-height;
+      line-height: $line-height;
+      background-color: $offWhite;
+      width: auto;
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0 $horizontal-padding;
+      }
+
+      &:hover {
+        background-color: $nonBlack;
+        color: #fff;
+      }
+
+      &:after {
+        position: absolute;
+        right: $horizontal-padding;
+        top: 50%;
+        content: "";
+        display: block;
+        width: $tag-size;
+        height: $tag-size;
+        border-radius: 50%;
+        margin-top: -($tag-size * .5)
+      }
+
+      @each $category, $colour in $blog-categories {
+        &.#{$category} {
+          &:after {
+            background-color: #{$colour};
+          }
+        }
+      }
+
+      &.all {
+        &:after {
+          background-color: $nonBlack;
+        }
+
+        &:hover:after {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    height: auto;
+    position: absolute;
+    // awaiting phil
+
+    .close-button {
+      display: none;
+    }
+
+    .blog-categories li {
+      width: $item-width;
+    }
+  }
+}

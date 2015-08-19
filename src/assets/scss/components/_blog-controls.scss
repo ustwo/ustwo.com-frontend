@@ -58,84 +58,7 @@
       line-height: $line-height;
       background-color: #fff;
     }
-    .dropdown li {
-      width: auto;
-      &:hover {
-        background-color: $nonBlack;
-        color: #fff;
-      }
-
-      &:after {
-        position: absolute;
-        right: $horizontal-padding;
-        top: 50%;
-        content: "";
-        display: block;
-        width: $tag-size;
-        height: $tag-size;
-        border-radius: 50%;
-        margin-top: -($tag-size * .5)
-      }
-    }
-    .dropdown {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1;
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-
-      li {
-        position: relative;
-
-        a {
-          display: block;
-          width: 100%;
-          height: 100%;
-          padding: 0 $horizontal-padding;
-        }
-
-        &:after {
-          position: absolute;
-          right: $horizontal-padding;
-          top: 50%;
-          content: "";
-          display: block;
-          width: $tag-size;
-          height: $tag-size;
-          border-radius: 50%;
-          margin-top: -($tag-size * .5)
-        }
-
-        @each $category, $colour in $blog-categories {
-          &.#{$category} {
-            &:after {
-              background-color: #{$colour};
-            }
-          }
-        }
-
-        &.all {
-          &:after {
-            background-color: $nonBlack;
-          }
-          &:hover:after {
-            background-color: #fff;
-          }
-        }
-      }
-    }
-
-    .dropdown {
-      display: none;
-    }
-    &.open .dropdown {
-      display: block;
-    }
   }
-
 
   @include susy-breakpoint($bp-medium, $susy) {
 
@@ -144,16 +67,8 @@
     .blog-filter {
       position: relative;
 
-      .selected,
-      .dropdown li {
+      .selected {
         width: $item-width;
-      }
-
-      .dropdown {
-        position: absolute;
-        left: 0;
-        right: auto;
-        top: -$dropdown-offset;
       }
     }
   }

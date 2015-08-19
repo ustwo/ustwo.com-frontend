@@ -127,4 +127,8 @@ export default {
     _state.modal = 'search';
     return Promise.resolve(_state);
   },
+  showBlogCategories() {
+    _state.modal = 'blogCategories'
+    return Promise.resolve(_state);
+  }
 };

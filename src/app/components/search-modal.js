@@ -48,6 +48,9 @@ export default class SearchModal extends React.Component {
     event.preventDefault();
     Flux.navigate('/');
   }
+  onClickClose() {
+    Flux.closeModal();
+  }
   onKeydown = (event) => {
     switch(event.keyCode) {
       case 13: // enter
