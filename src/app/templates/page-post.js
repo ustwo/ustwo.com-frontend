@@ -7,10 +7,14 @@ import ModuleRenderer from '../_lib/module-renderer';
 
 export default class PagePost extends React.Component {
   componentDidMount() {
-    this.fetchTweetCount(this.props.page);
+    const post = this.props.page;
+    this.fetchTweetCount(post);
+    // this.fetchFacebookShareCount(post);
   }
   componentWillReceiveProps(nextProps) {
-    this.fetchTweetCount(nextProps.page);
+    const post = nextProps.page;
+    this.fetchTweetCount(post);
+    // this.fetchFacebookShareCount(post);
   }
   render() {
     const post = this.props.page;
@@ -31,7 +35,8 @@ export default class PagePost extends React.Component {
         </div>
         <div className="content-container">
           <ul className="social-container">
-            <li className="twitter">{post && post.tweetCount}</li>
+            <li className="twitter">{post && post.twitterShares}</li>
+            <li className="facebook">{post && post.facebookShares}</li>
           </ul>
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h1 className="title">{get(post, 'title.rendered')}</h1>
@@ -60,9 +65,15 @@ export default class PagePost extends React.Component {
     };
   }
   fetchTweetCount = (post) => {
-    if (post && post.slug && post.tweetCount !== 0) {
+    if (post && post.slug && !(post.twitterShares || post.twitterShares === 0)) {
       const uri = `http://ustwo.com/blog/${post.slug}`;
-      Flux.getTweetCountForPost(uri);
+      Flux.getSocialShareCountForPost('twitter', uri);
     }
   }
+  // fetchFacebookShareCount = (post) => {
+  //   if (post && post.slug && post.facebookShares !== 0) {
+  //     const uri = `http://ustwo.com/blog/${post.slug}`;
+  //     Flux.getSocialShareCountForPost('facebook', uri);
+  //   }
+  // }
 }

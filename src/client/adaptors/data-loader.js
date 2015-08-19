@@ -7,7 +7,7 @@ export default function (requiredData, apply) {
     console.log('Loading...', params.type, (params.slug || ''));
     return fetcher({
       url: params.url,
-      twitter: params.twitter,
+      external: params.external,
       success: (data) => {
         apply(CamelCase(params.type), params.get ? params.get(data) : data);
       }

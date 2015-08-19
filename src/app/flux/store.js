@@ -53,11 +53,19 @@ function applyJobDetailData(job) {
   _state.jobs[index] = job;
   console.log('Added job details', job);
 }
-function applyTweetCountData(object) {
-  Object.assign(_state.page, {
-    tweetCount: object.count
-  });
-  console.log('Added tweet count', object.count);
+function applySocialShareCountData(service, object) {
+  let propertyName;
+  switch (service) {
+    case 'twitter':
+      propertyName = 'count';
+      break;
+    case 'facebook':
+      propertyName = 'shares';
+      break;
+  }
+  const value = object[propertyName];
+  _state.page[`${service}Shares`] = value;
+  console.log(`Added ${service} share count`, value);
 }
 
 window._state = _state;
@@ -137,17 +145,27 @@ export default {
     _state.modal = 'blogCategories'
     return Promise.resolve(_state);
   },
-  getTweetCountForPost(uri) {
-    let promise;
+  getSocialShareCountForPost(service, uri) {
     const post = _state.page;
-    if (post.tweetCount) {
+    let promise;
+
+    if (post[service] || post[service] === 0) {
       promise = Promise.resolve(_state);
     } else {
+      let url;
+      switch (service) {
+        case 'twitter':
+          url = `twitter/count?url=${uri}`;
+          break;
+        case 'facebook':
+          url = `http://graph.facebook.com/?id=${uri}`;
+          break;
+      }
       promise = DataLoader([{
-        url: `twitter/count?url=${uri}`,
-        twitter: true,
-        type: 'tweetCount'
-      }], applyTweetCountData).then(() => _state);
+        url: url,
+        external: service,
+        type: `${service}Shares`
+      }], applySocialShareCountData.bind(this, service)).then(() => _state);
     }
     return promise;
   }
