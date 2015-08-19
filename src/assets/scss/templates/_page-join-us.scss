@@ -87,6 +87,7 @@
     text-align: center;
     flex-direction: column;
     height: 210px;
+    background-size: cover;
 
     @include susy-breakpoint($bp-medium, $susy) {
       height: 500px;
