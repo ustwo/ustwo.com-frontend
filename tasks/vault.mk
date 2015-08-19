@@ -1,4 +1,5 @@
 ## Vault tasks ################################################################
+vault_image = ustwo/asterisk-vault
 vault_name = $(project_name)_$(TIER)_vault
 
 .PHONY: vault-rm vault-create
@@ -27,22 +28,13 @@ vault-create:
 	@echo "Creating $(vault_name)"
 	@$(DOCKER_VOLUME) \
 		--name $(vault_name) \
-		-v $(BASE_PATH)/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
-		-v $(BASE_PATH)/etc/nginx/ssl.conf:/etc/nginx/ssl.conf:ro \
-		$(nginx_config) \
-		-v $(BASE_PATH)/etc/nginx/ssl:/etc/nginx/ssl:ro \
-		-v $(BASE_PATH)/share/nginx/html:/usr/share/nginx/html \
 		$(project_labels) \
-		busybox true
-
+		$(vault_image)
 
 vault-build:
-	$(DOCKER) build -t ustwo/usweb-spa -f Dockerfile.spa .
+	$(DOCKER) build -t $(vault_image) -f Dockerfile.vault .
 
-data-build:
-	$(DOCKER) build -t ustwo/usweb-spa -f Dockerfile.spa .
+vault-save: vault.tar
 
-data-create:
-	@$(DOCKER_VOLUME) \
-		--name usweb_data \
-		ustwo/usweb-spa true
+vault.tar:
+	$(DOCKER) save -o vault.tar $(vault_image)

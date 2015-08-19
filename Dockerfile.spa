@@ -1,8 +1,11 @@
 FROM busybox
 MAINTAINER Arnau Siches <arnau@ustwo.com>
 
-# Contains the React Single Page Application (SPA)
-
+COPY etc/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY etc/nginx/ssl.conf /etc/nginx/ssl.conf
+COPY etc/nginx/mime.types /etc/nginx/mime.types
+COPY etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
 COPY share/nginx /usr/share/nginx
 
+VOLUME /etc/nginx
 VOLUME /usr/share/nginx
