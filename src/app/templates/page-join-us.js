@@ -6,6 +6,7 @@ import map from 'lodash/collection/map';
 import filter from 'lodash/collection/filter';
 import get from 'lodash/object/get';
 
+import ModuleRenderer from '../_lib/module-renderer';
 import Hero from '../components/hero';
 import kebabCase from 'lodash/string/kebabCase';
 import DownChevron from '../elements/down-chevron';
@@ -28,28 +29,9 @@ export default class PageJoinUs extends React.Component {
     return (
       <article className="page-join-us">
 
-        <Hero title={get(pageData, 'page_builder.0.attr.heading.value')} imageURL={get(image, 'source_url')} backgroundTint={true} eventLabel='join-us' />
+        <Hero title="Do the best work of your life" imageURL={get(image, 'source_url', '')} backgroundTint={true} eventLabel='join-us' />
 
-        <section className="intro">
-          <h2 className="intro__title">{get(pageData, 'page_builder.1.attr.heading.value')}</h2>
-          <hr className="intro__rule" />
-          <div className="intro__para" dangerouslySetInnerHTML={{__html: get(pageData, 'page_builder.1.attr.body.value')}} />
-        </section>
-
-        <section className="why-ustwo">
-
-          <div className="video"></div>
-
-          <div className="slides">
-            <Slide />
-            <Slide />
-            <Slide />
-            <Slide />
-            <Slide />
-            <Slide />
-          </div>
-
-        </section>
+        {get(pageData, 'page_builder', []).map(this.getModuleRenderer())}
 
         <div className="hero-image" style={{backgroundImage: "url(/images/joinus/current_openings.jpg)"}}>
           <svg className="ustwo-logo" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
@@ -67,6 +49,11 @@ export default class PageJoinUs extends React.Component {
 
       </article>
     );
+  }
+  getModuleRenderer = (colours) => {
+    return (moduleData) => {
+      return ModuleRenderer(moduleData, colours, () => true);
+    };
   }
   getStudios = () => {
     return [{
@@ -100,7 +87,7 @@ export default class PageJoinUs extends React.Component {
       const id = kebabCase(studio.name);
       const name = studio.name;
       const studioJobs = filter(jobs, job => get(job, 'location.city', '') === name || (get(job, 'location.region') || '').includes(name));
-      return <StudioJobs studio={id} jobs={id === 'all-studios' ? jobs : studioJobs} selected={this.state.studio === id} colour={studio.color} />;
+      return <StudioJobs studio={id} studios={this.props.studios} jobs={id === 'all-studios' ? jobs : studioJobs} selected={this.state.studio === id} colour={studio.color} />;
     });
   }
 }

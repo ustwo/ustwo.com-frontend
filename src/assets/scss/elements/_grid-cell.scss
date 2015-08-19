@@ -1,0 +1,112 @@
+.grid-cell {
+  position: relative;
+  height: $jobs-image-height-mobile + $jobs-card-height-mobile;
+
+  @each $colour in $feature-card-colours {
+    $i: index($feature-card-colours, $colour);
+    $wow: nth($colour, 1);
+    $softy: nth($colour, 2);
+    &:nth-child(#{$i}) {
+      .card.feature {
+        background-color: rgba($softy, .3);
+        h2 {
+          color: $wow;
+        }
+      }
+    }
+  }
+
+  .card {
+
+    // Layout
+    &.feature {
+      height: $jobs-card-height-mobile - $jobs-feature-card-padding-mobile;
+      box-sizing: content-box;
+      padding-top: $jobs-image-height-mobile + $jobs-feature-card-padding-mobile;
+      padding-left: $jobs-feature-card-padding-mobile;
+      padding-right: $jobs-feature-card-padding-mobile;
+    }
+    &.image {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: $jobs-image-height-mobile;
+      background-position: center;
+      background-size: cover;
+
+      .image__image {
+        display: none;
+      }
+    }
+
+    // Style
+    &.feature {
+      h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    display: inline;
+
+    // Create gap after first line of slides to position video
+    &:nth-of-type(2) {
+      .card {
+        margin-top: $jobs-video-height;
+      }
+    }
+    &:nth-of-type(2n+2) {
+      .card:first-child {
+        float: right;
+      }
+    }
+
+    .card:first-child,
+    .card:last-child {
+      position: relative;
+      top: auto;
+      box-sizing: border-box;
+      padding: $jobs-feature-card-padding;
+      height: $jobs-slide-height;
+      float: left;
+      width: 50%;
+    }
+  }
+
+  @include susy-breakpoint($bp-large, $susy) {
+
+    &:nth-of-type(2n+2) {
+      .card:first-child {
+        float: left;
+      }
+    }
+    &:nth-of-type(2) {
+      .card:first-child {
+        margin-top: 0;
+      }
+      .card:last-child {
+        margin-top: 0;
+        margin-left: 66.6666%;
+      }
+    }
+    &:nth-of-type(3) {
+      .card:first-child {
+        margin-left: 66.6666%;
+      }
+    }
+    &:last-of-type {
+      .card:last-child {
+        display: none;
+      }
+    }
+
+    .card:first-child,
+    .card:last-child {
+      width: 33.3333%;
+    }
+  }
+
+}

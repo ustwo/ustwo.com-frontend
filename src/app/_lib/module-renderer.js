@@ -4,6 +4,7 @@ import get from 'lodash/object/get';
 import SingleColumn from '../components/single-column';
 import QuoteBlock from '../components/quote-block';
 import FullImage from '../components/full-image';
+import Grid from '../components/grid';
 
 export default (moduleData, colours, getZebra) => {
   let module;
@@ -28,6 +29,13 @@ export default (moduleData, colours, getZebra) => {
             {get(moduleData, 'attr.text.value')}
         </QuoteBlock>
       )
+      break;
+    case 'grid':
+      module = <Grid
+        cells={get(moduleData, 'attr.grid_cells.value')}
+        video={get(moduleData, 'attr.grid_video.value')}
+        image={get(moduleData, 'attr.grid_image.value')}
+      />;
       break;
   }
   return module;
