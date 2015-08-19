@@ -11,6 +11,7 @@
   margin-top: 5px;
   background: #fff;
   height: 50px;
+  min-height: 50px;
   overflow: hidden;
   transition: height .6s ease-in-out;
 
@@ -110,6 +111,7 @@
 
   @include susy-breakpoint($bp-medium, $susy) {
     height: 70px;
+    min-height: 70px;
 
     .title {
       padding: 0 30px;
