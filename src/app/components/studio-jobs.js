@@ -25,8 +25,10 @@ export default class StudioJobs extends React.Component {
         <h3>{studio}</h3>
         <div className="tab-content" id={`tab-content-${studio}`}>
           <div className="studio-info">
-            <p className="excerpt" style={{ backgroundColor: this.props.colour }}>Join our flagship studio in Shoreditch</p>
-            <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
+            <div className="info" style={{ backgroundColor: this.props.colour }}>
+              <p className="excerpt">Join our flagship studio in Shoreditch</p>
+              <p className="content">Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley.</p>
+            </div>
             <div className="photo" style={{backgroundImage: "url(/images/photo.jpg)"}}>
               <img src="/images/photo.jpg" alt="Tea Building" />
             </div>

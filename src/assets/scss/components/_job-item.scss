@@ -22,48 +22,60 @@
     font-size: 16px;
     cursor: pointer;
     display: flex;
-
+    justify-content: space-between;
 
     .title-text {
-
+      flex-basis: auto;
+      flex: 4;
+    }
+    .location {
+      flex: 6;
+      display: none;
     }
     .status {
-      position: absolute;
-      right: 15px;
 
       .status-text {
-        margin-right: 10px;
         display: none;
+        margin-right: 10px;
+        width: 100px;
+        text-align: right;
+        line-height: 1;
       }
       .icon {
         position: relative;
         display: inline-block;
         width: 15px;
         height: 15px;
-        padding-left: 15px;
         line-height: 1;
+        vertical-align: middle;
+        margin-top: -2px;
 
         .horiz,
         .vert {
-          content: "";
           position: absolute;
-          height: 3px;
-          width: 15px;
-          top: 50%;
-          right: 0;
-          transform-origin: 50% 50%;
           background: #ccc;
         }
+        .horiz {
+          top: 50%;
+          margin-top: -2px;
+          left: 0;
+          height: 3px;
+          width: 15px;
+        }
         .vert {
-          transform: rotate(-90deg);
+          top: 0;
+          left: 50%;
+          margin-left: -2px;
+          height: 15px;
+          width: 3px;
         }
       }
     }
   }
 
-
   .job-description {
     padding: 0 15px 15px;
+    font-size: 18px;
   }
 
   .link {
@@ -97,13 +109,55 @@
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
+    height: 70px;
 
     .title {
+      padding: 0 30px;
+      height: 70px;
+      line-height: 70px;
+      font-size: 18px;
+
+      .title-text {
+        font-size: 20px;
+      }
+      .location {
+        display: block;
+        padding-left: 20px;
+
+        .icon {
+          width: 11px;
+          height: 16px;
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 10px;
+          margin-top: -1px;
+        }
+      }
       .status {
         .status-text {
           display: inline-block;
         }
       }
+    }
+    .job-description {
+      position: relative;
+      padding: 30px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 22px;
+        height: 2px;
+        background: $nonBlack;
+        top: 0;
+        left: 30px;
+      }
+    }
+  }
+
+  @include susy-breakpoint($bp-large, $susy) {
+    .job-description {
+      width: 50%;
     }
   }
 }

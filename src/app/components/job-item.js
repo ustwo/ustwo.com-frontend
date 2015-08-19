@@ -27,7 +27,10 @@ export default class JobItem extends React.Component {
     return (
       <li className={classes}>
         <h4 ref='title' className="title" onClick={this.onClickJobItem}>
-          <span className="title-text">{get(job, 'title')}</span> {this.renderStatus()}</h4>
+          <div className="title-text">{get(job, 'title')}</div>
+          {this.renderLocation()}
+          {this.renderStatus()}
+        </h4>
         <div ref='description' className="job-description">
           <p className="description-text">{get(job, 'description')}</p>
           <a className="link" href={get(job, 'url')} style={{ borderBottomColor: this.props.colour }}>Read full description</a>
@@ -37,6 +40,16 @@ export default class JobItem extends React.Component {
   }
   getLoadedState = () => {
     return get(this.props.job, 'description');
+  }
+  renderLocation = () => {
+    const job = this.props.job;
+    const locationPin = '<use xlink:href="/images/spritemap.svg#locationpin" />';
+    return (
+      <div className="location" style={{ color: this.props.colour }}>
+        <svg className="icon" role="img" dangerouslySetInnerHTML={{__html: locationPin }} style={{ fill: this.props.colour }} />
+        {get(job, 'location.city')}
+      </div>
+    );
   }
   renderStatus = () => {
     const loaded = this.getLoadedState();
