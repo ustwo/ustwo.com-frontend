@@ -1,5 +1,5 @@
 ## Vault tasks ################################################################
-vault_image = ustwo/usweb-vault
+vault_image = ustwo/usweb-vault:$(TAG)
 vault_name = $(project_name)_$(TIER)_vault
 
 .PHONY: \

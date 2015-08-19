@@ -1,5 +1,5 @@
 ## App tasks ##################################################################
-image_name := ustwo/ustwo.com-frontend
+image_name := ustwo/usweb-app
 app_image := $(image_name):$(TAG)
 app_version = $(TAG)
 app_name = $(project_name)_$(TIER)_app
@@ -36,6 +36,7 @@ app-rm:
 	@echo "Removing $(app_name)"
 	@$(DOCKER_RM) $(app_name)
 
+assets-compile: app_cmd = $(if $(VVV), npm run dev,)
 app-create:
 	@echo "Creating $(app_name)"
 	@$(DOCKER_RUN) \

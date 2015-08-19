@@ -56,7 +56,6 @@ vault: vault-save
 build: app-build assets-build
 push: app-push assets-push
 pull: app-pull assets-pull
-
 init: vault-create assets-create app-create proxy-create
 init-rm: proxy-rm app-rm assets-rm vault-rm
 deploy: init-rm init

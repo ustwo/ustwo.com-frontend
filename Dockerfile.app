@@ -2,19 +2,17 @@ FROM iojs:1.6
 
 MAINTAINER Nick Collings <nick@ustwo.com>
 
-WORKDIR /usr/local/src
-
 ENV TERM=xterm-256color \
     NODE_ENV=production
 
-RUN mkdir -p /usr/local/src/public
+WORKDIR /usr/local/src
 
 COPY package.json /usr/local/src/package.json
 RUN npm install --production
+RUN mkdir -p /usr/local/src/public
 
 COPY gulpfile.js /usr/local/src/gulpfile.js
 COPY src /usr/local/src/src
-RUN npm run compile
 
 EXPOSE 8888
 
