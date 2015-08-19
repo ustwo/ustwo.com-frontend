@@ -43,5 +43,12 @@ body {
     &.disabled {
       pointer-events: none;
     }
+
+    &.mobile-no-scroll {
+      position: fixed;
+      overflow: hidden;
+    }
   }
+
+
 }

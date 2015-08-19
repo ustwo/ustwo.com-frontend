@@ -25,7 +25,9 @@ export default class BlogCategories extends React.Component {
     return (
       <div className='blog-categories-container' onClick={onClickContent}>
         <CloseButton onClose={this.onClickClose} autoAnim={500} />
-        <ul className='blog-categories'>{this.renderBlogCategories()}</ul>
+        <div className="scroll-wrapper">
+          <ul className='blog-categories'>{this.renderBlogCategories()}</ul>
+        </div>
       </div>
     );
   }
