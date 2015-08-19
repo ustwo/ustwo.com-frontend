@@ -8,3 +8,4 @@ public/*
 !public/.gitignore
 etc/nginx/ssl
 share/nginx/assets
+build

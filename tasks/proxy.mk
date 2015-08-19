@@ -5,7 +5,9 @@ PROXY_HTTPS_PORT ?= 9443
 proxy_image := ustwo/usweb-proxy:$(TAG)
 proxy_name = $(project_name)_$(TIER)_proxy
 
-.PHONY: proxy-rm proxy-create
+.PHONY: \
+	proxy-create \
+	proxy-rm
 
 proxy-build: app-assets
 	$(DOCKER) build \
@@ -34,6 +36,7 @@ proxy-create:
 		-p $(PROXY_HTTP_PORT):80 \
 		$(docker_host) \
 		--volumes-from $(vault_name) \
+		--volumes-from $(assets_name) \
 		--restart always \
 		$(project_labels) \
 		$(proxy_image)

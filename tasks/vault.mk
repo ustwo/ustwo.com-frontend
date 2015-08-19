@@ -1,10 +1,12 @@
 ## Vault tasks ################################################################
-vault_image = ustwo/asterisk-vault
+vault_image = ustwo/usweb-vault
 vault_name = $(project_name)_$(TIER)_vault
 
-.PHONY: vault-rm vault-create
-
-nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+.PHONY: \
+	vault-build \
+	vault-create \
+	vault-rm \
+	vault-save
 
 ifeq ($(TIER), dev)
   nginx_config = \
@@ -29,12 +31,14 @@ vault-create:
 	@$(DOCKER_VOLUME) \
 		--name $(vault_name) \
 		$(project_labels) \
+		$(nginx_config) \
 		$(vault_image)
 
 vault-build:
 	$(DOCKER) build -t $(vault_image) -f Dockerfile.vault .
 
-vault-save: vault-$(TAG).tar
-
-vault-$(TAG).tar:
+build/vault-$(TAG).tar: vault-build
+	$(MKDIR) build
 	$(DOCKER) save -o $@ $(vault_image)
+
+vault-save: build/vault-$(TAG).tar
