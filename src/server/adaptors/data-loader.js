@@ -6,7 +6,8 @@ export default function (requiredData, apply) {
   return Promise.all(requiredData.map(params => {
     console.log('Loading...', params.type, (params.slug || ''));
     return fetcher({
-      url: params.url
+      url: params.url,
+      twitter: params.twitter
     });
   })).then(dataCollection => {
     dataCollection.forEach((data, index) => {

@@ -53,6 +53,12 @@ function applyJobDetailData(job) {
   _state.jobs[index] = job;
   console.log('Added job details', job);
 }
+function applyTweetCountData(object) {
+  Object.assign(_state.page, {
+    tweetCount: object.count
+  });
+  console.log('Added tweet count', object.count);
+}
 
 window._state = _state;
 
@@ -130,5 +136,19 @@ export default {
   showBlogCategories() {
     _state.modal = 'blogCategories'
     return Promise.resolve(_state);
+  },
+  getTweetCountForPost(uri) {
+    let promise;
+    const post = _state.page;
+    if (post.tweetCount) {
+      promise = Promise.resolve(_state);
+    } else {
+      promise = DataLoader([{
+        url: `twitter/count?url=${uri}`,
+        twitter: true,
+        type: 'tweetCount'
+      }], applyTweetCountData).then(() => _state);
+    }
+    return promise;
   }
 };

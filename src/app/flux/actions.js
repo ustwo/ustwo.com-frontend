@@ -36,6 +36,9 @@ const Actions = {
   },
   showBlogCategories() {
     return Store.showBlogCategories();
+  },
+  getTweetCountForPost(uri) {
+    return Store.getTweetCountForPost(uri);
   }
 };
 
