@@ -27,7 +27,7 @@ export default class PageSearchResults extends React.Component {
     return (
       <article className="page-search-results">
         <h1>{outcomeText}</h1>
-        <div className="clear-search" onClick={this.onClickReSearch}>{searchText}</div>
+        <div className="clear-search"><button onClick={this.onClickReSearch}>{searchText}</button></div>
         <ul>{this.renderSearchResults(props.page)}</ul>
       </article>
     );

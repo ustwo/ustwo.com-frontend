@@ -87,15 +87,17 @@
     flex-direction: column;
     height: 210px;
 
+    @include susy-breakpoint($bp-medium, $susy) {
+      height: 500px;
+    }
+
     .ustwo-logo {
       fill: #fff;
       height: 26px;
-      margin-bottom: 5px;
     }
 
     h2 {
       color: #fff;
-      font-size: 36px;
       line-height: 1.2;
     }
   }
@@ -104,10 +106,6 @@
     position: relative;
     background: $honey;
     padding: 10px 15px;
-
-    @include susy-breakpoint($bp-medium, $susy) {
-
-    }
   }
 
   .jobs-studio-tabs {
