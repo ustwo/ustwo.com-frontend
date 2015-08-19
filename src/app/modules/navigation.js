@@ -36,7 +36,7 @@ export default class Navigation extends React.Component {
   render() {
     const navigationLinks = this.props.pages.map((link) => {
       return (
-        <NavigationLink key={link.url} url={link.url} colour={link.colour} onClick={this.closeOverlay} selected={link.id === this.props.section} external={link.external} gaId={link.ga}>
+        <NavigationLink key={link.id} url={link.url} colour={link.colour} onClick={this.closeOverlay} selected={link.id === this.props.section} external={link.external} gaId={link.ga}>
           {link.title}
         </NavigationLink>
       );

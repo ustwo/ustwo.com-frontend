@@ -31,8 +31,47 @@
     }
   }
 
+  .single-column {
+    padding: 50px 6.25%;
 
-  .why-ustwo {
+    &__content {
+      &__heading {
+        color: $marshPassion;
+        text-align: center;
+      }
+      &__rule {
+        border: 2px solid $mare;
+        width: 120px;
+        margin: 30px auto;
+      }
+      &__para {
+        text-align: center;
+      }
+    }
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      padding-top: 100px;
+      padding-bottom: 100px;
+
+      &__content {
+        &__title {
+          max-width: 768px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        &__rule {
+          width: 180px;
+        }
+        &__para {
+          max-width: 620px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+  }
+
+  .grid {
     position: relative;
     height: $jobs-card-height-mobile + $jobs-image-height-mobile + $jobs-video-height-mobile;
     overflow: hidden;
@@ -48,6 +87,12 @@
       clear: both;
     }
 
+    .grid-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
     .video {
       position: absolute;
       left: 0;
@@ -56,9 +101,15 @@
       height: $jobs-video-height-mobile;
       background: url("/images/joinus/join_us_image.jpg");
       background-size: cover;
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
     }
 
-    .slides {
+    .grid-cell {
       position: relative;
     }
 

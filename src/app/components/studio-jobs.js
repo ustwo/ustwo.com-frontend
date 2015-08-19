@@ -3,6 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
+import find from 'lodash/collection/find';
 import times from 'lodash/utility/times';
 import Flux from '../flux';
 import JobItem from '../components/job-item';
@@ -58,6 +59,13 @@ export default class StudioJobs extends React.Component {
     return list;
   }
   renderJobItem = (job) => {
-    return <JobItem job={job} colour={this.props.colour} />;
+    return <JobItem job={job} colour={this.getStudioColour(job)} />;
+  }
+  getStudioColour = (job) => {
+    let studio = find(this.props.studios, 'name', job.location.city);
+    if(!studio) {
+      studio = find(this.props.studios, 'name', 'London');
+    }
+    return studio.color;
   }
 }
