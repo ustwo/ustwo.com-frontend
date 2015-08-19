@@ -197,7 +197,7 @@ export default class PageHome extends React.Component {
           </div>
           <div className="page-home__screen-block--client__text-block-vertical-centerer">
             <HomeTextBlock title="Innovative client work">
-              <p>We work with big brands to solve the huge problems. We conspire with smart clients to launch new products, services and companies that are of strategic importance and reliant on innovation.</p>
+              <p>We work with big brands to solve the huge problems. We partner with smart clients to launch new products, services and companies that are of strategic importance and reliant on innovation.</p>
             </HomeTextBlock>
           </div>
         </ScreenBlock>
