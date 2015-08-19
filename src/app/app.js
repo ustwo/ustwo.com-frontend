@@ -62,7 +62,8 @@ export default class App extends React.Component {
       'app-404': state.currentPage === 'notfound'
     });
     const contentClasses = classnames('app__content', {
-      takeover: this.showTakeover()
+      takeover: this.showTakeover(),
+      disabled: !!state.modal
     });
     let content;
     if(this.state.showNav) {

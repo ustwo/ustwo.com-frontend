@@ -1,11 +1,5 @@
 .blog-categories-container {
 
-  $line-height: 50px;
-  $horizontal-padding: 15px;
-  $tag-size: 21px;
-  $item-width: 190px;
-  $dropdown-offset: $line-height * 3;
-
   background: $offWhite;
   height: 100%;
 
@@ -36,8 +30,8 @@
 
     li {
       position: relative;
-      height: $line-height;
-      line-height: $line-height;
+      height: $blog-controls-line-height;
+      line-height: $blog-controls-line-height;
       background-color: $offWhite;
       width: auto;
 
@@ -45,7 +39,7 @@
         display: block;
         width: 100%;
         height: 100%;
-        padding: 0 $horizontal-padding;
+        padding: 0 $blog-controls-horizontal-padding;
       }
 
       &:hover {
@@ -55,14 +49,14 @@
 
       &:after {
         position: absolute;
-        right: $horizontal-padding;
+        right: $blog-controls-horizontal-padding;
         top: 50%;
         content: "";
         display: block;
-        width: $tag-size;
-        height: $tag-size;
+        width: $blog-controls-tag-size;
+        height: $blog-controls-tag-size;
         border-radius: 50%;
-        margin-top: -($tag-size * .5)
+        margin-top: -($blog-controls-tag-size * .5)
       }
 
       @each $category, $colour in $blog-categories {
@@ -87,15 +81,30 @@
 
   @include susy-breakpoint($bp-medium, $susy) {
     height: auto;
-    position: absolute;
-    // awaiting phil
 
     .close-button {
       display: none;
     }
 
     .blog-categories li {
-      width: $item-width;
+      width: $blog-controls-item-width;
+    }
+  }
+}
+
+@include susy-breakpoint($bp-medium, $susy) {
+  .modal.blog-categories {
+    position: absolute;
+    background: transparent;
+    cursor: default;
+
+    .blog-categories-container {
+      position: absolute;
+      top: calc(100% + #{$blog-margin-offset} - #{$blog-controls-margin-bottom} - #{$blog-controls-dropdown-offset});
+      left: 50%;
+      margin-left: - $blog-controls-search-width - ($blog-controls-search-margin * .5);
+      box-shadow: 0 0 4px 2px rgba(0,0,0,.1);
+      cursor: pointer;
     }
   }
 }
