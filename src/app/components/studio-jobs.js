@@ -4,14 +4,15 @@ import React from 'react';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
-import times from 'lodash/utility/times';
+import kebabCase from 'lodash/string/kebabCase';
 import Flux from '../flux';
 import JobItem from '../components/job-item';
 
 export default class StudioJobs extends React.Component {
   render() {
     const studio = this.props.studio;
-    const classes = classnames('studio-jobs', `${studio}-jobs`, {
+    const id = kebabCase(studio.name);
+    const classes = classnames('studio-jobs', `${id}-jobs`, {
       selected: this.props.selected
     });
     const jobCount = {
@@ -23,8 +24,8 @@ export default class StudioJobs extends React.Component {
     }
     return (
       <div className={classes}>
-        <h3>{studio}</h3>
-        <div className="tab-content" id={`tab-content-${studio}`}>
+        <h3>{studio.name}</h3>
+        <div className="tab-content" id={`tab-content-${id}`}>
           <div className="studio-info">
             <div className="info" style={{ backgroundColor: this.props.colour }}>
               <p className="excerpt">Join our flagship studio in Shoreditch</p>
