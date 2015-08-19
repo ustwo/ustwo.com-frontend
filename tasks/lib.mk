@@ -5,7 +5,7 @@ endef
 define project_labels
 	--label project_name=$(project_name) \
 	--label tier=$(TIER) \
-	--label version=$(app_version)
+	--label version=$(TAG)
 endef
 
 define project_filters

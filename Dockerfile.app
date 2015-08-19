@@ -1,6 +1,6 @@
 FROM iojs:1.6
 
-MAINTAINER Nick Collings <nick@ustwo.com>
+MAINTAINER Arnau Siches <arnau@ustwo.com>
 
 ENV TERM=xterm-256color \
     NODE_ENV=production

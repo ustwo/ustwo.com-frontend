@@ -7,7 +7,7 @@ ENV TERM=xterm-256color \
 
 WORKDIR /usr/local/src
 
-COPY package.json /usr/local/src/package-dev.json
+COPY package-builder.json /usr/local/src/package.json
 RUN npm install
 RUN mkdir -p /usr/local/src/public
 

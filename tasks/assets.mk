@@ -31,14 +31,10 @@ assets-compile: compile_cmd = $(if $(VVV), compile-dev, compile)
 assets-compile:
 	@echo "Compiling assets into share/nginx/assets"
 	$(DOCKER_TASK) \
-		$(app_volumes) \
-		-v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
-		$(app_image) \
+		$(builder_volumes) \
+		$(builder_image) \
 		npm run $(compile_cmd)
 
 assets-css:
 	@echo "Compiling assets into share/nginx/assets"
-	$(DOCKER_TASK) \
-		$(app_volumes) \
-		-v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
-		$(app_image) npm run css
+	$(call builder-task, npm run css)

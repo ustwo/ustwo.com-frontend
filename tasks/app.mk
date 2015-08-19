@@ -1,7 +1,6 @@
 ## App tasks ##################################################################
 image_name := ustwo/usweb-app
 app_image := $(image_name):$(TAG)
-app_version = $(TAG)
 app_name = $(project_name)_$(TIER)_app
 verbosity = $(if $(VERBOSE), -e VERBOSE=true,)
 
@@ -18,8 +17,8 @@ ifeq ($(TIER), dev)
   app_volumes = \
     -v $(BASE_PATH)/gulpfile.js:/usr/local/src/gulpfile.js \
     -v $(BASE_PATH)/package.json:/usr/local/src/package.json \
+    -v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
     -v $(BASE_PATH)/src:/usr/local/src/src
-  app_cmd = npm run dev
   VERBOSE := true
 endif
 
@@ -36,7 +35,6 @@ app-rm:
 	@echo "Removing $(app_name)"
 	@$(DOCKER_RM) $(app_name)
 
-assets-compile: app_cmd = $(if $(VVV), npm run dev,)
 app-create:
 	@echo "Creating $(app_name)"
 	@$(DOCKER_RUN) \
@@ -48,8 +46,7 @@ app-create:
 		$(docker_host) \
 		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \
 		$(verbosity) \
-		$(app_image) \
-		$(app_cmd)
+		$(app_image)
 
 app-log:
 	$(DOCKER) logs -f $(app_name)
