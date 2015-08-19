@@ -18,7 +18,7 @@ export default (moduleData, colours, getZebra) => {
       backgroundColour={!getZebra() && get(colours, 'bg')}>{get(moduleData, 'attr.body.value')}</SingleColumn>;
       break;
     case 'image':
-      module = <FullImage photo={get(moduleData, 'attr.image.value.0.sizes.large.url')} />;
+      module = <FullImage sizes={get(moduleData, 'attr.image.value.0.sizes')} />;
       break;
     case 'blockquote':
       module = (

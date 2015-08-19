@@ -30,6 +30,7 @@
       transition: opacity 0.8s ease-in-out;
       backface-visibility: hidden;
       opacity: 1;
+      display: block;
 
       @include susy-breakpoint($bp-large, $susy) {
         width: 45%;
