@@ -1,15 +1,7 @@
 .blog-controls {
 
-  $line-height: 50px;
-  $horizontal-padding: 15px;
-  $tag-size: 21px;
-  $item-width: 190px;
-  $search-width: 50px;
-  $search-margin: 20px;
-  $dropdown-offset: $line-height * 3;
-
   z-index: 1;
-  bottom: calc(52px + 9vh);
+  bottom: calc(#{$blog-controls-margin-bottom} + 9vh);
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -19,29 +11,29 @@
     left: 0;
     display: flex;
     align-items: center;
-    height: $line-height;
-    width: $search-width;
+    height: $blog-controls-line-height;
+    width: $blog-controls-search-width;
     background: transparent;
     border: 0;
 
     .search-icon {
       fill: #fff;
-      width: $line-height;
-      height: $line-height;
+      width: $blog-controls-line-height;
+      height: $blog-controls-line-height;
       margin: 0 auto;
     }
   }
 
   .blog-filter {
-    margin-left: $search-width + $search-margin;
+    margin-left: $blog-controls-search-width + $blog-controls-search-margin;
 
     .selected {
-      width: $item-width;
-      padding: 0 $horizontal-padding;
+      width: $blog-controls-item-width;
+      padding: 0 $blog-controls-horizontal-padding;
 
       &:after {
         position: absolute;
-        right: $horizontal-padding;
+        right: $blog-controls-horizontal-padding;
         top: 50%;
         content: "";
         display: block;
@@ -54,106 +46,21 @@
     .selected,
     .dropdown li {
       cursor: pointer;
-      height: $line-height;
-      line-height: $line-height;
+      height: $blog-controls-line-height;
+      line-height: $blog-controls-line-height;
       background-color: #fff;
-    }
-    .dropdown li {
-      width: auto;
-      &:hover {
-        background-color: $nonBlack;
-        color: #fff;
-      }
-
-      &:after {
-        position: absolute;
-        right: $horizontal-padding;
-        top: 50%;
-        content: "";
-        display: block;
-        width: $tag-size;
-        height: $tag-size;
-        border-radius: 50%;
-        margin-top: -($tag-size * .5)
-      }
-    }
-    .dropdown {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1;
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-
-      li {
-        position: relative;
-
-        a {
-          display: block;
-          width: 100%;
-          height: 100%;
-          padding: 0 $horizontal-padding;
-        }
-
-        &:after {
-          position: absolute;
-          right: $horizontal-padding;
-          top: 50%;
-          content: "";
-          display: block;
-          width: $tag-size;
-          height: $tag-size;
-          border-radius: 50%;
-          margin-top: -($tag-size * .5)
-        }
-
-        @each $category, $colour in $blog-categories {
-          &.#{$category} {
-            &:after {
-              background-color: #{$colour};
-            }
-          }
-        }
-
-        &.all {
-          &:after {
-            background-color: $nonBlack;
-          }
-          &:hover:after {
-            background-color: #fff;
-          }
-        }
-      }
-    }
-
-    .dropdown {
-      display: none;
-    }
-    &.open .dropdown {
-      display: block;
     }
   }
 
-
   @include susy-breakpoint($bp-medium, $susy) {
 
-    bottom: calc(52px - #{$blog-margin-offset});
+    bottom: calc(#{$blog-controls-margin-bottom} - #{$blog-margin-offset});
 
     .blog-filter {
       position: relative;
 
-      .selected,
-      .dropdown li {
-        width: $item-width;
-      }
-
-      .dropdown {
-        position: absolute;
-        left: 0;
-        right: auto;
-        top: -$dropdown-offset;
+      .selected {
+        width: $blog-controls-item-width;
       }
     }
   }

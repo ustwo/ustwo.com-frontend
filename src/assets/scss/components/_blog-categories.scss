@@ -1,0 +1,110 @@
+.blog-categories-container {
+
+  background: $offWhite;
+  height: 100%;
+
+  .close-button {
+    width: 100%;
+    height: 60px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+
+    svg {
+      width: 50px;
+      height: 50px;
+      fill: $nonBlack;
+    }
+
+    &:focus {
+      -webkit-focus-ring-color: rgba(0,0,0,0);
+      outline: none;
+      outline: 0;
+    }
+  }
+
+  .blog-categories {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      height: $blog-controls-line-height;
+      line-height: $blog-controls-line-height;
+      background-color: $offWhite;
+      width: auto;
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0 $blog-controls-horizontal-padding;
+      }
+
+      &:hover {
+        background-color: $nonBlack;
+        color: #fff;
+      }
+
+      &:after {
+        position: absolute;
+        right: $blog-controls-horizontal-padding;
+        top: 50%;
+        content: "";
+        display: block;
+        width: $blog-controls-tag-size;
+        height: $blog-controls-tag-size;
+        border-radius: 50%;
+        margin-top: -($blog-controls-tag-size * .5)
+      }
+
+      @each $category, $colour in $blog-categories {
+        &.#{$category} {
+          &:after {
+            background-color: #{$colour};
+          }
+        }
+      }
+
+      &.all {
+        &:after {
+          background-color: $nonBlack;
+        }
+
+        &:hover:after {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    height: auto;
+
+    .close-button {
+      display: none;
+    }
+
+    .blog-categories li {
+      width: $blog-controls-item-width;
+    }
+  }
+}
+
+@include susy-breakpoint($bp-medium, $susy) {
+  .modal.blog-categories {
+    position: absolute;
+    background: transparent;
+    cursor: default;
+
+    .blog-categories-container {
+      position: absolute;
+      top: calc(100% + #{$blog-margin-offset} - #{$blog-controls-margin-bottom} - #{$blog-controls-dropdown-offset});
+      left: 50%;
+      margin-left: - $blog-controls-search-width - ($blog-controls-search-margin * .5);
+      box-shadow: 0 0 4px 2px rgba(0,0,0,.1);
+      cursor: pointer;
+    }
+  }
+}

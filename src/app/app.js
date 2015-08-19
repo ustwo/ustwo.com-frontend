@@ -26,6 +26,7 @@ import ContactTray from './components/contact-tray';
 import TakeOver from './modules/take-over';
 import FourOhFour from './templates/page-404';
 import SearchModal from './components/search-modal';
+import BlogCategories from './components/blog-categories';
 
 const pageMap = {
   'home': require('./templates/page-home'),
@@ -61,7 +62,8 @@ export default class App extends React.Component {
       'app-404': state.currentPage === 'notfound'
     });
     const contentClasses = classnames('app__content', {
-      takeover: this.showTakeover()
+      takeover: this.showTakeover(),
+      disabled: !!state.modal
     });
     let content;
     if(this.state.showNav) {
@@ -117,10 +119,14 @@ export default class App extends React.Component {
         case 'contacts':
           className = 'tray';
           content = <ContactTray contacts={this.state.footer.contacts} />;
-        break;
+          break;
         case 'search':
           className = 'search';
           content = <SearchModal searchQuery={this.state.searchQuery} />;
+          break;
+        case 'blogCategories':
+          className = 'blog-categories';
+          content = <BlogCategories />;
           break;
       }
       modal = <Modal key={this.state.modal} className={className}>{content}</Modal>;

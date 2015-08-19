@@ -6,7 +6,7 @@
   height: 100%;
   background: rgba(0,0,0,0.7);
   z-index: 50;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity .2s ease-in-out;
   cursor: pointer;
 
   &.below-header {
@@ -24,5 +24,9 @@
   }
   > * {
     cursor: auto;
+  }
+
+  &.tray {
+    transition-duration: .4s;
   }
 }
