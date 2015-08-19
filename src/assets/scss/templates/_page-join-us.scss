@@ -158,7 +158,14 @@
   .jobs {
     position: relative;
     background: $honey;
-    padding: 10px 15px;
+    padding: 10px 15px 40px 15px;
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      padding-bottom: 60px;
+    }
+    @include susy-breakpoint($bp-large, $susy) {
+      padding-bottom: 80px;
+    }
   }
 
   .jobs-studio-tabs {

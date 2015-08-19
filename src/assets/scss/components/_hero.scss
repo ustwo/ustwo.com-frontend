@@ -8,6 +8,7 @@
   background-position: center;
   background-size: cover;
   position: relative;
+  overflow: hidden;
 
   &__title {
     text-align: center;
@@ -43,6 +44,7 @@
     }
   }
 }
+
 
 .js {
   .image-entrance {
