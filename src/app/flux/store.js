@@ -68,7 +68,7 @@ export default {
   },
   loadData(itemsToLoad) {
     itemsToLoad = reject(itemsToLoad, item => {
-      return (!item.slug && _state[item.type]) || (_state[item.type] && _state[item.type].slug === item.slug);
+      return item.cache !== false && ((!item.slug && _state[item.type]) || (_state[item.type] && _state[item.type].slug === item.slug));
     });
     return DataLoader(itemsToLoad, applyData).then(() => _state);
   },

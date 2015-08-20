@@ -41,10 +41,14 @@ const routes = {
     id: 'blog',
     pattern: '/blog?category=:category',
     status: 200,
-    data: () => [{
-      url: 'ustwo/v1/pages/blog',
+    data: (category) => [{
+      url: `ustwo/v1/pages/blog`,
       type: 'page',
       slug: 'blog'
+    }, {
+      url: `ustwo/v1/posts?category=${category}`,
+      type: 'posts',
+      cache: false
     }]
   },
   blog: {
@@ -55,6 +59,10 @@ const routes = {
       url: 'ustwo/v1/pages/blog',
       type: 'page',
       slug: 'blog'
+    }, {
+      url: 'ustwo/v1/posts',
+      type: 'posts',
+      cache: false
     }]
   },
   searchResults: {
