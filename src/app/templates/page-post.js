@@ -9,12 +9,12 @@ export default class PagePost extends React.Component {
   componentDidMount() {
     const post = this.props.page;
     this.fetchTweetCount(post);
-    // this.fetchFacebookShareCount(post);
+    this.fetchFacebookShareCount(post);
   }
   componentWillReceiveProps(nextProps) {
     const post = nextProps.page;
     this.fetchTweetCount(post);
-    // this.fetchFacebookShareCount(post);
+    this.fetchFacebookShareCount(post);
   }
   render() {
     const post = this.props.page;
@@ -70,10 +70,10 @@ export default class PagePost extends React.Component {
       Flux.getSocialShareCountForPost('twitter', uri);
     }
   }
-  // fetchFacebookShareCount = (post) => {
-  //   if (post && post.slug && post.facebookShares !== 0) {
-  //     const uri = `http://ustwo.com/blog/${post.slug}`;
-  //     Flux.getSocialShareCountForPost('facebook', uri);
-  //   }
-  // }
+  fetchFacebookShareCount = (post) => {
+    if (post && post.slug && !(post.facebookShares || post.facebookShares === 0)) {
+      const uri = `http://ustwo.com/blog/${post.slug}`;
+      Flux.getSocialShareCountForPost('facebook', uri);
+    }
+  }
 }

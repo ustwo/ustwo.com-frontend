@@ -1,6 +1,7 @@
 import reject from 'lodash/collection/reject';
 import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
+import capitalize from 'lodash/string/capitalize';
 
 import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
@@ -65,7 +66,7 @@ function applySocialShareCountData(service, object) {
   }
   const value = object[propertyName];
   _state.page[`${service}Shares`] = value;
-  console.log(`Added ${service} share count`, value);
+  console.log(`Added ${capitalize(service)} share count`, value);
 }
 
 window._state = _state;
@@ -155,17 +156,19 @@ export default {
       let url;
       switch (service) {
         case 'twitter':
-          url = `twitter/count?url=${uri}`;
+          url = `/twitter/count?url=${uri}`;
           break;
         case 'facebook':
-          url = `http://graph.facebook.com/?id=${uri}`;
+          url = `https://graph.facebook.com/?id=${uri}`;
           break;
       }
-      promise = DataLoader([{
-        url: url,
-        external: service,
-        type: `${service}Shares`
-      }], applySocialShareCountData.bind(this, service)).then(() => _state);
+      if (url) {
+        promise = DataLoader([{
+          url: url,
+          external: service,
+          type: `${service}Shares`
+        }], applySocialShareCountData.bind(this, service)).then(() => _state);
+      }
     }
     return promise;
   }

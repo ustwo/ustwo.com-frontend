@@ -17,15 +17,7 @@ let defaultConfig = {
 
 function fetcher (config) {
   let mergedConfig = Object.assign({}, defaultConfig, config);
-  let url = mergedConfig.baseurl + mergedConfig.url;
-  switch (config.external) {
-    case 'twitter':
-      url = '/' + mergedConfig.url;
-      break;
-    case 'facebook':
-      url = mergedConfig.url;
-      break;
-  }
+  let url = config.external ? mergedConfig.url : mergedConfig.baseurl + mergedConfig.url;
   console.log('Fetching:', url);
   const req = Fetch(url, mergedConfig)
     .then((response) => {
