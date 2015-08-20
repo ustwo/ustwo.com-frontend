@@ -46,10 +46,10 @@ export default class PageBlog extends React.Component {
           return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!categorised && index === 0} data={postData} />;
         });
       } else {
-        posts = <div className="message">No posts found</div>;
+        posts = <h3 className="message">No posts found</h3>;
       }
     } else {
-      posts = <div className="message">Loading</div>;
+      posts = <h3 className="message">Loading</h3>;
     }
     return posts;
   }

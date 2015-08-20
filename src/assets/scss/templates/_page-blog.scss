@@ -124,6 +124,9 @@
         display: none;
       }
       .blog-post-list {
+        .message {
+          text-align: center;
+        }
         .message,
         .blog-post-list-item {
           position: relative;
