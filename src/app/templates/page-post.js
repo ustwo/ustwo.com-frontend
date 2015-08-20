@@ -22,6 +22,8 @@ export default class PagePost extends React.Component {
     const category = get(terms, '0.0');
     const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'category')}`);
     const attachments = (post && post._embedded && post._embedded['http://v2.wp-api.org/attachment']) || [];
+    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebook" />';
+    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitter" />';
 
     return (
       <article className={classes}>
@@ -34,12 +36,18 @@ export default class PagePost extends React.Component {
           <img className="image" src={get(attachments, '1.source_url')} />
         </div>
         <div className="content-container">
-          <ul className="social-container">
-            <li className="twitter">{post && post.twitterShares}</li>
-            <li className="facebook">{post && post.facebookShares}</li>
-          </ul>
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h1 className="title">{get(post, 'title.rendered')}</h1>
+          <ul className="social-media-container">
+            <li className="twitter channel">
+              <div className='svg-container'><svg className="logo" title="twitter logo" role="img" dangerouslySetInnerHTML={{__html: twitterLogo }} /></div>
+              <span>{post && post.twitterShares}</span>
+            </li>
+            <li className="facebook channel">
+              <div className='svg-container'><svg className="logo" title="facebook logo" role="img" dangerouslySetInnerHTML={{__html: facebookLogo }} /></div>
+              <span>{post && post.facebookShares}</span>
+            </li>
+          </ul>
           <p className="meta">By {get(post, '_embedded.author.0.name')} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
           <hr className="rule" />
           {get(post, 'page_builder', []).map(this.getModuleRenderer(get(post, 'colors', {})))}

@@ -14,10 +14,9 @@
     }
   }
 }
+
 // NO MORE DRAGONS
-
 .page-post {
-
   a {
     font-family: $PxGroteskBold;
     border-bottom-width: 2px;
@@ -50,6 +49,52 @@
     margin: 0 auto;
     padding: 40px 0;
     position: relative;
+
+    .social-media-container {
+      position: absolute;
+      right: 0;
+      list-style: none;
+
+      .channel {
+        $box-height: 34px;
+
+        width: 74px;
+        height: $box-height;
+
+        span {
+          display: block;
+          font-size: 16px;
+          font-weight: bold;
+          color: #fff;
+          margin: 0;
+          text-align: right;
+          padding-right: 14px;
+          position: relative;
+          top: 52%;
+          transform: translateY(-50%);
+        }
+
+        @each $channel, $colour in $social-media-colours {
+          &.#{$channel} {
+            background: $colour;
+
+            .svg-container {
+              position: absolute;
+              width: $box-height;
+              height: $box-height;
+              background: $offWhite;
+
+              .logo {
+                display: block;
+                height: 100%;
+                width: 100%;
+                fill: $colour;
+              }
+            }
+          }
+        }
+      }
+    }
 
     .title,
     .excerpt,
