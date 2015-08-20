@@ -73,8 +73,8 @@
 
   .grid {
     position: relative;
-    height: $jobs-card-height-mobile + $jobs-image-height-mobile + $jobs-video-height-mobile;
-    overflow: hidden;
+    // height: $jobs-card-height-mobile + $jobs-image-height-mobile + $jobs-video-height-mobile;
+    // overflow: hidden;
     padding-top: $jobs-video-height-mobile;
 
     &:before,
@@ -114,8 +114,8 @@
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
-      height: auto;
-      overflow: visible;
+      // height: auto;
+      // overflow: visible;
       padding-top: 0;
 
       .video {
@@ -203,5 +203,4 @@
     max-width: 1120px;
     margin: 0 auto;
   }
-
 }
