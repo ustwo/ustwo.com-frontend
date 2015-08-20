@@ -5,7 +5,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import omit from 'lodash/object/omit';
 
-const isomorphic = false;
+const isomorphic = true;
 let router = express.Router();
 
 function readData (cb) {
