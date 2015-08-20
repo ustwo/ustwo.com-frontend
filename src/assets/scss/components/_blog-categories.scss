@@ -7,13 +7,12 @@
     height: $dropdown-close-height;
     border: 0;
     padding: 0;
-    background: transparent;
+    background: #fff;
 
     svg {
       width: 60px;
       height: 60px;
       fill: $nonBlack;
-      float: right;
     }
 
     &:focus {
