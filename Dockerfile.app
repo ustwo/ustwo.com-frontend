@@ -1,19 +1,14 @@
-FROM iojs:1.6
-
+FROM ustwo/nodejs
 MAINTAINER Arnau Siches <arnau@ustwo.com>
 
-ENV TERM=xterm-256color \
-    NODE_ENV=production
+USER root
+RUN apk add --update \
+  nodejs-dev \
+  && rm -rf /var/cache/apk/*
 
-WORKDIR /usr/local/src
-
-COPY package.json /usr/local/src/package.json
+COPY package.json /home/ustwo/package.json
 RUN npm install --production
-RUN mkdir -p /usr/local/src/public
-
-COPY gulpfile.js /usr/local/src/gulpfile.js
-COPY src /usr/local/src/src
-
-EXPOSE 8888
+RUN mkdir -p /home/ustwo/public
+COPY src /home/ustwo/src
 
 CMD ["node", "/usr/local/src/node_modules/babel/lib/_babel-node", "--optional", "es7.classProperties", "src/server"]
