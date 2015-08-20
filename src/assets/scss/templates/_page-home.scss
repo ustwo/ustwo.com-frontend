@@ -16,7 +16,6 @@
     }
   }
 
-
   &__screen-block--welcome {
 
     &__headline-background-image {
@@ -27,6 +26,7 @@
       top: 0;
       bottom: 0;
       width: 100%;
+      max-width: 660px;
       transition: opacity 0.8s ease-in-out;
       backface-visibility: hidden;
       opacity: 1;
@@ -35,6 +35,7 @@
         width: 45%;
         // FIXME: this should be 280px, but we have shedloads of transparent pixels around the image :(
         min-width: 220px;
+        max-width: 830px;
         transform: translateZ(0) scale(1.4);
       }
 
