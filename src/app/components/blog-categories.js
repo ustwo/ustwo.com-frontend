@@ -45,7 +45,7 @@ export default class BlogCategories extends React.Component {
     return (event) => {
       event.preventDefault();
       Flux.closeModal();
-      Flux.navigate(uri);
+      Flux.navigate(uri, true);
     }
   }
   onClickClose() {

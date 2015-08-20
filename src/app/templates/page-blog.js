@@ -14,12 +14,17 @@ export default class PageBlog extends React.Component {
   render() {
     const props = this.props;
     const pageData = this.props.page;
-    const posts = get(this.props, 'posts', []);
+
+    const latestPosts = get(pageData, '_embedded.ustwo:posts.0', []);
+    const filteredPosts = get(this.props, 'posts');
+    const posts = props.blogCategory === 'all' ? latestPosts : filteredPosts;
     const attachments = get(pageData, '_embedded.wp:attachment.0', []);
     const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
     const categorised = this.props.blogCategory !== 'all';
     const classes = classnames('page-blog', {
-      categorised: categorised
+      categorised: categorised,
+      loading: !posts,
+      empty: posts && !posts.length
     });
     return (
       <article className={classes}>
@@ -27,12 +32,25 @@ export default class PageBlog extends React.Component {
           <BlogControls blogCategory={props.blogCategory}/>
         </Hero>
         <section className="blog-post-list">
-          {posts.map((postData, index) => {
-            return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!categorised && index === 0} data={postData} />;
-          })}
-          <div className="load-more"><button className="load">Load more</button></div>
+          {this.renderPosts(posts)}
         </section>
       </article>
     );
+  }
+  renderPosts = (postsArray) => {
+    const categorised = this.props.blogCategory !== 'all';
+    let posts;
+    if(postsArray) {
+      if(postsArray.length) {
+        posts = postsArray.map((postData, index) => {
+          return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!categorised && index === 0} data={postData} />;
+        });
+      } else {
+        posts = <div className="message">No posts found</div>;
+      }
+    } else {
+      posts = <div className="message">Loading</div>;
+    }
+    return posts;
   }
 }

@@ -46,7 +46,7 @@ const routes = {
       type: 'page',
       slug: 'blog'
     }, {
-      url: `ustwo/v1/posts?category=${category}`,
+      url: `ustwo/v1/posts?per_page=12&category=${category}`,
       type: 'posts',
       cache: false
     }]
@@ -60,7 +60,7 @@ const routes = {
       type: 'page',
       slug: 'blog'
     }, {
-      url: 'ustwo/v1/posts',
+      url: 'ustwo/v1/posts?per_page=12',
       type: 'posts',
       cache: false
     }]

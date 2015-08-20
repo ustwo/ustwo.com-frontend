@@ -106,6 +106,7 @@
     }
     .blog-post-list {
       margin-top: $blog-margin-offset;
+      min-height: $blog-margin-offset * -1;
       padding: 0 $blog-gutter-large;
 
       .blog-post-list-item:not(.featured) {
@@ -123,9 +124,10 @@
         display: none;
       }
       .blog-post-list {
+        .message,
         .blog-post-list-item {
           position: relative;
-
+          
           &:not(.featured) {
             &:nth-child(2n + 1) {
               margin-right: $blog-gutter-large;

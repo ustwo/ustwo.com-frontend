@@ -64,6 +64,7 @@ export default {
     }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
+    _state.posts = null;
     return Promise.resolve(_state);
   },
   loadData(itemsToLoad) {

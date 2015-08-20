@@ -22,9 +22,9 @@ export default class BlogControls extends React.Component {
     const searchIcon = '<use xlink:href="/images/spritemap.svg#search" />';
     return (
       <div className="blog-controls">
-        <button onClick={this.onClickSearch} className="blog-search-button">
+        {/* <button onClick={this.onClickSearch} className="blog-search-button">
           <svg className="search-icon" role="img" dangerouslySetInnerHTML={{__html: searchIcon }} />
-        </button>
+        </button> */}
         <div className='blog-filter'>
           <div className="selected" onClick={this.onClickSelectedCategory}>{blogCategories[this.props.blogCategory]}</div>
         </div>
