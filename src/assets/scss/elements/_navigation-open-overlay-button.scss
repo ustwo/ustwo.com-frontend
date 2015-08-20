@@ -7,9 +7,13 @@
   z-index: 2;
   fill: #fff;
   width: 60px;
+  height: 60px;
+  display: block;
 
   svg {
-    width: 40px;
+    width: 42px;
+    height: 32px;
+    pointer-events: none; // Fixes intermittent issue on touch devices?
   }
 }
 
