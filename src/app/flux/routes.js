@@ -38,14 +38,13 @@ const routes = {
     }]
   },
   blogCategory: {
-    id: 'blog/category',
+    id: 'blog',
     pattern: '/blog?category=:category',
     status: 200,
     data: () => [{
-      url: 'ustwo/v1/pages?name=blog',
+      url: 'ustwo/v1/pages/blog',
       type: 'page',
-      slug: 'blog',
-      get: data => data[0]
+      slug: 'blog'
     }]
   },
   blog: {

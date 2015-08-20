@@ -565,16 +565,14 @@ export default class PageBlog extends React.Component {
       const terms = (post._embedded && post._embedded['http://v2.wp-api.org/term']) || [];
       return get(terms, '0.0.slug') === props.blogCategory;
     });
-    const attachments = (props.page && props.page._embedded && props.page._embedded['http://v2.wp-api.org/attachment'][0]) || [];
+    const attachments = get(props.page, '._embedded.wp:attachment.0', []);
     const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
 
     return (
       <article className="page-blog">
-
         <Hero title='Think. Share. Learn.' backgroundTint={true} imageURL={get(image, 'source_url')} eventLabel='blog'>
           <BlogControls blogCategory={props.blogCategory}/>
         </Hero>
-
         <section className="blog-post-list">
           {/*get(pageData, '_embedded.ustwo:posts.0', []).map((postData, index) => {
             return <BlogPostListItem key={get(postData, 'slug')} className="blog-post-list-item" featured={index === 0} data={postData} />;

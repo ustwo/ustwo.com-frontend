@@ -99,7 +99,7 @@ const Flux = Object.assign(
       }
       if (params.length) {
         switch(route.id) {
-          case 'blog/category':
+          case 'blog':
             Flux.setBlogCategoryTo(params[0]);
             break;
           case 'blog/search-results':
