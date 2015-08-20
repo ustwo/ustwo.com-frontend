@@ -1,0 +1,80 @@
+.social-media-sharing {
+  $small-width: 60px;
+  $small-height: 26px;
+  $small-font-size: 14px;
+
+  $large-width: 74px;
+  $large-height: 34px;
+  $large-font-size: 16px;
+
+  list-style: none;
+  padding: 0;
+
+  .channel {
+    width: $small-width;
+    height: $small-height;
+
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      border-bottom: 0;
+
+      &:after {
+        display: none;
+      }
+    }
+
+    span {
+      font-size: $small-font-size;
+      padding-right: 14px;
+      display: block;
+      font-weight: bold;
+      color: #fff;
+      margin: 0;
+      text-align: right;
+      position: relative;
+      top: 52%;
+      transform: translateY(-50%);
+    }
+
+    .svg-container {
+      position: absolute;
+      width: $small-height;
+      height: $small-height;
+      background: $offWhite;
+
+      .logo {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    @each $channel, $colour in $social-media-colours {
+      &.#{$channel} {
+        background: $colour;
+
+        .svg-container .logo {
+          fill: $colour;
+        }
+      }
+    }
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    .channel {
+      width: $large-width;
+      height: $large-height;
+
+      span {
+        font-size: $large-font-size;
+      }
+
+      .svg-container {
+        width: $large-height;
+        height: $large-height;
+      }
+    }
+  }
+}

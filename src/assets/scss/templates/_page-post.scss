@@ -44,53 +44,7 @@
     }
   }
 
-  .social-media-statistics {
-    list-style: none;
-    padding: 0;
-
-    .channel {
-      $box-height: 26px;
-
-      width: 60px;
-      height: $box-height;
-
-      span {
-        display: block;
-        font-size: 14px;
-        font-weight: bold;
-        color: #fff;
-        margin: 0;
-        text-align: right;
-        padding-right: 14px;
-        position: relative;
-        top: 52%;
-        transform: translateY(-50%);
-      }
-
-      .svg-container {
-        position: absolute;
-        width: $box-height;
-        height: $box-height;
-        background: $offWhite;
-
-        .logo {
-          display: block;
-          height: 100%;
-          width: 100%;
-        }
-      }
-
-      @each $channel, $colour in $social-media-colours {
-        &.#{$channel} {
-          background: $colour;
-
-          .svg-container .logo {
-            fill: $colour;
-          }
-        }
-      }
-    }
-
+  .social-media-sharing {
     &.side {
       display: none;
       position: absolute;
@@ -248,7 +202,7 @@
     .hero-image {
       height: 450px;
     }
-    .social-media-statistics {
+    .social-media-sharing {
       &.side {
         display: block;
       }
@@ -257,20 +211,6 @@
 
         .channel {
           margin-right: 17px;
-        }
-      }
-      .channel {
-        $box-height: 34px;
-        width: 74px;
-        height: $box-height;
-
-        span {
-          font-size: 16px;
-        }
-
-        .svg-container {
-          width: $box-height;
-          height: $box-height;
         }
       }
     }
