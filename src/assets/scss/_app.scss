@@ -48,7 +48,12 @@ body {
       position: fixed;
       overflow: hidden;
     }
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      &.mobile-no-scroll {
+        position: relative;
+        overflow: auto;
+      }
+    }
   }
-
-
 }
