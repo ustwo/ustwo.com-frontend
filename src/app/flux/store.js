@@ -15,28 +15,6 @@ const _state = Object.assign({
   modal: Nulls.modal,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
-  pages: [{
-    id: "home",
-    ga: "home",
-    title: "Home",
-    url: "/"
-  }, {
-    id: "what-we-do",
-    ga: "what_we_do",
-    title: "What we do",
-    url: "/what-we-do"
-  }, {
-    id: "blog",
-    ga: "blog",
-    title: "Blog",
-    url: "/blog"
-  }, {
-    id: "join-us",
-    ga: "join_us",
-    title: "Join us",
-    url: "http://ustwo.workable.com/",
-    external: true
-  }],
   caseStudy: Nulls.caseStudy
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {

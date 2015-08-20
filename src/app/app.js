@@ -75,7 +75,7 @@ export default class App extends React.Component {
     }
     if(state.currentPage === 'notfound') {
       content = <div className={appClasses}>
-        <Navigation pages={state.pages} section={this.state.currentPage.split('/')[0]} page={this.state.currentPage.split('/')[1]} takeover={this.showTakeover()} open={this.state.showNav} />
+        <Navigation pages={state.navMain} section={this.state.currentPage.split('/')[0]} page={this.state.currentPage.split('/')[1]} takeover={this.showTakeover()} open={this.state.showNav} />
         <FourOhFour {...this.state} />
       </div>;
     } else {
@@ -92,7 +92,7 @@ export default class App extends React.Component {
             }]}
           />
           <EntranceTransition className="nav-wrapper">
-            <Navigation pages={state.pages} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={this.showTakeover()} open={state.showNav} />
+            <Navigation pages={state.navMain} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={this.showTakeover()} open={state.showNav} />
           </EntranceTransition>
           <TransitionManager component="div" className={contentClasses} duration="0">
             <div className="app__stage__page-container" key={state.currentPage}>

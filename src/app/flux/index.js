@@ -13,8 +13,8 @@ import Routes from './routes';
 import Actions from './actions';
 
 const globalLoads = [{
-  url: 'ustwo/v1/studios',
-  type: 'studios'
+  url: 'ustwo/v1/nav/main',
+  type: 'navMain'
 }, {
   url: 'ustwo/v1/global/footer',
   type: 'footer'
@@ -22,6 +22,9 @@ const globalLoads = [{
   url: 'ustwo/v1/takeovers?embed',
   type: 'takeover',
   get: data => data[0]
+}, {
+  url: 'ustwo/v1/studios',
+  type: 'studios'
 }];
 
 function emitify(fn) {

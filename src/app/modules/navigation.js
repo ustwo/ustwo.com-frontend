@@ -36,14 +36,14 @@ export default class Navigation extends React.Component {
   render() {
     const navigationLinks = this.props.pages.map((link) => {
       return (
-        <NavigationLink key={link.id} url={link.url} colour={link.colour} onClick={this.closeOverlay} selected={link.id === this.props.section} external={link.external} gaId={link.ga}>
+        <NavigationLink key={link.id} url={link.slug === 'home' ? '/' : `/${link.slug}`} colour={link.colour} onClick={this.closeOverlay} selected={link.slug === this.props.section} gaId={link.ga}>
           {link.title}
         </NavigationLink>
       );
     });
     const navigationOverlayLinks = this.props.pages.map((link) => {
       return (
-        <NavigationOverlayLink key={link.url} url={link.url} onClick={this.closeOverlay} selected={link.id === this.props.section} external={link.external}>
+        <NavigationOverlayLink key={link.id} url={link.slug === 'home' ? '/' : `/${link.slug}`} onClick={this.closeOverlay} selected={link.slug === this.props.section}>
           {link.title}
         </NavigationOverlayLink>
       );
