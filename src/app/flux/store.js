@@ -134,7 +134,7 @@ export default {
       let url;
       switch (service) {
         case 'twitter':
-          url = `/twitter/count?url=${uri}`;
+          url = `twitter/count?url=${uri}`;
           break;
         case 'facebook':
           url = `https://graph.facebook.com/?id=${uri}`;

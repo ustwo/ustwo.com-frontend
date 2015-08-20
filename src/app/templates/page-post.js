@@ -3,11 +3,13 @@ import get from 'lodash/object/get';
 import moment from 'moment';
 import classnames from 'classnames';
 
+import Flux from '../flux';
+
 import ModuleRenderer from '../_lib/module-renderer';
 import SocialMediaStatistics from '../components/social-media-statistics';
 
 export default class PagePost extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.fetchSocialMediaShareCounts(this.props.page);
   }
   componentWillReceiveProps(nextProps) {
