@@ -34,7 +34,6 @@ const pageMap = {
   'what-we-do': require('./templates/page-what-we-do'),
   'what-we-do/case-study': require('./templates/page-case-study'),
   'blog': require('./templates/page-blog'),
-  'blog/category': require('./templates/page-blog'),
   'blog/post': require('./templates/page-post'),
   'blog/search-results': require('./templates/page-search-results'),
   'legal': require('./templates/page-legal'),
