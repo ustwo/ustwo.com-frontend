@@ -2,6 +2,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
+import get from 'lodash/object/get';
 
 import Flux from '../flux';
 import Nulls from '../flux/nulls';
@@ -34,14 +35,14 @@ export default class Navigation extends React.Component {
     Flux.navigate('/');
   }
   render() {
-    const navigationLinks = this.props.pages.map((link) => {
+    const navigationLinks = get(this.props, 'pages', []).map((link) => {
       return (
         <NavigationLink key={link.id} url={link.slug === 'home' ? '/' : `/${link.slug}`} colour={link.colour} onClick={this.closeOverlay} selected={link.slug === this.props.section} gaId={link.ga}>
           {link.title}
         </NavigationLink>
       );
     });
-    const navigationOverlayLinks = this.props.pages.map((link) => {
+    const navigationOverlayLinks = get(this.props, 'pages', []).map((link) => {
       return (
         <NavigationOverlayLink key={link.id} url={link.slug === 'home' ? '/' : `/${link.slug}`} onClick={this.closeOverlay} selected={link.slug === this.props.section}>
           {link.title}
