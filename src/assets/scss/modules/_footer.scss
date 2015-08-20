@@ -58,9 +58,29 @@
         width: 16px;
       }
       .email-cta {
-        font-size: 20px;
+        background: $offWhite;
+        height: 40px;
+        line-height: 40px;
+        color: $nonBlack;
+        font-size: 18px;
+        padding: 0 35px 0 15px;
         margin: 0;
-        border-bottom: 1px solid $marshPassion;
+        display: inline-block;
+        position: relative;
+        margin-top: 2px;
+
+        &:after {
+          content: "";
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          margin-top: -5px;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10"><path d="M 0 0 L 7 10 L 13 0 Z" fill="#F9615B" /></svg>');
+          background-position: 0 0;
+          transform: rotate(180deg);
+          width: 13px;
+          height: 10px;
+        }
 
         &:hover {
           border-bottom-color: $offWhite;
@@ -76,6 +96,7 @@
           display: block;
           float: left;
           margin-right: 21px;
+          background: $offWhite;
 
           &:last-child {
             margin-right: 0;
@@ -83,21 +104,41 @@
           a,
           .logo {
             display: block;
-            width: 43px;
-            height: 43px;
+            height: 35px;
+            width: 35px;
           }
           .logo {
-            fill: $offWhite;
+            fill: #777;
           }
           .name {
             display: none;
           }
-          a:hover .logo {
-            fill: $mare;
+
+          &.facebook {
+            a:hover {
+              .logo {
+                fill: #3A5998;
+              }
+            }
+          }
+          &.twitter {
+            a:hover {
+              .logo {
+                fill: #32ABE2;
+              }
+            }
+          }
+          &.linkedin {
+            a:hover {
+              .logo {
+                fill: #069;
+              }
+            }
           }
         }
       }
     }
+
     .studios {
       list-style: none;
       padding: 0;
@@ -151,11 +192,6 @@
           .social {
             .channel {
               margin-right: 15px;
-              a,
-              .logo {
-                height: 35px;
-                width: 35px;
-              }
             }
           }
         }
