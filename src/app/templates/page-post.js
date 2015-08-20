@@ -17,10 +17,9 @@ export default class PagePost extends React.Component {
   }
   render() {
     const post = this.props.page;
-    const terms = get(post, '_embedded.wp:term', []);
-    const category = get(terms, '0.0');
+    const category = get(post, '_embedded.wp:term.0.0', []);
+    const imageURL = get(post, '_embedded.wp:attachment.1.source_url');
     const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'uncategorised')}`);
-    const attachments = get(post, '_embedded.wp:attachment', []);
 
     return (
       <article className={classes}>
@@ -29,8 +28,8 @@ export default class PagePost extends React.Component {
             border-bottom-color: #14C04D;
           }
         `}</style>
-        <div className="hero-image" style={{backgroundImage: `url(${get(attachments, '1.source_url')})`}}>
-          <img className="image" src={get(attachments, '1.source_url')} />
+        <div className="hero-image" style={{backgroundImage: `url(${imageURL})`}}>
+          <img className="image" src={imageURL} />
         </div>
         <div className="content-container">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
