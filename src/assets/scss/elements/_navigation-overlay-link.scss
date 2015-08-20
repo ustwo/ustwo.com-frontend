@@ -3,10 +3,27 @@
   font-size: 24px;
   line-height: 2.5em;
 
-  &__link {
+  a {
     @extend .h3;
   }
-  &.selected &__link {
+  &.selected a {
     border-bottom: 4px solid $nonBlack;
   }
+
+  $i: 1;
+
+  @each $colour in $rain, $pot, $blu, $honey {
+    &:nth-child(#{$i}) {
+      color: #{$colour};
+      &.selected a {
+        border-color: #{$colour};
+      }
+    }
+    $i: $i + 1;
+  }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    line-height: 3.5em;
+  }
+
 }
