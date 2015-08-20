@@ -34,7 +34,7 @@ export default class StudioContact extends React.Component {
               <p><span className="locality">{studio.address['locality']}</span> <span className="region">{studio.address['region']}</span> <span className="postal-code">{studio.address['postal-code']}</span></p>
               <p className="country-name">{studio.address['country-name']}</p>
             </div>
-            <a className="url map" href={mapurl}>Google Maps</a>
+            <a className="url map" style={{borderColor: studio.color}} href={mapurl}>Google Maps</a>
           </div>
         </div>
       </li>
