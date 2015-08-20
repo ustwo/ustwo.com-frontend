@@ -13,6 +13,7 @@
     text-align: center;
     color: $offWhite;
     padding: 0 20px;
+    max-width: 550px;
   }
   &__image {
     display: none;
@@ -35,15 +36,16 @@
   @include susy-breakpoint($bp-medium, $susy) {
     &__title {
       padding: 0 40px;
+      max-width: 750px;
     }
   }
   @include susy-breakpoint($bp-large, $susy) {
     &__title {
       padding: 0 80px;
+      max-width: 1080px;
     }
   }
 }
-
 
 .js {
   .image-entrance {

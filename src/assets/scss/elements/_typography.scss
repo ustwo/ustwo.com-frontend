@@ -106,6 +106,14 @@ p, .p            { font-size: 16px; }
   }
 }
 
+@include susy-breakpoint($bp-medium, $susy) {
+  h1, .h1          { font-size: 60px; }
+  .page-post,
+  .page-case-study {
+    h1, .h1          { font-size: 56px; }
+  }
+}
+
 @include susy-breakpoint($bp-large, $susy) {
   h1, .h1          { font-size: 80px; }
   h2, .h2          { font-size: 50px; }
