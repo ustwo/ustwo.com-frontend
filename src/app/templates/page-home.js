@@ -27,7 +27,7 @@ export default class PageHome extends React.Component {
         },
         {
           blockReference: () => {return React.findDOMNode(this.refs.blockClient)},
-          hexColour: '6A86EC'
+          hexColour: '009CF3'
         },
         {
           blockReference: () => {return React.findDOMNode(this.refs.blockOwnStuff)},
