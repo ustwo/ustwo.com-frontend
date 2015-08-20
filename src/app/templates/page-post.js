@@ -49,8 +49,13 @@ export default class PagePost extends React.Component {
   }
   renderSocialMediaSharing = (position) => {
     const props = this.props;
+    let facebookShareCount = props.facebookShares.shares;
+    if (!facebookShareCount && props.facebookShares.id) {
+      // facebook returns an object without a 'shares' key (just id) when shares = 0
+      facebookShareCount = 0;
+    }
     return (
-      <SocialMediaSharing className={position} title={get(props.page, 'title.rendered')} uri={`http://ustwo.com/blog/${get(props.page, 'slug')}`} facebookShareCount={props.facebookShares.shares} twitterShareCount={props.twitterShares.count} />
+      <SocialMediaSharing className={position} title={get(props.page, 'title.rendered')} uri={`http://ustwo.com/blog/${get(props.page, 'slug')}`} facebookShareCount={facebookShareCount} twitterShareCount={props.twitterShares.count} />
     );
   }
   getModuleRenderer(colours) {
