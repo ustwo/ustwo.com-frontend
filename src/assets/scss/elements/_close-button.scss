@@ -1,7 +1,7 @@
 .nav__overlay__close-button {
   @extend %button__bare;
   display: inline-block;
-  margin-top: 15px;
   width: 60px;
   height: 60px;
+  float: right;
 }
