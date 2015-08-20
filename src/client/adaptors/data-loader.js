@@ -9,6 +9,7 @@ export default function (requiredData, apply) {
     return fetcher({
       url: params.url,
       external: params.external,
+      failure: params.failure,
       success: (data) => {
         apply(CamelCase(params.type), params.get ? params.get(data) : data);
       }

@@ -9,14 +9,9 @@ import ModuleRenderer from '../_lib/module-renderer';
 import SocialMediaSharing from '../components/social-media-sharing';
 
 export default class PagePost extends React.Component {
-  // componentWillMount() {
-  //   this.fetchSocialMediaShareCounts(this.props.page);
-  // }
-  // componentWillReceiveProps(nextProps) {
-  //   this.fetchSocialMediaShareCounts(nextProps.page);
-  // }
   render() {
-    const post = this.props.page;
+    const props = this.props;
+    const post = props.page;
     const category = get(post, '_embedded.wp:term.0.0', []);
     const imageURL = get(post, '_embedded.wp:attachment.1.source_url');
     const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'uncategorised')}`);
@@ -33,13 +28,13 @@ export default class PagePost extends React.Component {
         </div>
         <div className="content-container">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
-          <h1 className="title">{get(post, 'title.rendered')}</h1>
-          {/*<SocialMediaSharing className='side' title={get(post, 'title.rendered')} uri={`http://ustwo.com/blog/${post.slug}`} facebookShareCount={post && post.facebookShares} twitterShareCount={post && post.twitterShares} />*/}
+          <h1 className="title" dangerouslySetInnerHTML={{ __html: get(post, 'title.rendered') }} />
+          {this.renderSocialMediaSharing('side')}
           <p className="meta">By {get(post, '_embedded.author.0.name')} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
           <hr className="rule" />
           {get(post, 'page_builder', []).map(this.getModuleRenderer(get(post, 'colors', {})))}
           <hr className="rule" />
-          {/*<SocialMediaSharing className='bottom' title={get(post, 'title.rendered')} uri={`http://ustwo.com/blog/${post.slug}`} facebookShareCount={post && post.facebookShares} twitterShareCount={post && post.twitterShares} />*/}
+          {this.renderSocialMediaSharing('bottom')}
           <section className="author">
             <img className="mugshot" src={get(post, '_embedded.author.0.avatar_urls.96')} />
             <h1 className="title">About {get(post, '_embedded.author.0.name')}</h1>
@@ -52,6 +47,12 @@ export default class PagePost extends React.Component {
       </article>
     );
   }
+  renderSocialMediaSharing = (position) => {
+    const props = this.props;
+    return (
+      <SocialMediaSharing className={position} title={get(props.page, 'title.rendered')} uri={`http://ustwo.com/blog/${get(props.page, 'slug')}`} facebookShareCount={props.facebookShares.shares} twitterShareCount={props.twitterShares.count} />
+    );
+  }
   getModuleRenderer(colours) {
     return (moduleData) => {
       return ModuleRenderer(moduleData, colours, () => {
@@ -59,23 +60,5 @@ export default class PagePost extends React.Component {
         return this.zebra;
       });
     };
-  }
-  fetchSocialMediaShareCounts = (post) => {
-    if (post && post.slug) {
-      this.fetchFacebookShareCount(post);
-      this.fetchTweetCount(post);
-    }
-  }
-  fetchFacebookShareCount = (post) => {
-    if (!(post.facebookShares || post.facebookShares === 0)) {
-      const uri = `http://ustwo.com/blog/${post.slug}`;
-      Flux.getSocialShareCountForPost('facebook', uri);
-    }
-  }
-  fetchTweetCount = (post) => {
-    if (!(post.twitterShares || post.twitterShares === 0)) {
-      const uri = `http://ustwo.com/blog/${post.slug}`;
-      Flux.getSocialShareCountForPost('twitter', uri);
-    }
   }
 }

@@ -16,7 +16,9 @@ const _state = Object.assign({
   modal: Nulls.modal,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
-  caseStudy: Nulls.caseStudy
+  caseStudy: Nulls.caseStudy,
+  twitterShares: Nulls.twitterShares,
+  facebookShares: Nulls.facebookShares
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
   _state.takeover.seen = true;
@@ -33,20 +35,6 @@ function applyJobDetailData(job) {
   _state.jobs[index] = job;
   Log('Added job details', job);
 }
-function applySocialShareCountData(service, object) {
-  let propertyName;
-  switch (service) {
-    case 'twitter':
-      propertyName = 'count';
-      break;
-    case 'facebook':
-      propertyName = 'shares';
-      break;
-  }
-  const value = object[propertyName];
-  _state.page[`${service}Shares`] = value;
-  Log(`Added ${capitalize(service)} share count`, value);
-}
 
 window._state = _state;
 
@@ -62,6 +50,10 @@ export default {
     }
     if(newPage !== 'blog/category') {
       _state.blogCategory = 'all';
+    }
+    if(newPage !== 'blog/post') {
+      _state.twitterShares = {};
+      _state.facebookShares = {};
     }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
@@ -125,31 +117,5 @@ export default {
   showBlogCategories() {
     _state.modal = 'blogCategories'
     return Promise.resolve(_state);
-  },
-  getSocialShareCountForPost(service, uri) {
-    const post = _state.page;
-    let promise;
-
-    if (post[service] || post[service] === 0) {
-      promise = Promise.resolve(_state);
-    } else {
-      let url;
-      switch (service) {
-        case 'twitter':
-          url = `twitter/count?url=${uri}`;
-          break;
-        case 'facebook':
-          url = `https://graph.facebook.com/?id=${uri}`;
-          break;
-      }
-      if (url) {
-        promise = DataLoader([{
-          url: url,
-          external: service,
-          type: `${service}Shares`
-        }], applySocialShareCountData.bind(this, service)).then(() => _state);
-      }
-    }
-    return promise;
   }
 };
