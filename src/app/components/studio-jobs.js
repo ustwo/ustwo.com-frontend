@@ -51,8 +51,8 @@ export default class StudioJobs extends React.Component {
         <div className="tab-content" id={`tab-content-${id}`}>
           <div className="studio-info">
             <div className="info" style={{ backgroundColor: this.props.colour }}>
-              <p className="excerpt">{studioIntros[id].title}</p>
-              <p className="content">{studioIntros[id].text}</p>
+              <p className="excerpt">{get(studio, 'recruitment-title')}</p>
+              <p className="content">{get(studio, 'recruitment-desc')}</p>
             </div>
             <div className="photo" style={{backgroundImage: "url(/images/photo.jpg)"}}>
               <img src="/images/photo.jpg" alt="Tea Building" />
@@ -76,7 +76,7 @@ export default class StudioJobs extends React.Component {
       list = (
         <div className="jobs-none">
           <p>We don't have any openings currently. However we're always looking for talented individuals to join the ustwo family.</p>
-          <a href="#">Get in touch</a>
+          <a href={this.props.contactEmail.length ? `${this.props.contactEmail}?subject=${this.props.studio.name} Jobs` : ''}>Get in touch</a>
         </div>
       );
     }
