@@ -9,12 +9,12 @@ import ModuleRenderer from '../_lib/module-renderer';
 import SocialMediaSharing from '../components/social-media-sharing';
 
 export default class PagePost extends React.Component {
-  componentWillMount() {
-    this.fetchSocialMediaShareCounts(this.props.page);
-  }
-  componentWillReceiveProps(nextProps) {
-    this.fetchSocialMediaShareCounts(nextProps.page);
-  }
+  // componentWillMount() {
+  //   this.fetchSocialMediaShareCounts(this.props.page);
+  // }
+  // componentWillReceiveProps(nextProps) {
+  //   this.fetchSocialMediaShareCounts(nextProps.page);
+  // }
   render() {
     const post = this.props.page;
     const category = get(post, '_embedded.wp:term.0.0', []);
@@ -34,12 +34,12 @@ export default class PagePost extends React.Component {
         <div className="content-container">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h1 className="title">{get(post, 'title.rendered')}</h1>
-          <SocialMediaSharing className='side' title={get(post, 'title.rendered')} uri={`http://ustwo.com/blog/${post.slug}`} facebookShareCount={post && post.facebookShares} twitterShareCount={post && post.twitterShares} />
+          {/*<SocialMediaSharing className='side' title={get(post, 'title.rendered')} uri={`http://ustwo.com/blog/${post.slug}`} facebookShareCount={post && post.facebookShares} twitterShareCount={post && post.twitterShares} />*/}
           <p className="meta">By {get(post, '_embedded.author.0.name')} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
           <hr className="rule" />
           {get(post, 'page_builder', []).map(this.getModuleRenderer(get(post, 'colors', {})))}
           <hr className="rule" />
-          <SocialMediaSharing className='bottom' title={get(post, 'title.rendered')} uri={`http://ustwo.com/blog/${post.slug}`} facebookShareCount={post && post.facebookShares} twitterShareCount={post && post.twitterShares} />
+          {/*<SocialMediaSharing className='bottom' title={get(post, 'title.rendered')} uri={`http://ustwo.com/blog/${post.slug}`} facebookShareCount={post && post.facebookShares} twitterShareCount={post && post.twitterShares} />*/}
           <section className="author">
             <img className="mugshot" src={get(post, '_embedded.author.0.avatar_urls.96')} />
             <h1 className="title">About {get(post, '_embedded.author.0.name')}</h1>
