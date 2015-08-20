@@ -29,4 +29,24 @@
       font-size: 36px;
     }
   }
+
+  @include susy-breakpoint($bp-medium, $susy) {
+    &:first-of-type {
+      min-height: 300px;
+
+      h2 {
+        font-size: 40px;
+      }
+    }
+  }
+
+  @include susy-breakpoint($bp-large, $susy) {
+    &:first-of-type {
+      min-height: 400px;
+
+      h2 {
+        font-size: 60px;
+      }
+    }
+  }
 }
