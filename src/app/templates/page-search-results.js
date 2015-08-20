@@ -6,6 +6,7 @@ import map from 'lodash/collection/map';
 import Flux from '../flux';
 
 import SearchResultListItem from '../components/search-result-list-item';
+import BlogControls from '../components/blog-controls';
 
 export default class PageSearchResults extends React.Component {
   render() {
@@ -26,7 +27,10 @@ export default class PageSearchResults extends React.Component {
 
     return (
       <article className="page-search-results">
-        <h1>{outcomeText}</h1>
+        <div className="search-results-header">
+          <h1>{outcomeText}</h1>
+          <BlogControls blogCategory={props.blogCategory}/>
+        </div>
         <div className="clear-search"><button onClick={this.onClickReSearch}>{searchText}</button></div>
         <ul>{this.renderSearchResults(props.page)}</ul>
       </article>

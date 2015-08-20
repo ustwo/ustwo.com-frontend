@@ -1,5 +1,7 @@
 .search-result-list-item {
   position: relative;
+  max-width: 1380px;
+  margin: 0 auto;
   margin-bottom: 10px;
 
   &:last-of-type {
