@@ -3,6 +3,7 @@
 import React from 'react';
 import find from 'lodash/collection/find';
 import findIndex from 'lodash/array/findIndex';
+import omit from 'lodash/object/omit';
 
 class Rimage extends React.Component {
   constructor(props) {
@@ -14,12 +15,10 @@ class Rimage extends React.Component {
   render() {
     const url = this.getImageUrl();
     let img;
-    if(this.props.background) {
-      img = (
-        <section className={this.props.className} style={{backgroundImage: `url('${url}')`}}>
-          <img className={`${this.props.className}__image`} src={url} />
-        </section>
-      );
+    if(this.props.wrap) {
+      img = React.createElement(this.props.wrap, Object.assign({
+        style: {backgroundImage: `url('${url}')`}
+      }, omit(this.props, ['wrap', 'sizes'])), [<img className={`${this.props.className}__image`} src={url} />]);
     } else {
       img = <img className={this.props.className} src={url} />
     }

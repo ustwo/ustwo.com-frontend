@@ -5,18 +5,14 @@ import classnames from 'classnames';
 import get from 'lodash/object/get';
 
 import Flux from '../flux';
+import GetFeaturedImage from '../_lib/get-featured-image';
+import Rimage from '../elements/rimage';
 
 export default class WorkItem extends React.Component {
   render() {
     const data = this.props.data;
     const link = `/what-we-do/${get(data, 'slug')}`;
-    const imageId = get(data, 'featured_image');
-    let image;
-    this.props.attachments.forEach(item => {
-      if(item.id === imageId) {
-        image = item;
-      }
-    });
+    const image = GetFeaturedImage(data);
     return (
       <li className={classnames(this.props.className, 'work-item')} style={{backgroundColor: get(data, 'colors.bg')}}>
         <a href={link} onClick={Flux.override(link)} className="work-item__image-link" style={{backgroundImage: `url('${get(image, 'source_url') || ''}')`}}>

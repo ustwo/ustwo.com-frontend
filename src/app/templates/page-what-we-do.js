@@ -5,6 +5,7 @@ import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 
 import ModuleRenderer from '../_lib/module-renderer';
+import GetAttachments from '../_lib/get-attachments';
 import WorkItem from '../components/work-item';
 import Hero from '../components/hero';
 
@@ -20,8 +21,7 @@ export default class PageWhatWeDo extends React.Component {
         <ul className="page-work__list">
           {get(caseStudiesModule, 'attr.case_studies.value', '').split(',').map(caseStudyName => {
             const caseStudyData = find(get(pageData, '_embedded.ustwo:case_studies', []), 'slug', caseStudyName);
-            const attachments = get(pageData, '_embedded.wp:attachment', []);
-            return <WorkItem key={caseStudyName} className="page-work__list__item" data={caseStudyData} attachments={attachments} />;
+            return <WorkItem key={caseStudyName} className="page-work__list__item" data={caseStudyData} attachments={GetAttachments(pageData)} />;
           })}
         </ul>
       </article>

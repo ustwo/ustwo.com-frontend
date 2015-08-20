@@ -13,6 +13,6 @@ function getSizesArray(sizesObject) {
 
 export default class FullImage extends React.Component {
   render() {
-    return <Rimage className="full-image" sizes={getSizesArray(this.props.sizes)} background={true} />;
+    return <Rimage className="full-image" sizes={getSizesArray(this.props.sizes)} wrap="section" />;
   }
 }

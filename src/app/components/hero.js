@@ -6,6 +6,7 @@ import classnames from 'classnames';
 import EntranceTransition from '../elements/entrance-transition';
 import WordAnimation from '../elements/word-animation';
 import DownChevron from '../elements/down-chevron';
+import Rimage from '../elements/rimage';
 import Track from '../../server/adaptors/track';
 
 export default class Hero extends React.Component {
@@ -55,11 +56,11 @@ export default class Hero extends React.Component {
     if (props.backgroundTint) {
       image = (
         <EntranceTransition className='image-entrance'>
-          <img className="hero__image" src={props.imageURL} />
+          <Rimage className="hero__image" src={props.imageURL} />
         </EntranceTransition>
       );
     } else {
-      image = <img className="hero__image" src={props.imageURL} />;
+      image = <Rimage className="hero__image" src={props.imageURL} />;
     }
     return image;
   }
