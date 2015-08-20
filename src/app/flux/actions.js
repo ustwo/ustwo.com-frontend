@@ -36,6 +36,9 @@ const Actions = {
   },
   showBlogCategories() {
     return Store.showBlogCategories();
+  },
+  getSocialShareCountForPost(service, uri) {
+    return Store.getSocialShareCountForPost(service, uri);
   }
 };
 

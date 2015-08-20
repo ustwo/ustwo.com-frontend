@@ -17,7 +17,7 @@ let defaultConfig = {
 
 function fetcher (config) {
   let mergedConfig = Object.assign({}, defaultConfig, config);
-  let url = mergedConfig.baseurl + mergedConfig.url;
+  let url = config.external ? mergedConfig.url : mergedConfig.baseurl + mergedConfig.url;
   console.log('Fetching:', url);
   const req = Fetch(url, mergedConfig)
     .then((response) => {

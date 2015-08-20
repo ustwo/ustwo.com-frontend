@@ -25,6 +25,8 @@ $grey        : #212121;
 $nonBlack    : #333333;
 $midGrey     : #BFBFBF;
 $lightGrey   : #E8E8E8;
+$twitter     : #32abe2;
+$facebook    : #3a5998;
 
 $colours: (
   'piglet'            $piglet      ,
@@ -77,6 +79,11 @@ $studio-colours: (
   malmo: $piglet,
   newyork: $ohra,
   sydney: $rain
+);
+
+$social-media-colours: (
+  twitter: $twitter,
+  facebook: $facebook
 );
 
 @each $colour in $colours {

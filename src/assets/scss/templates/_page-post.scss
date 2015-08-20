@@ -14,10 +14,9 @@
     }
   }
 }
+
 // NO MORE DRAGONS
-
 .page-post {
-
   a {
     font-family: $PxGroteskBold;
     border-bottom-width: 2px;
@@ -42,6 +41,77 @@
     }
     img {
       display: none;
+    }
+  }
+
+  .social-media-statistics {
+    list-style: none;
+    padding: 0;
+
+    .channel {
+      $box-height: 26px;
+
+      width: 60px;
+      height: $box-height;
+
+      span {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        margin: 0;
+        text-align: right;
+        padding-right: 14px;
+        position: relative;
+        top: 52%;
+        transform: translateY(-50%);
+      }
+
+      .svg-container {
+        position: absolute;
+        width: $box-height;
+        height: $box-height;
+        background: $offWhite;
+
+        .logo {
+          display: block;
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      @each $channel, $colour in $social-media-colours {
+        &.#{$channel} {
+          background: $colour;
+
+          .svg-container .logo {
+            fill: $colour;
+          }
+        }
+      }
+    }
+
+    &.side {
+      display: none;
+      position: absolute;
+      right: 0;
+    }
+
+    &.bottom {
+      display: inline-block;
+      margin: 5px 0 35px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+
+      .channel {
+        display: inline-block;
+        margin-right: 12px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
 
@@ -177,6 +247,32 @@
   @include susy-breakpoint($bp-medium, $susy) {
     .hero-image {
       height: 450px;
+    }
+    .social-media-statistics {
+      &.side {
+        display: block;
+      }
+      &.bottom {
+        margin: 20px 0 60px;
+
+        .channel {
+          margin-right: 17px;
+        }
+      }
+      .channel {
+        $box-height: 34px;
+        width: 74px;
+        height: $box-height;
+
+        span {
+          font-size: 16px;
+        }
+
+        .svg-container {
+          width: $box-height;
+          height: $box-height;
+        }
+      }
     }
     .content-container {
       margin-top: -70px;

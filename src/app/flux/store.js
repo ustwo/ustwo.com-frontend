@@ -1,6 +1,7 @@
 import reject from 'lodash/collection/reject';
 import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
+import capitalize from 'lodash/string/capitalize';
 
 import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
@@ -52,6 +53,20 @@ function applyJobDetailData(job) {
   const index = findIndex(_state.jobs, 'shortcode', job.shortcode);
   _state.jobs[index] = job;
   console.log('Added job details', job);
+}
+function applySocialShareCountData(service, object) {
+  let propertyName;
+  switch (service) {
+    case 'twitter':
+      propertyName = 'count';
+      break;
+    case 'facebook':
+      propertyName = 'shares';
+      break;
+  }
+  const value = object[propertyName];
+  _state.page[`${service}Shares`] = value;
+  console.log(`Added ${capitalize(service)} share count`, value);
 }
 
 window._state = _state;
@@ -130,5 +145,31 @@ export default {
   showBlogCategories() {
     _state.modal = 'blogCategories'
     return Promise.resolve(_state);
+  },
+  getSocialShareCountForPost(service, uri) {
+    const post = _state.page;
+    let promise;
+
+    if (post[service] || post[service] === 0) {
+      promise = Promise.resolve(_state);
+    } else {
+      let url;
+      switch (service) {
+        case 'twitter':
+          url = `/twitter/count?url=${uri}`;
+          break;
+        case 'facebook':
+          url = `https://graph.facebook.com/?id=${uri}`;
+          break;
+      }
+      if (url) {
+        promise = DataLoader([{
+          url: url,
+          external: service,
+          type: `${service}Shares`
+        }], applySocialShareCountData.bind(this, service)).then(() => _state);
+      }
+    }
+    return promise;
   }
 };
