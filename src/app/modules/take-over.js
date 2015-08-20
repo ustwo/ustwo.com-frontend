@@ -46,7 +46,7 @@ export default class TakeOver extends React.Component {
               {takeover.links.map(this.renderLink)}
             </ul>
           </div>
-          <div className="take-over__content__image" style={{"background-image": takeover.image}}>
+          <div className="take-over__content__image" style={{backgroundImage: `url(${takeover.image})`}}>
           </div>
         </div>
       );
