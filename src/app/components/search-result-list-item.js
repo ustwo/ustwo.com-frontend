@@ -8,9 +8,9 @@ import Flux from '../flux';
 export default class SearchResultListItem extends React.Component {
   render() {
     const post = this.props.data;
-    const terms = (post && post._embedded && post._embedded['http://v2.wp-api.org/term']) || [];
+    const terms = get(post, '_embedded.wp:terms', []);
     const category = get(terms, '0.0.name', 'category');
-    const attachments = (post && post._embedded && post._embedded['http://v2.wp-api.org/attachment']) || [];
+    const attachments = get(post, '_embedded.wp:attachment', []);
     const imageURL = get(attachments, '1.source_url');
     const uri = `/blog/${get(post, 'slug')}`;
 

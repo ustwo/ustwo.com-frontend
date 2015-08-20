@@ -22,7 +22,7 @@ export default class PageJoinUs extends React.Component {
   }
   render() {
     const pageData = this.props.page;
-    const attachments = (pageData && pageData._embedded && pageData._embedded['http://v2.wp-api.org/attachment'][0]) || [];
+    const attachments = get(pageData, '_embedded.wp:attachment', []);
     const image = find(attachments, item => item.id === get(pageData, 'featured_image'));
     const svgContent = '<use xlink:href="/images/spritemap.svg#ustwologo" />';
 
@@ -82,7 +82,7 @@ export default class PageJoinUs extends React.Component {
     }
   }
   renderStudioJobs = () => {
-    const jobs = this.props.jobs;
+    const jobs = this.props.jobs || [];
     return map(this.getStudios(), studio => {
       const id = kebabCase(studio.name);
       const name = studio.name;

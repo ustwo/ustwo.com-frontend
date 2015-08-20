@@ -4,29 +4,31 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 
+import ModuleRenderer from '../_lib/module-renderer';
 import WorkItem from '../components/work-item';
 import Hero from '../components/hero';
 
 export default class PageWork extends React.Component {
   render() {
     const pageData = this.props.page;
-    const headerText = 'Building and Launching'; // get(pageData, 'page_builder.0.attr.heading.value')
+    const caseStudiesModule = find(get(pageData, 'page_builder', []), 'name', 'case_studies');
     return (
       <article className="page-work">
-        <Hero title={headerText} imageURL='/images/whatwedo/header/image_1.jpg' eventLabel='what-we-do' />
-        <section className="intro">
-          <h2 className="intro__title">{get(pageData, 'page_builder.1.attr.heading.value')}</h2>
-          <hr className="intro__rule" />
-          <div className="intro__para" dangerouslySetInnerHTML={{__html: get(pageData, 'page_builder.1.attr.body.value')}} />
-        </section>
+        <Hero title={get(pageData, 'display_title')} imageURL='/images/whatwedo/header/image_1.jpg' eventLabel='what-we-do' />
+        {get(pageData, 'page_builder', []).map(this.getModuleRenderer(get(pageData, 'colors')))}
         <ul className="page-work__list">
-          {get(pageData, 'page_builder.2.attr.case_studies.value', '').split(',').map(caseStudyName => {
+          {get(caseStudiesModule, 'attr.case_studies.value', '').split(',').map(caseStudyName => {
             const caseStudyData = find(get(pageData, '_embedded.ustwo:case_studies', []), 'slug', caseStudyName);
-            const attachments = (pageData && pageData._embedded && pageData._embedded['http://v2.wp-api.org/attachment']) || [];
+            const attachments = get(pageData, '_embedded.wp:attachment', []);
             return <WorkItem key={caseStudyName} className="page-work__list__item" data={caseStudyData} attachments={attachments} />;
           })}
         </ul>
       </article>
     );
+  }
+  getModuleRenderer = (colours) => {
+    return (moduleData) => {
+      return ModuleRenderer(moduleData, colours, () => true);
+    };
   }
 }

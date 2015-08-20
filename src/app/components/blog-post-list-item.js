@@ -10,13 +10,13 @@ export default class BlogPostListItem extends React.Component {
   render() {
     const props = this.props;
     const post = props.data;
-    const terms = (post._embedded && post._embedded['http://v2.wp-api.org/term']) || [];
+    const terms = get(post, '_embedded.wp:term', []);
     const category = get(terms, '0.0');
     const classes = classnames('blog-post-list-item', `blog-label-${get(category, 'slug', 'category')}`, {
       featured: props.featured
     });
-    const attachments = (post._embedded && post._embedded['http://v2.wp-api.org/attachment']) || [];
-    const imageURL = get(attachments, '1.source_url');
+    const attachments = get(post, '_embedded.wp:attachment', []);
+    const imageURL = get(attachments, '1.source_url', '');
     const featuredImage = find(attachments, 'id', get(post, 'featured_image'));
     const uri = `/blog/${get(post, 'slug')}`;
 

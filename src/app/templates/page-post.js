@@ -15,10 +15,10 @@ export default class PagePost extends React.Component {
   }
   render() {
     const post = this.props.page;
-    const terms = (post && post._embedded && post._embedded['http://v2.wp-api.org/term']) || [];
+    const terms = get(post, '_embedded.wp:terms', []);
     const category = get(terms, '0.0');
     const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'category')}`);
-    const attachments = (post && post._embedded && post._embedded['http://v2.wp-api.org/attachment']) || [];
+    const attachments = get(post, '_embedded.wp:attachment', []);
 
     return (
       <article className={classes}>
