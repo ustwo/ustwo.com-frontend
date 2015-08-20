@@ -30,6 +30,7 @@ export default class PageBlog extends React.Component {
           {posts.map((postData, index) => {
             return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!categorised && index === 0} data={postData} />;
           })}
+          <div className="load-more"><button className="load">Load more</button></div>
         </section>
       </article>
     );

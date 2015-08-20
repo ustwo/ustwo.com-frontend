@@ -81,6 +81,25 @@
     margin: 0 auto;
   }
 
+  .load-more {
+    padding: 10px 0 30px 0;
+    text-align: center;
+
+    .load {
+      background: transparent;
+      border: none;
+      outline: 0;
+      height: 60px;
+      line-height: 60px;
+      display: inline-block;
+      background: $nonBlack;
+      color: #fff;
+      font-family: $PxGroteskBold;
+      padding: 0 70px;
+      font-size: 18px;
+    }
+  }
+
   @include susy-breakpoint($bp-medium, $susy) {
     .blog-category {
       transform: translateY(-21px);
@@ -106,7 +125,7 @@
       .blog-post-list {
         .blog-post-list-item {
           position: relative;
-          
+
           &:not(.featured) {
             &:nth-child(2n + 1) {
               margin-right: $blog-gutter-large;
@@ -116,6 +135,11 @@
             }
           }
         }
+      }
+    }
+    .load-more {
+      .load {
+        padding: 0 150px;
       }
     }
   }

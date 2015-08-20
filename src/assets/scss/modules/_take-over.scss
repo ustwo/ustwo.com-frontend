@@ -75,6 +75,10 @@
         background: none;
         margin: 0 auto;
         padding: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 100;
 
         svg {
           width: 50px;
@@ -99,6 +103,7 @@
         flex-direction: column;
         list-style: none;
         padding: 0;
+        margin: 0;
 
         &__link-item {
           margin-bottom: 15px;
@@ -110,7 +115,6 @@
           }
         }
       }
-
       &__title,
       &__description,
       &__links {
@@ -194,7 +198,7 @@
       &__title,
       &__description,
       &__links__link-item {
-        margin-top: 2%;
+
       }
       &__links {
 
