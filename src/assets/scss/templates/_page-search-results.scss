@@ -3,21 +3,26 @@
 
   .search-results-header {
     position: relative;
-    height: 50vh;
     background-color: $blu;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 100px 0;
+    flex-direction: column;
 
     .blog-controls {
-      bottom: $blog-search-result-offset + 30px;
+      bottom: auto;
+      position: relative;
+      left: auto;
+      transform: none;
+      margin-top: 30px;
     }
   }
 
   h1 {
     text-align: center;
-    margin-top: - $blog-search-result-offset;
     color: #fff;
+    padding: 0 100px;
   }
 
   .clear-search {
@@ -46,10 +51,6 @@
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
-
-    .search-results-header {
-
-    }
 
     ul {
       padding-bottom: 110px;

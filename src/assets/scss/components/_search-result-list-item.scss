@@ -49,6 +49,11 @@
       img {
         display: none;
       }
+
+      a {
+        display: block;
+        height: 245px;
+      }
     }
     .content {
       padding-left: $search-result-height-desktop + 20px;
