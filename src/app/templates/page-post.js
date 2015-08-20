@@ -4,17 +4,14 @@ import moment from 'moment';
 import classnames from 'classnames';
 
 import ModuleRenderer from '../_lib/module-renderer';
+import SocialMediaStatistics from '../components/social-media-statistics';
 
 export default class PagePost extends React.Component {
   componentDidMount() {
-    const post = this.props.page;
-    this.fetchTweetCount(post);
-    this.fetchFacebookShareCount(post);
+    this.fetchSocialMediaShareCounts(this.props.page);
   }
   componentWillReceiveProps(nextProps) {
-    const post = nextProps.page;
-    this.fetchTweetCount(post);
-    this.fetchFacebookShareCount(post);
+    this.fetchSocialMediaShareCounts(nextProps.page);
   }
   render() {
     const post = this.props.page;
@@ -22,8 +19,6 @@ export default class PagePost extends React.Component {
     const category = get(terms, '0.0');
     const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'category')}`);
     const attachments = (post && post._embedded && post._embedded['http://v2.wp-api.org/attachment']) || [];
-    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebook" />';
-    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitter" />';
 
     return (
       <article className={classes}>
@@ -38,20 +33,12 @@ export default class PagePost extends React.Component {
         <div className="content-container">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h1 className="title">{get(post, 'title.rendered')}</h1>
-          <ul className="social-media-container">
-            <li className="twitter channel">
-              <div className='svg-container'><svg className="logo" title="twitter logo" role="img" dangerouslySetInnerHTML={{__html: twitterLogo }} /></div>
-              <span>{post && post.twitterShares}</span>
-            </li>
-            <li className="facebook channel">
-              <div className='svg-container'><svg className="logo" title="facebook logo" role="img" dangerouslySetInnerHTML={{__html: facebookLogo }} /></div>
-              <span>{post && post.facebookShares}</span>
-            </li>
-          </ul>
+          <SocialMediaStatistics className='side' facebookShareCount={post && post.facebookShares} twitterShareCount={post && post.twitterShares} />
           <p className="meta">By {get(post, '_embedded.author.0.name')} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
           <hr className="rule" />
           {get(post, 'page_builder', []).map(this.getModuleRenderer(get(post, 'colors', {})))}
           <hr className="rule" />
+          <SocialMediaStatistics className='bottom' facebookShareCount={post && post.facebookShares} twitterShareCount={post && post.twitterShares} />
           <section className="author">
             <img className="mugshot" src={get(post, '_embedded.author.0.avatar_urls.96')} />
             <h1 className="title">About {get(post, '_embedded.author.0.name')}</h1>
@@ -72,16 +59,22 @@ export default class PagePost extends React.Component {
       });
     };
   }
-  fetchTweetCount = (post) => {
-    if (post && post.slug && !(post.twitterShares || post.twitterShares === 0)) {
-      const uri = `http://ustwo.com/blog/${post.slug}`;
-      Flux.getSocialShareCountForPost('twitter', uri);
+  fetchSocialMediaShareCounts = (post) => {
+    if (post && post.slug) {
+      this.fetchFacebookShareCount(post);
+      this.fetchTweetCount(post);
     }
   }
   fetchFacebookShareCount = (post) => {
-    if (post && post.slug && !(post.facebookShares || post.facebookShares === 0)) {
+    if (!(post.facebookShares || post.facebookShares === 0)) {
       const uri = `http://ustwo.com/blog/${post.slug}`;
       Flux.getSocialShareCountForPost('facebook', uri);
+    }
+  }
+  fetchTweetCount = (post) => {
+    if (!(post.twitterShares || post.twitterShares === 0)) {
+      const uri = `http://ustwo.com/blog/${post.slug}`;
+      Flux.getSocialShareCountForPost('twitter', uri);
     }
   }
 }
