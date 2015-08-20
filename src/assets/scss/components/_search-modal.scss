@@ -44,6 +44,16 @@
       -webkit-focus-ring-color: rgba(0,0,0,0);
       outline: none;
     }
+
+    .text {
+      display: none;
+    }
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      .text {
+        display: inline-block;
+      }
+    }
   }
 
   .search {

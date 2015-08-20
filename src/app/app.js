@@ -65,7 +65,7 @@ export default class App extends React.Component {
     const contentClasses = classnames('app__content', {
       takeover: this.showTakeover(),
       disabled: !!state.modal,
-      'mobile-no-scroll': state.modal === 'blogCategories' || state.showNav
+      'mobile-no-scroll': state.modal === 'blogCategories' || state.showNav || state.modal === 'search'
     });
     let content;
     if(this.state.showNav) {

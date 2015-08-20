@@ -25,13 +25,8 @@ export default class SearchModal extends React.Component {
     return (
       <div className="search-modal" onClick={onClickContent}>
         <header className='header'>
-          <div className="nav__logo">
-            <a className="nav__logo__link" href="/" onClick={this.onClickLogo}>
-              <svg className="nav__logo__graphic" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: ustwoLogo }} />
-            </a>
-          </div>
           <CloseButton onClose={this.onClickClose} autoAnim={500}>
-            <span>Hit esc to close</span>
+            <span className="text">Hit esc to close</span>
           </CloseButton>
         </header>
         <form method='POST' action='/blog/search' className='search' onSubmit={this.onSubmit}>
