@@ -2,6 +2,7 @@ import reject from 'lodash/collection/reject';
 import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
 import capitalize from 'lodash/string/capitalize';
+import every from 'lodash/collection/every';
 
 import Log from '../_lib/log';
 import window from '../../server/adaptors/window';
@@ -34,6 +35,15 @@ function applyJobDetailData(job) {
   const index = findIndex(_state.jobs, 'shortcode', job.shortcode);
   _state.jobs[index] = job;
   Log('Added job details', job);
+}
+function applyTwitterShareCount(twitterObject) {
+  const url = twitterObject.url.split('/');
+  const slug = url[-1] || url[url.length-2];
+  const index = findIndex(_state.posts, 'slug', slug);
+  Object.assign(_state.posts[index], {
+    twitterShares: twitterObject.count
+  });
+  console.log('Added Twitter share count', twitterObject.count);
 }
 
 window._state = _state;
@@ -117,5 +127,21 @@ export default {
   showBlogCategories() {
     _state.modal = 'blogCategories'
     return Promise.resolve(_state);
+  },
+  getSocialSharesForPosts() {
+    let promise;
+    if (every(_state.posts, 'twitterShares')) {
+      promise = Promise.resolve(_state);
+    } else {
+      promise = Promise.all(_state.posts.map(post => {
+        const uri = `http://ustwo.com/blog/${post.slug}`;
+        return DataLoader([{
+            url: `twitter/count?url=http://ustwo.com/blog/${post.slug}`,
+            external: 'twitter',
+            type: 'twitterShares'
+          }], applyTwitterShareCount).then(() => _state);
+      })).then(() => _state);
+    }
+    return promise;
   }
 };

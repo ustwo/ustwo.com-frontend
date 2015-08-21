@@ -32,10 +32,10 @@ export default class BlogPostListItem extends React.Component {
           <div className="excerpt" dangerouslySetInnerHTML={{ __html: get(post, 'excerpt.rendered')}} />
           <div className="tail">
             <a href={uri} onClick={Flux.override(uri)}>Read more</a>
-            {/*<div className="social">
-              <div className="twitter">120</div>
-              <div className="comments">43</div>
-            </div>*/}
+            <div className="social">
+              <div className="twitter">{post.twitterShares}</div>
+              <div className="facebook">xx</div>
+            </div>
           </div>
         </div>
       </article>

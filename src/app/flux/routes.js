@@ -88,13 +88,13 @@ const routes = {
       external: 'facebook',
       type: 'facebookShares',
       slug: pid,
-      failure: response => console.log('failed', response)
+      failure: response => console.log('Failed to fetch Facebook share count', response)
     }, {
       url: `twitter/count?url=http://ustwo.com/blog/${pid}`,
       external: 'twitter',
       type: 'twitterShares',
       slug: pid,
-      failure: response => console.log('failed', response)
+      failure: response => console.log('Failed to fetch Twitter share count', response)
     }]
   },
   legal: {
