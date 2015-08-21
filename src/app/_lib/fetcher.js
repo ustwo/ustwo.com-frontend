@@ -2,6 +2,7 @@ import { polyfill } from 'es6-promise';
 import Fetch from 'isomorphic-fetch/fetch-npm-node.js';
 import pick from 'lodash/object/pick';
 
+import Log from '../_lib/log';
 import window from '../../server/adaptors/window';
 
 (typeof window !== 'undefined') && (window.ajaxPending = false);
@@ -30,7 +31,7 @@ function fetcher (config) {
   } else {
     url = mergedConfig.baseurl + mergedConfig.url;
   }
-  console.log('Fetching:', url);
+  Log('Fetching:', url);
   const req = Fetch(url, mergedConfig)
     .then((response) => {
       remove(mergedConfig.url);

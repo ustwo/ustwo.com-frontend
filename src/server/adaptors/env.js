@@ -1,3 +1,4 @@
 export default {
-  Modernizr: {}
+  Modernizr: {},
+  verbose: !!process.env.VERBOSE
 }

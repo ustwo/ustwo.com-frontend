@@ -3,6 +3,7 @@ import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
 import capitalize from 'lodash/string/capitalize';
 
+import Log from '../_lib/log';
 import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
 import Nulls from '../flux/nulls';
@@ -25,12 +26,12 @@ function applyData(data, type) {
   const changeSet = {};
   changeSet[type] = data;
   Object.assign(_state, changeSet);
-  console.log('Loaded', type, _state[type]);
+  Log('Loaded', type, _state[type]);
 }
 function applyJobDetailData(job) {
   const index = findIndex(_state.jobs, 'shortcode', job.shortcode);
   _state.jobs[index] = job;
-  console.log('Added job details', job);
+  Log('Added job details', job);
 }
 function applySocialShareCountData(service, object) {
   let propertyName;
@@ -44,7 +45,7 @@ function applySocialShareCountData(service, object) {
   }
   const value = object[propertyName];
   _state.page[`${service}Shares`] = value;
-  console.log(`Added ${capitalize(service)} share count`, value);
+  Log(`Added ${capitalize(service)} share count`, value);
 }
 
 window._state = _state;

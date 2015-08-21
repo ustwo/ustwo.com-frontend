@@ -4,5 +4,6 @@ import 'browsernizr/test/css/transitions';
 import 'browsernizr/test/dom/classlist';
 
 export default {
-  Modernizr: require('browsernizr')
+  Modernizr: require('browsernizr'),
+  verbose: true
 };

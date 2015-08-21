@@ -3,6 +3,7 @@ image_name := ustwo/ustwo.com-frontend
 app_image := $(image_name):$(TAG)
 app_version = $(TAG)
 app_name = $(project_name)_$(TIER)_app
+verbosity = $(if $(VERBOSE), -e VERBOSE=true,)
 
 .PHONY: app-rm app-create app-log app-sh build pull push
 
@@ -12,6 +13,7 @@ ifeq ($(TIER), dev)
     -v $(BASE_PATH)/package.json:/usr/local/src/package.json \
     -v $(BASE_PATH)/src:/usr/local/src/src
   app_cmd = npm run dev
+  VERBOSE := true
 endif
 
 build:
@@ -37,6 +39,7 @@ app-create:
 		-p 8888:8888 \
 		$(docker_host) \
 		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \
+		$(verbosity) \
 		$(app_image) \
 		$(app_cmd)
 

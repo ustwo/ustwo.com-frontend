@@ -26,4 +26,4 @@ app.use(express.static(publicPath));
 app.use('/', routes);
 
 http.createServer(app).listen(app.get('port'));
-console.log(`${capitalize(camelCase(manifest.name))} ${manifest.version} up and running on ${app.get('port')}`);
+console.log(`${capitalize(camelCase(manifest.name))} up and running on ${app.get('port')}`);
