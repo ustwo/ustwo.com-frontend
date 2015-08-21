@@ -86,6 +86,10 @@
     }
     ul {
       list-style: square;
+
+      &.social-media-sharing {
+        list-style: none;
+      }
     }
     .title,
     .excerpt,
