@@ -80,7 +80,9 @@ p, .p            { font-size: 16px; }
   h4, .h4          { font-size: 20px; }
   h5, .h5          { font-size: 18px; }
   h6, .h6          { font-size: 18px; }
-  p, .p            { font-size: 18px; }
+  p, .p,
+  ul, .ul,
+  ol, .ol          { font-size: 18px; }
 }
 
 @include susy-breakpoint($bp-small, $susy) {
@@ -102,7 +104,10 @@ p, .p            { font-size: 16px; }
     h4, .h4          { font-size: 22px; }
     h5, .h5          { font-size: 20px; }
     h6, .h6          { font-size: 18px; }
-    p, .p            { font-size: 18px; }
+    p, .p,
+    ul, .ul,
+    ol, .ol          { font-size: 18px; }
+      margin-bottom: 10px;
   }
 }
 
@@ -121,7 +126,9 @@ p, .p            { font-size: 16px; }
   h4, .h4          { font-size: 30px; }
   h5, .h5          { font-size: 26px; }
   h6, .h6          { font-size: 24px; }
-  p, .p            { font-size: 18px; }
+  p, .p,
+  ul, .ul,
+  ol, .ol          { font-size: 18px; }
   .p__small        { font-size: 16px; }
   .p__super-small  { font-size: 14px; }
 }

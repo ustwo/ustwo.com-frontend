@@ -3,6 +3,7 @@
   a {
     position: relative;
     display: inline-block;
+    line-height: 1;
 
     &:after {
       content: "";
@@ -75,6 +76,17 @@
     padding: 40px 0;
     position: relative;
 
+
+    ul,
+    ol {
+      line-height: 1.5;
+      li {
+        margin-bottom: 10px;
+      }
+    }
+    ul {
+      list-style: square;
+    }
     .title,
     .excerpt,
     .meta,
@@ -128,7 +140,8 @@
     .single-column__content__para {
       a {
         font-family: $PxGroteskBold;
-        border-bottom: 2px solid;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
       }
       video,
       img,
