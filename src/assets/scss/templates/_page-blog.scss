@@ -84,6 +84,7 @@
   .load-more {
     padding: 10px 0 30px 0;
     text-align: center;
+    margin: 0 10px;
 
     .load {
       background: transparent;
@@ -95,8 +96,8 @@
       background: $nonBlack;
       color: #fff;
       font-family: $PxGroteskBold;
-      padding: 0 70px;
       font-size: 18px;
+      width: 100%;
     }
   }
 
@@ -130,7 +131,7 @@
         .message,
         .blog-post-list-item {
           position: relative;
-          
+
           &:not(.featured) {
             &:nth-child(2n + 1) {
               margin-right: $blog-gutter-large;
@@ -143,8 +144,11 @@
       }
     }
     .load-more {
+      margin: 0;
+
       .load {
         padding: 0 150px;
+        width: auto;
       }
     }
   }
