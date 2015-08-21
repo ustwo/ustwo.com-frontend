@@ -81,13 +81,16 @@ export default class App extends React.Component {
       content = (
         <div className={appClasses}>
           <Meta
-            title={`${get(state, 'page.seo.title') ? get(state, 'page.seo.title') + ' | ' : ''}ustwo`}
+            title={get(state, 'page.seo.title') || ''}
             meta={[{
               name: "description",
               content: get(state, 'page.seo.desc') || ''
             }, {
               name: "keywords",
               content: get(state, 'page.seo.keywords') || ''
+            }, {
+              name: "og:image",
+              content: get(state, 'page.seo.image') || ''
             }]}
           />
           <EntranceTransition className="nav-wrapper">
