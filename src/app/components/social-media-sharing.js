@@ -2,14 +2,15 @@
 
 import React from 'react';
 import classnames from 'classnames';
+import he from 'he';
 
 import Flux from '../flux';
 
 export default class SocialMediaSharing extends React.Component {
   render() {
     const props = this.props;
-    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebook" />';
-    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitter" />';
+    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebookBox" />';
+    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitterBox" />';
 
     return (
       <ul className={classnames('social-media-sharing', props.className)}>
@@ -20,7 +21,7 @@ export default class SocialMediaSharing extends React.Component {
           </a>
         </li>
         <li className="channel twitter">
-          <a target='_blank' href={`https://twitter.com/intent/tweet?text=${`${props.title} via @ustwo`}&url=${props.uri}`}>
+          <a target='_blank' href={`https://twitter.com/intent/tweet?text=${`${encodeURIComponent(props.title)} via @ustwo`}&url=${props.uri}`}>
             <div className='svg-container'><svg className="logo" title="twitter logo" role="img" dangerouslySetInnerHTML={{__html: twitterLogo }} /></div>
             <span>{props.twitterShareCount}</span>
           </a>

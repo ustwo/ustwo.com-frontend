@@ -16,7 +16,9 @@ const _state = Object.assign({
   modal: Nulls.modal,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
-  caseStudy: Nulls.caseStudy
+  caseStudy: Nulls.caseStudy,
+  twitterShares: Nulls.twitterShares,
+  facebookShares: Nulls.facebookShares
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
   _state.takeover.seen = true;
@@ -33,19 +35,20 @@ function applyJobDetailData(job) {
   _state.jobs[index] = job;
   Log('Added job details', job);
 }
-function applySocialShareCountData(service, object) {
-  let propertyName;
-  switch (service) {
-    case 'twitter':
-      propertyName = 'count';
-      break;
-    case 'facebook':
-      propertyName = 'shares';
-      break;
+function applySocialShareCount(response, type) {
+  let uri;
+  let value;
+  if (type === 'twitterShares') {
+    uri = response.url.split('/');
+    value = response.count;
+  } else {
+    uri = response.id.split('/');
+    value = response.shares || (response.id && 0);
   }
-  const value = object[propertyName];
-  _state.page[`${service}Shares`] = value;
-  Log(`Added ${capitalize(service)} share count`, value);
+  const slug = uri[uri.length-1] || uri[uri.length-2];
+  const index = findIndex(_state.posts, 'slug', slug);
+  _state.posts[index][type] = value;
+  Log(`Added ${type}`, value);
 }
 
 window._state = _state;
@@ -62,6 +65,10 @@ export default {
     }
     if(newPage !== 'blog/category') {
       _state.blogCategory = 'all';
+    }
+    if(newPage !== 'blog/post') {
+      _state.twitterShares = {};
+      _state.facebookShares = {};
     }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
@@ -126,30 +133,20 @@ export default {
     _state.modal = 'blogCategories'
     return Promise.resolve(_state);
   },
-  getSocialShareCountForPost(service, uri) {
-    const post = _state.page;
-    let promise;
-
-    if (post[service] || post[service] === 0) {
-      promise = Promise.resolve(_state);
-    } else {
-      let url;
-      switch (service) {
-        case 'twitter':
-          url = `twitter/count?url=${uri}`;
-          break;
-        case 'facebook':
-          url = `https://graph.facebook.com/?id=${uri}`;
-          break;
-      }
-      if (url) {
-        promise = DataLoader([{
-          url: url,
-          external: service,
-          type: `${service}Shares`
-        }], applySocialShareCountData.bind(this, service)).then(() => _state);
-      }
-    }
-    return promise;
+  getSocialSharesForPosts() {
+    return Promise.all(_state.posts.map(post => {
+      const uri = `http://ustwo.com/blog/${post.slug}`;
+      return DataLoader([{
+          url: `twitter/count?url=http://ustwo.com/blog/${post.slug}`,
+          external: 'twitter',
+          type: 'twitterShares',
+          failure: response => console.log('Failed to fetch Twitter share count', response)
+        }, {
+          url: `https://graph.facebook.com/?id=http://ustwo.com/blog/${post.slug}`,
+          external: 'facebook',
+          type: 'facebookShares',
+          failure: response => console.log('Failed to fetch Facebook share count', response)
+        }], applySocialShareCount).then(() => _state);
+      })).then(() => _state);
   }
 };

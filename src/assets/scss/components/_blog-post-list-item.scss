@@ -61,10 +61,41 @@
       border-bottom: 2px solid;
     }
 
-    .social {
-      > div {
+    .social-media {
+      .channel {
+        $height: 22px;
+
         display: inline-block;
         padding-left: 20px;
+        height: $height;
+
+        .logo,
+        span {
+          display: inline-block;
+        }
+
+        span {
+          position: relative;
+          bottom: 3px;
+        }
+
+        .logo {
+          height: $height;
+          width: $height;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+        }
+
+        &.facebook .logo {
+          margin-right: 3px;
+          background-image: url('/images/blog/facebook_icon_v2.svg');
+        }
+
+        &.twitter .logo {
+          margin-right: 7px;
+          background-image: url('/images/blog/twitter_icon_v2.svg');
+        }
       }
     }
   }

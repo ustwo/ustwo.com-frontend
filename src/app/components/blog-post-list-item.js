@@ -32,13 +32,27 @@ export default class BlogPostListItem extends React.Component {
           <div className="excerpt" dangerouslySetInnerHTML={{ __html: get(post, 'excerpt.rendered')}} />
           <div className="tail">
             <a href={uri} onClick={Flux.override(uri)}>Read more</a>
-            {/*<div className="social">
-              <div className="twitter">120</div>
-              <div className="comments">43</div>
-            </div>*/}
+            {this.renderSocialMediaShareCounts()}
           </div>
         </div>
       </article>
+    );
+  }
+  renderSocialMediaShareCounts = () => {
+    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebook" />';
+    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitter" />';
+
+    return (
+      <div className="social-media">
+        <div className="channel facebook">
+          <div className='logo'></div>
+          <span>{get(this.props.data, 'facebookShares', '')}</span>
+        </div>
+        <div className="channel twitter">
+          <div className='logo'></div>
+          <span>{get(this.props.data, 'twitterShares', '')}</span>
+        </div>
+      </div>
     );
   }
 }

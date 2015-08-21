@@ -25,5 +25,7 @@ export default {
     "page_builder": [],
     "featured_image": null,
     "_links": {}
-  }
+  },
+  twitterShares: {},
+  facebookShares: {}
 };
