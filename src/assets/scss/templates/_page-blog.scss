@@ -101,6 +101,26 @@
     }
   }
 
+  .message {
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: top;
+    background: $blu;
+    margin-top: 0;
+    text-align: center;
+    padding-bottom: 70px;
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      margin-left: 20px;
+      background: url("/images/loading_spinner_bg_blu.gif") no-repeat 0 0;
+      display: inline-block;
+      background-size: 50px 50px;
+    }
+  }
+
   @include susy-breakpoint($bp-medium, $susy) {
     .blog-category {
       transform: translateY(-21px);
@@ -126,7 +146,8 @@
       }
       .blog-post-list {
         .message {
-          text-align: center;
+          margin-top: 30px;
+          padding-bottom: 0;
         }
         .message,
         .blog-post-list-item {
@@ -143,6 +164,7 @@
         }
       }
     }
+
     .load-more {
       margin: 0;
 

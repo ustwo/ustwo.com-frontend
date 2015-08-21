@@ -49,7 +49,7 @@ export default class PageBlog extends React.Component {
         posts = <h3 className="message">No posts found</h3>;
       }
     } else {
-      posts = <h3 className="message">Loading</h3>;
+      posts = <h3 className="message loading">Loading<div className="spinner"></div></h3>;
     }
     return posts;
   }
