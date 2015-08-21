@@ -117,7 +117,7 @@ var tasks = {
         .on('error', handleError('Browserify'))
         .pipe(source('app.js'))
         .pipe(buffer())
-        .pipe(gulpif(production, uglify()))
+        // .pipe(gulpif(production, uglify()))
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('public/js/'));
