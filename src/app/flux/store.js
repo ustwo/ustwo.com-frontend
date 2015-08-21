@@ -2,7 +2,6 @@ import reject from 'lodash/collection/reject';
 import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
 import capitalize from 'lodash/string/capitalize';
-import every from 'lodash/collection/every';
 
 import Log from '../_lib/log';
 import window from '../../server/adaptors/window';
@@ -36,14 +35,20 @@ function applyJobDetailData(job) {
   _state.jobs[index] = job;
   Log('Added job details', job);
 }
-function applyTwitterShareCount(twitterObject) {
-  const url = twitterObject.url.split('/');
-  const slug = url[-1] || url[url.length-2];
+function applySocialShareCount(response, type) {
+  let uri;
+  let value;
+  if (type === 'twitterShares') {
+    uri = response.url.split('/');
+    value = response.count;
+  } else {
+    uri = response.id.split('/');
+    value = response.shares || (response.id && 0);
+  }
+  const slug = uri[uri.length-1] || uri[uri.length-2];
   const index = findIndex(_state.posts, 'slug', slug);
-  Object.assign(_state.posts[index], {
-    twitterShares: twitterObject.count
-  });
-  console.log('Added Twitter share count', twitterObject.count);
+  _state.posts[index][type] = value;
+  console.log(`Added ${type}`, value);
 }
 
 window._state = _state;
@@ -129,19 +134,19 @@ export default {
     return Promise.resolve(_state);
   },
   getSocialSharesForPosts() {
-    let promise;
-    if (every(_state.posts, 'twitterShares')) {
-      promise = Promise.resolve(_state);
-    } else {
-      promise = Promise.all(_state.posts.map(post => {
-        const uri = `http://ustwo.com/blog/${post.slug}`;
-        return DataLoader([{
-            url: `twitter/count?url=http://ustwo.com/blog/${post.slug}`,
-            external: 'twitter',
-            type: 'twitterShares'
-          }], applyTwitterShareCount).then(() => _state);
+    return Promise.all(_state.posts.map(post => {
+      const uri = `http://ustwo.com/blog/${post.slug}`;
+      return DataLoader([{
+          url: `twitter/count?url=http://ustwo.com/blog/${post.slug}`,
+          external: 'twitter',
+          type: 'twitterShares',
+          failure: response => console.log('Failed to fetch Twitter share count', response)
+        }, {
+          url: `https://graph.facebook.com/?id=http://ustwo.com/blog/${post.slug}`,
+          external: 'facebook',
+          type: 'facebookShares',
+          failure: response => console.log('Failed to fetch Facebook share count', response)
+        }], applySocialShareCount).then(() => _state);
       })).then(() => _state);
-    }
-    return promise;
   }
 };

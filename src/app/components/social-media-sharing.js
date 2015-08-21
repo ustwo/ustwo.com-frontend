@@ -10,7 +10,7 @@ export default class SocialMediaSharing extends React.Component {
     const props = this.props;
     const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebook" />';
     const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitter" />';
-
+    // when there is a html entity in the title the text goes bonkers
     return (
       <ul className={classnames('social-media-sharing', props.className)}>
         <li className="channel facebook">

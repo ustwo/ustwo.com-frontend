@@ -6,6 +6,7 @@ import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import filter from 'lodash/collection/filter';
 import take from 'lodash/array/take';
+import every from 'lodash/collection/every';
 
 import Flux from '../flux';
 
@@ -16,6 +17,17 @@ import BlogControls from '../components/blog-controls';
 export default class PageBlog extends React.Component {
   componentWillMount() {
     if (this.props.posts) {
+      Flux.getSocialSharesForPosts();
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    const posts = nextProps.blogCategory === 'all' ? take(nextProps.posts, 10) : nextProps.posts;
+    const socialShareDataIncomplete = !every(posts, post => {
+      const hasFacebookData = post.facebookShares || post.facebookShares === 0;
+      const hasTwitterData = post.twitterShares || post.twitterShares === 0;
+      return hasFacebookData && hasTwitterData;
+    });
+    if (posts && socialShareDataIncomplete) {
       Flux.getSocialSharesForPosts();
     }
   }
