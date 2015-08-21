@@ -50,6 +50,7 @@
     "gulp-sourcemaps": "1.5.2",
     "gulp-uglify": "1.2.0",
     "gulp-util": "3.0.6",
+    "he": "0.5.0",
     "isomorphic-fetch": "2.1.1",
     "lodash": "3.10.0",
     "moment": "2.10.6",

@@ -2,6 +2,7 @@ import React from 'react';
 import get from 'lodash/object/get';
 import moment from 'moment';
 import classnames from 'classnames';
+import he from 'he';
 
 import Flux from '../flux';
 
@@ -15,7 +16,6 @@ export default class PagePost extends React.Component {
     const category = get(post, '_embedded.wp:term.0.0', []);
     const imageURL = get(post, '_embedded.wp:attachment.1.source_url');
     const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'uncategorised')}`);
-
     return (
       <article className={classes}>
         <style>{`
@@ -28,7 +28,7 @@ export default class PagePost extends React.Component {
         </div>
         <div className="content-container">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
-          <h1 className="title" dangerouslySetInnerHTML={{ __html: get(post, 'title.rendered') }} />
+          <h1 className="title">{he.decode(get(post, 'title.rendered', ''))}</h1>
           {this.renderSocialMediaSharing('side')}
           <p className="meta">By {get(post, '_embedded.author.0.name')} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
           <hr className="rule" />
@@ -55,7 +55,7 @@ export default class PagePost extends React.Component {
       facebookShareCount = 0;
     }
     return (
-      <SocialMediaSharing className={position} title={get(props.page, 'title.rendered')} uri={`http://ustwo.com/blog/${get(props.page, 'slug')}`} facebookShareCount={facebookShareCount} twitterShareCount={props.twitterShares.count} />
+      <SocialMediaSharing className={position} title={he.decode(get(props.page, 'title.rendered', ''))} uri={`http://ustwo.com/blog/${get(props.page, 'slug')}`} facebookShareCount={facebookShareCount} twitterShareCount={props.twitterShares.count} />
     );
   }
   getModuleRenderer(colours) {

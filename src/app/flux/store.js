@@ -48,7 +48,7 @@ function applySocialShareCount(response, type) {
   const slug = uri[uri.length-1] || uri[uri.length-2];
   const index = findIndex(_state.posts, 'slug', slug);
   _state.posts[index][type] = value;
-  console.log(`Added ${type}`, value);
+  Log(`Added ${type}`, value);
 }
 
 window._state = _state;
