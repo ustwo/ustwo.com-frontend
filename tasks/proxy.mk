@@ -2,7 +2,8 @@
 PROXY_HTTP_PORT ?= 9080
 PROXY_HTTPS_PORT ?= 9443
 
-proxy_image := ustwo/usweb-proxy:$(TAG)
+# proxy_image := ustwo/usweb-proxy:$(TAG)
+proxy_image := nginx
 proxy_name = $(project_name)_$(TIER)_proxy
 
 .PHONY: \
