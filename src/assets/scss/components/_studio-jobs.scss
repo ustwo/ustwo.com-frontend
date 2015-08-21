@@ -41,17 +41,40 @@
 
 
   .jobs-none {
+    position: relative;
     padding: 20px;
     margin-top: 5px;
     background: #fff;
 
+    p {
+      width: 65%;
+      margin: 0;
+    }
+
     a {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      margin-top: -20px;
       display: inline-block;
       color: #fff;
       font-size: 18px;
       padding: 0 30px 0 15px;
       height: 40px;
       line-height: 40px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -5px;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10"><path d="M 0 0 L 7 10 L 13 0 Z" fill="#ffffff" /></svg>');
+        background-position: 0 0;
+        transform: rotate(-90deg);
+        width: 13px;
+        height: 10px;
+      }
     }
   }
 
