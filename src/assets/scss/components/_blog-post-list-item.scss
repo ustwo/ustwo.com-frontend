@@ -1,7 +1,7 @@
 .blog-post-list-item {
 
   $padding: 20px;
-  $padding-large: 10px 30px 30px;
+  $padding-large: 30px;
 
 
   background-color: #eaeaea;
@@ -142,8 +142,15 @@
 
 
     .content {
-      padding: $padding-large;
+      padding: 10px $padding-large $padding-large;
       height: 320px;
+      position: relative;
+
+      .tail {
+        position: absolute;
+        bottom: $padding-large;
+        width: calc(100% - (2 * #{$padding-large}));
+      }
     }
 
     &.featured {
