@@ -31,6 +31,7 @@
     }
   }
 
+  // TODO: This is copied to what-we-do styles. Need to consolidate.
   .single-column {
     padding: 50px 6.25%;
 
@@ -41,8 +42,6 @@
       }
       &__rule {
         border: 2px solid $mare;
-        width: 120px;
-        margin: 30px auto;
       }
       &__para {
         text-align: center;
@@ -70,6 +69,7 @@
       }
     }
   }
+  // End
 
   .grid {
     position: relative;

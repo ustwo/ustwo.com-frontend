@@ -6,6 +6,47 @@
     margin: 0;
   }
 
+  // TODO: This is copied to join-us styles. Need to consolidate.
+  .single-column {
+    padding: 50px 6.25%;
+
+    &__content {
+      &__heading {
+        color: $marshPassion;
+        text-align: center;
+      }
+      &__rule {
+        border: 2px solid $mare;
+      }
+      &__para {
+        text-align: center;
+      }
+    }
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      padding-top: 100px;
+      padding-bottom: 100px;
+
+      &__content {
+        &__title {
+          max-width: 768px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        &__rule {
+          width: 180px;
+        }
+        &__para {
+          max-width: 620px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+  }
+  // End
+
+
   @include susy-breakpoint($bp-medium, $susy) {
     &__hero {
 
