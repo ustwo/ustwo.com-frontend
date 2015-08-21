@@ -9,8 +9,8 @@ import Flux from '../flux';
 export default class SocialMediaSharing extends React.Component {
   render() {
     const props = this.props;
-    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebook" />';
-    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitter" />';
+    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebookBox" />';
+    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitterBox" />';
 
     return (
       <ul className={classnames('social-media-sharing', props.className)}>

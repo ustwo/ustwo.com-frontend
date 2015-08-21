@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="60px" height="60px"
+	 viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+<style type="text/css">
+	.st0{enable-background:new    ;}
+</style>
+<g id="UI-Kit_1_" sketch:type="MSPage">
+	<g id="Blog-Post-Spec_1_" transform="translate(-2007.000000, -1123.000000)" sketch:type="MSArtboardGroup">
+		<g id="Group_1_" transform="translate(1996.000000, 985.000000)" sketch:type="MSLayerGroup">
+			<g id="Facebook-Button" transform="translate(0.000000, 131.000000)" sketch:type="MSShapeGroup">
+				<path id="f" d="M45.3,65.5v-26H54l1.3-10.1h-10v-6.5c0-2.9,0.8-4.9,5-4.9h5.4V8.9c-0.9-0.1-4.1-0.4-7.8-0.4
+					c-7.7,0-13,4.7-13,13.4v7.5h-8.7v10.1h8.7v26H45.3L45.3,65.5z"/>
+			</g>
+		</g>
+	</g>
+</g>
+<g class="st0">
+	<g>
+		<g>
+			<defs>
+				<rect id="SVGID_1_" x="135" y="-1842" width="19" height="16"/>
+			</defs>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+			</clipPath>
+		</g>
+	</g>
+</g>
+</svg>
