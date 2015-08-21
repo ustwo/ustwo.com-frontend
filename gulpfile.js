@@ -58,7 +58,7 @@ var tasks = {
   sass: function() {
     return gulp.src('src/assets/scss/[^_]*.scss')
       // sourcemaps + sass + error handling
-      .pipe(gulpif(!production, sourcemaps.init()))
+      .pipe(sourcemaps.init())
       .pipe(sass({
         errLogToConsole: true,
         sourceComments: !production,
@@ -68,14 +68,14 @@ var tasks = {
         sass.logError.bind(this, err)();
       })
       // generate .maps
-      .pipe(gulpif(!production, sourcemaps.write({
+      .pipe(sourcemaps.write({
         'includeContent': false,
         'sourceRoot': '.'
-      })))
+      }))
       // autoprefixer
-      .pipe(gulpif(!production, sourcemaps.init({
+      .pipe(sourcemaps.init({
         'loadMaps': true
-      })))
+      }))
       .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
       // we don't serve the source files
       // so include scss content inside the sourcemaps
@@ -99,7 +99,7 @@ var tasks = {
     .require('svg4everybody');
 
     var bundler = browserify({
-      debug: !production, // Sourcemapping
+      debug: true, // Sourcemapping
       cache: {},
       packageCache: {}
     })
@@ -118,8 +118,8 @@ var tasks = {
         .pipe(source('app.js'))
         .pipe(buffer())
         .pipe(gulpif(production, uglify()))
-        .pipe(gulpif(!production, sourcemaps.init({loadMaps: true})))
-        .pipe(gulpif(!production, sourcemaps.write('./')))
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('public/js/'));
     };
 
@@ -136,7 +136,7 @@ var tasks = {
   // --------------------------
   reactstyleguide: function() {
     var bundler = browserify({
-      debug: !production, // Sourcemapping
+      debug: true, // Sourcemapping
       cache: {},
       packageCache: {}
     })
@@ -153,8 +153,8 @@ var tasks = {
         .pipe(source('styleguide.js'))
         .pipe(buffer())
         .pipe(gulpif(production, uglify()))
-        .pipe(gulpif(!production, sourcemaps.init({loadMaps: true})))
-        .pipe(gulpif(!production, sourcemaps.write('./')))
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('public/js/'));
     };
 
