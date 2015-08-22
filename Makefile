@@ -6,8 +6,7 @@ IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
 ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
-project_name := ustwosite
-# project_name := usweb
+project_name := usweb
 
 ## CLI aliases ################################################################
 RM := rm -rf
