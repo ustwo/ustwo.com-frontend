@@ -79,7 +79,7 @@ stats:
 nuke:
 	docker images \
 	| grep $(project_name) \
-	| awk {print $$1} \
+	| awk '{print $$1":$(TAG)"}' \
 	| xargs docker rmi
 
 rm-production: TIER := production
