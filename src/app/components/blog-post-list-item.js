@@ -39,18 +39,18 @@ export default class BlogPostListItem extends React.Component {
     );
   }
   renderSocialMediaShareCounts = () => {
-    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebook" />';
-    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitter" />';
+    const facebookIcon = '<use xlink:href="/images/spritemap.svg#facebook" />';
+    const twitterIcon = '<use xlink:href="/images/spritemap.svg#twitter" />';
 
     return (
       <div className="social-media">
         <div className="channel facebook">
-          <div className='logo'></div>
-          <span>{get(this.props.data, 'facebookShares', '')}</span>
+          <div className='logo'><svg className="facebook-icon" role="img" dangerouslySetInnerHTML={{__html: facebookIcon }} /></div>
+          <span>{get(this.props.data, 'facebookShares', 4)}</span>
         </div>
         <div className="channel twitter">
-          <div className='logo'></div>
-          <span>{get(this.props.data, 'twitterShares', '')}</span>
+          <div className='logo'><svg className="twitter-icon" role="img" dangerouslySetInnerHTML={{__html: twitterIcon }} /></div>
+          <span>{get(this.props.data, 'twitterShares', 18)}</span>
         </div>
       </div>
     );

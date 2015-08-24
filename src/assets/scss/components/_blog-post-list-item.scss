@@ -84,20 +84,24 @@
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
+
+          svg {
+            width: $height;
+            height: $height;
+          }
         }
 
         &.facebook .logo {
           margin-right: 3px;
-          background-image: url('/images/blog/facebook_icon_v2.svg');
         }
 
         &.twitter .logo {
           margin-right: 7px;
-          background-image: url('/images/blog/twitter_icon_v2.svg');
         }
       }
     }
   }
+
 
 
   // Hero/featured blog post

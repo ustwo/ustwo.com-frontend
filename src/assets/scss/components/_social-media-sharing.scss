@@ -11,7 +11,7 @@
   padding: 0;
 
   .channel {
-    width: $small-width;
+    min-width: $small-width;
     height: $small-height;
 
     a {
@@ -28,11 +28,12 @@
     span {
       font-size: $small-font-size;
       padding-right: 14px;
+      padding-left: 36px;
       display: block;
       font-weight: bold;
       color: #fff;
       margin: 0;
-      text-align: right;
+      text-align: left;
       position: relative;
       top: 52%;
       transform: translateY(-50%);
@@ -40,23 +41,26 @@
 
     .svg-container {
       position: absolute;
-      width: $small-height;
+      width: $small-height * 2;
       height: $small-height;
-      background: $offWhite;
+      display: flex;
+      align-items: center;
+      margin-left: 5px;
+
 
       .logo {
         display: block;
-        height: 100%;
-        width: 100%;
+        height: 18px;
+        width: 18px;
+        fill: #fff;
       }
     }
 
     @each $channel, $colour in $social-media-colours {
       &.#{$channel} {
         background: $colour;
+        .svg-container {
 
-        .svg-container .logo {
-          fill: $colour;
         }
       }
     }
@@ -64,7 +68,7 @@
 
   @include susy-breakpoint($bp-medium, $susy) {
     .channel {
-      width: $large-width;
+      min-width: $large-width;
       height: $large-height;
 
       span {
@@ -74,6 +78,13 @@
       .svg-container {
         width: $large-height;
         height: $large-height;
+        justify-content: center;
+        margin-left: 0;
+
+        .logo {
+          height: 22px;
+          width: 22px;
+        }
       }
     }
   }
