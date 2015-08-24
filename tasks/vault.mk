@@ -15,6 +15,10 @@ ifeq ($(TIER), staging)
   nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro
 endif
 
+ifeq ($(TIER), canary)
+  nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/canary.conf:/etc/nginx/conf.d/default.conf:ro
+endif
+
 vault-rm:
 	@echo "Removing $(vault_name)"
 	@$(DOCKER_RM) $(vault_name)
