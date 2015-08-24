@@ -47,9 +47,11 @@ function applySocialShareCount(data, type) {
   }
   const slug = uri[uri.length-1] || uri[uri.length-2];
   const index = findIndex(_state.posts, 'slug', slug);
-  const value = formatSocialShareData(data, type);
-  _state.posts[index][type] = value;
-  Log(`Added ${type}`, value);
+  if (index > -1) {
+    const value = formatSocialShareData(data, type);
+    _state.posts[index][type] = value;
+    Log(`Added ${type}`, value);
+  }
 }
 function formatSocialShareData(data, type) {
   switch (type) {
@@ -81,6 +83,7 @@ export default {
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
     _state.posts = null;
+    _state.modal = null;
     return Promise.resolve(_state);
   },
   loadData(itemsToLoad) {
