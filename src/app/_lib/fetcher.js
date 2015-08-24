@@ -9,10 +9,6 @@ import window from '../../server/adaptors/window';
 let ajaxes = {};
 
 let defaultConfig = {
-  mode: 'cors',
-  headers: {
-    'Origin': window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '')
-  },
   baseurl: require('../../server/adaptors/proxy-url')
 }
 
