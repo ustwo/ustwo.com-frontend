@@ -1,7 +1,7 @@
 .blog-post-list-item {
 
   $padding: 20px;
-  $padding-large: 30px;
+  $padding-large: 40px;
 
 
   background-color: #eaeaea;
@@ -34,7 +34,7 @@
   }
 
   .meta {
-    margin-bottom: $padding;
+    margin-bottom: $padding - 5px;
     margin-top: 5px;
     color: #646464;
     font-family: $PxGroteskBold;
@@ -50,7 +50,6 @@
   }
 
   .tail {
-    position: relative;
     text-align: right;
     overflow: auto;
 
@@ -115,7 +114,8 @@
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
-    padding: 0 0 $blog-gutter-large;
+    position: relative;
+    padding: 0 0 60px;
 
     &:last-of-type {
       padding-bottom: $blog-gutter-large;
@@ -148,7 +148,7 @@
 
       .tail {
         position: absolute;
-        bottom: $padding-large;
+        bottom: $padding-large - 10px;
         width: calc(100% - (2 * #{$padding-large}));
       }
     }
