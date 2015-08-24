@@ -26,7 +26,7 @@ if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id
 
 function applyData(data, type) {
   const changeSet = {};
-  changeSet[type] = data;
+  changeSet[type] = formatSocialShareData(data, type);
   Object.assign(_state, changeSet);
   Log('Loaded', type, _state[type]);
 }
@@ -35,20 +35,31 @@ function applyJobDetailData(job) {
   _state.jobs[index] = job;
   Log('Added job details', job);
 }
-function applySocialShareCount(response, type) {
+function applySocialShareCount(data, type) {
   let uri;
-  let value;
-  if (type === 'twitterShares') {
-    uri = response.url.split('/');
-    value = response.count;
-  } else {
-    uri = response.id.split('/');
-    value = response.shares || (response.id && 0);
+  switch (type) {
+    case 'twitterShares':
+      uri = data.url.split('/');
+      break;
+    case 'facebookShares':
+      uri = data.id.split('/');
+      break;
   }
   const slug = uri[uri.length-1] || uri[uri.length-2];
   const index = findIndex(_state.posts, 'slug', slug);
-  _state.posts[index][type] = value;
+  _state.posts[index][type] = formatSocialShareData(data, type);
   Log(`Added ${type}`, value);
+}
+function formatSocialShareData(data, type) {
+  switch (type) {
+    case 'twitterShares':
+      data = data.count;
+      break;
+    case 'facebookShares':
+      data = data.shares || (data.id && 0);
+      break;
+  }
+  return data;
 }
 
 window._state = _state;
@@ -65,10 +76,6 @@ export default {
     }
     if(newPage !== 'blog/category') {
       _state.blogCategory = 'all';
-    }
-    if(newPage !== 'blog/post') {
-      _state.twitterShares = {};
-      _state.facebookShares = {};
     }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
@@ -137,12 +144,12 @@ export default {
     return Promise.all(_state.posts.map(post => {
       const uri = `http://ustwo.com/blog/${post.slug}`;
       return DataLoader([{
-          url: `twitter/count?url=http://ustwo.com/blog/${post.slug}`,
+          url: `twitter/count?url=${uri}`,
           external: 'twitter',
           type: 'twitterShares',
           failure: response => console.log('Failed to fetch Twitter share count', response)
         }, {
-          url: `https://graph.facebook.com/?id=http://ustwo.com/blog/${post.slug}`,
+          url: `https://graph.facebook.com/?id=${uri}`,
           external: 'facebook',
           type: 'facebookShares',
           failure: response => console.log('Failed to fetch Facebook share count', response)

@@ -41,7 +41,7 @@ const routes = {
     id: 'blog',
     pattern: '/blog?category=:category',
     status: 200,
-    data: (category) => [{
+    data: category => [{
       url: `ustwo/v1/pages/blog`,
       type: 'page',
       slug: 'blog'

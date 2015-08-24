@@ -3,6 +3,8 @@ export default {
   searchQuery: null,
   modal: null,
   takeover: null,
+  twitterShares: null,
+  facebookShares: null,
   caseStudy: {
     "name": null,
     "link": null,
@@ -25,7 +27,5 @@ export default {
     "page_builder": [],
     "featured_image": null,
     "_links": {}
-  },
-  twitterShares: {},
-  facebookShares: {}
+  }
 };

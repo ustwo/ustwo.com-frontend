@@ -37,8 +37,8 @@ const Actions = {
   showBlogCategories() {
     return Store.showBlogCategories();
   },
-  getSocialSharesForPosts(posts) {
-    return Store.getSocialSharesForPosts(posts);
+  getSocialSharesForPosts() {
+    return Store.getSocialSharesForPosts();
   }
 };
 
