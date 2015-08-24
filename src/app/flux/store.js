@@ -47,7 +47,8 @@ function applySocialShareCount(data, type) {
   }
   const slug = uri[uri.length-1] || uri[uri.length-2];
   const index = findIndex(_state.posts, 'slug', slug);
-  _state.posts[index][type] = formatSocialShareData(data, type);
+  const value = formatSocialShareData(data, type);
+  _state.posts[index][type] = value;
   Log(`Added ${type}`, value);
 }
 function formatSocialShareData(data, type) {
@@ -137,13 +138,15 @@ export default {
     return Promise.resolve(_state);
   },
   showBlogCategories() {
-    _state.modal = 'blogCategories'
+    _state.modal = 'blogCategories';
     return Promise.resolve(_state);
   },
   getSocialSharesForPosts() {
     return Promise.all(_state.posts.map(post => {
-      const uri = `http://ustwo.com/blog/${post.slug}`;
-      return DataLoader([{
+      let promise;
+      if (post.slug) {
+        const uri = `http://ustwo.com/blog/${post.slug}`;
+        promise = DataLoader([{
           url: `twitter/count?url=${uri}`,
           external: 'twitter',
           type: 'twitterShares',
@@ -154,6 +157,10 @@ export default {
           type: 'facebookShares',
           failure: response => console.log('Failed to fetch Facebook share count', response)
         }], applySocialShareCount).then(() => _state);
-      })).then(() => _state);
+      } else {
+        promise = Promise.resolve(_state);
+      }
+      return promise;
+    })).then(() => _state);
   }
 };
