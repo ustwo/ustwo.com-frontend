@@ -80,6 +80,10 @@ export default {
     if(newPage !== 'blog/category') {
       _state.blogCategory = 'all';
     }
+    if(newPage !== 'blog/post') {
+      _state.twitterShares = null;
+      _state.facebookShares = null;
+    }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
     _state.posts = null;
