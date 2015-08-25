@@ -1,18 +1,15 @@
 .social-media-sharing {
-  $small-width: 60px;
-  $small-height: 26px;
-  $small-font-size: 14px;
 
-  $large-width: 74px;
-  $large-height: 34px;
-  $large-font-size: 16px;
+  $width: 74px;
+  $height: 34px;
+  $font-size: 16px;
 
   list-style: none;
   padding: 0;
 
   .channel {
-    min-width: $small-width;
-    height: $small-height;
+    min-width: $width;
+    height: $height;
 
     a {
       display: block;
@@ -26,7 +23,7 @@
     }
 
     span {
-      font-size: $small-font-size;
+      font-size: $font-size;
       padding-right: 14px;
       padding-left: 36px;
       display: block;
@@ -41,17 +38,17 @@
 
     .svg-container {
       position: absolute;
-      width: $small-height * 2;
-      height: $small-height;
+      width: $height * 2;
+      height: $height;
       display: flex;
       align-items: center;
-      margin-left: 5px;
+      margin-left: 6px;
 
 
       .logo {
         display: block;
-        height: 18px;
-        width: 18px;
+        height: 22px;
+        width: 22px;
         fill: #fff;
       }
     }
@@ -59,32 +56,24 @@
     @each $channel, $colour in $social-media-colours {
       &.#{$channel} {
         background: $colour;
-        .svg-container {
-
-        }
       }
     }
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
     .channel {
-      min-width: $large-width;
-      height: $large-height;
+      min-width: $width;
+      height: $height;
 
       span {
-        font-size: $large-font-size;
+        font-size: $font-size;
       }
 
       .svg-container {
-        width: $large-height;
-        height: $large-height;
+        width: $height;
+        height: $height;
         justify-content: center;
         margin-left: 0;
-
-        .logo {
-          height: 22px;
-          width: 22px;
-        }
       }
     }
   }
