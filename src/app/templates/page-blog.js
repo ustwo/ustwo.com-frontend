@@ -43,7 +43,7 @@ export default class PageBlog extends React.Component {
     });
     return (
       <article className={classes}>
-        <Hero title='Think. Share. Learn.' backgroundTint={true} imageURL={get(image, 'source_url', '')} eventLabel='blog'>
+        <Hero title='Think. Share. Learn.' backgroundTint={true} imageURL={get(image, 'source_url', '')} eventLabel='blog' showDownChevron={false}>
           <BlogControls blogCategory={props.blogCategory}/>
         </Hero>
         <section className="blog-post-list">
