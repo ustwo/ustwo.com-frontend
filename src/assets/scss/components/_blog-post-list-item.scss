@@ -109,7 +109,7 @@
     padding: 0;
 
     .content {
-      padding: 30px 40px 40px;
+      padding: 30px $padding $padding;
 
       .blog-category {
         transform: translateY(-12px);
@@ -144,7 +144,6 @@
       }
     }
 
-
     .content {
       padding: 10px $padding-large $padding-large;
       height: 332px;
@@ -172,6 +171,7 @@
         top: 0;
         left: 0;
         width: 530px;
+        padding: 30px $padding-large $padding-large;
       }
     }
   }
