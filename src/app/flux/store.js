@@ -153,8 +153,9 @@ export default {
       let promise;
       if (post.slug) {
         const uri = `http://ustwo.com/blog/${post.slug}`;
+        const httpsUri = `https://ustwo.com/blog/${post.slug}`;
         promise = DataLoader([{
-          url: `twitter/count?url=${uri}`,
+          url: `twitter/count?url=${httpsUri}`,
           external: 'twitter',
           type: 'twitterShares',
           failure: response => console.log('Failed to fetch Twitter share count', response)
