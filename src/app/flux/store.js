@@ -7,6 +7,7 @@ import Log from '../_lib/log';
 import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
 import Nulls from '../flux/nulls';
+import tweetCounts from '../flux/tweetCounts';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
@@ -26,7 +27,13 @@ if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id
 
 function applyData(data, type) {
   const changeSet = {};
-  changeSet[type] = formatSocialShareData(data, type);
+  let value;
+  if (type === 'twitterShares' || type === 'facebookShares') {
+    value = formatSocialShareData(data, type);
+  } else {
+    value = data;
+  }
+  changeSet[type] = value;
   Object.assign(_state, changeSet);
   Log('Loaded', type, _state[type]);
 }
@@ -36,33 +43,48 @@ function applyJobDetailData(job) {
   Log('Added job details', job);
 }
 function applySocialShareCount(data, type) {
-  let uri;
-  switch (type) {
-    case 'twitterShares':
-      uri = data.url.split('/');
-      break;
-    case 'facebookShares':
-      uri = data.id.split('/');
-      break;
-  }
-  const slug = uri[uri.length-1] || uri[uri.length-2];
-  const index = findIndex(_state.posts, 'slug', slug);
+  const response = formatSocialShareResponse(data, type);
+  const index = findIndex(_state.posts, 'slug', response.slug);
   if (index > -1) {
     const value = formatSocialShareData(data, type);
     _state.posts[index][type] = value;
     Log(`Added ${type}`, value);
   }
 }
-function formatSocialShareData(data, type) {
+function formatSocialShareResponse(data, type) {
+  let uri;
+  let count;
+  let slug;
   switch (type) {
     case 'twitterShares':
-      data = data.count;
+      uri = data.url;
+      count = data.count;
       break;
     case 'facebookShares':
-      data = data.shares || (data.id && 0);
+      uri = data.id;
+      count = data.shares || (data.id && 0);
       break;
   }
-  return data;
+  if (uri) {
+    const uriArray = uri.split('/');
+    slug = uriArray[uriArray.length-1] || uriArray[uriArray.length-2];
+  }
+  return {
+    url: uri,
+    slug: slug,
+    count: count
+  }
+}
+function formatSocialShareData(data, type) {
+  const response = formatSocialShareResponse(data, type);
+  let value = response.count;
+  if (type === 'twitterShares') {
+    const oldCount = find(tweetCounts, 'slug', response.slug);
+    if (oldCount) {
+      value += oldCount.count;
+    }
+  }
+  return value;
 }
 
 window._state = _state;
@@ -159,11 +181,11 @@ export default {
           external: 'twitter',
           type: 'twitterShares',
           failure: response => console.log('Failed to fetch Twitter share count', response)
-        }, {
-          url: `https://graph.facebook.com/?id=${uri}`,
-          external: 'facebook',
-          type: 'facebookShares',
-          failure: response => console.log('Failed to fetch Facebook share count', response)
+        // }, {
+          // url: `https://graph.facebook.com/?id=${uri}`,
+          // external: 'facebook',
+          // type: 'facebookShares',
+          // failure: response => console.log('Failed to fetch Facebook share count', response)
         }], applySocialShareCount).then(() => _state);
       } else {
         promise = Promise.resolve(_state);

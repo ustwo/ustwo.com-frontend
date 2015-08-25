@@ -27,9 +27,9 @@ export default class PageBlog extends React.Component {
       const hasTwitterData = post.twitterShares || post.twitterShares === 0;
       return hasFacebookData && hasTwitterData;
     });
-    if (posts && socialShareDataIncomplete) {
-      Flux.getSocialSharesForPosts();
-    }
+    // if (posts && socialShareDataIncomplete) {
+      // Flux.getSocialSharesForPosts();
+    // }
   }
   render() {
     const props = this.props;
