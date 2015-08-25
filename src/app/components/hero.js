@@ -10,19 +10,23 @@ import Track from '../../server/adaptors/track';
 
 export default class Hero extends React.Component {
   componentDidMount() {
-    const duration = this.props.backgroundTint ? 2500 : 1700;
-    this.animTimeout = setTimeout(() => {
-      this.refs.downChevron.resetAnim();
-      this.refs.downChevron.anim();
-    }, duration);
+    if (this.props.showDownChevron) {
+      const duration = this.props.backgroundTint ? 2500 : 1700;
+      this.animTimeout = setTimeout(() => {
+        this.refs.downChevron.resetAnim();
+        this.refs.downChevron.anim();
+      }, duration);
+    }
   }
   componentWillUnmount() {
-    clearTimeout(this.animTimeout);
+    if (this.props.showDownChevron) {
+      clearTimeout(this.animTimeout);
+    }
   }
   render() {
     const props = this.props;
     const styles = {
-      backgroundImage: props.backgroundTint ? '' : `url(${props.imageURL})`
+      backgroundImage: props.backgroundTint ? null : `url(${props.imageURL})`
     }
     const headlineWordsAnimationOptions = {
       ease: Power2.easeOut,
@@ -41,7 +45,7 @@ export default class Hero extends React.Component {
         </EntranceTransition>
         {this.renderImage()}
         {props.children}
-        <DownChevron customClass="hero__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />
+        {this.renderDownChevron()}
       </section>
     );
   }
@@ -58,6 +62,13 @@ export default class Hero extends React.Component {
       image = <img className="hero__image" src={props.imageURL} />;
     }
     return image;
+  }
+  renderDownChevron = () => {
+    let chevron;
+    if (this.props.showDownChevron) {
+      chevron = <DownChevron customClass="hero__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />;
+    }
+    return chevron;
   }
   onClickDownChevron() {
     Track('send', {
