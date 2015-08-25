@@ -46,11 +46,11 @@ export default class BlogPostListItem extends React.Component {
       <div className="social-media">
         <div className="channel facebook">
           <div className='logo'><svg className="facebook-icon" role="img" dangerouslySetInnerHTML={{__html: facebookIcon }} /></div>
-          <span>{get(this.props.data, 'facebookShares', 4)}</span>
+          <span>{get(this.props.data, 'facebookShares')}</span>
         </div>
         <div className="channel twitter">
           <div className='logo'><svg className="twitter-icon" role="img" dangerouslySetInnerHTML={{__html: twitterIcon }} /></div>
-          <span>{get(this.props.data, 'twitterShares', 18)}</span>
+          <span>{get(this.props.data, 'twitterShares')}</span>
         </div>
       </div>
     );
