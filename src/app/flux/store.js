@@ -8,6 +8,7 @@ import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
 import Nulls from '../flux/nulls';
 import tweetCounts from '../flux/tweetCounts';
+import socialMediaFormatter from '../_lib/social-media-formatter';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
@@ -29,7 +30,8 @@ function applyData(data, type) {
   const changeSet = {};
   let value;
   if (type === 'twitterShares' || type === 'facebookShares') {
-    value = formatSocialShareData(data, type);
+    const response = socialMediaFormatter(data, type);
+    value = getCountFromResponse(response);
   } else {
     value = data;
   }
@@ -43,42 +45,17 @@ function applyJobDetailData(job) {
   Log('Added job details', job);
 }
 function applySocialShareCount(data, type) {
-  const response = formatSocialShareResponse(data, type);
+  const response = socialMediaFormatter(data, type);
   const index = findIndex(_state.posts, 'slug', response.slug);
   if (index > -1) {
-    const value = formatSocialShareData(data, type);
+    const value = getCountFromResponse(response);
     _state.posts[index][type] = value;
     Log(`Added ${type}`, value);
   }
 }
-function formatSocialShareResponse(data, type) {
-  let uri;
-  let count;
-  let slug;
-  switch (type) {
-    case 'twitterShares':
-      uri = data.url;
-      count = data.count;
-      break;
-    case 'facebookShares':
-      uri = data.id;
-      count = data.shares || (data.id && 0);
-      break;
-  }
-  if (uri) {
-    const uriArray = uri.split('/');
-    slug = uriArray[uriArray.length-1] || uriArray[uriArray.length-2];
-  }
-  return {
-    url: uri,
-    slug: slug,
-    count: count
-  }
-}
-function formatSocialShareData(data, type) {
-  const response = formatSocialShareResponse(data, type);
+function getCountFromResponse(response) {
   let value = response.count;
-  if (type === 'twitterShares') {
+  if (response.type === 'twitterShares') {
     const oldCount = find(tweetCounts, 'slug', response.slug);
     if (oldCount) {
       value += oldCount.count;
