@@ -90,7 +90,6 @@
         list-style: none;
         padding: 0;
         margin: 45px 0;
-        overflow: auto;
 
         .channel {
           display: block;
@@ -165,7 +164,6 @@
       }
     }
   }
-
 
   @include susy-breakpoint(650px, $susy) {
     .content {
