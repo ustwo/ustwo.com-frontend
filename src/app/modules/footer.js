@@ -34,9 +34,9 @@ export default class Footer extends React.Component {
     };
   }
   render() {
-    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebookBox" />';
-    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitterBox" />';
-    const linkedinLogo = '<use xlink:href="/images/spritemap.svg#linkedinBox" />';
+    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebook" />';
+    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitter" />';
+    const linkedinLogo = '<use xlink:href="/images/spritemap.svg#linkedin" />';
     const studios = this.props.studios && Object.keys(this.props.studios).map((key) => {
       return <StudioContact studio={this.props.studios[key]} />;
     });

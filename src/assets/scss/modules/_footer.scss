@@ -101,14 +101,17 @@
           &:last-child {
             margin-right: 0;
           }
-          a,
-          .logo {
+          a {
             display: block;
             height: 35px;
             width: 35px;
+            background-color: #777;
           }
           .logo {
-            fill: #777;
+            fill: #fff;
+            width: 21px;
+            height: 21px;
+            margin: 7px;
           }
           .name {
             display: none;
@@ -116,23 +119,17 @@
 
           &.facebook {
             a:hover {
-              .logo {
-                fill: #3A5998;
-              }
+              background-color: #3A5998;
             }
           }
           &.twitter {
             a:hover {
-              .logo {
-                fill: #32ABE2;
-              }
+              background-color: #32ABE2;
             }
           }
           &.linkedin {
             a:hover {
-              .logo {
-                fill: #069;
-              }
+              background-color: #069;
             }
           }
         }
