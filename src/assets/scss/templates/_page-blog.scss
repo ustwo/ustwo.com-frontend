@@ -110,6 +110,12 @@
     margin-top: 0;
     text-align: center;
     padding-bottom: 70px;
+    height: 170px;
+
+    > span {
+      display: inline-block;
+      vertical-align: top;
+    }
 
     .spinner {
       width: 50px;
@@ -127,7 +133,7 @@
     }
     .blog-post-list {
       margin-top: $blog-margin-offset;
-      min-height: $blog-margin-offset * -1;
+      // min-height: $blog-margin-offset * -1;
       padding: 0 $blog-gutter-large;
 
       .blog-post-list-item:not(.featured) {
@@ -138,6 +144,11 @@
         &:nth-child(2n + 1) {
           margin-right: 0;
         }
+      }
+    }
+    &.loading {
+      .blog-post-list {
+        padding: 0;
       }
     }
     &.categorised {
@@ -174,6 +185,7 @@
       }
     }
   }
+
   @include susy-breakpoint($bp-larger, $susy) {
     .blog-post-list {
       .blog-post-list-item:not(.featured) {
