@@ -76,9 +76,10 @@
         margin: 0 auto;
         padding: 0;
         position: absolute;
-        right: 0;
-        top: 0;
+        left: 50%;
+        top: 10%;
         z-index: 100;
+        margin-left: -25px;
 
         svg {
           width: 50px;
