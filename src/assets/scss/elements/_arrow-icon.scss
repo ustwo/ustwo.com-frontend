@@ -1,0 +1,13 @@
+// Using SVG in data uri
+// The method below allows the argument from the mixin to be intepolated in the xml and encodes
+// some characters to make it compatible with IE and FF
+
+// 1.) This function removes # and converts colour to a string
+@function url-friendly-colour($colour) {
+    @return '%23' + str-slice('#{$colour}', 2, -1);
+}
+
+// 2.) This mixin pulls in the colour (note some characters need to be encoded and also make sure 'charset=' is used)
+@mixin arrow-icon($colour) {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='10' viewBox='0 0 13 10'%3E%3Cpath d='M 0 0 L 7 10 L 13 0 Z'  fill='#{url-friendly-colour($colour)}' /%3E%3C/svg%3E");
+}

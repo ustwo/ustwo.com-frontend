@@ -40,8 +40,8 @@
         display: block;
         width: 13px;
         height: 10px;
-        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10"><path d="M 0 0 L 7 10 L 13 0 Z" fill="#333333" /></svg>');
         transform: translateY(-50%);
+        @include arrow-icon(#333333);
       }
     }
     .selected,

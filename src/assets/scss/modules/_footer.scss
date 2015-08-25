@@ -75,11 +75,11 @@
           right: 10px;
           top: 50%;
           margin-top: -5px;
-          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10"><path d="M 0 0 L 7 10 L 13 0 Z" fill="#F9615B" /></svg>');
-          background-position: 0 0;
-          transform: rotate(180deg);
           width: 13px;
           height: 10px;
+          @include arrow-icon(#F9615B);
+          background-position: 0 0;
+          transform: rotate(180deg);
         }
 
         &:hover {
