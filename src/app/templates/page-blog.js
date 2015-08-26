@@ -19,12 +19,16 @@ export default class PageBlog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loadingInitialPosts: true,
       loadingMorePosts: false
     }
   }
   componentWillMount() {
     if (this.props.posts) {
       Flux.getSocialSharesForPosts();
+      this.setState({
+        loadingInitialPosts: false
+      });
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -32,14 +36,17 @@ export default class PageBlog extends React.Component {
     const nextPosts = nextProps.posts;
     const thereAreNoPosts = !currentPosts || !(currentPosts && currentPosts.length);
     const thereWillBePosts = nextPosts && !!nextPosts.length;
-    const blogCategoryChanged = this.props.blogCategory !== nextProps.blogCategory;
+    const newPostsAdded = (currentPosts && nextPosts) && (currentPosts.length < nextPosts.length);
 
-    if (thereWillBePosts && (thereAreNoPosts || blogCategoryChanged)) {
+    // applies on cold loading and when category is changed
+    if (thereAreNoPosts && thereWillBePosts) {
       Flux.getSocialSharesForPosts();
+      this.setState({
+        loadingInitialPosts: false
+      });
     }
 
-    const newPostsAdded = (currentPosts && nextPosts) && (currentPosts.length < nextPosts.length);
-    
+    // applies when "load more" button is clicked
     if (newPostsAdded) {
       Flux.getSocialSharesForPosts();
       this.setState({
