@@ -1,7 +1,6 @@
 'use strict'
 
 import '../server/adaptors/svg4everybody';
-import '../server/adaptors/fastclick';
 import React from 'react';
 import Meta from "react-helmet";
 import TransitionManager from 'react-transition-manager';

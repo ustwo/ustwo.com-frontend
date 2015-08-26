@@ -1,3 +1,0 @@
-import 'fastclick';
-
-export default {};
