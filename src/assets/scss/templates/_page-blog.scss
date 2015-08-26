@@ -81,26 +81,6 @@
     margin: 0 auto;
   }
 
-  .load-more {
-    padding: 10px 0 30px 0;
-    text-align: center;
-    margin: 0 10px;
-
-    .load {
-      background: transparent;
-      border: none;
-      outline: 0;
-      height: 60px;
-      line-height: 60px;
-      display: inline-block;
-      background: $nonBlack;
-      color: #fff;
-      font-family: $PxGroteskBold;
-      font-size: 18px;
-      width: 100%;
-    }
-  }
-
   .message {
     color: #fff;
     height: 50px;

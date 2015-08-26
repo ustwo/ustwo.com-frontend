@@ -13,6 +13,7 @@ import Flux from '../flux';
 import Hero from '../components/hero';
 import BlogPostListItem from '../components/blog-post-list-item';
 import BlogControls from '../components/blog-controls';
+import LoadMoreButton from '../elements/load-more-button';
 
 export default class PageBlog extends React.Component {
   componentWillMount() {
@@ -48,7 +49,7 @@ export default class PageBlog extends React.Component {
         </Hero>
         <section className="blog-post-list">
           {this.renderPosts(posts)}
-          <button onClick={this.onClickLoadMore}>Load more</button>
+          <LoadMoreButton />
         </section>
       </article>
     );
@@ -68,8 +69,5 @@ export default class PageBlog extends React.Component {
       posts = <h3 className="message loading">Loading<div className="spinner"></div></h3>;
     }
     return posts;
-  }
-  onClickLoadMore = () => {
-    Flux.loadMorePosts();
   }
 }
