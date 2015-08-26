@@ -158,11 +158,11 @@ export default {
           external: 'twitter',
           type: 'twitterShares',
           failure: response => console.log('Failed to fetch Twitter share count', response)
-        // }, {
-          // url: `https://graph.facebook.com/?id=${uri}`,
-          // external: 'facebook',
-          // type: 'facebookShares',
-          // failure: response => console.log('Failed to fetch Facebook share count', response)
+        }, {
+          url: `https://graph.facebook.com/?id=${uri}`,
+          external: 'facebook',
+          type: 'facebookShares',
+          failure: response => console.log('Failed to fetch Facebook share count', response)
         }], applySocialShareCount).then(() => _state);
       } else {
         promise = Promise.resolve(_state);

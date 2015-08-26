@@ -21,15 +21,15 @@ export default class PageBlog extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    const posts = nextProps.blogCategory === 'all' ? take(nextProps.posts, 10) : nextProps.posts;
-    const socialShareDataIncomplete = !every(posts, post => {
-      const hasFacebookData = post.facebookShares || post.facebookShares === 0;
-      const hasTwitterData = post.twitterShares || post.twitterShares === 0;
-      return hasFacebookData && hasTwitterData;
-    });
-    // if (posts && socialShareDataIncomplete) {
-      // Flux.getSocialSharesForPosts();
-    // }
+    const currentPosts = this.props.posts;
+    const nextPosts = nextProps.posts;
+    const thereAreNoPosts = !currentPosts || !(currentPosts && currentPosts.length);
+    const thereWillBePosts = nextPosts && !!nextPosts.length;
+    const blogCategoryChanged = this.props.blogCategory !== nextProps.blogCategory;
+
+    if (thereWillBePosts && (thereAreNoPosts || blogCategoryChanged)) {
+      Flux.getSocialSharesForPosts();
+    }
   }
   render() {
     const props = this.props;
