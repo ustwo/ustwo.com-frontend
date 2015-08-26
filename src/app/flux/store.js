@@ -7,6 +7,8 @@ import Log from '../_lib/log';
 import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
 import Nulls from '../flux/nulls';
+import tweetCounts from '../flux/tweetCounts';
+import socialMediaFormatter from '../_lib/social-media-formatter';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
@@ -26,7 +28,14 @@ if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id
 
 function applyData(data, type) {
   const changeSet = {};
-  changeSet[type] = formatSocialShareData(data, type);
+  let value;
+  if (type === 'twitterShares' || type === 'facebookShares') {
+    const response = socialMediaFormatter(data, type);
+    value = getCountFromResponse(response);
+  } else {
+    value = data;
+  }
+  changeSet[type] = value;
   Object.assign(_state, changeSet);
   Log('Loaded', type, _state[type]);
 }
@@ -36,33 +45,23 @@ function applyJobDetailData(job) {
   Log('Added job details', job);
 }
 function applySocialShareCount(data, type) {
-  let uri;
-  switch (type) {
-    case 'twitterShares':
-      uri = data.url.split('/');
-      break;
-    case 'facebookShares':
-      uri = data.id.split('/');
-      break;
-  }
-  const slug = uri[uri.length-1] || uri[uri.length-2];
-  const index = findIndex(_state.posts, 'slug', slug);
+  const response = socialMediaFormatter(data, type);
+  const index = findIndex(_state.posts, 'slug', response.slug);
   if (index > -1) {
-    const value = formatSocialShareData(data, type);
+    const value = getCountFromResponse(response);
     _state.posts[index][type] = value;
     Log(`Added ${type}`, value);
   }
 }
-function formatSocialShareData(data, type) {
-  switch (type) {
-    case 'twitterShares':
-      data = data.count;
-      break;
-    case 'facebookShares':
-      data = data.shares || (data.id && 0);
-      break;
+function getCountFromResponse(response) {
+  let value = response.count;
+  if (response.type === 'twitterShares') {
+    const oldCount = find(tweetCounts, 'slug', response.slug);
+    if (oldCount) {
+      value += oldCount.count;
+    }
   }
-  return data;
+  return value;
 }
 
 window._state = _state;
