@@ -39,6 +39,9 @@ const Actions = {
   },
   getSocialSharesForPosts() {
     return Store.getSocialSharesForPosts();
+  },
+  loadMorePosts() {
+    return Store.loadMorePosts();
   }
 };
 

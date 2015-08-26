@@ -7,20 +7,22 @@ import Log from '../_lib/log';
 import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
 import Nulls from '../flux/nulls';
+import Defaults from '../flux/defaults';
 import tweetCounts from '../flux/tweetCounts';
 import fetchSocialMediaData from '../_lib/social-media-fetcher';
 import socialMediaFormatter from '../_lib/social-media-formatter';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
-  blogCategory: 'all',
+  blogCategory: Defaults.blogCategory,
   searchQuery: Nulls.searchQuery,
   modal: Nulls.modal,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
   caseStudy: Nulls.caseStudy,
   twitterShares: Nulls.twitterShares,
-  facebookShares: Nulls.facebookShares
+  facebookShares: Nulls.facebookShares,
+  postsPagination: Defaults.postsPagination
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
   _state.takeover.seen = true;
@@ -83,6 +85,9 @@ export default {
       _state.twitterShares = null;
       _state.facebookShares = null;
     }
+    if(newPage !== 'blog' || newPage !== 'blog/category') {
+      _state.postsPagination = Defaults.postsPagination;
+    }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
     _state.posts = null;
@@ -97,6 +102,7 @@ export default {
   },
   setBlogCategoryTo(id) {
     _state.blogCategory = id;
+    _state.postsPagination = Defaults.postsPagination;
     return Promise.resolve(_state);
   },
   setSearchQueryTo(string) {
@@ -128,7 +134,7 @@ export default {
     if(job.description) {
       promise = Promise.resolve(_state);
     } else {
-     promise = DataLoader([{
+      promise = DataLoader([{
         url: `ustwo/v1/jobs/${jid}`,
         type: 'job'
       }], applyJobDetailData).then(() => _state);
@@ -165,5 +171,19 @@ export default {
       }
       return promise;
     })).then(() => _state);
+  },
+  loadMorePosts() {
+    const pageNo = ++_state.postsPagination;
+    const category = _state.blogCategory;
+    let url;
+    if (category === 'all') {
+      url = `ustwo/v1/posts?per_page=12&page=${pageNo}`;
+    } else {
+      url = `ustwo/v1/posts?per_page=12&category=${category}&page=${pageNo}`;
+    }
+    return DataLoader([{
+      url: url,
+      type: 'posts'
+    }], applyMorePosts).then(() => _state);
   }
 };

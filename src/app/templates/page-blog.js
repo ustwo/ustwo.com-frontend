@@ -33,7 +33,7 @@ export default class PageBlog extends React.Component {
   }
   render() {
     const props = this.props;
-    const posts = props.blogCategory === 'all' ? take(props.posts, 10) : props.posts;
+    const posts = props.blogCategory === 'all' ? take(props.posts, (12*props.postsPagination)-2) : props.posts;
     const attachments = get(props.page, '_embedded.wp:attachment.0', []);
     const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
     const classes = classnames('page-blog', {
@@ -48,6 +48,7 @@ export default class PageBlog extends React.Component {
         </Hero>
         <section className="blog-post-list">
           {this.renderPosts(posts)}
+          <button onClick={this.onClickLoadMore}>Load more</button>
         </section>
       </article>
     );
@@ -67,5 +68,8 @@ export default class PageBlog extends React.Component {
       posts = <h3 className="message loading">Loading<div className="spinner"></div></h3>;
     }
     return posts;
+  }
+  onClickLoadMore = () => {
+    Flux.loadMorePosts();
   }
 }
