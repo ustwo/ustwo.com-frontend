@@ -16,6 +16,12 @@ import BlogControls from '../components/blog-controls';
 import LoadMoreButton from '../elements/load-more-button';
 
 export default class PageBlog extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadingMorePosts: false
+    }
+  }
   componentWillMount() {
     if (this.props.posts) {
       Flux.getSocialSharesForPosts();
@@ -31,8 +37,18 @@ export default class PageBlog extends React.Component {
     if (thereWillBePosts && (thereAreNoPosts || blogCategoryChanged)) {
       Flux.getSocialSharesForPosts();
     }
+
+    const newPostsAdded = (currentPosts && nextPosts) && (currentPosts.length < nextPosts.length);
+    
+    if (newPostsAdded) {
+      Flux.getSocialSharesForPosts();
+      this.setState({
+        loadingMorePosts: false
+      });
+    }
   }
   render() {
+    const state = this.state;
     const props = this.props;
     const posts = props.blogCategory === 'all' ? take(props.posts, (12*props.postsPagination)-2) : props.posts;
     const attachments = get(props.page, '_embedded.wp:attachment.0', []);
@@ -49,7 +65,7 @@ export default class PageBlog extends React.Component {
         </Hero>
         <section className="blog-post-list">
           {this.renderPosts(posts)}
-          <LoadMoreButton />
+          <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} />
         </section>
       </article>
     );
@@ -69,5 +85,11 @@ export default class PageBlog extends React.Component {
       posts = <h3 className="message loading">Loading<div className="spinner"></div></h3>;
     }
     return posts;
+  }
+  onClickLoadMore = () => {
+    Flux.loadMorePosts();
+    this.setState({
+      loadingMorePosts: true
+    });
   }
 }

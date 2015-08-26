@@ -46,6 +46,10 @@ function applyJobDetailData(job) {
   _state.jobs[index] = job;
   Log('Added job details', job);
 }
+function applyMorePosts(data, type) {
+  _state.posts = _state.posts.concat(data);
+  Log('Added more posts', data);
+}
 function applySocialMediaDataForPosts(data, type) {
   const response = socialMediaFormatter(data, type);
   const index = findIndex(_state.posts, 'slug', response.slug);
@@ -150,24 +154,27 @@ export default {
     return Promise.resolve(_state);
   },
   getSocialSharesForPost() {
-    const slug = _state.page.slug;
+    const hasFacebookData = !!_state.facebookShares || _state.facebookShares === 0;
+    const hasTwitterData = !!_state.twitterShares || _state.twitterShares === 0;
     let promise;
-    if (slug) {
-      promise = fetchSocialMediaData(slug, applyData)
-        .then(() => _state);
-    } else {
+    if (hasFacebookData && hasTwitterData) {
       promise = Promise.resolve(_state);
+    } else {
+      promise = fetchSocialMediaData(_state.page.slug, applyData)
+        .then(() => _state);
     }
     return promise;
   },
   getSocialSharesForPosts() {
     return Promise.all(_state.posts.map(post => {
+      const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
+      const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
       let promise;
-      if (post.slug) {
+      if (hasFacebookData && hasTwitterData) {
+        promise = Promise.resolve(_state);
+      } else {
         promise = fetchSocialMediaData(post.slug, applySocialMediaDataForPosts)
           .then(() => _state);
-      } else {
-        promise = Promise.resolve(_state);
       }
       return promise;
     })).then(() => _state);
