@@ -10,6 +10,17 @@ import ModuleRenderer from '../_lib/module-renderer';
 import SocialMediaSharing from '../components/social-media-sharing';
 
 export default class PagePost extends React.Component {
+  componentWillMount() {
+    const page = this.props.page;
+    if (page && page.slug) {
+      Flux.getSocialSharesForPost();
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.page && nextProps.page && nextProps.page.slug) {
+      Flux.getSocialSharesForPost();
+    }
+  }
   render() {
     const props = this.props;
     const post = props.page;

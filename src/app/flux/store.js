@@ -8,6 +8,7 @@ import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
 import Nulls from '../flux/nulls';
 import tweetCounts from '../flux/tweetCounts';
+import fetchSocialMediaData from '../_lib/social-media-fetcher';
 import socialMediaFormatter from '../_lib/social-media-formatter';
 
 const _state = Object.assign({
@@ -44,7 +45,7 @@ function applyJobDetailData(job) {
   _state.jobs[index] = job;
   Log('Added job details', job);
 }
-function applySocialShareCount(data, type) {
+function applySocialMediaDataForPosts(data, type) {
   const response = socialMediaFormatter(data, type);
   const index = findIndex(_state.posts, 'slug', response.slug);
   if (index > -1) {
@@ -147,23 +148,23 @@ export default {
     _state.modal = 'blogCategories';
     return Promise.resolve(_state);
   },
+  getSocialSharesForPost() {
+    const slug = _state.page.slug;
+    let promise;
+    if (slug) {
+      promise = fetchSocialMediaData(slug, applyData)
+        .then(() => _state);
+    } else {
+      promise = Promise.resolve(_state);
+    }
+    return promise;
+  },
   getSocialSharesForPosts() {
     return Promise.all(_state.posts.map(post => {
       let promise;
       if (post.slug) {
-        const uri = `http://ustwo.com/blog/${post.slug}`;
-        const httpsUri = `https://ustwo.com/blog/${post.slug}`;
-        promise = DataLoader([{
-          url: `twitter/count?url=${httpsUri}`,
-          external: 'twitter',
-          type: 'twitterShares',
-          failure: response => console.log('Failed to fetch Twitter share count', response)
-        }, {
-          url: `https://graph.facebook.com/?id=${uri}`,
-          external: 'facebook',
-          type: 'facebookShares',
-          failure: response => console.log('Failed to fetch Facebook share count', response)
-        }], applySocialShareCount).then(() => _state);
+        promise = fetchSocialMediaData(post.slug, applySocialMediaDataForPosts)
+          .then(() => _state);
       } else {
         promise = Promise.resolve(_state);
       }

@@ -83,18 +83,6 @@ const routes = {
       url: `ustwo/v1/posts/${pid}`,
       type: 'page',
       slug: pid
-    }, {
-      url: `https://graph.facebook.com/?id=http://ustwo.com/blog/${pid}`,
-      external: 'facebook',
-      type: 'facebookShares',
-      slug: pid,
-      failure: response => console.log('Failed to fetch Facebook share count', response)
-    }, {
-      url: `twitter/count?url=https://ustwo.com/blog/${pid}`,
-      external: 'twitter',
-      type: 'twitterShares',
-      slug: pid,
-      failure: response => console.log('Failed to fetch Twitter share count', response)
     }]
   },
   legal: {
