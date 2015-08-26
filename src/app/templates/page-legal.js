@@ -4,6 +4,8 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 
+import LoadingIcon from '../elements/loading-icon';
+
 export default class PageLegal extends React.Component {
   render() {
     const pageData = this.props.page;
@@ -15,6 +17,8 @@ export default class PageLegal extends React.Component {
         </div>
 
         <div className="content-container">
+
+          <LoadingIcon />
 
           <h2>Legal</h2>
 

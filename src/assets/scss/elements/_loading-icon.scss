@@ -1,0 +1,59 @@
+@keyframes loadingSpin {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.loading-icon {
+
+  $stage-size: 50px;
+  $dot-size: 40px;
+  $colours: $piglet, $navy, $pot, $honey;
+  $duration: 2s;
+
+  width: $stage-size;
+  height: $stage-size;
+
+  .wrapper {
+    display: inline-block;
+    width: $stage-size;
+    height: $stage-size;
+    margin: 5px;
+    background: grey;
+    animation: loadingSpin 2s infinite linear;
+    transform-origin: 50% 50%;
+
+    > div {
+      width: $dot-size;
+      height: $dot-size;
+      border-radius: 50%;
+      display: none;
+
+      @each $colour in $colours {
+        $i: index($colours, $colour);
+        &:nth-child(#{$i}) {
+          background-color: $colour;
+        }
+      }
+
+      &:nth-child(1) {
+
+      }
+      &:nth-child(2) {
+
+      }
+      &:nth-child(3) {
+
+      }
+      &:nth-child(4) {
+
+      }
+
+    }
+
+  }
+
+}
