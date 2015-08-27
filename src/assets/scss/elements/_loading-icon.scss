@@ -1,11 +1,11 @@
 .loading-icon {
 
-  $stage-size: 100px;
-  $dot-size: $stage-size * .4;
+  $stage-size: 50px;
+  $dot-size: $stage-size * .3;
   $colours: $mare, $rain, $softPassion, $honey;
   $duration: 1.8s;
-  $margin-small: $stage-size * .05;
-  $margin-large: $stage-size * .3;
+  $margin-small: ($stage-size - ($dot-size * 2)) * .25; // 2 dots
+  $margin-large: ($stage-size - $dot-size) * .5; // 1 dot
 
   width: $stage-size;
   height: $stage-size;
@@ -90,10 +90,10 @@
       transform: rotateZ(-4deg);
     }
     24% {
-      transform: rotateZ(-23deg);
+      transform: rotateZ(-20deg);
     }
     35% {
-      transform: rotateZ(-90deg);
+      transform: rotateZ(-65deg);
     }
     36% {
       transform: rotateZ(60deg);
@@ -105,7 +105,6 @@
       transform: rotateZ(0deg);
     }
   }
-
 
   @keyframes collapse {
     22% {
@@ -133,8 +132,8 @@
     30% {
       background-color: #000;
     }
-    35% {
-      transform: scale(1.2);
+    40% {
+      transform: scale(1.25);
     }
     80% {
       transform: scale(1);
