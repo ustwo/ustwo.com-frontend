@@ -100,6 +100,7 @@
 
         > div {
           background-color: $mare;
+          animation: oppositeDarken $duration infinite linear;
         }
       }
     }
@@ -172,24 +173,49 @@
   @keyframes oppositeLoadingSpin {
     0% {
       transform: rotateZ(0deg);
+      z-index: 1;
     }
     18% {
       transform: rotateZ(4deg);
+      z-index: 1;
     }
     24% {
       transform: rotateZ(20deg);
+      z-index: 1;
     }
     35% {
       transform: rotateZ(65deg);
+      z-index: 1;
     }
     36% {
       transform: rotateZ(-60deg);
+      z-index: 1;
     }
     87% {
       transform: rotateZ(-60deg);
+      z-index: 3;
     }
     100% {
       transform: rotateZ(0deg);
+      z-index: 3;
+    }
+  }
+
+  @keyframes oppositeDarken {
+    0% {
+      background-color: $mare;
+    }
+    30% {
+      background-color: $mare;
+    }
+    31% {
+      background-color: #000;
+    }
+    75% {
+      background-color: #000;
+    }
+    100% {
+      background-color: $mare;
     }
   }
 
