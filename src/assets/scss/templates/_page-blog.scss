@@ -107,6 +107,7 @@
     }
   }
 
+
   @include susy-breakpoint($bp-medium, $susy) {
     .blog-category {
       transform: translateY(-21px);
@@ -126,14 +127,19 @@
         }
       }
     }
-    &.loading {
+
+    &.loading,
+    &.empty {
       .blog-post-list {
         padding: 0;
+        max-width: none;
       }
       .load-more-button {
         display: none;
       }
     }
+
+
     &.categorised {
       .down-chevron {
         display: none;
