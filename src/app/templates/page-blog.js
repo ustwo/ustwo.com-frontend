@@ -72,7 +72,7 @@ export default class PageBlog extends React.Component {
         </Hero>
         <section className="blog-post-list">
           {this.renderPosts(posts)}
-          <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} />
+          <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} disabled={false} />
         </section>
       </article>
     );
