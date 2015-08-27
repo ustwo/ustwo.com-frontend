@@ -3,7 +3,9 @@
   $stage-size: 100px;
   $dot-size: $stage-size * .4;
   $colours: $mare, $rain, $softPassion, $honey;
-  $duration: 1.78s;
+  $duration: 1.8s;
+  $margin-small: $stage-size * .05;
+  $margin-large: $stage-size * .3;
 
   width: $stage-size;
   height: $stage-size;
@@ -21,7 +23,7 @@
       display: inline-block;
       width: $dot-size;
       height: $dot-size;
-      margin: 5px;
+      margin: $margin-small;
       transform-origin: 50% 50%;
       animation: collapse $duration infinite linear;
 
@@ -87,38 +89,36 @@
     18% {
       transform: rotateZ(-4deg);
     }
-    30% {
+    24% {
+      transform: rotateZ(-23deg);
+    }
+    35% {
       transform: rotateZ(-90deg);
     }
-    69% {
-      transform: rotateZ(-90deg);
+    36% {
+      transform: rotateZ(60deg);
     }
-    83% {
-      transform: rotateZ(90deg);
-    }
-    95% {
-      transform: rotateZ(6deg);
+    87% {
+      transform: rotateZ(60deg);
     }
     100% {
       transform: rotateZ(0deg);
     }
   }
 
+
   @keyframes collapse {
-    10% {
-      margin: 5px;
+    22% {
+      margin: $margin-small;
     }
-    18% {
-      margin: 5px;
+    35% {
+      margin: $margin-large;
     }
-    30% {
-      margin: 30px;
+    82% {
+      margin: $margin-large;
     }
-    83% {
-      margin: 30px;
-    }
-    90% {
-      margin: 5px;
+    94% {
+      margin: $margin-small;
     }
   }
 
@@ -146,6 +146,5 @@
       background-color: $rain;
     }
   }
-
 
 }
