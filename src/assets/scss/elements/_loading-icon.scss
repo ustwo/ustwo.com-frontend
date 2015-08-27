@@ -1,59 +1,151 @@
-@keyframes loadingSpin {
-  from {
-    transform: rotateZ(0deg);
-  }
-  to {
-    transform: rotateZ(360deg);
-  }
-}
-
 .loading-icon {
 
-  $stage-size: 50px;
-  $dot-size: 40px;
-  $colours: $piglet, $navy, $pot, $honey;
-  $duration: 2s;
+  $stage-size: 100px;
+  $dot-size: $stage-size * .4;
+  $colours: $mare, $rain, $softPassion, $honey;
+  $duration: 1.78s;
 
   width: $stage-size;
   height: $stage-size;
 
   .wrapper {
+    position: relative;
     display: inline-block;
     width: $stage-size;
     height: $stage-size;
-    margin: 5px;
-    background: grey;
-    animation: loadingSpin 2s infinite linear;
-    transform-origin: 50% 50%;
+    font-size: 0;
+    animation: loadingSpin $duration infinite linear;
 
     > div {
+      position: absolute;
+      display: inline-block;
       width: $dot-size;
       height: $dot-size;
-      border-radius: 50%;
-      display: none;
+      margin: 5px;
+      transform-origin: 50% 50%;
+      animation: collapse $duration infinite linear;
 
       @each $colour in $colours {
         $i: index($colours, $colour);
-        &:nth-child(#{$i}) {
+        &:nth-child(#{$i}) > div {
           background-color: $colour;
         }
       }
 
-      &:nth-child(1) {
+      > div {
+        width: $dot-size;
+        height: $dot-size;
+        border-radius: 50%;
+      }
 
+      &:nth-child(1) {
+        // display: none;
       }
       &:nth-child(2) {
+        z-index: 4;
 
+        > div {
+          animation: darken $duration infinite linear;
+        }
       }
       &:nth-child(3) {
-
+        z-index: 2;
       }
       &:nth-child(4) {
+        z-index: 3;
+      }
 
+      &:nth-child(1),
+      &:nth-child(2) {
+        top: 0;
+      }
+      &:nth-child(3),
+      &:nth-child(4) {
+        bottom: 0;
+      }
+      &:nth-child(1),
+      &:nth-child(3) {
+        left: 0;
+      }
+      &:nth-child(2),
+      &:nth-child(4) {
+        right: 0;
       }
 
     }
 
   }
+
+
+  @keyframes loadingSpin {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    7% {
+      transform: rotateZ(-1deg);
+    }
+    18% {
+      transform: rotateZ(-4deg);
+    }
+    30% {
+      transform: rotateZ(-90deg);
+    }
+    69% {
+      transform: rotateZ(-90deg);
+    }
+    83% {
+      transform: rotateZ(90deg);
+    }
+    95% {
+      transform: rotateZ(6deg);
+    }
+    100% {
+      transform: rotateZ(0deg);
+    }
+  }
+
+  @keyframes collapse {
+    10% {
+      margin: 5px;
+    }
+    18% {
+      margin: 5px;
+    }
+    30% {
+      margin: 30px;
+    }
+    83% {
+      margin: 30px;
+    }
+    90% {
+      margin: 5px;
+    }
+  }
+
+  @keyframes darken {
+    0% {
+      background-color: $rain;
+    }
+    25% {
+      transform: scale(1);
+      background-color: $rain;
+    }
+    30% {
+      background-color: #000;
+    }
+    35% {
+      transform: scale(1.2);
+    }
+    80% {
+      transform: scale(1);
+    }
+    83% {
+      background-color: #000;
+    }
+    90% {
+      background-color: $rain;
+    }
+  }
+
 
 }
