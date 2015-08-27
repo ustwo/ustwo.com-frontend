@@ -108,12 +108,8 @@ export default {
     _state.modal = 'contacts';
     return Promise.resolve(_state);
   },
-  openNav() {
-    _state.showNav = true;
-    return Promise.resolve(_state);
-  },
-  closeNav() {
-    _state.showNav = false;
+  showNavOverlay() {
+    _state.modal = 'navigation';
     return Promise.resolve(_state);
   },
   closeTakeover() {

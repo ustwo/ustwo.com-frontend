@@ -81,40 +81,6 @@
         opacity: 0;
       }
     }
-    &__overlay {
-      display: block;
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      text-align: center;
-      background-color: #fff;
-      z-index: 100;
-      height: 100vh;
-      overflow: scroll;
-
-      &__close-button {
-        fill: $nonBlack;
-      }
-      &__menu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        height: calc(100% - 75px - 100px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        clear: both;
-      }
-      &.nav__overlay-open {
-        visibility: visible;
-      }
-      &.nav__overlay-closed {
-        visibility: hidden;
-      }
-    }
   }
   &.takeover {
     @extend .neg-nav;
@@ -152,8 +118,7 @@
 @include susy-breakpoint($bp-large, $susy) {
   .header {
     .nav {
-      .nav__open-overlay-button,
-      .nav__overlay {
+      .nav__open-overlay-button {
         display: none;
       }
 

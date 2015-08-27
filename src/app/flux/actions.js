@@ -16,11 +16,8 @@ const Actions = {
   showContacts() {
     return Store.showContacts();
   },
-  openNav() {
-    return Store.openNav();
-  },
-  closeNav() {
-    return Store.closeNav();
+  showNavOverlay() {
+    return Store.showNavOverlay();
   },
   closeTakeover() {
     return Store.closeTakeover();
