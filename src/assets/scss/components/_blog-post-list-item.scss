@@ -119,7 +119,7 @@
 
   @include susy-breakpoint($bp-medium, $susy) {
     position: relative;
-    padding: 0 0 60px;
+    padding: 0 0 30px;
 
     &:last-of-type {
       padding-bottom: $blog-gutter-large;
@@ -181,6 +181,5 @@
       height: 84.2px;
     }
   }
-
 
 }
