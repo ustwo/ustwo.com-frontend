@@ -7,16 +7,17 @@
   $margin-small: ($stage-size - ($dot-size * 2)) * .25; // 2 dots
   $margin-large: ($stage-size - $dot-size) * .5; // 1 dot
 
+  position: relative;
   width: $stage-size;
   height: $stage-size;
 
-  .wrapper {
+  .wrapper,
+  .opposite {
     position: relative;
-    display: inline-block;
+    display: block;
     width: $stage-size;
     height: $stage-size;
     font-size: 0;
-    animation: loadingSpin $duration infinite linear;
 
     > div {
       position: absolute;
@@ -27,6 +28,20 @@
       transform-origin: 50% 50%;
       animation: collapse $duration infinite linear;
 
+      > div {
+        width: $dot-size;
+        height: $dot-size;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .wrapper {
+    z-index: 2;
+    animation: loadingSpin $duration infinite linear;
+
+    > div {
+
       @each $colour in $colours {
         $i: index($colours, $colour);
         &:nth-child(#{$i}) > div {
@@ -34,14 +49,8 @@
         }
       }
 
-      > div {
-        width: $dot-size;
-        height: $dot-size;
-        border-radius: 50%;
-      }
-
       &:nth-child(1) {
-        // display: none;
+        display: none;
       }
       &:nth-child(2) {
         z-index: 4;
@@ -78,13 +87,27 @@
 
   }
 
+  .opposite {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    animation: oppositeLoadingSpin $duration infinite linear;
+
+    > div {
+      &:nth-child(1) {
+        top: 0;
+        left: 0;
+
+        > div {
+          background-color: $mare;
+        }
+      }
+    }
+  }
 
   @keyframes loadingSpin {
     0% {
       transform: rotateZ(0deg);
-    }
-    7% {
-      transform: rotateZ(-1deg);
     }
     18% {
       transform: rotateZ(-4deg);
@@ -143,6 +166,30 @@
     }
     90% {
       background-color: $rain;
+    }
+  }
+
+  @keyframes oppositeLoadingSpin {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    18% {
+      transform: rotateZ(4deg);
+    }
+    24% {
+      transform: rotateZ(20deg);
+    }
+    35% {
+      transform: rotateZ(65deg);
+    }
+    36% {
+      transform: rotateZ(-60deg);
+    }
+    87% {
+      transform: rotateZ(-60deg);
+    }
+    100% {
+      transform: rotateZ(0deg);
     }
   }
 

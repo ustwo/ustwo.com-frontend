@@ -11,6 +11,9 @@ export default class LoadingIcon extends React.Component {
           <div><div></div></div>
           <div><div></div></div>
         </div>
+        <div className="opposite">
+          <div><div></div></div>
+        </div>
       </div>
     );
   }
