@@ -1,13 +1,8 @@
 FROM busybox
 MAINTAINER Arnau Siches <arnau@ustwo.com>
 
-COPY etc/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY etc/nginx/ssl.conf /etc/nginx/ssl.conf
-COPY etc/nginx/mime.types /etc/nginx/mime.types
-COPY etc/nginx/ssl /etc/nginx/ssl
-COPY etc/nginx/locations /etc/nginx/locations
-COPY etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY etc/nginx/ssl /etc/ustwo/ssl
 
-VOLUME /etc/nginx
+VOLUME /etc/ustwo/ssl
 
 CMD ["true"]
