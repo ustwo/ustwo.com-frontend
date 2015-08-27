@@ -5,6 +5,7 @@ export default {
   takeover: null,
   twitterShares: null,
   facebookShares: null,
+  postsPaginationTotal: null,
   caseStudy: {
     "name": null,
     "link": null,

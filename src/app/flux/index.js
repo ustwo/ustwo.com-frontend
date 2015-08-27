@@ -21,7 +21,7 @@ const globalLoads = [{
 }, {
   url: 'ustwo/v1/takeovers?embed',
   type: 'takeover',
-  get: data => data[0]
+  get: response => response.data[0]
 }, {
   url: 'ustwo/v1/studios',
   type: 'studios'

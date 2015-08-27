@@ -22,13 +22,15 @@ const _state = Object.assign({
   caseStudy: Nulls.caseStudy,
   twitterShares: Nulls.twitterShares,
   facebookShares: Nulls.facebookShares,
-  postsPagination: Defaults.postsPagination
+  postsPagination: Defaults.postsPagination,
+  postsPaginationTotal: Nulls.postsPaginationTotal
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
   _state.takeover.seen = true;
 }
 
-function applyData(data, type) {
+function applyData(response, type) {
+  const data = response && response.data;
   const changeSet = {};
   let value;
   if (type === 'twitterShares' || type === 'facebookShares') {
@@ -38,10 +40,14 @@ function applyData(data, type) {
     value = data;
   }
   changeSet[type] = value;
+  if (response.postsPaginationTotal) {
+    changeSet.postsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
+  }
   Object.assign(_state, changeSet);
   Log('Loaded', type, _state[type]);
 }
-function applyJobDetailData(job) {
+function applyJobDetailData(response) {
+  const job = response.data;
   const index = findIndex(_state.jobs, 'shortcode', job.shortcode);
   _state.jobs[index] = job;
   Log('Added job details', job);
@@ -50,8 +56,8 @@ function applyMorePosts(data, type) {
   _state.posts = _state.posts.concat(data);
   Log('Added more posts', data);
 }
-function applySocialMediaDataForPosts(data, type) {
-  const response = socialMediaFormatter(data, type);
+function applySocialMediaDataForPosts(response, type) {
+  response = socialMediaFormatter(response.data, type);
   const index = findIndex(_state.posts, 'slug', response.slug);
   if (index > -1) {
     const value = getCountFromResponse(response);
