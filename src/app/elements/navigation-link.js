@@ -13,7 +13,7 @@ export default class NavigationLink extends React.Component {
     });
     return (
       <li className={classes}>
-        <a href={this.props.url} className="nav__menu__item__link" onClick={this.onClick}>{this.props.children}</a>
+        <a href={this.props.url} className="nav__menu__item__link">{this.props.children}</a>
       </li>
     );
   }

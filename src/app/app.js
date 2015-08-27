@@ -27,6 +27,7 @@ import TakeOver from './modules/take-over';
 import FourOhFour from './templates/page-404';
 import SearchModal from './components/search-modal';
 import BlogCategories from './components/blog-categories';
+import NavigationOverlay from './modules/navigation-overlay';
 
 const pageMap = {
   'home': require('./templates/page-home'),
@@ -93,7 +94,7 @@ export default class App extends React.Component {
             }]}
           />
           <EntranceTransition className="nav-wrapper">
-            <Navigation pages={state.navMain} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={this.showTakeover()} open={state.showNav} />
+            <Navigation pages={state.navMain} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={this.showTakeover()} />
           </EntranceTransition>
           <TransitionManager component="div" className={contentClasses} duration="0">
             <div className="app__stage__page-container" key={state.currentPage}>
@@ -110,8 +111,9 @@ export default class App extends React.Component {
     return content;
   }
   renderModal() {
-    const takeover = this.state.takeover;
-    const modalType = this.state.modal;
+    const state = this.state;
+    const takeover = state.takeover;
+    const modalType = state.modal;
     let modal;
     if(this.showTakeover()) {
       modal = <TakeOver key="takeover" takeover={takeover} />;
@@ -119,20 +121,24 @@ export default class App extends React.Component {
       let content;
       let className;
       switch(modalType) {
+        case 'navigation':
+          className = 'navigation';
+          content = <NavigationOverlay pages={state.navMain} section={state.currentPage.split('/')[0]} />
+          break;
         case 'contacts':
           className = 'tray';
-          content = <ContactTray contacts={this.state.footer.contacts} />;
+          content = <ContactTray contacts={state.footer.contacts} />;
           break;
         case 'search':
           className = 'search';
-          content = <SearchModal searchQuery={this.state.searchQuery} />;
+          content = <SearchModal searchQuery={state.searchQuery} />;
           break;
         case 'blogCategories':
           className = 'blog-categories';
           content = <BlogCategories />;
           break;
       }
-      modal = <Modal key={this.state.modal} className={className}>{content}</Modal>;
+      modal = <Modal key={state.modal} className={className}>{content}</Modal>;
     }
     return modal;
   }

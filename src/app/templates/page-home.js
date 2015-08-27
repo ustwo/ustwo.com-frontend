@@ -75,7 +75,7 @@ export default class PageHome extends React.Component {
   teardownScrollMagic = () => {
     this.Tracking.removePageScrollTracking();
 
-    if (!env.Modernizr.touchevents) {
+    if (!env.Modernizr.touchevents && window.innerWidth > 480) {
       this.scrollSceneChevron.remove();
       this.colourBlockScenes.forEach((scene) => {
         scene.remove();

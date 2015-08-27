@@ -13,13 +13,13 @@ export default class NavigationOverlayLink extends React.Component {
     });
     return (
       <li className={classes}>
-          <a href={this.props.url} className="nav__overlay__menu__item__link" onClick={this.onClick}>{this.props.children}</a>
+        <a href={this.props.url} className="nav__overlay__menu__item__link" onClick={this.onClick}>{this.props.children}</a>
       </li>
     );
   }
   onClick = (e) => {
     e.preventDefault();
-    this.props.onClick();
+    this.props.onClick && this.props.onClick();
     Track('send', {
       'hitType': 'event',          // Required.
       'eventCategory': 'nav',   // Required.
