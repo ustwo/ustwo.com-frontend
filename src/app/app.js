@@ -51,7 +51,6 @@ export default class App extends React.Component {
   }
   componentDidMount() {
     Flux.addChangeListener(this.onFlux);
-    this.state.showNav && window.document.body.classList.add('nav-open');
   }
   componentWillUnmount() {
     Flux.removeChangeListener(this.onFlux);
@@ -64,17 +63,12 @@ export default class App extends React.Component {
     const contentClasses = classnames('app__content', {
       takeover: this.showTakeover(),
       disabled: !!state.modal,
-      'mobile-no-scroll': state.modal === 'blogCategories' || state.showNav || state.modal === 'search' || this.showTakeover()
+      'mobile-no-scroll': state.modal === 'blogCategories' || state.modal === 'navigation' || state.modal === 'search' || this.showTakeover()
     });
     let content;
-    if(this.state.showNav) {
-      window.document.body.classList.add('nav-open');
-    } else {
-      window.document.body.classList.remove('nav-open');
-    }
     if(state.currentPage === 'notfound') {
       content = <div className={appClasses}>
-        <Navigation pages={state.navMain} section={this.state.currentPage.split('/')[0]} page={this.state.currentPage.split('/')[1]} takeover={this.showTakeover()} open={this.state.showNav} />
+        <Navigation pages={state.navMain} section={this.state.currentPage.split('/')[0]} page={this.state.currentPage.split('/')[1]} takeover={this.showTakeover()} />
         <FourOhFour {...this.state} />
       </div>;
     } else {

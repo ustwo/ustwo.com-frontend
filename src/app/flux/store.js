@@ -15,7 +15,6 @@ const _state = Object.assign({
   currentPage: Nulls.page,
   blogCategory: 'all',
   searchQuery: Nulls.searchQuery,
-  showNav: false,
   modal: Nulls.modal,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
