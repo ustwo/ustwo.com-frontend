@@ -2,6 +2,7 @@
 
 import React from 'react';
 import get from 'lodash/object/get';
+import kebabCase from 'lodash/string/kebabCase';
 
 import Track from '../../server/adaptors/track';
 import Flux from '../flux';
@@ -37,9 +38,7 @@ export default class Footer extends React.Component {
     const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebook" />';
     const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitter" />';
     const linkedinLogo = '<use xlink:href="/images/spritemap.svg#linkedin" />';
-    const studios = this.props.studios && Object.keys(this.props.studios).map((key) => {
-      return <StudioContact studio={this.props.studios[key]} />;
-    });
+
     return (
       <footer className="footer">
         <div className="feedback">
@@ -69,7 +68,7 @@ export default class Footer extends React.Component {
             </ul>
           </div>
           <ul className="studios">
-            {studios}
+            {this.renderStudios()}
           </ul>
           <div className="copyright">
             <ul>
@@ -81,5 +80,11 @@ export default class Footer extends React.Component {
         </div>
       </footer>
     );
+  }
+  renderStudios = () => {
+    const studios = this.props.studios;
+    return studios && studios.map(studio => {
+      return <StudioContact key={`studio-${kebabCase(studio.name.toLowerCase())}`} studio={studio} />;
+    });
   }
 }
