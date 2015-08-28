@@ -24,13 +24,3 @@ endef
 
 compiler-build:
 	$(DOCKER) build -t $(compiler_image) -f Dockerfile .
-
-compiler-pull:
-	$(DOCKER) pull $(compiler_image)
-
-compiler-push:
-	$(DOCKER) push $(compiler_image)
-
-compiler-rm:
-	@echo "Removing $(compiler_name)"
-	@$(DOCKER_RM) $(compiler_name)
