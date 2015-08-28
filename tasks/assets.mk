@@ -4,7 +4,9 @@ assets_name = $(project_name)_$(TIER)_assets
 
 .PHONY: \
   assets-build \
+  assets-compile \
   assets-create \
+  assets-css \
   assets-rm \
   assets-save
 
@@ -38,7 +40,7 @@ assets-create:
 assets-build: assets-compile
 	$(DOCKER) build -t $(assets_image) -f Dockerfile.assets .
 
-assets-compile: compile_cmd = $(if $(VVV), compile-dev, compile)
+assets-compile: compile_cmd = $(if $(VERBOSE), compile-dev, compile)
 assets-compile:
 	@echo "Compiling assets into share/nginx/assets"
 	$(call compile, npm run $(compile_cmd))
