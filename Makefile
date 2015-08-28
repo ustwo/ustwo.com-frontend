@@ -112,7 +112,7 @@ deploy-production:
 # deploy-staging: PROXY_HTTPS_PORT := 443
 # deploy-staging: deploy
 deploy-staging:
-	$(MAKE) pull proxy-pull deploy \
+	$(MAKE) deploy \
 		BASE_PATH=/home/ubuntu \
 		TIER=staging \
 		PROXY_HTTPS_PORT=443 \

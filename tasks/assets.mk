@@ -18,11 +18,11 @@ ifeq ($(TIER), dev)
 endif
 
 ifeq ($(TIER), staging)
-  nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro
+  assets_volumes := -v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro
 endif
 
 ifeq ($(TIER), canary)
-  nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/canary.conf:/etc/nginx/conf.d/default.conf:ro
+  assets_volumes := -v $(BASE_PATH)/etc/nginx/conf.d/canary.conf:/etc/nginx/conf.d/default.conf:ro
 endif
 
 assets-build: assets-compile
