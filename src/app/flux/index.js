@@ -20,8 +20,7 @@ const globalLoads = [{
   type: 'footer'
 }, {
   url: 'ustwo/v1/takeovers?embed',
-  type: 'takeover',
-  get: response => response.data[0]
+  type: 'takeover'
 }, {
   url: 'ustwo/v1/studios',
   type: 'studios'

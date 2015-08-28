@@ -36,6 +36,8 @@ function applyData(response, type) {
   if (type === 'twitterShares' || type === 'facebookShares') {
     const response = socialMediaFormatter(data, type);
     value = getCountFromResponse(response);
+  } else if (type === 'takeover') {
+    value = data[0];
   } else {
     value = data;
   }
