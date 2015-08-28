@@ -25,6 +25,16 @@ ifeq ($(TIER), canary)
   nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/canary.conf:/etc/nginx/conf.d/default.conf:ro
 endif
 
+assets-build: assets-compile
+	$(DOCKER) build -t $(assets_image) -f Dockerfile.assets .
+
+assets-pull:
+	$(DOCKER) pull $(assets_image)
+
+assets-push:
+	$(DOCKER) push $(assets_image)
+
+
 assets-rm:
 	@echo "Removing $(assets_name)"
 	@$(DOCKER_RM) $(assets_name)
@@ -36,9 +46,6 @@ assets-create:
 		$(project_labels) \
 		$(assets_volumes) \
 		$(assets_image)
-
-assets-build: assets-compile
-	$(DOCKER) build -t $(assets_image) -f Dockerfile.assets .
 
 assets-compile: compile_cmd = $(if $(VERBOSE), compile-dev, compile)
 assets-compile:
