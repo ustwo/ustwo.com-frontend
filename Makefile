@@ -76,11 +76,16 @@ stats:
 		$(DOCKER) stats --no-stream $(quiet_ps), \
 		echo "No containers for $(TIER)")
 
+ls:
+	@docker images \
+	| grep $(project_name)
+
 nuke:
 	docker images \
 	| grep $(project_name) \
 	| awk '{print $$1":$(TAG)"}' \
 	| xargs docker rmi
+
 
 rm-production: TIER := production
 rm-production: init-rm
