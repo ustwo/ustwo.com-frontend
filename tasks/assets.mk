@@ -41,11 +41,8 @@ assets-build: assets-compile
 assets-compile: compile_cmd = $(if $(VVV), compile-dev, compile)
 assets-compile:
 	@echo "Compiling assets into share/nginx/assets"
-	$(DOCKER_TASK) \
-		$(builder_volumes) \
-		$(builder_image) \
-		npm run $(compile_cmd)
+	$(call compile, npm run $(compile_cmd))
 
 assets-css:
 	@echo "Compiling assets into share/nginx/assets"
-	$(call builder-task, npm run css)
+	$(call compile, npm run css)
