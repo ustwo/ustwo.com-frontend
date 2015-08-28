@@ -3,13 +3,24 @@ assets_image = ustwo/usweb-assets:$(TAG)
 assets_name = $(project_name)_$(TIER)_assets
 
 .PHONY: \
-	assets-build \
-	assets-create \
-	assets-rm \
-	assets-save
+  assets-build \
+  assets-create \
+  assets-rm \
+  assets-save
 
 ifeq ($(TIER), dev)
-  assets_volumes = -v $(BASE_PATH)/share/nginx:/usr/share/nginx:ro
+  assets_volumes := \
+    -v $(BASE_PATH)/share/nginx:/usr/share/nginx:ro \
+    -v $(BASE_PATH)/etc/nginx/conf.d/dev.conf:/etc/nginx/conf.d/default.conf:ro \
+    -v $(BASE_PATH)/etc/nginx/locations:/etc/nginx/locations:ro
+endif
+
+ifeq ($(TIER), staging)
+  nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro
+endif
+
+ifeq ($(TIER), canary)
+  nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/canary.conf:/etc/nginx/conf.d/default.conf:ro
 endif
 
 assets-rm:
