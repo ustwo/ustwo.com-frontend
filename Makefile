@@ -6,12 +6,12 @@ IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
 ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
-project_name := ustwosite
-# project_name := usweb
+project_name := usweb
 
 ## CLI aliases ################################################################
 RM := rm -rf
 CP := cp
+MKDIR := mkdir -p
 DOCKER := docker
 DOCKER_CP := $(DOCKER) cp
 DOCKER_EXEC := $(DOCKER) exec -it
@@ -48,19 +48,48 @@ include tasks/*.mk
 #
 ###############################################################################
 
-init: vault-create app-create proxy-create
-init-rm: vault-rm app-rm proxy-rm
+ifeq ($(TIER), dev)
+  VERBOSE := true
+endif
+
+# TODO: Prevents breaking Phil's flow
+css: assets-css
+
+vault: vault-save
+build: app-build assets-build
+push: app-push assets-push
+pull: app-pull assets-pull
+init: vault-create assets-create app-create proxy-create
+init-rm: proxy-rm app-rm assets-rm vault-rm
 deploy: init-rm init
+
+seeds: build
+infection: push
+incubation: pull
+offspring: init
+extermination: init-rm
+love: extermination offspring
+
 
 ps:
 	@$(DOCKER) ps -a $(project_filters)
-
 
 stats: quiet_ps := $(shell $(DOCKER) ps -aq $(project_filters))
 stats:
 	@$(if $(quiet_ps), \
 		$(DOCKER) stats --no-stream $(quiet_ps), \
 		echo "No containers for $(TIER)")
+
+ls:
+	@docker images \
+	| grep $(project_name)
+
+nuke:
+	docker images \
+	| grep $(project_name) \
+	| awk '{print $$1":$(TAG)"}' \
+	| xargs docker rmi
+
 
 rm-production: TIER := production
 rm-production: init-rm
@@ -94,4 +123,3 @@ absorb:
 	git pull --rebase=preserve origin master
 	git checkout $(GIT_BRANCH)
 	git rebase master
-	# git merge --no-ff $(GIT_BRANCH)

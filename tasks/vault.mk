@@ -1,23 +1,15 @@
 ## Vault tasks ################################################################
+
+# vault version matches the SSL cert year of creation.
+vault_version := 2015
+vault_image := ustwo/usweb-vault:$(vault_version)
 vault_name = $(project_name)_$(TIER)_vault
 
-.PHONY: vault-rm vault-create
-
-nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
-
-ifeq ($(TIER), dev)
-  nginx_config = \
-    -v $(BASE_PATH)/etc/nginx/conf.d/dev.conf:/etc/nginx/conf.d/default.conf:ro \
-    -v $(BASE_PATH)/etc/nginx/locations:/etc/nginx/locations:ro
-endif
-
-ifeq ($(TIER), staging)
-  nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro
-endif
-
-ifeq ($(TIER), canary)
-  nginx_config := -v $(BASE_PATH)/etc/nginx/conf.d/canary.conf:/etc/nginx/conf.d/default.conf:ro
-endif
+.PHONY: \
+	vault-build \
+	vault-create \
+	vault-rm \
+	vault-save
 
 vault-rm:
 	@echo "Removing $(vault_name)"
@@ -27,22 +19,14 @@ vault-create:
 	@echo "Creating $(vault_name)"
 	@$(DOCKER_VOLUME) \
 		--name $(vault_name) \
-		-v $(BASE_PATH)/etc/nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
-		-v $(BASE_PATH)/etc/nginx/ssl.conf:/etc/nginx/ssl.conf:ro \
-		$(nginx_config) \
-		-v $(BASE_PATH)/etc/nginx/ssl:/etc/nginx/ssl:ro \
-		-v $(BASE_PATH)/share/nginx/html:/usr/share/nginx/html \
 		$(project_labels) \
-		busybox true
-
+		$(vault_image)
 
 vault-build:
-	$(DOCKER) build -t ustwo/usweb-spa -f Dockerfile.spa .
+	$(DOCKER) build -t $(vault_image) -f Dockerfile.vault .
 
-data-build:
-	$(DOCKER) build -t ustwo/usweb-spa -f Dockerfile.spa .
+build/vault-$(vault_version).tar: vault-build
+	$(MKDIR) build
+	$(DOCKER) save -o $@ $(vault_image)
 
-data-create:
-	@$(DOCKER_VOLUME) \
-		--name usweb_data \
-		ustwo/usweb-spa true
+vault-save: build/vault-$(vault_version).tar

@@ -1,28 +1,33 @@
 ## App tasks ##################################################################
-image_name := ustwo/ustwo.com-frontend
+image_name := ustwo/usweb-app
 app_image := $(image_name):$(TAG)
-app_version = $(TAG)
 app_name = $(project_name)_$(TIER)_app
 verbosity = $(if $(VERBOSE), -e VERBOSE=true,)
 
-.PHONY: app-rm app-create app-log app-sh build pull push
+.PHONY: \
+	app-rm \
+	app-create \
+	app-log \
+	app-sh \
+	app-build \
+	app-pull \
+	app-push
 
 ifeq ($(TIER), dev)
   app_volumes = \
     -v $(BASE_PATH)/gulpfile.js:/usr/local/src/gulpfile.js \
     -v $(BASE_PATH)/package.json:/usr/local/src/package.json \
+    -v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
     -v $(BASE_PATH)/src:/usr/local/src/src
-  app_cmd = npm run dev
-  VERBOSE := true
 endif
 
-build:
-	$(DOCKER) build -t $(app_image) .
+app-build:
+	$(DOCKER) build -t $(app_image) -f Dockerfile.app .
 
-pull:
+app-pull:
 	$(DOCKER) pull $(app_image)
 
-push:
+app-push:
 	$(DOCKER) push $(app_image)
 
 app-rm:
@@ -40,25 +45,10 @@ app-create:
 		$(docker_host) \
 		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \
 		$(verbosity) \
-		$(app_image) \
-		$(app_cmd)
+		$(app_image)
 
 app-log:
 	$(DOCKER) logs -f $(app_name)
 
 app-sh:
 	$(DOCKER_EXEC) $(app_name) /bin/bash
-
-css:
-	$(DOCKER_EXEC) $(app_name) npm run css
-
-app-compile:
-	$(DOCKER_EXEC) $(app_name) npm run compile
-
-app-assets:
-	@echo "Compile assets to share/nginx/assets"
-	@$(DOCKER_TASK) \
-		$(app_volumes) \
-		-v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
-		$(app_image) \
-		npm run compile
