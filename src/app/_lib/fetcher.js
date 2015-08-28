@@ -12,24 +12,28 @@ let defaultConfig = {
   baseurl: require('../../server/adaptors/proxy-url')
 }
 
-function fetcher (config) {
-  let mergedConfig = Object.assign({}, defaultConfig, config);
+function generateURL(config) {
   let url;
-  if (config.external) {
-    switch(config.external) {
-      case 'facebook':
-        url = mergedConfig.url;
-        break;
-      case 'twitter':
-        url = (mergedConfig.baseurl + mergedConfig.url).replace('/api/wp-json/', '/');
-        break;
-    }
-  } else {
-    url = mergedConfig.baseurl + mergedConfig.url;
+  switch(config.external) {
+    case 'facebook':
+      url = config.url;
+      break;
+    case 'twitter':
+      url = (config.baseurl + config.url).replace('/api/wp-json/', '/');
+      break;
+    default:
+      url = config.baseurl + config.url;
+      break;
   }
+  return url;
+}
+
+function fetcher (config) {
+  const mergedConfig = Object.assign({}, defaultConfig, config);
+  const url = generateURL(mergedConfig);
   Log('Fetching:', url);
   const req = Fetch(url, mergedConfig)
-    .then((response) => {
+    .then(response => {
       remove(mergedConfig.url);
       if (response.status >= 400) {
         if(mergedConfig.failure) {
@@ -38,7 +42,12 @@ function fetcher (config) {
           throw new Error("Bad response from server");
         }
       }
-      return response.json();
+      return response.json().then(data => {
+        return {
+          postsPaginationTotal: response.headers.get('X-WP-TotalPages'),
+          data: data
+        }
+      });
     });
   if(mergedConfig.success) {
     req

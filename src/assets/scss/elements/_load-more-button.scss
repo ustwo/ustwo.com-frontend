@@ -1,0 +1,72 @@
+.load-more-button {
+  padding: 10px 0 30px 0;
+  text-align: center;
+  margin: 0 10px;
+  display: block;
+
+  &.hidden {
+    display: none;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    outline: 0;
+    height: 60px;
+    line-height: 60px;
+    display: inline-block;
+    background: $nonBlack;
+    color: #fff;
+    font-family: $PxGroteskBold;
+    font-size: 18px;
+    width: 100%;
+
+    .loader {
+      position: relative;
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      line-height: 1;
+      vertical-align: middle;
+      margin-top: -2px;
+      transform-origin: 50% 50%;
+      margin-left: 5px;
+
+      &:before,
+      &:after {
+        position: absolute;
+        background: #fff;
+        content: "";
+      }
+      &:before {
+        top: 6px;
+        left: 0;
+        height: 3px;
+        width: 15px;
+      }
+      &:after {
+        top: 0;
+        left: 6px;
+        height: 15px;
+        width: 3px;
+      }
+    }
+
+    &.loading {
+      .loader {
+        animation: spin 1s infinite linear;
+      }
+    }
+  }
+}
+
+@include susy-breakpoint($bp-medium, $susy) {
+  .load-more-button {
+    margin: 0;
+
+    button {
+      padding: 0 150px;
+      width: auto;
+    }
+  }
+}

@@ -7,26 +7,30 @@ import Log from '../_lib/log';
 import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
 import Nulls from '../flux/nulls';
+import Defaults from '../flux/defaults';
 import tweetCounts from '../flux/tweetCounts';
 import fetchSocialMediaData from '../_lib/social-media-fetcher';
 import socialMediaFormatter from '../_lib/social-media-formatter';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
-  blogCategory: 'all',
+  blogCategory: Defaults.blogCategory,
   searchQuery: Nulls.searchQuery,
   modal: Nulls.modal,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
   caseStudy: Nulls.caseStudy,
   twitterShares: Nulls.twitterShares,
-  facebookShares: Nulls.facebookShares
+  facebookShares: Nulls.facebookShares,
+  postsPagination: Defaults.postsPagination,
+  postsPaginationTotal: Nulls.postsPaginationTotal
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
   _state.takeover.seen = true;
 }
 
-function applyData(data, type) {
+function applyData(response, type) {
+  const data = response && response.data;
   const changeSet = {};
   let value;
   if (type === 'twitterShares' || type === 'facebookShares') {
@@ -36,16 +40,24 @@ function applyData(data, type) {
     value = data;
   }
   changeSet[type] = value;
+  if (response.postsPaginationTotal) {
+    changeSet.postsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
+  }
   Object.assign(_state, changeSet);
   Log('Loaded', type, _state[type]);
 }
-function applyJobDetailData(job) {
+function applyJobDetailData(response) {
+  const job = response.data;
   const index = findIndex(_state.jobs, 'shortcode', job.shortcode);
   _state.jobs[index] = job;
   Log('Added job details', job);
 }
-function applySocialMediaDataForPosts(data, type) {
-  const response = socialMediaFormatter(data, type);
+function applyMorePosts(response, type) {
+  _state.posts = _state.posts.concat(response.data);
+  Log('Added more posts', response.data);
+}
+function applySocialMediaDataForPosts(response, type) {
+  response = socialMediaFormatter(response.data, type);
   const index = findIndex(_state.posts, 'slug', response.slug);
   if (index > -1) {
     const value = getCountFromResponse(response);
@@ -83,6 +95,9 @@ export default {
       _state.twitterShares = null;
       _state.facebookShares = null;
     }
+    if(newPage !== 'blog' || newPage !== 'blog/category') {
+      _state.postsPagination = Defaults.postsPagination;
+    }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
     _state.posts = null;
@@ -97,6 +112,7 @@ export default {
   },
   setBlogCategoryTo(id) {
     _state.blogCategory = id;
+    _state.postsPagination = Defaults.postsPagination;
     return Promise.resolve(_state);
   },
   setSearchQueryTo(string) {
@@ -128,7 +144,7 @@ export default {
     if(job.description) {
       promise = Promise.resolve(_state);
     } else {
-     promise = DataLoader([{
+      promise = DataLoader([{
         url: `ustwo/v1/jobs/${jid}`,
         type: 'job'
       }], applyJobDetailData).then(() => _state);
@@ -144,26 +160,49 @@ export default {
     return Promise.resolve(_state);
   },
   getSocialSharesForPost() {
-    const slug = _state.page.slug;
+    const hasFacebookData = !!_state.facebookShares || _state.facebookShares === 0;
+    const hasTwitterData = !!_state.twitterShares || _state.twitterShares === 0;
     let promise;
-    if (slug) {
-      promise = fetchSocialMediaData(slug, applyData)
-        .then(() => _state);
-    } else {
+    if (hasFacebookData && hasTwitterData) {
       promise = Promise.resolve(_state);
+    } else {
+      promise = fetchSocialMediaData(_state.page.slug, applyData)
+        .then(() => _state);
     }
     return promise;
   },
   getSocialSharesForPosts() {
     return Promise.all(_state.posts.map(post => {
+      const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
+      const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
       let promise;
-      if (post.slug) {
+      if (hasFacebookData && hasTwitterData) {
+        promise = Promise.resolve(_state);
+      } else {
         promise = fetchSocialMediaData(post.slug, applySocialMediaDataForPosts)
           .then(() => _state);
-      } else {
-        promise = Promise.resolve(_state);
       }
       return promise;
     })).then(() => _state);
+  },
+  loadMorePosts() {
+    let promise;
+    if (_state.postsPagination === _state.postsPaginationTotal) {
+      promise = Promise.resolve(_state);
+    } else {
+      const pageNo = ++_state.postsPagination;
+      const category = _state.blogCategory;
+      let url;
+      if (category === 'all') {
+        url = `ustwo/v1/posts?per_page=12&page=${pageNo}`;
+      } else {
+        url = `ustwo/v1/posts?per_page=12&category=${category}&page=${pageNo}`;
+      }
+      promise = DataLoader([{
+        url: url,
+        type: 'posts'
+      }], applyMorePosts).then(() => _state);
+    }
+    return promise;
   }
 };
