@@ -32,6 +32,7 @@ export default class PageBlog extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
+    this.isCategorised = nextProps.blogCategory !== 'all';
     const currentPosts = this.props.posts;
     const nextPosts = nextProps.posts;
     const thereAreNoPosts = !currentPosts || !(currentPosts && currentPosts.length);
@@ -57,11 +58,14 @@ export default class PageBlog extends React.Component {
   render() {
     const state = this.state;
     const props = this.props;
-    const posts = props.blogCategory === 'all' ? take(props.posts, (12*props.postsPagination)-2) : props.posts;
+    let posts = props.posts;
+    if (!this.isCategorised && (props.postsPagination < props.postsPaginationTotal)) {
+      posts = props.posts && take(props.posts, props.posts.length-2);
+    }
     const attachments = get(props.page, '_embedded.wp:attachment.0', []);
     const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
     const classes = classnames('page-blog', {
-      categorised: props.blogCategory !== 'all',
+      categorised: this.isCategorised,
       loading: !posts,
       empty: posts && !posts.length
     });
@@ -72,18 +76,17 @@ export default class PageBlog extends React.Component {
         </Hero>
         <section className="blog-post-list">
           {this.renderPosts(posts)}
-          <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} disabled={false} />
+          <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} disabled={props.postsPagination >= props.postsPaginationTotal} />
         </section>
       </article>
     );
   }
   renderPosts = (postsArray) => {
-    const categorised = this.props.blogCategory !== 'all';
     let posts;
     if(postsArray) {
       if(postsArray.length) {
         posts = postsArray.map((postData, index) => {
-          return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!categorised && index === 0} data={postData} />;
+          return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!this.isCategorised && index === 0} data={postData} />;
         });
       } else {
         posts = <h3 className="message">No posts found</h3>;

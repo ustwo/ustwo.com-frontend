@@ -52,9 +52,9 @@ function applyJobDetailData(response) {
   _state.jobs[index] = job;
   Log('Added job details', job);
 }
-function applyMorePosts(data, type) {
-  _state.posts = _state.posts.concat(data);
-  Log('Added more posts', data);
+function applyMorePosts(response, type) {
+  _state.posts = _state.posts.concat(response.data);
+  Log('Added more posts', response.data);
 }
 function applySocialMediaDataForPosts(response, type) {
   response = socialMediaFormatter(response.data, type);
@@ -186,17 +186,23 @@ export default {
     })).then(() => _state);
   },
   loadMorePosts() {
-    const pageNo = ++_state.postsPagination;
-    const category = _state.blogCategory;
-    let url;
-    if (category === 'all') {
-      url = `ustwo/v1/posts?per_page=12&page=${pageNo}`;
+    let promise;
+    if (_state.postsPagination === _state.postsPaginationTotal) {
+      promise = Promise.resolve(_state);
     } else {
-      url = `ustwo/v1/posts?per_page=12&category=${category}&page=${pageNo}`;
+      const pageNo = ++_state.postsPagination;
+      const category = _state.blogCategory;
+      let url;
+      if (category === 'all') {
+        url = `ustwo/v1/posts?per_page=12&page=${pageNo}`;
+      } else {
+        url = `ustwo/v1/posts?per_page=12&category=${category}&page=${pageNo}`;
+      }
+      promise = DataLoader([{
+        url: url,
+        type: 'posts'
+      }], applyMorePosts).then(() => _state);
     }
-    return DataLoader([{
-      url: url,
-      type: 'posts'
-    }], applyMorePosts).then(() => _state);
+    return promise;
   }
 };

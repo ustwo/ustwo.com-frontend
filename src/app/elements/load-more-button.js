@@ -11,8 +11,8 @@ export default class LoadMoreButton extends React.Component {
     });
 
     return (
-      <div className="load-more-button">
-        <button onClick={this.onClick} className={classes} disabled={props.disabled}>Load more <div className="loader"></div></button>
+      <div className={classnames("load-more-button", { hidden: props.disabled })}>
+        <button onClick={this.onClick} className={classes}>Load more <div className="loader"></div></button>
       </div>
     );
   }
