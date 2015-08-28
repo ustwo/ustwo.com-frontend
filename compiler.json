@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "compile": "gulp build",
+    "compile-dev": "gulp build --dev",
     "start": "babel-node --optional es7.classProperties src/server",
     "dev": "gulp start --dev && npm run start",
-    "compile-dev": "gulp build --dev",
     "styleguide": "gulp start --styleguide --dev && npm run start",
     "css": "gulp css --dev"
   },
@@ -24,7 +24,8 @@
       "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
       "../../server/adaptors/window": "./src/client/adaptors/window",
       "../../server/adaptors/scroll-magic": "./src/client/adaptors/scroll-magic",
-      "../../server/adaptors/proxy-url": "./src/client/adaptors/proxy-url"
+      "../../server/adaptors/proxy-url": "./src/client/adaptors/proxy-url",
+      "../server/adaptors/svg4everybody": "./src/client/adaptors/svg4everybody"
     }
   },
   "dependencies": {
@@ -48,6 +49,7 @@
     "gulp-sourcemaps": "1.5.2",
     "gulp-uglify": "1.2.0",
     "gulp-util": "3.0.6",
+    "he": "0.5.0",
     "isomorphic-fetch": "2.1.1",
     "lodash": "3.10.0",
     "moment": "2.10.6",
@@ -59,6 +61,7 @@
     "react-transition-manager": "1.2.3",
     "route-pattern": "0.0.6",
     "scrollmagic": "2.0.5",
+    "serve-favicon": "2.3.0",
     "susy": "2.2.5",
     "svg4everybody": "1.0.0",
     "urllite": "0.5.0",
