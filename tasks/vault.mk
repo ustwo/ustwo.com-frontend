@@ -18,6 +18,7 @@ vault-rm:
 vault-create:
 	@echo "Creating $(vault_name)"
 	@$(DOCKER_VOLUME) \
+		--read-only \
 		--name $(vault_name) \
 		$(project_labels) \
 		$(vault_image)

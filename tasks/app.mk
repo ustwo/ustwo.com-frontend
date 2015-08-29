@@ -5,19 +5,17 @@ app_name = $(project_name)_$(TIER)_app
 verbosity = $(if $(VERBOSE), -e VERBOSE=true,)
 
 .PHONY: \
-	app-rm \
-	app-create \
-	app-log \
-	app-sh \
-	app-build \
-	app-pull \
-	app-push
+  app-rm \
+  app-create \
+  app-log \
+  app-sh \
+  app-build \
+  app-pull \
+  app-push
 
 ifeq ($(TIER), dev)
   app_volumes = \
-    -v $(BASE_PATH)/gulpfile.js:/usr/local/src/gulpfile.js \
     -v $(BASE_PATH)/package.json:/usr/local/src/package.json \
-    -v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
     -v $(BASE_PATH)/src:/usr/local/src/src
 endif
 

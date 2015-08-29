@@ -43,6 +43,7 @@ assets-create:
 	@echo "Creating $(assets_name)"
 	@$(DOCKER_VOLUME) \
 		--name $(assets_name) \
+		--read-only \
 		$(project_labels) \
 		$(assets_volumes) \
 		$(assets_image)
