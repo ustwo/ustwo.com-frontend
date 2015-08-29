@@ -8,9 +8,7 @@ import window from '../../server/adaptors/window';
 import DataLoader from '../../server/adaptors/data-loader';
 import Nulls from '../flux/nulls';
 import Defaults from '../flux/defaults';
-import tweetCounts from '../flux/tweetCounts';
 import fetchSocialMediaData from '../_lib/social-media-fetcher';
-import socialMediaFormatter from '../_lib/social-media-formatter';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
@@ -30,19 +28,9 @@ if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id
 }
 
 function applyData(response, type) {
-  const data = response && response.data;
   const changeSet = {};
-  let value;
-  if (type === 'twitterShares' || type === 'facebookShares') {
-    const response = socialMediaFormatter(data, type);
-    value = getCountFromResponse(response);
-  } else if (type === 'takeover') {
-    value = data[0];
-  } else {
-    value = data;
-  }
-  changeSet[type] = value;
-  if (response.postsPaginationTotal) {
+  changeSet[type] = response.data;
+  if (response && response.postsPaginationTotal) {
     changeSet.postsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
   }
   Object.assign(_state, changeSet);
@@ -59,23 +47,11 @@ function applyMorePosts(response, type) {
   Log('Added more posts', response.data);
 }
 function applySocialMediaDataForPosts(response, type) {
-  response = socialMediaFormatter(response.data, type);
   const index = findIndex(_state.posts, 'slug', response.slug);
   if (index > -1) {
-    const value = getCountFromResponse(response);
-    _state.posts[index][type] = value;
-    Log(`Added ${type}`, value);
+    _state.posts[index][type] = response.data;
+    Log(`Added ${type}`, response.data);
   }
-}
-function getCountFromResponse(response) {
-  let value = response.count;
-  if (response.type === 'twitterShares') {
-    const oldCount = find(tweetCounts, 'slug', response.slug);
-    if (oldCount) {
-      value += oldCount.count;
-    }
-  }
-  return value;
 }
 
 window._state = _state;

@@ -1,4 +1,4 @@
-[{
+export default [{
     "slug": "moodnotes",
     "count": 0
   }, {
