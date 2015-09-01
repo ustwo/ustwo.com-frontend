@@ -1,6 +1,6 @@
 TIER ?= dev
 BASE_PATH ?= $(PWD)
-TAG ?= 1.1.1
+TAG ?= 1.1.2
 MACHINE_ALIAS ?= ustwosite
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
 ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
