@@ -97,16 +97,11 @@ export default class TakeOver extends React.Component {
   }
   onClickLink(index) {
     return (e) => {
-      const target = e.currentTarget;
-      e.preventDefault();
       Track('send', {
         'hitType': 'event',          // Required.
         'eventCategory': 'takeover',   // Required.
         'eventAction': 'click_link_' + index+1,  // Required.
-        'eventLabel': takeover.name, // Name of the takeover as set in WordPress
-        'hitCallback' : function() {
-          window.location = target.href;
-        }
+        'eventLabel': takeover.name // Name of the takeover as set in WordPress
       });
     }
   }

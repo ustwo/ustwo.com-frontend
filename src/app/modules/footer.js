@@ -21,16 +21,11 @@ export default class Footer extends React.Component {
   }
   onClickSocial(social) {
     return (e) => {
-      const target = e.currentTarget;
-      e.preventDefault();
       Track('send', {
         'hitType': 'event',          // Required.
         'eventCategory': 'contact',   // Required.
         'eventAction': 'click_social_' + social,     // Required.
-        'eventLabel': 'home', // TODO: Remove once GA has been hooked into router
-        'hitCallback' : () => {
-          window.location = target.href;
-        }
+        'eventLabel': 'home' // TODO: Remove once GA has been hooked into router
       });
     };
   }
