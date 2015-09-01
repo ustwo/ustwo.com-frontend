@@ -38,13 +38,6 @@ export default class StudioJobs extends React.Component {
     const classes = classnames('studio-jobs', `${id}-jobs`, {
       selected: this.props.selected
     });
-    const jobCount = {
-      all: 12,
-      london: 4,
-      malmo: 3,
-      newyork: 2,
-      sydney: 3
-    }
     return (
       <div className={classes}>
         <h3>{studio.name}</h3>
@@ -83,7 +76,7 @@ export default class StudioJobs extends React.Component {
     return list;
   }
   renderJobItem = (job) => {
-    return <JobItem job={job} colour={this.getStudioColour(job)} />;
+    return <JobItem key={`job-${job.shortcode}`} job={job} colour={this.getStudioColour(job)} />;
   }
   getStudioColour = (job) => {
     let studio = find(this.props.studios, 'name', job.location.city);

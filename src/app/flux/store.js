@@ -75,6 +75,7 @@ export default {
     }
     if(newPage !== 'blog' || newPage !== 'blog/category') {
       _state.postsPagination = Defaults.postsPagination;
+      _state.postsPaginationTotal = Nulls.postsPaginationTotal;
     }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;

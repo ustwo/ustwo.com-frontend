@@ -64,7 +64,7 @@ export default class PageJoinUs extends React.Component {
     return map(this.getStudios(), studio => {
       const id = kebabCase(studio.name);
       const name = studio.name;
-      return <li ref={`tab-${id}`} onClick={this.generateOnClickStudioHandler(id)} aria-selected={this.state.studio === id}>{name}</li>;
+      return <li key={`tab-${id}`} ref={`tab-${id}`} onClick={this.generateOnClickStudioHandler(id)} aria-selected={this.state.studio === id}>{name}</li>;
     });
   }
   generateOnClickStudioHandler = (studio) => {
