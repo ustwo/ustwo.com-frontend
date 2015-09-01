@@ -32,6 +32,12 @@ const studioIntros = {
 };
 
 export default class StudioJobs extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedJob: null
+    }
+  }
   render() {
     const studio = this.props.studio;
     const id = kebabCase(studio.name);
@@ -76,7 +82,24 @@ export default class StudioJobs extends React.Component {
     return list;
   }
   renderJobItem = (job) => {
-    return <JobItem key={`job-${job.shortcode}`} job={job} colour={this.getStudioColour(job)} />;
+    return <JobItem
+      key={`job-${job.shortcode}`}
+      job={job}
+      colour={this.getStudioColour(job)}
+      open={this.state.selectedJob === job.shortcode}
+      onClick={this.generateOnClickJobItemHandler(job)}
+    />;
+  }
+  generateOnClickJobItemHandler = (job) => {
+    return () => {
+      const jid = job.shortcode;
+      if (this.state.selectedJob === jid) {
+        this.setState({ selectedJob: null });
+      } else {
+        this.setState({ selectedJob: jid });
+        Flux.getJobDetails(jid);
+      }
+    }
   }
   getStudioColour = (job) => {
     let studio = find(this.props.studios, 'name', job.location.city);
