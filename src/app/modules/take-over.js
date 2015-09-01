@@ -74,7 +74,7 @@ export default class TakeOver extends React.Component {
         prefix = "tel:";
       break;
     }
-    return <li className={`take-over__content__message__links__link-item ${link.type}`}><a className="take-over__content__message__links__link-item__link" href={`${prefix}${link.url}`} onClick={this.onClickLink(index)}>{link.text}</a></li>;
+    return <li className={`take-over__content__message__links__link-item ${link.type}`}><a className="take-over__content__message__links__link-item__link" target="_blank" href={`${prefix}${link.url}`} onClick={this.onClickLink(index)}>{link.text}</a></li>;
   }
   componentDidMount() {
     this.contentTimeout = setTimeout(() => {
