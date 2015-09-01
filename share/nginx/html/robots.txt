@@ -1,6 +1,9 @@
 User-agent: *
 Disallow:
 
+User-agent: *
+Disallow: /api
+
 User-agent: litefinder
 Disallow: /
 
