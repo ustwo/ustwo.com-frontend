@@ -9,6 +9,12 @@ import Flux from '../flux';
 import StudioContact from '../components/studio-contact';
 
 export default class Footer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedStudio: null
+    }
+  }
   onClickShowContacts(e) {
     e.preventDefault();
     Track('send', {
@@ -79,7 +85,19 @@ export default class Footer extends React.Component {
   renderStudios = () => {
     const studios = this.props.studios;
     return studios && studios.map(studio => {
-      return <StudioContact key={`studio-${kebabCase(studio.name.toLowerCase())}`} studio={studio} />;
+      return <StudioContact
+        key={`studio-${kebabCase(studio.name.toLowerCase())}`}
+        studio={studio}
+        open={this.state.selectedStudio === studio.id}
+        onClick={this.generateOnClickStudioHandler(studio)}
+      />;
     });
+  }
+  generateOnClickStudioHandler = (studio) => {
+    return () => {
+      this.setState({
+        selectedStudio: this.state.selectedStudio === studio.id ? null : studio.id
+      });
+    }
   }
 }
