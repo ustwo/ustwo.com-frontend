@@ -42,13 +42,12 @@
         text-align: right;
         line-height: 1;
       }
+      
       .icon {
         position: relative;
         display: inline-block;
         width: 15px;
         height: 15px;
-        line-height: 1;
-        vertical-align: middle;
         margin-top: -2px;
 
         .horiz,
@@ -57,16 +56,14 @@
           background: #ccc;
         }
         .horiz {
-          top: 50%;
-          margin-top: -2px;
+          top: 6px;
           left: 0;
           height: 3px;
           width: 15px;
         }
         .vert {
           top: 0;
-          left: 50%;
-          margin-left: -2px;
+          left: 6px;
           height: 15px;
           width: 3px;
         }
