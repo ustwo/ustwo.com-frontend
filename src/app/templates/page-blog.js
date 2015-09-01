@@ -14,6 +14,7 @@ import Hero from '../components/hero';
 import BlogPostListItem from '../components/blog-post-list-item';
 import BlogControls from '../components/blog-controls';
 import LoadMoreButton from '../elements/load-more-button';
+import LoadingIcon from '../elements/loading-icon';
 
 export default class PageBlog extends React.Component {
   constructor(props) {
@@ -92,7 +93,12 @@ export default class PageBlog extends React.Component {
         posts = <h3 className="message">No posts found</h3>;
       }
     } else {
-      posts = <h3 className="message loading">Loading<div className="spinner"></div></h3>;
+      posts = (
+        <div className="message loading">
+          <h3>Loading</h3>
+          <LoadingIcon />
+        </div>
+      );
     }
     return posts;
   }

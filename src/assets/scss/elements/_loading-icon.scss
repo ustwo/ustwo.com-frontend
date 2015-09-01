@@ -1,0 +1,224 @@
+.loading-icon {
+
+  $stage-size: 50px;
+  $dot-size: $stage-size * .3;
+  $colours: $mare, $rain, $softPassion, $honey;
+  $duration: 1.8s;
+  $margin-small: ($stage-size - ($dot-size * 2)) * .25; // 2 dots
+  $margin-large: ($stage-size - $dot-size) * .5; // 1 dot
+
+  position: relative;
+  width: $stage-size;
+  height: $stage-size;
+
+  .wrapper,
+  .opposite {
+    position: relative;
+    display: block;
+    width: $stage-size;
+    height: $stage-size;
+    font-size: 0;
+
+    > div {
+      position: absolute;
+      display: inline-block;
+      width: $dot-size;
+      height: $dot-size;
+      margin: $margin-small;
+      transform-origin: 50% 50%;
+      animation: collapse $duration infinite linear;
+
+      &:after {
+        display: block;
+        content: "";
+        width: $dot-size;
+        height: $dot-size;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .wrapper {
+    z-index: 2;
+    animation: loadingSpin $duration infinite linear;
+
+    > div {
+
+      @each $colour in $colours {
+        $i: index($colours, $colour);
+        &:nth-child(#{$i}):after {
+          background-color: $colour;
+        }
+      }
+
+      &:nth-child(1) {
+        display: none;
+      }
+      &:nth-child(2) {
+        z-index: 4;
+
+        &:after {
+          animation: darken $duration infinite linear;
+        }
+      }
+      &:nth-child(3) {
+        z-index: 2;
+      }
+      &:nth-child(4) {
+        z-index: 3;
+      }
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        top: 0;
+      }
+      &:nth-child(3),
+      &:nth-child(4) {
+        bottom: 0;
+      }
+      &:nth-child(1),
+      &:nth-child(3) {
+        left: 0;
+      }
+      &:nth-child(2),
+      &:nth-child(4) {
+        right: 0;
+      }
+
+    }
+
+  }
+
+  .opposite {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    animation: oppositeLoadingSpin $duration infinite linear;
+
+    > div {
+      &:nth-child(1) {
+        top: 0;
+        left: 0;
+
+        &:after {
+          background-color: $mare;
+          animation: oppositeDarken $duration infinite linear;
+        }
+      }
+    }
+  }
+
+  @keyframes loadingSpin {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    18% {
+      transform: rotateZ(-4deg);
+    }
+    24% {
+      transform: rotateZ(-20deg);
+    }
+    35% {
+      transform: rotateZ(-65deg);
+    }
+    36% {
+      transform: rotateZ(60deg);
+    }
+    87% {
+      transform: rotateZ(60deg);
+    }
+    100% {
+      transform: rotateZ(0deg);
+    }
+  }
+
+  @keyframes collapse {
+    22% {
+      margin: $margin-small;
+    }
+    35% {
+      margin: $margin-large;
+    }
+    82% {
+      margin: $margin-large;
+    }
+    94% {
+      margin: $margin-small;
+    }
+  }
+
+  @keyframes darken {
+    0% {
+      background-color: $rain;
+    }
+    25% {
+      transform: scale(1);
+      background-color: $rain;
+    }
+    30% {
+      background-color: #000;
+    }
+    40% {
+      transform: scale(1.25);
+    }
+    80% {
+      transform: scale(1);
+    }
+    83% {
+      background-color: #000;
+    }
+    90% {
+      background-color: $rain;
+    }
+  }
+
+  @keyframes oppositeLoadingSpin {
+    0% {
+      transform: rotateZ(0deg);
+      z-index: 1;
+    }
+    18% {
+      transform: rotateZ(4deg);
+      z-index: 1;
+    }
+    24% {
+      transform: rotateZ(20deg);
+      z-index: 1;
+    }
+    35% {
+      transform: rotateZ(65deg);
+      z-index: 1;
+    }
+    36% {
+      transform: rotateZ(-60deg);
+      z-index: 1;
+    }
+    87% {
+      transform: rotateZ(-60deg);
+      z-index: 3;
+    }
+    100% {
+      transform: rotateZ(0deg);
+      z-index: 3;
+    }
+  }
+
+  @keyframes oppositeDarken {
+    0% {
+      background-color: $mare;
+    }
+    30% {
+      background-color: $mare;
+    }
+    31% {
+      background-color: #000;
+    }
+    75% {
+      background-color: #000;
+    }
+    100% {
+      background-color: $mare;
+    }
+  }
+
+}
