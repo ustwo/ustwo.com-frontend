@@ -7,6 +7,7 @@ proxy_image := nginx
 proxy_name = $(project_name)_$(TIER)_proxy
 
 .PHONY: \
+	proxy-log \
 	proxy-create \
 	proxy-rm
 
