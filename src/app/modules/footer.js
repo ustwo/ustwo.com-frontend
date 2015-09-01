@@ -51,17 +51,17 @@ export default class Footer extends React.Component {
             <a className="email-cta" href="mailto:hello@ustwo.com" onClick={this.onClickShowContacts}>{get(this.props, 'data.contact_link_text')}</a>
             <ul className="social">
               <li className="channel facebook">
-                <a href={get(this.props, 'data.social.facebook')} onClick={this.onClickSocial('facebook')}>
+                <a href={get(this.props, 'data.social.facebook')} onClick={this.onClickSocial('facebook')} target="_blank">
                   <svg className="logo" title="facebook logo" role="img" dangerouslySetInnerHTML={{__html: facebookLogo }} />
                 </a>
               </li>
               <li className="channel twitter">
-                <a href={get(this.props, 'data.social.twitter')} onClick={this.onClickSocial('twitter')}>
+                <a href={get(this.props, 'data.social.twitter')} onClick={this.onClickSocial('twitter')} target="_blank">
                   <svg className="logo" title="twitter logo" role="img" dangerouslySetInnerHTML={{__html: twitterLogo }} />
                 </a>
               </li>
               <li className="channel linkedin">
-                <a href={get(this.props, 'data.social.linkedin')} onClick={this.onClickSocial('linkedin')}>
+                <a href={get(this.props, 'data.social.linkedin')} onClick={this.onClickSocial('linkedin')} target="_blank">
                   <svg className="logo" title="linkedin logo" role="img" dangerouslySetInnerHTML={{__html: linkedinLogo }} />
                 </a>
               </li>
