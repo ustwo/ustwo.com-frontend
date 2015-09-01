@@ -69,6 +69,7 @@ incubation: pull
 offspring: init
 extermination: init-rm
 love: extermination offspring
+stuff: assets-compile
 
 
 ps:
