@@ -48,10 +48,6 @@ include tasks/*.mk
 #
 ###############################################################################
 
-ifeq ($(TIER), dev)
-  VERBOSE := true
-endif
-
 # TODO: Prevents breaking Phil's flow
 css: assets-css
 
@@ -95,25 +91,20 @@ nuke:
 rm-production: TIER := production
 rm-production: init-rm
 
-# deploy-production: TIER := production
-# deploy-production: STATIC_HTTP_PORT := 80
-# deploy-production: STATIC_HTTPS_PORT := 443
-# deploy-production: BASE_PATH := /home/ubuntu
-# deploy-production: deploy
-
 deploy-production:
-	$(MAKE) deploy \
+	$(MAKE) -i love \
 		BASE_PATH=/home/ubuntu \
 		TIER=production \
 		PROXY_HTTPS_PORT=443 \
 		PROXY_HTTP_PORT=80
 
-# deploy-staging: TIER := staging
-# deploy-staging: PROXY_HTTP_PORT := 80
-# deploy-staging: PROXY_HTTPS_PORT := 443
+# deploy-staging: TIER = staging
+# deploy-staging: PROXY_HTTP_PORT = 80
+# deploy-staging: PROXY_HTTPS_PORT = 443
+# deploy-staging: BASE_PATH = /home/ubuntu
 # deploy-staging: deploy
 deploy-staging:
-	$(MAKE) deploy \
+	$(MAKE) -i love \
 		BASE_PATH=/home/ubuntu \
 		TIER=staging \
 		PROXY_HTTPS_PORT=443 \

@@ -24,48 +24,54 @@ Main motivation to have a SPA is to have nice between page transitions like on h
 
 ## Setup
 
-The project is wrapped into a Docker container so the only dependencies are Docker related.
+The project is wrapped managed via Docker containers.
 
-Commands below assume OS X and preference to install binaries via Homebrew and Cask. You can of course install Docker Machine and Virtualbox in any other way you want, or what is appropriate to your environment.
+Commands below assume OS X and preference to install binaries via Homebrew and
+Cask. You can of course install Docker Machine and Virtualbox in any other way
+you want, or what is appropriate to your environment.
 
-  * Install [Docker Machine](https://docs.docker.com/machine/#installation)
+* Install [Docker Machine](https://docs.docker.com/machine/#installation)
 
-  `$ brew install docker-machine`
+      $ brew install docker-machine
 
-  * Install [Docker Engine](https://docs.docker.com/installation/binaries/)
+* Install [Docker Engine](https://docs.docker.com/installation/binaries/)
 
-  `$ brew install docker`
+      $ brew install docker
 
-  * Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+* Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
-  `$ brew cask install virtualbox`
+      $ brew cask install virtualbox
 
-  * Create Docker host VM
+* Create Docker host VM
 
-  `$ docker-machine create --driver virtualbox dev`
+      $ docker-machine create --driver virtualbox dev
 
-  * Set up Docker environment to VM – needs to be done for every new shell session
+* Set up Docker environment to VM – needs to be done for every new shell session
 
-  `$ eval "$(docker-machine env dev)"`
+      $ eval "$(docker-machine env dev)"
 
-  * Build container – you can also do a `pull` instead to download a prebuilt image if you're on a fast connection and have a Docker Hub account added to the ustwo organisation
+* Build images — If you build the vault, you need to place the SSL certificates
+in `./etc/nginx/ssl`.  Alternatively, get the image `ustwo/usweb-vault:2015`
+from another member of the team.
 
-  `$ make build`
+      $ make vault-build
+      $ make compiler-build seeds
+
 
 ## Develop
 
-First thing, request to the team maintainer the ustwo SSL certificates and put
-them into `./etc/nginx/ssl`.
+*Note*: Check the [Make.md](./Make.md) for an explanation of how the make
+tasks are structured.
 
 Bootstrap a new environment:
 
-    $ make init TIER=dev
+    $ make offspring
+
+*Note*: Add the flag `VERBOSE=true` if you want the JS and CSS expanded.
 
 Deploy app:
 
-    $ make deploy TIER=dev
-
-*Note*: Deploy recreates the app and the proxy but keeps the vault.
+    $ make love
 
 It is recommended to add a new entry to your `/etc/hosts` with an ustwo
 subdomain so the SSL certificate works without warnings:
@@ -75,87 +81,59 @@ subdomain so the SSL certificate works without warnings:
 
 Clean the environment:
 
-    $ make init-rm TIER=dev
+    $ make extermination
 
 
 ## Release staging
 
-1. Increment version in `Makefile`.
-2. Build a fresh Docker image
+1. Increment version in `Makefile`
+2. Build fresh Docker images
 
-        $ make build
-        $ make proxy-build
+      $ make seeds
 
 3. Push image to the Docker Hub
 
-        $ make push
-        $ make proxy-push
+      $ make infection
 
 4. Set the right environment
 
-        $ eval $(docker-machine env ustwosite)
+      $ eval $(docker-machine env ustwosite)
+
+5. Pull images
+
+      $ make incubation
 
 5. Deploy
 
-        $ make deploy-staging
-
-*Note*: If there is no previous release you must use
-
-      $ make init TIER=staging PROXY_HTTP_PORT=80 PROXY_HTTPS_PORT=443
+      $ make -i deploy-staging
 
 
 ## Release production
 
-1. Deploy the latest version in your dev environment.
-2. Build a fresh Docker image
+1. Deploy in your local environment the production version.
 
-      $ make proxy-build
+      # Remove dev instances to avoid port collisions
+      $ make extermination
+      $ make -i love TIER=production
 
-3. Test container
+*Note* It assumes you build the images already following the staging process.
 
-      $ make static-create
+2. Test deployment
+
       $ open https://local.ustwo.com:10443
 
-3. Push image to the Docker Hub
-
-      $ make proxy-push
-
-4. Set the right environment
+3. Set the right environment
 
       $ eval $(docker-machine env ustwositepro)
 
+4. Pull images
+
+      $ make incubation
+
 5. Deploy
 
-      $ make proxy-pull rm-production init-production
-      # or
-      $ make deploy-production
+      $ make -i deploy-production
 
-*Note*: If there is no previous release don't run `rm-production`.
-
-
-## Make tasks
-
-* `make init` — Starts vault, app and proxy in this order.
-* `make init-rm` — Removes all containers.
-* `make deploy` — Recreates app and proxy.
-* `make deploy-production` — Equivalent to `make deploy TIER=production`.
-* `make deploy-staging` — Equivalent to `make deploy TIER=staging`.
-* `make ps` —  Lists all relevant containers (running and stopped).
-* `make app-create` — Creates the app.
-* `make app-rm` — Removes the app.
-* `make app-log` — Tails the app log.
-* `make app-sh` — Opens a shell inside the app container.
-* `make proxy-create` — Creates the proxy (requires vault and app).
-* `make proxy-rm` — Removes the proxy.
-* `make vault-create` — Creates the vault *WARNING*: as said in the README it requires the SSL certs.
-* `make vault-rm` — Removes the vault.
-* `make provision-data` — Provisions the remote server.
-* `make provision-vault` — Provisions the remote server with sensitive data.
-* `make proxy-build` — Builds the static proxy.
-* `make proxy-push` — Pushes the static proxy to the Docker Hub.
-* `make proxy-pull` — Pulls the static proxy from the Docker Hub.
-* `make static-create` — Creates the static proxy.
-* `make static-rm` — Removes the static proxy.
 
 
 ## Style guide (WIP)
