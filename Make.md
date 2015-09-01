@@ -3,7 +3,7 @@
 The make tasks are structured in layers.  This document describes them from
 top to bottom.
 
-This document assumes knowledge on how the Docker containers are connected. A
+This document assumes knowledge of how the Docker containers are connected. A
 summary:
 
 There are 5 containers that can be used or created with these tasks:
