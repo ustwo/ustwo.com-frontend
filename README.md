@@ -24,7 +24,7 @@ Main motivation to have a SPA is to have nice between page transitions like on h
 
 ## Setup
 
-The project is wrapped managed via Docker containers.
+The project is managed via Docker containers.
 
 Commands below assume OS X and preference to install binaries via Homebrew and
 Cask. You can of course install Docker Machine and Virtualbox in any other way
@@ -41,6 +41,8 @@ you want, or what is appropriate to your environment.
 * Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
       $ brew cask install virtualbox
+
+*Note* Beware the version might matter.  The tested version is 5.0.0.
 
 * Create Docker host VM
 
