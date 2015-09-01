@@ -30,7 +30,7 @@ if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id
 function applyData(response, type) {
   const changeSet = {};
   changeSet[type] = response.data;
-  if (response && response.postsPaginationTotal) {
+  if (response.postsPaginationTotal) {
     changeSet.postsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
   }
   Object.assign(_state, changeSet);
