@@ -3,30 +3,17 @@
 import React from 'react';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
-import Flux from '../flux';
 
 export default class JobItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false
-    }
-  }
-  onClickJobItem = () => {
-    Flux.getJobDetails(this.props.job.shortcode);
-    this.setState({
-      open: !this.state.open
-    });
-  }
   render() {
     const job = this.props.job;
     const classes = classnames('job-item', {
-      open: this.state.open,
-      loading: this.state.open && !this.getLoadedState()
+      open: this.props.open,
+      loading: this.props.open && !this.getLoadedState()
     });
     return (
       <li className={classes}>
-        <h4 ref='title' className="title" onClick={this.onClickJobItem}>
+        <h4 ref='title' className="title" onClick={this.onClick}>
           <div className="title-text">{get(job, 'title')}</div>
           {this.renderLocation()}
           {this.renderStatus()}
@@ -56,7 +43,7 @@ export default class JobItem extends React.Component {
     return (
       <div className="status">
         <div className="status-text">
-          {this.state.open && loaded ? 'Hide info' : 'More info'}
+          {this.props.open && loaded ? 'Hide info' : 'More info'}
         </div>
         <div className="icon">
           <div className="horiz" style={{ backgroundColor: this.props.colour }}></div>
@@ -65,12 +52,15 @@ export default class JobItem extends React.Component {
       </div>
     );
   }
+  onClick = () => {
+    this.props.onClick && this.props.onClick();
+  }
   componentDidUpdate() {
     const job = this.props.job;
     const el = React.findDOMNode(this);
     const title = React.findDOMNode(this.refs.title);
     const description = React.findDOMNode(this.refs.description);
-    const newHeight = this.state.open && this.getLoadedState() ? (title.clientHeight + description.clientHeight) : title.clientHeight;
+    const newHeight = this.props.open && this.getLoadedState() ? (title.clientHeight + description.clientHeight) : title.clientHeight;
     el.style.height = `${newHeight}px`;
   }
 }
