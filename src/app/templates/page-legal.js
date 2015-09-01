@@ -18,8 +18,6 @@ export default class PageLegal extends React.Component {
 
         <div className="content-container">
 
-          <LoadingIcon />
-
           <h2>Legal</h2>
 
           <p>ustwo studio ltd. Registered No. 05286528. Registered in England & Wales.</p>

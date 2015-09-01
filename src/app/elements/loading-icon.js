@@ -6,13 +6,13 @@ export default class LoadingIcon extends React.Component {
     return (
       <div className="loading-icon">
         <div className="wrapper">
-          <div><div></div></div>
-          <div><div></div></div>
-          <div><div></div></div>
-          <div><div></div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
         <div className="opposite">
-          <div><div></div></div>
+          <div></div>
         </div>
       </div>
     );

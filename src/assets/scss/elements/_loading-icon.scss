@@ -28,7 +28,9 @@
       transform-origin: 50% 50%;
       animation: collapse $duration infinite linear;
 
-      > div {
+      &:after {
+        display: block;
+        content: "";
         width: $dot-size;
         height: $dot-size;
         border-radius: 50%;
@@ -44,7 +46,7 @@
 
       @each $colour in $colours {
         $i: index($colours, $colour);
-        &:nth-child(#{$i}) > div {
+        &:nth-child(#{$i}):after {
           background-color: $colour;
         }
       }
@@ -55,7 +57,7 @@
       &:nth-child(2) {
         z-index: 4;
 
-        > div {
+        &:after {
           animation: darken $duration infinite linear;
         }
       }
@@ -98,7 +100,7 @@
         top: 0;
         left: 0;
 
-        > div {
+        &:after {
           background-color: $mare;
           animation: oppositeDarken $duration infinite linear;
         }
