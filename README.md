@@ -92,26 +92,27 @@ Clean the environment:
 
 ## Release staging
 
-1. Increment version in `Makefile`
-2. Build fresh Docker images
+1. Build fresh Docker images
 
         $ make seeds
 
-3. Push image to the Docker Hub
+2. Push image to the Docker Hub
 
         $ make infection
 
-4. Set the right environment
+3. Set the right environment
 
         $ eval $(docker-machine env ustwosite)
 
-5. Pull images
+4. Pull images
 
         $ make incubation
 
 5. Deploy
 
         $ make -i deploy-staging
+
+6. Increment version in `Makefile`
 
 
 ## Release production
