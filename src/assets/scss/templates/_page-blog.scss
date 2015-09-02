@@ -76,9 +76,13 @@
     }
   }
 
+
   .blog-post-list {
     max-width: 1380px;
     margin: 0 auto;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: opacity .2s ease-in-out, transform .32s ease-in-out;
   }
 
   .message {
@@ -136,6 +140,17 @@
       }
     }
 
+    &.loading {
+      .blog-post-list {
+        opacity: 0;
+        transform: translateY(300px);
+        transition-delay: .12s, 0s;
+      }
+
+      .blog-controls .blog-filter .loading-icon {
+        display: block;
+      }
+    }
 
     &.categorised {
       .down-chevron {

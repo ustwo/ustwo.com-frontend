@@ -4,6 +4,8 @@ import React from 'react';
 
 import Flux from '../flux';
 
+import LoadingIcon from '../elements/loading-icon';
+
 const blogCategories = {
   all: "All Categories",
   business: "Business",
@@ -27,6 +29,7 @@ export default class BlogControls extends React.Component {
         </button> */}
         <div className='blog-filter'>
           <div className="selected" onClick={this.onClickSelectedCategory}>{blogCategories[this.props.blogCategory]}</div>
+          <LoadingIcon />
         </div>
       </div>
     );

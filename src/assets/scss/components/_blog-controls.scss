@@ -51,6 +51,10 @@
       line-height: $blog-controls-line-height;
       background-color: #fff;
     }
+
+    .loading-icon {
+      display: none;
+    }
   }
 
   @include susy-breakpoint($bp-medium, $susy) {
