@@ -4,11 +4,7 @@ compiler_version = $(TAG)
 compiler_name = $(project_name)_$(TIER)_compiler
 
 .PHONY: \
-  compiler-rm \
-  compiler-create \
-  compiler-build \
-  compiler-pull \
-  compiler-push
+  compiler-build
 
 ifeq ($(TIER), dev)
   compiler_volumes = \
