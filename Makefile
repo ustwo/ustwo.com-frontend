@@ -103,6 +103,12 @@ deploy-production:
 		PROXY_HTTPS_PORT=443 \
 		PROXY_HTTP_PORT=80
 
+deploy-canary:
+	$(MAKE) -i canary-rm canary-create \
+		BASE_PATH=/home/ubuntu \
+		TIER=production
+
+
 # deploy-staging: TIER = staging
 # deploy-staging: PROXY_HTTP_PORT = 80
 # deploy-staging: PROXY_HTTPS_PORT = 443
