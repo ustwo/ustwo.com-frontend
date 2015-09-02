@@ -95,7 +95,7 @@ export default class PageBlog extends React.Component {
       if (!this.isCategorised && (props.postsPagination < props.postsPaginationTotal)) {
         posts = props.posts && take(props.posts, props.posts.length-2);
       }
-
+      console.log('image');
       content = (
         <div>
           <Hero title='Think. Share. Learn.' backgroundTint={true} imageURL={get(image, 'source_url', '')} eventLabel='blog' showDownChevron={false}>
@@ -112,12 +112,14 @@ export default class PageBlog extends React.Component {
   }
   renderPosts = (posts) => {
     let output;
-    if (posts && posts.length) {
-      output = posts.map((postData, index) => {
-        return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!this.isCategorised && index === 0} data={postData} />;
-      });
-    } else {
-      output = <h3 className="message">No posts found</h3>;
+    if (posts) {
+      if (posts.length) {
+        output = posts.map((postData, index) => {
+          return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!this.isCategorised && index === 0} data={postData} />;
+        });
+      } else {
+        output = <h3 className="message">No posts found</h3>;
+      }
     }
     return output;
   }
