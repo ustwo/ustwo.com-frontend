@@ -48,10 +48,6 @@ include tasks/*.mk
 #
 ###############################################################################
 
-ifeq ($(TIER), dev)
-  VERBOSE := true
-endif
-
 # TODO: Prevents breaking Phil's flow
 css: assets-css
 
