@@ -188,6 +188,12 @@
 
     @include susy-breakpoint($bp-medium, $susy) {
       display: block;
+
+      li.all-studios {
+        span:last-child {
+          display: none;
+        }
+      }
     }
 
     @include susy-breakpoint($bp-large, $susy) {
@@ -195,6 +201,12 @@
 
       li {
         font-size: 30px;
+
+        &.all-studios {
+          span:last-child {
+            display: inline;
+          }
+        }
       }
     }
   }
