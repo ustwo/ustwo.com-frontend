@@ -76,7 +76,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-large, $susy) {
+  @include susy-breakpoint($bp-larger, $susy) {
 
     &:nth-of-type(2n+2) {
       .card:first-child {

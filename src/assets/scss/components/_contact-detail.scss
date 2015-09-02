@@ -23,7 +23,7 @@
     font-size: 18px;
   }
 
-  @include susy-breakpoint($bp-large, $susy) {
+  @include susy-breakpoint($bp-larger, $susy) {
     &__link {
       float: right;
       clear: none;
