@@ -60,11 +60,14 @@ export default class PageJoinUs extends React.Component {
       name: "All studios"
     }].concat(this.props.studios);
   }
+  spannify = (word, index, array) => {
+    return <span key={`word${index}`}>{index === array.length - 1 ? word : `${word} `}</span>;
+  }
   renderStudioTabs = () => {
     return map(this.getStudios(), studio => {
       const id = kebabCase(studio.name);
-      const name = studio.name;
-      return <li key={`tab-${id}`} ref={`tab-${id}`} onClick={this.generateOnClickStudioHandler(id)} aria-selected={this.state.studio === id}>{name}</li>;
+      const name = studio.name.split(' ').map(this.spannify);
+      return <li key={`tab-${id}`} className={id} ref={`tab-${id}`} onClick={this.generateOnClickStudioHandler(id)} aria-selected={this.state.studio === id}>{name}</li>;
     });
   }
   generateOnClickStudioHandler = (studio) => {
