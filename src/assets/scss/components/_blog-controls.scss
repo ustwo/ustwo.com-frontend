@@ -29,6 +29,8 @@
     // margin-left: $blog-controls-search-width + $blog-controls-search-margin;
 
     .selected {
+      position: relative;
+      z-index: 1;
       width: $blog-controls-item-width;
       padding: 0 $blog-controls-horizontal-padding;
 
@@ -53,7 +55,10 @@
     }
 
     .loading-icon {
-      display: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      opacity: 0;
     }
   }
 
