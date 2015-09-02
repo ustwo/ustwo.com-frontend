@@ -2,6 +2,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
+import TransitionManager from 'react-transition-manager';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import filter from 'lodash/collection/filter';
@@ -10,6 +11,7 @@ import every from 'lodash/collection/every';
 
 import Flux from '../flux';
 
+import BlogLoader from '../components/blog-loader';
 import Hero from '../components/hero';
 import BlogPostListItem from '../components/blog-post-list-item';
 import BlogControls from '../components/blog-controls';
@@ -26,9 +28,12 @@ export default class PageBlog extends React.Component {
   componentWillMount() {
     if (this.props.posts) {
       Flux.getSocialSharesForPosts();
-      this.setState({
-        loadingInitialPosts: false
-      });
+      // TODO: REMOVE THIS
+      setTimeout(() => {
+        this.setState({
+          loadingInitialPosts: false
+        });
+      }, 4000);
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -42,9 +47,10 @@ export default class PageBlog extends React.Component {
     // applies on cold loading and when category is changed
     if (thereAreNoPosts && thereWillBePosts) {
       Flux.getSocialSharesForPosts();
-      this.setState({
-        loadingInitialPosts: false
-      });
+      // TODO: REMOVE THIS
+      // this.setState({
+      //   loadingInitialPosts: false
+      // });
     }
 
     // applies when "load more" button is clicked
@@ -62,37 +68,58 @@ export default class PageBlog extends React.Component {
     if (!this.isCategorised && (props.postsPagination < props.postsPaginationTotal)) {
       posts = props.posts && take(props.posts, props.posts.length-2);
     }
-    const attachments = get(props.page, '_embedded.wp:attachment.0', []);
-    const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
     const classes = classnames('page-blog', {
       categorised: this.isCategorised,
-      loading: !posts,
+      loading: state.loadingInitialPosts,
       empty: posts && !posts.length
     });
     return (
       <article className={classes}>
-        <Hero title='Think. Share. Learn.' backgroundTint={true} imageURL={get(image, 'source_url', '')} eventLabel='blog' showDownChevron={false}>
-          <BlogControls blogCategory={props.blogCategory}/>
-        </Hero>
-        <section className="blog-post-list">
-          {this.renderPosts(posts)}
-          <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} disabled={props.postsPagination >= props.postsPaginationTotal} />
-        </section>
+        <TransitionManager component="div" duration="0">
+          {this.renderBlogContent()}
+        </TransitionManager>
       </article>
     );
   }
-  renderPosts = (postsArray) => {
-    let posts;
-    if(postsArray) {
-      if(postsArray.length) {
-        posts = postsArray.map((postData, index) => {
-          return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!this.isCategorised && index === 0} data={postData} />;
-        });
-      } else {
-        posts = <h3 className="message">No posts found</h3>;
+  renderBlogContent = () => {
+    const state = this.state;
+    const props = this.props;
+    let content;
+
+    if (state.loadingInitialPosts) {
+      content = <BlogLoader />;
+    } else {
+      const attachments = get(props.page, '_embedded.wp:attachment.0', []);
+      const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
+      let posts = props.posts;
+      if (!this.isCategorised && (props.postsPagination < props.postsPaginationTotal)) {
+        posts = props.posts && take(props.posts, props.posts.length-2);
       }
+
+      content = (
+        <div>
+          <Hero title='Think. Share. Learn.' backgroundTint={true} imageURL={get(image, 'source_url', '')} eventLabel='blog' showDownChevron={false}>
+            <BlogControls blogCategory={props.blogCategory}/>
+          </Hero>
+          <section className="blog-post-list">
+            {this.renderPosts(posts)}
+            <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} disabled={props.postsPagination >= props.postsPaginationTotal} />
+          </section>
+        </div>
+      );
     }
-    return posts;
+    return content;
+  }
+  renderPosts = (posts) => {
+    let output;
+    if (posts && posts.length) {
+      output = posts.map((postData, index) => {
+        return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!this.isCategorised && index === 0} data={postData} />;
+      });
+    } else {
+      output = <h3 className="message">No posts found</h3>;
+    }
+    return output;
   }
   onClickLoadMore = () => {
     Flux.loadMorePosts();
