@@ -37,7 +37,6 @@ const pageMap = {
   'blog/post': require('./templates/page-post'),
   'blog/search-results': require('./templates/page-search-results'),
   'legal': require('./templates/page-legal'),
-  'privacy': require('./templates/page-privacy'),
   'join-us': require('./templates/page-join-us')
 };
 

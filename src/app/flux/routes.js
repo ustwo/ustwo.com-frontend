@@ -95,16 +95,6 @@ const routes = {
       slug: 'legal'
     }]
   },
-  privacy: {
-    id: 'privacy',
-    pattern: '/privacy',
-    statusCode: 200,
-    data: () => [{
-      url: 'ustwo/v1/pages/privacy',
-      type: 'page',
-      slug: 'privacy'
-    }]
-  },
   joinUs: {
     id: 'join-us',
     pattern: '/join-us',
