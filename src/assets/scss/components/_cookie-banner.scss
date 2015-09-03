@@ -1,0 +1,21 @@
+#iubenda-cs-banner {
+  p:first-of-type {
+    display: none;
+  }
+  p+p {
+    margin: 0;
+  }
+  .iubenda-cs-close-btn {
+    font-size: 0;
+    width: 40px;
+    height: 40px;
+    background: url("/images/close.svg") no-repeat 50% 50%;
+    background-size: 100%;
+    transform: translateY(7px);
+  }
+  .iubenda-banner-content {
+    padding-right: 40px;
+    font-family: $PxGroteskRegular;
+    line-height: 1.4;
+  }
+}
