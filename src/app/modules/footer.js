@@ -72,7 +72,7 @@ export default class Footer extends React.Component {
             <ul>
               <li>Copyright &copy; ustwo studio Ltd. All rights reserved.</li>
               <li>For company information and other legal bits, see our <a href="/legal">legal page</a></li>
-              <li>We are using <a href="/privacy">cookies</a>, hope you're cool with that.</li>
+              <li>We're using <a href="https://www.iubenda.com/privacy-policy/322454/cookie-policy">cookies</a> and here's our <a href="https://www.iubenda.com/privacy-policy/322454">Privacy Policy</a>.</li>
             </ul>
           </div>
         </div>
