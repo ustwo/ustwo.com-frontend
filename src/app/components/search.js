@@ -19,7 +19,6 @@ export default class Search extends React.Component {
     input.removeEventListener('keydown', this.onKeydown);
   }
   render() {
-    const searchIcon = '<use xlink:href="/images/spritemap.svg#search" />';
     return (
       <div className='search'>
         <form method='POST' action='/blog/search' className='search-form' onSubmit={this.onSubmit}>
@@ -28,6 +27,7 @@ export default class Search extends React.Component {
           <button className='submit' type='submit' onClick={this.onSubmit}>
             <SVG role="img" spritemapID='search' />
           </button>
+          <button className="cancel" onClick={this.onClickCancel}>Clear search</button>
         </form>
         <button className='cancel' type='button' onClick={this.onClickCancel}>Cancel</button>
       </div>

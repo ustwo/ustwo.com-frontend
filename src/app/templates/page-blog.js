@@ -20,8 +20,7 @@ export default class PageBlog extends React.Component {
     super(props);
     this.state = {
       isCategorised: props.blogCategory !== 'all',
-      loadingMorePosts: false,
-      searchMode: false
+      loadingMorePosts: false
     }
   }
   componentWillMount() {
