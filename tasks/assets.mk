@@ -13,16 +13,8 @@ assets_name = $(project_name)_$(TIER)_assets
 ifeq ($(TIER), dev)
   assets_volumes := \
     -v $(BASE_PATH)/share/nginx:/usr/share/nginx:ro \
-    -v $(BASE_PATH)/etc/nginx/conf.d/dev.conf:/etc/nginx/conf.d/default.conf:ro \
+    -v $(BASE_PATH)/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro \
     -v $(BASE_PATH)/etc/nginx/locations:/etc/nginx/locations:ro
-endif
-
-ifeq ($(TIER), staging)
-  assets_volumes := -v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro
-endif
-
-ifeq ($(TIER), canary)
-  assets_volumes := -v $(BASE_PATH)/etc/nginx/conf.d/canary.conf:/etc/nginx/conf.d/default.conf:ro
 endif
 
 assets-build: assets-compile
