@@ -8,7 +8,7 @@
 
   .blog-search-button {
     position: absolute;
-    left: 0;
+    left: -($blog-controls-search-width + 15px);
     display: flex;
     align-items: center;
     height: $blog-controls-line-height;
