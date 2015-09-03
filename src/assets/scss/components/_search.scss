@@ -1,4 +1,4 @@
-.search-modal {
+.search {
 
   $height: 30px;
   $font-size: 36px;
@@ -12,51 +12,16 @@
   $font-size-desktop: 90px;
   $icon-size-desktop: 61px;
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  background: $offWhite;
-  transition: transform 0.5s ease-out;
+  background: $blu;
 
-  .close-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    border: 0;
-    padding: 0;
-    background: transparent;
-    line-height: 50px;
-
-    svg {
-      width: 50px;
-      height: 50px;
-      fill: $nonBlack;
-    }
-
-    &:focus {
-      -webkit-focus-ring-color: rgba(0,0,0,0);
-      outline: none;
-    }
-
-    .text {
-      display: none;
-    }
-
-    @include susy-breakpoint($bp-medium, $susy) {
-      .text {
-        display: inline-block;
-      }
-    }
-  }
-
-  .search {
+  .search-form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,7 +47,7 @@
 
       &:before {
         content: "SEARCH";
-        color: $blu;
+        color: $offWhite;
         cursor: text;
       }
     }
@@ -104,7 +69,7 @@
       svg {
         width: $icon-size;
         height: $icon-size;
-        fill: $blu;
+        fill: $offWhite;
       }
     }
 

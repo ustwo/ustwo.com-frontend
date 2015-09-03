@@ -52,8 +52,13 @@
 .page-blog {
   background-color: #eaeaea;
 
+  .search {
+    display: none;
+  }
+
   .hero {
     background-color: $blu;
+    display: flex;
 
     &__title {
       margin-top: $blog-margin-offset * .75;
@@ -149,6 +154,21 @@
   }
 
   // END LOADING
+
+
+  // SEARCHIN'
+
+  &.searching {
+    .search {
+      display: flex;
+    }
+
+    .hero {
+      display: none;
+    }
+  }
+
+  // END SEARCHING
 
   @include susy-breakpoint($bp-medium, $susy) {
     .blog-category {

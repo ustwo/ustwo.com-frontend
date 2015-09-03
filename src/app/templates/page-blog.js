@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
@@ -10,6 +11,7 @@ import every from 'lodash/collection/every';
 
 import Flux from '../flux';
 
+import Search from '../components/search';
 import Hero from '../components/hero';
 import BlogPostListItem from '../components/blog-post-list-item';
 import BlogControls from '../components/blog-controls';
@@ -20,8 +22,7 @@ export default class PageBlog extends React.Component {
     super(props);
     this.state = {
       isCategorised: props.blogCategory !== 'all',
-      loadingMorePosts: false,
-      searchMode: false
+      loadingMorePosts: false
     }
   }
   componentWillMount() {
@@ -62,11 +63,13 @@ export default class PageBlog extends React.Component {
     const classes = classnames('page-blog', {
       categorised: state.isCategorised,
       loading: !posts,
+      searching: props.searchMode,
       empty: posts && !posts.length
     });
     return (
       <article className={classes}>
-        <Hero title={get(props.page, 'display_title')} imageOnly={true} sizes={get(image, 'media_details.sizes')} eventLabel='blog' showDownChevron={false}>
+        <Search searchQuery={this.props.searchQuery} />
+        <Hero title={get(props.page, 'display_title')} imageOnly={true} sizes={get(image, 'media_detail.sizes')} eventLabel='blog' showDownChevron={false}>
           <BlogControls blogCategory={props.blogCategory}/>
         </Hero>
         <section className="blog-post-list">

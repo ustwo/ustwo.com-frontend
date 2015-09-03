@@ -25,7 +25,6 @@ import EntranceTransition from './elements/entrance-transition';
 import ContactTray from './components/contact-tray';
 import TakeOver from './modules/take-over';
 import FourOhFour from './templates/page-404';
-import SearchModal from './components/search-modal';
 import BlogCategories from './components/blog-categories';
 import NavigationOverlay from './modules/navigation-overlay';
 
@@ -130,10 +129,6 @@ export default class App extends React.Component {
         case 'contacts':
           className = 'tray';
           content = <ContactTray contacts={state.footer.contacts} />;
-          break;
-        case 'search':
-          className = 'search';
-          content = <SearchModal searchQuery={state.searchQuery} />;
           break;
         case 'blogCategories':
           className = 'blog-categories';
