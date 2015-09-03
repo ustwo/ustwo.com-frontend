@@ -108,7 +108,6 @@
     }
   }
 
-
   // LOADING
 
   &.loading,
@@ -124,15 +123,10 @@
 
   .blog-controls .blog-filter {
     .selected:after {
-      opacity: 1;
-      transition-delay: .2s;
+      display: block;
     }
     .loading-icon {
-      opacity: 0;
-    }
-    .selected:after,
-    .loading-icon {
-      transition: opacity .2s ease-in-out;
+      display: none;
     }
   }
 
@@ -141,17 +135,15 @@
       margin-top: 0;
       opacity: 0;
       transform: translateY(100px);
-      transition-delay: .12s, 0s;
+      transition-delay: .62s, .5s;
     }
 
     .blog-controls .blog-filter {
       .selected:after {
-        opacity: 0;
-        transition-delay: 0s;
+        display: none;
       }
       .loading-icon {
-        opacity: 1;
-        transition-delay: .2s;
+        display: block;
       }
     }
   }

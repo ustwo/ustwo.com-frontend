@@ -19,32 +19,29 @@ export default class PageBlog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loadingInitialPosts: true,
+      isCategorised: props.blogCategory !== 'all',
       loadingMorePosts: false
     }
   }
   componentWillMount() {
     if (this.props.posts) {
       Flux.getSocialSharesForPosts();
-      this.setState({
-        loadingInitialPosts: false
-      });
     }
   }
   componentWillReceiveProps(nextProps) {
-    this.isCategorised = nextProps.blogCategory !== 'all';
     const currentPosts = this.props.posts;
     const nextPosts = nextProps.posts;
     const thereAreNoPosts = !currentPosts || !(currentPosts && currentPosts.length);
     const thereWillBePosts = nextPosts && !!nextPosts.length;
     const newPostsAdded = (currentPosts && nextPosts) && (currentPosts.length < nextPosts.length);
 
-    // applies on cold loading and when category is changed
+    this.setState({
+      isCategorised: nextProps.blogCategory !== 'all'
+    });
+
+    // applies when category is changed
     if (thereAreNoPosts && thereWillBePosts) {
       Flux.getSocialSharesForPosts();
-      this.setState({
-        loadingInitialPosts: false
-      });
     }
 
     // applies when "load more" button is clicked
@@ -58,14 +55,14 @@ export default class PageBlog extends React.Component {
   render() {
     const state = this.state;
     const props = this.props;
-    let posts = props.posts;
-    if (!this.isCategorised && (props.postsPagination < props.postsPaginationTotal)) {
-      posts = props.posts && take(props.posts, props.posts.length-2);
-    }
     const attachments = get(props.page, '_embedded.wp:attachment.0', []);
     const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
+    let posts = props.posts;
+    if (!state.isCategorised && (props.postsPagination < props.postsPaginationTotal)) {
+      posts = props.posts && take(props.posts, props.posts.length-2);
+    }
     const classes = classnames('page-blog', {
-      categorised: this.isCategorised,
+      categorised: state.isCategorised,
       loading: !posts,
       empty: posts && !posts.length
     });
@@ -81,18 +78,18 @@ export default class PageBlog extends React.Component {
       </article>
     );
   }
-  renderPosts = (postsArray) => {
-    let posts;
-    if(postsArray) {
-      if(postsArray.length) {
-        posts = postsArray.map((postData, index) => {
-          return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!this.isCategorised && index === 0} data={postData} />;
+  renderPosts = (posts) => {
+    let output;
+    if (posts) {
+      if (posts.length) {
+        output = posts.map((postData, index) => {
+          return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!this.state.isCategorised && index === 0} data={postData} />;
         });
       } else {
-        posts = <h3 className="message">No posts found</h3>;
+        output = <h3 className="message">No posts found</h3>;
       }
     }
-    return posts;
+    return output;
   }
   onClickLoadMore = () => {
     Flux.loadMorePosts();
