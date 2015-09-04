@@ -87,11 +87,6 @@ nuke:
 	| awk '{print $$1":$(TAG)"}' \
 	| xargs docker rmi
 
-cache-purge: CDN_USER = domains@ustwo.co.uk
-cache-purge:
-	curl --data "cdn_id=33624&login=$(CDN_USER)&passwd=$(CDN_PASSWORD)" \
-		https://api.cdn77.com/v2.0/data/purge-all
-
 
 rm-production: TIER := production
 rm-production: init-rm
