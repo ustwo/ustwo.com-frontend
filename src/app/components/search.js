@@ -3,8 +3,11 @@
 import React from 'react';
 
 import Flux from '../flux';
+<<<<<<< HEAD
 
 import SVG from '../elements/svg';
+=======
+>>>>>>> Fix form being submitted twice, and cancel button not working
 
 export default class Search extends React.Component {
   componentDidMount() {
@@ -25,11 +28,12 @@ export default class Search extends React.Component {
           <input name='q' type='text' className='input' value={this.props.searchQuery} />
           <div ref='input' contentEditable='true' className='editable-div'></div>
           <button className='submit' type='submit' onClick={this.onSubmit}>
-            <SVG role="img" spritemapID='search' />
+            <SVG spritemapID='search' />
           </button>
-          <button className="cancel" onClick={this.onClickCancel}>Clear search</button>
+          <button className='cancel' type='button' onClick={this.onClickCancel}>
+            Clear search
+          </button>
         </form>
-        <button className='cancel' type='button' onClick={this.onClickCancel}>Cancel</button>
       </div>
     );
   }
@@ -37,13 +41,8 @@ export default class Search extends React.Component {
     Flux.hideSearch();
   }
   onKeydown = (event) => {
-    switch(event.keyCode) {
-      case 13: // enter
-        this.onSubmit(event);
-        break;
-      case 27: // esc
-        Flux.hideSearch();
-        break;
+    if (event.keyCode === 13) { // enter
+      this.onSubmit(event);
     }
   }
   onKeyup = (event) => {
