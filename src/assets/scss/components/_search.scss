@@ -9,25 +9,24 @@
   $icon-size-tablet: 44px;
 
   $height-desktop: 75px;
-  $font-size-desktop: 90px;
-  $icon-size-desktop: 61px;
+  $font-size-desktop: 80px;
+  $icon-size-desktop: 57px;
+
 
   position: relative;
   height: 100vh;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
   background: $blu;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
   .search-form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    max-width: 90%;
-    margin-bottom: 140px;
+    margin-top: $blog-margin-offset * .75;
 
     .input {
       display: none;
@@ -100,5 +99,14 @@
         }
       }
     }
+  }
+
+  .cancel {
+    margin: 0 auto;
+    padding: 0;
+    border: none;
+    border-bottom: solid 2px $offWhite;
+    color: $offWhite;
+    background: transparent;
   }
 }
