@@ -5,11 +5,12 @@ import find from 'lodash/collection/find';
 import map from 'lodash/collection/map';
 import filter from 'lodash/collection/filter';
 import get from 'lodash/object/get';
+import kebabCase from 'lodash/string/kebabCase';
 
 import ModuleRenderer from '../_lib/module-renderer';
-import Hero from '../components/hero';
-import kebabCase from 'lodash/string/kebabCase';
 import DownChevron from '../elements/down-chevron';
+import SVG from '../elements/svg';
+import Hero from '../components/hero';
 import Slide from '../components/slide';
 import StudioJobs from '../components/studio-jobs';
 
@@ -24,7 +25,6 @@ export default class PageJoinUs extends React.Component {
     const pageData = this.props.page;
     const attachments = get(pageData, '_embedded.wp:attachment.0', []);
     const image = find(attachments, item => item.id === get(pageData, 'featured_image'));
-    const svgContent = '<use xlink:href="/images/spritemap.svg#ustwologo" />';
 
     return (
       <article className="page-join-us">
@@ -34,7 +34,7 @@ export default class PageJoinUs extends React.Component {
         {get(pageData, 'page_builder', []).map(this.getModuleRenderer())}
 
         <div className="hero-image" style={{backgroundImage: "url(/images/joinus/current_openings.jpg)"}}>
-          <svg className="ustwo-logo" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
+          <SVG className="ustwo-logo" title="ustwo logo" spritemapID='ustwologo' />
           <h2>Current Openings</h2>
         </div>
 

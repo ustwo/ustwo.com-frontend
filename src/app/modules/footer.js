@@ -6,6 +6,7 @@ import kebabCase from 'lodash/string/kebabCase';
 
 import Track from '../../server/adaptors/track';
 import Flux from '../flux';
+import SVG from '../elements/svg';
 import StudioContact from '../components/studio-contact';
 
 export default class Footer extends React.Component {
@@ -36,10 +37,6 @@ export default class Footer extends React.Component {
     };
   }
   render() {
-    const facebookLogo = '<use xlink:href="/images/spritemap.svg#facebook" />';
-    const twitterLogo = '<use xlink:href="/images/spritemap.svg#twitter" />';
-    const linkedinLogo = '<use xlink:href="/images/spritemap.svg#linkedin" />';
-
     return (
       <footer className="footer">
         <div className="feedback">
@@ -53,17 +50,17 @@ export default class Footer extends React.Component {
             <ul className="social">
               <li className="channel facebook">
                 <a href={get(this.props, 'data.social.facebook')} onClick={this.onClickSocial('facebook')} target="_blank">
-                  <svg className="logo" title="facebook logo" role="img" dangerouslySetInnerHTML={{__html: facebookLogo }} />
+                  <SVG className="logo" title="facebook logo" spritemapID='facebook' />
                 </a>
               </li>
               <li className="channel twitter">
                 <a href={get(this.props, 'data.social.twitter')} onClick={this.onClickSocial('twitter')} target="_blank">
-                  <svg className="logo" title="twitter logo" role="img" dangerouslySetInnerHTML={{__html: twitterLogo }} />
+                  <SVG className="logo" title="twitter logo" spritemapID='twitter' />
                 </a>
               </li>
               <li className="channel linkedin">
                 <a href={get(this.props, 'data.social.linkedin')} onClick={this.onClickSocial('linkedin')} target="_blank">
-                  <svg className="logo" title="linkedin logo" role="img" dangerouslySetInnerHTML={{__html: linkedinLogo }} />
+                  <SVG className="logo" title="linkedin logo" spritemapID='linkedin' />
                 </a>
               </li>
             </ul>
