@@ -77,6 +77,19 @@ export default class PageBlog extends React.Component {
       </article>
     );
   }
+  renderHero = () => {
+    let output;
+    if (this.props.searchMode) {
+      output = <Search searchQuery={this.props.searchQuery} />;
+    } else {
+      output = (
+        <Hero title='Think. Share. Learn.' backgroundTint={true} imageURL='https://usweb.s3.amazonaws.com/ustwo-production/uploads/2014/01/blog_overview_header_image_v3.png' eventLabel='blog' showDownChevron={false}>
+          <BlogControls blogCategory={this.props.blogCategory}/>
+        </Hero>
+      );
+    }
+    return output;
+  }
   renderPosts = (posts) => {
     let output;
     if (posts) {

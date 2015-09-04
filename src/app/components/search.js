@@ -37,13 +37,18 @@ export default class Search extends React.Component {
     Flux.hideSearch();
   }
   onKeydown = (event) => {
-    if (event.keyCode === 13) { // enter
-      this.onSubmit(event);
+    switch(event.keyCode) {
+      case 13: // enter
+        this.onSubmit(event);
+        break;
+      case 27: // esc
+        Flux.hideSearch();
+        break;
     }
   }
   onKeyup = (event) => {
     const value = event.target.innerHTML;
-    if (value) {
+    if (value || event.keyCode === 8) { // backspace
       Flux.setSearchQueryTo(value);
     }
   }
