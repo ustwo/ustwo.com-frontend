@@ -8,6 +8,7 @@ import Flux from '../flux';
 import Nulls from '../flux/nulls';
 
 import Track from '../../server/adaptors/track';
+import SVG from '../elements/svg';
 import NavigationLink from '../elements/navigation-link';
 import NavigationOpenOverlayButton from '../elements/navigation-open-overlay-button';
 
@@ -31,13 +32,13 @@ export default class Navigation extends React.Component {
   render() {
     const props = this.props;
     const headerClasses = classnames('header', props.section, props.page, { 'takeover': props.takeover });
-    const svgContent = '<use xlink:href="/images/spritemap.svg#ustwologo" />';
+
     return (
       <header className={headerClasses}>
         <nav className={classnames('nav', props.customClass)}>
           <div className="nav__logo">
             <a className="nav__logo__link" href="/" onClick={this.onClickLogo}>
-              <svg className="nav__logo__graphic" title="ustwo logo" role="img" dangerouslySetInnerHTML={{__html: svgContent }} />
+              <SVG className="nav__logo__graphic" title="ustwo logo" spritemapID='ustwologo' />
             </a>
           </div>
           <NavigationOpenOverlayButton onOpen={this.openOverlay} />

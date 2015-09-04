@@ -7,6 +7,8 @@ import find from 'lodash/collection/find';
 
 import Flux from '../flux';
 
+import SVG from '../elements/svg';
+
 export default class BlogPostListItem extends React.Component {
   render() {
     const props = this.props;
@@ -40,17 +42,14 @@ export default class BlogPostListItem extends React.Component {
     );
   }
   renderSocialMediaShareCounts = () => {
-    const facebookIcon = '<use xlink:href="/images/spritemap.svg#facebook" />';
-    const twitterIcon = '<use xlink:href="/images/spritemap.svg#twitter" />';
-
     return (
       <div className="social-media">
         <div className="channel facebook">
-          <div className='logo'><svg className="facebook-icon" role="img" dangerouslySetInnerHTML={{__html: facebookIcon }} /></div>
+          <div className='logo'><SVG className='facebook-icon' spritemapID='facebook' /></div>
           <span>{get(this.props.data, 'facebookShares')}</span>
         </div>
         <div className="channel twitter">
-          <div className='logo'><svg className="twitter-icon" role="img" dangerouslySetInnerHTML={{__html: twitterIcon }} /></div>
+          <div className='logo'><SVG className='twitter-icon' spritemapID='twitter' /></div>
           <span>{get(this.props.data, 'twitterShares')}</span>
         </div>
       </div>

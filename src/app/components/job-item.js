@@ -4,6 +4,8 @@ import React from 'react';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
 
+import SVG from '../elements/svg';
+
 export default class JobItem extends React.Component {
   render() {
     const job = this.props.job;
@@ -29,12 +31,11 @@ export default class JobItem extends React.Component {
     return get(this.props.job, 'description');
   }
   renderLocation = () => {
-    const job = this.props.job;
-    const locationPin = '<use xlink:href="/images/spritemap.svg#locationpin" />';
+    const props = this.props;
     return (
-      <div className="location" style={{ color: this.props.colour }}>
-        <svg className="icon" role="img" dangerouslySetInnerHTML={{__html: locationPin }} style={{ fill: this.props.colour }} />
-        {get(job, 'location.city')}
+      <div className="location" style={{ color: props.colour }}>
+        <SVG className='icon' spritemapID='locationpin' style={{ fill: props.colour }} />
+        {get(props.job, 'location.city')}
       </div>
     );
   }

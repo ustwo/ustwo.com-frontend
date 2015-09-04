@@ -8,6 +8,7 @@ import window from '../../server/adaptors/window';
 import Track from '../../server/adaptors/track';
 
 import DownChevron from '../elements/down-chevron';
+import SVG from '../elements/svg';
 import WordAnimation from '../elements/word-animation';
 import Rotator from '../elements/rotator';
 import EntranceTransition from '../elements/entrance-transition';
@@ -132,14 +133,6 @@ export default class PageHome extends React.Component {
     clearTimeout(this.animTimeout);
   }
   render() {
-    const HarveyNicksShape1 = '<use xlink:href="/images/spritemap.svg#HarveyShape1" />';
-    const HarveyNicksShape2 = '<use xlink:href="/images/spritemap.svg#HarveyShape2" />';
-    const HarveyNicksShape3 = '<use xlink:href="/images/spritemap.svg#HarveyShape3" />';
-    const HarveyNicksShape4 = '<use xlink:href="/images/spritemap.svg#HarveyShape4" />';
-    const MonumentAward1 = '<use xlink:href="/images/spritemap.svg#MonumentAward1" />';
-    const MonumentAward2 = '<use xlink:href="/images/spritemap.svg#MonumentAward2" />';
-    const MonumentAward3 = '<use xlink:href="/images/spritemap.svg#MonumentAward3" />';
-    const DiceLogo = '<use xlink:href="/images/spritemap.svg#dicelogo" />';
     const headlineWordsAnimationOptions = {
       ease: Power2.easeOut,
       opacity: 0,
@@ -187,11 +180,11 @@ export default class PageHome extends React.Component {
           <div className="page-home__screen-block--client__image-vertical-centerer-parent">
             <div className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child">
               <div className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container">
-                <svg className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-3" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape3 }} />
-                <svg className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-4" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape4 }} />
+                <SVG className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-3" role="presentation" spritemapID='HarveyShape3' />
+                <SVG className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-4" role="presentation" spritemapID='HarveyShape4' />
                 {HarveyNicksImage}
-                <svg className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-1" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape1 }} />
-                <svg className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-2" role="presentation" dangerouslySetInnerHTML={{__html: HarveyNicksShape2 }} />
+                <SVG className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-1" role="presentation" spritemapID='HarveyShape1' />
+                <SVG className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-2" role="presentation" spritemapID='HarveyShape2' />
               </div>
             </div>
           </div>
@@ -205,9 +198,9 @@ export default class PageHome extends React.Component {
           <div className="page-home__screen-block--own-stuff__image-vertical-centerer-parent">
             <div className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child">
               <div className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer">
-                <svg className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-award-1" role="presentation" dangerouslySetInnerHTML={{__html: MonumentAward1 }} />
-                <svg className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-award-2" role="presentation" dangerouslySetInnerHTML={{__html: MonumentAward2 }} />
-                <svg className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-award-3" role="presentation" dangerouslySetInnerHTML={{__html: MonumentAward3 }} />
+                <SVG className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-award-1" role="presentation" spritemapID='MonumentAward1' />
+                <SVG className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-award-2" role="presentation" spritemapID='MonumentAward2' />
+                <SVG className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-award-3" role="presentation" spritemapID='MonumentAward3' />
                 {GamesImage}
               </div>
             </div>
@@ -224,7 +217,7 @@ export default class PageHome extends React.Component {
               <div className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer">
                 <img className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-screen-anim" src="/images/home/Homepage_Dice_Motion.gif" />
                 {DiceImage}
-                <svg className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-logo" role="presentation" dangerouslySetInnerHTML={{__html: DiceLogo }} />
+                <SVG className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-logo" role="presentation" spritemapID='dicelogo' />
               </div>
             </div>
           </div>
