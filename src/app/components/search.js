@@ -27,10 +27,8 @@ export default class Search extends React.Component {
           <button className='submit' type='submit' onClick={this.onSubmit}>
             <SVG spritemapID='search' />
           </button>
-          <button className='cancel' type='button' onClick={this.onClickCancel}>
-            Clear search
-          </button>
         </form>
+        <button className='cancel' type='button' onClick={this.onClickCancel}>Cancel</button>
       </div>
     );
   }
