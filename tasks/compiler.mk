@@ -1,21 +1,17 @@
 ## Compiler tasks ##############################################################
-compiler_image := ustwo/usweb-compiler:$(TAG)
-compiler_version = $(TAG)
-compiler_name = $(project_name)_$(TIER)_compiler
+compiler_image := ustwo/usweb-compiler
+compiler_name = $(project_name)_compiler
 
 .PHONY: \
   compiler-build
 
-ifeq ($(TIER), dev)
-  compiler_volumes = \
-    -v $(BASE_PATH)/gulpfile.js:/usr/local/src/gulpfile.js \
-    -v $(BASE_PATH)/compiler.json:/usr/local/src/package.json \
-    -v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
-    -v $(BASE_PATH)/src:/usr/local/src/src
-endif
-
 define compile
-	$(DOCKER_TASK) $(compiler_volumes) $(compiler_image) $1
+	$(DOCKER_TASK) \
+		-v $(BASE_PATH)/gulpfile.js:/usr/local/src/gulpfile.js \
+		-v $(BASE_PATH)/compiler.json:/usr/local/src/package.json \
+		-v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
+		-v $(BASE_PATH)/src:/usr/local/src/src \
+		$(compiler_image) $1
 endef
 
 compiler-build:
