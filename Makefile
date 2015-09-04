@@ -84,8 +84,8 @@ ls:
 
 nuke:
 	$(DOCKER) images \
-	| grep $(project_name) \
-	| awk '{print $$1":$(VERSION)"}' \
+	| grep $(project_name):$(VERSION) \
+	| awk '{print $$1}' \
 	| xargs $(DOCKER) rmi
 
 
