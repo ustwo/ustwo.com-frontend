@@ -3,11 +3,8 @@
 import React from 'react';
 
 import Flux from '../flux';
-<<<<<<< HEAD
 
 import SVG from '../elements/svg';
-=======
->>>>>>> Fix form being submitted twice, and cancel button not working
 
 export default class Search extends React.Component {
   componentDidMount() {

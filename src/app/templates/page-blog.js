@@ -58,6 +58,10 @@ export default class PageBlog extends React.Component {
     const attachments = get(props.page, '_embedded.wp:attachment.0', []);
     const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
     const posts = props.posts;
+    let posts = props.posts;
+    if (!state.isCategorised && (props.postsPagination < props.postsPaginationTotal)) {
+      posts = props.posts && take(props.posts, props.posts.length-2);
+    }
     const classes = classnames('page-blog', {
       categorised: state.isCategorised,
       loading: !posts,
