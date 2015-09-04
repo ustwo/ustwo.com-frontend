@@ -8,7 +8,7 @@
 
   .blog-search-button {
     position: absolute;
-    left: -($blog-controls-search-width + 15px);
+    left: 0;
     display: flex;
     align-items: center;
     height: $blog-controls-line-height;
@@ -26,11 +26,9 @@
   }
 
   .blog-filter {
-    // margin-left: $blog-controls-search-width + $blog-controls-search-margin;
+    margin-left: $blog-controls-search-width + $blog-controls-search-margin;
 
     .selected {
-      position: relative;
-      z-index: 1;
       width: $blog-controls-item-width;
       padding: 0 $blog-controls-horizontal-padding;
 
@@ -46,8 +44,7 @@
         @include arrow-icon(#333333);
       }
     }
-    .selected,
-    .dropdown li {
+    .selected {
       cursor: pointer;
       height: $blog-controls-line-height;
       line-height: $blog-controls-line-height;
