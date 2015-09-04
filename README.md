@@ -59,31 +59,37 @@ from another member of the team.
         $ make vault-build
         $ make compiler-build seeds
 
+* Set `/etc/hosts`
+
+        192.168.99.100 local.ustwo.com
+        192.168.99.100 staging.ustwo.com
+
+*Note*: The ip depends on your local instance. Check `docker-machine ip dev`.
+
+
 
 ## Develop
 
 *Note*: Check the [Make.md](./Make.md) for an explanation of how the make
 tasks are structured.
 
-Bootstrap a new environment:
+Prepare a new environment:
 
-    $ make offspring
-
-*Note*: Add the flag `VERBOSE=true` if you want the JS and CSS expanded.
+    $ make compiler-build
+    $ make seeds
 
 Deploy app:
 
-    $ make love
+    $ make -i love LOCAL_FS=true VERBOSE=true
+
+*Note*: Add the flag `LOCAL_FS=true` if you want to use your local files instead
+of the ones inside the containers.
+*Note*: Add the flag `VERBOSE=true` if you want the JS and CSS expanded.
 
 Compile the assets:
 
     $ make stuff
 
-It is recommended to add a new entry to your `/etc/hosts` with an ustwo
-subdomain so the SSL certificate works without warnings:
-
-    # Assuming 192.168.99.100 is your dev environment.
-    192.168.99.100 local.ustwo.com
 
 Clean the environment:
 
@@ -117,17 +123,15 @@ Clean the environment:
 
 ## Release production
 
-1. Deploy in your local environment the production version.
+1. Deploy in your local environment
 
-        # Remove dev instances to avoid port collisions
-        $ make extermination
-        $ make -i love TIER=production
+        $ make love
 
 *Note* It assumes you build the images already following the staging process.
 
 2. Test deployment
 
-        $ open https://local.ustwo.com:10443
+        $ open https://local.ustwo.com:9443
 
 3. Set the right environment
 
