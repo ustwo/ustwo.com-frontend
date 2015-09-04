@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import map from 'lodash/collection/map';
 
 import Flux from '../flux';
 
@@ -29,15 +28,14 @@ export default class PageSearchResults extends React.Component {
       <article className="page-search-results">
         <div className="search-results-header">
           <h1>{outcomeText}</h1>
-          <BlogControls blogCategory={props.blogCategory}/>
         </div>
         <div className="clear-search"><button onClick={this.onClickReSearch}>{searchText}</button></div>
-        <ul>{this.renderSearchResults(props.page)}</ul>
+        <ul>{this.renderSearchResults(props.posts)}</ul>
       </article>
     );
   }
   renderSearchResults(posts) {
-    return map(posts, (post, index) => {
+    return posts && posts.map(post => {
       return <SearchResultListItem data={post} />;
     });
   }

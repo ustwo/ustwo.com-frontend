@@ -3,7 +3,6 @@
 import React from 'react';
 
 import Flux from '../flux';
-import {onClickContent} from '../modules/modal';
 
 export default class Search extends React.Component {
   componentDidMount() {
@@ -11,7 +10,6 @@ export default class Search extends React.Component {
     input.focus();
     input.addEventListener('keyup', this.onKeyup);
     input.addEventListener('keydown', this.onKeydown);
-    window.addEventListener('keydown', this.onKeydown);
   }
   componentWillUnmount() {
     const input = React.findDOMNode(this.refs.input);
@@ -21,14 +19,16 @@ export default class Search extends React.Component {
   render() {
     const searchIcon = '<use xlink:href="/images/spritemap.svg#search" />';
     return (
-      <div className="search" onClick={onClickContent}>
+      <div className='search'>
         <form method='POST' action='/blog/search' className='search-form' onSubmit={this.onSubmit}>
           <input name='q' type='text' className='input' value={this.props.searchQuery} />
-          <div ref='input' contentEditable="true" className='editable-div'></div>
-          <button className="submit">
-            <svg role="img" dangerouslySetInnerHTML={{__html: searchIcon }} />
+          <div ref='input' contentEditable='true' className='editable-div'></div>
+          <button className='submit' type='submit' onClick={this.onSubmit}>
+            <svg role="img" dangerouslySetInnerHTML={{ __html: searchIcon }} />
           </button>
-          <button className="cancel" onClick={this.onClickCancel}>Clear search</button>
+          <button className='cancel' type='button' onClick={this.onClickCancel}>
+            Clear search
+          </button>
         </form>
       </div>
     );
@@ -37,13 +37,8 @@ export default class Search extends React.Component {
     Flux.hideSearch();
   }
   onKeydown = (event) => {
-    switch(event.keyCode) {
-      case 13: // enter
-        this.onSubmit(event);
-        break;
-      case 27: // esc
-        Flux.hideSearch();
-        break;
+    if (event.keyCode === 13) { // enter
+      this.onSubmit(event);
     }
   }
   onKeyup = (event) => {

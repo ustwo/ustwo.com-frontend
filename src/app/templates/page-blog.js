@@ -5,9 +5,7 @@ import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
-import filter from 'lodash/collection/filter';
 import take from 'lodash/array/take';
-import every from 'lodash/collection/every';
 
 import Flux from '../flux';
 
