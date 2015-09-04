@@ -1,7 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
-import get from 'lodash/object/get';
 import moment from 'moment';
+import he from 'he';
+import get from 'lodash/object/get';
 
 import Flux from '../flux';
 
@@ -21,7 +22,9 @@ export default class SearchResultListItem extends React.Component {
         </div>
         <div className='content'>
           <div className='blog-category'>{category}</div>
-          <h2 className='title'><a href={uri} onClick={Flux.override(uri)} dangerouslySetInnerHTML={{ __html: get(post, 'title.rendered') }}></a></h2>
+          <h2 className='title'>
+            <a href={uri} onClick={Flux.override(uri)}>{he.decode(get(post, 'title.rendered'))}</a>
+          </h2>
           <p className='meta'>By {get(post, '_embedded.author.0.first_name')} {get(post, '_embedded.author.0.last_name')} - <span className='date'>{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
           <div className='tail'>
             <a href={uri} onClick={Flux.override(uri)}>Read more</a>
