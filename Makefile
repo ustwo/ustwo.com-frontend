@@ -12,6 +12,9 @@ project_name := usweb
 ## CLI aliases ################################################################
 RM := rm -rf
 CP := cp
+GREP := grep
+AWK := awk
+XARGS := xargs
 MKDIR := mkdir -p
 DOCKER := docker
 DOCKER_CP := $(DOCKER) cp
@@ -80,13 +83,14 @@ stats:
 
 ls:
 	@$(DOCKER) images \
-	| grep $(project_name)
+	| $(GREP) $(project_name)
 
 nuke:
 	$(DOCKER) images \
-	| grep $(project_name):$(VERSION) \
-	| awk '{print $$1}' \
-	| xargs $(DOCKER) rmi
+	| $(GREP) $(project_name) \
+	| $(GREP) "$(VERSION) " \
+	| $(AWK) '{print $$1":$(VERSION)"}' \
+	| $(XARGS) $(DOCKER) rmi
 
 
 deploy-production:
