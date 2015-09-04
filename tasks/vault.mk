@@ -3,7 +3,7 @@
 # vault version matches the SSL cert year of creation.
 vault_version := 2015
 vault_image := ustwo/usweb-vault:$(vault_version)
-vault_name = $(project_name)_$(TIER)_vault
+vault_name = $(project_name)_vault
 
 .PHONY: \
 	vault-build \

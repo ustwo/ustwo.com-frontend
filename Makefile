@@ -1,6 +1,7 @@
 TIER ?= dev
 BASE_PATH ?= $(PWD)
 TAG ?= 1.2.0
+VERSION = $(TAG)
 MACHINE_ALIAS ?= ustwosite
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
 ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
@@ -84,37 +85,20 @@ ls:
 nuke:
 	$(DOCKER) images \
 	| grep $(project_name) \
-	| awk '{print $$1":$(TAG)"}' \
-	| xargs docker rmi
+	| awk '{print $$1":$(VERSION)"}' \
+	| xargs $(DOCKER) rmi
 
-
-rm-production: TIER := production
-rm-production: init-rm
 
 deploy-production:
 	$(MAKE) -i love \
-		BASE_PATH=/home/ubuntu \
-		TIER=production \
 		PROXY_HTTPS_PORT=443 \
 		PROXY_HTTP_PORT=80
+
+deploy-staging: deploy-production
 
 deploy-canary:
 	$(MAKE) -i canary-rm canary-create \
-		BASE_PATH=/home/ubuntu \
-		TIER=production
-
-
-# deploy-staging: TIER = staging
-# deploy-staging: PROXY_HTTP_PORT = 80
-# deploy-staging: PROXY_HTTPS_PORT = 443
-# deploy-staging: BASE_PATH = /home/ubuntu
-# deploy-staging: deploy
-deploy-staging:
-	$(MAKE) -i love \
-		BASE_PATH=/home/ubuntu \
-		TIER=staging \
-		PROXY_HTTPS_PORT=443 \
-		PROXY_HTTP_PORT=80
+		BASE_PATH=/home/ubuntu
 
 absorb:
 	git checkout master

@@ -1,8 +1,7 @@
 ## App tasks ##################################################################
 image_name := ustwo/usweb-app
-app_image := $(image_name):$(TAG)
-app_name = $(project_name)_$(TIER)_app
-verbosity = $(if $(VERBOSE), -e VERBOSE=true,)
+app_image := $(image_name):$(VERSION)
+app_name = $(project_name)_app
 
 .PHONY: \
   app-rm \
@@ -13,10 +12,13 @@ verbosity = $(if $(VERBOSE), -e VERBOSE=true,)
   app-pull \
   app-push
 
-ifeq ($(TIER), dev)
+ifeq ($(LOCAL_FS), true)
   app_volumes = \
     -v $(BASE_PATH)/package.json:/usr/local/src/package.json \
     -v $(BASE_PATH)/src:/usr/local/src/src
+endif
+ifeq ($(VERBOSE), true)
+  verbosity = -e VERBOSE=true
 endif
 
 app-build:
