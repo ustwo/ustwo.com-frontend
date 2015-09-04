@@ -4,6 +4,8 @@ import React from 'react';
 
 import Flux from '../flux';
 
+import SVG from '../elements/svg';
+
 export default class Search extends React.Component {
   componentDidMount() {
     const input = React.findDOMNode(this.refs.input);
@@ -24,7 +26,7 @@ export default class Search extends React.Component {
           <input name='q' type='text' className='input' value={this.props.searchQuery} />
           <div ref='input' contentEditable='true' className='editable-div'></div>
           <button className='submit' type='submit' onClick={this.onSubmit}>
-            <svg role="img" dangerouslySetInnerHTML={{ __html: searchIcon }} />
+            <SVG role="img" spritemapID='search' />
           </button>
         </form>
         <button className='cancel' type='button' onClick={this.onClickCancel}>Cancel</button>
