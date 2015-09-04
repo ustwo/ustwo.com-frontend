@@ -78,11 +78,11 @@ stats:
 		echo "No containers for $(TIER)")
 
 ls:
-	@docker images \
+	@$(DOCKER) images \
 	| grep $(project_name)
 
 nuke:
-	docker images \
+	$(DOCKER) images \
 	| grep $(project_name) \
 	| awk '{print $$1":$(TAG)"}' \
 	| xargs docker rmi
