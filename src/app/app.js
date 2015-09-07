@@ -82,6 +82,15 @@ export default class App extends React.Component {
               name: "keywords",
               content: get(state, 'page.seo.keywords') || ''
             }, {
+              name: "og:type",
+              content: 'website'
+            }, {
+              name: "og:title",
+              content: get(state, 'page.seo.title') || ''
+            }, {
+              name: "og:description",
+              content: get(state, 'page.seo.desc') || ''
+            }, {
               name: "og:image",
               content: get(state, 'page.seo.image') || ''
             }]}
