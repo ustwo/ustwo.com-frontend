@@ -1,6 +1,6 @@
 ## App tasks ##################################################################
 image_name := ustwo/usweb-app
-app_image := $(image_name):$(VERSION)
+app_image = $(image_name):$(VERSION)
 app_name = $(project_name)_app
 
 .PHONY: \
