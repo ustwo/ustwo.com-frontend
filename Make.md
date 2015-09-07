@@ -34,8 +34,8 @@ between parenthesis.
 
 *Note* All porcelain tasks can be found in [Makefile](./Makefile).
 
-* `deploy` (`love`): Removes any container belonging to the project and tier
-and creates new ones.
+* `deploy` (`love`): Removes any container belonging to the project and creates
+new ones.
 * `deploy-production`: Same as above with implicit setup for production.
 * `deploy-staging`: Same as above with implicit setup for staging.
 * `init` (`offspring`): Creates the four Docker containers (vault, proxy, app, assets).
@@ -46,7 +46,7 @@ Hub.
 * `pull` (`incubation`): Pulls the app image and the assets images from the
 Docker Hub.
 * `stats`: Lists the stats for all containers.
-* `ps`: Lists the containers for the specified tier.
+* `ps`: Lists the containers for the specified.
 * `ls`: Lists the images for the current version.
 * `nuke`: Removes all images for the given `TAG`.
 
