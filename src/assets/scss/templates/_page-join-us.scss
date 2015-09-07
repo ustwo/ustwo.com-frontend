@@ -124,7 +124,7 @@
       }
 
     }
-    @include susy-breakpoint($bp-large, $susy) {
+    @include susy-breakpoint($bp-larger, $susy) {
       .video {
         width: 66.6666%;
       }
