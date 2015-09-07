@@ -9,14 +9,6 @@
     justify-content: center;
     padding: 100px 0;
     flex-direction: column;
-
-    .blog-controls {
-      bottom: auto;
-      position: relative;
-      left: auto;
-      transform: none;
-      margin-top: 30px;
-    }
   }
 
   h1 {
@@ -26,19 +18,13 @@
   }
 
   .clear-search {
-    display: none;
-    text-align: center;
-    cursor: pointer;
-
-    button {
-      display: inline-block;
-      background: none;
-      border: none;
-      outline: 0;
-      font-family: $PxGroteskBold;
-      border-bottom: 2px solid $blu;
-      padding: 0;
-    }
+    background: none;
+    border: none;
+    outline: 0;
+    font-family: $PxGroteskBold;
+    border-bottom: 2px solid $offWhite;
+    color: $offWhite;
+    padding: 0;
   }
 
   ul {
