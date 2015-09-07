@@ -108,7 +108,11 @@ export default {
   },
   closeTakeover() {
     if(_state.takeover) {
-      window.localStorage.setItem('takeover-'+_state.takeover.id, true);
+      try {
+        window.localStorage.setItem('takeover-'+_state.takeover.id, true);
+      } catch (e) {
+        console.warn('Silently ignoring localStorage error when browsing in Private Mode on iOS');
+      }
       _state.takeover.seen = true;
     }
     return Promise.resolve(_state);
