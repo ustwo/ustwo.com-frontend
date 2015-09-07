@@ -1,0 +1,24 @@
+---
+- hosts: usweb
+  vars:
+    owner: ubuntu
+    group: ubuntu
+  tasks:
+    - name: add htop
+      apt:
+        pkg: htop
+        state: latest
+    - name: copy ssh authorized keys
+      copy:
+        src: ../authorized_keys
+        dest: /home/ubuntu/.ssh/authorized_keys
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0600
+    # - name: copy us2proxy upstart config
+    #   copy:
+    #     src: ../init/us2proxy.conf
+    #     dest: /etc/init/us2proxy.conf
+    #     owner: "root"
+    #     group: "root"
+    #     mode: 0644

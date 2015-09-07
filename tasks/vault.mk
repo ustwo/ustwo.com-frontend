@@ -31,3 +31,7 @@ build/vault-$(vault_version).tar: vault-build
 	$(DOCKER) save -o $@ $(vault_image)
 
 vault-save: build/vault-$(vault_version).tar
+
+# Imports the vault tarball into the docker environment.
+load-vault: build/vault-$(vault_version).tar
+	$(DOCKER) load -i $<

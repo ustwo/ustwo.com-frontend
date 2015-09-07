@@ -1,5 +1,8 @@
-# Provisioning with Ansible ###################################################
-#
+# Provisioning ################################################################
+
+provision-vault: load-vault
+
+# Ansible #####################################################################
 # Better using ssh agent:
 #    $ ssh-agent bash # if not already running
 #    $ ssh-add ~/.docker/machine/machines/caretool/id_rsa
@@ -13,9 +16,7 @@
 #
 # Possible options are:
 #
-# * data
-# * vault
-
+# * host
 provision-%: etc/ansible/%.yml
-	$(call warn, "This task may require files intentionally left out the git repository")
 	$(ANSIBLE_PLAY) $<
+
