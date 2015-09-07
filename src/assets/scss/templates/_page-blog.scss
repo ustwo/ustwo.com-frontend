@@ -48,20 +48,19 @@
 }
 
 
+
+
+
 // Blog landing page layout
 .page-blog {
   background-color: #eaeaea;
-
-  .search {
-    display: none;
-  }
 
   .hero {
     background-color: $blu;
     display: flex;
 
     &__title {
-      margin-top: $blog-margin-offset * .75;
+      margin-top: -12vh;
     }
 
     h1 {
@@ -158,17 +157,48 @@
 
   // SEARCHIN'
 
+  .search {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .32s ease-in-out .5s, visibility 0s linear .82s;
+
+    .search-form {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .cancel {
+      opacity: 0;
+    }
+    .search-form,
+    .cancel {
+      transition: opacity .32s ease-in-out, transform 0s linear .5s;
+    }
+  }
+
   &.searching {
     .search {
-      display: flex;
-    }
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s;
 
-    .hero {
-      display: none;
+      .search-form {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .cancel {
+        opacity: 1;
+      }
+      .search-form,
+      .cancel {
+        transition: all .32s ease-in-out;
+        transition-delay: .5s;
+      }
     }
   }
 
   // END SEARCHING
+
+
 
   @include susy-breakpoint($bp-medium, $susy) {
     .blog-category {
