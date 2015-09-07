@@ -1,6 +1,7 @@
 TIER ?= dev
 BASE_PATH ?= $(PWD)
 TAG ?= 1.2.0
+VERSION = $(TAG)
 MACHINE_ALIAS ?= ustwosite
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
 ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
@@ -11,6 +12,9 @@ project_name := usweb
 ## CLI aliases ################################################################
 RM := rm -rf
 CP := cp
+GREP := grep
+AWK := awk
+XARGS := xargs
 MKDIR := mkdir -p
 DOCKER := docker
 DOCKER_CP := $(DOCKER) cp
@@ -78,48 +82,27 @@ stats:
 		echo "No containers for $(TIER)")
 
 ls:
-	@docker images \
-	| grep $(project_name)
+	@$(DOCKER) images \
+	| $(GREP) $(project_name)
 
 nuke:
-	docker images \
-	| grep $(project_name) \
-	| awk '{print $$1":$(TAG)"}' \
-	| xargs docker rmi
+	$(DOCKER) images \
+	| $(GREP) $(project_name) \
+	| $(GREP) "$(VERSION) " \
+	| $(AWK) '{print $$1":$(VERSION)"}' \
+	| $(XARGS) $(DOCKER) rmi
 
-cache-purge: CDN_USER = domains@ustwo.co.uk
-cache-purge:
-	curl --data "cdn_id=33624&login=$(CDN_USER)&passwd=$(CDN_PASSWORD)" \
-		https://api.cdn77.com/v2.0/data/purge-all
-
-
-rm-production: TIER := production
-rm-production: init-rm
 
 deploy-production:
 	$(MAKE) -i love \
-		BASE_PATH=/home/ubuntu \
-		TIER=production \
 		PROXY_HTTPS_PORT=443 \
 		PROXY_HTTP_PORT=80
+
+deploy-staging: deploy-production
 
 deploy-canary:
 	$(MAKE) -i canary-rm canary-create \
-		BASE_PATH=/home/ubuntu \
-		TIER=production
-
-
-# deploy-staging: TIER = staging
-# deploy-staging: PROXY_HTTP_PORT = 80
-# deploy-staging: PROXY_HTTPS_PORT = 443
-# deploy-staging: BASE_PATH = /home/ubuntu
-# deploy-staging: deploy
-deploy-staging:
-	$(MAKE) -i love \
-		BASE_PATH=/home/ubuntu \
-		TIER=staging \
-		PROXY_HTTPS_PORT=443 \
-		PROXY_HTTP_PORT=80
+		BASE_PATH=/home/ubuntu
 
 absorb:
 	git checkout master

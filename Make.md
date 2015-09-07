@@ -21,11 +21,11 @@ local filesystem as it is only used in development.
 
 ## Variables
 
-* `TIER` — dev, staging, canary or production.  Controls in what degree files
-are mounted into the Docker containers.
+* `VERSION` — The version of the project.  It is used when building Docker
+images.
 * `BASE_PATH` — Defines the base path to mount files into containers.
-* `TAG` — The version of the project.  It is used when building Docker images.
-* `VERBOSE` — Affects how css and js are compiled.
+* `VERBOSE` — When `true` it compiles js and css non-minified.
+* `LOCAL_FS` — When `true` it mounts local files to the containers.
 
 ## Porcelain tasks
 

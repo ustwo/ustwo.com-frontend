@@ -4,13 +4,11 @@ endef
 
 define project_labels
 	--label project_name=$(project_name) \
-	--label tier=$(TIER) \
-	--label version=$(TAG)
+	--label version=$(VERSION)
 endef
 
 define project_filters
-	--filter 'label=project_name=$(project_name)' \
-	--filter 'label=tier=$(TIER)'
+	--filter 'label=project_name=$(project_name)'
 endef
 
 

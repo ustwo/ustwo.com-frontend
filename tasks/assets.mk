@@ -1,6 +1,7 @@
 ## Assets tasks ###############################################################
-assets_image = ustwo/usweb-assets:$(TAG)
-assets_name = $(project_name)_$(TIER)_assets
+assets_image = ustwo/usweb-assets:$(VERSION)
+assets_name = $(project_name)_assets
+assets_template = Dockerfile.assets
 
 .PHONY: \
   assets-build \
@@ -10,30 +11,21 @@ assets_name = $(project_name)_$(TIER)_assets
   assets-rm \
   assets-save
 
-ifeq ($(TIER), dev)
+ifeq ($(LOCAL_FS), true)
   assets_volumes := \
     -v $(BASE_PATH)/share/nginx:/usr/share/nginx:ro \
-    -v $(BASE_PATH)/etc/nginx/conf.d/dev.conf:/etc/nginx/conf.d/default.conf:ro \
+    -v $(BASE_PATH)/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro \
     -v $(BASE_PATH)/etc/nginx/locations:/etc/nginx/locations:ro
 endif
 
-ifeq ($(TIER), staging)
-  assets_volumes := -v $(BASE_PATH)/etc/nginx/conf.d/staging.conf:/etc/nginx/conf.d/default.conf:ro
-endif
-
-ifeq ($(TIER), canary)
-  assets_volumes := -v $(BASE_PATH)/etc/nginx/conf.d/canary.conf:/etc/nginx/conf.d/default.conf:ro
-endif
-
 assets-build: assets-compile
-	$(DOCKER) build -t $(assets_image) -f Dockerfile.assets .
+	$(DOCKER) build -t $(assets_image) -f $(assets_template) .
 
 assets-pull:
 	$(DOCKER) pull $(assets_image)
 
 assets-push:
 	$(DOCKER) push $(assets_image)
-
 
 assets-rm:
 	@echo "Removing $(assets_name)"
