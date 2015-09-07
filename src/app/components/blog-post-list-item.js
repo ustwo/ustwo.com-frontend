@@ -14,8 +14,7 @@ export default class BlogPostListItem extends React.Component {
   render() {
     const props = this.props;
     const post = props.data;
-    const terms = get(post, '_embedded.wp:term', []);
-    const category = get(terms, '0.0');
+    const category = get(post, '_embedded.wp:term.0.0', {});
     const classes = classnames('blog-post-list-item', `blog-label-${get(category, 'slug', 'category')}`, {
       featured: props.featured
     });
