@@ -1,21 +1,55 @@
 #iubenda-cs-banner {
+  background: $nonBlack;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: #333;
+  color: #fff;
+  padding: 30px 0;
+  color: #fff;
+
   p:first-of-type {
     display: none;
   }
+
   p+p {
     margin: 0;
   }
+
+  .iubenda-cs-content {
+    position: relative;
+    max-width: 1030px;
+    margin: 0 auto;
+    display: block;
+    padding: 0 30px;
+  }
   .iubenda-cs-close-btn {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    display: block;
     font-size: 0;
     width: 40px;
     height: 40px;
     background: url("/images/close.svg") no-repeat 50% 50%;
     background-size: 100%;
-    transform: translateY(7px);
   }
   .iubenda-banner-content {
-    padding-right: 40px;
+    padding-right: 0;
     font-family: $PxGroteskRegular;
     line-height: 1.4;
+  }
+
+  @include susy-breakpoint($bp-larger, $susy) {
+    .iubenda-cs-close-btn {
+      position: absolute;
+      top: 50%;
+      margin-top: -20px;
+    }
+    .iubenda-banner-content {
+      padding-right: 40px;
+    }
   }
 }
