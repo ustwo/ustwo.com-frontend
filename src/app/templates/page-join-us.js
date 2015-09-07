@@ -29,7 +29,7 @@ export default class PageJoinUs extends React.Component {
     return (
       <article className="page-join-us">
 
-        <Hero title="Do the best work of your life" imageURL={get(image, 'source_url', '')} backgroundTint={true} eventLabel='join-us' showDownChevron={true} />
+        <Hero title={get(pageData, 'display_title')} imageURL={get(image, 'source_url', '')} backgroundTint={true} eventLabel='join-us' showDownChevron={true} />
 
         {get(pageData, 'page_builder', []).map(this.getModuleRenderer())}
 
