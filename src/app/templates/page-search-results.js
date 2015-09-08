@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import TransitionManager from 'react-transition-manager';
 
 import Flux from '../flux';
 
@@ -39,7 +40,9 @@ export default class PageSearchResults extends React.Component {
           <h1>{this.props.searchQuery}</h1>
           <button className='clear-search' onClick={this.onClickClearSearch}>Clear search</button>
         </div>
-        {this.renderSearchResults()}
+        <TransitionManager component='div' className='search-transition-manager' duration={500}>
+          {this.renderSearchResults()}
+        </TransitionManager>
       </article>
     );
   }
@@ -49,15 +52,15 @@ export default class PageSearchResults extends React.Component {
     let output;
 
     if (state.loading) {
-      output = <LoadingIcon />;
+      output = <LoadingIcon key='loading-icon' />;
     } else if (props.posts.length) {
       output = (
-        <ul>
+        <ul key='search-results' className='search-results'>
           {props.posts.map(post => <SearchResultListItem data={post} />)}
         </ul>
       );
     } else {
-      output = <h1>No results found</h1>;
+      output = <h1 key='no-results' className='no-results'>No results found</h1>;
     }
     return output;
   }

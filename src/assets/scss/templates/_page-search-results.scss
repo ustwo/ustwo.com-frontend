@@ -40,6 +40,14 @@
     margin-top: - $blog-search-result-offset;
   }
 
+  .search-transition-manager {
+    .loading-icon,
+    .search-results,
+    .no-results {
+      transition: opacity .32s ease-in-out;
+    }
+  }
+
   @include susy-breakpoint($bp-medium, $susy) {
 
     ul {
