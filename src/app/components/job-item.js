@@ -2,6 +2,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
+import ellipsize from 'ellipsize';
 import get from 'lodash/object/get';
 
 import SVG from '../elements/svg';
@@ -21,7 +22,7 @@ export default class JobItem extends React.Component {
           {this.renderStatus()}
         </h4>
         <div ref='description' className="job-description">
-          <p className="description-text">{get(job, 'description')}</p>
+          <p className="description-text">{ellipsize(get(job, 'description'), 400)}</p>
           <a className="link" href={get(job, 'url')} style={{ borderBottomColor: this.props.colour }}>Read full description</a>
         </div>
       </li>

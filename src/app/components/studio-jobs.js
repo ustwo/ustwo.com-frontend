@@ -5,31 +5,10 @@ import classnames from 'classnames';
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
 import kebabCase from 'lodash/string/kebabCase';
-import Flux from '../flux';
-import JobItem from '../components/job-item';
 
-const studioIntros = {
-  'all-studios': {
-    title: "",
-    text: ""
-  },
-  london: {
-    title: "Join our flagship studio in Shoreditch",
-    text: "Occuping three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicatoed to delivering pixel perfect work for clients including Barclays and Cahnnel4, as well as our own products including Whale Trail and Monument Valley."
-  },
-  malmo: {
-    title: "Join our flagship Swedish studio in Malmö",
-    text: "Swedish cheesy feet paneer who moved my cheese. Fromage frais halloumi queso cheese triangles feta boursin port-salut macaroni cheese. Mozzarella smelly cheese cheese triangles rubber cheese ricotta the big cheese ricotta melted cheese. Chalk and cheese stinking bishop."
-  },
-  'new-york': {
-    title: "Join our flagship US studio in Noo Yoik",
-    text: "American cheesy feet paneer who moved my cheese. Fromage frais halloumi queso cheese triangles feta boursin port-salut macaroni cheese. Mozzarella smelly cheese cheese triangles rubber cheese ricotta the big cheese ricotta melted cheese. Chalk and cheese stinking bishop."
-  },
-  sydney: {
-    title: "Join our flagship Aussie studio in Sydo",
-    text: "Australian cheesy feet paneer who moved my cheese. Fromage frais halloumi queso cheese triangles feta boursin port-salut macaroni cheese. Mozzarella smelly cheese cheese triangles rubber cheese ricotta the big cheese ricotta melted cheese. Chalk and cheese stinking bishop."
-  }
-};
+import Flux from '../flux';
+
+import JobItem from '../components/job-item';
 
 export default class StudioJobs extends React.Component {
   constructor(props) {
