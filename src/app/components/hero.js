@@ -38,7 +38,7 @@ export default class Hero extends React.Component {
       <section className='hero' style={styles}>
         <EntranceTransition className='title-entrance'>
           <h1 className='hero__title'>
-            <WordAnimation delay={0.5} duration={0.5} options={headlineWordsAnimationOptions}>
+            <WordAnimation delay={1} duration={0.5} options={headlineWordsAnimationOptions}>
               {props.title}
             </WordAnimation>
           </h1>

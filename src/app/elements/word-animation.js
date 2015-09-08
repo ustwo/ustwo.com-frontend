@@ -2,21 +2,19 @@
 
 import React from 'react';
 
-function wrapWords (word, index, array) {
-  return <span key={`word${index}`} className="word">{index === array.length - 1 ? word : `${word} `}</span>;
-}
+import spannify from '../_lib/spannify';
 
 export default class WordAnimation extends React.Component {
   componentWillMount() {
     const props = this.props;
     if (props.children) {
-      this.text = props.children.split(' ').map(wrapWords);
+      this.text = spannify(props.children, 'word');
     }
   }
   componentDidMount() {
     const props = this.props;
     const words = [].filter.call(React.findDOMNode(this).children, element => element.className === "word");
-    console.log('children', React.findDOMNode(this).children);
+    // console.log('children', React.findDOMNode(this).children);
     this.timeline = new TimelineLite({delay: props.delay});
     if (words.length) {
       this.timeline.add(TweenMax.staggerFrom(words, props.duration, props.options, props.duration / words.length));
@@ -25,7 +23,7 @@ export default class WordAnimation extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     if (!this.text && nextProps.children) {
-      this.text = nextProps.children.split(' ').map(wrapWords);
+      this.text = spannify(nextProps.children, 'word');
     }
   }
   componentDidUpdate() {
