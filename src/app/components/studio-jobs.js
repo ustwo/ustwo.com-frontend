@@ -23,6 +23,8 @@ export default class StudioJobs extends React.Component {
     const classes = classnames('studio-jobs', `${id}-jobs`, {
       selected: this.props.selected
     });
+    const attachments = get(studio, '_embedded.wp:attachment');
+    const image = find(attachments, 'id', get(studio, 'featured_image'));
     return (
       <div className={classes}>
         <h3>{studio.name}</h3>
@@ -32,8 +34,8 @@ export default class StudioJobs extends React.Component {
               <p className="excerpt">{get(studio, 'recruitment-title')}</p>
               <p className="content">{get(studio, 'recruitment-desc')}</p>
             </div>
-            <div className="photo" style={{backgroundImage: "url(/images/photo.jpg)"}}>
-              <img src="/images/photo.jpg" alt="Tea Building" />
+            <div className="photo" style={{backgroundImage: `url(${get(image, 'source_url')})`}}>
+              <img src={get(image, 'source_url')} alt={get(image, 'alt_text')} />
             </div>
           </div>
           {this.renderJobsList()}

@@ -26,7 +26,7 @@ const globalLoads = [{
     return response;
   }
 }, {
-  url: 'ustwo/v1/studios',
+  url: 'ustwo/v1/studios?_embed',
   type: 'studios'
 }];
 
