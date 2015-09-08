@@ -24,14 +24,14 @@ class Rimage extends React.Component {
     }
     return img;
   }
-  getImageUrl = (size) => {
+  getImageUrl = () => {
     return this.state.size.url;
   }
   getNewSize = () => {
     const sizes = this.props.sizes;
     const el = React.findDOMNode(this);
-    const constrainSize = el.clientHeight;
-    let newSize = find(sizes, size => size.height > constrainSize);
+    const constrainSize = el.clientWidth;
+    let newSize = find(sizes, size => size.width > constrainSize);
     if(!newSize) {
       newSize = sizes[sizes.length - 1];
     }
@@ -45,7 +45,7 @@ class Rimage extends React.Component {
       img.onload = () => this.setState({
         size: newSize
       });
-      img.src = this.getImageUrl(newSize);
+      img.src = newSize.url;
     }
   }
 };
