@@ -39,9 +39,6 @@ export default class Footer extends React.Component {
   render() {
     return (
       <footer className="footer">
-        <div className="feedback">
-          <span className="beta-tag">BETA</span> Got feedback? <a href="https://ustwo.typeform.com/to/ecVjrZ" target="_blank">Let us know</a>
-        </div>
         <div className="content">
           <div className="general">
             <h1 className="contact-title">{get(this.props, 'data.title')}</h1>
