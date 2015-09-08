@@ -22,12 +22,54 @@
   }
 
   .title {
-    font-size: 24px;
-    margin: 10px 0;
+    font-size: 28px;
+    margin: 12px 0 5px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     padding-right: 20%;
+  }
+
+  .meta,
+  .social-media-statistics,
+  .tail {
+    display: inline-block;
+    font-family: $PxGroteskBold;
+    font-size: 16px;
+  }
+
+  .meta {
+    color: #646464;
+
+    .date {
+      font-family: $PxGroteskRegular;
+      color: #969696;
+    }
+  }
+
+  .social-media-statistics {
+    .channel {
+      $height: 20px;
+
+      padding-left: 15px;
+      height: $height;
+
+      .logo {
+        height: $height;
+        width: $height;
+        position: relative;
+        top: 3px;
+
+        svg {
+          width: $height;
+          height: $height;
+        }
+      }
+
+      span {
+        font-family: $PxGroteskBold;
+      }
+    }
   }
 
   .tail {
@@ -69,6 +111,13 @@
       p {
         margin: 0;
       }
+    }
+
+    .title {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding-right: 20%;
     }
 
     .tail {

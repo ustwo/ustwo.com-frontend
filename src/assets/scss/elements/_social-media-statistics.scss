@@ -1,0 +1,24 @@
+.social-media-statistics {
+  .channel {
+    display: inline-block;
+
+    .logo,
+    span {
+      display: inline-block;
+    }
+
+    .logo {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+
+    &.facebook .logo {
+      margin-right: 3px;
+    }
+
+    &.twitter .logo {
+      margin-right: 7px;
+    }
+  }
+}

@@ -22,6 +22,7 @@ export default class PageSearchResults extends React.Component {
           loading: false
         });
       }, 2000);
+      Flux.getSocialSharesForPosts();
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -31,6 +32,7 @@ export default class PageSearchResults extends React.Component {
           loading: false
         });
       }, 2000);
+      Flux.getSocialSharesForPosts();
     }
   }
   render() {

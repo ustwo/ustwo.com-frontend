@@ -9,6 +9,7 @@ import Flux from '../flux';
 
 import SVG from '../elements/svg';
 import Rimage from '../elements/rimage';
+import SocialMediaStatistics from '../elements/social-media-statistics';
 
 export default class BlogPostListItem extends React.Component {
   render() {
@@ -33,24 +34,10 @@ export default class BlogPostListItem extends React.Component {
           <div className="excerpt" dangerouslySetInnerHTML={{ __html: get(post, 'excerpt.rendered')}} />
           <div className="tail">
             <a href={uri} onClick={Flux.override(uri)}>Read more</a>
-            {this.renderSocialMediaShareCounts()}
+            <SocialMediaStatistics facebookShares={get(props.data, 'facebookShares')} twitterShares={get(props.data, 'twitterShares')} />
           </div>
         </div>
       </article>
-    );
-  }
-  renderSocialMediaShareCounts = () => {
-    return (
-      <div className="social-media">
-        <div className="channel facebook">
-          <div className='logo'><SVG className='facebook-icon' spritemapID='facebook' /></div>
-          <span>{get(this.props.data, 'facebookShares')}</span>
-        </div>
-        <div className="channel twitter">
-          <div className='logo'><SVG className='twitter-icon' spritemapID='twitter' /></div>
-          <span>{get(this.props.data, 'twitterShares')}</span>
-        </div>
-      </div>
     );
   }
 }
