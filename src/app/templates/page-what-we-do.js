@@ -9,9 +9,6 @@ import WorkItem from '../components/work-item';
 import Hero from '../components/hero';
 
 export default class PageWhatWeDo extends React.Component {
-  // componentWillMount() {
-  //   debugger;
-  // }
   render() {
     const pageData = this.props.page;
     const caseStudiesModule = find(get(pageData, 'page_builder', []), 'name', 'case_studies');

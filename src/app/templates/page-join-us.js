@@ -25,7 +25,7 @@ export default class PageJoinUs extends React.Component {
   render() {
     const pageData = this.props.page;
     const attachments = get(pageData, '_embedded.wp:attachment.0', []);
-    const image = find(attachments, item => item.id === get(pageData, 'featured_image'));
+    const image = find(attachments, 'id', get(pageData, 'featured_image'));
 
     return (
       <article className="page-join-us">

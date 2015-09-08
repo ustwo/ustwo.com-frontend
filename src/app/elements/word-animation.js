@@ -5,20 +5,16 @@ import React from 'react';
 import spannify from '../_lib/spannify';
 
 export default class WordAnimation extends React.Component {
-  componentWillMount() {
-    const props = this.props;
-    if (props.children) {
-      this.text = spannify(props.children, 'word');
+  constructor(props) {
+    super(props);
+    this.timeline = new TimelineLite({ delay: props.delay });
+    this.state = {
+      animationShown: false
     }
   }
-  componentDidMount() {
-    const props = this.props;
-    const words = [].filter.call(React.findDOMNode(this).children, element => element.className === "word");
-    // console.log('children', React.findDOMNode(this).children);
-    this.timeline = new TimelineLite({delay: props.delay});
-    if (words.length) {
-      this.timeline.add(TweenMax.staggerFrom(words, props.duration, props.options, props.duration / words.length));
-      this.animationShown = true;
+  componentWillMount() {
+    if (this.props.children) {
+      this.text = spannify(this.props.children, 'word');
     }
   }
   componentWillReceiveProps(nextProps) {
@@ -26,12 +22,24 @@ export default class WordAnimation extends React.Component {
       this.text = spannify(nextProps.children, 'word');
     }
   }
+  componentDidMount() {
+    if (this.text) {
+      this.startAnimation();
+    }
+  }
   componentDidUpdate() {
+    if (!this.state.animationShown && this.text) {
+      this.startAnimation();
+    }
+  }
+  startAnimation = () => {
     const props = this.props;
-    const words = [].filter.call(React.findDOMNode(this).children, element => element.className === "word");
-    if (!this.animationShown && words.length) {
+    const words = React.findDOMNode(this).children;
+    if (!this.state.animationShown && words.length) {
       this.timeline.add(TweenMax.staggerFrom(words, props.duration, props.options, props.duration / words.length));
-      this.animationShown = true;
+      this.setState({
+        animationShown: true
+      });
     }
   }
   render() {
