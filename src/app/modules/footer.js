@@ -41,8 +41,6 @@ export default class Footer extends React.Component {
       <footer className="footer">
         <div className="content">
           <div className="general">
-            <h1 className="contact-title">{get(this.props, 'data.title')}</h1>
-            <hr className="contact-divider" />
             <a className="email-cta" href="mailto:hello@ustwo.com" onClick={this.onClickShowContacts}>{get(this.props, 'data.contact_link_text')}</a>
             <ul className="social">
               <li className="channel facebook">
