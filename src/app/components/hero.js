@@ -56,11 +56,11 @@ export default class Hero extends React.Component {
     if (props.backgroundTint) {
       image = (
         <EntranceTransition className='image-entrance'>
-          <Rimage className="hero__image" src={props.imageURL} />
+          <img className="hero__image" src={props.imageURL} />
         </EntranceTransition>
       );
     } else {
-      image = <Rimage className="hero__image" src={props.imageURL} />;
+      image = <img className="hero__image" src={props.imageURL} />;
     }
     return image;
   }

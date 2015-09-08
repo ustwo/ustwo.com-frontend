@@ -60,7 +60,7 @@ const routes = {
       type: 'page',
       slug: 'blog'
     }, {
-      url: 'ustwo/v1/posts?per_page=12',
+      url: 'ustwo/v1/posts?per_page=15',
       type: 'posts',
       cache: false
     }]

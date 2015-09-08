@@ -3,7 +3,7 @@
   background-position: center;
   background-size: cover;
 
-  &__image {
+  .image {
     display: none;
   }
 
@@ -11,7 +11,7 @@
     height: auto;
     background-image: none;
 
-    &__image {
+    .image {
       display: block;
       height: auto;
       width: 100%;
