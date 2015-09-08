@@ -16,16 +16,20 @@ export default class PageSearchResults extends React.Component {
   }
   componentWillMount() {
     if (this.props.posts) {
-      this.setState({
-        loading: false
-      });
+      setTimeout(() => {
+        this.setState({
+          loading: false
+        });
+      }, 2000);
     }
   }
   componentWillReceiveProps(nextProps) {
     if (this.state.loading && nextProps.posts) {
-      this.setState({
-        loading: false
-      });
+      setTimeout(() => {
+        this.setState({
+          loading: false
+        });
+      }, 2000);
     }
   }
   render() {
