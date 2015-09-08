@@ -47,21 +47,18 @@
     background: #fff;
 
     p {
-      width: 65%;
       margin: 0;
     }
 
     a {
-      position: absolute;
-      right: 30px;
-      top: 50%;
-      margin-top: -20px;
+      position: relative;
       display: inline-block;
       color: #fff;
       font-size: 18px;
       padding: 0 30px 0 15px;
       height: 40px;
       line-height: 40px;
+      margin-top: 10px;
 
       &:after {
         content: "";
@@ -151,6 +148,17 @@
 
       .photo {
         height: auto;
+      }
+    }
+    .jobs-none {
+      p {
+        width: 65%;
+      }
+      a {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        margin-top: -20px;
       }
     }
   }
