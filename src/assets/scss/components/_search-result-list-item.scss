@@ -24,7 +24,12 @@
   .title {
     font-size: 24px;
     margin: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 20%;
   }
+
   .tail {
     margin-top: 10px;
     text-align: right;
