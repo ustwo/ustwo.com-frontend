@@ -3,41 +3,6 @@
   background: #252525;
   color: $offWhite;
 
-  .feedback {
-    background: #000;
-    text-align: center;
-    height: 60px;
-    line-height: 60px;
-    font-size: 18px;
-
-    .beta-tag {
-      background: $pot;
-      height: 22px;
-      line-height: 22px;
-      display: inline-block;
-      color: #fff;
-      font-size: 16px;
-      border-radius: 3px;
-      padding: 0 5px 0 5px;
-      margin-right: 10px;
-      font-family: PxGrotesk-Bold, Arial, sans-serif;
-
-    }
-    a {
-      border-bottom: 2px solid $pot;
-    }
-
-    @include susy-breakpoint($bp-large, $susy) {
-      height: 90px;
-      line-height: 90px;
-      font-size: 26px;
-
-      .beta-tag {
-        transform: translateY(-3px);
-      }
-    }
-  }
-
   .content {
     max-width: 1800px;
     padding: 50px 0 0 0;
