@@ -7,15 +7,36 @@ function wrapWords (word, index, array) {
 }
 
 export default class WordAnimation extends React.Component {
+  componentWillMount() {
+    const props = this.props;
+    if (props.children) {
+      this.text = props.children.split(' ').map(wrapWords);
+    }
+  }
   componentDidMount() {
     const props = this.props;
     const words = [].filter.call(React.findDOMNode(this).children, element => element.className === "word");
-    const timeline = new TimelineLite({delay: props.delay});
-    timeline.add(TweenMax.staggerFrom(words, props.duration, props.options, props.duration / words.length));
+    console.log('children', React.findDOMNode(this).children);
+    this.timeline = new TimelineLite({delay: props.delay});
+    if (words.length) {
+      this.timeline.add(TweenMax.staggerFrom(words, props.duration, props.options, props.duration / words.length));
+      this.animationShown = true;
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (!this.text && nextProps.children) {
+      this.text = nextProps.children.split(' ').map(wrapWords);
+    }
+  }
+  componentDidUpdate() {
+    const props = this.props;
+    const words = [].filter.call(React.findDOMNode(this).children, element => element.className === "word");
+    if (!this.animationShown && words.length) {
+      this.timeline.add(TweenMax.staggerFrom(words, props.duration, props.options, props.duration / words.length));
+      this.animationShown = true;
+    }
   }
   render() {
-    const children = this.props.children;
-    const text = children && children.split(' ').map(wrapWords);
-    return <span className="word-animator">{text}</span>;
+    return <span className="word-animator">{this.text}</span>;
   }
 };

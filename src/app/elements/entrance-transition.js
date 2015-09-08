@@ -11,7 +11,7 @@ export default class EntranceTransition extends React.Component {
   componentDidMount() {
     this.timeout = setTimeout(() => {
       React.findDOMNode(this).classList.add('show');
-    }, 100);
+    }, 10);
   }
   componentWillUnmount() {
     clearTimeout(this.timeout);
