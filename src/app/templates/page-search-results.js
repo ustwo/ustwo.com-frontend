@@ -29,20 +29,10 @@ export default class PageSearchResults extends React.Component {
     }
   }
   render() {
-    const state = this.state;
-    const props = this.props;
-    let outcomeText;
-
-    if (!state.loading && !props.posts.length) {
-      outcomeText = `No results found for ${props.searchQuery}`;
-    } else {
-      outcomeText = props.searchQuery;
-    }
-
     return (
       <article className="page-search-results">
         <div className="search-results-header">
-          <h1>{outcomeText}</h1>
+          <h1>{this.props.searchQuery}</h1>
           <button className='clear-search' onClick={this.onClickClearSearch}>Clear search</button>
         </div>
         {this.renderSearchResults()}
@@ -56,12 +46,14 @@ export default class PageSearchResults extends React.Component {
 
     if (state.loading) {
       output = <LoadingIcon />;
-    } else {
+    } else if (props.posts.length) {
       output = (
         <ul>
           {props.posts.map(post => <SearchResultListItem data={post} />)}
         </ul>
       );
+    } else {
+      output = <h1>No results found</h1>;
     }
     return output;
   }
