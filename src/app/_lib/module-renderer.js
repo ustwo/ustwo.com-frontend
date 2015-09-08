@@ -34,7 +34,7 @@ export default (moduleData, colours, getZebra) => {
       module = <Grid
         cells={get(moduleData, 'attr.grid_cells.value')}
         video={get(moduleData, 'attr.grid_video.value')}
-        image={get(moduleData, 'attr.grid_image.value')}
+        images={get(moduleData, 'attr.grid_image.value.0.sizes')}
       />;
       break;
   }

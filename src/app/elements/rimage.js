@@ -26,13 +26,15 @@ class Rimage extends React.Component {
   render() {
     const url = this.getImageUrl();
     let img;
-    if(!this.props.href && !this.props.wrap) {
-      img = <img className={this.props.className} src={url} />;
-    } else {
-      img = <img className="image" src={url} />;
-    }
-    if(this.props.href) {
-      img = <a className="link" href={this.props.href} onClick={Flux.override(this.props.href)}>{img}</a>;
+    if(!this.props.backgroundOnly) {
+      if(!this.props.href && !this.props.wrap) {
+        img = <img className={this.props.className} src={url} />;
+      } else {
+        img = <img className="image" src={url} />;
+      }
+      if(this.props.href) {
+        img = <a className="link" href={this.props.href} onClick={Flux.override(this.props.href)}>{img}</a>;
+      }
     }
     if(this.props.wrap) {
       img = React.createElement(

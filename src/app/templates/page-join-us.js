@@ -14,6 +14,7 @@ import SVG from '../elements/svg';
 import Hero from '../components/hero';
 import Slide from '../components/slide';
 import StudioJobs from '../components/studio-jobs';
+import Rimage from '../elements/rimage';
 
 export default class PageJoinUs extends React.Component {
   constructor(props) {
@@ -34,10 +35,12 @@ export default class PageJoinUs extends React.Component {
 
         {get(pageData, 'page_builder', []).map(this.getModuleRenderer())}
 
-        <div className="hero-image" style={{backgroundImage: "url(/images/joinus/current_openings.jpg)"}}>
+        <Rimage className="hero-image" wrap="div" backgroundOnly={true} sizes={{ hardcoded: {
+            url: "/images/joinus/current_openings.jpg"
+          } }}>
           <SVG className="ustwo-logo" title="ustwo logo" spritemapID='ustwologo' />
           <h2>Current Openings</h2>
-        </div>
+        </Rimage>
 
         <section className="jobs">
           <nav className="jobs-studio-tabs">
