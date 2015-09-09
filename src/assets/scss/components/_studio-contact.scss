@@ -30,6 +30,10 @@
     .vcard {
       padding: 0;
 
+      p {
+        font-size: 14px;
+      }
+
       .adr {
 
         p {
@@ -57,7 +61,7 @@
       content: '\2013';
     }
     .studio-details {
-      height: 140px;
+      height: 160px;
 
       .map {
         border-bottom-color: $offWhite;
@@ -69,7 +73,7 @@
     @include nested(10) {
       @include gallery(5 of 10);
       vertical-align: top;
-      height: 200px;
+      height: 230px;
       border-bottom: none;
       transition-duration: 0s;
 
@@ -106,7 +110,7 @@
   @include susy-breakpoint($bp-large, $susy) {
     @include nested(12) {
       @include gallery(3 of 12);
-      height: 150px;
+      height: 180px;
 
       .studio-details {
         .map {

@@ -3,6 +3,13 @@
 import React from 'react';
 import classnames from 'classnames';
 
+const phoneNumbers = {
+  'Sydney': '+61 2 8188 3900',
+  'London': '+44 (0)20 7613 0433',
+  'New York': '+1 212-518-4900',
+  'Malmö': '+46 (0)40-330480'
+};
+
 export default class StudioContact extends React.Component {
   render() {
     const studio = this.props.studio;
@@ -16,6 +23,7 @@ export default class StudioContact extends React.Component {
         <h1 className="studio-title" onClick={this.onClick}>{studio.name}</h1>
         <div className="studio-details">
           <div className="vcard">
+            <p className="phone-number">{phoneNumbers[studio.name]}</p>
             <div className="adr">
               <p className="street-address">{studio.address['street-address']}</p>
               <p><span className="locality">{studio.address['locality']}</span> <span className="region">{studio.address['region']}</span> <span className="postal-code">{studio.address['postal-code']}</span></p>
