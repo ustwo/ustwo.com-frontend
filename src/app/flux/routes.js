@@ -71,8 +71,8 @@ const routes = {
     status: 200,
     data: query => [{
       url: `ustwo/v1/posts?search=${query}`,
-      type: 'page',
-      slug: 'search'
+      type: 'posts',
+      cache: false
     }]
   },
   post: {

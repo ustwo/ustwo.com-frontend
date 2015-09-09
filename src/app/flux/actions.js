@@ -31,6 +31,9 @@ const Actions = {
   showSearch() {
     return Store.showSearch();
   },
+  hideSearch() {
+    return Store.hideSearch();
+  },
   showBlogCategories() {
     return Store.showBlogCategories();
   },

@@ -4,6 +4,7 @@ import React from 'react';
 
 import Flux from '../flux';
 
+import SVG from '../elements/svg';
 import LoadingIcon from '../elements/loading-icon';
 
 const blogCategories = {
@@ -21,12 +22,11 @@ const blogCategories = {
 
 export default class BlogControls extends React.Component {
   render() {
-    const searchIcon = '<use xlink:href="/images/spritemap.svg#search" />';
     return (
       <div className="blog-controls">
-        {/* <button onClick={this.onClickSearch} className="blog-search-button">
-          <svg className="search-icon" role="img" dangerouslySetInnerHTML={{__html: searchIcon }} />
-        </button> */}
+        <button onClick={this.onClickSearch} className="blog-search-button">
+          <SVG className="search-icon" spritemapID='search' />
+        </button>
         <div className='blog-filter'>
           <div className="selected" onClick={this.onClickSelectedCategory}>{blogCategories[this.props.blogCategory]}</div>
           <LoadingIcon />

@@ -1,15 +1,15 @@
 'use strict';
 
 import React from 'react';
+import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
-import filter from 'lodash/collection/filter';
 import take from 'lodash/array/take';
-import every from 'lodash/collection/every';
 
 import Flux from '../flux';
 
+import Search from '../components/search';
 import Hero from '../components/hero';
 import BlogPostListItem from '../components/blog-post-list-item';
 import BlogControls from '../components/blog-controls';
@@ -55,25 +55,38 @@ export default class PageBlog extends React.Component {
   render() {
     const state = this.state;
     const props = this.props;
-    const attachments = get(props.page, '_embedded.wp:attachment.0', []);
-    const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
-    const posts = props.posts;
     const classes = classnames('page-blog', {
       categorised: state.isCategorised,
-      loading: !posts,
-      empty: posts && !posts.length
+      loading: !props.posts,
+      empty: props.posts && !props.posts.length
     });
     return (
       <article className={classes}>
-        <Hero title={get(props.page, 'display_title')} imageOnly={true} sizes={get(image, 'media_details.sizes')} eventLabel='blog' showDownChevron={false}>
-          <BlogControls blogCategory={props.blogCategory}/>
-        </Hero>
-        <section className="blog-post-list">
-          {this.renderPosts(posts)}
+        <TransitionManager component='div' className='hero-transition-manager' duration={1000}>
+          {this.renderHero()}
+        </TransitionManager>
+        <section className='blog-post-list'>
+          {this.renderPosts(props.posts)}
           <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} disabled={props.postsPagination >= props.postsPaginationTotal} />
         </section>
       </article>
     );
+  }
+  renderHero = () => {
+    const props = this.props;
+    const attachments = get(props.page, '_embedded.wp:attachment.0', []);
+    const image = find(attachments, 'id', get(props.page, 'featured_image'));
+    let output;
+    if (props.searchMode) {
+      output = <Search key='search' searchQuery={props.searchQuery} />;
+    } else {
+      output = (
+        <Hero key='hero' title={get(props.page, 'display_title')} imageOnly={true} sizes={get(image, 'media_details.sizes')} eventLabel='blog' showDownChevron={false}>
+          <BlogControls blogCategory={props.blogCategory}/>
+        </Hero>
+      );
+    }
+    return output;
   }
   renderPosts = (posts) => {
     let output;

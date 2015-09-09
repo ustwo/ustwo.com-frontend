@@ -1,47 +1,72 @@
 'use strict';
 
 import React from 'react';
-import map from 'lodash/collection/map';
+import TransitionManager from 'react-transition-manager';
 
 import Flux from '../flux';
 
+import LoadingIcon from '../elements/loading-icon';
 import SearchResultListItem from '../components/search-result-list-item';
-import BlogControls from '../components/blog-controls';
 
 export default class PageSearchResults extends React.Component {
-  render() {
-    const props = this.props;
-    let outcomeText;
-    let searchText;
-
-    outcomeText = props.searchQuery;
-
-    if (props.page) {
-      if (Object.keys(props.page).length) {
-        searchText = 'Clear search';
-      } else {
-        outcomeText = `No results found for ${props.searchQuery}`;
-        searchText = 'Search again';
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
     }
-
+  }
+  componentWillMount() {
+    if (this.props.posts) {
+      this.setState({
+        loading: false
+      });
+      Flux.getSocialSharesForPosts();
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (this.state.loading && nextProps.posts) {
+      this.setState({
+        loading: false
+      });
+      Flux.getSocialSharesForPosts();
+    }
+  }
+  render() {
     return (
       <article className="page-search-results">
         <div className="search-results-header">
-          <h1>{outcomeText}</h1>
-          <BlogControls blogCategory={props.blogCategory}/>
+          <div className="h1 searched-term">{this.props.searchQuery}</div>
+          <div className="clear-search"><button onClick={this.onClickClearSearch}>Clear search</button></div>
         </div>
-        <div className="clear-search"><button onClick={this.onClickReSearch}>{searchText}</button></div>
-        <ul>{this.renderSearchResults(props.page)}</ul>
+        <TransitionManager component='div' className='search-transition-manager' duration={700}>
+          {this.renderSearchResults()}
+        </TransitionManager>
       </article>
     );
   }
-  renderSearchResults(posts) {
-    return map(posts, (post, index) => {
-      return <SearchResultListItem data={post} />;
-    });
+  renderSearchResults = () => {
+    const state = this.state;
+    const props = this.props;
+    let output;
+
+    if (state.loading) {
+      output = <LoadingIcon key='loading-icon' />;
+    } else if (props.posts.length) {
+      output = (
+        <ul key='search-results' className='search-results'>
+          {props.posts.map(post => <SearchResultListItem data={post} />)}
+        </ul>
+      );
+    } else {
+      output = <h2 key='no-results' className='no-results'>No results found</h2>;
+    }
+    return output;
   }
-  onClickReSearch = (event) => {
-    Flux.showSearch();
+  onClickClearSearch = () => {
+    if (history) {
+      history.go(-1);
+    } else {
+      Flux.navigate('/blog');
+    }
   }
 };

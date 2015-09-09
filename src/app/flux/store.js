@@ -13,6 +13,7 @@ import fetchSocialMediaData from '../_lib/social-media-fetcher';
 const _state = Object.assign({
   currentPage: Nulls.page,
   blogCategory: Defaults.blogCategory,
+  searchMode: Defaults.searchMode,
   searchQuery: Nulls.searchQuery,
   modal: Nulls.modal,
   colours: Nulls.colours,
@@ -67,13 +68,14 @@ export default {
       _state.searchQuery = null;
     }
     if(newPage !== 'blog/category') {
-      _state.blogCategory = 'all';
+      _state.blogCategory = Defaults.blogCategory;
     }
     if(newPage !== 'blog/post') {
       _state.twitterShares = null;
       _state.facebookShares = null;
     }
     if(newPage !== 'blog' || newPage !== 'blog/category') {
+      _state.searchMode = Defaults.searchMode;
       _state.postsPagination = Defaults.postsPagination;
       _state.postsPaginationTotal = Nulls.postsPaginationTotal;
     }
@@ -135,7 +137,11 @@ export default {
     return promise;
   },
   showSearch() {
-    _state.modal = 'search';
+    _state.searchMode = true;
+    return Promise.resolve(_state);
+  },
+  hideSearch() {
+    _state.searchMode = false;
     return Promise.resolve(_state);
   },
   showBlogCategories() {

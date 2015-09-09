@@ -1,4 +1,4 @@
-.search-modal {
+.search {
 
   $height: 30px;
   $font-size: 36px;
@@ -9,60 +9,29 @@
   $icon-size-tablet: 44px;
 
   $height-desktop: 75px;
-  $font-size-desktop: 90px;
-  $icon-size-desktop: 61px;
+  $font-size-desktop: 80px;
+  $icon-size-desktop: 57px;
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
+  position: absolute;
   width: 100%;
+  height: 100vh;
+  background: $blu;
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: row;
-  background: $offWhite;
-  transition: transform 0.5s ease-out;
+  flex-direction: column;
+  z-index: 10;
 
-  .close-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    border: 0;
-    padding: 0;
-    background: transparent;
-    line-height: 50px;
 
-    svg {
-      width: 50px;
-      height: 50px;
-      fill: $nonBlack;
-    }
-
-    &:focus {
-      -webkit-focus-ring-color: rgba(0,0,0,0);
-      outline: none;
-    }
-
-    .text {
-      display: none;
-    }
-
-    @include susy-breakpoint($bp-medium, $susy) {
-      .text {
-        display: inline-block;
-      }
-    }
+  @include susy-breakpoint($bp-medium, $susy) {
+    height: calc(100vh + #{$blog-margin-offset});
   }
 
-  .search {
+  .search-form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    max-width: 90%;
-    margin-bottom: 140px;
+    padding: 0 5%;
 
     .input {
       display: none;
@@ -79,10 +48,12 @@
       white-space: nowrap;
       overflow: hidden;
       outline: 0;
+      color: $offWhite;
+      margin-left: $icon-size + 11px;
 
       &:before {
         content: "SEARCH";
-        color: $blu;
+        color: $offWhite;
         cursor: text;
       }
     }
@@ -104,17 +75,20 @@
       svg {
         width: $icon-size;
         height: $icon-size;
-        fill: $blu;
+        fill: $offWhite;
       }
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
+
       .editable-div {
         font-size: $font-size-tablet;
+        margin-left: $icon-size-tablet + 11px;
       }
       .submit {
         height: $icon-size-tablet;
         width: $icon-size-tablet + 1px;
+
         svg {
           height: $icon-size-tablet;
           width: $icon-size-tablet;
@@ -124,15 +98,34 @@
     @include susy-breakpoint($bp-large, $susy) {
       .editable-div {
         font-size: $font-size-desktop;
+        margin-left: $icon-size-desktop + 11px;
       }
       .submit {
         height: $icon-size-desktop;
         width: $icon-size-desktop + 1px;
+
         svg {
           height: $icon-size-desktop;
           width: $icon-size-desktop;
         }
       }
+    }
+  }
+
+  .cancel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+
+    button {
+      margin: 0 auto;
+      padding: 0;
+      border: none;
+      border-bottom: solid 2px $offWhite;
+      color: $offWhite;
+      background: transparent;
     }
   }
 }

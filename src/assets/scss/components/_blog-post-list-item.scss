@@ -64,18 +64,12 @@
       border-bottom: 2px solid;
     }
 
-    .social-media {
+    .social-media-statistics {
       .channel {
         $height: 22px;
 
-        display: inline-block;
         padding-left: 20px;
         height: $height;
-
-        .logo,
-        span {
-          display: inline-block;
-        }
 
         span {
           position: relative;
@@ -85,22 +79,11 @@
         .logo {
           height: $height;
           width: $height;
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-position: center;
 
           svg {
             width: $height;
             height: $height;
           }
-        }
-
-        &.facebook .logo {
-          margin-right: 3px;
-        }
-
-        &.twitter .logo {
-          margin-right: 7px;
         }
       }
     }
