@@ -1,0 +1,13 @@
+machine:
+  services:
+    - docker
+
+deployment:
+  dockerhub:
+    branch: master
+    commands:
+      - $TRIGGER_DOCKER_HUB_BUILD
+
+test:
+  override:
+    - make test
