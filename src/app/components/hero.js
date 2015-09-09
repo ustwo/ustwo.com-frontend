@@ -12,7 +12,7 @@ import Track from '../../server/adaptors/track';
 export default class Hero extends React.Component {
   componentDidMount() {
     if (this.props.showDownChevron) {
-      const duration = this.props.backgroundTint ? 2500 : 1700;
+      const duration = this.props.imageOnly ? 2500 : 1700;
       this.animTimeout = setTimeout(() => {
         this.refs.downChevron.resetAnim();
         this.refs.downChevron.anim();
@@ -33,7 +33,7 @@ export default class Hero extends React.Component {
     };
 
     return (
-      <Rimage wrap="section" className="hero" sizes={this.props.sizes} backgroundOnly={true} >
+      <Rimage wrap="section" className="hero" sizes={this.props.imageOnly ? {} : this.props.sizes} backgroundOnly={true} >
         <EntranceTransition className='title-entrance'>
           <h1 className='hero__title'>
             <WordAnimation delay={1} duration={0.5} options={headlineWordsAnimationOptions}>
@@ -50,7 +50,7 @@ export default class Hero extends React.Component {
   renderImage = () => {
     const props = this.props;
     let image;
-    if (props.backgroundTint) {
+    if (props.imageOnly) {
       image = (
         <EntranceTransition className='image-entrance'>
           <Rimage className="hero__image" sizes={this.props.sizes} />

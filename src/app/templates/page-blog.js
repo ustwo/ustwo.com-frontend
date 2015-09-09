@@ -57,10 +57,7 @@ export default class PageBlog extends React.Component {
     const props = this.props;
     const attachments = get(props.page, '_embedded.wp:attachment.0', []);
     const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
-    let posts = props.posts;
-    if (!state.isCategorised && (props.postsPagination < props.postsPaginationTotal)) {
-      posts = props.posts && take(props.posts, props.posts.length-2);
-    }
+    const posts = props.posts;
     const classes = classnames('page-blog', {
       categorised: state.isCategorised,
       loading: !posts,
@@ -68,7 +65,7 @@ export default class PageBlog extends React.Component {
     });
     return (
       <article className={classes}>
-        <Hero title={get(props.page, 'display_title')} backgroundTint={true} sizes={get(image, 'media_details.sizes')} eventLabel='blog' showDownChevron={false}>
+        <Hero title={get(props.page, 'display_title')} imageOnly={true} sizes={get(image, 'media_details.sizes')} eventLabel='blog' showDownChevron={false}>
           <BlogControls blogCategory={props.blogCategory}/>
         </Hero>
         <section className="blog-post-list">
