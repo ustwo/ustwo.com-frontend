@@ -7,6 +7,8 @@ import map from 'lodash/collection/map';
 import sortBy from 'lodash/collection/sortBy';
 import omit from 'lodash/object/omit';
 
+import Flux from '../flux';
+
 function getSizesArray(sizesObject) {
   return sortBy(map(omit(sizesObject, 'thumbnail'), (size, name) => {
     size.name = name;

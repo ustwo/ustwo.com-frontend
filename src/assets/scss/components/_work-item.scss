@@ -4,8 +4,9 @@
     background-size: cover;
     height: 320px;
     display: block;
+    cursor: pointer;
 
-    &__image {
+    .image {
       display: none;
     }
   }
