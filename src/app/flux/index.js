@@ -19,14 +19,14 @@ const globalLoads = [{
   url: 'ustwo/v1/global/footer',
   type: 'footer'
 }, {
-  url: 'ustwo/v1/takeovers?embed',
+  url: 'ustwo/v1/takeovers',
   type: 'takeover',
   get: response => {
     response.data = response.data[0];
     return response;
   }
 }, {
-  url: 'ustwo/v1/studios',
+  url: 'ustwo/v1/studios?_embed',
   type: 'studios'
 }];
 
