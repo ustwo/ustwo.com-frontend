@@ -32,6 +32,8 @@ export default class Hero extends React.Component {
       y: 30
     };
 
+    console.log(this.props.sizes, this.props);
+
     return (
       <Rimage wrap="section" className="hero" sizes={this.props.sizes} backgroundOnly={true} >
         <EntranceTransition className='title-entrance'>
