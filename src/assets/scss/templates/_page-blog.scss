@@ -55,9 +55,105 @@
 .page-blog {
   background-color: #eaeaea;
 
-  .hero {
-    background-color: $blu;
+  .hero-transition-manager {
     display: flex;
+    height: 100vh;
+    min-height: 100vh;
+    background: $blu;
+
+    .hero {
+      .blog-controls {
+        transition: opacity .32s ease-in-out;
+      }
+
+      &.add {
+        opacity: 1;
+
+        .blog-controls {
+          opacity: 0;
+        }
+      }
+
+      &.show {
+        .blog-controls {
+          opacity: 1;
+          transition-duration: .5s;
+          transition-delay: 2s;
+        }
+      }
+
+      &.hide {
+        opacity: 0;
+        transition: opacity .32s ease-in-out;
+
+        .blog-controls {
+          opacity: 0;
+        }
+      }
+    }
+
+    .search {
+      transition: opacity .32s ease-in-out;
+
+      &.add {
+        opacity: 0;
+
+        .search-form {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+
+        .cancel {
+          opacity: 0;
+        }
+
+        .search-form,
+        .cancel {
+          transition: opacity .32s ease-in-out, transform 0s linear .5s;
+        }
+      }
+
+      &.show {
+        opacity: 1;
+
+        .search-form {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .cancel {
+          opacity: 1;
+        }
+
+        .search-form,
+        .cancel {
+          transition: all .32s ease-in-out;
+          transition-delay: .5s;
+        }
+      }
+
+      &.hide {
+        opacity: 0;
+
+        // .search-form {
+        //   opacity: 0;
+        // }
+
+        // .cancel {
+        //   opacity: 0;
+        // }
+
+        .search-form,
+        .cancel {
+          transition: none;
+          // transition-delay: 0s;
+        }
+      }
+    }
+  }
+
+  .hero {
+    width: 100%;
 
     &__title {
       margin-top: -12vh;
@@ -79,7 +175,6 @@
       opacity: .4;
     }
   }
-
 
   .blog-post-list {
     max-width: 1380px;
@@ -154,49 +249,6 @@
 
   // END LOADING
 
-
-  // SEARCHIN'
-
-  .search {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .32s ease-in-out .5s, visibility 0s linear .82s;
-
-    .search-form {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .cancel {
-      opacity: 0;
-    }
-    .search-form,
-    .cancel {
-      transition: opacity .32s ease-in-out, transform 0s linear .5s;
-    }
-  }
-
-  &.searching {
-    .search {
-      opacity: 1;
-      visibility: visible;
-      transition-delay: 0s;
-
-      .search-form {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .cancel {
-        opacity: 1;
-      }
-      .search-form,
-      .cancel {
-        transition: all .32s ease-in-out;
-        transition-delay: .5s;
-      }
-    }
-  }
-
-  // END SEARCHING
 
 
   @include susy-breakpoint($bp-medium, $susy) {

@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import classnames from 'classnames';
 
 import Flux from '../flux';
 
@@ -20,7 +21,7 @@ export default class Search extends React.Component {
   }
   render() {
     return (
-      <div className='search'>
+      <div className={classnames('search', this.props.className)}>
         <form method='POST' action='/blog/search' className='search-form' onSubmit={this.onSubmit}>
           <input name='q' type='text' className='input' value={this.props.searchQuery} />
           <div ref='input' contentEditable='true' className='editable-div'></div>

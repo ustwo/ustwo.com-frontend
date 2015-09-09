@@ -55,31 +55,38 @@ export default class PageBlog extends React.Component {
   render() {
     const state = this.state;
     const props = this.props;
-    const attachments = get(props.page, '_embedded.wp:attachment.0', []);
-    const image = find(attachments, item => item.id === get(props.page, 'featured_image'));
-    const posts = props.posts;
-    let posts = props.posts;
-    if (!state.isCategorised && (props.postsPagination < props.postsPaginationTotal)) {
-      posts = props.posts && take(props.posts, props.posts.length-2);
-    }
     const classes = classnames('page-blog', {
       categorised: state.isCategorised,
-      loading: !posts,
-      searching: props.searchMode,
-      empty: posts && !posts.length
+      loading: !props.posts,
+      empty: props.posts && !props.posts.length
     });
     return (
       <article className={classes}>
-        <Search searchQuery={this.props.searchQuery} />
-        <Hero title={get(props.page, 'display_title')} imageOnly={true} sizes={get(image, 'media_detail.sizes')} eventLabel='blog' showDownChevron={false}>
-          <BlogControls blogCategory={props.blogCategory}/>
-        </Hero>
+        <TransitionManager component='div' className='hero-transition-manager' duration={1000}>
+          {this.renderHero()}
+        </TransitionManager>
         <section className='blog-post-list'>
-          {this.renderPosts(posts)}
+          {this.renderPosts(props.posts)}
           <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} disabled={props.postsPagination >= props.postsPaginationTotal} />
         </section>
       </article>
     );
+  }
+  renderHero = () => {
+    const props = this.props;
+    const attachments = get(props.page, '_embedded.wp:attachment.0', []);
+    const image = find(attachments, 'id', get(props.page, 'featured_image'));
+    let output;
+    if (props.searchMode) {
+      output = <Search key='search' searchQuery={props.searchQuery} />;
+    } else {
+      output = (
+        <Hero key='hero' title={get(props.page, 'display_title')} imageOnly={true} sizes={get(image, 'media_details.sizes')} eventLabel='blog' showDownChevron={false}>
+          <BlogControls blogCategory={props.blogCategory}/>
+        </Hero>
+      );
+    }
+    return output;
   }
   renderPosts = (posts) => {
     let output;
