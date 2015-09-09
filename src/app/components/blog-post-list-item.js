@@ -8,6 +8,7 @@ import find from 'lodash/collection/find';
 import Flux from '../flux';
 
 import SVG from '../elements/svg';
+import Rimage from '../elements/rimage';
 
 export default class BlogPostListItem extends React.Component {
   render() {
@@ -25,9 +26,7 @@ export default class BlogPostListItem extends React.Component {
 
     return (
       <article className={classes}>
-        <div className="image" style={{backgroundImage: `url(${imageURL})`}} onClick={Flux.override(uri)}>
-          <a href={uri} onClick={Flux.override(uri)}><img src={imageURL} /></a>
-        </div>
+        <Rimage className="image" wrap="div" href={uri} sizes={get(featuredImage, 'media_details.sizes')} />
         <div className="content">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h2 className="title"><a href={uri} onClick={Flux.override(uri)}>{he.decode(get(post, 'title.rendered'))}</a></h2>

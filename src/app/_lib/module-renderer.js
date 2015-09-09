@@ -18,7 +18,7 @@ export default (moduleData, colours, getZebra) => {
       backgroundColour={!getZebra() && get(colours, 'bg')}>{get(moduleData, 'attr.body.value')}</SingleColumn>;
       break;
     case 'image':
-      module = <FullImage photo={get(moduleData, 'attr.image.value.0.sizes.large.url')} />;
+      module = <FullImage sizes={get(moduleData, 'attr.image.value.0.sizes')} />;
       break;
     case 'blockquote':
       module = (
@@ -34,7 +34,7 @@ export default (moduleData, colours, getZebra) => {
       module = <Grid
         cells={get(moduleData, 'attr.grid_cells.value')}
         video={get(moduleData, 'attr.grid_video.value')}
-        image={get(moduleData, 'attr.grid_image.value')}
+        images={get(moduleData, 'attr.grid_image.value.0.sizes')}
       />;
       break;
   }

@@ -1,14 +1,15 @@
 import React from 'react';
 
+import Rimage from '../elements/rimage';
 import GridCell from '../elements/grid-cell';
 
 export default class Grid extends React.Component {
   render() {
     return (
       <section className={`grid ${this.props.className}`}>
-        <div className="video" style={{backgroundImage: this.props.image}}>
+        <Rimage className="video" wrap="div" sizes={this.props.images} backgroundOnly={true}>
           {this.renderVideo()}
-        </div>
+        </Rimage>
         <ul className="grid-list">
           {this.props.cells.map(cell => <GridCell cell={cell} />)}
         </ul>

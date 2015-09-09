@@ -6,6 +6,7 @@ import classnames from 'classnames';
 import EntranceTransition from '../elements/entrance-transition';
 import WordAnimation from '../elements/word-animation';
 import DownChevron from '../elements/down-chevron';
+import Rimage from '../elements/rimage';
 import Track from '../../server/adaptors/track';
 
 export default class Hero extends React.Component {
@@ -25,17 +26,14 @@ export default class Hero extends React.Component {
   }
   render() {
     const props = this.props;
-    const styles = {
-      backgroundImage: props.backgroundTint ? null : `url(${props.imageURL})`
-    }
     const headlineWordsAnimationOptions = {
       ease: Power2.easeOut,
       opacity: 0,
       y: 30
-    }
+    };
 
     return (
-      <section className='hero' style={styles}>
+      <Rimage wrap="section" className="hero" sizes={this.props.sizes} backgroundOnly={true} >
         <EntranceTransition className='title-entrance'>
           <h1 className='hero__title'>
             <WordAnimation delay={1} duration={0.5} options={headlineWordsAnimationOptions}>
@@ -46,7 +44,7 @@ export default class Hero extends React.Component {
         {this.renderImage()}
         {props.children}
         {this.renderDownChevron()}
-      </section>
+      </Rimage>
     );
   }
   renderImage = () => {
@@ -55,11 +53,11 @@ export default class Hero extends React.Component {
     if (props.backgroundTint) {
       image = (
         <EntranceTransition className='image-entrance'>
-          <img className="hero__image" src={props.imageURL} />
+          <Rimage className="hero__image" sizes={this.props.sizes} />
         </EntranceTransition>
       );
     } else {
-      image = <img className="hero__image" src={props.imageURL} />;
+      image = <Rimage className="hero__image" sizes={this.props.sizes} />;
     }
     return image;
   }

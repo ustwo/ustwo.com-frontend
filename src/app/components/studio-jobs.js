@@ -7,8 +7,8 @@ import find from 'lodash/collection/find';
 import kebabCase from 'lodash/string/kebabCase';
 
 import Flux from '../flux';
-
 import JobItem from '../components/job-item';
+import Rimage from '../elements/rimage';
 
 export default class StudioJobs extends React.Component {
   constructor(props) {
@@ -34,9 +34,9 @@ export default class StudioJobs extends React.Component {
               <p className="excerpt">{get(studio, 'recruitment-title')}</p>
               <p className="content">{get(studio, 'recruitment-desc')}</p>
             </div>
-            <div className="photo" style={{backgroundImage: `url(${get(image, 'source_url')})`}}>
-              <img src={get(image, 'source_url')} alt={get(image, 'alt_text')} />
-            </div>
+            <Rimage className="photo" wrap="div" sizes={{ hardcoded: {
+              url: "/images/photo.jpg"
+            } }} />
           </div>
           {this.renderJobsList()}
         </div>
