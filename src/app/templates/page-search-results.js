@@ -17,21 +17,17 @@ export default class PageSearchResults extends React.Component {
   }
   componentWillMount() {
     if (this.props.posts) {
-      setTimeout(() => {
-        this.setState({
-          loading: false
-        });
-      }, 2000);
+      this.setState({
+        loading: false
+      });
       Flux.getSocialSharesForPosts();
     }
   }
   componentWillReceiveProps(nextProps) {
     if (this.state.loading && nextProps.posts) {
-      setTimeout(() => {
-        this.setState({
-          loading: false
-        });
-      }, 2000);
+      this.setState({
+        loading: false
+      });
       Flux.getSocialSharesForPosts();
     }
   }
