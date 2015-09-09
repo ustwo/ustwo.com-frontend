@@ -19,16 +19,17 @@ function getSizesArray(sizesObject) {
 class Rimage extends React.Component {
   constructor(props) {
     super(props);
-    this.processProps(props);
-  }
-  componentWillReceiveProps(props) {
-    this.processProps(props);
-  }
-  processProps = props => {
     const sizes = getSizesArray(props.sizes);
     this.state = {
       sizes: sizes,
       size: sizes[0] || { url: '' }
+    };
+  }
+  componentWillReceiveProps(props) {
+    const sizes = getSizesArray(props.sizes);
+    this.state = {
+      sizes: sizes,
+      size: this.getNewSize()
     };
   }
   render() {

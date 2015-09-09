@@ -14,7 +14,6 @@ export default class PageWhatWeDo extends React.Component {
     const caseStudiesModule = find(get(pageData, 'page_builder', []), 'name', 'case_studies');
     const attachments = get(pageData, '_embedded.wp:attachment.0', []);
     const image = find(attachments, item => item.id === get(pageData, 'featured_image'));
-    
     return (
       <article className="page-work">
         <Hero title={get(pageData, 'display_title')} sizes={get(image, 'media_details.sizes')} eventLabel='what-we-do' showDownChevron={true} />

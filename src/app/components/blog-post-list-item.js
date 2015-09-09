@@ -23,7 +23,7 @@ export default class BlogPostListItem extends React.Component {
     const imageURL = get(attachments, '1.source_url', '');
     const featuredImage = find(attachments, 'id', get(post, 'featured_image'));
     const uri = `/blog/${get(post, 'slug')}`;
-    
+
     return (
       <article className={classes}>
         <Rimage className="image" wrap="div" href={uri} sizes={get(featuredImage, 'media_details.sizes')} />
