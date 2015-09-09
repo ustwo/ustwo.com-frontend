@@ -31,6 +31,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    padding: 0 5%;
 
     .input {
       display: none;
@@ -48,6 +49,7 @@
       overflow: hidden;
       outline: 0;
       color: $offWhite;
+      margin-left: $icon-size + 11px;
 
       &:before {
         content: "SEARCH";
@@ -81,10 +83,12 @@
 
       .editable-div {
         font-size: $font-size-tablet;
+        margin-left: $icon-size-tablet + 11px;
       }
       .submit {
         height: $icon-size-tablet;
         width: $icon-size-tablet + 1px;
+
         svg {
           height: $icon-size-tablet;
           width: $icon-size-tablet;
@@ -94,10 +98,12 @@
     @include susy-breakpoint($bp-large, $susy) {
       .editable-div {
         font-size: $font-size-desktop;
+        margin-left: $icon-size-desktop + 11px;
       }
       .submit {
         height: $icon-size-desktop;
         width: $icon-size-desktop + 1px;
+
         svg {
           height: $icon-size-desktop;
           width: $icon-size-desktop;

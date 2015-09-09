@@ -199,7 +199,6 @@
   // END SEARCHING
 
 
-
   @include susy-breakpoint($bp-medium, $susy) {
     .blog-category {
       transform: translateY(-21px);
@@ -283,3 +282,14 @@
     }
   }
 }
+
+//
+//
+// .hide {
+//   .page-blog {
+//     .blog-post-list {
+//       opacity: 0;
+//       transition: opacity .32s ease-in-out;
+//     }
+//   }
+// }

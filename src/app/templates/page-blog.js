@@ -74,7 +74,7 @@ export default class PageBlog extends React.Component {
         <Hero title={get(props.page, 'display_title')} imageOnly={true} sizes={get(image, 'media_detail.sizes')} eventLabel='blog' showDownChevron={false}>
           <BlogControls blogCategory={props.blogCategory}/>
         </Hero>
-        <section className="blog-post-list">
+        <section className='blog-post-list'>
           {this.renderPosts(posts)}
           <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} disabled={props.postsPagination >= props.postsPaginationTotal} />
         </section>

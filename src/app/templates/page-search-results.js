@@ -39,10 +39,10 @@ export default class PageSearchResults extends React.Component {
     return (
       <article className="page-search-results">
         <div className="search-results-header">
-          <h1>{this.props.searchQuery}</h1>
-          <button className='clear-search' onClick={this.onClickClearSearch}>Clear search</button>
+          <div className="h1 searched-term">{this.props.searchQuery}</div>
+          <div className="clear-search"><button onClick={this.onClickClearSearch}>Clear search</button></div>
         </div>
-        <TransitionManager component='div' className='search-transition-manager' duration={500}>
+        <TransitionManager component='div' className='search-transition-manager' duration={700}>
           {this.renderSearchResults()}
         </TransitionManager>
       </article>
@@ -62,7 +62,7 @@ export default class PageSearchResults extends React.Component {
         </ul>
       );
     } else {
-      output = <h1 key='no-results' className='no-results'>No results found</h1>;
+      output = <h2 key='no-results' className='no-results'>No results found</h2>;
     }
     return output;
   }

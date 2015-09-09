@@ -89,8 +89,8 @@
       left: 0;
       top: 0;
       display: block;
-      height: $search-result-height-desktop;
-      width: $search-result-height-desktop;
+      height: $blog-search-item-height-desktop;
+      width: $blog-search-item-height-desktop;
       background-size: cover;
 
       img {
@@ -103,9 +103,9 @@
       }
     }
     .content {
-      padding-left: $search-result-height-desktop + 20px;
+      padding-left: $blog-search-item-height-desktop + 20px;
       padding-bottom: 0;
-      height: $search-result-height-desktop;
+      height: $blog-search-item-height-desktop;
 
 
       p {
