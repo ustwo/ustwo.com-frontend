@@ -2,6 +2,7 @@
 image_name := ustwo/usweb-app
 app_image = $(image_name):$(VERSION)
 app_name = $(project_name)_app
+app_dockerfile = etc/docker/app/Dockerfile
 
 .PHONY: \
   app-rm \
@@ -22,7 +23,7 @@ ifeq ($(VERBOSE), true)
 endif
 
 app-build:
-	$(DOCKER) build -t $(app_image) -f Dockerfile.app .
+	$(DOCKER) build -t $(app_image) -f $(app_dockerfile) .
 
 app-pull:
 	$(DOCKER) pull $(app_image)
