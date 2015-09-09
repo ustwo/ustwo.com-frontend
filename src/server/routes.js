@@ -8,6 +8,7 @@ import omit from 'lodash/object/omit';
 import Log from '../app/_lib/log';
 
 const isomorphic = true;
+console.log('Isomorphic:', isomorphic);
 let router = express.Router();
 
 function readData (cb) {
@@ -29,23 +30,28 @@ function renderApp(req, res) {
           state: omit(state, 'takeover')
         }));
         const head = Helmet.rewind();
-        res.status(state.statusCode).render('index', {
-          title: head.title,
-          meta: head.meta,
-          link: head.link,
-          state: JSON.stringify(state),
-          app: AppString
-        });
+        res
+          .set('api_id', req.get('api_id'))
+          .status(state.statusCode)
+          .render('index', {
+            title: head.title,
+            meta: head.meta,
+            link: head.link,
+            state: JSON.stringify(state),
+            app: AppString
+          });
       })
       .catch(error => Log('server route error', error, error.stack));
   } else {
-    res.render('index', {
-      title: '',
-      meta: '',
-      link: '',
-      state: '""',
-      app: ''
-    });
+    res
+      .set('api_id', req.get('api_id'))
+      .render('index', {
+        title: '',
+        meta: '',
+        link: '',
+        state: '""',
+        app: ''
+      });
   }
 }
 
