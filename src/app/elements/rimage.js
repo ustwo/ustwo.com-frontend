@@ -22,7 +22,7 @@ class Rimage extends React.Component {
     super(props);
     this.state = {
       sizes: sizes,
-      size: sizes[0]
+      size: sizes[0] || { url: '' }
     };
   }
   render() {
@@ -41,7 +41,7 @@ class Rimage extends React.Component {
     if(this.props.wrap) {
       img = React.createElement(
         this.props.wrap,
-        Object.assign({ style: {backgroundImage: `url('${url}')`} }, omit(this.props, ['wrap', 'sizes', 'href'])),
+        Object.assign({ style: {backgroundImage: `url('${url || ''}')`} }, omit(this.props, ['wrap', 'sizes', 'href'])),
         [img].concat(this.props.children)
       );
     }
