@@ -144,9 +144,9 @@ export default class PageHome extends React.Component {
     let Watches;
     let Chevron;
     if (window.innerWidth <= 480) {
-      HarveyNicksImage = <img className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-device" src="/images/home/Homepage_Harvey_Phone_Mobile.png"/>;
-      GamesImage = <img className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-device" src="/images/home/Homepage_Games_Ipad_Mobile.png"/>;
-      DiceImage = <img className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-device" src="/images/home/Homepage_Dice_Mask_Mobile.png"/>;
+      HarveyNicksImage = <img className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-device" src="/images/home/Homepage_Harvey_Phone_Mobile.jpg"/>;
+      GamesImage = <img className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-device" src="/images/home/Homepage_Games_Ipad_Mobile.jpg"/>;
+      DiceImage = <img className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-device" src="/images/home/Homepage_Dice_Mobile.jpg"/>;
       Watches = <img className="page-home__screen-block--welcome__headline-background-image" src="/images/home/Homepage_hero_00.jpg"/>;
       Chevron = (<div className="down-chevron page-home__screen-block--welcome__down-chevron">
         <svg ref="animsvg" title="Down arrow" role="img" viewBox="0 0 400 200"><g>
@@ -155,7 +155,8 @@ export default class PageHome extends React.Component {
     } else {
       HarveyNicksImage = <img className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-device" src="/images/home/Homepage_Harvey_Phone.png"/>;
       GamesImage = <img className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-device" src="/images/home/Homepage_Games_Ipad.png"/>;
-      DiceImage = <img className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-device" src="/images/home/Homepage_Dice_Mask.png"/>;
+      DiceImage = (<div><img className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-device" src="/images/home/Homepage_Dice_Mask.png"/>
+    <img className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-screen-anim" src="/images/home/Homepage_Dice_Motion.gif" /></div>);
       Watches = <img className="page-home__screen-block--welcome__headline-background-image" src="/images/home/homepage_hero_00_singleimage.png"/>;
       Chevron = <DownChevron customClass="page-home__screen-block--welcome__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />;
     }
@@ -215,7 +216,6 @@ export default class PageHome extends React.Component {
           <div className="page-home__screen-block--ventures__image-vertical-centerer-parent">
             <div className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child">
               <div className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer">
-                <img className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-screen-anim" src="/images/home/Homepage_Dice_Motion.gif" />
                 {DiceImage}
                 <SVG className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-logo" role="presentation" spritemapID='dicelogo' />
               </div>
