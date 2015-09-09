@@ -21,6 +21,10 @@ endif
 assets-build: assets-compile
 	$(DOCKER) build -t $(assets_image) -f $(assets_template) .
 
+assets-build-ci: assets-compile-ci
+	$(DOCKER) build -t $(assets_image) -f $(assets_template) .
+
+
 assets-pull:
 	$(DOCKER) pull $(assets_image)
 
@@ -44,6 +48,10 @@ assets-compile: compile_cmd = $(if $(VERBOSE), compile-dev, compile)
 assets-compile:
 	@echo "Compiling assets into share/nginx/assets"
 	$(call compile, npm run $(compile_cmd))
+
+assets-compile-ci:
+	$(call compileci, npm run compile)
+
 
 assets-css:
 	@echo "Compiling assets into share/nginx/assets"

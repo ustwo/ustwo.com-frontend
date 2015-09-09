@@ -10,7 +10,9 @@ deployment:
 
 dependencies:
   override:
-    - make compiler-build build
+    - make compiler-build
+    - make assets-build-ci
+    - make app-build
     - make assets-create app-create
 test:
   override:
