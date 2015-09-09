@@ -10,8 +10,6 @@ import Flux from '../flux';
 import JobItem from '../components/job-item';
 import Rimage from '../elements/rimage';
 
-import JobItem from '../components/job-item';
-
 export default class StudioJobs extends React.Component {
   constructor(props) {
     super(props);

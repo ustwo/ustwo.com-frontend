@@ -29,7 +29,7 @@ class Rimage extends React.Component {
     const sizes = getSizesArray(props.sizes);
     this.state = {
       sizes: sizes,
-      size: this.getNewSize()
+      size: this.getNewSize() || { url: '' }
     };
   }
   render() {
