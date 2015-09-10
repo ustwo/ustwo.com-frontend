@@ -21,7 +21,7 @@ function readData (cb) {
 }
 
 function renderApp(req, res) {
-  console.log('Header?', req.get('api_id'));
+  console.log('Header?', req.get('api-id'));
   if (isomorphic) {
     const Flux = require('../app/flux');
     Flux.init(req.protocol + '://' + req.hostname + req.originalUrl)
@@ -32,7 +32,7 @@ function renderApp(req, res) {
         }));
         const head = Helmet.rewind();
         res
-          .set('api_id', req.get('api_id'))
+          .set('api-id', req.get('api-id'))
           .status(state.statusCode)
           .render('index', {
             title: head.title,
