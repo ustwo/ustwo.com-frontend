@@ -60,13 +60,18 @@ export default class PageBlog extends React.Component {
       loading: !props.posts,
       empty: props.posts && !props.posts.length
     });
+    let posts = props.posts;
+    if (!state.isCategorised && props.postsPagination > 1 && props.postsPagination < props.postsPaginationTotal) {
+      posts = take(props.posts, (props.postsPagination * 12) + 1);
+    }
+
     return (
       <article className={classes}>
         <TransitionManager component='div' className='hero-transition-manager' duration={1000}>
           {this.renderHero()}
         </TransitionManager>
         <section className='blog-post-list'>
-          {this.renderPosts(props.posts)}
+          {this.renderPosts(posts)}
           <LoadMoreButton loading={state.loadingMorePosts} onClick={this.onClickLoadMore} disabled={props.postsPagination >= props.postsPaginationTotal} />
         </section>
       </article>

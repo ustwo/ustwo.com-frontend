@@ -183,7 +183,7 @@ export default {
       const category = _state.blogCategory;
       let url;
       if (category === 'all') {
-        url = `ustwo/v1/posts?per_page=12&page=${pageNo}`;
+        url = `ustwo/v1/posts?per_page=13&page=${pageNo}`;
       } else {
         url = `ustwo/v1/posts?per_page=12&category=${category}&page=${pageNo}`;
       }
