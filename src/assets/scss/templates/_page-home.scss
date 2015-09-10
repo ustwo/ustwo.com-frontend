@@ -16,9 +16,9 @@
     }
   }
 
-  &__screen-block--welcome {
+  .welcome {
 
-    &__headline-background-image {
+    .headline-image {
       position: absolute;
       margin: auto;
       left: 0;
@@ -26,18 +26,25 @@
       top: 0;
       bottom: 0;
       width: 100%;
-      max-width: 660px;
       transition: opacity 0.8s ease-in-out;
       backface-visibility: hidden;
       opacity: 1;
       display: block;
+      max-width: 520px;
+      background-image: url("/images/home/homepage_hero_00_singleimage.jpg");
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: 520px auto;
+
+      @include susy-breakpoint($bp-medium, $susy) {
+        max-width: 660px;
+        background-size: 660px auto;
+      }
 
       @include susy-breakpoint($bp-large, $susy) {
-        width: 45%;
-        // FIXME: this should be 280px, but we have shedloads of transparent pixels around the image :(
-        min-width: 220px;
-        max-width: 830px;
-        transform: translateZ(0) scale(1.4);
+        max-width: 1000px;
+        background-image: url("/images/home/homepage_hero_00_singleimage.png");
+        background-size: 1000px auto;
       }
 
       &.add {
@@ -51,13 +58,15 @@
       }
     }
 
-    &__header-vertical-centerer {
+    .headline-text {
       @include vertically-centering-parent(80vh);
       width: 100%;
       margin-top: 5vh;
-      &__bold-header {
+
+      .bold-header {
         @include vertically-centred-element;
         position: relative;
+
         h1 {
           max-width: 15em;
           margin: auto;
@@ -66,7 +75,7 @@
       }
     }
 
-    &__down-chevron {
+    .down-chevron {
       position: absolute;
       left: 0;
       right: 0;
@@ -75,8 +84,8 @@
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
-      &__header-vertical-centerer {
-        &__bold-header {
+      .headline-text {
+        .bold-header {
           h1 {
             padding: 0 40px;
           }
@@ -89,8 +98,8 @@
       @include nested(16) {
         background: none;
       }
-      &__header-vertical-centerer {
-        &__bold-header {
+      .headline-text {
+        .bold-header {
           h1 {
             padding: 0 80px;
           }
@@ -99,12 +108,13 @@
     }
   }
 
-  &__screen-block--client {
-    &__image-vertical-centerer-parent {
-      &__image-vertical-centerer-child {
-        &__image-margin-container {
+  .client {
+    .block-parent {
+      .block-child {
+        .image-container {
           position: relative;
-          &__harvey-nicks-shape-3 {
+
+          .harvey-nicks-shape-3 {
             @extend %svg-shape;
             top: 58%;
             left: 10%;
@@ -112,7 +122,7 @@
             height: 18%;
           }
 
-          &__harvey-nicks-shape-4 {
+          .harvey-nicks-shape-4 {
             @extend %svg-shape;
             top: 20%;
             right: 23%;
@@ -120,13 +130,13 @@
             height: 18%;
           }
 
-          &__harvey-nicks-device {
+          .harvey-nicks-device {
             margin: 7% 10% 9% 6%;
             width: span(84%);
             position: relative;
           }
 
-          &__harvey-nicks-shape-1 {
+          .harvey-nicks-shape-1 {
             @extend %svg-shape;
             top: 0;
             left: 10%;
@@ -134,7 +144,7 @@
             height: 18%;
           }
 
-          &__harvey-nicks-shape-2 {
+          .harvey-nicks-shape-2 {
             @extend %svg-shape;
             top: 63%;
             right: 6%;
@@ -145,21 +155,23 @@
       }
     }
 
-    &__text-block-vertical-centerer {
+    .text-block {
       @include span(87.5%);
       @include squish(6.25%);
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
       @include nested(8) {
-        &__image-vertical-centerer-parent {
+
+        .block-parent {
           @include span(6 first);
           @include squish(1);
         }
-        &__text-block-vertical-centerer {
+        .text-block {
           @include span(8 nest last) {
+
             .home-text-block {
-              >* {
+              > * {
                 @include squish(1);
                 width: span(6);
               }
@@ -171,21 +183,24 @@
 
     @include susy-breakpoint($bp-large, $susy) {
       @include nested(16) {
-        &__image-vertical-centerer-parent {
+        .block-parent {
           @include span(9 first);
           margin-left: 0;
           @include vertically-centering-parent(90vh);
-          &__image-vertical-centerer-child {
+
+          .block-child {
             @include vertically-centred-element;
           }
         }
-        &__text-block-vertical-centerer {
+        .text-block {
           margin-left: 0;
           @include vertically-centering-parent(90vh);
+
           @include span(7 nest last) {
             .home-text-block {
               @include vertically-centred-element;
-              >* {
+
+              > * {
                 @include squish(1);
                 width: span(5);
               }
@@ -196,36 +211,37 @@
     }
   }
 
-  &__screen-block--own-stuff {
-    &__image-vertical-centerer-parent {
+  .own-stuff {
+    .block-parent {
       margin: 0 6.25%;
       @include span(87.5%);
-      &__image-vertical-centerer-child {
-        &__image-layer {
+
+      .block-child {
+        .image-container {
           position: relative;
           text-align: center;
-          &__monument-award-1 {
+          .monument-award-1 {
             @extend %svg-shape;
             top: 0%;
             left: 23%;
             width: 27%;
             height: 16%;
           }
-          &__monument-award-2 {
+          .monument-award-2 {
             @extend %svg-shape;
             top: 12%;
             left: 11%;
             width: 27%;
             height: 16%;
           }
-          &__monument-award-3 {
+          .monument-award-3 {
             @extend %svg-shape;
             top: 24%;
             left: -2%;
             width: 27%;
             height: 16%;
           }
-          &__monument-device {
+          .monument-device {
             width: 95%;
             position: relative;
             margin: 10% 0;
@@ -234,24 +250,26 @@
       }
     }
 
-    &__text-block-vertical-centerer {
+    .text-block {
       @include span(87.5%);
       @include squish(6.25%);
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
       @include nested(8) {
-        &__text-block-vertical-centerer {
+
+        .text-block {
           @include span(8 nest last) {
+
             .home-text-block {
-              >* {
+              > * {
                 @include squish(1);
                 width: span(6);
               }
             }
           }
         }
-        &__image-vertical-centerer-parent {
+        .block-parent {
           @include span(6 first);
           @include squish(1);
         }
@@ -260,13 +278,16 @@
 
     @include susy-breakpoint($bp-large, $susy) {
       @include nested(16) {
-        &__text-block-vertical-centerer {
+
+        .text-block {
           margin-left: 0;
           @include vertically-centering-parent(90vh);
+
           @include span(6 nest first) {
             .home-text-block {
               @include vertically-centred-element;
-              >* {
+
+              > * {
                 @include pre(1);
                 width: span(5);
               }
@@ -274,11 +295,12 @@
           }
         }
 
-        &__image-vertical-centerer-parent {
+        .block-parent {
           @include span(10 last);
           @include vertically-centering-parent(90vh);
           margin: 0 -7% 0 0;
-          &__image-vertical-centerer-child {
+
+          .block-child {
             @include vertically-centred-element;
           }
         }
@@ -286,12 +308,13 @@
     }
   }
 
-  &__screen-block--ventures {
-    &__image-vertical-centerer-parent {
-      &__image-vertical-centerer-child {
-        &__image-layer {
+  .ventures {
+    .block-parent {
+      .block-child {
+        .image-container {
           position: relative;
-          &__dice-screen-anim {
+
+          .dice-screen-anim {
             position: absolute;
             width: 27.8%;
             right: 21%;
@@ -304,18 +327,17 @@
               right: 11%;
             }
           }
-          &__dice-device {
+          .dice-device {
             position: relative;
             width: 100%;
             margin: 0;
-
 
             @include susy-breakpoint($bp-large, $susy) {
               margin: 0 -10%;
               width: 125%;
             }
           }
-          &__dice-logo {
+          .dice-logo {
             @extend %svg-shape;
             top: -2%;
             left: 64%;
@@ -326,33 +348,35 @@
       }
     }
 
-    &__text-block-vertical-centerer {
+    .text-block {
       @include span(87.5%);
       @include squish(6.25%);
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
       @include nested(8) {
-        &__image-vertical-centerer-parent {
+        .block-parent {
           @include span(6 first);
           @include squish(1);
-          &__image-vertical-centerer-child {
-            &__image-layer {
-              &__dice-screen-anim {
+
+          .block-child {
+            .image-conatiner {
+              .dice-screen-anim {
                 width: 27.7%;
                 right: 20.9%;
               }
-              &__dice-device {
+              .dice-device {
                 width: 100%;
                 margin: auto;
               }
             }
           }
         }
-        &__text-block-vertical-centerer {
+        .text-block {
           @include span(8 nest last) {
+
             .home-text-block {
-              >* {
+              > * {
                 @include squish(1);
                 width: span(6);
               }
@@ -364,22 +388,25 @@
 
     @include susy-breakpoint($bp-large, $susy) {
       @include nested(16) {
-        &__image-vertical-centerer-parent {
+        .block-parent {
           @include span(9 first);
           @include vertically-centering-parent(90vh);
           margin-left: 0;
-          &__image-vertical-centerer-child {
+
+          .block-child {
             @include vertically-centred-element;
           }
         }
-        &__text-block-vertical-centerer {
+        .text-block {
           position: relative;
           margin-left: 0;
           @include vertically-centering-parent(90vh);
+
           @include span(7 nest last) {
             .home-text-block {
               @include vertically-centred-element;
-              >* {
+
+              > * {
                 @include squish(1);
                 width: span(5);
               }
@@ -390,8 +417,9 @@
     }
   }
 }
+
 .js .page-home {
-  &__screen-block--welcome {
+  .welcome {
     .image-entrance.show {
       transition: opacity 0.8s ease-in-out;
       transition-delay: 1.2s;

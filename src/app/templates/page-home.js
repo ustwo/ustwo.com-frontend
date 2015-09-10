@@ -138,37 +138,26 @@ export default class PageHome extends React.Component {
       opacity: 0,
       y: 30
     };
-    let HarveyNicksImage;
-    let GamesImage;
-    let DiceImage;
-    let Watches;
+    // Show only the final frame of the Chevron animation on mobile
     let Chevron;
     if (window.innerWidth <= 480) {
-      HarveyNicksImage = <img className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-device" src="/images/home/Homepage_Harvey_Phone_Mobile.jpg"/>;
-      GamesImage = <img className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-device" src="/images/home/Homepage_Games_Ipad_Mobile.jpg"/>;
-      DiceImage = <img className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-device" src="/images/home/Homepage_Dice_Mobile.jpg"/>;
-      Watches = <img className="page-home__screen-block--welcome__headline-background-image" src="/images/home/Homepage_hero_00.jpg"/>;
-      Chevron = (<div className="down-chevron page-home__screen-block--welcome__down-chevron">
+      Chevron = (<div className="down-chevron">
         <svg ref="animsvg" title="Down arrow" role="img" viewBox="0 0 400 200"><g>
         <path d="M195.864 143.667c19.556-14.667 39.556-28.89 59.11-43.556 2.224 2.67 6.224 8 8.446 10.67-22.222 16.89-45.778 32.45-67.556 50.67-21.778-17.78-44.89-33.33-67.11-50.22 2.22-2.66 6.22-8 8-11.11 20 14.67 39.555 29.33 59.11 43.56z"/>
       </g></svg></div>);
     } else {
-      HarveyNicksImage = <img className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-device" src="/images/home/Homepage_Harvey_Phone.png"/>;
-      GamesImage = <img className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-device" src="/images/home/Homepage_Games_Ipad.png"/>;
-      DiceImage = (<div><img className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-device" src="/images/home/Homepage_Dice_Mask.png"/>
-    <img className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-screen-anim" src="/images/home/Homepage_Dice_Motion.gif" /></div>);
-      Watches = <img className="page-home__screen-block--welcome__headline-background-image" src="/images/home/homepage_hero_00_singleimage.png"/>;
-      Chevron = <DownChevron customClass="page-home__screen-block--welcome__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />;
+      Chevron = <DownChevron ref="downChevron" onClick={this.onClickDownChevron} />;
     }
+    // End Chevron
     return (
       <article className="page-home">
-        <ScreenBlock ref="blockWelcome" customClass="page-home__screen-block--welcome" hexColour={'#' + this.state.blocks[0].hexColour}>
+        <ScreenBlock ref="blockWelcome" customClass="welcome" hexColour={'#' + this.state.blocks[0].hexColour}>
           <EntranceTransition className="image-entrance">
-            {Watches}
+            <div className="headline-image"></div>
           </EntranceTransition>
           <EntranceTransition className="title-entrance">
-            <div className="page-home__screen-block--welcome__header-vertical-centerer">
-              <BoldHeader customClass="page-home__screen-block--welcome__header-vertical-centerer__bold-header" colour="white">
+            <div className="headline-text">
+              <BoldHeader colour="white">
                 <WordAnimation delay={1} duration={0.4} options={headlineWordsAnimationOptions}>
                   We're a digital product studio
                 </WordAnimation>
@@ -177,51 +166,53 @@ export default class PageHome extends React.Component {
           </EntranceTransition>
           {Chevron}
         </ScreenBlock>
-        <ScreenBlock ref="blockClient" customClass="page-home__screen-block--client" hexColour={'#' + this.state.blocks[1].hexColour}>
-          <div className="page-home__screen-block--client__image-vertical-centerer-parent">
-            <div className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child">
-              <div className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container">
-                <SVG className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-3" role="presentation" spritemapID='HarveyShape3' />
-                <SVG className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-4" role="presentation" spritemapID='HarveyShape4' />
-                {HarveyNicksImage}
-                <SVG className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-1" role="presentation" spritemapID='HarveyShape1' />
-                <SVG className="page-home__screen-block--client__image-vertical-centerer-parent__image-vertical-centerer-child__image-margin-container__harvey-nicks-shape-2" role="presentation" spritemapID='HarveyShape2' />
+        <ScreenBlock ref="blockClient" customClass="client" hexColour={'#' + this.state.blocks[1].hexColour}>
+          <div className="block-parent">
+            <div className="block-child">
+              <div className="image-container">
+                <SVG className="harvey-nicks-shape-3" role="presentation" spritemapID='HarveyShape3' />
+                <SVG className="harvey-nicks-shape-4" role="presentation" spritemapID='HarveyShape4' />
+                <div className="harvey-nicks-device"></div>
+                <SVG className="harvey-nicks-shape-1" role="presentation" spritemapID='HarveyShape1' />
+                <SVG className="harvey-nicks-shape-2" role="presentation" spritemapID='HarveyShape2' />
               </div>
             </div>
           </div>
-          <div className="page-home__screen-block--client__text-block-vertical-centerer">
+          <div className="text-block">
             <HomeTextBlock title="Innovative client work">
               <p>We work with big brands to solve the huge problems. We partner with smart clients to launch new products, services and companies that are of strategic importance and reliant on innovation.</p>
             </HomeTextBlock>
           </div>
         </ScreenBlock>
-        <ScreenBlock ref="blockOwnStuff" customClass="page-home__screen-block--own-stuff" hexColour={'#' + this.state.blocks[2].hexColour}>
-          <div className="page-home__screen-block--own-stuff__image-vertical-centerer-parent">
-            <div className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child">
-              <div className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer">
-                <SVG className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-award-1" role="presentation" spritemapID='MonumentAward1' />
-                <SVG className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-award-2" role="presentation" spritemapID='MonumentAward2' />
-                <SVG className="page-home__screen-block--own-stuff__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__monument-award-3" role="presentation" spritemapID='MonumentAward3' />
-                {GamesImage}
+        <ScreenBlock ref="blockOwnStuff" customClass="own-stuff" hexColour={'#' + this.state.blocks[2].hexColour}>
+          <div className="block-parent">
+            <div className="block-child">
+              <div className="image-container">
+                <SVG className="monument-award-1" role="presentation" spritemapID='MonumentAward1' />
+                <SVG className="monument-award-2" role="presentation" spritemapID='MonumentAward2' />
+                <SVG className="monument-award-3" role="presentation" spritemapID='MonumentAward3' />
+                <div className="monument-device"></div>
               </div>
             </div>
           </div>
-          <div className="page-home__screen-block--own-stuff__text-block-vertical-centerer">
+          <div className="text-block">
             <HomeTextBlock title="Award-winning own products and games" colour="nonBlack" childColour="nonBlack">
               <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic game Monument Valley or innovative technical platform Wayfindr, we create products with passion from conception to launch and beyond.</p>
             </HomeTextBlock>
           </div>
         </ScreenBlock>
-        <ScreenBlock ref="blockVenture" customClass="page-home__screen-block--ventures" hexColour={'#' + this.state.blocks[3].hexColour}>
-          <div className="page-home__screen-block--ventures__image-vertical-centerer-parent">
-            <div className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child">
-              <div className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer">
-                {DiceImage}
-                <SVG className="page-home__screen-block--ventures__image-vertical-centerer-parent__image-vertical-centerer-child__image-layer__dice-logo" role="presentation" spritemapID='dicelogo' />
+        <ScreenBlock ref="blockVenture" customClass="ventures" hexColour={'#' + this.state.blocks[3].hexColour}>
+          <div className="block-parent">
+            <div className="block-child">
+              <div className="image-container">
+                <div className="dice-device">
+                  <div className="dice-screen-anim"></div>
+                </div>
+                <SVG className="dice-logo" role="presentation" spritemapID='dicelogo' />
               </div>
             </div>
           </div>
-          <div className="page-home__screen-block--ventures__text-block-vertical-centerer">
+          <div className="text-block">
             <HomeTextBlock title="Launching new ventures" colour="white" childColour="white">
               <p>Working with people who know their industry inside-out gets us super excited. We partner with the world’s leading experts, entrepreneurs and investors by offering our expertise, technology or investment.</p>
             </HomeTextBlock>
