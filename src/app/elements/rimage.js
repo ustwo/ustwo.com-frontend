@@ -22,19 +22,19 @@ class Rimage extends React.Component {
     const sizes = getSizesArray(props.sizes);
     this.state = {
       sizes: sizes,
-      size: sizes[0] || { url: '' }
+      size: sizes[0] || {}
     };
   }
   componentWillReceiveProps(props) {
     const sizes = getSizesArray(props.sizes);
     this.state = {
       sizes: sizes,
-      size: this.getNewSize() || { url: '' }
+      size: this.getNewSize()
     };
   }
   render() {
     const url = this.getImageUrl();
-    let img;
+    let img = <img />;
     if(!this.props.backgroundOnly) {
       if(!this.props.href && !this.props.wrap) {
         img = <img className={this.props.className} src={url} />;
@@ -48,7 +48,7 @@ class Rimage extends React.Component {
     if(this.props.wrap) {
       img = React.createElement(
         this.props.wrap,
-        Object.assign({ style: {backgroundImage: `url('${url || ''}')`} }, omit(this.props, ['wrap', 'sizes', 'href'])),
+        Object.assign({ style: {backgroundImage: url && `url('${url}')`} }, omit(this.props, ['wrap', 'sizes', 'href'])),
         [img].concat(this.props.children)
       );
     }
@@ -62,12 +62,12 @@ class Rimage extends React.Component {
     const el = React.findDOMNode(this);
     const constrainSize = el.clientWidth;
     let newSize = find(sizes, size => size.width > constrainSize);
-    return newSize || sizes[0];
+    return newSize || sizes[0] || {};
   }
   componentDidMount() {
     const sizes = this.state.sizes;
     const newSize = this.getNewSize();
-    if(findIndex(sizes, newSize) > findIndex(this.state.size)) {
+    if((newSize.url || newSize.source_url) && findIndex(sizes, newSize) > findIndex(this.state.size)) {
       const img = new Image();
       img.onload = () => this.setState({
         size: newSize
