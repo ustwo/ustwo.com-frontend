@@ -6,7 +6,8 @@ deployment:
   dockerhub:
     branch: master
     commands:
-      - "curl -H 'Content-Type: application/json' --data '{\"build\": true}' -X POST $DOCKER_HUB_TRIGGER_URL"
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - make app-push
 
 dependencies:
   override:
