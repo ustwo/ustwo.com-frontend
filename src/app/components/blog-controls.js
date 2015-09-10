@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import classnames from 'classnames';
 
 import Flux from '../flux';
 
@@ -23,7 +24,7 @@ const blogCategories = {
 export default class BlogControls extends React.Component {
   render() {
     return (
-      <div className="blog-controls">
+      <div className={classnames("blog-controls", this.props.className)}>
         <button onClick={this.onClickSearch} className="blog-search-button">
           <SVG className="search-icon" spritemapID='search' />
         </button>

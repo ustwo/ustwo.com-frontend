@@ -87,7 +87,7 @@ export default class PageBlog extends React.Component {
     } else {
       output = (
         <Hero key='hero' title={get(props.page, 'display_title')} imageOnly={true} sizes={get(image, 'media_details.sizes')} eventLabel='blog' showDownChevron={false}>
-          <BlogControls blogCategory={props.blogCategory}/>
+          <BlogControls className={classnames({ show: props.page })} blogCategory={props.blogCategory}/>
         </Hero>
       );
     }
