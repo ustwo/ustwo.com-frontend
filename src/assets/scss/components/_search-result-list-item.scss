@@ -49,6 +49,10 @@
   }
 
   .social-media-statistics {
+    display: block;
+    position: absolute;
+    left: 0;
+
     .channel {
       $height: 20px;
 
@@ -74,6 +78,7 @@
   }
 
   .tail {
+    width: 100%;
     margin-top: 10px;
     text-align: right;
 
@@ -120,7 +125,6 @@
       padding-bottom: 0;
       height: $blog-search-item-height-desktop;
 
-
       p {
         margin: 0;
       }
@@ -133,10 +137,16 @@
       padding-right: 20%;
     }
 
+    .social-media-statistics {
+      position: relative;
+      display: inline;
+    }
+
     .tail {
       position: absolute;
       right: 20px;
       bottom: 20px;
+      width: auto;
     }
   }
 }
