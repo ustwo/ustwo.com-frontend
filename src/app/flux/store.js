@@ -1,4 +1,4 @@
-import reject from 'lodash/collection/reject';
+import filter from 'lodash/collection/filter';
 import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
 import capitalize from 'lodash/string/capitalize';
@@ -86,8 +86,8 @@ export default {
     return Promise.resolve(_state);
   },
   loadData(itemsToLoad) {
-    itemsToLoad = reject(itemsToLoad, item => {
-      return item.cache !== false && ((!item.slug && _state[item.type]) || (_state[item.type] && _state[item.type].slug === item.slug));
+    itemsToLoad = filter(itemsToLoad, item => {
+      return (!_state[item.type] || (_state[item.type].slug !== item.slug));
     });
     return DataLoader(itemsToLoad, applyData).then(() => _state);
   },
