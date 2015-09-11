@@ -21,7 +21,7 @@ function readData (cb) {
 }
 
 function renderApp(req, res) {
-  console.log('Header?', req.get('api-id'));
+  console.log('Header?', req.get('Host-API'));
   if (isomorphic) {
     const Flux = require('../app/flux');
     Flux.init(req.protocol + '://' + req.hostname + req.originalUrl)
