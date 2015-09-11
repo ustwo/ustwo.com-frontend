@@ -24,7 +24,7 @@ export default class Search extends React.Component {
       <div className={classnames('search', this.props.className)}>
         <form method='POST' action='/blog/search' className='search-form' onSubmit={this.onSubmit}>
           <input name='q' type='text' className='input' value={this.props.searchQuery} />
-          <div ref='input' contentEditable='true' className='editable-div'></div>
+          <div ref='input' contentEditable='true' className='h1 editable-div'></div>
           <button className='submit' type='submit' onClick={this.onSubmit}>
             <SVG spritemapID='search' />
           </button>

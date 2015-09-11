@@ -9,10 +9,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    height: calc(100vh + #{$blog-margin-offset});
 
-    @include susy-breakpoint($bp-medium, $susy) {
-      height: calc(100vh + #{$blog-margin-offset});
-    }
   }
 
   .searched-term {
@@ -27,7 +25,7 @@
     right: 0;
     text-align: center;
     width: 100%;
-    transform: translateY(-125px);
+    transform: translateY(-21vh);
 
     button {
       background: none;
@@ -77,8 +75,12 @@
   }
 
   .search-transition-manager {
-    margin-top: -320px;
+    margin-top: -50vh;
     min-height: 350px;
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      margin-top: calc(-50vh - #{$blog-margin-offset});
+    }
 
     // .loading-icon,
     // .search-results {
@@ -139,7 +141,7 @@
 .shown {
   .page-search-results .search-results-header {
     .searched-term {
-      transform: translateY(-120px) scale(0.8);
+      transform: translateY(-20vh) scale(0.8);
       transition: transform .3s ease-in-out;
     }
     .clear-search {

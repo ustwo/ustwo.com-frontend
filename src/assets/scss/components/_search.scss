@@ -1,15 +1,12 @@
 .search {
 
   $height: 30px;
-  $font-size: 36px;
   $icon-size: 28px;
 
   $height-tablet: 50px;
-  $font-size-tablet: 60px;
   $icon-size-tablet: 44px;
 
   $height-desktop: 75px;
-  $font-size-desktop: 80px;
   $icon-size-desktop: 57px;
 
   position: absolute;
@@ -20,11 +17,7 @@
   justify-content: center;
   flex-direction: column;
   z-index: 10;
-
-
-  @include susy-breakpoint($bp-medium, $susy) {
-    height: calc(100vh + #{$blog-margin-offset});
-  }
+  height: calc(100vh + #{$blog-margin-offset});
 
   .search-form {
     display: flex;
@@ -40,7 +33,7 @@
     .editable-div {
       text-align: right;
       border: none;
-      font-size: $font-size;
+      width: auto;
       text-transform: uppercase;
       font-family: $Futura;
       display: inline-block;
@@ -82,7 +75,6 @@
     @include susy-breakpoint($bp-medium, $susy) {
 
       .editable-div {
-        font-size: $font-size-tablet;
         margin-left: $icon-size-tablet + 11px;
       }
       .submit {
@@ -97,7 +89,6 @@
     }
     @include susy-breakpoint($bp-large, $susy) {
       .editable-div {
-        font-size: $font-size-desktop;
         margin-left: $icon-size-desktop + 11px;
       }
       .submit {
