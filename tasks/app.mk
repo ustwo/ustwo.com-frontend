@@ -1,7 +1,8 @@
 ## App tasks ##################################################################
-app_image = ustwo/usweb:app-$(VERSION)
-app_name = $(project_name)_app
-app_dockerfile = Dockerfile.app
+app_id = app
+app_image = $(call image_tag,$(app_id),$(VERSION))
+app_name = $(project_name)_$(app_id)
+app_dockerfile = Dockerfile.$(app_id)
 
 .PHONY: \
   app-rm \

@@ -1,7 +1,8 @@
 ## Assets tasks ###############################################################
-assets_image = ustwo/usweb:assets-$(VERSION)
-assets_name = $(project_name)_assets
-assets_dockerfile = Dockerfile.assets
+assets_id := assets
+assets_image = $(call image_tag,$(assets_id),$(VERSION))
+assets_name = $(project_name)_$(assets_id)
+assets_dockerfile = Dockerfile.$(assets_id)
 
 .PHONY: \
   assets-build \

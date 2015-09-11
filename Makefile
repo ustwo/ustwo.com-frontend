@@ -6,14 +6,16 @@ ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 project_name := usweb
+project_namespace := ustwo/$(project_name)
 
 ## CLI aliases ################################################################
-RM := rm -rf
-CP := cp
-GREP := grep
 AWK := awk
-XARGS := xargs
+CP := cp
+GIT := git
+GREP := grep
 MKDIR := mkdir -p
+RM := rm -rf
+XARGS := xargs
 DOCKER := docker
 DOCKER_CP := $(DOCKER) cp
 DOCKER_EXEC := $(DOCKER) exec -it
@@ -28,7 +30,7 @@ MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
 ANSIBLE := ansible
 ANSIBLE_SHELL = $(ANSIBLE) $(MACHINE_IP) --become -m shell
 ANSIBLE_PLAY := ansible-playbook -b -v \
---private-key=$(IDENTITY_FILE) \
+	--private-key=$(IDENTITY_FILE) \
 	--inventory-file=$(ANSIBLE_INVENTORY)
 ###############################################################################
 
@@ -52,9 +54,6 @@ include tasks/*.mk
 #
 ###############################################################################
 
-# TODO: Prevents breaking Phil's flow
-css: assets-css
-
 vault: vault-save
 build: app-build assets-build
 test: assets-test
@@ -64,7 +63,10 @@ init: vault-create assets-create app-create proxy-create
 clean: proxy-rm app-rm assets-rm vault-rm
 init-rm: clean
 deploy: clean init
+css: assets-css
+release: release-create
 
+## Porcelain ##################################################################
 seeds: build
 infection: push
 incubation: pull
@@ -93,7 +95,6 @@ nuke:
 	| $(GREP) $(VERSION) \
 	| $(AWK) '{print $$3}' \
 	| $(XARGS) $(DOCKER) rmi
-
 
 deploy-production:
 	$(MAKE) -i love \
