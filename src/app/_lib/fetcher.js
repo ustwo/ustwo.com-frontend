@@ -1,8 +1,8 @@
 import { polyfill } from 'es6-promise';
-import Fetch from 'isomorphic-fetch/fetch-npm-node.js';
+import fetch from 'isomorphic-fetch/fetch-npm-node.js';
 import pick from 'lodash/object/pick';
 
-import Log from '../_lib/log';
+import log from '../_lib/log';
 import window from '../../server/adaptors/window';
 
 (typeof window !== 'undefined') && (window.ajaxPending = false);
@@ -19,10 +19,10 @@ function generateURL(config) {
       url = config.url;
       break;
     case 'twitter':
-      url = (config.baseurl + config.url).replace('/api/wp-json/', '/');
+      url = (config.baseurl() + config.url).replace('/api/wp-json/', '/');
       break;
     default:
-      url = config.baseurl + config.url;
+      url = config.baseurl() + config.url;
       break;
   }
   return url;
@@ -31,8 +31,8 @@ function generateURL(config) {
 function fetcher (config) {
   const mergedConfig = Object.assign({}, defaultConfig, config);
   const url = generateURL(mergedConfig);
-  Log('Fetching:', url);
-  const req = Fetch(url, mergedConfig)
+  log('Fetching:', url);
+  const req = fetch(url, mergedConfig)
     .then(response => {
       remove(mergedConfig.url);
       if (response.status >= 400) {
