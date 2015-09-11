@@ -20,9 +20,6 @@ var babelify = require('babelify');
 var aliasify = require('aliasify');
 var source = require('vinyl-source-stream');
 
-// testing
-var mocha = require('gulp-mocha');
-
 // production flag
 var production = !argv.dev;
 var styleguide = argv.styleguide;
@@ -169,17 +166,6 @@ var tasks = {
     gulp.src('src/assets/favicon.{png,ico}')
         .pipe(gulp.dest('public'));
   },
-  // --------------------------
-  // Testing with mocha
-  // --------------------------
-  test: function() {
-    return gulp.src('src/app/**/*test.js', {read: false})
-      .pipe(mocha({
-        'ui': 'bdd',
-        'reporter': 'spec'
-      })
-    );
-  },
   data: function() {
     return gulp.src('src/data/**/*.json')
       .pipe(gulp.dest('public/data')
@@ -203,7 +189,6 @@ gulp.task('sass', tasks.sass);
 gulp.task('reactify', tasks.reactify);
 gulp.task('reactstyleguide', tasks.reactstyleguide);
 gulp.task('data', tasks.data);
-gulp.task('test', tasks.test);
 gulp.task('serve', ['build'], tasks.serve);
 gulp.task('start', ['clean', 'build']);
 
