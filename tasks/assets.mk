@@ -1,7 +1,7 @@
 ## Assets tasks ###############################################################
-assets_image = ustwo/usweb-assets:$(VERSION)
+assets_image = ustwo/usweb:assets-$(VERSION)
 assets_name = $(project_name)_assets
-assets_dockerfile = etc/docker/assets/Dockerfile
+assets_dockerfile = Dockerfile.assets
 
 .PHONY: \
   assets-build \
@@ -44,14 +44,11 @@ assets-create:
 		$(assets_volumes) \
 		$(assets_image)
 
+
 assets-compile: compile_cmd = $(if $(VERBOSE), compile-dev, compile)
 assets-compile:
 	@echo "Compiling assets into share/nginx/assets"
 	$(call compile, npm run $(compile_cmd))
-
-assets-compile-ci:
-	$(call compileci, npm run compile)
-
 
 assets-css:
 	@echo "Compiling assets into share/nginx/assets"

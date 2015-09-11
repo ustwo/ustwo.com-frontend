@@ -1,20 +1,46 @@
 machine:
+  environment:
+    VERSION: $CIRCLE_SHA1
   services:
     - docker
 
+general:
+  branches:
+    only:
+      - master
+      - /hotfixes\/.+/
+      - features/circleci
+
 deployment:
-  dockerhub:
+  stable:
     branch: features/circleci
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - make app-push assets-push TAG=$CIRCLE_SHA1
+      - make app-push assets-push
+  hotfix:
+    branch: /hotfixes\/.+/
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - make app-push assets-push
+
+  # TODO: Find a nice way to tag using the version number
+  # release:
+  #   tag: /v[0-9]+(\.[0-9]+)*/
+  #   commands:
+  #     - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+  #     - VERSION=$CIRCLE_BRANCH make app-push assets-push
 
 dependencies:
   override:
-    - make compiler-build
-    - make assets-build-ci
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - CI=true make assets-build
     - make app-build
     - make assets-create app-create
 test:
   override:
     - make test
+
+# TODO: Slack
+# notify:
+#   webhooks:
+#     - url: https://example.com/hooks/circle
