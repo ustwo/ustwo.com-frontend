@@ -25,9 +25,10 @@
     font-size: 28px;
     margin: 12px 0 5px;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    padding-right: 20%;
+    height: 60px;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
   }
 
   .meta,
@@ -79,6 +80,18 @@
     a {
       font-family: $PxGroteskBold;
       border-bottom: 2px solid $pot;
+    }
+  }
+
+  @include susy-breakpoint($bp-small, $susy) {
+    .title {
+      -webkit-line-clamp: none;
+      display: block;
+      -webkit-box-orient: vertical;
+      height: auto;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding-right: 20%;
     }
   }
 

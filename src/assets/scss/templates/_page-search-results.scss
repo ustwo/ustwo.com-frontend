@@ -9,10 +9,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    height: calc(100vh + #{$blog-margin-offset});
 
-    @include susy-breakpoint($bp-medium, $susy) {
-      height: calc(100vh + #{$blog-margin-offset});
-    }
   }
 
   .searched-term {
@@ -77,8 +75,12 @@
   }
 
   .search-transition-manager {
-    margin-top: -320px;
+    margin-top: -50vh;
     min-height: 350px;
+
+    @include susy-breakpoint($bp-medium, $susy) {
+      margin-top: calc(-50vh - #{$blog-margin-offset});
+    }
 
     // .loading-icon,
     // .search-results {
