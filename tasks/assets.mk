@@ -48,3 +48,7 @@ assets-compile:
 assets-css:
 	@echo "Compiling assets into share/nginx/assets"
 	$(call compile, npm run css)
+
+assets-test:
+	@echo "Testing assets"
+	$(call compile, npm test)
