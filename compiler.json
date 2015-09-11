@@ -9,7 +9,7 @@
     "dev": "gulp start --dev && npm run start",
     "styleguide": "gulp start --styleguide --dev && npm run start",
     "css": "gulp css --dev",
-    "test": "mocha $(find test -name '*test.js')"
+    "test": "mocha --compilers js:./src/app/_lib/testdom.js,js:babel/register $(find test -name '*.js')"
   },
   "aliasify": {
     "aliases": {
@@ -28,6 +28,9 @@
       "../../server/adaptors/proxy-url": "./src/client/adaptors/proxy-url",
       "../server/adaptors/svg4everybody": "./src/client/adaptors/svg4everybody"
     }
+  },
+  "babel": {
+    "optional": ["es7.classProperties"]
   },
   "dependencies": {
     "aliasify": "1.7.2",
@@ -54,6 +57,7 @@
     "gulp-util": "3.0.6",
     "he": "0.5.0",
     "isomorphic-fetch": "2.1.1",
+    "jsdom": "3.1.0",
     "lodash": "3.10.0",
     "mocha": "2.3.2",
     "moment": "2.10.6",
@@ -62,10 +66,13 @@
     "react": "0.13.3",
     "react-helmet": "1.1.0",
     "react-style-guide": "1.1.5",
+    "react-addons-test-utils": "0.14.0-rc1",
     "react-transition-manager": "1.2.3",
     "route-pattern": "0.0.6",
     "scrollmagic": "2.0.5",
     "serve-favicon": "2.3.0",
+    "sinon": "1.16.1",
+    "sinon-chai": "2.8.0",
     "susy": "2.2.5",
     "svg4everybody": "1.0.0",
     "urllite": "0.5.0",
