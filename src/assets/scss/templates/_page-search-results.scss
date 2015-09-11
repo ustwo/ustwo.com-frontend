@@ -25,7 +25,7 @@
     right: 0;
     text-align: center;
     width: 100%;
-    transform: translateY(-125px);
+    transform: translateY(-21vh);
 
     button {
       background: none;
@@ -141,7 +141,7 @@
 .shown {
   .page-search-results .search-results-header {
     .searched-term {
-      transform: translateY(-120px) scale(0.8);
+      transform: translateY(-20vh) scale(0.8);
       transition: transform .3s ease-in-out;
     }
     .clear-search {
