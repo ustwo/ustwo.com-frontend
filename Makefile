@@ -57,6 +57,7 @@ css: assets-css
 
 vault: vault-save
 build: app-build assets-build
+test: assets-test
 push: app-push assets-push
 pull: app-pull assets-pull
 init: vault-create assets-create app-create proxy-create
