@@ -21,10 +21,9 @@ function readData (cb) {
 }
 
 function renderApp(req, res) {
-  console.log('Header?', req.get('Host-API'));
   if (isomorphic) {
     const Flux = require('../app/flux');
-    Flux.init(req.protocol + '://' + req.hostname + req.originalUrl)
+    Flux.init(req.protocol + '://' + req.hostname + req.originalUrl, req.get('Host-API'))
       .then((state) => {
         const App = React.createFactory(require('../app/app'));
         const AppString = React.renderToString(App({
@@ -32,7 +31,6 @@ function renderApp(req, res) {
         }));
         const head = Helmet.rewind();
         res
-          .set('api-id', req.get('api-id'))
           .status(state.statusCode)
           .render('index', {
             title: head.title,
@@ -45,7 +43,6 @@ function renderApp(req, res) {
       .catch(error => Log('server route error', error, error.stack));
   } else {
     res
-      .set('api_id', req.get('api_id'))
       .render('index', {
         title: '',
         meta: '',

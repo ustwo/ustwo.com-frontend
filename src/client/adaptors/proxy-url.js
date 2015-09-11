@@ -1,1 +1,1 @@
-export default '/api/wp-json/'
+export default () => '/api/wp-json/'
