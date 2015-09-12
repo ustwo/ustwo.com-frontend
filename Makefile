@@ -112,6 +112,3 @@ absorb:
 	git pull --rebase=preserve origin master
 	git checkout $(GIT_BRANCH)
 	git rebase master
-
-test:
-	echo "Yay"
