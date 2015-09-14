@@ -34,6 +34,8 @@
       display: none;
     }
     .status {
+      display: flex;
+      align-items: center;
 
       .status-text {
         display: none;
@@ -48,7 +50,6 @@
         display: inline-block;
         width: 15px;
         height: 15px;
-        margin-top: -1px;
 
         .horiz,
         .vert {
