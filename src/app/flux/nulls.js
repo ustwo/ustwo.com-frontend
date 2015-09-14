@@ -29,5 +29,19 @@ export default {
     "page_builder": [],
     "featured_image": null,
     "_links": {}
+  },
+  attachment: {
+    "_links": {},
+    "alt_text": null,
+    "author": null,
+    "date": null,
+    "id": null,
+    "link": null,
+    "media_details": {},
+    "media_type": null,
+    "slug": null,
+    "source_url": null,
+    "title": {},
+    "type": "attachment"
   }
 };
