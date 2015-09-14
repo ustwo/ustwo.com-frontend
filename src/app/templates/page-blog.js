@@ -6,6 +6,7 @@ import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import take from 'lodash/array/take';
+import isEqual from 'lodash/lang/isEqual';
 
 import Flux from '../flux';
 
@@ -15,12 +16,17 @@ import BlogPostListItem from '../components/blog-post-list-item';
 import BlogControls from '../components/blog-controls';
 import LoadMoreButton from '../elements/load-more-button';
 
+function getCategory(post) {
+  return get(post, '_embedded.wp:term.0.0.slug');
+}
+
 export default class PageBlog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isCategorised: props.blogCategory !== 'all',
-      loadingMorePosts: false
+      loadingMorePosts: false,
+      loadingCategoryPosts: false
     }
   }
   componentWillMount() {
@@ -29,22 +35,29 @@ export default class PageBlog extends React.Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    const currentPosts = this.props.posts;
-    const nextPosts = nextProps.posts;
-    const thereAreNoPosts = !currentPosts || !(currentPosts && currentPosts.length);
-    const thereWillBePosts = nextPosts && !!nextPosts.length;
-    const newPostsAdded = (currentPosts && nextPosts) && (currentPosts.length < nextPosts.length);
-
-    this.setState({
-      isCategorised: nextProps.blogCategory !== 'all'
-    });
+    const { posts: currentPosts, blogCategory: currentBlogCategory } = this.props;
+    const { posts: nextPosts, blogCategory: nextBlogCategory } = nextProps;
 
     // applies when category is changed
-    if (thereAreNoPosts && thereWillBePosts) {
+    if (currentBlogCategory !== nextBlogCategory) {
+      this.setState({
+        loadingCategoryPosts: true
+      });
+    }
+
+    // applies when posts from category change have loaded
+    const currentPostsSample = take(currentPosts, 6).map(post => post.id);
+    const nextPostsSample = take(nextPosts, 6).map(post => post.id);
+    if (!isEqual(currentPostsSample, nextPostsSample)) {
       Flux.getSocialSharesForPosts();
+      this.setState({
+        loadingCategoryPosts: false,
+        isCategorised: currentBlogCategory !== 'all'
+      });
     }
 
     // applies when "load more" button is clicked
+    const newPostsAdded = (currentPosts && nextPosts) && (currentPosts.length < nextPosts.length);
     if (newPostsAdded) {
       Flux.getSocialSharesForPosts();
       this.setState({
@@ -57,7 +70,7 @@ export default class PageBlog extends React.Component {
     const props = this.props;
     const classes = classnames('page-blog', {
       categorised: state.isCategorised,
-      loading: !props.posts,
+      loading: state.loadingCategoryPosts,
       empty: props.posts && !props.posts.length
     });
     let posts = props.posts;

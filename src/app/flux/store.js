@@ -71,8 +71,8 @@ export default {
       _state.blogCategory = Defaults.blogCategory;
     }
     if(newPage !== 'blog/post') {
-      _state.twitterShares = null;
-      _state.facebookShares = null;
+      _state.twitterShares = Nulls.twitterShares;
+      _state.facebookShares = Nulls.facebookShares;
     }
     if(!(newPage === 'blog' || newPage === 'blog/category')) {
       _state.searchMode = Defaults.searchMode;
