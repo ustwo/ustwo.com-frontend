@@ -6,6 +6,7 @@ export default {
   twitterShares: null,
   facebookShares: null,
   postsPaginationTotal: null,
+  posts: null,
   caseStudy: {
     "name": null,
     "link": null,

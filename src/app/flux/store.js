@@ -74,14 +74,14 @@ export default {
       _state.twitterShares = null;
       _state.facebookShares = null;
     }
-    if(newPage !== 'blog' || newPage !== 'blog/category') {
+    if(!(newPage === 'blog' || newPage === 'blog/category')) {
       _state.searchMode = Defaults.searchMode;
+      _state.posts = Nulls.posts;
       _state.postsPagination = Defaults.postsPagination;
       _state.postsPaginationTotal = Nulls.postsPaginationTotal;
     }
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
-    _state.posts = null;
     _state.modal = null;
     return Promise.resolve(_state);
   },
