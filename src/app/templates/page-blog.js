@@ -16,10 +16,6 @@ import BlogPostListItem from '../components/blog-post-list-item';
 import BlogControls from '../components/blog-controls';
 import LoadMoreButton from '../elements/load-more-button';
 
-function getCategory(post) {
-  return get(post, '_embedded.wp:term.0.0.slug');
-}
-
 export default class PageBlog extends React.Component {
   constructor(props) {
     super(props);

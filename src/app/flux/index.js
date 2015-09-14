@@ -101,15 +101,13 @@ const Flux = Object.assign(
       if (!history) {
         window.document.body.scrollTop = 0;
       }
-      if (params.length) {
-        switch(route.id) {
-          case 'blog':
-            Flux.setBlogCategoryTo(params[0]);
-            break;
-          case 'blog/search-results':
-            Flux.setSearchQueryTo(params[0]);
-            break;
-        }
+      switch(route.id) {
+        case 'blog':
+          Flux.setBlogCategoryTo(params[0] || 'all');
+          break;
+        case 'blog/search-results':
+          Flux.setSearchQueryTo(params[0]);
+          break;
       }
       Track('set', 'page', path);
       Track('send', 'pageview');
