@@ -39,8 +39,12 @@
   }
 
   .loading-icon {
-    margin: 50px auto 0 auto;
-    height: 150px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50vh;
+    margin: 10vh auto 0 auto;
+    z-index: 1;
   }
 
   ul {
@@ -99,6 +103,9 @@
 
 
     .search-results {
+      position: relative;
+      z-index: 2;
+      
       li {
         opacity: 0;
         transform: translateY(80px);
