@@ -68,5 +68,6 @@ export default class PageSearchResults extends React.Component {
     } else {
       Flux.navigate('/blog');
     }
+    Flux.resetPosts();
   }
 };

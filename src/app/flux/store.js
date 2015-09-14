@@ -195,5 +195,9 @@ export default {
       }], applyMorePosts).then(() => _state);
     }
     return promise;
+  },
+  resetPosts() {
+    _state.posts = Nulls.posts;
+    return Promise.resolve(_state);
   }
 };

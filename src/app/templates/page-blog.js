@@ -21,6 +21,7 @@ export default class PageBlog extends React.Component {
     super(props);
     this.state = {
       isCategorised: props.blogCategory !== 'all',
+      loadingInitialPosts: true,
       loadingMorePosts: false,
       loadingCategoryPosts: false
     }
@@ -28,11 +29,20 @@ export default class PageBlog extends React.Component {
   componentWillMount() {
     if (this.props.posts) {
       Flux.getSocialSharesForPosts();
+      this.setState({
+        loadingInitialPosts: false
+      });
     }
   }
   componentWillReceiveProps(nextProps) {
     const { posts: currentPosts, blogCategory: currentBlogCategory } = this.props;
     const { posts: nextPosts, blogCategory: nextBlogCategory } = nextProps;
+
+    if (this.state.loadingInitialPosts && nextPosts) {
+      this.setState({
+        loadingInitialPosts: false
+      });
+    }
 
     // applies when category is changed
     if (currentBlogCategory !== nextBlogCategory) {
@@ -42,6 +52,10 @@ export default class PageBlog extends React.Component {
     }
 
     // applies when posts from category change have loaded
+    // we infer a category change from post IDs as:
+    // - can't use props, by this point currentBlogCategory === nextBlogCategory
+    // - looping through posts to infer category is less reliable as some posts have multiple
+    //   categories, hence in a given category not all the posts will have the same category.
     const currentPostsSample = take(currentPosts, 6).map(post => post.id);
     const nextPostsSample = take(nextPosts, 6).map(post => post.id);
     if (!isEqual(currentPostsSample, nextPostsSample)) {
@@ -66,7 +80,7 @@ export default class PageBlog extends React.Component {
     const props = this.props;
     const classes = classnames('page-blog', {
       categorised: state.isCategorised,
-      loading: state.loadingCategoryPosts,
+      loading: state.loadingInitialPosts || state.loadingCategoryPosts,
       empty: props.posts && !props.posts.length
     });
     let posts = props.posts;
