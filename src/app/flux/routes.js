@@ -47,7 +47,8 @@ const routes = {
       slug: 'blog'
     }, {
       url: `ustwo/v1/posts?per_page=12&category=${category}`,
-      type: 'posts'
+      type: 'posts',
+      slug: `posts/${category}`
     }]
   },
   blog: {
@@ -60,7 +61,8 @@ const routes = {
       slug: 'blog'
     }, {
       url: 'ustwo/v1/posts?per_page=13',
-      type: 'posts'
+      type: 'posts',
+      slug: 'posts/all'
     }]
   },
   searchResults: {
@@ -69,7 +71,8 @@ const routes = {
     status: 200,
     data: query => [{
       url: `ustwo/v1/posts?search=${query}`,
-      type: 'posts'
+      type: 'posts',
+      slug: 'posts/search'
     }]
   },
   post: {

@@ -87,7 +87,11 @@ export default {
   },
   loadData(itemsToLoad) {
     itemsToLoad = filter(itemsToLoad, item => {
-      return (!_state[item.type] || (_state[item.type].slug !== item.slug));
+      // load this item if:
+      // - it doesn't exist in the store OR
+      // - it exists in the store with a different slug OR
+      // - posts have a different blog category
+      return (!_state[item.type] || (_state[item.type].slug && _state[item.type].slug !== item.slug) || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory));
     });
     return DataLoader(itemsToLoad, applyData).then(() => _state);
   },
