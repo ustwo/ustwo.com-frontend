@@ -10,22 +10,6 @@ import NewsFlash from '../elements/news-flash';
 
 import {onClickContent} from '../modules/modal';
 
-const takeover = {
-  title: "Moodnotes - Out Now!",
-  name: "Moodnotes",
-  description: "Capture your feelings and improve your thinking habits",
-  links: [{
-    type: 'http',
-    text: 'Download on iOS',
-    url: 'http://us2.co/Moodnotes'
-  }, {
-    type: 'http',
-    text: 'Go to moodnotesapp.com',
-    url: 'http://moodnotes.thriveport.com/'
-  }],
-  image: 'images/home/moodnotes_takeover_image.png'
-};
-
 export default class TakeOver extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +20,7 @@ export default class TakeOver extends React.Component {
   render = () => {
     let content;
     if(this.state.showContent) {
+      const { takeover } = this.props;
       content = (
         <div key="detail" className="take-over__content">
           <div className="take-over__content__message">
