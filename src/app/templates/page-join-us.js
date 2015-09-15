@@ -6,9 +6,10 @@ import map from 'lodash/collection/map';
 import filter from 'lodash/collection/filter';
 import get from 'lodash/object/get';
 import kebabCase from 'lodash/string/kebabCase';
-
 import spannify from '../_lib/spannify';
+import getFeaturedImage from '../_lib/get-featured-image';
 import ModuleRenderer from '../_lib/module-renderer';
+
 import DownChevron from '../elements/down-chevron';
 import SVG from '../elements/svg';
 import Hero from '../components/hero';
@@ -24,9 +25,8 @@ export default class PageJoinUs extends React.Component {
     }
   }
   render() {
-    const pageData = this.props.page;
-    const attachments = get(pageData, '_embedded.wp:attachment.0', []);
-    const image = find(attachments, 'id', get(pageData, 'featured_image'));
+    const { page: pageData } = this.props;
+    const image = getFeaturedImage(pageData);
 
     return (
       <article className="page-join-us">

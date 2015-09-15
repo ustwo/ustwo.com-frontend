@@ -3,17 +3,18 @@
 import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
-
 import ModuleRenderer from '../_lib/module-renderer';
+import getFeaturedImage from '../_lib/get-featured-image';
+
 import WorkItem from '../components/work-item';
 import Hero from '../components/hero';
 
 export default class PageWhatWeDo extends React.Component {
   render() {
-    const pageData = this.props.page;
+    const { page: pageData } = this.props;
     const caseStudiesModule = find(get(pageData, 'page_builder', []), 'name', 'case_studies');
-    const attachments = get(pageData, '_embedded.wp:attachment.0', []);
-    const image = find(attachments, item => item.id === get(pageData, 'featured_image'));
+    const image = getFeaturedImage(pageData);
+
     return (
       <article className="page-work">
         <Hero title={get(pageData, 'display_title')} sizes={get(image, 'media_details.sizes')} eventLabel='what-we-do' showDownChevron={true} />
