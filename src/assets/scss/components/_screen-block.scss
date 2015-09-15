@@ -1,5 +1,5 @@
 .screen-block {
-  min-height: 100vh;
+
   width: 100%;
   padding: 5vh 0;
   max-width: 1800px; // this relates to the breakpoint below
@@ -11,6 +11,10 @@
     content: " ";
     clear: both;
     display: block;
+  }
+
+  @include susy-breakpoint($bp-large, $susy) {
+    min-height: 100vh;
   }
 
   @include susy-breakpoint($bp-gargantuan, $susy) {

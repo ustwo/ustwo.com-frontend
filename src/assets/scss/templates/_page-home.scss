@@ -1,3 +1,9 @@
+// NOTE:
+// The homepage is in need of a big refactor due to things getting chopped and changed as
+// well as the lack of integration with the CMS. We can't make use of optmised images so a
+// temporary solution has been implemented where images are served up according to
+// screen width in this css rather than having inline <img>
+
 %svg-shape {
   fill: $white;
   position: absolute;
@@ -17,6 +23,7 @@
   }
 
   .welcome {
+    background-color: #6114CC !important;
 
     .headline-image {
       position: absolute;
@@ -109,10 +116,37 @@
   }
 
   .client {
+    background-color: #6986ec !important; // this is the wrong blue but it goes with the jpg provided
+
     .block-parent {
       .block-child {
         .image-container {
           position: relative;
+
+          .harvey-nicks-device {
+            width: 100%;
+            position: relative;
+            background-image: url("/images/home/Homepage_Harvey_Phone_Mobile.jpg");
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: auto 310px;
+            height: 310px;
+
+            @include susy-breakpoint($bp-small, $susy) {
+              height: 400px;
+              background-size: auto 400px;
+            }
+
+            @include susy-breakpoint($bp-medium, $susy) {
+              height: 500px;
+              background-size: auto 500px;
+            }
+
+            @include susy-breakpoint($bp-large, $susy) {
+              background-image: url("/images/home/Homepage_Harvey_Phone_Mobile.png");
+            }
+
+          }
 
           .harvey-nicks-shape-3 {
             @extend %svg-shape;
@@ -128,12 +162,6 @@
             right: 23%;
             width: 15%;
             height: 18%;
-          }
-
-          .harvey-nicks-device {
-            margin: 7% 10% 9% 6%;
-            width: span(84%);
-            position: relative;
           }
 
           .harvey-nicks-shape-1 {
@@ -154,6 +182,7 @@
         }
       }
     }
+
 
     .text-block {
       @include span(87.5%);
@@ -212,6 +241,8 @@
   }
 
   .own-stuff {
+    background-color: #FFBF02 !important;
+
     .block-parent {
       margin: 0 6.25%;
       @include span(87.5%);
@@ -220,32 +251,54 @@
         .image-container {
           position: relative;
           text-align: center;
+
+          .monument-device {
+            width: 100%;
+            position: relative;
+            background-image: url("/images/home/Homepage_Games_Ipad_Mobile.jpg");
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: auto 310px;
+            height: 310px;
+
+            @include susy-breakpoint($bp-small, $susy) {
+              height: 400px;
+              background-size: auto 400px;
+            }
+
+            @include susy-breakpoint($bp-medium, $susy) {
+              height: 500px;
+              background-size: auto 500px;
+            }
+
+            @include susy-breakpoint($bp-large, $susy) {
+              background-image: url("/images/home/Homepage_Games_Ipad_Mobile.png");
+            }
+
+          }
+
           .monument-award-1 {
             @extend %svg-shape;
             top: 0%;
-            left: 23%;
+            left: 18%;
             width: 27%;
             height: 16%;
           }
           .monument-award-2 {
             @extend %svg-shape;
-            top: 12%;
-            left: 11%;
+            top: 14%;
+            left: 7%;
             width: 27%;
             height: 16%;
           }
           .monument-award-3 {
             @extend %svg-shape;
-            top: 24%;
-            left: -2%;
+            top: 28%;
+            left: -4%;
             width: 27%;
             height: 16%;
           }
-          .monument-device {
-            width: 95%;
-            position: relative;
-            margin: 10% 0;
-          }
+
         }
       }
     }
@@ -309,34 +362,53 @@
   }
 
   .ventures {
+    background-color: #f55c57 !important;
+
     .block-parent {
       .block-child {
         .image-container {
           position: relative;
 
-          .dice-screen-anim {
-            position: absolute;
-            width: 27.8%;
-            right: 21%;
-            top: 0px;
-            bottom: 4.5%;
-            margin: auto;
-
-            @include susy-breakpoint($bp-large, $susy) {
-              width: 34.8%;
-              right: 11%;
-            }
-          }
           .dice-device {
-            position: relative;
             width: 100%;
-            margin: 0;
+            position: relative;
+            background-image: url("/images/home/Homepage_Dice_Mobile.jpg");
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: auto 440px;
+            height: 440px;
+
+            @include susy-breakpoint($bp-small, $susy) {
+              height: 500px;
+              background-size: auto 500px;
+            }
+
+            @include susy-breakpoint($bp-medium, $susy) {
+              height: 600px;
+              background-size: auto 600px;
+            }
 
             @include susy-breakpoint($bp-large, $susy) {
-              margin: 0 -10%;
-              width: 125%;
+              position: relative;
+              background-image: url("/images/home/Homepage_Dice_Mask.png");
+            }
+
+          }
+
+          @include susy-breakpoint($bp-large, $susy) {
+            .dice-screen-anim {
+              position: absolute;
+              width: 173px;
+              height: 305px;
+              left: 50%;
+              margin-left: 7px;
+              top: 137px;
+              background-image: url("/images/home/Homepage_Dice_Motion.gif");
+              background-size: 100% auto;
             }
           }
+
+
           .dice-logo {
             @extend %svg-shape;
             top: -2%;
@@ -358,19 +430,6 @@
         .block-parent {
           @include span(6 first);
           @include squish(1);
-
-          .block-child {
-            .image-conatiner {
-              .dice-screen-anim {
-                width: 27.7%;
-                right: 20.9%;
-              }
-              .dice-device {
-                width: 100%;
-                margin: auto;
-              }
-            }
-          }
         }
         .text-block {
           @include span(8 nest last) {
@@ -416,7 +475,18 @@
       }
     }
   }
+
+  @include susy-breakpoint($bp-large, $susy) {
+    .welcome,
+    .client,
+    .own-stuff,
+    .ventures {
+      background-color: transparent !important;
+    }
+  }
 }
+
+
 
 .js .page-home {
   .welcome {

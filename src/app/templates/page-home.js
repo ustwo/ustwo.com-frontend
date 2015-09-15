@@ -66,7 +66,10 @@ export default class PageHome extends React.Component {
 
       this.colourBlockScenes = [];
       this.state.blocks.forEach((block, index) => {
-        block.blockReference().style.backgroundColor = 'transparent';
+        // The following has been commented out so we can use the temporary solution of using jpgs in
+        // the css (for mobile optimisation). background: transaprent is then added in the home css at the large
+        // breakpoint to allow us to see the scrollmagic underneath on large screen sizes
+        // block.blockReference().style.backgroundColor = 'transparent';
         if (index > 0) {
           this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, block.blockReference(), this.state.blocks[index - 1].hexColour, block.hexColour));
         }
@@ -170,9 +173,9 @@ export default class PageHome extends React.Component {
           <div className="block-parent">
             <div className="block-child">
               <div className="image-container">
+                <div className="harvey-nicks-device"></div>
                 <SVG className="harvey-nicks-shape-3" role="presentation" spritemapID='HarveyShape3' />
                 <SVG className="harvey-nicks-shape-4" role="presentation" spritemapID='HarveyShape4' />
-                <div className="harvey-nicks-device"></div>
                 <SVG className="harvey-nicks-shape-1" role="presentation" spritemapID='HarveyShape1' />
                 <SVG className="harvey-nicks-shape-2" role="presentation" spritemapID='HarveyShape2' />
               </div>
@@ -188,10 +191,10 @@ export default class PageHome extends React.Component {
           <div className="block-parent">
             <div className="block-child">
               <div className="image-container">
+                <div className="monument-device"></div>
                 <SVG className="monument-award-1" role="presentation" spritemapID='MonumentAward1' />
                 <SVG className="monument-award-2" role="presentation" spritemapID='MonumentAward2' />
                 <SVG className="monument-award-3" role="presentation" spritemapID='MonumentAward3' />
-                <div className="monument-device"></div>
               </div>
             </div>
           </div>
@@ -205,9 +208,8 @@ export default class PageHome extends React.Component {
           <div className="block-parent">
             <div className="block-child">
               <div className="image-container">
-                <div className="dice-device">
-                  <div className="dice-screen-anim"></div>
-                </div>
+                <div className="dice-screen-anim"></div>
+                <div className="dice-device"></div>
                 <SVG className="dice-logo" role="presentation" spritemapID='dicelogo' />
               </div>
             </div>
