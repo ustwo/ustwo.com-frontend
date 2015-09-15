@@ -129,8 +129,8 @@
             background-image: url("/images/home/Homepage_Harvey_Phone_Mobile.jpg");
             background-repeat: no-repeat;
             background-position: 50% 50%;
-            background-size: auto 310px;
-            height: 310px;
+            background-size: auto 280px;
+            height: 290px;
 
             @include susy-breakpoint($bp-small, $susy) {
               height: 400px;
@@ -244,10 +244,13 @@
     background-color: #FFBF02 !important;
 
     .block-parent {
-      margin: 0 6.25%;
-      @include span(87.5%);
-
       .block-child {
+        padding: 0 15px;
+
+        @include susy-breakpoint($bp-small, $susy) {
+          padding: 0;
+        }
+
         .image-container {
           position: relative;
           text-align: center;
@@ -258,8 +261,8 @@
             background-image: url("/images/home/Homepage_Games_Ipad_Mobile.jpg");
             background-repeat: no-repeat;
             background-position: 50% 50%;
-            background-size: auto 310px;
-            height: 310px;
+            background-size: auto 265px;
+            height: 300px;
 
             @include susy-breakpoint($bp-small, $susy) {
               height: 400px;
@@ -375,8 +378,8 @@
             background-image: url("/images/home/Homepage_Dice_Mobile.jpg");
             background-repeat: no-repeat;
             background-position: 50% 50%;
-            background-size: auto 440px;
-            height: 440px;
+            background-size: auto 380px;
+            height: 380px;
 
             @include susy-breakpoint($bp-small, $susy) {
               height: 500px;
