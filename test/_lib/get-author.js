@@ -71,6 +71,11 @@ describe('GetAuthor', () => {
       });
       expect(GetAuthor(post)).to.equal("Bob");
     });
+
+    it('should not throw an error if post is undefined', () => {
+      expect(GetAuthor).to.not.throw(ReferenceError);
+      expect(GetAuthor()).to.equal(undefined);
+    });
   });
 
 });

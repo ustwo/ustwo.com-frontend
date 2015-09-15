@@ -4,6 +4,7 @@ import moment from 'moment';
 import he from 'he';
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
+import getAuthor from '../_lib/get-author';
 
 import Flux from '../flux';
 
@@ -30,7 +31,7 @@ export default class BlogPostListItem extends React.Component {
         <div className="content">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h2 className="title"><a href={uri} onClick={Flux.override(uri)}>{he.decode(get(post, 'title.rendered'))}</a></h2>
-          <p className="meta">By {get(post, '_embedded.author.0.first_name')} {get(post, '_embedded.author.0.last_name')} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
+          <p className="meta">By {getAuthor(post)} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
           <div className="excerpt" dangerouslySetInnerHTML={{ __html: get(post, 'excerpt.rendered')}} />
           <div className="tail">
             <a href={uri} onClick={Flux.override(uri)}>Read more</a>

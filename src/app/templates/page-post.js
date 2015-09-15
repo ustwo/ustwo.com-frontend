@@ -3,10 +3,11 @@ import moment from 'moment';
 import classnames from 'classnames';
 import he from 'he';
 import get from 'lodash/object/get';
+import ModuleRenderer from '../_lib/module-renderer';
+import getAuthor from '../_lib/get-author';
 
 import Flux from '../flux';
 
-import ModuleRenderer from '../_lib/module-renderer';
 import SocialMediaSharing from '../components/social-media-sharing';
 
 export default class PagePost extends React.Component {
@@ -41,7 +42,7 @@ export default class PagePost extends React.Component {
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h1 className="title">{he.decode(get(post, 'title.rendered', ''))}</h1>
           {this.renderSocialMediaSharing('side')}
-          <p className="meta">By {get(post, '_embedded.author.0.name')} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
+          <p className="meta">By {getAuthor(post)} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
           <hr className="rule" />
           {get(post, 'page_builder', []).map(this.getModuleRenderer(get(post, 'colors', {})))}
           <hr className="rule" />
