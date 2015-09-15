@@ -52,11 +52,13 @@ you want, or what is appropriate to your environment.
 
         $ eval "$(docker-machine env dev)"
 
-* Build images — If you build the vault, you need to place the SSL certificates
-in `./etc/nginx/ssl`.  Alternatively, get the image `ustwo/usweb-vault:2015`
-from another member of the team.
+* Get the vault from someone (e.g. arnau@ustwo.com) and load it in your
+docker environment.
 
-        $ make vault-build
+        $ make vault-load VAULT_PATH=vault-2015.tar
+
+* Build images
+
         $ make compiler-build seeds
 
 * Set `/etc/hosts`

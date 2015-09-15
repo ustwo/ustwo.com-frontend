@@ -54,7 +54,7 @@ Docker Hub.
 The following are one-time tasks unless dependencies change.
 
 * `compiler-build`: Creates the compiler Docker image.
-* `vault`: Builds the vault and creates a tarball at `build/`.  Requires the
+* `vault-load VAULT_PATH=path/to/vault.tar`:  Loads the vault image.
 SSL certificates at `./etc/nginx/ssl`.
 
 
