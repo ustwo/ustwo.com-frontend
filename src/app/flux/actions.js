@@ -45,6 +45,9 @@ const Actions = {
   },
   loadMorePosts() {
     return Store.loadMorePosts();
+  },
+  resetPosts() {
+    return Store.resetPosts();
   }
 };
 

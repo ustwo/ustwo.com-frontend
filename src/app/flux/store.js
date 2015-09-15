@@ -67,14 +67,12 @@ export default {
     if(newPage !== 'blog/search-results') {
       _state.searchQuery = null;
     }
-    if(newPage !== 'blog/category') {
-      _state.blogCategory = Defaults.blogCategory;
-    }
     if(newPage !== 'blog/post') {
-      _state.twitterShares = null;
-      _state.facebookShares = null;
+      _state.twitterShares = Nulls.twitterShares;
+      _state.facebookShares = Nulls.facebookShares;
     }
-    if(!(newPage === 'blog' || newPage === 'blog/category')) {
+    if(newPage !== 'blog') {
+      _state.blogCategory = Defaults.blogCategory;
       _state.searchMode = Defaults.searchMode;
       _state.posts = Nulls.posts;
       _state.postsPagination = Defaults.postsPagination;
@@ -197,5 +195,9 @@ export default {
       }], applyMorePosts).then(() => _state);
     }
     return promise;
+  },
+  resetPosts() {
+    _state.posts = Nulls.posts;
+    return Promise.resolve(_state);
   }
 };

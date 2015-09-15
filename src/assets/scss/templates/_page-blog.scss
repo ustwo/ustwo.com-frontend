@@ -212,7 +212,6 @@
   &.loading,
   &.empty {
     .blog-post-list {
-      padding: 0;
       max-width: none;
     }
     .load-more-button {
@@ -231,7 +230,6 @@
 
   &.loading {
     .blog-post-list {
-      margin-top: 0;
       opacity: 0;
       transform: translateY(100px);
       transition-delay: .62s, .5s;
@@ -249,6 +247,11 @@
 
   // END LOADING
 
+  &.empty {
+    .blog-post-list {
+      padding: 0;
+    }
+  }
 
 
   @include susy-breakpoint($bp-medium, $susy) {
