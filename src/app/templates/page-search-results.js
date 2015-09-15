@@ -45,16 +45,16 @@ export default class PageSearchResults extends React.Component {
     );
   }
   renderSearchResults = () => {
-    const state = this.state;
-    const props = this.props;
+    const { loading: isLoading } = this.state;
+    const { posts } = this.props;
     let output;
 
-    if (state.loading) {
+    if (isLoading) {
       output = <LoadingIcon key='loading-icon' />;
-    } else if (props.posts.length) {
+    } else if (posts && posts.length) {
       output = (
         <ul key='search-results' className='search-results'>
-          {props.posts.map(post => <SearchResultListItem data={post} />)}
+          {posts.map(post => <SearchResultListItem data={post} />)}
         </ul>
       );
     } else {
