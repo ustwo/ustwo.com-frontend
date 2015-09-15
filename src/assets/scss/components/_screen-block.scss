@@ -6,15 +6,12 @@
   position: relative;
   margin: auto;
   overflow: hidden;
+  min-height: 100vh;
 
   &:after {
     content: " ";
     clear: both;
     display: block;
-  }
-
-  @include susy-breakpoint($bp-large, $susy) {
-    min-height: 100vh;
   }
 
   @include susy-breakpoint($bp-gargantuan, $susy) {
