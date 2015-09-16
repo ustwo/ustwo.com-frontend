@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Flux from '../flux/';
 import Track from '../../server/adaptors/track';
 
 export default class ContactDetail extends React.Component {
@@ -19,17 +20,13 @@ export default class ContactDetail extends React.Component {
       const target = e.currentTarget;
       if(isLink) {
         e.preventDefault();
+        Flux.navigate(target.href);
       }
       Track('send', {
         'hitType': 'event',          // Required.
         'eventCategory': 'contact',   // Required.
         'eventAction': 'click_' + contactType + '_' + link.type,   // Required.
         'eventLabel': 'home', // TODO: Remove once GA has been hooked into router
-        'hitCallback' : () => {
-          if(isLink) {
-            window.location = target.href;
-          }
-        }
       });
     };
   }
