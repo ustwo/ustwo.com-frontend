@@ -1,7 +1,8 @@
 ## App tasks ##################################################################
-image_name := ustwo/usweb-app
-app_image = $(image_name):$(VERSION)
-app_name = $(project_name)_app
+app_id = app
+app_image = $(call image_tag,$(app_id),$(VERSION))
+app_name = $(project_name)_$(app_id)
+app_dockerfile = Dockerfile.$(app_id)
 
 .PHONY: \
   app-rm \
@@ -22,7 +23,7 @@ ifeq ($(VERBOSE), true)
 endif
 
 app-build:
-	$(DOCKER) build -t $(app_image) -f Dockerfile.app .
+	$(DOCKER) build -t $(app_image) -f $(app_dockerfile) .
 
 app-pull:
 	$(DOCKER) pull $(app_image)

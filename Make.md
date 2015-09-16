@@ -26,6 +26,7 @@ images.
 * `BASE_PATH` — Defines the base path to mount files into containers.
 * `VERBOSE` — When `true` it compiles js and css non-minified.
 * `LOCAL_FS` — When `true` it mounts local files to the containers.
+* `CI` — When `true` runs the compile container without self-cleaning
 
 ## Porcelain tasks
 
@@ -34,21 +35,20 @@ between parenthesis.
 
 *Note* All porcelain tasks can be found in [Makefile](./Makefile).
 
-* `deploy` (`love`): Removes any container belonging to the project and creates
-new ones.
+* `deploy`: Removes any container belonging to the project and creates new ones.
 * `deploy-production`: Same as above with implicit setup for production.
 * `deploy-staging`: Same as above with implicit setup for staging.
-* `init` (`offspring`): Creates the four Docker containers (vault, proxy, app, assets).
-* `init-rm` (`extermination`): Removes the four Docker containers.
-* `build` (`seeds`): Builds the node app image and the assets image.
-* `push` (`infection`): Pushes the app image and the assets image to the Docker
-Hub.
-* `pull` (`incubation`): Pulls the app image and the assets images from the
-Docker Hub.
+* `init`: Creates the project Docker containers.
+* `clean`: Removes the project Docker containers.
+* `build`: Builds the node app image and the assets image.
+* `push`: Pushes the app image and the assets image to the Docker Hub.
+* `pull`: Pulls the app image and the assets images from the Docker Hub.
 * `stats`: Lists the stats for all containers.
 * `ps`: Lists the containers for the specified.
 * `ls`: Lists the images for the current version.
-* `nuke`: Removes all images for the given `TAG`.
+* `nuke`: Removes all images for the given `VERSION`.
+* `release`: Creates a tag version from the given `VERSION`, tags the snapshot
+image created by CI and pushes to the Docker Hub
 
 
 The following are one-time tasks unless dependencies change.

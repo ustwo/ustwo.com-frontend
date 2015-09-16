@@ -1,7 +1,8 @@
 ## Assets tasks ###############################################################
-assets_image = ustwo/usweb-assets:$(VERSION)
-assets_name = $(project_name)_assets
-assets_template = Dockerfile.assets
+assets_id := assets
+assets_image = $(call image_tag,$(assets_id),$(VERSION))
+assets_name = $(project_name)_$(assets_id)
+assets_dockerfile = Dockerfile.$(assets_id)
 
 .PHONY: \
   assets-build \
@@ -19,7 +20,11 @@ ifeq ($(LOCAL_FS), true)
 endif
 
 assets-build: assets-compile
-	$(DOCKER) build -t $(assets_image) -f $(assets_template) .
+	$(DOCKER) build -t $(assets_image) -f $(assets_dockerfile) .
+
+assets-build-ci: assets-compile-ci
+	$(DOCKER) build -t $(assets_image) -f $(assets_dockerfile) .
+
 
 assets-pull:
 	$(DOCKER) pull $(assets_image)
@@ -39,6 +44,7 @@ assets-create:
 		$(project_labels) \
 		$(assets_volumes) \
 		$(assets_image)
+
 
 assets-compile: compile_cmd = $(if $(VERBOSE), compile-dev, compile)
 assets-compile:

@@ -1,0 +1,39 @@
+machine:
+  environment:
+    VERSION: $CIRCLE_SHA1
+  services:
+    - docker
+
+general:
+  branches:
+    only:
+      - master
+      - /hotfixes\/.+/
+      - features/circleci
+
+deployment:
+  stable:
+    branch: features/circleci
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - make app-push assets-push
+  hotfix:
+    branch: /hotfixes\/.+/
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+      - make app-push assets-push
+
+dependencies:
+  override:
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - make assets-build
+    - make app-build
+    - make assets-create app-create
+test:
+  override:
+    - make test
+
+# TODO: Slack
+# notify:
+#   webhooks:
+#     - url: https://example.com/hooks/circle
