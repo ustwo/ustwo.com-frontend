@@ -4,6 +4,7 @@
 // temporary solution has been implemented where images are served up according to
 // screen width in this css rather than having inline <img>
 
+
 %svg-shape {
   fill: $white;
   position: absolute;
@@ -13,6 +14,14 @@
   transform: translateZ(0); // hardware accelerate background-color change on scroll
 
   .screen-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include susy-breakpoint($bp-large, $susy) {
+      display: block;
+    }
+
     h2 {
       margin-bottom: 10px;
 
@@ -23,8 +32,6 @@
   }
 
   .welcome {
-    background-color: #6114CC !important;
-
     .headline-image {
       position: absolute;
       margin: auto;
@@ -116,8 +123,6 @@
   }
 
   .client {
-    background-color: #6986ec !important; // this is the wrong blue but it goes with the jpg provided
-
     .block-parent {
       .block-child {
         .image-container {
@@ -190,23 +195,28 @@
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
+      .text-block {
+        @include span(75%);
+        @include squish(12.5%);
+      }
+
       @include nested(8) {
 
         .block-parent {
           @include span(6 first);
           @include squish(1);
         }
-        .text-block {
-          @include span(8 nest last) {
-
-            .home-text-block {
-              > * {
-                @include squish(1);
-                width: span(6);
-              }
-            }
-          }
-        }
+        // .text-block {
+        //   @include span(8 nest last) {
+        //
+        //     .home-text-block {
+        //       > * {
+        //         @include squish(1);
+        //         width: span(6);
+        //       }
+        //     }
+        //   }
+        // }
       }
     }
 
@@ -241,8 +251,6 @@
   }
 
   .own-stuff {
-    background-color: #FFBF02 !important;
-
     .block-parent {
       .block-child {
         padding: 0 15px;
@@ -312,19 +320,24 @@
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
+      .text-block {
+        @include span(75%);
+        @include squish(12.5%);
+      }
+
       @include nested(8) {
 
-        .text-block {
-          @include span(8 nest last) {
-
-            .home-text-block {
-              > * {
-                @include squish(1);
-                width: span(6);
-              }
-            }
-          }
-        }
+        // .text-block {
+        //   @include span(8 nest last) {
+        //
+        //     .home-text-block {
+        //       > * {
+        //         @include squish(1);
+        //         width: span(6);
+        //       }
+        //     }
+        //   }
+        // }
         .block-parent {
           @include span(6 first);
           @include squish(1);
@@ -365,8 +378,6 @@
   }
 
   .ventures {
-    background-color: #f55c57 !important;
-
     .block-parent {
       .block-child {
         .image-container {
@@ -429,22 +440,27 @@
     }
 
     @include susy-breakpoint($bp-medium, $susy) {
+      .text-block {
+        @include span(75%);
+        @include squish(12.5%);
+      }
+
       @include nested(8) {
         .block-parent {
           @include span(6 first);
           @include squish(1);
         }
-        .text-block {
-          @include span(8 nest last) {
-
-            .home-text-block {
-              > * {
-                @include squish(1);
-                width: span(6);
-              }
-            }
-          }
-        }
+        // .text-block {
+        //   @include span(8 nest last) {
+        //
+        //     .home-text-block {
+        //       > * {
+        //         @include squish(1);
+        //         width: span(6);
+        //       }
+        //     }
+        //   }
+        // }
       }
     }
 
@@ -479,16 +495,21 @@
     }
   }
 
-  @include susy-breakpoint($bp-large, $susy) {
-    .welcome,
-    .client,
-    .own-stuff,
+  @media screen and (max-width: $bp-large) {
+    .welcome {
+      background-color: #6114CC !important;
+    }
+    .client {
+      background-color: #6986ec !important; // this is the wrong blue but it goes with the jpg provided
+    }
+    .own-stuff {
+      background-color: #FFBF02 !important;
+    }
     .ventures {
-      background-color: transparent !important;
+      background-color: #f55c57 !important;
     }
   }
 }
-
 
 
 .js .page-home {
