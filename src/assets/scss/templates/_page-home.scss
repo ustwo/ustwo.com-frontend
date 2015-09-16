@@ -1,8 +1,12 @@
 // NOTE:
 // The homepage is in need of a big refactor due to things getting chopped and changed as
 // well as the lack of integration with the CMS. We can't make use of optmised images so a
-// temporary solution has been implemented where images are served up according to
+// temporary solution has been implemented where jpgs or pngs are served up according to
 // screen width in this css rather than having inline <img>
+// Jpgs for smaller screns to save on download cost. But they need flat backgrounds (or
+// hide the scrollmagic). See near the bottom where each block now has background-color !important
+// to override scrollmagic on screens that use the jpg instead of png.
+
 
 
 %svg-shape {
@@ -506,7 +510,7 @@
       background-color: #FFBF02 !important;
     }
     .ventures {
-      background-color: #f55c57 !important;
+      background-color: #f55c57 !important; // this too is actually slightly different to the correct red
     }
   }
 }

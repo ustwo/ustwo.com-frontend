@@ -1,6 +1,6 @@
 TIER ?= dev
 BASE_PATH ?= $(PWD)
-TAG ?= 1.3.0
+TAG ?= 1.4.0
 VERSION = $(TAG)
 MACHINE_ALIAS ?= ustwosite
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa

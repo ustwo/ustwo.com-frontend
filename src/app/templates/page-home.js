@@ -66,9 +66,6 @@ export default class PageHome extends React.Component {
 
       this.colourBlockScenes = [];
       this.state.blocks.forEach((block, index) => {
-        // The following has been commented out so we can use the temporary solution of using jpgs in
-        // the css (for mobile optimisation). background: transaprent is then added in the home css at the large
-        // breakpoint to allow us to see the scrollmagic underneath on large screen sizes
         block.blockReference().style.backgroundColor = 'transparent';
         if (index > 0) {
           this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, block.blockReference(), this.state.blocks[index - 1].hexColour, block.hexColour));
