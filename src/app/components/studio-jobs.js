@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
 import kebabCase from 'lodash/string/kebabCase';
+import getFeaturedImage from '../_lib/get-featured-image';
 
 import Flux from '../flux';
 import JobItem from '../components/job-item';
@@ -18,19 +19,18 @@ export default class StudioJobs extends React.Component {
     }
   }
   render() {
-    const studio = this.props.studio;
+    const { studio, selected, colour } = this.props;
     const id = kebabCase(studio.name);
     const classes = classnames('studio-jobs', `${id}-jobs`, {
-      selected: this.props.selected
+      selected: selected
     });
-    const attachments = get(studio, '_embedded.wp:attachment');
-    const image = find(attachments, 'id', get(studio, 'featured_image'));
+    const image = getFeaturedImage(studio);
     return (
       <div className={classes}>
         <h3>{studio.name}</h3>
         <div className="tab-content" id={`tab-content-${id}`}>
           <div className="studio-info">
-            <div className="info" style={{ backgroundColor: this.props.colour }}>
+            <div className="info" style={{ backgroundColor: colour }}>
               <p className="excerpt">{get(studio, 'recruitment-title')}</p>
               <p className="content">{get(studio, 'recruitment-desc')}</p>
             </div>
@@ -42,7 +42,7 @@ export default class StudioJobs extends React.Component {
     );
   }
   renderJobsList = () => {
-    const jobs = this.props.jobs;
+    const { jobs, studio, contactEmail } = this.props;
     let list;
     if(jobs.length) {
       list = (
@@ -54,7 +54,7 @@ export default class StudioJobs extends React.Component {
       list = (
         <div className="jobs-none">
           <p>We don't have any openings currently. However we're always looking for talented individuals to join the ustwo family.</p>
-          <a href={this.props.contactEmail.length ? `${this.props.contactEmail}?subject=${this.props.studio.name} Jobs` : ''}>Get in touch</a>
+          <a href={contactEmail.length ? `${contactEmail}?subject=${studio.name} Jobs` : ''}>Get in touch</a>
         </div>
       );
     }
@@ -81,9 +81,10 @@ export default class StudioJobs extends React.Component {
     }
   }
   getStudioColour = (job) => {
-    let studio = find(this.props.studios, 'name', job.location.city);
+    const { studios } = this.props;
+    let studio = find(studios, 'name', job.location.city);
     if(!studio) {
-      studio = find(this.props.studios, 'name', 'London');
+      studio = find(studios, 'name', 'London');
     }
     return studio.color;
   }

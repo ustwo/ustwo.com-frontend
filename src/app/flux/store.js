@@ -18,7 +18,6 @@ const _state = Object.assign({
   modal: Nulls.modal,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
-  caseStudy: Nulls.caseStudy,
   twitterShares: Nulls.twitterShares,
   facebookShares: Nulls.facebookShares,
   postsPagination: Defaults.postsPagination,
