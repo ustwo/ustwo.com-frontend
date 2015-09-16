@@ -5,9 +5,11 @@ import he from 'he';
 import get from 'lodash/object/get';
 import ModuleRenderer from '../_lib/module-renderer';
 import getAuthor from '../_lib/get-author';
+import getFeaturedImage from '../_lib/get-featured-image';
 
 import Flux from '../flux';
 
+import Rimage from '../elements/rimage';
 import SocialMediaSharing from '../components/social-media-sharing';
 
 export default class PagePost extends React.Component {
@@ -23,10 +25,9 @@ export default class PagePost extends React.Component {
     }
   }
   render() {
-    const props = this.props;
-    const post = props.page;
+    const { page: post } = this.props;
     const category = get(post, '_embedded.wp:term.0.0', []);
-    const imageURL = get(post, '_embedded.wp:attachment.1.source_url');
+    const image = getFeaturedImage(post);
     const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'uncategorised')}`);
     return (
       <article className={classes}>
@@ -35,9 +36,7 @@ export default class PagePost extends React.Component {
             border-bottom-color: #14C04D;
           }
         `}</style>
-        <div className="hero-image" style={{backgroundImage: `url(${imageURL})`}}>
-          <img className="image" src={imageURL} />
-        </div>
+        <Rimage wrap='div' className='hero-image' sizes={get(image, 'media_details.sizes')} />
         <div className="content-container">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h1 className="title">{he.decode(get(post, 'title.rendered', ''))}</h1>
