@@ -55,24 +55,28 @@ describe('GetAuthor', () => {
     expect(GetAuthor(post)).to.equal("Bob Dylan");
   });
 
-  describe('edge cases', () => {
-    it('should return the username if the first name is not present', () => {
+  describe('if the first name is not present', () => {
+    it('should return the username', () => {
       Object.assign(post._embedded.author[0], {
         last_name: "Dylan",
         name: "spongebob"
       });
       expect(GetAuthor(post)).to.equal("spongebob");
     });
+  });
 
-    it('should return the first name if only the first name is present', () => {
+  describe('if only the first name is present', () => {
+    it('should return the first name', () => {
       Object.assign(post._embedded.author[0], {
         first_name: "Bob",
         name: "spongebob"
       });
       expect(GetAuthor(post)).to.equal("Bob");
     });
+  });
 
-    it('should not throw an error if post is undefined', () => {
+  describe('if post is undefined', () => {
+    it('should not throw an error', () => {
       expect(GetAuthor).to.not.throw(ReferenceError);
       expect(GetAuthor()).to.equal(undefined);
     });
