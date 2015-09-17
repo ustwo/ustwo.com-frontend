@@ -197,7 +197,7 @@ export default class PageHome extends React.Component {
           </div>
           <div className="text-block">
             <HomeTextBlock title="Award-winning own products and games" colour="nonBlack" childColour="nonBlack">
-              <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic game Monument Valley or innovative technical platform Wayfindr, we create products with passion from conception to launch and beyond.</p>
+              <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic game <a href='http://www.monumentvalleygame.com/' target='_blank'>Monument Valley</a> or innovative technical platform <a href='http://www.wayfindr.net/' target='_blank'>Wayfindr</a>, we create products with passion from conception to launch and beyond.</p>
             </HomeTextBlock>
           </div>
         </ScreenBlock>
@@ -213,7 +213,7 @@ export default class PageHome extends React.Component {
           </div>
           <div className="text-block">
             <HomeTextBlock title="Launching new ventures" colour="white" childColour="white">
-              <p>Working with people who know their industry inside-out gets us super excited. We partner with the world’s leading experts, entrepreneurs and investors by offering our expertise, technology or investment.</p>
+              <p>Working with people who know their industry inside-out gets us super excited. We partner with the world’s leading experts and entrepreneurs, offering our expertise, technology or investment to create great new companies like live music discovery platform <a href='https://dice.fm/' target='_blank'>DICE</a>.</p>
             </HomeTextBlock>
           </div>
         </ScreenBlock>
