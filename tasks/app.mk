@@ -52,4 +52,4 @@ app-log:
 	$(DOCKER) logs -f $(app_name)
 
 app-sh:
-	$(DOCKER_EXEC) $(app_name) /bin/bash
+	$(DOCKER_EXEC) $(app_name) /bin/sh
