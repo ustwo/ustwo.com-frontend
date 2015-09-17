@@ -104,9 +104,9 @@ Clean the environment:
 
         $ make seeds
 
-2. Push image to the Docker Hub
+2. Make a new release
 
-        $ make infection
+        $ make release VERSION=x.x.x
 
 3. Set the right environment
 
@@ -114,14 +114,19 @@ Clean the environment:
 
 4. Pull images
 
-        $ make incubation
+        $ make incubation VERSION=x.x.x
 
 5. Deploy
 
-        $ make -i deploy-staging
+        $ make -i deploy-staging VERSION=x.x.x
 
-6. Increment version in `Makefile`
+6. Clean old images, keeping only the last known working version in case of rollback
 
+        $ make nuke VERSION=x.x.x
+
+7. Push tags to GitHub
+
+        $ git push --tags
 
 ## Release production
 
@@ -141,11 +146,15 @@ Clean the environment:
 
 4. Pull images
 
-        $ make incubation
+        $ make incubation VERSION=x.x.x
 
 5. Deploy
 
-        $ make -i deploy-production
+        $ make -i deploy-production VERSION=x.x.x
+
+6. Clean old images, keeping only the last known working version in case of rollback
+
+        $ make nuke VERSION=x.x.x
 
 
 ## Style guide (WIP)
