@@ -54,6 +54,7 @@ include tasks/*.mk
 #
 ###############################################################################
 
+## Porcelain ##################################################################
 vault: vault-save
 build: app-build assets-build
 test: assets-test
@@ -61,52 +62,49 @@ push: app-push assets-push
 pull: app-pull assets-pull
 init: vault-create assets-create app-create proxy-create
 clean: proxy-rm app-rm assets-rm vault-rm
-init-rm: clean
 deploy: clean init
+deploy-production:
+	$(MAKE) -i deploy \
+		PROXY_HTTPS_PORT=443 \
+		PROXY_HTTP_PORT=80
+deploy-staging: deploy-production
 css: assets-css
 release: release-create
 
-## Porcelain ##################################################################
 seeds: build
-infection: push
-incubation: pull
-offspring: init
-extermination: init-rm
-love: extermination offspring
+love: clean init
 stuff: assets-compile
 
+## Obsolete ###################################################################
+init-rm: clean
 
+## Environment  ###############################################################
+##
+# Lists all containers related to the project.
 ps:
 	@$(DOCKER) ps -a $(project_filters)
-
+##
+# Lists the status of all containers related to the project.
 stats: quiet_ps := $(shell $(DOCKER) ps -aq $(project_filters))
 stats:
 	@$(if $(quiet_ps), \
 		$(DOCKER) stats --no-stream $(quiet_ps), \
 		echo "No containers for $(project_name)")
-
+##
+# Lists all images related to the project.
 ls:
 	@$(DOCKER) images \
 	| $(GREP) $(project_name)
-
+##
+# Removes the images for a given version
 nuke:
 	$(DOCKER) images \
 	| $(GREP) $(project_name) \
 	| $(GREP) $(VERSION) \
 	| $(AWK) '{print $$3}' \
 	| $(XARGS) $(DOCKER) rmi
-
-deploy-production:
-	$(MAKE) -i love \
-		PROXY_HTTPS_PORT=443 \
-		PROXY_HTTP_PORT=80
-
-deploy-staging: deploy-production
-
-deploy-canary:
-	$(MAKE) -i canary-rm canary-create \
-		BASE_PATH=/home/ubuntu
-
+##
+# Absorbs changes from master and rebases current branch on top of it.
 absorb:
 	git checkout master
 	git pull --rebase=preserve origin master

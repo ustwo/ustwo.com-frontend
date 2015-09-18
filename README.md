@@ -16,11 +16,8 @@ Currently used:
 * Scroll triggered animations: [ScrollMagic](http://janpaepke.github.io/ScrollMagic/)
 * Data: using Flux Store to cache stuff loaded using Isomorpic-Fetch via WP API
 
-Upcoming:
-
- * Tests
-
 Main motivation to have a SPA is to have nice between page transitions like on http://www.google.com/design/articles/ :)
+
 
 ## Setup
 
@@ -57,17 +54,12 @@ docker environment.
 
         $ make vault-load VAULT_PATH=vault-2015.tar
 
-* Build images
-
-        $ make compiler-build seeds
-
 * Set `/etc/hosts`
 
         192.168.99.100 local.ustwo.com
         192.168.99.100 staging.ustwo.com
 
 *Note*: The ip depends on your local instance. Check `docker-machine ip dev`.
-
 
 
 ## Develop
@@ -77,8 +69,7 @@ tasks are structured.
 
 Prepare a new environment:
 
-    $ make compiler-build
-    $ make seeds
+    $ make compiler-build build
 
 Deploy app:
 
@@ -92,21 +83,40 @@ Compile the assets:
 
     $ make stuff
 
+Run the tests:
+
+    $ make test
+
+As long as `LOCAL_FS=true` is set a convenient way to refresh the environment
+is:
+
+    $ make -i love stuff LOCAL_FS=true
+
+As it will rebuild the assets (`stuff`) and recreate the containers (`love`)
+remounting all necessary files from the host environment.
 
 Clean the environment:
 
-    $ make extermination
+    $ make clean
 
 
 ## Release staging
 
+If the commit you are releasing from has been picked up by CircleCI (so you have
+an snapshot available `ustwo/usweb:app-{git hash}` you can release with:
+
+        $ make release VERSION=1.2.3
+
+
+If not, do it manually:
+
 1. Build fresh Docker images
 
-        $ make seeds
+        $ make build VERSION=x.x.x
 
-2. Make a new release
+2. Publish the release
 
-        $ make release VERSION=x.x.x
+        $ make push VERSION=1.2.3
 
 3. Set the right environment
 
@@ -114,27 +124,30 @@ Clean the environment:
 
 4. Pull images
 
-        $ make incubation VERSION=x.x.x
+        $ make pull VERSION=1.2.3
 
 5. Deploy
 
-        $ make -i deploy-staging VERSION=x.x.x
+        $ make deploy-staging VERSION=1.2.3
 
 6. Clean old images, keeping only the last known working version in case of rollback
 
-        $ make nuke VERSION=x.x.x
+        $ make nuke VERSION=1.1.0
 
-7. Push tags to GitHub
+7. Tag the release
 
-        $ git push --tags
+        $ make release-tag-create VERSION=1.2.3
+        $ git push --tags origin master
+
 
 ## Release production
 
+It assumes you followed the staging flow so the tagged images are available in
+the Docker Hub.
+
 1. Deploy in your local environment
 
-        $ make love
-
-*Note* It assumes you build the images already following the staging process.
+        $ make -i love VERSION=1.2.3
 
 2. Test deployment
 
@@ -146,15 +159,15 @@ Clean the environment:
 
 4. Pull images
 
-        $ make incubation VERSION=x.x.x
+        $ make pull VERSION=1.2.3
 
 5. Deploy
 
-        $ make -i deploy-production VERSION=x.x.x
+        $ make deploy-production VERSION=1.2.3
 
 6. Clean old images, keeping only the last known working version in case of rollback
 
-        $ make nuke VERSION=x.x.x
+        $ make nuke VERSION=1.2.3
 
 
 ## Style guide (WIP)
