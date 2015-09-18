@@ -1,6 +1,8 @@
 ## Compiler tasks #############################################################
-compiler_image := ustwo/usweb:compiler
-compiler_name = $(project_name)_compiler
+compiler_id = compiler
+compiler_image := ustwo/usweb:$(compiler_id)
+compiler_name = $(project_name)_$(compiler_id)
+compiler_dockerfile = Dockerfile.$(compiler_id)
 
 .PHONY: \
   compiler-build \
@@ -21,7 +23,7 @@ define compile
 endef
 
 compiler-build:
-	$(DOCKER) build -t $(compiler_image) -f Dockerfile .
+	$(DOCKER) build -t $(compiler_image) -f $(compiler_dockerfile) .
 
 compiler-pull:
 	$(DOCKER) pull $(compiler_image)
