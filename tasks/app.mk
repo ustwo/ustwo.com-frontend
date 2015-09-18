@@ -15,8 +15,8 @@ app_dockerfile = Dockerfile.$(app_id)
 
 ifeq ($(LOCAL_FS), true)
   app_volumes = \
-    -v $(BASE_PATH)/package.json:/usr/local/src/package.json \
-    -v $(BASE_PATH)/src:/usr/local/src/src
+    -v $(BASE_PATH)/package.json:/home/ustwo/package.json \
+    -v $(BASE_PATH)/src:/home/ustwo/src
 endif
 ifeq ($(VERBOSE), true)
   verbosity = -e VERBOSE=true
@@ -37,7 +37,7 @@ app-rm:
 
 app-create:
 	@echo "Creating $(app_name)"
-	@$(DOCKER_RUN) \
+	$(DOCKER_RUN) \
 		--name $(app_name) \
 		$(app_volumes) \
 		--restart always \
