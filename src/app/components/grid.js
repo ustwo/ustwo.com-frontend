@@ -1,4 +1,6 @@
 import React from 'react';
+import kebabCase from 'lodash/string/kebabCase';
+import get from 'lodash/object/get';
 
 import Rimage from '../elements/rimage';
 import GridCell from '../elements/grid-cell';
@@ -11,7 +13,7 @@ export default class Grid extends React.Component {
           {this.renderVideo()}
         </Rimage>
         <ul className="grid-list">
-          {this.props.cells.map(cell => <GridCell cell={cell} />)}
+          {this.props.cells.map(cell => <GridCell key={`cell-${kebabCase(get(cell, 'attr.heading.value'))}`} cell={cell} />)}
         </ul>
       </section>
     );
@@ -19,7 +21,7 @@ export default class Grid extends React.Component {
   renderVideo = () => {
     let video;
     if(this.props.video && this.props.video.length) {
-      video = <iframe src={`https://player.vimeo.com/video/${this.props.video}?title=0&byline=0&portrait=0`} frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>;
+      video = <iframe src={`https://player.vimeo.com/video/${this.props.video}?title=0&byline=0&portrait=0`} frameBorder="0" webkitallowfullscreen mozallowfullscreen allowFullScreen></iframe>;
     }
     return video;
   }
