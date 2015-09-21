@@ -10,15 +10,13 @@ export default (moduleData, colours, getZebra) => {
   let module;
   switch(moduleData.name) {
     case 'header':
-      module = <SingleColumn className="intro" title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')}
-    backgroundColour={get(colours, 'bg')}>{get(moduleData, 'attr.subheading.value')}</SingleColumn>;
+      module = <SingleColumn key={`module-header-${get(moduleData, 'attr.heading.value')}`} className="intro" title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')} backgroundColour={get(colours, 'bg')}>{get(moduleData, 'attr.subheading.value')}</SingleColumn>;
       break;
     case 'text':
-      module = <SingleColumn title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')}
-      backgroundColour={!getZebra() && get(colours, 'bg')}>{get(moduleData, 'attr.body.value')}</SingleColumn>;
+      module = <SingleColumn key={`module-text-${get(moduleData, 'attr.heading.value')}`} title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')} backgroundColour={!getZebra() && get(colours, 'bg')}>{get(moduleData, 'attr.body.value')}</SingleColumn>;
       break;
     case 'image':
-      module = <FullImage sizes={get(moduleData, 'attr.image.value.0.sizes')} />;
+      module = <FullImage key={`module-image`} sizes={get(moduleData, 'attr.image.value.0.sizes')} />;
       break;
     case 'blockquote':
       module = (
@@ -32,6 +30,7 @@ export default (moduleData, colours, getZebra) => {
       break;
     case 'grid':
       module = <Grid
+        key='module-grid'
         cells={get(moduleData, 'attr.grid_cells.value')}
         video={get(moduleData, 'attr.grid_video.value')}
         images={get(moduleData, 'attr.grid_image.value.0.sizes')}

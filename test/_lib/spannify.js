@@ -42,4 +42,21 @@ describe('Spannify', () => {
 
   });
 
+  describe('if no arguments are passed', () => {
+
+    beforeEach(() => {
+      result = spannify();
+    });
+
+    it('should not throw an error', () => {
+      expect(spannify).not.to.throw(TypeError);
+    });
+
+    it('should return an empty array', () => {
+      expect(result).to.be.an('array');
+      expect(result.length).to.equal(0);
+    });
+
+  });
+
 });

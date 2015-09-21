@@ -91,7 +91,7 @@ export default class PageJoinUs extends React.Component {
       const id = kebabCase(studio.name);
       const name = studio.name;
       const studioJobs = filter(jobs, job => get(job, 'location.city', '') === name || (get(job, 'location.region') || '').includes(name));
-      return <StudioJobs studio={studio} studios={this.props.studios} jobs={id === 'all-studios' ? jobs : studioJobs} selected={this.state.studio === id} colour={studio.color} contactEmail={get(find(get(find(get(this.props, 'footer.contacts', []), 'type', 'general'), 'methods', []), 'type', 'email'), 'uri', '')} />;
+      return <StudioJobs key={`jobs-${id}`} studio={studio} studios={this.props.studios} jobs={id === 'all-studios' ? jobs : studioJobs} selected={this.state.studio === id} colour={studio.color} contactEmail={get(find(get(find(get(this.props, 'footer.contacts', []), 'type', 'general'), 'methods', []), 'type', 'email'), 'uri', '')} />;
     });
   }
 }

@@ -78,7 +78,7 @@ export default class Footer extends React.Component {
     const studios = this.props.studios;
     return studios && studios.map(studio => {
       return <StudioContact
-        key={`studio-${kebabCase(studio.name.toLowerCase())}`}
+        key={`studio-${kebabCase(studio.name)}`}
         studio={studio}
         open={this.state.selectedStudio === studio.id}
         onClick={this.generateOnClickStudioHandler(studio)}
