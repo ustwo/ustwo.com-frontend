@@ -59,6 +59,11 @@
     width: 50px;
     background: $blu;
 
+    &:active {
+      /* TODO: Use a 'darken' function here but the sass one doesn't seem to be working. Bad sass! */
+      background: #007dc0;
+    }
+
     .text {
       display: none;
     }
