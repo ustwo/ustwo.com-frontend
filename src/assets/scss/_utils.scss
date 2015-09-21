@@ -16,6 +16,16 @@ a {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
+input,
+button {
+  padding: 0;
+  border: none;
+}
+
+button {
+
+}
+
 %button__bare {
   background-color: transparent;
   background-repeat: no-repeat;
