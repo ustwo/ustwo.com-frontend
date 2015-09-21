@@ -3,6 +3,7 @@
     "../adaptors/server/env": "./adaptors/client/env",
     "../../adaptors/server/env": "./adaptors/client/env",
     "../../adaptors/server/localfont": "./adaptors/client/localfont",
+    "../../adaptors/server/image": "./adaptors/client/image",
     "../adaptors/server/proxy-url": "./adaptors/client/proxy-url",
     "../../adaptors/server/scroll-magic": "./adaptors/client/scroll-magic",
     "../../adaptors/server/scroll-to-plugin": "./adaptors/client/scroll-to-plugin",

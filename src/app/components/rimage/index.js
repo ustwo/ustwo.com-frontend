@@ -11,6 +11,7 @@ import omit from 'lodash/object/omit';
 import endsWith from 'lodash/string/endsWith';
 
 import Flux from '../../flux';
+import Image from '../../adaptors/server/image';
 
 function getSizesArray(sizesObject) {
   return sortBy(map(omit(sizesObject, (size, name) => {
@@ -59,10 +60,10 @@ class Rimage extends React.Component {
     }
     return img;
   }
-  getImageUrl = () => {
+  getImageUrl() {
     return this.state.size.url || this.state.size.source_url;
   }
-  getNewSize = () => {
+  getNewSize() {
     const sizes = this.state.sizes;
     const el = React.findDOMNode(this);
     const constrainSize = el.clientWidth;
