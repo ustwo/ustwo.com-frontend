@@ -8,6 +8,7 @@ import Track from '../../server/adaptors/track';
 import Flux from '../flux';
 import SVG from '../elements/svg';
 import StudioContact from '../components/studio-contact';
+import Subscription from '../components/subscription';
 
 export default class Footer extends React.Component {
   constructor(props) {
@@ -39,6 +40,7 @@ export default class Footer extends React.Component {
   render() {
     return (
       <footer className="footer">
+        <Subscription />
         <div className="content">
           <div className="general">
             <a className="email-cta" href="mailto:hello@ustwo.com" onClick={this.onClickShowContacts}>{get(this.props, 'data.contact_link_text')}</a>
