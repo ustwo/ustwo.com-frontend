@@ -11,7 +11,7 @@ export default class Subscription extends React.Component {
       <div className="subscription">
         <SVG className="icon" spritemapID="subscriptionIcon" />
         <h3>ustwo News</h3>
-        <p>Give us your email and we'll keep you in the loop with our latest projects and thoughts.</p>
+        <p>Give us your email and we'll keep you in the loop with our latest projects and thoughts</p>
         <form action="//ustwo.us10.list-manage.com/subscribe/post?u=7f1269c0305abed7c91a24b97&amp;id=e6835a8563" method="POST" target="_blank">
           <label htmlFor="subscription-email" className="label">{labelText}</label>
           <input name="EMAIL" id="subscription-email" className="email" placeholder={labelText} required={true} />
