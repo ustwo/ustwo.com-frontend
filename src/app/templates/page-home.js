@@ -6,6 +6,7 @@ import ScrollMagic from '../../server/adaptors/scroll-magic';
 import Tracking from '../../server/adaptors/tracking';
 import window from '../../server/adaptors/window';
 import Track from '../../server/adaptors/track';
+import ScrollTracker from '../../server/adaptors/scroll-tracker';
 
 import DownChevron from '../elements/down-chevron';
 import SVG from '../elements/svg';
@@ -123,12 +124,14 @@ export default class PageHome extends React.Component {
     this.Tracking = new Tracking();
   }
   componentDidMount() {
+    this.scrollTracker = new ScrollTracker('home', React.findDOMNode(this));
     this.setupScrollMagic();
     this.animTimeout = setTimeout(() => {
       this.animateChevron();
     }, 2500);
   }
   componentWillUnmount() {
+    this.scrollTracker.teardown();
     this.teardownScrollMagic();
     clearTimeout(this.animTimeout);
   }

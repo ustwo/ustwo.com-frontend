@@ -8,6 +8,7 @@ import getFeaturedImage from '../_lib/get-featured-image';
 
 import WorkItem from '../components/work-item';
 import Hero from '../components/hero';
+import ScrollTracker from '../../server/adaptors/scroll-tracker';
 
 export default class PageWhatWeDo extends React.Component {
   render() {
@@ -32,5 +33,11 @@ export default class PageWhatWeDo extends React.Component {
     return (moduleData) => {
       return ModuleRenderer(moduleData, colours, () => true);
     };
+  }
+  componentDidMount() {
+    this.scrollTracker = new ScrollTracker('what-we-do', React.findDOMNode(this));
+  }
+  componentWillUnmount() {
+    this.scrollTracker.teardown();
   }
 }

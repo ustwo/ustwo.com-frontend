@@ -26,7 +26,8 @@
       "../../server/adaptors/window": "./src/client/adaptors/window",
       "../../server/adaptors/scroll-magic": "./src/client/adaptors/scroll-magic",
       "../../server/adaptors/proxy-url": "./src/client/adaptors/proxy-url",
-      "../server/adaptors/svg4everybody": "./src/client/adaptors/svg4everybody"
+      "../server/adaptors/svg4everybody": "./src/client/adaptors/svg4everybody",
+      "../../server/adaptors/scroll-tracker": "./src/client/adaptors/scroll-tracker"
     }
   },
   "babel": {
