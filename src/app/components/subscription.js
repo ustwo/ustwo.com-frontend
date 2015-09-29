@@ -12,7 +12,7 @@ export default class Subscription extends React.Component {
         <SVG className="icon" spritemapID="subscriptionIcon" />
         <h3>ustwo News</h3>
         <p>Give us your email and we'll keep you in the loop with our latest projects and thoughts</p>
-        <form action="//ustwo.us10.list-manage.com/subscribe/post?u=7f1269c0305abed7c91a24b97&amp;id=a4ba15109f" method="POST" target="_blank">
+        <form action="//ustwo.us10.list-manage.com/subscribe/post?u=7f1269c0305abed7c91a24b97&amp;id=a4ba15109f" method="POST">
           <label htmlFor="subscription-email" className="label">{labelText}</label>
           <input name="EMAIL" id="subscription-email" className="email" placeholder={labelText} required={true} />
           <div style={{ position: "absolute", left: -5000 }}>
