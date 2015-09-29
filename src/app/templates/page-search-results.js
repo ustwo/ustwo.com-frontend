@@ -3,18 +3,20 @@
 import React from 'react';
 import TransitionManager from 'react-transition-manager';
 
+import getScrollTrackerMixin from '../_lib/get-scroll-tracker-mixin';
+
 import Flux from '../flux';
 
 import LoadingIcon from '../elements/loading-icon';
 import SearchResultListItem from '../components/search-result-list-item';
 
-export default class PageSearchResults extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const PageSearchResults = React.createClass({
+  mixins: [getScrollTrackerMixin('search-results')],
+  getInitialState() {
+    return {
       loading: true
-    }
-  }
+    };
+  },
   componentWillMount() {
     if (this.props.posts) {
       this.setState({
@@ -22,7 +24,7 @@ export default class PageSearchResults extends React.Component {
       });
       Flux.getSocialSharesForPosts();
     }
-  }
+  },
   componentWillReceiveProps(nextProps) {
     if (this.state.loading && nextProps.posts) {
       this.setState({
@@ -30,7 +32,7 @@ export default class PageSearchResults extends React.Component {
       });
       Flux.getSocialSharesForPosts();
     }
-  }
+  },
   render() {
     return (
       <article className="page-search-results">
@@ -43,8 +45,8 @@ export default class PageSearchResults extends React.Component {
         </TransitionManager>
       </article>
     );
-  }
-  renderSearchResults = () => {
+  },
+  renderSearchResults() {
     const { loading: isLoading } = this.state;
     const { posts } = this.props;
     let output;
@@ -61,8 +63,8 @@ export default class PageSearchResults extends React.Component {
       output = <h2 key='no-results' className='no-results'>No results found</h2>;
     }
     return output;
-  }
-  onClickClearSearch = () => {
+  },
+  onClickClearSearch() {
     if (history) {
       history.go(-1);
     } else {
@@ -70,4 +72,6 @@ export default class PageSearchResults extends React.Component {
     }
     Flux.resetPosts();
   }
-};
+});
+
+export default PageSearchResults;

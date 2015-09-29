@@ -6,24 +6,26 @@ import get from 'lodash/object/get';
 import ModuleRenderer from '../_lib/module-renderer';
 import getAuthor from '../_lib/get-author';
 import getFeaturedImage from '../_lib/get-featured-image';
+import getScrollTrackerMixin from '../_lib/get-scroll-tracker-mixin';
 
 import Flux from '../flux';
 
 import Rimage from '../elements/rimage';
 import SocialMediaSharing from '../components/social-media-sharing';
 
-export default class PagePost extends React.Component {
+const PagePost = React.createClass({
+  mixins: [getScrollTrackerMixin('post')],
   componentWillMount() {
     const page = this.props.page;
     if (page && page.slug) {
       Flux.getSocialSharesForPost();
     }
-  }
+  },
   componentWillReceiveProps(nextProps) {
     if (!this.props.page && nextProps.page && nextProps.page.slug) {
       Flux.getSocialSharesForPost();
     }
-  }
+  },
   render() {
     const { page: post } = this.props;
     const category = get(post, '_embedded.wp:term.0.0', []);
@@ -57,8 +59,8 @@ export default class PagePost extends React.Component {
         </div>
       </article>
     );
-  }
-  renderSocialMediaSharing = (position) => {
+  },
+  renderSocialMediaSharing(position) {
     const props = this.props;
     return (
       <SocialMediaSharing
@@ -69,7 +71,7 @@ export default class PagePost extends React.Component {
         twitterShares={props.twitterShares}
       />
     );
-  }
+  },
   getModuleRenderer(colours) {
     return (moduleData) => {
       return ModuleRenderer(moduleData, colours, () => {
@@ -78,4 +80,6 @@ export default class PagePost extends React.Component {
       });
     };
   }
-}
+});
+
+export default PagePost;

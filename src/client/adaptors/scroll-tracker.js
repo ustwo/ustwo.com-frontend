@@ -41,7 +41,6 @@ ScrollTracker.prototype = {
   constructor: ScrollTracker,
   onScroll() {
     this.scrollTop = document.body.scrollTop;
-    console.log(this.top, this.middle, this.bottom, this.scrollTop, this.pageHeight, this.windowHeight);
     if(!this.top && this.scrollTop >= this.windowHeight) {
       this.top = true;
       trackEvent('page', 'scroll_1', this.pageName);
@@ -56,12 +55,10 @@ ScrollTracker.prototype = {
     }
   },
   setup() {
-    console.log('setting up scroll tracking for', this.pageName);
     document.onscroll = this.onScrollBound;
   },
   teardown() {
     if(document.onscroll === this.onScrollBound) {
-      console.log('tearing down scroll tracking for', this.pageName);
       document.onscroll = null;
     }
   }

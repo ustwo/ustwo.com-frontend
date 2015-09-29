@@ -4,9 +4,12 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 
+import getScrollTrackerMixin from '../_lib/get-scroll-tracker-mixin';
+
 import Navigation from '../modules/navigation';
 
-export default class page404 extends React.Component {
+const page404 = React.createClass({
+  mixins: [getScrollTrackerMixin('404')],
   render() {
     const pageData = this.props.page;
     return (
@@ -17,4 +20,6 @@ export default class page404 extends React.Component {
       </article>
     );
   }
-}
+});
+
+export default page404;

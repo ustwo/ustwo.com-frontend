@@ -2,11 +2,12 @@
 
 import React from 'react';
 
+import getScrollTrackerMixin from '../_lib/get-scroll-tracker-mixin';
+
 import ScrollMagic from '../../server/adaptors/scroll-magic';
 import Tracking from '../../server/adaptors/tracking';
 import window from '../../server/adaptors/window';
 import Track from '../../server/adaptors/track';
-import ScrollTracker from '../../server/adaptors/scroll-tracker';
 
 import DownChevron from '../elements/down-chevron';
 import SVG from '../elements/svg';
@@ -18,10 +19,10 @@ import BoldHeader from '../components/bold-header';
 import HomeTextBlock from '../components/home-text-block';
 import ScreenBlock from '../components/screen-block';
 
-export default class PageHome extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const PageHome = React.createClass({
+  mixins: [getScrollTrackerMixin('home')],
+  getInitialState() {
+    return {
       blocks: [
         {
           blockReference: () => {return React.findDOMNode(this.refs.blockWelcome)},
@@ -41,14 +42,14 @@ export default class PageHome extends React.Component {
         }
       ]
     };
-  }
-  animateChevron = (event) => {
+  },
+  animateChevron(event) {
     if(this.refs.downChevron) {
       this.refs.downChevron.resetAnim();
       this.refs.downChevron.anim();
     }
-  }
-  setupScrollMagic = () => {
+  },
+  setupScrollMagic() {
     let pageElement = React.findDOMNode(this);
     this.Tracking.addPageScrollTracking('home', pageElement);
 
@@ -73,8 +74,8 @@ export default class PageHome extends React.Component {
         }
       });
     }
-  }
-  teardownScrollMagic = () => {
+  },
+  teardownScrollMagic() {
     this.Tracking.removePageScrollTracking();
 
     if (!env.Modernizr.touchevents && window.innerWidth > 480) {
@@ -83,8 +84,8 @@ export default class PageHome extends React.Component {
         scene.remove();
       });
     }
-  }
-  createColourBlockScene = (scrollController, pageElement, blockReference, hexColour1, hexColour2) => {
+  },
+  createColourBlockScene(scrollController, pageElement, blockReference, hexColour1, hexColour2) {
     return new ScrollMagic.Scene({
         triggerElement: blockReference,
         triggerHook: 'onEnter',
@@ -98,8 +99,8 @@ export default class PageHome extends React.Component {
           pageElement.style.backgroundColor = '#' + this.blendColours(hexColour1, hexColour2, e.progress);
         });
     });
-  }
-  blendColours = (colour1, colour2, percentage) => {
+  },
+  blendColours(colour1, colour2, percentage) {
     function intToHex(num) {
       let hex = Math.round(num).toString(16);
       return hex.length === 1 ? '0' + hex : hex;
@@ -119,22 +120,20 @@ export default class PageHome extends React.Component {
     ];
 
     return intToHex(rgbColour3[0]) + intToHex(rgbColour3[1]) + intToHex(rgbColour3[2]);
-  }
+  },
   componentWillMount() {
     this.Tracking = new Tracking();
-  }
+  },
   componentDidMount() {
-    this.scrollTracker = new ScrollTracker('home', React.findDOMNode(this));
     this.setupScrollMagic();
     this.animTimeout = setTimeout(() => {
       this.animateChevron();
     }, 2500);
-  }
+  },
   componentWillUnmount() {
-    this.scrollTracker.teardown();
     this.teardownScrollMagic();
     clearTimeout(this.animTimeout);
-  }
+  },
   render() {
     const headlineWordsAnimationOptions = {
       ease: Power2.easeOut,
@@ -222,7 +221,7 @@ export default class PageHome extends React.Component {
         </ScreenBlock>
       </article>
     );
-  }
+  },
   onClickDownChevron() {
     Track('send', {
       'hitType': 'event',
@@ -231,4 +230,6 @@ export default class PageHome extends React.Component {
       'eventLabel': 'home'
     });
   }
-};
+});
+
+export default PageHome;

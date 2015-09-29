@@ -7,7 +7,9 @@ import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import take from 'lodash/array/take';
 import isEqual from 'lodash/lang/isEqual';
+
 import getFeaturedImage from '../_lib/get-featured-image';
+import getScrollTrackerMixin from '../_lib/get-scroll-tracker-mixin';
 
 import Flux from '../flux';
 
@@ -17,16 +19,16 @@ import BlogPostListItem from '../components/blog-post-list-item';
 import BlogControls from '../components/blog-controls';
 import LoadMoreButton from '../elements/load-more-button';
 
-export default class PageBlog extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isCategorised: props.blogCategory !== 'all',
+const PageBlog = React.createClass({
+  mixins: [getScrollTrackerMixin('blog')],
+  getInitialState() {
+    return {
+      isCategorised: this.props.blogCategory !== 'all',
       isLoadingInitialPosts: true,
       isLoadingMorePosts: false,
       isLoadingCategoryPosts: false
-    }
-  }
+    };
+  },
   componentWillMount() {
     if (this.props.posts) {
       Flux.getSocialSharesForPosts();
@@ -34,7 +36,7 @@ export default class PageBlog extends React.Component {
         isLoadingInitialPosts: false
       });
     }
-  }
+  },
   componentWillReceiveProps(nextProps) {
     const { posts: currentPosts, blogCategory: currentBlogCategory } = this.props;
     const { posts: nextPosts, blogCategory: nextBlogCategory } = nextProps;
@@ -76,7 +78,7 @@ export default class PageBlog extends React.Component {
         isLoadingMorePosts: false
       });
     }
-  }
+  },
   render() {
     const {
       isCategorised,
@@ -103,8 +105,8 @@ export default class PageBlog extends React.Component {
         </section>
       </article>
     );
-  }
-  renderHero = () => {
+  },
+  renderHero() {
     const { page, searchMode, searchQuery, blogCategory } = this.props;
     const image = getFeaturedImage(page);
     let output;
@@ -118,8 +120,8 @@ export default class PageBlog extends React.Component {
       );
     }
     return output;
-  }
-  renderPosts = () => {
+  },
+  renderPosts() {
     const posts = this.getPosts();
     let output;
     if (posts) {
@@ -132,8 +134,8 @@ export default class PageBlog extends React.Component {
       }
     }
     return output;
-  }
-  getPosts = () => {
+  },
+  getPosts() {
     const { isCategorised } = this.state;
     const { postsPagination, postsPaginationTotal } = this.props;
     let { posts } = this.props;
@@ -141,11 +143,13 @@ export default class PageBlog extends React.Component {
       posts = take(posts, (postsPagination * 12) + 1);
     }
     return posts;
-  }
-  onClickLoadMore = () => {
+  },
+  onClickLoadMore() {
     Flux.loadMorePosts();
     this.setState({
       isLoadingMorePosts: true
     });
   }
-}
+});
+
+export default PageBlog;
