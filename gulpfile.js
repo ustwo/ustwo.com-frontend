@@ -53,7 +53,11 @@ var tasks = {
   // SASS (libsass)
   // --------------------------
   sass: function() {
-    return gulp.src('src/assets/scss/[^_]*.scss')
+    return gulp.src([
+      'src/app/index.scss',
+      'src/app/lib/*.scss',
+      'src/app/**/_index.scss'
+    ])
       // sourcemaps + sass + error handling
       .pipe(sourcemaps.init())
       .pipe(sass({
@@ -161,9 +165,9 @@ var tasks = {
   // Optimize asset images
   // --------------------------
   assets: function() {
-    gulp.src('src/assets/images/**/*.{gif,jpg,png,svg}')
+    gulp.src('src/app/images/**/*.{gif,jpg,png,svg}')
       .pipe(gulp.dest('public/images'));
-    gulp.src('src/assets/favicon.{png,ico}')
+    gulp.src('src/app/images/favicon.{png,ico}')
         .pipe(gulp.dest('public'));
   },
   data: function() {

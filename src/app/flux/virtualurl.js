@@ -1,6 +1,6 @@
 import urllite from 'urllite';
 
-import QS from '../flux/query-string';
+import QS from './query-string';
 
 function getActualUrl(url) {
   const splitUrl = url.split('#/');

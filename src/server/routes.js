@@ -5,7 +5,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import omit from 'lodash/object/omit';
 
-import Log from '../app/_lib/log';
+import Log from '../app/lib/log';
 
 const isomorphic = true;
 console.log('Isomorphic:', isomorphic);
@@ -25,14 +25,14 @@ function renderApp(req, res) {
     const Flux = require('../app/flux');
     Flux.init(req.protocol + '://' + req.hostname + req.originalUrl, req.get('Host-API'))
       .then((state) => {
-        const App = React.createFactory(require('../app/app'));
+        const App = React.createFactory(require('../app/components/app'));
         const AppString = React.renderToString(App({
           state: omit(state, 'takeover')
         }));
         const head = Helmet.rewind();
         res
           .status(state.statusCode)
-          .render('index', {
+          .render('app', {
             title: head.title,
             meta: head.meta,
             link: head.link,
@@ -43,7 +43,7 @@ function renderApp(req, res) {
       .catch(error => Log('server route error', error, error.stack));
   } else {
     res
-      .render('index', {
+      .render('app', {
         title: '',
         meta: '',
         link: '',
