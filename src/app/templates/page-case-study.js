@@ -1,9 +1,11 @@
 import React from 'react';
 import get from 'lodash/object/get';
 
+import getScrollTrackerMixin from '../_lib/get-scroll-tracker-mixin';
 import ModuleRenderer from '../_lib/module-renderer';
 
-export default class PageCaseStudy extends React.Component {
+const PageCaseStudy = React.createClass({
+  mixins: [getScrollTrackerMixin('case-study')],
   render() {
     const caseStudy = this.props.page;
     return (
@@ -16,8 +18,8 @@ export default class PageCaseStudy extends React.Component {
         {get(caseStudy, 'page_builder', []).map(this.getModuleRenderer(get(caseStudy, 'colors')))}
       </article>
     );
-  }
-  getModuleRenderer = (colours) => {
+  },
+  getModuleRenderer(colours) {
     return (moduleData) => {
       return ModuleRenderer(moduleData, colours, () => {
         this.zebra = !this.zebra;
@@ -25,4 +27,6 @@ export default class PageCaseStudy extends React.Component {
       });
     };
   }
-}
+});
+
+export default PageCaseStudy;

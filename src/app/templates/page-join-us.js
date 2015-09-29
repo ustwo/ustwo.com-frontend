@@ -9,6 +9,7 @@ import kebabCase from 'lodash/string/kebabCase';
 import spannify from '../_lib/spannify';
 import getFeaturedImage from '../_lib/get-featured-image';
 import ModuleRenderer from '../_lib/module-renderer';
+import getScrollTrackerMixin from '../_lib/get-scroll-tracker-mixin';
 
 import DownChevron from '../elements/down-chevron';
 import SVG from '../elements/svg';
@@ -17,13 +18,13 @@ import Slide from '../components/slide';
 import StudioJobs from '../components/studio-jobs';
 import Rimage from '../elements/rimage';
 
-export default class PageJoinUs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const PageJoinUs = React.createClass({
+  mixins: [getScrollTrackerMixin('join-us')],
+  getInitialState() {
+    return {
       studio: 'all-studios'
-    }
-  }
+    };
+  },
   render() {
     const { page: pageData } = this.props;
     const image = getFeaturedImage(pageData);
@@ -53,25 +54,25 @@ export default class PageJoinUs extends React.Component {
 
       </article>
     );
-  }
-  getModuleRenderer = (colours) => {
+  },
+  getModuleRenderer(colours) {
     return (moduleData) => {
       return ModuleRenderer(moduleData, colours, () => true);
     };
-  }
-  getStudios = () => {
+  },
+  getStudios() {
     return [{
       name: "All studios"
     }].concat(this.props.studios);
-  }
-  renderStudioTabs = () => {
+  },
+  renderStudioTabs() {
     return map(this.getStudios(), studio => {
       const id = kebabCase(studio.name);
       const name = spannify(studio.name);
       return <li key={`tab-${id}`} className={id} ref={`tab-${id}`} onClick={this.generateOnClickStudioHandler(id)} aria-selected={this.state.studio === id}>{name}</li>;
     });
-  }
-  generateOnClickStudioHandler = (studio) => {
+  },
+  generateOnClickStudioHandler(studio) {
     return () => {
       const el = React.findDOMNode(this.refs[`tab-${studio}`]);
       const tabs = this.getStudios().map(studio => {
@@ -84,8 +85,8 @@ export default class PageJoinUs extends React.Component {
         studio: studio
       });
     }
-  }
-  renderStudioJobs = () => {
+  },
+  renderStudioJobs() {
     const jobs = this.props.jobs || [];
     return map(this.getStudios(), studio => {
       const id = kebabCase(studio.name);
@@ -94,4 +95,6 @@ export default class PageJoinUs extends React.Component {
       return <StudioJobs key={`jobs-${id}`} studio={studio} studios={this.props.studios} jobs={id === 'all-studios' ? jobs : studioJobs} selected={this.state.studio === id} colour={studio.color} contactEmail={get(find(get(find(get(this.props, 'footer.contacts', []), 'type', 'general'), 'methods', []), 'type', 'email'), 'uri', '')} />;
     });
   }
-}
+});
+
+export default PageJoinUs;

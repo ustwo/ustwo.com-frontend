@@ -5,11 +5,13 @@ import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import ModuleRenderer from '../_lib/module-renderer';
 import getFeaturedImage from '../_lib/get-featured-image';
+import getScrollTrackerMixin from '../_lib/get-scroll-tracker-mixin';
 
 import WorkItem from '../components/work-item';
 import Hero from '../components/hero';
 
-export default class PageWhatWeDo extends React.Component {
+const PageWhatWeDo = React.createClass({
+  mixins: [getScrollTrackerMixin('what-we-do')],
   render() {
     const { page: pageData } = this.props;
     const caseStudiesModule = find(get(pageData, 'page_builder', []), 'name', 'case_studies');
@@ -27,10 +29,12 @@ export default class PageWhatWeDo extends React.Component {
         </ul>
       </article>
     );
-  }
-  getModuleRenderer = (colours) => {
+  },
+  getModuleRenderer(colours) {
     return (moduleData) => {
       return ModuleRenderer(moduleData, colours, () => true);
     };
   }
-}
+});
+
+export default PageWhatWeDo;

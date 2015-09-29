@@ -4,9 +4,12 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 
+import getScrollTrackerMixin from '../_lib/get-scroll-tracker-mixin';
+
 import LoadingIcon from '../elements/loading-icon';
 
-export default class PageLegal extends React.Component {
+const PageLegal = React.createClass({
+  mixins: [getScrollTrackerMixin('legal')],
   render() {
     const pageData = this.props.page;
     return (
@@ -30,4 +33,6 @@ export default class PageLegal extends React.Component {
       </article>
     );
   }
-}
+});
+
+export default PageLegal;
