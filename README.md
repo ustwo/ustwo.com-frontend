@@ -23,9 +23,9 @@ Main motivation to have a SPA is to have nice between page transitions like on h
 
 The project is managed via Docker containers.
 
-Commands below assume OS X and preference to install binaries via Homebrew and
-Cask. You can of course install Docker Machine and Virtualbox in any other way
-you want, or what is appropriate to your environment.
+Commands below assume OS X and preference to install libraries via Homebrew.
+You can of course install Docker Machine and Virtualbox in any other way
+you want (like [Kitematic](https://kitematic.com/)).
 
 * Install [Docker Machine](https://docs.docker.com/machine/#installation)
 
@@ -37,9 +37,7 @@ you want, or what is appropriate to your environment.
 
 * Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
-        $ brew cask install virtualbox
-
-*Note* Beware the version might matter.  The tested version is 5.0.0.
+*Note* Beware the version might matter. The tested version is 5.0.4.
 
 * Create Docker host VM
 
@@ -71,21 +69,21 @@ Prepare a new environment:
 
     $ make compiler-build build
 
-Deploy app:
-
-    $ make -i love LOCAL_FS=true VERBOSE=true
-
-*Note*: Add the flag `LOCAL_FS=true` if you want to use your local files instead
-of the ones inside the containers.
-*Note*: Add the flag `VERBOSE=true` if you want the JS and CSS expanded.
-
-Compile the assets:
+Compile the assets (you can use only this when you're only recompiling on front end stuff):
 
     $ make stuff
 
 Run the tests:
 
     $ make test
+
+Deploy app (when you need to restart services):
+
+    $ make -i love LOCAL_FS=true VERBOSE=true
+
+*Note*: Add the flag `LOCAL_FS=true` if you want to use your local files instead
+of the ones inside the containers.
+*Note*: Add the flag `VERBOSE=true` if you want the JS and CSS expanded.
 
 As long as `LOCAL_FS=true` is set a convenient way to refresh the environment
 is:
@@ -103,12 +101,11 @@ Clean the environment:
 ## Release staging
 
 If the commit you are releasing from has been picked up by CircleCI (so you have
-an snapshot available `ustwo/usweb:app-{git hash}` you can release with:
+an snapshot available `ustwo/usweb:app-{git hash}`) you can release with:
 
         $ make release VERSION=1.2.3
 
-
-If not, do it manually:
+If not, do it manually (only for emergencies):
 
 1. Build fresh Docker images
 
