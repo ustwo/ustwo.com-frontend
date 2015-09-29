@@ -40,7 +40,7 @@ function ScrollTracker (pageName, pageElement) {
 ScrollTracker.prototype = {
   constructor: ScrollTracker,
   onScroll() {
-    this.scrollTop = document.body.scrollTop;
+    this.scrollTop = getScrollTop();
     if(!this.top && this.scrollTop >= this.windowHeight) {
       this.top = true;
       trackEvent('page', 'scroll_1', this.pageName);
