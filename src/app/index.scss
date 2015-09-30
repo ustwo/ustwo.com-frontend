@@ -4,10 +4,10 @@
 @import '../../node_modules/susy/sass/susy';
 
 @import "lib/variables";
-@import "lib/utils";
 @import "lib/colours";
+@import "lib/mixins";
+@import "lib/utils";
 @import "lib/typography";
-@import "lib/arrow-icon";
 @import "lib/intro";
 @import "lib/cookie-banner";
 
