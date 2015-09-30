@@ -73,50 +73,45 @@ var tasks = {
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('public/css'));
   },
+  vendors: function () {
+    // Create a separate vendor bundler that will only run when starting gulp
+    var bundler = browserify({debug: false})
+                    .require('babelify/polyfill')
+                    .require('react')
+                    .require('svg4everybody');
+
+    return bundler.bundle()
+            .pipe(source('vendors.js'))
+            .pipe(buffer())
+            .pipe(uglify({preserveComments: 'license'}))
+            .pipe(gulp.dest('public/js'));
+  },
   // --------------------------
   // Reactify
   // --------------------------
-  reactify: function() {
-    // Create a separate vendor bundler that will only run when starting gulp
-    var vendorBundler = browserify({
-      debug: !production // Sourcemapping
-    })
-    .require('babelify/polyfill')
-    .require('react')
-    .require('svg4everybody');
-
+  reactify: function () {
     var bundler = browserify({
-      debug: true, // Sourcemapping
-      cache: {},
-      packageCache: {}
-    })
-    .require(require.resolve('./src/app/index.js'), { entry: true })
-    .transform(babelify.configure({
-        optional: ["es7.classProperties"]
-    }))
-    .transform(aliasify, require('./package.json').aliasify)
-    .external('babelify/polyfill')
-    .external('react')
-    .external('svg4everybody');
+                    debug: true,
+                    cache: {},
+                    packageCache: {}})
+                  .require(require.resolve('./src/app/index.js'),
+                           { entry: true })
+                  .transform(babelify.configure({
+                      optional: ["es7.classProperties"]}))
+                  .transform(aliasify, require('./package.json').aliasify)
+                  .external('babelify/polyfill')
+                  .external('react')
+                  .external('svg4everybody');
 
-    var bundle = function() {
-      return bundler.bundle()
-        .on('error', handleError('Browserify'))
-        .pipe(source('app.js'))
-        .pipe(buffer())
-        .pipe(gulpif(production, uglify()))
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('public/js/'));
-    };
-
-    vendorBundler.bundle()
-      .pipe(source('vendors.js'))
-      .pipe(buffer())
-      .pipe(gulpif(production, uglify()))
-      .pipe(gulp.dest('public/js/'));
-
-    return bundle();
+    return bundler.bundle()
+            .on('error', handleError('Browserify'))
+            .pipe(source('app.js'))
+            .pipe(buffer())
+            // .pipe(gulpif(production, uglify({preserveComments: all})))
+            .pipe(uglify({preserveComments: 'all'}))
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(sourcemaps.write('.'))
+            .pipe(gulp.dest('public/js'));
   },
   // --------------------------
   // React style guide
@@ -176,6 +171,7 @@ var tasks = {
 gulp.task('clean', tasks.clean);
 gulp.task('assets', tasks.assets);
 gulp.task('sass', tasks.sass);
+gulp.task('vendors', tasks.vendors);
 gulp.task('reactify', tasks.reactify);
 gulp.task('reactstyleguide', tasks.reactstyleguide);
 gulp.task('data', tasks.data);
@@ -183,13 +179,12 @@ gulp.task('serve', ['build'], tasks.serve);
 gulp.task('start', ['clean', 'build']);
 
 // build task
-gulp.task('build', [
-  'assets',
-  'sass',
-  'reactify',
-  // 'reactstyleguide',
-  'data'
-]);
+gulp.task('build', ['assets',
+                    'sass',
+                    'vendors',
+                    'reactify',
+                    // 'reactstyleguide',
+                    'data']);
 
 // --------------------------
 // CSS ONLY WATCH TASK
