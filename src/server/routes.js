@@ -11,6 +11,7 @@ import capitalize from 'lodash/string/capitalize';
 
 import helpers from './helpers';
 import log from '../app/lib/log';
+import helpers from './helpers';
 
 const isomorphic = true;
 log('Isomorphic:', isomorphic);
@@ -93,6 +94,14 @@ router.get('/components/:component', (req, res) => {
   res.render('component', {
     name: capitalize(slug),
     uri: uri
+  });
+});
+
+router.get('/components', (req, res) => {
+  helpers.getAllComponentSandboxNames(components => {
+    res.render('components', {
+      components: components
+    });
   });
 });
 
