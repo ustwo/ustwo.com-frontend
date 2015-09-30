@@ -98,46 +98,49 @@ Clean the environment:
     $ make clean
 
 
-## Release staging
+## Release
 
 If the commit you are releasing from has been picked up by CircleCI (so you have
 an snapshot available `ustwo/usweb:app-{git hash}`) you can release with:
 
         $ make release VERSION=1.2.3
 
-If not, do it manually (only for emergencies):
+If not, do it manually (only for emergencies when you cannot wait for the CircleCI build):
 
-1. Build fresh Docker images
-
-        $ make build VERSION=x.x.x
-
-2. Publish the release
-
-        $ make push VERSION=1.2.3
-
-3. Set the right environment
-
-        $ eval $(docker-machine env ustwosite)
-
-4. Pull images
-
-        $ make pull VERSION=1.2.3
-
-5. Deploy
-
-        $ make deploy-staging VERSION=1.2.3
-
-6. Clean old images, keeping only the last known working version in case of rollback
-
-        $ make nuke VERSION=1.1.0
-
-7. Tag the release
+1. Tag the release
 
         $ make release-tag-create VERSION=1.2.3
         $ git push --tags origin master
 
+2. Build fresh Docker images
 
-## Release production
+        $ make build VERSION=x.x.x
+
+3. Publish the release
+
+        $ make push VERSION=1.2.3
+
+
+## Deploy staging
+
+1. Set the right environment
+
+        $ eval $(docker-machine env ustwosite)
+
+2. Pull images
+
+        $ make pull VERSION=1.2.3
+
+3. Deploy
+
+        $ make deploy-staging VERSION=1.2.3
+
+4. Clean old images, keeping only the last known working version in case of rollback
+
+        $ make nuke VERSION=1.2.2
+
+
+## Deploy production
 
 It assumes you followed the staging flow so the tagged images are available in
 the Docker Hub.
