@@ -28,6 +28,7 @@
     "ellipsize": "0.0.2",
     "es6-promise": "2.3.0",
     "express": "4.13.1",
+    "glob": "5.0.15",
     "he": "0.5.0",
     "isomorphic-fetch": "2.1.1",
     "lodash": "3.10.0",
