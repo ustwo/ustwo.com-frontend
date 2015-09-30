@@ -1,15 +1,14 @@
 /*
-  SUBSCRIPTION
-  So users can subscribe to the ustwo mailing list
-
-  Notes: Requires functionality and visual states to handle the full submission within the website rather
-  than the current 'first-slice' which sends the user to a mailchimp page for confirmation.
+ *  SUBSCRIPTION
+ *  So users can subscribe to the ustwo mailing list
+ *  Notes: Requires functionality and visual states to handle the full submission within the website rather
+ *  than the current 'first-slice' which sends the user to a mailchimp page for confirmation.
  */
 
 .subscription {
   $height: 400px;
   $input-height: 50px;
-  $submit-btn-width-mob: 50px;
+  $submit-button-width-small: 50px;
 
   display: flex;
   flex-direction: column;
@@ -66,6 +65,10 @@
     width: $submit-btn-width-mob;
     background: $blu;
 
+    .text {
+      display: none;
+    }
+
     &:active {
       /* TODO: Use a 'darken' function here but the sass one doesn't seem to be working. Bad-sass! */
       background: #007dc0;
@@ -84,10 +87,6 @@
       transform: rotate(-90deg) scale(0.8);
     }
   }
-  
-  .submit-text {
-    display: none;
-  }
 }
 
 @media screen and (min-width: $bp-small) {
@@ -102,15 +101,15 @@
       width: auto;
       padding: 0 20px;
 
+      .text {
+        display: inline;
+      }
+
       &:after {
         width: 13px;
         height: 10px;
         margin-left: 10px;
       }
-    }
-
-    .submit-text {
-      display: inline;
     }
   }
 }
