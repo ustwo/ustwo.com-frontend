@@ -15,8 +15,7 @@
     <main id="stage"></main>
     <script type="text/javascript">
       var React = require('react');
-      var Sandbox = React.createFactory(require('sandbox'));
-      window.view = React.render(Sandbox(), document.getElementById('stage'));
+      window.view = React.render(require('sandbox'), document.getElementById('stage'));
     </script>
   </body>
 </html>

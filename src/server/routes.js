@@ -9,8 +9,8 @@ import Helmet from 'react-helmet';
 import omit from 'lodash/object/omit';
 import capitalize from 'lodash/string/capitalize';
 
-import log from '../app/lib/log';
 import helpers from './helpers';
+import log from '../app/lib/log';
 
 const isomorphic = true;
 log('Isomorphic:', isomorphic);
