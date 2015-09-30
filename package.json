@@ -18,7 +18,7 @@
       "../../adaptors/server/scroll-magic": "./src/adaptors/client/scroll-magic",
       "../adaptors/server/proxy-url": "./src/adaptors/client/proxy-url",
       "../../adaptors/server/svg4everybody": "./src/adaptors/client/svg4everybody",
-      "../../adaptors/server/scroll-tracker": "./src/adaptors/client/scroll-tracker"
+      "../adaptors/server/scroll-tracker": "./src/adaptors/client/scroll-tracker"
     }
   },
   "dependencies": {
