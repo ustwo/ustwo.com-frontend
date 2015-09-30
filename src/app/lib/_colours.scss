@@ -1,14 +1,23 @@
+/*
+  COLOURS
+  A collection of all the colours used throughout the site as individual variables or grouped into palettes
+
+  TODO: Extract .u-{xxx} stuff at the bottom into a different component
+*/
+
+
+/* ustwo */
 $piglet      : #ED0082;
 $softPiglet  : #FFA5BE;
 $passion     : #E60C29;
-$marshPassion: #F9615B;
+$marshPassion: #F9615B; /* TODO: is there a reason we are breaking from the ustwo palette and not using softPassion ? */
 $softPassion : #FA7D78;
-$softMarsh   : #FF716C;
 $ohra        : #FF5519;
 $softOhra    : #FFC39B;
 $honey       : #FFBF02;
 $softHoney   : #F5E664;
 $jeezz       : #96CC29;
+$softJeezz   : #C8E691;
 $pot         : #14C04D;
 $softPot     : #A5FAAF;
 $mare        : #16D6D9;
@@ -18,41 +27,53 @@ $softBlu     : #A5E1FF;
 $navy        : #143FCC;
 $softNavy    : #5FB6FA;
 $rain        : #6114CC;
-$four        : #171D27;
+$softRain    : #C382E6;
+
+/* monochrome */
 $white       : #FFFFFF;
 $offWhite    : #F8F8F8;
-$grey        : #212121;
-$nonBlack    : #333333;
-$midGrey     : #BFBFBF;
 $lightGrey   : #E8E8E8;
+$midGrey     : #BFBFBF;
+$nonBlack    : #333333;
+$darkGrey    : #212121;
+
+/* other */
 $twitter     : #32abe2;
 $facebook    : #3a5998;
 
-$colours: (
-  'piglet'            $piglet      ,
-  'softPiglet'        $softPiglet  ,
-  'passion'           $passion     ,
-  'marshPassion'      $marshPassion,
-  'softPassion'       $softPassion ,
-  'ohra'              $ohra        ,
-  'honey'             $honey       ,
-  'softHoney'         $softHoney   ,
-  'jeezz'             $jeezz       ,
-  'pot'               $pot         ,
-  'softPot'           $softPot     ,
-  'mare'              $mare        ,
-  'softMare'          $softMare    ,
-  'blu'               $blu         ,
-  'softBlu'           $softBlu     ,
-  'navy'              $navy        ,
-  'rain'              $rain        ,
-  'four'              $four        ,
-  'white'             $white       ,
-  'offWhite'          $offWhite    ,
-  'grey'              $grey        ,
-  'nonBlack'          $nonBlack    ,
-  'midGrey'           $midGrey     ,
-  'lightGrey'         $lightGrey   ,
+
+
+/*
+  Palettes
+*/
+
+$ustwo-palette: (
+  piglet: $piglet,
+  softPiglet: $softPiglet,
+  passion: $passion,
+  marshPassion: $marshPassion,
+  softPassion: $softPassion,
+  ohra: $ohra,
+  softOhra: $softOhra,
+  honey: $honey,
+  softHoney: $softHoney,
+  jeezz: $jeezz,
+  softJeezz: $softJeezz,
+  pot: $pot,
+  softPot: $softPot,
+  mare: $mare,
+  softMare: $softMare,
+  blu: $blu,
+  softBlu: $softBlu,
+  navy: $navy,
+  softNavy: $softNavy,
+  rain: $rain,
+  softRain: $softRain
+);
+
+$black-white: (
+  white: $white,
+  nonBlack: $nonBlack
 );
 
 $blog-categories: (
@@ -86,7 +107,9 @@ $social-media-colours: (
   facebook: $facebook
 );
 
-@each $colour in $colours {
+
+/* Move this somewhere else */
+@each $colour in $black-white {
   $name: nth($colour, 1);
   $hex:  unquote(nth($colour, 2));
 
@@ -96,52 +119,5 @@ $social-media-colours: (
 
   .u-text-#{$name} {
     color: $hex;
-  }
-
-  .u-link-#{$name}--coloured {
-    color: #fff;
-    text-decoration: none;
-
-    &:hover {
-      color: $hex;
-    }
-  }
-
-  .u-link-#{$name}--full {
-    color: $hex;
-    text-decoration: none;
-
-    &:hover,
-    &.active {
-      // color: darken($hex, 10);
-    }
-  }
-
-  .u-link-#{$name} {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover,
-    &.active {
-      color: $hex;
-    }
-  }
-
-  .u-bar-after--#{$name} {
-    position: relative;
-
-    &:after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 99%;
-      bottom: 0px;
-      height: 2px;
-      background: $hex;
-    }
-  }
-
-  .#{$name} .swatch {
-    background-color: $hex;
   }
 }
