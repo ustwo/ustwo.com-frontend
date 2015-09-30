@@ -18,7 +18,7 @@ export default class Subscription extends React.Component {
           <div style={{ position: "absolute", left: -5000 }}>
             <input type="text" name="b_7f1269c0305abed7c91a24b97_e6835a8563" tabIndex="-1" value="" />
           </div>
-          <button className="submit" type="submit"><span className="text">Subscribe</span></button>
+          <button className="submit" type="submit"><span className="submit-text">Subscribe</span></button>
         </form>
       </div>
     );
