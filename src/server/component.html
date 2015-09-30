@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= name %> sandbox</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <script src="<%= uri %>" type="text/javascript"></script>
+    <style>
+      html {
+        background: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="stage"></main>
+    <script type="text/javascript">
+      var React = require('react');
+      window.view = React.render(require('sandbox'), document.getElementById('stage'));
+    </script>
+  </body>
+</html>
