@@ -52,38 +52,25 @@ var tasks = {
   // --------------------------
   // SASS (libsass)
   // --------------------------
-  sass: function() {
+  sass: function () {
     return gulp.src([
       'src/app/index.scss'
     ])
-      // sourcemaps + sass + error handling
-      .pipe(sourcemaps.init())
+      .pipe(sourcemaps.init({
+        debug: true,
+        loadMaps: true
+      }))
       .pipe(sass({
         includePaths: ['src/app/components', 'src/app/libs'],
         errLogToConsole: true,
         sourceComments: !production,
         outputStyle: (production ? 'compressed' : 'nested')
       }))
-      .on('error', function(err) {
+      .on('error', function (err) {
         sass.logError.bind(this, err)();
       })
-      // generate .maps
-      .pipe(sourcemaps.write({
-        'includeContent': false,
-        'sourceRoot': '.'
-      }))
-      // autoprefixer
-      .pipe(sourcemaps.init({
-        'loadMaps': true
-      }))
       .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
-      // we don't serve the source files
-      // so include scss content inside the sourcemaps
-      .pipe(sourcemaps.write({
-        'includeContent': true
-      }))
-      // write sourcemaps to a specific directory
-      // give it a file and save
+      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('public/css'));
   },
   // --------------------------
