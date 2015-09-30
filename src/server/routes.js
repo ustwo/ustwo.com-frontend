@@ -6,6 +6,7 @@ import Helmet from 'react-helmet';
 import omit from 'lodash/object/omit';
 
 import log from '../app/lib/log';
+import helpers from './helpers';
 
 const isomorphic = true;
 log('Isomorphic:', isomorphic);
@@ -43,6 +44,14 @@ function renderApp(req, res) {
       });
   }
 }
+
+router.get('/components', (req, res) => {
+  helpers.getAllComponentSandboxNames(components => {
+    res.render('components', {
+      components: components
+    });
+  });
+});
 
 router.post('/blog/search', renderApp);
 router.get('/*', renderApp);
