@@ -54,13 +54,12 @@ var tasks = {
   // --------------------------
   sass: function() {
     return gulp.src([
-      'src/app/index.scss',
-      'src/app/lib/*.scss',
-      'src/app/**/_index.scss'
+      'src/app/index.scss'
     ])
       // sourcemaps + sass + error handling
       .pipe(sourcemaps.init())
       .pipe(sass({
+        includePaths: ['src/app/components', 'src/app/libs'],
         errLogToConsole: true,
         sourceComments: !production,
         outputStyle: (production ? 'compressed' : 'nested')
