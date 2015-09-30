@@ -16,7 +16,7 @@ export default (moduleData, colours, getZebra) => {
       module = <SingleColumn key={`module-text-${get(moduleData, 'attr.heading.value')}`} title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')} backgroundColour={!getZebra() && get(colours, 'bg')}>{get(moduleData, 'attr.body.value')}</SingleColumn>;
       break;
     case 'image':
-      module = <FullImage key={`module-image`} sizes={get(moduleData, 'attr.image.value.0.sizes')} />;
+      module = <FullImage key={`module-image-${get(moduleData, 'attr.image.value.0.id')}`} sizes={get(moduleData, 'attr.image.value.0.sizes')} />;
       break;
     case 'blockquote':
       module = (

@@ -23,7 +23,7 @@
       "../adaptors/server/env": "./src/app/adaptors/client/env",
       "../../adaptors/server/env": "./src/app/adaptors/client/env",
       "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
-      "../../adaptors/server/window": "./src/app/adaptors/client/window",
+      "../adaptors/server/window": "./src/app/adaptors/client/window",
       "../../adaptors/server/scroll-magic": "./src/app/adaptors/client/scroll-magic",
       "../adaptors/server/proxy-url": "./src/app/adaptors/client/proxy-url",
       "../../adaptors/server/svg4everybody": "./src/app/adaptors/client/svg4everybody",
