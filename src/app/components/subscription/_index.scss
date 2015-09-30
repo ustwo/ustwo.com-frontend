@@ -1,23 +1,28 @@
 /*
- * SUBSCRIPTION
- * Users can subscribe to ustwo emails
- *
- *
+ *  SUBSCRIPTION
+ *  So users can subscribe to the ustwo mailing list
+ *  Notes: Requires functionality and visual states to handle the full submission within the website rather
+ *  than the current 'first-slice' which sends the user to a mailchimp page for confirmation.
  */
 
 .subscription {
+  $height: 400px;
+  $input-height: 50px;
+  $submit-button-width-small: 50px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 400px;
-  border-bottom: 1px solid #323232;
+  height: $height;
+  border-bottom: 1px solid $nonBlack;
 
+  /* SVG */
   .icon {
-    fill: #fff;
     width: 90px;
     height: 70px;
     margin-bottom: 30px;
+    fill: $white;
   }
 
   h3,
@@ -36,8 +41,8 @@
 
   form {
     display: flex;
-    padding: 0 10px;
     width: 320px;
+    padding: 0 10px;
   }
 
   .label {
@@ -47,7 +52,7 @@
   .email,
   .submit,
   .submit:after {
-    height: 50px;
+    height: $input-height;
   }
 
   .email {
@@ -57,28 +62,29 @@
   }
 
   .submit {
-    width: 50px;
+    width: $submit-btn-width-mob;
     background: $blu;
-
-    &:active {
-      /* TODO: Use a 'darken' function here but the sass one doesn't seem to be working. Bad sass! */
-      background: #007dc0;
-    }
 
     .text {
       display: none;
     }
 
+    &:active {
+      /* TODO: Use a 'darken' function here but the sass one doesn't seem to be working. Bad-sass! */
+      background: #007dc0;
+    }
+
     &:after {
+      @include arrow-icon($white);
+
       content: "";
       position: relative;
       display: inline-block;
-      width: 50px;
-      @include arrow-icon(#fff);
-      transform: rotate(-90deg) scale(0.8);
+      width: $submit-btn-width-mob;
       background-size: 13px 10px;
       background-repeat: no-repeat;
       background-position: 50%;
+      transform: rotate(-90deg) scale(0.8);
     }
   }
 }
