@@ -1,9 +1,13 @@
+import browserify from 'browserify';
+import babelify from 'babelify';
+import aliasify from 'aliasify';
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
 import Helmet from 'react-helmet';
 import omit from 'lodash/object/omit';
+import capitalize from 'lodash/string/capitalize';
 
 import log from '../app/lib/log';
 import helpers from './helpers';
@@ -44,6 +48,51 @@ function renderApp(req, res) {
       });
   }
 }
+
+router.get('/components/:component.js', (req, res, next) => {
+  const basepath = path.join(__dirname);
+  console.log('basepath', basepath);
+  const filename = path.join(basepath, '../app/components', req.params.component, 'index.js');
+  const sandbox = path.join(basepath, '../app/components', req.params.component, 'sandbox.js');
+  const b = browserify();
+  b.transform(babelify.configure({
+      optional: ["es7.classProperties"]
+  }));
+  // b.transform(aliasify, require('../../package.json').aliasify)
+
+  b.require('react', {expose: 'react'});
+  b.require(filename, {expose: 'index'});
+  b.require(sandbox, {expose: 'sandbox'});
+
+  res.setHeader('content-type', 'text/javascript');
+
+  // catch file system errors, such as test.js being unreadable
+  b.on('error', (error) => {
+    console.error('browserify error', error);
+
+    res.send('console.error(\'' + errorMessage + '\');');
+  });
+
+  b.bundle()
+    .on('error', (error) => {
+      console.log("b.bundle() error", error);
+
+      const errorMessage = [error.name, ': "', error.description, '" in ', error.filename, ' at line number ', error.lineNumber].join('');
+      // due to Chrome not displaying response data in non 200 states need to expose the error message via a console.error
+      res.send('console.error(\'' + errorMessage + '\');');
+    })
+    .pipe(res);
+});
+
+router.get('/components/:component', (req, res) => {
+  const slug = req.params.component;
+  const uri = `/components/${slug}.js`;
+
+  res.render('component', {
+    name: capitalize(slug),
+    uri: uri
+  });
+});
 
 router.get('/components', (req, res) => {
   helpers.getAllComponentSandboxNames(components => {
