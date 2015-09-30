@@ -4,9 +4,9 @@ import find from 'lodash/collection/find';
 import mapValues from 'lodash/object/mapValues';
 import camelCase from 'lodash/string/camelCase';
 
-import {Modernizr} from '../../server/adaptors/env';
-import Track from '../../server/adaptors/track';
-import window from '../../server/adaptors/window';
+import {Modernizr} from '../adaptors/server/env';
+import Track from '../adaptors/server/track';
+import window from '../adaptors/server/window';
 
 import virtualUrl from './virtualurl';
 import Routes from './routes';

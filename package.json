@@ -4,21 +4,21 @@
   "private": true,
   "aliasify": {
     "aliases": {
-      "../../server/adaptors/track": "./src/client/adaptors/track",
-      "../server/adaptors/tween-max": "./src/client/adaptors/tween-max",
-      "../../server/adaptors/tween-max": "./src/client/adaptors/tween-max",
-      "../server/adaptors/scroll-to-plugin": "./src/client/adaptors/scroll-to-plugin",
-      "../server/adaptors/localfont": "./src/client/adaptors/localfont",
-      "../server/adaptors/tracking": "./src/client/adaptors/tracking",
-      "../../server/adaptors/tracking": "./src/client/adaptors/tracking",
-      "../server/adaptors/env": "./src/client/adaptors/env",
-      "../../server/adaptors/env": "./src/client/adaptors/env",
+      "../../adaptors/server/track": "./src/adaptors/client/track",
+      "../adaptors/server/tween-max": "./src/adaptors/client/tween-max",
+      "../../adaptors/server/tween-max": "./src/adaptors/client/tween-max",
+      "../../adaptors/server/scroll-to-plugin": "./src/adaptors/client/scroll-to-plugin",
+      "../../adaptors/server/localfont": "./src/adaptors/client/localfont",
+      "../adaptors/server/tracking": "./src/adaptors/client/tracking",
+      "../../adaptors/server/tracking": "./src/adaptors/client/tracking",
+      "../adaptors/server/env": "./src/adaptors/client/env",
+      "../../adaptors/server/env": "./src/adaptors/client/env",
       "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
-      "../../server/adaptors/window": "./src/client/adaptors/window",
-      "../../server/adaptors/scroll-magic": "./src/client/adaptors/scroll-magic",
-      "../../server/adaptors/proxy-url": "./src/client/adaptors/proxy-url",
-      "../server/adaptors/svg4everybody": "./src/client/adaptors/svg4everybody",
-      "../../server/adaptors/scroll-tracker": "./src/client/adaptors/scroll-tracker"
+      "../../adaptors/server/window": "./src/adaptors/client/window",
+      "../../adaptors/server/scroll-magic": "./src/adaptors/client/scroll-magic",
+      "../adaptors/server/proxy-url": "./src/adaptors/client/proxy-url",
+      "../../adaptors/server/svg4everybody": "./src/adaptors/client/svg4everybody",
+      "../adaptors/server/scroll-tracker": "./src/adaptors/client/scroll-tracker"
     }
   },
   "dependencies": {

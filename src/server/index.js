@@ -17,7 +17,7 @@ app.set('host', process.env.VIRTUAL_HOST || ('http://localhost:' + app.get('port
 app.set('x-powered-by', false);
 app.engine('html', cons.lodash);
 app.set('view engine', 'html');
-app.set('views', path.join(__dirname, '../templates'));
+app.set('views', path.join(__dirname, './'));
 
 app.use('/', routes);
 

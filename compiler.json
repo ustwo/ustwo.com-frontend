@@ -9,25 +9,25 @@
     "dev": "gulp start --dev && npm run start",
     "styleguide": "gulp start --styleguide --dev && npm run start",
     "css": "gulp css --dev",
-    "test": "mocha --compilers js:./src/app/_lib/testdom.js,js:babel/register $(find test -name '*.js')"
+    "test": "mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test -name '*.js')"
   },
   "aliasify": {
     "aliases": {
-      "../../server/adaptors/track": "./src/client/adaptors/track",
-      "../server/adaptors/tween-max": "./src/client/adaptors/tween-max",
-      "../../server/adaptors/tween-max": "./src/client/adaptors/tween-max",
-      "../server/adaptors/scroll-to-plugin": "./src/client/adaptors/scroll-to-plugin",
-      "../server/adaptors/localfont": "./src/client/adaptors/localfont",
-      "../server/adaptors/tracking": "./src/client/adaptors/tracking",
-      "../../server/adaptors/tracking": "./src/client/adaptors/tracking",
-      "../server/adaptors/env": "./src/client/adaptors/env",
-      "../../server/adaptors/env": "./src/client/adaptors/env",
+      "../../adaptors/server/track": "./src/app/adaptors/client/track",
+      "../adaptors/server/tween-max": "./src/app/adaptors/client/tween-max",
+      "../../adaptors/server/tween-max": "./src/app/adaptors/client/tween-max",
+      "../../adaptors/server/scroll-to-plugin": "./src/app/adaptors/client/scroll-to-plugin",
+      "../../adaptors/server/localfont": "./src/app/adaptors/client/localfont",
+      "../adaptors/server/tracking": "./src/app/adaptors/client/tracking",
+      "../../adaptors/server/tracking": "./src/app/adaptors/client/tracking",
+      "../adaptors/server/env": "./src/app/adaptors/client/env",
+      "../../adaptors/server/env": "./src/app/adaptors/client/env",
       "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
-      "../../server/adaptors/window": "./src/client/adaptors/window",
-      "../../server/adaptors/scroll-magic": "./src/client/adaptors/scroll-magic",
-      "../../server/adaptors/proxy-url": "./src/client/adaptors/proxy-url",
-      "../server/adaptors/svg4everybody": "./src/client/adaptors/svg4everybody",
-      "../../server/adaptors/scroll-tracker": "./src/client/adaptors/scroll-tracker"
+      "../../adaptors/server/window": "./src/app/adaptors/client/window",
+      "../../adaptors/server/scroll-magic": "./src/app/adaptors/client/scroll-magic",
+      "../adaptors/server/proxy-url": "./src/app/adaptors/client/proxy-url",
+      "../../adaptors/server/svg4everybody": "./src/app/adaptors/client/svg4everybody",
+      "../adaptors/server/scroll-tracker": "./src/app/adaptors/client/scroll-tracker"
     }
   },
   "babel": {

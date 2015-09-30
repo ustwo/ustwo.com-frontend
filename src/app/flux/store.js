@@ -3,12 +3,12 @@ import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
 import capitalize from 'lodash/string/capitalize';
 
-import Log from '../_lib/log';
-import window from '../../server/adaptors/window';
-import DataLoader from '../../server/adaptors/data-loader';
-import Nulls from '../flux/nulls';
-import Defaults from '../flux/defaults';
-import fetchSocialMediaData from '../_lib/social-media-fetcher';
+import Log from '../lib/log';
+import window from '../adaptors/server/window';
+import DataLoader from '../adaptors/server/data-loader';
+import Nulls from './nulls';
+import Defaults from './defaults';
+import fetchSocialMediaData from '../lib/social-media-fetcher';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
