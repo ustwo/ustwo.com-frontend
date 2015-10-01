@@ -62,7 +62,7 @@
   }
 
   .submit {
-    width: $submit-btn-width-mob;
+    width: $submit-button-width-small;
     background: $blu;
 
     .text {
@@ -80,7 +80,7 @@
       content: "";
       position: relative;
       display: inline-block;
-      width: $submit-btn-width-mob;
+      width: $submit-button-width-small;
       background-size: 13px 10px;
       background-repeat: no-repeat;
       background-position: 50%;
