@@ -95,7 +95,7 @@ var tasks = {
   // --------------------------
   spa: function () {
     var bundler = browserify({
-                    debug: true,
+                    debug: !production,
                     // insertGlobals: false,
                     // detectGlobals: false,
                     cache: {},
