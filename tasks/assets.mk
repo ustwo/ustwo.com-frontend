@@ -56,6 +56,11 @@ assets-css:
 	@echo "Compiling css"
 	$(call compile, npm run $(compile_cmd))
 
+assets-css-watch:
+	@echo "Watching css"
+	$(call compile, npm run css-watch)
+
+
 assets-vendors:
 	@echo "Compiling vendors"
 	$(call compile, npm run vendors)

@@ -10,7 +10,7 @@
     "spa-verbose": "gulp spa --verbose",
     "css": "gulp css",
     "css-verbose": "gulp css --verbose",
-    "css-watch": "gulp css:watch",
+    "css-watch": "gulp css:watch --verbose",
     "start": "babel-node --optional es7.classProperties src/server",
     "test": "mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test -name '*.js')"
   },

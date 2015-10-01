@@ -76,3 +76,6 @@ This does not work in production as the logs are stored in `/var/log/syslog`.
 * `app-sh`: Opens a shell to inspect the `app` container.
 * `assets-compile`: Compiles assets.
 * `assets-css`: Compiles css.
+* `assets-css-watch`: Compiles css watching for changes.
+* `assets-spa`: Compiles the react application.
+* `assets-vendors`: Compiles the react dependencies.
