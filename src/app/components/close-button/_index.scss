@@ -1,4 +1,12 @@
-.nav__overlay__close-button {
+/*
+ *  CLOSE BUTTON
+ *  Animated X button found in modals and takeover
+ *
+ *  Notes: Just the base style. This is extended with another class when
+ *  inserting the component
+ */
+
+.close-button {
   @extend %button__bare;
   display: inline-block;
   width: 60px;

@@ -67,10 +67,8 @@
       }
 
       @each $category, $colour in $blog-categories {
-        &.#{$category} {
-          &:after {
-            background-color: #{$colour};
-          }
+        &.#{$category}:after {
+          background-color: #{$colour};
         }
       }
 
@@ -94,7 +92,7 @@
   }
 }
 
-@include susy-breakpoint($bp-medium, $susy) {
+@media screen and (min-width: $bp-medium) {
 
   /* The modal wrapper. Move out of the component and into blog? */
   .modal-blog-categories {
