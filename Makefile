@@ -71,7 +71,7 @@ deploy-staging: deploy-production
 release: release-create
 css: assets-css
 css-watch: assets-css-watch
-vendors: assets-verndors
+vendors: assets-vendors
 spa: assets-spa
 
 seeds: build
