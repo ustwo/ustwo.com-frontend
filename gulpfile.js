@@ -21,11 +21,9 @@ var babelify = require('babelify');
 var aliasify = require('aliasify');
 var source = require('vinyl-source-stream');
 
-// production flag
-var production = !argv.dev;
-var styleguide = argv.styleguide;
+var verbose = !!argv.verbose;
 
-gutil.log(gutil.colors.bgGreen('Flags:', 'production:', production, "styleguide:", styleguide));
+gutil.log(gutil.colors.bgGreen('Flags:', 'verbose:', verbose));
 
 // ----------------------------
 // Error notification methods
@@ -43,25 +41,22 @@ var tasks = {
   // --------------------------
   // SASS (libsass)
   // --------------------------
-  sass: function () {
+  css: function () {
     return gulp.src([
       'src/app/index.scss'
     ])
-      .pipe(sourcemaps.init({
-        debug: true,
-        loadMaps: true
-      }))
+      .pipe(sourcemaps.init({debug: verbose,}))
       .pipe(sass({
         includePaths: ['src/app/components', 'src/app/libs'],
         errLogToConsole: true,
-        sourceComments: !production,
-        outputStyle: (production ? 'compressed' : 'nested')
+        sourceComments: !verbose,
+        outputStyle: (verbose ? 'nested' : 'compressed')
       }))
       .on('error', function (err) {
         sass.logError.bind(this, err)();
       })
       .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
-      .pipe(sourcemaps.write('.'))
+      .pipe(gulpif(verbose, sourcemaps.write()))
       .pipe(gulp.dest('public/css'));
   },
   vendors: function () {
@@ -83,7 +78,7 @@ var tasks = {
   // --------------------------
   spa: function () {
     var bundler = browserify({
-                    debug: !production,
+                    debug: verbose,
                     // insertGlobals: false,
                     // detectGlobals: false,
                     cache: {},
@@ -101,7 +96,7 @@ var tasks = {
             .on('error', handleError('Browserify'))
             .pipe(source('app.js'))
             .pipe(buffer())
-            .pipe(gulpif(production, uglify()))
+            .pipe(gulpif(!verbose, uglify()))
             .pipe(gulp.dest('public/js'));
             // .pipe(fs.createWriteStream(path.join(__dirname,
             //                                      'public/js/app.js'), 'utf8'));
@@ -109,7 +104,7 @@ var tasks = {
   // --------------------------
   // React style guide
   // --------------------------
-  reactstyleguide: function() {
+  styleguide: function() {
     var bundler = browserify({
       debug: true, // Sourcemapping
       cache: {},
@@ -127,7 +122,7 @@ var tasks = {
         .on('error', handleError('Browserify'))
         .pipe(source('styleguide.js'))
         .pipe(buffer())
-        .pipe(gulpif(production, uglify()))
+        .pipe(gulpif(!verbose, uglify()))
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('public/js/'));
@@ -138,13 +133,13 @@ var tasks = {
   // --------------------------
   // Optimize asset images
   // --------------------------
-  assets: function() {
+  assets: function () {
     gulp.src('src/app/images/**/*.{gif,jpg,png,svg}')
       .pipe(gulp.dest('public/images'));
     gulp.src('src/app/images/favicon.{png,ico}')
         .pipe(gulp.dest('public'));
   },
-  data: function() {
+  data: function () {
     return gulp.src('src/data/**/*.json')
       .pipe(gulp.dest('public/data')
     );
@@ -155,7 +150,8 @@ var tasks = {
 // CUSTOMS TASKS
 // --------------------------
 gulp.task('assets', tasks.assets);
-gulp.task('sass', tasks.sass);
+gulp.task('css', tasks.css);
+gulp.task('css:watch', tasks.cssWatch);
 gulp.task('vendors', tasks.vendors);
 gulp.task('spa', tasks.spa);
 gulp.task('styleguide', tasks.styleguide);
@@ -163,7 +159,7 @@ gulp.task('data', tasks.data);
 
 // build task
 gulp.task('build', ['assets',
-                    'sass',
+                    'css',
                     'vendors',
                     'spa',
                     // 'styleguide',
@@ -172,12 +168,12 @@ gulp.task('build', ['assets',
 // --------------------------
 // CSS ONLY WATCH TASK
 // --------------------------
-gulp.task('css', function() {
+gulp.task('css:watch', function () {
 
   // --------------------------
   // watch:sass
   // --------------------------
-  gulp.watch(['src/app/**/*.scss'], ['sass']);
+  gulp.watch(['src/app/**/*.scss'], ['css']);
 
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
