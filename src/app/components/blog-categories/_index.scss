@@ -1,12 +1,22 @@
-.blog-categories-container {
-  background: $offWhite;
+/*
+ *  BLOG CATEGORIES
+ *  Users can filter blog posts by category
+
+ *  Notes: This is not the dropdown component, but just the list itself. It opens
+ *  up inside a modal (fullscreen on small screens, then a more conventional looking
+ *  dropdown list on larger screens).
+ *  TODO: set variables in the scope of the component (but keeping some globalised)
+ */
+
+.blog-categories {
   height: 100%;
+  background: $offWhite;
 
   .close-button {
     width: 100%;
     height: $dropdown-close-height;
-    border: 0;
     padding: 0;
+    border: 0;
     background: #fff;
 
     svg {
@@ -17,30 +27,27 @@
 
     &:focus {
       -webkit-focus-ring-color: rgba(0,0,0,0);
-      outline: none;
       outline: 0;
     }
   }
 
-  .blog-categories {
-    list-style-type: none;
+  .scroll-wrapper {
+    height: calc(100% - #{$dropdown-close-height});
+    overflow: scroll;
+  }
+
+  .list {
     margin: 0;
     padding: 0;
     clear: both;
+    list-style-type: none;
 
     li {
       position: relative;
-      height: $blog-controls-line-height;
-      line-height: $blog-controls-line-height;
-      background-color: $offWhite;
       width: auto;
-
-      a {
-        display: block;
-        width: 100%;
-        height: 100%;
-        padding: 0 $blog-controls-horizontal-padding;
-      }
+      height: $blog-controls-line-height;
+      background-color: $offWhite;
+      line-height: $blog-controls-line-height;
 
       &:hover {
         background-color: $nonBlack;
@@ -48,15 +55,15 @@
       }
 
       &:after {
-        position: absolute;
-        right: $blog-controls-horizontal-padding;
-        top: 50%;
         content: "";
+        position: absolute;
+        top: 50%;
+        right: $blog-controls-horizontal-padding;
         display: block;
         width: $blog-controls-tag-size;
         height: $blog-controls-tag-size;
+        margin-top: -($blog-controls-tag-size * .5);
         border-radius: 50%;
-        margin-top: -($blog-controls-tag-size * .5)
       }
 
       @each $category, $colour in $blog-categories {
@@ -77,45 +84,45 @@
         }
       }
     }
-  }
 
-  .scroll-wrapper {
-    height: calc(100% - #{$dropdown-close-height});
-    overflow: scroll;
-  }
-
-
-  @include susy-breakpoint($bp-medium, $susy) {
-    height: auto;
-
-    .close-button {
-      display: none;
-    }
-
-    .blog-categories li {
-      width: $blog-controls-item-width;
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 0 $blog-controls-horizontal-padding;
     }
   }
 }
 
 @include susy-breakpoint($bp-medium, $susy) {
-  .modal.blog-categories {
+
+  /* The modal wrapper. Move out of the component and into blog? */
+  .modal-blog-categories {
     position: absolute;
     background: transparent;
     cursor: default;
+  }
 
-    .blog-categories-container {
-      position: absolute;
-      top: calc(100% + #{$blog-margin-offset} - #{$blog-controls-margin-bottom} - #{$blog-controls-dropdown-offset});
-      left: 50%;
-      margin-left: - $blog-controls-search-width - ($blog-controls-search-margin * .5);
-      box-shadow: 0 0 4px 2px rgba(0,0,0,.1);
-      cursor: pointer;
+  .blog-categories {
+    position: absolute;
+    top: calc(100% + #{$blog-margin-offset} - #{$blog-controls-margin-bottom} - #{$blog-controls-dropdown-offset});
+    left: 50%;
+    height: auto;
+    margin-left: - $blog-controls-search-width - ($blog-controls-search-margin * .5);
+    box-shadow: 0 0 4px 2px rgba(0,0,0,.1);
+    cursor: pointer;
 
-      .scroll-wrapper {
-        height: auto;
-        overflow: auto;
-      }
+    .close-button {
+      display: none;
+    }
+
+    .scroll-wrapper {
+      height: auto;
+      overflow: auto;
+    }
+
+    .list li {
+      width: $blog-controls-item-width;
     }
   }
 }

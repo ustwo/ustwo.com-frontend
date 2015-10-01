@@ -23,10 +23,10 @@ const blogCategories = {
 export default class BlogCategories extends React.Component {
   render() {
     return (
-      <div className='blog-categories-container' onClick={onClickContent}>
+      <div className='blog-categories' onClick={onClickContent}>
         <CloseButton onClose={this.onClickClose} autoAnim={500} />
         <div className="scroll-wrapper">
-          <ul className='blog-categories'>{this.renderBlogCategories()}</ul>
+          <ul className='list'>{this.renderBlogCategories()}</ul>
         </div>
       </div>
     );
