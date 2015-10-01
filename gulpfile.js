@@ -168,7 +168,7 @@ gulp.task('build', ['assets',
 // --------------------------
 // CSS ONLY WATCH TASK
 // --------------------------
-gulp.task('css:watch', function () {
+gulp.task('css:watch', ['css'], function () {
 
   // --------------------------
   // watch:sass
