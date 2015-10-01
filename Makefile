@@ -68,8 +68,11 @@ deploy-production:
 		PROXY_HTTPS_PORT=443 \
 		PROXY_HTTP_PORT=80
 deploy-staging: deploy-production
-css: assets-css
 release: release-create
+css: assets-css
+css-watch: assets-css-watch
+vendors: assets-verndors
+spa: assets-spa
 
 seeds: build
 love: clean init

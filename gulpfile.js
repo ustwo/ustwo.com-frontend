@@ -1,13 +1,13 @@
 'use strict';
+var path = require('path');
+var fs = require('fs');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var del = require('del');
 var uglify = require('gulp-uglify');
 var gulpif = require('gulp-if');
 var exec = require('child_process').exec;
 var buffer = require('vinyl-buffer');
 var argv = require('yargs').argv;
-var sourcemaps = require('gulp-sourcemaps');
 
 // sass
 var sass = require('gulp-sass');
@@ -20,17 +20,15 @@ var babelify = require('babelify');
 var aliasify = require('aliasify');
 var source = require('vinyl-source-stream');
 
-// production flag
-var production = !argv.dev;
-var styleguide = argv.styleguide;
+var verbose = !!argv.verbose;
 
-gutil.log(gutil.colors.bgGreen('Flags:', 'production:', production, "styleguide:", styleguide));
+gutil.log(gutil.colors.bgGreen('Flags:', 'verbose:', verbose));
 
 // ----------------------------
 // Error notification methods
 // ----------------------------
-var handleError = function(task) {
-  return function(err) {
+function handleError(task) {
+  return function (err) {
     gutil.log(gutil.colors.bgRed(task + ' error:'), gutil.colors.red(err));
   };
 };
@@ -40,101 +38,74 @@ var handleError = function(task) {
 // --------------------------
 var tasks = {
   // --------------------------
-  // Delete build folder
-  // --------------------------
-  clean: function() {
-    del.sync(['public']);
-
-    return gulp.src('node_modules/.gitignore')
-      .pipe(gulp.dest('public/')
-    );
-  },
-  // --------------------------
   // SASS (libsass)
   // --------------------------
-  sass: function() {
+  css: function () {
     return gulp.src([
       'src/app/index.scss'
     ])
-      // sourcemaps + sass + error handling
-      .pipe(sourcemaps.init())
       .pipe(sass({
         includePaths: ['src/app/components', 'src/app/libs'],
         errLogToConsole: true,
-        sourceComments: !production,
-        outputStyle: (production ? 'compressed' : 'nested')
+        sourceMap: verbose,
+        sourceMapContents: verbose,
+        sourceComments: verbose,
+        sourceMapEmbed: verbose,
+        outFile: (verbose ? 'public/css/index.css' : null),
+        outputStyle: (verbose ? 'nested' : 'compressed')
       }))
-      .on('error', function(err) {
+      .on('error', function (err) {
         sass.logError.bind(this, err)();
       })
-      // generate .maps
-      .pipe(sourcemaps.write({
-        'includeContent': false,
-        'sourceRoot': '.'
-      }))
-      // autoprefixer
-      .pipe(sourcemaps.init({
-        'loadMaps': true
-      }))
       .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
-      // we don't serve the source files
-      // so include scss content inside the sourcemaps
-      .pipe(sourcemaps.write({
-        'includeContent': true
-      }))
-      // write sourcemaps to a specific directory
-      // give it a file and save
       .pipe(gulp.dest('public/css'));
   },
-  // --------------------------
-  // Reactify
-  // --------------------------
-  reactify: function() {
+  vendors: function () {
     // Create a separate vendor bundler that will only run when starting gulp
-    var vendorBundler = browserify({
-      debug: !production // Sourcemapping
-    })
-    .require('babelify/polyfill')
-    .require('react')
-    .require('svg4everybody');
+    var bundler = browserify({noParse: false})
+                    .require('babelify/polyfill')
+                    .require('react')
+                    .require('svg4everybody');
 
+    return bundler.bundle()
+            .on('error', handleError('Browserify'))
+            .pipe(source('vendors.js'))
+            .pipe(buffer())
+            .pipe(uglify({preserveComments: 'license'}))
+            .pipe(gulp.dest('public/js'));
+  },
+  // --------------------------
+  // SPA (Single Page Application compilation)
+  // --------------------------
+  spa: function () {
     var bundler = browserify({
-      debug: true, // Sourcemapping
-      cache: {},
-      packageCache: {}
-    })
-    .require(require.resolve('./src/app/index.js'), { entry: true })
-    .transform(babelify.configure({
-        optional: ["es7.classProperties"]
-    }))
-    .transform(aliasify, require('./package.json').aliasify)
-    .external('babelify/polyfill')
-    .external('react')
-    .external('svg4everybody');
+                    debug: verbose,
+                    // insertGlobals: false,
+                    // detectGlobals: false,
+                    cache: {},
+                    packageCache: {}})
+                  .require(require.resolve('./src/app/index.js'),
+                           { entry: true })
+                  .transform(babelify.configure({
+                      optional: ["es7.classProperties"]}))
+                  .transform(aliasify, require('./package.json').aliasify)
+                  .external('babelify/polyfill')
+                  .external('react')
+                  .external('svg4everybody');
 
-    var bundle = function() {
-      return bundler.bundle()
-        .on('error', handleError('Browserify'))
-        .pipe(source('app.js'))
-        .pipe(buffer())
-        .pipe(gulpif(production, uglify()))
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('public/js/'));
-    };
-
-    vendorBundler.bundle()
-      .pipe(source('vendors.js'))
-      .pipe(buffer())
-      .pipe(gulpif(production, uglify()))
-      .pipe(gulp.dest('public/js/'));
-
-    return bundle();
+    return bundler.bundle()
+            .on('error', handleError('Browserify'))
+            .pipe(source('app.js'))
+            .pipe(buffer())
+            .pipe(gulpif(!verbose, uglify()))
+            .pipe(gulp.dest('public/js'));
+            // .pipe(fs.createWriteStream(path.join(__dirname,
+            //                                      'public/js/app.js'), 'utf8'));
   },
   // --------------------------
   // React style guide
   // --------------------------
-  reactstyleguide: function() {
+  styleguide: function() {
     var bundler = browserify({
       debug: true, // Sourcemapping
       cache: {},
@@ -152,7 +123,7 @@ var tasks = {
         .on('error', handleError('Browserify'))
         .pipe(source('styleguide.js'))
         .pipe(buffer())
-        .pipe(gulpif(production, uglify()))
+        .pipe(gulpif(!verbose, uglify()))
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('public/js/'));
@@ -163,58 +134,48 @@ var tasks = {
   // --------------------------
   // Optimize asset images
   // --------------------------
-  assets: function() {
+  assets: function () {
     gulp.src('src/app/images/**/*.{gif,jpg,png,svg}')
       .pipe(gulp.dest('public/images'));
     gulp.src('src/app/images/favicon.{png,ico}')
         .pipe(gulp.dest('public'));
   },
-  data: function() {
+  data: function () {
     return gulp.src('src/data/**/*.json')
       .pipe(gulp.dest('public/data')
     );
-  },
-  serve: function(cb) {
-    return exec('./node_modules/.bin/babel-node src/server/index.js', function (err, stdout, stderr) {
-      console.log(stdout);
-      console.log(stderr);
-      cb(err);
-    });
   }
 };
 
 // --------------------------
 // CUSTOMS TASKS
 // --------------------------
-gulp.task('clean', tasks.clean);
 gulp.task('assets', tasks.assets);
-gulp.task('sass', tasks.sass);
-gulp.task('reactify', tasks.reactify);
-gulp.task('reactstyleguide', tasks.reactstyleguide);
+gulp.task('css', tasks.css);
+gulp.task('css:watch', tasks.cssWatch);
+gulp.task('vendors', tasks.vendors);
+gulp.task('spa', tasks.spa);
+gulp.task('styleguide', tasks.styleguide);
 gulp.task('data', tasks.data);
-gulp.task('serve', ['build'], tasks.serve);
-gulp.task('start', ['clean', 'build']);
 
 // build task
-gulp.task('build', [
-  'assets',
-  'sass',
-  'reactify',
-  // 'reactstyleguide',
-  'data'
-]);
+gulp.task('build', ['assets',
+                    'css',
+                    'vendors',
+                    'spa',
+                    'data']);
 
 // --------------------------
 // CSS ONLY WATCH TASK
 // --------------------------
-gulp.task('css', function() {
+gulp.task('css:watch', function () {
 
   // --------------------------
   // watch:sass
   // --------------------------
-  gulp.watch(['src/app/**/*.scss'], ['sass']);
+  gulp.watch(['src/app/**/*.scss'], ['css']);
 
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
 
-gulp.task('default', ['start']);
+gulp.task('default', ['build']);
