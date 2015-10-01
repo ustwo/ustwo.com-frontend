@@ -8,7 +8,6 @@ var gulpif = require('gulp-if');
 var exec = require('child_process').exec;
 var buffer = require('vinyl-buffer');
 var argv = require('yargs').argv;
-var sourcemaps = require('gulp-sourcemaps');
 
 // sass
 var sass = require('gulp-sass');
@@ -45,18 +44,20 @@ var tasks = {
     return gulp.src([
       'src/app/index.scss'
     ])
-      .pipe(sourcemaps.init({debug: verbose,}))
       .pipe(sass({
         includePaths: ['src/app/components', 'src/app/libs'],
         errLogToConsole: true,
-        sourceComments: !verbose,
+        sourceMap: verbose,
+        sourceMapContents: verbose,
+        sourceComments: verbose,
+        sourceMapEmbed: verbose,
+        outFile: (verbose ? 'public/css/index.css' : null),
         outputStyle: (verbose ? 'nested' : 'compressed')
       }))
       .on('error', function (err) {
         sass.logError.bind(this, err)();
       })
       .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
-      .pipe(gulpif(verbose, sourcemaps.write()))
       .pipe(gulp.dest('public/css'));
   },
   vendors: function () {
@@ -162,7 +163,6 @@ gulp.task('build', ['assets',
                     'css',
                     'vendors',
                     'spa',
-                    // 'styleguide',
                     'data']);
 
 // --------------------------

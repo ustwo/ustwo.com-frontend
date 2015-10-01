@@ -53,7 +53,6 @@
     "gulp-if": "1.2.5",
     "gulp-postcss": "6.0.0",
     "gulp-sass": "2.0.4",
-    "gulp-sourcemaps": "1.5.2",
     "gulp-uglify": "1.2.0",
     "gulp-util": "3.0.6",
     "he": "0.5.0",
