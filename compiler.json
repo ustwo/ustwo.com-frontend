@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "compile": "gulp build",
-    "compile-dev": "gulp build --dev",
+    "compile-verbose": "gulp build --dev",
+    "vendors": "gulp vendors",
+    "spa": "gulp spa",
+    "spa-verbose": "gulp spa --dev",
     "start": "babel-node --optional es7.classProperties src/server",
     "dev": "gulp start --dev && npm run start",
     "styleguide": "gulp start --styleguide --dev && npm run start",

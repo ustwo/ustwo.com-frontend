@@ -1,4 +1,6 @@
 'use strict';
+var path = require('path');
+var fs = require('fs');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var del = require('del');
@@ -8,6 +10,7 @@ var exec = require('child_process').exec;
 var buffer = require('vinyl-buffer');
 var argv = require('yargs').argv;
 var sourcemaps = require('gulp-sourcemaps');
+var exorcist = require('exorcist');
 
 // sass
 var sass = require('gulp-sass');
@@ -29,8 +32,8 @@ gutil.log(gutil.colors.bgGreen('Flags:', 'production:', production, "styleguide:
 // ----------------------------
 // Error notification methods
 // ----------------------------
-var handleError = function(task) {
-  return function(err) {
+function handleError(task) {
+  return function (err) {
     gutil.log(gutil.colors.bgRed(task + ' error:'), gutil.colors.red(err));
   };
 };
@@ -75,23 +78,26 @@ var tasks = {
   },
   vendors: function () {
     // Create a separate vendor bundler that will only run when starting gulp
-    var bundler = browserify({debug: false})
+    var bundler = browserify({noParse: false})
                     .require('babelify/polyfill')
                     .require('react')
                     .require('svg4everybody');
 
     return bundler.bundle()
+            .on('error', handleError('Browserify'))
             .pipe(source('vendors.js'))
             .pipe(buffer())
             .pipe(uglify({preserveComments: 'license'}))
             .pipe(gulp.dest('public/js'));
   },
   // --------------------------
-  // Reactify
+  // SPA (Single Page Application compilation)
   // --------------------------
-  reactify: function () {
+  spa: function () {
     var bundler = browserify({
                     debug: true,
+                    // insertGlobals: false,
+                    // detectGlobals: false,
                     cache: {},
                     packageCache: {}})
                   .require(require.resolve('./src/app/index.js'),
@@ -107,11 +113,10 @@ var tasks = {
             .on('error', handleError('Browserify'))
             .pipe(source('app.js'))
             .pipe(buffer())
-            // .pipe(gulpif(production, uglify({preserveComments: all})))
-            .pipe(uglify({preserveComments: 'all'}))
-            .pipe(sourcemaps.init({loadMaps: true}))
-            .pipe(sourcemaps.write('.'))
+            .pipe(gulpif(production, uglify()))
             .pipe(gulp.dest('public/js'));
+            // .pipe(fs.createWriteStream(path.join(__dirname,
+            //                                      'public/js/app.js'), 'utf8'));
   },
   // --------------------------
   // React style guide
@@ -172,8 +177,8 @@ gulp.task('clean', tasks.clean);
 gulp.task('assets', tasks.assets);
 gulp.task('sass', tasks.sass);
 gulp.task('vendors', tasks.vendors);
-gulp.task('reactify', tasks.reactify);
-gulp.task('reactstyleguide', tasks.reactstyleguide);
+gulp.task('spa', tasks.spa);
+gulp.task('styleguide', tasks.styleguide);
 gulp.task('data', tasks.data);
 gulp.task('serve', ['build'], tasks.serve);
 gulp.task('start', ['clean', 'build']);
@@ -182,8 +187,8 @@ gulp.task('start', ['clean', 'build']);
 gulp.task('build', ['assets',
                     'sass',
                     'vendors',
-                    'reactify',
-                    // 'reactstyleguide',
+                    'spa',
+                    // 'styleguide',
                     'data']);
 
 // --------------------------
