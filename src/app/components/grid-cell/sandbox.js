@@ -1,3 +1,9 @@
 import GridCell from './';
 
-export default (<GridCell />);
+const Sandbox = React.createClass({
+  render() {
+    return <GridCell />;
+  }
+});
+
+export default Sandbox;
