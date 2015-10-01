@@ -3,14 +3,12 @@ var path = require('path');
 var fs = require('fs');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var del = require('del');
 var uglify = require('gulp-uglify');
 var gulpif = require('gulp-if');
 var exec = require('child_process').exec;
 var buffer = require('vinyl-buffer');
 var argv = require('yargs').argv;
 var sourcemaps = require('gulp-sourcemaps');
-var exorcist = require('exorcist');
 
 // sass
 var sass = require('gulp-sass');
@@ -42,16 +40,6 @@ function handleError(task) {
 // CUSTOM TASK METHODS
 // --------------------------
 var tasks = {
-  // --------------------------
-  // Delete build folder
-  // --------------------------
-  clean: function() {
-    del.sync(['public']);
-
-    return gulp.src('node_modules/.gitignore')
-      .pipe(gulp.dest('public/')
-    );
-  },
   // --------------------------
   // SASS (libsass)
   // --------------------------
@@ -160,28 +148,18 @@ var tasks = {
     return gulp.src('src/data/**/*.json')
       .pipe(gulp.dest('public/data')
     );
-  },
-  serve: function(cb) {
-    return exec('./node_modules/.bin/babel-node src/server/index.js', function (err, stdout, stderr) {
-      console.log(stdout);
-      console.log(stderr);
-      cb(err);
-    });
   }
 };
 
 // --------------------------
 // CUSTOMS TASKS
 // --------------------------
-gulp.task('clean', tasks.clean);
 gulp.task('assets', tasks.assets);
 gulp.task('sass', tasks.sass);
 gulp.task('vendors', tasks.vendors);
 gulp.task('spa', tasks.spa);
 gulp.task('styleguide', tasks.styleguide);
 gulp.task('data', tasks.data);
-gulp.task('serve', ['build'], tasks.serve);
-gulp.task('start', ['clean', 'build']);
 
 // build task
 gulp.task('build', ['assets',
@@ -204,4 +182,4 @@ gulp.task('css', function() {
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
 });
 
-gulp.task('default', ['start']);
+gulp.task('default', ['build']);
