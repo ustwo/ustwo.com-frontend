@@ -1,3 +1,7 @@
+ifeq ($(VERBOSE), true)
+  verbose_flag = -e VERBOSE=true
+endif
+
 define docker_host
 --add-host docker.ustwo.com:172.17.42.1
 endef

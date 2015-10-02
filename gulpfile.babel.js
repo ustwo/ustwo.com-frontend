@@ -1,37 +1,27 @@
 'use strict';
-var path = require('path');
-var fs = require('fs');
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var uglify = require('gulp-uglify');
-var gulpif = require('gulp-if');
-var exec = require('child_process').exec;
-var buffer = require('vinyl-buffer');
-var argv = require('yargs').argv;
-
-// sass
-var sass = require('gulp-sass');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-
+import path from 'path';
+import fs from 'fs';
+import gulp from 'gulp';
+import uglify from 'gulp-uglify';
+import gulpif from 'gulp-if';
+import {exec} from 'child_process';
+import buffer from 'vinyl-buffer';
+// css
+import sass from 'gulp-sass';
+import postcss from 'gulp-postcss';
+import autoprefixer from 'autoprefixer';
 // js
-var browserify = require('browserify');
-var babelify = require('babelify');
-var aliasify = require('aliasify');
-var source = require('vinyl-source-stream');
+import browserify from 'browserify';
+import babelify from 'babelify';
+import aliasify from 'aliasify';
+import source from 'vinyl-source-stream';
 
-var verbose = !!argv.verbose;
+import {info, error, handleError} from './src/scripts/helpers';
+import vendors from './src/scripts/vendors';
 
-gutil.log(gutil.colors.bgGreen('Flags:', 'verbose:', verbose));
+const verbose = process.env.VERBOSE;
 
-// ----------------------------
-// Error notification methods
-// ----------------------------
-function handleError(task) {
-  return function (err) {
-    gutil.log(gutil.colors.bgRed(task + ' error:'), gutil.colors.red(err));
-  };
-};
+info(`Verbose: ${!!verbose}`);
 
 // --------------------------
 // CUSTOM TASK METHODS
@@ -153,7 +143,7 @@ var tasks = {
 gulp.task('assets', tasks.assets);
 gulp.task('css', tasks.css);
 gulp.task('css:watch', tasks.cssWatch);
-gulp.task('vendors', tasks.vendors);
+gulp.task('vendors', vendors);
 gulp.task('spa', tasks.spa);
 gulp.task('styleguide', tasks.styleguide);
 gulp.task('data', tasks.data);
@@ -175,7 +165,7 @@ gulp.task('css:watch', ['css'], function () {
   // --------------------------
   gulp.watch(['src/app/**/*.scss'], ['css']);
 
-  gutil.log(gutil.colors.bgGreen('Watching for changes...'));
+  info('Watching for changes...');
 });
 
 gulp.task('default', ['build']);

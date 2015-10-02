@@ -18,9 +18,6 @@ ifeq ($(LOCAL_FS), true)
     -v $(BASE_PATH)/package.json:/home/ustwo/package.json \
     -v $(BASE_PATH)/src:/home/ustwo/src
 endif
-ifeq ($(VERBOSE), true)
-  verbosity = -e VERBOSE=true
-endif
 
 app-build:
 	$(DOCKER) build -t $(app_image) -f $(app_dockerfile) .
@@ -45,7 +42,7 @@ app-create:
 		-p 8888:8888 \
 		$(docker_host) \
 		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \
-		$(verbosity) \
+		$(verbose_flag) \
 		$(app_image)
 
 app-log:

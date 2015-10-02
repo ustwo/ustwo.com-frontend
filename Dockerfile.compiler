@@ -1,4 +1,4 @@
-FROM iojs:1.6
+FROM node:0.12
 
 MAINTAINER Nick Collings <nick@ustwo.com>
 
@@ -11,7 +11,9 @@ COPY compiler.json /usr/local/src/package.json
 RUN npm install
 RUN mkdir -p /usr/local/src/public
 
-COPY gulpfile.js /usr/local/src/gulpfile.js
+ENV PATH $PATH:/usr/local/node_modules/.bin
+
+COPY gulpfile.babel.js /usr/local/src/gulpfile.babel.js
 COPY src /usr/local/src/src
 
 CMD ["npm", "run", "compile"]
