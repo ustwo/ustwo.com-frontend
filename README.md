@@ -104,6 +104,7 @@ If the commit you are releasing from has been picked up by CircleCI (so you have
 an snapshot available `ustwo/usweb:app-{git hash}`) you can release with:
 
         $ make release VERSION=1.2.3
+        $ git push --tags origin master
 
 If not, do it manually (only for emergencies when you cannot wait for the CircleCI build):
 
