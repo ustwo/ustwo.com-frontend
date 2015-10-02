@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "compile": "gulp build",
-    "xvendors": "./src/scripts/vendors.sh",
-    "vendors": "gulp vendors",
+    "vendors": "./src/scripts/vendors.sh",
+    "xvendors": "gulp vendors",
     "xspa": "gulp spa",
     "spa": "./src/scripts/spa.sh",
     "css": "gulp css",
