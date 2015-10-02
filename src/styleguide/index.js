@@ -7,10 +7,6 @@ import React from 'react';
 import TransitionManager from 'react-transition-manager';
 // TODO: see if there's a better way to get fonts in
 import 'localfont';
-import '../../adaptors/server/tween-max';
-import TimelineLite from 'gsap/src/uncompressed/TimelineLite.js';
-import TweenLite-ScrollToPlugin from 'gsap/src/uncompressed/plugins/ScrollToPlugin.js';
-import TweenLite-EasePack from 'gsap/src/uncompressed/easing/EasePack.js';
 import 'browsernizr/test/history';
 
 import Store from './flux/store';
