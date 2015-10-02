@@ -1,50 +1,60 @@
+/*
+ *  SINGLE COLUMN
+ *  Column of centered text with header
+ *
+ *  Notes:
+ */
+
 .single-column {
   padding: 30px 6.25%;
-  // margin: 30px 0;
 
-  &__content {
+  .wrapper {
     max-width: 680px;
     margin: 0 auto;
-
-    &__heading {
-      text-align: center;
-    }
-    &__rule {
-      border: 2px solid $nonBlack;
-      width: 120px;
-      margin: 20px auto;
-    }
-    &__para {
-      text-align: left;
-    }
   }
 
-  @include susy-breakpoint($bp-medium, $susy) {
-    padding-top: 50px;
-    padding-bottom: 50px;
+  .title {
+    text-align: center;
+  }
+
+  hr {
+    border: 2px solid $nonBlack;
+    width: 120px;
+    margin: 20px auto;
+  }
+
+  .content {
+    text-align: left;
   }
 
   &:first-of-type {
-    h2 {
+    .title {
       font-size: 36px;
     }
   }
+}
 
-  @include susy-breakpoint($bp-medium, $susy) {
+@media screen and (min-width: $bp-medium) {
+  .single-column {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
     &:first-of-type {
       min-height: 300px;
 
-      h2 {
+      .title {
         font-size: 40px;
       }
     }
   }
+}
 
-  @include susy-breakpoint($bp-large, $susy) {
+@media screen and (min-width: $bp-large) {
+  .single-column {
     &:first-of-type {
       min-height: 400px;
 
-      h2 {
+      .title {
         font-size: 60px;
       }
     }
