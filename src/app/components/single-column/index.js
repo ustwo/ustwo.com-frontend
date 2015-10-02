@@ -5,7 +5,7 @@ export default class SingleColumn extends React.Component {
   render() {
     return (
       <section className={classnames('single-column', this.props.className)} style={{ backgroundColor: this.props.backgroundColour }}>
-        <div className="wraper">
+        <div className="wrapper">
           {this.renderTitle()}
           {this.renderRule()}
           {this.renderContent()}
