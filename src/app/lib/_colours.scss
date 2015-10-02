@@ -106,8 +106,8 @@ $social-media-colours: (
 /* Move this somewhere else */
 
 $black-white: (
-  white: white,
-  nonBlack: $nonBlack
+  'white' $white,
+  'nonBlack' $nonBlack
 );
 
 @each $colour in $black-white {
