@@ -10,12 +10,10 @@ import find from 'lodash/collection/find';
 
 // TODO: see if there's a better way to get fonts in
 import '../../adaptors/server/localfont';
-import '../../adaptors/server/tween-max';
-import 'gsap/src/uncompressed/TimelineLite.js';
-import '../../adaptors/server/scroll-to-plugin';
-import 'gsap/src/uncompressed/easing/EasePack.js';
 
 import window from '../../adaptors/server/window';
+import '../../lib/animate';
+
 import Flux from '../../flux';
 import Nulls from '../../flux/nulls';
 import Navigation from '../navigation';
