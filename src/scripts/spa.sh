@@ -1,20 +1,21 @@
 #!/bin/bash
 set -e
 
-filename="/usr/local/src/public/js/app.js"
+base="/usr/local/src"
+input="$base/src/app/index.js"
+filename="$base/public/js/app.js"
+aliases="$base/scripts/aliases.json"
 
 if [[ "$VERBOSE" -eq "true" ]]; then
   browserify_verbose="--debug"
-else
-  uglify="uglifyjs --mangle --comments --stats"
 fi
 
-mkdir -p /usr/local/src/public/js
+mkdir -p $base/public/js
 
-browserify /usr/local/src/src/app/index.js \
+browserify $input \
            $browserify_verbose \
            --transform [babelify --stage 0] \
-           --transform [aliasify --require /usr/local/src/scripts/aliases.json] \
+           --transform [aliasify --require $aliases] \
            --external babelify/polyfill \
            --external react \
            --external svg4everybody \
@@ -31,8 +32,6 @@ browserify /usr/local/src/src/app/index.js \
            --external scrollmagic \
            --outfile $filename
 
-echo ">>> $VERBOSE"
-if [[ "$VERBOSE" -ne "true" ]]; then
-  echo "here"
+if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename
 fi
