@@ -4,7 +4,7 @@ set -e
 base="/usr/local/src"
 input="$base/src/app/index.js"
 filename="$base/public/js/app.js"
-aliases="$base/scripts/aliases.json"
+aliases="$base/src/app/aliases.json"
 
 if [[ "$VERBOSE" -eq "true" ]]; then
   browserify_verbose="--debug"
