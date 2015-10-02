@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 
-import {info, error, handleError} from './src/scripts/helpers';
+import {info} from './src/scripts/helpers';
 import vendors from './src/scripts/vendors';
 import spa from './src/scripts/spa';
 import {css, watch as cssWatch} from './src/scripts/css';
