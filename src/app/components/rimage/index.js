@@ -1,7 +1,9 @@
 'use strict';
 
 import React from 'react';
-import find from 'lodash/collection/find';
+import first from 'lodash/array/first';
+import last from 'lodash/array/last';
+import dropWhile from 'lodash/array/dropWhile';
 import findIndex from 'lodash/array/findIndex';
 import map from 'lodash/collection/map';
 import sortBy from 'lodash/collection/sortBy';
@@ -61,8 +63,11 @@ class Rimage extends React.Component {
     const sizes = this.state.sizes;
     const el = React.findDOMNode(this);
     const constrainSize = el.clientWidth;
-    let newSize = find(sizes, size => size.width > constrainSize);
-    return newSize || sizes[0] || {};
+    let newSize = first(dropWhile(sizes, size => {
+      console.log(size.width, constrainSize, size.width < constrainSize);
+      return size.width < constrainSize;
+    }));
+    return newSize || last(sizes) || {};
   }
   componentDidMount() {
     const sizes = this.state.sizes;
