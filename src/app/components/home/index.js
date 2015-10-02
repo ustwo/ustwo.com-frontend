@@ -134,11 +134,6 @@ const PageHome = React.createClass({
     clearTimeout(this.animTimeout);
   },
   render() {
-    const headlineWordsAnimationOptions = {
-      ease: Power2.easeOut,
-      opacity: 0,
-      y: 30
-    };
     // Show only the final frame of the Chevron animation on mobile
     let Chevron;
     if (window.innerWidth <= 480) {
@@ -159,7 +154,7 @@ const PageHome = React.createClass({
           <EntranceTransition className="title-entrance">
             <div className="headline-text">
               <BoldHeader colour="white">
-                <WordAnimation delay={1} duration={0.4} options={headlineWordsAnimationOptions}>
+                <WordAnimation delay={1} duration={0.4}>
                   We're a digital product studio
                 </WordAnimation>
               </BoldHeader>

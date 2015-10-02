@@ -17,9 +17,6 @@
   "aliasify": {
     "aliases": {
       "../../adaptors/server/track": "./src/app/adaptors/client/track",
-      "../adaptors/server/tween-max": "./src/app/adaptors/client/tween-max",
-      "../../adaptors/server/tween-max": "./src/app/adaptors/client/tween-max",
-      "../../adaptors/server/scroll-to-plugin": "./src/app/adaptors/client/scroll-to-plugin",
       "../../adaptors/server/localfont": "./src/app/adaptors/client/localfont",
       "../adaptors/server/tracking": "./src/app/adaptors/client/tracking",
       "../../adaptors/server/tracking": "./src/app/adaptors/client/tracking",
@@ -50,7 +47,6 @@
     "consolidate": "0.13.1",
     "ellipsize": "0.0.2",
     "es6-promise": "2.3.0",
-    "gsap": "1.17.0",
     "gulp": "3.9.0",
     "gulp-if": "1.2.5",
     "gulp-postcss": "6.0.0",

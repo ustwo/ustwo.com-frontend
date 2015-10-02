@@ -7,7 +7,6 @@ import spannify from '../../lib/spannify';
 export default class WordAnimation extends React.Component {
   constructor(props) {
     super(props);
-    this.timeline = new TimelineLite({ delay: props.delay });
     this.state = {
       animationShown: false
     }
@@ -36,7 +35,20 @@ export default class WordAnimation extends React.Component {
     const props = this.props;
     const words = React.findDOMNode(this).children;
     if (!this.state.animationShown && words.length) {
-      this.timeline.add(TweenMax.staggerFrom(words, props.duration, props.options, props.duration / words.length));
+      for(let i = 0; i < words.length; i++) {
+        let word = words[i];
+        let delay = props.delay + props.duration / words.length * i;
+        word.style.transform = 'translateY(30px)';
+        word.style.opacity = 0;
+        animate({
+          easing: 'ease',
+          el: word,
+          translateY: 0,
+          opacity: 1,
+          duration: props.duration * 1000,
+          delay: delay * 1000
+        });
+      }
       this.setState({
         animationShown: true
       });
