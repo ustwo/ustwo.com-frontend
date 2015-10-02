@@ -7,6 +7,8 @@ else
   uglify="uglifyjs --mangle --comments --stats"
 fi
 
+mkdir -p /usr/local/src/public/js
+
 browserify /usr/local/src/src/app/index.js \
            $browserify_verbose \
            --transform [babelify --stage 0] \
