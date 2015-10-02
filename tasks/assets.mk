@@ -56,7 +56,7 @@ assets-css-watch:
 	$(call compile, npm run css-watch)
 
 assets-vendors:
-	$(call compile, /usr/local/src/src/scripts/vendors.sh)
+	$(call compile, npm run vendors)
 
 assets-spa:
 	$(call compile, npm run spa)

@@ -18,6 +18,7 @@ import source from 'vinyl-source-stream';
 
 import {info, error, handleError} from './src/scripts/helpers';
 import vendors from './src/scripts/vendors';
+import spa from './src/scripts/spa';
 
 const verbose = process.env.VERBOSE;
 
@@ -49,48 +50,6 @@ var tasks = {
       })
       .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
       .pipe(gulp.dest('public/css'));
-  },
-  vendors: function () {
-    // Create a separate vendor bundler that will only run when starting gulp
-    var bundler = browserify({noParse: false})
-                    .require('babelify/polyfill')
-                    .require('react')
-                    .require('svg4everybody');
-
-    return bundler.bundle()
-            .on('error', handleError('Browserify'))
-            .pipe(source('vendors.js'))
-            .pipe(buffer())
-            .pipe(uglify({preserveComments: 'license'}))
-            .pipe(gulp.dest('public/js'));
-  },
-  // --------------------------
-  // SPA (Single Page Application compilation)
-  // --------------------------
-  spa: function () {
-    var bundler = browserify({
-                    debug: verbose,
-                    // insertGlobals: false,
-                    // detectGlobals: false,
-                    cache: {},
-                    packageCache: {}})
-                  .require(require.resolve('./src/app/index.js'),
-                           { entry: true })
-                  .transform(babelify.configure({
-                      optional: ["es7.classProperties"]}))
-                  .transform(aliasify, require('./package.json').aliasify)
-                  .external('babelify/polyfill')
-                  .external('react')
-                  .external('svg4everybody');
-
-    return bundler.bundle()
-            .on('error', handleError('Browserify'))
-            .pipe(source('app.js'))
-            .pipe(buffer())
-            .pipe(gulpif(!verbose, uglify()))
-            .pipe(gulp.dest('public/js'));
-            // .pipe(fs.createWriteStream(path.join(__dirname,
-            //                                      'public/js/app.js'), 'utf8'));
   },
   // --------------------------
   // React style guide
@@ -144,7 +103,7 @@ gulp.task('assets', tasks.assets);
 gulp.task('css', tasks.css);
 gulp.task('css:watch', tasks.cssWatch);
 gulp.task('vendors', vendors);
-gulp.task('spa', tasks.spa);
+gulp.task('spa', spa);
 gulp.task('styleguide', tasks.styleguide);
 gulp.task('data', tasks.data);
 

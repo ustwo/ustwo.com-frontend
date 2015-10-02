@@ -11,7 +11,7 @@ COPY compiler.json /usr/local/src/package.json
 RUN npm install
 RUN mkdir -p /usr/local/src/public
 
-ENV PATH $PATH:/usr/local/node_modules/.bin
+ENV PATH $PATH:/usr/local/src/node_modules/.bin
 
 COPY gulpfile.babel.js /usr/local/src/gulpfile.babel.js
 COPY src /usr/local/src/src

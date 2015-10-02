@@ -5,8 +5,10 @@
   "private": true,
   "scripts": {
     "compile": "gulp build",
-    "vendors": "./src/scripts/vendors.sh",
-    "spa": "gulp spa",
+    "xvendors": "./src/scripts/vendors.sh",
+    "vendors": "gulp vendors",
+    "xspa": "gulp spa",
+    "spa": "./src/scripts/spa.sh",
     "css": "gulp css",
     "css-watch": "gulp css:watch",
     "start": "babel-node --optional es7.classProperties src/server",
@@ -60,6 +62,7 @@
     "isomorphic-fetch": "2.1.1",
     "jsdom": "3.1.0",
     "lodash": "3.10.0",
+    "minifyify": "7.1.0",
     "mocha": "2.3.2",
     "moment": "2.10.6",
     "normalize-libsass": "1.0.3",
@@ -75,7 +78,7 @@
     "svg4everybody": "1.0.0",
     "urllite": "0.5.0",
     "uglify-js": "2.4.24",
-    "through2": "*",
+    "through2": "2.0.0",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0"
   }
