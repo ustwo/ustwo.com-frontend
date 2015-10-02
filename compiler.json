@@ -6,12 +6,9 @@
   "scripts": {
     "compile": "gulp build",
     "vendors": "./src/scripts/vendors.sh",
-    "xvendors": "gulp vendors",
-    "xspa": "gulp spa",
     "spa": "./src/scripts/spa.sh",
     "css": "gulp css",
     "css-watch": "gulp css:watch",
-    "start": "babel-node --optional es7.classProperties src/server",
     "test": "mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test -name '*.js')"
   },
   "aliasify": {
@@ -62,7 +59,6 @@
     "isomorphic-fetch": "2.1.1",
     "jsdom": "3.1.0",
     "lodash": "3.10.0",
-    "minifyify": "7.1.0",
     "mocha": "2.3.2",
     "moment": "2.10.6",
     "normalize-libsass": "1.0.3",
