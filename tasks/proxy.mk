@@ -2,7 +2,7 @@
 PROXY_HTTP_PORT ?= 9080
 PROXY_HTTPS_PORT ?= 9443
 
-proxy_image := nginx
+proxy_image := nginx:1.9.2
 proxy_name = $(project_name)_proxy
 
 .PHONY: \
