@@ -51,6 +51,10 @@ Write media queries at the bottom of the component file, each one outside of the
 ```
 Note: Use `@mixin` and standard CSS as much as possible here, no mixins unless necessary.
 
+#### Selector naming conventions
+
+Simple words separated by hyphens. No BEM. Elements inside the component do not need reference to the parent. If the component is truly isolated this shouldn't be a problem. Let's see what happens :)
+
 ### SASS
 
 Three very useful, arguably unavoidable CSS extensions:
