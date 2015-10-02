@@ -2,7 +2,10 @@
  *  SINGLE COLUMN
  *  Column of centered text with header
  *
- *  Notes:
+ *  Notes: The colours used for title and hr are defaults. Overrides are used for case studies.
+ *  TODO: This is used for the top of case study pages. Ideally it sholdn't be used, that should be a
+ *  header/title component maybe. Also clarification is needed (with a designer) about when and where
+ *  the 'content' is text-align left/center;
  */
 
 .single-column {
@@ -14,22 +17,43 @@
   }
 
   .title {
+    color: $marshPassion;
+    max-width: 820px;
     text-align: center;
   }
 
   hr {
-    border: 2px solid $nonBlack;
     width: 120px;
-    margin: 20px auto;
+    margin: 30px auto;
+    border: 2px solid $mare;
   }
 
   .content {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 20px;
     text-align: left;
   }
 
   &:first-of-type {
     .title {
       font-size: 36px;
+    }
+
+    .content {
+      text-align: center;
+    }
+  }
+
+  &.intro {
+    padding: 118px 6.25% 55px;
+  }
+}
+
+@media screen and (min-width: $bp-small) {
+  .single-column {
+    &.intro {
+      padding: 168px 6.25% 100px;
     }
   }
 }
@@ -51,6 +75,9 @@
 
 @media screen and (min-width: $bp-large) {
   .single-column {
+    padding-top: 100px;
+    padding-bottom: 100px;
+
     &:first-of-type {
       min-height: 400px;
 
