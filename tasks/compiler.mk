@@ -20,6 +20,7 @@ define compile
 	@$(if $(CI), $(DOCKER_CI_TASK), $(DOCKER_TASK)) \
 		$(compiler_volumes) \
 		$(verbose_flag) \
+		$(cache_flag) \
 		$(compiler_image) $1
 endef
 

@@ -12,9 +12,11 @@ fi
 
 mkdir -p $base/public/js
 
-if [[ -d $base/public/.cache ]]; then
-  cp -R $base/public/.cache \
-        $base/node_modules/persistify/node_modules/flat-cache/.cache
+if [[ -z $FLUSH_CACHE ]]; then
+  if [[ -d $base/public/.cache ]]; then
+    cp -R $base/public/.cache \
+          $base/node_modules/persistify/node_modules/flat-cache/
+  fi
 fi
 
 persistify $input \
