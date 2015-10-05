@@ -4,7 +4,11 @@ set -e
 base="/usr/local/src"
 filename="$base/public/js/vendors.js"
 
-# browserify --require babelify/polyfill \
+if [[ -d $base/public/.cache ]]; then
+  cp -R $base/public/.cache \
+        $base/node_modules/persistify/node_modules/flat-cache/
+fi
+
 persistify --require babelify/polyfill \
            --require react \
            --require svg4everybody \
@@ -15,12 +19,11 @@ persistify --require babelify/polyfill \
            --require react-transition-manager \
            --require scrollmagic \
            --verbose \
-           --recreate \
            --outfile $filename
 
-ls -la
+cp -R $base/node_modules/persistify/node_modules/flat-cache/.cache \
+      $base/public/
 
-# uglifyjs --mangle \
-#          --comments \
-#          --stats \
-#          -o $filename
+if [[ -z "$VERBOSE" ]]; then
+  uglifyjs --mangle --comments --stats -o $filename -- $filename
+fi
