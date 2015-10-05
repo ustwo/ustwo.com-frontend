@@ -63,6 +63,7 @@
     &__message {
       flex: 2;
       max-width: 700px;
+      width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -75,11 +76,7 @@
         background: none;
         margin: 0 auto;
         padding: 0;
-        position: absolute;
-        left: 50%;
-        top: 10%;
         z-index: 100;
-        margin-left: -25px;
 
         svg {
           width: 50px;
@@ -104,12 +101,11 @@
         flex-direction: column;
         list-style: none;
         padding: 0;
-        margin: 0;
+        margin: 0 0 30px;
 
         &__link-item {
           margin-bottom: 15px;
           text-align: center;
-
 
           &__link {
             border-bottom: 2px solid $mare;
@@ -131,9 +127,13 @@
       width: 100%;
       flex: 1;
       background-repeat: no-repeat;
-      background-position: center bottom;
+      background-position: center center;
       background-clip: content-box;
       background-size: contain;
+
+      img {
+        display: none;
+      }
     }
     &.add {
       opacity: 0;
