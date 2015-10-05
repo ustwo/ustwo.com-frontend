@@ -1,5 +1,4 @@
 {
-  "configDir": "/usr/local/src",
   "aliases": {
     "../../adaptors/server/track": "./adaptors/client/track",
     "../adaptors/server/tween-max": "./adaptors/client/tween-max",
