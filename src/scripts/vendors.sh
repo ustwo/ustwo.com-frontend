@@ -4,9 +4,11 @@ set -e
 base="/usr/local/src"
 filename="$base/public/js/vendors.js"
 
-if [[ -d $base/public/.cache ]]; then
-  cp -R $base/public/.cache \
-        $base/node_modules/persistify/node_modules/flat-cache/
+if [[ -z $FLUSH_CACHE ]]; then
+  if [[ -d $base/public/.cache ]]; then
+    cp -R $base/public/.cache \
+          $base/node_modules/persistify/node_modules/flat-cache/
+  fi
 fi
 
 persistify --require babelify/polyfill \

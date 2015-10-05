@@ -81,6 +81,13 @@ Or target specific subtasks:
     $ make spa             # compiles the react app
     $ make vendors         # compiles the react dependencies
 
+*Note*: `css` and `spa` combined with `VERBOSE=true` will create sourcemaps.
+
+*Note*: `spa` and `vendors` combined with `FLUSH_CACHE=true` will skip any
+cache created by browserify. Ex:
+
+    $ make spa VERBOSE=true FLUSH_CACHE=true
+
 Run the tests:
 
     $ make test
