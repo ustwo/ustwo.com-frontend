@@ -1,6 +1,7 @@
 import {exec} from 'child_process';
+
 // import browserify from 'browserify';
-// import minifyify from 'minifyify';
+// import persistify from 'persistify';
 // import fs from 'fs';
 // import path from 'path';
 // import uglify from 'uglify-js';
