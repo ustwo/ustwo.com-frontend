@@ -12,7 +12,12 @@ fi
 
 mkdir -p $base/public/js
 
-browserify $input \
+if [[ -d $base/public/.cache ]]; then
+  cp -R $base/public/.cache \
+        $base/node_modules/persistify/node_modules/flat-cache/.cache
+fi
+
+persistify $input \
            $browserify_verbose \
            --transform [babelify --stage 0] \
            --transform [aliasify --require $aliases] \
@@ -25,7 +30,11 @@ browserify $input \
            --external moment \
            --external react-transition-manager \
            --external scrollmagic \
+           --verbose \
            --outfile $filename
+
+cp -R $base/node_modules/persistify/node_modules/flat-cache/.cache \
+      $base/public/
 
 if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename
