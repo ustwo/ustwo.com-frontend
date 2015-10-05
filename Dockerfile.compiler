@@ -1,5 +1,4 @@
-FROM node:4-slim
-
+FROM ustwo/nodejs:4.1.1
 MAINTAINER Nick Collings <nick@ustwo.com>
 
 ENV TERM=xterm-256color \
@@ -7,13 +6,12 @@ ENV TERM=xterm-256color \
 
 WORKDIR /usr/local/src
 
-COPY compiler.json /usr/local/src/package.json
+COPY compiler.json /home/ustwo/package.json
 RUN npm install
-RUN mkdir -p /usr/local/src/public
 
-ENV PATH $PATH:/usr/local/src/node_modules/.bin
+ENV PATH $PATH:/home/ustwo/node_modules/.bin
 
-COPY gulpfile.babel.js /usr/local/src/gulpfile.babel.js
-COPY src /usr/local/src/src
+COPY gulpfile.js /home/ustwo/gulpfile.babel.js
+COPY src /home/ustwo/src
 
 CMD ["npm", "run", "compile"]
