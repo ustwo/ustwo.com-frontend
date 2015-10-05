@@ -1,17 +1,14 @@
 {
-  "name": "ustwo-com-frontend",
-  "version": "1.1.0",
+  "name": "usweb-compiler",
+  "description": "Compiles css, js (spa), images, etc",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "compile": "gulp build",
-    "compile-verbose": "gulp build --verbose",
-    "vendors": "gulp vendors",
-    "spa": "gulp spa",
-    "spa-verbose": "gulp spa --verbose",
+    "vendors": "./src/scripts/vendors.sh",
+    "spa": "./src/scripts/spa.sh",
     "css": "gulp css",
-    "css-verbose": "gulp css --verbose",
-    "css-watch": "gulp css:watch --verbose",
-    "start": "babel-node --optional es7.classProperties src/server",
+    "css-watch": "gulp css:watch",
     "test": "mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test -name '*.js')"
   },
   "aliasify": {
@@ -75,8 +72,6 @@
     "susy": "2.2.5",
     "svg4everybody": "1.0.0",
     "urllite": "0.5.0",
-    "vinyl-buffer": "1.0.0",
-    "vinyl-source-stream": "1.1.0",
-    "yargs": "3.15.0"
+    "uglify-js": "2.4.24"
   }
 }

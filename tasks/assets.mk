@@ -46,31 +46,20 @@ assets-create:
 		$(assets_image)
 
 
-assets-compile: compile_cmd = $(if $(filter $(VERBOSE),true), compile-verbose, compile)
 assets-compile:
-	@echo "Compiling assets into share/nginx/assets"
-	$(call compile, npm run $(compile_cmd))
+	$(call compile, npm run compile)
 
-assets-css: compile_cmd = $(if $(filter $(VERBOSE),true), css-verbose, css)
 assets-css:
-	@echo "Compiling css"
-	$(call compile, npm run $(compile_cmd))
+	$(call compile, npm run css)
 
 assets-css-watch:
-	@echo "Watching css"
 	$(call compile, npm run css-watch)
 
-
 assets-vendors:
-	@echo "Compiling vendors"
 	$(call compile, npm run vendors)
 
-assets-spa: compile_cmd = $(if $(filter $(VERBOSE),true), spa-verbose, spa)
 assets-spa:
-	@echo "Compiling SPA"
-	$(call compile, npm run $(compile_cmd))
-
+	$(call compile, npm run spa)
 
 assets-test:
-	@echo "Testing assets"
 	$(call compile, npm test)
