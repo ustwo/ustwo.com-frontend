@@ -4,7 +4,8 @@ set -e
 base="/usr/local/src"
 filename="$base/public/js/vendors.js"
 
-browserify --require babelify/polyfill \
+# browserify --require babelify/polyfill \
+persistify --require babelify/polyfill \
            --require react \
            --require svg4everybody \
            --require classnames \
@@ -13,7 +14,13 @@ browserify --require babelify/polyfill \
            --require moment \
            --require react-transition-manager \
            --require scrollmagic \
-| uglifyjs --mangle \
-           --comments \
-           --stats \
-           -o $filename
+           --verbose \
+           --recreate \
+           --outfile $filename
+
+ls -la
+
+# uglifyjs --mangle \
+#          --comments \
+#          --stats \
+#          -o $filename
