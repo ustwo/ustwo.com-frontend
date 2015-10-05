@@ -69,9 +69,17 @@ Prepare a new environment:
 
     $ make compiler-build build
 
-Compile the assets (you can use only this when you're only recompiling on front end stuff):
+Compile the assets (you can use only this when you're only recompiling on front
+end stuff):
 
     $ make stuff
+
+Or target specific subtasks:
+
+    $ make css
+    $ make css-watch       # watches for changes in SASS files
+    $ make spa             # compiles the react app
+    $ make vendors         # compiles the react dependencies
 
 Run the tests:
 
