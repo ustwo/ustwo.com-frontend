@@ -7,7 +7,7 @@
   padding: 68px 6.25% 0;
   background: $offWhite;
   text-align: center;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out, background 0.5s ease-in-out;
 
   &.add {
     opacity: 0;
@@ -74,7 +74,7 @@
         display: block;
         border: 0;
         background: none;
-        margin: 0 auto;
+        margin: 0 auto 5%;
         padding: 0;
         z-index: 100;
 
@@ -90,7 +90,7 @@
       }
       &__title {
         color: $marshPassion;
-        margin-top: 3%;
+        margin-top: 10%;
         font-size: 32px;
       }
       &__description {

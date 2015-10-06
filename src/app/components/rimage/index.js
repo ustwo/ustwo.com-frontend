@@ -8,11 +8,14 @@ import findIndex from 'lodash/array/findIndex';
 import map from 'lodash/collection/map';
 import sortBy from 'lodash/collection/sortBy';
 import omit from 'lodash/object/omit';
+import endsWith from 'lodash/string/endsWith';
 
 import Flux from '../../flux';
 
 function getSizesArray(sizesObject) {
-  return sortBy(map(omit(sizesObject, 'thumbnail'), (size, name) => {
+  return sortBy(map(omit(sizesObject, (size, name) => {
+    return name === 'thumbnail' || endsWith(name, '_crop');
+  }), (size, name) => {
     size.name = name;
     return size;
   }), 'width');
@@ -64,7 +67,6 @@ class Rimage extends React.Component {
     const el = React.findDOMNode(this);
     const constrainSize = el.clientWidth;
     let newSize = first(dropWhile(sizes, size => {
-      console.log(size.width, constrainSize, size.width < constrainSize);
       return size.width < constrainSize;
     }));
     return newSize || last(sizes) || {};

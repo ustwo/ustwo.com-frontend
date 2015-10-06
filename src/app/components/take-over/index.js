@@ -15,13 +15,17 @@ import {onClickContent} from '../modal';
 
 const takeover = {
   name: "Pause",
-  title: "PAUSE",
-  description: "Relaxation at your fingertip",
+  title: "PAUSE - OUT NOW",
+  description: "A totally new relaxation and meditation experience for iPhone.",
   featured_image: 8672,
+  header_color: "#2a88a9",
+  text_color: "#f4fcff",
+  background_color_top: "#e3eef4",
+  background_color_bottom: "#7db9e8",
   links: [{
     type: 'http',
     text: 'Download on iOS',
-    url: 'http://us2.co/Pause'
+    url: 'https://itunes.apple.com/us/app/pause-relaxation-at-your-fingertip/id991764216?ls=1&mt=8'
   }, {
     type: 'http',
     text: 'Go to getpauseapp.com',
@@ -52,35 +56,35 @@ const takeover = {
               "width": 300,
               "height": 300,
               "mime-type": "image/png",
-              "source_url": "https://hmn-uploads.s3.amazonaws.com/ustwo-staging/uploads/2015/10/pause-300x300.png"
+              "source_url": "/images/home/pause.png"
             },
             "medium": {
               "file": "pause-501x768.png",
               "width": 501,
               "height": 768,
               "mime-type": "image/png",
-              "source_url": "https://hmn-uploads.s3.amazonaws.com/ustwo-staging/uploads/2015/10/pause-501x768.png"
+              "source_url": "/images/home/pause.png"
             },
             "small": {
               "file": "pause-313x480.png",
               "width": 313,
               "height": 480,
               "mime-type": "image/png",
-              "source_url": "https://hmn-uploads.s3.amazonaws.com/ustwo-staging/uploads/2015/10/pause-313x480.png"
+              "source_url": "/images/home/pause.png"
             },
             "small_crop": {
               "file": "pause-640x480.png",
               "width": 640,
               "height": 480,
               "mime-type": "image/png",
-              "source_url": "https://hmn-uploads.s3.amazonaws.com/ustwo-staging/uploads/2015/10/pause-640x480.png"
+              "source_url": "/images/home/pause.png"
             },
             "medium_crop": {
               "file": "pause-670x768.png",
               "width": 670,
               "height": 768,
               "mime-type": "image/png",
-              "source_url": "https://hmn-uploads.s3.amazonaws.com/ustwo-staging/uploads/2015/10/pause-670x768.png"
+              "source_url": "/images/home/pause.png"
             }
           },
           "image_meta": {
@@ -120,7 +124,7 @@ export default class TakeOver extends React.Component {
             <CloseButton onClose={this.onClickClose} className="take-over__content__message__close" autoAnim={1000} />
             <Rimage wrap="div" className="take-over__content__image"  sizes={get(image, 'media_details.sizes')}>
             </Rimage>
-            <h1 className="take-over__content__message__title" style={{color: "#2a88a9"}}>{takeover.title}</h1>
+            <h1 className="take-over__content__message__title" style={{color: takeover.header_color}}>{takeover.title}</h1>
             <p className="take-over__content__message__description">{takeover.description}</p>
             <ul className="take-over__content__message__links">
               {takeover.links.map(this.renderLink)}
@@ -136,8 +140,10 @@ export default class TakeOver extends React.Component {
         </div>
       );
     }
+    const background_color_top = this.state.showContent ? takeover.background_color_top : "#F8F8F8";
+    const background_color_bottom = this.state.showContent ? takeover.background_color_bottom : "#F8F8F8";
     return (
-      <TransitionManager className={`take-over ${this.props.className}`} component="div" duration={800} onClick={onClickContent}>
+      <TransitionManager className={`take-over ${this.props.className}`} component="div" duration={800} onClick={onClickContent} style={{ color: takeover.text_color, background: `linear-gradient(to bottom, ${background_color_top} 0%,${background_color_bottom} 100%)` }}>
         {content}
       </TransitionManager>
     );
@@ -152,7 +158,7 @@ export default class TakeOver extends React.Component {
         prefix = "tel:";
       break;
     }
-    return <li className={`take-over__content__message__links__link-item ${link.type}`}><a className="take-over__content__message__links__link-item__link" target="_blank" href={`${prefix}${link.url}`} onClick={this.onClickLink(index)} style={{color: "#2a88a9"}}>{link.text}</a></li>;
+    return <li className={`take-over__content__message__links__link-item ${link.type}`}><a className="take-over__content__message__links__link-item__link" target="_blank" href={`${prefix}${link.url}`} onClick={this.onClickLink(index)} style={{color: takeover.header_color, borderColor: takeover.header_color}}>{link.text}</a></li>;
   }
   componentDidMount() {
     this.contentTimeout = setTimeout(() => {
