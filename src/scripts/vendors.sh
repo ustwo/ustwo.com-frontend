@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
-base="/usr/local/src"
+base="/home/ustwo"
 filename="$base/public/js/vendors.js"
 
 if [[ -z $FLUSH_CACHE ]]; then
