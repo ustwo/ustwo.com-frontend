@@ -49,4 +49,11 @@ body {
       }
     }
   }
+
+  &.app-404 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+  }
 }
