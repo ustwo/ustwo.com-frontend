@@ -5,12 +5,19 @@ base="/home/ustwo"
 input="$base/src/app/index.scss"
 filename="$base/public/css/index.css"
 
+if [[ "$VERBOSE" == "true" ]]; then
+  sassc_opts="--sourcemap --line-comments --style nested"
+else
+  sassc_opts="--style compressed"
+fi
+
 sassc $input \
       --load-path $base/src/app/components \
       --load-path $base/src/app/libs \
-      --line-comments \
-      --style nested \
-      --sourcemap \
+      $sassc_opts \
       $filename
 
-# .pipe(postcss([autoprefixer({browsers: ['last 2 versions']})]))
+postcss --use autoprefixer \
+        --autoprefixer.browser "last 2 versions" \
+        --output $filename \
+        $filename
