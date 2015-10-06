@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
-base="/usr/local/src"
+base="/home/ustwo"
 input="$base/src/app/index.js"
 filename="$base/public/js/app.js"
 aliases="$base/src/app/aliases.json"
 
-if [[ "$VERBOSE" -eq "true" ]]; then
+if [[ "$VERBOSE" == "true" ]]; then
   browserify_verbose="--debug"
 fi
 

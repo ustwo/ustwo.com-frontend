@@ -32,3 +32,10 @@ compiler-pull:
 
 compiler-push:
 	$(DOCKER) push $(compiler_image)
+
+compiler-shell:
+	$(DOCKER) run --rm -it \
+	$(compiler_volumes) \
+	$(verbose_flag) \
+	$(compiler_image) \
+	sh
