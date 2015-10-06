@@ -11,7 +11,6 @@ import Navigation from '../navigation';
 const page404 = React.createClass({
   mixins: [getScrollTrackerMixin('404')],
   render() {
-    const pageData = this.props.page;
     return (
       <article className="page-404">
 
