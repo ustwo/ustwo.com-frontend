@@ -55,7 +55,7 @@ router.get('/components/:component.js', (req, res, next) => {
   const sandbox = path.join(basepath, '../app/components', req.params.component, 'sandbox.js');
   const b = browserify();
 
-  let aliasifyConfig = require('../app/aliases.json');
+  let aliasifyConfig = require('../app/aliases.sandbox.json');
 
   b.transform(babelify.configure({
       optional: ["es7.classProperties"]

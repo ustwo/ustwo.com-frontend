@@ -6,22 +6,13 @@
  *  TODO: Not found
  */
 
-/* Wrapper */
-.app-404 {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 100%;
-  background-color: $notfound;
-}
-
-/* page itself */
 .page-404 {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   text-align: center;
+  background-color: $notfound;
 
   img {
     width: 300px;
