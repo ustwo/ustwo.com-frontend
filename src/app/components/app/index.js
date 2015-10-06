@@ -131,7 +131,7 @@ export default class App extends React.Component {
           content = <ContactTray contacts={state.footer.contacts} />;
           break;
         case 'blogCategories':
-          className = 'blog-categories';
+          className = 'modal-blog-categories';
           content = <BlogCategories />;
           break;
       }

@@ -1,19 +1,29 @@
+/*
+ *  404 page
+ *  Not found
+ *
+ *  Notes: Not found
+ *  TODO: Not found
+ */
+
+/* Wrapper */
+.app-404 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-color: $notfound;
+}
+
+/* page itself */
 .page-404 {
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
+  text-align: center;
 
   img {
     width: 300px;
   }
-}
-
-.app-404 {
-  background-color: #f7e370;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  right: 0;
 }
