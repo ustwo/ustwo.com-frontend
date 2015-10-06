@@ -51,14 +51,16 @@ function renderApp(req, res) {
 
 router.get('/components/:component.js', (req, res, next) => {
   const basepath = path.join(__dirname);
-  console.log('basepath', basepath);
   const filename = path.join(basepath, '../app/components', req.params.component, 'index.js');
   const sandbox = path.join(basepath, '../app/components', req.params.component, 'sandbox.js');
   const b = browserify();
+
+  let aliasifyConfig = require('../app/aliases.json');
+
   b.transform(babelify.configure({
       optional: ["es7.classProperties"]
   }));
-  // b.transform(aliasify, require('../../package.json').aliasify)
+  b.transform(aliasify, aliasifyConfig);
 
   b.require('react', {expose: 'react'});
   b.require(filename, {expose: 'index'});
