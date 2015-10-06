@@ -5,9 +5,9 @@ base="/usr/local/src"
 filename="$base/public/js/vendors.js"
 
 if [[ -z $FLUSH_CACHE ]]; then
-  if [[ -d $base/public/.cache ]]; then
-    cp -R $base/public/.cache \
-          $base/node_modules/persistify/node_modules/flat-cache/
+  if [[ -d $base/public/.cache-vendors ]]; then
+    cp -R $base/public/.cache-vendors \
+          $base/node_modules/persistify/node_modules/flat-cache/.cache
   fi
 fi
 
@@ -24,7 +24,7 @@ persistify --require babelify/polyfill \
            --outfile $filename
 
 cp -R $base/node_modules/persistify/node_modules/flat-cache/.cache \
-      $base/public/
+      $base/public/.cache-vendors
 
 if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename
