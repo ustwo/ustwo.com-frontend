@@ -34,8 +34,8 @@ ANSIBLE_PLAY := ansible-playbook -b -v \
 	--inventory-file=$(ANSIBLE_INVENTORY)
 ###############################################################################
 
-default:
-	@echo "$(.VARIABLES)" | tr ' ' "\n" | sort -
+default: compiler-build build
+install: init
 
 include tasks/*.mk
 

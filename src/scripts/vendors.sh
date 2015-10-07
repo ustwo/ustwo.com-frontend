@@ -1,10 +1,19 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
-base="/usr/local/src"
+echo "Compiling the SPA vendors..."
+
+base="/home/ustwo"
 filename="$base/public/js/vendors.js"
 
-browserify --require babelify/polyfill \
+if [[ -z $FLUSH_CACHE ]]; then
+  if [[ -d $base/public/.cache-vendors ]]; then
+    cp -R $base/public/.cache-vendors \
+          $base/node_modules/persistify/node_modules/flat-cache/.cache
+  fi
+fi
+
+persistify --require babelify/polyfill \
            --require react \
            --require svg4everybody \
            --require classnames \
@@ -13,7 +22,14 @@ browserify --require babelify/polyfill \
            --require moment \
            --require react-transition-manager \
            --require scrollmagic \
-| uglifyjs --mangle \
-           --comments \
-           --stats \
-           -o $filename
+           --verbose \
+           --outfile $filename
+
+cp -R $base/node_modules/persistify/node_modules/flat-cache/.cache \
+      $base/public/.cache-vendors
+
+if [[ -z "$VERBOSE" ]]; then
+  uglifyjs --mangle --comments --stats -o $filename -- $filename
+fi
+
+echo "Done with the SPA vendors"

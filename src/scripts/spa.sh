@@ -1,18 +1,27 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
-base="/usr/local/src"
+echo "Compiling the SPA..."
+
+base="/home/ustwo"
 input="$base/src/app/index.js"
 filename="$base/public/js/app.js"
 aliases="$base/src/app/aliases.json"
 
-if [[ "$VERBOSE" -eq "true" ]]; then
+if [[ "$VERBOSE" == "true" ]]; then
   browserify_verbose="--debug"
 fi
 
 mkdir -p $base/public/js
 
-browserify $input \
+if [[ -z $FLUSH_CACHE ]]; then
+  if [[ -d $base/public/.cache-spa ]]; then
+    cp -R $base/public/.cache-spa \
+          $base/node_modules/persistify/node_modules/flat-cache/.cache
+  fi
+fi
+
+persistify $input \
            $browserify_verbose \
            --transform [babelify --stage 0] \
            --transform [aliasify --require $aliases] \
@@ -25,8 +34,14 @@ browserify $input \
            --external moment \
            --external react-transition-manager \
            --external scrollmagic \
+           --verbose \
            --outfile $filename
+
+cp -R $base/node_modules/persistify/node_modules/flat-cache/.cache \
+      $base/public/.cache-spa
 
 if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename
 fi
+
+echo "Done with the SPA"

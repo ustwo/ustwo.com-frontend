@@ -26,17 +26,12 @@ export default class Hero extends React.Component {
   }
   render() {
     const props = this.props;
-    const headlineWordsAnimationOptions = {
-      ease: Power2.easeOut,
-      opacity: 0,
-      y: 30
-    };
 
     return (
       <Rimage wrap="section" className={classnames("hero", props.className)} sizes={props.imageOnly ? {} : props.sizes} backgroundOnly={true} >
         <EntranceTransition className='title-entrance'>
           <h1 className='hero__title'>
-            <WordAnimation delay={1} duration={0.5} options={headlineWordsAnimationOptions}>
+            <WordAnimation delay={1} duration={0.5}>
               {props.title}
             </WordAnimation>
           </h1>

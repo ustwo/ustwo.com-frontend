@@ -10,16 +10,17 @@ compiler_dockerfile = Dockerfile.$(compiler_id)
 	compiler-pull
 
 compiler_volumes = \
-  -v $(BASE_PATH)/gulpfile.babel.js:/usr/local/src/gulpfile.babel.js \
-  -v $(BASE_PATH)/compiler.json:/usr/local/src/package.json \
-  -v $(BASE_PATH)/share/nginx/assets:/usr/local/src/public \
-  -v $(BASE_PATH)/test:/usr/local/src/test \
-  -v $(BASE_PATH)/src:/usr/local/src/src
+  -v $(BASE_PATH)/gulpfile.babel.js:/home/ustwo/gulpfile.babel.js \
+  -v $(BASE_PATH)/compiler.json:/home/ustwo/package.json \
+  -v $(BASE_PATH)/share/nginx/assets:/home/ustwo/public \
+  -v $(BASE_PATH)/test:/home/ustwo/test \
+  -v $(BASE_PATH)/src:/home/ustwo/src
 
 define compile
 	@$(if $(CI), $(DOCKER_CI_TASK), $(DOCKER_TASK)) \
 		$(compiler_volumes) \
 		$(verbose_flag) \
+		$(cache_flag) \
 		$(compiler_image) $1
 endef
 
@@ -31,3 +32,10 @@ compiler-pull:
 
 compiler-push:
 	$(DOCKER) push $(compiler_image)
+
+compiler-shell:
+	$(DOCKER) run --rm -it \
+	$(compiler_volumes) \
+	$(verbose_flag) \
+	$(compiler_image) \
+	sh

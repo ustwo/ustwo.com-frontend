@@ -1,3 +1,4 @@
 .git
 node_modules
-public
+share/nginx/assets/.cache-vendors
+share/nginx/assets/.cache-spa

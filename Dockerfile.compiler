@@ -1,19 +1,27 @@
-FROM node:0.12
+FROM ustwo/nodejs:4.1.1
+MAINTAINER Arnau Siches <arnau@ustwo.com>
 
-MAINTAINER Nick Collings <nick@ustwo.com>
+ENV TERM xterm-256color
+ENV NODE_ENV production
+ENV SASSC_VERSION 3.2.5
+ENV LIBSASS_VERSION 3.2.5
 
-ENV TERM=xterm-256color \
-    NODE_ENV=production
+RUN apk add --update \
+          curl \
+          grep \
+          parallel \
+ && rm -rf /var/cache/apk/*
 
-WORKDIR /usr/local/src
+WORKDIR /usr/local/bin
+RUN curl -L "https://github.com/ustwo/docker-sass/releases/download/v$SASSC_VERSION/alpine-sassc-$SASSC_VERSION.tar.gz" | tar xvz
 
-COPY compiler.json /usr/local/src/package.json
+WORKDIR /home/ustwo
+COPY compiler.json /home/ustwo/package.json
 RUN npm install
-RUN mkdir -p /usr/local/src/public
 
-ENV PATH $PATH:/usr/local/src/node_modules/.bin
+ENV PATH $PATH:/home/ustwo/node_modules/.bin
 
-COPY gulpfile.babel.js /usr/local/src/gulpfile.babel.js
-COPY src /usr/local/src/src
+COPY gulpfile.babel.js /home/ustwo/gulpfile.babel.js
+COPY src /home/ustwo/src
 
 CMD ["npm", "run", "compile"]
