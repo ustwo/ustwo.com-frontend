@@ -21,7 +21,7 @@ const takeover = {
   header_color: "#2a88a9",
   text_color: "#f4fcff",
   background_color_top: "#e3eef4",
-  background_color_bottom: "#7db9e8",
+  background_color_bottom: "#b3d5e0",
   links: [{
     type: 'http',
     text: 'Download on iOS',
