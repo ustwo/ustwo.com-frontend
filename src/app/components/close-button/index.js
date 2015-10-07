@@ -14,7 +14,7 @@ export default class CloseButton extends SVGSequenceAnimation {
     return (
       <button onClick={this.props.onClose} className={classnames('close-button', this.props.className)}>
         {this.props.children}
-        <svg ref="animsvg" title="Close menu" role="img" viewBox="0 0 20 20">
+        <svg ref="animsvg" title="Close menu" role="img" viewBox="0 0 20 20" style={this.props.style}>
           <g id="Frame16">
             <path d="M6.507 7.323c.268-.25.54-.5.807-.75.904.97 1.812 1.944 2.72 2.913.92-.983 1.835-1.97 2.757-2.952l.81.75c-.93 1.008-1.87 2.008-2.8 3.008.89.953 1.78 1.906 2.67 2.867-.26.25-.54.5-.8.75-.872-.94-1.74-1.88-2.614-2.81-.874.94-1.757 1.88-2.632 2.83-.266-.25-.54-.5-.805-.75.894-.96 1.8-1.92 2.69-2.89-.93-.99-1.85-1.99-2.774-2.98z" />
           </g>

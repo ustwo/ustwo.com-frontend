@@ -25,7 +25,7 @@ const takeover = {
   links: [{
     type: 'http',
     text: 'Download on iOS',
-    url: 'https://itunes.apple.com/us/app/pause-relaxation-at-your-fingertip/id991764216?ls=1&mt=8'
+    url: 'http://us2.co/pauseapp'
   }, {
     type: 'http',
     text: 'Go to getpauseapp.com',
@@ -121,9 +121,8 @@ export default class TakeOver extends React.Component {
       content = (
         <div key="detail" className="take-over__content">
           <div className="take-over__content__message">
-            <CloseButton onClose={this.onClickClose} className="take-over__content__message__close" autoAnim={1000} />
-            <Rimage wrap="div" className="take-over__content__image"  sizes={get(image, 'media_details.sizes')}>
-            </Rimage>
+            <CloseButton onClose={this.onClickClose} className="take-over__content__message__close" autoAnim={1000} style={{ fill: takeover.header_color }} />
+            <Rimage wrap="div" className="take-over__content__image"  sizes={get(image, 'media_details.sizes')} />
             <h1 className="take-over__content__message__title" style={{color: takeover.header_color}}>{takeover.title}</h1>
             <p className="take-over__content__message__description">{takeover.description}</p>
             <ul className="take-over__content__message__links">
