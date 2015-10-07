@@ -5,8 +5,8 @@ var jsdom = require("jsdom").jsdom;
 if (typeof document !== 'undefined') return
 
 // mock browser setup
-global.document = jsdom('<html><body><div id="sandbox"></div></body></html>', {});
-global.window = document.parentWindow;
+global.window = jsdom('<html><body><div id="sandbox"></div></body></html>', {}).defaultView;
+global.document = window.document;
 global.navigator = window.navigator;
 
 // React
