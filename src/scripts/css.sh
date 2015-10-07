@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+echo "Compiling CSS..."
+
 base="/home/ustwo"
 input="$base/src/app/index.scss"
 filename="$base/public/css/index.css"
@@ -21,3 +23,5 @@ postcss --use autoprefixer \
         --autoprefixer.browser "last 2 versions" \
         --output $filename \
         $filename
+
+echo "Done with CSS"

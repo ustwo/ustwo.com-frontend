@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "compile": "gulp build",
+    "xcompile": "./src/scripts/build.sh",
     "vendors": "./src/scripts/vendors.sh",
     "spa": "./src/scripts/spa.sh",
     "css": "./src/scripts/css.sh",

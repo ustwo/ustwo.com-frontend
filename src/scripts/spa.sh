@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+echo "Compiling the SPA..."
+
 base="/home/ustwo"
 input="$base/src/app/index.js"
 filename="$base/public/js/app.js"
@@ -41,3 +43,5 @@ cp -R $base/node_modules/persistify/node_modules/flat-cache/.cache \
 if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename
 fi
+
+echo "Done with the SPA"

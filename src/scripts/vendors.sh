@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+echo "Compiling the SPA vendors..."
+
 base="/home/ustwo"
 filename="$base/public/js/vendors.js"
 
@@ -29,3 +31,5 @@ cp -R $base/node_modules/persistify/node_modules/flat-cache/.cache \
 if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename
 fi
+
+echo "Done with the SPA vendors"
