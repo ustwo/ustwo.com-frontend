@@ -101,7 +101,7 @@
         flex-direction: column;
         list-style: none;
         padding: 0;
-        margin: 5vh 0 10vh;
+        margin: 0 0 5vh;
 
         &__link-item {
           margin-bottom: 15px;
@@ -182,6 +182,7 @@
       &__links {
         flex-direction: row;
         justify-content: center;
+        margin: 5vh 0 10vh;
 
         &__link-item {
           margin-left: 30px;
