@@ -7,6 +7,8 @@ base="/home/ustwo"
 input="$base/src/app/index.scss"
 filename="$base/public/css/index.css"
 
+mkdir -p $base/public/css
+
 if [[ "$VERBOSE" == "true" ]]; then
   sassc_opts="--sourcemap --line-comments --style nested"
 else
