@@ -9,6 +9,7 @@ ENV LIBSASS_VERSION 3.2.5
 RUN apk add --update \
           curl \
           grep \
+          parallel \
  && rm -rf /var/cache/apk/*
 
 WORKDIR /usr/local/bin
