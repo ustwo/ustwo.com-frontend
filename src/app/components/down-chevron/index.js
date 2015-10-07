@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import classnames from 'classnames';
 
 import SVGSequenceAnimation from '../../lib/svg-sequence-animation';
 
@@ -11,7 +12,7 @@ export default class DownChevron extends SVGSequenceAnimation {
     this.state.fps = 30;
   }
   render() {
-    const classes = `down-chevron ${this.props.customClass}`;
+    const classes = classnames('down-chevron', this.props.customClass);
     return (
       <div className={classes} onClick={this.props.onClick}>
         <svg ref="animsvg" title="Down arrow" role="img" viewBox="0 0 400 200">
