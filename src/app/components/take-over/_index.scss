@@ -74,7 +74,7 @@
         display: block;
         border: 0;
         background: none;
-        margin: 0 auto 5%;
+        margin: 0 auto 5vh;
         padding: 0;
         z-index: 100;
 
@@ -90,18 +90,18 @@
       }
       &__title {
         color: $marshPassion;
-        margin-top: 10%;
+        margin-top: 5vh;
         font-size: 32px;
       }
       &__description {
-        margin-top: 3%;
+        margin-top: 1vh;
       }
       &__links {
         display: flex;
         flex-direction: column;
         list-style: none;
         padding: 0;
-        margin: 0 0 30px;
+        margin: 0 0 5vh;
 
         &__link-item {
           margin-bottom: 15px;
@@ -176,12 +176,13 @@
   @include susy-breakpoint($bp-large, $susy) {
     &__content__message {
       &__title {
-        margin-top: 5%;
+        margin-top: 0;
         font-size: 40px;
       }
       &__links {
         flex-direction: row;
         justify-content: center;
+        margin: 5vh 0 10vh;
 
         &__link-item {
           margin-left: 30px;
