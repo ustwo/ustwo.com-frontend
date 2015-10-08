@@ -3,6 +3,7 @@
 import React from 'react';
 
 import spannify from '../../lib/spannify';
+import animate from '../../lib/animate';
 
 export default class WordAnimation extends React.Component {
   constructor(props) {
