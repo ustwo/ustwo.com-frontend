@@ -11,6 +11,7 @@
     "../../adaptors/server/env": "./adaptors/client/env",
     "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
     "../adaptors/server/window": "./adaptors/client/window",
+    "../../adaptors/server/window": "./adaptors/client/window",
     "../../adaptors/server/scroll-magic": "./adaptors/client/scroll-magic",
     "../adaptors/server/proxy-url": "./adaptors/client/proxy-url",
     "../../adaptors/server/svg4everybody": "./adaptors/client/svg4everybody",
