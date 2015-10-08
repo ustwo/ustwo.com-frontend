@@ -55,8 +55,8 @@ const PageJoinUs = React.createClass({
     );
   },
   getModuleRenderer(colours) {
-    return (moduleData) => {
-      return ModuleRenderer(moduleData, colours, () => true);
+    return (moduleData, index) => {
+      return ModuleRenderer(moduleData, index, colours, () => true);
     };
   },
   getStudios() {

@@ -20,8 +20,8 @@ const PageCaseStudy = React.createClass({
     );
   },
   getModuleRenderer(colours) {
-    return (moduleData) => {
-      return ModuleRenderer(moduleData, colours, () => {
+    return (moduleData, index) => {
+      return ModuleRenderer(moduleData, index, colours, () => {
         this.zebra = !this.zebra;
         return this.zebra;
       });
