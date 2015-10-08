@@ -10,7 +10,6 @@ compiler_dockerfile = Dockerfile.$(compiler_id)
 	compiler-pull
 
 compiler_volumes = \
-  -v $(BASE_PATH)/gulpfile.babel.js:/home/ustwo/gulpfile.babel.js \
   -v $(BASE_PATH)/compiler.json:/home/ustwo/package.json \
   -v $(BASE_PATH)/share/nginx/assets:/home/ustwo/public \
   -v $(BASE_PATH)/test:/home/ustwo/test \

@@ -20,8 +20,6 @@ COPY compiler.json /home/ustwo/package.json
 RUN npm install
 
 ENV PATH $PATH:/home/ustwo/node_modules/.bin
-
-COPY gulpfile.babel.js /home/ustwo/gulpfile.babel.js
 COPY src /home/ustwo/src
 
 CMD ["npm", "run", "compile"]
