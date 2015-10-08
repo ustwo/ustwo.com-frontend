@@ -16,9 +16,11 @@ mkdir -p $base/public/js
 
 if [[ -z $FLUSH_CACHE ]]; then
   if [[ -d $base/public/.cache-spa ]]; then
-    cp -R $base/public/.cache-spa \
-          $base/node_modules/persistify/node_modules/flat-cache/.cache
+    mv $base/public/.cache-spa \
+       $base/node_modules/persistify/node_modules/flat-cache/.cache
   fi
+else
+  rm -rf $base/public/.cache-spa
 fi
 
 persistify $input \
@@ -37,8 +39,8 @@ persistify $input \
            --verbose \
            --outfile $filename
 
-cp -R $base/node_modules/persistify/node_modules/flat-cache/.cache \
-      $base/public/.cache-spa
+mv $base/node_modules/persistify/node_modules/flat-cache/.cache \
+   $base/public/.cache-spa
 
 if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename
