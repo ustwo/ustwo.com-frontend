@@ -11,6 +11,8 @@ if [[ -z $FLUSH_CACHE ]]; then
     mv $base/public/.cache-vendors \
        $base/node_modules/persistify/node_modules/flat-cache/.cache
   fi
+else
+  rm -rf $base/public/.cache-vendors
 fi
 
 persistify --require babelify/polyfill \

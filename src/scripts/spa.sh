@@ -19,6 +19,8 @@ if [[ -z $FLUSH_CACHE ]]; then
     mv $base/public/.cache-spa \
        $base/node_modules/persistify/node_modules/flat-cache/.cache
   fi
+else
+  rm -rf $base/public/.cache-spa
 fi
 
 persistify $input \
@@ -39,8 +41,6 @@ persistify $input \
 
 mv $base/node_modules/persistify/node_modules/flat-cache/.cache \
    $base/public/.cache-spa
-
-ls -la $base/public/.cache-spa
 
 if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename
