@@ -80,3 +80,6 @@ assets-spa:
 # Runs SPA tests
 assets-test:
 	@$(call compile, npm test)
+
+assets-integration:
+	@$(call compile, npm run integration)
