@@ -29,7 +29,7 @@ const takeover = {
   }, {
     type: 'http',
     text: 'Go to getpauseapp.com',
-    url: 'http://getpauseapp.com/'
+    url: 'http://us2.co/pause-web'
   }],
   _embedded: {
     "wp:attachment": [
