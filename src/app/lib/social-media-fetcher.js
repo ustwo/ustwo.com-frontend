@@ -1,7 +1,7 @@
 import find from 'lodash/collection/find';
 import DataLoader from '../adaptors/server/data-loader';
 import tweetCounts from './tweetCounts';
-import Log from './log';
+import log from './log';
 
 function formatter(data, type) {
   let uri;
@@ -43,12 +43,12 @@ export default (slug, cb) => {
     external: 'facebook',
     type: 'facebookShares',
     get: response => formatter(response.data, 'facebook'),
-    failure: err => Log('Failed to fetch Facebook share count', err)
+    failure: err => log('Failed to fetch Facebook share count', err)
   }, {
     url: `twitter/count?url=${httpsUri}`,
     external: 'twitter',
     type: 'twitterShares',
     get: response => formatter(response.data, 'twitter'),
-    failure: err => Log('Failed to fetch Twitter share count', err)
+    failure: err => log('Failed to fetch Twitter share count', err)
   }], cb);
 };

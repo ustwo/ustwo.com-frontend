@@ -5,16 +5,16 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import omit from 'lodash/object/omit';
 
-import Log from '../app/lib/log';
+import log from '../app/lib/log';
 
 const isomorphic = true;
-Log('Isomorphic:', isomorphic);
+log('Isomorphic:', isomorphic);
 let router = express.Router();
 
 function readData (cb) {
   fs.readFile(path.join(path.join(__dirname), '../data/gulpdata.json'), 'utf8', (err, data) => {
     if (err) {
-      return Log(err);
+      return log(err);
     }
     cb(data);
   });
@@ -40,7 +40,7 @@ function renderApp(req, res) {
             app: AppString
           });
       })
-      .catch(error => Log('server route error', error, error.stack));
+      .catch(error => log('server route error', error, error.stack));
   } else {
     res
       .render('app', {

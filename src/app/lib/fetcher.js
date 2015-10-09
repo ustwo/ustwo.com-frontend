@@ -2,7 +2,7 @@ import { polyfill } from 'es6-promise';
 import fetch from 'isomorphic-fetch/fetch-npm-node.js';
 import pick from 'lodash/object/pick';
 
-import Log from './log';
+import log from './log';
 import window from '../adaptors/server/window';
 
 (typeof window !== 'undefined') && (window.ajaxPending = false);
@@ -29,7 +29,7 @@ function generateURL(config) {
 function fetcher (config) {
   const mergedConfig = Object.assign({}, defaultConfig, config);
   const url = generateURL(mergedConfig);
-  Log('Fetching:', url);
+  log('Fetching:', url);
   const req = fetch(url, mergedConfig)
     .then(response => {
       remove(mergedConfig.url);
