@@ -42,6 +42,7 @@ app-create:
 		-p 8888:8888 \
 		$(docker_host) \
 		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \
+		-e DOCKER_PROXY_HOST=$(DOCKER_PROXY_HOST) \
 		$(verbose_flag) \
 		$(app_image)
 

@@ -10,7 +10,7 @@ window.env = Env;
 
 React.initializeTouchEvents(true);
 
-Flux.init(window.location.href).then(state => {
+Flux.init().then(state => {
   React.render(
     <App state={state} />,
     document.body

@@ -3,7 +3,7 @@ import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
 import capitalize from 'lodash/string/capitalize';
 
-import Log from '../lib/log';
+import log from '../lib/log';
 import window from '../adaptors/server/window';
 import DataLoader from '../adaptors/server/data-loader';
 import Nulls from './nulls';
@@ -34,23 +34,23 @@ function applyData(response, type) {
     changeSet.postsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
   }
   Object.assign(_state, changeSet);
-  Log('Loaded', type, _state[type]);
+  log('Loaded', type, _state[type]);
 }
 function applyJobDetailData(response) {
   const job = response.data;
   const index = findIndex(_state.jobs, 'shortcode', job.shortcode);
   _state.jobs[index] = job;
-  Log('Added job details', job);
+  log('Added job details', job);
 }
 function applyMorePosts(response, type) {
   _state.posts = _state.posts.concat(response.data);
-  Log('Added more posts', response.data);
+  log('Added more posts', response.data);
 }
 function applySocialMediaDataForPosts(response, type) {
   const index = findIndex(_state.posts, 'slug', response.slug);
   if (index > -1) {
     _state.posts[index][type] = response.data;
-    Log(`Added ${type}`, response.data);
+    log(`Added ${type}`, response.data);
   }
 }
 

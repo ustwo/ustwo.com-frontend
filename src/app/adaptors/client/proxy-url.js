@@ -1,1 +1,4 @@
-export default () => '/api/wp-json/'
+export default () => ({
+  api: () => `${global.hostApi}/api/wp-json/`,
+  proxy: () => `${global.proxyUrl}/`
+})

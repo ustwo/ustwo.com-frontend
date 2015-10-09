@@ -6,9 +6,10 @@ ifeq ($(FLUSH_CACHE), true)
   cache_flag = -e FLUSH_CACHE=true
 endif
 
-
+# this is passed on to the server side React renderer to be able to reach the proxy
+DOCKER_PROXY_HOST ?= docker.ustwo.com
 define docker_host
---add-host docker.ustwo.com:172.17.42.1
+--add-host $(DOCKER_PROXY_HOST):172.17.42.1
 endef
 
 define project_labels

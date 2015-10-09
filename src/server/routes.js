@@ -5,16 +5,16 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import omit from 'lodash/object/omit';
 
-import Log from '../app/lib/log';
+import log from '../app/lib/log';
 
 const isomorphic = true;
-console.log('Isomorphic:', isomorphic);
+log('Isomorphic:', isomorphic);
 let router = express.Router();
 
 function readData (cb) {
   fs.readFile(path.join(path.join(__dirname), '../data/gulpdata.json'), 'utf8', (err, data) => {
     if (err) {
-      return Log(err);
+      return log(err);
     }
     cb(data);
   });
@@ -23,7 +23,7 @@ function readData (cb) {
 function renderApp(req, res) {
   if (isomorphic) {
     const Flux = require('../app/flux');
-    Flux.init(req.protocol + '://' + req.hostname + req.originalUrl, req.get('Host-API'))
+    Flux.init(req.protocol + '://' + req.hostname + req.originalUrl, req.get('Host-API'), `https://${process.env.DOCKER_PROXY_HOST}:${process.env.PROXY_HTTPS_PORT}`)
       .then((state) => {
         const App = React.createFactory(require('../app/components/app'));
         const AppString = React.renderToString(App({
@@ -40,7 +40,7 @@ function renderApp(req, res) {
             app: AppString
           });
       })
-      .catch(error => Log('server route error', error, error.stack));
+      .catch(error => log('server route error', error, error.stack));
   } else {
     res
       .render('app', {

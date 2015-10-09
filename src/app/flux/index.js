@@ -60,9 +60,10 @@ const Flux = Object.assign(
   EventEmitter.prototype,
   mapValues(Actions, emitify),
   {
-    init(initialUrl, hostApi) {
-      global.hostApi = hostApi;
+    init(initialUrl, hostApi, proxyUrl) {
       const vurl = virtualUrl(initialUrl || window.location.href);
+      global.hostApi = hostApi || '';
+      global.proxyUrl = proxyUrl || vurl.origin;
 
       window.onpopstate = () => {
         let url = window.location.href;
