@@ -20,6 +20,8 @@ define compile
 		$(compiler_volumes) \
 		$(verbose_flag) \
 		$(cache_flag) \
+		-e SAUCE_USERNAME=$(SAUCE_USERNAME) \
+		-e SAUCE_ACCESS_KEY=$(SAUCE_ACCESS_KEY) \
 		$(compiler_image) $1
 endef
 
