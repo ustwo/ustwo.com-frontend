@@ -8,6 +8,7 @@
     "vendors": "./src/scripts/vendors.sh",
     "spa": "./src/scripts/spa.sh",
     "css": "./src/scripts/css.sh",
+    "images": "./src/scripts/images.sh",
     "css-watch": "echo 'not implemented'",
     "test": "mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test -name '*.js')"
   },

@@ -49,6 +49,9 @@ assets-create:
 assets-compile:
 	$(call compile, npm run compile)
 
+assets-images:
+	$(call compile, npm run images)
+
 assets-css:
 	$(call compile, npm run css)
 

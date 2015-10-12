@@ -73,6 +73,7 @@ css: assets-css
 css-watch: assets-css-watch
 vendors: assets-vendors
 spa: assets-spa
+images: assets-images
 
 seeds: build
 love: clean init
