@@ -2,7 +2,13 @@
 
 ## Overview
 
-TODO: What is this, less technical high level overview
+This repository contains all the front end code for the current [ustwo.com](https://ustwo.com) website and the toolset required to build and deploy it.
+
+
+
+Our content management system behind this is a Wordpress instance which doesn't actually render the pages themselves, but instead serves content up via [WP API](http://v2.wp-api.org/) through a mixture of standard and customised JSON REST API endpoints making the vast majority of the content editable.
+
+
 
 React SPA front end + Wordpress API back end
 
@@ -26,8 +32,6 @@ Currently used:
 * CSS via LibSass + Susy
 * CSS browser support with PostCSS / [Autoprefixer](https://github.com/postcss/autoprefixer)
 * Web fonts using [Localfont.js](https://github.com/jaicab/localFont)
-* Icons via SVG spritemap – might need to use [SVG4everybody](https://github.com/jonathantneal/svg4everybody) for IE support
-* SVGs optimised with [SVGOMG](https://jakearchibald.github.io/svgomg/)
 * Responsive images via [Imager.jsx](https://github.com/oncletom/Imager.jsx) (React wrapper of Imager.js)
 * Dynamic animations: [GreenSock.js](http://greensock.com/get-started-js) + [bezier easing](https://github.com/gre/bezier-easing)
 * Routing: Express + Flux Routes
@@ -44,7 +48,7 @@ The project is managed via Docker containers.
 
 Commands below assume OS X and preference to install libraries via Homebrew.
 You can of course install Docker Machine and Virtualbox in any other way
-you want (like [Kitematic](https://kitematic.com/)).
+you want (like Docker Toolbox / [Kitematic](https://kitematic.com/)).
 
 * Install [Docker Machine](https://docs.docker.com/machine/#installation)
 
@@ -85,10 +89,6 @@ TODO: steps how to run local instance with self certification.
 docker environment.
 
         $ make vault-load VAULT_PATH=vault-2015.tar
-
-#### AWS – move to RELEASE.md?
-
-TODO: how to set up `ustwosite` and `ustwositepro` Docker env
 
 #### Testing
 
@@ -141,6 +141,14 @@ remounting all necessary files from the host environment.
 Clean the environment:
 
     $ make clean
+    
+See Node app logs with:
+
+    $ make app-log
+    
+And Nginx logs with:
+
+    $ make proxy-log
 
 ## Test
 
@@ -156,91 +164,17 @@ TODO: describe what we use (Mocha, JSDOM, etc)
 
 TODO: describe what we use (Mocha, Chai, Chai Promises, Sauce Labs, etc)
 
-## Contribution (code style guide)
+## Release
 
-TODO: clean up, maybe move completely to [CONTRIBUTING.md](./CONTRIBUTING.md)?
+We're using Docker Hub and Docker Machine to tag and deploy Docker images, for more info see [RELEASE.md](./RELEASE.md).
 
-Use [EditorConfig](http://editorconfig.org/)!
+## Contribution
 
-JS: [Airbnb ES6 style guide](https://github.com/airbnb/javascript) as a starting point + which JSX one?
-Should we enforce with [JSCS](http://jscs.info/) (see [Airbnb's settings](https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json))?
+To read up on our coding style and general contribution guide, have a look at [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Sandbox / component style guide
 
 TODO
-
-## Release – move to RELEASE.md?
-
-If the commit you are releasing from has been picked up by CircleCI (so you have
-a snapshot available `ustwo/usweb:app-{git hash}`) you can release with:
-
-        $ make release VERSION=1.2.3
-        $ git push --tags origin master
-
-If not, do it manually (only for emergencies when you cannot wait for the CircleCI build):
-
-1. Tag the release
-
-        $ make release-tag-create VERSION=1.2.3
-        $ git push --tags origin master
-
-2. Build fresh Docker images
-
-        $ make build VERSION=x.x.x
-
-3. Publish the release
-
-        $ make push VERSION=1.2.3
-
-
-## Deploy staging – move to RELEASE.md?
-
-1. Set the right environment
-
-        $ eval $(docker-machine env ustwosite)
-
-2. Pull images
-
-        $ make pull VERSION=1.2.3
-
-3. Deploy
-
-        $ make deploy-staging VERSION=1.2.3
-
-4. Clean old images, keeping only the last known working version in case of rollback
-
-        $ make nuke VERSION=1.2.2
-
-
-## Deploy production – move to RELEASE.md?
-
-It assumes you followed the staging flow so the tagged images are available in
-the Docker Hub.
-
-1. Deploy in your local environment
-
-        $ make -i love VERSION=1.2.3
-
-2. Test deployment
-
-        $ open https://local.ustwo.com:9443
-
-3. Set the right environment
-
-        $ eval $(docker-machine env ustwositepro)
-
-4. Pull images
-
-        $ make pull VERSION=1.2.3
-
-5. Deploy
-
-        $ make deploy-production VERSION=1.2.3
-
-6. Clean old images, keeping only the last known working version in case of rollback
-
-        $ make nuke VERSION=1.2.3
-
 
 ## Contact / credits
 

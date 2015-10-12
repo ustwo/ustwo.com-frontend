@@ -1,5 +1,19 @@
 # Contributing
 
+In general feel free to open issues / pull requests if you spot something – though we don't expect anyone outside of ustwo to do free work for us :)
+
+If you're still serious about contributing, please have a read of our guidelines below.
+
+## General
+
+Use [EditorConfig](http://editorconfig.org/) in your editor of choice, whitespace flipping is naughty!
+
+## JavaScript
+
+There's too much to list here, but in general we mostly agree with the [Airbnb ES6 style guide](https://github.com/airbnb/javascript) and [Khan Academy React style guide](https://github.com/Khan/style-guides/blob/master/style/react.md).
+
+TODO: Should we enforce with [JSCS](http://jscs.info/) (see [Airbnb's settings](https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json))?
+
 ## CSS
 
 Author: Phil Linnell
@@ -42,6 +56,7 @@ To me, there is a familiar and natural order of how to write an element's attrib
 #### Media queries
 
 Write media queries at the bottom of the component file, each one outside of the component selector name
+
 ```
 @media screen and (min-width: $breakpoint) {
   .component-name {
@@ -49,6 +64,7 @@ Write media queries at the bottom of the component file, each one outside of the
   }
 }
 ```
+
 Note: Use `@mixin` and standard CSS as much as possible here, no mixins unless necessary.
 
 #### Selector naming conventions
@@ -66,6 +82,7 @@ Simply import all scss partials into the main file `@import "path-to-component-n
 #### Nesting
 
 Try to avoid anything more than a selector nested within an already nested selector (three selectors deep).
+
 ```
 .component-name {
   padding: 20px;
@@ -83,6 +100,7 @@ Try to avoid anything more than a selector nested within an already nested selec
 #### SASS Variables
 
 All variables used within a component should be scoped inside the main selector (thus simple naming conventions can be used). For global variables, define them inside the global variables file.
+
 ```
 /* _variables.scss */
 $header-height: 70px;
@@ -99,6 +117,7 @@ $header-height: 70px;
   }
 }
 ```
+
 Move to PostCSS's custom-properties and `var()`?
 
 ### Advanced SASS
@@ -124,4 +143,14 @@ Know to use mixins only if an argument is being passed in. Try to limit the amou
 
 #### Loops, iterations etc
 
-If you need them, go bananas.
+If you need them, go bananas ![image](http://www.sherv.net/cm/emo/funny/2/banana.gif)
+
+## SVG vector graphics and animations
+
+We're keeping our vector icons in an external [SVG spritemap](./src/app/images/spritemap.svg), loaded using the `use xlink:href` method. There's a React component named (surprisingly) `SVG` to cleanly link and include these. 
+
+To make these work on IE we're using [SVG4everybody](https://github.com/jonathantneal/svg4everybody).
+
+If you need to include a new SVG, make sure to optimise markup with [SVGOMG](https://jakearchibald.github.io/svgomg/).
+
+Also, for animation sequences (like the down chevron or the close `x`), we're using SVG sequences with a bespoke component called `SVGSequenceAnimation`. Unfortunately right now it's not possible to manipulate external SVGs, so these need to be inlined.
