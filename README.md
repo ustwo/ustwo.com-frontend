@@ -1,5 +1,15 @@
 # ustwo.com website
 
+## Overview
+
+TODO: What is this, less technical high level overview
+
+React SPA front end + Wordpress API back end
+
+## Tech stack
+
+TODO: cull unimportant ones and update to current stack with a bit more explanation about choices.
+
 Currently used:
 
 * Building using Gulp + Browserify
@@ -18,8 +28,9 @@ Currently used:
 
 Main motivation to have a SPA is to have nice between page transitions like on http://www.google.com/design/articles/ :)
 
-
 ## Setup
+
+### Docker dependencies
 
 The project is managed via Docker containers.
 
@@ -37,7 +48,9 @@ you want (like [Kitematic](https://kitematic.com/)).
 
 * Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
-*Note* Beware the version might matter. The tested version is 5.0.4.
+*Note*: Beware, the version might matter. Our latest known working version is 5.0.4.
+
+### Docker environment
 
 * Create Docker host VM
 
@@ -47,22 +60,35 @@ you want (like [Kitematic](https://kitematic.com/)).
 
         $ eval "$(docker-machine env dev)"
 
+* Set up `/etc/hosts` aliases
+
+        192.168.99.100 local.ustwo.com
+        192.168.99.100 staging.ustwo.com
+
+*Note*: The IP number above depends on your local instance. Check `docker-machine ip dev`.
+
+### Credentials
+
+#### Vault
+
+TODO: steps how to run local instance with self certification.
+
 * Get the vault from someone (e.g. arnau@ustwo.com) and load it in your
 docker environment.
 
         $ make vault-load VAULT_PATH=vault-2015.tar
 
-* Set `/etc/hosts`
+#### AWS
 
-        192.168.99.100 local.ustwo.com
-        192.168.99.100 staging.ustwo.com
+TODO: how to set up `ustwosite` and `ustwositepro` Docker env
 
-*Note*: The ip depends on your local instance. Check `docker-machine ip dev`.
+#### Testing
 
+TODO: Sauce Labs environment variables
 
 ## Develop
 
-*Note*: Check the [Make.md](./Make.md) for an explanation of how the make
+*Note*: Check the [Make.md](./Make.md) for an explanation of how the Make
 tasks are structured.
 
 Prepare a new environment:
@@ -88,10 +114,6 @@ cache created by browserify. Ex:
 
     $ make spa VERBOSE=true FLUSH_CACHE=true
 
-Run the tests:
-
-    $ make test
-
 Deploy app (when you need to restart services):
 
     $ make -i love LOCAL_FS=true VERBOSE=true
@@ -112,11 +134,37 @@ Clean the environment:
 
     $ make clean
 
+## Test
 
-## Release
+### Unit
+
+Run the unit tests:
+
+    $ make test
+
+TODO: describe what we use (Mocha, JSDOM, etc)
+
+### Integration
+
+TODO: describe what we use (Mocha, Chai, Chai Promises, Sauce Labs, etc)
+
+## Contribution (code style guide)
+
+TODO: clean up, maybe move completely to [CONTRIBUTING.md](./CONTRIBUTING.md)?
+
+Use [EditorConfig](http://editorconfig.org/)!
+
+JS: [Airbnb ES6 style guide](https://github.com/airbnb/javascript) as a starting point + which JSX one?
+Should we enforce with [JSCS](http://jscs.info/) (see [Airbnb's settings](https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json))?
+
+## Sandbox / component style guide
+
+TODO
+
+## Release – move to RELEASE.md?
 
 If the commit you are releasing from has been picked up by CircleCI (so you have
-an snapshot available `ustwo/usweb:app-{git hash}`) you can release with:
+a snapshot available `ustwo/usweb:app-{git hash}`) you can release with:
 
         $ make release VERSION=1.2.3
         $ git push --tags origin master
@@ -137,7 +185,7 @@ If not, do it manually (only for emergencies when you cannot wait for the Circle
         $ make push VERSION=1.2.3
 
 
-## Deploy staging
+## Deploy staging – move to RELEASE.md?
 
 1. Set the right environment
 
@@ -156,7 +204,7 @@ If not, do it manually (only for emergencies when you cannot wait for the Circle
         $ make nuke VERSION=1.2.2
 
 
-## Deploy production
+## Deploy production – move to RELEASE.md?
 
 It assumes you followed the staging flow so the tagged images are available in
 the Docker Hub.
@@ -186,20 +234,4 @@ the Docker Hub.
         $ make nuke VERSION=1.2.3
 
 
-## Style guide (WIP)
 
-Use [EditorConfig](http://editorconfig.org/)!
-
-JS: [Airbnb ES6 style guide](https://github.com/airbnb/javascript) as a starting point + which JSX one?
-Should we enforce with [JSCS](http://jscs.info/) (see [Airbnb's settings](https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json))?
-
-CSS: [BEM](http://getbem.com/introduction/)
-
-Components / HTML: [Atomic design](http://bradfrost.com/blog/post/atomic-web-design/) – we're using the ideas from Atomic design, but with different naming convention for component hierarchy levels (from simple to complex):
-
-* Elements instead of Atoms
-* Components instead of Molecules
-* Modules instead of Organisms
-* Templates
-
-If you find yourself with very long class names due to BEM, it's probably a sign that you should have broken some pieces out to smaller components!
