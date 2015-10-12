@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import get from 'lodash/object/get';
 
 export default class LoadingIcon extends React.Component {
   render() {

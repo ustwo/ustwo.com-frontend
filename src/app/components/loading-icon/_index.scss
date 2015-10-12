@@ -6,6 +6,8 @@
   height: $size;
   width: $size;
   box-sizing: content-box;
+  display: inline-block;
+  position: relative;
 
   .half {
     position: absolute;
