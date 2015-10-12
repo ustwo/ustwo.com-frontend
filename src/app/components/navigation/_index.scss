@@ -53,6 +53,13 @@
         margin-left: 30px;
       }
     }
+    .nav__open-overlay-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+    }
     &__inner {
       position: absolute;
       right: 0;
