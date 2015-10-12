@@ -6,6 +6,8 @@ echo "Compiling CSS..."
 base="/home/ustwo"
 input="$base/src/app/index.scss"
 filename="$base/public/css/index.css"
+fontinput="$base/src/app/lib/font.scss"
+fontfilename="$base/public/css/font.css"
 
 mkdir -p $base/public/css
 
@@ -25,5 +27,9 @@ postcss --use autoprefixer \
         --autoprefixer.browser "last 2 versions" \
         --output $filename \
         $filename
+
+sassc $fontinput \
+      --style compressed \
+      $fontfilename
 
 echo "Done with CSS"
