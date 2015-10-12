@@ -8,7 +8,15 @@ React SPA front end + Wordpress API back end
 
 ## Tech stack
 
-TODO: cull unimportant ones and update to current stack with a bit more explanation about choices.
+### React SPA
+
+### Node app
+
+### Nginx proxy
+
+__________
+
+TODO: cull unimportant ones and update to current stack under right section and with a bit more explanation about choices.
 
 Currently used:
 
@@ -24,7 +32,7 @@ Currently used:
 * Dynamic animations: [GreenSock.js](http://greensock.com/get-started-js) + [bezier easing](https://github.com/gre/bezier-easing)
 * Routing: Express + Flux Routes
 * Scroll triggered animations: [ScrollMagic](http://janpaepke.github.io/ScrollMagic/)
-* Data: using Flux Store to cache stuff loaded using Isomorpic-Fetch via WP API
+* Data: using Flux Store to cache stuff loaded using Isomorphic-Fetch via WP API
 
 Main motivation to have a SPA is to have nice between page transitions like on http://www.google.com/design/articles/ :)
 
@@ -78,7 +86,7 @@ docker environment.
 
         $ make vault-load VAULT_PATH=vault-2015.tar
 
-#### AWS
+#### AWS – move to RELEASE.md?
 
 TODO: how to set up `ustwosite` and `ustwositepro` Docker env
 
@@ -234,4 +242,8 @@ the Docker Hub.
         $ make nuke VERSION=1.2.3
 
 
+## Contact / credits
 
+TODO: who to best talk to about various aspects
+
+## License – probably best as LICENSE.md
