@@ -82,6 +82,11 @@ vendors: assets-vendors
 spa: assets-spa
 images: assets-images
 
+sandlove: sandbox-rm sandbox-create
+
+## Obsolete ###################################################################
+init-rm: clean
+
 ## Environment  ###############################################################
 ##
 # Lists all containers related to the project.
