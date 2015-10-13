@@ -15,8 +15,8 @@ nginx config).
 Mounts the assets volume.
 * proxy: Container "daemon" running nginx.  Mounts the vault and the assets
 volumes.
-* compiler: Container "task" wrapping Gulp, npm and other tasks.  Mounts the
-local filesystem as it is only used in development.
+* compiler: Container "task" wrapping npm and other tasks.  Mounts the local
+filesystem as it is only used in development.
 
 
 ## Variables
