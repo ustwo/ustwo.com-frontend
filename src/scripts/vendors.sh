@@ -6,10 +6,12 @@ echo "Compiling the SPA vendors..."
 base="/home/ustwo"
 filename="$base/public/js/vendors.js"
 
+mkdir -p $base/public/js
+
 if [[ -z $FLUSH_CACHE ]]; then
   if [[ -d $base/public/.cache-vendors ]]; then
-    mv $base/public/.cache-vendors \
-       $base/node_modules/persistify/node_modules/flat-cache/.cache
+    rsync -r $base/public/.cache-vendors/ \
+             $base/node_modules/persistify/node_modules/flat-cache/.cache/
   fi
 else
   rm -rf $base/public/.cache-vendors
@@ -27,8 +29,8 @@ persistify --require babelify/polyfill \
            --verbose \
            --outfile $filename
 
-mv $base/node_modules/persistify/node_modules/flat-cache/.cache \
-   $base/public/.cache-vendors
+rsync -r $base/node_modules/persistify/node_modules/flat-cache/.cache/ \
+         $base/public/.cache-vendors/
 
 if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename
