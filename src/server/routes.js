@@ -11,15 +11,6 @@ const isomorphic = true;
 log('Isomorphic:', isomorphic);
 let router = express.Router();
 
-function readData (cb) {
-  fs.readFile(path.join(path.join(__dirname), '../data/gulpdata.json'), 'utf8', (err, data) => {
-    if (err) {
-      return log(err);
-    }
-    cb(data);
-  });
-}
-
 function renderApp(req, res) {
   if (isomorphic) {
     const Flux = require('../app/flux');
@@ -52,13 +43,6 @@ function renderApp(req, res) {
       });
   }
 }
-
-router.get('/styleguide', (req, res) => {
-  readData(data => res.render('styleguide', {
-    title: 'ustwo styleguide',
-    data: data
-  }));
-});
 
 router.post('/blog/search', renderApp);
 router.get('/*', renderApp);
