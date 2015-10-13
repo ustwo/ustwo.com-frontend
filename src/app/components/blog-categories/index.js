@@ -35,7 +35,7 @@ export default class BlogCategories extends React.Component {
     return map(blogCategories, (name, id) => {
       const uri = (id === 'all') ? '/blog' : `/blog?category=${id}`;
       return (
-        <li className={id}>
+        <li key={`blog-category-${id}`} className={id}>
           <a href={uri} onClick={this.getOnClickBlogCategoryHandler(uri)}>{name}</a>
         </li>
       );
