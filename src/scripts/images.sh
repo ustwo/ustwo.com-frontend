@@ -7,10 +7,8 @@ base="/home/ustwo"
 
 mkdir -p $base/public/images
 
-cp -rf $base/src/app/images/**/*.{gif,jpg,png,svg} \
-       $base/public/images/
-
-cp -rf $base/src/app/images/favicon.{png,ico} \
-       $base/public
+rsync -rv \
+      $base/src/app/images/ \
+      $base/public/images/
 
 echo "Done processing images..."
