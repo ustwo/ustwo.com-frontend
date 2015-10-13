@@ -45,6 +45,8 @@ assets-create:
 		$(assets_volumes) \
 		$(assets_image)
 
+assets-clean:
+	$(RM) share/nginx/assets
 
 assets-compile:
 	$(call compile, npm run compile)
