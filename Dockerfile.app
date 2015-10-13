@@ -1,7 +1,7 @@
 FROM ustwo/nodejs:4.1.1
 MAINTAINER Arnau Siches <arnau@ustwo.com>
 
-COPY package.json /home/ustwo/package.json
+COPY package.app.json /home/ustwo/package.json
 RUN npm install --production
 COPY src /home/ustwo/src
 RUN mkdir -p /home/ustwo/public
