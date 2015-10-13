@@ -45,21 +45,34 @@ assets-create:
 		$(assets_volumes) \
 		$(assets_image)
 
+# Removes generated files by any assets-% task related to compile.
+assets-clean:
+	$(RM) share/nginx/assets
 
+# Compiles all assets.
 assets-compile:
 	$(call compile, npm run compile)
 
+# Copies images into share/nginx/assets/images
+assets-images:
+	$(call compile, npm run images)
+
+# Compiles CSS into share/nginx/assets/css
 assets-css:
 	$(call compile, npm run css)
 
+# noop
 assets-css-watch:
 	$(call compile, npm run css-watch)
 
+# Compiles SPA vendors into share/nginx/assets/js
 assets-vendors:
 	$(call compile, npm run vendors)
 
+# Compiles SPA into share/nginx/assets/js
 assets-spa:
 	$(call compile, npm run spa)
 
+# Runs SPA tests
 assets-test:
 	$(call compile, npm test)

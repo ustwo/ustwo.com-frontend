@@ -9,8 +9,12 @@ ENV LIBSASS_VERSION 3.2.5
 RUN apk add --update \
           curl \
           grep \
+          rsync \
           parallel \
  && rm -rf /var/cache/apk/*
+
+RUN mkdir /root/.parallel \
+ && touch /root/.parallel/will-cite
 
 WORKDIR /usr/local/bin
 RUN curl -L "https://github.com/ustwo/docker-sass/releases/download/v$SASSC_VERSION/alpine-sassc-$SASSC_VERSION.tar.gz" | tar xvz
@@ -20,8 +24,6 @@ COPY compiler.json /home/ustwo/package.json
 RUN npm install
 
 ENV PATH $PATH:/home/ustwo/node_modules/.bin
-
-COPY gulpfile.babel.js /home/ustwo/gulpfile.babel.js
 COPY src /home/ustwo/src
 
 CMD ["npm", "run", "compile"]

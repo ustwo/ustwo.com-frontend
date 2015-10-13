@@ -69,14 +69,15 @@ deploy-production:
 		PROXY_HTTP_PORT=80
 deploy-staging: deploy-production
 release: release-create
-css: assets-css
-css-watch: assets-css-watch
-vendors: assets-vendors
-spa: assets-spa
 
 seeds: build
 love: clean init
 stuff: assets-compile
+css: assets-css
+css-watch: assets-css-watch
+vendors: assets-vendors
+spa: assets-spa
+images: assets-images
 
 ## Obsolete ###################################################################
 init-rm: clean

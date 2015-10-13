@@ -51,6 +51,12 @@ between parenthesis.
 * `release`: Creates a tag version from the given `VERSION`, tags the snapshot
 image created by CI and pushes to the Docker Hub
 
+## Sugar
+* `stuff`: Compiles assets.
+* `css`: Compiles CSS.
+* `vendors`: Compiles vendors.
+* `spa`: Compiles the Single Page Application.
+* `images`: Compiles images.
 
 The following are one-time tasks unless dependencies change.
 
@@ -70,8 +76,8 @@ of the image/container it operates.
 `vault` or `proxy`.
 * `{name}-rm: Removes a Docker container. `{name}` can be `app`, `assets`,
 `vault` or `proxy`.
-* `{name}-push`: Pushes a Docker image. `{name}` can be `app` or `assets`.
-* `{name}-pull`: Pulls a Docker image. `{name}` can be `app` or `assets`.
+* `{name}-push`: Pushes a Docker image. `{name}` can be `app`, `assets` or `compiler`.
+* `{name}-pull`: Pulls a Docker image. `{name}` can be `app`, `assets` or `compiler`.
 * `{name}-log`: Tails the logs for a container. `{name}` can be `app` or `proxy`.
 This does not work in production as the logs are stored in `/var/log/syslog`.
 * `app-sh`: Opens a shell to inspect the `app` container.
