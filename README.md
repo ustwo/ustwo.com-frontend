@@ -4,41 +4,43 @@
 
 This repository contains all the front end code for the current [ustwo.com](https://ustwo.com) website and the toolset required to build and deploy it.
 
+In order to be able to have full control over all aspects of the website – including transitions between pages – and to make navigation super fast by not having to reload the browser, we decided to build the site as a [single-page application](https://en.wikipedia.org/wiki/Single-page_application). We chose [React.js](https://facebook.github.io/react/) as a main JavaScript technology enabling us to do this, since it has built in support to render pages on the server side too (called isomorphic rendering). This way we could keep the loading and rendering performance snappy on mobile and let visitors see content without an extra data loading step after the initial page load. To do this work we put a small Node backend server in place.
 
-
-Our content management system behind this is a Wordpress instance which doesn't actually render the pages themselves, but instead serves content up via [WP API](http://v2.wp-api.org/) through a mixture of standard and customised JSON REST API endpoints making the vast majority of the content editable.
-
-
-
-React SPA front end + Wordpress API back end
+Our content management system behind this is a Wordpress instance which doesn't actually render the pages itself, but instead serves content up via [WP API](http://v2.wp-api.org/) through a mixture of standard and customised JSON REST API endpoints making the vast majority of the content editable.
 
 ## Tech stack
 
 ### React SPA
 
+ES6/7, React.js, Flux
+
+Sass, SVG animations
+
 ### Node app
 
-### Nginx proxy
+Express, Flux routes
 
-__________
+Isomorphic rendering
 
-TODO: cull unimportant ones and update to current stack under right section and with a bit more explanation about choices.
+### Nginx
 
-Currently used:
+Reverse proxy
 
-* Building using Gulp + Browserify
-* UI using React.js + ES6/7
-* Lightweight style guide using [React Style Guide](https://github.com/alexlande/react-style-guide)
-* CSS via LibSass + Susy
-* CSS browser support with PostCSS / [Autoprefixer](https://github.com/postcss/autoprefixer)
-* Web fonts using [Localfont.js](https://github.com/jaicab/localFont)
-* Responsive images via [Imager.jsx](https://github.com/oncletom/Imager.jsx) (React wrapper of Imager.js)
-* Dynamic animations: [GreenSock.js](http://greensock.com/get-started-js) + [bezier easing](https://github.com/gre/bezier-easing)
-* Routing: Express + Flux Routes
-* Scroll triggered animations: [ScrollMagic](http://janpaepke.github.io/ScrollMagic/)
-* Data: using Flux Store to cache stuff loaded using Isomorphic-Fetch via WP API
+### Build tools
 
-Main motivation to have a SPA is to have nice between page transitions like on http://www.google.com/design/articles/ :)
+Make, NPM scripts
+
+Browserify, Babel
+
+Autoprefixer, LibSASS
+
+### Browser compatibility
+
+We're aiming to support all evergreen browsers (Chrome, Firefox, Safari, Edge and Opera on all platforms) plus Internet Explorer 10-11 and Android Browser 4.2-4.4.4.
+
+In case you were wondering, we've chosen these as we wanted to be able to use [Flexbox](http://caniuse.com/#feat=flexbox).
+
+If you see any misbehaviour with one of these browsers please open an issue!
 
 ## Setup
 
@@ -141,11 +143,11 @@ remounting all necessary files from the host environment.
 Clean the environment:
 
     $ make clean
-    
+
 See Node app logs with:
 
     $ make app-log
-    
+
 And Nginx logs with:
 
     $ make proxy-log
