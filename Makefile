@@ -61,10 +61,10 @@ test: assets-test
 push: app-push assets-push
 pull: app-pull assets-pull
 init: vault-create assets-create app-create proxy-create
-rm-all: proxy-rm app-rm assets-rm vault-rm
+clean-no-confirm: proxy-rm app-rm assets-rm vault-rm
 clean:
-	$(call confirm,"Are you sure you want to clean __$(DOCKER_MACHINE_NAME)__?",$(MAKE) -i rm-all)
-deploy: rm-all init
+	$(call confirm,"Are you sure you want to clean __$(DOCKER_MACHINE_NAME)__?",$(MAKE) -i clean-no-confirm)
+deploy: clean-no-confirm init
 deploy-production:
 	$(MAKE) -i deploy \
 		PROXY_HTTPS_PORT=443 \
@@ -73,7 +73,7 @@ deploy-staging: deploy-production
 release: release-create
 
 seeds: build
-love: rm-all init
+love: deploy
 stuff: assets-compile
 css: assets-css
 css-watch: assets-css-watch
