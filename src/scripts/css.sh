@@ -23,10 +23,7 @@ sassc $input \
       $sassc_opts \
       $filename
 
-postcss --use autoprefixer \
-        --autoprefixer.browser "last 2 versions" \
-        --output $filename \
-        $filename
+babel-node $base/src/scripts/postcss.js $filename
 
 sassc $fontinput \
       --style compressed \
