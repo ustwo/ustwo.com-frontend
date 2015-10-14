@@ -56,6 +56,10 @@ router.get('/components/:component.js', (req, res, next) => {
   const b = browserify();
 
   let aliasifyConfig = require('../app/aliases.sandbox.json');
+  // add mock for Flux as we do not care about Actions/Data when sandboxing
+  aliasifyConfig.aliases['../flux'] = './src/app/flux/mock';
+  aliasifyConfig.aliases['../../flux'] = './src/app/flux/mock';
+  aliasifyConfig.aliases['../../../flux'] = './src/app/flux/mock';
 
   b.transform(babelify.configure({
       optional: ["es7.classProperties"]
