@@ -50,7 +50,6 @@
   ul {
     padding: 0;
     padding-bottom: 45px;
-    list-style-type: none;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 0;
@@ -105,7 +104,7 @@
     .search-results {
       position: relative;
       z-index: 2;
-      
+
       li {
         opacity: 0;
         transform: translateY(80px);
