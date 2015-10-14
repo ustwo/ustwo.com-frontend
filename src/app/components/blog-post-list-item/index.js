@@ -9,7 +9,6 @@ import getFeaturedImage from '../../lib/get-featured-image';
 
 import Flux from '../../flux';
 
-import SVG from '../svg';
 import Rimage from '../rimage';
 import SocialMediaStatistics from '../social-media-statistics';
 
