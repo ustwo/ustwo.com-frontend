@@ -61,8 +61,10 @@ test: assets-test
 push: app-push assets-push
 pull: app-pull assets-pull
 init: vault-create assets-create app-create proxy-create
-clean: proxy-rm app-rm assets-rm vault-rm
-deploy: clean init
+rm-all: proxy-rm app-rm assets-rm vault-rm
+clean:
+	$(call confirm,"Are you sure you want to clean __$(DOCKER_MACHINE_NAME)__?",$(MAKE) -i rm-all)
+deploy: rm-all init
 deploy-production:
 	$(MAKE) -i deploy \
 		PROXY_HTTPS_PORT=443 \
@@ -71,16 +73,13 @@ deploy-staging: deploy-production
 release: release-create
 
 seeds: build
-love: clean init
+love: rm-all init
 stuff: assets-compile
 css: assets-css
 css-watch: assets-css-watch
 vendors: assets-vendors
 spa: assets-spa
 images: assets-images
-
-## Obsolete ###################################################################
-init-rm: clean
 
 ## Environment  ###############################################################
 ##
@@ -114,3 +113,5 @@ absorb:
 	git pull --rebase=preserve origin master
 	git checkout $(GIT_BRANCH)
 	git rebase master
+
+
