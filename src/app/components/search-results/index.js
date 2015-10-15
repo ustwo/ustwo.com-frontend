@@ -2,6 +2,7 @@
 
 import React from 'react';
 import TransitionManager from 'react-transition-manager';
+import classnames from 'classnames';
 
 import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
 
@@ -34,8 +35,11 @@ const PageSearchResults = React.createClass({
     }
   },
   render() {
+    const pageClasses = classnames('page-search-results', {
+      'shown': this.props.transitionState === 'shown'
+    });
     return (
-      <article className="page-search-results">
+      <article className={pageClasses}>
         <div className="search-results-header">
           <div className="h1 searched-term">{this.props.searchQuery}</div>
           <div className="clear-search"><button onClick={this.onClickClearSearch}>Clear search</button></div>
