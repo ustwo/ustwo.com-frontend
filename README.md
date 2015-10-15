@@ -38,9 +38,9 @@ Autoprefixer, LibSASS
 
 ### Browser compatibility
 
-We're aiming to support all evergreen browsers (Chrome, Firefox, Safari, Edge and Opera on all platforms) plus Internet Explorer 10-11 and Android Browser 4.2-4.4.4.
+We're aiming to support all evergreen browsers (Chrome, Firefox, Edge and Opera on all platforms), Safari on Mac and iOS, Internet Explorer 10-11 and Android Browser 4.2-4.4.4.
 
-In case you were wondering, we've chosen these as we wanted to be able to use [Flexbox](http://caniuse.com/#feat=flexbox).
+In case you were wondering, we've chosen these as we wanted to be able to use [Flexbox](http://caniuse.com/#feat=flexbox) and they happen to conveniently mostly overlap the visitor profiles from Google Analytics.
 
 If you see any misbehaviour with one of these browsers please open an issue!
 
@@ -83,9 +83,7 @@ you want (like Docker Toolbox / [Kitematic](https://kitematic.com/)).
 
 *Note*: The IP number above depends on your local instance. Check `docker-machine ip dev`.
 
-### Credentials
-
-#### Vault
+### Credentials / Vault
 
 TODO: steps how to run local instance with self certification.
 
@@ -93,10 +91,6 @@ TODO: steps how to run local instance with self certification.
 docker environment.
 
         $ make vault-load VAULT_PATH=vault-2015.tar
-
-#### Testing
-
-TODO: Sauce Labs environment variables
 
 ## Develop
 
@@ -162,7 +156,7 @@ Run all tests:
 
 ### Unit
 
-We're using Mocha + Chai + Sinon to run unit tests against JSDOM as setup works well with React and executes fast.
+We're using Mocha + Chai + Sinon to run unit tests against JSDOM as this setup works well with React and executes fast.
 
 Run the unit tests:
 
@@ -170,7 +164,7 @@ Run the unit tests:
 
 ### Integration
 
-To keep setup simple and still be able to test Internet Explorer and mobile browsers running on real devices, we're running integrations tests using Sauce Labs with a Sauce Connect tunnel.
+To keep setup simple and still be able to test Internet Explorer and mobile browsers running on real devices, we're running integrations tests using Sauce Labs with a Sauce Connect tunnel. This unfortunately means that if you want to be able to run these tests, you'll need to create an account and set up `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` as environment variables.
 
 Also to minimise context switching, we're running our simple sanity testing suite using Mocha + Chai + Chai Promises + WD.js.
 
