@@ -107,11 +107,9 @@ nuke:
 	| $(AWK) '{print $$3}' \
 	| $(XARGS) $(DOCKER) rmi
 ##
-# Absorbs changes from master and rebases current branch on top of it.
+# Absorbs changes from a branch (by default: master) and rebases current branch on top of it.
 absorb:
-	git checkout master
-	git pull --rebase=preserve origin master
+	git checkout $(ABSORBE_BRANCH)
+	git pull --rebase=preserve origin $(ABSORBE_BRANCH)
 	git checkout $(GIT_BRANCH)
-	git rebase master
-
-
+	git rebase $(ABSORBE_BRANCH)
