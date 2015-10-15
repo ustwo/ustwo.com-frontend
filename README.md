@@ -10,6 +10,8 @@ Our content management system behind this is a Wordpress instance which doesn't 
 
 ## Tech stack
 
+![image](./docs/infrastructure.png)
+
 ### React SPA
 
 ES6/7, React.js, Flux
