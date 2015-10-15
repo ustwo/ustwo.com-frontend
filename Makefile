@@ -3,6 +3,7 @@ VERSION ?= dev
 MACHINE_ALIAS ?= ustwosite
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
 ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
+SOURCE_BRANCH ?= master
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 project_name := usweb
@@ -107,11 +108,9 @@ nuke:
 	| $(AWK) '{print $$3}' \
 	| $(XARGS) $(DOCKER) rmi
 ##
-# Absorbs changes from master and rebases current branch on top of it.
+# Absorbs changes from a branch (by default: master) and rebases current branch on top of it.
 absorb:
-	git checkout master
-	git pull --rebase=preserve origin master
+	git checkout $(SOURCE_BRANCH)
+	git pull --rebase=preserve origin $(SOURCE_BRANCH)
 	git checkout $(GIT_BRANCH)
-	git rebase master
-
-
+	git rebase $(SOURCE_BRANCH)
