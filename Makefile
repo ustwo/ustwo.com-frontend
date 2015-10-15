@@ -28,11 +28,15 @@ DOCKER_TASK := $(DOCKER) run --rm -it
 DOCKER_CI_TASK := $(DOCKER) run -it
 DOCKER_MACHINE := docker-machine
 MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
-ANSIBLE := ansible
-ANSIBLE_SHELL = $(ANSIBLE) $(MACHINE_IP) --become -m shell
-ANSIBLE_PLAY := ansible-playbook -b -v \
-	--private-key=$(IDENTITY_FILE) \
-	--inventory-file=$(ANSIBLE_INVENTORY)
+ANSIBLE := $(DOCKER_TASK) \
+	-v $(IDENTITY_FILE):/root/.ssh/id_rsa \
+	-v $(PWD):/home/ustwo \
+	-w /home/ustwo \
+	ustwo/ansible:1.9.4
+ANSIBLE_SHELL = $(ANSIBLE) ansible $(MACHINE_IP) --become -m shell
+ANSIBLE_PLAY := $(ANSIBLE) ansible-playbook -b -v \
+	--private-key=/root/.ssh/id_rsa \
+	--inventory-file=/home/ustwo/etc/ansible/hosts
 ###############################################################################
 
 default: compiler-build build
