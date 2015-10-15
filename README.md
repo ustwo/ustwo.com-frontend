@@ -54,11 +54,11 @@ Commands below assume OS X and preference to install libraries via Homebrew.
 You can of course install Docker Machine and Virtualbox in any other way
 you want (like Docker Toolbox / [Kitematic](https://kitematic.com/)).
 
-* Install [Docker Machine](https://docs.docker.com/machine/#installation)
+* Install [Docker Machine](https://docs.docker.com/machine/install-machine/)
 
         $ brew install docker-machine
 
-* Install [Docker Engine](https://docs.docker.com/installation/binaries/)
+* Install [Docker Engine](https://docs.docker.com/installation/)
 
         $ brew install docker
 
@@ -156,17 +156,27 @@ And Nginx logs with:
 
 ## Test
 
-### Unit
-
-Run the unit tests:
+Run all tests:
 
     $ make test
 
-TODO: describe what we use (Mocha, JSDOM, etc)
+### Unit
+
+We're using Mocha + Chai + Sinon to run unit tests against JSDOM as setup works well with React and executes fast.
+
+Run the unit tests:
+
+    $ make assets-test
 
 ### Integration
 
-TODO: describe what we use (Mocha, Chai, Chai Promises, Sauce Labs, etc)
+To keep setup simple and still be able to test Internet Explorer and mobile browsers running on real devices, we're running integrations tests using Sauce Labs with a Sauce Connect tunnel.
+
+Also to minimise context switching, we're running our simple sanity testing suite using Mocha + Chai + Chai Promises + WD.js.
+
+Run the integration tests:
+
+    $ make assets-integration
 
 ## Release
 
