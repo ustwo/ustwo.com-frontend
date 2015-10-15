@@ -12,7 +12,7 @@ import routes from './routes.js';
 
 let app = express();
 
-app.set('port', process.env.PORT || 8889);
+app.set('port', 8889);
 app.set('host', process.env.VIRTUAL_HOST || ('http://localhost:' + app.get('port') + '/'));
 app.set('x-powered-by', false);
 app.engine('html', cons.lodash);
