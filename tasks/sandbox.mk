@@ -15,7 +15,7 @@ sandbox_dockerfile = Dockerfile.$(sandbox_id)
 
 ifeq ($(LOCAL_FS), true)
   sandbox_volumes = \
-    -v $(BASE_PATH)/package.json:/home/ustwo/package.json \
+    -v $(BASE_PATH)/package.sandbox.json:/home/ustwo/package.json \
     -v $(BASE_PATH)/src:/home/ustwo/src
 endif
 
