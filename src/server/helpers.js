@@ -14,7 +14,7 @@ module.exports = {
     });
   },
   getAllComponentSandboxNames: function (callback) {
-    glob("src/app/components/*", function (er, files) {
+    glob("src/app/components/**/sandbox.js", function (er, files) {
       callback(files.map(function (path) {
         return path.split('/')[3];
       }));
