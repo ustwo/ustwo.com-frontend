@@ -37,6 +37,18 @@ const pageMap = {
   'join-us': require('../join-us')
 };
 
+class PageContainer extends React.Component {
+  render() {
+    return (
+      <div className="page-container">
+        {React.Children.map(this.props.children, (child) => {
+          return React.cloneElement(child, { transitionState: this.props.transitionState });
+        })}
+      </div>
+    );
+  }
+}
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -96,10 +108,10 @@ export default class App extends React.Component {
             <Navigation pages={state.navMain} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={this.showTakeover()} />
           </EntranceTransition>
           <TransitionManager component="div" className={contentClasses} duration={0}>
-            <div className="app__stage__page-container" key={state.currentPage}>
+            <PageContainer key={state.currentPage}>
               {this.getPage(state.currentPage)}
               <Footer data={state.footer} studios={state.studios} />
-            </div>
+            </PageContainer>
           </TransitionManager>
           <TransitionManager component="div" className="app__modal" duration="500">
             {this.renderModal()}

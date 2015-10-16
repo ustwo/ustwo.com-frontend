@@ -1,6 +1,7 @@
 import React from 'react';
 import kebabCase from 'lodash/string/kebabCase';
 import get from 'lodash/object/get';
+import classnames from 'classnames';
 
 import Rimage from '../rimage';
 import GridCell from '../grid-cell';
@@ -8,7 +9,7 @@ import GridCell from '../grid-cell';
 export default class Grid extends React.Component {
   render() {
     return (
-      <section className={`grid ${this.props.className}`}>
+      <section className={classnames('grid', this.props.className)}>
         <Rimage className="video" wrap="div" sizes={this.props.images} backgroundOnly={true}>
           {this.renderVideo()}
         </Rimage>

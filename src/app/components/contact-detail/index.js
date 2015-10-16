@@ -10,7 +10,7 @@ export default class ContactDetail extends React.Component {
       <section className="contact-detail">
         <h1 className="contact-detail__title">{detail.title}</h1>
         <p className="contact-detail__description">{detail.desc}</p>
-        {detail.methods.map(link => <a className={`contact-detail__link ${link.type}`} href={`${link.uri}`} onClick={this.onClickContact(detail.type, link)}>{link.text}</a>)}
+        {detail.methods.map(link => <a key={`contact-detail-link-${link.uri}`} className={`contact-detail__link ${link.type}`} href={`${link.uri}`} onClick={this.onClickContact(detail.type, link)}>{link.text}</a>)}
       </section>
     );
   }

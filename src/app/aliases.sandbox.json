@@ -1,0 +1,22 @@
+{
+  "aliases": {
+    "../adaptors/server/tween-max": "./src/app/adaptors/client/tween-max",
+    "../../adaptors/server/tween-max": "./src/app/adaptors/client/tween-max",
+    "../../adaptors/server/scroll-to-plugin": "./src/app/adaptors/client/scroll-to-plugin",
+    "../../adaptors/server/localfont": "./src/app/adaptors/client/localfont",
+    "../adaptors/server/tracking": "./src/app/adaptors/client/tracking",
+    "../../adaptors/server/tracking": "./src/app/adaptors/client/tracking",
+    "../adaptors/server/env": "./src/app/adaptors/client/env",
+    "../../adaptors/server/env": "./src/app/adaptors/client/env",
+    "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
+    "../adaptors/server/window": "./src/app/adaptors/client/window",
+    "../../adaptors/server/window": "./src/app/adaptors/client/window",
+    "../../adaptors/server/scroll-magic": "./src/app/adaptors/client/scroll-magic",
+    "../adaptors/server/proxy-url": "./src/app/adaptors/client/proxy-url",
+    "../../adaptors/server/svg4everybody": "./src/app/adaptors/client/svg4everybody",
+    "../adaptors/server/scroll-tracker": "./src/app/adaptors/client/scroll-tracker",
+    "../flux": "./src/app/flux/mock",
+    "../../flux": "./src/app/flux/mock",
+    "../../../flux": "./src/app/flux/mock"
+  }
+}

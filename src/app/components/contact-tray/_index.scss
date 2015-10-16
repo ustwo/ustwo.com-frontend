@@ -39,10 +39,6 @@
         .contact-detail {
           @include gallery(4 of 8);
           padding: 0;
-
-          &__description {
-            display: block;
-          }
         }
       }
     }
