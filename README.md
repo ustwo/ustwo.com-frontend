@@ -166,7 +166,7 @@ To prepare the sandbox run:
 
 And start the sandbox server with:
 
-    $ make -i sandlove LOCAL_FS=true
+    $ make -i sandbox LOCAL_FS=true
 
 The sandbox will be available at `local.ustwo.com:9443/sandbox`
 
