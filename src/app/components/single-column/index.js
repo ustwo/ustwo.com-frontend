@@ -4,7 +4,9 @@ import classnames from 'classnames';
 export default class SingleColumn extends React.Component {
   render() {
     return (
-      <section className={classnames('single-column', this.props.className)} style={{ backgroundColor: this.props.backgroundColour }}>
+      <section className={classnames('single-column', this.props.className, {
+          isInZebraList: this.props.isInZebraList
+        })} style={{ backgroundColor: this.props.backgroundColour }}>
         <div className="wrapper">
           {this.renderTitle()}
           {this.renderRule()}

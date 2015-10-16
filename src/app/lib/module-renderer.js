@@ -10,10 +10,10 @@ export default (moduleData, index, colours, getZebra) => {
   let module;
   switch(moduleData.name) {
     case 'header':
-      module = <SingleColumn key={`module-header-${get(moduleData, 'attr.heading.value')}-${index}`} className="intro" title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')} backgroundColour={get(colours, 'bg')}>{get(moduleData, 'attr.subheading.value')}</SingleColumn>;
+      module = <SingleColumn key={`module-header-${get(moduleData, 'attr.heading.value')}-${index}`} className="intro" title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')} backgroundColour={get(colours, 'bg')} isInZebraList={!!getZebra}>{get(moduleData, 'attr.subheading.value')}</SingleColumn>;
       break;
     case 'text':
-      module = <SingleColumn key={`module-text-${get(moduleData, 'attr.heading.value')}-${index}`} title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')} backgroundColour={!getZebra() && get(colours, 'bg')}>{get(moduleData, 'attr.body.value')}</SingleColumn>;
+      module = <SingleColumn key={`module-text-${get(moduleData, 'attr.heading.value')}-${index}`} title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')} backgroundColour={getZebra && !getZebra() && get(colours, 'bg')} isInZebraList={!!getZebra}>{get(moduleData, 'attr.body.value')}</SingleColumn>;
       break;
     case 'image':
       module = <FullImage key={`module-image-${get(moduleData, 'attr.image.value.0.id')}-${index}`} sizes={get(moduleData, 'attr.image.value.0.sizes')} />;
