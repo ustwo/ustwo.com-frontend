@@ -72,7 +72,7 @@ router.get('/sandbox/:component.js', (req, res, next) => {
   b.on('error', (error) => {
     console.error('browserify error', error);
 
-    res.send('console.error(\'' + errorMessage + '\');');
+    res.send(`console.error('${errorMessage}');`);
   });
 
   b.bundle()
@@ -81,7 +81,7 @@ router.get('/sandbox/:component.js', (req, res, next) => {
 
       const errorMessage = [error.name, ': "', error.description, '" in ', error.filename, ' at line number ', error.lineNumber].join('');
       // due to Chrome not displaying response data in non 200 states need to expose the error message via a console.error
-      res.send('console.error(\'' + errorMessage + '\');');
+      res.send(`console.error('${errorMessage}');`);
     })
     .pipe(res);
 });
