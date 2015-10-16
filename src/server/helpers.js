@@ -1,4 +1,4 @@
-var glob = require('glob');
+import glob from 'glob';
 
 module.exports = {
   toPath: function () {
