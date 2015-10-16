@@ -175,6 +175,7 @@ Run all tests:
 ### Sandbox
 
 We believe that every component should hold a single responsibity, and which functionality must be working independently from the context the component is instanciated in.
+
 To enforce best practices, like storing functionality and styles in the component they belong to, we created a sandbox to test components in an isolated environment.
 
 To prepare the sandbox run:
