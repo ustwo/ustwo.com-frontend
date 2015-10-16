@@ -41,7 +41,6 @@ sandbox-create:
 		$(project_labels) \
 		-p 8889:8889 \
 		$(docker_host) \
-		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \
 		$(verbose_flag) \
 		$(sandbox_image)
 
