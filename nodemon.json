@@ -1,6 +1,0 @@
-{
-  "execMap": {
-    "js": "babel-node"
-  },
-  "ext": "js json html css"
-}
