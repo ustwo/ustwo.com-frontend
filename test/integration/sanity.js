@@ -28,16 +28,22 @@ var desired = DESIREDS[browserKey];
 desired.name = 'testing with ' + browserKey;
 desired.tags = ['integration'];
 
-describe('  mocha integration tests (' + desired.browserName + ')', function() {
+describe('  mocha integration tests (' + desired.browserName + ')', function () {
   this.timeout(60000);
   var browser;
   var allPassed = true;
 
-  before(function() {
+  function openMobileMenu() {
+    if (browser.hasElementByCss('.nav__open-overlay-button') && browser.elementByCss('.nav__open-overlay-button').isVisible) {
+      browser.elementByCss('.nav__open-overlay-button').click();
+    }
+  }
+
+  before(function () {
     var username = process.env.SAUCE_USERNAME;
     var accessKey = process.env.SAUCE_ACCESS_KEY;
     browser = wd.promiseChainRemote('ondemand.saucelabs.com', 80, username, accessKey);
-    if(process.env.VERBOSE){
+    if (process.env.VERBOSE){
       // optional logging
       browser.on('status', function(info) {
         console.log(info.cyan);
@@ -51,25 +57,25 @@ describe('  mocha integration tests (' + desired.browserName + ')', function() {
       .setWindowSize(1280, 720);
   });
 
-  afterEach(function() {
+  afterEach(function () {
     allPassed = allPassed && (this.currentTest.state === 'passed');
   });
 
-  after(function() {
+  after(function () {
     return browser
       .quit()
       .sauceJobStatus(allPassed);
   });
 
-  it('should load home page', function() {
+  it('should load home page', function () {
     return browser
-      .get('https://ustwo.com')
+      .get('https://local.ustwo.com')
       .title()
       .should.become('ustwo | Digital product studio')
   });
 
-  it('should close overlay if present', function() {
-    if(browser.hasElementByCss('.takeover')) {
+  it('should close overlay if present', function () {
+    if (browser.hasElementByCss('.takeover')) {
       return browser
         .waitForElementByCss('.take-over__content__message__close', 10000)
         .click()
@@ -80,14 +86,15 @@ describe('  mocha integration tests (' + desired.browserName + ')', function() {
     }
   });
 
-  it('should contain London in footer', function() {
+  it('should contain London in footer', function () {
     return browser
       .elementByCss('.studios')
       .text()
       .should.eventually.include('London')
   });
 
-  it('should go to the Blog page and look for Featured post', function() {
+  it('should go to the Blog page and look for Featured post', function () {
+    openMobileMenu();
     return browser
       .elementByLinkText('Blog')
       .click()
@@ -95,14 +102,15 @@ describe('  mocha integration tests (' + desired.browserName + ')', function() {
       .url().should.eventually.include('blog');
   });
 
-  it('should return to the home page', function() {
+  it('should return to the home page', function () {
     return browser
       .elementByCss('.nav__logo__link')
       .click()
       .waitForElementByCss('.page-home', wd.asserters.textInclude('DIGITAL PRODUCT STUDIO'), 10000);
   });
 
-  it('should go to the Join us page and look for job listings', function() {
+  it('should go to the Join us page and look for job listings', function () {
+    openMobileMenu();
     return browser
       .elementByLinkText('Join Us')
       .click()
@@ -110,7 +118,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function() {
       .url().should.eventually.include('join');
   });
 
-  it('should go to the What We Do page and look for case studies', function() {
+  it('should go to the What We Do page and look for case studies', function () {
     return browser
       .get('https://ustwo.com/what-we-do')
       .waitForElementByCss('.page-work__list', wd.asserters.textInclude('Read more'), 10000)
