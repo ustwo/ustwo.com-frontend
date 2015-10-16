@@ -154,6 +154,21 @@ Run all tests:
 
     $ make test
 
+### Sandbox
+
+We believe that every component should hold a single responsibity, and which functionality must be working independently from the context the component is instanciated in.
+To enforce best practices, like storing functionality and styles in the component they belong to, we created a sandbox to test components in an isolated environment.
+
+To prepare the sandbox run:
+
+    $ make sandbox-build
+
+And start the sandbox server with:
+
+    $ make -i sandlove LOCAL_FS=true
+
+The sandbox will be available at `local.ustwo.com:9443/sandbox`
+
 ### Unit
 
 We're using Mocha + Chai + Sinon to run unit tests against JSDOM as this setup works well with React and executes fast.
