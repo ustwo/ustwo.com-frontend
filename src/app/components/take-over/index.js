@@ -19,7 +19,7 @@ const takeover = {
   description: "A totally new relaxation and meditation experience for iPhone.",
   featured_image: 8672,
   header_color: "#2a88a9",
-  text_color: "#f4fcff",
+  text_color: "#333",
   background_color_top: "#e3eef4",
   background_color_bottom: "#b3d5e0",
   links: [{
