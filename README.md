@@ -210,11 +210,23 @@ To read up on our coding style and general contribution guide, have a look at
 
 TODO
 
-## Contact / credits
+## License
 
-TODO: who to best talk to about various aspects
+ustwo.com website front end and tools
+Copyright (C) 2015 ustwo
 
-## License – probably best as LICENSE.md
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 [1]: https://ustwo.com
 [2]: https://en.wikipedia.org/wiki/Single-page_application
@@ -226,6 +238,6 @@ TODO: who to best talk to about various aspects
 [8]: https://docs.docker.com/machine/install-machine/
 [9]: https://docs.docker.com/installation/
 [10]: https://www.virtualbox.org/wiki/Downloads
-[11]: ./Make.md
-[12]: ./RELEASE.md
+[11]: ./docs/MAKE.md
+[12]: ./docs/RELEASE.md
 [13]: ./CONTRIBUTING.md
