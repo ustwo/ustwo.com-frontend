@@ -2,15 +2,27 @@
 
 ## Overview
 
-This repository contains all the front end code for the current [ustwo.com](https://ustwo.com) website and the toolset required to build and deploy it.
+This repository contains all the front end code for the current [ustwo.com][1]
+website and the toolset required to build and deploy it.
 
-In order to be able to have full control over all aspects of the website – including transitions between pages – and to make navigation super fast by not having to reload the browser, we decided to build the site as a [single-page application](https://en.wikipedia.org/wiki/Single-page_application). We chose [React.js](https://facebook.github.io/react/) as a main JavaScript technology enabling us to do this, since it has built in support to render pages on the server side too (called isomorphic rendering). This way we could keep the loading and rendering performance snappy on mobile and let visitors see content without an extra data loading step after the initial page load. To do this work we put a small Node backend server in place.
+In order to be able to have full control over all aspects of the website –
+including transitions between pages – and to make navigation super fast by not
+having to reload the browser, we decided to build the site as a
+[single-page application][2]. We chose [React.js][3] as a main JavaScript
+technology enabling us to do this, since it has built in support to render
+pages on the server side too (called isomorphic rendering). This way we could
+keep the loading and rendering performance snappy on mobile and let visitors
+see content without an extra data loading step after the initial page load. To
+do this work we put a small Node backend server in place.
 
-Our content management system behind this is a Wordpress instance which doesn't actually render the pages itself, but instead serves content up via [WP API](http://v2.wp-api.org/) through a mixture of standard and customised JSON REST API endpoints making the vast majority of the content editable.
+Our content management system behind this is a Wordpress instance which doesn't
+actually render the pages itself, but instead serves content up via [WP API][4]
+through a mixture of standard and customised JSON REST API endpoints making the
+vast majority of the content editable.
 
 ## Tech stack
 
-![image](./docs/infrastructure.png)
+[![ustwo.com infrastructure diagram][5]][5]
 
 ### React SPA
 
@@ -38,9 +50,13 @@ Autoprefixer, LibSASS
 
 ### Browser compatibility
 
-We're aiming to support all evergreen browsers (Chrome, Firefox, Edge and Opera on all platforms), Safari on Mac and iOS, Internet Explorer 10-11 and Android Browser 4.2-4.4.4.
+We're aiming to support all evergreen browsers (Chrome, Firefox, Edge and Opera
+on all platforms), Safari on Mac and iOS, Internet Explorer 10-11 and Android
+Browser 4.2-4.4.4.
 
-In case you were wondering, we've chosen these as we wanted to be able to use [Flexbox](http://caniuse.com/#feat=flexbox) and they happen to conveniently mostly overlap the visitor profiles from Google Analytics.
+In case you were wondering, we've chosen these as we wanted to be able to use
+[Flexbox][6] and they happen to conveniently mostly overlap the visitor profiles
+from Google Analytics.
 
 If you see any misbehaviour with one of these browsers please open an issue!
 
@@ -52,19 +68,20 @@ The project is managed via Docker containers.
 
 Commands below assume OS X and preference to install libraries via Homebrew.
 You can of course install Docker Machine and Virtualbox in any other way
-you want (like Docker Toolbox / [Kitematic](https://kitematic.com/)).
+you want (like Docker Toolbox / [Kitematic][7]).
 
-* Install [Docker Machine](https://docs.docker.com/machine/install-machine/)
+* Install [Docker Machine][8]
 
         $ brew install docker-machine
 
-* Install [Docker Engine](https://docs.docker.com/installation/)
+* Install [Docker Engine][9]
 
         $ brew install docker
 
-* Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+* Install [Virtualbox][10]
 
-*Note*: Beware, the version might matter. Our latest known working version is 5.0.4.
+*Note*: Beware, the version might matter. Our latest known working version is
+5.0.4.
 
 ### Docker environment
 
@@ -81,7 +98,8 @@ you want (like Docker Toolbox / [Kitematic](https://kitematic.com/)).
         192.168.99.100 local.ustwo.com
         192.168.99.100 staging.ustwo.com
 
-*Note*: The IP number above depends on your local instance. Check `docker-machine ip dev`.
+*Note*: The IP number above depends on your local instance. Check
+`docker-machine ip dev`.
 
 ### Credentials / Vault
 
@@ -94,7 +112,7 @@ docker environment.
 
 ## Develop
 
-*Note*: Check the [Make.md](./Make.md) for an explanation of how the Make
+*Note*: Check the [Make.md][11] for an explanation of how the Make
 tasks are structured.
 
 Prepare a new environment:
@@ -156,7 +174,8 @@ Run all tests:
 
 ### Unit
 
-We're using Mocha + Chai + Sinon to run unit tests against JSDOM as this setup works well with React and executes fast.
+We're using Mocha + Chai + Sinon to run unit tests against JSDOM as this setup
+works well with React and executes fast.
 
 Run the unit tests:
 
@@ -164,9 +183,14 @@ Run the unit tests:
 
 ### Integration
 
-To keep setup simple and still be able to test Internet Explorer and mobile browsers running on real devices, we're running integrations tests using Sauce Labs with a Sauce Connect tunnel. This unfortunately means that if you want to be able to run these tests, you'll need to create an account and set up `SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` as environment variables.
+To keep setup simple and still be able to test Internet Explorer and mobile
+browsers running on real devices, we're running integrations tests using Sauce
+Labs with a Sauce Connect tunnel. This unfortunately means that if you want to
+be able to run these tests, you'll need to create an account and set up
+`SAUCE_USERNAME` and `SAUCE_ACCESS_KEY` as environment variables.
 
-Also to minimise context switching, we're running our simple sanity testing suite using Mocha + Chai + Chai Promises + WD.js.
+Also to minimise context switching, we're running our simple sanity testing
+suite using Mocha + Chai + Chai Promises + WD.js.
 
 Run the integration tests:
 
@@ -174,11 +198,13 @@ Run the integration tests:
 
 ## Release
 
-We're using Docker Hub and Docker Machine to tag and deploy Docker images, for more info see [RELEASE.md](./RELEASE.md).
+We're using Docker Hub and Docker Machine to tag and deploy Docker images, for
+more info see [RELEASE.md][12].
 
 ## Contribution
 
-To read up on our coding style and general contribution guide, have a look at [CONTRIBUTING.md](./CONTRIBUTING.md).
+To read up on our coding style and general contribution guide, have a look at
+[CONTRIBUTING.md][13].
 
 ## Sandbox / component style guide
 
@@ -189,3 +215,17 @@ TODO
 TODO: who to best talk to about various aspects
 
 ## License – probably best as LICENSE.md
+
+[1]: https://ustwo.com
+[2]: https://en.wikipedia.org/wiki/Single-page_application
+[3]: https://facebook.github.io/react/
+[4]: http://v2.wp-api.org/
+[5]: ./docs/infrastructure.png
+[6]: http://caniuse.com/#feat=flexbox
+[7]: https://kitematic.com/
+[8]: https://docs.docker.com/machine/install-machine/
+[9]: https://docs.docker.com/installation/
+[10]: https://www.virtualbox.org/wiki/Downloads
+[11]: ./Make.md
+[12]: ./RELEASE.md
+[13]: ./CONTRIBUTING.md
