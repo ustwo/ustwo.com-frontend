@@ -50,7 +50,7 @@ function renderApp(req, res) {
 }
 
 router.get('/sandbox/:component.js', (req, res, next) => {
-  const basepath = path.join(__dirname);
+  const basepath = __dirname;
   const filename = path.join(basepath, '../app/components', req.params.component, 'index.js');
   const sandbox = path.join(basepath, '../app/components', req.params.component, 'sandbox.js');
   const b = browserify();
