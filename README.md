@@ -112,7 +112,7 @@ docker environment.
 
 ## Develop
 
-*Note*: Check the [Make.md][11] for an explanation of how the Make
+*Note*: Check the [MAKE.md][11] for an explanation of how the Make
 tasks are structured.
 
 Prepare a new environment:
@@ -126,10 +126,9 @@ end stuff):
 
 Or target specific subtasks:
 
-    $ make css
-    $ make css-watch       # watches for changes in SASS files
-    $ make spa             # compiles the react app
-    $ make vendors         # compiles the react dependencies
+    $ make css             # compiles SASS files
+    $ make spa             # compiles the React app
+    $ make vendors         # compiles app dependencies
 
 *Note*: `css` and `spa` combined with `VERBOSE=true` will create sourcemaps.
 
@@ -144,7 +143,8 @@ Deploy app (when you need to restart services):
 
 *Note*: Add the flag `LOCAL_FS=true` if you want to use your local files instead
 of the ones inside the containers.
-*Note*: Add the flag `VERBOSE=true` if you want the JS and CSS expanded.
+*Note*: Add the flag `VERBOSE=true` if you want the JS and CSS expanded and more
+log output on the services.
 
 As long as `LOCAL_FS=true` is set a convenient way to refresh the environment
 is:
@@ -174,9 +174,13 @@ Run all tests:
 
 ### Sandbox
 
-We believe that every component should hold a single responsibity, and which functionality must be working independently from the context the component is instanciated in.
+We believe that every component should hold a single responsibity, and which
+functionality must be working independently from the context the component is
+instantiated in.
 
-To enforce best practices, like storing functionality and styles in the component they belong to, we created a sandbox to test components in an isolated environment.
+To enforce best practices – like storing functionality and styles in the
+component they belong to – we created a sandbox to test components in an
+isolated environment.
 
 To prepare the sandbox run:
 
@@ -186,7 +190,7 @@ And start the sandbox server with:
 
     $ make -i sandbox LOCAL_FS=true
 
-The sandbox will be available at `local.ustwo.com:9443/sandbox`
+The sandbox will be available at https://local.ustwo.com:9443/sandbox
 
 ### Unit
 
@@ -221,10 +225,6 @@ more info see [RELEASE.md][12].
 
 To read up on our coding style and general contribution guide, have a look at
 [CONTRIBUTING.md][13].
-
-## Sandbox / component style guide
-
-TODO
 
 ## License
 
