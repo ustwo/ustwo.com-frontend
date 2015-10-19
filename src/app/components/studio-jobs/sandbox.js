@@ -1,4 +1,5 @@
 import StudioJobs from './';
+import renderVariations from '../../lib/render-variations';
 
 const studio = {
   id: 26,
@@ -830,24 +831,26 @@ const jobs = [{
 const Sandbox = React.createClass({
   render() {
     return (<div className="sandbox">
-      <StudioJobs
-        studio={studio}
-        studios={studios}
-        selected={true}
-        selectedJob="31345F669C"
-        colour="pink"
-        jobs={jobs}
-        contactEmail="test@ustwo.com"
-      />
-      <StudioJobs
-        studio={studio}
-        studios={studios}
-        selected={false}
-        selectedJob=""
-        colour="pink"
-        jobs={jobs}
-        contactEmail="test@ustwo.com"
-      />
+      {renderVariations({
+        'Selected': <StudioJobs
+            studio={studio}
+            studios={studios}
+            selected={true}
+            selectedJob="31345F669C"
+            colour="pink"
+            jobs={jobs}
+            contactEmail="test@ustwo.com"
+          />,
+        'Not selected': <StudioJobs
+            studio={studio}
+            studios={studios}
+            selected={false}
+            selectedJob=""
+            colour="pink"
+            jobs={jobs}
+            contactEmail="test@ustwo.com"
+          />
+      })}
     </div>);
   }
 });

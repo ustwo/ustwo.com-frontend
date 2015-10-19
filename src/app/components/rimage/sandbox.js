@@ -1,4 +1,5 @@
 import Rimage from './';
+import renderVariations from '../../lib/render-variations';
 
 const sizes = {
   "thumbnail": {
@@ -41,32 +42,28 @@ const Sandbox = React.createClass({
           display: block;
           width: 100%;
         }
-        .sandbox div img {
+        .background-rimage img {
           display: none;
         }
       `}</style>
-      <Rimage
-        sizes={sizes}
-      />
-      <Rimage
-        sizes={sizes}
-        href="/test"
-      />
-      <Rimage
-        sizes={sizes}
-        wrap="div"
-      />
-      <Rimage
-        sizes={sizes}
-        className="test-class"
-      />
-      <Rimage
-        sizes={sizes}
-        backgroundOnly={true}
-      />
-      <Rimage
-        sizes={sizes}
-      >Some children</Rimage>
+      {renderVariations({
+        'Default': <Rimage sizes={sizes} />,
+        'With href': <Rimage sizes={sizes} href='/test' />,
+        'As background image': <Rimage
+            sizes={sizes}
+            wrap="div"
+            className="background-rimage"
+          />,
+        'As background image only': <Rimage
+            sizes={sizes}
+            wrap="div"
+            backgroundOnly={true}
+            className="background-rimage"
+          />,
+        'With children': <Rimage
+            sizes={sizes}
+          >Some children</Rimage>
+      })}
     </div>);
   }
 });

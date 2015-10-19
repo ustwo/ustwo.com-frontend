@@ -1,19 +1,20 @@
 import BlogControls from './';
-
-function renderInContainer(component) {
-  return (<div style={{position: 'relative', width: '400px', height: '100%', display: 'inline-block'}}>
-    {component}
-  </div>);
-}
+import renderVariations from '../../lib/render-variations';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div style={{height: '100%'}}>
-      {[
-        <BlogControls />,
-        <BlogControls className="test" />,
-        <BlogControls blogCategory="design" />
-      ].map(renderInContainer)}
+    return (<div className="sandbox" style={{height: '100%'}}>
+      <style>{`
+        .sandbox-component {
+          position: relative;
+          height: 100%;
+        }
+      `}</style>
+      {renderVariations({
+        'Default': <BlogControls />,
+        'With class name': <BlogControls className="test" />,
+        'With selected category': <BlogControls blogCategory="design" />
+      })}
     </div>);
   }
 });
