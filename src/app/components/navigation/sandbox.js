@@ -1,4 +1,5 @@
 import Navigation from './';
+import renderVariations from '../../lib/render-variations';
 
 const pages = [{
   id: 1,
@@ -23,24 +24,26 @@ const pages = [{
 const Sandbox = React.createClass({
   render() {
     return (<div>
-      <div style={{position: 'relative', height: 68}}>
-        <Navigation
-          section="what-we-do"
-          page="what-we-do"
-          pages={pages}
-          takeover={false}
-          customClass="test-class"
-        />
-      </div>
-      <div style={{position: 'relative', height: 68}}>
-        <Navigation
-          section="what-we-do"
-          page="what-we-do"
-          pages={pages}
-          takeover={true}
-          customClass="test-class-takeover"
-        />
-      </div>
+      {renderVariations({
+        'Default': <div style={{position: 'relative', height: 68}}>
+          <Navigation
+            section="what-we-do"
+            page="what-we-do"
+            pages={pages}
+            takeover={false}
+            customClass="test-class"
+          />
+        </div>,
+        'On takeover': <div style={{position: 'relative', height: 68}}>
+          <Navigation
+            section="what-we-do"
+            page="what-we-do"
+            pages={pages}
+            takeover={true}
+            customClass="test-class-takeover"
+          />
+        </div>
+      })}
     </div>);
   }
 });

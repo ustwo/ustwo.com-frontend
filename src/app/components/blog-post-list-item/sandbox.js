@@ -1,4 +1,5 @@
 import BlogPostListItem from './';
+import renderVariations from '../../lib/render-variations';
 
 const data = {
     id: 8878,
@@ -457,9 +458,11 @@ const data = {
 
 const Sandbox = React.createClass({
   render() {
-    return (<div style={{height: '100%'}}>
-      <BlogPostListItem data={data} featured={true} />
-      <BlogPostListItem data={data} />
+    return (<div className="sandbox">
+      {renderVariations({
+        'Default': <BlogPostListItem data={data} />,
+        'Featured': <BlogPostListItem data={data} featured={true} />
+      })}
     </div>);
   }
 });
