@@ -72,9 +72,9 @@
   }
 
   .social-media-statistics {
-    .channel {
-      $height: 22px;
+    $height: 22px;
 
+    .channel {
       padding-left: 20px;
       height: $height;
 
@@ -106,10 +106,9 @@
       }
     }
   }
-}
 
-@media screen and (min-width: $bp-medium) {
-  .blog-post-list-item {
+
+  @media screen and (min-width: $bp-medium) {
     position: relative;
     padding: 0 0 30px;
 
@@ -167,12 +166,11 @@
       }
     }
   }
-}
 
-@media screen and (min-width: $bp-large) {
-  .blog-post-list-item {
+  @media screen and (min-width: $bp-large) {
     .excerpt {
       height: 84.2px;
     }
   }
+
 }

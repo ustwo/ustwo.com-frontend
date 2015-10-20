@@ -69,10 +69,8 @@
       margin-right: 14px;
     }
   }
-}
 
-@media screen and (min-width: $bp-medium) {
-  .blog-controls {
+  @media screen and (min-width: $bp-medium) {
     bottom: calc(#{$blog-controls-margin-bottom} - #{$blog-margin-offset});
 
     .blog-filter {
@@ -83,4 +81,5 @@
       }
     }
   }
+
 }

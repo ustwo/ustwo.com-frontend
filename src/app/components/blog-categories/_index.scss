@@ -93,18 +93,8 @@
       padding: 0 $blog-controls-horizontal-padding;
     }
   }
-}
 
-@media screen and (min-width: $bp-large) {
-
-  /* The modal wrapper. Move out of the component and into blog? */
-  .modal-blog-categories {
-    position: absolute;
-    background: transparent;
-    cursor: default;
-  }
-
-  .blog-categories {
+  @media screen and (min-width: $bp-large) {
     position: absolute;
     top: calc(100% + #{$blog-margin-offset} - #{$blog-controls-margin-bottom} - #{$blog-controls-dropdown-offset});
     left: 50%;
@@ -125,5 +115,14 @@
     .list li {
       width: $blog-controls-item-width;
     }
+  }
+}
+
+/* TODO: The modal wrapper. Move out of the component and into blog? */
+@media screen and (min-width: $bp-large) {
+  .modal-blog-categories {
+    position: absolute;
+    background: transparent;
+    cursor: default;
   }
 }
