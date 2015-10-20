@@ -1,8 +1,8 @@
 /*
  *  TYPOGRAPHY
- *  Global fonts & styles for text
+ *  Global fonts & styles of text
  *
- *  Notes:
+ *  Notes: Includes slightly different font sizes for post and case study pages
  */
 
 $PxGroteskLight: "PxGrotesk-Light", "Arial", sans-serif;
@@ -35,12 +35,6 @@ a {
   }
 }
 
-.link__block {
-  display: inline-block;
-  font-family: $PxGroteskBold;
-  font-size: 20px;
-}
-
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: normal;
@@ -61,8 +55,7 @@ h6, .h6 {
   font-family: $PxGroteskRegular;
 }
 
-p,
-.p {
+p, .p {
   font-family: $PxGroteskRegular;
   line-height: 1.5;
 }
@@ -106,7 +99,7 @@ p, .p   {font-size: 16px;}
   p, .p   {font-size: 16px;}
 
   .page-post,
-  .page-case-study {    
+  .page-case-study {
     h1, .h1 {font-size: 40px;}
     h2, .h2 {font-size: 30px;}
     h3, .h3 {font-size: 26px;}
