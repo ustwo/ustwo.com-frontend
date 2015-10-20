@@ -87,22 +87,6 @@
     display: none;
   }
 
-  /* Colours relevant to each studio */
-  @each $studio, $colour in $studio-colours {
-    &.#{$studio}-jobs {
-      .excerpt,
-      .jobs-none a {
-        background: $colour;
-      }
-      .job-item h4 {
-        &:before,
-        &:after {
-          background: $colour;
-        }
-      }
-    }
-  }
-
   @media screen and (min-width: $bp-medium) {
     display: none;
 
