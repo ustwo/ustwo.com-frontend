@@ -842,7 +842,6 @@ const Sandbox = React.createClass({
             studios={studios}
             selected={true}
             selectedJob="31345F669C"
-            colour={studio.color}
             jobs={jobs}
             contactEmail="test@ustwo.com"
           />,
@@ -851,7 +850,6 @@ const Sandbox = React.createClass({
             studios={studios}
             selected={false}
             selectedJob=""
-            colour="pink"
             jobs={jobs}
             contactEmail="test@ustwo.com"
           />
