@@ -1,11 +1,12 @@
 /*
  *  BLOG CATEGORIES
  *  Users can filter blog posts by category
-
+ *
  *  Notes: This is not the dropdown component, but just the list itself. It opens
- *  up inside a modal (fullscreen on small screens, then a more conventional looking
- *  dropdown list on larger screens).
- *  TODO: set variables in the scope of the component (but keeping some globalised)
+ *         up inside a modal (fullscreen on small screens, then a more conventional
+ *         looking dropdown list on larger screens).
+ *  TODO: Should this component include the filter button?
+ *  TODO: Bring variables in scope of component
  */
 
 .blog-categories {
