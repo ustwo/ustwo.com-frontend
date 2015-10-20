@@ -15,9 +15,6 @@ let router = express.Router();
 
 function renderApp(req, res) {
   if (isomorphic) {
-    const Flux = require('../app/flux');
-
-    // Flux.init(req.protocol + '://' + req.hostname + req.originalUrl, req.get('Host-API'), `https://${process.env.DOCKER_PROXY_HOST}:${process.env.PROXY_HTTPS_PORT}`)
     bootstrapper(req.protocol + '://' + req.hostname + req.originalUrl, req.get('Host-API'), `https://${process.env.DOCKER_PROXY_HOST}:${process.env.PROXY_HTTPS_PORT}`)
       .then((state) => {
         const App = React.createFactory(require('../app/components/app'));
