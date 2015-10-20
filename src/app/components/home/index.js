@@ -210,7 +210,7 @@ const PageHome = React.createClass({
           </div>
           <div className="text-block">
             <HomeTextBlock title="Launching new ventures" colour="white" childColour="white">
-              <p>Working with people who know their industry inside-out gets us super excited. We partner with the world’s leading experts and entrepreneurs, offering our expertise, technology or investment to create great new companies like live music discovery platform <a href='https://dice.fm/' target='_blank'>DICE</a>.</p>
+              <p>Working with people who know their industry inside-out gets us super excited. We partner with the world’s leading experts and entrepreneurs, offering our expertise, technology or investment to create great new companies like live music discovery platform <a href='https://dice.fm/' target='_blank'>DICE</a>, or relaxation and meditation iOS app <a href='http://getpauseapp.com/' target='_blank'>PAUSE</a>.</p>
             </HomeTextBlock>
           </div>
         </ScreenBlock>
