@@ -139,9 +139,9 @@ Know to use mixins only if an argument is being passed in. Try to limit the amou
 }
 ```
 
-#### Loops, iterations etc
+#### Iterations, functions etc
 
-If you really need them, then go bananas I say ![image](http://www.sherv.net/cm/emo/funny/2/banana.gif) but extensively document and raise to the top of the file below the component title and description.
+If you really need them, then go bananas ![image](http://www.sherv.net/cm/emo/funny/2/banana.gif) but extensively document.
 
 ## SVG vector graphics and animations
 

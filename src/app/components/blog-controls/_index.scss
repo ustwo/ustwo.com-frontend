@@ -1,5 +1,13 @@
-.blog-controls {
+/*
+ *  BLOG CONTROLS
+ *  Blog search button and filter
+ *
+ *  Notes: This is the containing component for search and the dropdown buttons.
+ *         The dropdown list itself is a modal called blog-categories.
+ *  TODO: Bring variables in scope of component
+ */
 
+.blog-controls {
   z-index: 1;
   bottom: calc(#{$blog-controls-margin-bottom} + 9vh);
   position: absolute;
@@ -33,6 +41,9 @@
       padding: 0 $blog-controls-horizontal-padding;
 
       &:after {
+
+        @include arrow-icon(#333);
+
         position: absolute;
         right: $blog-controls-horizontal-padding;
         top: 50%;
@@ -41,7 +52,6 @@
         width: 13px;
         height: 10px;
         transform: translateY(-50%);
-        @include arrow-icon(#333333);
       }
     }
     .selected {
@@ -59,9 +69,10 @@
       margin-right: 14px;
     }
   }
+}
 
-  @include susy-breakpoint($bp-medium, $susy) {
-
+@media screen and (min-width: $bp-medium) {
+  .blog-controls {
     bottom: calc(#{$blog-controls-margin-bottom} - #{$blog-margin-offset});
 
     .blog-filter {

@@ -4,11 +4,6 @@
 
 $susy: (
   global-box-sizing: border-box,
-  // debug: (
-  //   image: show,
-  //   color: rgba(#AAA, .25),
-  //   output: background,
-  // ),
 );
 
 $susy-mobile-layout: (
@@ -20,7 +15,7 @@ $bp-medium: 768px;
 $bp-large: 1024px;
 $bp-larger: 1240px;
 $bp-huge: 1440px;
-$bp-gargantuan: 1800px;
+$bp-gargantuan: 1800px; /* This is becoming a joke! Find a better way to name breakpoints. */
 
 /* ------------------------------------------------------------ *\
 |* Misc
@@ -28,7 +23,6 @@ $bp-gargantuan: 1800px;
 
 $nav-height: 68px;
 $dropdown-close-height: 60px;
-
 $loading-spinner-size: 28px;
 
 /* ------------------------------------------------------------ *\
@@ -57,7 +51,7 @@ $blog-search-item-height-desktop: 140px;
 
 $jobs-card-height-mobile: 270px;
 $jobs-image-height-mobile: 210px;
-$jobs-slide-height: 310px; // default on tablet+
+$jobs-slide-height: 310px; /* default on tablet+ */
 $jobs-video-height-mobile: 310px;
 $jobs-video-height: $jobs-slide-height * 2;
 $jobs-feature-card-padding-mobile: 25px;
