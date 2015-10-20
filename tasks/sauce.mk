@@ -11,6 +11,8 @@ sauce-rm:
 	@echo "Removing $(sauce_name)"
 	@$(DOCKER_RM) $(sauce_name)
 
+sauce_available = $(shell $(DOCKER) ps -a | $(GREP) $(sauce_name) | $(AWK) '{print $$1}')
+
 sauce-create:
 	@echo "Creating $(sauce_name)"
 ifeq ($(strip $(sauce_available)),)
@@ -30,6 +32,3 @@ endif
 sauce-log:
 	docker logs -f $(sauce_name)
 
-define sauce_available
-	$(shell $(DOCKER) ps -a | $(GREP) $(sauce_name) | $(AWK) '{print $$1}')
-endef
