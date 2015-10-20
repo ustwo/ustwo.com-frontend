@@ -21,7 +21,7 @@ ifeq ($(strip $(sauce_available)),)
 		-p 8000:8000 \
 		-e SAUCE_USERNAME=$(SAUCE_USERNAME) \
 		-e SAUCE_ACCESS_KEY=$(SAUCE_ACCESS_KEY) \
-		--link usweb_proxy:local.ustwo.com \
+		--link $(proxy_name):local.ustwo.com \
 		ustwo/docker-sauce-connect
 	# TODO: use something smarter than sleep
 	sleep 15

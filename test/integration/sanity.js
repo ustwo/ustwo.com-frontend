@@ -96,7 +96,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   it('should go to the Blog page and look for Featured post', function () {
     openMobileMenu();
     return browser
-      .elementByLinkText('Blog')
+      .waitForElementByLinkText('Blog', 3000)
       .click()
       .waitForElementByCss('.blog-post-list-item.featured', wd.asserters.textInclude('Read more'), 10000)
       .url().should.eventually.include('blog');
@@ -112,7 +112,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   it('should go to the Join us page and look for job listings', function () {
     openMobileMenu();
     return browser
-      .elementByLinkText('Join Us')
+      .waitForElementByLinkText('Join Us', 3000)
       .click()
       .waitForElementByCss('.jobs-container', wd.asserters.textInclude('More info'), 10000)
       .url().should.eventually.include('join');
