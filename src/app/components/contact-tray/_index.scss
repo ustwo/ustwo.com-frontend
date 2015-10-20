@@ -46,7 +46,8 @@
   @include susy-breakpoint($bp-large, $susy) {
     @include nested(16) {
       &__content {
-        padding: 0 0 30px;
+        padding: 0;
+        margin-bottom: 60px;
         @include span(14);
         @include pre(1);
         @include post(1);

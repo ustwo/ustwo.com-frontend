@@ -1,6 +1,6 @@
 .contact-detail {
   padding: 0 6.25%;
-  margin: 30px 0;
+  margin: 40px 0 0;
   overflow: auto;
 
   &__title {
@@ -8,6 +8,7 @@
     font-size: 22px;
     font-family: "PxGrotesk-Regular", "Arial", sans-serif;
     text-transform: none;
+    margin-bottom: 15px;
   }
 
   &__description {
@@ -16,7 +17,6 @@
 
   &__link {
     border-bottom: 2px solid $mare;
-    margin-top: 15px;
     display: block;
     float: left;
     clear: left;
@@ -24,6 +24,8 @@
   }
 
   @include susy-breakpoint(650px, $susy) {
+    margin: 60px 0 0;
+
     &__description {
       display: block;
     }
