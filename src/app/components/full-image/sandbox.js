@@ -60,7 +60,9 @@ const sizes = {
 
 const Sandbox = React.createClass({
   render() {
-    return (<FullImage sizes={sizes} />);
+    return <div className="sandbox">
+      <FullImage sizes={sizes} />
+    </div>;
   }
 });
 

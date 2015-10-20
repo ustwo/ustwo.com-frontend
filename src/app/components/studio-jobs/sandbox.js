@@ -830,7 +830,7 @@ const jobs = [{
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
+    return <div className="sandbox">
       {renderVariations({
         'Selected': <StudioJobs
             studio={studio}
@@ -851,7 +851,7 @@ const Sandbox = React.createClass({
             contactEmail="test@ustwo.com"
           />
       })}
-    </div>);
+    </div>;
   }
 });
 

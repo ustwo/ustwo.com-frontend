@@ -2,11 +2,11 @@ import NavigationOpenOverlayButton from './';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div>
+    return <div className="sandbox">
       <NavigationOpenOverlayButton
         onOpen={() => alert('opened!')}
       />
-    </div>);
+    </div>;
   }
 });
 

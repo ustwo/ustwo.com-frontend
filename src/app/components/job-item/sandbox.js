@@ -63,13 +63,13 @@ const Sandbox = React.createClass({
     };
   },
   render() {
-    return (<div className="sandbox full-width-component">
+    return <div className="sandbox full-width-component">
       {renderVariations({
         'Collapsed': <JobItem job={job} />,
         'Loading': <JobItem job={job} open={this.state.open} />,
         'Expanded': <JobItem job={jobDetail} open={this.state.open} />
       })}
-    </div>);
+    </div>;
   },
   componentDidMount() {
     this.setState({

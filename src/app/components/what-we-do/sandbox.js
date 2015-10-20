@@ -5996,9 +5996,11 @@ const page = {
 
 const Sandbox = React.createClass({
   render() {
-    return <WhatWeDo
-      page={page}
-    />;
+    return <div className="sandbox">
+      <WhatWeDo
+        page={page}
+      />
+    </div>;
   }
 });
 

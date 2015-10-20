@@ -458,12 +458,12 @@ const data = {
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
+    return <div className="sandbox">
       {renderVariations({
-        'Default': <BlogPostListItem data={data} />,
-        'Featured': <BlogPostListItem data={data} featured={true} />
+        'Featured': <BlogPostListItem data={data} featured={true} />,
+        'Default': <BlogPostListItem data={data} />
       })}
-    </div>);
+    </div>;
   }
 });
 

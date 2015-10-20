@@ -457,11 +457,11 @@ const data = {
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
+    return <div className="sandbox">
       <SearchResultListItem
         data={data}
       />
-    </div>);
+    </div>;
   }
 });
 

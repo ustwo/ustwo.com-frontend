@@ -13,9 +13,9 @@ const detail = {
 
 const Sandbox = React.createClass({
   render() {
-    return (<div style={{height: '100%'}}>
+    return <div className="sandbox">
       <ContactDetail detail={detail} />
-    </div>);
+    </div>;
   }
 });
 

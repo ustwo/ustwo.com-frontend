@@ -3,7 +3,7 @@ import renderVariations from '../../lib/render-variations';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox full-width-component">
+    return <div className="sandbox full-width-component">
       {renderVariations({
         'With title': <SingleColumn
             title="Test Title"
@@ -17,7 +17,7 @@ const Sandbox = React.createClass({
             ruleColour="green"
           >Some content with no title</SingleColumn>
       })}
-    </div>);
+    </div>;
   }
 });
 

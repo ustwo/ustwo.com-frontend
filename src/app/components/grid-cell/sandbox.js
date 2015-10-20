@@ -115,10 +115,10 @@ const cell = {
 
 const Sandbox = React.createClass({
   render() {
-    return (<div style={{height: '100%'}}>
+    return <div className="sandbox">
       <GridCell cell={cell} />
       <GridCell cell={cell} />
-    </div>);
+    </div>;
   }
 });
 

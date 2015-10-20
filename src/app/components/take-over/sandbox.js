@@ -2,9 +2,9 @@ import Takeover from './';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
+    return <div className="sandbox">
       <Takeover />
-    </div>);
+    </div>;
   }
 });
 

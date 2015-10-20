@@ -35,7 +35,7 @@ const sizes = {
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
+    return <div className="sandbox">
       <style>{`
         img,
         a {
@@ -64,7 +64,7 @@ const Sandbox = React.createClass({
             sizes={sizes}
           >Some children</Rimage>
       })}
-    </div>);
+    </div>;
   }
 });
 

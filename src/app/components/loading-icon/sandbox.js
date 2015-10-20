@@ -2,9 +2,9 @@ import LoadingIcon from './';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div>
+    return <div className="sandbox">
       <LoadingIcon className="test-class" />
-    </div>);
+    </div>;
   }
 });
 
