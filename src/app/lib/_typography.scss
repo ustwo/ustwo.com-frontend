@@ -1,3 +1,10 @@
+/*
+ *  TYPOGRAPHY
+ *  Global fonts & styles of text
+ *
+ *  Notes: Includes slightly different font sizes for post and case study pages
+ */
+
 $PxGroteskLight: "PxGrotesk-Light", "Arial", sans-serif;
 $PxGroteskLightItalic: "PxGrotesk-LightItalic", "Arial", sans-serif;
 $PxGroteskRegular: "PxGrotesk-Regular", "Arial", sans-serif;
@@ -6,10 +13,14 @@ $PxGroteskBold: "PxGrotesk-Bold", "Arial", sans-serif;
 $PxGroteskBoldItalic: "PxGrotesk-BoldItalic", "Arial", sans-serif;
 $Futura: "futura-pt", Futura, Arial, sans-serif;
 
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   font-family: $PxGroteskRegular;
   color: #333;
-  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -22,12 +33,6 @@ a {
     text-decoration: none;
     outline: none;
   }
-}
-
-.link__block {
-  display: inline-block;
-  font-family: $PxGroteskBold;
-  font-size: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -58,77 +63,72 @@ p, .p {
 p {
   margin-top: 0;
 }
-p+p {
+
+p + p {
   margin-top: 20px;
 }
 
-h1, .h1          { font-size: 36px; }
-h2, .h2          { font-size: 32px; }
-h3, .h3          { font-size: 30px; }
-h4, .h4          { font-size: 26px; }
-h5, .h5          { font-size: 20px; }
-h6, .h6          { font-size: 18px; }
-p, .p            { font-size: 16px; }
-.p__small        { font-size: 14px; }
-.p__super-small  { font-size: 14px; }
+h1, .h1 {font-size: 36px;}
+h2, .h2 {font-size: 32px;}
+h3, .h3 {font-size: 30px;}
+h4, .h4 {font-size: 26px;}
+h5, .h5 {font-size: 20px;}
+h6, .h6 {font-size: 18px;}
+p, .p   {font-size: 16px;}
 
 .page-post,
 .page-case-study {
-  h1, .h1          { font-size: 30px; }
-  h2, .h2          { font-size: 26px; }
-  h3, .h3          { font-size: 22px; }
-  h4, .h4          { font-size: 20px; }
-  h5, .h5          { font-size: 18px; }
-  h6, .h6          { font-size: 18px; }
+  h1, .h1 {font-size: 30px;}
+  h2, .h2 {font-size: 26px;}
+  h3, .h3 {font-size: 22px;}
+  h4, .h4 {font-size: 20px;}
+  h5, .h5 {font-size: 18px;}
+  h6, .h6 {font-size: 18px;}
   p, .p,
   ul, .ul,
-  ol, .ol          { font-size: 18px; }
+  ol, .ol {font-size: 18px;}
 }
 
 @include susy-breakpoint($bp-small, $susy) {
-  h1, .h1          { font-size: 46px; }
-  h2, .h2          { font-size: 40px; }
-  h3, .h3          { font-size: 36px; }
-  h4, .h4          { font-size: 28px; }
-  h5, .h5          { font-size: 24px; }
-  h6, .h6          { font-size: 22px; }
-  p, .p            { font-size: 16px; }
-  .p__small        { font-size: 15px; }
-  .p__super-small  { font-size: 14px; }
+  h1, .h1 {font-size: 46px;}
+  h2, .h2 {font-size: 40px;}
+  h3, .h3 {font-size: 36px;}
+  h4, .h4 {font-size: 28px;}
+  h5, .h5 {font-size: 24px;}
+  h6, .h6 {font-size: 22px;}
+  p, .p   {font-size: 16px;}
 
   .page-post,
   .page-case-study {
-    h1, .h1          { font-size: 40px; }
-    h2, .h2          { font-size: 30px; }
-    h3, .h3          { font-size: 26px; }
-    h4, .h4          { font-size: 22px; }
-    h5, .h5          { font-size: 20px; }
-    h6, .h6          { font-size: 18px; }
+    h1, .h1 {font-size: 40px;}
+    h2, .h2 {font-size: 30px;}
+    h3, .h3 {font-size: 26px;}
+    h4, .h4 {font-size: 22px;}
+    h5, .h5 {font-size: 20px;}
+    h6, .h6 {font-size: 18px;}
     p, .p,
     ul, .ul,
-    ol, .ol          { font-size: 18px; }
-      margin-bottom: 10px;
+    ol, .ol {font-size: 18px;}
   }
 }
 
 @include susy-breakpoint($bp-medium, $susy) {
-  h1, .h1          { font-size: 60px; }
+  h1, .h1 {font-size: 60px;}
+
   .page-post,
   .page-case-study {
-    h1, .h1          { font-size: 56px; }
+    h1, .h1 {font-size: 56px;}
   }
 }
 
 @include susy-breakpoint($bp-large, $susy) {
-  h1, .h1          { font-size: 80px; }
-  h2, .h2          { font-size: 50px; }
-  h3, .h3          { font-size: 40px; }
-  h4, .h4          { font-size: 30px; }
-  h5, .h5          { font-size: 26px; }
-  h6, .h6          { font-size: 24px; }
+  h1, .h1 {font-size: 80px;}
+  h2, .h2 {font-size: 50px;}
+  h3, .h3 {font-size: 40px;}
+  h4, .h4 {font-size: 30px;}
+  h5, .h5 {font-size: 26px;}
+  h6, .h6 {font-size: 24px;}
   p, .p,
   ul, .ul,
-  ol, .ol          { font-size: 18px; }
-  .p__small        { font-size: 16px; }
-  .p__super-small  { font-size: 14px; }
+  ol, .ol {font-size: 18px;}
 }
