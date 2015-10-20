@@ -15,19 +15,8 @@ import SocialMediaSharing from '../social-media-sharing';
 
 const PagePost = React.createClass({
   mixins: [getScrollTrackerMixin('post')],
-  componentWillMount() {
-    const page = this.props.page;
-    if (page && page.slug) {
-      Flux.getSocialSharesForPost();
-    }
-  },
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.page && nextProps.page && nextProps.page.slug) {
-      Flux.getSocialSharesForPost();
-    }
-  },
   render() {
-    const { page: post } = this.props;
+    const {post} = this.props;
     const category = get(post, '_embedded.wp:term.0.0', []);
     const image = getFeaturedImage(post);
     const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'uncategorised')}`);
@@ -70,7 +59,7 @@ const PagePost = React.createClass({
     return (
       <SocialMediaSharing
         className={position}
-        title={he.decode(get(props.page, 'title.rendered', ''))}
+        title={he.decode(get(props.post, 'title.rendered', ''))}
         uri={`http://ustwo.com/blog/${get(props.page, 'slug')}`}
         facebookShares={props.facebookShares}
         twitterShares={props.twitterShares}

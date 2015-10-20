@@ -126,7 +126,7 @@ function bootstrapper(initialUrl, hostApi, proxyUrl) {
     if (hasFacebookData && hasTwitterData) {
       promise = Promise.resolve(_state);
     } else {
-      promise = fetchSocialMediaData(_state.page.slug, applyData).then(() => _state);
+      promise = fetchSocialMediaData(_state.post.slug, applyData).then(() => _state);
     }
     return promise;
   }

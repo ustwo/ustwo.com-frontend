@@ -1,6 +1,7 @@
 import filter from 'lodash/collection/filter';
 import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
+import some from 'lodash/collection/some';
 import capitalize from 'lodash/string/capitalize';
 
 import log from '../lib/log';
@@ -56,12 +57,19 @@ function applySocialMediaDataForPosts(response, type) {
 
 window._state = _state;
 
-export default {
+const Store = {
   setPage(newPage, statusCode) {
     const newPageIdArray = newPage.split('/');
     const slug = newPageIdArray[newPageIdArray.length - 1];
+    debugger;
     if(_state.page && _state.page.slug !== slug) {
       _state.page = null;
+    }
+    if(_state.post && _state.post.slug !== slug) {
+      _state.post = null;
+    }
+    if(_state.caseStudy && _state.caseStudy.slug !== slug) {
+      _state.caseStudy = null;
     }
     if(newPage !== 'blog/search-results') {
       _state.searchQuery = null;
@@ -90,7 +98,18 @@ export default {
       // - posts have a different blog category
       return (!_state[item.type] || (item.slug && _state[item.type].slug && _state[item.type].slug !== item.slug) || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory));
     });
-    return DataLoader(itemsToLoad, applyData).then(() => _state);
+
+    return DataLoader(itemsToLoad, applyData).then(() => {
+      let result;
+      if(some(itemsToLoad, item => item.type === 'posts')) {
+        result = Store.getSocialSharesForPosts();
+      } else if(some(itemsToLoad, item => item.type === 'post')) {
+        result = Store.getSocialSharesForPost();
+      } else {
+        result = _state;
+      }
+      return result;
+    });
   },
   setBlogCategoryTo(id) {
     _state.blogCategory = id;
@@ -156,7 +175,7 @@ export default {
     if (hasFacebookData && hasTwitterData) {
       promise = Promise.resolve(_state);
     } else {
-      promise = fetchSocialMediaData(_state.page.slug, applyData)
+      promise = fetchSocialMediaData(_state.post.slug, applyData)
         .then(() => _state);
     }
     return promise;
@@ -200,3 +219,5 @@ export default {
     return Promise.resolve(_state);
   }
 };
+
+export default Store;
