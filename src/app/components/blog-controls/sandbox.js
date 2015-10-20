@@ -3,7 +3,7 @@ import renderVariations from '../../lib/render-variations';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox" style={{height: '100%'}}>
+    return <div className="sandbox" style={{height: '100%'}}>
       <style>{`
         .sandbox-component {
           position: relative;
@@ -12,10 +12,9 @@ const Sandbox = React.createClass({
       `}</style>
       {renderVariations({
         'Default': <BlogControls />,
-        'With class name': <BlogControls className="test" />,
         'With selected category': <BlogControls blogCategory="design" />
       })}
-    </div>);
+    </div>;
   }
 });
 

@@ -3,7 +3,7 @@ import renderVariations from '../../lib/render-variations';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox full-width-component">
+    return <div className="sandbox full-width-component">
       {renderVariations({
         'With hex colour': <ScreenBlock
             hexColour="#aabbcc"
@@ -14,7 +14,7 @@ const Sandbox = React.createClass({
             customClass="test-class"
           />
       })}
-    </div>);
+    </div>;
   }
 });
 

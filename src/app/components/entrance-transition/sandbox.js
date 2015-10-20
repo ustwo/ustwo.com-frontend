@@ -3,7 +3,7 @@ import renderVariations from '../../lib/render-variations';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
+    return <div className="sandbox">
       <style>{`
         .entrance-transition {
           transition: opacity 0.5s ease-in-out;
@@ -23,7 +23,7 @@ const Sandbox = React.createClass({
           'No JS': <EntranceTransition>Content to show</EntranceTransition>
         })}
       </div>
-    </div>);
+    </div>;
   }
 });
 

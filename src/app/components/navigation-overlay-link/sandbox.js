@@ -3,7 +3,7 @@ import renderVariations from '../../lib/render-variations';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
+    return <div className="sandbox">
       {renderVariations({
         'Not selected': <NavigationOverlayLink
             selected={false}
@@ -18,7 +18,7 @@ const Sandbox = React.createClass({
             onClick={() => alert('clicked')}
           >Click me</NavigationOverlayLink>
       })}
-    </div>);
+    </div>;
   }
 });
 

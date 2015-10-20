@@ -2,7 +2,9 @@ import FourOhFour from './';
 
 const Sandbox = React.createClass({
   render() {
-    return <FourOhFour />;
+    return <div className="sandbox">
+      <FourOhFour />
+    </div>;
   }
 });
 

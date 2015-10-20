@@ -27,13 +27,13 @@ const sizes = {
 
 const Sandbox = React.createClass({
   render() {
-    return (<div style={{height: '100%'}}>
+    return <div className="sandbox">
       <Hero
         title="Do the best work of your life"
         showDownChevron={true}
         sizes={sizes}
       >Some children</Hero>
-    </div>);
+    </div>;
   }
 });
 

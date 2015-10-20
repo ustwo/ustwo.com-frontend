@@ -23,7 +23,7 @@ const pages = [{
 
 const Sandbox = React.createClass({
   render() {
-    return (<div>
+    return <div className="sandbox">
       {renderVariations({
         'Default': <div style={{position: 'relative', height: 68}}>
           <Navigation
@@ -44,7 +44,7 @@ const Sandbox = React.createClass({
           />
         </div>
       })}
-    </div>);
+    </div>;
   }
 });
 
