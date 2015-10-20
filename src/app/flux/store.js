@@ -61,7 +61,6 @@ const Store = {
   setPage(newPage, statusCode) {
     const newPageIdArray = newPage.split('/');
     const slug = newPageIdArray[newPageIdArray.length - 1];
-    debugger;
     if(_state.page && _state.page.slug !== slug) {
       _state.page = null;
     }
