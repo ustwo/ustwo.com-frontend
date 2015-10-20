@@ -31,7 +31,6 @@ const PageBlog = React.createClass({
   },
   componentWillMount() {
     if (this.props.posts) {
-      Flux.getSocialSharesForPosts();
       this.setState({
         isLoadingInitialPosts: false
       });
@@ -63,7 +62,6 @@ const PageBlog = React.createClass({
     const currentPostsSample = take(currentPosts, 6).map(post => post.id);
     const nextPostsSample = take(nextPosts, 6).map(post => post.id);
     if (!isEqual(currentPostsSample, nextPostsSample)) {
-      Flux.getSocialSharesForPosts();
       this.setState({
         isLoadingCategoryPosts: false,
         isCategorised: currentBlogCategory !== 'all'
@@ -73,7 +71,6 @@ const PageBlog = React.createClass({
     // applies when "load more" button is clicked
     const newPostsAdded = (currentPosts && nextPosts) && (currentPosts.length < nextPosts.length);
     if (newPostsAdded) {
-      Flux.getSocialSharesForPosts();
       this.setState({
         isLoadingMorePosts: false
       });
