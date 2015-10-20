@@ -67,6 +67,8 @@
         border-radius: 50%;
       }
 
+      /* This spits out the blog category class and it's paired colour from the
+      $blog-categories object in variables.scss */
       @each $category, $colour in $blog-categories {
         &.#{$category}:after {
           background-color: #{$colour};

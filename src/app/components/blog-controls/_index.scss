@@ -41,6 +41,9 @@
       padding: 0 $blog-controls-horizontal-padding;
 
       &:after {
+
+        @include arrow-icon(#333);
+
         position: absolute;
         right: $blog-controls-horizontal-padding;
         top: 50%;
@@ -49,7 +52,6 @@
         width: 13px;
         height: 10px;
         transform: translateY(-50%);
-        @include arrow-icon(#333);
       }
     }
     .selected {
