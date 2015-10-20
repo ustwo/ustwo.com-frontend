@@ -51,28 +51,33 @@ assets-clean:
 
 # Compiles all assets.
 assets-compile:
-	$(call compile, npm run compile)
+	@$(call compile, npm run compile)
 
 # Copies images into share/nginx/assets/images
 assets-images:
-	$(call compile, npm run images)
+	@$(call compile, npm run images)
 
 # Compiles CSS into share/nginx/assets/css
 assets-css:
-	$(call compile, npm run css)
+	@$(call compile, npm run css)
 
-# noop
 assets-css-watch:
-	$(call compile, npm run css-watch)
+	@echo "Watching CSS files..."
+	@$(FSWATCH) -or -0 -l 0.2 \
+		-i \.scss \
+		-i \.css \
+		$(PWD)/src/app \
+	| $(XARGS) -0 -o -n1 -I{} $(call compile, npm run css)
+
 
 # Compiles SPA vendors into share/nginx/assets/js
 assets-vendors:
-	$(call compile, npm run vendors)
+	@$(call compile, npm run vendors)
 
 # Compiles SPA into share/nginx/assets/js
 assets-spa:
-	$(call compile, npm run spa)
+	@$(call compile, npm run spa)
 
 # Runs SPA tests
 assets-test:
-	$(call compile, npm test)
+	@$(call compile, npm test)
