@@ -1,17 +1,18 @@
 @charset "utf-8/index";
 
-@import '../../node_modules/normalize-libsass/normalize';
-@import '../../node_modules/susy/sass/susy';
-
+/* Helpers: re-usable code (nothing here is compiled directly) */
 @import "lib/variables";
 @import "lib/colours";
 @import "lib/mixins";
-@import "lib/utils";
+@import '../../node_modules/susy/sass/susy';
+
+/* Foundation: Normalise, resets, base styles & typography */
+@import '../../node_modules/normalize-libsass/normalize';
+@import "lib/environment";
 @import "lib/typography";
-@import "lib/intro";
-@import "lib/cookie-banner";
 
-
+/* Components */
+@import "lib/intro"; /* TODO: Move this to components */
 @import "components/app/index";
 @import "components/navigation-link/index";
 @import "components/navigation-overlay-link/index";

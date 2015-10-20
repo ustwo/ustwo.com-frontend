@@ -7,7 +7,15 @@
 // hide the scrollmagic). See near the bottom where each block now has background-color !important
 // to override scrollmagic on screens that use the jpg instead of png.
 
+@mixin vertically-centering-parent($height: 100%) {
+  display: table;
+  height: $height;
+}
 
+@mixin vertically-centred-element {
+  display: table-cell;
+  vertical-align: middle;
+}
 
 %svg-shape {
   fill: $white;
