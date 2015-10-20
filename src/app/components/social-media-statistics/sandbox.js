@@ -2,12 +2,12 @@ import SocialMediaStatistics from './';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
+    return <div className="sandbox">
       <SocialMediaStatistics
         facebookShares={34}
         twitterShares={15}
       />
-    </div>);
+    </div>;
   }
 });
 

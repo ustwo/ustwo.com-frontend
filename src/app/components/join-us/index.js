@@ -68,7 +68,13 @@ const PageJoinUs = React.createClass({
     return map(this.getStudios(), studio => {
       const id = kebabCase(studio.name);
       const name = spannify(studio.name);
-      return <li key={`tab-${id}`} className={id} ref={`tab-${id}`} onClick={this.generateOnClickStudioHandler(id)} aria-selected={this.state.studio === id}>{name}</li>;
+      return <li
+        key={`tab-${id}`}
+        className={id}
+        ref={`tab-${id}`}
+        onClick={this.generateOnClickStudioHandler(id)}
+        aria-selected={this.state.studio === id}
+      >{name}</li>;
     });
   },
   generateOnClickStudioHandler(studio) {
@@ -86,13 +92,32 @@ const PageJoinUs = React.createClass({
     }
   },
   renderStudioJobs() {
-    const jobs = this.props.jobs || [];
     return map(this.getStudios(), studio => {
       const id = kebabCase(studio.name);
-      const name = studio.name;
-      const studioJobs = filter(jobs, job => get(job, 'location.city', '') === name || (get(job, 'location.region') || '').includes(name));
-      return <StudioJobs key={`jobs-${id}`} studio={studio} studios={this.props.studios} jobs={id === 'all-studios' ? jobs : studioJobs} selected={this.state.studio === id} colour={studio.color} contactEmail={get(find(get(find(get(this.props, 'footer.contacts', []), 'type', 'general'), 'methods', []), 'type', 'email'), 'uri', '')} />;
+      return <StudioJobs
+        key={`jobs-${id}`}
+        studio={studio}
+        studios={this.props.studios}
+        jobs={this.getJobsForStudio(studio)}
+        selected={this.state.studio === id}
+        contactEmail={get(find(get(find(get(this.props, 'footer.contacts', []), 'type', 'general'), 'methods', []), 'type', 'email'), 'uri', '')}
+      />;
     });
+  },
+  getJobsForStudio(studio) {
+    const allJobs = this.props.jobs || [];
+    const { name } = studio;
+    let jobs;
+    if (name === 'All studios') {
+      jobs = allJobs;
+    } else {
+      jobs = filter(allJobs, job => {
+        const studioMatchesCity = get(job, 'location.city', '') === name;
+        const studioMatchesRegion = (get(job, 'location.region') || '').includes(name);
+        return studioMatchesCity || studioMatchesRegion;
+      });
+    }
+    return jobs;
   }
 });
 

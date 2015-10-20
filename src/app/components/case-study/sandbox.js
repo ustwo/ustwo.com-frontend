@@ -852,9 +852,11 @@ const page = {
 
 const Sandbox = React.createClass({
   render() {
-    return <CaseStudy
-      page={page}
-    />;
+    return <div className="sandbox">
+      <CaseStudy
+        page={page}
+      />
+    </div>;
   }
 });
 

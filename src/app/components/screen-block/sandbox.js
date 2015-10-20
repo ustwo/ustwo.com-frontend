@@ -1,17 +1,20 @@
 import ScreenBlock from './';
+import renderVariations from '../../lib/render-variations';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
-      <ScreenBlock
-        hexColour="#aabbcc"
-        customClass="test-class"
-      >Block with hexcolour</ScreenBlock>
-      <ScreenBlock
-        colour="light-blue"
-        customClass="test-class"
-      >Block with colour class</ScreenBlock>
-    </div>);
+    return <div className="sandbox full-width-component">
+      {renderVariations({
+        'With hex colour': <ScreenBlock
+            hexColour="#aabbcc"
+            customClass="test-class"
+          />,
+        'With colour class': <ScreenBlock
+            colour="light-blue"
+            customClass="test-class"
+          />
+      })}
+    </div>;
   }
 });
 

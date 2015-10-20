@@ -22,12 +22,12 @@ const pages = [{
 
 const Sandbox = React.createClass({
   render() {
-    return (<div>
+    return <div className="sandbox">
       <NavigationOverlay
         section="what-we-do"
         pages={pages}
       />
-    </div>);
+    </div>;
   }
 });
 

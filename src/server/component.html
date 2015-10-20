@@ -6,13 +6,20 @@
     <link rel="stylesheet" href="/css/index.css" />
     <script src="<%= uri %>" type="text/javascript"></script>
     <style>
-      html {
-        background: #ccc;
+      .sandbox-component {
+        padding: 1rem;
+        margin-bottom: 4rem;
       }
-      html,
-      body,
-      main {
-        height: 100%;
+      .sandbox-label {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        text-transform: none;
+      }
+      .full-width-component .sandbox-component {
+        padding: 1rem 0;
+      }
+      .full-width-component .sandbox-label {
+        margin-left: 1rem;
       }
     </style>
   </head>

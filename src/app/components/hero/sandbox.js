@@ -1,4 +1,5 @@
 import Hero from './';
+import renderVariations from '../../lib/render-variations';
 
 const sizes = {
   "thumbnail": {
@@ -27,13 +28,25 @@ const sizes = {
 
 const Sandbox = React.createClass({
   render() {
-    return (<div style={{height: '100%'}}>
-      <Hero
-        title="Do the best work of your life"
-        showDownChevron={true}
-        sizes={sizes}
-      >Some children</Hero>
-    </div>);
+    return <div className="sandbox full-width-component">
+      <style>{`
+        .hero {
+          background-color: #FFBF02;
+        }
+      `}</style>
+      {renderVariations({
+        'With down chevron': <Hero
+            title="This is a title"
+            showDownChevron={true}
+            sizes={sizes}
+          />,
+        'With children': <Hero
+            title="This is a title"
+            showDownChevron={false}
+            sizes={sizes}
+          >Some children</Hero>
+      })}
+    </div>;
   }
 });
 

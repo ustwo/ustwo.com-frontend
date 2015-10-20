@@ -80,7 +80,9 @@ const attachments = [
 
 const Sandbox = React.createClass({
   render() {
-    return <WorkItem data={caseStudy} attachments={attachments} />;
+    return <div className="sandbox">
+      <WorkItem data={caseStudy} attachments={attachments} />
+    </div>;
   }
 });
 

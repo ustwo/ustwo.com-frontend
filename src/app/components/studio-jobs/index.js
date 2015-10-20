@@ -19,7 +19,7 @@ export default class StudioJobs extends React.Component {
     }
   }
   render() {
-    const { studio, selected, colour } = this.props;
+    const { studio, selected } = this.props;
     const id = kebabCase(studio.name);
     const classes = classnames('studio-jobs', `${id}-jobs`, {
       selected: selected
@@ -30,7 +30,7 @@ export default class StudioJobs extends React.Component {
         <h3>{studio.name}</h3>
         <div className="tab-content" id={`tab-content-${id}`}>
           <div className="studio-info">
-            <div className="info" style={{ backgroundColor: colour }}>
+            <div className="info" style={{ backgroundColor: studio.color }}>
               <p className="excerpt">{get(studio, 'recruitment-title')}</p>
               <p className="content">{get(studio, 'recruitment-desc')}</p>
             </div>
@@ -44,19 +44,15 @@ export default class StudioJobs extends React.Component {
   renderJobsList = () => {
     const { jobs, studio, contactEmail } = this.props;
     let list;
-    if(jobs.length) {
-      list = (
-        <ul className="jobs-list">
-          {jobs.map(this.renderJobItem)}
-        </ul>
-      );
+    if (jobs.length) {
+      list = <ul className="jobs-list">
+        {jobs.map(this.renderJobItem)}
+      </ul>;
     } else {
-      list = (
-        <div className="jobs-none">
-          <p>We don't have any openings currently. However we're always looking for talented individuals to join the ustwo family.</p>
-          <a href={contactEmail.length ? `${contactEmail}?subject=${studio.name} Jobs` : ''}>Get in touch</a>
-        </div>
-      );
+      list = <div className="jobs-none">
+        <p>We don't have any openings currently. However we're always looking for talented individuals to join the ustwo family.</p>
+        <a style={{backgroundColor: studio.color}} href={contactEmail.length ? `${contactEmail}?subject=${studio.name} Jobs` : ''}>Get in touch</a>
+      </div>;
     }
     return list;
   }

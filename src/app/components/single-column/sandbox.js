@@ -1,28 +1,23 @@
 import SingleColumn from './';
+import renderVariations from '../../lib/render-variations';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
-      <SingleColumn
-        className="content-title"
-        title="Test Title"
-        backgroundColour="pink"
-        headingColour="black"
-        ruleColour="green"
-      >Some content with title</SingleColumn>
-      <SingleColumn
-        className="content"
-        backgroundColour="pink"
-        headingColour="black"
-        ruleColour="green"
-      >Some content with no title</SingleColumn>
-      <SingleColumn
-        className="nothing"
-        backgroundColour="pink"
-        headingColour="black"
-        ruleColour="green"
-      />
-    </div>);
+    return <div className="sandbox full-width-component">
+      {renderVariations({
+        'With title': <SingleColumn
+            title="Test Title"
+            backgroundColour="#A5E1FF"
+            headingColour="black"
+            ruleColour="#009CF3"
+          >Some content with title</SingleColumn>,
+        'With no title': <SingleColumn
+            backgroundColour="#A5E1FF"
+            headingColour="black"
+            ruleColour="green"
+          >Some content with no title</SingleColumn>
+      })}
+    </div>;
   }
 });
 

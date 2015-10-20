@@ -1074,11 +1074,18 @@ const page = {
 
 const Sandbox = React.createClass({
   render() {
-    return <Post
-      page={page}
-      facebookShares={20}
-      twitterShares={97}
-    />;
+    return <div className="sandbox">
+      <style>{`
+        body {
+          background: #ccc;
+        }
+      `}</style>
+      <Post
+        page={page}
+        facebookShares={20}
+        twitterShares={97}
+      />
+    </div>;
   }
 });
 

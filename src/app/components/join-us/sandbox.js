@@ -2449,12 +2449,14 @@ const footer = {
 
 const Sandbox = React.createClass({
   render() {
-    return <JoinUs
-      page={page}
-      studios={studios}
-      jobs={jobs}
-      footer={footer}
-    />;
+    return <div className="sandbox">
+      <JoinUs
+        page={page}
+        studios={studios}
+        jobs={jobs}
+        footer={footer}
+      />
+    </div>;
   }
 });
 

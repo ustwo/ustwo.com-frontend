@@ -2,7 +2,9 @@ import Home from './';
 
 const Sandbox = React.createClass({
   render() {
-    return <Home />;
+    return <div className="sandbox">
+      <Home />
+    </div>;
   }
 });
 
