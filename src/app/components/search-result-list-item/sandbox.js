@@ -458,6 +458,11 @@ const data = {
 const Sandbox = React.createClass({
   render() {
     return <div className="sandbox">
+      <style>{`
+        body {
+          background: #ccc;
+        }
+      `}</style>
       <SearchResultListItem
         data={data}
       />

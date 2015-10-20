@@ -64,6 +64,11 @@ const Sandbox = React.createClass({
   },
   render() {
     return <div className="sandbox full-width-component">
+      <style>{`
+        body {
+          background: #ccc;
+        }
+      `}</style>
       {renderVariations({
         'Collapsed': <JobItem job={job} />,
         'Loading': <JobItem job={job} open={this.state.open} />,

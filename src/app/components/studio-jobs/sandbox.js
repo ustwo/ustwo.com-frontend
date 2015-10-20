@@ -830,14 +830,19 @@ const jobs = [{
 
 const Sandbox = React.createClass({
   render() {
-    return <div className="sandbox">
+    return <div className="sandbox full-width-component">
+      <style>{`
+        body {
+          background: #ccc;
+        }
+      `}</style>
       {renderVariations({
         'Selected': <StudioJobs
             studio={studio}
             studios={studios}
             selected={true}
             selectedJob="31345F669C"
-            colour="pink"
+            colour={studio.color}
             jobs={jobs}
             contactEmail="test@ustwo.com"
           />,

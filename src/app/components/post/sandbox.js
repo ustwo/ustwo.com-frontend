@@ -1075,6 +1075,11 @@ const page = {
 const Sandbox = React.createClass({
   render() {
     return <div className="sandbox">
+      <style>{`
+        body {
+          background: #ccc;
+        }
+      `}</style>
       <Post
         page={page}
         facebookShares={20}
