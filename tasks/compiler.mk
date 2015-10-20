@@ -6,8 +6,8 @@ compiler_dockerfile = Dockerfile.$(compiler_id)
 
 .PHONY: \
   compiler-build \
-	compiler-push \
-	compiler-pull
+  compiler-push \
+  compiler-pull
 
 compiler_volumes = \
   -v $(BASE_PATH)/package.compiler.json:/home/ustwo/package.json \

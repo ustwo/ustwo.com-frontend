@@ -6,10 +6,10 @@ vault_image := ustwo/vault:$(vault_version)
 vault_name = $(project_name)_vault
 
 .PHONY: \
-	vault-build \
-	vault-create \
-	vault-rm \
-	vault-save
+  vault-build \
+  vault-create \
+  vault-rm \
+  vault-save
 
 vault-rm:
 	@echo "Removing $(vault_name)"
