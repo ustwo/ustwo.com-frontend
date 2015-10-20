@@ -458,7 +458,7 @@ const data = {
 
 const Sandbox = React.createClass({
   render() {
-    return <div className="sandbox">
+    return <div className="sandbox full-width-component">
       {renderVariations({
         'Featured': <BlogPostListItem data={data} featured={true} />,
         'Default': <BlogPostListItem data={data} />
