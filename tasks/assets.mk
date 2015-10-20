@@ -82,6 +82,4 @@ assets-test:
 	@$(call compile, npm test)
 
 assets-integration: sauce-create
-	# TODO: use something smarter than sleep
-	sleep 15
 	@$(call compile, npm run integration)
