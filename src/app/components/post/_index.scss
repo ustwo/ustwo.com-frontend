@@ -204,6 +204,10 @@
     }
   }
 
+  @include susy-breakpoint($bp-small, $susy) {
+    margin-bottom: 10px;
+  }
+
   @include susy-breakpoint($bp-medium, $susy) {
     .hero-image {
       height: 450px;

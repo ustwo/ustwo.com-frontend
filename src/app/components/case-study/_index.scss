@@ -7,3 +7,9 @@
     border-bottom-style: solid;
   }
 }
+
+@media screen and (min-width: $bp-small) {
+  .page-case-study {
+    margin-bottom: 10px;
+  }
+}
