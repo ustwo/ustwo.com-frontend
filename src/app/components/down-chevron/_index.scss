@@ -1,3 +1,11 @@
+/*
+ *  DOWN CHEVRON
+ *  Directional Indicator
+ *
+ *  Notes: Currently used only for indicating 'down'
+ *  TODO: Rename component to 'chevron' to  unattach itself to a fixed direction
+ */
+
 .down-chevron {
   display: inline-block;
   width: 100px;
@@ -8,8 +16,10 @@
     display: none;
   }
 }
+
 .js .down-chevron g {
   display: inline;
+
   &:not(:first-child) {
     display: none;
   }

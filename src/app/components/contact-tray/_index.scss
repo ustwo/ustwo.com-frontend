@@ -1,3 +1,11 @@
+/*
+ *  CONTACT TRAY
+ *  Panel that appears over the footer that houses contact details
+ *
+ *  TODO: Remove BEM
+ *  TODO: Remove susy
+ */
+
 .contact-tray {
   position: fixed;
   bottom: 0;
@@ -30,7 +38,7 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  @include susy-breakpoint(650px, $susy) {
+  @media screen and (min-width: 650px) {
     &__content {
       overflow: auto;
       padding-left: 6.25%;
@@ -43,7 +51,7 @@
       }
     }
   }
-  @include susy-breakpoint($bp-large, $susy) {
+  @media screen and (min-width: $bp-large) {
     @include nested(16) {
       &__content {
         padding: 0;
@@ -62,7 +70,7 @@
       }
     }
   }
-  @include susy-media(max-height 500px) {
+  @media screen and (max-height 500px) {
     height: 100%;
 
     &__content {
