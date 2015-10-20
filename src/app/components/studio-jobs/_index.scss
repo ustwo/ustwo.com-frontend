@@ -79,21 +79,6 @@
     display: none;
   }
 
-  @each $studio, $colour in $studio-colours {
-    &.#{$studio}-jobs {
-      .excerpt,
-      .jobs-none a {
-        background: $colour;
-      }
-      .job-item h4 {
-        &:before,
-        &:after {
-          background: $colour;
-        }
-      }
-    }
-  }
-
   @include susy-breakpoint($bp-medium, $susy) {
     display: none;
 

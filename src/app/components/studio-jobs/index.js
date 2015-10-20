@@ -44,14 +44,14 @@ export default class StudioJobs extends React.Component {
   renderJobsList = () => {
     const { jobs, studio, contactEmail } = this.props;
     let list;
-    if(jobs.length) {
+    if (jobs.length) {
       list = <ul className="jobs-list">
         {jobs.map(this.renderJobItem)}
       </ul>;
     } else {
       list = <div className="jobs-none">
         <p>We don't have any openings currently. However we're always looking for talented individuals to join the ustwo family.</p>
-        <a href={contactEmail.length ? `${contactEmail}?subject=${studio.name} Jobs` : ''}>Get in touch</a>
+        <a style={{backgroundColor: studio.color}} href={contactEmail.length ? `${contactEmail}?subject=${studio.name} Jobs` : ''}>Get in touch</a>
       </div>;
     }
     return list;
