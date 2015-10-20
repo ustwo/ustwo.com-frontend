@@ -4,7 +4,7 @@ const Sandbox = React.createClass({
   render() {
     return <div className="sandbox">
       <QuoteBlock
-        backgroundColor="grey"
+        backgroundColour="grey"
         source="The Original Source"
       >Some quote text</QuoteBlock>
     </div>;

@@ -7,12 +7,12 @@ const Sandbox = React.createClass({
       {renderVariations({
         'With title': <SingleColumn
             title="Test Title"
-            backgroundColour="pink"
+            backgroundColour="#A5E1FF"
             headingColour="black"
-            ruleColour="green"
+            ruleColour="#009CF3"
           >Some content with title</SingleColumn>,
         'With no title': <SingleColumn
-            backgroundColour="pink"
+            backgroundColour="#A5E1FF"
             headingColour="black"
             ruleColour="green"
           >Some content with no title</SingleColumn>

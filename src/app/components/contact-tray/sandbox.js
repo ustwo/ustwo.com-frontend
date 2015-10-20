@@ -41,6 +41,11 @@ const contacts = [{
 const Sandbox = React.createClass({
   render() {
     return <div className="sandbox">
+      <style>{`
+        body {
+          background: #ccc;
+        }
+      `}</style>
       <ContactTray contacts={contacts} />
     </div>;
   }

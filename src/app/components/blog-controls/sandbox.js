@@ -3,11 +3,17 @@ import renderVariations from '../../lib/render-variations';
 
 const Sandbox = React.createClass({
   render() {
-    return <div className="sandbox" style={{height: '100%'}}>
+    return <div className="sandbox">
       <style>{`
+        body {
+          background: #ccc;
+        }
+        .sandbox {
+          height: 100vh;
+        }
         .sandbox-component {
           position: relative;
-          height: 100%;
+          height: inherit;
         }
       `}</style>
       {renderVariations({
