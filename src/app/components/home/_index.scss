@@ -30,14 +30,14 @@
     flex-direction: column;
     justify-content: center;
 
-    @include susy-breakpoint($bp-large, $susy) {
+    @media screen and (min-width: $bp-large) {
       display: block;
     }
 
     h2 {
       margin-bottom: 10px;
 
-      @include susy-breakpoint($bp-large, $susy) {
+      @media screen and (min-width: $bp-large) {
         margin-bottom: 20px;
       }
     }
@@ -62,12 +62,12 @@
       background-position: 50% 50%;
       background-size: 460px auto;
 
-      @include susy-breakpoint($bp-medium, $susy) {
+      @media screen and (min-width: $bp-medium) {
         max-width: 660px;
         background-size: 580px auto;
       }
 
-      @include susy-breakpoint($bp-large, $susy) {
+      @media screen and (min-width: $bp-large) {
         background-image: url("/images/home/homepage_hero_00_singleimage.png");
         background-size: 770px auto;
       }
@@ -109,7 +109,7 @@
       margin: 0 auto;
     }
 
-    @include susy-breakpoint($bp-medium, $susy) {
+    @media screen and (min-width: $bp-medium) {
       .headline-text {
         .bold-header {
           h1 {
@@ -119,7 +119,7 @@
       }
     }
 
-    @include susy-breakpoint($bp-large, $susy) {
+    @media screen and (min-width: $bp-large) {
       @include container(16);
       @include nested(16) {
         background: none;
@@ -149,17 +149,17 @@
             background-size: auto 280px;
             height: 290px;
 
-            @include susy-breakpoint($bp-small, $susy) {
+            @media screen and (min-width: $bp-small) {
               height: 400px;
               background-size: auto 400px;
             }
 
-            @include susy-breakpoint($bp-medium, $susy) {
+            @media screen and (min-width: $bp-medium) {
               height: 500px;
               background-size: auto 500px;
             }
 
-            @include susy-breakpoint($bp-large, $susy) {
+            @media screen and (min-width: $bp-large) {
               background-image: url("/images/home/Homepage_Harvey_Phone.png");
             }
 
@@ -206,7 +206,7 @@
       @include squish(6.25%);
     }
 
-    @include susy-breakpoint($bp-medium, $susy) {
+    @media screen and (min-width: $bp-medium) {
       .text-block {
         @include span(75%);
         @include squish(12.5%);
@@ -232,7 +232,7 @@
       }
     }
 
-    @include susy-breakpoint($bp-large, $susy) {
+    @media screen and (min-width: $bp-large) {
       @include nested(16) {
         .block-parent {
           @include span(9 first);
@@ -267,7 +267,7 @@
       .block-child {
         padding: 0 15px;
 
-        @include susy-breakpoint($bp-small, $susy) {
+        @media screen and (min-width: $bp-small) {
           padding: 0;
         }
 
@@ -284,17 +284,17 @@
             background-size: auto 265px;
             height: 300px;
 
-            @include susy-breakpoint($bp-small, $susy) {
+            @media screen and (min-width: $bp-small) {
               height: 400px;
               background-size: auto 400px;
             }
 
-            @include susy-breakpoint($bp-medium, $susy) {
+            @media screen and (min-width: $bp-medium) {
               height: 500px;
               background-size: auto 500px;
             }
 
-            @include susy-breakpoint($bp-large, $susy) {
+            @media screen and (min-width: $bp-large) {
               background-image: url("/images/home/Homepage_Games_Ipad.png");
             }
 
@@ -331,7 +331,7 @@
       @include squish(6.25%);
     }
 
-    @include susy-breakpoint($bp-medium, $susy) {
+    @media screen and (min-width: $bp-medium) {
       .text-block {
         @include span(75%);
         @include squish(12.5%);
@@ -357,7 +357,7 @@
       }
     }
 
-    @include susy-breakpoint($bp-large, $susy) {
+    @media screen and (min-width: $bp-large) {
       @include nested(16) {
 
         .text-block {
@@ -404,24 +404,24 @@
             background-size: auto 380px;
             height: 380px;
 
-            @include susy-breakpoint($bp-small, $susy) {
+            @media screen and (min-width: $bp-small) {
               height: 500px;
               background-size: auto 500px;
             }
 
-            @include susy-breakpoint($bp-medium, $susy) {
+            @media screen and (min-width: $bp-medium) {
               height: 600px;
               background-size: auto 600px;
             }
 
-            @include susy-breakpoint($bp-large, $susy) {
+            @media screen and (min-width: $bp-large) {
               position: relative;
               background-image: url("/images/home/Homepage_Dice_Mask.png");
             }
 
           }
 
-          @include susy-breakpoint($bp-large, $susy) {
+          @media screen and (min-width: $bp-large) {
             .dice-screen-anim {
               position: absolute;
               width: 173px;
@@ -451,7 +451,7 @@
       @include squish(6.25%);
     }
 
-    @include susy-breakpoint($bp-medium, $susy) {
+    @media screen and (min-width: $bp-medium) {
       .text-block {
         @include span(75%);
         @include squish(12.5%);
@@ -476,7 +476,7 @@
       }
     }
 
-    @include susy-breakpoint($bp-large, $susy) {
+    @media screen and (min-width: $bp-large) {
       @include nested(16) {
         .block-parent {
           @include span(9 first);

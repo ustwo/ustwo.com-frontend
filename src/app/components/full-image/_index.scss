@@ -7,7 +7,7 @@
     display: none;
   }
 
-  @include susy-breakpoint(min-width 570px, $susy) {
+  @media screen and (min-width: 570px) {
     height: auto;
     background-image: none;
 

@@ -33,13 +33,13 @@
     }
   }
 
-  @include susy-breakpoint($bp-medium, $susy) {
+  @media screen and (min-width: $bp-medium) {
     &__title {
       padding: 0 40px;
       max-width: 750px;
     }
   }
-  @include susy-breakpoint($bp-large, $susy) {
+  @media screen and (min-width: $bp-large) {
     &__title {
       padding: 0 80px;
       max-width: 1080px;

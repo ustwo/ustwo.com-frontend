@@ -38,7 +38,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-medium, $susy) {
+  @media screen and (min-width: $bp-medium) {
     padding: 140px 6.25% 80px;
 
     &__quote-mark {
@@ -51,8 +51,5 @@
     &__quote {
       font-size: 50px;
     }
-  }
-  @include susy-breakpoint($bp-large, $susy) {
-
   }
 }

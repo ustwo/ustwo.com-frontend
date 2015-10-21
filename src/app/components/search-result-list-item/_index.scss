@@ -89,7 +89,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-small, $susy) {
+  @media screen and (min-width: $bp-small) {
     .title {
       -webkit-line-clamp: none;
       display: block;
@@ -101,7 +101,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-medium, $susy) {
+  @media screen and (min-width: $bp-medium) {
 
     .image {
       position: absolute;

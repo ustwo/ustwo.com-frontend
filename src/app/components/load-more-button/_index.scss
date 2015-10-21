@@ -56,10 +56,8 @@
       }
     }
   }
-}
 
-@include susy-breakpoint($bp-medium, $susy) {
-  .load-more-button {
+  @media screen and (min-width: $bp-medium) {
     margin: 0;
 
     button {

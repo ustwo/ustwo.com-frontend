@@ -133,7 +133,7 @@
     }
   }
 
-  @include susy-breakpoint(650px, $susy) {
+  @media screen and (min-width: 650px) {
     .content {
       padding: 100px 0 0 0;
       padding-bottom: 0;
@@ -173,7 +173,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-large, $susy) {
+  @media screen and (min-width: $bp-large) {
     .content {
       padding-bottom: 0;
 
@@ -192,7 +192,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-larger, $susy) {
+  @media screen and (min-width: $bp-larger) {
     .content {
       .copyright {
         ul {

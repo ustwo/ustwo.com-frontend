@@ -37,7 +37,7 @@
       opacity: 0;
     }
 
-    @include susy-breakpoint($bp-large, $susy) {
+    @media screen and (min-width: $bp-large) {
       &.mobile-no-scroll {
         position: relative;
         overflow: auto;

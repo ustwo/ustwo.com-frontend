@@ -89,7 +89,7 @@ p, .p   {font-size: 16px;}
   ol, .ol {font-size: 18px;}
 }
 
-@include susy-breakpoint($bp-small, $susy) {
+@media screen and (min-width: $bp-small) {
   h1, .h1 {font-size: 46px;}
   h2, .h2 {font-size: 40px;}
   h3, .h3 {font-size: 36px;}
@@ -112,7 +112,7 @@ p, .p   {font-size: 16px;}
   }
 }
 
-@include susy-breakpoint($bp-medium, $susy) {
+@media screen and (min-width: $bp-medium) {
   h1, .h1 {font-size: 60px;}
 
   .page-post,
@@ -121,7 +121,7 @@ p, .p   {font-size: 16px;}
   }
 }
 
-@include susy-breakpoint($bp-large, $susy) {
+@media screen and (min-width: $bp-large) {
   h1, .h1 {font-size: 80px;}
   h2, .h2 {font-size: 50px;}
   h3, .h3 {font-size: 40px;}

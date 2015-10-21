@@ -70,7 +70,7 @@
     }
   }
 
-  @include susy-breakpoint(650px, $susy) {
+  @media screen and (min-width: 650px) {
     @include nested(10) {
       @include gallery(5 of 10);
       vertical-align: top;
@@ -108,7 +108,7 @@
       }
     }
   }
-  @include susy-breakpoint($bp-large, $susy) {
+  @media screen and (min-width: $bp-large) {
     @include nested(12) {
       @include gallery(3 of 12);
       height: 180px;

@@ -25,7 +25,7 @@
     clear: both;
   }
 
-  @include susy-breakpoint($bp-large, $susy) {
+  @media screen and (min-width: $bp-large) {
     display: none;
   }
 }

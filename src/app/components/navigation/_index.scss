@@ -49,7 +49,7 @@
         fill: $nonBlack;
       }
 
-      @include susy-breakpoint($bp-large, $susy) {
+      @media screen and (min-width: $bp-large) {
         margin-left: 30px;
       }
     }
@@ -105,25 +105,8 @@
   &.search {
     @extend .neg-nav;
   }
-}
-.app-404 .header {
-  @extend .neg-nav;
-}
-.js .nav-wrapper {
-  .header {
-    transform: translateY(-68px);
-  }
 
-  &.show {
-    .header {
-      transition: transform 0.5s ease-out;
-      transform: translateY(0px);
-    }
-  }
-}
-
-@include susy-breakpoint($bp-large, $susy) {
-  .header {
+  @media screen and (min-width: $bp-large) {
     .nav {
       .nav__open-overlay-button {
         display: none;
@@ -145,6 +128,23 @@
           margin-left: 0;
         }
       }
+    }
+  }
+}
+
+.app-404 .header {
+  @extend .neg-nav;
+}
+
+.js .nav-wrapper {
+  .header {
+    transform: translateY(-68px);
+  }
+
+  &.show {
+    .header {
+      transition: transform 0.5s ease-out;
+      transform: translateY(0px);
     }
   }
 }

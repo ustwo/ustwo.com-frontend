@@ -14,7 +14,7 @@
     display: block;
   }
 
-  @include susy-breakpoint($bp-gargantuan, $susy) {
+  @media screen and (min-width: $bp-gargantuan) {
     overflow: visible;
   }
 }

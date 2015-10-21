@@ -254,7 +254,7 @@
   }
 
 
-  @include susy-breakpoint($bp-medium, $susy) {
+  @media screen and (min-width: $bp-medium) {
     .blog-category {
       transform: translateY(-21px);
     }
@@ -309,7 +309,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-larger, $susy) {
+  @media screen and (min-width: $bp-larger) {
     .blog-post-list {
       .blog-post-list-item:not(.featured) {
         width: calc(33.333% - (#{$blog-gutter-large} * 2 / 3));
@@ -337,14 +337,3 @@
     }
   }
 }
-
-//
-//
-// .hide {
-//   .page-blog {
-//     .blog-post-list {
-//       opacity: 0;
-//       transition: opacity .32s ease-in-out;
-//     }
-//   }
-// }
