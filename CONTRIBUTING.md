@@ -53,17 +53,17 @@ To me, there is a familiar and natural order of how to write an element's attrib
 
 #### Media queries
 
-Write media queries at the bottom of the component file, each one outside of the component selector name
+Write media queries at the bottom of the component file, each one inside of the main selector name so as to be in scope of the component for component specific variables.
 
 ```scss
-@media screen and (min-width: $breakpoint) {
-  .component-name {
-    ...
+.component-name {
+  /*...*/
+
+  @media screen and (min-width: $breakpoint) {
+    /*...*/
   }
 }
 ```
-
-Note: Use `@mixin` and standard CSS as much as possible here, no mixins unless necessary.
 
 #### Selector naming conventions
 

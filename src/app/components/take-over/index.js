@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import he from 'he';
 import TransitionManager from 'react-transition-manager';
 import get from 'lodash/object/get';
 
@@ -15,7 +16,7 @@ import {onClickContent} from '../modal';
 
 const takeover = {
   name: "Pause",
-  title: "PAUSE - OUT NOW",
+  title: "PAUSE &#8211; OUT NOW",
   description: "A totally new relaxation and meditation experience for iPhone.",
   featured_image: 8672,
   header_color: "#2a88a9",
@@ -123,7 +124,7 @@ export default class TakeOver extends React.Component {
           <div className="take-over__content__message">
             <CloseButton onClose={this.onClickClose} className="take-over__content__message__close" autoAnim={1000} style={{ fill: takeover.header_color }} />
             <Rimage wrap="div" className="take-over__content__image"  sizes={get(image, 'media_details.sizes')} />
-            <h1 className="take-over__content__message__title" style={{color: takeover.header_color}}>{takeover.title}</h1>
+            <h1 className="take-over__content__message__title" style={{color: takeover.header_color}}>{he.decode(takeover.title)}</h1>
             <p className="take-over__content__message__description">{takeover.description}</p>
             <ul className="take-over__content__message__links">
               {takeover.links.map(this.renderLink)}
