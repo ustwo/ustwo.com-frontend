@@ -8,7 +8,7 @@ import camelCase from 'lodash/string/camelCase';
 import capitalize from 'lodash/string/capitalize';
 
 import manifest from '../../package.json';
-import routes from './routes.js';
+import sandboxRoutes from './routes.sandbox.js';
 
 let app = express();
 
@@ -19,7 +19,7 @@ app.engine('html', cons.lodash);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, './'));
 
-app.use('/', routes);
+app.use('/sandbox', sandboxRoutes);
 
 http.createServer(app).listen(app.get('port'));
 console.log(`${capitalize(camelCase(manifest.name))} up and running on ${app.get('port')}`);
