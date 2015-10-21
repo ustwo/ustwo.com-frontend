@@ -1,3 +1,13 @@
+/*
+ *  NAVIGATION / HEADER
+ *  Includes the site navigation and logo
+ *
+ *  Notes: Should this component be called header?
+ *  TODO: Remove BEM
+ *  TODO: The way the .neg-nav class is extended needs addressing
+ *  TODO: The whole component needs a good look at itself in the mirror 
+ */
+
 .neg-nav {
   .nav {
     color: $nonBlack;
@@ -21,13 +31,13 @@
 }
 
 .header {
-  display: block;
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  height: $nav-height;
   z-index: 40;
+  display: block;
+  height: $nav-height;
 
   .nav {
     background: transparent;
@@ -38,11 +48,12 @@
     }
 
     &__logo {
-      display: block;
-      margin-left: 20px;
       overflow: hidden;
+      display: block;
       width: 100px;
       height: $nav-height;
+      margin-left: 20px;
+
       &__graphic {
         width: 100px;
         height: $nav-height;
@@ -68,6 +79,7 @@
 
       .nav__menu {
         @extend %clearfix;
+
         display: none;
         margin: 0;
         padding: 0;
@@ -83,8 +95,8 @@
         top: 35px;
         width: 0px;
         height: 2px;
-        background-color: $darkGrey;
         border: none;
+        background-color: $darkGrey;
         opacity: 0;
       }
     }

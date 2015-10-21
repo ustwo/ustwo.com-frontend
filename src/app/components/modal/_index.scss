@@ -1,3 +1,10 @@
+/*
+ *  MODAL
+ *  Core style for overlay
+ *
+ *  Notes:
+ */
+
 .modal {
   position: fixed;
   top: 0;
@@ -6,8 +13,8 @@
   height: 100%;
   background: rgba(0,0,0,0.7);
   z-index: 50;
-  transition: opacity .2s ease-in-out;
   cursor: pointer;
+  transition: opacity .2s ease-in-out;
 
   &.below-header {
     z-index: 30;
@@ -16,12 +23,15 @@
   &.add {
     opacity: 0;
   }
+
   &.show {
     opacity: 1;
   }
+
   &.hide {
     opacity: 0;
   }
+
   > * {
     cursor: auto;
   }

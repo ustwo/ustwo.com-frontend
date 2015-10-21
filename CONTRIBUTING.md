@@ -42,7 +42,7 @@ Each CSS file should have the following at the top:
 
 To me, there is a familiar and natural order of how to write an element's attributes when I consider a) how a node is drawn and painted in the browser and b) the order of thought process when constructing the style of an element.
 
-- **content, clear, overflow** - Unusual/breaking rules, flags, resets
+- **content, box-sizing, clear, overflow** - Unusual/breaking rules, flags, resets
 - **position, top, right, bottom, left**  - Position is a naughty (but helpful) rule, can remove element from the flow
 - **display, flex properties, float**  - How the element behaves in the flow, the element flavour
 - **width, height, margin, padding** - Box Model, dimensions
