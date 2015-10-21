@@ -72,7 +72,8 @@ const Sandbox = React.createClass({
       {renderVariations({
         'Collapsed': <JobItem job={job} />,
         'Loading': <JobItem job={job} open={this.state.open} />,
-        'Expanded': <JobItem job={jobDetail} open={this.state.open} />
+        'Expanded': <JobItem job={jobDetail} open={this.state.open} />,
+        'With colour': <JobItem job={job} colour="#143fcc" />
       })}
     </div>;
   },
