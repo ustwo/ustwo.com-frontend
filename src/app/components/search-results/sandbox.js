@@ -4518,11 +4518,13 @@ const posts = [
 
 const Sandbox = React.createClass({
   render() {
-    return <SearchResults
-      posts={posts}
-      searchQuery="design"
-      transitionState="shown"
-    />;
+    return <div className="sandbox">
+      <SearchResults
+        posts={posts}
+        searchQuery="design"
+        transitionState="shown"
+      />
+    </div>;
   }
 });
 

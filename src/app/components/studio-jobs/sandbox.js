@@ -1,4 +1,5 @@
 import StudioJobs from './';
+import renderVariations from '../../lib/sandbox/render-variations';
 
 const studio = {
   id: 26,
@@ -827,28 +828,69 @@ const jobs = [{
   "description": "Some description"
 }];
 
+const newYorkJob = {
+  "key": "25b3",
+  "title": "Android Developer",
+  "full_title": "Android Developer - New York",
+  "code": "",
+  "shortcode": "31345F669B",
+  "state": "published",
+  "department": "",
+  "url": "https://ustwo.workable.com/jobs/8417",
+  "application_url": "https://ustwo.workable.com/jobs/8417/candidates/new",
+  "shortlink": "https://ustwo.workable.com/j/31345F669C",
+  "location": {
+    "country": "United States",
+    "country_code": "US",
+    "region": "New York",
+    "region_code": "NY",
+    "city": "New York",
+    "zip_code": "10004",
+    "telecommuting": ""
+  },
+  "created_at": "2014-04-29",
+  "description": "Some description"
+};
+
 const Sandbox = React.createClass({
   render() {
-    return (<div className="sandbox">
-      <StudioJobs
-        studio={studio}
-        studios={studios}
-        selected={true}
-        selectedJob="31345F669C"
-        colour="pink"
-        jobs={jobs}
-        contactEmail="test@ustwo.com"
-      />
-      <StudioJobs
-        studio={studio}
-        studios={studios}
-        selected={false}
-        selectedJob=""
-        colour="pink"
-        jobs={jobs}
-        contactEmail="test@ustwo.com"
-      />
-    </div>);
+    return <div className="sandbox full-width-component">
+      <style>{`
+        body {
+          background: #ccc;
+        }
+      `}</style>
+      {renderVariations({
+        'All studios': <StudioJobs
+            studio={{name: 'All studios'}}
+            studios={studios}
+            selected={true}
+            jobs={jobs.concat(newYorkJob)}
+            contactEmail="test@ustwo.com"
+          />,
+        'Selected studio': <StudioJobs
+            studio={studio}
+            studios={studios}
+            selected={true}
+            jobs={jobs}
+            contactEmail="test@ustwo.com"
+          />,
+        'Unselected studio': <StudioJobs
+            studio={studio}
+            studios={studios}
+            selected={false}
+            jobs={jobs}
+            contactEmail="test@ustwo.com"
+          />,
+        'With no jobs': <StudioJobs
+            studio={studio}
+            studios={studios}
+            selected={true}
+            jobs={[]}
+            contactEmail="test@ustwo.com"
+          />
+      })}
+    </div>;
   }
 });
 

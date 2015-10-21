@@ -1,24 +1,29 @@
 import EntranceTransition from './';
+import renderVariations from '../../lib/sandbox/render-variations';
 
 const Sandbox = React.createClass({
   render() {
-    return (<div style={{height: '100%'}}>
+    return <div className="sandbox">
       <style>{`
         .entrance-transition {
-          opacity: 0;
           transition: opacity 0.5s ease-in-out;
         }
         .delayed {
           transition-delay: 1.5s;
         }
-        .entrance-transition.show {
-          opacity: 1;
-        }
       `}</style>
-      <EntranceTransition>Content to show</EntranceTransition>
-      <EntranceTransition className="testClass">Content to show</EntranceTransition>
-      <EntranceTransition className="delayed">Content to show</EntranceTransition>
-    </div>);
+      <div className="js">
+        {renderVariations({
+          'Default': <EntranceTransition>Content to show</EntranceTransition>,
+          '1.5s delay': <EntranceTransition className="delayed">Content to show</EntranceTransition>
+        })}
+      </div>
+      <div>
+        {renderVariations({
+          'No JS': <EntranceTransition>Content to show</EntranceTransition>
+        })}
+      </div>
+    </div>;
   }
 });
 

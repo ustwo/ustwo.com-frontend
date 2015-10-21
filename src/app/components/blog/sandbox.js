@@ -2220,15 +2220,17 @@ const posts = [
 
 const Sandbox = React.createClass({
   render() {
-    return <Blog
-      page={page}
-      blogCategory="all"
-      posts={posts}
-      postsPagination={1}
-      postsPaginationTotal={10}
-      searchMode={false}
-      searchQuery=""
-    />;
+    return <div class="sandbox">
+      <Blog
+        page={page}
+        blogCategory="all"
+        posts={posts}
+        postsPagination={1}
+        postsPaginationTotal={10}
+        searchMode={false}
+        searchQuery=""
+      />
+    </div>;
   }
 });
 

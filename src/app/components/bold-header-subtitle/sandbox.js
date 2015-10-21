@@ -2,7 +2,9 @@ import BoldHeaderSubtitle from './';
 
 const Sandbox = React.createClass({
   render() {
-    return <BoldHeaderSubtitle>This is a sample subtitle</BoldHeaderSubtitle>;
+    return <div className="sandbox">
+      <BoldHeaderSubtitle>This is a sample subtitle</BoldHeaderSubtitle>
+    </div>;
   }
 });
 

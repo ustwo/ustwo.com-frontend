@@ -1,4 +1,5 @@
 import JobItem from './';
+import renderVariations from '../../lib/sandbox/render-variations';
 
 const job = {
   key: "5a6e",
@@ -62,13 +63,19 @@ const Sandbox = React.createClass({
     };
   },
   render() {
-    return (<div>
-      <h3>Job Item</h3>
-      <h5>Collapsed Job</h5>
-      <JobItem job={job} />
-      <h5>Expanded Job</h5>
-      <JobItem job={jobDetail} open={this.state.open} />
-    </div>);
+    return <div className="sandbox full-width-component">
+      <style>{`
+        body {
+          background: #ccc;
+        }
+      `}</style>
+      {renderVariations({
+        'Collapsed': <JobItem job={job} />,
+        'Loading': <JobItem job={job} open={this.state.open} />,
+        'Expanded': <JobItem job={jobDetail} open={this.state.open} />,
+        'With colour': <JobItem job={job} colour="#143fcc" />
+      })}
+    </div>;
   },
   componentDidMount() {
     this.setState({

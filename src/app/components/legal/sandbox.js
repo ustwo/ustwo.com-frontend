@@ -2,7 +2,9 @@ import Legal from './';
 
 const Sandbox = React.createClass({
   render() {
-    return <Legal />;
+    return <div className="sandbox">
+      <Legal />
+    </div>;
   }
 });
 
