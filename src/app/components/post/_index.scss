@@ -211,11 +211,11 @@
     }
   }
 
-  @include susy-breakpoint($bp-small, $susy) {
+  @media screen and (min-width: $bp-small) {
     margin-bottom: 10px;
   }
 
-  @include susy-breakpoint($bp-medium, $susy) {
+  @media screen and (min-width: $bp-medium) {
     .hero-image {
       height: 450px;
     }
@@ -243,7 +243,7 @@
       }
     }
   }
-  @include susy-breakpoint($bp-huge, $susy) {
+  @media screen and (min-width: $bp-huge) {
     .hero-image {
       height: 620px;
     }

@@ -1,3 +1,7 @@
+/*
+TODO: Why are the breakpoints not using the pre-defined ones from variables?
+*/
+
 .work-item {
   list-style: none;
 
@@ -32,13 +36,13 @@
     }
   }
 
-  @include susy-breakpoint(min-width 450px, $susy) {
+  @media screen and (min-width: 450px) {
     &__image-link {
       height: 480px;
     }
   }
 
-  @include susy-breakpoint(min-width 750px, $susy) {
+  @media screen and (min-width: 750px) {
     display: flex;
     flex-direction: row-reverse;
 
@@ -66,7 +70,7 @@
     }
   }
 
-  @include susy-breakpoint(min-width 1200px, $susy) {
+  @media screen and (min-width: 1200px) {
     &__image-link {
       height: 630px;
     }

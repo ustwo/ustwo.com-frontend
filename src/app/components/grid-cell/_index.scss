@@ -49,7 +49,7 @@
   }
 
 
-  @include susy-breakpoint($bp-medium, $susy) {
+  @media screen and (min-width: $bp-medium) {
     display: inline;
 
     // Create gap after first line of slides to position video
@@ -76,7 +76,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-larger, $susy) {
+  @media screen and (min-width: $bp-larger) {
 
     &:nth-of-type(2n+2) {
       .card:first-child {

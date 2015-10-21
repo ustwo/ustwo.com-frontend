@@ -108,7 +108,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-medium, $susy) {
+  @media screen and (min-width: $bp-medium) {
     height: 70px;
     min-height: 70px;
 
@@ -156,7 +156,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-large, $susy) {
+  @media screen and (min-width: $bp-large) {
     .job-description {
       width: 50%;
     }

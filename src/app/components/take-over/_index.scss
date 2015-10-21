@@ -173,7 +173,7 @@
     }
   }
 
-  @include susy-breakpoint($bp-large, $susy) {
+  @media screen and (min-width: $bp-large) {
     &__content__message {
       &__title {
         margin-top: 0;
@@ -195,7 +195,7 @@
       }
     }
   }
-  @include susy-media(max-height 500px) {
+  @media screen and (max-height: 500px) {
     &__content__message {
       &__title,
       &__description,

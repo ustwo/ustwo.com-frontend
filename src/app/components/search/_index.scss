@@ -72,7 +72,7 @@
       }
     }
 
-    @include susy-breakpoint($bp-medium, $susy) {
+    @media screen and (min-width: $bp-medium) {
 
       .editable-div {
         margin-left: $icon-size-tablet + 11px;
@@ -87,7 +87,7 @@
         }
       }
     }
-    @include susy-breakpoint($bp-large, $susy) {
+    @media screen and (min-width: $bp-large) {
       .editable-div {
         margin-left: $icon-size-desktop + 11px;
       }

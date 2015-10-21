@@ -51,7 +51,7 @@
       text-align: left;
     }
 
-    @include susy-breakpoint($bp-medium, $susy) {
+    @media screen and (min-width: $bp-medium) {
       padding-top: 100px;
       padding-bottom: 100px;
 
@@ -116,7 +116,7 @@
       position: relative;
     }
 
-    @include susy-breakpoint($bp-medium, $susy) {
+    @media screen and (min-width: $bp-medium) {
       // height: auto;
       // overflow: visible;
       padding-top: 0;
@@ -127,7 +127,7 @@
       }
 
     }
-    @include susy-breakpoint($bp-larger, $susy) {
+    @media screen and (min-width: $bp-larger) {
       .video {
         width: 66.6666%;
       }
@@ -143,7 +143,7 @@
     height: 210px;
     background-size: cover;
 
-    @include susy-breakpoint($bp-medium, $susy) {
+    @media screen and (min-width: $bp-medium) {
       height: 500px;
     }
 
@@ -163,10 +163,10 @@
     background: $honey;
     padding: 10px 15px 40px 15px;
 
-    @include susy-breakpoint($bp-medium, $susy) {
+    @media screen and (min-width: $bp-medium) {
       padding-bottom: 60px;
     }
-    @include susy-breakpoint($bp-large, $susy) {
+    @media screen and (min-width: $bp-large) {
       padding-bottom: 80px;
     }
   }
@@ -189,7 +189,7 @@
       }
     }
 
-    @include susy-breakpoint($bp-medium, $susy) {
+    @media screen and (min-width: $bp-medium) {
       display: block;
 
       li.all-studios {
@@ -199,7 +199,7 @@
       }
     }
 
-    @include susy-breakpoint($bp-large, $susy) {
+    @media screen and (min-width: $bp-large) {
       margin: 55px 0;
 
       li {
