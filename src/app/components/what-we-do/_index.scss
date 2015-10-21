@@ -1,8 +1,20 @@
+/*
+ *  PAGE: WHAT WE DO / WORK
+ *  Landing page to see examples of past projects
+ *
+ *  Notes:
+ *  TODO: Remove BEM
+ */
+
 .page-work {
 
   &__list {
     padding: 0;
     margin: 0;
+  }
+
+  .single-coloumn .content {
+    text-align: center;
   }
 
   @media screen and (min-width: $bp-medium) {
