@@ -1,27 +1,34 @@
-.loading-icon {
+/*
+ *  LOADING ICON
+ *  Small loading spinner, originally intended for inside category dropdown
+ *
+ *  Notes:
+ *  TODO: Currently just rotates between black and white, need to implement it to cycle through the ustwo colour palette.
+ */
 
+.loading-icon {
   $size: $loading-spinner-size;
   $duration: 1.2s;
 
-  height: $size;
-  width: $size;
   box-sizing: content-box;
-  display: inline-block;
   position: relative;
+  display: inline-block;
+  width: $size;
+  height: $size;
 
   .half {
+    overflow: hidden;
     position: absolute;
     top: 0;
-    height: $size;
     width: $size * .5;
-    overflow: hidden;
+    height: $size;
 
     .bg {
       position: absolute;
       width: $size * .5;
       height: $size;
-      background: #000;
       border-radius: $size;
+      background: #000;
       transform: rotate(-180deg);
     }
 

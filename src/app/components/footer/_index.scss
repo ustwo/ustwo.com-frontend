@@ -1,13 +1,21 @@
+/*
+ *  FOOTER
+ *  The bottom bit of the internet website
+ *
+ *  Notes:
+ *  TODO: Remove susy stuff
+ */
+
 .footer {
-  font-family: PxGrotesk-Regular, Arial, sans-serif;
   background: #252525;
+  font-family: PxGrotesk-Regular, Arial, sans-serif;
   color: $offWhite;
 
   .content {
-    max-width: 1800px;
-    padding: 40px 0 0 0;
     overflow: auto;
+    max-width: 1800px;
     margin: auto;
+    padding: 40px 0 0 0;
 
     .general {
       padding: 0 6.25%;
@@ -18,32 +26,33 @@
         text-transform: capitalize;
       }
       .contact-divider {
-        border: 1px solid $offWhite;
-        margin: 15px 0;
         width: 16px;
+        margin: 15px 0;
+        border: 1px solid $offWhite;
       }
       .email-cta {
-        background: $offWhite;
+        position: relative;
+        display: inline-block;
+        width: 150px;
         height: 40px;
+        margin: 0;
+        margin-top: 2px;
+        padding: 0 35px 0 15px;
+        background: $offWhite;
         line-height: 40px;
         color: $nonBlack;
         font-size: 18px;
-        padding: 0 35px 0 15px;
-        margin: 0;
-        display: inline-block;
-        position: relative;
-        margin-top: 2px;
-        width: 150px;
 
         &:after {
+          @include arrow-icon(#F9615B);
+
           content: "";
           position: absolute;
           right: 10px;
           top: 50%;
-          margin-top: -5px;
           width: 13px;
           height: 10px;
-          @include arrow-icon(#F9615B);
+          margin-top: -5px;
           background-position: 0 0;
           transform: rotate(180deg);
         }
@@ -75,9 +84,9 @@
             background-color: transparent;
           }
           .logo {
-            fill: #fff;
             width: 21px;
             height: 21px;
+            fill: #fff;
           }
           .name {
             display: none;
@@ -106,16 +115,16 @@
     }
 
     .studios {
-      padding: 0;
       margin-top: 30px;
+      padding: 0;
       border-top: 1px solid #333;
     }
     .copyright {
-      padding-top: 60px;
-      color: #999;
-      text-align: center;
       clear: both;
+      padding-top: 60px;
+      text-align: center;
       font-size: 12px;
+      color: #999;
 
       ul {
         padding: 30px 0;
@@ -142,10 +151,11 @@
         @include nested(16) {
           @include pre(1 of 16);
           @include span(5);
-          vertical-align: top;
+
           position: relative;
           height: 150px;
           padding: 0;
+          vertical-align: top;
 
           .contact-title {
             margin-bottom: 15px;
@@ -159,10 +169,11 @@
         @include nested(16) {
           @include span(10);
           @include last;
-          margin-top: 0;
+
           display: inline-block;
-          vertical-align: top;
+          margin-top: 0;
           border-top: none;
+          vertical-align: top;
         }
       }
       .copyright {
@@ -180,6 +191,7 @@
       .general {
         @include nested(16) {
           @include span(3);
+
           height: 150px;
         }
       }
@@ -197,8 +209,8 @@
       .copyright {
         ul {
           li {
-            width: 33%;
             display: inline-block;
+            width: 33%;
           }
         }
       }

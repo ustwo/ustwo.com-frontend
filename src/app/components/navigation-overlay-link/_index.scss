@@ -1,3 +1,11 @@
+/*
+ *  NAVIGATION OVERLAY MENU ITEM
+ *  A menu item for mobile nav
+ *
+ *  Notes:
+ *  TODO: Remove BEM
+ */
+
 .nav__overlay__menu__item {
   color: $nonBlack;
   font-size: 24px;
@@ -12,8 +20,8 @@
     border-bottom: 4px solid $nonBlack;
   }
 
+  /* Each menu item has a different colour as defined here */
   $i: 1;
-
   @each $colour in $rain, $pot, $blu, $honey {
     &:nth-child(#{$i}) {
       color: #{$colour};

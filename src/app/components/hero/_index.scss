@@ -1,19 +1,27 @@
+/*
+ *  HERO
+ *  The top showcase image with bold text on each page
+ *
+ *  Notes:
+ *  TODO: Remove BEM
+ */
+
 .hero {
-  height: 100vh; // This is for IE as content doesn't center
-  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh; /* This is for IE as content doesn't center */
+  min-height: 100vh;
   background-position: center;
   background-size: cover;
-  position: relative;
-  overflow: hidden;
 
   &__title {
+    max-width: 550px;
+    padding: 0 20px;
     text-align: center;
     color: $offWhite;
-    padding: 0 20px;
-    max-width: 550px;
   }
   &__image {
     display: none;
@@ -22,10 +30,10 @@
     position: absolute;
     bottom: 40px;
     left: 0;
-    width: 100%;
-    height: 50px;
     display: flex;
     justify-content: center;
+    width: 100%;
+    height: 50px;
 
     svg {
       width: 100px;
@@ -35,14 +43,14 @@
 
   @media screen and (min-width: $bp-medium) {
     &__title {
-      padding: 0 40px;
       max-width: 750px;
+      padding: 0 40px;
     }
   }
   @media screen and (min-width: $bp-large) {
     &__title {
-      padding: 0 80px;
       max-width: 1080px;
+      padding: 0 80px;
     }
   }
 }

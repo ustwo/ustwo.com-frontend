@@ -6,6 +6,7 @@
  *  TODO: This is used for the top of case study pages. Ideally it sholdn't be used, that should be a
  *  header/title component maybe. Also clarification is needed (with a designer) about when and where
  *  the 'content' is text-align left/center;
+ *  TODO: Change camelCase selector: .isInZebraList
  */
 
 .single-column {
@@ -48,18 +49,14 @@
   &.intro {
     padding: 118px 6.25% 55px;
   }
-}
 
-@media screen and (min-width: $bp-small) {
-  .single-column {
+  @media screen and (min-width: $bp-small) {
     &.intro {
       padding: 168px 6.25% 100px;
     }
   }
-}
 
-@media screen and (min-width: $bp-medium) {
-  .single-column {
+  @media screen and (min-width: $bp-medium) {
     margin-top: 50px;
     margin-bottom: 50px;
 
@@ -80,10 +77,8 @@
       }
     }
   }
-}
 
-@media screen and (min-width: $bp-large) {
-  .single-column {
+  @media screen and (min-width: $bp-large) {
     margin-top: 100px;
     margin-bottom: 100px;
 
@@ -104,4 +99,5 @@
       }
     }
   }
+
 }

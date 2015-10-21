@@ -1,3 +1,10 @@
+/*
+ *  SEARCH RESULT LIST ITEM
+ *  On results page
+ *
+ *  Notes:
+ */
+
 .search-result-list-item {
   position: relative;
   max-width: 1380px;
@@ -23,13 +30,13 @@
   }
 
   .title {
-    font-size: 28px;
-    margin: 12px 0 5px;
     overflow: hidden;
-    height: 60px;
-    -webkit-line-clamp: 2;
     display: -webkit-box;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    height: 60px;
+    margin: 12px 0 5px;
+    font-size: 28px;
   }
 
   .meta,
@@ -50,21 +57,21 @@
   }
 
   .social-media-statistics {
-    display: block;
     position: absolute;
     left: 0;
+    display: block;
 
     .channel {
       $height: 20px;
 
-      padding-left: 15px;
       height: $height;
+      padding-left: 15px;
 
       .logo {
-        height: $height;
-        width: $height;
         position: relative;
         top: 3px;
+        width: $height;
+        height: $height;
 
         svg {
           width: $height;
@@ -91,13 +98,13 @@
 
   @media screen and (min-width: $bp-small) {
     .title {
-      -webkit-line-clamp: none;
       display: block;
+      -webkit-line-clamp: none;
       -webkit-box-orient: vertical;
       height: auto;
+      padding-right: 20%;
       white-space: nowrap;
       text-overflow: ellipsis;
-      padding-right: 20%;
     }
   }
 
@@ -108,8 +115,8 @@
       left: 0;
       top: 0;
       display: block;
-      height: $blog-search-item-height-desktop;
       width: $blog-search-item-height-desktop;
+      height: $blog-search-item-height-desktop;
       background-size: cover;
 
       img {
@@ -122,9 +129,9 @@
       }
     }
     .content {
+      height: $blog-search-item-height-desktop;
       padding-left: $blog-search-item-height-desktop + 20px;
       padding-bottom: 0;
-      height: $blog-search-item-height-desktop;
 
       p {
         margin: 0;
@@ -133,9 +140,9 @@
 
     .title {
       overflow: hidden;
+      padding-right: 20%;
       white-space: nowrap;
       text-overflow: ellipsis;
-      padding-right: 20%;
     }
 
     .social-media-statistics {

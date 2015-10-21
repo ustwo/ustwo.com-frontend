@@ -1,3 +1,11 @@
+/*
+ *  TAKE OVER
+ *  Periodic splash screen before the homepage
+ *
+ *  Notes:
+ *  TODO: Remove BEM
+ */
+
 .take-over {
   position: absolute;
   top: 0;
@@ -197,14 +205,6 @@
   }
   @media screen and (max-height: 500px) {
     &__content__message {
-      &__title,
-      &__description,
-      &__links__link-item {
-
-      }
-      &__links {
-
-      }
       &__title {
         font-size: 25px;
       }

@@ -22,10 +22,10 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
       display: block;
       width: 92%;
       max-width: 800px;
+      transform: translate(-50%, -50%);
     }
   }
 
@@ -139,10 +139,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     flex-direction: column;
     height: 210px;
     background-size: cover;
+    text-align: center;
 
     @media screen and (min-width: $bp-medium) {
       height: 500px;
@@ -161,8 +161,8 @@
 
   .jobs {
     position: relative;
-    background: $honey;
     padding: 10px 15px 40px 15px;
+    background: $honey;
 
     @media screen and (min-width: $bp-medium) {
       padding-bottom: 60px;

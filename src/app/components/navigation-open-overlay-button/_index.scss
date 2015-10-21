@@ -1,13 +1,21 @@
+/*
+ *  NAVIGATION OPEN OVERLAY BUTTON
+ *  Mobile nav burger icon
+ *
+ *  Notes:
+ *  TODO: Remove BEM
+ */
+
 .nav__open-overlay-button {
-  fill: #fff;
+  display: block;
   width: 60px;
   height: 60px;
-  display: block;
+  fill: #fff;
 
   svg {
     width: 42px;
     height: 32px;
-    pointer-events: none; // Fixes intermittent issue on touch devices?
+    pointer-events: none; /* Fixes intermittent issue on touch devices? */
   }
 }
 

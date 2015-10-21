@@ -3,20 +3,21 @@
  *  Blog post pages
  *
  *  Notes:
+ *  TODO: Sort mess with multiple selectors about line 90 (.title, .excerpt, .meta etc)
  */
 
 .page-post {
   a {
-    font-family: $PxGroteskBold;
     border-bottom-width: 2px;
     border-bottom-style: solid;
+    font-family: $PxGroteskBold;
   }
 
   .hero-image {
+    position: relative;
+    height: 300px;
     background-size: cover;
     background-position: center;
-    height: 300px;
-    position: relative;
 
     &:after {
       content: '';
@@ -43,16 +44,16 @@
 
   .social-media-sharing {
     &.side {
-      display: none;
       position: absolute;
       right: 0;
+      display: none;
     }
 
     &.bottom {
-      display: inline-block;
-      margin: 5px 0 35px;
       position: relative;
       left: 50%;
+      display: inline-block;
+      margin: 5px 0 35px;
       transform: translateX(-50%);
 
       .channel {
@@ -67,10 +68,10 @@
   }
 
   .content-container {
-    background: #fff;
+    position: relative;
     margin: 0 auto;
     padding: 40px 0;
-    position: relative;
+    background: #fff;
 
 
     ul,
@@ -112,36 +113,36 @@
     }
 
     .title {
-      padding: 0 30px;
       margin-bottom: 0;
+      padding: 0 30px;
     }
     .excerpt {
+      max-width: 450px;
       font-size: 30px;
       font-family: $PxGroteskBold;
-      max-width: 450px;
 
       p {
         margin-top: 10px;
       }
     }
     .meta {
-      color: #646464;
-      font-size: 18px;
       margin: 10px auto 20px;
+      font-size: 18px;
+      color: #646464;
 
       .date {
         color: #969696;
       }
     }
     .rule {
-      border: 2px solid;
       width: 184px;
+      border: 2px solid;
     }
     .single-column .content {
       a {
-        font-family: $PxGroteskBold;
         border-bottom-width: 2px;
         border-bottom-style: solid;
+        font-family: $PxGroteskBold;
       }
       video,
       img,
@@ -163,14 +164,14 @@
         border-radius: 45px;
       }
       .title {
+        margin-bottom: 20px;
         font-family: $PxGroteskBold;
         font-size: 20px;
-        margin-bottom: 20px;
       }
       .links {
-        list-style: none;
         margin: 30px 0;
         padding: 0;
+        list-style: none;
 
         .link a {
           border-bottom: 2px solid;
@@ -193,10 +194,10 @@
       content: "";
       position: absolute;
       bottom: 27px;
+      left: 50%;
       width: 120px;
       height: 4px;
       background: $nonBlack;
-      left: 50%;
       transform: translateX(-50%);
     }
   }

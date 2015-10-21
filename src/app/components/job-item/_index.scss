@@ -1,3 +1,10 @@
+/*
+ *  JOB ITEM
+ *  A current vacancy item which can be clicked to expand for more information
+ *
+ *  Notes:
+ */
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -8,68 +15,75 @@
 }
 
 .job-item {
+  $height-small: 50px;
+  $height-large: 70px;
+
+  overflow: hidden;
+  height: $height-small;
+  min-height: $height-small;
   margin-top: 5px;
   background: #fff;
-  height: 50px;
-  min-height: 50px;
-  overflow: hidden;
-  transition: height .6s ease-in-out;
   list-style: none;
+  transition: height .6s ease-in-out;
 
   .title {
     position: relative;
-    height: 50px;
-    padding: 0 15px;
-    line-height: 50px;
-    font-size: 16px;
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
+    height: $height-small;
+    padding: 0 15px;
+    line-height: $height-small;
+    font-size: 16px;
+    cursor: pointer;
+  }
 
-    .title-text {
-      flex-basis: auto;
-      flex: 4;
+  .title-text {
+    flex-basis: auto;
+    flex: 4;
+  }
+
+  .location {
+    display: none;
+    flex: 6;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+  }
+
+  .status-text {
+    display: none;
+    width: 100px;
+    margin-right: 10px;
+    text-align: right;
+    line-height: 1;
+  }
+
+  .status-icon {
+    position: relative;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+
+    .horiz,
+    .vert {
+      position: absolute;
+      background: #ccc;
     }
-    .location {
-      flex: 6;
-      display: none;
+
+    .horiz {
+      width: 15px;
+      height: 3px;
+      top: 6px;
+      left: 0;
     }
-    .status {
-      display: flex;
-      align-items: center;
 
-      .status-text {
-        display: none;
-        margin-right: 10px;
-        width: 100px;
-        text-align: right;
-        line-height: 1;
-      }
-
-      .icon {
-        position: relative;
-        display: inline-block;
-        width: 15px;
-        height: 15px;
-
-        .horiz,
-        .vert {
-          position: absolute;
-          background: #ccc;
-        }
-        .horiz {
-          top: 6px;
-          left: 0;
-          height: 3px;
-          width: 15px;
-        }
-        .vert {
-          top: 0;
-          left: 6px;
-          height: 15px;
-          width: 3px;
-        }
-      }
+    .vert {
+      top: 0;
+      left: 6px;
+      width: 3px;
+      height: 15px;
     }
   }
 
@@ -83,63 +97,56 @@
   }
 
   &.open {
-    .title {
-      .status {
-        .icon {
-          .vert {
-            display: none;
-          }
-        }
+    .status-icon {
+      .vert {
+        display: none;
       }
     }
 
     &.loading {
-      .title {
-        .status {
-          .icon {
-            animation: spin 1000ms infinite linear;
+      .status-icon {
+        animation: spin 1000ms infinite linear;
 
-            .vert {
-              display: block;
-            }
-          }
+        .vert {
+          display: block;
         }
       }
     }
   }
 
   @media screen and (min-width: $bp-medium) {
-    height: 70px;
-    min-height: 70px;
+    height: $height-large;
+    min-height: $height-large;
 
     .title {
+      height: $height-large;
       padding: 0 30px;
-      height: 70px;
-      line-height: 70px;
+      line-height: $height-large;
       font-size: 18px;
-
-      .title-text {
-        font-size: 20px;
-      }
-      .location {
-        display: block;
-        padding-left: 20px;
-
-        .icon {
-          width: 11px;
-          height: 16px;
-          display: inline-block;
-          vertical-align: middle;
-          margin-right: 10px;
-          margin-top: -1px;
-        }
-      }
-      .status {
-        .status-text {
-          display: inline-block;
-        }
-      }
     }
+
+    .title-text {
+      font-size: 20px;
+    }
+
+    .location {
+      display: block;
+      padding-left: 20px;
+    }
+
+    .location-icon {
+      display: inline-block;
+      width: 11px;
+      height: 16px;
+      margin-right: 10px;
+      margin-top: -1px;
+      vertical-align: middle;
+    }
+
+    .status-text {
+      display: inline-block;
+    }
+
     .job-description {
       position: relative;
       padding: 30px;
@@ -147,11 +154,11 @@
       &:before {
         content: "";
         position: absolute;
+        top: 0;
+        left: 30px;
         width: 22px;
         height: 2px;
         background: $nonBlack;
-        top: 0;
-        left: 30px;
       }
     }
   }

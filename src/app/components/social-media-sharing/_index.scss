@@ -1,11 +1,17 @@
-.social-media-sharing {
+/*
+ *  SOCIAL MEDIA SHARING
+ *  On each blog post, this is the component that includes each social media sharing button
+ *
+ *  Notes:
+ */
 
+.social-media-sharing {
   $width: 74px;
   $height: 34px;
   $font-size: 16px;
 
-  list-style: none;
   padding: 0;
+  list-style: none;
 
   .channel {
     min-width: $width;
@@ -13,8 +19,8 @@
 
     a {
       display: block;
-      height: 100%;
       width: 100%;
+      height: 100%;
       border-bottom: 0;
 
       &:after {
@@ -23,36 +29,37 @@
     }
 
     span {
-      font-size: $font-size;
-      padding-right: 14px;
-      padding-left: 36px;
-      display: block;
-      font-weight: bold;
-      color: #fff;
-      margin: 0;
-      text-align: left;
       position: relative;
       top: 52%;
+      display: block;
+      margin: 0;
+      padding-right: 14px;
+      padding-left: 36px;
+      font-weight: bold;
+      font-size: $font-size;
+      text-align: left;
+      color: #fff;
       transform: translateY(-50%);
     }
 
     .svg-container {
       position: absolute;
-      width: $height * 2;
-      height: $height;
       display: flex;
       align-items: center;
+      width: $height * 2;
+      height: $height;
       margin-left: 6px;
 
 
       .logo {
         display: block;
-        height: 22px;
         width: 22px;
+        height: 22px;
         fill: #fff;
       }
     }
 
+    /* Each social network has an icon on the relavant brand colour */
     @each $channel, $colour in $social-media-colours {
       &.#{$channel} {
         background: $colour;
@@ -70,9 +77,9 @@
       }
 
       .svg-container {
+        justify-content: center;
         width: $height;
         height: $height;
-        justify-content: center;
         margin-left: 0;
       }
     }

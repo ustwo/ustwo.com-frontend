@@ -1,7 +1,15 @@
+/*
+ *  PAGE: LEGAL
+ *  Simple page that holds some of the legal gumpf
+ *
+ *  Notes:
+ *  TODO: Perhaps we need to make this a generic template page for other such small, relatively styless pages?
+ */
+
 .page-legal {
   .hero-image {
-    background-size: cover;
     height: 320px;
+    background-size: cover;
 
     img {
       display: none;
@@ -9,13 +17,14 @@
   }
 
   .content-container {
-    background: #fff;
-    margin: $blog-margin-offset auto 0;
-    padding: 70px 50px;
     position: relative;
     max-width: 1200px;
+    margin: $blog-margin-offset auto 0;
+    padding: 70px 50px;
+    background: #fff;
 
-    h2, h3 {
+    h2,
+    h3 {
       margin-top: 40px;
 
       &:first-child {

@@ -1,32 +1,40 @@
+/*
+ *  STUDIO CONTACT
+ *  Studio info in the footer
+ *
+ *  Notes:
+ *  TODO: Remove susy stuff
+ */
+
 .studio {
-  border-bottom: 1px solid $nonBlack;
   position: relative;
-  transition: background-color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
+  border-bottom: 1px solid $nonBlack;
   list-style: none;
+  transition: background-color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
 
   .studio-title {
+    margin: 0;
+    padding: 20px 6.25%;
     font-size: 24px;
     font-family: $PxGroteskRegular;
-    padding: 20px 6.25%;
-    margin: 0;
     text-transform: capitalize;
     cursor: pointer;
 
     &::after {
       content: '+';
-      display: block;
       position: absolute;
       top: 6px;
       right: 6.25%;
-      color: $offWhite;
+      display: block;
       font-size: 45px;
+      color: $offWhite;
     }
   }
   .studio-details {
-    height: 0;
-    transition: height 0.3s ease-in-out;
     overflow: hidden;
+    height: 0;
     padding: 0 6.25%;
+    transition: height 0.3s ease-in-out;
 
     .vcard {
       padding: 0;
@@ -46,10 +54,10 @@
         }
       }
       .map {
-        font-size: 14px;
-        margin-top: 20px;
         display: inline-block;
+        margin-top: 20px;
         border-bottom: 2px solid #646464;
+        font-size: 14px;
 
         &:hover {
           border-bottom-color: $offWhite;
@@ -73,14 +81,15 @@
   @media screen and (min-width: 650px) {
     @include nested(10) {
       @include gallery(5 of 10);
-      vertical-align: top;
       height: 230px;
       border-bottom: none;
+      vertical-align: top;
       transition-duration: 0s;
 
       &.open {
         background-color: transparent !important;
         border-bottom-color: transparent !important;
+
         .studio-details .map {
           border-bottom-color: #646464;
         }
@@ -100,6 +109,7 @@
         .vcard {
           padding: 0;
         }
+
         .map {
           margin-top: 0;
           position: absolute;
