@@ -35,7 +35,7 @@ export default class JobItem extends React.Component {
     const props = this.props;
     return (
       <div className="location" style={{ color: props.colour }}>
-        <SVG className='icon' spritemapID='locationpin' style={{ fill: props.colour }} />
+        <SVG className='location-icon' spritemapID='locationpin' style={{ fill: props.colour }} />
         {get(props.job, 'location.city')}
       </div>
     );
@@ -47,7 +47,7 @@ export default class JobItem extends React.Component {
         <div className="status-text">
           {this.props.open && loaded ? 'Hide info' : 'More info'}
         </div>
-        <div className="icon">
+        <div className="status-icon">
           <div className="horiz" style={{ backgroundColor: this.props.colour }}></div>
           <div className="vert" style={{ backgroundColor: this.props.colour }}></div>
         </div>
