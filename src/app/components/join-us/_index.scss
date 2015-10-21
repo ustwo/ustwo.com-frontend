@@ -47,6 +47,10 @@
       }
     }
 
+    .content {
+      text-align: left;
+    }
+
     @include susy-breakpoint($bp-medium, $susy) {
       padding-top: 100px;
       padding-bottom: 100px;
