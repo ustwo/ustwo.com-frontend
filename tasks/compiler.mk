@@ -16,7 +16,7 @@ compiler_volumes = \
   -v $(BASE_PATH)/src:/home/ustwo/src
 
 define compile
-	@$(if $(CI), $(DOCKER_CI_TASK), $(DOCKER_TASK)) \
+	$(if $(CI), $(DOCKER_CI_TASK), $(DOCKER_TASK)) \
 		$(compiler_volumes) \
 		$(verbose_flag) \
 		$(cache_flag) \

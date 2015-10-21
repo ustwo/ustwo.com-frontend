@@ -15,6 +15,7 @@ CP := cp
 GIT := git
 GREP := grep
 MKDIR := mkdir -p
+FSWATCH := fswatch
 RM := rm -rf
 XARGS := xargs
 DOCKER := docker
