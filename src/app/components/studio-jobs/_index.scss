@@ -1,3 +1,10 @@
+/*
+ *  STUDIO JOBS
+ *  Each studio specific section that houses the job-items
+ *
+ *  Notes:
+ */
+
 .studio-jobs {
 
   h3 {
@@ -35,15 +42,15 @@
 
 
   .jobs-list {
-    list-style-type: none;
     margin: 0;
     padding: 0;
+    list-style-type: none;
   }
 
   .jobs-none {
     position: relative;
-    padding: 20px;
     margin-top: 5px;
+    padding: 20px;
     background: #fff;
 
     p {
@@ -53,22 +60,23 @@
     a {
       position: relative;
       display: inline-block;
-      color: #fff;
-      font-size: 18px;
-      padding: 0 30px 0 15px;
       height: 40px;
-      line-height: 40px;
       margin-top: 10px;
+      padding: 0 30px 0 15px;
+      font-size: 18px;
+      line-height: 40px;
+      color: #fff;
 
       &:after {
+        @include arrow-icon(#FFFFFF);
+
         content: "";
         position: absolute;
         right: 10px;
         top: 50%;
-        margin-top: -5px;
         width: 13px;
         height: 10px;
-        @include arrow-icon(#FFFFFF);
+        margin-top: -5px;
         background-position: 0 0;
         transform: rotate(-90deg);
       }
@@ -79,6 +87,7 @@
     display: none;
   }
 
+  /* Colours relevant to each studio */
   @each $studio, $colour in $studio-colours {
     &.#{$studio}-jobs {
       .excerpt,
@@ -124,25 +133,25 @@
 
       .excerpt {
         padding: 0;
-        font-size: 26px;
         background: transparent;
+        font-size: 26px;
       }
 
       .content {
         position: relative;
         display: block;
-        color: #fff;
         margin-top: 40px;
         font-size: 16px;
+        color: #fff;
 
         &:before {
           content: "";
           position: absolute;
+          top: -20px;
+          left: 0;
           width: 22px;
           height: 2px;
           background: #fff;
-          top: -20px;
-          left: 0;
         }
       }
 

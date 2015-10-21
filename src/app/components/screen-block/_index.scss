@@ -1,12 +1,18 @@
-.screen-block {
+/*
+ *  SCREEN BLOCK
+ *  A full width container
+ *
+ *  Notes:
+ */
 
-  width: 100%;
-  padding: 5vh 0;
-  max-width: 1800px; // this relates to the breakpoint below
-  position: relative;
-  margin: auto;
+.screen-block {
   overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 1800px; /* this relates to the breakpoint below */
   min-height: 100vh;
+  margin: auto;
+  padding: 5vh 0;
 
   &:after {
     content: " ";

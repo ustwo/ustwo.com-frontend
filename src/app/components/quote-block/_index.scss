@@ -1,3 +1,11 @@
+/*
+ *  QUOTE BLOCK
+ *  Styling for quotes mid- content
+ *
+ *  Notes:
+ *  TODO: Remove BEM
+ */
+
 .quote-block {
   padding: 90px 6.25% 50px;
 
@@ -7,31 +15,31 @@
     transform: translate(-10px, -90px);
 
     &__quote {
-      fill: $offWhite;
-      height: 140px;
-      width: 120px;
       position: absolute;
       z-index: 1;
+      width: 120px;
+      height: 140px;
+      fill: $offWhite;
       opacity: 0.3;
     }
   }
   &__quote {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    margin: 0 auto;
     color: $offWhite;
     text-align: left;
     font-size: 30px;
-    max-width: 680px;
-    margin: 0 auto;
     line-height: 1.3em;
-    position: relative;
-    z-index: 2;
   }
   &__source {
-    font-size: 16px;
-    font-family: $PxGroteskBold;
-    color: $offWhite;
     max-width: 680px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 16px;
+    font-family: $PxGroteskBold;
+    color: $offWhite;
 
     &__date {
       font-family: $PxGroteskRegular;

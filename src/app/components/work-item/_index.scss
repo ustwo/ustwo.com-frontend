@@ -1,15 +1,20 @@
 /*
-TODO: Why are the breakpoints not using the pre-defined ones from variables?
-*/
+ *  WORK ITEM
+ *  Each showcase feature on what we do page
+ *
+ *  Notes:
+ *  TODO: Why are the breakpoints not using the pre-defined ones from variables?
+ *  TODO: Remove BEM
+ */
 
 .work-item {
   list-style: none;
 
   &__image-link {
+    display: block;
+    height: 320px;
     background-position: center;
     background-size: cover;
-    height: 320px;
-    display: block;
     cursor: pointer;
 
     .image {
@@ -20,10 +25,10 @@ TODO: Why are the breakpoints not using the pre-defined ones from variables?
     padding: 30px 6.25%;
 
     &__type {
+      margin-top: 0;
       border-bottom: 4px solid $nonBlack;
       text-transform: uppercase;
       font-family: $PxGroteskBold;
-      margin-top: 0;
     }
     &__title,
     &__desc {
@@ -52,21 +57,10 @@ TODO: Why are the breakpoints not using the pre-defined ones from variables?
 
     &__image-link {
       flex: 1.5;
-
-      &__image {
-      }
     }
     &__details {
       flex: 1;
       padding: 70px 6.25%;
-
-      &__type {
-      }
-      &__title,
-      &__desc {
-      }
-      &__cta {
-      }
     }
   }
 

@@ -88,10 +88,8 @@
       transform: rotate(-90deg) scale(0.8);
     }
   }
-}
 
-@media screen and (min-width: $bp-small) {
-  .subscription {
+  @media screen and (min-width: $bp-small) {
     margin: 0 6%;
 
     form {
@@ -113,4 +111,5 @@
       }
     }
   }
+
 }

@@ -1,7 +1,15 @@
+/*
+ *  GRID CELL
+ *  On join us page, the unusual ordered grid of boxes
+ *
+ *  Notes:
+ */
+
 .grid-cell {
   position: relative;
   height: $jobs-image-height-mobile + $jobs-card-height-mobile;
 
+  /* Each box has a different color and backgrround-color, pairs of ustwo palette: wow and softy */
   @each $colour in $feature-card-colours {
     $i: index($feature-card-colours, $colour);
     $wow: nth($colour, 1);
@@ -18,14 +26,14 @@
 
   .card {
 
-    // Layout
     &.feature {
-      height: $jobs-card-height-mobile - $jobs-feature-card-padding-mobile;
       box-sizing: content-box;
+      height: $jobs-card-height-mobile - $jobs-feature-card-padding-mobile;
       padding-top: $jobs-image-height-mobile + $jobs-feature-card-padding-mobile;
       padding-left: $jobs-feature-card-padding-mobile;
       padding-right: $jobs-feature-card-padding-mobile;
     }
+
     &.image {
       position: absolute;
       top: 0;
@@ -39,7 +47,6 @@
       }
     }
 
-    // Style
     &.feature {
       h2 {
         font-size: 30px;
@@ -52,7 +59,7 @@
   @media screen and (min-width: $bp-medium) {
     display: inline;
 
-    // Create gap after first line of slides to position video
+    /* Create gap after first line of slides to position video/large-image */
     &:nth-of-type(2) {
       .card {
         margin-top: $jobs-video-height;
@@ -66,13 +73,13 @@
 
     .card:first-child,
     .card:last-child {
+      box-sizing: border-box;
       position: relative;
       top: auto;
-      box-sizing: border-box;
-      padding: $jobs-feature-card-padding;
-      height: $jobs-slide-height;
       float: left;
       width: 50%;
+      height: $jobs-slide-height;
+      padding: $jobs-feature-card-padding;
     }
   }
 

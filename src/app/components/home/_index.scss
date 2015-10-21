@@ -1,11 +1,16 @@
-// NOTE:
-// The homepage is in need of a big refactor due to things getting chopped and changed as
-// well as the lack of integration with the CMS. We can't make use of optmised images so a
-// temporary solution has been implemented where jpgs or pngs are served up according to
-// screen width in this css rather than having inline <img>
-// Jpgs for smaller screns to save on download cost. But they need flat backgrounds (or
-// hide the scrollmagic). See near the bottom where each block now has background-color !important
-// to override scrollmagic on screens that use the jpg instead of png.
+/*
+ *  PAGE: HOME
+ *  Well it's the homepage isn't it
+ *
+ *  Notes: The homepage is in need of a big refactor due to things getting chopped and changed as
+ *         well as the lack of integration with the CMS. We can't make use of optmised images so a
+ *         temporary solution has been implemented where jpgs or pngs are served up according to
+ *         screen width in this css rather than having inline <img>
+ *         Jpgs for smaller screns to save on download cost. But they need flat backgrounds (or
+ *         hide the scrollmagic). See near the bottom where each block now has background-color !important
+ *         to override scrollmagic on screens that use the jpg instead of png.
+ * TODO: The homepage needs to think about what it's done and sort itself out. BIG REFACTOR NEEDED!
+ */
 
 @mixin vertically-centering-parent($height: 100%) {
   display: table;
@@ -23,7 +28,7 @@
 }
 
 .page-home {
-  transform: translateZ(0); // hardware accelerate background-color change on scroll
+  transform: translateZ(0); /* hardware accelerate background-color change on scroll */
 
   .screen-block {
     display: flex;
@@ -218,17 +223,6 @@
           @include span(6 first);
           @include squish(1);
         }
-        // .text-block {
-        //   @include span(8 nest last) {
-        //
-        //     .home-text-block {
-        //       > * {
-        //         @include squish(1);
-        //         width: span(6);
-        //       }
-        //     }
-        //   }
-        // }
       }
     }
 
@@ -339,17 +333,6 @@
 
       @include nested(8) {
 
-        // .text-block {
-        //   @include span(8 nest last) {
-        //
-        //     .home-text-block {
-        //       > * {
-        //         @include squish(1);
-        //         width: span(6);
-        //       }
-        //     }
-        //   }
-        // }
         .block-parent {
           @include span(6 first);
           @include squish(1);
@@ -462,17 +445,6 @@
           @include span(6 first);
           @include squish(1);
         }
-        // .text-block {
-        //   @include span(8 nest last) {
-        //
-        //     .home-text-block {
-        //       > * {
-        //         @include squish(1);
-        //         width: span(6);
-        //       }
-        //     }
-        //   }
-        // }
       }
     }
 
@@ -512,13 +484,13 @@
       background-color: #6114CC !important;
     }
     .client {
-      background-color: #6986ec !important; // this is the wrong blue but it goes with the jpg provided
+      background-color: #6986ec !important; /* this is the wrong blue but it goes with the jpg provided */
     }
     .own-stuff {
       background-color: #FFBF02 !important;
     }
     .ventures {
-      background-color: #f55c57 !important; // this too is actually slightly different to the correct red
+      background-color: #f55c57 !important; /* this too is actually slightly different to the correct red */
     }
   }
 }
