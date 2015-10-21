@@ -1,5 +1,5 @@
 import Navigation from './';
-import renderVariations from '../../lib/render-variations';
+import renderVariations from '../../lib/sandbox/render-variations';
 
 const pages = [{
   id: 1,

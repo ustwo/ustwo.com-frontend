@@ -1,5 +1,5 @@
 import JobItem from './';
-import renderVariations from '../../lib/render-variations';
+import renderVariations from '../../lib/sandbox/render-variations';
 
 const job = {
   key: "5a6e",
