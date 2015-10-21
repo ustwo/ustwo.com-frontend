@@ -1,3 +1,12 @@
+/*
+ *  PAGE: JOIN US
+ *  Showcasing ustwo perks and current vaccancies
+ *
+ *  Notes:
+ *  TODO: Remove BEM
+ *  TODO: Consolidate media queries
+ */
+
 .page-join-us {
 
   .hero {
@@ -30,7 +39,7 @@
     }
   }
 
-  // TODO: This is copied to what-we-do styles. Need to consolidate.
+  /* TODO: This is copied to what-we-do styles. Need to consolidate. */
   .single-column {
     padding: 50px 6.25%;
 
@@ -45,10 +54,6 @@
       &__para {
         text-align: center;
       }
-    }
-
-    .content {
-      text-align: left;
     }
 
     @media screen and (min-width: $bp-medium) {
@@ -72,12 +77,10 @@
       }
     }
   }
-  // End
+  /* End */
 
   .grid {
     position: relative;
-    // height: $jobs-card-height-mobile + $jobs-image-height-mobile + $jobs-video-height-mobile;
-    // overflow: hidden;
     padding-top: $jobs-video-height-mobile;
 
     &:before,
@@ -117,8 +120,6 @@
     }
 
     @media screen and (min-width: $bp-medium) {
-      // height: auto;
-      // overflow: visible;
       padding-top: 0;
 
       .video {
