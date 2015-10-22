@@ -1,15 +1,16 @@
-var wd = require('wd');
+'use strict';
+
+let wd = require('wd');
 require('colors');
-var _ = require('lodash');
-var chai = require('chai');
-var chaiAsPromised = require('chai-as-promised');
+let chai = require('chai');
+let chaiAsPromised = require('chai-as-promised');
 
 chai.use(chaiAsPromised);
 chai.should();
 chaiAsPromised.transferPromiseness = wd.transferPromiseness;
 
 // browser capabilities
-var DESIREDS = {
+let DESIREDS = {
   firefox: {browserName: 'firefox'},
   chrome: {browserName: 'chrome'},
   explorer: {browserName: 'internet explorer'}
@@ -23,15 +24,15 @@ wd.configureHttp( {
 });
 
 // building desired capability
-var browserKey = process.env.BROWSER || 'explorer';
-var desired = DESIREDS[browserKey];
+let browserKey = process.env.BROWSER || 'explorer';
+let desired = DESIREDS[browserKey];
 desired.name = 'testing with ' + browserKey;
 desired.tags = ['integration'];
 
 describe('  mocha integration tests (' + desired.browserName + ')', function () {
   this.timeout(60000);
-  var browser;
-  var allPassed = true;
+  let browser;
+  let allPassed = true;
 
   function openMobileMenu() {
     if (browser.hasElementByCss('.nav__open-overlay-button') && browser.elementByCss('.nav__open-overlay-button').isVisible) {
@@ -39,16 +40,16 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
     }
   }
 
-  before(function () {
-    var username = process.env.SAUCE_USERNAME;
-    var accessKey = process.env.SAUCE_ACCESS_KEY;
+  before(() => {
+    let username = process.env.SAUCE_USERNAME;
+    let accessKey = process.env.SAUCE_ACCESS_KEY;
     browser = wd.promiseChainRemote('ondemand.saucelabs.com', 80, username, accessKey);
-    if (process.env.VERBOSE){
+    if (process.env.VERBOSE) {
       // optional logging
-      browser.on('status', function(info) {
+      browser.on('status', info => {
         console.log(info.cyan);
       });
-      browser.on('command', function(meth, path, data) {
+      browser.on('command', (meth, path, data) => {
         console.log(' > ' + meth.yellow, path.grey, data || '');
       });
     }
@@ -61,20 +62,20 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
     allPassed = allPassed && (this.currentTest.state === 'passed');
   });
 
-  after(function () {
-    return browser
+  after(() => {
+    browser
       .quit()
       .sauceJobStatus(allPassed);
   });
 
-  it('should load home page', function () {
-    return browser
+  it('should load home page', () => {
+    browser
       .get('https://local.ustwo.com')
       .title()
       .should.become('ustwo | Digital product studio')
   });
 
-  it('should close overlay if present', function () {
+  it('should close overlay if present', () => {
     if (browser.hasElementByCss('.takeover')) {
       return browser
         .waitForElementByCss('.take-over__content__message__close', 10000)
@@ -86,40 +87,40 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
     }
   });
 
-  it('should contain London in footer', function () {
-    return browser
+  it('should contain London in footer', () => {
+    browser
       .elementByCss('.studios')
       .text()
       .should.eventually.include('London')
   });
 
-  it('should go to the Blog page and look for Featured post', function () {
+  it('should go to the Blog page and look for Featured post', () => {
     openMobileMenu();
-    return browser
+    browser
       .waitForElementByLinkText('Blog', 3000)
       .click()
       .waitForElementByCss('.blog-post-list-item.featured', wd.asserters.textInclude('Read more'), 10000)
       .url().should.eventually.include('blog');
   });
 
-  it('should return to the home page', function () {
-    return browser
+  it('should return to the home page', () => {
+    browser
       .elementByCss('.nav__logo__link')
       .click()
       .waitForElementByCss('.page-home', wd.asserters.textInclude('DIGITAL PRODUCT STUDIO'), 10000);
   });
 
-  it('should go to the Join us page and look for job listings', function () {
+  it('should go to the Join us page and look for job listings', () => {
     openMobileMenu();
-    return browser
+    browser
       .waitForElementByLinkText('Join Us', 3000)
       .click()
       .waitForElementByCss('.jobs-container', wd.asserters.textInclude('More info'), 10000)
       .url().should.eventually.include('join');
   });
 
-  it('should go to the What We Do page and look for case studies', function () {
-    return browser
+  it('should go to the What We Do page and look for case studies', () => {
+    browser
       .get('https://ustwo.com/what-we-do')
       .waitForElementByCss('.page-work__list', wd.asserters.textInclude('Read more'), 10000)
       .url().should.eventually.include('what');
