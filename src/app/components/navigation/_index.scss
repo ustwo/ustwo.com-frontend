@@ -10,10 +10,8 @@
   .navigation {
     color: $nonBlack;
 
-    .logo svg {
-      fill: $nonBlack;
-    }
-    .nav-condensed-button {
+    .logo svg,
+    .navigation-toggle {
       fill: $nonBlack;
     }
     .navigation-link {
@@ -56,7 +54,7 @@
         margin-left: 30px;
       }
     }
-    .nav-condensed-button {
+    .navigation-toggle {
       position: absolute;
       top: 0;
       right: 0;
@@ -88,7 +86,7 @@
     @extend .neg-nav;
 
     .navigation {
-      .nav-condensed-button,
+      .navigation-toggle,
       .menu {
         display: none;
       }
@@ -102,7 +100,7 @@
 
   @media screen and (min-width: $bp-large) {
     .navigation {
-      .nav-condensed-button {
+      .navigation-toggle {
         display: none;
       }
 

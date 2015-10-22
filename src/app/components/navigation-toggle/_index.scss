@@ -1,10 +1,10 @@
 /*
- *  NAVIGATION CONDENSED BUTTON
- *  Mobile nav burger icon
+ *  NAVIGATION TOGGLE
+ *  Burger icon for smaller screens
  *
  */
 
-.nav-condensed-button {
+.navigation-toggle {
   display: block;
   width: 60px;
   height: 60px;
@@ -18,12 +18,12 @@
 }
 
 .transparent-white {
-  .nav-condensed-button {
+  .navigation-toggle {
     fill: $offWhite;
   }
 }
 .takeover {
-  .nav-condensed-button {
+  .navigation-toggle {
     fill: $nonBlack;
   }
 }

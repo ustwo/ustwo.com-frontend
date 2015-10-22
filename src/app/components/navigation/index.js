@@ -10,7 +10,7 @@ import Nulls from '../../flux/nulls';
 import Track from '../../adaptors/server/track';
 import SVG from '../svg';
 import NavigationLink from '../navigation-link';
-import NavigationCondensedButton from '../navigation-condensed-button';
+import NavigationToggle from '../navigation-toggle';
 
 export default class Navigation extends React.Component {
   openOverlay() {
@@ -41,7 +41,7 @@ export default class Navigation extends React.Component {
               <SVG title="ustwo logo" spritemapID='ustwologo' />
             </a>
           </div>
-          <NavigationCondensedButton onOpen={this.openOverlay} />
+          <NavigationToggle onOpen={this.openOverlay} />
           <div className="menu">
             <ul>
               {this.renderNavigationLinks()}
