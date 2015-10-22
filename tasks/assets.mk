@@ -69,7 +69,6 @@ assets-css-watch:
 		$(PWD)/src/app \
 	| $(XARGS) -0 -o -n1 -I{} $(call compile, npm run css)
 
-
 # Compiles SPA vendors into share/nginx/assets/js
 assets-vendors:
 	@$(call compile, npm run vendors)
