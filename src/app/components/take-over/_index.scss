@@ -142,7 +142,7 @@
     &.add {
       opacity: 0;
 
-      .take-over__content {
+      .message {
         .title,
         .description,
         .links {
@@ -154,7 +154,7 @@
     &.show {
       opacity: 1;
 
-      .take-over__content {
+      .message {
         .title,
         .description,
         .links {
@@ -166,7 +166,7 @@
     &.hide {
       opacity: 0;
 
-      .take-over__content {
+      .message {
         .title,
         .description,
         .links {
