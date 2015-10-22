@@ -30,7 +30,7 @@ export default class Hero extends React.Component {
     return (
       <Rimage wrap="section" className={classnames("hero", props.className)} sizes={props.imageOnly ? {} : props.sizes} backgroundOnly={true} >
         <EntranceTransition className='title-entrance'>
-          <h1 className='hero__title'>
+          <h1 className='title'>
             <WordAnimation delay={1} duration={0.5}>
               {props.title}
             </WordAnimation>
@@ -48,18 +48,18 @@ export default class Hero extends React.Component {
     if (props.imageOnly) {
       image = (
         <EntranceTransition className='image-entrance'>
-          <Rimage className="hero__image" sizes={this.props.sizes} />
+          <Rimage className="image" sizes={this.props.sizes} />
         </EntranceTransition>
       );
     } else {
-      image = <Rimage className="hero__image" sizes={this.props.sizes} />;
+      image = <Rimage className="image" sizes={this.props.sizes} />;
     }
     return image;
   }
   renderDownChevron = () => {
     let chevron;
     if (this.props.showDownChevron) {
-      chevron = <DownChevron customClass="hero__down-chevron" ref="downChevron" onClick={this.onClickDownChevron} />;
+      chevron = <DownChevron ref="downChevron" onClick={this.onClickDownChevron} />;
     }
     return chevron;
   }
