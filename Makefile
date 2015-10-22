@@ -65,7 +65,7 @@ include tasks/*.mk
 ## Porcelain ##################################################################
 vault: vault-save
 build: app-build assets-build
-test: assets-test assets-integration
+test: assets-unit-test assets-integration-test
 push: app-push assets-push
 pull: app-pull assets-pull
 init: vault-create assets-create app-create proxy-create

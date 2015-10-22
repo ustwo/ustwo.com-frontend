@@ -285,7 +285,7 @@ works well with React and executes fast.
 
 Run the unit tests:
 
-    $ make assets-test
+    $ make assets-unit-test
 
 ### Integration
 
@@ -300,7 +300,7 @@ suite using Mocha + Chai + Chai Promises + WD.js.
 
 Run the integration tests:
 
-    $ make assets-integration
+    $ make assets-integration-test
 
 ## Release
 

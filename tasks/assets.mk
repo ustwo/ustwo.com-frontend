@@ -78,8 +78,8 @@ assets-spa:
 	@$(call compile, npm run spa)
 
 # Runs SPA tests
-assets-test:
+assets-unit-test:
 	@$(call compile, npm test)
 
-assets-integration: sauce-create
+assets-integration-test: sauce-create
 	@$(call compile, npm run integration)
