@@ -1,26 +1,12 @@
+/*
+ *  APP
+ *  Various states or special pages
+ *
+ */
+
 .app {
 
-  &__content {
-
-    &__container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-
-      &.add {
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-
-        &.show {
-          opacity: 1;
-        }
-        &.hide {
-          opacity: 0;
-        }
-      }
-    }
+  .content {
 
     &.takeover {
       height: 100vh;
@@ -36,14 +22,6 @@
       overflow: hidden;
       opacity: 0;
     }
-
-    @media screen and (min-width: $bp-large) {
-      &.mobile-no-scroll {
-        position: relative;
-        overflow: auto;
-        opacity: 1;
-      }
-    }
   }
 
   &.app-404 {
@@ -51,5 +29,15 @@
     left: 0;
     right: 0;
     height: 100%;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .content {
+      &.mobile-no-scroll {
+        position: relative;
+        overflow: auto;
+        opacity: 1;
+      }
+    }
   }
 }
