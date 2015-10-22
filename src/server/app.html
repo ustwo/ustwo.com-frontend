@@ -19,6 +19,12 @@
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-7940378-1', 'auto');
     </script>
+    <script>
+      document.documentElement.className += " js";
+      if(!!navigator.userAgent.match(/(iPhone)/g)) {
+        document.documentElement.className += " iPhone";
+      }
+    </script>
     <script type="text/javascript" src="//use.typekit.com/yeb1wrp.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
@@ -27,10 +33,6 @@
   </body>
   <script>
     window.state = <%= state %>;
-    document.documentElement.className += " js";
-    if(!!navigator.userAgent.match(/(iPhone)/g)) {
-      document.documentElement.className += " iPhone";
-    }
   </script>
   <script src="/js/vendors.js"></script>
   <script src="/js/app.js"></script>
