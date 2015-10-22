@@ -2,24 +2,6 @@
   "name": "usweb",
   "version": "1.1.0",
   "private": true,
-  "aliasify": {
-    "aliases": {
-      "../../adaptors/server/track": "./src/adaptors/client/track",
-      "../../adaptors/server/localfont": "./src/adaptors/client/localfont",
-      "../adaptors/server/tracking": "./src/adaptors/client/tracking",
-      "../../adaptors/server/tracking": "./src/adaptors/client/tracking",
-      "./adaptors/server/env": "./src/app/adaptors/client/env",
-      "../adaptors/server/env": "./src/adaptors/client/env",
-      "../../adaptors/server/env": "./src/adaptors/client/env",
-      "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
-      "../adaptors/server/window": "./src/adaptors/client/window",
-      "../../adaptors/server/window": "./src/app/adaptors/client/window",
-      "../../adaptors/server/scroll-magic": "./src/adaptors/client/scroll-magic",
-      "../adaptors/server/proxy-url": "./src/adaptors/client/proxy-url",
-      "../../adaptors/server/svg4everybody": "./src/adaptors/client/svg4everybody",
-      "../adaptors/server/scroll-tracker": "./src/adaptors/client/scroll-tracker"
-    }
-  },
   "dependencies": {
     "aliasify": "1.7.2",
     "babel": "5.8.21",
