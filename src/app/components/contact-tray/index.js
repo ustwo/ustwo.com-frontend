@@ -10,8 +10,8 @@ export default class ContactTray extends React.Component {
     const contactData = this.props.contacts;
     return (
       <div className="contact-tray" onClick={onClickContent}>
-        <CloseButton onClose={this.onClickClose} className="contact-tray__close" autoAnim={500} />
-        <article className="contact-tray__content">
+        <CloseButton onClose={this.onClickClose} autoAnim={500} />
+        <article className="content">
           {contactData.map(contactDetail => <ContactDetail key={`contact-detail-${contactDetail.type}`} detail={contactDetail}/>)}
         </article>
       </div>
