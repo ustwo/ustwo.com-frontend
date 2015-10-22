@@ -4,37 +4,40 @@
  *
  *  Notes:
  *  TODO: Why are the breakpoints not using the pre-defined ones from variables?
- *  TODO: Remove BEM
+ *  TODO: New design to implement
  */
 
 .work-item {
   list-style: none;
 
-  &__image-link {
+  .image {
     display: block;
     height: 320px;
     background-position: center;
     background-size: cover;
     cursor: pointer;
 
-    .image {
+    img {
       display: none;
     }
   }
-  &__details {
+
+  .details {
     padding: 30px 6.25%;
 
-    &__type {
+    .type {
       margin-top: 0;
       border-bottom: 4px solid $nonBlack;
       text-transform: uppercase;
       font-family: $PxGroteskBold;
     }
-    &__title,
-    &__desc {
+
+    .title,
+    .desc {
       margin: 20px 0;
     }
-    &__cta {
+
+    .link {
       display: inline-block;
       border-bottom: 2px solid $nonBlack;
       font-family: $PxGroteskBold;
@@ -42,7 +45,7 @@
   }
 
   @media screen and (min-width: 450px) {
-    &__image-link {
+    .image {
       height: 480px;
     }
   }
@@ -55,17 +58,18 @@
       flex-direction: row;
     }
 
-    &__image-link {
+    .image {
       flex: 1.5;
     }
-    &__details {
+
+    .details {
       flex: 1;
       padding: 70px 6.25%;
     }
   }
 
   @media screen and (min-width: 1200px) {
-    &__image-link {
+    .image {
       height: 630px;
     }
   }
