@@ -120,13 +120,13 @@ export default class TakeOver extends React.Component {
     // const takeover = this.props.takeover;
     if(this.state.showContent) {
       content = (
-        <div key="detail" className="take-over__content">
-          <div className="take-over__content__message">
-            <CloseButton onClose={this.onClickClose} className="take-over__content__message__close" autoAnim={1000} style={{ fill: takeover.header_color }} />
-            <Rimage wrap="div" className="take-over__content__image"  sizes={get(image, 'media_details.sizes')} />
-            <h1 className="take-over__content__message__title" style={{color: takeover.header_color}}>{he.decode(takeover.title)}</h1>
-            <p className="take-over__content__message__description">{takeover.description}</p>
-            <ul className="take-over__content__message__links">
+        <div key="detail" className="content">
+          <div className="message">
+            <CloseButton onClose={this.onClickClose} autoAnim={1000} style={{ fill: takeover.header_color }} />
+            <Rimage wrap="div" className="image"  sizes={get(image, 'media_details.sizes')} />
+            <h1 className="title" style={{color: takeover.header_color}}>{he.decode(takeover.title)}</h1>
+            <p className="description">{takeover.description}</p>
+            <ul className="links">
               {takeover.links.map(this.renderLink)}
             </ul>
           </div>
@@ -134,9 +134,9 @@ export default class TakeOver extends React.Component {
       );
     } else {
       content = (
-        <div key="news-flash" className="take-over__news-flash">
-          <NewsFlash className="take-over__news-flash__animation" autoAnim={50} loop={true} />
-          <h1 className="take-over__news-flash__title">News</h1>
+        <div key="news-flash" className="news-flash-wrapper">
+          <NewsFlash autoAnim={50} loop={true} />
+          <h1 className="title">News</h1>
         </div>
       );
     }
@@ -158,7 +158,7 @@ export default class TakeOver extends React.Component {
         prefix = "tel:";
       break;
     }
-    return <li className={`take-over__content__message__links__link-item ${link.type}`}><a className="take-over__content__message__links__link-item__link" target="_blank" href={`${prefix}${link.url}`} onClick={this.onClickLink(index)} style={{color: takeover.header_color, borderColor: takeover.header_color}}>{link.text}</a></li>;
+    return <li className={`link-item ${link.type}`}><a target="_blank" href={`${prefix}${link.url}`} onClick={this.onClickLink(index)} style={{color: takeover.header_color, borderColor: takeover.header_color}}>{link.text}</a></li>;
   }
   componentDidMount() {
     this.contentTimeout = setTimeout(() => {

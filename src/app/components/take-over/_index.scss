@@ -1,9 +1,8 @@
 /*
  *  TAKE OVER
- *  Periodic splash screen before the homepage
+ *  Splash screen before the homepage
  *
- *  Notes:
- *  TODO: Remove BEM
+ *  TODO: Separate news-flash-wrapper out into news-flash component (js too)
  */
 
 .take-over {
@@ -27,7 +26,7 @@
     opacity: 0;
   }
 
-  &__news-flash {
+  .news-flash-wrapper {
     position: absolute;
     width: 100px;
     top: calc(50% - 50px);
@@ -35,15 +34,7 @@
     text-align: center;
     transition: opacity 0.5s ease-in-out;
 
-    &__animation {
-      width: 100px;
-      height: 100px;
-      fill: $marshPassion;
-      display: inline-block;
-      margin: 0 auto;
-      transform: translateX(2px);
-    }
-    &__title {
+    .title {
       color: $marshPassion;
       text-transform: uppercase;
       font-size: 16px;
@@ -59,7 +50,8 @@
       opacity: 0;
     }
   }
-  &__content {
+
+  .content {
     height: 100%;
     transition: opacity 0.5s ease-in-out;
     margin: 0 auto;
@@ -67,89 +59,93 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
 
-    &__message {
-      flex: 2;
-      max-width: 700px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+  .message {
+    flex: 2;
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-      &__close {
+    .close-button {
+      width: 50px;
+      height: 50px;
+      display: block;
+      border: 0;
+      background: none;
+      margin: 0 auto 5vh;
+      padding: 0;
+      z-index: 100;
+
+      svg {
         width: 50px;
         height: 50px;
-        display: block;
-        border: 0;
-        background: none;
-        margin: 0 auto 5vh;
-        padding: 0;
-        z-index: 100;
-
-        svg {
-          width: 50px;
-          height: 50px;
-          fill: $nonBlack;
-        }
-        &:focus {
-          -webkit-focus-ring-color: rgba(0,0,0,0);
-          outline: none;
-        }
+        fill: $nonBlack;
       }
-      &__title {
-        color: $marshPassion;
-        margin-top: 5vh;
-        font-size: 32px;
-      }
-      &__description {
-        margin-top: 1vh;
-      }
-      &__links {
-        display: flex;
-        flex-direction: column;
-        list-style: none;
-        padding: 0;
-        margin: 0 0 5vh;
-
-        &__link-item {
-          margin-bottom: 15px;
-          text-align: center;
-
-          &__link {
-            border-bottom: 2px solid $mare;
-          }
-        }
-      }
-      &__title,
-      &__description,
-      &__links {
-        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-        transition-delay: 0s;
-      }
-      &__description,
-      &__links {
-        transition-delay: 0.35s;
+      &:focus {
+        -webkit-focus-ring-color: rgba(0,0,0,0);
+        outline: none;
       }
     }
-    &__image {
-      width: 100%;
-      flex: 1;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-clip: content-box;
-      background-size: contain;
+    .title {
+      color: $marshPassion;
+      margin-top: 5vh;
+      font-size: 32px;
+    }
+    .description {
+      margin-top: 1vh;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 5vh;
 
-      img {
-        display: none;
+      .link-item {
+        margin-bottom: 15px;
+        text-align: center;
+
+        a {
+          border-bottom: 2px solid $mare;
+        }
       }
     }
+    .title,
+    .description,
+    .links {
+      transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+      transition-delay: 0s;
+    }
+    .description,
+    .links {
+      transition-delay: 0.35s;
+    }
+  }
+
+  .image {
+    width: 100%;
+    flex: 1;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-clip: content-box;
+    background-size: contain;
+
+    img {
+      display: none;
+    }
+  }
+
+  .content {
     &.add {
       opacity: 0;
 
       .take-over__content {
-        &__title,
-        &__description,
-        &__links {
+        .title,
+        .description,
+        .links {
           opacity: 0;
           transform: translateY(30px);
         }
@@ -159,9 +155,9 @@
       opacity: 1;
 
       .take-over__content {
-        &__title,
-        &__description,
-        &__links {
+        .title,
+        .description,
+        .links {
           opacity: 1;
           transform: translateY(0px);
         }
@@ -171,9 +167,9 @@
       opacity: 0;
 
       .take-over__content {
-        &__title,
-        &__description,
-        &__links {
+        .title,
+        .description,
+        .links {
           opacity: 0;
           transform: translateY(30px);
         }
@@ -182,17 +178,17 @@
   }
 
   @media screen and (min-width: $bp-large) {
-    &__content__message {
-      &__title {
+    .message {
+      .title {
         margin-top: 0;
         font-size: 40px;
       }
-      &__links {
+      .links {
         flex-direction: row;
         justify-content: center;
         margin: 5vh 0 10vh;
 
-        &__link-item {
+        .link-item {
           margin-left: 30px;
           margin-right: 0;
 
@@ -203,9 +199,10 @@
       }
     }
   }
+
   @media screen and (max-height: 500px) {
-    &__content__message {
-      &__title {
+    .message {
+      .title {
         font-size: 25px;
       }
     }
