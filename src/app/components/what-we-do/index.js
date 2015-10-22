@@ -21,7 +21,7 @@ const PageWhatWeDo = React.createClass({
       <article className="page-work">
         <Hero title={get(pageData, 'display_title')} sizes={get(image, 'media_details.sizes')} eventLabel='what-we-do' showDownChevron={true} />
         {get(pageData, 'page_builder', []).map(this.getModuleRenderer(get(pageData, 'colors')))}
-        <ul className="page-work__list">
+        <ul>
           {get(caseStudiesModule, 'attr.case_studies.value', '').split(',').map(caseStudyName => {
             const caseStudyData = find(get(pageData, '_embedded.ustwo:case_studies', []), 'slug', caseStudyName);
             return <WorkItem key={caseStudyName} className="page-work__list__item" data={caseStudyData} attachments={get(pageData, '_embedded.wp:attachment', [])} />;
