@@ -2,22 +2,16 @@
  *  NAVIGATION LINK
  *  A menu item in the header
  *
- *  Notes:
- *  TODO: Remove BEM
  */
 
-.nav__menu__item {
+.navigation-link {
   display: block;
   font-family: $PxGroteskRegular;
   font-size: 16px;
   line-height: 24px;
 
-  &__link {
-    &:hover {
-      border-bottom: 2px solid #fff;
-    }
-  }
-  &.selected &__link {
+  a:hover,
+  &.selected a {
     border-bottom: 2px solid #fff;
   }
 }

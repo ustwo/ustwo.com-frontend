@@ -3,29 +3,24 @@
  *  Includes the site navigation and logo
  *
  *  Notes: Should this component be called header?
- *  TODO: Remove BEM
  *  TODO: The way the .neg-nav class is extended needs addressing
- *  TODO: The whole component needs a good look at itself in the mirror 
  */
 
 .neg-nav {
-  .nav {
+  .navigation {
     color: $nonBlack;
 
-    .nav__logo__graphic,
-    .nav__logo__graphic.transparent-white {
+    .logo svg {
       fill: $nonBlack;
     }
-    .nav__open-overlay-button {
+    .nav-condensed-button {
       fill: $nonBlack;
     }
-    .nav__menu__item__link {
-      &:hover {
+    .navigation-link {
+      &.selected a,
+      a:hover {
         border-bottom: 2px solid $nonBlack;
       }
-    }
-    .nav__menu__item.selected .nav__menu__item__link {
-      border-bottom: 2px solid $nonBlack;
     }
   }
 }
@@ -39,45 +34,42 @@
   display: block;
   height: $nav-height;
 
-  .nav {
+  .navigation {
     background: transparent;
     color: $white;
 
-    .nav__logo__graphic {
-      fill: $white;
-    }
-
-    &__logo {
+    .logo {
       overflow: hidden;
       display: block;
       width: 100px;
       height: $nav-height;
       margin-left: 20px;
 
-      &__graphic {
+      svg {
         width: 100px;
         height: $nav-height;
         fill: $nonBlack;
+        fill: $white;
       }
 
       @media screen and (min-width: $bp-large) {
         margin-left: 30px;
       }
     }
-    .nav__open-overlay-button {
+    .nav-condensed-button {
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       z-index: 2;
     }
-    &__inner {
+
+    .menu {
       position: absolute;
       right: 0;
       top: 0;
 
-
-      .nav__menu {
+      ul {
         @extend %clearfix;
 
         display: none;
@@ -85,29 +77,19 @@
         padding: 0;
         list-style: none;
 
-        &__item:first-child {
+        .navigation-link:first-child {
           display: none;
         }
       }
-
-      .nav__underline {
-        position: absolute;
-        top: 35px;
-        width: 0px;
-        height: 2px;
-        border: none;
-        background-color: $darkGrey;
-        opacity: 0;
-      }
     }
   }
+
   &.takeover {
     @extend .neg-nav;
 
-    .nav {
-      .nav__open-overlay-button,
-      .nav__inner,
-      .nav__underline {
+    .navigation {
+      .nav-condensed-button,
+      .menu {
         display: none;
       }
     }
@@ -119,23 +101,22 @@
   }
 
   @media screen and (min-width: $bp-large) {
-    .nav {
-      .nav__open-overlay-button {
+    .navigation {
+      .nav-condensed-button {
         display: none;
       }
 
-      &__inner {
-        .nav__menu {
-          display: block;
-          position: static;
-          margin-right: 30px;
-        }
+      .menu ul {
+        display: block;
+        position: static;
+        margin-right: 30px;
       }
 
-      .nav__menu__item {
+      .navigation-link {
         display: inline-block;
         line-height: $nav-height;
         margin-left: 40px;
+
         &:first-child {
           margin-left: 0;
         }

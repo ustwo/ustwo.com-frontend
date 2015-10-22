@@ -1,12 +1,10 @@
 /*
- *  NAVIGATION OPEN OVERLAY BUTTON
+ *  NAVIGATION CONDENSED BUTTON
  *  Mobile nav burger icon
  *
- *  Notes:
- *  TODO: Remove BEM
  */
 
-.nav__open-overlay-button {
+.nav-condensed-button {
   display: block;
   width: 60px;
   height: 60px;
@@ -20,12 +18,12 @@
 }
 
 .transparent-white {
-  .nav__open-overlay-button {
+  .nav-condensed-button {
     fill: $offWhite;
   }
 }
 .takeover {
-  .nav__open-overlay-button {
+  .nav-condensed-button {
     fill: $nonBlack;
   }
 }
