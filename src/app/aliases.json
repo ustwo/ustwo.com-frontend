@@ -1,20 +1,18 @@
 {
   "aliases": {
-    "../../adaptors/server/track": "./adaptors/client/track",
-    "../adaptors/server/tween-max": "./adaptors/client/tween-max",
-    "../../adaptors/server/tween-max": "./adaptors/client/tween-max",
-    "../../adaptors/server/scroll-to-plugin": "./adaptors/client/scroll-to-plugin",
-    "../../adaptors/server/localfont": "./adaptors/client/localfont",
-    "../adaptors/server/tracking": "./adaptors/client/tracking",
-    "../../adaptors/server/tracking": "./adaptors/client/tracking",
     "../adaptors/server/env": "./adaptors/client/env",
     "../../adaptors/server/env": "./adaptors/client/env",
-    "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
+    "../../adaptors/server/localfont": "./adaptors/client/localfont",
+    "../adaptors/server/proxy-url": "./adaptors/client/proxy-url",
+    "../../adaptors/server/scroll-magic": "./adaptors/client/scroll-magic",
+    "../../adaptors/server/scroll-to-plugin": "./adaptors/client/scroll-to-plugin",
+    "../adaptors/server/scroll-tracker": "./adaptors/client/scroll-tracker",
+    "../../adaptors/server/svg4everybody": "./adaptors/client/svg4everybody",
+    "../../adaptors/server/track": "./adaptors/client/track",
+    "../adaptors/server/tracking": "./adaptors/client/tracking",
+    "../../adaptors/server/tracking": "./adaptors/client/tracking",
     "../adaptors/server/window": "./adaptors/client/window",
     "../../adaptors/server/window": "./adaptors/client/window",
-    "../../adaptors/server/scroll-magic": "./adaptors/client/scroll-magic",
-    "../adaptors/server/proxy-url": "./adaptors/client/proxy-url",
-    "../../adaptors/server/svg4everybody": "./adaptors/client/svg4everybody",
-    "../adaptors/server/scroll-tracker": "./adaptors/client/scroll-tracker"
+    "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js"
   }
 }
