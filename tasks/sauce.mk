@@ -5,17 +5,15 @@ sauce_name = $(project_name)_$(sauce_id)
 .PHONY: \
   sauce-rm \
   sauce-create \
+  sauce-startup \
   sauce-log
 
 sauce-rm:
 	@echo "Removing $(sauce_name)"
 	@$(DOCKER_RM) $(sauce_name)
 
-sauce_available = $(shell $(DOCKER) ps -a | $(GREP) $(sauce_name) | $(AWK) '{print $$1}')
-
 sauce-create:
 	@echo "Creating $(sauce_name)"
-ifeq ($(strip $(sauce_available)),)
 	@$(DOCKER) run -d \
 		--name $(sauce_name) \
 		-p 8000:8000 \
@@ -25,10 +23,22 @@ ifeq ($(strip $(sauce_available)),)
 		ustwo/docker-sauce-connect
 	# TODO: use something smarter than sleep
 	sleep 15
+
+sauce_available = $(shell $(DOCKER) ps -a | $(GREP) $(sauce_name) | $(AWK) '{print $$1}')
+
+sauce-startup:
+ifeq ($(strip $(sauce_available)),)
+	@$(MAKE) sauce-create
 else
-	@echo "Skipping creating $(sauce_name) as it's already running!"
+ifeq ($(strip $(shell $(DOCKER) logs $(sauce_name) | $(GREP) 'Connection closed' | $(AWK) '{print $$1}')),)
+	@echo "Skipping creating $(sauce_name) as it's already running"
+else
+	@echo "Sauce Connect container is running, but tunnel has been closed"
+	@$(MAKE) sauce-rm
+	@$(MAKE) sauce-create
+endif
 endif
 
 sauce-log:
-	docker logs -f $(sauce_name)
+	@$(DOCKER) logs -f $(sauce_name)
 
