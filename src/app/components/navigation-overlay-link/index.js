@@ -8,12 +8,12 @@ import Flux from '../../flux';
 
 export default class NavigationOverlayLink extends React.Component {
   render() {
-    const classes = classnames('nav__overlay__menu__item', {
+    const classes = classnames('navigation-overlay-link', {
       selected: this.props.selected
     });
     return (
       <li className={classes}>
-        <a href={this.props.url} className="nav__overlay__menu__item__link" onClick={this.onClick}>{this.props.children}</a>
+        <a href={this.props.url} onClick={this.onClick}>{this.props.children}</a>
       </li>
     );
   }

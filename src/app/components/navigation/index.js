@@ -10,7 +10,7 @@ import Nulls from '../../flux/nulls';
 import Track from '../../adaptors/server/track';
 import SVG from '../svg';
 import NavigationLink from '../navigation-link';
-import NavigationOpenOverlayButton from '../navigation-open-overlay-button';
+import NavigationToggle from '../navigation-toggle';
 
 export default class Navigation extends React.Component {
   openOverlay() {
@@ -35,18 +35,17 @@ export default class Navigation extends React.Component {
 
     return (
       <header className={headerClasses}>
-        <nav className={classnames('nav', props.customClass)}>
-          <div className="nav__logo">
-            <a className="nav__logo__link" href="/" onClick={this.onClickLogo}>
-              <SVG className="nav__logo__graphic" title="ustwo logo" spritemapID='ustwologo' />
+        <nav className={classnames('navigation', props.customClass)}>
+          <div className="logo">
+            <a href="/" onClick={this.onClickLogo}>
+              <SVG title="ustwo logo" spritemapID='ustwologo' />
             </a>
           </div>
-          <NavigationOpenOverlayButton onOpen={this.openOverlay} />
-          <div className="nav__inner">
-            <ul className="nav__menu">
+          <NavigationToggle onOpen={this.openOverlay} />
+          <div className="menu">
+            <ul>
               {this.renderNavigationLinks()}
             </ul>
-            <hr className="nav__underline"/>
           </div>
         </nav>
       </header>

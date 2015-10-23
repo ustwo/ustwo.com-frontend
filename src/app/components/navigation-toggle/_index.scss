@@ -1,12 +1,10 @@
 /*
- *  NAVIGATION OPEN OVERLAY BUTTON
- *  Mobile nav burger icon
+ *  NAVIGATION TOGGLE
+ *  Burger icon for smaller screens
  *
- *  Notes:
- *  TODO: Remove BEM
  */
 
-.nav__open-overlay-button {
+.navigation-toggle {
   display: block;
   width: 60px;
   height: 60px;
@@ -20,12 +18,12 @@
 }
 
 .transparent-white {
-  .nav__open-overlay-button {
+  .navigation-toggle {
     fill: $offWhite;
   }
 }
 .takeover {
-  .nav__open-overlay-button {
+  .navigation-toggle {
     fill: $nonBlack;
   }
 }

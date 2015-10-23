@@ -2,7 +2,6 @@
  *  CONTACT DETAIL
  *  Inside contact-tray, a block of contact details
  *
- *  TODO: Remove BEM
  */
 
 .contact-detail {
@@ -10,7 +9,7 @@
   margin: 40px 0 0;
   overflow: auto;
 
-  &__title {
+  .title {
     color: $marshPassion;
     font-size: 22px;
     font-family: "PxGrotesk-Regular", "Arial", sans-serif;
@@ -18,11 +17,11 @@
     margin-bottom: 15px;
   }
 
-  &__description {
+  .description {
     display: none;
   }
 
-  &__link {
+  .link {
     border-bottom: 2px solid $mare;
     display: block;
     float: left;
@@ -33,12 +32,12 @@
   @media screen and (min-width: 650px) {
     margin: 60px 0 0;
 
-    &__description {
+    .description {
       display: block;
     }
   }
   @media screen and (min-width: $bp-huge) {
-    &__link {
+    .link {
       float: right;
       clear: none;
 

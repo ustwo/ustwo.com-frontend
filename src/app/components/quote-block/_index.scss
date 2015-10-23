@@ -3,18 +3,17 @@
  *  Styling for quotes mid- content
  *
  *  Notes:
- *  TODO: Remove BEM
  */
 
 .quote-block {
   padding: 90px 6.25% 50px;
 
-  &__quote-mark {
+  .quote-mark {
     max-width: 680px;
     margin: 0 auto;
     transform: translate(-10px, -90px);
 
-    &__quote {
+    svg {
       position: absolute;
       z-index: 1;
       width: 120px;
@@ -23,7 +22,8 @@
       opacity: 0.3;
     }
   }
-  &__quote {
+
+  .quote {
     position: relative;
     z-index: 2;
     max-width: 680px;
@@ -33,30 +33,28 @@
     font-size: 30px;
     line-height: 1.3em;
   }
-  &__source {
+
+  .source {
     max-width: 680px;
     margin-left: auto;
     margin-right: auto;
     font-size: 16px;
     font-family: $PxGroteskBold;
     color: $offWhite;
-
-    &__date {
-      font-family: $PxGroteskRegular;
-    }
   }
 
   @media screen and (min-width: $bp-medium) {
     padding: 140px 6.25% 80px;
 
-    &__quote-mark {
+    .quote-mark {
       transform: translate(-50px, -80px);
 
-      &__quote {
+      svg {
         width: 193px;
       }
     }
-    &__quote {
+
+    .quote {
       font-size: 50px;
     }
   }

@@ -1,0 +1,15 @@
+/*
+ *  NEWS FLASH
+ *  Animation as the takeover loads
+ *
+ *  TODO: Extend component to include the <title>, currently in takeover component
+ */
+
+.news-flash {
+  width: 100px;
+  height: 100px;
+  fill: $marshPassion;
+  display: inline-block;
+  margin: 0 auto;
+  transform: translateX(2px);
+}

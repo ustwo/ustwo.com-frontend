@@ -2,7 +2,6 @@
  *  BLOG POST LIST ITEM
  *  Short excerpts and images of each blog post on the main /blog page
  *
- *  Notes:
  */
 
 .blog-post-list-item {
@@ -136,7 +135,7 @@
     .content {
       position: relative;
       height: 332px;
-      padding: 0 $padding-large $padding-large;
+      padding: 10px $padding-large $padding-large;
 
       .tail {
         position: absolute;
@@ -170,5 +169,4 @@
       height: 84.2px;
     }
   }
-
 }

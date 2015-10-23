@@ -13,9 +13,9 @@ import {onClickContent} from '../modal';
 export default class NavigationOverlay extends React.Component {
   render() {
     return (
-      <nav className='nav__overlay' onClick={onClickContent}>
-        <CloseButton onClose={this.onClickClose} className="nav__overlay__close-button" autoAnim={10} />
-        <ul className="nav__overlay__menu">
+      <nav className='navigation-overlay' onClick={onClickContent}>
+        <CloseButton onClose={this.onClickClose} autoAnim={10} />
+        <ul className="menu">
           {this.renderNavigationOverlayLinks()}
         </ul>
       </nav>

@@ -1,34 +1,35 @@
-// SHARED STYLES ACROSS ALL BLOG COMPONENTS
+/*
+ *  PAGE: BLOG
+ *  Latest posts and category and search functions
+ *
+ *  Notes: Includes category some styles that affect blog post, perhaps should be moved out at some point
+ */
 
 .blog-category {
   display: inline-block;
   height: $blog-category-height;
   padding: 0 5px;
-  transform: translateY(-12px);
-  color: #fff;
   font-size: 12px;
   line-height: $blog-category-height;
   font-weight: bold;
   text-transform: uppercase;
-  background-color: #aaa; // fallback
+  color: #fff;
+  transform: translateY(-12px);
 }
 
-// Category colours
+/* Style each blog post item according to it's category colour */
 @each $category, $colour in $blog-categories {
-  &.blog-label-#{$category} {
+  .blog-label-#{$category} {
 
-    // Shared
     .blog-category {
       background-color: #{$colour};
     }
 
-    // Landing page
     .tail a {
       border-color: #{$colour};
       font-family: $PxGroteskBold;
     }
 
-    // Post page
     &.page-post {
       .content-container {
         .rule,
@@ -47,11 +48,6 @@
   }
 }
 
-
-
-
-
-// Blog landing page layout
 .page-blog {
   background-color: #eaeaea;
 
@@ -135,18 +131,9 @@
       &.hide {
         opacity: 0;
 
-        // .search-form {
-        //   opacity: 0;
-        // }
-
-        // .cancel {
-        //   opacity: 0;
-        // }
-
         .search-form,
         .cancel {
           transition: none;
-          // transition-delay: 0s;
         }
       }
     }
@@ -155,16 +142,13 @@
   .hero {
     width: 100%;
 
-    &__title {
+    .title {
+      position: relative;
+      z-index: 2;
       margin-top: -12vh;
     }
 
-    h1 {
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero__image {
+    .image {
       position: absolute;
       left: 50%;
       top: 42%;
@@ -207,8 +191,6 @@
     }
   }
 
-  // LOADING
-
   &.loading,
   &.empty {
     .blog-post-list {
@@ -245,8 +227,6 @@
     }
   }
 
-  // END LOADING
-
   &.empty {
     .blog-post-list {
       padding: 0;
@@ -260,7 +240,6 @@
     }
     .blog-post-list {
       margin-top: $blog-margin-offset;
-      // min-height: $blog-margin-offset * -1;
       padding: 0 $blog-gutter-large;
 
       .blog-post-list-item:not(.featured) {

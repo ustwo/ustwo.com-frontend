@@ -1,9 +1,7 @@
 /*
- *  CASE STUDY
+ *  PAGE: CASE STUDY
  *  What we do pages
  *
- *  TODO: Do we need specific styles for these pages - globalise?
- *  TODO: Remove BEM
  */
 
 .page-case-study {
@@ -15,47 +13,7 @@
     border-bottom-style: solid;
   }
 
-  .intro {
-    padding: 50px 6.25%;
-
-    &__title {
-      color: $marshPassion;
-      text-align: center;
-    }
-    &__rule {
-      border: 2px solid $mare;
-      width: 120px;
-      margin: 30px auto;
-    }
-    &__para {
-      text-align: center;
-    }
-
-    .content {
-      text-align: center;
-    }
-
-    @media screen and (min-width: $bp-medium) {
-      padding-top: 100px;
-      padding-bottom: 100px;
-
-      &__title {
-        max-width: 768px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      &__rule {
-        width: 180px;
-      }
-      &__para {
-        max-width: 620px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  }
-
-  @media screen and (min-width: $bp-small) {
-    margin-bottom: 10px;
+  .single-column.intro .content{
+    text-align: center;
   }
 }

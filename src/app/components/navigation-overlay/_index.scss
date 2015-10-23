@@ -2,11 +2,9 @@
  *  NAVIGATION OVERLAY
  *  Mobile menu
  *
- *  Notes:
- *  TODO: Remove BEM
  */
 
-.nav__overlay {
+.navigation-overlay {
   overflow: scroll;
   position: fixed;
   top: 0;
@@ -19,18 +17,19 @@
   background-color: #fff;
   text-align: center;
 
-  &__close-button {
+  .close-button {
     fill: $nonBlack;
   }
-  &__menu {
+
+  .menu {
     clear: both;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: calc(100% - 75px - 100px);
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
 
   @media screen and (min-width: $bp-large) {

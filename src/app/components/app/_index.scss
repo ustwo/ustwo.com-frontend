@@ -1,55 +1,49 @@
+/*
+ *  APP
+ *  App states that alter the behaviour or structure of the app container, e.g. prevent scrolling when overlay is activated
+ *
+ *  TODO: Can some of the following be consolidated into generic states or moved into the component they relate to?
+ */
+
 .app {
 
-  &__content {
+  .content {
 
-    &__container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-
-      &.add {
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-
-        &.show {
-          opacity: 1;
-        }
-        &.hide {
-          opacity: 0;
-        }
-      }
-    }
-
+    /* Takeover bound by viewport size */
     &.takeover {
       height: 100vh;
       overflow: hidden;
     }
 
+    /* TODO: When is this used? */
     &.disabled {
       pointer-events: none;
     }
 
+    /* For when mobile navigation-overlay is visible to prevent scrolling of the page underneath */
     &.mobile-no-scroll {
       position: fixed;
       overflow: hidden;
       opacity: 0;
     }
+  }
 
-    @media screen and (min-width: $bp-large) {
+  /* 404 page bound by viewport size */
+  &.app-404 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .content {
+      /* Reset to normal behaviour for larger screens */
       &.mobile-no-scroll {
         position: relative;
         overflow: auto;
         opacity: 1;
       }
     }
-  }
-
-  &.app-404 {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 100%;
   }
 }

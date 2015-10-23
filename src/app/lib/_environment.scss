@@ -19,6 +19,11 @@ body {
   box-sizing: inherit;
 }
 
+ul, ol {
+  padding: 0;
+  margin: 0;
+}
+
 input,
 textarea,
 button,
