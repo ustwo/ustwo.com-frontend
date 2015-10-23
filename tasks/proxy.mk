@@ -19,7 +19,7 @@ proxy-log:
 
 proxy-create:
 	@echo "Creating $(proxy_name)"
-	@$(DOCKER_RUN) \
+	@$(DOCKER_PROC) \
 		--name $(proxy_name) \
 		-p $(PROXY_HTTPS_PORT):443 \
 		-p $(PROXY_HTTP_PORT):80 \

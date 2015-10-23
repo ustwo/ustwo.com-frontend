@@ -34,7 +34,7 @@ sandbox-rm:
 
 sandbox-create:
 	@echo "Creating $(sandbox_name)"
-	@$(DOCKER_RUN) \
+	@$(DOCKER_PROC) \
 		--name $(sandbox_name) \
 		$(sandbox_volumes) \
 		--restart always \
