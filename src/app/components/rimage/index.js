@@ -61,27 +61,33 @@ class Rimage extends React.Component {
     const newSize = first(dropWhile(sizes, isSmallerThanContainer));
     return newSize || last(sizes) || {};
   }
+  wrapImageInElement(img, wrapper) {
+    const url = this.getImageUrl(this.state.size);
+    const { children } = this.props;
+    return React.createElement(
+      wrapper,
+      { style: { backgroundImage: url && `url('${url}')` } },
+      [React.cloneElement(img, { className: 'img' })].concat(children)
+    );
+  }
+  wrapElementInAnchorTag(element, href) {
+    return <a href={href} onClick={Flux.override(href)}>{element}</a>;
+  }
   render() {
     const url = this.getImageUrl(this.state.size);
-    let img = <img />;
-    if(!this.props.backgroundOnly) {
-      if(!this.props.href && !this.props.wrap) {
-        img = <img className={this.props.className} src={url} alt="" />;
-      } else {
-        img = <img className="image" src={url} alt="" />;
-      }
-      if(this.props.href) {
-        img = <a className="link" href={this.props.href} onClick={Flux.override(this.props.href)}>{img}</a>;
-      }
+    const { className, wrap, href } = this.props;
+    const img = <img src={url} alt="" />;
+    let output = img;
+
+    if (wrap) {
+      output = this.wrapImageInElement(img, wrap);
     }
-    if(this.props.wrap) {
-      img = React.createElement(
-        this.props.wrap,
-        Object.assign({ style: {backgroundImage: url && `url('${url}')`} }, omit(this.props, ['wrap', 'sizes', 'href'])),
-        [img].concat(this.props.children)
-      );
+
+    if (href) {
+      output = this.wrapElementInAnchorTag(output, href);
     }
-    return img;
+
+    return React.cloneElement(output, { className: className });
   }
 };
 

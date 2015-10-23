@@ -21,7 +21,7 @@ const PageWhatWeDo = React.createClass({
       <article className="page-work">
         <Hero
           title={get(pageData, 'display_title')}
-          imageOnly={true}
+          transitionImage={true}
           sizes={get(image, 'media_details.sizes')}
           eventLabel='what-we-do'
           showDownChevron={true}

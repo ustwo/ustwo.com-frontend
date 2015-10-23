@@ -31,13 +31,13 @@ const PageJoinUs = React.createClass({
     return <article className="page-join-us">
       <Hero
         title={get(pageData, 'display_title')}
-        imageOnly={true}
+        transitionImage={true}
         sizes={get(image, 'media_details.sizes')}
         eventLabel='join-us'
         showDownChevron={true}
       />
       {get(pageData, 'page_builder', []).map(this.getModuleRenderer())}
-      <Rimage className="hero-image" wrap="div" backgroundOnly={true} sizes={{ hardcoded: {
+      <Rimage className="hero-image" wrap="div" sizes={{ hardcoded: {
           url: "/images/joinus/current_openings.jpg"
         } }}>
         <SVG className="ustwo-logo" title="ustwo logo" spritemapID='ustwologo' />

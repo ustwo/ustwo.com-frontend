@@ -12,7 +12,7 @@ import Track from '../../adaptors/server/track';
 export default class Hero extends React.Component {
   componentDidMount() {
     if (this.props.showDownChevron) {
-      const duration = this.props.imageOnly ? 2500 : 1700;
+      const duration = this.props.transitionImage ? 2500 : 1700;
       this.animTimeout = setTimeout(() => {
         this.refs.downChevron.resetAnim();
         this.refs.downChevron.anim();
@@ -28,7 +28,7 @@ export default class Hero extends React.Component {
     const props = this.props;
 
     return (
-      <Rimage wrap="section" className={classnames("hero", props.className)} sizes={props.imageOnly ? {} : props.sizes} backgroundOnly={true} >
+      <section className={classnames("hero", props.className)}>
         <EntranceTransition className='title-entrance'>
           <h1 className='title'>
             <WordAnimation delay={1} duration={0.5}>
@@ -39,22 +39,23 @@ export default class Hero extends React.Component {
         {this.renderImage()}
         {props.children}
         {this.renderDownChevron()}
-      </Rimage>
+      </section>
     );
   }
   renderImage = () => {
-    const props = this.props;
-    let image;
-    if (props.imageOnly) {
-      image = (
-        <EntranceTransition className='image-entrance'>
-          <Rimage className="image" sizes={this.props.sizes} />
-        </EntranceTransition>
+    const { sizes, transitionImage } = this.props;
+    const image = <Rimage className='image' sizes={sizes} />;
+    let output;
+    if (transitionImage) {
+      output = React.createElement(
+        EntranceTransition,
+        { className: 'image-entrance' },
+        image
       );
     } else {
-      image = <Rimage className="image" sizes={this.props.sizes} />;
+      output = image;
     }
-    return image;
+    return output;
   }
   renderDownChevron = () => {
     let chevron;
