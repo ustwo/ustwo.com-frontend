@@ -29,7 +29,7 @@ desired.name = 'testing with ' + browserKey;
 desired.tags = ['integration'];
 
 describe('  mocha integration tests (' + desired.browserName + ')', function () {
-  this.timeout(60000);
+  this.timeout(100000);
   let browser;
   let allPassed = true;
 
@@ -74,7 +74,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   it('should close overlay if present', () => {
     if (browser.hasElementByCss('.takeover')) {
       return browser
-        .waitForElementByCss('.take-over__content__message__close', 10000)
+        .waitForElementByCss('.take-over__content__message__close', 20000)
         .click()
         .elementByCss('.app__modal')
         .should.eventually.not.hasElementByCss('.take-over');
