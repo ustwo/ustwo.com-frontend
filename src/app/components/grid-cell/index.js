@@ -10,7 +10,7 @@ export default class GridCell extends React.Component {
     return (
       <li className="grid-cell">
         <div className="card feature">
-          <h2>{get(cell, 'attr.heading.value')}</h2>
+          <h3>{get(cell, 'attr.heading.value')}</h3>
           <p>{get(cell, 'attr.body.value')}</p>
         </div>
         <Rimage className="card image" sizes={images} wrap="div" />
