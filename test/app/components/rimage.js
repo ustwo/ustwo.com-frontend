@@ -34,8 +34,10 @@ describe('Rimage', () => {
     expect(renderedDOM().getAttribute('src')).to.equal(sizes.small.source_url);
   });
 
-  it('will replace the image with a sufficiently large image on mount', () => {
-    expect(rimage().getNewSize().name).to.equal('large');
+  it('will replace the image with a sufficiently large image', () => {
+    const sizesArray = rimage().getSizesArray(sizes);
+    expect(rimage().getNewSize(sizesArray, 800).name).to.equal('medium');
+    expect(rimage().getNewSize(sizesArray, 1100).name).to.equal('large');
   });
 
   it('includes the classname if it is passed', () => {

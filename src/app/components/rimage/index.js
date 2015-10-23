@@ -13,33 +13,56 @@ import endsWith from 'lodash/string/endsWith';
 import Flux from '../../flux';
 import Image from '../../adaptors/server/image';
 
-function getSizesArray(sizesObject) {
-  return sortBy(map(omit(sizesObject, (size, name) => {
-    return name === 'thumbnail' || endsWith(name, '_crop');
-  }), (size, name) => {
-    size.name = name;
-    return size;
-  }), 'width');
-}
-
 class Rimage extends React.Component {
   constructor(props) {
     super(props);
-    const sizes = getSizesArray(props.sizes);
+    const sizes = this.getSizesArray(props.sizes);
     this.state = {
       sizes: sizes,
       size: sizes[0] || {}
     };
   }
   componentWillReceiveProps(props) {
-    const sizes = getSizesArray(props.sizes);
-    this.state = {
+    const sizes = this.getSizesArray(props.sizes);
+    const el = React.findDOMNode(this);
+    this.setState({
       sizes: sizes,
-      size: this.getNewSize()
-    };
+      size: this.getNewSize(sizes, el.clientWidth)
+    });
+  }
+  componentDidMount() {
+    const { sizes, size: currentSize } = this.state;
+    const el = React.findDOMNode(this);
+    const newSize = this.getNewSize(sizes, el.clientWidth);
+    const newSizeUrl = this.getImageUrl(newSize);
+    const newSizeIsBigger = findIndex(sizes, newSize) > findIndex(currentSize);
+
+    if (newSizeUrl && newSizeIsBigger) {
+      const img = new Image();
+      img.src = newSizeUrl;
+      img.onload = () => this.setState({
+        size: newSize
+      });
+    }
+  }
+  getSizesArray(sizesObject) {
+    return sortBy(map(omit(sizesObject, (size, name) => {
+      return name === 'thumbnail' || endsWith(name, '_crop');
+    }), (size, name) => {
+      size.name = name;
+      return size;
+    }), 'width');
+  }
+  getImageUrl(size) {
+    return size.url || size.source_url;
+  }
+  getNewSize(sizes, containerSize) {
+    const isSmallerThanContainer = size => size.width < containerSize;
+    const newSize = first(dropWhile(sizes, isSmallerThanContainer));
+    return newSize || last(sizes) || {};
   }
   render() {
-    const url = this.getImageUrl();
+    const url = this.getImageUrl(this.state.size);
     let img = <img />;
     if(!this.props.backgroundOnly) {
       if(!this.props.href && !this.props.wrap) {
@@ -59,29 +82,6 @@ class Rimage extends React.Component {
       );
     }
     return img;
-  }
-  getImageUrl() {
-    return this.state.size.url || this.state.size.source_url;
-  }
-  getNewSize() {
-    const sizes = this.state.sizes;
-    const el = React.findDOMNode(this);
-    const constrainSize = el.clientWidth;
-    let newSize = first(dropWhile(sizes, size => {
-      return size.width < constrainSize;
-    }));
-    return newSize || last(sizes) || {};
-  }
-  componentDidMount() {
-    const sizes = this.state.sizes;
-    const newSize = this.getNewSize();
-    if((newSize.url || newSize.source_url) && findIndex(sizes, newSize) > findIndex(this.state.size)) {
-      const img = new Image();
-      img.onload = () => this.setState({
-        size: newSize
-      });
-      img.src = newSize.url || newSize.source_url;
-    }
   }
 };
 
