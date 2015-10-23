@@ -24,7 +24,7 @@ sauce-create:
 	# TODO: use something smarter than sleep
 	sleep 15
 
-sauce_available = $(shell $(DOCKER) ps -a | $(GREP) $(sauce_name) | $(AWK) '{print $$1}')
+sauce_available = $(shell $(DOCKER) ps -a | $(GREP) $(sauce_name))
 
 sauce-startup:
 ifeq ($(strip $(sauce_available)),)
