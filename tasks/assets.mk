@@ -61,7 +61,7 @@ assets-images:
 assets-css:
 	@$(call compile, npm run css)
 
-assets-css-watch:
+assets-css-watch: assets-css
 	@echo "Watching CSS files..."
 	@$(FSWATCH) -or -0 -l 0.2 \
 		-i \.scss \
