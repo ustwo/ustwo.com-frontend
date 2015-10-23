@@ -50,7 +50,7 @@ const PagePost = React.createClass({
           {this.renderSocialMediaSharing('bottom')}
           <section className="author">
             <img className="mugshot" alt={`Photo of ${get(post, '_embedded.author.0.name', 'post author')}`} src={get(post, '_embedded.author.0.avatar_urls.96')} />
-            <h1 className="title">About {get(post, '_embedded.author.0.name')}</h1>
+            <h3 className="title">About {get(post, '_embedded.author.0.name')}</h3>
             <p className="desc">{get(post, '_embedded.author.0.description')}</p>
             {/*<ul className="links">
               <li className="link"><a href={get(post, 'author.links[0].href')}>{get(post, 'author.links[0].text')}</a></li>

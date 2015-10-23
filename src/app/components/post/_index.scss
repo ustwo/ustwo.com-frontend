@@ -185,23 +185,6 @@
     width: 100%;
   }
 
-  h3 {
-    position: relative;
-    padding: 30px 0 54px;
-    text-align: center;
-
-    &:after {
-      content: "";
-      position: absolute;
-      bottom: 27px;
-      left: 50%;
-      width: 120px;
-      height: 4px;
-      background: $nonBlack;
-      transform: translateX(-50%);
-    }
-  }
-
   [id*="attachment_"] {
     width: 100% !important;
   }
@@ -220,6 +203,7 @@
     .hero-image {
       height: 450px;
     }
+    
     .social-media-sharing {
       &.side {
         display: block;
@@ -232,28 +216,26 @@
         }
       }
     }
+    
     .content-container {
       margin-top: -70px;
       margin-left: 80px;
       margin-right: 80px;
     }
-
-    h3 {
-      &:after {
-        width: 184px;
-      }
-    }
   }
+
   @media screen and (min-width: $bp-huge) {
     .hero-image {
       height: 620px;
     }
+    
     .content-container {
       max-width: 1200px;
       margin-top: -100px;
       margin-left: auto;
       margin-right: auto;
     }
+    
     .content-container ul.social-media-sharing {
       right: 80px;
     }
