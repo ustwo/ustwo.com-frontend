@@ -1,0 +1,40 @@
+# Browser Sync tasks ##########################################################
+SYNC_PORT ?= 3000
+SYNC_ADMIN_PORT ?= 3001
+
+sync_id = sync
+sync_image = ustwo/browser-sync
+sync_name = $(project_name)_$(sync_id)
+
+.PHONY: \
+  sync-create \
+  sync-rm \
+  sync-log \
+  sync-reload
+
+sync: sync-rm sync-create
+
+sync-create:
+	@$(DOCKER_PROC) \
+		-p $(SYNC_PORT):$(SYNC_PORT) \
+		-p $(SYNC_ADMIN_PORT):$(SYNC_ADMIN_PORT) \
+		-v $(PWD)/share:/home/ustwo/share \
+		-w /home/ustwo \
+		$(project_labels) \
+		--name $(sync_name) \
+		$(docker_host) \
+		$(sync_image) \
+		start --proxy "https://docker.ustwo.com:$(PROXY_HTTPS_PORT)" \
+					--files "share/nginx/assets/css/*.css" \
+					--port $(SYNC_PORT) \
+					--ui-port $(SYNC_ADMIN_PORT) \
+					--browser false
+
+sync-rm:
+	$(DOCKER_RM) $(sync_name)
+
+sync-log:
+	$(DOCKER) logs -f $(sync_name)
+
+sync-reload:
+	$(DOCKER_EXEC) $(sync_name) reload

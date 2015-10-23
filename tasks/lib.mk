@@ -18,7 +18,7 @@ define project_labels
 endef
 
 define project_filters
---filter 'label=project_name=$(project_name)'
+--filter "label=project_name=$(project_name)"
 endef
 ##
 # Gets the Git commit hash from the given version

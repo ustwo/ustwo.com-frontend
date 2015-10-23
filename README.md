@@ -166,6 +166,29 @@ And Nginx logs with:
 
     $ make proxy-log
 
+
+### Watch and reload
+
+CSS has extra tasks to speed up the development cycle. `css-watch` starts a
+`fswatch` process in _the host machine_ watching any scss or css file under
+`scr/app`.
+
+    $ make css-watch
+
+*Note*: `brew install fswatch` to install `fswatch` in your machine.
+
+`sync` starts a dockerised `browser-sync` proxy listening by default to port
+`3000`. So you can combine the two:
+
+    $ make -i sync css-watch
+
+Open `https://192.168.99.100:3000` in your browser and start editing scss and
+let the toolchain compile and push changes to the browser.
+
+*Note*: `browser-sync` uses a self-signed certificate so using `local.ustwo.com` or the raw IP will make the browser complain.  If you need to overcome this
+please add a forward rule to Virtualbox so you can use `https://localhost:3000`.
+
+
 ## Test
 
 Run all tests:

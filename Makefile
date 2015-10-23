@@ -22,7 +22,7 @@ DOCKER := docker
 DOCKER_CP := $(DOCKER) cp
 DOCKER_EXEC := $(DOCKER) exec -it
 DOCKER_RM := $(DOCKER) rm -vf
-DOCKER_RUN := $(DOCKER) run -d
+DOCKER_PROC := $(DOCKER) run -d
 DOCKER_VOLUME := $(DOCKER) run
 DOCKER_TASK := $(DOCKER) run --rm -it
 # CircleCI fails if you try to remove a container
@@ -67,7 +67,8 @@ test: assets-test
 push: app-push assets-push
 pull: app-pull assets-pull
 init: vault-create assets-create app-create proxy-create
-clean-no-confirm: proxy-rm app-rm assets-rm vault-rm
+clean-no-confirm:
+	@$(DOCKER_RM) $(shell $(DOCKER) ps -aq $(project_filters))
 clean:
 	$(call confirm,"Are you sure you want to clean __$(DOCKER_MACHINE_NAME)__?",$(MAKE) -i clean-no-confirm)
 deploy: clean-no-confirm init
@@ -88,9 +89,6 @@ spa: assets-spa
 images: assets-images
 
 sandbox: sandbox-rm sandbox-create
-
-## Obsolete ###################################################################
-init-rm: clean
 
 ## Environment  ###############################################################
 ##
@@ -120,7 +118,7 @@ nuke:
 ##
 # Absorbs changes from a branch (by default: master) and rebases current branch on top of it.
 absorb:
-	git checkout $(SOURCE_BRANCH)
-	git pull --rebase=preserve origin $(SOURCE_BRANCH)
-	git checkout $(GIT_BRANCH)
-	git rebase $(SOURCE_BRANCH)
+	$(GIT) checkout $(SOURCE_BRANCH)
+	$(GIT) pull --rebase=preserve origin $(SOURCE_BRANCH)
+	$(GIT) checkout $(GIT_BRANCH)
+	$(GIT) rebase $(SOURCE_BRANCH)
