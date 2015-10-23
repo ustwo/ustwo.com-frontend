@@ -13,15 +13,33 @@ function log(browser, data) {
   filteredLines.forEach(line => console.log(`${browser}:${' '.repeat(15 - browser.length)}${line.trimRight()}`));
 }
 
-// runs the mocha tests for a given browser
-function run_mocha(browser, done) {
-  let mocha = exec('mocha ' + mochaArgs, {env: Object.assign({BROWSER: browser}, process.env)}, done);
-  mocha.stdout.on('data', log.bind(null, browser));
-  mocha.stderr.on('data', log.bind(null, browser));
+// promisifying `child_process`
+function promiseFromChildProcess(child) {
+  return new Promise(function (resolve, reject) {
+    child.addListener('error', (code, signal) => {
+      console.log('ChildProcess error', code, signal);
+      reject();
+    });
+    child.addListener('exit', (code, signal) => {
+      if (code === 0) {
+        resolve();
+      } else {
+        reject();
+      }
+    });
+  });
 }
 
-// building job list
-let jobs = browsers.map(browser => Q.nfcall(run_mocha, browser));
+// runs the mocha tests for a given browser
+function runMocha(browser) {
+  let mergedEnv = Object.assign({BROWSER: browser}, process.env);
+  let mocha = exec('mocha ' + mochaArgs, {env: mergedEnv});
+  mocha.stdout.on('data', log.bind(null, browser));
+  mocha.stderr.on('data', log.bind(null, browser));
+  return promiseFromChildProcess(mocha);
+}
 
 // running jobs in parallel
-Q.all(jobs).then(() => console.log("ALL TESTS SUCCESSFUL")).done();
+Promise.all(browsers.map(browser => runMocha(browser)))
+  .then(() => console.log('ALL TESTS RAN SUCCESSFULLY!'))
+  .catch(() => console.log('SOME TEST(S) FAILED!'));
