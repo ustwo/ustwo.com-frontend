@@ -17,7 +17,7 @@
     &:nth-child(#{$i}) {
       .card.feature {
         background-color: rgba($softy, .3);
-        h2 {
+        h3 {
           color: $wow;
         }
       }
@@ -48,7 +48,7 @@
     }
 
     &.feature {
-      h2 {
+      h3 {
         font-size: 30px;
         margin-bottom: 30px;
       }

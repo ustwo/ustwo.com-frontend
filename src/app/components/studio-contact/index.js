@@ -20,7 +20,7 @@ export default class StudioContact extends React.Component {
     const mapurl = `https://maps.google.com/maps?z=12&t=m&q=loc:${studio.location.lat}+${studio.location.long}`;
     return (
       <li className={classnames('studio', { open: this.props.open })} style={style}>
-        <h1 className="studio-title" onClick={this.onClick}>{studio.name}</h1>
+        <h4 className="studio-title" onClick={this.onClick}>{studio.name}</h4>
         <div className="studio-details">
           <div className="vcard">
             <p className="phone-number">{phoneNumbers[studio.name]}</p>
