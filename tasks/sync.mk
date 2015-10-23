@@ -1,30 +1,39 @@
 # Browser Sync tasks ##########################################################
+SYNC_PORT ?= 3000
+SYNC_ADMIN_PORT ?= 3001
 
-sync-proxy:
-	$(DOCKER) run --rm -t \
-		-p 3000:3000 \
-		-p 3001:3001 \
-		-v $(PWD)/etc/browser-sync/polling.js:/home/ustwo/bs.js \
+sync_id = sync
+sync_image = ustwo/browser-sync
+sync_name = $(project_name)_$(sync_id)
+
+.PHONY: \
+	sync-create \
+	sync-rm \
+	sync-log \
+	sync-reload
+
+sync: sync-rm sync-create
+
+sync-create:
+	@$(DOCKER_PROC) \
+		-p $(SYNC_PORT):$(SYNC_PORT) \
+		-p $(SYNC_ADMIN_PORT):$(SYNC_ADMIN_PORT) \
 		-v $(PWD)/share:/home/ustwo/share \
 		-w /home/ustwo \
-		--name usweb_sync \
+		--name $(sync_name) \
 		$(docker_host) \
-		ustwo/browser-sync \
+		$(sync_image) \
 		start --proxy "https://docker.ustwo.com:$(PROXY_HTTPS_PORT)" \
 					--files "share/nginx/assets/css/*.css" \
-					--reload-delay 0 \
-					--https
+					--port $(SYNC_PORT) \
+					--ui-port $(SYNC_ADMIN_PORT) \
+					--browser false
 
-sync-proxy-raw:
-		@browser-sync \
-			start --proxy "https://local.ustwo.com:$(PROXY_HTTPS_PORT)" \
-						--files "share/nginx/assets/css/*.css" \
-						--ws \
-						--browser false \
-						--https
+sync-rm:
+	$(DOCKER_RM) $(sync_name)
 
+sync-log:
+	$(DOCKER) logs -f $(sync_name)
 
 sync-reload:
-	docker exec -t \
-		usweb_sync \
-		browser-sync reload
+	$(DOCKER_EXEC) $(sync_name) reload

@@ -34,7 +34,7 @@ app-rm:
 
 app-create:
 	@echo "Creating $(app_name)"
-	@$(DOCKER_RUN) \
+	@$(DOCKER_PROC) \
 		--name $(app_name) \
 		$(app_volumes) \
 		--restart always \
