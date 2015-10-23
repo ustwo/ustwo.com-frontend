@@ -20,6 +20,7 @@ sync-create:
 		-p $(SYNC_ADMIN_PORT):$(SYNC_ADMIN_PORT) \
 		-v $(PWD)/share:/home/ustwo/share \
 		-w /home/ustwo \
+		$(project_labels) \
 		--name $(sync_name) \
 		$(docker_host) \
 		$(sync_image) \
