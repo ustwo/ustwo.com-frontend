@@ -182,7 +182,7 @@ CSS has extra tasks to speed up the development cycle. `css-watch` starts a
 
     $ make -i sync css-watch
 
-Open `https://local.ustwo.com:3000` in your browser and start editing scss and
+Open `https://192.168.99.100:3000` in your browser and start editing scss and
 let the toolchain compile and push changes to the browser.
 
 *Note*: `browser-sync` uses a self-signed certificate so using `local.ustwo.com` or the raw IP will make the browser complain.  If you need to overcome this
