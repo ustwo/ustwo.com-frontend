@@ -16,7 +16,7 @@ const PageLegal = React.createClass({
       <article className="page-legal">
 
         <div className="hero-image" style={{backgroundImage: "url(/images/photo.jpg)"}}>
-          <img className="image" src="/images/photo.jpg" />
+          <img className="image" src="/images/photo.jpg" alt="ustwo studio" />
         </div>
 
         <div className="content-container">

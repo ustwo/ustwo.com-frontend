@@ -25,7 +25,7 @@ export default class BlogPostListItem extends React.Component {
 
     return (
       <article className={classes}>
-        <Rimage className="image" wrap="div" href={uri} sizes={get(image, 'media_details.sizes')} />
+        <Rimage className="post-image" wrap="div" href={uri} sizes={get(image, 'media_details.sizes')} />
         <div className="content">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h2 className="title"><a href={uri} onClick={Flux.override(uri)}>{he.decode(get(post, 'title.rendered'))}</a></h2>
