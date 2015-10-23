@@ -1,16 +1,20 @@
 'use strict';
 
-let exec = require('child_process').exec;
-let Q = require('q');
+const exec = require('child_process').exec;
 
-let mochaArgs = process.argv[2];
-let browsers = process.argv.splice(3);
+const mochaArgs = process.argv[2];
+const browsers = process.argv.splice(3);
 
-// context specific log
+// context (browser) specific log
 function log(browser, data) {
   let lines = data.replace(/\033\[[0-9;]*m/g,'').split(/(\r?\n)/g);
-  let filteredLines = lines.filter(line => line !== '\n' && line !== '\r' && line !== '');
-  filteredLines.forEach(line => console.log(`${browser}:${' '.repeat(15 - browser.length)}${line.trimRight()}`));
+  let filteredLines = lines.filter(line => {
+    return line !== '\n' && line !== '\r' && line !== '';
+  });
+  filteredLines.forEach(line => {
+    let m = `${browser}:${' '.repeat(15 - browser.length)}${line.trimRight()}`;
+    console.log(m);
+  });
 }
 
 // promisifying `child_process`

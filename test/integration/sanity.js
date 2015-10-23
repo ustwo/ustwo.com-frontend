@@ -1,16 +1,15 @@
 'use strict';
 
-let wd = require('wd');
-require('colors');
-let chai = require('chai');
-let chaiAsPromised = require('chai-as-promised');
+const wd = require('wd');
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
 
 chai.use(chaiAsPromised);
 chai.should();
 chaiAsPromised.transferPromiseness = wd.transferPromiseness;
 
 // browser capabilities
-let DESIREDS = {
+const desireds = {
   firefox: {browserName: 'firefox'},
   chrome: {browserName: 'chrome'},
   explorer: {browserName: 'internet explorer'}
@@ -25,7 +24,7 @@ wd.configureHttp( {
 
 // building desired capability
 let browserKey = process.env.BROWSER || 'explorer';
-let desired = DESIREDS[browserKey];
+let desired = desireds[browserKey];
 desired.name = 'testing with ' + browserKey;
 desired.tags = ['integration'];
 
@@ -46,18 +45,15 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
     browser = wd.promiseChainRemote('ondemand.saucelabs.com', 80, username, accessKey);
     if (process.env.VERBOSE) {
       // optional logging
-      browser.on('status', info => {
-        console.log(info.cyan);
-      });
-      browser.on('command', (meth, path, data) => {
-        console.log(' > ' + meth.yellow, path.grey, data || '');
-      });
+      browser.on('status', info => console.log(info));
+      browser.on('command', (meth, path, data) => console.log(' > ' + meth, path, data || ''));
     }
     return browser
       .init(desired)
       .setWindowSize(1280, 720);
   });
 
+  // need to keep it `function`, otherwise `this.currentTest` is undefined
   afterEach(function () {
     allPassed = allPassed && (this.currentTest.state === 'passed');
   });
@@ -125,6 +121,4 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
       .waitForElementByCss('.page-work__list', wd.asserters.textInclude('Read more'), 10000)
       .url().should.eventually.include('what');
   });
-
 });
-

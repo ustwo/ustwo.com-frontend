@@ -11,7 +11,7 @@
     "images": "./src/scripts/images.sh",
     "css-watch": "echo 'not implemented'",
     "test": "NODE_ENV=development mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test/unit/ -name '*.js')",
-    "integration": "node ./src/app/lib/parallel-mochas '--reporter spec ./test/integration/*.js' chrome firefox explorer"
+    "integration": "babel-node ./src/app/lib/parallel-mochas '--reporter spec ./test/integration/*.js' chrome firefox explorer"
   },
   "aliasify": "./src/app/aliases.json",
   "dependencies": {
@@ -47,8 +47,6 @@
     "urllite": "0.5.0",
     "uglify-js": "2.4.24",
     "wd": "0.3.12",
-    "chai-as-promised": "5.1.0",
-    "colors": "1.1.2",
-    "q": "1.4.1"
+    "chai-as-promised": "5.1.0"
   }
 }
