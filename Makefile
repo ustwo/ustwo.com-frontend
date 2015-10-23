@@ -118,7 +118,7 @@ nuke:
 ##
 # Absorbs changes from a branch (by default: master) and rebases current branch on top of it.
 absorb:
-	git checkout $(SOURCE_BRANCH)
-	git pull --rebase=preserve origin $(SOURCE_BRANCH)
-	git checkout $(GIT_BRANCH)
-	git rebase $(SOURCE_BRANCH)
+	$(GIT) checkout $(SOURCE_BRANCH)
+	$(GIT) pull --rebase=preserve origin $(SOURCE_BRANCH)
+	$(GIT) checkout $(GIT_BRANCH)
+	$(GIT) rebase $(SOURCE_BRANCH)
