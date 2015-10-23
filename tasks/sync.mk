@@ -7,10 +7,10 @@ sync_image = ustwo/browser-sync
 sync_name = $(project_name)_$(sync_id)
 
 .PHONY: \
-	sync-create \
-	sync-rm \
-	sync-log \
-	sync-reload
+  sync-create \
+  sync-rm \
+  sync-log \
+  sync-reload
 
 sync: sync-rm sync-create
 
