@@ -90,9 +90,6 @@ images: assets-images
 
 sandbox: sandbox-rm sandbox-create
 
-## Obsolete ###################################################################
-init-rm: clean
-
 ## Environment  ###############################################################
 ##
 # Lists all containers related to the project.
