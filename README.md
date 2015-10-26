@@ -22,8 +22,6 @@ vast majority of the content editable.
 
 ## Tech stack
 
-[![ustwo.com infrastructure diagram][5]][5]
-
 ### React SPA
 
 ES6/7, React.js, Flux
@@ -48,6 +46,8 @@ Browserify, Babel
 
 Autoprefixer, LibSASS
 
+## Inclusion
+
 ### Browser compatibility
 
 We're aiming to support all evergreen browsers (Chrome, Firefox, Edge and Opera
@@ -55,10 +55,56 @@ on all platforms), Safari on Mac and iOS, Internet Explorer 10-11 and Android
 Browser 4.2-4.4.4.
 
 In case you were wondering, we've chosen these as we wanted to be able to use
-[Flexbox][6] and they happen to conveniently mostly overlap the visitor profiles
-from Google Analytics.
+[Flexbox][6], and they also happened to conveniently overlap our historical
+visitor profiles from Google Analytics.
 
 If you see any misbehaviour with one of these browsers please open an issue!
+
+### Performance
+
+Being a studio which is passionate about delivering a great user experience
+everywhere and early champions of mobile, we kept performance in the front of
+our minds throughout the process of building the websites.
+
+This means that we are continuously reviewing both hard metrics and perceptual
+performance. To get reports and keep an eye on things, we found [GTmetrix][14]
+to be a great tool with a generous free tier. It calculates both PageSpeed and
+YSlow scores, generates a network waterfall, renders a filmstrip view and sends
+an automated report of all these regularly.
+
+There are too many things to list here, but we mentioned a lot of optimisations
+throughout this README and might cover some of them specifically in blog posts
+later.
+
+### Accessibility
+
+TODO
+
+Officially supporting only modern browsers doesn't mean that we ignore people
+(and browsers) with special needs.
+
+* Prerendered HTML
+* Clean, standards compliant markup
+* WAI-ARIA tags
+
+## Infrastructure
+
+### CDN
+
+We (will soon) have *everything* served up from a CDN with HTTP/2 enabled, and
+by that we mean that ustwo.com is pointed at the CDN URL on a DNS level!
+
+Unless you have a lot of user dependent dynamic content this is a matter of
+expiry / cache headers optimised and honoured throughout your stack and having a
+CDN with some basic APIs so you can flush and prefetch on code and content
+changes.
+
+### The big picture
+
+So here's how all this fits together and creates a working setup with our
+WordPress backend and CDN.
+
+[![ustwo.com infrastructure diagram][5]][5]
 
 ## Setup
 
@@ -185,9 +231,9 @@ CSS has extra tasks to speed up the development cycle. `css-watch` starts a
 Open `https://192.168.99.100:3000` in your browser and start editing scss and
 let the toolchain compile and push changes to the browser.
 
-*Note*: `browser-sync` uses a self-signed certificate so using `local.ustwo.com` or the raw IP will make the browser complain.  If you need to overcome this
+*Note*: `browser-sync` uses a self-signed certificate so using `local.ustwo.com`
+or the raw IP will make the browser complain.  If you need to overcome this
 please add a forward rule to Virtualbox so you can use `https://localhost:3000`.
-
 
 ## Test
 
@@ -280,3 +326,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 [11]: ./docs/MAKE.md
 [12]: ./docs/RELEASE.md
 [13]: ./CONTRIBUTING.md
+[14]: https://gtmetrix.com/
