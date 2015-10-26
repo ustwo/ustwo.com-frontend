@@ -60,7 +60,7 @@ const PageSearchResults = React.createClass({
     } else if (posts && posts.length) {
       output = (
         <ul key='search-results' className='search-results'>
-          {posts.map(post => <SearchResultListItem data={post} />)}
+          {posts.map(post => <SearchResultListItem key={post.slug} data={post} />)}
         </ul>
       );
     } else {
