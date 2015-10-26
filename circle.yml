@@ -4,27 +4,16 @@ machine:
   services:
     - docker
 
-general:
-  branches:
-    only:
-      - master
-      - /hotfixes\/.+/
-
 deployment:
   stable:
-    branch: master
-    commands:
-      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - make app-push assets-push
-  hotfix:
-    branch: /hotfixes\/.+/
+    branch: /(master|hotfixes\/.+)/
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
       - make app-push assets-push
 
 dependencies:
   override:
-    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - make compiler-build
     - make assets-build
     - make app-build
     - make assets-create app-create
