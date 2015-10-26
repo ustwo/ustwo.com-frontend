@@ -70,21 +70,14 @@ class Rimage extends React.Component {
       [React.cloneElement(img, { className: 'img' })].concat(children)
     );
   }
-  wrapElementInAnchorTag(element, href) {
-    return <a href={href} onClick={Flux.override(href)}>{element}</a>;
-  }
   render() {
+    const { className, wrap } = this.props;
     const url = this.getImageUrl(this.state.size);
-    const { className, wrap, href } = this.props;
     const img = <img src={url} alt="" />;
     let output = img;
 
     if (wrap) {
       output = this.wrapImageInElement(img, wrap);
-    }
-
-    if (href) {
-      output = this.wrapElementInAnchorTag(output, href);
     }
 
     return React.cloneElement(output, { className: className });

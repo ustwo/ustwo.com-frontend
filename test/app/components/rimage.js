@@ -75,31 +75,4 @@ describe('Rimage', () => {
       expect(renderedDOM().children[1].localName).to.equal('h1');
     });
   });
-
-  describe('if an optional href is passed', () => {
-    let ustwo;
-
-    beforeEach(() => {
-      ustwo = 'https://ustwo.com';
-      props = Object.assign(props, { href: ustwo });
-    });
-
-    it('wraps the image in an anchor with the href', () => {
-      expect(renderedDOM().localName).to.equal('a');
-      expect(renderedDOM().getAttribute('href')).to.equal(ustwo);
-      expect(renderedDOM().children[0].localName).to.equal('img');
-    });
-
-    describe('and Rimage is rendered as a wrapper', () => {
-      beforeEach(() => {
-        props = Object.assign(props, { wrap: 'div' });
-      });
-
-      xit('wraps the wrapper in an anchor', () => {
-        expect(renderedDOM().localName).to.equal('a');
-        expect(renderedDOM().getAttribute('href')).to.equal(ustwo);
-        expect(renderedDOM().children[0].localName).to.equal('div');
-      });
-    });
-  });
 });
