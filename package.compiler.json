@@ -11,7 +11,7 @@
     "images": "./src/scripts/images.sh",
     "css-watch": "echo 'not implemented'",
     "test": "NODE_ENV=development mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test/unit/ -name '*.js')",
-    "integration": "babel-node ./src/app/lib/parallel-mochas '--reporter spec ./test/integration/*.js' chrome firefox explorer"
+    "integration": "babel-node ./src/app/lib/parallel-mochas '--compilers js:babel/register --reporter spec ./test/integration/*.js' chrome firefox explorer"
   },
   "aliasify": "./src/app/aliases.json",
   "dependencies": {
