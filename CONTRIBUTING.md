@@ -18,7 +18,7 @@ TODO: Should we enforce with [JSCS](http://jscs.info/) (see [Airbnb's settings](
 
 **"Write CSS, not SASS (well... unless absolutely necessary)"**
 
-The purpose of this document is to suggest some guidelines that will make the styling codebase simple, readable, consistent and relatively transferable to other CSS processor languages.
+Some suggestions and guidelines that will make the styling codebase simple, readable, consistent and relatively transferable to other CSS processor languages.
 
 Approach writing the code with a 'vanilla CSS' ethos, only adding non-standard syntax (SASS or perhaps PostCSS) when absolutely necessary.
 
@@ -40,14 +40,14 @@ Each CSS file should have the following at the top:
 
 #### Attribute order
 
-To me, there is a familiar and natural order of how to write an element's attributes when I consider a) how a node is drawn and painted in the browser and b) the order of thought process when constructing the style of an element.
+We feel there is a familiar and natural order of how to write an element's attributes when we consider a) how a node is drawn and painted in the browser and b) the thought process when writing the element's styles.
 
-- **content, box-sizing, clear, overflow** - Unusual/breaking rules, flags, resets
+- **content, box-sizing, clear, overflow** - Unusual/breaking rules, flags, resets, everything else (?)
 - **position, top, right, bottom, left**  - Position is a naughty (but helpful) rule, can remove element from the flow
-- **display, flex properties, float**  - How the element behaves in the flow, the element flavour
-- **width, height, margin, padding** - Box Model, dimensions
+- **display, flex properties, float**  - How the element behaves in the flow
+- **width, height, margin, padding** - Box Model, dimensions etc
 - **border, border-radius, background** - Cosmetics of the box
-- **color, font, line-height, text** - Text and innards behaviour (leaves)
+- **color, font, line-height, text** - Text and innards behaviour
 - **transform, opacity, visibility** - Modify the element
 - **transition, animation** - Motion
 
@@ -122,7 +122,7 @@ Move to PostCSS's custom-properties and `var()`?
 
 #### Mixins and Extends
 
-Know to use mixins only if an argument is being passed in. Try to limit the amount of 'static' code (can that code be used as an extend instead?). Include the mixin or extend at the top of the attribute stack with space underneath before the first attribute.
+Try to use mixins only if an argument is being passed in, limit the amount of unchanging code (can that code be used as an extend instead?). Include the mixin or extend at the top of the attribute stack with space underneath before the first attribute.
 
 ```scss
 /* mixins.scss */
@@ -139,7 +139,7 @@ Know to use mixins only if an argument is being passed in. Try to limit the amou
 }
 ```
 
-#### Iterations, functions etc
+#### Loops, functions etc
 
 If you really need them, then go bananas ![image](http://www.sherv.net/cm/emo/funny/2/banana.gif) but extensively document.
 
