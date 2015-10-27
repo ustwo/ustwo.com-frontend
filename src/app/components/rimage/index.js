@@ -1,6 +1,8 @@
 'use strict';
 
 import React from 'react';
+import { create as createFragment } from 'react/lib/ReactFragment';
+import classnames from 'classnames';
 import first from 'lodash/array/first';
 import last from 'lodash/array/last';
 import dropWhile from 'lodash/array/dropWhile';
@@ -61,26 +63,32 @@ class Rimage extends React.Component {
     const newSize = first(dropWhile(sizes, isSmallerThanContainer));
     return newSize || last(sizes) || {};
   }
-  wrapImageInElement(img, wrapper) {
-    const url = this.getImageUrl(this.state.size);
-    const { children } = this.props;
-    return React.createElement(
-      wrapper,
-      { style: { backgroundImage: url && `url('${url}')` } },
-      [React.cloneElement(img, { className: 'img' })].concat(children)
-    );
-  }
   render() {
-    const { className, wrap } = this.props;
+    const classes = classnames('rimage', this.props.className);
     const url = this.getImageUrl(this.state.size);
-    const img = <img src={url} alt="" />;
-    let output = img;
+    const img = <img className='img' src={url} alt="" />;
+    let wrap;
+    let props;
+    let children;
 
-    if (wrap) {
-      output = this.wrapImageInElement(img, wrap);
+    if (this.props.wrap) {
+      wrap = this.props.wrap;
+      props = { style: { backgroundImage: url && `url('${url}')` } };
+      children = createFragment({
+        img: img,
+        originalChildren: this.props.children
+      });
+    } else {
+      wrap = 'div';
+      props = {};
+      children = img;
     }
 
-    return React.cloneElement(output, { className: className });
+    return React.createElement(
+      wrap,
+      Object.assign(props, { className: classes }),
+      children
+    );
   }
 };
 
