@@ -20,9 +20,8 @@ export default class WorkItem extends React.Component {
     const secondaryColour = get(data, 'colors.secondary');
 
     return <li className={classes} style={{backgroundColor: bgColour}}>
-      <a href={link} onClick={Flux.override(link)}>
+      <a href={link} onClick={Flux.override(link)} className="image">
         <Rimage
-          className='image'
           wrap='div'
           sizes={get(image, 'media_details.sizes')}
           altText={get(image, 'alt_text')}

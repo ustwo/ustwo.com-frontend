@@ -11,11 +11,13 @@
   list-style: none;
 
   .image {
-    display: block;
-    height: 320px;
-    background-position: center;
-    background-size: cover;
     cursor: pointer;
+
+    .rimage {
+      height: 320px;
+      background-position: center;
+      background-size: cover;
+    }
 
     img {
       display: none;
@@ -45,7 +47,7 @@
   }
 
   @media screen and (min-width: 450px) {
-    .image {
+    .image .rimage {
       height: 480px;
     }
   }
@@ -69,7 +71,7 @@
   }
 
   @media screen and (min-width: 1200px) {
-    .image {
+    .image .rimage {
       height: 630px;
     }
   }
