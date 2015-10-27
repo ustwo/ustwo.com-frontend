@@ -67,7 +67,7 @@ class Rimage extends React.Component {
     const { className, altText, children: originalChildren, wrap } = this.props;
     const classes = classnames('rimage', className, { wrap: wrap });
     const url = this.getImageUrl(this.state.size);
-    const img = <img className='image' src={url} alt={altText} />;
+    const img = <img className='img' src={url} alt={altText} />;
     let wrapElement;
     let props;
     let children;
