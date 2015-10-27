@@ -34,7 +34,12 @@ export default class StudioJobs extends React.Component {
               <p className="excerpt">{get(studio, 'recruitment-title')}</p>
               <p className="content">{get(studio, 'recruitment-desc')}</p>
             </div>
-            <Rimage className="photo" wrap="div" sizes={get(image, 'media_details.sizes')} />
+            <Rimage
+              className="photo"
+              wrap="div"
+              sizes={get(image, 'media_details.sizes')}
+              altText={get(image, 'alt_text')}
+            />
           </div>
           {this.renderJobsList()}
         </div>

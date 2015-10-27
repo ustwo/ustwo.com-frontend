@@ -43,8 +43,8 @@ export default class Hero extends React.Component {
     );
   }
   renderImage = () => {
-    const { sizes, transitionImage } = this.props;
-    const image = <Rimage className='image' sizes={sizes} />;
+    const { sizes, altText, transitionImage } = this.props;
+    const image = <Rimage className='image' sizes={sizes} altText={altText} />;
     let output;
     if (transitionImage) {
       output = React.createElement(

@@ -16,7 +16,11 @@ export default (moduleData, index, colours, getZebra) => {
       module = <SingleColumn key={`module-text-${get(moduleData, 'attr.heading.value')}-${index}`} title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')} backgroundColour={getZebra && !getZebra() && get(colours, 'bg')} isInZebraList={!!getZebra}>{get(moduleData, 'attr.body.value')}</SingleColumn>;
       break;
     case 'image':
-      module = <FullImage key={`module-image-${get(moduleData, 'attr.image.value.0.id')}-${index}`} sizes={get(moduleData, 'attr.image.value.0.sizes')} />;
+      module = <FullImage
+        key={`module-image-${get(moduleData, 'attr.image.value.0.id')}-${index}`}
+        sizes={get(moduleData, 'attr.image.value.0.sizes')}
+        altText={get(moduleData, 'attr.image.value.0.alt')}
+      />;
       break;
     case 'blockquote':
       module = (

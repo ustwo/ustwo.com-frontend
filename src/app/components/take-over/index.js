@@ -123,7 +123,12 @@ export default class TakeOver extends React.Component {
         <div key="detail" className="content">
           <div className="message">
             <CloseButton onClose={this.onClickClose} autoAnim={1000} style={{ fill: takeover.header_color }} />
-            <Rimage wrap="div" className="image"  sizes={get(image, 'media_details.sizes')} />
+            <Rimage
+              wrap="div"
+              className="image"
+              sizes={get(image, 'media_details.sizes')}
+              altText={get(image, 'alt_text')}
+            />
             <h1 className="title" style={{color: takeover.header_color}}>{he.decode(takeover.title)}</h1>
             <p className="description">{takeover.description}</p>
             <ul className="links">

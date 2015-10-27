@@ -32,6 +32,7 @@ export default class BlogPostListItem extends React.Component {
           className='post-image'
           wrap='div'
           sizes={get(image, 'media_details.sizes')}
+          altText={get(image, 'alt_text')}
         />
       </a>
       <div className='content'>

@@ -25,6 +25,7 @@ export default class WorkItem extends React.Component {
           className='image'
           wrap='div'
           sizes={get(image, 'media_details.sizes')}
+          altText={get(image, 'alt_text')}
         />
       </a>
       <div className='details'>

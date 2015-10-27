@@ -27,19 +27,19 @@ const PageJoinUs = React.createClass({
   render() {
     const { page: pageData } = this.props;
     const image = getFeaturedImage(pageData);
+    const sizes = { hardcoded: { url: "/images/joinus/current_openings.jpg" }};
 
     return <article className="page-join-us">
       <Hero
         title={get(pageData, 'display_title')}
         transitionImage={true}
         sizes={get(image, 'media_details.sizes')}
+        altText={get(image, 'alt_text')}
         eventLabel='join-us'
         showDownChevron={true}
       />
       {get(pageData, 'page_builder', []).map(this.getModuleRenderer())}
-      <Rimage className="hero-image" wrap="div" sizes={{ hardcoded: {
-          url: "/images/joinus/current_openings.jpg"
-        } }}>
+      <Rimage className="hero-image" wrap="div" sizes={sizes}>
         <SVG className="ustwo-logo" title="ustwo logo" spritemapID='ustwologo' />
         <h2>Current Openings</h2>
       </Rimage>

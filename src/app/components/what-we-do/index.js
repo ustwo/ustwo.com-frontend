@@ -23,6 +23,7 @@ const PageWhatWeDo = React.createClass({
           title={get(pageData, 'display_title')}
           transitionImage={true}
           sizes={get(image, 'media_details.sizes')}
+          altText={get(image, 'alt_text')}
           eventLabel='what-we-do'
           showDownChevron={true}
         />
