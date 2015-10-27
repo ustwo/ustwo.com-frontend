@@ -1,0 +1,16 @@
+/*
+ *  RIMAGE
+ *  Responsive alternative to <img> and background images
+ *
+ */
+
+.rimage {
+  &.wrap {
+    background-position: center;
+    background-size: cover;
+
+    .image {
+      display: none;
+    }
+  }
+}

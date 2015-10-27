@@ -16,10 +16,6 @@
     margin-bottom: 0;
   }
 
-  .image {
-    display: none;
-  }
-
   .content {
     padding: 20px;
     background: #fff;
@@ -109,7 +105,6 @@
   }
 
   @media screen and (min-width: $bp-medium) {
-
     .image {
       position: absolute;
       left: 0;
@@ -117,11 +112,6 @@
       display: block;
       width: $blog-search-item-height-desktop;
       height: $blog-search-item-height-desktop;
-      background-size: cover;
-
-      img {
-        display: none;
-      }
 
       a {
         display: block;

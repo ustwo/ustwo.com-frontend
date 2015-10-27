@@ -65,7 +65,7 @@ class Rimage extends React.Component {
   }
   render() {
     const { className, altText, children: originalChildren, wrap } = this.props;
-    const classes = classnames('rimage', className);
+    const classes = classnames('rimage', className, { wrap: wrap });
     const url = this.getImageUrl(this.state.size);
     const img = <img className='image' src={url} alt={altText} />;
     let wrapElement;
@@ -74,13 +74,9 @@ class Rimage extends React.Component {
 
     if (wrap) {
       wrapElement = wrap;
-      props = { style: {
-        backgroundImage: url && `url('${url}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }};
+      props = { style: { backgroundImage: url && `url('${url}')` }};
       children = createFragment({
-        img: React.cloneElement(img, { style: { display: 'none' } }),
+        img: img,
         originalChildren: originalChildren
       });
     } else {
