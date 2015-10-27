@@ -2,7 +2,6 @@
  *  CONTACT TRAY
  *  Panel that appears over the footer that houses contact details
  *
- *  TODO: Remove susy
  */
 
 .contact-tray {
@@ -31,49 +30,49 @@
       outline: none;
     }
   }
+
   .content {
     padding-bottom: 30px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
   }
 
-  @media screen and (min-width: 650px) {
-    .content {
-      overflow: auto;
-      padding-left: 6.25%;
-      padding-right: 6.25%;
-      @include nested(8) {
-        .contact-detail {
-          @include gallery(4 of 8);
-          padding: 0;
-        }
-      }
-    }
-  }
-  @media screen and (min-width: $bp-large) {
-    @include nested(16) {
-      .content {
-        padding: 0;
-        margin-bottom: 60px;
-        @include span(14);
-        @include pre(1);
-        @include post(1);
-        @include nested(14) {
-          .contact-detail {
-            padding: 0;
-            @include gallery(7 of 14);
-            @include prefix(1);
-            @include suffix(1);
-          }
-        }
-      }
-    }
-  }
   @media screen and (max-height: 500px) {
     height: 100%;
 
     .content {
       height: calc(100% - 60px);
+    }
+  }
+
+  @media screen and (min-width: 650px) {
+    .content {
+      padding-left: 6.25%;
+      padding-right: 6.25%;
+
+      .contact-detail {
+        float: left;
+        width: 48%;
+        padding: 0 4% 0 0;
+
+        &:nth-child(2n+1) {
+          clear: left;
+        }
+        &:nth-child(2n+2) {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .content {
+      margin-bottom: 60px;
+
+      .contact-detail {
+        width: 46%;
+        padding: 0 8%;
+      }
     }
   }
 }
