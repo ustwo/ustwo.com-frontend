@@ -24,14 +24,32 @@ describe('Rimage', () => {
     props = { sizes: sizes };
   });
 
-  it('returns an image only', () => {
-    expect(renderedDOM().localName).to.equal('img');
-    expect(renderedDOM().children.length).to.equal(0);
+  it('returns a div', () => {
+    expect(renderedDOM().localName).to.equal('div');
+  });
+
+  it('has a class name of "rimage"', () => {
+    expect(renderedDOM().className).to.include('rimage');
+  });
+
+  it('includes any class names that are passed', () => {
+    props = Object.assign(props, { className: 'hola' });
+    expect(renderedDOM().className).to.include('hola');
+  });
+
+  it('contains an image only', () => {
+    expect(renderedDOM().children.length).to.equal(1);
+    expect(renderedDOM().children[0].localName).to.equal('img');
+  });
+
+  it('contains an image with a class name of "img"', () => {
+    expect(renderedDOM().children.length).to.equal(1);
+    expect(renderedDOM().children[0].className).to.equal('img');
   });
 
   it('initializes with the smallest sized image', () => {
     expect(rimage().state.size.name).to.equal('small');
-    expect(renderedDOM().getAttribute('src')).to.equal(sizes.small.source_url);
+    expect(renderedDOM().children[0].getAttribute('src')).to.equal(sizes.small.source_url);
   });
 
   it('will replace the image with a sufficiently large image', () => {
@@ -40,30 +58,39 @@ describe('Rimage', () => {
     expect(rimage().getNewSize(sizesArray, 1100).name).to.equal('large');
   });
 
-  it('includes the classname if it is passed', () => {
-    props = Object.assign(props, { className: 'hola' });
-    expect(renderedDOM().className).to.include('hola');
-  });
-
   describe('if a wrap', () => {
     beforeEach(() => {
       props = {
         sizes: sizes,
-        wrap: 'div'
+        wrap: 'section'
       }
     });
 
     it('returns an element based on the wrap element', () => {
-      expect(renderedDOM().localName).to.equal('div');
+      expect(renderedDOM().localName).to.equal(props.wrap);
     });
 
-    it('includes the classname on the wrapper if it is passed', () => {
+    it('has a class name of "rimage"', () => {
+      expect(renderedDOM().className).to.include('rimage');
+    });
+
+    it('includes any class names that are passed', () => {
       props = Object.assign(props, { className: 'hola' });
       expect(renderedDOM().className).to.include('hola');
     });
 
-    it('renders a child image within the wrapper', () => {
+    it('has a background image', () => {
+      expect(renderedDOM().getAttribute('style')).to.include('background-image');
+      expect(renderedDOM().getAttribute('style')).to.include(sizes.small.source_url);
+    });
+
+    it('contains an image', () => {
       expect(renderedDOM().children[0].localName).to.equal('img');
+    });
+
+    it('contains an image with a class name of "img"', () => {
+      expect(renderedDOM().children.length).to.equal(1);
+      expect(renderedDOM().children[0].className).to.equal('img');
     });
 
     it('renders any children passed to it', () => {
