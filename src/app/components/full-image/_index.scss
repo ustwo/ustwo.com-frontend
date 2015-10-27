@@ -2,24 +2,20 @@
  *  FULL IMAGE
  *  Full width images within content such as on case studies
  *
- *  Notes:
  */
 
 .full-image {
   height: 250px;
-  background-position: center;
-  background-size: cover;
 
-  .image {
-    display: none;
-  }
-
+  /* !importants are used here because rimage component inlines styles to hide the <img class="image">
+  however for this component we would like to switch the allow the <img> to take over from the inlined background-image
+  and determine the height of the image (rather than hard-coding some value with unpredictable cropping results) */
   @media screen and (min-width: 570px) {
     height: auto;
-    background-image: none;
+    background-image: none !important;
 
     .image {
-      display: block;
+      display: block !important;
       height: auto;
       width: 100%;
     }
