@@ -43,8 +43,13 @@ describe('Rimage', () => {
   });
 
   it('contains an image with a class name of "img"', () => {
-    expect(renderedDOM().children.length).to.equal(1);
     expect(renderedDOM().children[0].className).to.equal('img');
+  });
+
+  it('contains an image with alt text that is passed', () => {
+    const altText = 'Some text';
+    props = Object.assign(props, { altText: altText });
+    expect(renderedDOM().children[0].getAttribute('alt')).to.equal(altText);
   });
 
   it('initializes with the smallest sized image', () => {

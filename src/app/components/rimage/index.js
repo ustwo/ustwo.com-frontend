@@ -64,28 +64,29 @@ class Rimage extends React.Component {
     return newSize || last(sizes) || {};
   }
   render() {
-    const classes = classnames('rimage', this.props.className);
+    const { className, altText, children: originalChildren, wrap } = this.props;
+    const classes = classnames('rimage', className);
     const url = this.getImageUrl(this.state.size);
-    const img = <img className='img' src={url} alt="" />;
-    let wrap;
+    const img = <img className='img' src={url} alt={altText} />;
+    let wrapElement;
     let props;
     let children;
 
-    if (this.props.wrap) {
-      wrap = this.props.wrap;
+    if (wrap) {
+      wrapElement = wrap;
       props = { style: { backgroundImage: url && `url('${url}')` } };
       children = createFragment({
         img: img,
-        originalChildren: this.props.children
+        originalChildren: originalChildren
       });
     } else {
-      wrap = 'div';
+      wrapElement = 'div';
       props = {};
       children = img;
     }
 
     return React.createElement(
-      wrap,
+      wrapElement,
       Object.assign(props, { className: classes }),
       children
     );
