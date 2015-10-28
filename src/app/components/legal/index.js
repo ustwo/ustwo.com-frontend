@@ -6,32 +6,24 @@ import get from 'lodash/object/get';
 
 import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
 
-import LoadingIcon from '../loading-icon';
+import Rimage from '../rimage';
 
 const PageLegal = React.createClass({
   mixins: [getScrollTrackerMixin('legal')],
   render() {
     const pageData = this.props.page;
-    return (
-      <article className="page-legal">
+    const sizes = { hardcoded: { url: '/images/photo.jpg' }};
 
-        <div className="hero-image" style={{backgroundImage: "url(/images/photo.jpg)"}}>
-          <img className="image" src="/images/photo.jpg" alt="ustwo studio" />
-        </div>
-
-        <div className="content-container">
-
-          <h2>Legal</h2>
-
-          <p>ustwo studio ltd. Registered No. 05286528. Registered in England & Wales.</p>
-          <p>Registered office:</p>
-          <p>2 AC Court, High Street, Thames Ditton, Surrey, KT7 0SR</p>
-          <p>VAT number: 853 3847 04</p>
-
-        </div>
-
-      </article>
-    );
+    return <article className="page-legal">
+      <Rimage className='hero-image' sizes={sizes} wrap='div' />
+      <div className="content-container">
+        <h2>Legal</h2>
+        <p>ustwo studio ltd. Registered No. 05286528. Registered in England & Wales.</p>
+        <p>Registered office:</p>
+        <p>2 AC Court, High Street, Thames Ditton, Surrey, KT7 0SR</p>
+        <p>VAT number: 853 3847 04</p>
+      </div>
+    </article>;
   }
 });
 

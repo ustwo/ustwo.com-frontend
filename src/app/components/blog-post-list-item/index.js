@@ -14,29 +14,46 @@ import SocialMediaStatistics from '../social-media-statistics';
 
 export default class BlogPostListItem extends React.Component {
   render() {
-    const props = this.props;
     const { data: post, featured } = this.props;
     const category = get(post, '_embedded.wp:term.0.0', {});
-    const classes = classnames('blog-post-list-item', `blog-label-${get(category, 'slug', 'category')}`, {
-      featured: featured
-    });
+    const classes = classnames(
+      'blog-post-list-item',
+      `blog-label-${get(category, 'slug', 'category')}`,
+      { featured: featured }
+    );
+    const formattedDate = moment(get(post, 'date')).format('D MMMM YYYY');
+    const excerpt = get(post, 'excerpt.rendered');
     const image = getFeaturedImage(post);
     const uri = `/blog/${get(post, 'slug')}`;
 
-    return (
-      <article className={classes}>
-        <Rimage className="post-image" wrap="div" href={uri} sizes={get(image, 'media_details.sizes')} />
-        <div className="content">
-          <div className="blog-category">{get(category, 'name', 'category')}</div>
-          <h2 className="title"><a href={uri} onClick={Flux.override(uri)}>{he.decode(get(post, 'title.rendered'))}</a></h2>
-          <p className="meta">By {getAuthor(post)} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
-          <div className="excerpt" dangerouslySetInnerHTML={{ __html: get(post, 'excerpt.rendered')}} />
-          <div className="tail">
-            <a href={uri} onClick={Flux.override(uri)}>Read more</a>
-            <SocialMediaStatistics facebookShares={get(post, 'facebookShares')} twitterShares={get(post, 'twitterShares')} />
-          </div>
+    return <article className={classes}>
+      <a href={uri} onClick={Flux.override(uri)}>
+        <Rimage
+          className='post-image'
+          wrap='div'
+          sizes={get(image, 'media_details.sizes')}
+          altText={get(image, 'alt_text')}
+        />
+      </a>
+      <div className='content'>
+        <div className='blog-category'>{get(category, 'name', 'category')}</div>
+        <h2 className='title'>
+          <a href={uri} onClick={Flux.override(uri)}>
+            {he.decode(get(post, 'title.rendered'))}
+          </a>
+        </h2>
+        <p className='meta'>
+          By {getAuthor(post)} - <span className='date'>{formattedDate}</span>
+        </p>
+        <div className='excerpt' dangerouslySetInnerHTML={{__html: excerpt}} />
+        <div className='tail'>
+          <a href={uri} onClick={Flux.override(uri)}>Read more</a>
+          <SocialMediaStatistics
+            facebookShares={get(post, 'facebookShares')}
+            twitterShares={get(post, 'twitterShares')}
+          />
         </div>
-      </article>
-    );
+      </div>
+    </article>;
   }
 }

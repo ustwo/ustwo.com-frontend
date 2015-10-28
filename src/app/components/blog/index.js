@@ -113,11 +113,17 @@ const PageBlog = React.createClass({
     if (searchMode) {
       output = <Search key='search' searchQuery={searchQuery} />;
     } else {
-      output = (
-        <Hero key='hero' title={get(page, 'display_title')} imageOnly={true} sizes={get(image, 'media_details.sizes')} eventLabel='blog' showDownChevron={false}>
-          <BlogControls className={classnames({ show: page })} blogCategory={blogCategory}/>
-        </Hero>
-      );
+      output = <Hero
+        key='hero'
+        title={get(page, 'display_title')}
+        transitionImage={true}
+        sizes={get(image, 'media_details.sizes')}
+        altText={get(image, 'alt_text')}
+        eventLabel='blog'
+        showDownChevron={false}
+      >
+        <BlogControls className={classnames({ show: page })} blogCategory={blogCategory}/>
+      </Hero>;
     }
     return output;
   },

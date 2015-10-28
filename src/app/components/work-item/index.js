@@ -14,16 +14,39 @@ export default class WorkItem extends React.Component {
     const { data, attachments, className } = this.props;
     const link = `/what-we-do/${get(data, 'slug')}`;
     const image = getFeaturedImage(data, attachments);
-    return (
-      <li className={classnames(className, 'work-item')} style={{backgroundColor: get(data, 'colors.bg')}}>
-        <Rimage wrap="div" href={link} onClick={Flux.override(link)} className="image" sizes={get(image, 'media_details.sizes')} />
-        <div className="details">
-          <p className="type" style={{borderColor: get(data, 'colors.secondary')}}>{get(data, 'type')}</p>
-          <h3 className="title" style={{color: get(data, 'colors.primary')}}><a href={link} onClick={Flux.override(link)}>{get(data, 'name')}</a></h3>
-          <div className="description" dangerouslySetInnerHTML={{__html: get(data, 'excerpt')}} />
-          <a className="link" href={link} style={{borderColor: get(data, 'colors.secondary')}} onClick={Flux.override(link)}>Read more</a>
-        </div>
-      </li>
-    );
+    const classes = classnames(className, 'work-item');
+    const bgColour = get(data, 'colors.bg');
+    const primaryColour = get(data, 'colors.primary');
+    const secondaryColour = get(data, 'colors.secondary');
+
+    return <li className={classes} style={{backgroundColor: bgColour}}>
+      <a href={link} onClick={Flux.override(link)} className="image">
+        <Rimage
+          wrap='div'
+          sizes={get(image, 'media_details.sizes')}
+          altText={get(image, 'alt_text')}
+        />
+      </a>
+      <div className='details'>
+        <p className='type' style={{borderColor: secondaryColour}}>
+          {get(data, 'type')}
+        </p>
+        <h3 className='title' style={{color: primaryColour}}>
+          <a href={link} onClick={Flux.override(link)}>{get(data, 'name')}</a>
+        </h3>
+        <div
+          className='desc'
+          dangerouslySetInnerHTML={{__html: get(data, 'excerpt')}}
+        />
+        <a
+          className='link'
+          href={link}
+          style={{borderColor: secondaryColour}}
+          onClick={Flux.override(link)}
+        >
+          Read more
+        </a>
+      </div>
+    </li>;
   }
 }

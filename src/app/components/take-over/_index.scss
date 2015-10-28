@@ -129,13 +129,8 @@
     width: 100%;
     flex: 1;
     background-repeat: no-repeat;
-    background-position: center center;
     background-clip: content-box;
     background-size: contain;
-
-    img {
-      display: none;
-    }
   }
 
   .content {

@@ -19,7 +19,14 @@ const PageWhatWeDo = React.createClass({
 
     return (
       <article className="page-work">
-        <Hero title={get(pageData, 'display_title')} imageOnly={true} sizes={get(image, 'media_details.sizes')} eventLabel='what-we-do' showDownChevron={true} />
+        <Hero
+          title={get(pageData, 'display_title')}
+          transitionImage={true}
+          sizes={get(image, 'media_details.sizes')}
+          altText={get(image, 'alt_text')}
+          eventLabel='what-we-do'
+          showDownChevron={true}
+        />
         {get(pageData, 'page_builder', []).map(this.getModuleRenderer(get(pageData, 'colors')))}
         <ul>
           {get(caseStudiesModule, 'attr.case_studies.value', '').split(',').map(caseStudyName => {

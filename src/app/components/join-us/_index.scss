@@ -57,8 +57,6 @@
       top: 0;
       width: 100%;
       height: $jobs-video-height-mobile;
-      background: url("/images/joinus/join_us_image.jpg");
-      background-size: cover;
 
       iframe {
         width: 100%;
@@ -94,12 +92,7 @@
     justify-content: center;
     flex-direction: column;
     height: 210px;
-    background-size: cover;
     text-align: center;
-
-    @media screen and (min-width: $bp-medium) {
-      height: 500px;
-    }
 
     .ustwo-logo {
       fill: #fff;
@@ -109,6 +102,10 @@
     h2 {
       color: #fff;
       line-height: 1.2;
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      height: 500px;
     }
   }
 

@@ -38,7 +38,12 @@ const PagePost = React.createClass({
             border-bottom-color: #14C04D;
           }
         `}</style>
-        <Rimage wrap='div' className='hero-image' sizes={get(image, 'media_details.sizes')} />
+        <Rimage
+          wrap='div'
+          className='hero-image'
+          sizes={get(image, 'media_details.sizes')}
+          altText={get(image, 'alt_text')}
+        />
         <div className="content-container">
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h1 className="title">{he.decode(get(post, 'title.rendered', ''))}</h1>

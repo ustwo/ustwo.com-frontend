@@ -13,18 +13,12 @@
   align-items: center;
   height: 100vh; /* This is for IE as content doesn't center */
   min-height: 100vh;
-  background-position: center;
-  background-size: cover;
 
   .title {
     max-width: 550px;
     padding: 0 20px;
     text-align: center;
     color: $offWhite;
-  }
-
-  .image {
-    display: none;
   }
 
   .down-chevron {

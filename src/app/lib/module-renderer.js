@@ -3,7 +3,7 @@ import get from 'lodash/object/get';
 
 import SingleColumn from '../components/single-column';
 import QuoteBlock from '../components/quote-block';
-import FullImage from '../components/full-image';
+import Rimage from '../components/rimage';
 import Grid from '../components/grid';
 
 export default (moduleData, index, colours, getZebra) => {
@@ -16,16 +16,21 @@ export default (moduleData, index, colours, getZebra) => {
       module = <SingleColumn key={`module-text-${get(moduleData, 'attr.heading.value')}-${index}`} title={get(moduleData, 'attr.heading.value')} headingColour={get(colours, 'primary')} ruleColour={get(colours, 'secondary')} backgroundColour={getZebra && !getZebra() && get(colours, 'bg')} isInZebraList={!!getZebra}>{get(moduleData, 'attr.body.value')}</SingleColumn>;
       break;
     case 'image':
-      module = <FullImage key={`module-image-${get(moduleData, 'attr.image.value.0.id')}-${index}`} sizes={get(moduleData, 'attr.image.value.0.sizes')} />;
+      const image = get(moduleData, 'attr.image.value.0');
+      module = <Rimage
+        key={`module-image-${get(image, 'id')}-${index}`}
+        sizes={get(image, 'sizes')}
+        altText={get(image, 'alt')}
+      />;
       break;
     case 'blockquote':
       module = (
         <QuoteBlock
-            key='module-quote-${index}'
-            source={get(moduleData, 'attr.source.value')}
-            backgroundColour={get(colours, 'primary')}
-          >
-            {get(moduleData, 'attr.text.value')}
+          key='module-quote-${index}'
+          source={get(moduleData, 'attr.source.value')}
+          backgroundColour={get(colours, 'primary')}
+        >
+          {get(moduleData, 'attr.text.value')}
         </QuoteBlock>
       )
       break;

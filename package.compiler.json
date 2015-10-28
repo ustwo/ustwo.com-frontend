@@ -10,7 +10,7 @@
     "css": "./src/scripts/css.sh",
     "images": "./src/scripts/images.sh",
     "css-watch": "echo 'not implemented'",
-    "test": "mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test -name '*.js')"
+    "test": "NODE_ENV=development mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test -name '*.js')"
   },
   "aliasify": "./src/app/aliases.json",
   "dependencies": {

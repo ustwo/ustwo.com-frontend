@@ -10,7 +10,7 @@ export default class Grid extends React.Component {
   render() {
     return (
       <section className={classnames('grid', this.props.className)}>
-        <Rimage className="video" wrap="div" sizes={this.props.images} backgroundOnly={true}>
+        <Rimage className="video" wrap="div" sizes={this.props.images}>
           {this.renderVideo()}
         </Rimage>
         <ul className="grid-list">

@@ -1,0 +1,27 @@
+/*
+ *  RIMAGE
+ *  Loads appropriate image size from wordpress
+ *
+ *  Notes: This component by default is an <img>. However, in some cases we
+ *  want to contain the image, scaling within a fixed height and maintaining
+ *  aspect ratio, i.e. background-size: cover. In the markup the image is added
+ *  as background-image (and the class added) and so uses the below styles.
+ *
+ */
+
+.rimage {
+  &:not(.background-image) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &.background-image {
+    background-position: center;
+    background-size: cover;
+
+    .img {
+      display: none;
+    }
+  }
+}
