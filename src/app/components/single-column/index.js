@@ -3,10 +3,15 @@ import classnames from 'classnames';
 
 export default class SingleColumn extends React.Component {
   render() {
+    const { className, isInZebraList, backgroundColour } = this.props;
+    const classes = classnames('single-column', className, {
+      isInZebraList: isInZebraList
+    });
     return (
-      <section className={classnames('single-column', this.props.className, {
-          isInZebraList: this.props.isInZebraList
-        })} style={{ backgroundColor: this.props.backgroundColour }}>
+      <section
+        className={classes}
+        style={{ backgroundColor: backgroundColour }}
+      >
         <div className="wrapper">
           {this.renderTitle()}
           {this.renderRule()}
@@ -15,24 +20,35 @@ export default class SingleColumn extends React.Component {
       </section>
     );
   }
-  renderTitle = () => {
-    let title;
-    if(this.props.title && this.props.title.length) {
-      title = <h2 className="title" style={{ color: this.props.headingColour }}>{this.props.title}</h2>;
+  renderTitle() {
+    const { title, headingColour } = this.props;
+    let output;
+    if (title && title.length) {
+      output = <h2
+        className="title"
+        style={{ color: headingColour }}
+      >
+        {title}
+      </h2>;
     }
-    return title;
+    return output;
   }
-  renderRule = () => {
+  renderRule() {
+    const { title, children, ruleColour } = this.props;
     let rule;
-    if((this.props.title && this.props.title.length) && (this.props.children && this.props.children.length)) {
-      rule = <hr style={{ borderColor: this.props.ruleColour }} />;
+    if ((title && title.length) && (children && children.length)) {
+      rule = <hr style={{ borderColor: ruleColour }} />;
     }
     return rule;
   }
-  renderContent = () => {
+  renderContent() {
+    const { children } = this.props;
     let content;
-    if(this.props.children && this.props.children.length) {
-      content = <div className="content" dangerouslySetInnerHTML={{ __html: this.props.children }} />;
+    if (children && children.length) {
+      content = <div
+        className="content"
+        dangerouslySetInnerHTML={{ __html: children }}
+      />;
     }
     return content;
   }

@@ -1,29 +1,49 @@
 import React from 'react';
+import classnames from 'classnames';
 import kebabCase from 'lodash/string/kebabCase';
 import get from 'lodash/object/get';
-import classnames from 'classnames';
+import QS from '../../flux/query-string';
 
 import Rimage from '../rimage';
 import GridCell from '../grid-cell';
 
 export default class Grid extends React.Component {
   render() {
+    const { className, images, cells } = this.props;
     return (
-      <section className={classnames('grid', this.props.className)}>
-        <Rimage className="video" wrap="div" sizes={this.props.images}>
+      <section className={classnames('grid', className)}>
+        <Rimage className='video' wrap='div' sizes={images}>
           {this.renderVideo()}
         </Rimage>
-        <ul className="grid-list">
-          {this.props.cells.map(cell => <GridCell key={`cell-${kebabCase(get(cell, 'attr.heading.value'))}`} cell={cell} />)}
+        <ul className='grid-list'>
+          {cells.map(cell => {
+            return <GridCell
+              key={`cell-${kebabCase(get(cell, 'attr.heading.value'))}`}
+              cell={cell}
+            />;
+          })}
         </ul>
       </section>
     );
   }
-  renderVideo = () => {
-    let video;
-    if(this.props.video && this.props.video.length) {
-      video = <iframe src={`https://player.vimeo.com/video/${this.props.video}?title=0&byline=0&portrait=0`} frameBorder="0" webkitallowfullscreen mozallowfullscreen allowFullScreen></iframe>;
+  renderVideo() {
+    const { video } = this.props;
+    let output;
+    if (video && video.length) {
+      const baseURL = 'https://player.vimeo.com/video';
+      const options = {
+        title: 0,
+        byline: 0,
+        portrait: 0
+      }
+      output = <iframe
+        src={`${baseURL}/${video}?${QS.stringify(options)}`}
+        frameBorder='0'
+        webkitallowfullscreen
+        mozallowfullscreen
+        allowFullScreen
+      />;
     }
-    return video;
+    return output;
   }
 }
