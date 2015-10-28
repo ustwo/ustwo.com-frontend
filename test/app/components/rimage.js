@@ -24,8 +24,8 @@ describe('Rimage', () => {
     props = { sizes: sizes };
   });
 
-  it('returns a div', () => {
-    expect(renderedDOM().localName).to.equal('div');
+  it('returns an img', () => {
+    expect(renderedDOM().localName).to.equal('img');
   });
 
   it('has a class name of "rimage"', () => {
@@ -37,24 +37,15 @@ describe('Rimage', () => {
     expect(renderedDOM().className).to.include('hola');
   });
 
-  it('contains an image only', () => {
-    expect(renderedDOM().children.length).to.equal(1);
-    expect(renderedDOM().children[0].localName).to.equal('img');
-  });
-
-  it('contains an image with a class name of "img"', () => {
-    expect(renderedDOM().children[0].className).to.equal('img');
-  });
-
   it('contains an image with alt text that is passed', () => {
     const altText = 'Some text';
     props = Object.assign(props, { altText: altText });
-    expect(renderedDOM().children[0].getAttribute('alt')).to.equal(altText);
+    expect(renderedDOM().getAttribute('alt')).to.equal(altText);
   });
 
   it('initializes with the smallest sized image', () => {
     expect(rimage().state.size.name).to.equal('small');
-    expect(renderedDOM().children[0].getAttribute('src')).to.equal(sizes.small.source_url);
+    expect(renderedDOM().getAttribute('src')).to.equal(sizes.small.source_url);
   });
 
   it('will replace the image with a sufficiently large image', () => {
