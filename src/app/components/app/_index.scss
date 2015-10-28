@@ -7,7 +7,7 @@
 
 .app {
 
-  .content {
+  .app-content {
 
     /* Takeover bound by viewport size */
     &.takeover {
@@ -37,7 +37,7 @@
   }
 
   @media screen and (min-width: $bp-large) {
-    .content {
+    .app-content {
       /* Reset to normal behaviour for larger screens */
       &.mobile-no-scroll {
         position: relative;

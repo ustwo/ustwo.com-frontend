@@ -10,13 +10,13 @@ export default class HomeTextBlock extends React.Component {
     const titleClasses = `h3 u-text-${colour}`;
     const childClasses = `u-text-${childColour}`;
     return (
-      <section className="home-text-block">
+      <div className="home-text-block">
         <hr className={hrClasses}/>
         <h2 className={titleClasses}>{this.props.title}</h2>
         <div className={childClasses}>
           {this.props.children}
         </div>
-      </section>
+      </div>
     );
   }
 };

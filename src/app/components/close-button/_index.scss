@@ -3,11 +3,18 @@
  *  Animated X button found in modals and takeover
  *
  *  Notes: Just the base style. This is extended with another class when
- *  inserting the component
+ *  inserting the component. Also, not possible to use <title> in the <svg>
+ *  as the svg animation sequence will conflict with it so falling back to
+ *  a span with 'Close' text and hiding it off screen.
  */
 
 .close-button {
   display: inline-block;
   width: 60px;
   height: 60px;
+
+  .text {
+    display: inline-block;
+    text-indent: -99999em;
+  }
 }

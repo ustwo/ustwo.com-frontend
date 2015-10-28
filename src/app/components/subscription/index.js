@@ -10,7 +10,7 @@ export default class Subscription extends React.Component {
     return (
       <div className="subscription">
         <SVG className="icon" spritemapID="subscriptionIcon" />
-        <h3>ustwo News</h3>
+        <h2>ustwo News</h2>
         <p>Give us your email and we'll keep you in the loop with our latest projects and thoughts</p>
         <form action="//ustwo.us10.list-manage.com/subscribe/post?u=7f1269c0305abed7c91a24b97&amp;id=a4ba15109f" method="POST">
           <label htmlFor="subscription-email" className="label">{labelText}</label>

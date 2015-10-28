@@ -11,7 +11,7 @@ export default class SVG extends React.Component {
         role={props.role || 'img'}
         title={props.title}
         dangerouslySetInnerHTML={{
-          __html: `<use xlink:href='/images/spritemap.svg#${props.spritemapID}' />`
+          __html: `<title>${props.title}</title><use xlink:href='/images/spritemap.svg#${props.spritemapID}' />`
         }}
         style={props.style}
       />
