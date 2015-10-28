@@ -17,6 +17,7 @@ GREP := grep
 MKDIR := mkdir -p
 FSWATCH := fswatch
 RM := rm -rf
+MV := mv
 XARGS := xargs
 DOCKER := docker
 DOCKER_CP := $(DOCKER) cp
