@@ -2,8 +2,6 @@
  *  STUDIO CONTACT
  *  Studio info in the footer
  *
- *  Notes:
- *  TODO: Remove susy stuff
  */
 
 .studio {
@@ -78,56 +76,52 @@
     }
   }
 
-  @media screen and (min-width: 650px) {
-    @include nested(10) {
-      @include gallery(5 of 10);
-      height: 230px;
-      border-bottom: none;
-      vertical-align: top;
-      transition-duration: 0s;
+  @media screen and (min-width: $bp-medium) {
+    height: 230px;
+    border-bottom: none;
+    vertical-align: top;
+    transition-duration: 0s;
 
-      &.open {
-        background-color: transparent !important;
-        border-bottom-color: transparent !important;
+    &.open {
+      background-color: transparent !important;
+      border-bottom-color: transparent !important;
 
-        .studio-details .map {
-          border-bottom-color: #646464;
-        }
+      .studio-details .map {
+        border-bottom-color: #646464;
       }
-      .studio-title {
-        padding: 0 0 15px;
-        cursor: auto;
+    }
+    .studio-title {
+      padding: 0 0 15px;
+      cursor: auto;
 
-        &::after {
-          display: none;
-        }
+      &::after {
+        display: none;
       }
-      .studio-details {
-        height: auto;
+    }
+    .studio-details {
+      height: auto;
+      padding: 0;
+
+      .vcard {
         padding: 0;
+      }
 
-        .vcard {
-          padding: 0;
-        }
-
-        .map {
-          margin-top: 0;
-          position: absolute;
-          bottom: 50px;
-        }
+      .map {
+        margin-top: 0;
+        position: absolute;
+        bottom: 50px;
       }
     }
   }
+
   @media screen and (min-width: $bp-large) {
-    @include nested(12) {
-      @include gallery(3 of 12);
-      height: 180px;
+    height: 180px;
 
-      .studio-details {
-        .map {
-          bottom: 0;
-        }
+    .studio-details {
+      .map {
+        bottom: 0;
       }
     }
   }
+
 }

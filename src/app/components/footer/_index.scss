@@ -2,8 +2,6 @@
  *  FOOTER
  *  The bottom bit of the internet website
  *
- *  Notes:
- *  TODO: Remove susy stuff
  */
 
 .footer {
@@ -13,8 +11,6 @@
 
   .content {
     overflow: auto;
-    max-width: 1800px;
-    margin: auto;
     padding: 40px 0 0 0;
 
     .general {
@@ -115,10 +111,9 @@
     }
 
     .studios {
-      margin: 30px 0;
-      padding: 0;
-      border-top: 1px solid #333;
+      border-top: 1px solid $nonBlack;
     }
+
     .copyright {
       clear: both;
       padding-top: 60px;
@@ -142,43 +137,41 @@
     }
   }
 
-  @media screen and (min-width: 650px) {
+
+  @media screen and (min-width: $bp-medium) {
+    padding: 0 6%;
+
+    .content,
+    .subscription {
+      max-width: $max-app-width;
+      margin: 0 auto;
+    }
+
     .content {
       padding: 100px 0 0 0;
-      padding-bottom: 0;
 
       .general {
-        @include nested(16) {
-          @include pre(1 of 16);
-          @include span(5);
+        float: left;
+        width: 33%;
+        padding: 0;
 
-          position: relative;
-          height: 150px;
-          padding: 0;
-          vertical-align: top;
+        .contact-title {
+          margin-bottom: 15px;
+        }
 
-          .contact-title {
-            margin-bottom: 15px;
-          }
-          .contact-divider {
-            display: none;
-          }
+        .contact-divider {
+          display: none;
         }
       }
+
       .studios {
-        @include nested(16) {
-          @include span(10);
-          @include last;
+        float: left;
+        width: 67%;
+        border-top: none;
 
-          display: inline-block;
-          margin-top: 0;
-          border-top: none;
-          vertical-align: top;
-        }
-      }
-      .copyright {
-        ul {
-          margin: 0 6%;
+        .studio {
+          float: left;
+          width: 50%;
         }
       }
     }
@@ -186,19 +179,15 @@
 
   @media screen and (min-width: $bp-large) {
     .content {
-      padding-bottom: 0;
 
       .general {
-        @include nested(16) {
-          @include span(3);
-
-          height: 150px;
-        }
+        width: 20%;
       }
       .studios {
-        @include nested(16) {
-          @include span(12);
-          @include last;
+        width: 80%;
+
+        .studio {
+          width: 25%;
         }
       }
     }
@@ -206,6 +195,7 @@
 
   @media screen and (min-width: $bp-larger) {
     .content {
+
       .copyright {
         ul {
           li {
