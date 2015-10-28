@@ -9,6 +9,7 @@
     "../../adaptors/server/scroll-to-plugin": "./adaptors/client/scroll-to-plugin",
     "../adaptors/server/scroll-tracker": "./adaptors/client/scroll-tracker",
     "../../adaptors/server/svg4everybody": "./adaptors/client/svg4everybody",
+    "../adaptors/server/track": "./adaptors/client/track",
     "../../adaptors/server/track": "./adaptors/client/track",
     "../adaptors/server/tracking": "./adaptors/client/tracking",
     "../../adaptors/server/tracking": "./adaptors/client/tracking",
