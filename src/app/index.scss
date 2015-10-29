@@ -2,7 +2,6 @@
  *  BASE
  *  Import all helpers, core styles and components
  *
- *  TODO: Remove need for susy (homepage) and make 'intro' a component
  */
 
 @charset "utf-8/index";
@@ -11,7 +10,6 @@
 @import "lib/variables";
 @import "lib/colours";
 @import "lib/mixins";
-@import '../../node_modules/susy/sass/susy';
 
 /* Foundation: Normalise, resets, base styles & typography */
 @import '../../node_modules/normalize-libsass/normalize';
