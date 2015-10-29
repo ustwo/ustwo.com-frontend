@@ -74,7 +74,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   it('should close overlay if present', () => {
     if (browser.hasElementByCss('.takeover')) {
       return browser
-        .waitForElementByCss('.take-over__content__message__close', 20000)
+        .waitForElementByCss('.take-over .close-button', 20000)
         .click()
         .elementByCss('.app__modal')
         .should.eventually.not.hasElementByCss('.take-over');
@@ -101,7 +101,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
 
   it('should return to the home page', () => {
     browser
-      .elementByCss('.nav__logo__link')
+      .elementByCss('.navigation .logo a')
       .click()
       .waitForElementByCss('.page-home', wd.asserters.textInclude('DIGITAL PRODUCT STUDIO'), 10000);
   });
@@ -118,7 +118,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   it('should go to the What We Do page and look for case studies', () => {
     browser
       .get('https://ustwo.com/what-we-do')
-      .waitForElementByCss('.page-work__list', wd.asserters.textInclude('Read more'), 10000)
+      .waitForElementByCss('.page-work work-item', wd.asserters.textInclude('Read more'), 10000)
       .url().should.eventually.include('what');
   });
 });
