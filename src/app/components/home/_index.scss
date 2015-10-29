@@ -30,7 +30,7 @@
 .page-home {
   transform: translateZ(0); /* hardware accelerate background-color change on scroll */
 
-  .screen-block {
+  .screen-block:not(.hero) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,56 +85,6 @@
       }
       &.hide {
         opacity: 0;
-      }
-    }
-
-
-    .headline-text {
-      @include vertically-centering-parent(80vh);
-      width: 100%;
-      margin-top: 5vh;
-
-      .bold-header {
-        @include vertically-centred-element;
-        position: relative;
-
-        h1 {
-          max-width: 15em;
-          margin: auto;
-          padding: 0 20px;
-        }
-      }
-    }
-
-    .down-chevron {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 40px;
-      margin: 0 auto;
-    }
-
-    @media screen and (min-width: $bp-medium) {
-      .headline-text {
-        .bold-header {
-          h1 {
-            padding: 0 40px;
-          }
-        }
-      }
-    }
-
-    @media screen and (min-width: $bp-large) {
-      @include container(16);
-      @include nested(16) {
-        background: none;
-      }
-      .headline-text {
-        .bold-header {
-          h1 {
-            padding: 0 80px;
-          }
-        }
       }
     }
   }

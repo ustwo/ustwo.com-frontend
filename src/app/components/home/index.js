@@ -148,12 +148,12 @@ const PageHome = React.createClass({
     // End Chevron
     return (
       <article className="page-home">
-        <ScreenBlock ref="blockWelcome" customClass="welcome" hexColour={'#' + this.state.blocks[0].hexColour}>
+        <ScreenBlock ref="blockWelcome" customClass="welcome hero" hexColour={'#' + this.state.blocks[0].hexColour}>
           <EntranceTransition className="image-entrance">
             <div className="headline-image"></div>
           </EntranceTransition>
           <EntranceTransition className="title-entrance">
-            <div className="headline-text">
+            <div className="headline-text title">
               <BoldHeader colour="white">
                 <WordAnimation delay={1} duration={0.4}>
                   We're a digital product studio
