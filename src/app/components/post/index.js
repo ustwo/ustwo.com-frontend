@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import classnames from 'classnames';
 import he from 'he';
 import get from 'lodash/object/get';
@@ -11,6 +10,7 @@ import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
 import Flux from '../../flux';
 
 import Rimage from '../rimage';
+import BlogPostMetaInformation from '../blog-post-meta-information';
 import SocialMediaSharing from '../social-media-sharing';
 
 const PagePost = React.createClass({
@@ -48,7 +48,10 @@ const PagePost = React.createClass({
           <div className="blog-category">{get(category, 'name', 'category')}</div>
           <h1 className="title">{he.decode(get(post, 'title.rendered', ''))}</h1>
           {this.renderSocialMediaSharing('side')}
-          <p className="meta">By {getAuthor(post)} - <span className="date">{moment(get(post, 'date')).format('D MMMM YYYY')}</span></p>
+          <BlogPostMetaInformation
+            author={getAuthor(post)}
+            date={get(post, 'date')}
+          />
           <hr className="rule" />
           {get(post, 'page_builder', []).map(this.getModuleRenderer(get(post, 'colors', {})))}
           <hr className="rule" />

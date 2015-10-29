@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import moment from 'moment';
 import he from 'he';
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
@@ -10,6 +9,7 @@ import getFeaturedImage from '../../lib/get-featured-image';
 import Flux from '../../flux';
 
 import Rimage from '../rimage';
+import BlogPostMetaInformation from '../blog-post-meta-information';
 import SocialMediaStatistics from '../social-media-statistics';
 
 export default class BlogPostListItem extends React.Component {
@@ -21,7 +21,6 @@ export default class BlogPostListItem extends React.Component {
       `blog-label-${get(category, 'slug', 'category')}`,
       { featured: featured }
     );
-    const formattedDate = moment(get(post, 'date')).format('D MMMM YYYY');
     const excerpt = get(post, 'excerpt.rendered');
     const image = getFeaturedImage(post);
     const uri = `/blog/${get(post, 'slug')}`;
@@ -42,9 +41,10 @@ export default class BlogPostListItem extends React.Component {
             {he.decode(get(post, 'title.rendered'))}
           </a>
         </h2>
-        <p className='meta'>
-          By {getAuthor(post)} - <span className='date'>{formattedDate}</span>
-        </p>
+        <BlogPostMetaInformation
+          author={getAuthor(post)}
+          date={get(post, 'date')}
+        />
         <div className='excerpt' dangerouslySetInnerHTML={{__html: excerpt}} />
         <div className='tail'>
           <a href={uri} onClick={Flux.override(uri)}>Read more</a>
