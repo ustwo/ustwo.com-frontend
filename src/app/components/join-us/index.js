@@ -25,42 +25,47 @@ const PageJoinUs = React.createClass({
     };
   },
   render() {
-    const { page: pageData } = this.props;
-    const image = getFeaturedImage(pageData);
-    const sizes = { hardcoded: { url: "/images/joinus/current_openings.jpg" }};
+    const { page } = this.props;
+    const image = getFeaturedImage(page);
+    const sizes = { hardcoded: { url: '/images/joinus/current_openings.jpg' }};
 
-    return <article className="page-join-us">
+    return <article className='page-join-us'>
       <Hero
-        title={get(pageData, 'display_title')}
+        title={get(page, 'display_title')}
         transitionImage={true}
         sizes={get(image, 'media_details.sizes')}
         altText={get(image, 'alt_text')}
         eventLabel='join-us'
         showDownChevron={true}
       />
-      {get(pageData, 'page_builder', []).map(this.getModuleRenderer())}
-      <Rimage className="hero-image" wrap="div" sizes={sizes}>
-        <SVG className="ustwo-logo" title="ustwo logo" spritemapID='ustwologo' />
+      {this.renderModules(get(page, 'page_builder', []))}
+      <Rimage className='hero-image' wrap='div' sizes={sizes}>
+        <SVG
+          className='ustwo-logo'
+          title='ustwo logo'
+          spritemapID='ustwologo'
+        />
         <h2>Current Openings</h2>
       </Rimage>
-      <section className="jobs">
-        <nav className="jobs-studio-tabs">
+      <section className='jobs'>
+        <nav className='jobs-studio-tabs'>
           {this.renderStudioTabs()}
         </nav>
-        <div className="jobs-container">
+        <div className='jobs-container'>
           {this.renderStudioJobs()}
         </div>
       </section>
     </article>;
   },
-  getModuleRenderer(colours) {
-    return (moduleData, index) => {
-      return ModuleRenderer(moduleData, index, colours, () => true);
-    };
+  renderModules(modules) {
+    const colours = get(this.props.page, 'colors');
+    return modules
+      .map(moduleData => Object.assign(moduleData, { colours: colours }))
+      .map((moduleData, index) => ModuleRenderer(moduleData, index, () => true));
   },
   getStudios() {
     return [{
-      name: "All studios"
+      name: 'All studios'
     }].concat(this.props.studios);
   },
   renderStudioTabs() {

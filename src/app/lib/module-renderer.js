@@ -6,7 +6,7 @@ import QuoteBlock from '../components/quote-block';
 import Rimage from '../components/rimage';
 import Grid from '../components/grid';
 
-export default (moduleData, index, getZebra) => {
+function ModuleRenderer(moduleData, index, getZebra) {
   const { colours } = moduleData;
   let module;
   let heading;
@@ -66,3 +66,5 @@ export default (moduleData, index, getZebra) => {
   }
   return module;
 }
+
+export default ModuleRenderer;

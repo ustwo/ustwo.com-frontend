@@ -13,34 +13,38 @@ import Hero from '../hero';
 const PageWhatWeDo = React.createClass({
   mixins: [getScrollTrackerMixin('what-we-do')],
   render() {
-    const { page: pageData } = this.props;
-    const caseStudiesModule = find(get(pageData, 'page_builder', []), 'name', 'case_studies');
-    const image = getFeaturedImage(pageData);
+    const { page } = this.props;
+    const caseStudiesModule = find(get(page, 'page_builder', []), 'name', 'case_studies');
+    const image = getFeaturedImage(page);
 
     return (
       <article className="page-work">
         <Hero
-          title={get(pageData, 'display_title')}
+          title={get(page, 'display_title')}
           transitionImage={true}
           sizes={get(image, 'media_details.sizes')}
           altText={get(image, 'alt_text')}
           eventLabel='what-we-do'
           showDownChevron={true}
         />
-        {get(pageData, 'page_builder', []).map(this.getModuleRenderer(get(pageData, 'colors')))}
+        {this.renderModules(get(page, 'page_builder', []))}
+        <ul>
+          {this.renderCaseStudies(caseStudies)}
+        </ul>
         <ul>
           {get(caseStudiesModule, 'attr.case_studies.value', '').split(',').map(caseStudyName => {
-            const caseStudyData = find(get(pageData, '_embedded.ustwo:case_studies', []), 'slug', caseStudyName);
-            return <WorkItem key={caseStudyName} data={caseStudyData} attachments={get(pageData, '_embedded.wp:attachment', [])} />;
+            const caseStudyData = find(get(page, '_embedded.ustwo:case_studies', []), 'slug', caseStudyName);
+            return <WorkItem key={caseStudyName} data={caseStudyData} attachments={get(page, '_embedded.wp:attachment', [])} />;
           })}
         </ul>
       </article>
     );
   },
-  getModuleRenderer(colours) {
-    return (moduleData, index) => {
-      return ModuleRenderer(moduleData, index, colours, () => true);
-    };
+  renderModules(modules) {
+    const colours = get(this.props.page, 'colors');
+    return modules
+      .map(moduleData => Object.assign(moduleData, { colours: colours }))
+      .map((moduleData, index) => ModuleRenderer(moduleData, index));
   }
 });
 

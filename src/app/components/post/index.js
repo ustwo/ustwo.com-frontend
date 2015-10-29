@@ -54,9 +54,7 @@ const PagePost = React.createClass({
           date={get(post, 'date')}
         />
         <hr className='rule' />
-        {get(post, 'page_builder', [])
-          .map(assignColours)
-          .map(this.getModuleRenderer}
+        {this.renderModules(get(post, 'page_builder', []))}
         <hr className='rule' />
         {this.renderSocialMediaSharing('bottom')}
         {this.renderAuthorInformation()}
@@ -95,12 +93,11 @@ const PagePost = React.createClass({
       </ul>*/}
     </section>;
   },
-  assignColours() {
-    const { page } = this.props;
-    return Object.assign(moduleData, { colours: get(page, 'colors') });
-  },
-  getModuleRenderer(moduleData, index) {
-    return ModuleRenderer(moduleData, index);
+  renderModules(modules) {
+    const colours = get(this.props.page, 'colors');
+    return modules
+      .map(moduleData => Object.assign(moduleData, { colours: colours }))
+      .map((moduleData, index) => ModuleRenderer(moduleData, index));
   }
 });
 

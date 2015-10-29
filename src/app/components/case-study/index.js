@@ -14,19 +14,20 @@ const PageCaseStudy = React.createClass({
           border-bottom-color: ${get(caseStudy, 'colors.secondary')};
         }
       `}</style>
-      {get(caseStudy, 'page_builder', [])
-        .map(this.assignColours)
-        .map(this.getModuleRenderer())}
+      {this.renderModules(get(caseStudy, 'page_builder', []))}
     </article>;
   },
-  assignColours(moduleData) {
-    const { page: caseStudy } = this.props;
-    return Object.assign(moduleData, { colours: get(caseStudy, 'colors') });
+  renderModules(modules) {
+    const colours = get(this.props.page, 'colors');
+    return modules
+      .map(moduleData => Object.assign(moduleData, { colours: colours }))
+      .map(this.getModuleRenderer());
   },
   getModuleRenderer() {
     return (moduleData, index) => {
       return ModuleRenderer(moduleData, index, () => {
         this.zebra = !this.zebra;
+        console.log('this.zebra', this.zebra);
         return this.zebra;
       });
     };
