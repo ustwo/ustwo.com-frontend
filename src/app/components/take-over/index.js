@@ -125,7 +125,6 @@ export default class TakeOver extends React.Component {
             <CloseButton onClose={this.onClickClose} autoAnim={1000} style={{ fill: takeover.header_color }} />
             <Rimage
               wrap="div"
-              className="image"
               sizes={get(image, 'media_details.sizes')}
               altText={get(image, 'alt_text')}
             />
