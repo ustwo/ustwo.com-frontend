@@ -149,7 +149,7 @@
     &.own-stuff {
 
       .block-parent {
-        transform: translateX(50px);
+        transform: translateX(20px);
 
         .block-child {
           padding: 0 15px;
@@ -208,6 +208,12 @@
             }
 
           }
+        }
+      }
+
+      @media screen and (min-width: $bp-medium) {
+        .block-parent {
+          transform: translateX(50px);
         }
       }
 
