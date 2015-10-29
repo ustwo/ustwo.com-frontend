@@ -12,6 +12,13 @@ sauce-rm:
 	@echo "Removing $(sauce_name)"
 	@$(DOCKER_RM) $(sauce_name)
 
+define wait_for_sauce
+@echo "Waiting for Sauce Connect tunnel to be ready..."
+while [ -z "`$(DOCKER) logs $(sauce_name) | $(GREP) 'Sauce Connect is up, you may start your tests'`" ] ; do \
+	sleep 1 ; \
+done;
+endef
+
 sauce-create:
 	@echo "Creating $(sauce_name)"
 	@$(DOCKER) run -d \
@@ -21,12 +28,19 @@ sauce-create:
 		-e SAUCE_ACCESS_KEY=$(SAUCE_ACCESS_KEY) \
 		--link $(proxy_name):local.ustwo.com \
 		ustwo/docker-sauce-connect
-	# TODO: use something smarter than sleep
-	sleep 15
+	@$(call wait_for_sauce)
+
+define wait_for_node
+@echo "Waiting for Node app to be ready..."
+while [ -z "`$(DOCKER) logs $(app_name) | $(GREP) 'up and running'`" ] ; do \
+	sleep 1 ; \
+done;
+endef
 
 sauce_available = $(shell $(DOCKER) ps -a | $(GREP) $(sauce_name))
 
 sauce-startup:
+	@$(call wait_for_node)
 ifeq ($(strip $(sauce_available)),)
 	@$(MAKE) sauce-create
 else
