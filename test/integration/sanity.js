@@ -2,7 +2,7 @@
 
 import wd from 'wd';
 import chai from 'chai';
-import chaiAsPromised from'chai-as-promised';
+import chaiAsPromised from 'chai-as-promised';
 
 chai.use(chaiAsPromised);
 chai.should();
@@ -28,16 +28,43 @@ let desired = desireds[browserKey];
 desired.name = 'testing with ' + browserKey;
 desired.tags = ['integration'];
 
+// selectors and strings
+let navigationToggle = '.navigation .navigation-toggle';
+let takeover = '.takeover';
+let baseURL = 'https://local.ustwo.com';
+let homeTitle = 'ustwo | Digital product studio';
+let takeoverClose = '.take-over .close-button';
+let modal = '.app__modal';
+let takeoverModal = '.take-over';
+let studios = '.studios';
+let studio = 'London';
+let blogLink = 'Blog';
+let featuredBlogPost = '.blog-post-list-item.featured';
+let blogReadmore = 'Read more';
+let blogSlug = 'blog';
+let logoLink = '.navigation .logo a';
+let pageHome = '.page-home';
+let homeHeadline = 'DIGITAL PRODUCT STUDIO';
+let joinLink = 'Join Us';
+let jobsList = '.jobs-container';
+let jobMoreinfo = 'More info';
+let joinSlug = 'join';
+let workURL = 'https://ustwo.com/what-we-do';
+let workItem = '.page-work work-item';
+let workReadmore = 'Read more';
+let workSlug = 'what';
+
+// helpers
+function openMobileMenuIfPresent(browser) {
+  if (browser.hasElementByCss(navigationToggle) && browser.elementByCss(navigationToggle).isVisible) {
+    browser.elementByCss(navigationToggle).click();
+  }
+}
+
 describe('  mocha integration tests (' + desired.browserName + ')', function () {
   this.timeout(100000);
   let browser;
   let allPassed = true;
-
-  function openMobileMenu() {
-    if (browser.hasElementByCss('.nav__open-overlay-button') && browser.elementByCss('.nav__open-overlay-button').isVisible) {
-      browser.elementByCss('.nav__open-overlay-button').click();
-    }
-  }
 
   before(() => {
     let username = process.env.SAUCE_USERNAME;
@@ -66,18 +93,18 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
 
   it('should load home page', () => {
     browser
-      .get('https://local.ustwo.com')
+      .get(baseURL)
       .title()
-      .should.become('ustwo | Digital product studio')
+      .should.become(homeTitle)
   });
 
   it('should close overlay if present', () => {
-    if (browser.hasElementByCss('.takeover')) {
+    if (browser.hasElementByCss(takeover)) {
       return browser
-        .waitForElementByCss('.take-over .close-button', 20000)
+        .waitForElementByCss(takeoverClose, 30000)
         .click()
-        .elementByCss('.app__modal')
-        .should.eventually.not.hasElementByCss('.take-over');
+        .elementByCss(modal)
+        .should.eventually.not.hasElementByCss(takeoverModal);
     } else {
       return browser;
     }
@@ -85,40 +112,40 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
 
   it('should contain London in footer', () => {
     browser
-      .elementByCss('.studios')
+      .elementByCss(studios)
       .text()
-      .should.eventually.include('London')
+      .should.eventually.include(studio)
   });
 
   it('should go to the Blog page and look for Featured post', () => {
-    openMobileMenu();
+    openMobileMenuIfPresent(browser);
     browser
-      .waitForElementByLinkText('Blog', 3000)
+      .waitForElementByLinkText(blogLink, 3000)
       .click()
-      .waitForElementByCss('.blog-post-list-item.featured', wd.asserters.textInclude('Read more'), 10000)
-      .url().should.eventually.include('blog');
+      .waitForElementByCss(featuredBlogPost, wd.asserters.textInclude(blogReadmore), 10000)
+      .url().should.eventually.include(blogSlug);
   });
 
   it('should return to the home page', () => {
     browser
-      .elementByCss('.navigation .logo a')
+      .elementByCss(logoLink)
       .click()
-      .waitForElementByCss('.page-home', wd.asserters.textInclude('DIGITAL PRODUCT STUDIO'), 10000);
+      .waitForElementByCss(pageHome, wd.asserters.textInclude(homeHeadline), 10000);
   });
 
   it('should go to the Join us page and look for job listings', () => {
-    openMobileMenu();
+    openMobileMenuIfPresent(browser);
     browser
-      .waitForElementByLinkText('Join Us', 3000)
+      .waitForElementByLinkText(joinLink, 3000)
       .click()
-      .waitForElementByCss('.jobs-container', wd.asserters.textInclude('More info'), 10000)
-      .url().should.eventually.include('join');
+      .waitForElementByCss(jobsList, wd.asserters.textInclude(jobMoreinfo), 10000)
+      .url().should.eventually.include(joinSlug);
   });
 
   it('should go to the What We Do page and look for case studies', () => {
     browser
-      .get('https://ustwo.com/what-we-do')
-      .waitForElementByCss('.page-work work-item', wd.asserters.textInclude('Read more'), 10000)
-      .url().should.eventually.include('what');
+      .get(workURL)
+      .waitForElementByCss(workItem, wd.asserters.textInclude(workReadmore), 10000)
+      .url().should.eventually.include(workSlug);
   });
 });
