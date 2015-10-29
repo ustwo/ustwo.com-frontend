@@ -5,7 +5,7 @@ export default class SingleColumn extends React.Component {
   render() {
     const { className, isInZebraList, backgroundColour } = this.props;
     const classes = classnames('single-column', className, {
-      isInZebraList: isInZebraList
+      'in-zebra-list': isInZebraList
     });
     return (
       <section
