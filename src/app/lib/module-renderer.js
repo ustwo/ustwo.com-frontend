@@ -6,9 +6,10 @@ import QuoteBlock from '../components/quote-block';
 import Rimage from '../components/rimage';
 import Grid from '../components/grid';
 
-export default (moduleData, index, colours, getZebra) => {
-  let heading;
+export default (moduleData, index, getZebra) => {
+  const { colours } = moduleData;
   let module;
+  let heading;
   switch(moduleData.name) {
     case 'header':
       heading = get(moduleData, 'attr.heading.value');
@@ -47,7 +48,7 @@ export default (moduleData, index, colours, getZebra) => {
       break;
     case 'blockquote':
       module = <QuoteBlock
-        key='module-quote-${index}'
+        key={`module-quote-${index}`}
         source={get(moduleData, 'attr.source.value')}
         backgroundColour={get(colours, 'primary')}
       >
@@ -56,7 +57,7 @@ export default (moduleData, index, colours, getZebra) => {
       break;
     case 'grid':
       module = <Grid
-        key='module-grid-${index}'
+        key={`module-grid-${index}`}
         cells={get(moduleData, 'attr.grid_cells.value')}
         video={get(moduleData, 'attr.grid_video.value')}
         images={get(moduleData, 'attr.grid_image.value.0.sizes')}

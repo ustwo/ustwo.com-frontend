@@ -8,20 +8,24 @@ const PageCaseStudy = React.createClass({
   mixins: [getScrollTrackerMixin('case-study')],
   render() {
     const caseStudy = this.props.page;
-    return (
-      <article className="page-case-study">
-        <style>{`
-          .page-case-study a {
-            border-bottom-color: ${get(caseStudy, 'colors.secondary')};
-          }
-        `}</style>
-        {get(caseStudy, 'page_builder', []).map(this.getModuleRenderer(get(caseStudy, 'colors')))}
-      </article>
-    );
+    return <article className="page-case-study">
+      <style>{`
+        .page-case-study a {
+          border-bottom-color: ${get(caseStudy, 'colors.secondary')};
+        }
+      `}</style>
+      {get(caseStudy, 'page_builder', [])
+        .map(this.assignColours)
+        .map(this.getModuleRenderer())}
+    </article>;
   },
-  getModuleRenderer(colours) {
+  assignColours(moduleData) {
+    const { page: caseStudy } = this.props;
+    return Object.assign(moduleData, { colours: get(caseStudy, 'colors') });
+  },
+  getModuleRenderer() {
     return (moduleData, index) => {
-      return ModuleRenderer(moduleData, index, colours, () => {
+      return ModuleRenderer(moduleData, index, () => {
         this.zebra = !this.zebra;
         return this.zebra;
       });

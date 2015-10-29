@@ -31,42 +31,37 @@ const PagePost = React.createClass({
     const category = get(post, '_embedded.wp:term.0.0', []);
     const image = getFeaturedImage(post);
     const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'uncategorised')}`);
-    return (
-      <article className={classes}>
-        <style>{`
-          .page-post .content-container a {
-            border-bottom-color: #14C04D;
-          }
-        `}</style>
-        <Rimage
-          wrap='div'
-          className='hero-image'
-          sizes={get(image, 'media_details.sizes')}
-          altText={get(image, 'alt_text')}
-        />
-        <div className="content-container">
-          <div className="blog-category">{get(category, 'name', 'category')}</div>
-          <h1 className="title">{he.decode(get(post, 'title.rendered', ''))}</h1>
-          {this.renderSocialMediaSharing('side')}
-          <BlogPostMetaInformation
-            author={getAuthor(post)}
-            date={get(post, 'date')}
-          />
-          <hr className="rule" />
-          {get(post, 'page_builder', []).map(this.getModuleRenderer(get(post, 'colors', {})))}
-          <hr className="rule" />
-          {this.renderSocialMediaSharing('bottom')}
-          <section className="author">
-            <img className="mugshot" alt={`Photo of ${get(post, '_embedded.author.0.name', 'post author')}`} src={get(post, '_embedded.author.0.avatar_urls.96')} />
-            <h3 className="title">About {get(post, '_embedded.author.0.name')}</h3>
-            <p className="desc">{get(post, '_embedded.author.0.description')}</p>
-            {/*<ul className="links">
-              <li className="link"><a href={get(post, 'author.links[0].href')}>{get(post, 'author.links[0].text')}</a></li>
-            </ul>*/}
-          </section>
+    return <article className={classes}>
+      <style>{`
+        .page-post .content-container a {
+          border-bottom-color: #14C04D;
+        }
+      `}</style>
+      <Rimage
+        wrap='div'
+        className='hero-image'
+        sizes={get(image, 'media_details.sizes')}
+        altText={get(image, 'alt_text')}
+      />
+      <div className='content-container'>
+        <div className='blog-category'>
+          {get(category, 'name', 'category')}
         </div>
-      </article>
-    );
+        <h1 className='title'>{he.decode(get(post, 'title.rendered', ''))}</h1>
+        {this.renderSocialMediaSharing('side')}
+        <BlogPostMetaInformation
+          author={getAuthor(post)}
+          date={get(post, 'date')}
+        />
+        <hr className='rule' />
+        {get(post, 'page_builder', [])
+          .map(assignColours)
+          .map(this.getModuleRenderer}
+        <hr className='rule' />
+        {this.renderSocialMediaSharing('bottom')}
+        {this.renderAuthorInformation()}
+      </div>
+    </article>;
   },
   renderSocialMediaSharing(position) {
     const props = this.props;
@@ -80,10 +75,32 @@ const PagePost = React.createClass({
       />
     );
   },
-  getModuleRenderer(colours) {
-    return (moduleData, index) => {
-      return ModuleRenderer(moduleData, index, colours);
-    };
+  renderAuthorInformation() {
+    const { page: post } = this.props;
+    const author = get(post, '_embedded.author.0');
+    return <section className='author'>
+      <img
+        className='mugshot'
+        alt={get(author, 'name', 'post author')}
+        src={get(author, 'avatar_urls.96')}
+      />
+      <h3 className='title'>About {get(author, 'name')}</h3>
+      <p className='desc'>{get(author, 'description')}</p>
+      {/*<ul className='links'>
+        <li className='link'>
+          <a href={get(post, 'author.links[0].href')}>
+            {get(post, 'author.links[0].text')}
+          </a>
+        </li>
+      </ul>*/}
+    </section>;
+  },
+  assignColours() {
+    const { page } = this.props;
+    return Object.assign(moduleData, { colours: get(page, 'colors') });
+  },
+  getModuleRenderer(moduleData, index) {
+    return ModuleRenderer(moduleData, index);
   }
 });
 
