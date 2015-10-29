@@ -34,7 +34,8 @@
       .content-container {
         .rule,
         .content a,
-        .author .link a {
+        .author .link a,
+        .single-column hr {
           border-color: #{$colour};
         }
       }
