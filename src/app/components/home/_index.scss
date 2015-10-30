@@ -300,7 +300,7 @@
       opacity: 1;
       display: block;
       max-width: 520px;
-      background-image: url("/images/home/homepage_hero_00_singleimage.jpg");
+      background-image: url("/images/home/watches_small.jpg");
       background-repeat: no-repeat;
       background-position: 50% 50%;
       background-size: 460px auto;
@@ -311,7 +311,7 @@
       }
 
       @media screen and (min-width: $bp-large) {
-        background-image: url("/images/home/homepage_hero_00_singleimage.png");
+        background-image: url("/images/home/watches.png");
         background-size: 770px auto;
       }
 
