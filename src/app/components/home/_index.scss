@@ -30,7 +30,7 @@
 .page-home {
   transform: translateZ(0); /* hardware accelerate background-color change on scroll */
 
-  .screen-block {
+  .screen-block:not(.hero) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,9 +46,247 @@
         margin-bottom: 20px;
       }
     }
+
+    .text-block {
+      margin: 0 6.25%;
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      .text-block {
+        margin: 0 12.5%;
+      }
+    }
+
+    @media screen and (min-width: $bp-large) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 0 4%;
+
+      .block-parent {
+        flex: 5;
+      }
+
+      .text-block {
+        flex: 3;
+        margin: 0 30px;
+      }
+
+    }
+
+    @media screen and (min-width: $bp-larger) {
+      padding: 0 6%;
+
+      .text-block {
+        margin: 0 50px;
+      }
+    }
+
+    &.client {
+      .block-parent {
+        .block-child {
+          .image-container {
+            position: relative;
+
+            .harvey-nicks-device {
+              width: 100%;
+              position: relative;
+              background-image: url("/images/home/Homepage_Harvey_Phone_Mobile.jpg");
+              background-repeat: no-repeat;
+              background-position: 50% 50%;
+              background-size: auto 280px;
+              height: 290px;
+
+              @media screen and (min-width: $bp-small) {
+                height: 400px;
+                background-size: auto 400px;
+              }
+
+              @media screen and (min-width: $bp-medium) {
+                height: 500px;
+                background-size: auto 500px;
+              }
+
+              @media screen and (min-width: $bp-large) {
+                background-image: url("/images/home/Homepage_Harvey_Phone.png");
+              }
+
+            }
+
+            [class^="harvey-nicks-shape-"] {
+              @extend %svg-shape;
+
+              width: 15%;
+              height: 18%;
+            }
+
+            .harvey-nicks-shape-3 {
+              top: 58%;
+              left: 10%;
+            }
+
+            .harvey-nicks-shape-4 {
+              top: 20%;
+              right: 23%;
+            }
+
+            .harvey-nicks-shape-1 {
+              top: 0;
+              left: 10%;
+            }
+
+            .harvey-nicks-shape-2 {
+              top: 63%;
+              right: 6%;
+            }
+          }
+        }
+      }
+    }
+
+    &.own-stuff {
+
+      .block-parent {
+        transform: translateX(20px);
+
+        .block-child {
+          padding: 0 15px;
+
+          @media screen and (min-width: $bp-small) {
+            padding: 0;
+          }
+
+          .image-container {
+            position: relative;
+            text-align: center;
+
+            .monument-device {
+              width: 100%;
+              position: relative;
+              background-image: url("/images/home/Homepage_Games_Ipad_Mobile.jpg");
+              background-repeat: no-repeat;
+              background-position: 50% 50%;
+              background-size: auto 265px;
+              height: 300px;
+
+              @media screen and (min-width: $bp-small) {
+                height: 400px;
+                background-size: auto 400px;
+              }
+
+              @media screen and (min-width: $bp-medium) {
+                height: 500px;
+                background-size: auto 500px;
+              }
+
+              @media screen and (min-width: $bp-large) {
+                background-image: url("/images/home/Homepage_Games_Ipad.png");
+              }
+
+            }
+
+            [class^="monument-award-"] {
+              @extend %svg-shape;
+
+              width: 25%;
+              height: 15%;
+            }
+
+            .monument-award-1 {
+              top: 0%;
+              left: 19%;
+            }
+            .monument-award-2 {
+              top: 15%;
+              left: 8%;
+            }
+            .monument-award-3 {
+              top: 30%;
+              left: -3%;
+            }
+
+          }
+        }
+      }
+
+      @media screen and (min-width: $bp-medium) {
+        .block-parent {
+          transform: translateX(50px);
+        }
+      }
+
+      @media screen and (min-width: $bp-large) {
+        padding-right: 0;
+
+        .block-parent {
+          order: 2;
+          transform: translateX(70px);
+        }
+      }
+    }
+
+    &.ventures {
+      .block-parent {
+        .block-child {
+          .image-container {
+            position: relative;
+
+            .dice-device {
+              width: 100%;
+              position: relative;
+              background-image: url("/images/home/Homepage_Dice_Mobile.jpg");
+              background-repeat: no-repeat;
+              background-position: 50% 50%;
+              background-size: auto 380px;
+              height: 380px;
+
+              @media screen and (min-width: $bp-small) {
+                height: 500px;
+                background-size: auto 500px;
+              }
+
+              @media screen and (min-width: $bp-medium) {
+                height: 600px;
+                background-size: auto 600px;
+              }
+
+              @media screen and (min-width: $bp-large) {
+                position: relative;
+                background-image: url("/images/home/Homepage_Dice_Mask.png");
+              }
+
+            }
+
+            @media screen and (min-width: $bp-large) {
+              .dice-screen-anim {
+                position: absolute;
+                width: 173px;
+                height: 305px;
+                left: 50%;
+                margin-left: 7px;
+                top: 137px;
+                background-image: url("/images/home/Homepage_Dice_Motion.gif");
+                background-size: 100% auto;
+              }
+            }
+
+
+            .dice-logo {
+              @extend %svg-shape;
+              top: -2%;
+              left: 64%;
+              width: 24%;
+              height: 24%;
+            }
+          }
+        }
+      }
+    }
   }
 
-  .welcome {
+  .screen-block.welcome {
     .headline-image {
       position: absolute;
       margin: auto;
@@ -85,396 +323,6 @@
       }
       &.hide {
         opacity: 0;
-      }
-    }
-
-
-    .headline-text {
-      @include vertically-centering-parent(80vh);
-      width: 100%;
-      margin-top: 5vh;
-
-      .bold-header {
-        @include vertically-centred-element;
-        position: relative;
-
-        h1 {
-          max-width: 15em;
-          margin: auto;
-          padding: 0 20px;
-        }
-      }
-    }
-
-    .down-chevron {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 40px;
-      margin: 0 auto;
-    }
-
-    @media screen and (min-width: $bp-medium) {
-      .headline-text {
-        .bold-header {
-          h1 {
-            padding: 0 40px;
-          }
-        }
-      }
-    }
-
-    @media screen and (min-width: $bp-large) {
-      @include container(16);
-      @include nested(16) {
-        background: none;
-      }
-      .headline-text {
-        .bold-header {
-          h1 {
-            padding: 0 80px;
-          }
-        }
-      }
-    }
-  }
-
-  .client {
-    .block-parent {
-      .block-child {
-        .image-container {
-          position: relative;
-
-          .harvey-nicks-device {
-            width: 100%;
-            position: relative;
-            background-image: url("/images/home/Homepage_Harvey_Phone_Mobile.jpg");
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            background-size: auto 280px;
-            height: 290px;
-
-            @media screen and (min-width: $bp-small) {
-              height: 400px;
-              background-size: auto 400px;
-            }
-
-            @media screen and (min-width: $bp-medium) {
-              height: 500px;
-              background-size: auto 500px;
-            }
-
-            @media screen and (min-width: $bp-large) {
-              background-image: url("/images/home/Homepage_Harvey_Phone.png");
-            }
-
-          }
-
-          .harvey-nicks-shape-3 {
-            @extend %svg-shape;
-            top: 58%;
-            left: 10%;
-            width: 15%;
-            height: 18%;
-          }
-
-          .harvey-nicks-shape-4 {
-            @extend %svg-shape;
-            top: 20%;
-            right: 23%;
-            width: 15%;
-            height: 18%;
-          }
-
-          .harvey-nicks-shape-1 {
-            @extend %svg-shape;
-            top: 0;
-            left: 10%;
-            width: 15%;
-            height: 18%;
-          }
-
-          .harvey-nicks-shape-2 {
-            @extend %svg-shape;
-            top: 63%;
-            right: 6%;
-            width: 15%;
-            height: 15%;
-          }
-        }
-      }
-    }
-
-
-    .text-block {
-      @include span(87.5%);
-      @include squish(6.25%);
-    }
-
-    @media screen and (min-width: $bp-medium) {
-      .text-block {
-        @include span(75%);
-        @include squish(12.5%);
-      }
-
-      @include nested(8) {
-
-        .block-parent {
-          @include span(6 first);
-          @include squish(1);
-        }
-      }
-    }
-
-    @media screen and (min-width: $bp-large) {
-      @include nested(16) {
-        .block-parent {
-          @include span(9 first);
-          margin-left: 0;
-          @include vertically-centering-parent(90vh);
-
-          .block-child {
-            @include vertically-centred-element;
-          }
-        }
-        .text-block {
-          margin-left: 0;
-          @include vertically-centering-parent(90vh);
-
-          @include span(7 nest last) {
-            .home-text-block {
-              @include vertically-centred-element;
-
-              > * {
-                @include squish(1);
-                width: span(5);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .own-stuff {
-    .block-parent {
-      .block-child {
-        padding: 0 15px;
-
-        @media screen and (min-width: $bp-small) {
-          padding: 0;
-        }
-
-        .image-container {
-          position: relative;
-          text-align: center;
-
-          .monument-device {
-            width: 100%;
-            position: relative;
-            background-image: url("/images/home/Homepage_Games_Ipad_Mobile.jpg");
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            background-size: auto 265px;
-            height: 300px;
-
-            @media screen and (min-width: $bp-small) {
-              height: 400px;
-              background-size: auto 400px;
-            }
-
-            @media screen and (min-width: $bp-medium) {
-              height: 500px;
-              background-size: auto 500px;
-            }
-
-            @media screen and (min-width: $bp-large) {
-              background-image: url("/images/home/Homepage_Games_Ipad.png");
-            }
-
-          }
-
-          .monument-award-1 {
-            @extend %svg-shape;
-            top: 0%;
-            left: 18%;
-            width: 27%;
-            height: 16%;
-          }
-          .monument-award-2 {
-            @extend %svg-shape;
-            top: 14%;
-            left: 7%;
-            width: 27%;
-            height: 16%;
-          }
-          .monument-award-3 {
-            @extend %svg-shape;
-            top: 28%;
-            left: -4%;
-            width: 27%;
-            height: 16%;
-          }
-
-        }
-      }
-    }
-
-    .text-block {
-      @include span(87.5%);
-      @include squish(6.25%);
-    }
-
-    @media screen and (min-width: $bp-medium) {
-      .text-block {
-        @include span(75%);
-        @include squish(12.5%);
-      }
-
-      @include nested(8) {
-
-        .block-parent {
-          @include span(6 first);
-          @include squish(1);
-        }
-      }
-    }
-
-    @media screen and (min-width: $bp-large) {
-      @include nested(16) {
-
-        .text-block {
-          margin-left: 0;
-          @include vertically-centering-parent(90vh);
-
-          @include span(6 nest first) {
-            .home-text-block {
-              @include vertically-centred-element;
-
-              > * {
-                @include pre(1);
-                width: span(5);
-              }
-            }
-          }
-        }
-
-        .block-parent {
-          @include span(10 last);
-          @include vertically-centering-parent(90vh);
-          margin: 0 -7% 0 0;
-
-          .block-child {
-            @include vertically-centred-element;
-          }
-        }
-      }
-    }
-  }
-
-  .ventures {
-    .block-parent {
-      .block-child {
-        .image-container {
-          position: relative;
-
-          .dice-device {
-            width: 100%;
-            position: relative;
-            background-image: url("/images/home/Homepage_Dice_Mobile.jpg");
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            background-size: auto 380px;
-            height: 380px;
-
-            @media screen and (min-width: $bp-small) {
-              height: 500px;
-              background-size: auto 500px;
-            }
-
-            @media screen and (min-width: $bp-medium) {
-              height: 600px;
-              background-size: auto 600px;
-            }
-
-            @media screen and (min-width: $bp-large) {
-              position: relative;
-              background-image: url("/images/home/Homepage_Dice_Mask.png");
-            }
-
-          }
-
-          @media screen and (min-width: $bp-large) {
-            .dice-screen-anim {
-              position: absolute;
-              width: 173px;
-              height: 305px;
-              left: 50%;
-              margin-left: 7px;
-              top: 137px;
-              background-image: url("/images/home/Homepage_Dice_Motion.gif");
-              background-size: 100% auto;
-            }
-          }
-
-
-          .dice-logo {
-            @extend %svg-shape;
-            top: -2%;
-            left: 64%;
-            width: 24%;
-            height: 24%;
-          }
-        }
-      }
-    }
-
-    .text-block {
-      @include span(87.5%);
-      @include squish(6.25%);
-    }
-
-    @media screen and (min-width: $bp-medium) {
-      .text-block {
-        @include span(75%);
-        @include squish(12.5%);
-      }
-
-      @include nested(8) {
-        .block-parent {
-          @include span(6 first);
-          @include squish(1);
-        }
-      }
-    }
-
-    @media screen and (min-width: $bp-large) {
-      @include nested(16) {
-        .block-parent {
-          @include span(9 first);
-          @include vertically-centering-parent(90vh);
-          margin-left: 0;
-
-          .block-child {
-            @include vertically-centred-element;
-          }
-        }
-        .text-block {
-          position: relative;
-          margin-left: 0;
-          @include vertically-centering-parent(90vh);
-
-          @include span(7 nest last) {
-            .home-text-block {
-              @include vertically-centred-element;
-
-              > * {
-                @include squish(1);
-                width: span(5);
-              }
-            }
-          }
-        }
       }
     }
   }
