@@ -2,7 +2,6 @@
  *  PAGE: WHAT WE DO / WORK
  *  Landing page to see examples of past projects
  *
- *  TODO: The hero and image styles are repeated from join-us
  */
 
 .page-work {
@@ -10,20 +9,9 @@
   .hero {
     background-color: $pot;
 
-    h1 {
-      position: relative;
-      z-index: 2;
-    }
-
-    .image {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      display: block;
-      width: 90%;
+    .rimage {
       max-width: 600px;
       opacity: .7;
-      transform: translate(-50%, -50%);
     }
   }
 

@@ -3,10 +3,103 @@
  *  Includes the site navigation and logo
  *
  *  Notes: Should this component be called header?
- *  TODO: The way the .neg-nav class is extended needs addressing
  */
 
-.neg-nav {
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 40;
+  display: block;
+  height: $nav-height;
+
+  .navigation {
+    background: transparent;
+    color: $white;
+  }
+
+  .logo {
+    overflow: hidden;
+    display: block;
+    width: 100px;
+    height: $nav-height;
+    margin-left: 20px;
+
+    svg {
+      width: 100px;
+      height: $nav-height;
+      fill: $nonBlack;
+      fill: $white;
+    }
+  }
+
+  .navigation-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+
+  .menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    ul {
+      display: none;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .navigation-link:first-child {
+      display: none;
+    }
+  }
+
+  &.takeover {
+
+    .navigation-toggle,
+    .menu {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .navigation-toggle {
+      display: none;
+    }
+
+    .logo {
+      margin-left: 30px;
+    }
+
+    .menu ul {
+      display: block;
+      position: static;
+      margin-right: 30px;
+    }
+
+    .navigation-link {
+      display: inline-block;
+      line-height: $nav-height;
+      margin-left: 40px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+/* Invert colours on some pages that have lighter backgrounds */
+.header.takeover,
+.header.case-study,
+.header.join-us,
+.header.search,
+.app-404 .header {
   .navigation {
     color: $nonBlack;
 
@@ -23,110 +116,7 @@
   }
 }
 
-.header {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 40;
-  display: block;
-  height: $nav-height;
-
-  .navigation {
-    background: transparent;
-    color: $white;
-
-    .logo {
-      overflow: hidden;
-      display: block;
-      width: 100px;
-      height: $nav-height;
-      margin-left: 20px;
-
-      svg {
-        width: 100px;
-        height: $nav-height;
-        fill: $nonBlack;
-        fill: $white;
-      }
-
-      @media screen and (min-width: $bp-large) {
-        margin-left: 30px;
-      }
-    }
-    .navigation-toggle {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 2;
-    }
-
-    .menu {
-      position: absolute;
-      right: 0;
-      top: 0;
-
-      ul {
-        @extend %clearfix;
-
-        display: none;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-
-        .navigation-link:first-child {
-          display: none;
-        }
-      }
-    }
-  }
-
-  &.takeover {
-    @extend .neg-nav;
-
-    .navigation {
-      .navigation-toggle,
-      .menu {
-        display: none;
-      }
-    }
-  }
-  &.case-study,
-  &.join-us,
-  &.search {
-    @extend .neg-nav;
-  }
-
-  @media screen and (min-width: $bp-large) {
-    .navigation {
-      .navigation-toggle {
-        display: none;
-      }
-
-      .menu ul {
-        display: block;
-        position: static;
-        margin-right: 30px;
-      }
-
-      .navigation-link {
-        display: inline-block;
-        line-height: $nav-height;
-        margin-left: 40px;
-
-        &:first-child {
-          margin-left: 0;
-        }
-      }
-    }
-  }
-}
-
-.app-404 .header {
-  @extend .neg-nav;
-}
-
+/* If js is supported, header animates in when class 'show' is added */
 .js .nav-wrapper {
   .header {
     transform: translateY(-68px);

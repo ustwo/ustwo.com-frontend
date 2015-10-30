@@ -32,7 +32,7 @@ export default class StudioJobs extends React.Component {
           <div className="studio-info">
             <div className="info" style={{ backgroundColor: studio.color }}>
               <p className="excerpt">{get(studio, 'recruitment-title')}</p>
-              <p className="content">{get(studio, 'recruitment-desc')}</p>
+              <p className="studio-blurb">{get(studio, 'recruitment-desc')}</p>
             </div>
             <Rimage
               className="photo"

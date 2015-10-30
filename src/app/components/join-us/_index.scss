@@ -2,7 +2,6 @@
  *  PAGE: JOIN US
  *  Showcasing ustwo perks and current vaccancies
  *
- *  TODO: Consolidate media queries
  */
 
 .page-join-us {
@@ -10,20 +9,12 @@
   .hero {
     background-color: $honey;
 
-    h1 {
-      position: relative;
-      z-index: 2;
+    .title {
       color: $nonBlack;
     }
 
-    .image {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      display: block;
-      width: 92%;
+    .rimage {
       max-width: 800px;
-      transform: translate(-50%, -50%);
     }
   }
 
@@ -68,21 +59,6 @@
     .grid-cell {
       position: relative;
     }
-
-    @media screen and (min-width: $bp-medium) {
-      padding-top: 0;
-
-      .video {
-        top: $jobs-slide-height;
-        height: $jobs-video-height;
-      }
-
-    }
-    @media screen and (min-width: $bp-larger) {
-      .video {
-        width: 66.6666%;
-      }
-    }
   }
 
   /* Current openings hero header */
@@ -103,23 +79,12 @@
       color: #fff;
       line-height: 1.2;
     }
-
-    @media screen and (min-width: $bp-medium) {
-      height: 500px;
-    }
   }
 
   .jobs {
     position: relative;
     padding: 10px 15px 40px 15px;
     background: $honey;
-
-    @media screen and (min-width: $bp-medium) {
-      padding-bottom: 60px;
-    }
-    @media screen and (min-width: $bp-large) {
-      padding-bottom: 80px;
-    }
   }
 
   .jobs-studio-tabs {
@@ -139,8 +104,32 @@
         border-bottom: 4px solid;
       }
     }
+  }
 
-    @media screen and (min-width: $bp-medium) {
+  .jobs-container {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .grid {
+      padding-top: 0;
+
+      .video {
+        top: $jobs-slide-height;
+        height: $jobs-video-height;
+      }
+    }
+
+    .hero-image {
+      height: 500px;
+    }
+
+    .jobs {
+      padding-bottom: 60px;
+    }
+
+    .jobs-studio-tabs {
       display: block;
 
       li.all-studios {
@@ -149,8 +138,20 @@
         }
       }
     }
+  }
 
-    @media screen and (min-width: $bp-large) {
+  @media screen and (min-width: $bp-large) {
+    .grid {
+      .video {
+        width: 66.6666%;
+      }
+    }
+
+    .jobs {
+      padding-bottom: 80px;
+    }
+
+    .jobs-studio-tabs {
       margin: 55px 0;
 
       li {
@@ -165,8 +166,4 @@
     }
   }
 
-  .jobs-container {
-    max-width: 1120px;
-    margin: 0 auto;
-  }
 }

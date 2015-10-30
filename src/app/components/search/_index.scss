@@ -2,8 +2,6 @@
  *  SEARCH
  *  The 'overlay' where a user can input a search term before submitting
  *
- *  Notes: Not found
- *  TODO: Not found
  */
 
 .search {
@@ -59,7 +57,7 @@
       display: none;
     }
 
-    .submit {
+    .submit-search {
       width: $icon-size + 1px;
       height: $icon-size;
       margin-left: 10px;
@@ -74,39 +72,9 @@
         fill: $offWhite;
       }
     }
-
-    @media screen and (min-width: $bp-medium) {
-
-      .editable-div {
-        margin-left: $icon-size-tablet + 11px;
-      }
-      .submit {
-        width: $icon-size-tablet + 1px;
-        height: $icon-size-tablet;
-
-        svg {
-          width: $icon-size-tablet;
-          height: $icon-size-tablet;
-        }
-      }
-    }
-    @media screen and (min-width: $bp-large) {
-      .editable-div {
-        margin-left: $icon-size-desktop + 11px;
-      }
-      .submit {
-        width: $icon-size-desktop + 1px;
-        height: $icon-size-desktop;
-
-        svg {
-          width: $icon-size-desktop;
-          height: $icon-size-desktop;
-        }
-      }
-    }
   }
 
-  .cancel {
+  .cancel-search {
     position: absolute;
     left: 0;
     right: 0;
@@ -120,6 +88,39 @@
       border-bottom: solid 2px $offWhite;
       background: transparent;
       color: $offWhite;
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .search-form {
+      .editable-div {
+        margin-left: $icon-size-tablet + 11px;
+      }
+      .submit-search {
+        width: $icon-size-tablet + 1px;
+        height: $icon-size-tablet;
+
+        svg {
+          width: $icon-size-tablet;
+          height: $icon-size-tablet;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: $bp-large) {
+    .search-form {
+      .editable-div {
+        margin-left: $icon-size-desktop + 11px;
+      }
+      .submit-search {
+        width: $icon-size-desktop + 1px;
+        height: $icon-size-desktop;
+
+        svg {
+          width: $icon-size-desktop;
+          height: $icon-size-desktop;
+        }
+      }
     }
   }
 }

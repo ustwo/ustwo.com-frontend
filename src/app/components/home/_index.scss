@@ -22,11 +22,6 @@
   vertical-align: middle;
 }
 
-%svg-shape {
-  fill: $white;
-  position: absolute;
-}
-
 .page-home {
   transform: translateZ(0); /* hardware accelerate background-color change on scroll */
 
@@ -116,10 +111,10 @@
             }
 
             [class^="harvey-nicks-shape-"] {
-              @extend %svg-shape;
-
+              position: absolute;
               width: 15%;
               height: 18%;
+              fill: $white;
             }
 
             .harvey-nicks-shape-3 {
@@ -188,10 +183,10 @@
             }
 
             [class^="monument-award-"] {
-              @extend %svg-shape;
-
+              position: absolute;
               width: 25%;
               height: 15%;
+              fill: $white;
             }
 
             .monument-award-1 {
@@ -274,11 +269,12 @@
 
 
             .dice-logo {
-              @extend %svg-shape;
+              position: absolute;
               top: -2%;
               left: 64%;
               width: 24%;
               height: 24%;
+              fill: $white;
             }
           }
         }
