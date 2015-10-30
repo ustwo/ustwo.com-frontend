@@ -100,12 +100,12 @@
           transform: translateY(30px);
         }
 
-        .cancel {
+        .cancel-search {
           opacity: 0;
         }
 
         .search-form,
-        .cancel {
+        .cancel-search {
           transition: opacity .32s ease-in-out, transform 0s linear .5s;
         }
       }
@@ -118,12 +118,12 @@
           transform: translateY(0);
         }
 
-        .cancel {
+        .cancel-search {
           opacity: 1;
         }
 
         .search-form,
-        .cancel {
+        .cancel-search {
           transition: all .32s ease-in-out;
           transition-delay: .5s;
         }
@@ -133,7 +133,7 @@
         opacity: 0;
 
         .search-form,
-        .cancel {
+        .cancel-search {
           transition: none;
         }
       }

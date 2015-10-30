@@ -25,11 +25,11 @@ export default class Search extends React.Component {
         <form method='POST' action='/blog/search' className='search-form' onSubmit={this.onSubmit}>
           <input name='q' type='text' className='input' value={this.props.searchQuery} />
           <div ref='input' contentEditable='true' className='h1 editable-div'></div>
-          <button className='submit' type='submit' onClick={this.onSubmit}>
+          <button className='submit-search' type='submit' onClick={this.onSubmit}>
             <SVG spritemapID='search' />
           </button>
         </form>
-        <div className='cancel'><button type='button' onClick={this.onClickCancel}>Cancel</button></div>
+        <div className='cancel-search'><button type='button' onClick={this.onClickCancel}>Cancel</button></div>
       </div>
     );
   }
