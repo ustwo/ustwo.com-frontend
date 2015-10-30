@@ -3,7 +3,7 @@
 import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
-import ModuleRenderer from '../../lib/module-renderer';
+import renderModules from '../../lib/module-renderer';
 import getFeaturedImage from '../../lib/get-featured-image';
 import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
 
@@ -27,7 +27,11 @@ const PageWhatWeDo = React.createClass({
           eventLabel='what-we-do'
           showDownChevron={true}
         />
-        {this.renderModules(get(page, 'page_builder', []))}
+        {renderModules({
+          modules: get(page, 'page_builder', []),
+          colours: get(page, 'colors'),
+          zebra: false
+        })}
         <ul>
           {this.renderCaseStudies(caseStudies)}
         </ul>
@@ -39,12 +43,6 @@ const PageWhatWeDo = React.createClass({
         </ul>
       </article>
     );
-  },
-  renderModules(modules) {
-    const colours = get(this.props.page, 'colors');
-    return modules
-      .map(moduleData => Object.assign(moduleData, { colours: colours }))
-      .map((moduleData, index) => ModuleRenderer(moduleData, index));
   }
 });
 

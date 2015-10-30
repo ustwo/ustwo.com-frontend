@@ -8,7 +8,7 @@ import get from 'lodash/object/get';
 import kebabCase from 'lodash/string/kebabCase';
 import spannify from '../../lib/spannify';
 import getFeaturedImage from '../../lib/get-featured-image';
-import ModuleRenderer from '../../lib/module-renderer';
+import renderModules from '../../lib/module-renderer';
 import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
 
 import DownChevron from '../down-chevron';
@@ -38,7 +38,11 @@ const PageJoinUs = React.createClass({
         eventLabel='join-us'
         showDownChevron={true}
       />
-      {this.renderModules(get(page, 'page_builder', []))}
+      {renderModules({
+        modules: get(page, 'page_builder', []),
+        colours: get(page, 'colors'),
+        zebra: false
+      })}
       <Rimage className='hero-image' wrap='div' sizes={sizes}>
         <SVG
           className='ustwo-logo'
@@ -56,12 +60,6 @@ const PageJoinUs = React.createClass({
         </div>
       </section>
     </article>;
-  },
-  renderModules(modules) {
-    const colours = get(this.props.page, 'colors');
-    return modules
-      .map(moduleData => Object.assign(moduleData, { colours: colours }))
-      .map((moduleData, index) => ModuleRenderer(moduleData, index, () => true));
   },
   getStudios() {
     return [{

@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import he from 'he';
 import get from 'lodash/object/get';
-import ModuleRenderer from '../../lib/module-renderer';
+import renderModules from '../../lib/module-renderer';
 import getAuthor from '../../lib/get-author';
 import getFeaturedImage from '../../lib/get-featured-image';
 import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
@@ -54,7 +54,11 @@ const PagePost = React.createClass({
           date={get(post, 'date')}
         />
         <hr className='rule' />
-        {this.renderModules(get(post, 'page_builder', []))}
+        {renderModules({
+          modules: get(post, 'page_builder', []),
+          colours: get(post, 'colors'),
+          zebra: false
+        })}
         <hr className='rule' />
         {this.renderSocialMediaSharing('bottom')}
         {this.renderAuthorInformation()}
@@ -92,12 +96,6 @@ const PagePost = React.createClass({
         </li>
       </ul>*/}
     </section>;
-  },
-  renderModules(modules) {
-    const colours = get(this.props.page, 'colors');
-    return modules
-      .map(moduleData => Object.assign(moduleData, { colours: colours }))
-      .map((moduleData, index) => ModuleRenderer(moduleData, index));
   }
 });
 
