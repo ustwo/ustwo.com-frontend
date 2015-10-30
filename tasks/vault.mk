@@ -32,9 +32,15 @@ build/vault-$(vault_version).tar: vault-build
 
 vault-save: build/vault-$(vault_version).tar
 
-# Imports the vault tarball into the docker environment.
-load-vault: build/vault-$(vault_version).tar
-	$(DOCKER) load -i $<
-
 vault-load:
 	$(DOCKER) load -i $(VAULT_PATH)
+
+# TODO: Normalise cert name to usweb.
+vault-generate-cert:
+	@$(DOCKER_TASK) \
+		-e COMMON_NAME=$(project_name) \
+		-e KEY_NAME=$(project_name) \
+		-v $(PWD)/etc/nginx/ssl:/certs \
+		centurylink/openssl
+	@$(MV) $(PWD)/etc/nginx/ssl/usweb.crt $(PWD)/etc/nginx/ssl/ustwo.com.chained.cert
+	@$(MV) $(PWD)/etc/nginx/ssl/usweb.key $(PWD)/etc/nginx/ssl/ustwo.com.key

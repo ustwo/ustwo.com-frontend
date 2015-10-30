@@ -147,14 +147,31 @@ you want (like Docker Toolbox / [Kitematic][7]).
 *Note*: The IP number above depends on your local instance. Check
 `docker-machine ip dev`.
 
+
 ### Credentials / Vault
 
-TODO: steps how to run local instance with self certification.
+If you receive the image tar from someone in the team just do:
 
-* Get the vault from someone (e.g. arnau@ustwo.com) and load it in your
-docker environment.
+        $ make vault-load VAULT_PATH=path/to/vault-2015.tar
 
-        $ make vault-load VAULT_PATH=vault-2015.tar
+*If not*, put your SSL certificates in the project's `etc/nginx/ssl` using
+`usweb` as the filename:
+
+    $ ls etc/nginx/ssl
+    ustwo.com.chained.cert  ustwo.com.key
+
+Optionally you can create a self-signed certificate via:
+
+    $ make vault-generate-cert
+
+Then build the vault image:
+
+    $ make vault-build
+
+*Note*: If you use self-signed certificates you probably want to use your
+docker IP (e.g. `docker-machine ip dev`) instead of a custom `ustwo.com`
+domain.
+
 
 ## Develop
 
