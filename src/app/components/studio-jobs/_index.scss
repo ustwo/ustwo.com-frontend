@@ -2,7 +2,6 @@
  *  STUDIO JOBS
  *  Each studio specific section that houses the job-items
  *
- *  Notes:
  */
 
 .studio-jobs {
@@ -26,7 +25,7 @@
       font-size: 22px;
       line-height: 1.2;
     }
-    .content {
+    .studio-blurb {
       display: none;
     }
     .photo {
@@ -115,7 +114,7 @@
         font-size: 26px;
       }
 
-      .content {
+      .studio-blurb {
         position: relative;
         display: block;
         margin-top: 40px;
