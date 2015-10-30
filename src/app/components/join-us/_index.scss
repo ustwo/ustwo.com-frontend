@@ -9,20 +9,12 @@
   .hero {
     background-color: $honey;
 
-    h1 {
-      position: relative;
-      z-index: 2;
+    .title {
       color: $nonBlack;
     }
 
-    .image {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      display: block;
-      width: 92%;
+    .rimage {
       max-width: 800px;
-      transform: translate(-50%, -50%);
     }
   }
 

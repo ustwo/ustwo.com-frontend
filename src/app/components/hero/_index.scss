@@ -2,7 +2,6 @@
  *  HERO
  *  The top showcase image with bold text on each page
  *
- *  Notes:
  */
 
 .hero {
@@ -15,10 +14,21 @@
   min-height: 100vh;
 
   .title {
+    position: relative;
+    z-index: 2;
     max-width: 550px;
     padding: 0 20px;
     text-align: center;
     color: $offWhite;
+  }
+
+  .rimage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    width: 92%;
+    transform: translate(-50%, -50%);
   }
 
   .down-chevron {

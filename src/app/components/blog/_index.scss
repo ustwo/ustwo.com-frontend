@@ -144,18 +144,11 @@
     width: 100%;
 
     .title {
-      position: relative;
-      z-index: 2;
       margin-top: -12vh;
     }
 
-    .image {
-      position: absolute;
-      left: 50%;
+    .rimage {
       top: 42%;
-      transform: translate(-50%, -50%);
-      display: block;
-      width: 92%;
       max-width: 450px;
       opacity: .4;
     }
