@@ -32,11 +32,8 @@
       fill: $nonBlack;
       fill: $white;
     }
-
-    @media screen and (min-width: $bp-large) {
-      margin-left: 30px;
-    }
   }
+
   .navigation-toggle {
     position: absolute;
     top: 0;
@@ -73,6 +70,10 @@
   @media screen and (min-width: $bp-large) {
     .navigation-toggle {
       display: none;
+    }
+
+    .logo {
+      margin-left: 30px;
     }
 
     .menu ul {
@@ -115,6 +116,7 @@
   }
 }
 
+/* If js is supported, header animates in when class 'show' is added */
 .js .nav-wrapper {
   .header {
     transform: translateY(-68px);
