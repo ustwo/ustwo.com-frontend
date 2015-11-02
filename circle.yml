@@ -16,6 +16,8 @@ dependencies:
     - make compiler-build
     - make assets-build
     - make app-build
+    - make vault-generate-cert
+    - make vault-build
     - make init
 
 test:
