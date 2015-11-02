@@ -5,21 +5,24 @@
  */
 
 .screen-block {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  max-width: 1800px; /* this relates to the breakpoint below */
-  min-height: 100vh;
-  margin: auto;
-  padding: 5vh 0;
+  
+  .wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 1800px; /* this relates to the breakpoint below */
+    min-height: 100vh;
+    margin: auto;
+    padding: 5vh 0;
 
-  &:after {
-    content: " ";
-    clear: both;
-    display: block;
-  }
+    &:after {
+      content: " ";
+      clear: both;
+      display: block;
+    }
 
-  @media screen and (min-width: $bp-gargantuan) {
-    overflow: visible;
+    @media screen and (min-width: $bp-gargantuan) {
+      overflow: visible;
+    }
   }
 }

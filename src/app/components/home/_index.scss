@@ -26,12 +26,17 @@
   transform: translateZ(0); /* hardware accelerate background-color change on scroll */
 
   .screen-block:not(.hero) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 
-    @media screen and (min-width: $bp-large) {
-      display: block;
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: visible;
+
+
+      @media screen and (min-width: $bp-large) {
+        display: block;
+      }
     }
 
     h2 {
@@ -53,12 +58,14 @@
     }
 
     @media screen and (min-width: $bp-large) {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 0 4%;
+      .wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 0 4%;
+      }
 
       .block-parent {
         flex: 5;
@@ -72,7 +79,9 @@
     }
 
     @media screen and (min-width: $bp-larger) {
-      padding: 0 6%;
+      .wrapper {
+        padding: 0 6%;
+      }
 
       .text-block {
         margin: 0 50px;
