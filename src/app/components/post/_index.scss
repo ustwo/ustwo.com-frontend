@@ -130,7 +130,11 @@
     }
     .rule {
       width: 184px;
-      border: 2px solid;
+      border-bottom: 4px solid;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+
     }
     .single-column {
       .title {

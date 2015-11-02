@@ -8,7 +8,9 @@ export default class ScreenBlock extends React.Component {
     const hexBackground = this.props.hexColour ? {backgroundColor: this.props.hexColour} : {};
     return (
       <section className={classes} style={hexBackground}>
-        {this.props.children}
+        <div className="wrapper">
+          {this.props.children}
+        </div>
       </section>
     );
   }

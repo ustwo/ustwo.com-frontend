@@ -2,9 +2,11 @@
  *  HERO
  *  The top showcase image with bold text on each page
  *
+ *  TODO: when homepage is integrated and refactor, remove need for the .page-home (etc) class below
  */
 
-.hero {
+.hero,
+.page-home .screen-block.welcome .wrapper {
   overflow: hidden;
   position: relative;
   display: flex;
