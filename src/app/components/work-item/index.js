@@ -2,7 +2,6 @@
 
 import React from 'react';
 import get from 'lodash/object/get';
-import getFeaturedImage from '../../lib/get-featured-image';
 
 import Flux from '../../flux';
 
@@ -10,9 +9,8 @@ import Rimage from '../rimage';
 
 export default class WorkItem extends React.Component {
   render() {
-    const { data, attachments, className } = this.props;
+    const { data, image, className } = this.props;
     const link = `/what-we-do/${get(data, 'slug')}`;
-    const image = getFeaturedImage(data, attachments);
     const bgColour = get(data, 'colors.bg');
     const primaryColour = get(data, 'colors.primary');
     const secondaryColour = get(data, 'colors.secondary');
