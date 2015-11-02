@@ -23,6 +23,7 @@
 }
 
 .page-home {
+  overflow:hidden;
   transform: translateZ(0); /* hardware accelerate background-color change on scroll */
 
   .screen-block:not(.hero) {
