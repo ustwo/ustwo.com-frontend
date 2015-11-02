@@ -16,7 +16,7 @@ dependencies:
     - make compiler-build
     - make assets-build
     - make app-build
-    - make assets-create app-create
+    - make init
 
 test:
   override:
