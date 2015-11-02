@@ -37,7 +37,7 @@ vault-load:
 
 # TODO: Normalise cert name to usweb.
 vault-generate-cert:
-	@$(DOCKER_TASK) \
+	@$(if $(CI), $(DOCKER_CI_TASK), $(DOCKER_TASK)) \
 		-e COMMON_NAME=$(project_name) \
 		-e KEY_NAME=$(project_name) \
 		-v $(PWD)/etc/nginx/ssl:/certs \
