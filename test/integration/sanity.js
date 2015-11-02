@@ -23,36 +23,36 @@ wd.configureHttp( {
 });
 
 // building desired capability
-let browserKey = process.env.BROWSER || 'explorer';
+const browserKey = process.env.BROWSER || 'explorer';
 let desired = desireds[browserKey];
 desired.name = 'testing with ' + browserKey;
 desired.tags = ['integration'];
 
 // selectors and strings
-let navigationToggle = '.navigation .navigation-toggle';
-let takeover = '.takeover';
-let baseURL = 'https://local.ustwo.com';
-let homeTitle = 'ustwo | Digital product studio';
-let takeoverClose = '.take-over .close-button';
-let modal = '.app__modal';
-let takeoverModal = '.take-over';
-let studios = '.studios';
-let studio = 'London';
-let blogLink = 'Blog';
-let featuredBlogPost = '.blog-post-list-item.featured';
-let blogReadmore = 'Read more';
-let blogSlug = 'blog';
-let logoLink = '.navigation .logo a';
-let pageHome = '.page-home';
-let homeHeadline = 'DIGITAL PRODUCT STUDIO';
-let joinLink = 'Join Us';
-let jobsList = '.jobs-container';
-let jobMoreinfo = 'More info';
-let joinSlug = 'join';
-let workURL = 'https://ustwo.com/what-we-do';
-let workItem = '.page-work work-item';
-let workReadmore = 'Read more';
-let workSlug = 'what';
+const navigationToggle = '.navigation .navigation-toggle';
+const takeover = '.takeover';
+const baseURL = 'https://local.ustwo.com';
+const homeTitle = 'ustwo | Digital product studio';
+const takeoverClose = '.take-over .close-button';
+const modal = '.app__modal';
+const takeoverModal = '.take-over';
+const studios = '.studios';
+const studio = 'London';
+const blogLink = 'Blog';
+const featuredBlogPost = '.blog-post-list-item.featured';
+const blogReadmore = 'Read more';
+const blogSlug = 'blog';
+const logoLink = '.navigation .logo a';
+const pageHome = '.page-home';
+const homeHeadline = 'DIGITAL PRODUCT STUDIO';
+const joinLink = 'Join Us';
+const jobsList = '.jobs-container';
+const jobMoreinfo = 'More info';
+const joinSlug = 'join';
+const workURL = 'https://ustwo.com/what-we-do';
+const workItem = '.page-work work-item';
+const workReadmore = 'Read more';
+const workSlug = 'what';
 
 // helpers
 function openMobileMenuIfPresent(browser) {
