@@ -55,12 +55,12 @@
     /* Create gap after first line of slides to position video/large-image */
     &:nth-of-type(2) {
       .card {
-        margin-top: $jobs-video-height;
+        // margin-top: $jobs-video-height;
       }
     }
     &:nth-of-type(2n+2) {
       .card:first-child {
-        float: right;
+        // float: right;
       }
     }
 
@@ -70,9 +70,17 @@
       position: relative;
       top: auto;
       float: left;
-      width: 50%;
       height: $jobs-slide-height;
       padding: $jobs-feature-card-padding;
+    }
+
+    .card {
+      &.image {
+        width: 33%;
+      }
+      &.feature {
+        width: 67%;
+      }
     }
   }
 
@@ -80,7 +88,7 @@
 
     &:nth-of-type(2n+2) {
       .card:first-child {
-        float: left;
+        // float: left;
       }
     }
     &:nth-of-type(2) {
@@ -89,12 +97,12 @@
       }
       .card:last-child {
         margin-top: 0;
-        margin-left: 66.6666%;
+        // margin-left: 66.6666%;
       }
     }
     &:nth-of-type(3) {
       .card:first-child {
-        margin-left: 66.6666%;
+        // margin-left: 66.6666%;
       }
     }
     &:last-of-type {
@@ -105,7 +113,7 @@
 
     .card:first-child,
     .card:last-child {
-      width: 33.3333%;
+      // width: 33.3333%;
     }
   }
 

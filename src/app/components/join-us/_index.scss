@@ -43,6 +43,7 @@
     }
 
     .video {
+      display: none;
       position: absolute;
       left: 0;
       top: 0;
@@ -61,19 +62,14 @@
     }
   }
 
-  /* Current openings hero header */
-  .hero-image {
+  .current-openings {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 210px;
+    height: 172px;
+    background: $blu;
     text-align: center;
-
-    .ustwo-logo {
-      fill: #fff;
-      height: 26px;
-    }
 
     h2 {
       color: #fff;
@@ -84,7 +80,7 @@
   .jobs {
     position: relative;
     padding: 10px 15px 40px 15px;
-    background: $honey;
+    background: $blu;
   }
 
   .jobs-studio-tabs {
@@ -126,8 +122,8 @@
       }
     }
 
-    .hero-image {
-      height: 500px;
+    .current-openings {
+      height: 240px;
     }
 
     .jobs {

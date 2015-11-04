@@ -40,27 +40,18 @@ const PageJoinUs = React.createClass({
         eventLabel='join-us'
         showDownChevron={true}
       />
-      {renderModules({
-        modules: get(page, 'page_builder', []),
-        colours: get(page, 'colors'),
-        zebra: false
-      })}
-      <Rimage className='hero-image' wrap='div' sizes={sizes}>
-        <SVG
-          className='ustwo-logo'
-          title='ustwo logo'
-          spritemapID='ustwologo'
-        />
+      <div className="current-openings">
         <h2>Current Openings</h2>
-      </Rimage>
-      <section className='jobs'>
-        <nav className='jobs-studio-tabs'>
+      </div>
+      <section className="jobs">
+        <nav className="jobs-studio-tabs">
           {this.renderStudioTabs()}
         </nav>
         <div className='jobs-container'>
           {this.renderStudioJobs()}
         </div>
       </section>
+      {get(pageData, 'page_builder', []).map(this.getModuleRenderer())}
     </article>;
   },
   getStudios() {
