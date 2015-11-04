@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import classnames from 'classnames';
 import get from 'lodash/object/get';
 import getFeaturedImage from '../../lib/get-featured-image';
 
@@ -14,12 +13,11 @@ export default class WorkItem extends React.Component {
     const { data, attachments, className } = this.props;
     const link = `/what-we-do/${get(data, 'slug')}`;
     const image = getFeaturedImage(data, attachments);
-    const classes = classnames(className, 'work-item');
     const bgColour = get(data, 'colors.bg');
     const primaryColour = get(data, 'colors.primary');
     const secondaryColour = get(data, 'colors.secondary');
 
-    return <li className={classes} style={{backgroundColor: bgColour}}>
+    return <li className="work-item" style={{backgroundColor: bgColour}}>
       <a href={link} onClick={Flux.override(link)} className="image">
         <Rimage
           wrap='div'

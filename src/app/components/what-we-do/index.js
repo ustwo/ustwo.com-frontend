@@ -31,7 +31,7 @@ const PageWhatWeDo = React.createClass({
         <ul>
           {get(caseStudiesModule, 'attr.case_studies.value', '').split(',').map(caseStudyName => {
             const caseStudyData = find(get(pageData, '_embedded.ustwo:case_studies', []), 'slug', caseStudyName);
-            return <WorkItem key={caseStudyName} className="page-work__list__item" data={caseStudyData} attachments={get(pageData, '_embedded.wp:attachment', [])} />;
+            return <WorkItem key={caseStudyName} data={caseStudyData} attachments={get(pageData, '_embedded.wp:attachment', [])} />;
           })}
         </ul>
       </article>
