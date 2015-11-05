@@ -12,7 +12,7 @@ chaiAsPromised.transferPromiseness = wd.transferPromiseness;
 const desireds = {
   firefox: {browserName: 'firefox'},
   chrome: {browserName: 'chrome'},
-  explorer: {browserName: 'internet explorer'}
+  explorer: {browserName: 'internet explorer', version:'10'}
 };
 
 // http configuration, not needed for simple runs
@@ -36,6 +36,7 @@ const homeTitle = 'ustwo | Digital product studio';
 const takeoverClose = '.take-over .close-button';
 const modal = '.app__modal';
 const takeoverModal = '.take-over';
+const footer = '.footer';
 const studios = '.studios';
 const studio = 'London';
 const blogLink = 'Blog';
@@ -50,16 +51,9 @@ const jobsList = '.jobs-container';
 const jobMoreinfo = 'More info';
 const joinSlug = 'join';
 const workURL = 'https://ustwo.com/what-we-do';
-const workItem = '.page-work work-item';
+const workItem = '.page-work .work-item';
 const workReadmore = 'Read more';
 const workSlug = 'what';
-
-// helpers
-function openMobileMenuIfPresent(browser) {
-  if (browser.hasElementByCss(navigationToggle) && browser.elementByCss(navigationToggle).isVisible) {
-    browser.elementByCss(navigationToggle).click();
-  }
-}
 
 describe('  mocha integration tests (' + desired.browserName + ')', function () {
   this.timeout(100000);
@@ -80,46 +74,53 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
       .setWindowSize(1280, 720);
   });
 
+  beforeEach(() => {
+    return browser
+      .setWindowSize(1280, 720);
+  });
+
   // need to keep it `function`, otherwise `this.currentTest` is undefined
   afterEach(function () {
     allPassed = allPassed && (this.currentTest.state === 'passed');
   });
 
   after(() => {
-    browser
+    return browser
       .quit()
       .sauceJobStatus(allPassed);
   });
 
   it('should load home page', () => {
-    browser
+    return browser
       .get(baseURL)
       .title()
-      .should.become(homeTitle)
+      .should.become(homeTitle);
   });
 
   it('should close overlay if present', () => {
-    if (browser.hasElementByCss(takeover)) {
       return browser
-        .waitForElementByCss(takeoverClose, 30000)
-        .click()
-        .elementByCss(modal)
-        .should.eventually.not.hasElementByCss(takeoverModal);
-    } else {
-      return browser;
-    }
+        .elementByCss(takeover, function (err, el) {
+          // here we need to break out of the promise chain to this callback to be able to
+          // check for the presence of the takeover without failing the test
+          if (err === null) {
+            return browser.waitForElementByCss(takeoverClose, 30000)
+              .click()
+              .elementByCss(modal)
+              .should.eventually.not.hasElementByCss(takeoverModal);
+          }
+          return browser.elementByCss(footer).isDisplayed();
+        });
   });
 
   it('should contain London in footer', () => {
-    browser
+    return browser
       .elementByCss(studios)
       .text()
-      .should.eventually.include(studio)
+      .should.eventually.include(studio);
   });
 
   it('should go to the Blog page and look for Featured post', () => {
-    openMobileMenuIfPresent(browser);
-    browser
+    return browser
       .waitForElementByLinkText(blogLink, 3000)
       .click()
       .waitForElementByCss(featuredBlogPost, wd.asserters.textInclude(blogReadmore), 10000)
@@ -127,15 +128,14 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   });
 
   it('should return to the home page', () => {
-    browser
+    return browser
       .elementByCss(logoLink)
       .click()
       .waitForElementByCss(pageHome, wd.asserters.textInclude(homeHeadline), 10000);
   });
 
   it('should go to the Join us page and look for job listings', () => {
-    openMobileMenuIfPresent(browser);
-    browser
+    return browser
       .waitForElementByLinkText(joinLink, 3000)
       .click()
       .waitForElementByCss(jobsList, wd.asserters.textInclude(jobMoreinfo), 10000)
@@ -143,7 +143,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   });
 
   it('should go to the What We Do page and look for case studies', () => {
-    browser
+    return browser
       .get(workURL)
       .waitForElementByCss(workItem, wd.asserters.textInclude(workReadmore), 10000)
       .url().should.eventually.include(workSlug);
