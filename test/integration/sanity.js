@@ -100,14 +100,16 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   it('should close overlay if present', () => {
       return browser
         .elementByCss(takeover, function (err, el) {
-          // here we need to break out of the promise chain to this callback to be able to
-          // check for the presence of the takeover without failing the test
+          // here we need to break out of the promise chain for this callback to be able to
+          // check for the presence of the takeover without failing the test...
           if (err === null) {
             return browser.waitForElementByCss(takeoverClose, 30000)
               .click()
               .elementByCss(modal)
               .should.eventually.not.hasElementByCss(takeoverModal);
           }
+        }).catch(() => {
+          // ...but we also need to catch and absorb the error
           return browser.elementByCss(footer).isDisplayed();
         });
   });
