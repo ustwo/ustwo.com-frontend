@@ -45,5 +45,10 @@ function runMocha(browser) {
 
 // running jobs in parallel
 Promise.all(browsers.map(browser => runMocha(browser)))
-  .then(() => console.log('ALL TESTS RAN SUCCESSFULLY!'))
-  .catch(() => console.log('SOME TEST(S) FAILED!'));
+  .then(() => {
+    console.log('ALL TESTS RAN SUCCESSFULLY!');
+  })
+  .catch(() => {
+    console.log('SOME TEST(S) FAILED!');
+    process.exit(1);
+  });
