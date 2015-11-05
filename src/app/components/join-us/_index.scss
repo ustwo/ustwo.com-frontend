@@ -24,7 +24,6 @@
 
   .grid {
     position: relative;
-    padding-top: $jobs-video-height-mobile;
 
     &:before,
     &:after {
@@ -40,21 +39,6 @@
       list-style: none;
       padding: 0;
       margin: 0;
-    }
-
-    .video {
-      display: none;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: $jobs-video-height-mobile;
-
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
     }
 
     .grid-cell {
@@ -115,11 +99,6 @@
   @media screen and (min-width: $bp-medium) {
     .grid {
       padding-top: 0;
-
-      .video {
-        top: $jobs-slide-height;
-        height: $jobs-video-height;
-      }
     }
 
     .current-openings {
@@ -142,12 +121,6 @@
   }
 
   @media screen and (min-width: $bp-large) {
-    .grid {
-      .video {
-        width: 66.6666%;
-      }
-    }
-
     .jobs {
       padding-bottom: 80px;
     }
