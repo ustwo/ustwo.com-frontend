@@ -42,5 +42,6 @@ vault-generate-cert:
 		-e KEY_NAME=$(project_name) \
 		-v $(PWD)/etc/nginx/ssl:/certs \
 		centurylink/openssl
+	@sudo chown -R `whoami` $(PWD)/etc/nginx/ssl
 	@$(MV) $(PWD)/etc/nginx/ssl/usweb.crt $(PWD)/etc/nginx/ssl/ustwo.com.chained.cert
 	@$(MV) $(PWD)/etc/nginx/ssl/usweb.key $(PWD)/etc/nginx/ssl/ustwo.com.key
