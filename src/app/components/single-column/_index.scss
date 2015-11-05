@@ -2,17 +2,18 @@
  *  SINGLE COLUMN
  *  Column of centered text with header
  *
- *  Notes: The colours used for title and hr are defaults. Overrides are used for case studies.
- *  TODO: This is used for the top of case study pages. Ideally it sholdn't be used, that should be a
- *  header/title component maybe. Also clarification is needed (with a designer) about when and where
- *  the 'content' is text-align left/center;
- *  TODO: Change camelCase selector: .isInZebraList
+ *  Notes: The colours used for title and hr are defaults. Overrides are used
+ *  for case studies.
+ *  TODO: This is used for the top of case study pages. Ideally it sholdn't be
+ *  used, that should be a header/title component maybe. Also clarification is
+ *  needed (with a designer) about when and where the 'content' is text-align
+ *  left/center;
  */
 
 .single-column {
   margin: 30px 6.25%;
 
-  &.isInZebraList {
+  &.in-zebra-list {
     margin: 0;
     padding: 30px 6.25%;
   }
@@ -64,7 +65,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
 
-    &.isInZebraList {
+    &.in-zebra-list {
       margin: 0;
       padding-top: 50px;
       padding-bottom: 50px;
@@ -86,7 +87,7 @@
     margin-top: 100px;
     margin-bottom: 100px;
 
-    &.isInZebraList {
+    &.in-zebra-list {
       margin: 0;
       padding-top: 100px;
       padding-bottom: 100px;

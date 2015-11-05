@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import moment from 'moment';
 import he from 'he';
 import get from 'lodash/object/get';
 import kebabCase from 'lodash/string/kebabCase';
@@ -9,8 +8,9 @@ import getAuthor from '../../lib/get-author';
 
 import Flux from '../../flux';
 
-import SocialMediaStatistics from '../social-media-statistics';
 import Rimage from '../rimage';
+import BlogPostMetaInformation from '../blog-post-meta-information';
+import SocialMediaStatistics from '../social-media-statistics';
 
 export default class SearchResultListItem extends React.Component {
   render() {
@@ -18,7 +18,6 @@ export default class SearchResultListItem extends React.Component {
     const category = get(post, '_embedded.wp:term.0.0.name', 'category');
     const uri = `/blog/${get(post, 'slug')}`;
     const image = getFeaturedImage(post);
-    const formattedDate = moment(get(post, 'date')).format('D MMMM YYYY');
     const classes = classnames(
       'search-result-list-item',
       `blog-label-${kebabCase(category)}`
@@ -40,9 +39,10 @@ export default class SearchResultListItem extends React.Component {
             {he.decode(get(post, 'title.rendered'))}
           </a>
         </h2>
-        <p className='meta'>
-          By {getAuthor(post)} - <span className='date'>{formattedDate}</span>
-        </p>
+        <BlogPostMetaInformation
+          author={getAuthor(post)}
+          date={get(post, 'date')}
+        />
         <SocialMediaStatistics
           facebookShares={get(post, 'facebookShares')}
           twitterShares={get(post, 'twitterShares')}

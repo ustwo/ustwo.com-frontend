@@ -3,7 +3,7 @@
 import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
-import ModuleRenderer from '../../lib/module-renderer';
+import renderModules from '../../lib/module-renderer';
 import getFeaturedImage from '../../lib/get-featured-image';
 import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
 
@@ -13,34 +13,41 @@ import Hero from '../hero';
 const PageWhatWeDo = React.createClass({
   mixins: [getScrollTrackerMixin('what-we-do')],
   render() {
-    const { page: pageData } = this.props;
-    const caseStudiesModule = find(get(pageData, 'page_builder', []), 'name', 'case_studies');
-    const image = getFeaturedImage(pageData);
+    const { page } = this.props;
+    const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
+    const image = getFeaturedImage(page);
 
-    return (
-      <article className="page-work">
-        <Hero
-          title={get(pageData, 'display_title')}
-          transitionImage={true}
-          sizes={get(image, 'media_details.sizes')}
-          altText={get(image, 'alt_text')}
-          eventLabel='what-we-do'
-          showDownChevron={true}
-        />
-        {get(pageData, 'page_builder', []).map(this.getModuleRenderer(get(pageData, 'colors')))}
-        <ul>
-          {get(caseStudiesModule, 'attr.case_studies.value', '').split(',').map(caseStudyName => {
-            const caseStudyData = find(get(pageData, '_embedded.ustwo:case_studies', []), 'slug', caseStudyName);
-            return <WorkItem key={caseStudyName} data={caseStudyData} attachments={get(pageData, '_embedded.wp:attachment', [])} />;
-          })}
-        </ul>
-      </article>
-    );
+    return <article className='page-work'>
+      <Hero
+        title={get(page, 'display_title')}
+        transitionImage={true}
+        sizes={get(image, 'media_details.sizes')}
+        altText={get(image, 'alt_text')}
+        eventLabel='what-we-do'
+        showDownChevron={true}
+      />
+      {renderModules({
+        modules: get(page, 'page_builder', []),
+        colours: get(page, 'colors'),
+        zebra: false
+      })}
+      <ul>
+        {this.renderCaseStudies(caseStudies)}
+      </ul>
+    </article>;
   },
-  getModuleRenderer(colours) {
-    return (moduleData, index) => {
-      return ModuleRenderer(moduleData, index, colours, () => true);
-    };
+  renderCaseStudies(caseStudies) {
+    const { page } = this.props;
+    return caseStudies.map(caseStudy => {
+      const attachments = get(page, '_embedded.wp:attachment');
+      const image = getFeaturedImage(caseStudy, attachments);
+
+      return <WorkItem
+        key={caseStudy.slug}
+        data={caseStudy}
+        image={image}
+      />;
+    });
   }
 });
 
