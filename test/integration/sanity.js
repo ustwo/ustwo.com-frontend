@@ -8,6 +8,9 @@ chai.use(chaiAsPromised);
 chai.should();
 chaiAsPromised.transferPromiseness = wd.transferPromiseness;
 
+// WebDriver browser instance
+let browser;
+
 // browser capabilities
 const desireds = {
   firefox: {browserName: 'firefox'},
@@ -30,6 +33,8 @@ desired.tags = ['integration'];
 
 // selectors and strings
 const navigationToggle = '.navigation .navigation-toggle';
+const navigationOverlay = '.navigation-overlay';
+const navigationDesktopMenu = '.navigation .menu';
 const takeover = '.takeover';
 const baseURL = 'https://local.ustwo.com';
 const homeTitle = 'ustwo | Digital product studio';
@@ -50,14 +55,31 @@ const joinLink = 'Join Us';
 const jobsList = '.jobs-container';
 const jobMoreinfo = 'More info';
 const joinSlug = 'join';
-const workURL = 'https://ustwo.com/what-we-do';
+const workURL = baseURL + '/what-we-do';
 const workItem = '.page-work .work-item';
 const workReadmore = 'Read more';
 const workSlug = 'what';
 
+// helpers
+function openPageByMenuLink(linkText) {
+  return browser
+    .elementByCss(navigationToggle).isDisplayed(function (err, isVisible) {
+      // here we need to break out of the promise chain for this callback to be able to
+      // check for the presence of the takeover without failing the test...
+      if (err === null && isVisible) {
+        return browser.elementByCss(navigationToggle)
+          .click()
+          .elementByCss(modal)
+          .should.eventually.hasElementByCss(navigationOverlay);
+      }
+    }).catch(() => {
+      // ...but we also need to catch and absorb the error
+      return browser.elementByCss(navigationDesktopMenu).isDisplayed();
+    });
+}
+
 describe('  mocha integration tests (' + desired.browserName + ')', function () {
   this.timeout(100000);
-  let browser;
   let allPassed = true;
 
   before(() => {
@@ -122,9 +144,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   });
 
   it('should go to the Blog page and look for Featured post', () => {
-    return browser
-      .waitForElementByLinkText(blogLink, 3000)
-      .click()
+    return openPageByMenuLink(blogLink)
       .waitForElementByCss(featuredBlogPost, wd.asserters.textInclude(blogReadmore), 10000)
       .url().should.eventually.include(blogSlug);
   });
@@ -137,9 +157,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   });
 
   it('should go to the Join us page and look for job listings', () => {
-    return browser
-      .waitForElementByLinkText(joinLink, 3000)
-      .click()
+    return openPageByMenuLink(joinLink)
       .waitForElementByCss(jobsList, wd.asserters.textInclude(jobMoreinfo), 10000)
       .url().should.eventually.include(joinSlug);
   });
