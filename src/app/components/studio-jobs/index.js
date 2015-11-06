@@ -55,7 +55,7 @@ export default class StudioJobs extends React.Component {
       </ul>;
     } else {
       list = <div className="jobs-none">
-        <p>We don't have any openings currently. However we're always looking for talented individuals to join the ustwo family.</p>
+        <p>We don’t have any openings currently. However we’re always looking for talented individuals to join the ustwo family.</p>
         <a style={{backgroundColor: studio.color}} href={contactEmail.length ? `${contactEmail}?subject=${studio.name} Jobs` : ''}>Get in touch</a>
       </div>;
     }

@@ -17,7 +17,7 @@
   transform: translateY(-12px);
 }
 
-/* Style each blog post item according to it's category colour */
+/* Style each blog post item according to its category colour */
 @each $category, $colour in $blog-categories {
   .blog-label-#{$category} {
 

@@ -156,7 +156,7 @@ const PageHome = React.createClass({
             <div className="headline-text title">
               <BoldHeader colour="white">
                 <WordAnimation delay={1} duration={0.4}>
-                  We're a digital product studio
+                  We’re a digital product studio
                 </WordAnimation>
               </BoldHeader>
             </div>
@@ -176,8 +176,8 @@ const PageHome = React.createClass({
             </div>
           </div>
           <div className="text-block">
-            <HomeTextBlock title="Innovative client work">
-              <p>We work with big brands to solve the huge problems. We partner with smart clients to launch new products, services and companies that are of strategic importance and reliant on innovation.</p>
+            <HomeTextBlock title="Creative client work">
+              <p>We work as partners with the biggest and smartest brands to make defining digital products, services and businesses.</p>
             </HomeTextBlock>
           </div>
         </ScreenBlock>
