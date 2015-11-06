@@ -133,7 +133,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
           }
         }).catch(() => {
           // ...but we also need to catch and absorb the error
-          return browser.elementByCss(footer).isDisplayed();
+          return browser.waitForElementByCss(footer).isDisplayed();
         });
   });
 
