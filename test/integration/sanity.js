@@ -93,6 +93,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
     }
     return browser
       .init(desired)
+      .setPageLoadTimeout(30000)
       .setWindowSize(1280, 720);
   });
 
