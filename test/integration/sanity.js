@@ -66,11 +66,12 @@ function openPageByMenuLink(linkText) {
     .elementByCss(navigationToggle).isDisplayed(function (err, isVisible) {
       // here we need to break out of the promise chain for this callback to be able to
       // check for the presence of the takeover without failing the test...
-      if (err === null && isVisible) {
+      if (err === null) {
         return browser.elementByCss(navigationToggle)
           .click()
-          .elementByCss(modal)
-          .should.eventually.hasElementByCss(navigationOverlay);
+          .waitForElementByCss(navigationOverlay)
+          .elementByLinkText(linkText)
+          .click();
       }
     }).catch(() => {
       // ...but we also need to catch and absorb the error
