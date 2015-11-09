@@ -1,4 +1,3 @@
-import {EventEmitter} from 'events';
 import RoutePattern from 'route-pattern';
 import find from 'lodash/collection/find';
 import mapValues from 'lodash/object/mapValues';
@@ -30,22 +29,9 @@ const globalLoads = [{
   type: 'studios'
 }];
 
-function emitify(fn) {
-  return function() {
-    return fn.apply(null, arguments).then(state => {
-      Flux.emit('change', state);
-      return Promise.resolve(state);
-    });
-  };
-}
-
 function getRouteHandler(name, itemsToLoad, statusCode) {
-  return Promise.all([
-    Flux.goTo(name, statusCode || 200),
-    Flux.loadData([].concat(globalLoads, itemsToLoad))
-  ]).then(responses => {
-    return responses[1];
-  });
+  Flux.goTo(name, statusCode || 200);
+  Flux.loadData([].concat(globalLoads, itemsToLoad));
 }
 
 function setUrl(url, replace) {
@@ -57,8 +43,7 @@ function setUrl(url, replace) {
 }
 
 const Flux = Object.assign(
-  EventEmitter.prototype,
-  mapValues(Actions, emitify),
+  Actions,
   {
     init(initialUrl, hostApi, proxyUrl) {
       const vurl = virtualUrl(initialUrl || window.location.href);
@@ -74,12 +59,12 @@ const Flux = Object.assign(
       };
 
       if (!RoutePattern.fromString(Routes.home.pattern).matches(vurl.pathname)) {
-        return Flux.navigate(vurl.original, false, false, true, true);
+        Flux.navigate(vurl.original, false, false, true, true);
       } else {
         Track('set', 'page', '/');
         Track('send', 'pageview');
         setUrl(vurl.original, true);
-        return getRouteHandler(Routes.home.id, Routes.home.data(), Routes.home.statusCode);
+        getRouteHandler(Routes.home.id, Routes.home.data(), Routes.home.statusCode);
       }
     },
     navigate(urlString, history, ignoreUrl, replaceState, force) {
@@ -94,7 +79,7 @@ const Flux = Object.assign(
       }
       let paramsSearch = RoutePattern.fromString(route.pattern).match(path);
       let params = paramsSearch ? paramsSearch.params : [];
-      let action = getRouteHandler(route.id, route.data.apply(null, params), route.statusCode);
+      getRouteHandler(route.id, route.data.apply(null, params), route.statusCode);
 
       if (!ignoreUrl) {
         setUrl(urlString, replaceState);
@@ -112,16 +97,6 @@ const Flux = Object.assign(
       }
       Track('set', 'page', path);
       Track('send', 'pageview');
-      return action.then(state => {
-        Flux.emit('change', state);
-        return Promise.resolve(state);
-      });
-    },
-    addChangeListener(callback) {
-      Flux.on('change', callback);
-    },
-    removeChangeListener(callback) {
-      Flux.removeListener('change', callback);
     },
     override(url) {
       return (e) => {
