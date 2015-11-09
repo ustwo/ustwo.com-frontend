@@ -5,7 +5,7 @@ import React from 'react';
 import WorkItem from '../work-item';
 import BlogPostListItem from '../blog-post-list-item';
 
-const caseStudyData = {
+const caseStudy = {
   "name": "Moodnotes",
   "slug": "moodnotes",
   "type": "Venture",
@@ -543,7 +543,7 @@ export default class RelatedContent extends React.Component {
     return (
       <div className="related-content">
         <h2>More Juice</h2>
-        <div className="related-content-item"><WorkItem data={caseStudyData} attachments={attachments} /></div>
+        <div className="related-content-item"><WorkItem data={caseStudy} attachments={attachments} /></div>
         <div className="related-content-item"><BlogPostListItem data={postData} /></div>
     </div>
     );

@@ -9,6 +9,8 @@
   $padding-large: 40px;
   $gutter-large: $blog-gutter-large;
   $category-tag-height: $blog-category-tag-height;
+  $excerpt-height: $blog-post-list-item-excerpt-height;
+  $image-height: $blog-post-list-item-image-height;
 
   padding: 10px 10px 0 10px;
   vertical-align: top;
@@ -18,7 +20,7 @@
   }
 
   .post-image {
-    height: 245px;
+    height: $image-height;
     cursor: pointer;
 
     .link {
@@ -136,7 +138,7 @@
 
     .content {
       position: relative;
-      height: 332px;
+      height: $excerpt-height;
       padding: $padding-large;
 
       .tail {

@@ -3,7 +3,6 @@
  *  Each showcase feature on what we do page
  *
  *  TODO: Why are the breakpoints not using the pre-defined ones from variables?
- *  TODO: New design to implement
  */
 
 .work-item {
@@ -36,36 +35,6 @@
       display: inline-block;
       border-bottom: 2px solid $nonBlack;
       font-family: $PxGroteskBold;
-    }
-  }
-
-  @media screen and (min-width: 450px) {
-    .image .rimage {
-      height: 480px;
-    }
-  }
-
-  @media screen and (min-width: 750px) {
-    display: flex;
-    flex-direction: row-reverse;
-
-    &:nth-child(2n) {
-      flex-direction: row;
-    }
-
-    .image {
-      flex: 1.5;
-    }
-
-    .details {
-      flex: 1;
-      padding: 70px 6.25%;
-    }
-  }
-
-  @media screen and (min-width: 1200px) {
-    .image .rimage {
-      height: 630px;
     }
   }
 }
