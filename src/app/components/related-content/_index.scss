@@ -5,24 +5,38 @@
  */
 
 .related-content {
-  $gutter: 40px;
+  $gutter-small: 20px;
+  $gutter: 30px;
   $work-item-exerpt-height: $blog-post-list-item-excerpt-height;
   $work-item-image-height: $blog-post-list-item-image-height;
 
   max-width: $max-app-width;
-  padding: 40px;
+  padding: $gutter $gutter-small $gutter-small $gutter-small;
   background: $nonBlack;
 
   > h2 {
+    font-size: 30px;
     color: #fff;
     text-align: center;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 120px;
+      margin: 15px auto 30px auto;
+      border: 2px solid $jeezz;
+    }
   }
 
-  /* Styles for work-item (case study) to replicate blog-post-list-item dimensions */
-  .work-item {
-    .details {
-      height: $work-item-exerpt-height;
+  .related-content-item {
+    margin-bottom: $gutter-small;
+
+    &:last-of-type {
+      margin-bottom: 0;
     }
+  }
+
+  .work-item {
     .image .rimage {
       height: $work-item-image-height;
     }
@@ -33,10 +47,23 @@
   }
 
   @media screen and (min-width: $bp-medium) {
+    padding: $gutter; /* Test this, same as footer? */
+
+    > h2 {
+      font-size: 40px;
+    }
+
+    .work-item {
+      .details {
+        height: $work-item-exerpt-height;
+      }
+    }
+
     .related-content-item {
       display: inline-block;
       width: calc(50% - (#{$gutter} / 2));
       margin-right: $gutter;
+      margin-bottom: 0;
       vertical-align: top;
 
       &:nth-child(2n + 1) {
