@@ -10,6 +10,7 @@ import Flux from '../../flux';
 
 import Rimage from '../rimage';
 import BlogPostMetaInformation from '../blog-post-meta-information';
+import BlogCategoryTag from '../blog-category-tag';
 import SocialMediaStatistics from '../social-media-statistics';
 
 const SearchResultListItem = React.createClass({
@@ -33,7 +34,9 @@ const SearchResultListItem = React.createClass({
         />
       </a>
       <div className="content">
-        <div className="blog-category-tag">{category}</div>
+        <BlogCategoryTag
+          category={get(category, 'name', 'category')}
+        />
         <h2 className="title">
           <a href={uri} onClick={Flux.override(uri)}>
             {he.decode(get(post, 'title.rendered'))}
