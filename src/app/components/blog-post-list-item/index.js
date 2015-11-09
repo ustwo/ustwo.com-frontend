@@ -26,7 +26,7 @@ const BlogPostListItem = React.createClass({
     const image = getFeaturedImage(post);
     const uri = `/blog/${get(post, 'slug')}`;
 
-    return <article className={classes}>
+    return <div className={classes}>
       <a href={uri} onClick={Flux.override(uri)}>
         <Rimage
           className="post-image"
@@ -57,7 +57,7 @@ const BlogPostListItem = React.createClass({
           />
         </div>
       </div>
-    </article>;
+    </div>;
   }
 });
 
