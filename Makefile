@@ -14,6 +14,7 @@ AWK := awk
 CP := cp
 GIT := git
 GREP := grep
+CURL := curl
 MKDIR := mkdir -p
 FSWATCH := fswatch
 RM := rm -rf
@@ -79,6 +80,12 @@ deploy-production:
 		PROXY_HTTP_PORT=80
 deploy-staging: deploy-production
 release: release-create
+
+# CDN ids:
+# ustwo.it 48643
+# TODO integrate with Slack?
+cdn-purge:
+	@$(CURL) --data "cdn_id=48643&login=$(CDN77_LOGIN)&passwd=$(CDN77_API_KEY)" https://api.cdn77.com/v2.0/data/purge-all
 
 seeds: build
 love: deploy

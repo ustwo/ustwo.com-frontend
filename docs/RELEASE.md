@@ -47,6 +47,7 @@ If not, do it manually (only for emergencies when you cannot wait for the Circle
 
 4. Clean old images, keeping only the last known working version in case of rollback
 
+        $ make ls
         $ make nuke VERSION=1.2.2
 
 ## Deploy to production
@@ -74,7 +75,12 @@ the Docker Hub.
 
         $ make deploy-production VERSION=1.2.3
 
-6. Clean old images, keeping only the last known working version in case of rollback
+6. Purge CDN cache
 
-        $ make nuke VERSION=1.2.3
+        $ make cdn-purge
+
+7. Clean old images, keeping only the last known working version in case of rollback
+
+        $ make ls
+        $ make nuke VERSION=1.2.2
 
