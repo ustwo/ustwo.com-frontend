@@ -5,13 +5,28 @@
  */
 
 .related-content {
-  /* TEMP */
-  height: 200px;
+  $gutter: 40px;
+
+  max-width: $max-app-width;
+  padding: 40px;
   background: $nonBlack;
 
-  h2 {
+  > h2 {
     color: #fff;
-    @extend .h3;
+    text-align: center;
   }
-  /* END TEMP */
+
+  @media screen and (min-width: $bp-medium) {
+    .related-content-item {
+      display: inline-block;
+      width: calc(50% - (#{$gutter} / 2));
+      margin-right: $gutter;
+      vertical-align: top;
+
+      &:nth-child(2n + 1) {
+        margin-right: 0;
+      }
+    }
+  }
+
 }
