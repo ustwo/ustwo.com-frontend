@@ -33,7 +33,7 @@ const PagePost = React.createClass({
         altText={get(image, 'alt_text')}
       />
       <div className='content-container'>
-        <div className='blog-category'>
+        <div className='blog-category-tag'>
           {get(category, 'name', 'category')}
         </div>
         <h1 className='title'>{he.decode(get(post, 'title.rendered', ''))}</h1>

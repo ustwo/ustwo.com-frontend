@@ -6,6 +6,8 @@
  */
 
 .page-post {
+  $category-tag-height: $blog-category-tag-height;
+
   a {
     border-bottom-width: 2px;
     border-bottom-style: solid;
@@ -99,11 +101,11 @@
       text-align: center;
     }
 
-    .blog-category {
+    .blog-category-tag {
       position: absolute;
-      top: 0;
+      top: - $category-tag-height * .5;
       left: 50%;
-      transform: translate(-50%, (- $blog-category-height * .5));
+      transform: translateX(-50%);
     }
 
     .title {

@@ -33,7 +33,7 @@ const SearchResultListItem = React.createClass({
         />
       </a>
       <div className="content">
-        <div className="blog-category">{category}</div>
+        <div className="blog-category-tag">{category}</div>
         <h2 className="title">
           <a href={uri} onClick={Flux.override(uri)}>
             {he.decode(get(post, 'title.rendered'))}

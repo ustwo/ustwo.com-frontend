@@ -2,20 +2,7 @@
  *  PAGE: BLOG
  *  Latest posts and category and search functions
  *
- *  Notes: Includes category some styles that affect blog post, perhaps should be moved out at some point
  */
-
-.blog-category {
-  display: inline-block;
-  height: $blog-category-height;
-  padding: 0 5px;
-  font-size: 12px;
-  line-height: $blog-category-height;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #fff;
-  transform: translateY(-12px);
-}
 
 /* Style each blog post item according to its category colour */
 @each $category, $colour in $blog-categories {
@@ -243,9 +230,6 @@
 
 
   @media screen and (min-width: $bp-medium) {
-    .blog-category {
-      transform: translateY(-21px);
-    }
     .blog-post-list {
       margin-top: $blog-margin-offset;
       padding: 0 $blog-gutter-large;

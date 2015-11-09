@@ -35,7 +35,7 @@ const BlogPostListItem = React.createClass({
         />
       </a>
       <div className="content">
-        <div className="blog-category">{get(category, 'name', 'category')}</div>
+        <div className="blog-category-tag">{get(category, 'name', 'category')}</div>
         <h2 className="title">
           <a href={uri} onClick={Flux.override(uri)}>
             {he.decode(get(post, 'title.rendered'))}

@@ -1,0 +1,19 @@
+/*
+ *  BLOG CATEGORY TAG
+ *  Tag to show what category the blog post belongs too, e.g. Product
+ *
+ */
+
+ .blog-category-tag {
+  $height: $blog-category-tag-height;
+
+  display: inline-block;
+  height: $height;
+  padding: 0 5px;
+  background: #aaa; /* Default, should be overridden with category specific colour, see in 'blog' component */
+  font-size: 12px;
+  line-height: $height;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+}
