@@ -1,0 +1,17 @@
+/*
+ *  RELATED CONTENT
+ *  More juice. "Cross sell" style links to blog posts or case studies below the content of the page.
+ *
+ */
+
+.related-content {
+  /* TEMP */
+  height: 200px;
+  background: $nonBlack;
+
+  h2 {
+    color: #fff;
+    @extend .h3;
+  }
+  /* END TEMP */
+}
