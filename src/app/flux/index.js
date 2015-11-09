@@ -100,7 +100,7 @@ const Flux = Object.assign(
         setUrl(urlString, replaceState);
       }
       if (!history) {
-        window.document.body.scrollTop = 0;
+        window.scrollTo(0, 0);
       }
       switch(route.id) {
         case 'blog':

@@ -7,13 +7,13 @@ export default {
   },
   document: {
     body: {
-      scrollTop: 0,
       classList: {
         add: ()=>{},
         remove: ()=>{}
       }
     }
   },
+  scrollTo: ()=>{},
   history: {
     pushState: ()=>{},
     replaceState: ()=>{}

@@ -12,11 +12,15 @@ const colours = {
 
 describe('renderModules', () => {
   let moduleData;
-  let result = () => renderModules({
-    modules: [moduleData],
-    colours: colours,
-    zebra: false
-  })[0];
+  let result;
+
+  beforeEach(() => {
+    result = () => renderModules({
+      modules: [moduleData],
+      colours: colours,
+      zebra: false
+    })[0];
+  });
 
   describe('header', () => {
     beforeEach(() => {
@@ -232,7 +236,6 @@ describe('renderModules', () => {
     beforeEach(() => {
       headerModule = { name: 'header' };
       textModule = { name: 'text' };
-      modules = [headerModule, textModule, textModule];
       result = () => renderModules({
         modules: modules,
         colours: colours,
@@ -241,6 +244,7 @@ describe('renderModules', () => {
     });
 
     it('gives alternate modules alternate background colours', () => {
+      modules = [headerModule, textModule, textModule];
       expect(result()[0].props.backgroundColour).not.to.equal(result()[1].props.backgroundColour);
       expect(result()[0].props.backgroundColour).to.equal(result()[2].props.backgroundColour);
     });
