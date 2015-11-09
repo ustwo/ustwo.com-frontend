@@ -20,7 +20,7 @@ const QS = {
           tuple[1] = false;
           break;
       }
-      if (tuple[1] !== undefined) {
+      if (tuple[1] !== 'undefined' && tuple[1] !== undefined) {
         hash[tuple[0]] = tuple[1];
       }
       return hash;
@@ -31,7 +31,8 @@ const QS = {
       let item;
       if (value !== undefined) {
         if (searchString.length) searchString += '&';
-        searchString += `${key}=${kebabCase(value)}`;
+        const valueString = value === null ? 'null' : kebabCase(value);
+        searchString += `${key}=${valueString}`;
       }
       return searchString;
     }, '');
