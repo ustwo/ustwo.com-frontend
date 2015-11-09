@@ -32,12 +32,13 @@ desired.name = 'testing with ' + browserKey;
 desired.tags = ['integration'];
 
 // selectors and strings
-const navigationToggle = '.navigation .navigation-toggle';
+const navigation = '.navigation';
+const navigationToggle = navigation + ' .navigation-toggle';
 const navigationOverlay = '.navigation-overlay';
-const navigationDesktopMenu = '.navigation .menu';
-const takeover = '.takeover';
+const navigationDesktopMenu = navigation + ' .menu';
 const baseURL = 'https://local.ustwo.com';
 const homeTitle = 'ustwo | Digital product studio';
+const takeover = '.takeover';
 const takeoverClose = '.take-over .close-button';
 const modal = '.app__modal';
 const takeoverModal = '.take-over';
@@ -65,17 +66,15 @@ function openPageByMenuLink(linkText) {
   return browser
     .elementByCss(navigationToggle).isDisplayed(function (err, isVisible) {
       // here we need to break out of the promise chain for this callback to be able to
-      // check for the presence of the takeover without failing the test...
-      if (err === null) {
-        return browser.elementByCss(navigationToggle)
+      // check for the presence of the mobile navigation toggle without failing the test...
+      if (err === null && isVisible) {
+        browser.elementByCss(navigationToggle)
           .click()
-          .waitForElementByCss(navigationOverlay)
-          .elementByLinkText(linkText)
-          .click();
+          .waitForElementByCss(navigationOverlay, wd.asserters.textInclude(blogLink), 10000);
       }
+      return browser.elementByLinkText(linkText).click();
     }).catch(() => {
       // ...but we also need to catch and absorb the error
-      return browser.elementByCss(navigationDesktopMenu).isDisplayed();
     });
 }
 
@@ -94,7 +93,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
     }
     return browser
       .init(desired)
-      .setPageLoadTimeout(30000)
+      .setPageLoadTimeout(60000)
       .setWindowSize(1280, 720);
   });
 
