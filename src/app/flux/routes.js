@@ -75,7 +75,8 @@ const routes = {
     data: pid => [{
       url: `ustwo/v1/posts/${pid}`,
       type: 'post',
-      slug: pid
+      slug: pid,
+      async: ['related_content']
     }]
   },
   legal: {

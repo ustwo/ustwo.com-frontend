@@ -23,7 +23,8 @@ const _state = Object.assign({
   twitterShares: Nulls.twitterShares,
   facebookShares: Nulls.facebookShares,
   postsPagination: Defaults.postsPagination,
-  postsPaginationTotal: Nulls.postsPaginationTotal
+  postsPaginationTotal: Nulls.postsPaginationTotal,
+  related_content: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
   _state.takeover.seen = true;
@@ -58,6 +59,12 @@ function applySocialMediaDataForPosts(response, type) {
     log(`Added ${type}`, response.data);
     Store.emit('change', _state);
   }
+}
+function applyRelatedContent(type) {
+  return (response) => {
+    _state.related_content.push(response.data);
+    Store.emit('change', _state);
+  };
 }
 
 window._state = _state;
@@ -94,6 +101,7 @@ const Store = Object.assign(
       _state.currentPage = newPage;
       _state.statusCode = statusCode;
       _state.modal = null;
+      _state.related_content = [];
       Store.emit('change', _state);
     },
     loadData(itemsToLoad) {
@@ -107,13 +115,38 @@ const Store = Object.assign(
 
       return DataLoader(itemsToLoad, applyData).then(() => {
         let result;
-        if(some(itemsToLoad, item => item.type === 'posts')) {
-          result = Store.getSocialSharesForPosts();
-        } else if(some(itemsToLoad, item => item.type === 'post')) {
-          result = Store.getSocialSharesForPost();
-        } else {
-          result = _state;
+        switch(true) {
+          case some(itemsToLoad, item => item.type === 'posts'):
+            result = Store.getSocialSharesForPosts();
+          break;
+          case some(itemsToLoad, item => item.type === 'post'):
+            result = Store.getSocialSharesForPost();
+          break;
+          default:
+            result = _state;
         }
+        itemsToLoad.forEach(item => {
+          if(item.async) {
+            item.async.forEach(dependency => {
+              if(dependency === 'related_content') {
+                setTimeout(() => {
+
+                  DataLoader(_state[item.type].related_content.posts.map(pid => {
+                    return {
+                      url: `wp/v2/posts/${pid}`,
+                      type: 'related_posts'
+                    };
+                  }), applyRelatedContent('posts'));
+                  // DataLoader(_state.page.related_content.case_studies.map(csid => {
+                  //   url: `ustwo/v1/case-studies/${csid}`,
+                  //   type: 'caseStudies'
+                  // }), applyRelatedContent('case_studies'));
+
+                }, 10);
+              }
+            });
+          }
+        });
         Store.emit('change', result);
       });
     },
