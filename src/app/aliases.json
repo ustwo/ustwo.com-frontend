@@ -15,6 +15,11 @@
     "../../adaptors/server/tracking": "./adaptors/client/tracking",
     "../adaptors/server/window": "./adaptors/client/window",
     "../../adaptors/server/window": "./adaptors/client/window",
-    "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js"
+    "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
+    "../../adaptors/server/scroll-magic": "./adaptors/client/scroll-magic",
+    "../adaptors/server/proxy-url": "./adaptors/client/proxy-url",
+    "../../adaptors/server/svg4everybody": "./adaptors/client/svg4everybody",
+    "../adaptors/server/scroll-tracker": "./adaptors/client/scroll-tracker",
+    "../adaptors/server/data-loader": "./adaptors/client/data-loader"
   }
 }

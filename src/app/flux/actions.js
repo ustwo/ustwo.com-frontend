@@ -2,52 +2,52 @@ import Store from './store';
 
 const Actions = {
   goTo(pageId, statusCode) {
-    return Store.setPage(pageId, statusCode);
+    Store.setPage(pageId, statusCode);
   },
   loadData(itemsToLoad) {
-    return Store.loadData(itemsToLoad || []);
+    Store.loadData(itemsToLoad || []);
   },
   setBlogCategoryTo(id) {
-    return Store.setBlogCategoryTo(id);
+    Store.setBlogCategoryTo(id);
   },
   setSearchQueryTo(string) {
-    return Store.setSearchQueryTo(string);
+    Store.setSearchQueryTo(string);
   },
   showContacts() {
-    return Store.showContacts();
+    Store.showContacts();
   },
   showNavOverlay() {
-    return Store.showNavOverlay();
+    Store.showNavOverlay();
   },
   closeTakeover() {
-    return Store.closeTakeover();
+    Store.closeTakeover();
   },
   closeModal() {
-    return Store.closeModal();
+    Store.closeModal();
   },
   getJobDetails(jid) {
-    return Store.getJobDetails(jid);
+    Store.getJobDetails(jid);
   },
   showSearch() {
-    return Store.showSearch();
+    Store.showSearch();
   },
   hideSearch() {
-    return Store.hideSearch();
+    Store.hideSearch();
   },
   showBlogCategories() {
-    return Store.showBlogCategories();
+    Store.showBlogCategories();
   },
   getSocialSharesForPost() {
-    return Store.getSocialSharesForPost();
+    Store.getSocialSharesForPost();
   },
   getSocialSharesForPosts() {
-    return Store.getSocialSharesForPosts();
+    Store.getSocialSharesForPosts();
   },
   loadMorePosts() {
-    return Store.loadMorePosts();
+    Store.loadMorePosts();
   },
   resetPosts() {
-    return Store.resetPosts();
+    Store.resetPosts();
   }
 };
 

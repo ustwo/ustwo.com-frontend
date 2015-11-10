@@ -10,7 +10,6 @@ const routes = {
   home: {
     id: 'home',
     pattern: '/',
-    statusCode: 200,
     data: () => [{
       url: 'ustwo/v1/pages/home',
       type: 'page',
@@ -20,7 +19,6 @@ const routes = {
   work: {
     id: 'what-we-do',
     pattern: '/what-we-do',
-    statusCode: 200,
     data: () => [{
       url: 'ustwo/v1/pages/what-we-do',
       type: 'page',
@@ -30,17 +28,15 @@ const routes = {
   caseStudy: {
     id: 'what-we-do/case-study',
     pattern: '/what-we-do/:cid',
-    statusCode: 200,
     data: slug => [{
       url: `ustwo/v1/case-studies/${slug}`,
-      type: 'page',
+      type: 'caseStudy',
       slug: slug
     }]
   },
   blogCategory: {
     id: 'blog',
     pattern: '/blog?category=:category',
-    status: 200,
     data: category => [{
       url: `ustwo/v1/pages/blog`,
       type: 'page',
@@ -54,7 +50,6 @@ const routes = {
   blog: {
     id: 'blog',
     pattern: '/blog',
-    statusCode: 200,
     data: () => [{
       url: 'ustwo/v1/pages/blog',
       type: 'page',
@@ -68,7 +63,6 @@ const routes = {
   searchResults: {
     id: 'blog/search-results',
     pattern: '/blog/search?q=:query',
-    status: 200,
     data: query => [{
       url: `ustwo/v1/posts?search=${query}`,
       type: 'posts',
@@ -78,17 +72,15 @@ const routes = {
   post: {
     id: 'blog/post',
     pattern: '/blog/:pid',
-    statusCode: 200,
     data: pid => [{
       url: `ustwo/v1/posts/${pid}`,
-      type: 'page',
+      type: 'post',
       slug: pid
     }]
   },
   legal: {
     id: 'legal',
     pattern: '/legal',
-    statusCode: 200,
     data: () => [{
       url: 'ustwo/v1/pages/legal',
       type: 'page',
@@ -98,7 +90,6 @@ const routes = {
   joinUs: {
     id: 'join-us',
     pattern: '/join-us',
-    status: 200,
     data: () => [{
       url: 'ustwo/v1/pages/join-us',
       type: 'page',

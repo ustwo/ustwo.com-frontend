@@ -14,7 +14,7 @@ import '../../adaptors/server/localfont';
 import window from '../../adaptors/server/window';
 import '../../lib/animate';
 
-import Flux from '../../flux';
+import Store from '../../flux/store';
 import Nulls from '../../flux/nulls';
 import Navigation from '../navigation';
 import Footer from '../footer';
@@ -54,14 +54,14 @@ export default class App extends React.Component {
     super(props);
     this.state = props.state;
   }
-  onFlux = (state) => {
+  onChangeStore = (state) => {
     this.setState(state);
   }
   componentDidMount() {
-    Flux.addChangeListener(this.onFlux);
+    Store.on('change', this.onChangeStore);
   }
   componentWillUnmount() {
-    Flux.removeChangeListener(this.onFlux);
+    Store.removeListener('change', this.onChangeStore);
   }
   render() {
     const state = this.state;
