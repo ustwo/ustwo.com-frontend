@@ -3,7 +3,8 @@
 const exec = require('child_process').exec;
 
 const mochaArgs = process.argv[2];
-const browsers = process.argv.splice(3);
+const user = process.argv[3];
+const browsers = ['chrome', 'firefox', 'explorer'];
 
 // context (browser) specific log
 function log(browser, data) {
@@ -36,7 +37,7 @@ function promiseFromChildProcess(child) {
 
 // runs the mocha tests for a given browser
 function runMocha(browser) {
-  let mergedEnv = Object.assign({BROWSER: browser}, process.env);
+  let mergedEnv = Object.assign({BROWSER: browser, USER:user}, process.env);
   let mocha = exec('mocha ' + mochaArgs, {env: mergedEnv});
   mocha.stdout.on('data', log.bind(null, browser));
   mocha.stderr.on('data', log.bind(null, browser));
