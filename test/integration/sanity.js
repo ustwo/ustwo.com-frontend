@@ -65,57 +65,40 @@ const workSlug = 'what';
 
 // helpers
 wd.addPromiseChainMethod('openPageByMenuLink', (linkText) => {
-  let navigationToggleExists;
-  let sequence = [
-    () => {
-      return browser
-        .elementByCss(navigationToggle)
-        .isDisplayed((err, isVisible) => {
-          navigationToggleExists = (err === null && isVisible);
-        }
-      ).catch(() => {});
-    },
-    () => {
-      if (navigationToggleExists) {
+  return browser
+    .elementByCss(navigationToggle)
+    .isDisplayed()
+    .then((isDisplayed) => {
+      if (isDisplayed) {
+        console.log('We have a mobile menu so need to open it first...');
         return browser
           .elementByCss(navigationToggle)
           .click()
           .waitForElementByPartialLinkText(linkText.toUpperCase(), 5000)
           .click();
       } else {
+        console.log('We are on desktop resolution now, no need to open mobile menu!');
         return browser
           .elementByPartialLinkText(linkText)
           .click();
       }
-    }
-  ];
-  return sequence.reduce(Q.when, new Q());
+    });
 });
 
 wd.addPromiseChainMethod('closeTakeoverIfPresent', () => {
-  let takeoverExists;
-  let sequence = [
-    () => {
+  return browser
+    .elementByCss(takeover)
+    .then(() => {
+      console.log('We have a takeover so need to close it first...')
       return browser
-        .elementByCss(takeover)
-        .isDisplayed((err, isVisible) => {
-          takeoverExists = (err === null && isVisible);
-        }
-      ).catch(() => {});
-    },
-    () => {
-      if (takeoverExists) {
-        return browser
-          .waitForElementByCss(takeoverClose, 30000)
-          .click()
-          .elementByCss(modal)
-          .should.eventually.not.hasElementByCss(takeoverModal);
-      } else {
-        return browser;
-      }
-    }
-  ];
-  return sequence.reduce(Q.when, new Q());
+        .waitForElementByCss(takeoverClose, 30000)
+        .click()
+        .elementByCss(modal)
+        .should.eventually.not.hasElementByCss(takeoverModal);
+    }, () => {
+      console.log('We don\'t have a takeover right now, carrying on!')
+      return browser;
+    });
 });
 
 describe('  mocha integration tests (' + desired.browserName + ')', function () {
