@@ -24,7 +24,7 @@ const _state = Object.assign({
   facebookShares: Nulls.facebookShares,
   postsPagination: Defaults.postsPagination,
   postsPaginationTotal: Nulls.postsPaginationTotal,
-  related_content: []
+  relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
   _state.takeover.seen = true;
@@ -62,7 +62,7 @@ function applySocialMediaDataForPosts(response, type) {
 }
 function applyRelatedContent(type) {
   return (response) => {
-    _state.related_content.push(response.data);
+    _state.relatedContent.push(response.data);
     Store.emit('change', _state);
   };
 }
@@ -101,7 +101,7 @@ const Store = Object.assign(
       _state.currentPage = newPage;
       _state.statusCode = statusCode;
       _state.modal = null;
-      _state.related_content = [];
+      _state.relatedContent = [];
       Store.emit('change', _state);
     },
     loadData(itemsToLoad) {
