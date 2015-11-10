@@ -14,9 +14,29 @@ let browser;
 
 // browser capabilities
 const desireds = {
-  firefox: {browserName: 'firefox'},
-  chrome: {browserName: 'chrome'},
-  explorer: {browserName: 'internet explorer', version:'10'}
+  firefox: {
+    browserName: 'firefox',
+    platform: 'OS X 10.10',
+    screenResolution: '1280x1024'
+  },
+  chrome: {
+    browserName: 'chrome',
+    platform: 'Windows 10',
+    screenResolution: '1280x1024'
+  },
+  explorer: {
+    browserName: 'internet explorer',
+    platform: 'Windows 7',
+    screenResolution: '1280x1024',
+    version: '10'
+  },
+  android: {
+    browserName: 'android',
+    platform: 'Linux',
+    deviceName: 'Samsung Galaxy S3 Emulator',
+    deviceOrientation: 'portrait',
+    version: '4.4'
+  }
 };
 
 // http configuration, not needed for simple runs
@@ -31,7 +51,7 @@ const browserKey = process.env.BROWSER || 'explorer';
 let desired = desireds[browserKey];
 desired.name = 'testing with ' + browserKey;
 desired.tags = ['integration'];
-desired['tunnel-identifier'] = process.env.USER || 'nouser';
+desired.tunnelIdentifier = process.env.USER || 'nouser';
 
 // selectors and strings
 const navigation = '.navigation';
@@ -114,10 +134,15 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
       browser.on('status', info => console.log(info));
       browser.on('command', (meth, path, data) => console.log(' > ' + meth, path, data || ''));
     }
-    return browser
-      .init(desired)
-      .setPageLoadTimeout(60000)
-      .setWindowSize(1100, 720);
+    if (desired.browserName === 'android') {
+      return browser
+        .init(desired);
+    } else {
+      return browser
+        .init(desired)
+        .setPageLoadTimeout(60000)
+        .setWindowSize(1200, 900);
+    }
   });
 
   // need to keep it `function`, otherwise `this.currentTest` is undefined
@@ -134,6 +159,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   it('should load home page', () => {
     return browser
       .get(baseURL)
+      .waitForElementByCss(navigation, 60000)
       .title()
       .should.become(homeTitle)
       .closeTakeoverIfPresent()
@@ -156,8 +182,10 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   });
 
   it('should return to the home page', () => {
+    if (desired.browserName !== 'android') {
+      browser.setWindowSize(800, 600)
+    }
     return browser
-      .setWindowSize(800, 600)
       .elementByCss(logoLink)
       .click()
       .waitForElementByCss(pageHome, wd.asserters.textInclude(homeHeadline), 10000);
