@@ -12,6 +12,7 @@ sauce-rm:
 	@echo "Removing $(sauce_name)"
 	@$(DOCKER_RM) $(sauce_name)
 
+# TODO add error checking and return with error or retry when Sauce Connect is unable to establish connection
 define wait_for_sauce
 @echo "Waiting for Sauce Connect tunnel to be ready..."
 while [ -z "`$(DOCKER) logs $(sauce_name) | $(GREP) 'Sauce Connect is up, you may start your tests'`" ] ; do \
@@ -26,7 +27,7 @@ sauce-create:
 		-p 8000:8000 \
 		--link $(proxy_name):local.ustwo.com \
 		ustwo/docker-sauce-connect \
-		./bin/sc -P 8000 -u $(SAUCE_USERNAME) -k $(SAUCE_ACCESS_KEY) --no-ssl-bump-domains *.ustwo.com
+		./bin/sc -P 8000 -u $(SAUCE_USERNAME) -k $(SAUCE_ACCESS_KEY) $(if $(CI), "", --no-ssl-bump-domains *.ustwo.com)
 	@$(call wait_for_sauce)
 
 define wait_for_node
