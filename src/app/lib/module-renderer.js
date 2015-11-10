@@ -62,7 +62,7 @@ function renderBlockquote(moduleData, index) {
   return <QuoteBlock
     key={`module-quote-${index}`}
     source={get(moduleData, 'attr.source.value')}
-    backgroundColour={get(colours, 'primary')}
+    backgroundColour={get(colours, 'secondary')}
   >
     {get(moduleData, 'attr.text.value')}
   </QuoteBlock>;

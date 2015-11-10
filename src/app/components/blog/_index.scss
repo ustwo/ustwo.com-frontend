@@ -22,11 +22,11 @@
   .blog-label-#{$category} {
 
     .blog-category {
-      background-color: #{$colour};
+      background-color: $colour;
     }
 
     .tail a {
-      border-color: #{$colour};
+      border-color: $colour;
       font-family: $PxGroteskBold;
     }
 
@@ -36,14 +36,28 @@
         .content a,
         .author .link a,
         .single-column hr {
-          border-color: #{$colour};
+          border-color: $colour;
         }
       }
     }
 
     &.search-result-list-item {
       .tail a {
-        border-color: #{$colour};
+        border-color: $colour;
+      }
+    }
+
+    .quote-block {
+      .quote-mark {
+        svg {
+          fill: $colour;
+        }
+      }
+      .quote {
+        color: $colour;
+      }
+      .source {
+        color: $darkGrey;
       }
     }
   }

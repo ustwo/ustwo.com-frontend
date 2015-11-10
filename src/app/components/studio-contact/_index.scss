@@ -54,7 +54,7 @@
       .map {
         display: inline-block;
         margin-top: 20px;
-        border-bottom: 2px solid #646464;
+        border-bottom: 2px solid $darkGrey;
         font-size: 14px;
 
         &:hover {
@@ -87,7 +87,7 @@
       border-bottom-color: transparent !important;
 
       .studio-details .map {
-        border-bottom-color: #646464;
+        border-bottom-color: $darkGrey;
       }
     }
     .studio-title {
