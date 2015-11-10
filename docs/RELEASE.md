@@ -25,7 +25,7 @@ If not, do it manually (only for emergencies when you cannot wait for the Circle
 
 2. Build fresh Docker images
 
-        $ make build VERSION=x.x.x
+        $ make build VERSION=1.2.3
 
 3. Publish the release
 
@@ -48,7 +48,11 @@ If not, do it manually (only for emergencies when you cannot wait for the Circle
 4. Clean old images, keeping only the last known working version in case of rollback
 
         $ make ls
-        $ make nuke VERSION=1.2.2
+        $ make nuke VERSION=1.2.1
+
+5. Switch back to dev environment
+
+        $ eval $(docker-machine env dev)
 
 ## Deploy to production
 
@@ -75,12 +79,16 @@ the Docker Hub.
 
         $ make deploy-production VERSION=1.2.3
 
-6. Purge CDN cache
+6. Purge and prefetch CDN cache
 
         $ make cdn-purge
+        $ make cdn-prefetch
 
 7. Clean old images, keeping only the last known working version in case of rollback
 
         $ make ls
-        $ make nuke VERSION=1.2.2
+        $ make nuke VERSION=1.2.1
 
+8. Switch back to dev environment
+
+        $ eval $(docker-machine env dev)

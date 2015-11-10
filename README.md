@@ -78,31 +78,36 @@ later.
 
 ### Accessibility
 
-TODO
-
 Officially supporting only modern browsers doesn't mean that we ignore people
 (and browsers) with special needs.
 
-* Prerendered HTML
+* We're delivering prerendered HTML, so content is delivered to and rendered on
+clients without Javascript (or with overzealous ad blockers)
 * Clean, standards compliant markup
-* WAI-ARIA tags
+* WAI-ARIA tags (TODO: test more comprehensively and with real users)
 
 ## Infrastructure
 
 ### CDN
 
-We (will soon) have *everything* served up from a CDN with HTTP/2 enabled, and
-by that we mean that ustwo.com is pointed at the CDN URL on a DNS level!
+We (will soon) have *everything* served up from a CDN, and by that we mean that
+ustwo.com is pointed at the CDN URL on a DNS level!
 
-Unless you have a lot of user dependent dynamic content this is a matter of
-expiry / cache headers optimised and honoured throughout your stack and having a
-CDN with some basic APIs so you can flush and prefetch on code and content
-changes.
+Unless you have a lot of user dependent dynamic content (and it's not feasible
+moving these areas to subdomains) the trick is to remove caching from all layers
+of the stack, while keeping the client side cache / expiry short (we're using
+only 1 hour or effectively one session).
+
+This way the only place you need to worry about and manage cache is the CDN. Of
+course for this you need to have a decent CDN which has an API to purge and
+prefetch content.
 
 ### The big picture
 
 So here's how all this fits together and creates a working setup with our
 WordPress backend and CDN.
+
+TODO: update diagram for new CDN setup
 
 [![ustwo.com infrastructure diagram][5]][5]
 

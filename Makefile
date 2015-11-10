@@ -83,9 +83,17 @@ release: release-create
 
 # CDN ids:
 # ustwo.it 48643
-# TODO integrate with Slack?
+
+# TODO: replace ID with ustwo.com CDN eventually
+# TODO: integrate with Slack as a dirty solution for manual content refresh?
+# For API documentation see: https://client.cdn77.com/support/api/version/2.0/data#Purge All
 cdn-purge:
 	@$(CURL) --data "cdn_id=48643&login=$(CDN77_LOGIN)&passwd=$(CDN77_API_KEY)" https://api.cdn77.com/v2.0/data/purge-all
+
+# TODO: we should warm up the CDN after a purge, but to do that we'll need to feed it a list of URLs, maybe from the sitemap...
+# For API documentation see: https://client.cdn77.com/support/api/version/2.0/data#Prefetch
+cdn-prefetch:
+	@echo "Not implemented yet..."
 
 seeds: build
 love: deploy
