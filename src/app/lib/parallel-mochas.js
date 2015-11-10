@@ -20,7 +20,7 @@ function log(browser, data) {
 
 // promisifying `child_process`
 function promiseFromChildProcess(child) {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     child.addListener('error', (code, signal) => {
       console.log('ChildProcess error', code, signal);
       reject();
