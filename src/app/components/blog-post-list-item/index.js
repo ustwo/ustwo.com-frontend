@@ -27,9 +27,8 @@ const BlogPostListItem = React.createClass({
     const uri = `/blog/${get(post, 'slug')}`;
 
     return <div className={classes}>
-      <a href={uri} onClick={Flux.override(uri)}>
+      <a href={uri} onClick={Flux.override(uri)} className="post-image">
         <Rimage
-          className="post-image"
           wrap="div"
           sizes={get(image, 'media_details.sizes')}
           altText={get(image, 'alt_text')}

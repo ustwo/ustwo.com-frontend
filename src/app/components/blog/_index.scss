@@ -15,6 +15,11 @@
     .tail a {
       border-color: $colour;
       font-family: $PxGroteskBold;
+      transition: color $hover-duration-quick ease-in-out;
+
+      &:hover {
+        color: $colour;
+      }
     }
 
     &.page-post {

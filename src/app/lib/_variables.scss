@@ -57,3 +57,12 @@ $jobs-video-height-mobile: 310px;
 $jobs-video-height: $jobs-slide-height * 2;
 $jobs-feature-card-padding-mobile: 25px;
 $jobs-feature-card-padding: 50px;
+
+/* ------------------------------------------------------------ *\
+|* Hovers
+\* ------------------------------------------------------------ */
+
+$hover-duration-quick: .2s;
+$hover-duration: .32s;
+$hover-opacity-fade: .8;
+$hover-scale-up: 1.05;
