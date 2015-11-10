@@ -7,6 +7,12 @@ const Sandbox = React.createClass({
         backgroundColour="grey"
         source="The Original Source"
       >Some quote text</QuoteBlock>
+      <div className="blog-label-product">
+        <QuoteBlock
+          backgroundColour=""
+          source="Hollandaise Source"
+        >Quote in a blog post</QuoteBlock>
+      </div>
     </div>;
   }
 });

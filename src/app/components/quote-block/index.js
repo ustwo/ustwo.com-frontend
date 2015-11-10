@@ -6,17 +6,17 @@ class QuoteBlock extends React.Component {
   render() {
     const { backgroundColour, children, source } = this.props;
     return <div
-      className='quote-block'
+      className="quote-block"
       style={{ backgroundColor: backgroundColour }}
     >
-      <div className='quote-mark'>
-        <SVG role='presentation' spritemapID='quotemark' />
+      <div className="quote-mark">
+        <SVG role="presentation" spritemapID="quotemark" />
       </div>
       <div
-        className='quote'
+        className="quote"
         dangerouslySetInnerHTML={{ __html: children }}
       />
-      <p className='source'>By {source}</p>
+    <p className="source">By {source}</p>
     </div>;
   }
 }

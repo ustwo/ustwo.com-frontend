@@ -15,7 +15,7 @@
     svg {
       position: absolute;
       z-index: 1;
-      width: 120px;
+      width: 90px;
       height: 140px;
       fill: $offWhite;
       opacity: 0.3;
@@ -46,10 +46,10 @@
     padding: 140px 6.25% 80px;
 
     .quote-mark {
-      transform: translate(-50px, -80px);
+      transform: translate(-30px, -90px);
 
       svg {
-        width: 193px;
+        width: 120px;
       }
     }
 
