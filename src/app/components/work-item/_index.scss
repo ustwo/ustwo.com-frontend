@@ -14,10 +14,29 @@
   background-color: $offWhite;
 
   .image {
+    position: relative;
     cursor: pointer;
 
     .rimage {
       height: 320px;
+    }
+
+    .image-hover {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba($mare, .7);
+      opacity: 0;
+      transition: opacity .32s ease-in-out;
+    }
+
+    &:hover {
+      .image-hover {
+        opacity: 1;
+      }
     }
   }
 
