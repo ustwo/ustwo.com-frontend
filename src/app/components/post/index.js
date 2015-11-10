@@ -13,6 +13,7 @@ import Rimage from '../rimage';
 import BlogPostMetaInformation from '../blog-post-meta-information';
 import BlogCategoryTag from '../blog-category-tag';
 import SocialMediaSharing from '../social-media-sharing';
+import RelatedContent from '../related-content';
 
 const PagePost = React.createClass({
   mixins: [getScrollTrackerMixin('post')],
@@ -53,7 +54,8 @@ const PagePost = React.createClass({
         {this.renderSocialMediaSharing('bottom')}
         {this.renderAuthorInformation()}
       </div>
-    </article>;
+      <RelatedContent content={this.props.relatedContent} />
+    </article>
   },
   renderSocialMediaSharing(position) {
     const props = this.props;
