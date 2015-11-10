@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import kebabCase from 'lodash/string/kebabCase';
 import get from 'lodash/object/get';
-import QS from '../../flux/query-string';
+import QS from '../../lib/query-string';
 
 import Rimage from '../rimage';
 import GridCell from '../grid-cell';
@@ -37,7 +37,7 @@ export default class Grid extends React.Component {
         portrait: 0
       }
       output = <iframe
-        src={`${baseURL}/${video}?${QS.stringify(options)}`}
+        src={`${baseURL}/${video}${QS.stringify(options)}`}
         frameBorder='0'
         webkitallowfullscreen
         mozallowfullscreen

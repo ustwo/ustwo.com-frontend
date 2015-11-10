@@ -1,6 +1,6 @@
 import urllite from 'urllite';
 
-import QS from './query-string';
+import QS from '../lib/query-string';
 
 function getActualUrl(url) {
   const splitUrl = url.split('#/');
