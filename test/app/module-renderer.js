@@ -172,7 +172,7 @@ describe('renderModules', () => {
     });
 
     it('has a background colour', () => {
-      expect(result().props.backgroundColour).to.equal(colours.primary);
+      expect(result().props.backgroundColour).to.equal(colours.secondary);
     });
 
     it('renders quote text as a child', () => {
