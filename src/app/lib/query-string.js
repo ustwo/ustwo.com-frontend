@@ -1,41 +1,49 @@
 import reduce from 'lodash/collection/reduce';
-import kebabCase from 'lodash/string/kebabCase';
 
-function stripIndicator(search) {
-  return search[0] === '?' ? search.substr(1) : search;
+function stripIndicator(queryString) {
+  return queryString.substr(1);
+}
+
+function parseForSpecialValue(string) {
+  let value = string;
+  switch(string) {
+    case "null":
+      value = null;
+      break;
+    case "true":
+      value = true;
+      break;
+    case "false":
+      value = false;
+      break;
+  }
+  return value;
 }
 
 const QS = {
-  parse: search => {
-    return stripIndicator(search).split('&').reduce((hash, item) => {
-      const tuple = item.split('=');
-      switch(tuple[1]) {
-        case "null":
-          tuple[1] = null;
-          break;
-        case "true":
-          tuple[1] = true;
-          break;
-        case "false":
-          tuple[1] = false;
-          break;
-      }
-      if (tuple[1] !== 'undefined' && tuple[1] !== undefined) {
-        hash[tuple[0]] = tuple[1];
-      }
-      return hash;
-    }, {});
+  parse(queryString) {
+    return stripIndicator(queryString)
+      .split('&')
+      .reduce((queryObject, item) => {
+        const tuple = item.split('=');
+        const key = tuple[0];
+        const value = parseForSpecialValue(tuple[1]);
+        if (value !== 'undefined' && value !== undefined) {
+          queryObject[key] = value;
+        }
+        return queryObject;
+      }, {});
   },
-  stringify: search => {
-    return reduce(search, (searchString, value, key) => {
-      let item;
+  stringify(queryObject) {
+    const queryString = reduce(queryObject, (queryString, value, key) => {
       if (value !== undefined) {
-        if (searchString.length) searchString += '&';
-        const valueString = value === null ? 'null' : kebabCase(value);
-        searchString += `${key}=${valueString}`;
+        if (queryString.length) queryString += '&';
+        const valueString = value === null ? 'null' : value;
+        queryString += `${key}=${valueString}`;
       }
-      return searchString;
+      return queryString;
     }, '');
+    return queryString.length ? `?${queryString}` : queryString;
   }
 };
 

@@ -37,7 +37,7 @@ export default class Grid extends React.Component {
         portrait: 0
       }
       output = <iframe
-        src={`${baseURL}/${video}?${QS.stringify(options)}`}
+        src={`${baseURL}/${video}${QS.stringify(options)}`}
         frameBorder='0'
         webkitallowfullscreen
         mozallowfullscreen

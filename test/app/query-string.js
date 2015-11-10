@@ -29,11 +29,6 @@ describe('QS', () => {
       expect(result.colour).to.equal(null);
     });
 
-    it('can take a string without a leading ?', () => {
-      const stringSansQuestion = string.substr(1);
-      expect(isEqual(QS.parse(string), QS.parse(stringSansQuestion))).to.equal(true);
-    });
-
     it('returns an empty object if passed an empty string', () => {
       expect(isEqual(QS.parse(''), {})).to.equal(true);
     });
@@ -56,6 +51,10 @@ describe('QS', () => {
 
     it('returns a string', () => {
       expect(result).to.be.a('string');
+    });
+
+    it('returns a string beginning with "?"', () => {
+      expect(result[0]).to.equal('?');
     });
 
     it('does not stringify undefined properties', () => {
