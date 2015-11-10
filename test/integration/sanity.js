@@ -3,6 +3,7 @@
 import wd from 'wd';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
+const Q = wd.Q;
 
 chai.use(chaiAsPromised);
 chai.should();
@@ -52,9 +53,9 @@ const blogSlug = 'blog';
 const logoLink = '.navigation .logo a';
 const pageHome = '.page-home';
 const homeHeadline = 'DIGITAL PRODUCT STUDIO';
-const joinLink = 'Join Us';
-const jobsList = '.jobs-container';
-const jobMoreinfo = 'More info';
+const joinLink = 'Join';
+const jobsPage = '.page-container';
+const jobOpenings = 'CURRENT OPENINGS';
 const joinSlug = 'join';
 const workURL = baseURL + '/what-we-do';
 const workItem = '.page-work .work-item';
@@ -62,21 +63,59 @@ const workReadmore = 'Read more';
 const workSlug = 'what';
 
 // helpers
-function openPageByMenuLink(linkText) {
-  return browser
-    .elementByCss(navigationToggle).isDisplayed(function (err, isVisible) {
-      // here we need to break out of the promise chain for this callback to be able to
-      // check for the presence of the mobile navigation toggle without failing the test...
-      if (err === null && isVisible) {
-        browser.elementByCss(navigationToggle)
+wd.addPromiseChainMethod('openPageByMenuLink', (linkText) => {
+  let navigationToggleExists;
+  let sequence = [
+    () => {
+      return browser
+        .elementByCss(navigationToggle)
+        .isDisplayed((err, isVisible) => {
+          navigationToggleExists = (err === null && isVisible);
+        }
+      ).catch(() => {});
+    },
+    () => {
+      if (navigationToggleExists) {
+        return browser
+          .elementByCss(navigationToggle)
           .click()
-          .waitForElementByCss(navigationOverlay, wd.asserters.textInclude(blogLink), 10000);
+          .waitForElementByPartialLinkText(linkText.toUpperCase(), 5000)
+          .click();
+      } else {
+        return browser
+          .elementByPartialLinkText(linkText)
+          .click();
       }
-      return browser.elementByLinkText(linkText).click();
-    }).catch(() => {
-      // ...but we also need to catch and absorb the error
-    });
-}
+    }
+  ];
+  return sequence.reduce(Q.when, new Q());
+});
+
+wd.addPromiseChainMethod('closeTakeoverIfPresent', () => {
+  let takeoverExists;
+  let sequence = [
+    () => {
+      return browser
+        .elementByCss(takeover)
+        .isDisplayed((err, isVisible) => {
+          takeoverExists = (err === null && isVisible);
+        }
+      ).catch(() => {});
+    },
+    () => {
+      if (takeoverExists) {
+        return browser
+          .waitForElementByCss(takeoverClose, 30000)
+          .click()
+          .elementByCss(modal)
+          .should.eventually.not.hasElementByCss(takeoverModal);
+      } else {
+        return browser;
+      }
+    }
+  ];
+  return sequence.reduce(Q.when, new Q());
+});
 
 describe('  mocha integration tests (' + desired.browserName + ')', function () {
   this.timeout(100000);
@@ -94,12 +133,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
     return browser
       .init(desired)
       .setPageLoadTimeout(60000)
-      .setWindowSize(1280, 720);
-  });
-
-  beforeEach(() => {
-    return browser
-      .setWindowSize(1280, 720);
+      .setWindowSize(1100, 720);
   });
 
   // need to keep it `function`, otherwise `this.currentTest` is undefined
@@ -117,24 +151,10 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
     return browser
       .get(baseURL)
       .title()
-      .should.become(homeTitle);
-  });
-
-  it('should close overlay if present', () => {
-      return browser
-        .elementByCss(takeover, function (err, el) {
-          // here we need to break out of the promise chain for this callback to be able to
-          // check for the presence of the takeover without failing the test...
-          if (err === null) {
-            return browser.waitForElementByCss(takeoverClose, 30000)
-              .click()
-              .elementByCss(modal)
-              .should.eventually.not.hasElementByCss(takeoverModal);
-          }
-        }).catch(() => {
-          // ...but we also need to catch and absorb the error
-          return browser.waitForElementByCss(footer).isDisplayed();
-        });
+      .should.become(homeTitle)
+      .closeTakeoverIfPresent()
+      .waitForElementByCss(footer)
+      .isDisplayed();
   });
 
   it('should contain London in footer', () => {
@@ -145,21 +165,24 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   });
 
   it('should go to the Blog page and look for Featured post', () => {
-    return openPageByMenuLink(blogLink)
+    return browser
+      .openPageByMenuLink(blogLink)
       .waitForElementByCss(featuredBlogPost, wd.asserters.textInclude(blogReadmore), 10000)
       .url().should.eventually.include(blogSlug);
   });
 
   it('should return to the home page', () => {
     return browser
+      .setWindowSize(800, 600)
       .elementByCss(logoLink)
       .click()
       .waitForElementByCss(pageHome, wd.asserters.textInclude(homeHeadline), 10000);
   });
 
-  it('should go to the Join us page and look for job listings', () => {
-    return openPageByMenuLink(joinLink)
-      .waitForElementByCss(jobsList, wd.asserters.textInclude(jobMoreinfo), 10000)
+  it('should go to the Join us page and look for job listing title', () => {
+    return browser
+      .openPageByMenuLink(joinLink)
+      .waitForElementByCss(jobsPage, wd.asserters.textInclude(jobOpenings), 15000)
       .url().should.eventually.include(joinSlug);
   });
 
