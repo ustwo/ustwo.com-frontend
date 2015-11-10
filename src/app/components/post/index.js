@@ -54,8 +54,15 @@ const PagePost = React.createClass({
         {this.renderSocialMediaSharing('bottom')}
         {this.renderAuthorInformation()}
       </div>
-      <RelatedContent content={this.props.relatedContent} />
+      {this.renderRelatedContent()}
     </article>
+  },
+  renderRelatedContent() {
+    let relatedContent;
+    if(this.props.relatedContent.length) {
+      relatedContent = <RelatedContent content={this.props.relatedContent} />
+    }
+    return relatedContent;
   },
   renderSocialMediaSharing(position) {
     const props = this.props;

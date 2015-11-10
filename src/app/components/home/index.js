@@ -221,7 +221,7 @@ const PageHome = React.createClass({
   renderRelatedContent() {
     let relatedContent;
     // if(this.props.page.related_content) {
-      relatedContent = <div>related_content</div>;
+      // relatedContent = <RelatedContent>;
     // }
     return relatedContent;
   },

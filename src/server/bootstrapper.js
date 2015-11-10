@@ -35,7 +35,9 @@ const globalLoads = [{
 }];
 
 function bootstrapper(initialUrl, hostApi, proxyUrl) {
-  const _state = {};
+  const _state = {
+    relatedContent: []
+  };
   const vurl = virtualUrl(initialUrl);
   global.hostApi = hostApi;
   global.proxyUrl = proxyUrl;

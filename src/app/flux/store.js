@@ -60,11 +60,10 @@ function applySocialMediaDataForPosts(response, type) {
     Store.emit('change', _state);
   }
 }
-function applyRelatedContent(type) {
-  return (response) => {
-    _state.relatedContent.push(response.data);
-    Store.emit('change', _state);
-  };
+function applyRelatedContent(response) {
+  _state.relatedContent.push(response.data);
+  log('Loaded related content', response.data);
+  Store.emit('change', _state);
 }
 
 window._state = _state;
@@ -114,40 +113,29 @@ const Store = Object.assign(
       });
 
       return DataLoader(itemsToLoad, applyData).then(() => {
-        let result;
         switch(true) {
           case some(itemsToLoad, item => item.type === 'posts'):
-            result = Store.getSocialSharesForPosts();
+            Store.getSocialSharesForPosts();
           break;
           case some(itemsToLoad, item => item.type === 'post'):
-            result = Store.getSocialSharesForPost();
+            Store.getSocialSharesForPost();
           break;
-          default:
-            result = _state;
         }
         itemsToLoad.forEach(item => {
-          if(item.async) {
-            item.async.forEach(dependency => {
-              if(dependency === 'related_content') {
-                setTimeout(() => {
-
-                  DataLoader(_state[item.type].related_content.posts.map(pid => {
-                    return {
-                      url: `wp/v2/posts/${pid}`,
-                      type: 'related_posts'
-                    };
-                  }), applyRelatedContent('posts'));
-                  // DataLoader(_state.page.related_content.case_studies.map(csid => {
-                  //   url: `ustwo/v1/case-studies/${csid}`,
-                  //   type: 'caseStudies'
-                  // }), applyRelatedContent('case_studies'));
-
-                }, 10);
-              }
-            });
-          }
+          (item.async || []).forEach(dependency => {
+            switch(dependency) {
+              case 'related_content':
+                DataLoader(_state[item.type].related_content.map(url => {
+                  return {
+                    url: url,
+                    type: 'relatedContent'
+                  };
+                }), applyRelatedContent);
+              break;
+            }
+          });
         });
-        Store.emit('change', result);
+        Store.emit('change', _state);
       });
     },
     setBlogCategoryTo(id) {

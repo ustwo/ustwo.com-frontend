@@ -540,6 +540,7 @@ const postData = {
 
 export default class RelatedContent extends React.Component {
   render() {
+    console.log('content', this.props.content);
     return (
       <div className="related-content">
         <h2>More Juice</h2>
