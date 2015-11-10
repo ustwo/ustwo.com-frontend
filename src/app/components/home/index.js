@@ -214,8 +214,16 @@ const PageHome = React.createClass({
             </HomeTextBlock>
           </div>
         </ScreenBlock>
+        {this.renderRelatedContent()}
       </article>
     );
+  },
+  renderRelatedContent() {
+    let relatedContent;
+    // if(this.props.page.related_content) {
+      relatedContent = <div>related_content</div>;
+    // }
+    return relatedContent;
   },
   onClickDownChevron() {
     Track('send', {
