@@ -8,12 +8,6 @@
 .page-post {
   $category-tag-height: $blog-category-tag-height;
 
-  p > a {
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    font-family: $PxGroteskBold;
-  }
-
   .hero-image {
     position: relative;
     height: 300px;
