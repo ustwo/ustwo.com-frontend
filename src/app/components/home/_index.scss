@@ -1,6 +1,6 @@
 /*
  *  PAGE: HOME
- *  Well it's the homepage isn't it
+ *  Homepage init
  *
  *  Notes: The homepage is in need of a big refactor due to things getting chopped and changed as
  *         well as the lack of integration with the CMS. We can't make use of optmised images so a
@@ -356,5 +356,37 @@
       transition: opacity 0.8s ease-in-out;
       transition-delay: 1.2s;
     }
+  }
+}
+
+
+
+$black-white: (
+  'white' $white,
+  'nonblack' $nonBlack
+);
+
+@each $colour in $black-white {
+  $name: nth($colour, 1);
+  $hex:  unquote(nth($colour, 2));
+
+  .u-bg-#{$name} {
+    background-color: $hex;
+  }
+
+  .u-text-#{$name} {
+    color: $hex;
+  }
+}
+
+.u-text-white {
+  a:hover {
+    color: $nonBlack;
+  }
+}
+
+.u-text-nonblack {
+  a:hover {
+    color: $white;
   }
 }

@@ -6,7 +6,7 @@ const BoldHeaderSubtitle = React.createClass({
   render() {
     return <section>
       <hr />
-      <h4 className="u-text-nonBlack">{this.props.children}</h4>
+      <h4 className="u-text-nonblack">{this.props.children}</h4>
     </section>;
   }
 });
