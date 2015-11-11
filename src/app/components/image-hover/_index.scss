@@ -6,13 +6,17 @@
  */
 
 .image-hover {
-  display: inline-block;
-  width: 100px;
-  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   fill: $white;
 
   g:not(:last-child) {
     display: none;
+  }
+
+  svg {
+    width: 100px;
   }
 }
 
