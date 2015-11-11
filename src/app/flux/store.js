@@ -4,10 +4,11 @@ import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
 import some from 'lodash/collection/some';
 import capitalize from 'lodash/string/capitalize';
+import get from 'lodash/object/get';
 
 import log from '../lib/log';
 import window from '../adaptors/server/window';
-import DataLoader from '../adaptors/server/data-loader';
+import DataLoader from '../lib/data-loader';
 import Nulls from './nulls';
 import Defaults from './defaults';
 import fetchSocialMediaData from '../lib/social-media-fetcher';
@@ -129,7 +130,7 @@ const Store = Object.assign(
       itemsToLoad.filter(item => item.async).forEach(item => {
         item.async.forEach(dependency => {
           if(dependency === 'related_content') {
-            DataLoader(_state[item.type].related_content.map(url => {
+            DataLoader(get(_state[item.type], 'related_content', []).map(url => {
               return {
                 url: url,
                 type: 'relatedContent'

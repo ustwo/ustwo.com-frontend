@@ -1,5 +1,5 @@
 import find from 'lodash/collection/find';
-import DataLoader from '../adaptors/server/data-loader';
+import DataLoader from './data-loader';
 import tweetCounts from './tweetCounts';
 import log from './log';
 
