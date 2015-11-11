@@ -1,4 +1,11 @@
 ## Release tasks ##############################################################
+.PHONY: \
+  release-create \
+  release-tag-create \
+  release-pull-snapshots \
+  release-tag-snapshots \
+  release-tag-rm
+
 release-create: snapshot_sha1 = $(call git_sha1,$(VERSION))
 release-create: app_snapshot = $(call image_tag,$(app_id),$(snapshot_sha1))
 release-create: assets_snapshot = $(call image_tag,$(assets_id),$(snapshot_sha1))
@@ -15,6 +22,9 @@ release-tag-snapshots:
 	$(DOCKER) tag -f $(assets_snapshot) $(assets_image)
 
 release-tag-create:
+ifeq ("$(VERSION)", "dev")
+	$(call abort,"Error: Version $(VERSION) is not a proper version")
+endif
 	$(if $(call version_exists,$(VERSION)), \
        $(call abort,"Error: Version $(VERSION) exists"),)
 	$(GIT) tag v$(VERSION)
