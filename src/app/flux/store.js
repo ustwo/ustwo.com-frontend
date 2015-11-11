@@ -62,9 +62,21 @@ function applySocialMediaDataForPosts(response, type) {
   }
 }
 function applyRelatedContent(response) {
-  _state.relatedContent.push(response.data);
-  log('Loaded related content', response.data);
+  const content = response.data;
+  _state.relatedContent.push(content);
+  log('Loaded related content', content);
   Store.emit('change', _state);
+  if(content.type === 'post') {
+    Store.getSocialSharesForRelatedPost(content);
+  }
+}
+function applySocialMediaDataForRelatedPost(response, type) {
+  const index = findIndex(_state.relatedContent, 'slug', response.slug);
+  if (index > -1) {
+    _state.relatedContent[index][type] = response.data;
+    log(`Added ${type}`, response.data);
+    Store.emit('change', _state);
+  }
 }
 
 window._state = _state;
@@ -113,7 +125,7 @@ const Store = Object.assign(
         return (!_state[item.type] || (item.slug && _state[item.type].slug && _state[item.type].slug !== item.slug) || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory));
       });
 
-      return DataLoader(itemsToLoad, applyData).then(() => {
+      DataLoader(itemsToLoad, applyData).then(() => {
         Store.emit('change', _state);
         Store.initiateAsyncLoadsFor(itemsToLoad);
       });
@@ -205,8 +217,16 @@ const Store = Object.assign(
           .then(() => Store.emit('change', _state));
       }
     },
+    getSocialSharesForRelatedPost(post) {
+      const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
+      const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
+      if (!hasFacebookData && !hasTwitterData) {
+        fetchSocialMediaData(post.slug, applySocialMediaDataForRelatedPost)
+          .then(() => Store.emit('change', _state));
+      }
+    },
     getSocialSharesForPosts() {
-      return Promise.all(_state.posts.map(post => {
+      Promise.all(_state.posts.map(post => {
         const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
         const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
         let promise;
