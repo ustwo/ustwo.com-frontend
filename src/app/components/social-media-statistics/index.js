@@ -4,19 +4,24 @@ import React from 'react';
 
 import SVG from '../svg';
 
-export default class SocialMediaStatistics extends React.Component {
+const SocialMediaStatistics = React.createClass({
   render() {
-    return (
-      <div className="social-media-statistics">
-        <div className="channel facebook">
-          <div className='logo'><SVG className='facebook-icon' spritemapID='facebook' /></div>
-          <span>{this.props.facebookShares}</span>
+    const { facebookShares, twitterShares } = this.props;
+    return <div className="social-media-statistics">
+      <div className="channel facebook">
+        <div className="logo">
+          <SVG className="facebook-icon" spritemapID="facebook" />
         </div>
-        <div className="channel twitter">
-          <div className='logo'><SVG className='twitter-icon' spritemapID='twitter' /></div>
-          <span>{this.props.twitterShares}</span>
-        </div>
+        <span>{facebookShares}</span>
       </div>
-    );
+      <div className="channel twitter">
+        <div className="logo">
+          <SVG className="twitter-icon" spritemapID="twitter" />
+        </div>
+        <span>{twitterShares}</span>
+      </div>
+    </div>;
   }
-};
+});
+
+export default SocialMediaStatistics;

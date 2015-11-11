@@ -2,19 +2,19 @@
 
 import React from 'react';
 
-export default class SVG extends React.Component {
+const SVG = React.createClass({
   render() {
-    const props = this.props;
-    return (
-      <svg
-        className={props.className}
-        role={props.role || 'img'}
-        title={props.title}
-        dangerouslySetInnerHTML={{
-          __html: `<title>${props.title}</title><use xlink:href='/images/spritemap.svg#${props.spritemapID}' />`
-        }}
-        style={props.style}
-      />
-    );
+    const { className, role, title, spritemapID, style } = this.props;
+    return <svg
+      className={className}
+      role={role || 'img'}
+      title={title}
+      dangerouslySetInnerHTML={{
+        __html: `<title>${title}</title><use xlink:href='/images/spritemap.svg#${spritemapID}' />`
+      }}
+      style={style}
+    />;
   }
-}
+});
+
+export default SVG;

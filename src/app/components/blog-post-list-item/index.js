@@ -12,7 +12,7 @@ import Rimage from '../rimage';
 import BlogPostMetaInformation from '../blog-post-meta-information';
 import SocialMediaStatistics from '../social-media-statistics';
 
-export default class BlogPostListItem extends React.Component {
+const BlogPostListItem = React.createClass({
   render() {
     const { data: post, featured } = this.props;
     const category = get(post, '_embedded.wp:term.0.0', {});
@@ -28,15 +28,15 @@ export default class BlogPostListItem extends React.Component {
     return <article className={classes}>
       <a href={uri} onClick={Flux.override(uri)}>
         <Rimage
-          className='post-image'
-          wrap='div'
+          className="post-image"
+          wrap="div"
           sizes={get(image, 'media_details.sizes')}
           altText={get(image, 'alt_text')}
         />
       </a>
-      <div className='content'>
-        <div className='blog-category'>{get(category, 'name', 'category')}</div>
-        <h2 className='title'>
+      <div className="content">
+        <div className="blog-category">{get(category, 'name', 'category')}</div>
+        <h2 className="title">
           <a href={uri} onClick={Flux.override(uri)}>
             {he.decode(get(post, 'title.rendered'))}
           </a>
@@ -45,8 +45,8 @@ export default class BlogPostListItem extends React.Component {
           author={getAuthor(post)}
           date={get(post, 'date')}
         />
-        <div className='excerpt' dangerouslySetInnerHTML={{__html: excerpt}} />
-        <div className='tail'>
+        <div className="excerpt" dangerouslySetInnerHTML={{__html: excerpt}} />
+        <div className="tail">
           <a href={uri} onClick={Flux.override(uri)}>Read more</a>
           <SocialMediaStatistics
             facebookShares={get(post, 'facebookShares')}
@@ -56,4 +56,6 @@ export default class BlogPostListItem extends React.Component {
       </div>
     </article>;
   }
-}
+});
+
+export default BlogPostListItem;

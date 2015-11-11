@@ -2,13 +2,13 @@
 
 import React from 'react';
 
-export default class BoldHeaderSubtitle extends React.Component {
+const BoldHeaderSubtitle = React.createClass({
   render() {
-    return (
-      <section>
-        <hr/>
-        <h4 className="u-text-nonBlack">{this.props.children}</h4>
-      </section>
-    );
+    return <section>
+      <hr />
+      <h4 className="u-text-nonBlack">{this.props.children}</h4>
+    </section>;
   }
-};
+});
+
+export default BoldHeaderSubtitle;

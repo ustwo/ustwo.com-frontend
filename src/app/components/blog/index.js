@@ -91,35 +91,44 @@ const PageBlog = React.createClass({
       empty: posts && !posts.length
     });
 
-    return (
-      <article className={classes}>
-        <TransitionManager component='div' className='hero-transition-manager' duration={1000}>
-          {this.renderHero()}
-        </TransitionManager>
-        <section className='blog-post-list'>
-          {this.renderPosts()}
-          <LoadMoreButton loading={isLoadingMorePosts} onClick={this.onClickLoadMore} disabled={postsPagination >= postsPaginationTotal} />
-        </section>
-      </article>
-    );
+    return <article className={classes}>
+      <TransitionManager
+        component="div"
+        className="hero-transition-manager"
+        duration={1000}
+      >
+        {this.renderHero()}
+      </TransitionManager>
+      <section className="blog-post-list">
+        {this.renderPosts()}
+        <LoadMoreButton
+          loading={isLoadingMorePosts}
+          onClick={this.onClickLoadMore}
+          disabled={postsPagination >= postsPaginationTotal}
+        />
+      </section>
+    </article>;
   },
   renderHero() {
     const { page, searchMode, searchQuery, blogCategory } = this.props;
     const image = getFeaturedImage(page);
     let output;
     if (searchMode) {
-      output = <Search key='search' searchQuery={searchQuery} />;
+      output = <Search key="search" searchQuery={searchQuery} />;
     } else {
       output = <Hero
-        key='hero'
+        key="hero"
         title={get(page, 'display_title')}
         transitionImage={true}
         sizes={get(image, 'media_details.sizes')}
         altText={get(image, 'alt_text')}
-        eventLabel='blog'
+        eventLabel="blog"
         showDownChevron={false}
       >
-        <BlogControls className={classnames({ show: page })} blogCategory={blogCategory}/>
+        <BlogControls
+          className={classnames({ show: page })}
+          blogCategory={blogCategory}
+        />
       </Hero>;
     }
     return output;
@@ -130,7 +139,12 @@ const PageBlog = React.createClass({
     if (posts) {
       if (posts.length) {
         output = posts.map((postData, index) => {
-          return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!this.state.isCategorised && index === 0} data={postData} />;
+          return <BlogPostListItem
+            key={postData.slug}
+            className="blog-post-list-item"
+            featured={!this.state.isCategorised && index === 0}
+            data={postData}
+          />;
         });
       } else {
         output = <h3 className="message">No posts found</h3>;

@@ -123,12 +123,11 @@ export default class App extends React.Component {
   }
   renderModal() {
     const state = this.state;
-    const takeover = state.takeover;
-    const modalType = state.modal;
+    const { modal: modalType } = state;
     let modal;
-    if(this.showTakeover()) {
-      modal = <TakeOver key="takeover" takeover={takeover} />;
-    } else if(modalType) {
+    if (this.showTakeover()) {
+      modal = <TakeOver key="takeover" takeover={state.takeover} />;
+    } else if (state.modal) {
       let content;
       let className;
       switch(modalType) {
@@ -145,7 +144,7 @@ export default class App extends React.Component {
           content = <BlogCategories />;
           break;
       }
-      modal = <Modal key={state.modal} className={className}>{content}</Modal>;
+      modal = <Modal key={modalType} className={className}>{content}</Modal>;
     }
     return modal;
   }

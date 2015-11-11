@@ -7,7 +7,7 @@ import Flux from '../../flux';
 
 import Rimage from '../rimage';
 
-export default class WorkItem extends React.Component {
+const WorkItem = React.createClass({
   render() {
     const { data, image, className } = this.props;
     const link = `/what-we-do/${get(data, 'slug')}`;
@@ -45,4 +45,6 @@ export default class WorkItem extends React.Component {
       </div>
     </li>;
   }
-}
+});
+
+export default WorkItem;

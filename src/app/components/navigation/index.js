@@ -12,12 +12,12 @@ import SVG from '../svg';
 import NavigationLink from '../navigation-link';
 import NavigationToggle from '../navigation-toggle';
 
-export default class Navigation extends React.Component {
+const Navigation = React.createClass({
   openOverlay() {
     Flux.showNavOverlay();
-  }
-  onClickLogo = (event) => {
-    const takeover = this.props.takeover;
+  },
+  onClickLogo(event) {
+    const { takeover } = this.props;
     event.preventDefault();
     if (takeover !== Nulls.takeover) {
       Track('send', {
@@ -28,36 +28,40 @@ export default class Navigation extends React.Component {
       });
     }
     Flux.navigate('/');
-  }
-  render() {
-    const props = this.props;
-    const headerClasses = classnames('header', props.section, props.page, { 'takeover': props.takeover });
-
-    return (
-      <header className={headerClasses}>
-        <nav className={classnames('navigation', props.customClass)}>
-          <div className="logo">
-            <a href="/" onClick={this.onClickLogo}>
-              <SVG title="ustwo logo" spritemapID='ustwologo' />
-            </a>
-          </div>
-          <NavigationToggle onOpen={this.openOverlay} />
-          <div className="menu">
-            <ul>
-              {this.renderNavigationLinks()}
-            </ul>
-          </div>
-        </nav>
-      </header>
-    );
-  }
-  renderNavigationLinks = () => {
+  },
+  renderNavigationLinks() {
     return get(this.props, 'pages', []).map(link => {
-      return (
-        <NavigationLink key={link.id} url={link.slug === 'home' ? '/' : `/${link.slug}`} colour={link.colour} selected={link.slug === this.props.section} gaId={link.ga}>
-          {link.title}
-        </NavigationLink>
-      );
+      return <NavigationLink
+        key={link.id}
+        url={link.slug === 'home' ? '/' : `/${link.slug}`}
+        colour={link.colour}
+        selected={link.slug === this.props.section}
+        gaId={link.ga}
+      >
+        {link.title}
+      </NavigationLink>;
     });
+  },
+  render() {
+    const { section, page, takeover, customClass } = this.props;
+    const headerClasses = classnames('header', section, page, {
+      'takeover': takeover
+    });
+
+    return <header className={headerClasses}>
+      <nav className={classnames('navigation', customClass)}>
+        <div className="logo">
+          <a href="/" onClick={this.onClickLogo}>
+            <SVG title="ustwo logo" spritemapID="ustwologo" />
+          </a>
+        </div>
+        <NavigationToggle onOpen={this.openOverlay} />
+        <div className="menu">
+          <ul>{this.renderNavigationLinks()}</ul>
+        </div>
+      </nav>
+    </header>;
   }
-};
+});
+
+export default Navigation;

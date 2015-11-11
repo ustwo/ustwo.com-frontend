@@ -107,73 +107,22 @@ const takeover = {
   }
 };
 
-export default class TakeOver extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const TakeOver = React.createClass({
+  getInitialState() {
+    return {
       showContent: false
-    };
-  }
-  render = () => {
-    let content;
-    const image = getFeaturedImage(takeover);
-    // const takeover = this.props.takeover;
-    if(this.state.showContent) {
-      content = (
-        <div key="detail" className="content">
-          <div className="message">
-            <CloseButton onClose={this.onClickClose} autoAnim={1000} style={{ fill: takeover.header_color }} />
-            <Rimage
-              wrap="div"
-              sizes={get(image, 'media_details.sizes')}
-              altText={get(image, 'alt_text')}
-            />
-            <h1 className="title" style={{color: takeover.header_color}}>{he.decode(takeover.title)}</h1>
-            <p className="description">{takeover.description}</p>
-            <ul className="links">
-              {takeover.links.map(this.renderLink)}
-            </ul>
-          </div>
-        </div>
-      );
-    } else {
-      content = (
-        <div key="news-flash" className="news-flash-wrapper">
-          <NewsFlash autoAnim={50} loop={true} />
-          <h1 className="title">News</h1>
-        </div>
-      );
     }
-    const background_color_top = this.state.showContent ? takeover.background_color_top : "#F8F8F8";
-    const background_color_bottom = this.state.showContent ? takeover.background_color_bottom : "#F8F8F8";
-    return (
-      <TransitionManager className={`take-over ${this.props.className}`} component="div" duration={800} onClick={onClickContent} style={{ color: takeover.text_color, background: `linear-gradient(to bottom, ${background_color_top} 0%,${background_color_bottom} 100%)` }}>
-        {content}
-      </TransitionManager>
-    );
-  }
-  renderLink = (link, index) => {
-    let prefix = "";
-    switch(link.type) {
-      case 'email':
-        prefix = "mailto:";
-      break;
-      case 'tel':
-        prefix = "tel:";
-      break;
-    }
-    return <li className={`link-item ${link.type}`}><a target="_blank" href={`${prefix}${link.url}`} onClick={this.onClickLink(index)} style={{color: takeover.header_color, borderColor: takeover.header_color}}>{link.text}</a></li>;
-  }
+  },
   componentDidMount() {
     this.contentTimeout = setTimeout(() => {
       this.setState({
         showContent: true
       });
     }, 3000);
-  }
+  },
   componentWillUnmount() {
     clearTimeout(this.contentTimeout);
-  }
+  },
   onClickClose() {
     // const takeover = this.props.takeover;
     Track('send', {
@@ -183,7 +132,7 @@ export default class TakeOver extends React.Component {
       'eventLabel': takeover.name // Name of the takeover as set in WordPress
     });
     Flux.closeTakeover();
-  }
+  },
   onClickLink(index) {
     // const takeover = this.props.takeover;
     return (e) => {
@@ -194,5 +143,74 @@ export default class TakeOver extends React.Component {
         'eventLabel': takeover.name // Name of the takeover as set in WordPress
       });
     }
+  },
+  renderLink(link, index) {
+    let prefix = '';
+    switch(link.type) {
+      case 'email':
+        prefix = 'mailto:';
+      break;
+      case 'tel':
+        prefix = 'tel:';
+      break;
+    }
+    return <li className={`link-item ${link.type}`}>
+      <a
+        target="_blank"
+        href={`${prefix}${link.url}`}
+        onClick={this.onClickLink(index)}
+        style={{color: takeover.header_color, borderColor: takeover.header_color}}
+      >
+        {link.text}
+      </a>
+    </li>;
+  },
+  render() {
+    let content;
+    const image = getFeaturedImage(takeover);
+    const backgroundColorTop = this.state.showContent ? takeover.background_color_top : "#F8F8F8";
+    const backgroundColorBottom = this.state.showContent ? takeover.background_color_bottom : "#F8F8F8";
+    const styles = {
+      color: takeover.text_color,
+      background: `linear-gradient(to bottom, ${backgroundColorTop} 0%,${backgroundColorBottom} 100%)`
+    };
+    // const takeover = this.props.takeover;
+    if (this.state.showContent) {
+      content = <div key="detail" className="content">
+        <div className="message">
+          <CloseButton
+            onClose={this.onClickClose}
+            autoAnim={1000}
+            style={{ fill: takeover.header_color }}
+          />
+          <Rimage
+            wrap="div"
+            sizes={get(image, 'media_details.sizes')}
+            altText={get(image, 'alt_text')}
+          />
+          <h1 className="title" style={{color: takeover.header_color}}>
+            {he.decode(takeover.title)}
+          </h1>
+          <p className="description">{takeover.description}</p>
+          <ul className="links">{takeover.links.map(this.renderLink)}</ul>
+        </div>
+      </div>;
+    } else {
+      content = <div key="news-flash" className="news-flash-wrapper">
+        <NewsFlash autoAnim={50} loop={true} />
+        <h1 className="title">News</h1>
+      </div>;
+    }
+    return <TransitionManager
+      className={`take-over ${this.props.className}`}
+      component="div"
+      duration={800}
+      onClick={onClickContent}
+      style={styles}
+    >
+      {content}
+    </TransitionManager>;
   }
-};
+});
+
+export default TakeOver;

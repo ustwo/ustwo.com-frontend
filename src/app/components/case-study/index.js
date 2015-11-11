@@ -8,7 +8,7 @@ const PageCaseStudy = React.createClass({
   mixins: [getScrollTrackerMixin('case-study')],
   render() {
     const { caseStudy } = this.props;
-    return <article className='page-case-study'>
+    return <article className="page-case-study">
       <style>{`
         .page-case-study a {
           border-bottom-color: ${get(caseStudy, 'colors.secondary')};
