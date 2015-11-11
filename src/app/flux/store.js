@@ -61,6 +61,15 @@ function applySocialMediaDataForPosts(response, type) {
     Store.emit('change', _state);
   }
 }
+function getApplyFunctionFor(dependency) {
+  let func;
+  switch(dependency) {
+    case 'related_content':
+      func = applyRelatedContent;
+      break;
+  }
+  return func;
+}
 function applyRelatedContent(response) {
   const content = response.data;
   _state.relatedContent.push(content);
@@ -132,23 +141,21 @@ const Store = Object.assign(
     },
     initiateAsyncLoadsFor(itemsToLoad) {
       switch(true) {
-        case some(itemsToLoad, item => item.type === 'posts'):
+        case some(itemsToLoad, type, 'posts'):
           Store.getSocialSharesForPosts();
-        break;
-        case some(itemsToLoad, item => item.type === 'post'):
+          break;
+        case some(itemsToLoad, type, 'post'):
           Store.getSocialSharesForPost();
-        break;
+          break;
       }
       itemsToLoad.filter(item => item.async).forEach(item => {
         item.async.forEach(dependency => {
-          if(dependency === 'related_content') {
-            DataLoader(get(_state[item.type], 'related_content', []).map(url => {
-              return {
-                url: url,
-                type: 'relatedContent'
-              };
-            }), applyRelatedContent);
-          }
+          DataLoader(get(_state[item.type], dependency, []).map(url => {
+            return {
+              url: url,
+              type: camelCase(dependency)
+            };
+          }), getApplyFunctionFor(dependency));
         });
       });
     },
