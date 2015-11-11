@@ -113,29 +113,30 @@ const Store = Object.assign(
       });
 
       return DataLoader(itemsToLoad, applyData).then(() => {
-        switch(true) {
-          case some(itemsToLoad, item => item.type === 'posts'):
-            Store.getSocialSharesForPosts();
-          break;
-          case some(itemsToLoad, item => item.type === 'post'):
-            Store.getSocialSharesForPost();
-          break;
-        }
-        itemsToLoad.forEach(item => {
-          (item.async || []).forEach(dependency => {
-            switch(dependency) {
-              case 'related_content':
-                DataLoader(_state[item.type].related_content.map(url => {
-                  return {
-                    url: url,
-                    type: 'relatedContent'
-                  };
-                }), applyRelatedContent);
-              break;
-            }
-          });
-        });
         Store.emit('change', _state);
+        Store.initiateAsyncLoadsFor(itemsToLoad);
+      });
+    },
+    initiateAsyncLoadsFor(itemsToLoad) {
+      switch(true) {
+        case some(itemsToLoad, item => item.type === 'posts'):
+          Store.getSocialSharesForPosts();
+        break;
+        case some(itemsToLoad, item => item.type === 'post'):
+          Store.getSocialSharesForPost();
+        break;
+      }
+      itemsToLoad.filter(item => item.async).forEach(item => {
+        item.async.forEach(dependency => {
+          if(dependency === 'related_content') {
+            DataLoader(_state[item.type].related_content.map(url => {
+              return {
+                url: url,
+                type: 'relatedContent'
+              };
+            }), applyRelatedContent);
+          }
+        });
       });
     },
     setBlogCategoryTo(id) {

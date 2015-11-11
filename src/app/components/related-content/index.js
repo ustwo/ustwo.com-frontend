@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import get from 'lodash/object/get';
 
 import WorkItem from '../work-item';
 import BlogPostListItem from '../blog-post-list-item';
@@ -19,7 +20,8 @@ export default class RelatedContent extends React.Component {
     if(data.type === 'post') {
       item = <div className="related-content-item"><BlogPostListItem data={data} /></div>;
     } else {
-      item = <div className="related-content-item"><WorkItem data={data} image={data._embedded['wp:attachment'][1]} /></div>;
+      let image = get(data, '_embedded.wp:attachment.1');
+      item = <div className="related-content-item"><WorkItem data={data} image={image} /></div>;
     }
     return item;
   }
