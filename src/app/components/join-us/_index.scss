@@ -46,19 +46,35 @@
     }
   }
 
-  .current-openings {
+  .current-openings,
+  .benefits {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 172px;
-    background: $blu;
     text-align: center;
 
     h2 {
+      padding: 0 20px;
       color: #fff;
       line-height: 1.2;
     }
+  }
+
+  .current-openings {
+    height: 172px;
+    background: $blu;
+
+    h2 {
+      @extend .h1;
+
+      @media screen and (min-width: $bp-large) {
+        font-size: 60px;
+      }
+    }
+  }
+
+  .benefits {
+    height: 156px;
+    background: $ohra;
   }
 
   .jobs {
@@ -105,6 +121,10 @@
       height: 240px;
     }
 
+    .benefits {
+      height: 312px;
+    }
+
     .jobs {
       padding-bottom: 60px;
     }
@@ -126,10 +146,10 @@
     }
 
     .jobs-studio-tabs {
-      margin: 55px 0;
+      margin: 45px 0;
 
       li {
-        font-size: 30px;
+        font-size: 26px;
 
         &.all-studios {
           span:last-child {

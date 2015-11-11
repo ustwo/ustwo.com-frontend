@@ -55,12 +55,6 @@
         padding: $jobs-feature-card-padding;
       }
     }
-
-    &:nth-child(2n+1) {
-      .card.image {
-        order: 2;
-      }
-    }
   }
 
   @media screen and (min-width: $bp-larger) {
@@ -69,15 +63,6 @@
 
       &.feature {
         flex: 2;
-      }
-    }
-
-    &:nth-child(2n+1) {
-      .card.image {
-        order: 1;
-      }
-      .card.feature {
-        order: 2;
       }
     }
   }

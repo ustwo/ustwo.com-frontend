@@ -51,6 +51,9 @@ const PageJoinUs = React.createClass({
           {this.renderStudioJobs()}
         </div>
       </section>
+      <div className="benefits">
+        <h2>Some of the benefits...</h2>
+      </div>
       {get(pageData, 'page_builder', []).map(this.getModuleRenderer())}
     </article>;
   },
