@@ -5,7 +5,7 @@ import map from 'lodash/collection/map';
 
 import Flux from '../../flux';
 import CloseButton from '../close-button';
-import { onClickContent } from '../modal';
+import ModalContentMixin from '../../lib/modal-content-mixin';
 
 const blogCategories = {
   all: 'All Categories',
@@ -21,6 +21,7 @@ const blogCategories = {
 }
 
 const BlogCategories = React.createClass({
+  mixins: [ModalContentMixin],
   renderBlogCategories() {
     return map(blogCategories, (name, id) => {
       const uri = (id === 'all') ? '/blog' : `/blog?category=${id}`;
@@ -42,7 +43,7 @@ const BlogCategories = React.createClass({
     Flux.closeModal();
   },
   render() {
-    return <div className="blog-categories" onClick={onClickContent}>
+    return <div className="blog-categories" onClick={this.onClickContent}>
       <CloseButton onClose={this.onClickClose} autoAnim={500} />
       <div className="scroll-wrapper">
         <ul className="list">{this.renderBlogCategories()}</ul>

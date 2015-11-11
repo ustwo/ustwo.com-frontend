@@ -8,9 +8,10 @@ import Flux from '../../flux';
 
 import NavigationOverlayLink from '../navigation-overlay-link';
 import CloseButton from '../close-button';
-import { onClickContent } from '../modal';
+import ModalContentMixin from '../../lib/modal-content-mixin';
 
 const NavigationOverlay = React.createClass({
+  mixins: [ModalContentMixin],
   onClickClose() {
     Flux.closeModal();
   },
