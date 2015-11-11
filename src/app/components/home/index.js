@@ -220,9 +220,9 @@ const PageHome = React.createClass({
   },
   renderRelatedContent() {
     let relatedContent;
-    // if(this.props.page.related_content) {
-      // relatedContent = <RelatedContent>;
-    // }
+    if(this.props.relatedContent.length) {
+      relatedContent = <RelatedContent content={this.props.relatedContent} />
+    }
     return relatedContent;
   },
   onClickDownChevron() {
