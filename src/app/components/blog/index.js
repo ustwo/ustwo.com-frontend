@@ -76,38 +76,20 @@ const PageBlog = React.createClass({
       });
     }
   },
-  render() {
-    const {
-      isCategorised,
-      isLoadingInitialPosts,
-      isLoadingMorePosts,
-      isLoadingCategoryPosts
-    } = this.state;
+  getPosts() {
+    const { isCategorised } = this.state;
     const { postsPagination, postsPaginationTotal } = this.props;
-    const { posts } = this.props;
-    const classes = classnames('page-blog', {
-      categorised: isCategorised,
-      loading: isLoadingInitialPosts || isLoadingCategoryPosts,
-      empty: posts && !posts.length
+    let { posts } = this.props;
+    if (!isCategorised && postsPagination > 1 && postsPagination < postsPaginationTotal) {
+      posts = take(posts, (postsPagination * 12) + 1);
+    }
+    return posts;
+  },
+  onClickLoadMore() {
+    Flux.loadMorePosts();
+    this.setState({
+      isLoadingMorePosts: true
     });
-
-    return <article className={classes}>
-      <TransitionManager
-        component="div"
-        className="hero-transition-manager"
-        duration={1000}
-      >
-        {this.renderHero()}
-      </TransitionManager>
-      <section className="blog-post-list">
-        {this.renderPosts()}
-        <LoadMoreButton
-          loading={isLoadingMorePosts}
-          onClick={this.onClickLoadMore}
-          disabled={postsPagination >= postsPaginationTotal}
-        />
-      </section>
-    </article>;
   },
   renderHero() {
     const { page, searchMode, searchQuery, blogCategory } = this.props;
@@ -152,21 +134,39 @@ const PageBlog = React.createClass({
     }
     return output;
   },
-  getPosts() {
-    const { isCategorised } = this.state;
+  render() {
+    const {
+      isCategorised,
+      isLoadingInitialPosts,
+      isLoadingMorePosts,
+      isLoadingCategoryPosts
+    } = this.state;
     const { postsPagination, postsPaginationTotal } = this.props;
-    let { posts } = this.props;
-    if (!isCategorised && postsPagination > 1 && postsPagination < postsPaginationTotal) {
-      posts = take(posts, (postsPagination * 12) + 1);
-    }
-    return posts;
-  },
-  onClickLoadMore() {
-    Flux.loadMorePosts();
-    this.setState({
-      isLoadingMorePosts: true
+    const { posts } = this.props;
+    const classes = classnames('page-blog', {
+      categorised: isCategorised,
+      loading: isLoadingInitialPosts || isLoadingCategoryPosts,
+      empty: posts && !posts.length
     });
-  }
+
+    return <article className={classes}>
+      <TransitionManager
+        component="div"
+        className="hero-transition-manager"
+        duration={1000}
+      >
+        {this.renderHero()}
+      </TransitionManager>
+      <section className="blog-post-list">
+        {this.renderPosts()}
+        <LoadMoreButton
+          loading={isLoadingMorePosts}
+          onClick={this.onClickLoadMore}
+          disabled={postsPagination >= postsPaginationTotal}
+        />
+      </section>
+    </article>;
+  },
 });
 
 export default PageBlog;
