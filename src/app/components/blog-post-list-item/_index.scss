@@ -62,7 +62,7 @@
       transition: opacity $hover-duration-quick ease-in-out;
 
       &:hover {
-        opacity: $hover-opacity-fade;
+        opacity: $hover-fade-back;
       }
     }
   }

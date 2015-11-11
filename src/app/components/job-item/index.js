@@ -57,7 +57,7 @@ const JobItem = React.createClass({
       open: open,
       loading: open && !this.getLoadedState()
     });
-    return <li className={classes}>
+    return <li className={classes} style={{ color: this.props.colour }}>
       <h4 ref="title" className="title" onClick={this.onClick}>
         <div className="title-text">{get(job, 'title')}</div>
         {this.renderLocation()}

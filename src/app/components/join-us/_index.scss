@@ -99,9 +99,14 @@
       font-family: $Futura;
       font-size: 24px;
       text-transform: uppercase;
+      transition: opacity $hover-duration-quick ease-in-out;
 
       &[aria-selected="true"] {
         border-bottom: 4px solid;
+      }
+
+      &:hover {
+        opacity: $hover-fade-back;
       }
     }
   }
