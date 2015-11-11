@@ -24,10 +24,17 @@
       width: 50px;
       height: 50px;
       fill: $nonBlack;
+      transition: fill $hover-duration-quick ease-in-out;
     }
     &:focus {
       -webkit-focus-ring-color: rgba(0,0,0,0);
       outline: none;
+    }
+
+    &:hover {
+      svg {
+        fill: $marshPassion;
+      }
     }
   }
 
