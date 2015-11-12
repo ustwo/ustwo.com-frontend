@@ -77,8 +77,28 @@ function renderGrid(moduleData, index) {
   />;
 }
 
+function renderPlaceholder(moduleData, index) {
+  const { placeholderContents } = moduleData;
+
+  const keyword = moduleData.attr.keyword.value;
+
+  if (placeholderContents[keyword]) {
+    return placeholderContents[keyword]();
+  }
+}
+
 function renderModules(options) {
-  const { modules, colours, zebra } = options;
+  const { modules, colours, zebra, placeholderContents } = options;
+
+  const renderMethodMap = {
+    header: renderHeader,
+    text: renderText,
+    image: renderImage,
+    blockquote: renderBlockquote,
+    grid: renderGrid,
+    placeholder: renderPlaceholder
+  };
+
   let isStripe;
 
   if (zebra) {
@@ -93,20 +113,19 @@ function renderModules(options) {
 
   return modules
     .map(moduleData => {
+      if (moduleData.name === 'placeholder') {
+        moduleData.placeholderContents = placeholderContents;
+      }
+
       return Object.assign(moduleData, {
         colours: colours,
         zebra: zebra,
         isStripe: getStripe
       });
+
     })
     .map((moduleData, index) => {
-      const renderMethod = {
-        header: renderHeader,
-        text: renderText,
-        image: renderImage,
-        blockquote: renderBlockquote,
-        grid: renderGrid
-      }[moduleData.name];
+      const renderMethod = renderMethodMap[moduleData.name];
       return renderMethod && renderMethod(moduleData, index);
     });
 }
