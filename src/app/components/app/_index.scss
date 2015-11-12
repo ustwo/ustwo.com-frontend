@@ -28,12 +28,6 @@
     }
 
     .page-loader-container {
-      .page-loader {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 30;
-      }
       .page-loader,
       > article {
         transition: opacity 1s ease-in-out;
