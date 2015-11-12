@@ -1,0 +1,26 @@
+/*
+ *  LOADER
+ *  Interstitial page loading animation
+ *
+ */
+
+.page-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: $offWhite;
+
+  &.loading-home {
+    background-color: #6114CC;
+  }
+  &.loading-what-we-do {
+    background-color: $pot;
+  }
+  &.loading-blog {
+    background-color: $blu;
+  }
+  &.loading-join-us {
+    background-color: $honey;
+  }
+}

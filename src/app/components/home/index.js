@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import classnames from 'classnames';
 
 import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
 
@@ -136,6 +137,7 @@ const PageHome = React.createClass({
     clearTimeout(this.animTimeout);
   },
   render() {
+    const classes = classnames('page-home', this.props.className);
     // Show only the final frame of the Chevron animation on mobile
     let Chevron;
     if (window.innerWidth <= 480) {
@@ -148,7 +150,7 @@ const PageHome = React.createClass({
     }
     // End Chevron
     return (
-      <article className="page-home">
+      <article className={classes}>
         <ScreenBlock ref="blockWelcome" customClass="welcome" hexColour={'#' + this.state.blocks[0].hexColour}>
           <EntranceTransition className="image-entrance">
             <div className="headline-image"></div>

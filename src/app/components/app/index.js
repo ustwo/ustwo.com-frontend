@@ -26,6 +26,7 @@ import TakeOver from '../take-over';
 import FourOhFour from '../404';
 import BlogCategories from '../blog-categories';
 import NavigationOverlay from '../navigation-overlay';
+import PageLoader from '../page-loader';
 
 const pageMap = {
   'home': require('../home'),
@@ -54,9 +55,6 @@ const App = React.createClass({
   showTakeover() {
     const { currentPage, takeover } = this.state;
     return currentPage === 'home' && takeover && !takeover.seen;
-  },
-  getPage(pageId) {
-    return React.createElement(pageMap[pageId], this.state);
   },
   renderModal() {
     const { takeover, modal: modalType } = this.state;
@@ -146,7 +144,13 @@ const App = React.createClass({
           duration={0}
         >
           <PageContainer key={state.currentPage}>
-            {this.getPage(state.currentPage)}
+            <TransitionManager
+              component="div"
+              className="page-loader-container"
+              duration={1000}
+            >
+              {this.getPage(state.currentPage)}
+            </TransitionManager>
             <Footer data={state.footer} studios={state.studios} />
           </PageContainer>
         </TransitionManager>
@@ -160,6 +164,15 @@ const App = React.createClass({
       </div>;
     }
     return content;
+  },
+  getPage(pageId) {
+    let page;
+    if(!this.state.page && !this.state.post && !this.state.caseStudy) {
+      page = <PageLoader key="loader" className={`loading-${pageId}`} />;
+    } else {
+      page = React.createElement(pageMap[pageId], Object.assign({ key: `page-${pageId}` }, this.state));
+    }
+    return page;
   }
 });
 
