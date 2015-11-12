@@ -285,7 +285,7 @@ works well with React and executes fast.
 
 Run the unit tests:
 
-    $ make assets-test
+    $ make assets-unit-test
 
 ### Integration
 
@@ -300,7 +300,12 @@ suite using Mocha + Chai + Chai Promises + WD.js.
 
 Run the integration tests:
 
-    $ make assets-integration
+    $ make assets-integration-test
+
+If you need more info on what's happening with the tests, you either log in to
+the Sauce web UI to see Selenium logs or run verbose mode:
+
+    $ make assets-integration-test VERBOSE=true
 
 ## Release
 

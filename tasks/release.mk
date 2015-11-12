@@ -25,8 +25,7 @@ release-tag-create:
 ifeq ("$(VERSION)", "dev")
 	$(call abort,"Error: Version $(VERSION) is not a proper version")
 endif
-	$(if $(call version_exists,$(VERSION)), \
-       $(call abort,"Error: Version $(VERSION) exists"),)
+	$(if $(call version_exists,$(VERSION)), $(call abort,"Error: Version $(VERSION) exists"),)
 	$(GIT) tag v$(VERSION)
 
 release-tag-rm:

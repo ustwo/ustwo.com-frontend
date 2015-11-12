@@ -16,7 +16,10 @@ dependencies:
     - make compiler-build
     - make assets-build
     - make app-build
-    - make assets-create app-create
+    - make vault-generate-cert
+    - make vault-build
+    - make init
+
 test:
   override:
     - make test

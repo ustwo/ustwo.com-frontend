@@ -1,6 +1,6 @@
-import spannify from '../../src/app/lib/spannify';
+import spannify from '../../../src/app/lib/spannify';
 
-describe('Spannify', () => {
+describe('spannify', () => {
 
   let result;
 

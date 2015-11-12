@@ -6,8 +6,8 @@ compiler_dockerfile = Dockerfile.$(compiler_id)
 
 .PHONY: \
   compiler-build \
-	compiler-push \
-	compiler-pull
+  compiler-push \
+  compiler-pull
 
 compiler_volumes = \
   -v $(BASE_PATH)/package.compiler.json:/home/ustwo/package.json \
@@ -20,6 +20,8 @@ define compile
 		$(compiler_volumes) \
 		$(verbose_flag) \
 		$(cache_flag) \
+		-e SAUCE_USERNAME=$(SAUCE_USERNAME) \
+		-e SAUCE_ACCESS_KEY=$(SAUCE_ACCESS_KEY) \
 		$(compiler_image) $1
 endef
 

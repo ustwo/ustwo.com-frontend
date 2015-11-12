@@ -1,8 +1,8 @@
-import renderModules from '../../src/app/lib/module-renderer';
-import SingleColumn from '../../src/app/components/single-column';
-import Rimage from '../../src/app/components/rimage';
-import QuoteBlock from '../../src/app/components/quote-block';
-import Grid from '../../src/app/components/grid';
+import renderModules from '../../../src/app/lib/module-renderer';
+import SingleColumn from '../../../src/app/components/single-column';
+import Rimage from '../../../src/app/components/rimage';
+import QuoteBlock from '../../../src/app/components/quote-block';
+import Grid from '../../../src/app/components/grid';
 
 const colours = {
   bg: '#ffede1',

@@ -10,7 +10,8 @@
     "css": "./src/scripts/css.sh",
     "images": "./src/scripts/images.sh",
     "css-watch": "echo 'not implemented'",
-    "test": "NODE_ENV=development mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test -name '*.js')"
+    "test": "NODE_ENV=development mocha --compilers js:./src/app/lib/testdom.js,js:babel/register $(find test/unit/ -name '*.js')",
+    "integration": "NODE_ENV=development babel-node ./src/app/lib/parallel-mochas '--compilers js:babel/register --reporter spec ./test/integration/*.js'"
   },
   "aliasify": "./src/app/aliases.json",
   "dependencies": {
@@ -44,6 +45,8 @@
     "sinon-chai": "2.8.0",
     "svg4everybody": "1.0.0",
     "urllite": "0.5.0",
-    "uglify-js": "2.4.24"
+    "uglify-js": "2.4.24",
+    "wd": "0.3.12",
+    "chai-as-promised": "5.1.0"
   }
 }

@@ -1,6 +1,6 @@
-import GetAuthor from '../../src/app/lib/get-author';
+import getAuthor from '../../../src/app/lib/get-author';
 
-describe('GetAuthor', () => {
+describe('getAuthor', () => {
   let post;
 
   beforeEach(() => {
@@ -52,7 +52,7 @@ describe('GetAuthor', () => {
       last_name: "Dylan",
       name: "spongebob"
     });
-    expect(GetAuthor(post)).to.equal("Bob Dylan");
+    expect(getAuthor(post)).to.equal("Bob Dylan");
   });
 
   describe('if the first name is not present', () => {
@@ -61,7 +61,7 @@ describe('GetAuthor', () => {
         last_name: "Dylan",
         name: "spongebob"
       });
-      expect(GetAuthor(post)).to.equal("spongebob");
+      expect(getAuthor(post)).to.equal("spongebob");
     });
   });
 
@@ -71,14 +71,14 @@ describe('GetAuthor', () => {
         first_name: "Bob",
         name: "spongebob"
       });
-      expect(GetAuthor(post)).to.equal("Bob");
+      expect(getAuthor(post)).to.equal("Bob");
     });
   });
 
   describe('if post is undefined', () => {
     it('should not throw an error', () => {
-      expect(GetAuthor).to.not.throw(ReferenceError);
-      expect(GetAuthor()).to.equal(undefined);
+      expect(getAuthor).to.not.throw(ReferenceError);
+      expect(getAuthor()).to.equal(undefined);
     });
   });
 

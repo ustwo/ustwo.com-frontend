@@ -1,7 +1,7 @@
-import GetFeaturedImage from '../../src/app/lib/get-featured-image';
+import getFeaturedImage from '../../../src/app/lib/get-featured-image';
 import set from 'lodash/object/set';
 
-describe('GetFeaturedImage', () => {
+describe('getFeaturedImage', () => {
   const NullCaseStudy = {
     "name": null,
     "link": null,
@@ -55,13 +55,13 @@ describe('GetFeaturedImage', () => {
   });
 
   it('should return the featured attachment', () => {
-    result = GetFeaturedImage(data, attachments);
+    result = getFeaturedImage(data, attachments);
     expect(result).to.equal(featuredAttachment);
   });
 
   it('looks within data if attachments are not specified', () => {
     set(data, '_embedded.wp:attachment', attachments);
-    result = GetFeaturedImage(data);
+    result = getFeaturedImage(data);
     expect(result).to.equal(featuredAttachment);
   });
 
@@ -70,7 +70,7 @@ describe('GetFeaturedImage', () => {
       const data = Object.assign(NullCaseStudy, { featured_image: 9443 });
       const attachments = [{}, NullAttachment, NullAttachment, NullAttachment];
       set(data, '_embedded.wp:attachment', attachments);
-      result = GetFeaturedImage(data);
+      result = getFeaturedImage(data);
     });
 
     it('should return undefined', () => {

@@ -6,9 +6,9 @@ proxy_image := nginx:1.9.4
 proxy_name = $(project_name)_proxy
 
 .PHONY: \
-	proxy-log \
-	proxy-create \
-	proxy-rm
+  proxy-log \
+  proxy-create \
+  proxy-rm
 
 proxy-rm:
 	@echo "Removing $(proxy_name)"

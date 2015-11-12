@@ -1,4 +1,4 @@
-import QS from '../../src/app/lib/query-string';
+import QS from '../../../src/app/lib/query-string';
 import isEqual from 'lodash/lang/isEqual';
 
 describe('QS', () => {

@@ -1,5 +1,5 @@
-import RenderVariations from '../../src/app/lib/sandbox/render-variations';
-import Component from '../../src/app/components/bold-header';
+import RenderVariations from '../../../src/app/lib/sandbox/render-variations';
+import Component from '../../../src/app/components/bold-header';
 import find from 'lodash/collection/find';
 
 describe('RenderVariations', () => {
