@@ -1,14 +1,14 @@
 import React from 'react';
 import moment from 'moment';
 
-class BlogPostMetaInformation extends React.Component {
+const BlogPostMetaInformation = React.createClass({
   render() {
     const { author, date } = this.props;
     const formattedDate = moment(date).format('D MMMM YYYY');
-    return <p className='meta'>
-      By {author} - <span className='date'>{formattedDate}</span>
+    return <p className="meta">
+      By {author} - <span className="date">{formattedDate}</span>
     </p>;
   }
-}
+});
 
 export default BlogPostMetaInformation;

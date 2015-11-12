@@ -1,25 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-export default class SingleColumn extends React.Component {
-  render() {
-    const { className, isInZebraList, backgroundColour } = this.props;
-    const classes = classnames('single-column', className, {
-      'in-zebra-list': isInZebraList
-    });
-    return (
-      <section
-        className={classes}
-        style={{ backgroundColor: backgroundColour }}
-      >
-        <div className="wrapper">
-          {this.renderTitle()}
-          {this.renderRule()}
-          {this.renderContent()}
-        </div>
-      </section>
-    );
-  }
+const SingleColumn = React.createClass({
   renderTitle() {
     const { title, headingColour } = this.props;
     let output;
@@ -32,7 +14,7 @@ export default class SingleColumn extends React.Component {
       </h2>;
     }
     return output;
-  }
+  },
   renderRule() {
     const { title, children, ruleColour } = this.props;
     let rule;
@@ -40,7 +22,7 @@ export default class SingleColumn extends React.Component {
       rule = <hr style={{ borderColor: ruleColour }} />;
     }
     return rule;
-  }
+  },
   renderContent() {
     const { children } = this.props;
     let content;
@@ -51,5 +33,23 @@ export default class SingleColumn extends React.Component {
       />;
     }
     return content;
+  },
+  render() {
+    const { className, isInZebraList, backgroundColour } = this.props;
+    const classes = classnames('single-column', className, {
+      'in-zebra-list': isInZebraList
+    });
+    return <section
+      className={classes}
+      style={{ backgroundColor: backgroundColour }}
+    >
+      <div className="wrapper">
+        {this.renderTitle()}
+        {this.renderRule()}
+        {this.renderContent()}
+      </div>
+    </section>;
   }
-}
+});
+
+export default SingleColumn;

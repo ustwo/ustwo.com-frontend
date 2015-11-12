@@ -3,21 +3,26 @@
 import React from 'react';
 import classnames from 'classnames';
 
-export default class LoadMoreButton extends React.Component {
-  render() {
-    const props = this.props;
-    const classes = classnames({
-      loading: props.loading
-    });
-
-    return (
-      <div className={classnames("load-more-button", { hidden: props.disabled })}>
-        <button onClick={this.onClick} className={classes}>Load more <div className="loader"></div></button>
-      </div>
-    );
-  }
-  onClick = (e) => {
+const LoadMoreButton = React.createClass({
+  onClick(e) {
     e.preventDefault();
     this.props.onClick && this.props.onClick();
+  },
+  render() {
+    const { loading, disabled } = this.props;
+    const props = this.props;
+    const topLevelClasses = classnames('load-more-button', { hidden: disabled });
+    const buttonClasses = classnames({ loading: loading });
+
+    return <div className={topLevelClasses}>
+      <button
+        onClick={this.onClick}
+        className={buttonClasses}
+      >
+        Load more <div className="loader"></div>
+      </button>
+    </div>;
   }
-};
+});
+
+export default LoadMoreButton;

@@ -12,7 +12,7 @@ import Rimage from '../rimage';
 import BlogPostMetaInformation from '../blog-post-meta-information';
 import SocialMediaStatistics from '../social-media-statistics';
 
-export default class SearchResultListItem extends React.Component {
+const SearchResultListItem = React.createClass({
   render() {
     const { data: post } = this.props;
     const category = get(post, '_embedded.wp:term.0.0.name', 'category');
@@ -26,15 +26,15 @@ export default class SearchResultListItem extends React.Component {
     return <li className={classes}>
       <a href={uri} onClick={Flux.override(uri)}>
         <Rimage
-          className='image'
-          wrap='div'
+          className="image"
+          wrap="div"
           sizes={get(image, 'media_details.sizes')}
           altText={get(image, 'alt_text')}
         />
       </a>
-      <div className='content'>
-        <div className='blog-category'>{category}</div>
-        <h2 className='title'>
+      <div className="content">
+        <div className="blog-category">{category}</div>
+        <h2 className="title">
           <a href={uri} onClick={Flux.override(uri)}>
             {he.decode(get(post, 'title.rendered'))}
           </a>
@@ -47,10 +47,12 @@ export default class SearchResultListItem extends React.Component {
           facebookShares={get(post, 'facebookShares')}
           twitterShares={get(post, 'twitterShares')}
         />
-        <div className='tail'>
+        <div className="tail">
           <a href={uri} onClick={Flux.override(uri)}>Read more</a>
         </div>
       </div>
     </li>;
   }
-}
+});
+
+export default SearchResultListItem;

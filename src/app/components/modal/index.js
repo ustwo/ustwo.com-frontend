@@ -3,22 +3,22 @@ import classnames from 'classnames';
 
 import Flux from '../../flux';
 
-class Modal extends React.Component {
-  render() {
-    return (
-      <div className={classnames('modal', this.props.className, {
-          "below-header": this.props.belowHeader
-        })} onClick={this.onClick}>
-        {this.props.children}
-      </div>
-    );
-  }
+const Modal = React.createClass({
   onClick() {
     Flux.closeModal();
+  },
+  render() {
+    const { className, belowHeader, children } = this.props;
+    const classes = classnames('modal', className, {
+      'below-header': belowHeader
+    });
+    return <div
+      className={classes}
+      onClick={this.onClick}
+    >
+      {children}
+    </div>;
   }
-};
-Modal.onClickContent = (e) => {
-  e.stopPropagation();
-};
+});
 
 export default Modal;

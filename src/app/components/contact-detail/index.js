@@ -1,26 +1,33 @@
 import React from 'react';
+import classnames from 'classnames';
 
 import Flux from '../../flux/';
 import Track from '../../adaptors/server/track';
 
-export default class ContactDetail extends React.Component {
+const ContactDetail = React.createClass({
   render() {
-    const detail = this.props.detail;
-    return (
-      <div className="contact-detail">
-        <h3 className="title">{detail.title}</h3>
-        <p className="description">{detail.desc}</p>
-        {detail.methods.map(link => <a key={`contact-detail-link-${link.uri}`} className={`link ${link.type}`} href={`${link.uri}`} onClick={this.onClickContact(detail.type, link)}>{link.text}</a>)}
-      </div>
-    );
-  }
+    const { detail } = this.props;
+    return <div className="contact-detail">
+      <h3 className="title">{detail.title}</h3>
+      <p className="description">{detail.desc}</p>
+      {detail.methods.map(link => {
+        return <a
+          key={`contact-detail-link-${link.uri}`}
+          className={classnames('link', link.type)}
+          href={link.uri}
+          onClick={this.onClickContact(detail.type, link)}
+        >
+          {link.text}
+        </a>;
+      })}
+    </div>;
+  },
   onClickContact(contactType, link) {
     const isLink = link.type === 'link';
     return (e) => {
       const target = e.currentTarget;
-      if(isLink) {
-        e.preventDefault();
-        Flux.navigate(target.href);
+      if (isLink) {
+        Flux.override(target.href);
       }
       Track('send', {
         'hitType': 'event',          // Required.
@@ -30,4 +37,6 @@ export default class ContactDetail extends React.Component {
       });
     };
   }
-}
+});
+
+export default ContactDetail;

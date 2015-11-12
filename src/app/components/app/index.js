@@ -16,6 +16,7 @@ import '../../lib/animate';
 
 import Store from '../../flux/store';
 import Nulls from '../../flux/nulls';
+import PageContainer from '../page-container';
 import Navigation from '../navigation';
 import Footer from '../footer';
 import Modal from '../modal';
@@ -37,104 +38,41 @@ const pageMap = {
   'join-us': require('../join-us')
 };
 
-class PageContainer extends React.Component {
-  render() {
-    return (
-      <div className="page-container">
-        {React.Children.map(this.props.children, (child) => {
-          return React.cloneElement(child, { transitionState: this.props.transitionState });
-        })}
-      </div>
-    );
-  }
-}
-
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = props.state;
-  }
-  onChangeStore = (state) => {
-    this.setState(state);
-  }
+const App = React.createClass({
+  getInitialState() {
+    return this.props.state;
+  },
   componentDidMount() {
     Store.on('change', this.onChangeStore);
-  }
+  },
   componentWillUnmount() {
     Store.removeListener('change', this.onChangeStore);
-  }
-  render() {
-    const state = this.state;
-    const appClasses = classnames('app', {
-      'app-404': state.currentPage === 'notfound'
-    });
-    const contentClasses = classnames('app-content', {
-      takeover: this.showTakeover(),
-      disabled: !!state.modal,
-      'mobile-no-scroll': state.modal === 'blogCategories' || state.modal === 'navigation' || state.modal === 'search' || this.showTakeover()
-    });
-    let content;
-    if(state.currentPage === 'notfound') {
-      content = <div className={appClasses}>
-        <Navigation pages={state.navMain} section={this.state.currentPage.split('/')[0]} page={this.state.currentPage.split('/')[1]} takeover={this.showTakeover()} />
-        <FourOhFour {...this.state} />
-      </div>;
-    } else {
-      content = (
-        <div className={appClasses}>
-          <Meta
-            title={get(state, 'page.seo.title') || ''}
-            meta={[{
-              name: "description",
-              content: get(state, 'page.seo.desc') || ''
-            }, {
-              name: "keywords",
-              content: get(state, 'page.seo.keywords') || ''
-            }, {
-              name: "og:type",
-              content: 'website'
-            }, {
-              name: "og:title",
-              content: get(state, 'page.seo.title') || ''
-            }, {
-              name: "og:description",
-              content: get(state, 'page.seo.desc') || ''
-            }, {
-              name: "og:image",
-              content: get(state, 'page.seo.image') || ''
-            }]}
-          />
-          <EntranceTransition className="nav-wrapper">
-            <Navigation pages={state.navMain} section={state.currentPage.split('/')[0]} page={state.currentPage.split('/')[1]} takeover={this.showTakeover()} />
-          </EntranceTransition>
-          <TransitionManager component="div" className={contentClasses} duration={0}>
-            <PageContainer key={state.currentPage}>
-              {this.getPage(state.currentPage)}
-              <Footer data={state.footer} studios={state.studios} />
-            </PageContainer>
-          </TransitionManager>
-          <TransitionManager component="div" className="app__modal" duration="500">
-            {this.renderModal()}
-          </TransitionManager>
-        </div>
-      );
-    }
-    return content;
-  }
+  },
+  onChangeStore(state) {
+    this.setState(state);
+  },
+  showTakeover() {
+    const { currentPage, takeover } = this.state;
+    return currentPage === 'home' && takeover && !takeover.seen;
+  },
+  getPage(pageId) {
+    return React.createElement(pageMap[pageId], this.state);
+  },
   renderModal() {
-    const state = this.state;
-    const takeover = state.takeover;
-    const modalType = state.modal;
+    const { takeover, modal: modalType } = this.state;
     let modal;
-    if(this.showTakeover()) {
+    if (this.showTakeover()) {
       modal = <TakeOver key="takeover" takeover={takeover} />;
-    } else if(modalType) {
+    } else if (modalType) {
       let content;
       let className;
       switch(modalType) {
         case 'navigation':
           className = 'navigation';
-          content = <NavigationOverlay pages={state.navMain} section={state.currentPage.split('/')[0]} />
+          content = <NavigationOverlay
+            pages={state.navMain}
+            section={state.currentPage.split('/')[0]}
+          />;
           break;
         case 'contacts':
           className = 'tray';
@@ -145,15 +83,84 @@ export default class App extends React.Component {
           content = <BlogCategories />;
           break;
       }
-      modal = <Modal key={state.modal} className={className}>{content}</Modal>;
+      modal = <Modal key={modalType} className={className}>{content}</Modal>;
     }
     return modal;
-  }
-  showTakeover() {
+  },
+  render() {
     const state = this.state;
-    return state.currentPage === 'home' && state.takeover && !state.takeover.seen;
+    const appClasses = classnames('app', {
+      'app-404': state.currentPage === 'notfound'
+    });
+    const contentClasses = classnames('app-content', {
+      'takeover': this.showTakeover(),
+      'disabled': !!state.modal,
+      'mobile-no-scroll': state.modal || this.showTakeover()
+    });
+    let content;
+    if (state.currentPage === 'notfound') {
+      content = <div className={appClasses}>
+        <Navigation
+          pages={state.navMain}
+          section={state.currentPage.split('/')[0]}
+          page={state.currentPage.split('/')[1]}
+          takeover={this.showTakeover()}
+        />
+        <FourOhFour {...this.state} />
+      </div>;
+    } else {
+      content = <div className={appClasses}>
+        <Meta
+          title={get(state, 'page.seo.title') || ''}
+          meta={[{
+            name: "description",
+            content: get(state, 'page.seo.desc') || ''
+          }, {
+            name: "keywords",
+            content: get(state, 'page.seo.keywords') || ''
+          }, {
+            name: "og:type",
+            content: 'website'
+          }, {
+            name: "og:title",
+            content: get(state, 'page.seo.title') || ''
+          }, {
+            name: "og:description",
+            content: get(state, 'page.seo.desc') || ''
+          }, {
+            name: "og:image",
+            content: get(state, 'page.seo.image') || ''
+          }]}
+        />
+        <EntranceTransition className="nav-wrapper">
+          <Navigation
+            pages={state.navMain}
+            section={state.currentPage.split('/')[0]}
+            page={state.currentPage.split('/')[1]}
+            takeover={this.showTakeover()}
+          />
+        </EntranceTransition>
+        <TransitionManager
+          component="div"
+          className={contentClasses}
+          duration={0}
+        >
+          <PageContainer key={state.currentPage}>
+            {this.getPage(state.currentPage)}
+            <Footer data={state.footer} studios={state.studios} />
+          </PageContainer>
+        </TransitionManager>
+        <TransitionManager
+          component="div"
+          className="app__modal"
+          duration={500}
+        >
+          {this.renderModal()}
+        </TransitionManager>
+      </div>;
+    }
+    return content;
   }
-  getPage(pageId) {
-    return React.createElement(pageMap[pageId], this.state);
-  }
-};
+});
+
+export default App;

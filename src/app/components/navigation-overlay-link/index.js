@@ -6,18 +6,8 @@ import classnames from 'classnames';
 import Track from '../../adaptors/server/track';
 import Flux from '../../flux';
 
-export default class NavigationOverlayLink extends React.Component {
-  render() {
-    const classes = classnames('navigation-overlay-link', {
-      selected: this.props.selected
-    });
-    return (
-      <li className={classes}>
-        <a href={this.props.url} onClick={this.onClick}>{this.props.children}</a>
-      </li>
-    );
-  }
-  onClick = (e) => {
+const NavigationOverlayLink = React.createClass({
+  onClick(e) {
     e.preventDefault();
     this.props.onClick && this.props.onClick();
     Track('send', {
@@ -27,5 +17,16 @@ export default class NavigationOverlayLink extends React.Component {
       'eventLabel': this.props.gaId, // TODO: Remove once GA has been hooked into router
     });
     Flux.navigate(this.props.url);
+  },
+  render() {
+    const { selected, url, children } = this.props;
+    const classes = classnames('navigation-overlay-link', {
+      selected: selected
+    });
+    return <li className={classes}>
+      <a href={url} onClick={this.onClick}>{children}</a>
+    </li>;
   }
-}
+});
+
+export default NavigationOverlayLink;

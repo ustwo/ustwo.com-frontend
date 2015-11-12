@@ -9,7 +9,7 @@ import DownChevron from '../down-chevron';
 import Rimage from '../rimage';
 import Track from '../../adaptors/server/track';
 
-export default class Hero extends React.Component {
+const Hero = React.createClass({
   componentDidMount() {
     if (this.props.showDownChevron) {
       const duration = this.props.transitionImage ? 2500 : 1700;
@@ -18,31 +18,13 @@ export default class Hero extends React.Component {
         this.refs.downChevron.anim();
       }, duration);
     }
-  }
+  },
   componentWillUnmount() {
     if (this.props.showDownChevron) {
       clearTimeout(this.animTimeout);
     }
-  }
-  render() {
-    const props = this.props;
-
-    return (
-      <section className={classnames("hero", props.className)}>
-        <EntranceTransition className='title-entrance'>
-          <h1 className='title'>
-            <WordAnimation delay={1} duration={0.5}>
-              {props.title}
-            </WordAnimation>
-          </h1>
-        </EntranceTransition>
-        {this.renderImage()}
-        {props.children}
-        {this.renderDownChevron()}
-      </section>
-    );
-  }
-  renderImage = () => {
+  },
+  renderImage() {
     const { sizes, altText, transitionImage } = this.props;
     const image = <Rimage sizes={sizes} altText={altText} />;
     let output;
@@ -56,14 +38,17 @@ export default class Hero extends React.Component {
       output = image;
     }
     return output;
-  }
-  renderDownChevron = () => {
+  },
+  renderDownChevron() {
     let chevron;
     if (this.props.showDownChevron) {
-      chevron = <DownChevron ref="downChevron" onClick={this.onClickDownChevron} />;
+      chevron = <DownChevron
+        ref="downChevron"
+        onClick={this.onClickDownChevron}
+      />;
     }
     return chevron;
-  }
+  },
   onClickDownChevron() {
     Track('send', {
       'hitType': 'event',
@@ -71,5 +56,20 @@ export default class Hero extends React.Component {
       'eventAction': 'click_animated_chevron',
       'eventLabel': this.props.eventLabel
     });
+  },
+  render() {
+    const { className, title, children } = this.props;
+    return <section className={classnames('hero', className)}>
+      <EntranceTransition className="title-entrance">
+        <h1 className="title">
+          <WordAnimation delay={1} duration={0.5}>{title}</WordAnimation>
+        </h1>
+      </EntranceTransition>
+      {this.renderImage()}
+      {children}
+      {this.renderDownChevron()}
+    </section>;
   }
-}
+});
+
+export default Hero;

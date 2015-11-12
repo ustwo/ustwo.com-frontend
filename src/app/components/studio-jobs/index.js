@@ -11,42 +11,13 @@ import Flux from '../../flux';
 import JobItem from '../job-item';
 import Rimage from '../rimage';
 
-export default class StudioJobs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const StudioJobs = React.createClass({
+  getInitialState() {
+    return {
       selectedJob: null
     }
-  }
-  render() {
-    const { studio, selected } = this.props;
-    const id = kebabCase(studio.name);
-    const classes = classnames('studio-jobs', `${id}-jobs`, {
-      selected: selected
-    });
-    const image = getFeaturedImage(studio);
-    return (
-      <div className={classes}>
-        <h3>{studio.name}</h3>
-        <div className="tab-content" id={`tab-content-${id}`}>
-          <div className="studio-info">
-            <div className="info" style={{ backgroundColor: studio.color }}>
-              <p className="excerpt">{get(studio, 'recruitment-title')}</p>
-              <p className="studio-blurb">{get(studio, 'recruitment-desc')}</p>
-            </div>
-            <Rimage
-              className="photo"
-              wrap="div"
-              sizes={get(image, 'media_details.sizes')}
-              altText={get(image, 'alt_text')}
-            />
-          </div>
-          {this.renderJobsList()}
-        </div>
-      </div>
-    );
-  }
-  renderJobsList = () => {
+  },
+  renderJobsList() {
     const { jobs, studio, contactEmail } = this.props;
     let list;
     if (jobs.length) {
@@ -56,12 +27,17 @@ export default class StudioJobs extends React.Component {
     } else {
       list = <div className="jobs-none">
         <p>We don’t have any openings currently. However we’re always looking for talented individuals to join the ustwo family.</p>
-        <a style={{backgroundColor: studio.color}} href={contactEmail.length ? `${contactEmail}?subject=${studio.name} Jobs` : ''}>Get in touch</a>
+        <a
+          style={{backgroundColor: studio.color}}
+          href={contactEmail.length ? `${contactEmail}?subject=${studio.name} Jobs` : ''}
+        >
+          Get in touch
+        </a>
       </div>;
     }
     return list;
-  }
-  renderJobItem = (job) => {
+  },
+  renderJobItem(job) {
     return <JobItem
       key={`job-${job.shortcode}`}
       job={job}
@@ -69,8 +45,8 @@ export default class StudioJobs extends React.Component {
       open={this.state.selectedJob === job.shortcode}
       onClick={this.generateOnClickJobItemHandler(job)}
     />;
-  }
-  generateOnClickJobItemHandler = (job) => {
+  },
+  generateOnClickJobItemHandler(job) {
     return () => {
       const jid = job.shortcode;
       if (this.state.selectedJob === jid) {
@@ -80,13 +56,41 @@ export default class StudioJobs extends React.Component {
         Flux.getJobDetails(jid);
       }
     }
-  }
-  getStudioColour = (job) => {
+  },
+  getStudioColour(job) {
     const { studios } = this.props;
     let studio = find(studios, 'name', job.location.city);
     if(!studio) {
       studio = find(studios, 'name', 'London');
     }
     return studio.color;
+  },
+  render() {
+    const { studio, selected } = this.props;
+    const id = kebabCase(studio.name);
+    const classes = classnames('studio-jobs', `${id}-jobs`, {
+      selected: selected
+    });
+    const image = getFeaturedImage(studio);
+    return <div className={classes}>
+      <h3>{studio.name}</h3>
+      <div className="tab-content" id={`tab-content-${id}`}>
+        <div className="studio-info">
+          <div className="info" style={{ backgroundColor: studio.color }}>
+            <p className="excerpt">{get(studio, 'recruitment-title')}</p>
+            <p className="studio-blurb">{get(studio, 'recruitment-desc')}</p>
+          </div>
+          <Rimage
+            className="photo"
+            wrap="div"
+            sizes={get(image, 'media_details.sizes')}
+            altText={get(image, 'alt_text')}
+          />
+        </div>
+        {this.renderJobsList()}
+      </div>
+    </div>;
   }
-}
+});
+
+export default StudioJobs;

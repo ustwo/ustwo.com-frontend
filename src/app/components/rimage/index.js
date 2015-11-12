@@ -15,23 +15,14 @@ import endsWith from 'lodash/string/endsWith';
 import Flux from '../../flux';
 import Image from '../../adaptors/server/image';
 
-class Rimage extends React.Component {
-  constructor(props) {
-    super(props);
-    const sizes = this.getSizesArray(props.sizes);
-    this.state = {
+const Rimage = React.createClass({
+  getInitialState() {
+    const sizes = this.getSizesArray(this.props.sizes);
+    return {
       sizes: sizes,
       size: sizes[0] || {}
-    };
-  }
-  componentWillReceiveProps(props) {
-    const sizes = this.getSizesArray(props.sizes);
-    const el = React.findDOMNode(this);
-    this.setState({
-      sizes: sizes,
-      size: this.getNewSize(sizes, el.clientWidth)
-    });
-  }
+    }
+  },
   componentDidMount() {
     const { sizes, size: currentSize } = this.state;
     const el = React.findDOMNode(this);
@@ -46,7 +37,15 @@ class Rimage extends React.Component {
         size: newSize
       });
     }
-  }
+  },
+  componentWillReceiveProps(props) {
+    const sizes = this.getSizesArray(props.sizes);
+    const el = React.findDOMNode(this);
+    this.setState({
+      sizes: sizes,
+      size: this.getNewSize(sizes, el.clientWidth)
+    });
+  },
   getSizesArray(sizesObject) {
     return sortBy(map(omit(sizesObject, (size, name) => {
       return name === 'thumbnail' || endsWith(name, '_crop');
@@ -54,15 +53,15 @@ class Rimage extends React.Component {
       size.name = name;
       return size;
     }), 'width');
-  }
+  },
   getImageUrl(size) {
     return size.url || size.source_url;
-  }
+  },
   getNewSize(sizes, containerSize) {
     const isSmallerThanContainer = size => size.width < containerSize;
     const newSize = first(dropWhile(sizes, isSmallerThanContainer));
     return newSize || last(sizes) || {};
-  }
+  },
   render() {
     const { className, altText, children: originalChildren, wrap } = this.props;
     const classes = classnames('rimage', className, { 'background-image': wrap });
@@ -83,6 +82,6 @@ class Rimage extends React.Component {
 
     return React.cloneElement(rimage, { className: classes });
   }
-};
+});
 
 export default Rimage;

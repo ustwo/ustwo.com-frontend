@@ -8,29 +8,32 @@ import Flux from '../../flux';
 
 import NavigationOverlayLink from '../navigation-overlay-link';
 import CloseButton from '../close-button';
-import {onClickContent} from '../modal';
+import ModalContentMixin from '../../lib/modal-content-mixin';
 
-export default class NavigationOverlay extends React.Component {
-  render() {
-    return (
-      <nav className='navigation-overlay' onClick={onClickContent}>
-        <CloseButton onClose={this.onClickClose} autoAnim={10} />
-        <ul className="menu">
-          {this.renderNavigationOverlayLinks()}
-        </ul>
-      </nav>
-    );
-  }
-  renderNavigationOverlayLinks = () => {
-    return get(this.props, 'pages', []).map(link => {
-      return (
-        <NavigationOverlayLink key={link.id} url={link.slug === 'home' ? '/' : `/${link.slug}`} selected={link.slug === this.props.section}>
-          {link.title}
-        </NavigationOverlayLink>
-      );
-    });
-  }
+const NavigationOverlay = React.createClass({
+  mixins: [ModalContentMixin],
   onClickClose() {
     Flux.closeModal();
+  },
+  renderNavigationOverlayLinks() {
+    return get(this.props, 'pages', []).map(link => {
+      return <NavigationOverlayLink
+        key={link.id}
+        url={link.slug === 'home' ? '/' : `/${link.slug}`}
+        selected={link.slug === this.props.section}
+      >
+        {link.title}
+      </NavigationOverlayLink>;
+    });
+  },
+  render() {
+    return <nav className="navigation-overlay" onClick={this.onClickContent}>
+      <CloseButton onClose={this.onClickClose} autoAnim={10} />
+      <ul className="menu">
+        {this.renderNavigationOverlayLinks()}
+      </ul>
+    </nav>;
   }
-}
+});
+
+export default NavigationOverlay;

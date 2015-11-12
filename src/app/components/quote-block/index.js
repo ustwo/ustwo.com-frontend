@@ -2,7 +2,7 @@ import React from 'react';
 
 import SVG from '../svg';
 
-class QuoteBlock extends React.Component {
+const QuoteBlock = React.createClass({
   render() {
     const { backgroundColour, children, source } = this.props;
     return <div
@@ -19,6 +19,6 @@ class QuoteBlock extends React.Component {
     <p className="source">By {source}</p>
     </div>;
   }
-}
+});
 
 export default QuoteBlock;

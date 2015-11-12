@@ -76,6 +76,64 @@ const PageBlog = React.createClass({
       });
     }
   },
+  getPosts() {
+    const { isCategorised } = this.state;
+    const { postsPagination, postsPaginationTotal } = this.props;
+    let { posts } = this.props;
+    if (!isCategorised && postsPagination > 1 && postsPagination < postsPaginationTotal) {
+      posts = take(posts, (postsPagination * 12) + 1);
+    }
+    return posts;
+  },
+  onClickLoadMore() {
+    Flux.loadMorePosts();
+    this.setState({
+      isLoadingMorePosts: true
+    });
+  },
+  renderHero() {
+    const { page, searchMode, searchQuery, blogCategory } = this.props;
+    const image = getFeaturedImage(page);
+    let output;
+    if (searchMode) {
+      output = <Search key="search" searchQuery={searchQuery} />;
+    } else {
+      output = <Hero
+        key="hero"
+        title={get(page, 'display_title')}
+        transitionImage={true}
+        sizes={get(image, 'media_details.sizes')}
+        altText={get(image, 'alt_text')}
+        eventLabel="blog"
+        showDownChevron={false}
+      >
+        <BlogControls
+          className={classnames({ show: page })}
+          blogCategory={blogCategory}
+        />
+      </Hero>;
+    }
+    return output;
+  },
+  renderPosts() {
+    const posts = this.getPosts();
+    let output;
+    if (posts) {
+      if (posts.length) {
+        output = posts.map((postData, index) => {
+          return <BlogPostListItem
+            key={postData.slug}
+            className="blog-post-list-item"
+            featured={!this.state.isCategorised && index === 0}
+            data={postData}
+          />;
+        });
+      } else {
+        output = <h3 className="message">No posts found</h3>;
+      }
+    }
+    return output;
+  },
   render() {
     const {
       isCategorised,
@@ -91,68 +149,24 @@ const PageBlog = React.createClass({
       empty: posts && !posts.length
     });
 
-    return (
-      <article className={classes}>
-        <TransitionManager component='div' className='hero-transition-manager' duration={1000}>
-          {this.renderHero()}
-        </TransitionManager>
-        <section className='blog-post-list'>
-          {this.renderPosts()}
-          <LoadMoreButton loading={isLoadingMorePosts} onClick={this.onClickLoadMore} disabled={postsPagination >= postsPaginationTotal} />
-        </section>
-      </article>
-    );
-  },
-  renderHero() {
-    const { page, searchMode, searchQuery, blogCategory } = this.props;
-    const image = getFeaturedImage(page);
-    let output;
-    if (searchMode) {
-      output = <Search key='search' searchQuery={searchQuery} />;
-    } else {
-      output = <Hero
-        key='hero'
-        title={get(page, 'display_title')}
-        transitionImage={true}
-        sizes={get(image, 'media_details.sizes')}
-        altText={get(image, 'alt_text')}
-        eventLabel='blog'
-        showDownChevron={false}
+    return <article className={classes}>
+      <TransitionManager
+        component="div"
+        className="hero-transition-manager"
+        duration={1000}
       >
-        <BlogControls className={classnames({ show: page })} blogCategory={blogCategory}/>
-      </Hero>;
-    }
-    return output;
+        {this.renderHero()}
+      </TransitionManager>
+      <section className="blog-post-list">
+        {this.renderPosts()}
+        <LoadMoreButton
+          loading={isLoadingMorePosts}
+          onClick={this.onClickLoadMore}
+          disabled={postsPagination >= postsPaginationTotal}
+        />
+      </section>
+    </article>;
   },
-  renderPosts() {
-    const posts = this.getPosts();
-    let output;
-    if (posts) {
-      if (posts.length) {
-        output = posts.map((postData, index) => {
-          return <BlogPostListItem key={postData.slug} className="blog-post-list-item" featured={!this.state.isCategorised && index === 0} data={postData} />;
-        });
-      } else {
-        output = <h3 className="message">No posts found</h3>;
-      }
-    }
-    return output;
-  },
-  getPosts() {
-    const { isCategorised } = this.state;
-    const { postsPagination, postsPaginationTotal } = this.props;
-    let { posts } = this.props;
-    if (!isCategorised && postsPagination > 1 && postsPagination < postsPaginationTotal) {
-      posts = take(posts, (postsPagination * 12) + 1);
-    }
-    return posts;
-  },
-  onClickLoadMore() {
-    Flux.loadMorePosts();
-    this.setState({
-      isLoadingMorePosts: true
-    });
-  }
 });
 
 export default PageBlog;

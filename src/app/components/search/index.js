@@ -7,36 +7,22 @@ import Flux from '../../flux';
 
 import SVG from '../svg';
 
-export default class Search extends React.Component {
+const Search = React.createClass({
   componentDidMount() {
     const input = React.findDOMNode(this.refs.input);
     input.focus();
     input.addEventListener('keyup', this.onKeyup);
     input.addEventListener('keydown', this.onKeydown);
-  }
+  },
   componentWillUnmount() {
     const input = React.findDOMNode(this.refs.input);
     input.removeEventListener('keyup', this.onKeyup);
     input.removeEventListener('keydown', this.onKeydown);
-  }
-  render() {
-    return (
-      <div className={classnames('search', this.props.className)}>
-        <form method='POST' action='/blog/search' className='search-form' onSubmit={this.onSubmit}>
-          <input name='q' type='text' className='input' value={this.props.searchQuery} />
-          <div ref='input' contentEditable='true' className='h1 editable-div'></div>
-          <button className='submit-search' type='submit' onClick={this.onSubmit}>
-            <SVG spritemapID='search' />
-          </button>
-        </form>
-        <div className='cancel-search'><button type='button' onClick={this.onClickCancel}>Cancel</button></div>
-      </div>
-    );
-  }
-  onClickCancel = () => {
+  },
+  onClickCancel() {
     Flux.hideSearch();
-  }
-  onKeydown = (event) => {
+  },
+  onKeydown(event) {
     switch(event.keyCode) {
       case 13: // enter
         this.onSubmit(event);
@@ -45,18 +31,41 @@ export default class Search extends React.Component {
         Flux.hideSearch();
         break;
     }
-  }
-  onKeyup = (event) => {
+  },
+  onKeyup(event) {
     const value = event.target.innerHTML;
     if (value || event.keyCode === 8) { // backspace
       Flux.setSearchQueryTo(value);
     }
-  }
-  onSubmit = (event) => {
+  },
+  onSubmit(event) {
+    const { searchQuery } = this.props;
     event.preventDefault();
-    if (this.props.searchQuery) {
+    if (searchQuery) {
       Flux.hideSearch();
-      Flux.navigate(`/blog/search?q=${this.props.searchQuery}`);
+      Flux.navigate(`/blog/search?q=${searchQuery}`);
     }
+  },
+  render() {
+    const { className, searchQuery } = this.props;
+    return <div className={classnames('search', className)}>
+      <form
+        method="POST"
+        action="/blog/search"
+        className="search-form"
+        onSubmit={this.onSubmit}
+      >
+        <input name="q" type="text" className="input" value={searchQuery} />
+        <div ref="input" contentEditable="true" className="h1 editable-div" />
+        <button className="submit-search" type="submit" onClick={this.onSubmit}>
+          <SVG spritemapID="search" />
+        </button>
+      </form>
+      <div className="cancel-search">
+        <button type="button" onClick={this.onClickCancel}>Cancel</button>
+      </div>
+    </div>;
   }
-}
+});
+
+export default Search;

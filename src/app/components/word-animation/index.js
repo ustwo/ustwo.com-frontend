@@ -5,34 +5,33 @@ import React from 'react';
 import spannify from '../../lib/spannify';
 import animate from '../../lib/animate';
 
-export default class WordAnimation extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const WordAnimation = React.createClass({
+  getInitialState() {
+    return {
       animationShown: false
     }
-  }
+  },
   componentWillMount() {
     if (this.props.children) {
       this.text = spannify(this.props.children, 'word');
     }
-  }
+  },
   componentWillReceiveProps(nextProps) {
     if (!this.text && nextProps.children) {
       this.text = spannify(nextProps.children, 'word');
     }
-  }
+  },
   componentDidMount() {
     if (this.text) {
       this.startAnimation();
     }
-  }
+  },
   componentDidUpdate() {
     if (!this.state.animationShown && this.text) {
       this.startAnimation();
     }
-  }
-  startAnimation = () => {
+  },
+  startAnimation() {
     const props = this.props;
     const words = React.findDOMNode(this).children;
     if (!this.state.animationShown && words.length) {
@@ -54,8 +53,10 @@ export default class WordAnimation extends React.Component {
         animationShown: true
       });
     }
-  }
+  },
   render() {
     return <span className="word-animator">{this.text}</span>;
   }
-};
+});
+
+export default WordAnimation;

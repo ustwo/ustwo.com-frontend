@@ -7,25 +7,7 @@ import QS from '../../lib/query-string';
 import Rimage from '../rimage';
 import GridCell from '../grid-cell';
 
-export default class Grid extends React.Component {
-  render() {
-    const { className, images, cells } = this.props;
-    return (
-      <section className={classnames('grid', className)}>
-        <Rimage className='video' wrap='div' sizes={images}>
-          {this.renderVideo()}
-        </Rimage>
-        <ul className='grid-list'>
-          {cells.map(cell => {
-            return <GridCell
-              key={`cell-${kebabCase(get(cell, 'attr.heading.value'))}`}
-              cell={cell}
-            />;
-          })}
-        </ul>
-      </section>
-    );
-  }
+const Grid = React.createClass({
   renderVideo() {
     const { video } = this.props;
     let output;
@@ -38,12 +20,30 @@ export default class Grid extends React.Component {
       }
       output = <iframe
         src={`${baseURL}/${video}${QS.stringify(options)}`}
-        frameBorder='0'
+        frameBorder="0"
         webkitallowfullscreen
         mozallowfullscreen
         allowFullScreen
       />;
     }
     return output;
+  },
+  render() {
+    const { className, images, cells } = this.props;
+    return <section className={classnames('grid', className)}>
+      <Rimage className="video" wrap="div" sizes={images}>
+        {this.renderVideo()}
+      </Rimage>
+      <ul className="grid-list">
+        {cells.map(cell => {
+          return <GridCell
+            key={`cell-${kebabCase(get(cell, 'attr.heading.value'))}`}
+            cell={cell}
+          />;
+        })}
+      </ul>
+    </section>;
   }
-}
+});
+
+export default Grid;

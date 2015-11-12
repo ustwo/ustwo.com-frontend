@@ -1,17 +1,17 @@
 'use strict';
 
 import React from 'react';
+import classnames from 'classnames';
 
-export default class ScreenBlock extends React.Component {
+const ScreenBlock = React.createClass({
   render() {
-    const classes = this.props.hexColour ? `screen-block ${this.props.customClass}` : `screen-block ${this.props.customClass} u-bg-${this.props.colour}`;
-    const hexBackground = this.props.hexColour ? {backgroundColor: this.props.hexColour} : {};
-    return (
-      <section className={classes} style={hexBackground}>
-        <div className="wrapper">
-          {this.props.children}
-        </div>
-      </section>
-    );
+    const { hexColour, customClass, colour, children } = this.props;
+    const classes = classnames('screen-block', customClass, !hexColour && `u-bg-${colour}`);
+    const hexBackground = hexColour ? { backgroundColor: hexColour } : {};
+    return <section className={classes} style={hexBackground}>
+      <div className="wrapper">{children}</div>
+    </section>;
   }
-};
+});
+
+export default ScreenBlock;

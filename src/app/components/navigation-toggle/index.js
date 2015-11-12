@@ -4,12 +4,12 @@ import React from 'react';
 
 import SVG from '../svg';
 
-export default class NavigationToggle extends React.Component {
+const NavigationToggle = React.createClass({
   render() {
-    return (
-      <button onClick={this.props.onOpen} className="navigation-toggle">
-        <SVG title="Open menu" spritemapID='menuopen' />
-      </button>
-    );
+    return <button onClick={this.props.onOpen} className="navigation-toggle">
+      <SVG title="Open menu" spritemapID="menuopen" />
+    </button>;
   }
-};
+});
+
+export default NavigationToggle;
