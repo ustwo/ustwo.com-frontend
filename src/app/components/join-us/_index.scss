@@ -105,7 +105,7 @@
         border-bottom: 4px solid;
       }
 
-      &:hover {
+      &:hover:not([aria-selected="true"]) {
         opacity: $hover-fade-back;
       }
     }

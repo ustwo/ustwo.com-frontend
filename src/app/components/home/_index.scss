@@ -349,7 +349,6 @@
   }
 }
 
-
 .js .page-home {
   .welcome {
     .image-entrance.show {
@@ -358,8 +357,6 @@
     }
   }
 }
-
-
 
 $black-white: (
   'white' $white,
@@ -389,4 +386,8 @@ $black-white: (
   a:hover {
     color: $white;
   }
+}
+
+[class*="u-text-"] a {
+  transition: color $hover-duration-quick ease-in-out;
 }

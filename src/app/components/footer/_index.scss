@@ -79,6 +79,7 @@
           width: 35px;
           border: 1px solid #fff;
           background-color: transparent;
+          transition: all $hover-duration-quick ease-in-out;
         }
         .logo {
           width: 21px;

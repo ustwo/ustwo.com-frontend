@@ -92,8 +92,18 @@
     font-size: 18px;
   }
 
+  .description-text {
+    color: $nonBlack;
+  }
+
   .link {
     border-bottom: 2px solid #777;
+    color: $nonBlack;
+    transition: color $hover-duration-quick ease-in-out;
+
+    &:hover {
+      color: inherit;
+    }
   }
 
   &.open {

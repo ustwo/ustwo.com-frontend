@@ -20,23 +20,6 @@
     .rimage {
       height: 320px;
     }
-
-    .image-hover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba($mare, .7);
-      opacity: 0;
-      transition: opacity .32s ease-in-out;
-    }
-
-    &:hover {
-      .image-hover {
-        opacity: 1;
-      }
-    }
   }
 
   .details {
