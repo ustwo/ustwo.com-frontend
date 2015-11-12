@@ -10,6 +10,7 @@ import Flux from '../../flux';
 
 import Rimage from '../rimage';
 import BlogPostMetaInformation from '../blog-post-meta-information';
+import BlogCategoryTag from '../blog-category-tag';
 import SocialMediaStatistics from '../social-media-statistics';
 
 const BlogPostListItem = React.createClass({
@@ -25,7 +26,7 @@ const BlogPostListItem = React.createClass({
     const image = getFeaturedImage(post);
     const uri = `/blog/${get(post, 'slug')}`;
 
-    return <article className={classes}>
+    return <div className={classes}>
       <a href={uri} onClick={Flux.override(uri)}>
         <Rimage
           className="post-image"
@@ -34,8 +35,10 @@ const BlogPostListItem = React.createClass({
           altText={get(image, 'alt_text')}
         />
       </a>
-      <div className="content">
-        <div className="blog-category">{get(category, 'name', 'category')}</div>
+      <div className="details">
+        <BlogCategoryTag
+          category={get(category, 'name', 'category')}
+        />
         <h2 className="title">
           <a href={uri} onClick={Flux.override(uri)}>
             {he.decode(get(post, 'title.rendered'))}
@@ -54,7 +57,7 @@ const BlogPostListItem = React.createClass({
           />
         </div>
       </div>
-    </article>;
+    </div>;
   }
 });
 

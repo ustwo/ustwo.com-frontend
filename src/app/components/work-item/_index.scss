@@ -3,11 +3,15 @@
  *  Each showcase feature on what we do page
  *
  *  TODO: Why are the breakpoints not using the pre-defined ones from variables?
- *  TODO: New design to implement
  */
 
 .work-item {
+  $padding-small: $card-padding-small;
+  $padding-medium: $card-padding-medium;
+  $padding-large: $card-padding-large;
+
   list-style: none;
+  background-color: $offWhite;
 
   .image {
     cursor: pointer;
@@ -18,7 +22,7 @@
   }
 
   .details {
-    padding: 30px 6.25%;
+    padding: $padding-small;
 
     .type {
       margin-top: 0;
@@ -39,33 +43,15 @@
     }
   }
 
-  @media screen and (min-width: 450px) {
-    .image .rimage {
-      height: 480px;
-    }
-  }
-
-  @media screen and (min-width: 750px) {
-    display: flex;
-    flex-direction: row-reverse;
-
-    &:nth-child(2n) {
-      flex-direction: row;
-    }
-
-    .image {
-      flex: 1.5;
-    }
-
+  @media screen and (min-width: $bp-medium) {
     .details {
-      flex: 1;
-      padding: 70px 6.25%;
+      padding: $padding-medium;
     }
   }
 
-  @media screen and (min-width: 1200px) {
-    .image .rimage {
-      height: 630px;
+  @media screen and (min-width: $bp-large) {
+    .details {
+      padding: $padding-large;
     }
   }
 }

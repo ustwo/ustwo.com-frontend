@@ -6,7 +6,7 @@ import capitalize from 'lodash/string/capitalize';
 
 import log from '../app/lib/log';
 import window from '../app/adaptors/server/window';
-import DataLoader from '../app/adaptors/server/data-loader';
+import DataLoader from './data-loader';
 import Nulls from '../app/flux/nulls';
 import Defaults from '../app/flux/defaults';
 import fetchSocialMediaData from '../app/lib/social-media-fetcher';
@@ -35,7 +35,9 @@ const globalLoads = [{
 }];
 
 function bootstrapper(initialUrl, hostApi, proxyUrl) {
-  const _state = {};
+  const _state = {
+    relatedContent: []
+  };
   const vurl = virtualUrl(initialUrl);
   global.hostApi = hostApi;
   global.proxyUrl = proxyUrl;

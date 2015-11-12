@@ -13,7 +13,8 @@ const routes = {
     data: () => [{
       url: 'ustwo/v1/pages/home',
       type: 'page',
-      slug: 'home'
+      slug: 'home',
+      async: ['related_content']
     }]
   },
   work: {
@@ -31,7 +32,8 @@ const routes = {
     data: slug => [{
       url: `ustwo/v1/case-studies/${slug}`,
       type: 'caseStudy',
-      slug: slug
+      slug: slug,
+      async: ['related_content']
     }]
   },
   blogCategory: {
@@ -75,7 +77,8 @@ const routes = {
     data: pid => [{
       url: `ustwo/v1/posts/${pid}`,
       type: 'post',
-      slug: pid
+      slug: pid,
+      async: ['related_content']
     }]
   },
   legal: {

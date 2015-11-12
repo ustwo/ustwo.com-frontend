@@ -5,9 +5,13 @@
  */
 
 .blog-post-list-item {
-  $padding: 20px;
-  $padding-large: 40px;
+  $padding-small: $card-padding-small;
+  $padding-medium: $card-padding-medium;
+  $padding-large: $card-padding-large;
   $gutter-large: $blog-gutter-large;
+  $category-tag-height: $blog-category-tag-height;
+  $excerpt-height: $blog-post-list-item-excerpt-height;
+  $image-height: $blog-post-list-item-image-height;
 
   padding: 10px 10px 0 10px;
   vertical-align: top;
@@ -17,7 +21,7 @@
   }
 
   .post-image {
-    height: 245px;
+    height: $image-height;
     cursor: pointer;
 
     .link {
@@ -26,9 +30,15 @@
     }
   }
 
-  .content {
-    padding: 0 $padding $padding $padding;
+  .details {
+    position: relative;
+    padding: $padding-small;
     background-color: #f8f8f8;
+  }
+
+  .blog-category-tag {
+    position: absolute;
+    top: - $category-tag-height * .5;
   }
 
   .title {
@@ -37,7 +47,7 @@
   }
 
   .meta {
-    margin-bottom: $padding - 5px;
+    margin-bottom: $padding-small - 5px;
     margin-top: 5px;
     color: $darkGrey;
     font-family: $PxGroteskBold;
@@ -91,12 +101,8 @@
   &.featured {
     padding: 0;
 
-    .content {
-      padding: 30px $padding $padding;
-
-      .blog-category {
-        transform: translateY(-12px);
-      }
+    .blog-category-tag {
+      position: relative;
     }
   }
 
@@ -107,6 +113,10 @@
 
     &:last-of-type {
       padding-bottom: $gutter-large;
+    }
+
+    .blog-catgory {
+      transform: translateY(-21px);
     }
 
     .excerpt {
@@ -127,15 +137,22 @@
       }
     }
 
-    .content {
+    .details {
       position: relative;
-      height: 332px;
-      padding: 10px $padding-large $padding-large;
+      height: $excerpt-height;
+      padding: $padding-medium;
 
       .tail {
         position: absolute;
-        bottom: $padding-large - 10px;
-        width: calc(100% - (2 * #{$padding-large}));
+        bottom: $padding-medium;
+        width: calc(100% - (2 * #{$padding-medium}));
+
+        a {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          float: none;
+        }
       }
     }
 
@@ -149,12 +166,11 @@
         height: 100%;
       }
 
-      .content {
+      .details {
         position: absolute;
         top: 0;
         left: 0;
         width: 530px;
-        padding: 30px $padding-large $padding-large;
       }
     }
   }
@@ -162,6 +178,14 @@
   @media screen and (min-width: $bp-large) {
     .excerpt {
       height: 84.2px;
+    }
+    .details {
+      padding: $padding-large;
+
+      .tail {
+        bottom: $padding-large;
+        width: calc(100% - (2 * #{$padding-large}));
+      }
     }
   }
 }

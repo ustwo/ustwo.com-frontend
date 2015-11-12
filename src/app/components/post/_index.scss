@@ -6,11 +6,7 @@
  */
 
 .page-post {
-  a {
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    font-family: $PxGroteskBold;
-  }
+  $category-tag-height: $blog-category-tag-height;
 
   .hero-image {
     position: relative;
@@ -99,11 +95,11 @@
       text-align: center;
     }
 
-    .blog-category {
+    .blog-category-tag {
       position: absolute;
-      top: 0;
+      top: - $category-tag-height * .5;
       left: 50%;
-      transform: translate(-50%, (- $blog-category-height * .5));
+      transform: translateX(-50%);
     }
 
     .title {
@@ -197,10 +193,6 @@
     li {
       padding: 8px 0;
     }
-  }
-
-  @media screen and (min-width: $bp-small) {
-    margin-bottom: 10px;
   }
 
   @media screen and (min-width: $bp-medium) {

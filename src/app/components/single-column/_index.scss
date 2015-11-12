@@ -18,6 +18,12 @@
     padding: 30px 6.25%;
   }
 
+  a {
+    font-family: $PxGroteskBold;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+  }
+
   .wrapper {
     max-width: 680px;
     margin: 0 auto;

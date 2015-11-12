@@ -18,6 +18,7 @@ import EntranceTransition from '../entrance-transition';
 import BoldHeader from '../bold-header';
 import HomeTextBlock from '../home-text-block';
 import ScreenBlock from '../screen-block';
+import RelatedContent from '../related-content';
 
 const PageHome = React.createClass({
   mixins: [getScrollTrackerMixin('home')],
@@ -214,8 +215,16 @@ const PageHome = React.createClass({
             </HomeTextBlock>
           </div>
         </ScreenBlock>
+        {this.renderRelatedContent()}
       </article>
     );
+  },
+  renderRelatedContent() {
+    let relatedContent;
+    if(this.props.relatedContent.length) {
+      relatedContent = <RelatedContent content={this.props.relatedContent} />
+    }
+    return relatedContent;
   },
   onClickDownChevron() {
     Track('send', {

@@ -1,0 +1,100 @@
+/*
+ *  RELATED CONTENT
+ *  More juice. "Cross sell" style links to blog posts or case studies below the content of the page.
+ *
+ */
+
+.related-content {
+  $padding-medium: $card-padding-medium;
+  $padding-large: $card-padding-large;
+  $gutter-small: 20px;
+  $gutter: 30px;
+  $work-item-exerpt-height: $blog-post-list-item-excerpt-height;
+  $work-item-image-height: $blog-post-list-item-image-height;
+
+  padding: $gutter $gutter-small $gutter-small $gutter-small;
+  background: $nonBlack;
+
+  .wrapper {
+    max-width: $max-app-width;
+    margin: 0 auto;
+  }
+
+  > h2 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 120px;
+      margin: 15px auto 30px auto;
+      border: 2px solid $jeezz;
+    }
+  }
+
+  .related-content-item {
+    margin-bottom: $gutter-small;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .work-item {
+    .image .rimage {
+      height: $work-item-image-height;
+    }
+  }
+
+  .blog-post-list-item {
+    padding: 0;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    padding: $gutter; /* Test this, same as footer? */
+
+    > h2 {
+      font-size: 40px;
+    }
+
+    .work-item {
+      .details {
+        height: $work-item-exerpt-height;
+      }
+    }
+
+    .related-content-item {
+      display: inline-block;
+      width: calc(50% - (#{$gutter} / 2));
+      margin-right: $gutter;
+      margin-bottom: 0;
+      vertical-align: top;
+
+      &:nth-child(2n + 1) {
+        margin-right: 0;
+      }
+    }
+
+    .work-item {
+      .details {
+        position: relative;
+      }
+
+      .link {
+        position: absolute;
+        bottom: $padding-medium;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .work-item {
+      .link {
+        bottom: $padding-large;
+      }
+    }
+  }
+
+}

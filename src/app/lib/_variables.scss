@@ -18,13 +18,21 @@ $nav-height: 68px;
 $dropdown-close-height: 60px;
 $loading-spinner-size: 28px;
 
+$card-padding-small: 20px;
+$card-padding-medium: 30px;
+$card-padding-large: 40px;
+
 /* ------------------------------------------------------------ *\
 |* Blog
 \* ------------------------------------------------------------ */
 
 $blog-margin-offset: -14vh;
-$blog-category-height: 22px;
 $blog-gutter-large: 30px;
+
+$blog-category-tag-height: 22px;
+
+$blog-post-list-item-image-height: 245px;
+$blog-post-list-item-excerpt-height: 332px;
 
 $blog-controls-line-height: 50px;
 $blog-controls-horizontal-padding: 20px;

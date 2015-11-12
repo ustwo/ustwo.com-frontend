@@ -11,7 +11,9 @@ import Flux from '../../flux';
 
 import Rimage from '../rimage';
 import BlogPostMetaInformation from '../blog-post-meta-information';
+import BlogCategoryTag from '../blog-category-tag';
 import SocialMediaSharing from '../social-media-sharing';
+import RelatedContent from '../related-content';
 
 const PagePost = React.createClass({
   mixins: [getScrollTrackerMixin('post')],
@@ -33,9 +35,9 @@ const PagePost = React.createClass({
         altText={get(image, 'alt_text')}
       />
       <div className='content-container'>
-        <div className='blog-category'>
-          {get(category, 'name', 'category')}
-        </div>
+        <BlogCategoryTag
+          category={get(category, 'name', 'category')}
+        />
         <h1 className='title'>{he.decode(get(post, 'title.rendered', ''))}</h1>
         {this.renderSocialMediaSharing('side')}
         <BlogPostMetaInformation
@@ -52,7 +54,15 @@ const PagePost = React.createClass({
         {this.renderSocialMediaSharing('bottom')}
         {this.renderAuthorInformation()}
       </div>
-    </article>;
+      {this.renderRelatedContent()}
+    </article>
+  },
+  renderRelatedContent() {
+    let relatedContent;
+    if(this.props.relatedContent.length) {
+      relatedContent = <RelatedContent content={this.props.relatedContent} />
+    }
+    return relatedContent;
   },
   renderSocialMediaSharing(position) {
     const props = this.props;

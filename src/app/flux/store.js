@@ -4,10 +4,12 @@ import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
 import some from 'lodash/collection/some';
 import capitalize from 'lodash/string/capitalize';
+import get from 'lodash/object/get';
+import camelCase from 'lodash/string/camelCase';
 
 import log from '../lib/log';
 import window from '../adaptors/server/window';
-import DataLoader from '../adaptors/server/data-loader';
+import DataLoader from '../lib/data-loader';
 import Nulls from './nulls';
 import Defaults from './defaults';
 import fetchSocialMediaData from '../lib/social-media-fetcher';
@@ -23,7 +25,8 @@ const _state = Object.assign({
   twitterShares: Nulls.twitterShares,
   facebookShares: Nulls.facebookShares,
   postsPagination: Defaults.postsPagination,
-  postsPaginationTotal: Nulls.postsPaginationTotal
+  postsPaginationTotal: Nulls.postsPaginationTotal,
+  relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
   _state.takeover.seen = true;
@@ -55,6 +58,32 @@ function applySocialMediaDataForPosts(response, type) {
   const index = findIndex(_state.posts, 'slug', response.slug);
   if (index > -1) {
     _state.posts[index][type] = response.data;
+    log(`Added ${type}`, response.data);
+    Store.emit('change', _state);
+  }
+}
+function getApplyFunctionFor(dependency) {
+  let func;
+  switch(dependency) {
+    case 'related_content':
+      func = applyRelatedContent;
+      break;
+  }
+  return func;
+}
+function applyRelatedContent(response) {
+  const content = response.data;
+  _state.relatedContent.push(content);
+  log('Loaded related content', content);
+  Store.emit('change', _state);
+  if(content.type === 'post') {
+    Store.getSocialSharesForRelatedPost(content);
+  }
+}
+function applySocialMediaDataForRelatedPost(response, type) {
+  const index = findIndex(_state.relatedContent, 'slug', response.slug);
+  if (index > -1) {
+    _state.relatedContent[index][type] = response.data;
     log(`Added ${type}`, response.data);
     Store.emit('change', _state);
   }
@@ -94,6 +123,7 @@ const Store = Object.assign(
       _state.currentPage = newPage;
       _state.statusCode = statusCode;
       _state.modal = null;
+      _state.relatedContent = [];
       Store.emit('change', _state);
     },
     loadData(itemsToLoad) {
@@ -105,16 +135,29 @@ const Store = Object.assign(
         return (!_state[item.type] || (item.slug && _state[item.type].slug && _state[item.type].slug !== item.slug) || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory));
       });
 
-      return DataLoader(itemsToLoad, applyData).then(() => {
-        let result;
-        if(some(itemsToLoad, item => item.type === 'posts')) {
-          result = Store.getSocialSharesForPosts();
-        } else if(some(itemsToLoad, item => item.type === 'post')) {
-          result = Store.getSocialSharesForPost();
-        } else {
-          result = _state;
-        }
-        Store.emit('change', result);
+      DataLoader(itemsToLoad, applyData).then(() => {
+        Store.emit('change', _state);
+        Store.initiateAsyncLoadsFor(itemsToLoad);
+      });
+    },
+    initiateAsyncLoadsFor(itemsToLoad) {
+      switch(true) {
+        case some(itemsToLoad, 'type', 'posts'):
+          Store.getSocialSharesForPosts();
+          break;
+        case some(itemsToLoad, 'type', 'post'):
+          Store.getSocialSharesForPost();
+          break;
+      }
+      itemsToLoad.filter(item => item.async).forEach(item => {
+        item.async.forEach(dependency => {
+          DataLoader(get(_state[item.type], dependency, []).map(url => {
+            return {
+              url: url,
+              type: camelCase(dependency)
+            };
+          }), getApplyFunctionFor(dependency));
+        });
       });
     },
     setBlogCategoryTo(id) {
@@ -182,8 +225,16 @@ const Store = Object.assign(
           .then(() => Store.emit('change', _state));
       }
     },
+    getSocialSharesForRelatedPost(post) {
+      const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
+      const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
+      if (!hasFacebookData && !hasTwitterData) {
+        fetchSocialMediaData(post.slug, applySocialMediaDataForRelatedPost)
+          .then(() => Store.emit('change', _state));
+      }
+    },
     getSocialSharesForPosts() {
-      return Promise.all(_state.posts.map(post => {
+      Promise.all(_state.posts.map(post => {
         const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
         const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
         let promise;

@@ -15,7 +15,7 @@ const WorkItem = React.createClass({
     const primaryColour = get(data, 'colors.primary');
     const secondaryColour = get(data, 'colors.secondary');
 
-    return <li className="work-item" style={{backgroundColor: bgColour}}>
+    return <div className="work-item" style={{backgroundColor: bgColour}}>
       <a href={link} onClick={Flux.override(link)} className="image">
         <Rimage
           wrap='div'
@@ -43,7 +43,7 @@ const WorkItem = React.createClass({
           Read more
         </a>
       </div>
-    </li>;
+    </div>;
   }
 });
 
