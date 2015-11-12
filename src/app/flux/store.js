@@ -5,6 +5,7 @@ import find from 'lodash/collection/find';
 import some from 'lodash/collection/some';
 import capitalize from 'lodash/string/capitalize';
 import get from 'lodash/object/get';
+import camelCase from 'lodash/string/camelCase';
 
 import log from '../lib/log';
 import window from '../adaptors/server/window';
@@ -141,10 +142,10 @@ const Store = Object.assign(
     },
     initiateAsyncLoadsFor(itemsToLoad) {
       switch(true) {
-        case some(itemsToLoad, type, 'posts'):
+        case some(itemsToLoad, 'type', 'posts'):
           Store.getSocialSharesForPosts();
           break;
-        case some(itemsToLoad, type, 'post'):
+        case some(itemsToLoad, 'type', 'post'):
           Store.getSocialSharesForPost();
           break;
       }
