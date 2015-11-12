@@ -6,6 +6,10 @@
  */
 
 .work-item {
+  $padding-small: $card-padding-small;
+  $padding-medium: $card-padding-medium;
+  $padding-large: $card-padding-large;
+
   list-style: none;
   background-color: $offWhite;
 
@@ -18,7 +22,7 @@
   }
 
   .details {
-    padding: 30px 6.25%;
+    padding: $padding-small;
 
     .type {
       margin-top: 0;
@@ -36,6 +40,18 @@
       display: inline-block;
       border-bottom: 2px solid $nonBlack;
       font-family: $PxGroteskBold;
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .details {
+      padding: $padding-medium;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .details {
+      padding: $padding-large;
     }
   }
 }

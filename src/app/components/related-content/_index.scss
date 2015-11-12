@@ -5,14 +5,20 @@
  */
 
 .related-content {
+  $padding-medium: $card-padding-medium;
+  $padding-large: $card-padding-large;
   $gutter-small: 20px;
   $gutter: 30px;
   $work-item-exerpt-height: $blog-post-list-item-excerpt-height;
   $work-item-image-height: $blog-post-list-item-image-height;
 
-  max-width: $max-app-width;
   padding: $gutter $gutter-small $gutter-small $gutter-small;
   background: $nonBlack;
+
+  .wrapper {
+    max-width: $max-app-width;
+    margin: 0 auto;
+  }
 
   > h2 {
     font-size: 30px;
@@ -68,6 +74,25 @@
 
       &:nth-child(2n + 1) {
         margin-right: 0;
+      }
+    }
+
+    .work-item {
+      .details {
+        position: relative;
+      }
+
+      .link {
+        position: absolute;
+        bottom: $padding-medium;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .work-item {
+      .link {
+        bottom: $padding-large;
       }
     }
   }

@@ -35,7 +35,7 @@ const BlogPostListItem = React.createClass({
           altText={get(image, 'alt_text')}
         />
       </a>
-      <div className="content">
+      <div className="details">
         <BlogCategoryTag
           category={get(category, 'name', 'category')}
         />
