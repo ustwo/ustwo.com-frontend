@@ -13,6 +13,10 @@ chaiAsPromised.transferPromiseness = wd.transferPromiseness;
 let browser;
 
 // browser capabilities
+// TODO: we should check Android later, seems currently (November 2015) Sauce
+// Labs is having some problems with launching Android emulator fast enough or
+// supporting setting a timeout long enough so that we don't intermittently
+// get failing tests
 const desireds = {
   firefox: {
     browserName: 'firefox',
@@ -33,7 +37,6 @@ const desireds = {
   android: {
     browserName: 'android',
     platform: 'Linux',
-    deviceName: 'Samsung Galaxy S3 Emulator',
     deviceOrientation: 'portrait',
     version: '4.4'
   }
@@ -122,7 +125,7 @@ wd.addPromiseChainMethod('closeTakeoverIfPresent', () => {
 });
 
 describe('  mocha integration tests (' + desired.browserName + ')', function () {
-  this.timeout(100000);
+  this.timeout(200000);
   let allPassed = true;
 
   before(() => {
@@ -140,7 +143,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
     } else {
       return browser
         .init(desired)
-        .setPageLoadTimeout(60000)
+        .setPageLoadTimeout(100000)
         .setWindowSize(1200, 900);
     }
   });
@@ -159,7 +162,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   it('should load home page', () => {
     return browser
       .get(baseURL)
-      .waitForElementByCss(navigation, 60000)
+      .waitForElementByCss(navigation, 100000)
       .title()
       .should.become(homeTitle)
       .closeTakeoverIfPresent()
@@ -177,7 +180,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   it('should go to the Blog page and look for Featured post', () => {
     return browser
       .openPageByMenuLink(blogLink)
-      .waitForElementByCss(featuredBlogPost, wd.asserters.textInclude(blogReadmore), 10000)
+      .waitForElementByCss(featuredBlogPost, wd.asserters.textInclude(blogReadmore), 15000)
       .url().should.eventually.include(blogSlug);
   });
 
@@ -201,7 +204,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
   it('should go to the What We Do page and look for case studies', () => {
     return browser
       .get(workURL)
-      .waitForElementByCss(workItem, wd.asserters.textInclude(workReadmore), 10000)
+      .waitForElementByCss(workItem, wd.asserters.textInclude(workReadmore), 15000)
       .url().should.eventually.include(workSlug);
   });
 });

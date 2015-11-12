@@ -4,7 +4,7 @@ const exec = require('child_process').exec;
 
 const mochaArgs = process.argv[2];
 const user = process.argv[3];
-const browsers = ['android', 'firefox', 'explorer'];
+const browsers = ['chrome', 'firefox', 'explorer'];
 
 // context (browser) specific log
 function log(browser, data) {
@@ -50,6 +50,6 @@ Promise.all(browsers.map(browser => runMocha(browser)))
     console.log('ALL TESTS RAN SUCCESSFULLY!');
   })
   .catch(() => {
-    console.log('SOME TEST(S) FAILED!');
+    console.log('SOME TESTS OR SOMETHING IN SAUCE STACK FAILED!');
     process.exit(1);
   });
