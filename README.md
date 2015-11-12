@@ -302,6 +302,11 @@ Run the integration tests:
 
     $ make assets-integration-test
 
+If you need more info on what's happening with the tests, you either log in to
+the Sauce web UI to see Selenium logs or run verbose mode:
+
+    $ make assets-integration-test VERBOSE=true
+
 ## Release
 
 We're using Docker Hub and Docker Machine to tag and deploy Docker images, for
