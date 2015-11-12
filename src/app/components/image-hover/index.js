@@ -11,10 +11,18 @@ export default class ImageHover extends SVGSequenceAnimation {
     this.state.fadeInDuration = 20;
     this.state.fps = 30;
   }
+  onMouseEnter() {
+    this.resetAnim();
+    this.anim();
+  }
   render() {
-    const classes = classnames('image-hover', this.props.customClass);
+    const { customClass, onClick } = this.props;
     return (
-      <div className={classes} onClick={this.props.onClick}>
+      <div
+        className={classnames('image-hover', customClass)}
+        onClick={onClick}
+        onMouseEnter={this.onMouseEnter.bind(this)}
+      >
         <svg ref="animsvg" title="Image hover" role="img" viewBox="-105 197 400 400" x="0px" y="0px" className="image-hover-icon">
           <g id="Frame1">
           	<path d="M-98.4,454.4c7.2,3.1,13.8,7.9,20,13.1c16.5,12.8,34.5,23.4,52.1,34.1c1,1.4,2.8,4.1,3.8,5.5
