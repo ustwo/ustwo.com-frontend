@@ -15,96 +15,97 @@
 
     .general {
       padding: 0 6.25%;
+    }
 
-      .contact-title {
-        font-size: 24px;
-        font-family: $PxGroteskRegular;
-        text-transform: capitalize;
+    .contact-title {
+      font-size: 24px;
+      font-family: $PxGroteskRegular;
+      text-transform: capitalize;
+    }
+    .contact-divider {
+      width: 16px;
+      margin: 15px 0;
+      border: 1px solid $offWhite;
+    }
+    .email-cta {
+      position: relative;
+      display: inline-block;
+      width: 150px;
+      height: 40px;
+      margin: 0;
+      margin-top: 2px;
+      padding: 0 35px 0 15px;
+      background: $offWhite;
+      line-height: 40px;
+      color: $nonBlack;
+      font-size: 18px;
+
+      &:after {
+        @include arrow-icon(#F9615B);
+
+        content: "";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        width: 13px;
+        height: 10px;
+        margin-top: -5px;
+        background-position: 0 0;
+        transform: rotate(180deg);
       }
-      .contact-divider {
-        width: 16px;
-        margin: 15px 0;
-        border: 1px solid $offWhite;
+
+      &:hover {
+        border-bottom-color: $offWhite;
       }
-      .email-cta {
-        position: relative;
+    }
+
+    .social {
+      list-style: none;
+      padding: 0;
+      margin: 45px 0;
+
+      .channel {
         display: inline-block;
-        width: 150px;
-        height: 40px;
-        margin: 0;
-        margin-top: 2px;
-        padding: 0 35px 0 15px;
-        background: $offWhite;
-        line-height: 40px;
-        color: $nonBlack;
-        font-size: 18px;
+        margin-right: 22px;
 
-        &:after {
-          @include arrow-icon(#F9615B);
-
-          content: "";
-          position: absolute;
-          right: 10px;
-          top: 50%;
-          width: 13px;
-          height: 10px;
-          margin-top: -5px;
-          background-position: 0 0;
-          transform: rotate(180deg);
+        &:last-child {
+          margin-right: 0;
+        }
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 35px;
+          width: 35px;
+          border: 1px solid #fff;
+          background-color: transparent;
+          transition: all $hover-duration-quick ease-in-out;
+        }
+        .logo {
+          width: 21px;
+          height: 21px;
+          fill: #fff;
+        }
+        .name {
+          display: none;
         }
 
-        &:hover {
-          border-bottom-color: $offWhite;
+        &.facebook {
+          a:hover {
+            background-color: #3A5998;
+            border-color: #3A5998;
+          }
         }
-      }
-
-      .social {
-        list-style: none;
-        padding: 0;
-        margin: 45px 0;
-
-        .channel {
-          display: inline-block;
-          margin-right: 22px;
-
-          &:last-child {
-            margin-right: 0;
+        &.twitter {
+          a:hover {
+            background-color: #32ABE2;
+            border-color: #32ABE2;
           }
-          a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 35px;
-            width: 35px;
-            border: 1px solid #fff;
-            background-color: transparent;
-          }
-          .logo {
-            width: 21px;
-            height: 21px;
-            fill: #fff;
-          }
-          .name {
-            display: none;
-          }
-
-          &.facebook {
-            a:hover {
-              background-color: #3A5998;
-              border-color: #3A5998;
-            }
-          }
-          &.twitter {
-            a:hover {
-              background-color: #32ABE2;
-              border-color: #32ABE2;
-            }
-          }
-          &.linkedin {
-            a:hover {
-              background-color: #069;
-              border-color: #069;
-            }
+        }
+        &.linkedin {
+          a:hover {
+            background-color: #069;
+            border-color: #069;
           }
         }
       }
@@ -125,13 +126,13 @@
         padding: 30px 0;
         border-top: 1px solid #333;
         font-size: 12px;
+      }
 
-        li {
-          display: block;
+      li {
+        display: block;
 
-          a {
-            text-decoration: underline;
-          }
+        a {
+          text-decoration: underline;
         }
       }
     }
@@ -154,14 +155,14 @@
         float: left;
         width: 33%;
         padding: 0;
+      }
 
-        .contact-title {
-          margin-bottom: 15px;
-        }
+      .contact-title {
+        margin-bottom: 15px;
+      }
 
-        .contact-divider {
-          display: none;
-        }
+      .contact-divider {
+        display: none;
       }
 
       .studios {

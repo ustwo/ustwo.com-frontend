@@ -21,12 +21,25 @@
   }
 
   .post-image {
-    height: $image-height;
-    cursor: pointer;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+
+    .rimage {
+      height: 245px;
+      cursor: pointer;
+      transition: transform $hover-duration-quick ease-in-out;
+    }
 
     .link {
       display: block;
       height: 100%;
+    }
+
+    &:hover {
+      .rimage {
+        transform: scale($hover-scale-up);
+      }
     }
   }
 
@@ -44,6 +57,14 @@
   .title {
     margin-bottom: 5px;
     font-size: 24px;
+
+    a {
+      transition: opacity $hover-duration-quick ease-in-out;
+
+      &:hover {
+        opacity: $hover-fade-back;
+      }
+    }
   }
 
   .meta {
@@ -162,7 +183,7 @@
       padding-bottom: 0;
       margin-bottom: $gutter-large;
 
-      .post-image {
+      .post-image .rimage {
         height: 100%;
       }
 

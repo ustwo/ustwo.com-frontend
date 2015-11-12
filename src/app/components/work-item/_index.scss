@@ -14,6 +14,7 @@
   background-color: $offWhite;
 
   .image {
+    position: relative;
     cursor: pointer;
 
     .rimage {
@@ -40,6 +41,11 @@
       display: inline-block;
       border-bottom: 2px solid $nonBlack;
       font-family: $PxGroteskBold;
+      transition: border-color $hover-duration-quick ease-in-out;
+
+      &:hover {
+        border-color: $nonBlack !important;
+      }
     }
   }
 

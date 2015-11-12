@@ -194,7 +194,7 @@ const PageHome = React.createClass({
             </div>
           </div>
           <div className="text-block">
-            <HomeTextBlock title="Award-winning own products and games" colour="nonBlack" childColour="nonBlack">
+            <HomeTextBlock title="Award-winning own products and games" colour="nonblack" childColour="nonblack">
               <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic game <a href='http://www.monumentvalleygame.com/' target='_blank'>Monument Valley</a> or innovative technical platform <a href='http://www.wayfindr.net/' target='_blank'>Wayfindr</a>, we create products with passion from conception to launch and beyond.</p>
             </HomeTextBlock>
           </div>

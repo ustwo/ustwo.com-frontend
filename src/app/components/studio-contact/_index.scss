@@ -28,6 +28,7 @@
       color: $offWhite;
     }
   }
+
   .studio-details {
     overflow: hidden;
     height: 0;
@@ -51,14 +52,16 @@
           border-bottom: 0;
         }
       }
+
       .map {
         display: inline-block;
         margin-top: 20px;
         border-bottom: 2px solid $darkGrey;
         font-size: 14px;
+        transition: border-color $hover-duration-quick ease-in-out;
 
         &:hover {
-          border-bottom-color: $offWhite;
+          border-color: $offWhite !important;
         }
       }
     }

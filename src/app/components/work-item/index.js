@@ -6,6 +6,7 @@ import get from 'lodash/object/get';
 import Flux from '../../flux';
 
 import Rimage from '../rimage';
+import ImageHover from '../image-hover';
 
 const WorkItem = React.createClass({
   render() {
@@ -22,6 +23,7 @@ const WorkItem = React.createClass({
           sizes={get(image, 'media_details.sizes')}
           altText={get(image, 'alt_text')}
         />
+        <ImageHover autoAnim={500} />
       </a>
       <div className='details'>
         <p className='type' style={{borderColor: secondaryColour}}>

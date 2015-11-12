@@ -92,24 +92,3 @@ $social-media-colours: (
   twitter: $twitter,
   facebook: $facebook
 );
-
-
-/* Move this somewhere else */
-
-$black-white: (
-  'white' $white,
-  'nonBlack' $nonBlack
-);
-
-@each $colour in $black-white {
-  $name: nth($colour, 1);
-  $hex:  unquote(nth($colour, 2));
-
-  .u-bg-#{$name} {
-    background-color: $hex;
-  }
-
-  .u-text-#{$name} {
-    color: $hex;
-  }
-}
