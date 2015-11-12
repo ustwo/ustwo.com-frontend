@@ -12,7 +12,7 @@ import includes from 'lodash/collection/includes';
 // TODO: see if there's a better way to get fonts in
 import '../../adaptors/server/localfont';
 
-import window from '../../adaptors/server/window';
+import window from 'app/adaptors/server/window';
 import '../../lib/animate';
 
 import Store from '../../flux/store';

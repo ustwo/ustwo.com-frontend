@@ -13,7 +13,7 @@
     "../../adaptors/server/track": "./adaptors/client/track",
     "../adaptors/server/tracking": "./adaptors/client/tracking",
     "../../adaptors/server/tracking": "./adaptors/client/tracking",
-    "../adaptors/server/window": "./adaptors/client/window",
+    "app/adaptors/server/window": "./adaptors/client/window",
     "../../adaptors/server/window": "./adaptors/client/window",
     "isomorphic-fetch/fetch-npm-node.js": "isomorphic-fetch/fetch-npm-browserify.js",
     "../../adaptors/server/scroll-magic": "./adaptors/client/scroll-magic",

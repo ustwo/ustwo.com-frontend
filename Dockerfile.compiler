@@ -5,6 +5,7 @@ ENV TERM xterm-256color
 ENV NODE_ENV production
 ENV SASSC_VERSION 3.2.5
 ENV LIBSASS_VERSION 3.2.5
+ENV NODE_PATH /home/ustwo/src
 
 RUN apk add --update \
           curl \
