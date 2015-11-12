@@ -27,7 +27,7 @@ const NavigationOverlay = React.createClass({
     });
   },
   render() {
-    return <nav className="navigation-overlay" onClick={onClickContent}>
+    return <nav className="navigation-overlay" onClick={this.onClickContent}>
       <CloseButton onClose={this.onClickClose} autoAnim={10} />
       <ul className="menu">
         {this.renderNavigationOverlayLinks()}

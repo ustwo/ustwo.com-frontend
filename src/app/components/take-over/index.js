@@ -7,12 +7,11 @@ import get from 'lodash/object/get';
 import Track from '../../adaptors/server/track';
 import Flux from '../../flux';
 import getFeaturedImage from '../../lib/get-featured-image';
+import ModalContentMixin from '../../lib/modal-content-mixin';
 
 import CloseButton from '../close-button';
 import NewsFlash from '../news-flash';
 import Rimage from '../rimage';
-
-import {onClickContent} from '../modal';
 
 const takeover = {
   name: "Pause",
@@ -108,6 +107,7 @@ const takeover = {
 };
 
 const TakeOver = React.createClass({
+  mixins: [ModalContentMixin],
   getInitialState() {
     return {
       showContent: false
@@ -205,7 +205,7 @@ const TakeOver = React.createClass({
       className={`take-over ${this.props.className}`}
       component="div"
       duration={800}
-      onClick={onClickContent}
+      onClick={this.onClickContent}
       style={styles}
     >
       {content}
