@@ -138,18 +138,16 @@ const App = React.createClass({
             takeover={this.showTakeover()}
           />
         </EntranceTransition>
-        <div className={contentClasses}>
-          <PageContainer key={state.currentPage}>
-            <TransitionManager
-              component="div"
-              className="page-loader-container"
-              duration={700}
-            >
-              {this.getPage(state.currentPage)}
-            </TransitionManager>
-            <Footer data={state.footer} studios={state.studios} />
-          </PageContainer>
-        </div>
+        <PageContainer key={state.currentPage} className={contentClasses}>
+          <TransitionManager
+            component="div"
+            className="page-loader-container"
+            duration={700}
+          >
+            {this.getPage(state.currentPage)}
+          </TransitionManager>
+          <Footer data={state.footer} studios={state.studios} />
+        </PageContainer>
         <TransitionManager
           component="div"
           className="app__modal"
