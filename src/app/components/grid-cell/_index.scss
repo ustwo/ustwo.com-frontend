@@ -6,9 +6,8 @@
 
 .grid-cell {
   position: relative;
-  height: $jobs-image-height-mobile + $jobs-card-height-mobile;
 
-  /* Each box has a different color and backgrround-color, pairs of ustwo palette: wow and softy */
+  /* Each box has a different color and background-color, pairs of ustwo palette: wow and softy */
   @each $colour in $feature-card-colours {
     $i: index($feature-card-colours, $colour);
     $wow: nth($colour, 1);
@@ -16,6 +15,7 @@
     &:nth-child(#{$i}) {
       .card.feature {
         background-color: rgba($softy, .3);
+
         h3 {
           color: $wow;
         }
@@ -24,23 +24,12 @@
   }
 
   .card {
-
-    &.feature {
-      box-sizing: content-box;
-      height: $jobs-card-height-mobile - $jobs-feature-card-padding-mobile;
-      padding-top: $jobs-image-height-mobile + $jobs-feature-card-padding-mobile;
-      padding-left: $jobs-feature-card-padding-mobile;
-      padding-right: $jobs-feature-card-padding-mobile;
-    }
-
     &.image {
-      position: absolute;
-      top: 0;
-      width: 100%;
       height: $jobs-image-height-mobile;
     }
-
     &.feature {
+      padding: $jobs-feature-card-padding-mobile;
+
       h3 {
         font-size: 30px;
         margin-bottom: 30px;
@@ -50,62 +39,31 @@
 
 
   @media screen and (min-width: $bp-medium) {
-    display: inline;
+    display: flex;
 
-    /* Create gap after first line of slides to position video/large-image */
-    &:nth-of-type(2) {
-      .card {
-        margin-top: $jobs-video-height;
-      }
-    }
-    &:nth-of-type(2n+2) {
-      .card:first-child {
-        float: right;
-      }
-    }
-
-    .card:first-child,
-    .card:last-child {
-      box-sizing: border-box;
-      position: relative;
-      top: auto;
-      float: left;
-      width: 50%;
+    .card,
+    .card.image { // annoying specificity problem so have to rewrite this with .image
       height: $jobs-slide-height;
       padding: $jobs-feature-card-padding;
+
+      &.image,
+      &.feature {
+        flex: 1;
+      }
+
+      &.feature {
+        padding: $jobs-feature-card-padding;
+      }
     }
   }
 
   @media screen and (min-width: $bp-larger) {
 
-    &:nth-of-type(2n+2) {
-      .card:first-child {
-        float: left;
-      }
-    }
-    &:nth-of-type(2) {
-      .card:first-child {
-        margin-top: 0;
-      }
-      .card:last-child {
-        margin-top: 0;
-        margin-left: 66.6666%;
-      }
-    }
-    &:nth-of-type(3) {
-      .card:first-child {
-        margin-left: 66.6666%;
-      }
-    }
-    &:last-of-type {
-      .card:last-child {
-        display: none;
-      }
-    }
+    .card {
 
-    .card:first-child,
-    .card:last-child {
-      width: 33.3333%;
+      &.feature {
+        flex: 2;
+      }
     }
   }
 

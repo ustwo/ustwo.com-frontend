@@ -12,16 +12,6 @@
  * TODO: The homepage needs to think about what it's done and sort itself out. BIG REFACTOR NEEDED!
  */
 
-@mixin vertically-centering-parent($height: 100%) {
-  display: table;
-  height: $height;
-}
-
-@mixin vertically-centred-element {
-  display: table-cell;
-  vertical-align: middle;
-}
-
 .page-home {
   overflow:hidden;
   transform: translateZ(0); /* hardware accelerate background-color change on scroll */

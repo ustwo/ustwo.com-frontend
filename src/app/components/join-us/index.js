@@ -29,7 +29,6 @@ const PageJoinUs = React.createClass({
     const { page } = this.props;
     const classes = classnames('page-join-us', this.props.className);
     const image = getFeaturedImage(page);
-    const sizes = { hardcoded: { url: '/images/joinus/current_openings.jpg' }};
 
     return <article className={classes}>
       <Hero
@@ -43,24 +42,11 @@ const PageJoinUs = React.createClass({
       {renderModules({
         modules: get(page, 'page_builder', []),
         colours: get(page, 'colors'),
-        zebra: false
+        zebra: false,
+        placeholderContents: {
+          WORKABLE_LIST: this.renderJobSection
+        }
       })}
-      <Rimage className='hero-image' wrap='div' sizes={sizes}>
-        <SVG
-          className='ustwo-logo'
-          title='ustwo logo'
-          spritemapID='ustwologo'
-        />
-        <h2>Current Openings</h2>
-      </Rimage>
-      <section className='jobs'>
-        <nav className='jobs-studio-tabs'>
-          {this.renderStudioTabs()}
-        </nav>
-        <div className='jobs-container'>
-          {this.renderStudioJobs()}
-        </div>
-      </section>
     </article>;
   },
   getStudios() {
@@ -94,6 +80,26 @@ const PageJoinUs = React.createClass({
         studio: studio
       });
     }
+  },
+  renderJobSection() {
+    const sizes = { hardcoded: { url: '/images/joinus/current_openings.jpg' }};
+
+    return <div>
+      <div className="current-openings">
+        <h2>Current Openings</h2>
+      </div>
+      <section className="jobs">
+        <nav className="jobs-studio-tabs">
+          {this.renderStudioTabs()}
+        </nav>
+        <div className="jobs-container">
+          {this.renderStudioJobs()}
+        </div>
+      </section>
+      <div className="benefits">
+        <h2>Some of the benefits...</h2>
+      </div>
+    </div>;
   },
   renderStudioJobs() {
     return map(this.getStudios(), studio => {

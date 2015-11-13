@@ -24,7 +24,6 @@
 
   .grid {
     position: relative;
-    padding-top: $jobs-video-height-mobile;
 
     &:before,
     &:after {
@@ -42,49 +41,46 @@
       margin: 0;
     }
 
-    .video {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: $jobs-video-height-mobile;
-
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-    }
-
     .grid-cell {
       position: relative;
     }
   }
 
-  /* Current openings hero header */
-  .hero-image {
+  .current-openings,
+  .benefits {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 210px;
     text-align: center;
 
-    .ustwo-logo {
-      fill: #fff;
-      height: 26px;
-    }
-
     h2 {
+      padding: 0 20px;
       color: #fff;
       line-height: 1.2;
     }
   }
 
+  .current-openings {
+    height: 172px;
+    background: $blu;
+
+    h2 {
+      @extend .h1;
+
+      @media screen and (min-width: $bp-large) {
+        font-size: 60px;
+      }
+    }
+  }
+
+  .benefits {
+    height: 156px;
+    background: $ohra;
+  }
+
   .jobs {
     position: relative;
     padding: 10px 15px 40px 15px;
-    background: $honey;
+    background: $blu;
   }
 
   .jobs-studio-tabs {
@@ -119,15 +115,14 @@
   @media screen and (min-width: $bp-medium) {
     .grid {
       padding-top: 0;
-
-      .video {
-        top: $jobs-slide-height;
-        height: $jobs-video-height;
-      }
     }
 
-    .hero-image {
-      height: 500px;
+    .current-openings {
+      height: 240px;
+    }
+
+    .benefits {
+      height: 312px;
     }
 
     .jobs {
@@ -146,21 +141,15 @@
   }
 
   @media screen and (min-width: $bp-large) {
-    .grid {
-      .video {
-        width: 66.6666%;
-      }
-    }
-
     .jobs {
       padding-bottom: 80px;
     }
 
     .jobs-studio-tabs {
-      margin: 55px 0;
+      margin: 45px 0;
 
       li {
-        font-size: 30px;
+        font-size: 26px;
 
         &.all-studios {
           span:last-child {

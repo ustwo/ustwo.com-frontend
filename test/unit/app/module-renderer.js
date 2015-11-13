@@ -228,6 +228,38 @@ describe('renderModules', () => {
     });
   });
 
+  describe('placeholder', () => {
+    let hasCallbackBeenCalled = false;
+
+    beforeEach(() => {
+      moduleData = {
+        name: 'placeholder',
+        attr: {
+          keyword: {
+            name: "keyword",
+            value: "WORKABLE_LIST",
+            type: "text"
+          }
+        }
+      }
+
+      renderModules({
+        modules: [moduleData],
+        colours: colours,
+        zebra: false,
+        placeholderContents: {
+          WORKABLE_LIST: () => {
+            hasCallbackBeenCalled = true;
+          }
+        }
+      });
+    });
+
+    it('calls the placeholder callback', () => {
+      expect(hasCallbackBeenCalled).to.equal(true);
+    });
+  });
+
   describe('if rendered as a zebra list', () => {
     let modules;
     let headerModule;
