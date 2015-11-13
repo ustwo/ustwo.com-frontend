@@ -82,4 +82,4 @@ assets-unit-test:
 	@$(call compile, npm test)
 
 assets-integration-test: sauce-startup
-	@$(call compile, npm run integration $(USER))
+	@$(call compile, npm run integration $(USER)$(CIRCLE_BRANCH))
