@@ -44,7 +44,7 @@ sauce-startup:
 ifeq ($(strip $(sauce_available)),)
 	@$(MAKE) sauce-create
 else
-ifeq ($(strip $(shell $(DOCKER) logs $(sauce_name) | $(GREP) 'Connection closed\|Shutting down\|could not establish a connection')),)
+ifeq ($(strip $(shell $(DOCKER) logs $(sauce_name) | $(GREP) 'Connection closed\|Shutting down\|Cleaning up\|could not establish a connection')),)
 	@echo "Skipping creating $(sauce_name) as it's already running"
 else
 	@echo "Sauce Connect container is running, but tunnel has been closed"
