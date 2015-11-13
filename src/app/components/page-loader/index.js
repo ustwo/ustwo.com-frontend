@@ -8,7 +8,6 @@ import LoadingIcon from '../loading-icon';
 export default class PageLoader extends React.Component {
   render() {
     const props = this.props;
-    console.log(props.className);
     return (
       <section className={classnames("page-loader", props.className)}>
         <LoadingIcon />
