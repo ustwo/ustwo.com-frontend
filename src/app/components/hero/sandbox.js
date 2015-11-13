@@ -44,7 +44,11 @@ const Sandbox = React.createClass({
             title="This is a title"
             showDownChevron={false}
             sizes={sizes}
-          >Some children</Hero>
+          >Some children</Hero>,
+        'Without image': <Hero
+            title="This is a title"
+            showDownChevron={true}
+          />
       })}
     </div>;
   }
