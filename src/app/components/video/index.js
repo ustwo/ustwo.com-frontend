@@ -1,12 +1,19 @@
 import React from 'react';
+import MediaQuery from '../../lib/react-responsive/src';
+
+import Rimage from '../rimage';
 
 const Video = React.createClass({
   render() {
-    const videoURL = "https://player.vimeo.com/external/143640008.hd.mp4?s=7c2a73ce981cae52bedc594546b6d27e17ca4f7b&profile_id=113";
+    const { src, sizes } = this.props;
     const posterURL = "/images/transparent.png";
-
     return <div className="video">
-      <video src={videoURL} poster={posterURL} autoPlay loop />
+      <MediaQuery maxWidth={768}>
+        <Rimage sizes={sizes} />
+      </MediaQuery>
+      <MediaQuery minWidth={769}>
+        <video src={src} poster={posterURL} autoPlay loop />
+      </MediaQuery>
     </div>;
   }
 });

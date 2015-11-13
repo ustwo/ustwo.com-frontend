@@ -17,6 +17,7 @@ import SVG from '../svg';
 import Hero from '../hero';
 import StudioJobs from '../studio-jobs';
 import Rimage from '../rimage';
+import Video from '../video';
 
 const PageJoinUs = React.createClass({
   mixins: [getScrollTrackerMixin('join-us')],
@@ -29,16 +30,20 @@ const PageJoinUs = React.createClass({
     const { page } = this.props;
     const classes = classnames('page-join-us', this.props.className);
     const image = getFeaturedImage(page);
+    const sizes = { hardcoded: { url: "https://usweb-cdn.ustwo.com/ustwo-production/uploads/2011/06/header_image_v2-640x480.png" } };
 
     return <article className={classes}>
       <Hero
         title={get(page, 'display_title')}
         transitionImage={true}
-        sizes={get(image, 'media_details.sizes')}
-        altText={get(image, 'alt_text')}
         eventLabel='join-us'
         showDownChevron={true}
-      />
+      >
+        <Video
+          src="https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/3728/5/143640008/432195184.mp4?token=56463c99_0xac1f9ad3a918cd24b729acf12a518fb79c75524b"
+          sizes={sizes}
+        />
+      </Hero>
       {renderModules({
         modules: get(page, 'page_builder', []),
         colours: get(page, 'colors'),
