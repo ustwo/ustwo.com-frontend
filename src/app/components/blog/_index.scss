@@ -12,6 +12,10 @@
       background-color: $colour;
     }
 
+    .title a:hover {
+      color: $colour;
+    }
+
     .tail a {
       border-color: $colour;
       font-family: $PxGroteskBold;

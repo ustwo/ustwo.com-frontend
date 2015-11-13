@@ -28,17 +28,23 @@
     .rimage {
       height: 245px;
       cursor: pointer;
-      transition: transform $hover-duration-quick ease-in-out;
     }
 
     .link {
       display: block;
       height: 100%;
     }
+  }
 
-    &:hover {
+  &:not(.featured) {
+    .post-image {
       .rimage {
-        transform: scale($hover-scale-up);
+        transition: transform $hover-duration-quick ease-out;
+      }
+      &:hover {
+        .rimage {
+          transform: scale($hover-scale-up);
+        }
       }
     }
   }
@@ -59,11 +65,7 @@
     font-size: 24px;
 
     a {
-      transition: opacity $hover-duration-quick ease-in-out;
-
-      &:hover {
-        opacity: $hover-fade-back;
-      }
+      transition: color $hover-duration-quick ease-in-out;
     }
   }
 
