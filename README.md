@@ -24,6 +24,16 @@ vast majority of the content editable.
 
 ### React SPA
 
+Composability
+
+One way binding
+
+Event handling
+
+JSX templates
+
+Precompilation
+
 ES6/7, React.js, Flux
 
 Sass, SVG animations
@@ -162,16 +172,16 @@ If you receive the image tar from someone in the team just do:
 *If not*, put your SSL certificates in the project's `etc/nginx/ssl` using
 `usweb` as the filename:
 
-    $ ls etc/nginx/ssl
-    ustwo.com.chained.cert  ustwo.com.key
+        $ ls etc/nginx/ssl
+        ustwo.com.chained.cert  ustwo.com.key
 
 Optionally you can create a self-signed certificate via:
 
-    $ make vault-generate-cert
+        $ make vault-generate-cert
 
 Then build the vault image:
 
-    $ make vault-build
+        $ make vault-build
 
 *Note*: If you use self-signed certificates you probably want to use your
 docker IP (e.g. `docker-machine ip dev`) instead of a custom `ustwo.com`
@@ -185,29 +195,29 @@ tasks are structured.
 
 Prepare a new environment:
 
-    $ make compiler-build build
+        $ make compiler-build build
 
 Compile the assets (you can use only this when you're only recompiling on front
 end stuff):
 
-    $ make stuff
+        $ make stuff
 
 Or target specific subtasks:
 
-    $ make css             # compiles SASS files
-    $ make spa             # compiles the React app
-    $ make vendors         # compiles app dependencies
+        $ make css             # compiles SASS files
+        $ make spa             # compiles the React app
+        $ make vendors         # compiles app dependencies
 
 *Note*: `css` and `spa` combined with `VERBOSE=true` will create sourcemaps.
 
 *Note*: `spa` and `vendors` combined with `FLUSH_CACHE=true` will skip any
 cache created by browserify. Ex:
 
-    $ make spa VERBOSE=true FLUSH_CACHE=true
+        $ make spa VERBOSE=true FLUSH_CACHE=true
 
 Deploy app (when you need to restart services):
 
-    $ make -i love LOCAL_FS=true VERBOSE=true
+        $ make -i love LOCAL_FS=true VERBOSE=true
 
 *Note*: Add the flag `LOCAL_FS=true` if you want to use your local files instead
 of the ones inside the containers.
@@ -217,22 +227,22 @@ log output on the services.
 As long as `LOCAL_FS=true` is set a convenient way to refresh the environment
 is:
 
-    $ make -i love stuff LOCAL_FS=true
+        $ make -i love stuff LOCAL_FS=true
 
 As it will rebuild the assets (`stuff`) and recreate the containers (`love`)
 remounting all necessary files from the host environment.
 
 Clean the environment:
 
-    $ make clean
+        $ make clean
 
 See Node app logs with:
 
-    $ make app-log
+        $ make app-log
 
 And Nginx logs with:
 
-    $ make proxy-log
+        $ make proxy-log
 
 
 ### Watch and reload
@@ -241,14 +251,14 @@ CSS has extra tasks to speed up the development cycle. `css-watch` starts a
 `fswatch` process in _the host machine_ watching any scss or css file under
 `scr/app`.
 
-    $ make css-watch
+        $ make css-watch
 
 *Note*: `brew install fswatch` to install `fswatch` in your machine.
 
 `sync` starts a dockerised `browser-sync` proxy listening by default to port
 `3000`. So you can combine the two:
 
-    $ make -i sync css-watch
+        $ make -i sync css-watch
 
 Open `https://192.168.99.100:3000` in your browser and start editing scss and
 let the toolchain compile and push changes to the browser.
@@ -261,7 +271,7 @@ please add a forward rule to Virtualbox so you can use `https://localhost:3000`.
 
 Run all tests:
 
-    $ make test
+        $ make test
 
 ### Sandbox
 
@@ -275,11 +285,11 @@ isolated environment.
 
 To prepare the sandbox run:
 
-    $ make sandbox-build
+        $ make sandbox-build
 
 And start the sandbox server with:
 
-    $ make -i sandbox LOCAL_FS=true
+        $ make -i sandbox LOCAL_FS=true
 
 The sandbox will be available at https://local.ustwo.com:9443/sandbox
 
@@ -290,7 +300,7 @@ works well with React and executes fast.
 
 Run the unit tests:
 
-    $ make assets-unit-test
+        $ make assets-unit-test
 
 ### Integration
 
@@ -305,12 +315,14 @@ suite using Mocha + Chai + Chai Promises + WD.js.
 
 Run the integration tests:
 
-    $ make assets-integration-test
+        $ make assets-integration-test
 
-If you need more info on what's happening with the tests, you either log in to
-the Sauce web UI to see Selenium logs or run verbose mode:
+If you need more info on what's happening with the tests, you can either log in
+to the Sauce web UI to see the Selenium logs to understand more details about
+the browser interactions or run verbose mode locally for more info on the API
+requests and their results:
 
-    $ make assets-integration-test VERBOSE=true
+        $ make assets-integration-test VERBOSE=true
 
 ## Release
 
