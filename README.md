@@ -24,19 +24,32 @@ vast majority of the content editable.
 
 ### React SPA
 
-Composability
+With the current set of challenges and available browser features we found
+React.js to be a great solution to templating and events on the UI. The
+composability of components with the one way binding and "queryless" event
+handling offered by JSX templates is answering the right problems, without
+trying to do too much and become a framework. The easy to implement server side
+rendering combined with the ability to prevent rerendering on client side (by
+internally doing a comparison to the virtual DOM) is also a great feature to
+make it a viable solution on mobile.
 
-One way binding
+To make it a single-page application we put Flux Routes and Store behind the
+React front end so that it can take over the navigation from the browser and
+load data from Wordpress by itself.
 
-Event handling
+Since we need to precompile JSX anyway, in our quest to minimise the number of
+libraries (like Underscore, etc) and push a future-proof way of working with
+JavaScript, we adopted a lot of ES6 features (by transpiling the code with
+Babel for now).
 
-JSX templates
+As for the CSS, we're using SASS to be able to split our styles and store them
+together with the components. But in general we're trying to minimise the
+reliance on SASS language specific features and instead write as much pure CSS
+as possible, getting ready for a CSS Next / PostCSS world.
 
-Precompilation
-
-ES6/7, React.js, Flux
-
-Sass, SVG animations
+For the animated illustrations on the site we use SVG sequences, controlled by a
+small React component. All the static vector symbols are stored in one, external
+SVG sprite, polyfilled for old Internet Explorers with [SVG for Everybody][15].
 
 ### Node app
 
@@ -366,3 +379,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 [12]: ./docs/RELEASE.md
 [13]: ./CONTRIBUTING.md
 [14]: https://gtmetrix.com/
+[15]: https://github.com/jonathantneal/svg4everybody
