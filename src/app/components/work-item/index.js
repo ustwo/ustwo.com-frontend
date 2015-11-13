@@ -25,7 +25,7 @@ const WorkItem = React.createClass({
         />
         <ImageHover autoAnim={500} />
       </a>
-      <div className='details'>
+      <div className='details' style={{color: secondaryColour}}>
         <p className='type' style={{borderColor: secondaryColour}}>
           {get(data, 'type')}
         </p>
