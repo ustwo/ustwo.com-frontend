@@ -1,12 +1,22 @@
 # Release
 
-Since this is more specific part of the project, we're keeping steps related to release in this separate document.
+Since this is more specific part of the project, we're keeping steps related to
+release in this separate document.
 
-As a general overview we're using Docker Machine to set up our server environments (staging and production) as Docker environments, so it's easy to push images around between local and remote containers.
+As a general overview we're using Docker Machine to set up and control our
+server environments (staging and production) as Docker environments, so it's
+easy to orchestrate images in local and remote containers.
 
-We're also making use of private Docker Hub repositories to store and distribute builds.
+We're also making use of private Docker Hub repositories to store and distribute
+tagged images, built on CI.
 
-To get a list of infrastructure platforms supported by Docker Machine, have a look at the output of `docker-machine create` (without any more parameters).
+To get a list of infrastructure platforms supported by Docker Machine, have a
+look at the output of `docker-machine create` (without any more parameters).
+
+In order to be able to access the staging and production environments you'll
+need to have the Docker Machine certificates and config folder sent over by
+someone from the team. As for the CDN commands, you need to set up `CDN77_LOGIN`
+and `CDN77_API_KEY` as environment variables.
 
 ## Tag / push images
 
@@ -16,7 +26,8 @@ a snapshot available `ustwo/usweb:app-{git hash}`) you can release with:
         $ make release VERSION=1.2.3
         $ git push --tags origin master
 
-If not, do it manually (only for emergencies when you cannot wait for the CircleCI build):
+If not, do it manually (only for emergencies when you cannot wait for the
+CircleCI build):
 
 1. Tag the release
 
@@ -45,12 +56,17 @@ If not, do it manually (only for emergencies when you cannot wait for the Circle
 
         $ make deploy-staging VERSION=1.2.3
 
-4. Clean old images, keeping only the last known working version in case of rollback
+4. Purge and prefetch CDN cache
+
+        $ make cdn-purge-staging
+        $ make cdn-prefetch-staging
+
+5. Clean old images, keeping only the last known working version in case of rollback
 
         $ make ls
         $ make nuke VERSION=1.2.1
 
-5. Switch back to dev environment
+6. Switch back to dev environment
 
         $ eval $(docker-machine env dev)
 
@@ -81,8 +97,8 @@ the Docker Hub.
 
 6. Purge and prefetch CDN cache
 
-        $ make cdn-purge
-        $ make cdn-prefetch
+        $ make cdn-purge-production
+        $ make cdn-prefetch-production
 
 7. Clean old images, keeping only the last known working version in case of rollback
 
