@@ -43,8 +43,22 @@
   }
 
   .work-item {
-    .image .rimage {
-      height: $work-item-image-height;
+    .image {
+      overflow: hidden;
+      display: block;
+      
+      .rimage {
+        height: $work-item-image-height;
+        transition: transform $hover-duration-quick ease-in-out;
+      }
+      &:hover {
+        .rimage {
+          transform: scale($hover-scale-up);
+        }
+      }
+      .image-hover {
+        display: none;
+      }
     }
   }
 

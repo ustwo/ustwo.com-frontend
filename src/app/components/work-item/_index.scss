@@ -22,6 +22,16 @@
     }
   }
 
+  .title {
+    a {
+      transition: opacity $hover-duration-quick ease-in-out;
+
+      &:hover {
+        opacity: $hover-fade-back;
+      }
+    }
+  }
+
   .details {
     padding: $padding-small;
 
@@ -30,6 +40,10 @@
       border-bottom: 4px solid $nonBlack;
       text-transform: uppercase;
       font-family: $PxGroteskBold;
+    }
+
+    p {
+      color: $nonBlack;
     }
 
     .title,
@@ -41,10 +55,11 @@
       display: inline-block;
       border-bottom: 2px solid $nonBlack;
       font-family: $PxGroteskBold;
-      transition: border-color $hover-duration-quick ease-in-out;
+      color: $nonBlack;
+      transition: color $hover-duration-quick ease-in-out;
 
       &:hover {
-        border-color: $nonBlack !important;
+        color: inherit;
       }
     }
   }
