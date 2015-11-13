@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import get from 'lodash/object/get';
 
 import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
@@ -9,21 +10,20 @@ const PageCaseStudy = React.createClass({
   mixins: [getScrollTrackerMixin('case-study')],
   render() {
     const { caseStudy } = this.props;
-    return (
-      <article className="page-case-study">
-        <style>{`
-          .page-case-study a {
-            border-bottom-color: ${get(caseStudy, 'colors.secondary')};
-          }
-        `}</style>
-        {renderModules({
-          modules: get(caseStudy, 'page_builder', []),
-          colours: get(caseStudy, 'colors'),
-          zebra: true
-        })}
-        {this.renderRelatedContent()}
-      </article>
-    );
+    const classes = classnames('page-case-study', this.props.className);
+    return <article className={classes}>
+      <style>{`
+        .page-case-study a {
+          border-bottom-color: ${get(caseStudy, 'colors.secondary')};
+        }
+      `}</style>
+      {renderModules({
+        modules: get(caseStudy, 'page_builder', []),
+        colours: get(caseStudy, 'colors'),
+        zebra: true
+      })}
+      {this.renderRelatedContent()}
+    </article>;
   },
   renderRelatedContent() {
     let relatedContent;

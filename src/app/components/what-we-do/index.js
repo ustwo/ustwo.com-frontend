@@ -1,8 +1,10 @@
 'use strict';
 
 import React from 'react';
+import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
+
 import renderModules from '../../lib/module-renderer';
 import getFeaturedImage from '../../lib/get-featured-image';
 import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
@@ -16,8 +18,9 @@ const PageWhatWeDo = React.createClass({
     const { page } = this.props;
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
+    const classes = classnames('page-work', this.props.className);
 
-    return <article className='page-work'>
+    return <article className={classes}>
       <Hero
         title={get(page, 'display_title')}
         transitionImage={true}

@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import map from 'lodash/collection/map';
 import filter from 'lodash/collection/filter';
@@ -26,10 +27,11 @@ const PageJoinUs = React.createClass({
   },
   render() {
     const { page } = this.props;
+    const classes = classnames('page-join-us', this.props.className);
     const image = getFeaturedImage(page);
     const sizes = { hardcoded: { url: '/images/joinus/current_openings.jpg' }};
 
-    return <article className='page-join-us'>
+    return <article className={classes}>
       <Hero
         title={get(page, 'display_title')}
         transitionImage={true}

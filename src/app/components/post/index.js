@@ -21,7 +21,7 @@ const PagePost = React.createClass({
     const {post} = this.props;
     const category = get(post, '_embedded.wp:term.0.0', []);
     const image = getFeaturedImage(post);
-    const classes = classnames('page-post', `blog-label-${get(category, 'slug', 'uncategorised')}`);
+    const classes = classnames('page-post', this.props.className, `blog-label-${get(category, 'slug', 'uncategorised')}`);
     return <article className={classes}>
       <style>{`
         .page-post .content-container a {
