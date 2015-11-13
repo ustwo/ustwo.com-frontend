@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 import LoadingIcon from '../loading-icon';
 
-export default class PageLoader extends React.Component {
+const PageLoader = React.createClass({
   render() {
     const props = this.props;
     return (
@@ -14,4 +14,6 @@ export default class PageLoader extends React.Component {
       </section>
     );
   }
-}
+});
+
+export default PageLoader;

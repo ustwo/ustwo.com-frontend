@@ -138,11 +138,7 @@ const App = React.createClass({
             takeover={this.showTakeover()}
           />
         </EntranceTransition>
-        <TransitionManager
-          component="div"
-          className={contentClasses}
-          duration={0}
-        >
+        <div className={contentClasses}>
           <PageContainer key={state.currentPage}>
             <TransitionManager
               component="div"
@@ -153,7 +149,7 @@ const App = React.createClass({
             </TransitionManager>
             <Footer data={state.footer} studios={state.studios} />
           </PageContainer>
-        </TransitionManager>
+        </div>
         <TransitionManager
           component="div"
           className="app__modal"
