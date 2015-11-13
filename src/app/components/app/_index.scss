@@ -5,6 +5,18 @@
  *  TODO: Can some of the following be consolidated into generic states or moved into the component they relate to?
  */
 
+@keyframes page-loader-exit {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
 .app {
 
   .app-content {
@@ -30,7 +42,7 @@
     .page-loader-container {
       .page-loader,
       > article {
-        transition: opacity 1s ease-in-out;
+        transition: opacity .3s ease-in-out;
 
         &.add {
           opacity: 0;
@@ -40,11 +52,16 @@
         }
         &.hide {
           opacity: 0;
+          transition: opacity .3s ease-in-out .3s;
+
+          .loading-icon {
+            animation: page-loader-exit .6s 1;
+          }
         }
       }
       > article {
         &.show {
-          transition-duration: 0s;
+          // transition-duration: 0s;
         }
       }
     }

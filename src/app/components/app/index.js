@@ -147,7 +147,7 @@ const App = React.createClass({
             <TransitionManager
               component="div"
               className="page-loader-container"
-              duration={1000}
+              duration={700}
             >
               {this.getPage(state.currentPage)}
             </TransitionManager>

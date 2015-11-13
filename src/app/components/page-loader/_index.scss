@@ -4,27 +4,43 @@
  *
  */
 
+@mixin page-loader-spinner($fg, $bg) {
+  background-color: $bg;
+
+  .loading-icon .half {
+    .bg {
+      background-color: $fg;
+    }
+    &.left,
+    &.right {
+      .bg {
+        border-color: $bg;
+      }
+    }
+  }
+}
+
 .page-loader {
   position: fixed;
   top: 0;
-  width: 100%;
   z-index: 30;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   min-height: 100vh;
   background-color: $offWhite;
 
   &.loading-home {
-    background-color: #6114CC;
+    @include page-loader-spinner(#fff, #6114CC);
   }
   &.loading-what-we-do {
-    background-color: $pot;
+    @include page-loader-spinner(#fff, $pot);
   }
   &.loading-blog {
-    background-color: $blu;
+    @include page-loader-spinner(#fff, $blu);
   }
   &.loading-join-us {
-    background-color: $honey;
+    @include page-loader-spinner(#000, $honey);
   }
 }
