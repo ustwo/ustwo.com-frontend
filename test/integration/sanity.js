@@ -194,7 +194,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
       .waitForElementByCss(pageHome, wd.asserters.textInclude(homeHeadline), 10000);
   });
 
-  it('should go to the Join us page and look for job listing title', () => {
+  xit('should go to the Join us page and look for job listing title', () => {
     return browser
       .openPageByMenuLink(joinLink)
       .waitForElementByCss(jobsPage, wd.asserters.textInclude(jobOpenings), 15000)
