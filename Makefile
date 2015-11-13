@@ -81,12 +81,6 @@ deploy-production:
 deploy-staging: deploy-production
 release: release-create
 
-# CDN ids:
-# ustwo.it 48643
-# TODO integrate with Slack?
-cdn-purge:
-	@$(CURL) --data "cdn_id=48643&login=$(CDN77_LOGIN)&passwd=$(CDN77_API_KEY)" https://api.cdn77.com/v2.0/data/purge-all
-
 seeds: build
 love: deploy
 stuff: assets-compile
