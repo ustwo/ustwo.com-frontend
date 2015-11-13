@@ -54,7 +54,7 @@ const browserKey = process.env.BROWSER || 'explorer';
 let desired = desireds[browserKey];
 desired.name = 'testing with ' + browserKey;
 desired.tags = ['integration'];
-desired.tunnelIdentifier = process.env.USER || 'nouser';
+desired.tunnelIdentifier = process.env.TUNNEL || 'nouser';
 
 // selectors and strings
 const navigation = '.navigation';
