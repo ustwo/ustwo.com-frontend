@@ -23,7 +23,7 @@
   margin-top: 5px;
   background: #fff;
   list-style: none;
-  transition: height .6s ease-in-out, box-shadow $hover-duration-quick ease-in-out;
+  transition: height .6s ease-in-out;
 
   .title {
     position: relative;
@@ -125,7 +125,9 @@
   }
 
   &:hover {
-    box-shadow: inset 0 3px;
+    .title {
+      color: inherit;
+    }
   }
 
   @media screen and (min-width: $bp-medium) {
