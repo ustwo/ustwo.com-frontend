@@ -95,6 +95,7 @@
       font-family: $Futura;
       font-size: 24px;
       text-transform: uppercase;
+      color: #fff;
       transition: opacity $hover-duration-quick ease-in-out;
 
       &[aria-selected="true"] {
