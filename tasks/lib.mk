@@ -1,8 +1,8 @@
-ifeq ($(VERBOSE), true)
+ifeq ("$(VERBOSE)", "true")
   verbose_flag = -e VERBOSE=true
 endif
 
-ifeq ($(FLUSH_CACHE), true)
+ifeq ("$(FLUSH_CACHE)", "true")
   cache_flag = -e FLUSH_CACHE=true
 endif
 

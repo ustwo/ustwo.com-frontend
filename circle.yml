@@ -13,6 +13,7 @@ deployment:
 
 dependencies:
   override:
+    - docker version
     - make compiler-build
     - make assets-build
     - make app-build
