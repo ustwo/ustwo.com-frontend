@@ -68,8 +68,8 @@ const App = React.createClass({
         case 'navigation':
           className = 'navigation';
           content = <NavigationOverlay
-            pages={state.navMain}
-            section={state.currentPage.split('/')[0]}
+            pages={this.state.navMain}
+            section={this.state.currentPage.split('/')[0]}
           />;
           break;
         case 'contacts':
