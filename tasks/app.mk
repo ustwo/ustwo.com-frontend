@@ -13,7 +13,7 @@ app_dockerfile = Dockerfile.$(app_id)
   app-pull \
   app-push
 
-ifeq ($(LOCAL_FS), true)
+ifeq ("$(LOCAL_FS)", "true")
   app_volumes = \
     -v $(BASE_PATH)/package.app.json:/home/ustwo/package.json \
     -v $(BASE_PATH)/src:/home/ustwo/src

@@ -12,7 +12,7 @@ assets_dockerfile = Dockerfile.$(assets_id)
   assets-rm \
   assets-save
 
-ifeq ($(LOCAL_FS), true)
+ifeq ("$(LOCAL_FS)", "true")
   assets_volumes := \
     -v $(BASE_PATH)/share/nginx:/usr/share/nginx:ro \
     -v $(BASE_PATH)/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro \
@@ -83,3 +83,7 @@ assets-unit-test:
 
 assets-integration-test: sauce-startup
 	@$(call compile, npm run integration $(USER)$(CIRCLE_BRANCH))
+	$(if $(CI),$(MAKE) sauce-rm,)
+ifneq ("$(KEEP_TUNNEL)", "true")
+	@$(MAKE) sauce-rm
+endif

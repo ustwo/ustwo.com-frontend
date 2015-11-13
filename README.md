@@ -337,6 +337,11 @@ requests and their results:
 
         $ make assets-integration-test VERBOSE=true
 
+Also, if you are working on tests and don't want to wait for Sauce Connect
+tunnel setup for every test run, you can keep it alive:
+
+        $ make assets-integration-test KEEP_TUNNEL=true
+
 ## Release
 
 We're using Docker Hub and Docker Machine to tag and deploy Docker images, for

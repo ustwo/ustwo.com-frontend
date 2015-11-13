@@ -4,7 +4,7 @@ const exec = require('child_process').exec;
 
 const mochaArgs = process.argv[2];
 const user = process.argv[3];
-const browsers = ['chrome', 'firefox', 'explorer'];
+const browsers = ['explorer']; // ['chrome', 'firefox', 'explorer'];
 
 // context (browser) specific log
 function log(browser, data) {
