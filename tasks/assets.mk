@@ -83,7 +83,3 @@ assets-unit-test:
 
 assets-integration-test: sauce-startup
 	@$(call compile, npm run integration $(subst /,-,"$(USER)-$(CIRCLE_BRANCH)"))
-	$(if $(CI),$(MAKE) sauce-rm,)
-ifneq ("$(KEEP_TUNNEL)", "true")
-	@$(MAKE) sauce-rm
-endif
