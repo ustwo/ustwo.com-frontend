@@ -8,7 +8,7 @@ const Sandbox = React.createClass({
           height: 100vh;
         }
       `}</style>
-      <Video src="https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/3728/5/143640008/432195184.mp4?token=56463c99_0xac1f9ad3a918cd24b729acf12a518fb79c75524b" />
+      <Video src="https://player.vimeo.com/external/143640008.sd.mp4?s=c2766105f03ee623f8b53fc274a33b563d30067d&profile_id=112" />
     </div>;
   }
 });

@@ -26,6 +26,7 @@ persistify --require babelify/polyfill \
            --require moment \
            --require react-transition-manager \
            --require scrollmagic \
+           --require react-responsive \
            --verbose \
            --outfile $filename
 

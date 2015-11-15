@@ -1,5 +1,5 @@
 import React from 'react';
-import MediaQuery from '../../lib/react-responsive/src';
+import MediaQuery from 'react-responsive';
 
 import Rimage from '../rimage';
 

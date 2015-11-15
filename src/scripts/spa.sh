@@ -36,6 +36,7 @@ persistify $input \
            --external moment \
            --external react-transition-manager \
            --external scrollmagic \
+           --external react-responsive \
            --verbose \
            --outfile $filename
 
