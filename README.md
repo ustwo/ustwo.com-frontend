@@ -11,13 +11,14 @@ having to reload the browser, we decided to build the site as a
 [single-page application][2]. We chose [React.js][3] as a main JavaScript
 technology enabling us to do this, since it has built in support to render
 pages on the server side too (called isomorphic rendering). This way we could
-keep the loading and rendering performance snappy on mobile and let visitors
-see content without an extra data loading step after the initial page load. To
-do this work we put a small Node backend server in place.
+keep the initial rendering performance snappy on mobile and let visitors
+see content without an extra data loading step which usually happens with most
+client side JavaScript framework. To enable server side rendering and to have
+proper URLs, we put a small Node backend server behind our app.
 
 Our content management system behind this is a Wordpress instance which doesn't
 actually render the pages itself, but instead serves content up via [WP API][4]
-through a mixture of standard and customised JSON REST API endpoints making the
+through a mixture of standard and customised JSON REST API endpoints, making the
 vast majority of the content editable.
 
 ## Tech stack
@@ -27,47 +28,60 @@ vast majority of the content editable.
 With the current set of challenges and available browser features we found
 React.js to be a great solution to templating and events on the UI. The
 composability of components with the one way binding and "queryless" event
-handling offered by JSX templates is answering the right problems, without
-trying to do too much and become a framework. The easy to implement server side
+handling offered by JSX templates is solving the right problems, without trying
+to do too much and become a framework. The easy to implement server side
 rendering combined with the ability to prevent rerendering on client side (by
 internally doing a comparison to the virtual DOM) is also a great feature to
 make it a viable solution on mobile.
 
 To make it a single-page application we put Flux Routes and Store behind the
-React front end so that it can take over the navigation from the browser and
+React front end, so that it can take over the navigation from the browser and
 load data from Wordpress by itself.
 
 Since we need to precompile JSX anyway, in our quest to minimise the number of
 libraries (like Underscore, etc) and push a future-proof way of working with
-JavaScript, we adopted a lot of ES6 features (by transpiling the code with
-Babel for now).
+JavaScript, we adopted a lot of ES6 features by transpiling the code with Babel.
 
-As for the CSS, we're using SASS to be able to split our styles and store them
+As for the CSS, we're using Sass to be able to split our styles and store them
 together with the components. But in general we're trying to minimise the
-reliance on SASS language specific features and instead write as much pure CSS
-as possible, getting ready for a CSS Next / PostCSS world.
+reliance on Sass language specific features and instead write as much pure CSS
+as possible, getting ready for a CSS Next / PostCSS world just as we did with
+ES6.
 
 For the animated illustrations on the site we use SVG sequences, controlled by a
-small React component. All the static vector symbols are stored in one, external
-SVG sprite, polyfilled for old Internet Explorers with [SVG for Everybody][15].
+small React component. This is unfortunately only possible with inlining SVGs,
+but all the static vector symbols are stored in one, external SVG sprite,
+polyfilled for old Internet Explorers with [SVG for Everybody][15].
 
 ### Node app
 
-Express, Flux routes
-
-Isomorphic rendering
+Since all the heavy content work is done for is in Wordpress, our Node / Express
+app is kept as light as possible. The only two main responsibilities are
+delivering fully baked HTML files through running React rendering on the
+prefetched content and responding to the same routes as the front end app does.
 
 ### Nginx
 
-Reverse proxy
+As we had quite a lot of components (or microservices if you will) to tie
+together – multiplied by production + staging + dev environments – we didn't
+want to overburden our Node server and decided to put an Nginx proxy in place.
 
 ### Build tools
 
-Make, NPM scripts
+While we started out using Gulp for our frontend builds which was a very
+convenient start point for quickly iterating different combination of tools,
+in the end we settled on shell scripts using the fastest command line builds of
+libraries.
 
-Browserify, Babel
+For JavaScript we're using Browserify (plus Persistify caching) to process our
+code with Babel and resolve dependencies using Aliasify. Our Sass code is
+compiled using SassC with PostCSS's Autoprefixer taking care of vendor
+prefixing. All this happens in a dedicated compiler Docker image, so that we can
+keep the production application as lean as possible.
 
-Autoprefixer, LibSASS
+To get the Docker environment up and running and to tie all of the above
+together, we created a fleet of Makefiles to get some extra flexibility with
+shared variables and task composition on top of shell scripting.
 
 ## Inclusion
 
@@ -138,7 +152,8 @@ TODO: update diagram for new CDN setup
 
 ### Docker dependencies
 
-The project is managed via Docker containers.
+The project is managed via Docker containers. Right now we're using Docker
+version 1.8.2 with Docker Machine version 0.4.1.
 
 Commands below assume OS X and preference to install libraries via Homebrew.
 You can of course install Docker Machine and Virtualbox in any other way
@@ -277,7 +292,7 @@ Open `https://192.168.99.100:3000` in your browser and start editing scss and
 let the toolchain compile and push changes to the browser.
 
 *Note*: `browser-sync` uses a self-signed certificate so using `local.ustwo.com`
-or the raw IP will make the browser complain.  If you need to overcome this
+or the raw IP will make the browser complain. If you need to overcome this
 please add a forward rule to Virtualbox so you can use `https://localhost:3000`.
 
 ## Test
