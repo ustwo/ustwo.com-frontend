@@ -23,9 +23,12 @@ proxy-create:
 		--name $(proxy_name) \
 		-p $(PROXY_HTTPS_PORT):443 \
 		-p $(PROXY_HTTP_PORT):80 \
-		$(docker_host) \
+		--net=$(network_name) \
 		--volumes-from $(vault_name) \
 		--volumes-from $(assets_name) \
 		--restart always \
 		$(project_labels) \
 		$(proxy_image)
+
+proxy-sh:
+	$(DOCKER_EXEC) $(proxy_name) /bin/sh
