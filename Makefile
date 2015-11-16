@@ -25,7 +25,7 @@ DOCKER_CP := $(DOCKER) cp
 DOCKER_EXEC := $(DOCKER) exec -it
 DOCKER_RM := $(DOCKER) rm -vf
 DOCKER_PROC := $(DOCKER) run -d
-DOCKER_VOLUME := $(DOCKER) run
+DOCKER_VOLUME := $(DOCKER) create
 DOCKER_TASK := $(DOCKER) run --rm -it
 # CircleCI fails if you try to remove a container
 DOCKER_CI_TASK := $(DOCKER) run -it
