@@ -7,16 +7,17 @@ import Flux from '../../flux';
 
 import Rimage from '../rimage';
 import ImageHover from '../image-hover';
+import WorkItemStyles from '../work-item-styles';
+import classnames from 'classnames';
 
 const WorkItem = React.createClass({
   render() {
+    console.log(this.props)
     const { data, image, className } = this.props;
     const link = `/what-we-do/${get(data, 'slug')}`;
-    const bgColour = get(data, 'colors.bg');
-    const primaryColour = get(data, 'colors.primary');
-    const secondaryColour = get(data, 'colors.secondary');
 
-    return <div className="work-item" style={{backgroundColor: bgColour}}>
+    return <div className={classnames('work-item', `work-item-${id}`)}>
+      <WorkItemStyles data={data} />
       <a href={link} onClick={Flux.override(link)} className="image">
         <Rimage
           wrap='div'
@@ -25,11 +26,11 @@ const WorkItem = React.createClass({
         />
         <ImageHover autoAnim={500} />
       </a>
-      <div className='details' style={{color: secondaryColour}}>
-        <p className='type' style={{borderColor: secondaryColour}}>
+      <div className='details'>
+        <p className='type'>
           {get(data, 'type')}
         </p>
-        <h3 className='title' style={{color: primaryColour}}>
+        <h3 className='title'>
           <a href={link} onClick={Flux.override(link)}>{get(data, 'name')}</a>
         </h3>
         <div
