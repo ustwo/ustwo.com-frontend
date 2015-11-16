@@ -21,7 +21,6 @@ const Video = React.createClass({
   },
   renderVideo() {
     const { src } = this.props;
-    console.log('src', src);
     let video;
     if(src && src.length) {
       video = <video src={src} poster={posterURL} autoPlay loop />;
