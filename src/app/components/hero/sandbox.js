@@ -1,5 +1,6 @@
 import Hero from './';
 import renderVariations from '../../lib/sandbox/render-variations';
+import Video from '../video';
 
 const sizes = {
   "thumbnail": {
@@ -48,7 +49,16 @@ const Sandbox = React.createClass({
         'Without image': <Hero
             title="This is a title"
             showDownChevron={true}
-          />
+          />,
+        'With video': <Hero
+            title="This is a title"
+            showDownChevron={true}
+          >
+            <Video
+              src="https://player.vimeo.com/external/143640008.sd.mp4?s=c2766105f03ee623f8b53fc274a33b563d30067d&profile_id=112"
+              sizes={sizes}
+            />
+          </Hero>
       })}
     </div>;
   }

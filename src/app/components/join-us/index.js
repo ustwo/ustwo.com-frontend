@@ -30,7 +30,6 @@ const PageJoinUs = React.createClass({
     const { page } = this.props;
     const classes = classnames('page-join-us', this.props.className);
     const image = getFeaturedImage(page);
-    const sizes = { hardcoded: { url: "https://usweb-cdn.ustwo.com/ustwo-production/uploads/2011/06/header_image_v2-640x480.png" } };
 
     return <article className={classes}>
       <Hero
@@ -40,8 +39,8 @@ const PageJoinUs = React.createClass({
         showDownChevron={true}
       >
         <Video
-          src="https://player.vimeo.com/external/143640008.sd.mp4?s=c2766105f03ee623f8b53fc274a33b563d30067d&profile_id=112"
-          sizes={sizes}
+          src={get(page, 'featured_video')}
+          sizes={get(image, 'media_details.sizes')}
         />
       </Hero>
       {renderModules({
