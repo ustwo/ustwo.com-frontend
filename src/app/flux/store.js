@@ -234,7 +234,7 @@ const Store = Object.assign(
       }
     },
     getSocialSharesForPosts() {
-      Promise.all(_state.posts.map(post => {
+      Promise.all((_state.posts || []).map(post => {
         const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
         const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
         let promise;
