@@ -1,15 +1,16 @@
 ## Network tasks ##############################################################
 network_name = usweb
 
-# WARNING: in test
-# net-install: net-create-app app-create
-net-install:
-	$(DOCKER) network connect $(network_name) $(proxy_name)
+.PHONY: \
+  network-create \
+  network-rm \
+  network-ls
 
+network-create:
+	@$(DOCKER) network create $(network_name)
 
-net-create-app:
-	$(DOCKER) network create $(network_name)
+network-rm:
+	@$(DOCKER) network rm $(network_name)
 
-
-net-ls:
+network-ls:
 	@$(DOCKER) network ls

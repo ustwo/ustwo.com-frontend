@@ -68,9 +68,10 @@ build: app-build assets-build
 test: assets-unit-test assets-integration-test
 push: app-push assets-push
 pull: app-pull assets-pull
-init: vault-create assets-create app-create proxy-create
+init: network-create vault-create assets-create app-create proxy-create
 clean-no-confirm:
 	@$(DOCKER_RM) $(shell $(DOCKER) ps -aq $(project_filters))
+	@$(MAKE) network-rm
 clean:
 	$(call confirm,"Are you sure you want to clean __$(DOCKER_MACHINE_NAME)__?",$(MAKE) -i clean-no-confirm)
 deploy: clean-no-confirm init
