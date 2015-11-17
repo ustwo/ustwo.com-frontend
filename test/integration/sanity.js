@@ -51,6 +51,7 @@ wd.configureHttp( {
 
 // building desired capability
 const browserKey = process.env.BROWSER || 'explorer';
+const proxyName = process.env.PROXY_NAME;
 let desired = desireds[browserKey];
 desired.name = 'testing with ' + browserKey;
 desired.tags = ['integration'];
@@ -61,7 +62,7 @@ const navigation = '.navigation';
 const navigationToggle = navigation + ' .navigation-toggle';
 const navigationOverlay = '.navigation-overlay';
 const navigationDesktopMenu = navigation + ' .menu';
-const baseURL = 'https://local.ustwo.com';
+const baseURL = 'http://' + proxyName;
 const homeTitle = 'ustwo | Digital product studio';
 const takeover = '.takeover';
 const takeoverClose = '.take-over .close-button';

@@ -15,11 +15,17 @@ compiler_volumes = \
   -v $(BASE_PATH)/test:/home/ustwo/test \
   -v $(BASE_PATH)/src:/home/ustwo/src
 
+# The compiler needs to be part of the shared network **only** when running
+# integration tests.
+compiler_network = $(if $(INTEGRATION),--net=$(network_name),)
+
 define compile
 	$(if $(CI), $(DOCKER_CI_TASK), $(DOCKER_TASK)) \
 		$(compiler_volumes) \
 		$(verbose_flag) \
 		$(cache_flag) \
+		$(compiler_network) \
+		-e PROXY_NAME=$(proxy_name) \
 		-e SAUCE_USERNAME=$(SAUCE_USERNAME) \
 		-e SAUCE_ACCESS_KEY=$(SAUCE_ACCESS_KEY) \
 		$(compiler_image) $1

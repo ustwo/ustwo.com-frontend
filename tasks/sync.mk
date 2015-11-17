@@ -22,9 +22,9 @@ sync-create:
 		-w /home/ustwo \
 		$(project_labels) \
 		--name $(sync_name) \
-		$(docker_host) \
 		$(sync_image) \
-		start --proxy "https://docker.ustwo.com:$(PROXY_HTTPS_PORT)" \
+		--net $(network_name) \
+		start --proxy "https://$(proxy_name):$(PROXY_HTTPS_PORT)" \
 					--files "share/nginx/assets/css/*.css" \
 					--port $(SYNC_PORT) \
 					--ui-port $(SYNC_ADMIN_PORT) \

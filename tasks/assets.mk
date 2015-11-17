@@ -81,5 +81,7 @@ assets-spa:
 assets-unit-test:
 	@$(call compile, npm test)
 
+
+assets-integration-test: INTEGRATION = true
 assets-integration-test: sauce-startup
 	@$(call compile, npm run integration $(subst /,-,"$(USER)-$(CIRCLE_BRANCH)"))

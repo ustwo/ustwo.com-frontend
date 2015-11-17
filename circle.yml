@@ -1,6 +1,9 @@
 machine:
   environment:
     VERSION: $CIRCLE_SHA1
+  pre:
+    - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
+    - sudo chmod 0755 /usr/bin/docker
   services:
     - docker
 
@@ -9,17 +12,13 @@ deployment:
     branch: /(master|hotfixes\/.+)/
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - make app-push assets-push
+      - make push
 
 dependencies:
   override:
-    - docker version
-    - make compiler-build
-    - make assets-build
-    - make app-build
-    - make vault-generate-cert
-    - make vault-build
-    - make init
+    - make vault-generate-cert vault-build
+    - make
+    - make install
 
 test:
   override:

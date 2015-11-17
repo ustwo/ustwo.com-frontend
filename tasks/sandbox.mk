@@ -39,8 +39,7 @@ sandbox-create:
 		$(sandbox_volumes) \
 		--restart always \
 		$(project_labels) \
-		-p 8889:8889 \
-		$(docker_host) \
+		--net=$(network_name) \
 		$(verbose_flag) \
 		$(sandbox_image)
 

@@ -6,4 +6,6 @@ RUN npm install --production
 COPY src /home/ustwo/src
 RUN mkdir -p /home/ustwo/public
 
+EXPOSE 8889
+
 CMD ["node", "./node_modules/babel/lib/_babel-node", "--optional", "es7.classProperties", "src/server/index.sandbox.js"]
