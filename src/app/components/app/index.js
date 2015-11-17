@@ -7,6 +7,7 @@ import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
+import includes from 'lodash/collection/includes';
 
 // TODO: see if there's a better way to get fonts in
 import '../../adaptors/server/localfont';
@@ -38,6 +39,8 @@ const pageMap = {
   'legal': require('../legal'),
   'join-us': require('../join-us')
 };
+
+const spinnerBlacklist = ['legal', 'blog/search-results'];
 
 const App = React.createClass({
   getInitialState() {
@@ -162,7 +165,7 @@ const App = React.createClass({
   getPage(pageId) {
     const { currentPage, page: pageData, post, caseStudy} = this.state;
     let page;
-    if(currentPage !== 'legal' && currentPage !== 'blog/search-results' && !pageData && !post && !caseStudy) {
+    if(!includes(spinnerBlacklist, currentPage) && !pageData && !post && !caseStudy) {
       page = <PageLoader key="loader" className={`loading-${pageId}`} />;
     } else {
       page = React.createElement(pageMap[pageId], Object.assign({ key: `page-${pageId}` }, this.state));
