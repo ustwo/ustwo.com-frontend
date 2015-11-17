@@ -13,6 +13,7 @@ import classnames from 'classnames';
 const WorkItem = React.createClass({
   render() {
     const { data, image, className } = this.props;
+    const id = data.id;
     const link = `/what-we-do/${get(data, 'slug')}`;
 
     return <div className={classnames('work-item', `work-item-${id}`)}>
@@ -39,7 +40,6 @@ const WorkItem = React.createClass({
         <a
           className='link'
           href={link}
-          style={{borderColor: secondaryColour}}
           onClick={Flux.override(link)}
         >
           Read more

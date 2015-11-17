@@ -1,6 +1,7 @@
 import WorkItem from './';
 
 const caseStudy = {
+  "id": 1,
   "name": "Moodnotes",
   "slug": "moodnotes",
   "type": "Venture",
