@@ -17,6 +17,7 @@ import SVG from '../svg';
 import Hero from '../hero';
 import StudioJobs from '../studio-jobs';
 import Rimage from '../rimage';
+import Video from '../video';
 
 const PageJoinUs = React.createClass({
   mixins: [getScrollTrackerMixin('join-us')],
@@ -34,11 +35,14 @@ const PageJoinUs = React.createClass({
       <Hero
         title={get(page, 'display_title')}
         transitionImage={true}
-        sizes={get(image, 'media_details.sizes')}
-        altText={get(image, 'alt_text')}
         eventLabel='join-us'
         showDownChevron={true}
-      />
+      >
+        <Video
+          src={get(page, 'featured_video')}
+          sizes={get(image, 'media_details.sizes')}
+        />
+      </Hero>
       {renderModules({
         modules: get(page, 'page_builder', []),
         colours: get(page, 'colors'),

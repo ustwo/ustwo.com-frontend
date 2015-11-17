@@ -9,12 +9,23 @@
   .hero {
     background-color: $honey;
 
+    .video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
     .title {
       color: $nonBlack;
     }
 
     .rimage {
       max-width: 800px;
+    }
+
+    .down-chevron {
+      z-index: 2;
     }
   }
 

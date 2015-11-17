@@ -1,6 +1,4 @@
-import Hero from './';
-import renderVariations from '../../lib/sandbox/render-variations';
-import Video from '../video';
+import Video from './';
 
 const sizes = {
   "thumbnail": {
@@ -31,35 +29,14 @@ const Sandbox = React.createClass({
   render() {
     return <div className="sandbox full-width-component">
       <style>{`
-        .hero {
-          background-color: #FFBF02;
+        .sandbox {
+          height: 100vh;
         }
       `}</style>
-      {renderVariations({
-        'With down chevron': <Hero
-            title="This is a title"
-            showDownChevron={true}
-            sizes={sizes}
-          />,
-        'With children': <Hero
-            title="This is a title"
-            showDownChevron={false}
-            sizes={sizes}
-          >Some children</Hero>,
-        'Without image': <Hero
-            title="This is a title"
-            showDownChevron={true}
-          />,
-        'With video': <Hero
-            title="This is a title"
-            showDownChevron={true}
-          >
-            <Video
-              src="https://player.vimeo.com/external/143640008.sd.mp4?s=c2766105f03ee623f8b53fc274a33b563d30067d&profile_id=112"
-              sizes={sizes}
-            />
-          </Hero>
-      })}
+      <Video
+        src="https://player.vimeo.com/external/143640008.sd.mp4?s=c2766105f03ee623f8b53fc274a33b563d30067d&profile_id=112"
+        sizes={sizes}
+      />
     </div>;
   }
 });

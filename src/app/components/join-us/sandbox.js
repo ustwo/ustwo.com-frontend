@@ -19,6 +19,7 @@ const page = {
   },
   "author": 13,
   "featured_image": 8723,
+  "featured_video": "https://player.vimeo.com/external/143640008.sd.mp4?s=c2766105f03ee623f8b53fc274a33b563d30067d&profile_id=112",
   "parent": 0,
   "menu_order": 50,
   "comment_status": "closed",
