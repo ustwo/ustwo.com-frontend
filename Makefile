@@ -42,9 +42,6 @@ ANSIBLE_PLAY := $(ANSIBLE) ansible-playbook -b -v \
 	--inventory-file=/home/ustwo/etc/ansible/hosts
 ###############################################################################
 
-default: compiler-build build
-install: init
-
 include tasks/*.mk
 
 ## Automatic variables ########################################################
@@ -63,18 +60,20 @@ include tasks/*.mk
 ###############################################################################
 
 ## Porcelain ##################################################################
+default: compiler-build build
+install: network-create vault-create assets-create app-create proxy-create
+
 vault: vault-save
 build: app-build assets-build
 test: assets-unit-test assets-integration-test
 push: app-push assets-push
 pull: app-pull assets-pull
-init: network-create vault-create assets-create app-create proxy-create
 clean-no-confirm:
 	@$(DOCKER_RM) $(shell $(DOCKER) ps -aq $(project_filters))
 	@$(MAKE) network-rm
 clean:
 	$(call confirm,"Are you sure you want to clean __$(DOCKER_MACHINE_NAME)__?",$(MAKE) -i clean-no-confirm)
-deploy: clean-no-confirm init
+deploy: clean-no-confirm install
 deploy-production:
 	$(MAKE) -i deploy \
 		PROXY_HTTPS_PORT=443 \
@@ -93,6 +92,8 @@ images: assets-images
 
 sandbox: sandbox-rm sandbox-create
 
+## Deprecated  ################################################################
+init: install
 ## Environment  ###############################################################
 ##
 # Lists all containers related to the project.

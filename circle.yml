@@ -12,17 +12,17 @@ deployment:
     branch: /(master|hotfixes\/.+)/
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - make app-push assets-push
+      - make push
 
 dependencies:
   override:
-    - docker version
-    - make compiler-build
-    - make assets-build
-    - make app-build
-    - make vault-generate-cert
-    - make vault-build
-    - make init
+    # - make compiler-build
+    # - make assets-build
+    # - make app-build
+    # - make vault-generate-cert
+    # - make vault-build
+    - make
+    - make install
 
 test:
   override:
