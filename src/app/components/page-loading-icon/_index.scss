@@ -8,7 +8,7 @@
 $loader-size: 12px;
 $loader-jump: $loader-size * 2.25;
 $loader-bg: #fff;
-$loader-color: #333;
+$loader-color: $offWhite;
 
 @keyframes loader {
   0% { // 0s
@@ -97,6 +97,12 @@ $loader-color: #333;
     }
     &:nth-child(4) div {
       animation-delay: 0.24s;
+    }
+  }
+
+  &.join-us {
+    li div {
+      background: $nonBlack;
     }
   }
 }
