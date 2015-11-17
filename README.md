@@ -153,7 +153,7 @@ TODO: update diagram for new CDN setup
 ### Docker dependencies
 
 The project is managed via Docker containers. Right now we're using Docker
-version 1.8.2 with Docker Machine version 0.4.1.
+version 1.9.0 with Docker Machine version 0.5.0.
 
 Commands below assume OS X and preference to install libraries via Homebrew.
 You can of course install Docker Machine and Virtualbox in any other way
