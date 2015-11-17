@@ -42,6 +42,8 @@ ANSIBLE_PLAY := $(ANSIBLE) ansible-playbook -b -v \
 	--inventory-file=/home/ustwo/etc/ansible/hosts
 ###############################################################################
 
+default: build-all
+
 include tasks/*.mk
 
 ## Automatic variables ########################################################
@@ -60,9 +62,8 @@ include tasks/*.mk
 ###############################################################################
 
 ## Porcelain ##################################################################
-default: compiler-build build
 install: network-create vault-create assets-create app-create proxy-create
-
+build-all: compiler-build build
 vault: vault-save
 build: app-build assets-build
 test: assets-unit-test assets-integration-test

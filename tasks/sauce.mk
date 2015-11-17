@@ -56,3 +56,5 @@ endif
 sauce-log:
 	@$(DOCKER) logs -f $(sauce_name)
 
+sauce-sh:
+	$(DOCKER_EXEC) $(sauce_name) /bin/sh
