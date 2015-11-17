@@ -162,7 +162,7 @@ const App = React.createClass({
   getPage(pageId) {
     const { currentPage, page: pageData, post, caseStudy} = this.state;
     let page;
-    if(currentPage !== 'blog/search-results' && !pageData && !post && !caseStudy) {
+    if(currentPage !== 'legal' && currentPage !== 'blog/search-results' && !pageData && !post && !caseStudy) {
       page = <PageLoader key="loader" className={`loading-${pageId}`} />;
     } else {
       page = React.createElement(pageMap[pageId], Object.assign({ key: `page-${pageId}` }, this.state));
