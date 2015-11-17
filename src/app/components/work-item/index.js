@@ -12,7 +12,6 @@ import classnames from 'classnames';
 
 const WorkItem = React.createClass({
   render() {
-    console.log(this.props)
     const { data, image, className } = this.props;
     const link = `/what-we-do/${get(data, 'slug')}`;
 

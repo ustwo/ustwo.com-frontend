@@ -7,7 +7,6 @@ import classnames from 'classnames';
 
 const WorkItemStyles = React.createClass({
   render() {
-    console.log(this.props)
     const { data } = this.props;
     const id = data.id;
     const bgColour = get(data, 'colors.bg');
