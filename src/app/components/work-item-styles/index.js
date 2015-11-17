@@ -26,8 +26,11 @@ const WorkItemStyles = React.createClass({
       .work-item-${id} .details h3 {
         color: ${primaryColour}
       }
-      .work-item-${id} .detail .link:hover {
-        color: ${primaryColour}
+      .work-item-${id} .details .link {
+        border-bottom-color: ${secondaryColour}
+      }
+      .work-item-${id} .details .link:hover {
+        color: ${secondaryColour}
       }
     `}</style>;
   }
