@@ -25,6 +25,7 @@ define compile
 		$(verbose_flag) \
 		$(cache_flag) \
 		$(compiler_network) \
+		-e PROXY_NAME=$(proxy_name) \
 		-e SAUCE_USERNAME=$(SAUCE_USERNAME) \
 		-e SAUCE_ACCESS_KEY=$(SAUCE_ACCESS_KEY) \
 		$(compiler_image) $1

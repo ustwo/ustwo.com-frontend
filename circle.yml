@@ -16,11 +16,7 @@ deployment:
 
 dependencies:
   override:
-    # - make compiler-build
-    # - make assets-build
-    # - make app-build
-    # - make vault-generate-cert
-    # - make vault-build
+    - make vault-generate-cert vault-build
     - make
     - make install
 
