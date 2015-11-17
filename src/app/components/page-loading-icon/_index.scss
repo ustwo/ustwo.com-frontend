@@ -1,0 +1,102 @@
+/*
+ *  LOADING ICON
+ *  Small loading spinner, originally intended for inside category dropdown
+ *
+ *  TODO: Currently just rotates between black and white, need to implement it to cycle through the ustwo colour palette.
+ */
+
+$loader-size: 12px;
+$loader-jump: $loader-size * 2.25;
+$loader-bg: #fff;
+$loader-color: #333;
+
+@keyframes loader {
+  0% { // 0s
+    bottom: 0;
+    //100, 100
+    transform: scale(1, 1);
+  }
+  19% { // 320ms
+    bottom: 0;
+    // 125, 25
+    transform: scale(1.25, 0.25);
+  }
+  33% { // 560ms
+    bottom: 0;
+    // 80, 115
+    transform: scale(0.8, 1.15);
+  }
+  40% { // halfway
+    bottom: $loader-jump * .75;
+  }
+  44% {
+    bottom: $loader-jump * .95;
+  }
+  47% { // 800ms
+    bottom: $loader-jump;
+  }
+  51% {
+    bottom: $loader-jump * .95;
+  }
+  52% { // 880ms
+    // 100, 100
+    transform: scale(1, 1);
+  }
+  59% {
+    bottom: $loader-jump * .75;
+  }
+  66% { // 1120ms
+    bottom: 0;
+    // 100, 80
+    transform: scale(1, 0.8);
+  }
+  71% { // 1200ms
+    // 150, 25
+    transform: scale(1.5, 0.25);
+  }
+  85% { // 1440ms
+    bottom: 0;
+    // 100, 100
+    transform: scale(1, 1);
+  }
+  100% { // 1680ms
+    bottom: 0;
+    // 100, 100
+    transform: scale(1, 1);
+  }
+}
+
+.page-loading-icon {
+  li {
+    position: relative;
+    width: $loader-size;
+    height: $loader-size + $loader-jump;
+    display: inline-block;
+    margin-left: $loader-size * .75;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    div {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: $loader-size;
+      height: $loader-size;
+      background: $loader-color;
+      animation: loader 2s infinite ;
+      transform-origin: 50% bottom;
+    }
+
+    &:nth-child(2) div {
+      animation-delay: 0.08s;
+    }
+    &:nth-child(3) div {
+      animation-delay: 0.16s;
+    }
+    &:nth-child(4) div {
+      animation-delay: 0.24s;
+    }
+  }
+}
