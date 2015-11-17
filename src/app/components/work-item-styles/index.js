@@ -4,6 +4,9 @@ import React from 'react';
 import get from 'lodash/object/get';
 
 import classnames from 'classnames';
+import hexRgb from 'hex-rgb';
+
+hexRgb('4183c4');
 
 const WorkItemStyles = React.createClass({
   render() {
@@ -12,6 +15,7 @@ const WorkItemStyles = React.createClass({
     const bgColour = get(data, 'colors.bg');
     const primaryColour = get(data, 'colors.primary');
     const secondaryColour = get(data, 'colors.secondary');
+    const rgbImageHover = hexRgb(secondaryColour);
 
     return <style type="text/css" scoped>{`
       .work-item-${id} {
@@ -31,6 +35,9 @@ const WorkItemStyles = React.createClass({
       }
       .work-item-${id} .details .link:hover {
         color: ${secondaryColour}
+      }
+      .work-item-${id} .image .image-hover {
+        background: rgba(${rgbImageHover[0]}, ${rgbImageHover[1]}, ${rgbImageHover[2]}, 0.7);
       }
     `}</style>;
   }
