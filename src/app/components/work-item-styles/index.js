@@ -6,8 +6,6 @@ import get from 'lodash/object/get';
 import classnames from 'classnames';
 import hexRgb from 'hex-rgb';
 
-hexRgb('4183c4');
-
 const WorkItemStyles = React.createClass({
   render() {
     const { data } = this.props;
