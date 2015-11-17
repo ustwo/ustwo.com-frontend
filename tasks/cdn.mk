@@ -6,11 +6,10 @@
 cdn-purge-staging:
 	@$(CURL) --data "cdn_id=60414&login=$(CDN77_LOGIN)&passwd=$(CDN77_API_KEY)" https://api.cdn77.com/v2.0/data/purge-all
 
-# ustwo.it 48643
-# TODO: replace ID with ustwo.com CDN eventually
+# ustwo.com 60685
 # TODO: integrate with Slack as a dirty solution for manual content refresh?
 cdn-purge-production:
-	@$(CURL) --data "cdn_id=48643&login=$(CDN77_LOGIN)&passwd=$(CDN77_API_KEY)" https://api.cdn77.com/v2.0/data/purge-all
+	@$(CURL) --data "cdn_id=60685&login=$(CDN77_LOGIN)&passwd=$(CDN77_API_KEY)" https://api.cdn77.com/v2.0/data/purge-all
 
 ## Prefetch  ##################################################################
 
