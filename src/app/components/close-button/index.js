@@ -3,7 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import SVGSequenceAnimation from '../../lib/svg-sequence-animation';
+import SVGSequenceAnimation from 'app/lib/svg-sequence-animation';
 
 const CloseButton = React.createClass({
   mixins: [SVGSequenceAnimation({ fadeInDuration: 10 })],

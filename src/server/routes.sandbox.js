@@ -5,8 +5,8 @@ import express from 'express';
 import path from 'path';
 import capitalize from 'lodash/string/capitalize';
 
-import helpers from './helpers';
-import log from '../app/lib/log';
+import helpers from 'server/helpers';
+import log from 'app/lib/log';
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.get('/:component.js', (req, res, next) => {
   const sandbox = path.join(basepath, '../app/components', req.params.component, 'sandbox.js');
   const b = browserify();
 
-  let aliasifyConfig = require('../app/aliases.sandbox.json');
+  let aliasifyConfig = require('app/aliases.sandbox.json');
 
   b.transform(babelify.configure({
       optional: ["es7.classProperties"]

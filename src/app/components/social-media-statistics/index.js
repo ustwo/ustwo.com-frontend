@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import SVG from '../svg';
+import SVG from 'app/components/svg';
 
 const SocialMediaStatistics = React.createClass({
   render() {

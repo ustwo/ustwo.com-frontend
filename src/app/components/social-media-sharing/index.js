@@ -4,9 +4,9 @@ import React from 'react';
 import classnames from 'classnames';
 import he from 'he';
 
-import Flux from '../../flux';
+import Flux from 'app/flux';
 
-import SVG from '../svg';
+import SVG from 'app/components/svg';
 
 const SocialMediaSharing = React.createClass({
   render() {

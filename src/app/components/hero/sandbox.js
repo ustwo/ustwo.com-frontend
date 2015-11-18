@@ -1,6 +1,6 @@
 import Hero from './';
-import renderVariations from '../../lib/sandbox/render-variations';
-import Video from '../video';
+import renderVariations from 'app/lib/sandbox/render-variations';
+import Video from 'app/components/video';
 
 const sizes = {
   "thumbnail": {

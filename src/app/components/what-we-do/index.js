@@ -5,12 +5,12 @@ import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 
-import renderModules from '../../lib/module-renderer';
-import getFeaturedImage from '../../lib/get-featured-image';
-import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
+import renderModules from 'app/lib/module-renderer';
+import getFeaturedImage from 'app/lib/get-featured-image';
+import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
-import WorkItem from '../work-item';
-import Hero from '../hero';
+import WorkItem from 'app/components/work-item';
+import Hero from 'app/components/hero';
 
 const PageWhatWeDo = React.createClass({
   mixins: [getScrollTrackerMixin('what-we-do')],

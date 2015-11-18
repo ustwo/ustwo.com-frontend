@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import Flux from '../../flux';
+import Flux from 'app/flux';
 
 const Modal = React.createClass({
   onClick() {

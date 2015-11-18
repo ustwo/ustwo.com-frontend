@@ -1,5 +1,5 @@
 import BlogPostListItem from './';
-import renderVariations from '../../lib/sandbox/render-variations';
+import renderVariations from 'app/lib/sandbox/render-variations';
 
 const data = {
     id: 8878,

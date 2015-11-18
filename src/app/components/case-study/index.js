@@ -2,9 +2,9 @@ import React from 'react';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
 
-import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
-import renderModules from '../../lib/module-renderer';
-import RelatedContent from '../related-content';
+import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
+import renderModules from 'app/lib/module-renderer';
+import RelatedContent from 'app/components/related-content';
 
 const PageCaseStudy = React.createClass({
   mixins: [getScrollTrackerMixin('case-study')],

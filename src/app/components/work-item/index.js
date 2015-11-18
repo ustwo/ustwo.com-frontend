@@ -3,11 +3,11 @@
 import React from 'react';
 import get from 'lodash/object/get';
 
-import Flux from '../../flux';
+import Flux from 'app/flux';
 
-import Rimage from '../rimage';
-import ImageHover from '../image-hover';
-import WorkItemStyles from '../work-item-styles';
+import Rimage from 'app/components/rimage';
+import ImageHover from 'app/components/image-hover';
+import WorkItemStyles from 'app/components/work-item-styles';
 import classnames from 'classnames';
 
 const WorkItem = React.createClass({

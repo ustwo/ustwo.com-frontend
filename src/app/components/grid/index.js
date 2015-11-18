@@ -2,9 +2,9 @@ import React from 'react';
 import classnames from 'classnames';
 import kebabCase from 'lodash/string/kebabCase';
 import get from 'lodash/object/get';
-import QS from '../../lib/query-string';
+import QS from 'app/lib/query-string';
 
-import GridCell from '../grid-cell';
+import GridCell from 'app/components/grid-cell';
 
 const Grid = React.createClass({
   render() {

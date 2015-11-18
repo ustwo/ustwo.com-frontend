@@ -4,9 +4,9 @@ import React from 'react';
 import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 
-import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
+import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
-import Navigation from '../navigation';
+import Navigation from 'app/components/navigation';
 
 const Page404 = React.createClass({
   mixins: [getScrollTrackerMixin('404')],

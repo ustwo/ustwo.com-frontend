@@ -4,17 +4,17 @@ import find from 'lodash/collection/find';
 import some from 'lodash/collection/some';
 import capitalize from 'lodash/string/capitalize';
 
-import log from '../app/lib/log';
-import window from '../app/adaptors/server/window';
-import DataLoader from './data-loader';
-import Nulls from '../app/flux/nulls';
-import Defaults from '../app/flux/defaults';
-import fetchSocialMediaData from '../app/lib/social-media-fetcher';
+import log from 'app/lib/log';
+import window from 'app/adaptors/server/window';
+import DataLoader from 'server/data-loader';
+import Nulls from 'app/flux/nulls';
+import Defaults from 'app/flux/defaults';
+import fetchSocialMediaData from 'app/lib/social-media-fetcher';
 
 import RoutePattern from 'route-pattern';
-import virtualUrl from '../app/flux/virtualurl';
-import Routes from '../app/flux/routes';
-import Actions from '../app/flux/actions';
+import virtualUrl from 'app/flux/virtualurl';
+import Routes from 'app/flux/routes';
+import Actions from 'app/flux/actions';
 
 const globalLoads = [{
   url: 'ustwo/v1/nav/main',

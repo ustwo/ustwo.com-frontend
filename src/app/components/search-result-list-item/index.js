@@ -3,15 +3,15 @@ import classnames from 'classnames';
 import he from 'he';
 import get from 'lodash/object/get';
 import kebabCase from 'lodash/string/kebabCase';
-import getFeaturedImage from '../../lib/get-featured-image';
-import getAuthor from '../../lib/get-author';
+import getFeaturedImage from 'app/lib/get-featured-image';
+import getAuthor from 'app/lib/get-author';
 
-import Flux from '../../flux';
+import Flux from 'app/flux';
 
-import Rimage from '../rimage';
-import BlogPostMetaInformation from '../blog-post-meta-information';
-import BlogCategoryTag from '../blog-category-tag';
-import SocialMediaStatistics from '../social-media-statistics';
+import Rimage from 'app/components/rimage';
+import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
+import BlogCategoryTag from 'app/components/blog-category-tag';
+import SocialMediaStatistics from 'app/components/social-media-statistics';
 
 const SearchResultListItem = React.createClass({
   render() {

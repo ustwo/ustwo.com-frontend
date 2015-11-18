@@ -3,7 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import BoldHeaderSubtitle from '../bold-header-subtitle';
+import BoldHeaderSubtitle from 'app/components/bold-header-subtitle';
 
 const BoldHeader = React.createClass({
   render() {

@@ -4,12 +4,12 @@ import React from 'react';
 import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
 
-import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
+import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
-import Flux from '../../flux';
+import Flux from 'app/flux';
 
-import LoadingIcon from '../loading-icon';
-import SearchResultListItem from '../search-result-list-item';
+import LoadingIcon from 'app/components/loading-icon';
+import SearchResultListItem from 'app/components/search-result-list-item';
 
 const PageSearchResults = React.createClass({
   mixins: [getScrollTrackerMixin('search-results')],

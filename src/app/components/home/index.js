@@ -3,23 +3,23 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
+import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
-import ScrollMagic from '../../adaptors/server/scroll-magic';
-import Tracking from '../../adaptors/server/tracking';
-import window from '../../adaptors/server/window';
-import Track from '../../adaptors/server/track';
-import env from '../../adaptors/server/env';
+import ScrollMagic from 'app/adaptors/server/scroll-magic';
+import Tracking from 'app/adaptors/server/tracking';
+import window from 'app/adaptors/server/window';
+import Track from 'app/adaptors/server/track';
+import env from 'app/adaptors/server/env';
 
-import DownChevron from '../down-chevron';
-import SVG from '../svg';
-import WordAnimation from '../word-animation';
-import EntranceTransition from '../entrance-transition';
+import DownChevron from 'app/components/down-chevron';
+import SVG from 'app/components/svg';
+import WordAnimation from 'app/components/word-animation';
+import EntranceTransition from 'app/components/entrance-transition';
 
-import BoldHeader from '../bold-header';
-import HomeTextBlock from '../home-text-block';
-import ScreenBlock from '../screen-block';
-import RelatedContent from '../related-content';
+import BoldHeader from 'app/components/bold-header';
+import HomeTextBlock from 'app/components/home-text-block';
+import ScreenBlock from 'app/components/screen-block';
+import RelatedContent from 'app/components/related-content';
 
 const PageHome = React.createClass({
   mixins: [getScrollTrackerMixin('home')],

@@ -1,6 +1,6 @@
 'use strict'
 
-import '../../adaptors/server/svg4everybody';
+import 'app/adaptors/server/svg4everybody';
 import React from 'react';
 import Meta from "react-helmet";
 import TransitionManager from 'react-transition-manager';
@@ -10,34 +10,34 @@ import find from 'lodash/collection/find';
 import includes from 'lodash/collection/includes';
 
 // TODO: see if there's a better way to get fonts in
-import '../../adaptors/server/localfont';
+import 'app/adaptors/server/localfont';
 
 import window from 'app/adaptors/server/window';
-import '../../lib/animate';
+import 'app/lib/animate';
 
-import Store from '../../flux/store';
-import Nulls from '../../flux/nulls';
-import PageContainer from '../page-container';
-import Navigation from '../navigation';
-import Footer from '../footer';
-import Modal from '../modal';
-import EntranceTransition from '../entrance-transition';
-import ContactTray from '../contact-tray';
-import TakeOver from '../take-over';
-import FourOhFour from '../404';
-import BlogCategories from '../blog-categories';
-import NavigationOverlay from '../navigation-overlay';
-import PageLoader from '../page-loader';
+import Store from 'app/flux/store';
+import Nulls from 'app/flux/nulls';
+import PageContainer from 'app/components/page-container';
+import Navigation from 'app/components/navigation';
+import Footer from 'app/components/footer';
+import Modal from 'app/components/modal';
+import EntranceTransition from 'app/components/entrance-transition';
+import ContactTray from 'app/components/contact-tray';
+import TakeOver from 'app/components/take-over';
+import FourOhFour from 'app/components/404';
+import BlogCategories from 'app/components/blog-categories';
+import NavigationOverlay from 'app/components/navigation-overlay';
+import PageLoader from 'app/components/page-loader';
 
 const pageMap = {
-  'home': require('../home'),
-  'what-we-do': require('../what-we-do'),
-  'what-we-do/case-study': require('../case-study'),
-  'blog': require('../blog'),
-  'blog/post': require('../post'),
-  'blog/search-results': require('../search-results'),
-  'legal': require('../legal'),
-  'join-us': require('../join-us')
+  'home': require('app/components/home'),
+  'what-we-do': require('app/components/what-we-do'),
+  'what-we-do/case-study': require('app/components/case-study'),
+  'blog': require('app/components/blog'),
+  'blog/post': require('app/components/post'),
+  'blog/search-results': require('app/components/search-results'),
+  'legal': require('app/components/legal'),
+  'join-us': require('app/components/join-us')
 };
 
 const spinnerBlacklist = ['legal', 'blog/search-results'];

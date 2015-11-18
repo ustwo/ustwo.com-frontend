@@ -5,11 +5,11 @@ import classnames from 'classnames';
 import get from 'lodash/object/get';
 import find from 'lodash/collection/find';
 import kebabCase from 'lodash/string/kebabCase';
-import getFeaturedImage from '../../lib/get-featured-image';
+import getFeaturedImage from 'app/lib/get-featured-image';
 
-import Flux from '../../flux';
-import JobItem from '../job-item';
-import Rimage from '../rimage';
+import Flux from 'app/flux';
+import JobItem from 'app/components/job-item';
+import Rimage from 'app/components/rimage';
 
 const StudioJobs = React.createClass({
   getInitialState() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import get from 'lodash/object/get';
 
-import Rimage from '../rimage';
+import Rimage from 'app/components/rimage';
 
 const GridCell = React.createClass({
   render() {

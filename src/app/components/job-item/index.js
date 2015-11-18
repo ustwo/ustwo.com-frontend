@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import ellipsize from 'ellipsize';
 import get from 'lodash/object/get';
 
-import SVG from '../svg';
+import SVG from 'app/components/svg';
 
 const JobItem = React.createClass({
   componentDidUpdate() {
