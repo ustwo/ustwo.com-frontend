@@ -166,7 +166,7 @@ const App = React.createClass({
     const { currentPage, page: pageData, post, caseStudy} = this.state;
     let page;
     if(!includes(spinnerBlacklist, currentPage) && !pageData && !post && !caseStudy) {
-      page = <PageLoader key="loader" className={`loading-${pageId}`} />;
+      page = <PageLoader key="loader" pageId={pageId} />;
     } else {
       page = React.createElement(pageMap[pageId], Object.assign({ key: `page-${pageId}` }, this.state));
     }
