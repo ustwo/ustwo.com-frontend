@@ -11,57 +11,32 @@ $loader-bg: #fff;
 $loader-color: $offWhite;
 
 @keyframes loader {
-  0% { // 0s
+  19% {
     bottom: 0;
-    //100, 100
-    transform: scale(1, 1);
-  }
-  19% { // 320ms
-    bottom: 0;
-    // 125, 25
     transform: scale(1.25, 0.25);
   }
-  33% { // 560ms
-    bottom: 0;
-    // 80, 115
+  30% {
     transform: scale(0.8, 1.15);
   }
-  40% { // halfway
-    bottom: $loader-jump * .75;
-  }
-  44% {
-    bottom: $loader-jump * .95;
-  }
-  47% { // 800ms
+  49% {
     bottom: $loader-jump;
   }
   51% {
     bottom: $loader-jump * .95;
   }
-  52% { // 880ms
-    // 100, 100
+  52% {
+    bottom: $loader-jump * .85;
+  }
+  60% {
     transform: scale(1, 1);
   }
-  59% {
-    bottom: $loader-jump * .75;
-  }
-  66% { // 1120ms
+  66% {
     bottom: 0;
-    // 100, 80
-    transform: scale(1, 0.8);
   }
-  71% { // 1200ms
-    // 150, 25
+  68% {
     transform: scale(1.5, 0.25);
   }
-  85% { // 1440ms
-    bottom: 0;
-    // 100, 100
-    transform: scale(1, 1);
-  }
-  100% { // 1680ms
-    bottom: 0;
-    // 100, 100
+  90% {
     transform: scale(1, 1);
   }
 }
