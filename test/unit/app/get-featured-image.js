@@ -1,4 +1,4 @@
-import getFeaturedImage from '../../../src/app/lib/get-featured-image';
+import getFeaturedImage from 'app/lib/get-featured-image';
 import set from 'lodash/object/set';
 
 describe('getFeaturedImage', () => {
