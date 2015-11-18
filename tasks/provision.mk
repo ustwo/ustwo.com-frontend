@@ -11,7 +11,7 @@ provision-vault: load-vault
 #
 # Example:
 #
-#     $ make provision-staging IDENTITY_FILE=~/.ssh/usweb_stg_rsa
+#     $ make provision-staging IDENTITY_FILE=~/.ssh/usweb_rsa
 #
 provision-%: etc/ansible/%.yml
 	$(ANSIBLE_PLAY) $<

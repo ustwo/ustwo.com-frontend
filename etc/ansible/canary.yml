@@ -1,5 +1,5 @@
 ---
-- hosts: usweb.production
+- hosts: usweb.canary
   vars:
     owner: ubuntu
     group: ubuntu

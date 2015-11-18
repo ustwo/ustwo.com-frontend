@@ -1,12 +1,12 @@
 BASE_PATH ?= $(PWD)
 VERSION ?= dev
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
-ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
 SOURCE_BRANCH ?= master
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 project_name := usweb
 project_namespace := ustwo/$(project_name)
+internal_path := /home/ustwo
 
 ## CLI aliases ################################################################
 AWK := awk
@@ -30,12 +30,12 @@ DOCKER_TASK := $(DOCKER) run --rm -it
 DOCKER_CI_TASK := $(DOCKER) run -it
 ANSIBLE := $(DOCKER_TASK) \
 	-v $(IDENTITY_FILE):/root/.ssh/id_rsa \
-	-v $(PWD):/home/ustwo \
-	-w /home/ustwo \
+	-v $(PWD):$(internal_path) \
+	-w $(internal_path) \
 	ustwo/ansible:1.9.4
 ANSIBLE_PLAY := $(ANSIBLE) ansible-playbook -b -v \
 	--private-key=/root/.ssh/id_rsa \
-	--inventory-file=/home/ustwo/etc/ansible/hosts
+	--inventory-file=$(internal_path)/etc/ansible/hosts
 ###############################################################################
 
 default: build-all

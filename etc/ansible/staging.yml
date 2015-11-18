@@ -4,10 +4,27 @@
     owner: ubuntu
     group: ubuntu
   tasks:
+    - name: add make
+      apt:
+        pkg: make
+        state: latest
     - name: add htop
       apt:
         pkg: htop
         state: latest
+    - name: add fail2ban
+      apt:
+        pkg: fail2ban
+        state: latest
+    - name: ufw setup
+      ufw:
+        state: enabled
+        policy: allow
+    - name: ufw limit
+      ufw:
+        rule: limit
+        port: ssh
+        proto: tcp
     - name: copy ssh authorized keys
       copy:
         src: ../authorized_keys
