@@ -1,11 +1,21 @@
 # Provisioning ################################################################
 
-provision-vault: load-vault
+##
+# When provisioning a machine from scratch, remember to load the vault docker
+# image.
+#
+# Assuming you created the VM with docker-machine, select it and use:
+#
+#     $ make vault-load VAULT_PATH=build/vault.tar
 
 
+
+##
+# Provisions the target machine
+#
 # Possible options are:
 #
-# * provision-host
+# * provision-canary
 # * provision-staging
 # * provision-production
 #
