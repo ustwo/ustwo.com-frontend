@@ -2,13 +2,13 @@ import { polyfill } from 'es6-promise';
 import fetch from 'isomorphic-fetch/fetch-npm-node.js';
 import pick from 'lodash/object/pick';
 
-import log from './log';
-import window from '../adaptors/server/window';
+import log from 'app/lib/log';
+import window from 'app/adaptors/server/window';
 
 (typeof window !== 'undefined') && (window.ajaxPending = false);
 let ajaxes = {};
 
-let defaultConfig = require('../adaptors/server/proxy-url')();
+let defaultConfig = require('app/adaptors/server/proxy-url')();
 
 function generateURL(config) {
   let url;

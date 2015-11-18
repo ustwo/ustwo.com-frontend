@@ -1,10 +1,10 @@
 import React from 'react';
 import get from 'lodash/object/get';
 
-import SingleColumn from '../components/single-column';
-import QuoteBlock from '../components/quote-block';
-import Rimage from '../components/rimage';
-import Grid from '../components/grid';
+import SingleColumn from 'app/components/single-column';
+import QuoteBlock from 'app/components/quote-block';
+import Rimage from 'app/components/rimage';
+import Grid from 'app/components/grid';
 
 function getBackgroundColour(options) {
   const { colours, zebra, getStripe } = options;
