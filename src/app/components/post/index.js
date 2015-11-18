@@ -65,19 +65,19 @@ const PagePost = React.createClass({
     return relatedContent;
   },
   renderSocialMediaSharing(position) {
-    const props = this.props;
+    const { post, facebookShares, twitterShares } = this.props;
     return (
       <SocialMediaSharing
         className={position}
-        title={he.decode(get(props.post, 'title.rendered', ''))}
-        uri={`http://ustwo.com/blog/${get(props.page, 'slug')}`}
-        facebookShares={props.facebookShares}
-        twitterShares={props.twitterShares}
+        title={he.decode(get(post, 'title.rendered', ''))}
+        uri={`http://ustwo.com/blog/${get(post, 'slug')}`}
+        facebookShares={facebookShares}
+        twitterShares={twitterShares}
       />
     );
   },
   renderAuthorInformation() {
-    const { page: post } = this.props;
+    const { post } = this.props;
     const author = get(post, '_embedded.author.0');
     return <section className='author'>
       <img
