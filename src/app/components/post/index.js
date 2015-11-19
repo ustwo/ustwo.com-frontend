@@ -2,18 +2,18 @@ import React from 'react';
 import classnames from 'classnames';
 import he from 'he';
 import get from 'lodash/object/get';
-import renderModules from '../../lib/module-renderer';
-import getAuthor from '../../lib/get-author';
-import getFeaturedImage from '../../lib/get-featured-image';
-import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
+import renderModules from 'app/lib/module-renderer';
+import getAuthor from 'app/lib/get-author';
+import getFeaturedImage from 'app/lib/get-featured-image';
+import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
-import Flux from '../../flux';
+import Flux from 'app/flux';
 
-import Rimage from '../rimage';
-import BlogPostMetaInformation from '../blog-post-meta-information';
-import BlogCategoryTag from '../blog-category-tag';
-import SocialMediaSharing from '../social-media-sharing';
-import RelatedContent from '../related-content';
+import Rimage from 'app/components/rimage';
+import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
+import BlogCategoryTag from 'app/components/blog-category-tag';
+import SocialMediaSharing from 'app/components/social-media-sharing';
+import RelatedContent from 'app/components/related-content';
 
 const PagePost = React.createClass({
   mixins: [getScrollTrackerMixin('post')],

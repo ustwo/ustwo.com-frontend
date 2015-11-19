@@ -3,8 +3,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import Track from '../../adaptors/server/track';
-import Flux from '../../flux';
+import Track from 'app/adaptors/server/track';
+import Flux from 'app/flux';
 
 const NavigationLink = React.createClass({
   onClick(e) {

@@ -1,6 +1,8 @@
 FROM ustwo/nodejs:4.1.1
 MAINTAINER Arnau Siches <arnau@ustwo.com>
 
+ENV NODE_PATH /home/ustwo/src
+
 COPY package.app.json /home/ustwo/package.json
 RUN npm install --production
 COPY src /home/ustwo/src

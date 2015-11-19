@@ -3,9 +3,9 @@
 import React from 'react';
 import map from 'lodash/collection/map';
 
-import Flux from '../../flux';
-import CloseButton from '../close-button';
-import ModalContentMixin from '../../lib/modal-content-mixin';
+import Flux from 'app/flux';
+import CloseButton from 'app/components/close-button';
+import ModalContentMixin from 'app/lib/modal-content-mixin';
 
 const blogCategories = {
   all: 'All Categories',

@@ -1,5 +1,5 @@
 import Rimage from './';
-import renderVariations from '../../lib/sandbox/render-variations';
+import renderVariations from 'app/lib/sandbox/render-variations';
 
 const sizes = {
   "thumbnail": {

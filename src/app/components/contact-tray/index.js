@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Flux from '../../flux';
-import ContactDetail from '../contact-detail';
-import CloseButton from '../close-button';
-import ModalContentMixin from '../../lib/modal-content-mixin';
+import Flux from 'app/flux';
+import ContactDetail from 'app/components/contact-detail';
+import CloseButton from 'app/components/close-button';
+import ModalContentMixin from 'app/lib/modal-content-mixin';
 
 const ContactTray = React.createClass({
   mixins: [ModalContentMixin],

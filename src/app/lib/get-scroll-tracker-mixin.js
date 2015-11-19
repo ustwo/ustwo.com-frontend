@@ -1,7 +1,7 @@
 import React from 'react';
 import get from 'lodash/object/get';
 
-import ScrollTracker from '../adaptors/server/scroll-tracker';
+import ScrollTracker from 'app/adaptors/server/scroll-tracker';
 
 function getScrollTrackerMixin(pageName) {
   return {

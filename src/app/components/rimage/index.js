@@ -12,8 +12,8 @@ import sortBy from 'lodash/collection/sortBy';
 import omit from 'lodash/object/omit';
 import endsWith from 'lodash/string/endsWith';
 
-import Flux from '../../flux';
-import Image from '../../adaptors/server/image';
+import Flux from 'app/flux';
+import Image from 'app/adaptors/server/image';
 
 const Rimage = React.createClass({
   getInitialState() {

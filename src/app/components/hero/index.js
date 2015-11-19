@@ -3,11 +3,11 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import EntranceTransition from '../entrance-transition';
-import WordAnimation from '../word-animation';
-import DownChevron from '../down-chevron';
-import Rimage from '../rimage';
-import Track from '../../adaptors/server/track';
+import EntranceTransition from 'app/components/entrance-transition';
+import WordAnimation from 'app/components/word-animation';
+import DownChevron from 'app/components/down-chevron';
+import Rimage from 'app/components/rimage';
+import Track from 'app/adaptors/server/track';
 
 const Hero = React.createClass({
   componentDidMount() {

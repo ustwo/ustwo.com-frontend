@@ -8,16 +8,16 @@ import get from 'lodash/object/get';
 import take from 'lodash/array/take';
 import isEqual from 'lodash/lang/isEqual';
 
-import getFeaturedImage from '../../lib/get-featured-image';
-import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
+import getFeaturedImage from 'app/lib/get-featured-image';
+import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
-import Flux from '../../flux';
+import Flux from 'app/flux';
 
-import Search from '../search';
-import Hero from '../hero';
-import BlogPostListItem from '../blog-post-list-item';
-import BlogControls from '../blog-controls';
-import LoadMoreButton from '../load-more-button';
+import Search from 'app/components/search';
+import Hero from 'app/components/hero';
+import BlogPostListItem from 'app/components/blog-post-list-item';
+import BlogControls from 'app/components/blog-controls';
+import LoadMoreButton from 'app/components/load-more-button';
 
 const PageBlog = React.createClass({
   mixins: [getScrollTrackerMixin('blog')],

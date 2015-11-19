@@ -1,7 +1,7 @@
 import find from 'lodash/collection/find';
-import DataLoader from './data-loader';
-import tweetCounts from './tweetCounts';
-import log from './log';
+import DataLoader from 'app/lib/data-loader';
+import tweetCounts from 'app/lib/tweetCounts';
+import log from 'app/lib/log';
 
 function formatter(data, type) {
   let uri;

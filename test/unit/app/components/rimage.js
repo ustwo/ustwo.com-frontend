@@ -1,4 +1,4 @@
-import Rimage from '../../../../src/app/components/rimage';
+import Rimage from 'app/components/rimage';
 import React from 'react/addons';
 
 describe('Rimage', () => {

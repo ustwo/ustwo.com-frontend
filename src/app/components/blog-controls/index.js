@@ -3,10 +3,10 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import Flux from '../../flux';
+import Flux from 'app/flux';
 
-import SVG from '../svg';
-import LoadingIcon from '../loading-icon';
+import SVG from 'app/components/svg';
+import LoadingIcon from 'app/components/loading-icon';
 
 const blogCategories = {
   all: 'All Categories',

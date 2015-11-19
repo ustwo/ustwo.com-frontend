@@ -1,7 +1,7 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
 
-import Rimage from '../rimage';
+import Rimage from 'app/components/rimage';
 
 const posterURL = "/images/transparent.png";
 const Video = React.createClass({

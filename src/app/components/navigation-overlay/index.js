@@ -4,11 +4,11 @@ import React from 'react';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
 
-import Flux from '../../flux';
+import Flux from 'app/flux';
 
-import NavigationOverlayLink from '../navigation-overlay-link';
-import CloseButton from '../close-button';
-import ModalContentMixin from '../../lib/modal-content-mixin';
+import NavigationOverlayLink from 'app/components/navigation-overlay-link';
+import CloseButton from 'app/components/close-button';
+import ModalContentMixin from 'app/lib/modal-content-mixin';
 
 const NavigationOverlay = React.createClass({
   mixins: [ModalContentMixin],

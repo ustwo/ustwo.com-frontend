@@ -5,14 +5,14 @@ import TransitionManager from 'react-transition-manager';
 import get from 'lodash/object/get';
 import reduce from 'lodash/collection/reduce';
 
-import Track from '../../adaptors/server/track';
-import Flux from '../../flux';
-import getFeaturedImage from '../../lib/get-featured-image';
-import ModalContentMixin from '../../lib/modal-content-mixin';
+import Track from 'app/adaptors/server/track';
+import Flux from 'app/flux';
+import getFeaturedImage from 'app/lib/get-featured-image';
+import ModalContentMixin from 'app/lib/modal-content-mixin';
 
-import CloseButton from '../close-button';
-import NewsFlash from '../news-flash';
-import Rimage from '../rimage';
+import CloseButton from 'app/components/close-button';
+import NewsFlash from 'app/components/news-flash';
+import Rimage from 'app/components/rimage';
 
 const TakeOver = React.createClass({
   mixins: [ModalContentMixin],

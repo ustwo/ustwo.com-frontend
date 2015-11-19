@@ -1,4 +1,4 @@
-import spannify from '../../../src/app/lib/spannify';
+import spannify from 'app/lib/spannify';
 
 describe('spannify', () => {
 

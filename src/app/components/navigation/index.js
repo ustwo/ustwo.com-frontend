@@ -4,13 +4,13 @@ import React from 'react';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
 
-import Flux from '../../flux';
-import Nulls from '../../flux/nulls';
+import Flux from 'app/flux';
+import Nulls from 'app/flux/nulls';
 
-import Track from '../../adaptors/server/track';
-import SVG from '../svg';
-import NavigationLink from '../navigation-link';
-import NavigationToggle from '../navigation-toggle';
+import Track from 'app/adaptors/server/track';
+import SVG from 'app/components/svg';
+import NavigationLink from 'app/components/navigation-link';
+import NavigationToggle from 'app/components/navigation-toggle';
 
 const Navigation = React.createClass({
   openOverlay() {

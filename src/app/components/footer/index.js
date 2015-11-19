@@ -5,11 +5,11 @@ import classnames from 'classnames';
 import get from 'lodash/object/get';
 import kebabCase from 'lodash/string/kebabCase';
 
-import Track from '../../adaptors/server/track';
-import Flux from '../../flux';
-import SVG from '../svg';
-import StudioContact from '../studio-contact';
-import Subscription from '../subscription';
+import Track from 'app/adaptors/server/track';
+import Flux from 'app/flux';
+import SVG from 'app/components/svg';
+import StudioContact from 'app/components/studio-contact';
+import Subscription from 'app/components/subscription';
 
 const Footer = React.createClass({
   getInitialState() {

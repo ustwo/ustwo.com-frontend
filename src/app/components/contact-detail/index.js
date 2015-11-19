@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import Flux from '../../flux/';
-import Track from '../../adaptors/server/track';
+import Flux from 'app/flux/';
+import Track from 'app/adaptors/server/track';
 
 const ContactDetail = React.createClass({
   render() {

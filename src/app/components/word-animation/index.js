@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import spannify from '../../lib/spannify';
-import animate from '../../lib/animate';
+import spannify from 'app/lib/spannify';
+import animate from 'app/lib/animate';
 
 const WordAnimation = React.createClass({
   getInitialState() {

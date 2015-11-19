@@ -1,6 +1,6 @@
 'use strict';
 
-import ScrollMagic from '../../adaptors/server/scroll-magic';
+import ScrollMagic from 'app/adaptors/server/scroll-magic';
 
 export default class Tracking {
   scrollController = new ScrollMagic.Controller();

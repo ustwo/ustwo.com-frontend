@@ -1,6 +1,6 @@
 'use strict';
 
-import Track from '../../adaptors/server/track';
+import Track from 'app/adaptors/server/track';
 
 function getScrollTop() {
   if(typeof pageYOffset!= 'undefined'){

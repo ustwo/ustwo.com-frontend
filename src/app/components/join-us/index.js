@@ -7,17 +7,17 @@ import map from 'lodash/collection/map';
 import filter from 'lodash/collection/filter';
 import get from 'lodash/object/get';
 import kebabCase from 'lodash/string/kebabCase';
-import spannify from '../../lib/spannify';
-import getFeaturedImage from '../../lib/get-featured-image';
-import renderModules from '../../lib/module-renderer';
-import getScrollTrackerMixin from '../../lib/get-scroll-tracker-mixin';
+import spannify from 'app/lib/spannify';
+import getFeaturedImage from 'app/lib/get-featured-image';
+import renderModules from 'app/lib/module-renderer';
+import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
-import DownChevron from '../down-chevron';
-import SVG from '../svg';
-import Hero from '../hero';
-import StudioJobs from '../studio-jobs';
-import Rimage from '../rimage';
-import Video from '../video';
+import DownChevron from 'app/components/down-chevron';
+import SVG from 'app/components/svg';
+import Hero from 'app/components/hero';
+import StudioJobs from 'app/components/studio-jobs';
+import Rimage from 'app/components/rimage';
+import Video from 'app/components/video';
 
 const PageJoinUs = React.createClass({
   mixins: [getScrollTrackerMixin('join-us')],

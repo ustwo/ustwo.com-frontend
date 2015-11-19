@@ -7,12 +7,12 @@ import capitalize from 'lodash/string/capitalize';
 import get from 'lodash/object/get';
 import camelCase from 'lodash/string/camelCase';
 
-import log from '../lib/log';
-import window from '../adaptors/server/window';
-import DataLoader from '../lib/data-loader';
+import log from 'app/lib/log';
+import window from 'app/adaptors/server/window';
+import DataLoader from 'app/lib/data-loader';
 import Nulls from './nulls';
 import Defaults from './defaults';
-import fetchSocialMediaData from '../lib/social-media-fetcher';
+import fetchSocialMediaData from 'app/lib/social-media-fetcher';
 
 const _state = Object.assign({
   currentPage: Nulls.page,

@@ -6,8 +6,8 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import omit from 'lodash/object/omit';
 
-import log from '../app/lib/log';
-import bootstrapper from './bootstrapper';
+import log from 'app/lib/log';
+import bootstrapper from 'server/bootstrapper';
 
 const isomorphic = true;
 log('Isomorphic:', isomorphic);
@@ -17,7 +17,7 @@ function renderApp(req, res) {
   if (isomorphic) {
     bootstrapper(req.protocol + '://' + req.hostname + req.originalUrl, req.get('Host-API'), `https://${process.env.DOCKER_PROXY_HOST}:${process.env.PROXY_HTTPS_PORT}`)
       .then((state) => {
-        const App = React.createFactory(require('../app/components/app'));
+        const App = React.createFactory(require('app/components/app'));
         const AppString = React.renderToString(App({
           state: omit(state, 'takeover')
         }));

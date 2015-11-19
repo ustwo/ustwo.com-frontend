@@ -8,7 +8,7 @@ import camelCase from 'lodash/string/camelCase';
 import capitalize from 'lodash/string/capitalize';
 
 import manifest from '../../package.json';
-import sandboxRoutes from './routes.sandbox.js';
+import sandboxRoutes from 'server/routes.sandbox.js';
 
 let app = express();
 

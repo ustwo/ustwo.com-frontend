@@ -1,4 +1,4 @@
-import getAuthor from '../../../src/app/lib/get-author';
+import getAuthor from 'app/lib/get-author';
 
 describe('getAuthor', () => {
   let post;

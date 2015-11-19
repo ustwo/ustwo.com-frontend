@@ -3,7 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import PageLoadingIcon from '../page-loading-icon';
+import PageLoadingIcon from 'app/components/page-loading-icon';
 
 const PageLoader = React.createClass({
   render() {
