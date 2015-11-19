@@ -3,9 +3,9 @@
 Since this is more specific part of the project, we're keeping steps related to
 release in this separate document.
 
-As a general overview we're using Docker Machine to set up and control our
-server environments (staging and production) as Docker environments, so it's
-easy to orchestrate images in local and remote containers.
+As a general overview locally we're using Docker Machine to set up and control
+the environment, but due to some bugs in 0.5.0 at the moment on staging and
+production you need to log in via SSH manually and run the make commands inside.
 
 We're also making use of private Docker Hub repositories to store and distribute
 tagged images, built on CI.
@@ -14,9 +14,9 @@ To get a list of infrastructure platforms supported by Docker Machine, have a
 look at the output of `docker-machine create` (without any more parameters).
 
 In order to be able to access the staging and production environments you'll
-need to have the Docker Machine certificates and config folder sent over by
-someone from the team. As for the CDN commands, you need to set up `CDN77_LOGIN`
-and `CDN77_API_KEY` as environment variables.
+need to have your SSH public key added by someone in the team. As for the CDN
+commands, you need to set up `CDN77_LOGIN` and `CDN77_API_KEY` as environment
+variables.
 
 ## Tag / push images
 
@@ -44,31 +44,31 @@ CircleCI build):
 
 ## Deploy to staging
 
-1. Set the right environment
+1. Log in using SSH
 
-        $ eval $(docker-machine env ustwosite)
+        $ ssh <staging-machine>
 
 2. Pull images
 
-        $ make pull VERSION=1.2.3
+        $ sudo make pull VERSION=1.2.3
 
 3. Deploy
 
-        $ make deploy-staging VERSION=1.2.3
+        $ sudo make deploy-staging VERSION=1.2.3
 
-4. Purge and prefetch CDN cache
+4. Clean old images, keeping the last known working version in case of rollback
+
+        $ sudo make ls
+        $ sudo make nuke VERSION=1.2.1
+
+5. Exit SSH
+
+        $ exit
+
+6. Purge and prefetch CDN cache
 
         $ make cdn-purge-staging
         $ make cdn-prefetch-staging
-
-5. Clean old images, keeping only the last known working version in case of rollback
-
-        $ make ls
-        $ make nuke VERSION=1.2.1
-
-6. Switch back to dev environment
-
-        $ eval $(docker-machine env dev)
 
 ## Deploy to production
 
@@ -83,28 +83,29 @@ the Docker Hub.
 
         $ open https://local.ustwo.com:9443
 
-3. Set the right environment
+3. Log in using SSH
 
-        $ eval $(docker-machine env ustwositepro)
+        $ ssh <production-machine>
 
 4. Pull images
 
-        $ make pull VERSION=1.2.3
+        $ sudo make pull VERSION=1.2.3
 
 5. Deploy
 
-        $ make deploy-production VERSION=1.2.3
+        $ sudo make deploy-production VERSION=1.2.3
 
-6. Purge and prefetch CDN cache
+6. Clean old images, keeping the last known working version in case of rollback
+
+        $ sudo make ls
+        $ sudo make nuke VERSION=1.2.1
+
+7. Exit SSH
+
+        $ exit
+
+8. Purge and prefetch CDN cache
 
         $ make cdn-purge-production
         $ make cdn-prefetch-production
 
-7. Clean old images, keeping only the last known working version in case of rollback
-
-        $ make ls
-        $ make nuke VERSION=1.2.1
-
-8. Switch back to dev environment
-
-        $ eval $(docker-machine env dev)
