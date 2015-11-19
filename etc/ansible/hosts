@@ -1,5 +1,5 @@
 [usweb.staging]
-staging.ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222
+usweb-staging.ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222
 
 [usweb.production]
 origin.ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222
@@ -8,5 +8,5 @@ origin.ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222
 54.72.140.250 ansible_ssh_user=ubuntu ansible_ssh_port=22
 
 [usweb]
-staging.ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222
+usweb-staging.ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222
 origin.ustwo.com ansible_ssh_user=ubuntu ansible_ssh_port=2222
