@@ -127,8 +127,9 @@ clients without Javascript (or with overzealous ad blockers)
 
 ### CDN
 
-We (will soon) have *everything* served up from a CDN, and by that we mean that
-ustwo.com is pointed at the CDN URL on a DNS level!
+We have *everything* served up from a CDN, and by that we mean that ustwo.com is
+pointed at the CDN URL on a DNS level! Call it the "CDN first" approach if you
+will and look out for a blog post soon...
 
 Unless you have a lot of user dependent dynamic content (and it's not feasible
 moving these areas to subdomains) the trick is to remove caching from all layers
@@ -143,8 +144,6 @@ prefetch content.
 
 So here's how all this fits together and creates a working setup with our
 WordPress backend and CDN.
-
-TODO: update diagram for new CDN setup
 
 [![ustwo.com infrastructure diagram][5]][5]
 
