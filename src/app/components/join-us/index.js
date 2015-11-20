@@ -20,6 +20,7 @@ import Hero from 'app/components/hero';
 import StudioJobs from 'app/components/studio-jobs';
 import Rimage from 'app/components/rimage';
 import Video from 'app/components/video';
+import Flux from 'app/flux';
 
 function isSelected(currentHash, id, studios) {
   const studioNames = pluck(studios, 'name');
@@ -73,19 +74,17 @@ const PageJoinUs = React.createClass({
     return map(this.getStudios(), studio => {
       const studioId = kebabCase(studio.name);
       const studioName = spannify(studio.name);
+      const uri = this.generateStudioUri(studioId);
       return <li
         key={`tab-${studioId}`}
         className={studioId}
-        onClick={this.generateOnClickStudioHandler(studioId)}
         aria-selected={isSelected(get(currentParams, 'lid'), studioId, this.props.studios)}
-      >{studioName}</li>;
+      ><a href={uri} onClick={Flux.override(uri)}>{studioName}</a></li>;
     });
   },
-  generateOnClickStudioHandler(studio) {
-    return () => {
-      const uri = studio !== 'all-studios' ? '/'+studio : '';
-      Flux.navigate(`/join-us${uri}`, true);
-    }
+  generateStudioUri(studio) {
+    const uri = studio !== 'all-studios' ? '/'+studio : '';
+    return `/join-us${uri}`;
   },
   renderJobSection() {
     const sizes = { hardcoded: { url: '/images/joinus/current_openings.jpg' }};
