@@ -2,11 +2,11 @@
 
 import React from 'react';
 
-import Env from './adaptors/server/env';
+import env from './adaptors/server/env';
 import App from './components/app';
 import Flux from './flux';
 
-window.env = Env;
+window.env = env;
 
 React.initializeTouchEvents(true);
 

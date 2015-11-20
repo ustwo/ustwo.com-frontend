@@ -1,3 +1,5 @@
+import env from 'app/adaptors/server/env';
+
 export default {
   location: {
     href: '',
@@ -26,5 +28,6 @@ export default {
   localStorage: {
     getItem: ()=>{},
     setItem: ()=>{}
-  }
+  },
+  env: env
 }

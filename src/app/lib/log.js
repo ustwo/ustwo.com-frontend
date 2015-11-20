@@ -1,5 +1,6 @@
 import env from 'app/adaptors/server/env';
+import window from 'app/adaptors/server/window';
 
 export default function () {
-  env.verbose && console.log.apply(console, arguments);
+  window.env.verbose && console.log.apply(console, arguments);
 }
