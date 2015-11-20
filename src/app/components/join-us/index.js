@@ -21,13 +21,13 @@ import StudioJobs from 'app/components/studio-jobs';
 import Rimage from 'app/components/rimage';
 import Video from 'app/components/video';
 
-function isSelected(currentSection, id, studios) {
+function isSelected(currentHash, id, studios) {
   const studioNames = pluck(studios, 'name');
   let selected = false;
   if(
-    (!currentSection && id === 'all-studios')
-    || currentSection && id === 'all-studios' && every(studioNames, name => currentSection !== kebabCase(name))
-    || currentSection && currentSection === id
+    (!currentHash && id === 'all-studios')
+    || currentHash && id === 'all-studios' && every(studioNames, name => currentHash !== kebabCase(name))
+    || currentHash && currentHash === id
   ) {
     selected = true;
   }
@@ -69,22 +69,22 @@ const PageJoinUs = React.createClass({
     }].concat(this.props.studios);
   },
   renderStudioTabs() {
+    const { currentParams } = this.props;
     return map(this.getStudios(), studio => {
-      const id = kebabCase(studio.name);
-      const name = spannify(studio.name);
+      const studioId = kebabCase(studio.name);
+      const studioName = spannify(studio.name);
       return <li
-        key={`tab-${id}`}
-        className={id}
-        ref={`tab-${id}`}
-        onClick={this.generateOnClickStudioHandler(id)}
-        aria-selected={isSelected(this.props.currentSection, id, this.props.studios)}
-      >{name}</li>;
+        key={`tab-${studioId}`}
+        className={studioId}
+        onClick={this.generateOnClickStudioHandler(studioId)}
+        aria-selected={isSelected(get(currentParams, 'lid'), studioId, this.props.studios)}
+      >{studioName}</li>;
     });
   },
   generateOnClickStudioHandler(studio) {
     return () => {
-      const hash = studio !== 'all-studios' ? '#'+studio : '';
-      Flux.navigate(`/join-us${hash}`, true);
+      const uri = studio !== 'all-studios' ? '/'+studio : '';
+      Flux.navigate(`/join-us${uri}`, true);
     }
   },
   renderJobSection() {
@@ -108,15 +108,15 @@ const PageJoinUs = React.createClass({
     </div>;
   },
   renderStudioJobs() {
+    const { currentParams } = this.props;
     return map(this.getStudios(), studio => {
-      const { currentSection } = this.props;
-      const id = kebabCase(studio.name);
+      const studioId = kebabCase(studio.name);
       return <StudioJobs
-        key={`jobs-${id}`}
+        key={`jobs-${studioId}`}
         studio={studio}
         studios={this.props.studios}
         jobs={this.getJobsForStudio(studio)}
-        selected={isSelected(currentSection, id, this.props.studios)}
+        selected={isSelected(get(currentParams, 'lid'), studioId, this.props.studios)}
         contactEmail={get(find(get(find(get(this.props, 'footer.contacts', []), 'type', 'general'), 'methods', []), 'type', 'email'), 'uri', '')}
       />;
     });

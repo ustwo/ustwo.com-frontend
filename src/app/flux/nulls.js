@@ -1,6 +1,7 @@
 export default {
   page: null,
-  section: null,
+  params: null,
+  hash: null,
   searchQuery: null,
   modal: null,
   takeover: null,

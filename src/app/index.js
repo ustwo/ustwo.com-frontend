@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import env from './adaptors/server/env';
-import App from './components/app';
-import Flux from './flux';
+import env from 'app/adaptors/server/env';
+import App from 'app/components/app';
+import Flux from 'app/flux';
 
 window.env = env;
 

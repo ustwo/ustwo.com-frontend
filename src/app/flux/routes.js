@@ -9,7 +9,7 @@
 const routes = {
   home: {
     id: 'home',
-    pattern: '/',
+    patterns: ['/'],
     data: () => [{
       url: 'ustwo/v1/pages/home',
       type: 'page',
@@ -19,7 +19,7 @@ const routes = {
   },
   work: {
     id: 'what-we-do',
-    pattern: '/what-we-do',
+    patterns: ['/what-we-do'],
     data: () => [{
       url: 'ustwo/v1/pages/what-we-do',
       type: 'page',
@@ -28,7 +28,7 @@ const routes = {
   },
   caseStudy: {
     id: 'what-we-do/case-study',
-    pattern: '/what-we-do/:cid',
+    patterns: ['/what-we-do/:cid'],
     data: slug => [{
       url: `ustwo/v1/case-studies/${slug}`,
       type: 'caseStudy',
@@ -38,7 +38,7 @@ const routes = {
   },
   blogCategory: {
     id: 'blog',
-    pattern: '/blog?category=:category',
+    patterns: ['/blog?category=:category'],
     data: category => [{
       url: `ustwo/v1/pages/blog`,
       type: 'page',
@@ -51,7 +51,7 @@ const routes = {
   },
   blog: {
     id: 'blog',
-    pattern: '/blog',
+    patterns: ['/blog'],
     data: () => [{
       url: 'ustwo/v1/pages/blog',
       type: 'page',
@@ -64,7 +64,7 @@ const routes = {
   },
   searchResults: {
     id: 'blog/search-results',
-    pattern: '/blog/search?q=:query',
+    pattern: ['/blog/search?q=:query'],
     data: query => [{
       url: `ustwo/v1/posts?search=${query}`,
       type: 'posts',
@@ -73,7 +73,7 @@ const routes = {
   },
   post: {
     id: 'blog/post',
-    pattern: '/blog/:pid',
+    patterns: ['/blog/:pid'],
     data: pid => [{
       url: `ustwo/v1/posts/${pid}`,
       type: 'post',
@@ -83,7 +83,7 @@ const routes = {
   },
   legal: {
     id: 'legal',
-    pattern: '/legal',
+    patterns: ['/legal'],
     data: () => [{
       url: 'ustwo/v1/pages/legal',
       type: 'page',
@@ -92,8 +92,8 @@ const routes = {
   },
   joinUs: {
     id: 'join-us',
-    pattern: '/join-us',
-    data: () => [{
+    patterns: ['/join-us', '/join-us/:lid'],
+    data: lid => [{
       url: 'ustwo/v1/pages/join-us',
       type: 'page',
       slug: 'join-us'

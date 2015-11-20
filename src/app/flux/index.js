@@ -1,5 +1,6 @@
 import RoutePattern from 'route-pattern';
 import find from 'lodash/collection/find';
+import some from 'lodash/collection/some';
 import mapValues from 'lodash/object/mapValues';
 import camelCase from 'lodash/string/camelCase';
 
@@ -29,15 +30,15 @@ const globalLoads = [{
   type: 'studios'
 }];
 
-function getRouteHandler(page, section, itemsToLoad, statusCode=200) {
-  Flux.goTo(page, section, statusCode);
+function applyRoute(page, params, hash, itemsToLoad, statusCode=200) {
+  Flux.goTo(page, params, hash, statusCode);
   Flux.loadData([].concat(globalLoads, itemsToLoad));
 }
 
-function getSection(vurl) {
-  let section = vurl.hash.substr(1);
-  section = section.length ? section : null;
-  return section;
+function getHash(vurl) {
+  let hash = vurl.hash.substr(1);
+  hash = hash.length ? hash : null;
+  return hash;
 }
 
 function setUrl(url, replace) {
@@ -55,33 +56,26 @@ const Flux = Object.assign(
       const vurl = virtualUrl(initialUrl || window.location.href);
       global.hostApi = hostApi;
       global.proxyUrl = proxyUrl || vurl.origin;
-
       window.onpopstate = () => {
         Flux.navigate(window.location.href, true, true);
       };
-
-      if (!RoutePattern.fromString(Routes.home.pattern).matches(vurl.pathname)) {
-        Flux.navigate(vurl.original, false, false, true, true);
-      } else {
-        Track('set', 'page', '/');
-        Track('send', 'pageview');
-        setUrl(vurl.original, true);
-        getRouteHandler(Routes.home.id, getSection(vurl), Routes.home.data(), Routes.home.statusCode);
-      }
+      Flux.navigate(vurl.original, false, false, true, true);
     },
     navigate(urlString, history, ignoreUrl, replaceState, force) {
       const vurl = virtualUrl(urlString);
       const path = vurl.pathname + vurl.search;
       let route = find(Routes, route => {
-        return RoutePattern.fromString(route.pattern).matches(path);
+        return some(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
       });
 
       if (!route) {
         route = Routes.notfound;
       }
-      let paramsSearch = RoutePattern.fromString(route.pattern).match(path);
-      let params = paramsSearch ? paramsSearch.params : [];
-      getRouteHandler(route.id, getSection(vurl), route.data.apply(null, params), route.statusCode);
+      const pattern = find(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
+      let paramsResult = RoutePattern.fromString(pattern).match(path);
+      let params = paramsResult ? paramsResult.params : [];
+      let namedParams = paramsResult ? paramsResult.namedParams : [];
+      applyRoute(route.id, namedParams, getHash(vurl), route.data.apply(null, params), route.statusCode);
 
       if (!ignoreUrl) {
         setUrl(urlString, replaceState);
