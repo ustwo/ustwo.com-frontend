@@ -6,6 +6,8 @@ import classnames from 'classnames';
 import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
 import ScrollMagic from 'app/adaptors/server/scroll-magic';
+import hexRgb from 'hex-rgb';
+import rgbHex from 'rgb-hex';
 import Tracking from 'app/adaptors/server/tracking';
 import window from 'app/adaptors/server/window';
 import Track from 'app/adaptors/server/track';
@@ -103,17 +105,8 @@ const PageHome = React.createClass({
     });
   },
   blendColours(colour1, colour2, percentage) {
-    function intToHex(num) {
-      let hex = Math.round(num).toString(16);
-      return hex.length === 1 ? '0' + hex : hex;
-    }
-
-    function hexToInt(hexArray) {
-      return [parseInt(hexArray[0] + hexArray[1], 16), parseInt(hexArray[2] + hexArray[3], 16), parseInt(hexArray[4] + hexArray[5], 16)];
-    }
-
-    let rgbColour1 = hexToInt(colour1);
-    let rgbColour2 = hexToInt(colour2);
+    let rgbColour1 = hexRgb(colour1);
+    let rgbColour2 = hexRgb(colour2);
 
     let rgbColour3 = [
       (1 - percentage) * rgbColour1[0] + percentage * rgbColour2[0],
@@ -121,7 +114,7 @@ const PageHome = React.createClass({
       (1 - percentage) * rgbColour1[2] + percentage * rgbColour2[2]
     ];
 
-    return intToHex(rgbColour3[0]) + intToHex(rgbColour3[1]) + intToHex(rgbColour3[2]);
+    return rgbHex(rgbColour3[0], rgbColour3[1], rgbColour3[2]);
   },
   componentWillMount() {
     this.Tracking = new Tracking();
