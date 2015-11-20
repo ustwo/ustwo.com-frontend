@@ -1,22 +1,30 @@
 # Provisioning ################################################################
 
-provision-vault: load-vault
+##
+# When provisioning a machine from scratch, remember to load the vault docker
+# image.
+#
+# Assuming you created the VM with docker-machine, select it and use:
+#
+#     $ make vault-load VAULT_PATH=build/vault.tar
 
-# Ansible #####################################################################
-# Better using ssh agent:
-#    $ ssh-agent bash # if not already running
-#    $ ssh-add ~/.docker/machine/machines/caretool/id_rsa
-#
-# Alternatively, an ad-hoc command can be triggered via
-#
-#    $ ansible $(docker-machine ip caretool) -a "ls -la"
-#    $ ansible $(docker-machine ip caretool) -m copy -a "src=./foo.txt dest=/home/ubuntu/foo.txt"
-#
-# Which avoids the need of configuring the host in /etc/ansible/hosts
+
+
+##
+# Provisions the target machine
 #
 # Possible options are:
 #
-# * host
+# * provision-canary
+# * provision-staging
+# * provision-production
+#
+# Example:
+#
+#     $ make provision-staging IDENTITY_FILE=~/.ssh/usweb_rsa
+#
 provision-%: etc/ansible/%.yml
 	$(ANSIBLE_PLAY) $<
 
+provision-sh:
+	$(ANSIBLE) sh

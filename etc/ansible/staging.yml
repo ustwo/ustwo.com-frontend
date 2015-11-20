@@ -1,0 +1,48 @@
+---
+- hosts: usweb.staging
+  vars:
+    owner: ubuntu
+    group: ubuntu
+  tasks:
+    - name: add make
+      apt:
+        pkg: make
+        state: latest
+    - name: add htop
+      apt:
+        pkg: htop
+        state: latest
+    - name: add fail2ban
+      apt:
+        pkg: fail2ban
+        state: latest
+    - name: ufw setup
+      ufw:
+        state: enabled
+        policy: allow
+    - name: ufw limit
+      ufw:
+        rule: limit
+        port: ssh
+        proto: tcp
+    - name: copy ssh authorized keys
+      copy:
+        src: ../authorized_keys
+        dest: /home/ubuntu/.ssh/authorized_keys
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0600
+    - name: copy Makefile
+      copy:
+        src: ../../Makefile
+        dest: /home/ubuntu/Makefile
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0644
+    - name: copy tasks
+      copy:
+        src: ../../tasks
+        dest: /home/ubuntu
+        owner: "{{ owner }}"
+        group: "{{ group }}"
+        mode: 0644

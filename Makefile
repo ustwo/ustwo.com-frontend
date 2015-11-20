@@ -1,13 +1,12 @@
 BASE_PATH ?= $(PWD)
 VERSION ?= dev
-MACHINE_ALIAS ?= ustwosite
 IDENTITY_FILE ?= ~/.docker/machine/machines/ustwosite/id_rsa
-ANSIBLE_INVENTORY ?= ./etc/ansible/hosts
 SOURCE_BRANCH ?= master
 GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 project_name := usweb
 project_namespace := ustwo/$(project_name)
+internal_path := /home/ustwo
 
 ## CLI aliases ################################################################
 AWK := awk
@@ -29,17 +28,14 @@ DOCKER_VOLUME := $(DOCKER) create
 DOCKER_TASK := $(DOCKER) run --rm -it
 # CircleCI fails if you try to remove a container
 DOCKER_CI_TASK := $(DOCKER) run -it
-DOCKER_MACHINE := docker-machine
-MACHINE_IP = $(shell $(DOCKER_MACHINE) ip $(MACHINE_ALIAS))
 ANSIBLE := $(DOCKER_TASK) \
 	-v $(IDENTITY_FILE):/root/.ssh/id_rsa \
-	-v $(PWD):/home/ustwo \
-	-w /home/ustwo \
+	-v $(PWD):$(internal_path) \
+	-w $(internal_path) \
 	ustwo/ansible:1.9.4
-ANSIBLE_SHELL = $(ANSIBLE) ansible $(MACHINE_IP) --become -m shell
 ANSIBLE_PLAY := $(ANSIBLE) ansible-playbook -b -v \
 	--private-key=/root/.ssh/id_rsa \
-	--inventory-file=/home/ustwo/etc/ansible/hosts
+	--inventory-file=$(internal_path)/etc/ansible/hosts
 ###############################################################################
 
 default: build-all
