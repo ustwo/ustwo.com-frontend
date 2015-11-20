@@ -39,7 +39,7 @@ export default (slug, cb) => {
   const uri = `http://ustwo.com/blog/${slug}`;
 
   return DataLoader([{
-    url: `https://graph.facebook.com/?id=${uri}`,
+    url: `facebook/count?id=${uri}`,
     external: 'facebook',
     type: 'facebookShares',
     get: response => formatter(response.data, 'facebook'),

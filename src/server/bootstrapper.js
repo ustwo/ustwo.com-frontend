@@ -41,7 +41,6 @@ function bootstrapper(initialUrl, hostApi, proxyUrl) {
   const vurl = virtualUrl(initialUrl);
   global.hostApi = hostApi;
   global.proxyUrl = proxyUrl;
-  console.log(global.hostApi, global.proxyUrl)
 
   if (!RoutePattern.fromString(Routes.home.pattern).matches(vurl.pathname)) {
     return navigate(vurl.original);

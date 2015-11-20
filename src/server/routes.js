@@ -15,7 +15,7 @@ let router = express.Router();
 
 function renderApp(req, res) {
   if (isomorphic) {
-    bootstrapper(req.protocol + '://' + req.hostname + req.originalUrl, req.get('Host-API'), `https://${process.env.DOCKER_PROXY_HOST}:${process.env.PROXY_HTTPS_PORT}`)
+    bootstrapper(`${req.protocol}://${req.hostname}${req.originalUrl}`, req.get('Host-API'), `http://${process.env.DOCKER_PROXY_HOST}`)
       .then((state) => {
         const App = React.createFactory(require('app/components/app'));
         const AppString = React.renderToString(App({

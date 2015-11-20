@@ -40,8 +40,7 @@ app-create:
 		--restart always \
 		$(project_labels) \
 		--net=$(network_name) \
-		-e PROXY_HTTPS_PORT=$(PROXY_HTTPS_PORT) \
-		-e DOCKER_PROXY_HOST=$(DOCKER_PROXY_HOST) \
+		-e DOCKER_PROXY_HOST=$(proxy_name) \
 		$(verbose_flag) \
 		$(app_image)
 
