@@ -14,8 +14,6 @@ function generateURL(config) {
   let url;
   switch(config.external) {
     case 'facebook':
-      url = config.url;
-      break;
     case 'twitter':
       url = config.proxy() + config.url;
       break;
@@ -37,7 +35,7 @@ function fetcher (config) {
         if(mergedConfig.failure) {
           mergedConfig.failure(response);
         } else {
-          throw new Error("Bad response from server");
+          throw new Error('Bad response from server');
         }
       }
       return response.json().then(data => {
