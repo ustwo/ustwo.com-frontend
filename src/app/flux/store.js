@@ -15,6 +15,7 @@ import Defaults from './defaults';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
+  currentSection: Nulls.section,
   blogCategory: Defaults.blogCategory,
   searchMode: Defaults.searchMode,
   searchQuery: Nulls.searchQuery,
@@ -72,7 +73,7 @@ window._state = _state;
 const Store = Object.assign(
   EventEmitter.prototype,
   {
-    setPage(newPage, statusCode) {
+    setPage(newPage, newSection, statusCode) {
       const newPageIdArray = newPage.split('/');
       const slug = newPageIdArray[newPageIdArray.length - 1];
       if(_state.page && _state.page.slug !== slug) {
@@ -95,6 +96,7 @@ const Store = Object.assign(
         _state.postsPaginationTotal = Nulls.postsPaginationTotal;
       }
       _state.currentPage = newPage;
+      _state.currentSection = newSection || Nulls.section;
       _state.statusCode = statusCode;
       _state.modal = null;
       _state.relatedContent = [];

@@ -29,9 +29,15 @@ const globalLoads = [{
   type: 'studios'
 }];
 
-function getRouteHandler(name, itemsToLoad, statusCode) {
-  Flux.goTo(name, statusCode || 200);
+function getRouteHandler(page, section, itemsToLoad, statusCode=200) {
+  Flux.goTo(page, section, statusCode);
   Flux.loadData([].concat(globalLoads, itemsToLoad));
+}
+
+function getSection(vurl) {
+  let section = vurl.hash.substr(1);
+  section = section.length ? section : null;
+  return section;
 }
 
 function setUrl(url, replace) {
@@ -45,17 +51,13 @@ function setUrl(url, replace) {
 const Flux = Object.assign(
   Actions,
   {
-    init(initialUrl, hostApi, proxyUrl) {
+    init(initialUrl, hostApi='', proxyUrl) {
       const vurl = virtualUrl(initialUrl || window.location.href);
-      global.hostApi = hostApi || '';
+      global.hostApi = hostApi;
       global.proxyUrl = proxyUrl || vurl.origin;
 
       window.onpopstate = () => {
-        let url = window.location.href;
-        if(window.location.href.indexOf('#') > -1) {
-          url = window.location.hash.substr(1);
-        }
-        Flux.navigate(url, true, true);
+        Flux.navigate(window.location.href, true, true);
       };
 
       if (!RoutePattern.fromString(Routes.home.pattern).matches(vurl.pathname)) {
@@ -64,7 +66,7 @@ const Flux = Object.assign(
         Track('set', 'page', '/');
         Track('send', 'pageview');
         setUrl(vurl.original, true);
-        getRouteHandler(Routes.home.id, Routes.home.data(), Routes.home.statusCode);
+        getRouteHandler(Routes.home.id, getSection(vurl), Routes.home.data(), Routes.home.statusCode);
       }
     },
     navigate(urlString, history, ignoreUrl, replaceState, force) {
@@ -79,7 +81,7 @@ const Flux = Object.assign(
       }
       let paramsSearch = RoutePattern.fromString(route.pattern).match(path);
       let params = paramsSearch ? paramsSearch.params : [];
-      getRouteHandler(route.id, route.data.apply(null, params), route.statusCode);
+      getRouteHandler(route.id, getSection(vurl), route.data.apply(null, params), route.statusCode);
 
       if (!ignoreUrl) {
         setUrl(urlString, replaceState);

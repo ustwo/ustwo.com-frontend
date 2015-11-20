@@ -5,6 +5,8 @@ import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import map from 'lodash/collection/map';
 import filter from 'lodash/collection/filter';
+import pluck from 'lodash/collection/pluck';
+import every from 'lodash/collection/every';
 import get from 'lodash/object/get';
 import kebabCase from 'lodash/string/kebabCase';
 import spannify from 'app/lib/spannify';
@@ -19,13 +21,21 @@ import StudioJobs from 'app/components/studio-jobs';
 import Rimage from 'app/components/rimage';
 import Video from 'app/components/video';
 
+function isSelected(currentSection, id, studios) {
+  const studioNames = pluck(studios, 'name');
+  let selected = false;
+  if(
+    (!currentSection && id === 'all-studios')
+    || currentSection && id === 'all-studios' && every(studioNames, name => currentSection !== kebabCase(name))
+    || currentSection && currentSection === id
+  ) {
+    selected = true;
+  }
+  return selected;
+}
+
 const PageJoinUs = React.createClass({
   mixins: [getScrollTrackerMixin('join-us')],
-  getInitialState() {
-    return {
-      studio: 'all-studios'
-    };
-  },
   render() {
     const { page } = this.props;
     const classes = classnames('page-join-us', this.props.className);
@@ -67,22 +77,14 @@ const PageJoinUs = React.createClass({
         className={id}
         ref={`tab-${id}`}
         onClick={this.generateOnClickStudioHandler(id)}
-        aria-selected={this.state.studio === id}
+        aria-selected={isSelected(this.props.currentSection, id, this.props.studios)}
       >{name}</li>;
     });
   },
   generateOnClickStudioHandler(studio) {
     return () => {
-      const el = React.findDOMNode(this.refs[`tab-${studio}`]);
-      const tabs = this.getStudios().map(studio => {
-        const id = kebabCase(studio.name);
-        return React.findDOMNode(this.refs[`tab-${id}`]);
-      });
-      tabs.forEach(tab => tab.setAttribute('aria-selected', false));
-      el.setAttribute('aria-selected', true);
-      this.setState({
-        studio: studio
-      });
+      const hash = studio !== 'all-studios' ? '#'+studio : '';
+      Flux.navigate(`/join-us${hash}`, true);
     }
   },
   renderJobSection() {
@@ -107,13 +109,14 @@ const PageJoinUs = React.createClass({
   },
   renderStudioJobs() {
     return map(this.getStudios(), studio => {
+      const { currentSection } = this.props;
       const id = kebabCase(studio.name);
       return <StudioJobs
         key={`jobs-${id}`}
         studio={studio}
         studios={this.props.studios}
         jobs={this.getJobsForStudio(studio)}
-        selected={this.state.studio === id}
+        selected={isSelected(currentSection, id, this.props.studios)}
         contactEmail={get(find(get(find(get(this.props, 'footer.contacts', []), 'type', 'general'), 'methods', []), 'type', 'email'), 'uri', '')}
       />;
     });

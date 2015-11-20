@@ -44,7 +44,7 @@ function bootstrapper(initialUrl, hostApi, proxyUrl) {
   if (!RoutePattern.fromString(Routes.home.pattern).matches(vurl.pathname)) {
     return navigate(vurl.original);
   } else {
-    return applyRoute(Routes.home.id, Routes.home.data(), Routes.home.statusCode);
+    return applyRoute(Routes.home.id, undefined, Routes.home.data(), Routes.home.statusCode);
   }
   function navigate(urlString) {
     const vurl = virtualUrl(urlString);
@@ -58,7 +58,7 @@ function bootstrapper(initialUrl, hostApi, proxyUrl) {
     }
     let paramsSearch = RoutePattern.fromString(route.pattern).match(path);
     let params = paramsSearch ? paramsSearch.params : [];
-    let action = applyRoute(route.id, route.data.apply(null, params), route.statusCode);
+    let action = applyRoute(route.id, undefined, route.data.apply(null, params), route.statusCode);
 
     switch(route.id) {
       case 'blog':
@@ -70,9 +70,9 @@ function bootstrapper(initialUrl, hostApi, proxyUrl) {
     }
     return action.then(state => Promise.resolve(state));
   }
-  function applyRoute(name, itemsToLoad, statusCode) {
+  function applyRoute(page, section, itemsToLoad, statusCode) {
     return Promise.all([
-      setPage(name, statusCode || 200),
+      setPage(page, statusCode || 200),
       loadData([].concat(globalLoads, itemsToLoad))
     ]).then(responses => responses[1]);
   }
