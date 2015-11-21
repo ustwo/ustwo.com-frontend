@@ -128,8 +128,9 @@ clients without Javascript (or with overzealous ad blockers)
 ### CDN
 
 We have *everything* served up from a CDN, and by that we mean that ustwo.com is
-pointed at the CDN URL on a DNS level! Call it the "CDN first" approach if you
-will and look out for a blog post soon...
+pointed at the CDN URL on a DNS level! Needless to say this guarantees great
+load speeds across the globe and at very little cost. Call it the "CDN first"
+approach if you will and look out for a blog post soon...
 
 Unless you have a lot of user dependent dynamic content (and it's not feasible
 moving these areas to subdomains) the trick is to remove caching from all layers
@@ -138,7 +139,9 @@ only 1 hour or effectively one session).
 
 This way the only place you need to worry about and manage cache is the CDN. Of
 course for this you need to have a decent CDN which has an API to purge and
-prefetch content.
+prefetch content. At this point all the servers and applications behind can be
+scaled down to no cache and minimum resources as they'll only be accessed by the
+CDN network for an occasional update.
 
 ### The big picture
 
