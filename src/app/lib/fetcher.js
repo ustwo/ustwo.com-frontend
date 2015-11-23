@@ -10,23 +10,9 @@ let ajaxes = {};
 
 let defaultConfig = require('app/adaptors/server/proxy-url')();
 
-function generateURL(config) {
-  let url;
-  switch(config.external) {
-    case 'facebook':
-    case 'twitter':
-      url = config.proxy() + config.url;
-      break;
-    default:
-      url = config.api() + config.url;
-      break;
-  }
-  return url;
-}
-
 function fetcher (config) {
   const mergedConfig = Object.assign({}, defaultConfig, config);
-  const url = generateURL(mergedConfig);
+  const url = mergedConfig.api() + mergedConfig.url;
   log('Fetching:', url);
   const req = fetch(url, mergedConfig)
     .then(response => {

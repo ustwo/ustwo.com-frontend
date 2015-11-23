@@ -23,7 +23,6 @@ const PageSearchResults = React.createClass({
       this.setState({
         loading: false
       });
-      Flux.getSocialSharesForPosts();
     }
   },
   componentWillReceiveProps(nextProps) {
@@ -31,7 +30,6 @@ const PageSearchResults = React.createClass({
       this.setState({
         loading: false
       });
-      Flux.getSocialSharesForPosts();
     }
   },
   render() {

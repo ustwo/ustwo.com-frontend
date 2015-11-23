@@ -8,7 +8,6 @@ export default function (requiredData, apply) {
     log('Loading...', params.type, (params.slug || ''));
     return fetcher({
       url: params.url,
-      external: params.external,
       failure: params.failure
     });
   })).then(dataCollection => {

@@ -11,7 +11,6 @@ import Flux from 'app/flux';
 import Rimage from 'app/components/rimage';
 import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
 import BlogCategoryTag from 'app/components/blog-category-tag';
-import SocialMediaStatistics from 'app/components/social-media-statistics';
 
 const SearchResultListItem = React.createClass({
   render() {
@@ -45,10 +44,6 @@ const SearchResultListItem = React.createClass({
         <BlogPostMetaInformation
           author={getAuthor(post)}
           date={get(post, 'date')}
-        />
-        <SocialMediaStatistics
-          facebookShares={get(post, 'facebookShares')}
-          twitterShares={get(post, 'twitterShares')}
         />
         <div className="tail">
           <a href={uri} onClick={Flux.override(uri)}>Read more</a>

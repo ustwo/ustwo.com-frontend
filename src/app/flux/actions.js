@@ -37,12 +37,6 @@ const Actions = {
   showBlogCategories() {
     Store.showBlogCategories();
   },
-  getSocialSharesForPost() {
-    Store.getSocialSharesForPost();
-  },
-  getSocialSharesForPosts() {
-    Store.getSocialSharesForPosts();
-  },
   loadMorePosts() {
     Store.loadMorePosts();
   },

@@ -11,7 +11,6 @@ import Flux from 'app/flux';
 import Rimage from 'app/components/rimage';
 import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
 import BlogCategoryTag from 'app/components/blog-category-tag';
-import SocialMediaStatistics from 'app/components/social-media-statistics';
 
 const BlogPostListItem = React.createClass({
   render() {
@@ -50,10 +49,6 @@ const BlogPostListItem = React.createClass({
         <div className="excerpt" dangerouslySetInnerHTML={{__html: excerpt}} />
         <div className="tail">
           <a href={uri} onClick={Flux.override(uri)}>Read more</a>
-          <SocialMediaStatistics
-            facebookShares={get(post, 'facebookShares')}
-            twitterShares={get(post, 'twitterShares')}
-          />
         </div>
       </div>
     </div>;

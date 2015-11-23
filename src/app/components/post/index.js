@@ -65,14 +65,12 @@ const PagePost = React.createClass({
     return relatedContent;
   },
   renderSocialMediaSharing(position) {
-    const { post, facebookShares, twitterShares } = this.props;
+    const { post } = this.props;
     return (
       <SocialMediaSharing
         className={position}
         title={he.decode(get(post, 'title.rendered', ''))}
         uri={`http://ustwo.com/blog/${get(post, 'slug')}`}
-        facebookShares={facebookShares}
-        twitterShares={twitterShares}
       />
     );
   },
