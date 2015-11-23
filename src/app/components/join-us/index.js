@@ -99,9 +99,6 @@ const PageJoinUs = React.createClass({
             {this.renderStudioJobs(selectedStudioSlug)}
           </div>
         </section>
-        <div className="benefits">
-          <h2>Some of the benefits...</h2>
-        </div>
       </div>;
     };
   },
