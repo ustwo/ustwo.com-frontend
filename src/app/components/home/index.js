@@ -330,12 +330,12 @@ const page = {
       },
       "text_colour": {
         "name": "text_colour",
-        "value": "",
+        "value": "#F5E664",
         "type": "text"
       },
       "background_colour": {
         "name": "background_colour",
-        "value": "",
+        "value": "#FFBF02",
         "type": "text"
       }
     }
@@ -443,12 +443,12 @@ const page = {
       },
       "text_colour": {
         "name": "text_colour",
-        "value": "",
+        "value": "#FA7D78",
         "type": "text"
       },
       "background_colour": {
         "name": "background_colour",
-        "value": "",
+        "value": "#F9615B",
         "type": "text"
       }
     }
@@ -614,28 +614,6 @@ const page = {
 
 const PageHome = React.createClass({
   mixins: [getScrollTrackerMixin('home')],
-  getInitialState() {
-    return {
-      blocks: [
-        {
-          blockReference: () => {return React.findDOMNode(this.refs.blockWelcome)},
-          hexColour: '6114CC'
-        },
-        {
-          blockReference: () => {return React.findDOMNode(this.refs.blockClient)},
-          hexColour: '009CF3'
-        },
-        {
-          blockReference: () => {return React.findDOMNode(this.refs.blockOwnStuff)},
-          hexColour: 'FFBF02'
-        },
-        {
-          blockReference: () => {return React.findDOMNode(this.refs.blockVenture)},
-          hexColour: 'F9615B'
-        }
-      ]
-    };
-  },
   animateChevron(event) {
     if(this.refs.downChevron) {
       this.refs.downChevron.resetAnim();
@@ -643,28 +621,38 @@ const PageHome = React.createClass({
     }
   },
   setupScrollMagic() {
+    // const { page } = this.props;
+    const blocks = get(page, 'page_builder', []);
     let pageElement = React.findDOMNode(this);
     this.Tracking.addPageScrollTracking('home', pageElement);
 
     if (!env.Modernizr.touchevents && window.innerWidth > 480) {
       let scrollController = this.Tracking.scrollController;
-      let blockWelcome = this.state.blocks[0].blockReference();
+      let blockWelcome = {
+        attr: {
+          background_colour: {
+            value: get(page, 'colors.bg')
+          }
+        }
+      };
+      let blockWelcomeDom = React.findDOMNode(this.refs.blockWelcome);
+      blockWelcomeDom.style.backgroundColor = 'transparent';
       // set initial colour – we need to do this due to having an offset
-      pageElement.style.backgroundColor = '#' + this.state.blocks[0].hexColour;
+      pageElement.style.backgroundColor = get(page, 'colors.bg');
 
       this.scrollSceneChevron = new ScrollMagic.Scene({
-          triggerElement: blockWelcome,
+          triggerElement: blockWelcomeDom,
           triggerHook: 'onLeave',
-          duration: () => {return blockWelcome.clientHeight * 0.7}
+          duration: () => {return blockWelcomeDom.clientHeight * 0.7}
         })
         .addTo(scrollController);
 
       this.colourBlockScenes = [];
-      this.state.blocks.forEach((block, index) => {
-        block.blockReference().style.backgroundColor = 'transparent';
-        if (index > 0) {
-          this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, block.blockReference(), this.state.blocks[index - 1].hexColour, block.hexColour));
-        }
+      blocks.forEach((block, index) => {
+        const blockDom = React.findDOMNode(this.refs[`block${index}`]);
+        const previousBlock = blocks[index - 1] || blockWelcome;
+        blockDom.style.backgroundColor = 'transparent';
+        this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, blockDom, get(previousBlock, 'attr.background_colour.value'), get(block, 'attr.background_colour.value')));
       });
     }
   },
@@ -709,13 +697,13 @@ const PageHome = React.createClass({
     this.Tracking = new Tracking();
   },
   componentDidMount() {
-    // this.setupScrollMagic();
+    this.setupScrollMagic();
     this.animTimeout = setTimeout(() => {
       this.animateChevron();
     }, 2500);
   },
   componentWillUnmount() {
-    // this.teardownScrollMagic();
+    this.teardownScrollMagic();
     clearTimeout(this.animTimeout);
   },
   render() {
@@ -757,10 +745,9 @@ const PageHome = React.createClass({
   },
   renderFeatureBlocks() {
     // const { page } = this.props;
-    return get(page, 'page_builder').map(block => {
+    return get(page, 'page_builder').map((block, index) => {
       const blockAttrs = get(block, 'attr');
-      console.log(get(blockAttrs, 'image_png.value.0.sizes'), blockAttrs);
-      return <ScreenBlock ref="blockClient" textColour={get(blockAttrs, 'text_colour.value')} bgColour={get(blockAttrs, 'background_colour.value')}>
+      return <ScreenBlock ref={`block${index}`} textColour={get(blockAttrs, 'text_colour.value')} bgColour={get(blockAttrs, 'background_colour.value')}>
         <div className="block-parent">
           <div className="block-child">
             <Rimage wrap="div" className="image-container" sizes={get(blockAttrs, 'image_png.value.0.sizes')} />
