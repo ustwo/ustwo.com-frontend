@@ -83,6 +83,31 @@ To get the Docker environment up and running and to tie all of the above
 together, we created a fleet of Makefiles to get some extra flexibility with
 shared variables and task composition on top of shell scripting.
 
+### CDN
+
+We have *everything* served up from a CDN, and by that we mean that ustwo.com is
+pointed at the CDN URL on a DNS level! Needless to say this guarantees great
+load speeds across the globe and at very little cost. Call it the "CDN first"
+approach if you will and look out for a blog post soon...
+
+Unless you have a lot of user dependent dynamic content (and it's not feasible
+moving these areas to subdomains) the trick is to remove caching from all layers
+of the stack, while keeping the client side cache / expiry short (we're using
+only 1 hour or effectively one session).
+
+This way the only place you need to worry about and manage cache is the CDN. Of
+course for this you need to have a decent CDN which has an API to purge and
+prefetch content. At this point all the servers and applications behind can be
+scaled down to no cache and minimum resources as they'll only be accessed by the
+CDN network for an occasional update.
+
+### The big picture
+
+So here's how all this fits together and creates a working setup with our
+WordPress backend and CDN.
+
+[![ustwo.com infrastructure diagram][5]][5]
+
 ## Inclusion
 
 ### Browser compatibility
@@ -122,33 +147,6 @@ Officially supporting only modern browsers doesn't mean that we ignore people
 clients without Javascript (or with overzealous ad blockers)
 * Clean, standards compliant markup
 * WAI-ARIA tags (TODO: test more comprehensively and with real users)
-
-## Infrastructure
-
-### CDN
-
-We have *everything* served up from a CDN, and by that we mean that ustwo.com is
-pointed at the CDN URL on a DNS level! Needless to say this guarantees great
-load speeds across the globe and at very little cost. Call it the "CDN first"
-approach if you will and look out for a blog post soon...
-
-Unless you have a lot of user dependent dynamic content (and it's not feasible
-moving these areas to subdomains) the trick is to remove caching from all layers
-of the stack, while keeping the client side cache / expiry short (we're using
-only 1 hour or effectively one session).
-
-This way the only place you need to worry about and manage cache is the CDN. Of
-course for this you need to have a decent CDN which has an API to purge and
-prefetch content. At this point all the servers and applications behind can be
-scaled down to no cache and minimum resources as they'll only be accessed by the
-CDN network for an occasional update.
-
-### The big picture
-
-So here's how all this fits together and creates a working setup with our
-WordPress backend and CDN.
-
-[![ustwo.com infrastructure diagram][5]][5]
 
 ## Setup
 
