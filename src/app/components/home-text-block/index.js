@@ -6,16 +6,16 @@ const HomeTextBlock = React.createClass({
   render() {
     const { title, children } = this.props;
     const colour = this.props.colour || 'white';
-    const childColour = this.props.childColour || 'white';
-    const hrClasses = `u-bg-${colour}`;
-    const titleClasses = `h3 u-text-${colour}`;
-    const childClasses = `u-text-${childColour}`;
-    return <div className="home-text-block">
-      <hr className={hrClasses}/>
-      <h2 className={titleClasses}>{title}</h2>
-      <div className={childClasses}>
-        {children}
-      </div>
+    const textStyles = {
+      color: colour
+    };
+    const bgStyles = {
+      backgroundColor: colour
+    };
+    return <div className="home-text-block" style={textStyles}>
+      <hr style={bgStyles} />
+      <h2>{title}</h2>
+      <div dangerouslySetInnerHTML={{ __html: children }} />
     </div>;
   }
 });

@@ -5,10 +5,10 @@ import classnames from 'classnames';
 
 const ScreenBlock = React.createClass({
   render() {
-    const { hexColour, customClass, colour, children } = this.props;
-    const classes = classnames('screen-block', customClass, !hexColour && `u-bg-${colour}`);
-    const hexBackground = hexColour ? { backgroundColor: hexColour } : {};
-    return <section className={classes} style={hexBackground}>
+    const { textColour, bgColour, customClass, children } = this.props;
+    const classes = classnames('screen-block', customClass);
+    const styles = { color: textColour, backgroundColor: bgColour };
+    return <section className={classes} style={styles}>
       <div className="wrapper">{children}</div>
     </section>;
   }

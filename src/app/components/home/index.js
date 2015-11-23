@@ -2,8 +2,10 @@
 
 import React from 'react';
 import classnames from 'classnames';
+import get from 'lodash/object/get';
 
 import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
+import getFeaturedImage from 'app/lib/get-featured-image';
 
 import ScrollMagic from 'app/adaptors/server/scroll-magic';
 import hexRgb from 'hex-rgb';
@@ -17,11 +19,598 @@ import DownChevron from 'app/components/down-chevron';
 import SVG from 'app/components/svg';
 import WordAnimation from 'app/components/word-animation';
 import EntranceTransition from 'app/components/entrance-transition';
+import Rimage from 'app/components/rimage';
 
 import BoldHeader from 'app/components/bold-header';
 import HomeTextBlock from 'app/components/home-text-block';
 import ScreenBlock from 'app/components/screen-block';
 import RelatedContent from 'app/components/related-content';
+
+const page = {
+  "id": 5731,
+  "date": "2013-12-10T20:38:52",
+  "guid": {
+    "rendered": "http:\/\/dev.ustwo.com\/?page_id=5731"
+  },
+  "modified": "2015-11-23T16:47:24",
+  "modified_gmt": "2015-11-23T16:47:24",
+  "slug": "home",
+  "type": "page",
+  "link": "https:\/\/staging_backend\/home\/",
+  "title": {
+    "rendered": "home"
+  },
+  "excerpt": {
+    "rendered": ""
+  },
+  "author": 53,
+  "featured_image": 9084,
+  "parent": 0,
+  "menu_order": 0,
+  "comment_status": "open",
+  "ping_status": "open",
+  "template": "",
+  "seo": {
+    "title": "ustwo | Digital product studio",
+    "desc": "",
+    "keywords": "digital product studio, digital design, app development, ventures, development, engineering, product design, product development.",
+    "image": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-640x480.png"
+  },
+  "hero": {
+    "name": "header",
+    "attr": {
+      "heading": {
+        "name": "heading",
+        "value": "We're a digital product studio",
+        "type": "text"
+      },
+      "subheading": {
+        "name": "subheading",
+        "value": "",
+        "type": "textarea"
+      }
+    }
+  },
+  "page_builder": [{
+    "name": "featured_block",
+    "attr": {
+      "heading": {
+        "name": "heading",
+        "value": "Creative client work",
+        "type": "text"
+      },
+      "description": {
+        "name": "description",
+        "value": "<p>We work as partners with the biggest and smartest brands to make defining digital products, services and businesses.<\/p>",
+        "type": "wysiwyg"
+      },
+      "image_png": {
+        "name": "image_png",
+        "value": [{
+          "uploading": false,
+          "date": 1448292419000,
+          "filename": "Homepage_Harvey_Phone.png",
+          "menuOrder": 0,
+          "uploadedTo": 5731,
+          "type": "image",
+          "subtype": "png",
+          "id": 9081,
+          "title": "Homepage_Harvey_Phone",
+          "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Harvey_Phone.png",
+          "link": "https:\/\/wp-staging.ustwo.com\/home\/homepage_harvey_phone\/",
+          "alt": "",
+          "author": "3",
+          "description": "",
+          "caption": "",
+          "name": "homepage_harvey_phone",
+          "status": "inherit",
+          "modified": 1448292419000,
+          "mime": "image\/png",
+          "icon": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-includes\/images\/media\/default.png",
+          "dateFormatted": "November 23, 2015",
+          "nonces": {
+            "update": "e2ba146f3c",
+            "delete": "b4a3fd1917",
+            "edit": "4383db209e"
+          },
+          "editLink": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-admin\/post.php?post=9081&action=edit",
+          "meta": false,
+          "authorName": "nick",
+          "uploadedToLink": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-admin\/post.php?post=5731&action=edit",
+          "uploadedToTitle": "home",
+          "filesizeInBytes": 349753,
+          "filesizeHumanReadable": "342 kB",
+          "sizes": {
+            "thumbnail": {
+              "height": 300,
+              "width": 300,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Harvey_Phone-300x300.png",
+              "orientation": "landscape"
+            },
+            "small": {
+              "height": 480,
+              "width": 538,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Harvey_Phone-538x480.png",
+              "orientation": "landscape"
+            },
+            "small_crop": {
+              "height": 480,
+              "width": 640,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Harvey_Phone-640x480.png",
+              "orientation": "landscape"
+            },
+            "full": {
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Harvey_Phone.png",
+              "height": 624,
+              "width": 700,
+              "orientation": "landscape"
+            }
+          },
+          "height": 624,
+          "width": 700,
+          "orientation": "landscape",
+          "compat": {
+            "item": "",
+            "meta": ""
+          }
+        }],
+        "type": "image"
+      },
+      "image_jpg": {
+        "name": "image_jpg",
+        "value": [{
+          "id": 9077,
+          "title": "header_image_v2-576x480",
+          "filename": "header_image_v2-576x480.png",
+          "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2011\/06\/header_image_v2-576x480.png",
+          "link": "https:\/\/wp-staging.ustwo.com\/join-us\/header_image_v2-576x480\/",
+          "alt": "",
+          "author": "3",
+          "description": "",
+          "caption": "",
+          "name": "header_image_v2-576x480",
+          "status": "inherit",
+          "uploadedTo": 790,
+          "date": "2015-11-17T10:46:14.000Z",
+          "modified": "2015-11-17T10:46:14.000Z",
+          "menuOrder": 0,
+          "mime": "image\/png",
+          "type": "image",
+          "subtype": "png",
+          "icon": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-includes\/images\/media\/default.png",
+          "dateFormatted": "November 17, 2015",
+          "nonces": {
+            "update": "957cb2f332",
+            "delete": "4016cb8c02",
+            "edit": "7997482a6e"
+          },
+          "editLink": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-admin\/post.php?post=9077&action=edit",
+          "meta": false,
+          "authorName": "nick",
+          "uploadedToLink": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-admin\/post.php?post=790&action=edit",
+          "uploadedToTitle": "Join Us",
+          "filesizeInBytes": 86959,
+          "filesizeHumanReadable": "85 kB",
+          "sizes": {
+            "thumbnail": {
+              "height": 300,
+              "width": 300,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2011\/06\/header_image_v2-576x480-300x300.png",
+              "orientation": "landscape"
+            },
+            "small": {
+              "height": 480,
+              "width": 576,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2011\/06\/header_image_v2-576x480-576x480.png",
+              "orientation": "landscape"
+            },
+            "small_crop": {
+              "height": 480,
+              "width": 576,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2011\/06\/header_image_v2-576x480-576x480.png",
+              "orientation": "landscape"
+            },
+            "full": {
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2011\/06\/header_image_v2-576x480.png",
+              "height": 480,
+              "width": 576,
+              "orientation": "landscape"
+            }
+          },
+          "height": 480,
+          "width": 576,
+          "orientation": "landscape",
+          "compat": {
+            "item": "",
+            "meta": ""
+          }
+        }],
+        "type": "image"
+      },
+      "text_colour": {
+        "name": "text_colour",
+        "value": "#A5E1FF",
+        "type": "text"
+      },
+      "background_colour": {
+        "name": "background_colour",
+        "value": "#009CF3",
+        "type": "text"
+      }
+    }
+  }, {
+    "name": "featured_block",
+    "attr": {
+      "heading": {
+        "name": "heading",
+        "value": "Award-winning own products and games",
+        "type": "text"
+      },
+      "description": {
+        "name": "description",
+        "value": "<p>We invest time, money and passion to learn by doing \u2013 creating products for ourselves and the world. Whether our iconic game <a href=\"http:\/\/www.monumentvalleygame.com\/\" target=\"_blank\">Monument Valley<\/a> or innovative technical platform <a href=\"http:\/\/www.wayfindr.net\/\" target=\"_blank\">Wayfindr<\/a>, we create products with passion from conception to launch and beyond.<\/p>",
+        "type": "wysiwyg"
+      },
+      "image_png": {
+        "name": "image_png",
+        "value": [{
+          "uploading": false,
+          "date": 1448294664000,
+          "filename": "Homepage_Games_Ipad.png",
+          "menuOrder": 0,
+          "uploadedTo": 5731,
+          "type": "image",
+          "subtype": "png",
+          "id": 9082,
+          "title": "Homepage_Games_Ipad",
+          "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Games_Ipad.png",
+          "link": "https:\/\/wp-staging.ustwo.com\/home\/homepage_games_ipad\/",
+          "alt": "",
+          "author": "3",
+          "description": "",
+          "caption": "",
+          "name": "homepage_games_ipad",
+          "status": "inherit",
+          "modified": 1448294664000,
+          "mime": "image\/png",
+          "icon": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-includes\/images\/media\/default.png",
+          "dateFormatted": "November 23, 2015",
+          "nonces": {
+            "update": "e653aeb740",
+            "delete": "8c1a4d834c",
+            "edit": "f814b2eaa4"
+          },
+          "editLink": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-admin\/post.php?post=9082&action=edit",
+          "meta": false,
+          "authorName": "nick",
+          "uploadedToLink": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-admin\/post.php?post=5731&action=edit",
+          "uploadedToTitle": "home",
+          "filesizeInBytes": 483475,
+          "filesizeHumanReadable": "472 kB",
+          "sizes": {
+            "thumbnail": {
+              "height": 300,
+              "width": 300,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Games_Ipad-300x300.png",
+              "orientation": "landscape"
+            },
+            "small": {
+              "height": 480,
+              "width": 532,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Games_Ipad-532x480.png",
+              "orientation": "landscape"
+            },
+            "small_crop": {
+              "height": 480,
+              "width": 640,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Games_Ipad-640x480.png",
+              "orientation": "landscape"
+            },
+            "full": {
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Games_Ipad.png",
+              "height": 758,
+              "width": 840,
+              "orientation": "landscape"
+            }
+          },
+          "height": 758,
+          "width": 840,
+          "orientation": "landscape",
+          "compat": {
+            "item": "",
+            "meta": ""
+          }
+        }],
+        "type": "image"
+      },
+      "image_jpg": {
+        "name": "image_jpg",
+        "value": "",
+        "type": "image"
+      },
+      "text_colour": {
+        "name": "text_colour",
+        "value": "",
+        "type": "text"
+      },
+      "background_colour": {
+        "name": "background_colour",
+        "value": "",
+        "type": "text"
+      }
+    }
+  }, {
+    "name": "featured_block",
+    "attr": {
+      "heading": {
+        "name": "heading",
+        "value": "Launching new ventures",
+        "type": "text"
+      },
+      "description": {
+        "name": "description",
+        "value": "<p>Working with people who know their industry inside-out gets us super excited. We partner with the world\u2019s leading experts and entrepreneurs, offering our expertise, technology or investment to create great new companies like live music discovery platform <a href=\"https:\/\/dice.fm\/\" target=\"_blank\">DICE<\/a>, or relaxation and meditation iOS app <a href=\"http:\/\/getpauseapp.com\/\" target=\"_blank\">PAUSE<\/a>.<\/p>",
+        "type": "wysiwyg"
+      },
+      "image_png": {
+        "name": "image_png",
+        "value": [{
+          "uploading": false,
+          "date": 1448295106000,
+          "filename": "Homepage_Dice_Mask.png",
+          "menuOrder": 0,
+          "uploadedTo": 5731,
+          "type": "image",
+          "subtype": "png",
+          "id": 9083,
+          "title": "Homepage_Dice_Mask",
+          "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Dice_Mask.png",
+          "link": "https:\/\/wp-staging.ustwo.com\/home\/homepage_dice_mask\/",
+          "alt": "",
+          "author": "3",
+          "description": "",
+          "caption": "",
+          "name": "homepage_dice_mask",
+          "status": "inherit",
+          "modified": 1448295106000,
+          "mime": "image\/png",
+          "icon": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-includes\/images\/media\/default.png",
+          "dateFormatted": "November 23, 2015",
+          "nonces": {
+            "update": "7641626084",
+            "delete": "6a009e03a0",
+            "edit": "85e6ecd97a"
+          },
+          "editLink": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-admin\/post.php?post=9083&action=edit",
+          "meta": false,
+          "authorName": "nick",
+          "uploadedToLink": "https:\/\/wp-staging.ustwo.com\/wordpress\/wp-admin\/post.php?post=5731&action=edit",
+          "uploadedToTitle": "home",
+          "filesizeInBytes": 264342,
+          "filesizeHumanReadable": "258 kB",
+          "sizes": {
+            "thumbnail": {
+              "height": 300,
+              "width": 300,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Dice_Mask-300x300.png",
+              "orientation": "landscape"
+            },
+            "small": {
+              "height": 480,
+              "width": 495,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Dice_Mask-495x480.png",
+              "orientation": "landscape"
+            },
+            "small_crop": {
+              "height": 480,
+              "width": 640,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Dice_Mask-640x480.png",
+              "orientation": "landscape"
+            },
+            "medium": {
+              "height": 768,
+              "width": 793,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Dice_Mask-793x768.png",
+              "orientation": "landscape"
+            },
+            "medium_crop": {
+              "height": 768,
+              "width": 840,
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Dice_Mask-840x768.png",
+              "orientation": "landscape"
+            },
+            "full": {
+              "url": "https:\/\/wp-staging.ustwo.com\/content\/uploads\/2013\/12\/Homepage_Dice_Mask.png",
+              "height": 814,
+              "width": 840,
+              "orientation": "landscape"
+            }
+          },
+          "height": 814,
+          "width": 840,
+          "orientation": "landscape",
+          "compat": {
+            "item": "",
+            "meta": ""
+          }
+        }],
+        "type": "image"
+      },
+      "image_jpg": {
+        "name": "image_jpg",
+        "value": "",
+        "type": "image"
+      },
+      "text_colour": {
+        "name": "text_colour",
+        "value": "",
+        "type": "text"
+      },
+      "background_colour": {
+        "name": "background_colour",
+        "value": "",
+        "type": "text"
+      }
+    }
+  }],
+  "display_title": "Home",
+  "colors": {
+    "bg": "#6114cc",
+    "primary": "#ffffff",
+    "secondary": ""
+  },
+  "featured_video": "hello",
+  "_embedded": {
+    "author": [
+      [{
+        "code": "rest_user_cannot_view",
+        "message": "Sorry, you cannot view this user",
+        "data": {
+          "status": 403
+        }
+      }]
+    ],
+    "wp:attachment": [
+      [{
+        "id": 9084,
+        "date": "2015-11-23T16:47:16",
+        "slug": "watches",
+        "type": "attachment",
+        "link": "https:\/\/staging_backend\/home\/watches\/",
+        "title": {
+          "rendered": "watches"
+        },
+        "author": 3,
+        "alt_text": "",
+        "media_type": "image",
+        "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches.png",
+        "media_details": {
+          "width": 1100,
+          "height": 633,
+          "file": "2013\/12\/watches.png",
+          "sizes": {
+            "thumbnail": {
+              "file": "watches-300x300.png",
+              "width": 300,
+              "height": 300,
+              "mime-type": "image\/png",
+              "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-300x300.png"
+            },
+            "medium": {
+              "file": "watches-1024x589.png",
+              "width": 1024,
+              "height": 589,
+              "mime-type": "image\/png",
+              "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-1024x589.png"
+            },
+            "small": {
+              "file": "watches-640x368.png",
+              "width": 640,
+              "height": 368,
+              "mime-type": "image\/png",
+              "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-640x368.png"
+            },
+            "small_crop": {
+              "file": "watches-640x480.png",
+              "width": 640,
+              "height": 480,
+              "mime-type": "image\/png",
+              "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-640x480.png"
+            },
+            "medium_crop": {
+              "file": "watches-1024x633.png",
+              "width": 1024,
+              "height": 633,
+              "mime-type": "image\/png",
+              "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-1024x633.png"
+            }
+          },
+          "image_meta": {
+            "aperture": 0,
+            "credit": "",
+            "camera": "",
+            "caption": "",
+            "created_timestamp": 0,
+            "copyright": "",
+            "focal_length": 0,
+            "iso": 0,
+            "shutter_speed": 0,
+            "title": "",
+            "orientation": 0
+          }
+        }
+      }], {
+        "id": 9084,
+        "date": "2015-11-23T16:47:16",
+        "slug": "watches",
+        "type": "attachment",
+        "link": "https:\/\/staging_backend\/home\/watches\/",
+        "title": {
+          "rendered": "watches"
+        },
+        "author": 3,
+        "alt_text": "",
+        "media_type": "image",
+        "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches.png",
+        "media_details": {
+          "width": 1100,
+          "height": 633,
+          "file": "2013\/12\/watches.png",
+          "sizes": {
+            "thumbnail": {
+              "file": "watches-300x300.png",
+              "width": 300,
+              "height": 300,
+              "mime-type": "image\/png",
+              "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-300x300.png"
+            },
+            "medium": {
+              "file": "watches-1024x589.png",
+              "width": 1024,
+              "height": 589,
+              "mime-type": "image\/png",
+              "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-1024x589.png"
+            },
+            "small": {
+              "file": "watches-640x368.png",
+              "width": 640,
+              "height": 368,
+              "mime-type": "image\/png",
+              "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-640x368.png"
+            },
+            "small_crop": {
+              "file": "watches-640x480.png",
+              "width": 640,
+              "height": 480,
+              "mime-type": "image\/png",
+              "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-640x480.png"
+            },
+            "medium_crop": {
+              "file": "watches-1024x633.png",
+              "width": 1024,
+              "height": 633,
+              "mime-type": "image\/png",
+              "source_url": "https:\/\/staging_backend\/content\/uploads\/2013\/12\/watches-1024x633.png"
+            }
+          },
+          "image_meta": {
+            "aperture": 0,
+            "credit": "",
+            "camera": "",
+            "caption": "",
+            "created_timestamp": 0,
+            "copyright": "",
+            "focal_length": 0,
+            "iso": 0,
+            "shutter_speed": 0,
+            "title": "",
+            "orientation": 0
+          }
+        }
+      }
+    ]
+  }
+};
 
 const PageHome = React.createClass({
   mixins: [getScrollTrackerMixin('home')],
@@ -120,17 +709,19 @@ const PageHome = React.createClass({
     this.Tracking = new Tracking();
   },
   componentDidMount() {
-    this.setupScrollMagic();
+    // this.setupScrollMagic();
     this.animTimeout = setTimeout(() => {
       this.animateChevron();
     }, 2500);
   },
   componentWillUnmount() {
-    this.teardownScrollMagic();
+    // this.teardownScrollMagic();
     clearTimeout(this.animTimeout);
   },
   render() {
+    // const { page } = this.props;
     const classes = classnames('page-home', this.props.className);
+    const featuredImage = getFeaturedImage(page);
     // Show only the final frame of the Chevron animation on mobile
     let Chevron;
     if (window.innerWidth <= 480) {
@@ -144,9 +735,9 @@ const PageHome = React.createClass({
     // End Chevron
     return (
       <article className={classes}>
-        <ScreenBlock ref="blockWelcome" customClass="welcome" hexColour={'#' + this.state.blocks[0].hexColour}>
+        <ScreenBlock ref="blockWelcome" customClass="welcome" textColour={get(page, 'colors.primary')} bgColour={get(page, 'colors.bg')}>
           <EntranceTransition className="image-entrance">
-            <div className="headline-image"></div>
+            <Rimage wrap="div" className="headline-image" sizes={get(featuredImage, 'media_details.sizes')} />
           </EntranceTransition>
           <EntranceTransition className="title-entrance">
             <div className="headline-text title">
@@ -159,60 +750,29 @@ const PageHome = React.createClass({
           </EntranceTransition>
           {Chevron}
         </ScreenBlock>
-        <ScreenBlock ref="blockClient" customClass="client" hexColour={'#' + this.state.blocks[1].hexColour}>
-          <div className="block-parent">
-            <div className="block-child">
-              <div className="image-container">
-                <div className="harvey-nicks-device"></div>
-                <SVG className="harvey-nicks-shape-3" role="presentation" spritemapID='HarveyShape3' />
-                <SVG className="harvey-nicks-shape-4" role="presentation" spritemapID='HarveyShape4' />
-                <SVG className="harvey-nicks-shape-1" role="presentation" spritemapID='HarveyShape1' />
-                <SVG className="harvey-nicks-shape-2" role="presentation" spritemapID='HarveyShape2' />
-              </div>
-            </div>
-          </div>
-          <div className="text-block">
-            <HomeTextBlock title="Creative client work">
-              <p>We work as partners with the biggest and smartest brands to make defining digital products, services and businesses.</p>
-            </HomeTextBlock>
-          </div>
-        </ScreenBlock>
-        <ScreenBlock ref="blockOwnStuff" customClass="own-stuff" hexColour={'#' + this.state.blocks[2].hexColour}>
-          <div className="block-parent">
-            <div className="block-child">
-              <div className="image-container">
-                <div className="monument-device"></div>
-                <SVG className="monument-award-1" role="presentation" spritemapID='MonumentAward1' />
-                <SVG className="monument-award-2" role="presentation" spritemapID='MonumentAward2' />
-                <SVG className="monument-award-3" role="presentation" spritemapID='MonumentAward3' />
-              </div>
-            </div>
-          </div>
-          <div className="text-block">
-            <HomeTextBlock title="Award-winning own products and games" colour="nonblack" childColour="nonblack">
-              <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic game <a href='http://www.monumentvalleygame.com/' target='_blank'>Monument Valley</a> or innovative technical platform <a href='http://www.wayfindr.net/' target='_blank'>Wayfindr</a>, we create products with passion from conception to launch and beyond.</p>
-            </HomeTextBlock>
-          </div>
-        </ScreenBlock>
-        <ScreenBlock ref="blockVenture" customClass="ventures" hexColour={'#' + this.state.blocks[3].hexColour}>
-          <div className="block-parent">
-            <div className="block-child">
-              <div className="image-container">
-                <div className="dice-screen-anim"></div>
-                <div className="dice-device"></div>
-                <SVG className="dice-logo" role="presentation" spritemapID='dicelogo' />
-              </div>
-            </div>
-          </div>
-          <div className="text-block">
-            <HomeTextBlock title="Launching new ventures" colour="white" childColour="white">
-              <p>Working with people who know their industry inside-out gets us super excited. We partner with the world’s leading experts and entrepreneurs, offering our expertise, technology or investment to create great new companies like live music discovery platform <a href='https://dice.fm/' target='_blank'>DICE</a>, or relaxation and meditation iOS app <a href='http://getpauseapp.com/' target='_blank'>PAUSE</a>.</p>
-            </HomeTextBlock>
-          </div>
-        </ScreenBlock>
+        {this.renderFeatureBlocks()}
         {this.renderRelatedContent()}
       </article>
     );
+  },
+  renderFeatureBlocks() {
+    // const { page } = this.props;
+    return get(page, 'page_builder').map(block => {
+      const blockAttrs = get(block, 'attr');
+      console.log(get(blockAttrs, 'image_png.value.0.sizes'), blockAttrs);
+      return <ScreenBlock ref="blockClient" textColour={get(blockAttrs, 'text_colour.value')} bgColour={get(blockAttrs, 'background_colour.value')}>
+        <div className="block-parent">
+          <div className="block-child">
+            <Rimage wrap="div" className="image-container" sizes={get(blockAttrs, 'image_png.value.0.sizes')} />
+          </div>
+        </div>
+        <div className="text-block">
+          <HomeTextBlock title={get(blockAttrs, 'heading.value')} colour={get(blockAttrs, 'text_colour.value')}>
+            {get(block, 'attr.description.value')}
+          </HomeTextBlock>
+        </div>
+      </ScreenBlock>;
+    });
   },
   renderRelatedContent() {
     let relatedContent;
