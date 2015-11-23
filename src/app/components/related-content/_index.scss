@@ -20,7 +20,7 @@
     margin: 0 auto;
   }
 
-  > h2 {
+  .more-juice-title {
     font-size: 30px;
     color: #fff;
     text-align: center;
@@ -46,16 +46,18 @@
     .image {
       overflow: hidden;
       display: block;
-      
+
       .rimage {
         height: $work-item-image-height;
         transition: transform $hover-duration-quick ease-in-out;
       }
+
       &:hover {
         .rimage {
           transform: scale($hover-scale-up);
         }
       }
+
       .image-hover {
         display: none;
       }
@@ -69,7 +71,7 @@
   @media screen and (min-width: $bp-medium) {
     padding: $gutter; /* Test this, same as footer? */
 
-    > h2 {
+    .more-juice-title {
       font-size: 40px;
     }
 
