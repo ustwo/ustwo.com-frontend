@@ -79,7 +79,7 @@ const PageJoinUs = React.createClass({
         key={`tab-${studioId}`}
         className={studioId}
         aria-selected={isSelected(get(currentParams, 'lid'), studioId, this.props.studios)}
-      ><a href={uri} onClick={Flux.override(uri)}>{studioName}</a></li>;
+      ><a href={uri} onClick={Flux.overrideNoScroll(uri)}>{studioName}</a></li>;
     });
   },
   generateStudioUri(studio) {

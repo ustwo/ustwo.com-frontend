@@ -99,6 +99,12 @@ const Flux = Object.assign(
         e.preventDefault();
         Flux.navigate(url);
       };
+    },
+    overrideNoScroll(url) {
+      return (e) => {
+        e.preventDefault();
+        Flux.navigate(url, true);
+      };
     }
   }
 );
