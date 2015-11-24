@@ -1082,8 +1082,6 @@ const Sandbox = React.createClass({
       `}</style>
       <Post
         page={page}
-        facebookShares={20}
-        twitterShares={97}
       />
     </div>;
   }

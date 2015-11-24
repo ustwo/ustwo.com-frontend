@@ -7,8 +7,6 @@ const Sandbox = React.createClass({
         className="test-class"
         title="Blog post title"
         uri="/blog/blog-post-title"
-        facebookShares={34}
-        twitterShares={15}
       />
     </div>;
   }

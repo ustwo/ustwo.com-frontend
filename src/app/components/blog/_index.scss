@@ -240,11 +240,12 @@
 
   @media screen and (min-width: $bp-medium) {
     .blog-post-list {
+      display: flex;
+      flex-wrap: wrap;
       margin-top: $blog-margin-offset;
       padding: 0 $blog-gutter-large;
 
       .blog-post-list-item:not(.featured) {
-        display: inline-block;
         width: calc(50% - (#{$blog-gutter-large} / 2));
         margin-right: $blog-gutter-large;
 

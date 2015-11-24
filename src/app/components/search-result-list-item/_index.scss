@@ -31,7 +31,6 @@
   }
 
   .meta,
-  .social-media-statistics,
   .tail {
     display: inline-block;
     font-family: $PxGroteskBold;
@@ -44,35 +43,6 @@
     .date {
       font-family: $PxGroteskRegular;
       color: #969696;
-    }
-  }
-
-  .social-media-statistics {
-    position: absolute;
-    left: 0;
-    display: block;
-
-    .channel {
-      $height: 20px;
-
-      height: $height;
-      padding-left: 15px;
-
-      .logo {
-        position: relative;
-        top: 3px;
-        width: $height;
-        height: $height;
-
-        svg {
-          width: $height;
-          height: $height;
-        }
-      }
-
-      span {
-        font-family: $PxGroteskBold;
-      }
     }
   }
 
@@ -128,11 +98,6 @@
       padding-right: 20%;
       white-space: nowrap;
       text-overflow: ellipsis;
-    }
-
-    .social-media-statistics {
-      position: relative;
-      display: inline;
     }
 
     .tail {

@@ -10,7 +10,6 @@
   $padding-large: $card-padding-large;
   $gutter-large: $blog-gutter-large;
   $category-tag-height: $blog-category-tag-height;
-  $excerpt-height: $blog-post-list-item-excerpt-height;
   $image-height: $blog-post-list-item-image-height;
 
   padding: 10px 10px 0 10px;
@@ -22,7 +21,6 @@
 
   .post-image {
     display: block;
-    height: 100%;
     overflow: hidden;
 
     .rimage {
@@ -37,6 +35,9 @@
   }
 
   &:not(.featured) {
+    display: flex;
+    flex-direction: column;
+
     .post-image {
       .rimage {
         transition: transform $hover-duration-quick ease-out;
@@ -52,7 +53,7 @@
   .details {
     position: relative;
     padding: $padding-small;
-    background-color: #f8f8f8;
+    background-color: $offWhite;
   }
 
   .blog-category-tag {
@@ -97,32 +98,10 @@
     }
   }
 
-  .social-media-statistics {
-    $height: 22px;
-
-    .channel {
-      height: $height;
-      padding-left: 20px;
-
-      span {
-        position: relative;
-        bottom: 3px;
-      }
-    }
-    .logo {
-      width: $height;
-      height: $height;
-
-      svg {
-        width: $height;
-        height: $height;
-      }
-    }
-  }
-
   /* Hero/featured blog post */
   &.featured {
     padding: 0;
+    width: 100%;
 
     .blog-category-tag {
       position: relative;
@@ -161,21 +140,13 @@
     }
 
     .details {
-      position: relative;
-      height: $excerpt-height;
+      display: flex;
+      flex: 1 0 auto;
+      flex-direction: column;
       padding: $padding-medium;
 
       .tail {
-        position: absolute;
-        bottom: $padding-medium;
-        width: calc(100% - (2 * #{$padding-medium}));
-
-        a {
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          float: none;
-        }
+        margin-top: auto;
       }
     }
 
@@ -185,6 +156,7 @@
       padding-bottom: 0;
       margin-bottom: $gutter-large;
 
+      .post-image,
       .post-image .rimage {
         height: 100%;
       }
@@ -194,6 +166,7 @@
         top: 0;
         left: 0;
         width: 530px;
+        display: block;
       }
     }
   }
@@ -204,11 +177,6 @@
     }
     .details {
       padding: $padding-large;
-
-      .tail {
-        bottom: $padding-large;
-        width: calc(100% - (2 * #{$padding-large}));
-      }
     }
   }
 }

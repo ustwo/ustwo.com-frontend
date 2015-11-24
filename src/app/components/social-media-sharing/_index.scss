@@ -5,7 +5,7 @@
  */
 
 .social-media-sharing {
-  $width: 74px;
+  $width: 34px;
   $height: 34px;
   $font-size: 16px;
 
@@ -27,20 +27,6 @@
       }
     }
 
-    span {
-      position: relative;
-      top: 52%;
-      display: block;
-      margin: 0;
-      padding-right: 14px;
-      padding-left: 36px;
-      font-weight: bold;
-      font-size: $font-size;
-      text-align: left;
-      color: #fff;
-      transform: translateY(-50%);
-    }
-
     .svg-container {
       position: absolute;
       display: flex;
@@ -48,7 +34,6 @@
       width: $height * 2;
       height: $height;
       margin-left: 6px;
-
 
       .logo {
         display: block;

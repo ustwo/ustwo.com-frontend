@@ -12,7 +12,6 @@ import window from 'app/adaptors/server/window';
 import DataLoader from 'app/lib/data-loader';
 import Nulls from './nulls';
 import Defaults from './defaults';
-import fetchSocialMediaData from 'app/lib/social-media-fetcher';
 
 const _state = Object.assign({
   currentPage: Nulls.page,
@@ -22,8 +21,6 @@ const _state = Object.assign({
   modal: Nulls.modal,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
-  twitterShares: Nulls.twitterShares,
-  facebookShares: Nulls.facebookShares,
   postsPagination: Defaults.postsPagination,
   postsPaginationTotal: Nulls.postsPaginationTotal,
   relatedContent: []
@@ -54,14 +51,6 @@ function applyMorePosts(response, type) {
   log('Added more posts', response.data);
   Store.emit('change', _state);
 }
-function applySocialMediaDataForPosts(response, type) {
-  const index = findIndex(_state.posts, 'slug', response.slug);
-  if (index > -1) {
-    _state.posts[index][type] = response.data;
-    log(`Added ${type}`, response.data);
-    Store.emit('change', _state);
-  }
-}
 function getApplyFunctionFor(dependency) {
   let func;
   switch(dependency) {
@@ -76,17 +65,6 @@ function applyRelatedContent(response) {
   _state.relatedContent.push(content);
   log('Loaded related content', content);
   Store.emit('change', _state);
-  if(content.type === 'post') {
-    Store.getSocialSharesForRelatedPost(content);
-  }
-}
-function applySocialMediaDataForRelatedPost(response, type) {
-  const index = findIndex(_state.relatedContent, 'slug', response.slug);
-  if (index > -1) {
-    _state.relatedContent[index][type] = response.data;
-    log(`Added ${type}`, response.data);
-    Store.emit('change', _state);
-  }
 }
 
 window._state = _state;
@@ -108,10 +86,6 @@ const Store = Object.assign(
       }
       if(newPage !== 'blog/search-results') {
         _state.searchQuery = null;
-      }
-      if(newPage !== 'blog/post') {
-        _state.twitterShares = Nulls.twitterShares;
-        _state.facebookShares = Nulls.facebookShares;
       }
       if(newPage !== 'blog') {
         _state.blogCategory = Defaults.blogCategory;
@@ -141,14 +115,6 @@ const Store = Object.assign(
       });
     },
     initiateAsyncLoadsFor(itemsToLoad) {
-      switch(true) {
-        case some(itemsToLoad, 'type', 'posts'):
-          Store.getSocialSharesForPosts();
-          break;
-        case some(itemsToLoad, 'type', 'post'):
-          Store.getSocialSharesForPost();
-          break;
-      }
       itemsToLoad.filter(item => item.async).forEach(item => {
         item.async.forEach(dependency => {
           DataLoader(get(_state[item.type], dependency, []).map(url => {
@@ -215,37 +181,6 @@ const Store = Object.assign(
       _state.modal = 'blogCategories';
       Store.emit('change', _state);
     },
-    getSocialSharesForPost() {
-      const hasFacebookData = !!_state.facebookShares || _state.facebookShares === 0;
-      const hasTwitterData = !!_state.twitterShares || _state.twitterShares === 0;
-      if (hasFacebookData && hasTwitterData) {
-        Store.emit('change', _state);
-      } else {
-        fetchSocialMediaData(_state.post.slug, applyData)
-          .then(() => Store.emit('change', _state));
-      }
-    },
-    getSocialSharesForRelatedPost(post) {
-      const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
-      const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
-      if (!hasFacebookData && !hasTwitterData) {
-        fetchSocialMediaData(post.slug, applySocialMediaDataForRelatedPost)
-          .then(() => Store.emit('change', _state));
-      }
-    },
-    getSocialSharesForPosts() {
-      Promise.all((_state.posts || []).map(post => {
-        const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
-        const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
-        let promise;
-        if (hasFacebookData && hasTwitterData) {
-          promise = Promise.resolve();
-        } else {
-          promise = fetchSocialMediaData(post.slug, applySocialMediaDataForPosts);
-        }
-        return promise;
-      })).then(() => Store.emit('change', _state));
-    },
     loadMorePosts() {
       if (_state.postsPagination === _state.postsPaginationTotal) {
         Store.emit('change', _state);
@@ -261,10 +196,7 @@ const Store = Object.assign(
         DataLoader([{
           url: url,
           type: 'posts'
-        }], applyMorePosts).then(() => {
-          Store.emit('change', _state);
-          Store.getSocialSharesForPosts();
-        });
+        }], applyMorePosts).then(() => Store.emit('change', _state));
       }
     },
     resetPosts() {

@@ -410,9 +410,7 @@ const posts = [
           }
         ]
       ]
-    },
-    "facebookShares": 0,
-    "twitterShares": 19
+    }
   },
   {
     "id": 8204,
@@ -994,9 +992,7 @@ const posts = [
           }
         ]
       ]
-    },
-    "facebookShares": 9,
-    "twitterShares": 49
+    }
   },
   {
     "id": 8235,
@@ -1407,9 +1403,7 @@ const posts = [
           }
         ]
       ]
-    },
-    "facebookShares": 6,
-    "twitterShares": 212
+    }
   },
   {
     "id": 7900,
@@ -1828,9 +1822,7 @@ const posts = [
           }
         ]
       ]
-    },
-    "facebookShares": 84,
-    "twitterShares": 67
+    }
   },
   {
     "id": 7842,
@@ -2315,9 +2307,7 @@ const posts = [
           }
         ]
       ]
-    },
-    "facebookShares": 6,
-    "twitterShares": 18
+    }
   },
   {
     "id": 7102,
@@ -2831,9 +2821,7 @@ const posts = [
           }
         ]
       ]
-    },
-    "facebookShares": 34,
-    "twitterShares": 16
+    }
   },
   {
     "id": 6779,
@@ -3368,9 +3356,7 @@ const posts = [
           }
         ]
       ]
-    },
-    "facebookShares": 46,
-    "twitterShares": 13
+    }
   },
   {
     "id": 6674,
@@ -3776,9 +3762,7 @@ const posts = [
           }
         ]
       ]
-    },
-    "facebookShares": 98,
-    "twitterShares": 130
+    }
   },
   {
     "id": 6637,
@@ -4131,9 +4115,7 @@ const posts = [
           }
         ]
       ]
-    },
-    "facebookShares": 29,
-    "twitterShares": 64
+    }
   },
   {
     "id": 6478,
@@ -4510,9 +4492,7 @@ const posts = [
           }
         ]
       ]
-    },
-    "facebookShares": 34,
-    "twitterShares": 51
+    }
   }
 ];
 

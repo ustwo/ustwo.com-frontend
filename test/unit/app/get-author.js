@@ -26,7 +26,6 @@ describe('getAuthor', () => {
       date: null,
       display_title: null,
       excerpt: {},
-      facebookShares: null,
       featured_image: null,
       format: null,
       guid: {},
@@ -41,7 +40,6 @@ describe('getAuthor', () => {
       sticky: null,
       terms: {},
       title: {},
-      twitterShares: null,
       type: "post"
     }
   });

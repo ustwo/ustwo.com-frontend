@@ -9,7 +9,6 @@ import window from 'app/adaptors/server/window';
 import DataLoader from 'server/data-loader';
 import Nulls from 'app/flux/nulls';
 import Defaults from 'app/flux/defaults';
-import fetchSocialMediaData from 'app/lib/social-media-fetcher';
 
 import RoutePattern from 'route-pattern';
 import virtualUrl from 'app/flux/virtualurl';
@@ -86,30 +85,13 @@ function bootstrapper(initialUrl, hostApi, proxyUrl) {
     Object.assign(_state, changeSet);
     log('Loaded', type, _state[type]);
   }
-  function applySocialMediaDataForPosts(response, type) {
-    const index = findIndex(_state.posts, 'slug', response.slug);
-    if (index > -1) {
-      _state.posts[index][type] = response.data;
-      log(`Added ${type}`, response.data);
-    }
-  }
   function setPage(newPage, statusCode) {
     _state.currentPage = newPage;
     _state.statusCode = statusCode;
     return Promise.resolve(_state);
   }
   function loadData(itemsToLoad) {
-    return DataLoader(itemsToLoad, applyData).then(() => {
-      let result;
-      if(some(itemsToLoad, item => item.type === 'posts')) {
-        result = getSocialSharesForPosts();
-      } else if(some(itemsToLoad, item => item.type === 'post')) {
-        result = getSocialSharesForPost();
-      } else {
-        result = _state;
-      }
-      return result;
-    });
+    return DataLoader(itemsToLoad, applyData).then(() => _state);
   }
   function setBlogCategoryTo(id) {
     _state.blogCategory = id;
@@ -119,30 +101,6 @@ function bootstrapper(initialUrl, hostApi, proxyUrl) {
   function setSearchQueryTo(string) {
     _state.searchQuery = string;
     return Promise.resolve(_state);
-  }
-  function getSocialSharesForPost() {
-    const hasFacebookData = !!_state.facebookShares || _state.facebookShares === 0;
-    const hasTwitterData = !!_state.twitterShares || _state.twitterShares === 0;
-    let promise;
-    if (hasFacebookData && hasTwitterData) {
-      promise = Promise.resolve(_state);
-    } else {
-      promise = fetchSocialMediaData(_state.post.slug, applyData).then(() => _state);
-    }
-    return promise;
-  }
-  function getSocialSharesForPosts() {
-    return Promise.all(_state.posts.map(post => {
-      const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
-      const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
-      let promise;
-      if (hasFacebookData && hasTwitterData) {
-        promise = Promise.resolve(_state);
-      } else {
-        promise = fetchSocialMediaData(post.slug, applySocialMediaDataForPosts).then(() => _state);
-      }
-      return promise;
-    })).then(() => _state);
   }
 }
 
