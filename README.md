@@ -193,9 +193,13 @@ you want (like Docker Toolbox / [Kitematic][7]).
 
 ### Credentials / Vault
 
+* Open a Terminal window and go to the project folder.
+
 If you receive the image tar from someone in the team just do:
 
         $ make vault-load VAULT_PATH=path/to/vault-2015.tar
+
+TODO: clarify with Arnau
 
 *If not*, put your SSL certificates in the project's `etc/nginx/ssl` using
 `usweb` as the filename:
@@ -220,6 +224,8 @@ domain.
 
 *Note*: Check the [MAKE.md][11] for an explanation of how the Make
 tasks are structured.
+
+* Open a Terminal window and go to the project folder.
 
 Prepare a new environment:
 
@@ -275,6 +281,8 @@ And Nginx logs with:
 
 ### Watch and reload
 
+* Open a Terminal window and go to the project folder.
+
 CSS has extra tasks to speed up the development cycle. `css-watch` starts a
 `fswatch` process in _the host machine_ watching any scss or css file under
 `scr/app`.
@@ -296,6 +304,8 @@ or the raw IP will make the browser complain. If you need to overcome this
 please add a forward rule to Virtualbox so you can use `https://localhost:3000`.
 
 ## Test
+
+* Open a Terminal window and go to the project folder.
 
 Run all tests:
 
@@ -351,6 +361,8 @@ the browser interactions or run verbose mode locally for more info on the API
 requests and their results:
 
         $ make assets-integration-test VERBOSE=true
+
+TODO: add flow diagram about git branches -> CI, etc
 
 ## Release
 
