@@ -21,7 +21,6 @@
 
   .post-image {
     display: block;
-    height: 100%;
     overflow: hidden;
 
     .rimage {
@@ -36,6 +35,9 @@
   }
 
   &:not(.featured) {
+    display: flex;
+    flex-direction: column;
+
     .post-image {
       .rimage {
         transition: transform $hover-duration-quick ease-out;
@@ -99,6 +101,7 @@
   /* Hero/featured blog post */
   &.featured {
     padding: 0;
+    width: 100%;
 
     .blog-category-tag {
       position: relative;
@@ -138,6 +141,7 @@
 
     .details {
       display: flex;
+      flex: 1 0 auto;
       flex-direction: column;
       padding: $padding-medium;
 
@@ -152,6 +156,7 @@
       padding-bottom: 0;
       margin-bottom: $gutter-large;
 
+      .post-image,
       .post-image .rimage {
         height: 100%;
       }
