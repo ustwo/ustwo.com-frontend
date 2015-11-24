@@ -1,8 +1,8 @@
 import Store from './store';
 
 const Actions = {
-  goTo(pageId, statusCode) {
-    Store.setPage(pageId, statusCode);
+  goTo(page, params, hash, statusCode) {
+    Store.setPage(page, params, hash, statusCode);
   },
   loadData(itemsToLoad) {
     Store.loadData(itemsToLoad || []);
