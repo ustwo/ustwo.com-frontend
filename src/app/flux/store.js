@@ -196,9 +196,7 @@ const Store = Object.assign(
         DataLoader([{
           url: url,
           type: 'posts'
-        }], applyMorePosts).then(() => {
-          Store.emit('change', _state);
-        });
+        }], applyMorePosts).then(() => Store.emit('change', _state));
       }
     },
     resetPosts() {

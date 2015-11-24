@@ -91,9 +91,7 @@ function bootstrapper(initialUrl, hostApi, proxyUrl) {
     return Promise.resolve(_state);
   }
   function loadData(itemsToLoad) {
-    return DataLoader(itemsToLoad, applyData).then(() => {
-      return _state;
-    });
+    return DataLoader(itemsToLoad, applyData).then(() => _state);
   }
   function setBlogCategoryTo(id) {
     _state.blogCategory = id;
