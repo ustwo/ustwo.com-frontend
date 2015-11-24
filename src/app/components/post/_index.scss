@@ -153,29 +153,29 @@
           height: auto;
         }
       }
-      .author {
-        margin: 0 auto;
-        padding: 0 6.25%;
+    }
+    .author {
+      margin: 0 auto;
+      padding: 0 6.25%;
 
-        .mugshot {
-          width: 90px;
-          height: 90px;
-          border-radius: 45px;
-        }
-        .title {
-          margin-bottom: 20px;
+      .mugshot {
+        width: 90px;
+        height: 90px;
+        border-radius: 45px;
+      }
+      .title {
+        margin-bottom: 20px;
+        font-family: $PxGroteskBold;
+        font-size: 20px;
+      }
+      .links {
+        margin: 30px 0;
+        padding: 0;
+        list-style: none;
+
+        .link a {
+          border-bottom: 2px solid;
           font-family: $PxGroteskBold;
-          font-size: 20px;
-        }
-        .links {
-          margin: 30px 0;
-          padding: 0;
-          list-style: none;
-
-          .link a {
-            border-bottom: 2px solid;
-            font-family: $PxGroteskBold;
-          }
         }
       }
     }

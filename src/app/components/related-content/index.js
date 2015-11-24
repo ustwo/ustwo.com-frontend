@@ -11,7 +11,7 @@ export default class RelatedContent extends React.Component {
     return (
       <div className="related-content">
         <div className="wrapper">
-          <h2>More Juice</h2>
+          <h2 className="more-juice-title">More Juice</h2>
           {this.props.content.map(this.renderItem)}
         </div>
       </div>
