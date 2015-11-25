@@ -3,6 +3,8 @@
 import React from 'react';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
+import map from 'lodash/collection/map';
+import last from 'lodash/array/last';
 import kebabCase from 'lodash/string/kebabCase';
 
 import Track from 'app/adaptors/server/track';
@@ -56,10 +58,10 @@ const Footer = React.createClass({
       });
     }
   },
-  renderSocialMediaChannel(channel) {
+  renderSocialMediaChannel(url, channel) {
     return <li key={channel} className={classnames('channel', channel)}>
       <a
-        href={get(this.props, `data.social.${channel}`)}
+        href={url}
         onClick={this.onClickSocial(channel)}
         target="_blank"
       >
@@ -72,19 +74,21 @@ const Footer = React.createClass({
     </li>;
   },
   render() {
+    const generalContact = last(get(this.props, 'data.contacts'));
+    const generalEmail = get(generalContact, 'methods.0.uri');
     return <footer className="footer">
       <Subscription />
       <div className="content">
         <div className="general">
           <a
             className="email-cta"
-            href="mailto:hello@ustwo.com"
+            href={generalEmail}
             onClick={this.onClickShowContacts}
           >
             {get(this.props, 'data.contact_link_text')}
           </a>
           <ul className="social">
-            {['facebook', 'twitter', 'linkedin'].map(this.renderSocialMediaChannel)}
+            {map(get(this.props, 'data.social', {}), this.renderSocialMediaChannel)}
           </ul>
         </div>
         <ul className="studios">
@@ -92,9 +96,9 @@ const Footer = React.createClass({
         </ul>
         <div className="copyright">
           <ul>
-            <li>Copyright &copy; ustwo studio Ltd. All rights reserved.</li>
-            <li>For company information and other legal bits, see our <a href="/legal">legal page</a>.</li>
-            <li>We’re using <a href="https://www.iubenda.com/privacy-policy/322454/cookie-policy" target="_blank">cookies</a>, hope that’s cool. Here’s our <a href="https://www.iubenda.com/privacy-policy/322454" target="_blank">Privacy Policy</a>.</li>
+            <li dangerouslySetInnerHTML={{ __html: get(this.props, 'data.copyright') }} />
+            <li dangerouslySetInnerHTML={{ __html: get(this.props, 'data.legal') }} />
+            <li dangerouslySetInnerHTML={{ __html: get(this.props, 'data.cookie') }} />
           </ul>
         </div>
       </div>
