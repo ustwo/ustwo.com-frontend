@@ -103,49 +103,11 @@
 
     &:nth-child(2n+1) {
 
-      .block-parent {
-        transform: translateX(20px);
-
-        .block-child {
-          padding: 0 15px;
-
-          @media screen and (min-width: $bp-small) {
-            padding: 0;
-          }
-
-          .image-container {
-            width: 100%;
-            position: relative;
-            background-repeat: no-repeat;
-            background-position: 50% 50%;
-            background-size: auto 265px;
-            height: 300px;
-
-            @media screen and (min-width: $bp-small) {
-              height: 400px;
-              background-size: auto 400px;
-            }
-
-            @media screen and (min-width: $bp-medium) {
-              height: 500px;
-              background-size: auto 500px;
-            }
-          }
-        }
-      }
-
-      @media screen and (min-width: $bp-medium) {
-        .block-parent {
-          transform: translateX(50px);
-        }
-      }
-
       @media screen and (min-width: $bp-large) {
         padding-right: 0;
 
         .block-parent {
           order: 2;
-          transform: translateX(70px);
         }
       }
     }
@@ -154,7 +116,6 @@
   .screen-block.welcome {
     .headline-image {
       position: absolute;
-      margin: auto;
       left: 0;
       right: 0;
       top: 0;
