@@ -146,7 +146,7 @@ const PageHome = React.createClass({
             <div className="headline-text title">
               <BoldHeader colour="white">
                 <WordAnimation delay={1} duration={0.4}>
-                  We’re a digital product studio
+                  {get(page, 'hero.attr.heading.value')}
                 </WordAnimation>
               </BoldHeader>
             </div>
@@ -162,7 +162,7 @@ const PageHome = React.createClass({
     const { page } = this.props;
     return get(page, 'page_builder').map((block, index) => {
       const blockAttrs = get(block, 'attr');
-      return <ScreenBlock ref={`block${index}`} textColour={get(blockAttrs, 'text_colour.value')} bgColour={get(blockAttrs, 'background_colour.value')}>
+      return <ScreenBlock key={`block${index}`} ref={`block${index}`} textColour={get(blockAttrs, 'text_colour.value')} bgColour={get(blockAttrs, 'background_colour.value')}>
         <div className="block-parent">
           <div className="block-child">
             <MediaQuery maxWidth={480}>

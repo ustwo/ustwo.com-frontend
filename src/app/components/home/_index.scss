@@ -165,7 +165,6 @@
       opacity: 1;
       display: block;
       max-width: 520px;
-      background-image: url("/images/home/watches_small.jpg");
       background-repeat: no-repeat;
       background-position: 50% 50%;
       background-size: 460px auto;
@@ -176,7 +175,6 @@
       }
 
       @media screen and (min-width: $bp-large) {
-        background-image: url("/images/home/watches.png");
         background-size: 770px auto;
       }
 
@@ -189,21 +187,6 @@
       &.hide {
         opacity: 0;
       }
-    }
-  }
-
-  @media screen and (max-width: $bp-large) {
-    .welcome {
-      background-color: #6114CC !important;
-    }
-    .client {
-      background-color: #6986ec !important; /* this is the wrong blue but it goes with the jpg provided */
-    }
-    .own-stuff {
-      background-color: #FFBF02 !important;
-    }
-    .ventures {
-      background-color: #f55c57 !important; /* this too is actually slightly different to the correct red */
     }
   }
 }
