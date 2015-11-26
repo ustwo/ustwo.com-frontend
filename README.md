@@ -1,5 +1,7 @@
 # ustwo.com website
 
+[![Circle CI build status][16]][17]
+
 ## Overview
 
 This repository contains all the front end code for the current [ustwo.com][1]
@@ -396,3 +398,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 [13]: ./CONTRIBUTING.md
 [14]: https://gtmetrix.com/
 [15]: https://github.com/jonathantneal/svg4everybody
+[16]: https://circleci.com/gh/ustwo/ustwo.com-frontend.png?circle-token=6b4747fb91e70c0c1e3050879f6b5eebdf34dec3
+[17]: https://circleci.com/gh/ustwo/ustwo.com-frontend
