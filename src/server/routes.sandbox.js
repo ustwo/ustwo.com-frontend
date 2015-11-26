@@ -18,9 +18,7 @@ router.get('/:component.js', (req, res, next) => {
 
   let aliasifyConfig = require('app/aliases.sandbox.json');
 
-  b.transform(babelify.configure({
-      optional: ["es7.classProperties"]
-  }));
+  b.transform(babelify);
   b.transform(aliasify, aliasifyConfig);
 
   b.require('react', {expose: 'react'});
