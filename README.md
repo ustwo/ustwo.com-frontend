@@ -199,15 +199,7 @@ The easiest way is to load the vault image from a tar. If you receive the image 
 
         $ make vault-load VAULT_PATH=path/to/vault-2015.tar
 
-If you do not have access to this tar then you can proceed by either bringing your own or generating self signed certificates.
-
- - To use your own certificates, place them in the project's `etc/nginx/ssl` using `usweb` as the filename:
-
-        $ ls etc/nginx/ssl
-        ustwo.com.chained.cert  ustwo.com.key
-        $ make vault-build
-
- - To generate self signed certificates
+If you do not have access to this tar then you can proceed by generating your own self-signed certificates.
 
         $ make vault-generate-cert
         $ make vault-build
