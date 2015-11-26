@@ -195,24 +195,21 @@ you want (like Docker Toolbox / [Kitematic][7]).
 
 * Open a Terminal window and go to the project folder.
 
-If you receive the image tar from someone in the team just do:
+The easiest way is to load the vault image from a tar. If you receive the image tar from someone in the team just do:
 
         $ make vault-load VAULT_PATH=path/to/vault-2015.tar
 
-TODO: clarify with Arnau
+If you do not have access to this tar then you can proceed by either bringing your own or generating self signed certificates.
 
-*If not*, put your SSL certificates in the project's `etc/nginx/ssl` using
-`usweb` as the filename:
+ - To use your own certificates, place them in the project's `etc/nginx/ssl` using `usweb` as the filename:
 
         $ ls etc/nginx/ssl
         ustwo.com.chained.cert  ustwo.com.key
+        $ make vault-build
 
-Optionally you can create a self-signed certificate via:
+ - To generate self signed certificates
 
         $ make vault-generate-cert
-
-Then build the vault image:
-
         $ make vault-build
 
 *Note*: If you use self-signed certificates you probably want to use your
