@@ -27,7 +27,8 @@
     fill: $white;
   }
 
-  &:hover {
+  &:hover,
+  &.hover {
     opacity: 1;
   }
 }

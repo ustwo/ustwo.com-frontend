@@ -7,14 +7,24 @@ import SVGSequenceAnimation from 'app/lib/svg-sequence-animation';
 
 const ImageHover = React.createClass({
   mixins: [SVGSequenceAnimation({ fadeInDuration: 20, fps: 30 })],
-  onMouseEnter() {
+  triggerAnim() {
     this.resetAnim();
     this.anim();
+  },
+  onMouseEnter() {
+    this.triggerAnim();
+  },
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.hover) {
+      this.triggerAnim();
+    }
   },
   render() {
     const { customClass, onClick } = this.props;
     return <div
-      className={classnames('image-hover', customClass)}
+      className={classnames('image-hover', customClass, {
+        hover: this.props.hover
+      })}
       onClick={onClick}
       onMouseEnter={this.onMouseEnter}
     >

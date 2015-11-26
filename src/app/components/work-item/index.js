@@ -11,6 +11,11 @@ import WorkItemStyles from 'app/components/work-item-styles';
 import classnames from 'classnames';
 
 const WorkItem = React.createClass({
+  getInitialState() {
+    return {
+      hover: false
+    };
+  },
   render() {
     const { data, image, className } = this.props;
     const id = data.id;
@@ -24,14 +29,19 @@ const WorkItem = React.createClass({
           sizes={get(image, 'media_details.sizes')}
           altText={get(image, 'alt_text')}
         />
-        <ImageHover autoAnim={500} />
+        <ImageHover autoAnim={500} hover={this.state.hover} />
       </a>
       <div className='details'>
         <p className='type'>
           {get(data, 'type')}
         </p>
         <h3 className='title'>
-          <a href={link} onClick={Flux.override(link)}>{get(data, 'name')}</a>
+          <a
+            href={link}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+            onClick={Flux.override(link)}
+          >{get(data, 'name')}</a>
         </h3>
         <div
           className='desc'
@@ -40,12 +50,22 @@ const WorkItem = React.createClass({
         <a
           className='link'
           href={link}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
           onClick={Flux.override(link)}
-        >
-          Read more
-        </a>
+        >Read more</a>
       </div>
     </div>;
+  },
+  onMouseEnter() {
+    this.setState({
+      hover: true
+    });
+  },
+  onMouseLeave() {
+    this.setState({
+      hover: false
+    });
   }
 });
 
