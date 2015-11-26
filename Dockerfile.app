@@ -10,4 +10,4 @@ RUN mkdir -p /home/ustwo/public
 
 EXPOSE 8888
 
-CMD ["node", "./node_modules/babel/lib/_babel-node", "--optional", "es7.classProperties", "src/server"]
+CMD ["node", "./node_modules/babel/lib/_babel-node", "src/server"]
