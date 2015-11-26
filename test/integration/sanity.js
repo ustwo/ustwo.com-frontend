@@ -86,6 +86,10 @@ const workURL = baseURL + '/what-we-do';
 const workItem = '.page-work .work-item';
 const workReadmore = 'Read more';
 const workSlug = 'what';
+const sandboxURL = baseURL + '/sandbox';
+const sandboxComponentList = 'body > ol';
+const sandboxComponentName = 'blog';
+const sandboxSlug = 'sandbox';
 
 // helpers
 wd.addPromiseChainMethod('openPageByMenuLink', (linkText) => {
@@ -195,7 +199,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
       .waitForElementByCss(pageHome, wd.asserters.textInclude(homeHeadline), 10000);
   });
 
-  xit('should go to the Join us page and look for job listing title', () => {
+  it('should go to the Join us page and look for job listing title', () => {
     return browser
       .openPageByMenuLink(joinLink)
       .waitForElementByCss(jobsPage, wd.asserters.textInclude(jobOpenings), 15000)
@@ -207,5 +211,12 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
       .get(workURL)
       .waitForElementByCss(workItem, wd.asserters.textInclude(workReadmore), 15000)
       .url().should.eventually.include(workSlug);
+  });
+
+  it('should go to the Sandbox page and look for the component list', () => {
+    return browser
+      .get(sandboxURL)
+      .waitForElementByCss(sandboxComponentList, wd.asserters.textInclude(sandboxComponentName), 15000)
+      .url().should.eventually.include(sandboxSlug);
   });
 });
