@@ -18,7 +18,7 @@ release-create: release-tag-create release-pull-snapshots release-tag-snapshots
 release-pull-snapshots:
 	$(DOCKER) pull $(app_snapshot)
 	$(DOCKER) pull $(assets_snapshot)
-	$(DOCKER) pull $(sandbox_image)
+	$(DOCKER) pull $(sandbox_snapshot)
 
 release-tag-snapshots:
 	$(DOCKER) tag -f $(app_snapshot) $(app_image)
