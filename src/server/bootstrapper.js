@@ -52,10 +52,10 @@ function navigate(urlString) {
 
   switch(route.id) {
     case 'blog':
-      Flux.setBlogCategoryTo(params[0] || 'all');
+      setBlogCategoryTo(params[0] || 'all');
       break;
     case 'blog/search-results':
-      Flux.setSearchQueryTo(params[0]);
+      setSearchQueryTo(params[0]);
       break;
   }
   return action.then(state => Promise.resolve(state));
