@@ -2,8 +2,11 @@
 
 import React from 'react';
 import classnames from 'classnames';
+import get from 'lodash/object/get';
+import MediaQuery from 'react-responsive';
 
 import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
+import getFeaturedImage from 'app/lib/get-featured-image';
 
 import ScrollMagic from 'app/adaptors/server/scroll-magic';
 import hexRgb from 'hex-rgb';
@@ -17,6 +20,7 @@ import DownChevron from 'app/components/down-chevron';
 import SVG from 'app/components/svg';
 import WordAnimation from 'app/components/word-animation';
 import EntranceTransition from 'app/components/entrance-transition';
+import Rimage from 'app/components/rimage';
 
 import BoldHeader from 'app/components/bold-header';
 import HomeTextBlock from 'app/components/home-text-block';
@@ -25,28 +29,6 @@ import RelatedContent from 'app/components/related-content';
 
 const PageHome = React.createClass({
   mixins: [getScrollTrackerMixin('home')],
-  getInitialState() {
-    return {
-      blocks: [
-        {
-          blockReference: () => {return React.findDOMNode(this.refs.blockWelcome)},
-          hexColour: '6114CC'
-        },
-        {
-          blockReference: () => {return React.findDOMNode(this.refs.blockClient)},
-          hexColour: '009CF3'
-        },
-        {
-          blockReference: () => {return React.findDOMNode(this.refs.blockOwnStuff)},
-          hexColour: 'FFBF02'
-        },
-        {
-          blockReference: () => {return React.findDOMNode(this.refs.blockVenture)},
-          hexColour: 'F9615B'
-        }
-      ]
-    };
-  },
   animateChevron(event) {
     if(this.refs.downChevron) {
       this.refs.downChevron.resetAnim();
@@ -54,28 +36,38 @@ const PageHome = React.createClass({
     }
   },
   setupScrollMagic() {
+    const { page } = this.props;
+    const blocks = get(page, 'page_builder', []);
     let pageElement = React.findDOMNode(this);
     this.Tracking.addPageScrollTracking('home', pageElement);
 
     if (!env.Modernizr.touchevents && window.innerWidth > 480) {
       let scrollController = this.Tracking.scrollController;
-      let blockWelcome = this.state.blocks[0].blockReference();
+      let blockWelcome = {
+        attr: {
+          background_colour: {
+            value: get(page, 'colors.bg')
+          }
+        }
+      };
+      let blockWelcomeDom = React.findDOMNode(this.refs.blockWelcome);
+      blockWelcomeDom.style.backgroundColor = 'transparent';
       // set initial colour – we need to do this due to having an offset
-      pageElement.style.backgroundColor = '#' + this.state.blocks[0].hexColour;
+      pageElement.style.backgroundColor = get(page, 'colors.bg');
 
       this.scrollSceneChevron = new ScrollMagic.Scene({
-          triggerElement: blockWelcome,
+          triggerElement: blockWelcomeDom,
           triggerHook: 'onLeave',
-          duration: () => {return blockWelcome.clientHeight * 0.7}
+          duration: () => {return blockWelcomeDom.clientHeight * 0.7}
         })
         .addTo(scrollController);
 
       this.colourBlockScenes = [];
-      this.state.blocks.forEach((block, index) => {
-        block.blockReference().style.backgroundColor = 'transparent';
-        if (index > 0) {
-          this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, block.blockReference(), this.state.blocks[index - 1].hexColour, block.hexColour));
-        }
+      blocks.forEach((block, index) => {
+        const blockDom = React.findDOMNode(this.refs[`block${index}`]);
+        const previousBlock = blocks[index - 1] || blockWelcome;
+        blockDom.style.backgroundColor = 'transparent';
+        this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, blockDom, get(previousBlock, 'attr.background_colour.value'), get(block, 'attr.background_colour.value')));
       });
     }
   },
@@ -130,7 +122,9 @@ const PageHome = React.createClass({
     clearTimeout(this.animTimeout);
   },
   render() {
+    const { page } = this.props;
     const classes = classnames('page-home', this.props.className);
+    const featuredImage = getFeaturedImage(page);
     // Show only the final frame of the Chevron animation on mobile
     let Chevron;
     if (window.innerWidth <= 480) {
@@ -144,75 +138,48 @@ const PageHome = React.createClass({
     // End Chevron
     return (
       <article className={classes}>
-        <ScreenBlock ref="blockWelcome" customClass="welcome" hexColour={'#' + this.state.blocks[0].hexColour}>
+        <ScreenBlock ref="blockWelcome" customClass="welcome" textColour={get(page, 'colors.primary')} bgColour={get(page, 'colors.bg')}>
           <EntranceTransition className="image-entrance">
-            <div className="headline-image"></div>
+            <Rimage wrap="div" className="headline-image" sizes={get(featuredImage, 'media_details.sizes')} />
           </EntranceTransition>
           <EntranceTransition className="title-entrance">
             <div className="headline-text title">
               <BoldHeader colour="white">
                 <WordAnimation delay={1} duration={0.4}>
-                  We’re a digital product studio
+                  {get(page, 'hero.attr.heading.value')}
                 </WordAnimation>
               </BoldHeader>
             </div>
           </EntranceTransition>
           {Chevron}
         </ScreenBlock>
-        <ScreenBlock ref="blockClient" customClass="client" hexColour={'#' + this.state.blocks[1].hexColour}>
-          <div className="block-parent">
-            <div className="block-child">
-              <div className="image-container">
-                <div className="harvey-nicks-device"></div>
-                <SVG className="harvey-nicks-shape-3" role="presentation" spritemapID='HarveyShape3' />
-                <SVG className="harvey-nicks-shape-4" role="presentation" spritemapID='HarveyShape4' />
-                <SVG className="harvey-nicks-shape-1" role="presentation" spritemapID='HarveyShape1' />
-                <SVG className="harvey-nicks-shape-2" role="presentation" spritemapID='HarveyShape2' />
-              </div>
-            </div>
-          </div>
-          <div className="text-block">
-            <HomeTextBlock title="Creative client work">
-              <p>We work as partners with the biggest and smartest brands to make defining digital products, services and businesses.</p>
-            </HomeTextBlock>
-          </div>
-        </ScreenBlock>
-        <ScreenBlock ref="blockOwnStuff" customClass="own-stuff" hexColour={'#' + this.state.blocks[2].hexColour}>
-          <div className="block-parent">
-            <div className="block-child">
-              <div className="image-container">
-                <div className="monument-device"></div>
-                <SVG className="monument-award-1" role="presentation" spritemapID='MonumentAward1' />
-                <SVG className="monument-award-2" role="presentation" spritemapID='MonumentAward2' />
-                <SVG className="monument-award-3" role="presentation" spritemapID='MonumentAward3' />
-              </div>
-            </div>
-          </div>
-          <div className="text-block">
-            <HomeTextBlock title="Award-winning own products and games" colour="nonblack" childColour="nonblack">
-              <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic game <a href='http://www.monumentvalleygame.com/' target='_blank'>Monument Valley</a> or innovative technical platform <a href='http://www.wayfindr.net/' target='_blank'>Wayfindr</a>, we create products with passion from conception to launch and beyond.</p>
-            </HomeTextBlock>
-          </div>
-        </ScreenBlock>
-        <ScreenBlock ref="blockVenture" customClass="ventures" hexColour={'#' + this.state.blocks[3].hexColour}>
-          <div className="block-parent">
-            <div className="block-child">
-              <div className="image-container">
-                <div className="dice-screen-anim"></div>
-                <div className="dice-device"></div>
-                <SVG className="dice-logo" role="presentation" spritemapID='dicelogo' />
-              </div>
-            </div>
-          </div>
-          <div className="text-block">
-            <HomeTextBlock title="Launching new ventures" colour="white" childColour="white">
-              <p>Working with people who know their industry inside-out gets us super excited. We partner with the world’s leading experts and entrepreneurs, offering our expertise, technology or investment to create great new companies like live music discovery platform <a href='https://dice.fm/' target='_blank'>DICE</a>, or relaxation and meditation iOS app <a href='http://getpauseapp.com/' target='_blank'>PAUSE</a>.</p>
-            </HomeTextBlock>
-          </div>
-        </ScreenBlock>
+        {this.renderFeatureBlocks()}
         {this.renderRelatedContent()}
       </article>
     );
+  },
+  renderFeatureBlocks() {
+    const { page } = this.props;
+    return get(page, 'page_builder').map((block, index) => {
+      const blockAttrs = get(block, 'attr');
+      return <ScreenBlock key={`block${index}`} ref={`block${index}`} textColour={get(blockAttrs, 'text_colour.value')} bgColour={get(blockAttrs, 'background_colour.value')}>
+        <div className="block-parent">
+          <div className="block-child">
+            <MediaQuery maxWidth={480}>
+              <Rimage wrap="div" className="image-container" sizes={get(blockAttrs, 'image_jpg.value.0.sizes')} />
+            </MediaQuery>
+            <MediaQuery minWidth={481}>
+              <Rimage wrap="div" className="image-container" sizes={get(blockAttrs, 'image_png.value.0.sizes')} />
+            </MediaQuery>
+          </div>
+        </div>
+        <div className="text-block">
+          <HomeTextBlock title={get(blockAttrs, 'heading.value')} colour={get(blockAttrs, 'text_colour.value')}>
+            {get(block, 'attr.description.value')}
+          </HomeTextBlock>
+        </div>
+      </ScreenBlock>;
+    });
   },
   renderRelatedContent() {
     let relatedContent;
