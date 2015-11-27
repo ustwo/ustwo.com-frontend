@@ -14,7 +14,7 @@ const HomeTextBlock = React.createClass({
     };
     return <div className="home-text-block" style={textStyles}>
       <hr style={bgStyles} />
-      <h2>{title}</h2>
+      <h2 className="h3">{title}</h2>
       <div dangerouslySetInnerHTML={{ __html: children }} />
     </div>;
   }
