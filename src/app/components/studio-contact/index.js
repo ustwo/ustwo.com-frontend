@@ -25,7 +25,7 @@ const StudioContact = React.createClass({
       <h4 className="studio-title" onClick={this.onClick}>{studio.name}</h4>
       <div className="studio-details">
         <div className="vcard">
-          <p className="phone-number">{phoneNumbers[studio.name]}</p>
+          <p className="phone-number">{studio.address.telephone}</p>
           <div className="adr">
             <p className="street-address">
               {studio.address['street-address']}
