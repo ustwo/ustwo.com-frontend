@@ -1,5 +1,7 @@
 # ustwo.com website
 
+[![Circle CI build status][16]][17]
+
 ## Overview
 
 This repository contains all the front end code for the current [ustwo.com][1]
@@ -190,25 +192,21 @@ you want (like Docker Toolbox / [Kitematic][7]).
 *Note*: The IP number above depends on your local instance. Check
 `docker-machine ip dev`.
 
+*Note 2*: You need the environment to be set to dev to use Make commands!
 
 ### Credentials / Vault
 
-If you receive the image tar from someone in the team just do:
+* Open a Terminal window and go to the project folder.
+
+The easiest way is to load the vault image from a tar. If you receive the image
+tar from someone in the team just do:
 
         $ make vault-load VAULT_PATH=path/to/vault-2015.tar
 
-*If not*, put your SSL certificates in the project's `etc/nginx/ssl` using
-`usweb` as the filename:
-
-        $ ls etc/nginx/ssl
-        ustwo.com.chained.cert  ustwo.com.key
-
-Optionally you can create a self-signed certificate via:
+If you do not have access to this tar then you can proceed by generating your
+own self-signed certificates.
 
         $ make vault-generate-cert
-
-Then build the vault image:
-
         $ make vault-build
 
 *Note*: If you use self-signed certificates you probably want to use your
@@ -220,6 +218,8 @@ domain.
 
 *Note*: Check the [MAKE.md][11] for an explanation of how the Make
 tasks are structured.
+
+* Open a Terminal window and go to the project folder.
 
 Prepare a new environment:
 
@@ -275,6 +275,8 @@ And Nginx logs with:
 
 ### Watch and reload
 
+* Open a Terminal window and go to the project folder.
+
 CSS has extra tasks to speed up the development cycle. `css-watch` starts a
 `fswatch` process in _the host machine_ watching any scss or css file under
 `scr/app`.
@@ -296,6 +298,8 @@ or the raw IP will make the browser complain. If you need to overcome this
 please add a forward rule to Virtualbox so you can use `https://localhost:3000`.
 
 ## Test
+
+* Open a Terminal window and go to the project folder.
 
 Run all tests:
 
@@ -352,6 +356,8 @@ requests and their results:
 
         $ make assets-integration-test VERBOSE=true
 
+TODO: add flow diagram about git branches -> CI, etc
+
 ## Release
 
 We're using Docker Hub and Docker Machine to tag and deploy Docker images, for
@@ -395,3 +401,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 [13]: ./CONTRIBUTING.md
 [14]: https://gtmetrix.com/
 [15]: https://github.com/jonathantneal/svg4everybody
+[16]: https://circleci.com/gh/ustwo/ustwo.com-frontend.png?circle-token=6b4747fb91e70c0c1e3050879f6b5eebdf34dec3
+[17]: https://circleci.com/gh/ustwo/ustwo.com-frontend
