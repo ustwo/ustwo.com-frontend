@@ -81,21 +81,28 @@
     .block-parent {
       .block-child {
         .image-container {
-          width: 100%;
+          width: 87.5%;
           position: relative;
           background-repeat: no-repeat;
           background-position: 50% 50%;
-          background-size: auto 280px;
-          height: 290px;
+          background-size: contain;
+          height: 300px;
+          margin: 0 6.25%;
 
           @media screen and (min-width: $bp-small) {
             height: 400px;
-            background-size: auto 400px;
           }
 
           @media screen and (min-width: $bp-medium) {
-            height: 500px;
-            background-size: auto 500px;
+            height: 450px;
+          }
+
+          @media screen and (min-width: $bp-larger) {
+            height: 525px;
+          }
+
+          @media screen and (min-width: $bp-huge) {
+            height: 600px;
           }
         }
       }
