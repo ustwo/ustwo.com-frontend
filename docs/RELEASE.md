@@ -65,10 +65,9 @@ CircleCI build):
 
         $ exit
 
-6. Purge and prefetch CDN cache
+6. Purge CDN cache
 
         $ make cdn-purge-staging
-        $ make cdn-prefetch-staging
 
 ## Deploy to production
 
@@ -104,8 +103,12 @@ the Docker Hub.
 
         $ exit
 
-8. Purge and prefetch CDN cache
+8. Purge CDN cache
 
         $ make cdn-purge-production
+
+9. After waiting and making sure the CDN purge happened, warm the cache up for
+all pages
+
         $ make cdn-prefetch-production
 

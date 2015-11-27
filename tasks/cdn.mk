@@ -13,10 +13,6 @@ cdn-purge-production:
 
 ## Prefetch  ##################################################################
 
-# TODO: we should warm up the CDN after a purge, but to do that we'll need to feed it a list of URLs, maybe from the sitemap...
-# For API documentation see: https://client.cdn77.com/support/api/version/2.0/data#Prefetch
-cdn-prefetch-staging:
-	@echo "Not implemented yet..."
-
+# Instead of using the CDN prefetch API, we're just running a crawler and let it discover and trigger all pages
 cdn-prefetch-production:
-	@echo "Not implemented yet..."
+	@$(CURL) --data "" https://www.apifier.com/api/v1/fMXoktZAWXXQyTetr/crawlers/ustwo-com/execute?token=$(APIFIER_TOKEN)
