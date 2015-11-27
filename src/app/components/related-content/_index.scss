@@ -16,6 +16,8 @@
   background: $nonBlack;
 
   .wrapper {
+    display: flex;
+    flex-wrap: wrap;
     max-width: $max-app-width;
     margin: 0 auto;
   }
@@ -82,7 +84,7 @@
     }
 
     .related-content-item {
-      display: inline-block;
+      display: flex;
       width: calc(50% - (#{$gutter} / 2));
       margin-right: $gutter;
       margin-bottom: 0;
