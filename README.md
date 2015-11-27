@@ -192,16 +192,19 @@ you want (like Docker Toolbox / [Kitematic][7]).
 *Note*: The IP number above depends on your local instance. Check
 `docker-machine ip dev`.
 
+*Note 2*: You need the environment to be set to dev to use Make commands!
 
 ### Credentials / Vault
 
 * Open a Terminal window and go to the project folder.
 
-The easiest way is to load the vault image from a tar. If you receive the image tar from someone in the team just do:
+The easiest way is to load the vault image from a tar. If you receive the image
+tar from someone in the team just do:
 
         $ make vault-load VAULT_PATH=path/to/vault-2015.tar
 
-If you do not have access to this tar then you can proceed by generating your own self-signed certificates.
+If you do not have access to this tar then you can proceed by generating your
+own self-signed certificates.
 
         $ make vault-generate-cert
         $ make vault-build
