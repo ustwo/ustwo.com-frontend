@@ -90,6 +90,8 @@ const sandboxURL = baseURL + '/sandbox';
 const sandboxComponentList = 'body > ol';
 const sandboxComponentName = 'blog';
 const sandboxSlug = 'sandbox';
+const badURL = baseURL + '/blog/press/asdf';
+const page404 = '.page-404';
 
 // helpers
 wd.addPromiseChainMethod('openPageByMenuLink', (linkText) => {
@@ -218,5 +220,11 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
       .get(sandboxURL)
       .waitForElementByCss(sandboxComponentList, wd.asserters.textInclude(sandboxComponentName), 15000)
       .url().should.eventually.include(sandboxSlug);
+  });
+
+  it('should go to a non-existent page and get 404', () => {
+    return browser
+      .get(badURL)
+      .waitForElementByCss(page404, 15000);
   });
 });

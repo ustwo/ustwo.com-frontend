@@ -41,23 +41,28 @@ function navigate(urlString) {
     return some(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
   });
 
+  let namedParams = [];
+  let params = [];
+
   if (!route) {
     route = Routes.notfound;
-  }
-  const pattern = find(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
-  let paramsResult = RoutePattern.fromString(pattern).match(path);
-  let params = paramsResult ? paramsResult.params : [];
-  let namedParams = paramsResult ? paramsResult.namedParams : [];
-  let action = applyRoute(route.id, namedParams, '', route.data.apply(null, params), route.statusCode);
+  } else {
+    const pattern = find(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
+    let paramsResult = RoutePattern.fromString(pattern).match(path);
+    params = paramsResult ? paramsResult.params : [];
+    namedParams = paramsResult ? paramsResult.namedParams : [];
 
-  switch(route.id) {
-    case 'blog':
-      setBlogCategoryTo(params[0] || 'all');
-      break;
-    case 'blog/search-results':
-      setSearchQueryTo(params[0]);
-      break;
+    switch(route.id) {
+      case 'blog':
+        setBlogCategoryTo(params[0] || 'all');
+        break;
+      case 'blog/search-results':
+        setSearchQueryTo(params[0]);
+        break;
+    }
   }
+
+  let action = applyRoute(route.id, namedParams, '', route.data.apply(null, params), route.statusCode);
   return action.then(state => Promise.resolve(state));
 }
 function applyRoute(page, params, hash, itemsToLoad, statusCode) {
