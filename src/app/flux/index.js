@@ -68,13 +68,17 @@ const Flux = Object.assign(
         return some(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
       });
 
+      let namedParams = [];
+      let params = [];
+
       if (!route) {
         route = Routes.notfound;
+      } else {
+        const pattern = find(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
+        let paramsResult = RoutePattern.fromString(pattern).match(path);
+        params = paramsResult ? paramsResult.params : [];
+        namedParams = paramsResult ? paramsResult.namedParams : [];
       }
-      const pattern = find(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
-      let paramsResult = RoutePattern.fromString(pattern).match(path);
-      let params = paramsResult ? paramsResult.params : [];
-      let namedParams = paramsResult ? paramsResult.namedParams : [];
       applyRoute(route.id, namedParams, getHash(vurl), route.data.apply(null, params), route.statusCode);
 
       if (!ignoreUrl) {
