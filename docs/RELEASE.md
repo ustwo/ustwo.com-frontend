@@ -10,6 +10,9 @@ production you need to log in via SSH manually and run the make commands inside.
 We're also making use of private Docker Hub repositories to store and distribute
 tagged images, built on CI.
 
+*IMPORTANT*: you have to be added to the ustwo organisation and logged in to
+Docker Hub (`docker login`) in order to be able to deploy!
+
 To get a list of infrastructure platforms supported by Docker Machine, have a
 look at the output of `docker-machine create` (without any more parameters).
 
