@@ -92,7 +92,7 @@ const TakeOver = React.createClass({
         <h1 className="title" style={{color: get(takeover, "colours.takeover_header_colour")}}>
             {he.decode(get(takeover, "name"))}
           </h1>
-          <p className="description">{get(takeover, "content")}</p>
+          <p className="description" style={{color: get(takeover, "colours.text_colour")}}>{get(takeover, "content")}</p>
           <ul className="links">
             {reduce(get(takeover, 'links', {}), (links, value, key) => {
               const index = key[5];
