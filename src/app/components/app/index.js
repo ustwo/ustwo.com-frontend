@@ -141,7 +141,7 @@ const App = React.createClass({
             takeover={this.showTakeover()}
           />
         </EntranceTransition>
-        <PageContainer key={state.currentPage} className={contentClasses}>
+        <PageContainer key={state.currentPage} extraClasses={contentClasses}>
           <TransitionManager
             component="div"
             className="page-loader-container"
