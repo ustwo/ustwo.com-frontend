@@ -135,15 +135,10 @@
       max-width: 520px;
       background-repeat: no-repeat;
       background-position: 50% 50%;
-      background-size: 460px auto;
+      background-size: contain;
 
       @media screen and (min-width: $bp-medium) {
         max-width: 660px;
-        background-size: 580px auto;
-      }
-
-      @media screen and (min-width: $bp-large) {
-        background-size: 770px auto;
       }
 
       &.add {
