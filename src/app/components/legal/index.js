@@ -18,10 +18,10 @@ const PageLegal = React.createClass({
       <Rimage className='hero-image' sizes={sizes} wrap='div' />
       <div className="content-container">
         <h2>Legal</h2>
-        <p>ustwo studio ltd. Registered No. 05286528. Registered in England & Wales.</p>
+        <p>Ustwo Fampany Limited. Registered No. 05286528. Registered in England & Wales.</p>
         <p>Registered office:</p>
-        <p>2 AC Court, High Street, Thames Ditton, Surrey, KT7 0SR</p>
-        <p>VAT number: 853 3847 04</p>
+        <p>Unit G.01, Tea Building, 56 Shoreditch High Street, London, E1 6JJ</p>
+        <p>VAT number: 227 2497 00</p>
       </div>
     </article>;
   }
