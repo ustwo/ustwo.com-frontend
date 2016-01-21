@@ -80,13 +80,6 @@ function applyData(response, type) {
   Object.assign(_state, changeSet);
   log('Loaded', type, _state[type]);
 }
-function applySocialMediaDataForPosts(response, type) {
-  const index = findIndex(_state.posts, 'slug', response.slug);
-  if (index > -1) {
-    _state.posts[index][type] = response.data;
-    log(`Added ${type}`, response.data);
-  }
-}
 function setPage(newPage, newParams, newHash, statusCode) {
   _state.currentPage = newPage;
   _state.currentParams = newParams;
@@ -106,31 +99,6 @@ function setSearchQueryTo(string) {
   _state.searchQuery = string;
   return Promise.resolve(_state);
 }
-function getSocialSharesForPost() {
-  const hasFacebookData = !!_state.facebookShares || _state.facebookShares === 0;
-  const hasTwitterData = !!_state.twitterShares || _state.twitterShares === 0;
-  let promise;
-  if (hasFacebookData && hasTwitterData) {
-    promise = Promise.resolve(_state);
-  } else {
-    promise = fetchSocialMediaData(_state.post.slug, applyData).then(() => _state);
-  }
-  return promise;
-}
-function getSocialSharesForPosts() {
-  return Promise.all(_state.posts.map(post => {
-    const hasFacebookData = !!post.facebookShares || post.facebookShares === 0;
-    const hasTwitterData = !!post.twitterShares || post.twitterShares === 0;
-    let promise;
-    if (hasFacebookData && hasTwitterData) {
-      promise = Promise.resolve(_state);
-    } else {
-      promise = fetchSocialMediaData(post.slug, applySocialMediaDataForPosts).then(() => _state);
-    }
-    return promise;
-  })).then(() => _state);
-}
-
 function bootstrapper(initialUrl, hostApi, proxyUrl) {
   _state = {
     relatedContent: []
