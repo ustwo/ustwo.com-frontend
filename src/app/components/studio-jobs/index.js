@@ -26,7 +26,7 @@ const StudioJobs = React.createClass({
       </ul>;
     } else {
       list = <div className="jobs-none">
-        <p>We don’t have any openings currently. However we’re always looking for talented individuals to join the ustwo family.</p>
+        <p>We don’t have any specific openings at the moment, but we’re always on the lookout for talented individuals to join the ustwo family. If that’s you, let us know.</p>
         <a
           style={{backgroundColor: studio.color}}
           href={contactEmail.length ? `${contactEmail}?subject=${studio.name} Jobs` : ''}
