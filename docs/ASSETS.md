@@ -16,9 +16,9 @@ After exporting the asset, some level of optimisation is needed before using it 
       <path>
 </symbol>
 ```
-* Back to SVG OMG, copy everything within `<svg>`
-* Past the copied code in place of `<path>` in the template
-* Rename `id`, `title` and replace the `viewbox` dimensions with the ones from the `<svg>` tag in SVG OMG
+5. Back to SVG OMG, copy everything within `<svg>`
+6. Past the copied code in place of `<path>` in the template
+7. Rename `id`, `title` and replace the `viewbox` dimensions with the ones from the `<svg>` tag in SVG OMG
 
 ### Using sprites
 
