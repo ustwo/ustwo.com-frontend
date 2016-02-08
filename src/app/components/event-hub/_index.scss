@@ -1,0 +1,67 @@
+/*
+ *  PAGE: Events
+ *  Landing page to see upcoming and past events
+ *
+ */
+
+.page-events-hub {
+  background-color: #eaeaea;
+
+  .hero {
+    background-color: $softPassion;
+  }
+
+  .event-hub-event-list {
+    max-width: 1380px;
+    margin: 0 auto;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: opacity .2s ease-in-out, transform .32s ease-in-out;
+    margin-top: -200px;
+  }
+
+  .event-hub-studio-tabs {
+    margin: 30px 0;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar; 
+
+
+    li {
+      display: inline-block;
+      margin: 0 20px 10px 20px;
+      cursor: pointer;
+      font-family: $Futura;
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #fff;
+      transition: opacity $hover-duration-quick ease-in-out;
+
+      &[aria-selected="true"] {
+        border-bottom: 4px solid;
+      }
+
+      &:hover:not([aria-selected="true"]) {
+        opacity: $hover-fade-back;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .event-hub-event-list {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 $blog-gutter-large;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+
+  }
+
+
+}
+

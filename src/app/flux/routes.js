@@ -81,6 +81,24 @@ const routes = {
       async: ['related_content']
     }]
   },
+  eventHub: {
+    id: 'event-hub',
+    patterns: ['/events?studio=:lid', '/events'],
+    data: lid => [{
+      url: 'ustwo/v1/pages/events',
+      type: 'page',
+      slug: 'events'
+    }]
+  },
+  event: {
+    id: 'event-hub/event',
+    patterns: ['/events/:eid'],
+    data: eid => [{
+      url: 'ustwo/v1/pages/events',
+      type: 'page',
+      slug: 'events'
+    }]
+  },
   legal: {
     id: 'legal',
     patterns: ['/legal'],

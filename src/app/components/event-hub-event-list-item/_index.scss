@@ -1,0 +1,153 @@
+/*
+ *  EVENTS HUB EVENT LIST ITEM
+ *  Short excerpts and images of each event listed in the event hub page
+ *
+ */
+
+.event-hub-event-list-item {
+  $padding-small: $card-padding-small;
+  $padding-medium: $card-padding-medium;
+  $padding-large: $card-padding-large;
+
+  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 30px;
+
+  .date {
+    padding: $padding-medium $padding-large 0 $padding-large;
+    order: 2;
+    color: $softPassion;
+    background-color: $offWhite;
+    margin: 0;
+    font-size: 30px;
+  }
+
+  .details {
+    position: relative;
+    padding: 0 $padding-large $padding-medium $padding-large;
+    background-color: $offWhite;
+    order: 3;
+    width: 100%;
+
+    .title {
+      margin: 0;
+      a {
+        transition: color $hover-duration-quick ease-in-out;
+      }
+    }
+
+    p.meta {
+      padding: 10px 0;
+      margin: 0;
+
+      .location a {
+        transition: color 0.2s ease-in-out;
+        border-bottom: 2px solid;
+        border-color: $softPassion;
+
+        &:hover {
+          color: $softPassion;
+        }
+      }
+
+      .time {
+        padding-left: 20px;
+      }
+    }
+
+    .tail {
+      margin-top: 50px;
+
+      a.read-more {
+          transition: color 0.2s ease-in-out;
+          border-bottom: 2px solid;
+          border-color: $softPassion;
+
+          &:hover {
+            color: $softPassion;
+          }
+        
+      }
+    }
+  }
+
+  .event-image {
+    display: block;
+    overflow: hidden;
+    order: 1;
+    width: 100%;
+
+    .rimage {
+      height: 260px;
+      cursor: pointer;
+      transition: transform $hover-duration-quick ease-out;
+    }
+
+    &:hover {
+      .rimage {
+        transform: scale($hover-scale-up);
+      }
+    }
+
+  }
+
+  &.featured {
+    padding: 0;
+
+    .event-image {
+
+      .rimage {
+        height: 520px;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    flex-direction: row;
+    padding: 0;
+    width: 100%;
+    background-color: $offWhite;
+
+    .date {
+      order: 1;
+      flex: 0.5;
+      padding: $padding-medium 0 $padding-medium $padding-large;
+      text-align: right;
+
+      .day {
+        font-size: 80px;
+        display: block;
+      }
+
+      .month {
+        display: block;
+        font-size: 25px;
+      }
+
+    }
+
+    .details {
+      padding: $padding-medium $padding-large;
+      order: 2;
+      flex: 1.5;
+
+      .title {
+        font-size: 40px;
+      }
+    }
+
+
+    .event-image {
+      order:3;
+      flex: 3;
+    }
+
+  }
+
+  @media screen and (min-width: $bp-large) {
+
+  }
+
+}
