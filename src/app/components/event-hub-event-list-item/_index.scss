@@ -14,6 +14,7 @@
   flex-direction: column;
   padding: 10px;
   margin-bottom: 30px;
+  width: 100%;
 
   .date {
     padding: $padding-medium $padding-large 0 $padding-large;
@@ -21,7 +22,11 @@
     color: $softPassion;
     background-color: $offWhite;
     margin: 0;
-    font-size: 30px;
+    font-size: 25px;
+
+    .day {
+      margin-right: 5px;
+    }
   }
 
   .details {
@@ -36,6 +41,16 @@
       a {
         transition: color $hover-duration-quick ease-in-out;
       }
+    }
+
+    .location-icon {
+        display: inline-block;
+        width: 15px;
+        height: 20px;
+        fill: $softPassion;
+        margin-right: 5px;
+        margin-top: -1px;
+        vertical-align: middle;
     }
 
     p.meta {
@@ -80,7 +95,7 @@
     width: 100%;
 
     .rimage {
-      height: 260px;
+      height: 180px;
       cursor: pointer;
       transition: transform $hover-duration-quick ease-out;
     }
@@ -99,12 +114,16 @@
     .event-image {
 
       .rimage {
-        height: 520px;
+        height: 320px;
       }
     }
   }
 
   @media screen and (min-width: $bp-medium) {
+
+  }
+
+  @media screen and (min-width: $bp-large) {
     flex-direction: row;
     padding: 0;
     width: 100%;
@@ -119,11 +138,12 @@
       .day {
         font-size: 80px;
         display: block;
+        margin-right: 0;
       }
 
       .month {
         display: block;
-        font-size: 25px;
+        font-size: 20px;
       }
 
     }
@@ -134,20 +154,28 @@
       flex: 1.5;
 
       .title {
-        font-size: 40px;
+        font-size: 35px;
       }
     }
-
 
     .event-image {
       order:3;
       flex: 3;
+
+      .rimage {
+        height: 300px;
+      }
     }
 
-  }
+    &.featured {
 
-  @media screen and (min-width: $bp-large) {
+      .event-image {
 
+        .rimage {
+          height: 500px;
+        }
+      }
+    }
   }
 
 }

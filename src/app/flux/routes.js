@@ -82,7 +82,7 @@ const routes = {
     }]
   },
   eventHub: {
-    id: 'event-hub',
+    id: 'events',
     patterns: ['/events?studio=:lid', '/events'],
     data: lid => [{
       url: 'ustwo/v1/pages/events',

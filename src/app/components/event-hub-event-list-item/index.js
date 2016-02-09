@@ -9,8 +9,8 @@ import getFeaturedImage from 'app/lib/get-featured-image';
 import moment from 'moment';
 
 import Flux from 'app/flux';
-
 import Rimage from 'app/components/rimage';
+import SVG from 'app/components/svg';
 
 const EventHubEventListItem = React.createClass({
   render() {
@@ -37,6 +37,10 @@ const EventHubEventListItem = React.createClass({
           </a>
         </h2>
         <p className="meta">
+          <SVG
+            className="location-icon"
+            spritemapID="locationpin"
+          />
           <span className="location"><a href="/events?studio=malmo">Malmo</a></span><span className="time">6:45pm–10pm</span>
         </p>
         <div className="excerpt" dangerouslySetInnerHTML={{__html: excerpt}} />

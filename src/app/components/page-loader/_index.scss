@@ -44,7 +44,7 @@
   &.loading-join-us {
     @include page-loader-spinner(#000, $honey);
   }
-  &.loading-event-hub {
+  &.loading-events {
     @include page-loader-spinner(#fff, $softPassion);
   }
 }

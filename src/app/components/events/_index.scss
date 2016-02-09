@@ -17,7 +17,6 @@
     opacity: 1;
     transform: translateY(0px);
     transition: opacity .2s ease-in-out, transform .32s ease-in-out;
-    margin-top: -200px;
   }
 
   .event-hub-studio-tabs {
@@ -32,12 +31,12 @@
 
     li {
       display: inline-block;
-      margin: 0 20px 10px 20px;
+      margin: 0 20px 0 20px;
       cursor: pointer;
       font-family: $Futura;
       font-size: 24px;
       text-transform: uppercase;
-      color: #fff;
+      color: $softPassion;
       transition: opacity $hover-duration-quick ease-in-out;
 
       &[aria-selected="true"] {
@@ -55,6 +54,13 @@
       display: flex;
       flex-wrap: wrap;
       padding: 0 $blog-gutter-large;
+      margin-top: -200px;
+
+      .event-hub-studio-tabs {
+        li {
+          color: #fff;
+        }
+      }
     }
   }
 
