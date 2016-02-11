@@ -108,6 +108,7 @@ const App = React.createClass({
           takeover={this.showTakeover()}
         />
         <FourOhFour {...this.state} />
+        {this.renderModal()}
       </div>;
     } else {
       content = <div className={appClasses}>
