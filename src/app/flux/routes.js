@@ -64,7 +64,7 @@ const routes = {
   },
   searchResults: {
     id: 'blog/search-results',
-    pattern: ['/blog/search?q=:query'],
+    patterns: ['/blog/search?q=:query'],
     data: query => [{
       url: `ustwo/v1/posts?search=${query}`,
       type: 'posts',
