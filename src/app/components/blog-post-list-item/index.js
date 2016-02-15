@@ -21,7 +21,7 @@ const BlogPostListItem = React.createClass({
       `blog-label-${get(category, 'slug', 'category')}`,
       { featured: featured }
     );
-    const excerpt = get(post, 'excerpt.rendered');
+    const excerpt = get(post, 'excerpt.rendered').replace(/<img[^>]*>/g,"");
     const image = getFeaturedImage(post);
     const uri = `/blog/${get(post, 'slug')}`;
 
