@@ -10,12 +10,11 @@ After exporting the asset, some level of optimisation is needed before using it 
 2. Choose 'Open SVG', select the file, and switch to the 'Code' tab
 3. Select 'Prettify code' and 'Multipass' in global settings
 4. Copy the following template and paste into `src/app/images/spritemap.svg` at an appropriate place:
-```
-<symbol id="name-of-sprite" viewbox="0 0 20 20">
-      <title>Name of Sprite</title>
-      <path>
-</symbol>
-```
+
+        <symbol id="name-of-sprite" viewbox="0 0 20 20">
+            <title>Name of Sprite</title>
+            <path>
+        </symbol>
 5. Back to SVG OMG, copy everything within `<svg>`
 6. Past the copied code in place of `<path>` in the template
 7. Rename `id`, `title` and replace the `viewbox` dimensions with the ones from the `<svg>` tag in SVG OMG
