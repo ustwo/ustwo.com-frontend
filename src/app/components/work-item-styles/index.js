@@ -16,12 +16,6 @@ const WorkItemStyles = React.createClass({
     const rgbImageHover = hexRgb(secondaryColour);
 
     return <style type="text/css" scoped>{`
-      .work-item-${id} {
-        background-color: ${bgColour};
-      }
-      .work-item-${id} .details {
-        color: ${secondaryColour};
-      }
       .work-item-${id} .details .type {
         border-color: ${secondaryColour};
       }

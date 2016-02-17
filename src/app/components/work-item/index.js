@@ -47,13 +47,15 @@ const WorkItem = React.createClass({
           className='desc'
           dangerouslySetInnerHTML={{__html: get(data, 'excerpt')}}
         />
-        <a
-          className='link'
-          href={link}
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
-          onClick={Flux.override(link)}
-        >Read more</a>
+        <div className="tail">
+          <a
+            className='link'
+            href={link}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+            onClick={Flux.override(link)}
+          >Read more</a>
+        </div>
       </div>
     </div>;
   },
