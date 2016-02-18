@@ -9,7 +9,7 @@
   $padding-medium: $card-padding-medium;
   $padding-large: $card-padding-large;
   $gutter-large: $blog-gutter-large;
-  $category-tag-height: $blog-category-tag-height;
+  $category-tag-height: $category-tag-height;
   $image-height: $blog-post-list-item-image-height;
 
   padding: 10px 10px 0 10px;
@@ -56,7 +56,7 @@
     background-color: $offWhite;
   }
 
-  .blog-category-tag {
+  .category-tag {
     position: absolute;
     top: - $category-tag-height * .5;
   }
@@ -103,7 +103,7 @@
     padding: 0;
     width: 100%;
 
-    .blog-category-tag {
+    .category-tag {
       position: relative;
     }
   }

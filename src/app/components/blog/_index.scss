@@ -8,7 +8,7 @@
 @each $category, $colour in $blog-categories {
   .blog-label-#{$category} {
 
-    .blog-category-tag {
+    .category-tag {
       background-color: $colour;
     }
 

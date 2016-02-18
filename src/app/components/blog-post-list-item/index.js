@@ -10,7 +10,7 @@ import Flux from 'app/flux';
 
 import Rimage from 'app/components/rimage';
 import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
-import BlogCategoryTag from 'app/components/blog-category-tag';
+import CategoryTag from 'app/components/category-tag';
 
 const BlogPostListItem = React.createClass({
   render() {
@@ -34,7 +34,7 @@ const BlogPostListItem = React.createClass({
         />
       </a>
       <div className="details">
-        <BlogCategoryTag
+        <CategoryTag
           category={get(category, 'name', 'category')}
         />
         <h2 className="title">

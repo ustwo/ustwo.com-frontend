@@ -1,11 +1,11 @@
 /*
- *  BLOG CATEGORY TAG
+ *  CATEGORY TAG
  *  Tag to show what category the blog post belongs too, e.g. Product
  *
  */
 
- .blog-category-tag {
-  $height: $blog-category-tag-height;
+ .category-tag {
+  $height: $category-tag-height;
 
   display: inline-block;
   height: $height;
