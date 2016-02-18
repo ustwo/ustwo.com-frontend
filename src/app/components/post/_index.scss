@@ -62,8 +62,7 @@
     margin: 0 auto;
     padding: 40px 0;
     background: #fff;
-
-
+	
     ul,
     ol {
       line-height: 1.5;
@@ -133,6 +132,12 @@
 
     }
     .single-column {
+	  h3 {
+	    padding-bottom: 20px;
+	    line-height: 30px;
+	    text-transform: inherit;
+	    font-family: $PxGroteskBold;
+	  }
       .title {
         color: $nonBlack;
       }
