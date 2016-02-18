@@ -15,12 +15,12 @@ import BlogCategoryTag from 'app/components/blog-category-tag';
 const SearchResultListItem = React.createClass({
   render() {
     const { data: post } = this.props;
-    const category = get(post, '_embedded.wp:term.0.0.name', 'category');
+    const category = get(post, '_embedded.wp:term.0.0', {});
     const uri = `/blog/${get(post, 'slug')}`;
     const image = getFeaturedImage(post);
     const classes = classnames(
       'search-result-list-item',
-      `blog-label-${kebabCase(category)}`
+      `blog-label-${get(category, 'slug', 'category')}`
     );
 
     return <li className={classes}>
