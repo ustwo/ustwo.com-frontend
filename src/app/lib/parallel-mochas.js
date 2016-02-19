@@ -50,6 +50,6 @@ Promise.all(browsers.map(browser => runMocha(browser)))
     console.log('ALL TESTS RAN SUCCESSFULLY!');
   })
   .catch(() => {
-    console.log('SOME TESTS OR SOMETHING IN SAUCE STACK FAILED!');
+    console.log('SOME TESTS OR SOMETHING IN THE SAUCE STACK HAS FAILED!');
     process.exit(1);
   });
