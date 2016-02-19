@@ -26,8 +26,9 @@ sauce-create:
 		--name $(sauce_name) \
 		-p 8000:8000 \
 		--net=$(network_name) \
-		ustwo/docker-sauce-connect \
-		./bin/sc -P 8000 -u $(SAUCE_USERNAME) -k $(SAUCE_ACCESS_KEY) --tunnel-identifier $(subst /,-,"$(USER)-$(CIRCLE_BRANCH)") $(if $(CI),,--no-ssl-bump-domains *.ustwo.com)
+		$(project_labels) \
+		ustwo/sauce-connect \
+		-P 8000 -u $(SAUCE_USERNAME) -k $(SAUCE_ACCESS_KEY) --tunnel-identifier $(subst /,-,"$(USER)-$(CIRCLE_BRANCH)") $(if $(CI),,--no-ssl-bump-domains *.ustwo.com)
 	@$(call wait_for_sauce)
 
 define wait_for_node
