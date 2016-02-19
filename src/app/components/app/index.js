@@ -113,7 +113,7 @@ const App = React.createClass({
     } else {
       content = <div className={appClasses}>
         <Meta
-          title={get(state, 'page.seo.title') || ''}
+          title={get(state, 'page.seo.title') || get(state, 'post.seo.title') || ''}
           meta={[{
             name: "description",
             content: get(state, 'page.seo.desc') || get(state, 'post.seo.desc') || ''
