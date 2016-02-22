@@ -229,3 +229,29 @@
     }
   }
 }
+
+@each $category, $colour in $work-categories {
+  .work-label-#{$category} {
+
+    .category-tag {
+      background-color: $colour;
+    }
+
+    .title a:hover {
+      color: $colour;
+    }
+
+    .tail a {
+      border-color: $colour;
+      transition: color $hover-duration-quick ease-in-out;
+
+      &:hover {
+        color: $colour;
+      }
+    }
+    .image-hover {
+      background: rgba($colour, 0.7);
+    }
+
+  }
+}

@@ -9,6 +9,8 @@ import Rimage from 'app/components/rimage';
 import ImageHover from 'app/components/image-hover';
 import classnames from 'classnames';
 
+import kebabCase from 'lodash/string/kebabCase';
+
 const WorkItem = React.createClass({
   getInitialState() {
     return {
@@ -19,8 +21,9 @@ const WorkItem = React.createClass({
     const { data, image, className } = this.props;
     const id = data.id;
     const link = `/what-we-do/${get(data, 'slug')}`;
+    const category = get(data, 'type');
 
-    return <div className={classnames('work-item', `work-item-${id}`)}>
+    return <div className={classnames('work-item', `work-item-${id}`, `work-label-${kebabCase(category).toLowerCase()}`)}>
       <a href={link} onClick={Flux.override(link)} className="image">
         <Rimage
           wrap='div'
@@ -31,7 +34,7 @@ const WorkItem = React.createClass({
       </a>
       <div className="details">
         <div className="category-tag">
-          {get(data, 'type')}
+          {category}
         </div>
         <h3 className="title">
           <a
