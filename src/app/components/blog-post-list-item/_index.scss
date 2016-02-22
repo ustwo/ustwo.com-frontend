@@ -32,6 +32,10 @@
       display: block;
       height: 100%;
     }
+
+    .image-hover {
+      height: 245px;
+    }
   }
 
   &:not(.featured) {
@@ -105,6 +109,12 @@
 
     .category-tag {
       position: relative;
+    }
+  }
+
+  &:first-child {
+    .image-hover {
+      display: none;
     }
   }
 

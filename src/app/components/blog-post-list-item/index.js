@@ -9,10 +9,16 @@ import getFeaturedImage from 'app/lib/get-featured-image';
 import Flux from 'app/flux';
 
 import Rimage from 'app/components/rimage';
+import ImageHover from 'app/components/image-hover';
 import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
 import CategoryTag from 'app/components/category-tag';
 
 const BlogPostListItem = React.createClass({
+  getInitialState() {
+    return {
+      hover: false
+    };
+  },
   render() {
     const { data: post, featured } = this.props;
     const category = get(post, '_embedded.wp:term.0.0', {});
@@ -32,6 +38,7 @@ const BlogPostListItem = React.createClass({
           sizes={get(image, 'media_details.sizes')}
           altText={get(image, 'alt_text')}
         />
+        <ImageHover autoAnim={500} hover={this.state.hover} />
       </a>
       <div className="details">
         <CategoryTag

@@ -26,6 +26,10 @@
       }
     }
 
+    .image-hover {
+      background-color: rgba($colour, .7);
+    }
+
     &.page-post {
       .content-container {
         .rule,
