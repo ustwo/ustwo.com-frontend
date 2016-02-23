@@ -29,9 +29,6 @@
       cursor: pointer;
     }
 
-    .image-hover {
-      height: 245px;
-    }
 
     .link {
       display: block;
@@ -39,20 +36,14 @@
     }
   }
 
+  .image-hover {
+    display: none;
+    height: 245px;
+  }
+
   &:not(:first-child) {
     display: flex;
     flex-direction: column;
-
-    .image {
-      .rimage {
-        transition: transform $hover-duration-quick ease-out;
-      }
-      &:hover {
-        .rimage {
-          transform: scale($hover-scale-up);
-        }
-      }
-    }
   }
 
   .details {
@@ -165,10 +156,6 @@
         height: 100%;
       }
 
-      .image-hover {
-        display: none;
-      }
-
       .details {
         position: absolute;
         top: 0;
@@ -180,6 +167,29 @@
   }
 
   @media screen and (min-width: $bp-large) {
+    &:not(:first-child) {
+      .post-image {
+        .rimage {
+          transition: transform $hover-duration-quick ease-out;
+        }
+        &:hover {
+          .rimage {
+            transform: scale($hover-scale-up);
+          }
+        }
+      }
+    }
+
+    .image-hover {
+      display: flex;
+    }
+    &:first-child {
+      .image-hover {
+        display: none;
+      }
+    }
+
+
     .excerpt {
       height: 84.2px;
     }
