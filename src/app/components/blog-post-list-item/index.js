@@ -45,7 +45,12 @@ const BlogPostListItem = React.createClass({
           category={get(category, 'name', 'category')}
         />
         <h2 className="title">
-          <a href={uri} onClick={Flux.override(uri)}>
+          <a
+            href={uri}
+            onClick={Flux.override(uri)}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+          >
             {he.decode(get(post, 'title.rendered'))}
           </a>
         </h2>
@@ -55,10 +60,25 @@ const BlogPostListItem = React.createClass({
         />
         <div className="excerpt" dangerouslySetInnerHTML={{__html: excerpt}} />
         <div className="tail">
-          <a href={uri} onClick={Flux.override(uri)}>Read more</a>
+          <a
+            href={uri}
+            onClick={Flux.override(uri)}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+          >Read more</a>
         </div>
       </div>
     </div>;
+  },
+  onMouseEnter() {
+    this.setState({
+      hover: true
+    });
+  },
+  onMouseLeave() {
+    this.setState({
+      hover: false
+    });
   }
 });
 
