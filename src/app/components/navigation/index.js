@@ -48,12 +48,22 @@ const Navigation = React.createClass({
     });
   },
   addHeaderBackground() {
+    const { page } = this.props;
+    let amount;
+    if (page === 'post') {
+      amount = 400;
+    } else {
+      amount = innerHeight
+    }
     this.setState({
-      'scrolled': window.scrollY > 500 ? true : false
+      'scrolled': window.scrollY > amount ? true : false
     });
   },
-  componentDidMount() {
-    window.addEventListener('scroll', this.addHeaderBackground);
+  componentWillReceiveProps() {
+    const { section } = this.props;
+    if (section !== 'home') {
+      window.addEventListener('scroll', this.addHeaderBackground);
+    }
   },
   render() {
     const { section, page, takeover, customClass } = this.props;
@@ -61,10 +71,6 @@ const Navigation = React.createClass({
       'takeover': takeover,
       'scrolled': this.state.scrolled
     });
-    const backgroundOpacityScrollLimit = 300;
-    const backgroundOpacity = {
-      opacity: window.scrollY / backgroundOpacityScrollLimit
-    }
     return <header className={headerClasses}>
       <nav className={classnames('navigation', customClass)}>
         <div className="logo">
@@ -77,7 +83,6 @@ const Navigation = React.createClass({
           <ul>{this.renderNavigationLinks()}</ul>
         </div>
       </nav>
-      <div className="background" style={backgroundOpacity}></div>
     </header>;
   }
 });
