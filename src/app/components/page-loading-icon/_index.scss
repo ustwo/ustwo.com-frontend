@@ -15,28 +15,53 @@ $loader-color: $offWhite;
     bottom: 0;
     transform: scale(1.25, 0.25);
   }
-  30% {
-    transform: scale(0.8, 1.15);
+  21% {
+    bottom: $loader-jump * .4;
+  }
+  26% {
+    bottom: $loader-jump * .7;
+  }
+  33% {
+    bottom: $loader-jump * .88;
+  }
+  34% {
+    transform: scale(0.8, 1.13);
+  }
+  39% {
+    bottom: $loader-jump * .96;
+  }
+  45% {
+    bottom: $loader-jump;
   }
   49% {
     bottom: $loader-jump;
   }
-  51% {
-    bottom: $loader-jump * .95;
-  }
   52% {
-    bottom: $loader-jump * .85;
+    bottom: $loader-jump * .92;
   }
-  60% {
+  54% {
     transform: scale(1, 1);
   }
-  66% {
-    bottom: 0;
+  56% {
+    bottom: $loader-jump * .74;
+  }
+  61% {
+    bottom: $loader-jump * .48;
+  }
+  64% {
+    bottom: $loader-jump * .26;
+  }
+  67% {
+    bottom: $loader-jump * .07;
   }
   68% {
+    transform: scale(1, 0.8);
+    bottom: 0;
+  }
+  73% {
     transform: scale(1.5, 0.25);
   }
-  90% {
+  88% {
     transform: scale(1, 1);
   }
 }
