@@ -7,8 +7,9 @@ import Flux from 'app/flux';
 
 import Rimage from 'app/components/rimage';
 import ImageHover from 'app/components/image-hover';
-import WorkItemStyles from 'app/components/work-item-styles';
 import classnames from 'classnames';
+
+import kebabCase from 'lodash/string/kebabCase';
 
 const WorkItem = React.createClass({
   getInitialState() {
@@ -20,9 +21,9 @@ const WorkItem = React.createClass({
     const { data, image, className } = this.props;
     const id = data.id;
     const link = `/what-we-do/${get(data, 'slug')}`;
+    const category = get(data, 'type');
 
-    return <div className={classnames('work-item', `work-item-${id}`)}>
-      <WorkItemStyles data={data} />
+    return <div className={classnames('work-item', `work-item-${id}`, `work-label-${kebabCase(category).toLowerCase()}`)}>
       <a href={link} onClick={Flux.override(link)} className="image">
         <Rimage
           wrap='div'
@@ -31,11 +32,11 @@ const WorkItem = React.createClass({
         />
         <ImageHover autoAnim={500} hover={this.state.hover} />
       </a>
-      <div className='details'>
-        <p className='type'>
-          {get(data, 'type')}
-        </p>
-        <h3 className='title'>
+      <div className="details">
+        <div className="category-tag">
+          {category}
+        </div>
+        <h3 className="title">
           <a
             href={link}
             onMouseEnter={this.onMouseEnter}
@@ -44,16 +45,18 @@ const WorkItem = React.createClass({
           >{get(data, 'name')}</a>
         </h3>
         <div
-          className='desc'
+          className="desc"
           dangerouslySetInnerHTML={{__html: get(data, 'excerpt')}}
         />
-        <a
-          className='link'
-          href={link}
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
-          onClick={Flux.override(link)}
-        >Read more</a>
+        <div className="tail">
+          <a
+            className="link"
+            href={link}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+            onClick={Flux.override(link)}
+          >Read more</a>
+        </div>
       </div>
     </div>;
   },

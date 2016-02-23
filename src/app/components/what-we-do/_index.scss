@@ -5,6 +5,7 @@
  */
 
 .page-work {
+  background-color: $lightGrey;
 
   .hero {
     background-color: $pot;
@@ -15,43 +16,28 @@
     }
   }
 
+  .hero + .single-column {
+    background: white;
+    margin: 0;
+    padding-top: 100px;
+    padding-bottom: calc(100px + 14vh);
+    padding-left: 6.25%;
+    padding-right: 6.25%;
+
+    @media screen and (min-width: $bp-medium) {
+
+    }
+
+    @media screen and (min-width: $bp-large) {
+
+    }
+  }
+
   .single-column .content {
     text-align: center;
   }
 
-  @media screen and (min-width: $bp-small) {
-    .work-item {
-      .image .rimage {
-        height: 480px;
-      }
-    }
-  }
-
-  @media screen and (min-width: $bp-medium) {
-    .work-item {
-      display: flex;
-      flex-direction: row-reverse;
-
-      &:nth-child(2n) {
-        flex-direction: row;
-      }
-
-      .image {
-        flex: 1.5;
-      }
-
-      .details {
-        flex: 1;
-        padding: 70px 6.25%;
-      }
-    }
-  }
-
-  @media screen and (min-width: $bp-larger) {
-    .work-item {
-      .image .rimage {
-        height: 630px;
-      }
-    }
+  .work-items-list {
+    transform: translateY(-14vh);
   }
 }

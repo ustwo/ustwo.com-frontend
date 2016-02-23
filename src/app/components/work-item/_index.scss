@@ -1,78 +1,267 @@
 /*
  *  WORK ITEM
- *  Each showcase feature on what we do page
+ *  Short excerpts and images of each blog post on the main /blog page
  *
- *  TODO: Why are the breakpoints not using the pre-defined ones from variables?
  */
+
 
 .work-item {
   $padding-small: $card-padding-small;
   $padding-medium: $card-padding-medium;
   $padding-large: $card-padding-large;
+  $gutter-large: $blog-gutter-large;
+  $category-tag-height: $category-tag-height;
+  $image-height: $blog-post-list-item-image-height;
 
-  list-style: none;
-  background-color: $offWhite;
+  padding: 10px 10px 0 10px;
+  vertical-align: top;
+
+  &:last-of-type {
+    padding-bottom: 10px;
+  }
 
   .image {
-    position: relative;
-    cursor: pointer;
+    display: block;
+    overflow: hidden;
 
     .rimage {
-      height: 320px;
+      height: 245px;
+      cursor: pointer;
+    }
+
+
+    .link {
+      display: block;
+      height: 100%;
     }
   }
 
-  .title {
-    a {
-      transition: opacity $hover-duration-quick ease-in-out;
+  .image-hover {
+    display: none;
+    height: 245px;
+  }
 
-      &:hover {
-        opacity: $hover-fade-back;
-      }
-    }
+  &:not(:first-child) {
+    display: flex;
+    flex-direction: column;
   }
 
   .details {
+    position: relative;
     padding: $padding-small;
+    background-color: $offWhite;
+  }
 
-    .type {
-      margin-top: 0;
-      border-bottom: 4px solid $nonBlack;
-      text-transform: uppercase;
-      font-family: $PxGroteskBold;
-    }
+  .category-tag {
+    position: absolute;
+    top: - $category-tag-height * .5;
+  }
 
-    p {
-      color: $nonBlack;
-    }
+  .title {
+    margin-bottom: 5px;
+    font-size: 24px;
 
-    .title,
-    .desc {
-      margin: 20px 0;
-    }
-
-    .link {
-      display: inline-block;
-      border-bottom: 2px solid $nonBlack;
-      font-family: $PxGroteskBold;
-      color: $nonBlack;
+    a {
       transition: color $hover-duration-quick ease-in-out;
-
-      &:hover {
-        color: inherit;
-      }
     }
   }
 
+  .meta {
+    margin-bottom: $padding-small - 5px;
+    margin-top: 5px;
+    color: $darkGrey;
+    font-family: $PxGroteskBold;
+    font-size: 16px;
+
+    .date {
+      font-family: $PxGroteskRegular;
+    }
+  }
+
+  .excerpt {
+    display: none;
+  }
+
+  .tail {
+    text-align: right;
+    overflow: auto;
+
+    a {
+      display: inline-block;
+      float: left;
+      text-align: left;
+      border-bottom: 2px solid;
+    }
+  }
+
+  &:first-child {
+    padding: 0;
+    width: 100%;
+
+    .category-tag {
+      position: relative;
+    }
+  }
+
+
   @media screen and (min-width: $bp-medium) {
+    position: relative;
+    padding: 0 0 30px;
+
+    &:last-of-type {
+      padding-bottom: $gutter-large;
+    }
+
+    .blog-catgory {
+      transform: translateY(-21px);
+    }
+
+    .excerpt {
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      height: 76.2px;
+      margin: 0 auto 10px auto;
+      font-size: 26px;
+      line-height: 1.4;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+
+      p {
+        padding: 0;
+        margin: 0;
+      }
+    }
+
     .details {
+      display: flex;
+      flex: 1 0 auto;
+      flex-direction: column;
       padding: $padding-medium;
+
+      .tail {
+        margin-top: auto;
+      }
+    }
+
+    &:first-child {
+      position: relative;
+      height: 720px;
+      padding-bottom: 0;
+      margin-bottom: $gutter-large;
+
+      .image,
+      .image .rimage {
+        height: 100%;
+      }
+
+      .details {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 530px;
+        display: block;
+      }
     }
   }
 
   @media screen and (min-width: $bp-large) {
+    &:not(:first-child) {
+      .post-image {
+        .rimage {
+          transition: transform $hover-duration-quick ease-out;
+        }
+        &:hover {
+          .rimage {
+            transform: scale($hover-scale-up);
+          }
+        }
+      }
+    }
+
+    .image-hover {
+      display: flex;
+    }
+    &:first-child {
+      .image-hover {
+        display: none;
+      }
+    }
+
+
+    .excerpt {
+      height: 84.2px;
+    }
     .details {
       padding: $padding-large;
     }
+  }
+}
+
+.work-item:first-child {
+  position: relative;
+  width: 100%;
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: $bp-medium) {
+  .work-items-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: $blog-margin-offset;
+    padding: 0 $blog-gutter-large;
+    max-width: 1380px;
+    margin: 0 auto;
+  }
+  .work-item:first-child {
+    height: 720px;
+  }
+  .work-item:not(:first-child) {
+    width: calc(50% - (#{$blog-gutter-large} / 2));
+    margin-right: $blog-gutter-large;
+
+    &:nth-child(2n + 1) {
+      margin-right: 0;
+    }
+  }
+}
+
+@media screen and (min-width: $bp-larger) {
+  .work-item:not(:first-child) {
+    width: calc(33.333% - (#{$blog-gutter-large} * 2 / 3));
+
+    &:nth-child(2n + 1) {
+      margin-right: $blog-gutter-large;
+    }
+    &:nth-child(3n + 4) {
+      margin-right: 0;
+    }
+  }
+}
+
+@each $category, $colour in $work-categories {
+  .work-label-#{$category} {
+
+    .category-tag {
+      background-color: $colour;
+    }
+
+    .title a:hover {
+      color: $colour;
+    }
+
+    .tail a {
+      border-color: $colour;
+      transition: color $hover-duration-quick ease-in-out;
+
+      &:hover {
+        color: $colour;
+      }
+    }
+    .image-hover {
+      background: rgba($colour, 0.7);
+    }
+
   }
 }

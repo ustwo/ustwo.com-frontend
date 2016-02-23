@@ -8,7 +8,7 @@
 @each $category, $colour in $blog-categories {
   .blog-label-#{$category} {
 
-    .blog-category-tag {
+    .category-tag {
       background-color: $colour;
     }
 
@@ -24,6 +24,10 @@
       &:hover {
         color: $colour;
       }
+    }
+
+    .image-hover {
+      background-color: rgba($colour, .7);
     }
 
     &.page-post {
@@ -60,7 +64,7 @@
 }
 
 .page-blog {
-  background-color: #eaeaea;
+  background-color: $lightGrey;
 
   .hero-transition-manager {
     display: flex;

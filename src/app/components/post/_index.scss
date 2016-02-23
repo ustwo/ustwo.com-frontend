@@ -6,7 +6,7 @@
  */
 
 .page-post {
-  $category-tag-height: $blog-category-tag-height;
+  $category-tag-height: $category-tag-height;
 
   .hero-image {
     position: relative;
@@ -94,7 +94,7 @@
       text-align: center;
     }
 
-    .blog-category-tag {
+    .category-tag {
       position: absolute;
       top: - $category-tag-height * .5;
       left: 50%;

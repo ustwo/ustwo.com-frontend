@@ -10,7 +10,7 @@ import Flux from 'app/flux';
 
 import Rimage from 'app/components/rimage';
 import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
-import BlogCategoryTag from 'app/components/blog-category-tag';
+import CategoryTag from 'app/components/category-tag';
 
 const SearchResultListItem = React.createClass({
   render() {
@@ -33,7 +33,7 @@ const SearchResultListItem = React.createClass({
         />
       </a>
       <div className="content">
-        <BlogCategoryTag
+        <CategoryTag
           category={get(category, 'name', 'category')}
         />
         <h2 className="title">
