@@ -5,18 +5,31 @@
  *  Notes: Should this component be called header?
  */
 
+.nav-wrapper {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+}
+
 .header {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 40;
   display: block;
   height: $nav-height;
 
   .navigation {
+    position: relative;
+    z-index: 2;
     background: transparent;
     color: $white;
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background: rgba(0,0,0,.2);
   }
 
   .logo {
@@ -124,7 +137,7 @@
 
   &.show {
     .header {
-      transition: transform 0.5s ease-out;
+      transition: transform 0.5s ease-out, background-color 1s ease-in-out;
       transform: translateY(0px);
     }
   }

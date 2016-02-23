@@ -13,6 +13,11 @@ import NavigationLink from 'app/components/navigation-link';
 import NavigationToggle from 'app/components/navigation-toggle';
 
 const Navigation = React.createClass({
+  getInitialState() {
+    return {
+      'scrolled': false
+    }
+  },
   openOverlay() {
     Flux.showNavOverlay();
   },
@@ -42,12 +47,24 @@ const Navigation = React.createClass({
       </NavigationLink>;
     });
   },
+  addHeaderBackground() {
+    this.setState({
+      'scrolled': window.scrollY > 500 ? true : false
+    });
+  },
+  componentDidMount() {
+    window.addEventListener('scroll', this.addHeaderBackground);
+  },
   render() {
     const { section, page, takeover, customClass } = this.props;
     const headerClasses = classnames('header', section, page, {
-      'takeover': takeover
+      'takeover': takeover,
+      'scrolled': this.state.scrolled
     });
-
+    const backgroundOpacityScrollLimit = 300;
+    const backgroundOpacity = {
+      opacity: window.scrollY / backgroundOpacityScrollLimit
+    }
     return <header className={headerClasses}>
       <nav className={classnames('navigation', customClass)}>
         <div className="logo">
@@ -60,6 +77,7 @@ const Navigation = React.createClass({
           <ul>{this.renderNavigationLinks()}</ul>
         </div>
       </nav>
+      <div className="background" style={backgroundOpacity}></div>
     </header>;
   }
 });
