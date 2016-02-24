@@ -23,8 +23,10 @@ const WorkItem = React.createClass({
     const link = `/what-we-do/${get(data, 'slug')}`;
     const category = get(data, 'type');
 
-    return <div className={classnames('card-item', 'work-item', `work-item-${id}`, `work-label-${kebabCase(category).toLowerCase()}`)}>
-      <a href={link} onClick={Flux.override(link)} className="image">
+    return <div className={classnames('card-item', 'work-item', `work-item-${id}`, `work-label-${kebabCase(category).toLowerCase()}`, {
+        featured: id === 9305 // Temporary, we need ability to choose which case study is 'featured' in backend
+      })}>
+      <a href={link} onClick={Flux.override(link)} className="card-image">
         <Rimage
           wrap='div'
           sizes={get(image, 'media_details.sizes')}
@@ -32,7 +34,7 @@ const WorkItem = React.createClass({
         />
         <ImageHover autoAnim={500} hover={this.state.hover} />
       </a>
-      <div className="details">
+      <div className="card-details">
         <div className="category-tag">
           {category}
         </div>

@@ -33,7 +33,7 @@ const BlogPostListItem = React.createClass({
     const uri = `/blog/${get(post, 'slug')}`;
 
     return <div className={classes}>
-      <a href={uri} onClick={Flux.override(uri)} className="post-image">
+      <a href={uri} onClick={Flux.override(uri)} className="card-image">
         <Rimage
           wrap="div"
           sizes={get(image, 'media_details.sizes')}
@@ -41,7 +41,7 @@ const BlogPostListItem = React.createClass({
         />
         <ImageHover autoAnim={500} hover={this.state.hover} />
       </a>
-      <div className="details">
+      <div className="card-details">
         <CategoryTag
           category={get(category, 'name', 'category')}
         />

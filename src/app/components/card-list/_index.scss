@@ -44,9 +44,8 @@
   }
 
 
-  /* FEATURED CARD (Introducing a larger 'feature' card) */
-  .card-item.featured,
-  .card-item:first-child {
+  /* FEATURED CARD (Introducing a larger 'feature' card for the first item) */
+  .card-item.featured {
     display: block;
     width: 100%; /* Overrides previous card-item width media queries */
   }
@@ -54,11 +53,70 @@
   @media screen and (min-width: $bp-medium) {
     margin-top: $card-margin-offset; /* Pushes content up */
 
-    .card-item.featured,
-    .card-item:first-child {
+    .card-item.featured {
       position: relative;
       height: 720px;
     }
+  }
+
+
+  /* CARD IMAGE */
+  .card-image {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+
+    .rimage {
+      height: $card-image-height;
+    }
+    .image-hover {
+      display: none; /* Remove these hover styles on smaller screens */
+      height: $card-image-height;
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .card-item.featured {
+      .card-image {
+        &, .rimage {
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .card-item:not(.featured) {
+      .card-image {
+        .rimage {
+          transition: transform $hover-duration-quick ease-out;
+        }
+        &:hover {
+          .rimage {
+            transform: scale($hover-scale-up);
+          }
+        }
+      }
+    }
+
+    /* Show hovers styles for larger screens but hide them for the featured card */
+    .card-item {
+      .image-hover {
+        display: flex;
+      }
+    }
+    .card-item.featured {
+      .image-hover {
+        display: none;
+      }
+    }
+  }
+
+
+  /* CARD DETAILS */
+  .card-details {
+
   }
 
 }
