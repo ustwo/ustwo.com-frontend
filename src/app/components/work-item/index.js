@@ -47,7 +47,7 @@ const WorkItem = React.createClass({
           >{get(data, 'name')}</a>
         </h3>
         <div
-          className="desc"
+          className="excerpt"
           dangerouslySetInnerHTML={{__html: get(data, 'excerpt')}}
         />
         <div className="tail">

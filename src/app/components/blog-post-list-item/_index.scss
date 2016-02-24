@@ -5,43 +5,10 @@
  */
 
 .blog-post-list-item {
-  $padding-small: $card-padding-small;
-  $padding-medium: $card-padding-medium;
-  $padding-large: $card-padding-large;
-  $gutter-large: $card-gutter-large;
-  $category-tag-height: $category-tag-height;
-  $image-height: $blog-post-list-item-image-height;
-
-  .card-image {
-    .link {
-      display: block;
-      height: 100%;
-    }
-  }
-
-  .card-details {
-    position: relative;
-    padding: $padding-small;
-    background-color: $offWhite;
-  }
-
-  .category-tag {
-    position: absolute;
-    top: - $category-tag-height * .5;
-  }
-
-  .title {
-    margin-bottom: 5px;
-    font-size: 24px;
-
-    a {
-      transition: color $hover-duration-quick ease-in-out;
-    }
-  }
 
   .meta {
-    margin-bottom: $padding-small - 5px;
-    margin-top: 5px;
+    margin-top: $card-padding-small * .75;
+    margin-bottom: 0;
     color: $darkGrey;
     font-family: $PxGroteskBold;
     font-size: 16px;
@@ -55,77 +22,21 @@
     display: none;
   }
 
-  .tail {
-    text-align: right;
-    overflow: auto;
-
-    a {
-      display: inline-block;
-      float: left;
-      text-align: left;
-      border-bottom: 2px solid;
-    }
-  }
-
-  /* Hero/featured blog post */
-  &.featured {
-    .category-tag {
-      position: relative;
-    }
-  }
-
   @media screen and (min-width: $bp-medium) {
-
-    .blog-catgory {
-      transform: translateY(-21px);
-    }
-
     .excerpt {
       overflow: hidden;
       display: block;
       display: -webkit-box;
       height: 76.2px;
-      margin: 0 auto 10px auto;
-      font-size: 26px;
-      line-height: 1.4;
       text-overflow: ellipsis;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
-
-      p {
-        padding: 0;
-        margin: 0;
-      }
-    }
-
-    .card-details {
-      display: flex;
-      flex: 1 0 auto;
-      flex-direction: column;
-      padding: $padding-medium;
-
-      .tail {
-        margin-top: auto;
-      }
-    }
-
-    &.featured {
-      .card-details {
-        position: absolute;
-        top: 0;
-        left: $card-gutter-large * .5;
-        width: 530px;
-        display: block;
-      }
     }
   }
 
   @media screen and (min-width: $bp-large) {
     .excerpt {
       height: 84.2px;
-    }
-    .card-details {
-      padding: $padding-large;
     }
   }
 }

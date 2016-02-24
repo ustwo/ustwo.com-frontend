@@ -8,28 +8,12 @@
 @each $category, $colour in $blog-categories {
   .blog-label-#{$category} {
 
-    .category-tag {
-      background-color: $colour;
+    /* Card items on /blog */
+    &.card-item {
+      @include card-item-category-colours($colour);
     }
 
-    .title a:hover {
-      color: $colour;
-    }
-
-    .tail a {
-      border-color: $colour;
-      font-family: $PxGroteskBold;
-      transition: color $hover-duration-quick ease-in-out;
-
-      &:hover {
-        color: $colour;
-      }
-    }
-
-    .image-hover {
-      background-color: rgba($colour, .7);
-    }
-
+    /* Styles on post pages and search results */
     &.page-post {
       .content-container {
         .rule,
