@@ -62,7 +62,7 @@ const PageEvents = React.createClass({
     const { archivedEvents } = this.props;
     return archivedEvents;
   },
-  renderEvents() {
+	renderEvents() {
     const events = this.getEvents();
     let output;
     if (events) {
@@ -116,10 +116,10 @@ const PageEvents = React.createClass({
       isLoadingMoreEvents
     } = this.state;
     const { postsPagination, postsPaginationTotal } = this.props;
-    const {page, currentParams, events, archivedEvents, studios} = this.props;
+		const {page, currentParams, events, archivedEvents, studios} = this.props;
     return <article className="page-events">
-      <Hero
-        title={get(page, 'display_title')}
+    	<Hero
+	      title={get(page, 'display_title')}
         transitionImage={true}
         eventLabel="events"
         subheading={get(page, 'hero.attr.subheading.value')}
@@ -128,19 +128,19 @@ const PageEvents = React.createClass({
           studios={studios}
           currentParams={currentParams}
         /> 
-      </Hero>
+    	</Hero>
       <section className="events-list">
-        {this.renderEvents()}
+			  {this.renderEvents()}
         <LoadMoreButton
           loading={isLoadingMoreEvents}
           onClick={this.onClickLoadMore}
           disabled={postsPagination >= postsPaginationTotal}
         />
-      </section>
+		  </section>
       
         {this.renderArchivedEvents()}
     </article>;
-  }
+	}
 });
 
 export default PageEvents;

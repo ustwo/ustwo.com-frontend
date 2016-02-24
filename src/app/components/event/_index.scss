@@ -1,11 +1,11 @@
 /*
- *  PAGE: Event
- *  Event details page
+ *  EVENT
+ *  Event pages
  *
  */
 
 .page-event {
-  $category-tag-height: $blog-category-tag-height;
+  background-color: #eaeaea;
 
   .hero-image {
     position: relative;
@@ -56,9 +56,9 @@
   .content-container {
     position: relative;
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 40px 0 0 0;
     background: #fff;
-
+    margin-bottom: 30px;
 
     ul,
     ol {
@@ -78,24 +78,19 @@
     .excerpt,
     .meta,
     .rule,
-    .content,
-    .author {
+    .content {
       margin: 30px auto;
       max-width: 676px;
     }
     .title,
     .excerpt,
     .meta,
-    .rule,
-    .author {
+    .rule {
       text-align: center;
     }
 
-    .blog-category-tag {
-      position: absolute;
-      top: - $category-tag-height * .5;
-      left: 50%;
-      transform: translateX(-50%);
+    .title {
+      padding: 0 30px;
     }
 
     p.date-time {
@@ -104,6 +99,16 @@
 
     .title {
       padding: 0 30px;
+    }
+
+    .location-icon {
+        display: inline-block;
+        width: 15px;
+        height: 20px;
+        fill: $softPassion;
+        margin-right: 5px;
+        margin-top: -1px;
+        vertical-align: middle;
     }
 
     p.location {
@@ -120,15 +125,14 @@
       }
     }
 
-    .im-in {
+    a.im-in {
       text-align: center;
-      padding-top: 100px;
-
-      a {
-        padding: 18px 60px;
-        background-color: $softPassion;
-        color: #fff;
-      }
+      padding: 18px 60px;
+      background-color: $softPassion;
+      color: #fff;
+      margin: 50px auto;
+      display: block;
+      width: 200px;
     }
 
     .excerpt {
@@ -158,6 +162,12 @@
 
     }
     .single-column {
+    h3 {
+      padding-bottom: 20px;
+      line-height: 30px;
+      text-transform: inherit;
+      font-family: $PxGroteskBold;
+    }
       .title {
         color: $nonBlack;
       }
@@ -179,33 +189,14 @@
         }
       }
     }
-    .author {
-      margin: 0 auto;
-      padding: 0 6.25%;
 
-      .mugshot {
-        width: 90px;
-        height: 90px;
-        border-radius: 45px;
-      }
-      .title {
-        margin-bottom: 20px;
-        font-family: $PxGroteskBold;
-        font-size: 20px;
-      }
-      .links {
-        margin: 30px 0;
-        padding: 0;
-        list-style: none;
-
-        .link a {
-          border-bottom: 2px solid;
-          font-family: $PxGroteskBold;
-        }
-      }
+    .footer-image {
+      margin-top: 40px;
     }
+
   }
 
+  
   @media screen and (min-width: $bp-medium) {
     .hero-image {
       height: 450px;
@@ -229,6 +220,7 @@
       margin-left: 80px;
       margin-right: 80px;
     }
+
   }
 
   @media screen and (min-width: $bp-huge) {
@@ -246,5 +238,6 @@
     .content-container ul.social-media-sharing {
       right: 80px;
     }
+
   }
 }

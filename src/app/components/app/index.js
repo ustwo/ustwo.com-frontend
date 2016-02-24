@@ -36,10 +36,10 @@ const pageMap = {
   'blog': require('app/components/blog'),
   'blog/post': require('app/components/post'),
   'blog/search-results': require('app/components/search-results'),
-  'events': require('app/components/events'),
-  'event-hub/event': require('app/components/event'),
   'legal': require('app/components/legal'),
-  'join-us': require('app/components/join-us')
+  'join-us': require('app/components/join-us'),
+  'events': require('app/components/events'),
+  'events/event': require('app/components/event')
 };
 
 const spinnerBlacklist = ['legal', 'blog/search-results'];
