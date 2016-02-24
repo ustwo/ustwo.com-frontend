@@ -42,7 +42,10 @@ const Actions = {
   },
   resetPosts() {
     Store.resetPosts();
-  }
+  },
+  loadMoreEvents() {
+    Store.loadMoreEvents();
+  },
 };
 
 export default Actions;

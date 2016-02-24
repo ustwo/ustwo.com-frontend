@@ -1,25 +1,65 @@
 'use strict';
 
 import React from 'react';
-import find from 'lodash/collection/find';
 import get from 'lodash/object/get';
 import map from 'lodash/collection/map';
-import filter from 'lodash/collection/filter';
-import pluck from 'lodash/collection/pluck';
-import includes from 'lodash/collection/includes';
-import kebabCase from 'lodash/string/kebabCase';
-import spannify from 'app/lib/spannify';
+import take from 'lodash/array/take';
 
 import Hero from 'app/components/hero';
 import SVG from 'app/components/svg';
-import EventsListItem from 'app/components/events-list-item';
 import EventsControls from 'app/components/events-controls';
-import Flux from 'app/flux';
+import EventsListItem from 'app/components/events-list-item';
+import LoadMoreButton from 'app/components/load-more-button';
 
-const PageEventHub = React.createClass({
+const PageEvents = React.createClass({
+  getInitialState() {
+    return {
+      isLoadingInitialEvents: true,
+      isLoadingMoreEvents: false
+    };
+  },
+  componentWillMount() {
+    if (this.props.events) {
+      this.setState({
+        isLoadingInitialEvents: false
+      });
+    }
+  },
+  componentWillReceiveProps(nextProps) {
+    const { events: currentEvents } = this.props;
+    const { events: nextEvents } = nextProps;
+    const { isLoadingInitialEvents } = this.state;
+
+    if (isLoadingInitialEvents && nextEvents) {
+      this.setState({
+        isLoadingInitialEvents: false
+      });
+    }
+
+    const newEventsAdded = (currentEvents && nextEvents) && (currentEvents.length < nextEvents.length);
+    if (newEventsAdded) {
+      this.setState({
+        isLoadingMoreEvents: false
+      });
+    }
+  },
+  onClickLoadMore() {
+    Flux.loadMoreEvents();
+    this.setState({
+      isLoadingMoreEvents: true
+    });
+  },
   getEvents() {
-    const { events } = this.props;
+    const { postsPagination, postsPaginationTotal } = this.props;
+    let { events } = this.props;
+    if (postsPagination > 1 && postsPagination < postsPaginationTotal) {
+      events = take(events, (postsPagination * 12) + 1);
+    }
     return events;
+  },
+  getArchivedEvents() {
+    const { archivedEvents } = this.props;
+    return archivedEvents;
   },
   renderEvents() {
     const events = this.getEvents();
@@ -48,8 +88,12 @@ const PageEventHub = React.createClass({
     return output;
   },
   render() {
-    const { page, currentParams, studios } = this.props;
-
+    const {
+      isLoadingInitialEvents,
+      isLoadingMoreEvents
+    } = this.state;
+    const { postsPagination, postsPaginationTotal } = this.props;
+    const {page, currentParams, events, archivedEvents, studios} = this.props;
     return <article className="page-events">
       <Hero
         title={get(page, 'display_title')}
@@ -64,9 +108,15 @@ const PageEventHub = React.createClass({
       </Hero>
       <section className="events-list">
         {this.renderEvents()}
+        <LoadMoreButton
+          loading={isLoadingMoreEvents}
+          onClick={this.onClickLoadMore}
+          disabled={postsPagination >= postsPaginationTotal}
+        />
       </section>
+      
     </article>;
   }
 });
 
-export default PageEventHub;
+export default PageEvents;

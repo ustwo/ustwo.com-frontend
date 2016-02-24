@@ -68,6 +68,12 @@ function applyRelatedContent(response) {
   Store.emit('change', _state);
 }
 
+function applyMoreEvents(response, type) {
+  _state.events = _state.events.concat(response.data);
+  log('Added more events', response.data);
+  Store.emit('change', _state);
+}
+
 window._state = _state;
 
 const Store = Object.assign(
@@ -205,6 +211,19 @@ const Store = Object.assign(
     resetPosts() {
       _state.posts = Nulls.posts;
       Store.emit('change', _state);
+    },
+    loadMoreEvents() {
+      if (_state.postsPagination === _state.postsPaginationTotal) {
+        Store.emit('change', _state);
+      } else {
+        const pageNo = ++_state.postsPagination;
+        let url;
+        url = `ustwo/v1/events?per_page=5&page=${pageNo}`;
+        DataLoader([{
+          url: url,
+          type: 'events'
+        }], applyMoreEvents).then(() => Store.emit('change', _state));
+      }
     }
   }
 );
