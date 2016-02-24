@@ -81,13 +81,16 @@ const routes = {
       async: ['related_content']
     }]
   },
-  eventHub: {
+  events: {
     id: 'events',
-    patterns: ['/events?studio=:lid', '/events'],
-    data: lid => [{
+    patterns: ['/events'],
+    data: () => [{
       url: 'ustwo/v1/pages/events',
       type: 'page',
       slug: 'events'
+    }, {
+      url: 'ustwo/v1/events?per_page=5',
+      type: 'events'
     }]
   },
   event: {

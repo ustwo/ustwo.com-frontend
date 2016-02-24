@@ -1,10 +1,10 @@
 /*
- *  EVENTS HUB EVENT LIST ITEM
+ *  EVENTS LIST ITEM
  *  Short excerpts and images of each event listed in the event hub page
  *
  */
 
-.event-hub-event-list-item {
+.events-list-item {
   $padding-small: $card-padding-small;
   $padding-medium: $card-padding-medium;
   $padding-large: $card-padding-large;
@@ -73,7 +73,7 @@
     }
 
     .tail {
-      margin-top: 50px;
+      margin-top: 30px;
 
       a.read-more {
           transition: color 0.2s ease-in-out;
@@ -119,15 +119,12 @@
     }
   }
 
-  @media screen and (min-width: $bp-medium) {
-
-  }
-
   @media screen and (min-width: $bp-large) {
     flex-direction: row;
     padding: 0;
     width: 100%;
     background-color: $offWhite;
+    overflow: hidden;
 
     .date {
       order: 1;
@@ -145,7 +142,6 @@
         display: block;
         font-size: 20px;
       }
-
     }
 
     .details {
@@ -156,11 +152,12 @@
       .title {
         font-size: 35px;
       }
+
     }
 
     .event-image {
       order:3;
-      flex: 3;
+      flex: 2.5;
 
       .rimage {
         height: 300px;
@@ -176,6 +173,6 @@
         }
       }
     }
+    
   }
-
 }
