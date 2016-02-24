@@ -13,42 +13,15 @@ import spannify from 'app/lib/spannify';
 import Navigation from 'app/components/navigation';
 import Hero from 'app/components/hero';
 import EventsListItem from 'app/components/events-list-item';
+import EventsControls from 'app/components/events-controls';
 import Flux from 'app/flux';
 
 const PageEventHub = React.createClass({
-  getSelectedStudio(studioSlugFromUrl, studioSlugs) {
-    let selected = 'all-studios';
-    if(includes(studioSlugs, studioSlugFromUrl)) {
-      selected = studioSlugFromUrl;
-    }
-    return selected;
-  },
-  getStudios() {
-    return [{
-      name: 'All studios'
-    }].concat(this.props.studios);
-  },
-  renderStudioTabs(selectedStudioSlug) {
-    return map(this.getStudios(), studio => {
-      const studioSlug = kebabCase(studio.name);
-      const studioName = spannify(studio.name);
-      const uri = this.generateStudioUri(studioSlug);
-      return <li
-        key={`tab-${studioSlug}`}
-        className={studioSlug}
-        aria-selected={studioSlug === selectedStudioSlug}
-      ><a href={uri} onClick={Flux.overrideNoScroll(uri)}>{studioName}</a></li>;
-    });
-  },
-  generateStudioUri(studio) {
-    const uri = studio !== 'all-studios' ? '?studio='+studio : '';
-    return `/events${uri}`;
-  },
   getEvents() {
     const { events } = this.props;
     return events;
   },
-  renderEvents(selectedStudioSlug) {
+  renderEvents() {
     const events = this.getEvents();
     let output;
     if (events) {
@@ -68,23 +41,21 @@ const PageEventHub = React.createClass({
   },
   render() {
     const { page, currentParams, studios } = this.props;
-    const studioSlugFromUrl = get(currentParams, 'lid');
-    const studioSlugs = map(pluck(studios, 'name'), kebabCase);
-    const selectedStudioSlug = this.getSelectedStudio(studioSlugFromUrl, studioSlugs);
 
-    return <article className="page-events-hub">
+    return <article className="page-events">
       <Hero
         title={get(page, 'display_title')}
         transitionImage={true}
         eventLabel="events"
         subheading={get(page, 'hero.attr.subheading.value')}
         showDownChevron={false} >
+        <EventsControls
+          studios={studios}
+          currentParams={currentParams}
+        /> 
       </Hero>
-      <section className="event-hub-event-list">
-        <nav className="event-hub-studio-tabs">
-          {this.renderStudioTabs(selectedStudioSlug)}
-        </nav>
-        {this.renderEvents(selectedStudioSlug)}
+      <section className="events-list">
+        {this.renderEvents()}
       </section>
     </article>;
   }

@@ -81,6 +81,19 @@ const routes = {
       async: ['related_content']
     }]
   },
+  eventsStudio: {
+    id: 'events',
+    patterns: ['/events?studio=:studio'],
+    data: studio => [{
+      url: `ustwo/v1/pages/events`,
+      type: 'page',
+      slug: 'events'
+    }, {
+      url: `ustwo/v1/events?per_page=5&studio=${studio}`,
+      type: 'events',
+      slug: `events/${studio}`
+    }]
+  },
   events: {
     id: 'events',
     patterns: ['/events'],
