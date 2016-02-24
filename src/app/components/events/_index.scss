@@ -19,6 +19,35 @@
     transition: opacity .2s ease-in-out, transform .32s ease-in-out;
   }
 
+  .no-events-found {
+    width: 100%;
+    margin: 0 auto;
+    background-color: $offWhite;
+    padding: 40px;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 40px;
+
+      a {
+        transition: color 0.2s ease-in-out;
+        border-bottom: 2px solid;
+        border-color: #333;
+
+      }
+    }
+
+    .flying-cow {
+        vertical-align: middle;
+        height: 210px;
+        width: 280px;
+    }
+  }
+
   @media screen and (min-width: $bp-medium) {
 
     .events-list {

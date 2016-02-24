@@ -10,8 +10,8 @@ import includes from 'lodash/collection/includes';
 import kebabCase from 'lodash/string/kebabCase';
 import spannify from 'app/lib/spannify';
 
-import Navigation from 'app/components/navigation';
 import Hero from 'app/components/hero';
+import SVG from 'app/components/svg';
 import EventsListItem from 'app/components/events-list-item';
 import EventsControls from 'app/components/events-controls';
 import Flux from 'app/flux';
@@ -34,7 +34,15 @@ const PageEventHub = React.createClass({
           />;
         });
       } else {
-        output = <h3 className="message">No Events found</h3>;
+        output = <div className="no-events-found">
+          <h2>Soz, No Talky</h2>
+          <p>We currently have no events coming up. Interested in hosting an event, 
+          <br />inviting us to one or giving a talky? <a href="mailto:events@ustwo.com">Let us know! </a></p>
+          <SVG
+            className="flying-cow"
+            spritemapID="flyingCow"
+          />
+        </div>;
       }
     }
     return output;
