@@ -9,6 +9,7 @@ import Hero from 'app/components/hero';
 import SVG from 'app/components/svg';
 import EventsControls from 'app/components/events-controls';
 import EventsListItem from 'app/components/events-list-item';
+import ArchivedEventsListItem from 'app/components/events-archived-list-item';
 import LoadMoreButton from 'app/components/load-more-button';
 
 const PageEvents = React.createClass({
@@ -87,6 +88,28 @@ const PageEvents = React.createClass({
     }
     return output;
   },
+  renderArchivedEvents() {
+    const archivedEvents = this.getArchivedEvents();
+    let output, events;
+    if (archivedEvents) {
+      if (archivedEvents.length) {
+        events = archivedEvents.map((archivedEventData, index) => {
+          return <ArchivedEventsListItem
+            className='archived-events-list'
+            data={archivedEventData}
+          />;
+        });
+        output = <div className='archived-events'>
+          <h2 className='sub-title'>Previous Talkies</h2>
+          <hr className='rule' />
+          <section className='archived-events-list'>
+            {events}
+          </section>
+        </div>;
+      }
+    }
+    return output;
+  },
   render() {
     const {
       isLoadingInitialEvents,
@@ -115,6 +138,7 @@ const PageEvents = React.createClass({
         />
       </section>
       
+        {this.renderArchivedEvents()}
     </article>;
   }
 });

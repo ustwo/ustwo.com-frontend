@@ -104,15 +104,22 @@ const routes = {
     }, {
       url: 'ustwo/v1/events?per_page=5',
       type: 'events'
+    }, {
+      url: 'ustwo/v1/events?per_page=3&archived=true',
+      type: 'archivedEvents'
     }]
   },
   event: {
-    id: 'event-hub/event',
+    id: 'events/event',
     patterns: ['/events/:eid'],
     data: eid => [{
       url: 'ustwo/v1/pages/events',
       type: 'page',
       slug: 'events'
+    }, {
+      url: `ustwo/v1/events/${eid}`,
+      type: 'event',
+      slug: eid
     }]
   },
   legal: {
