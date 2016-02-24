@@ -140,8 +140,7 @@
 
 
   @media screen and (min-width: $bp-medium) {
-    padding: 0 6%;
-
+    
     .content,
     .subscription {
       max-width: $max-app-width;
@@ -149,7 +148,7 @@
     }
 
     .content {
-      padding: 100px 0 0 0;
+      padding: 100px 6% 0 6%;
 
       .general {
         float: left;

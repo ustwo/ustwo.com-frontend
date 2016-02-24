@@ -1,0 +1,81 @@
+/*
+ *  EVENTS SUBSCRIPTION
+ */
+
+.events-subscription {
+  $height: 400px;
+  $input-height: 50px;
+  $submit-button-width-small: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: $height;
+  border-bottom: 1px solid $nonBlack;
+  font-size: 18px;
+  background-color: $softPassion;
+
+  /* SVG */
+  .icon {
+    width: 90px;
+    height: 80px;
+    margin-bottom: 30px;
+    fill: $white;
+  }
+
+  h2,
+  p {
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  p {
+    max-width: 480px;
+    padding: 0 20px;
+  }
+
+  .submit,
+  .submit:after {
+    height: $input-height;
+  }
+
+  .submit {
+    width: auto;
+    padding: 0 20px;
+    background: $blu;
+
+    .submit-text {
+      display: inline;
+      line-height:$input-height;
+    }
+
+    &:after {
+
+    }
+
+    &:active {
+      /* TODO: Use a 'darken' function here but the sass one doesn't seem to be working. Bad-sass! */
+      background: #007dc0;
+    }
+
+    &:after {
+      @include arrow-icon($white);
+      width: 13px;
+      height: 10px;
+      margin-left: 10px;
+      content: "";
+      position: relative;
+      display: inline-block;
+      background-size: 13px 10px;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transform: rotate(-90deg) scale(0.8);
+    }
+  }
+  
+
+}

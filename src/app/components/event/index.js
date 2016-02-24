@@ -2,6 +2,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
+import he from 'he';
 import get from 'lodash/object/get';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import renderModules from 'app/lib/module-renderer';
@@ -22,8 +23,8 @@ const PageEvent = React.createClass({
       />
     );
   },
-  render() {
-    const {event} = this.props;
+	render() {
+		const {event} = this.props;
     const image = getFeaturedImage(event);
     const classes = classnames('page-event', this.props.className);
     const start_time = get(event, 'start_time');
@@ -61,7 +62,7 @@ const PageEvent = React.createClass({
         />
       </div>
     </article>
-  }
+	}
 });
 
 export default PageEvent;

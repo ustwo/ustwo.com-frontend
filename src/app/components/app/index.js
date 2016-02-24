@@ -151,7 +151,7 @@ const App = React.createClass({
           >
             {this.getPage(state.currentPage)}
           </TransitionManager>
-          <Footer data={state.footer} studios={state.studios} />
+          <Footer data={state.footer} studios={state.studios} currentPage={this.state.currentPage}/>
         </PageContainer>
         <TransitionManager
           component="div"

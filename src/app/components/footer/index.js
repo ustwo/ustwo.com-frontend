@@ -12,6 +12,7 @@ import Flux from 'app/flux';
 import SVG from 'app/components/svg';
 import StudioContact from 'app/components/studio-contact';
 import Subscription from 'app/components/subscription';
+import EventsSubscription from 'app/components/events-subscription';
 
 const Footer = React.createClass({
   getInitialState() {
@@ -58,6 +59,19 @@ const Footer = React.createClass({
       });
     }
   },
+  renderSubscription() {
+    const currentPage = this.props.currentPage;
+    switch(currentPage) {
+      case 'events':
+        return <EventsSubscription />;
+        break;
+      case 'events/event':
+        return <EventsSubscription />;
+        break; 
+      default:
+        return <Subscription />;
+    }
+  },
   renderSocialMediaChannel(url, channel) {
     return <li key={channel} className={classnames('channel', channel)}>
       <a
@@ -77,7 +91,7 @@ const Footer = React.createClass({
     const generalContact = last(get(this.props, 'data.contacts'));
     const generalEmail = get(generalContact, 'methods.0.uri');
     return <footer className="footer">
-      <Subscription />
+      {this.renderSubscription()}
       <div className="content">
         <div className="general">
           <a
