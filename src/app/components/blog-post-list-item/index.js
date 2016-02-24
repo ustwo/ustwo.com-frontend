@@ -23,6 +23,7 @@ const BlogPostListItem = React.createClass({
     const { data: post, featured } = this.props;
     const category = get(post, '_embedded.wp:term.0.0', {});
     const classes = classnames(
+      'card-item',
       'blog-post-list-item',
       `blog-label-${get(category, 'slug', 'category')}`,
       { featured: featured }

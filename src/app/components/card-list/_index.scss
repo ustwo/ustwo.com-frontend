@@ -1,0 +1,64 @@
+/*
+ *  CARD LIST
+ *  Grid of 'cards' such as for blog and what-we-do
+ *
+ */
+
+.card-list {
+
+  /* BASIC LAYOUT (Imagine empty boxes in a responsive grid) */
+  max-width: 1380px;
+  margin: 0 auto;
+
+  .card-item {
+    display: flex; /* gives all items in a row the same height */
+    flex-direction: column;
+    padding: 10px 10px 0 10px;
+    vertical-align: top;
+
+    &:last-of-type {
+      padding-bottom: 10px;
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    display: flex; /* Basic row layout */
+    flex-wrap: wrap;
+    padding: 0 ($card-gutter-large * .5);
+
+    .card-item {
+      position: relative;
+      width: 50%;
+      padding: 0 ($card-gutter-large * .5) 30px ($card-gutter-large * .5);
+
+      &:last-of-type {
+        padding-bottom: $card-gutter-large;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-larger) {
+    .card-item {
+      width: 33.333%;
+    }
+  }
+
+
+  /* FEATURED CARD (Introducing a larger 'feature' card) */
+  .card-item.featured,
+  .card-item:first-child {
+    display: block;
+    width: 100%; /* Overrides previous card-item width media queries */
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    margin-top: $card-margin-offset; /* Pushes content up */
+
+    .card-item.featured,
+    .card-item:first-child {
+      position: relative;
+      height: 720px;
+    }
+  }
+
+}

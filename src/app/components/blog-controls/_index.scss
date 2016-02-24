@@ -71,7 +71,7 @@
   }
 
   @media screen and (min-width: $bp-medium) {
-    bottom: calc(#{$blog-controls-margin-bottom} - #{$blog-margin-offset});
+    bottom: calc(#{$blog-controls-margin-bottom} - #{$card-margin-offset});
 
     .blog-filter {
       position: relative;
