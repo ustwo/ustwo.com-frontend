@@ -4,119 +4,123 @@
  *
  */
 
+ /* BASIC LAYOUT (Imagine empty boxes in a responsive grid) */
 .card-list {
-
-  /* BASIC LAYOUT (Imagine empty boxes in a responsive grid) */
   max-width: 1380px;
   margin: 0 auto;
+}
 
-  .card-item {
-    display: flex; /* gives all items in a row the same height */
-    flex-direction: column;
-    padding: 10px 10px 0 10px;
-    vertical-align: top;
+.card-item {
+  display: flex; /* gives all items in a row the same height */
+  flex-direction: column;
+  padding: 10px 10px 0 10px;
+  vertical-align: top;
 
-    &:last-of-type {
-      padding-bottom: 10px;
-    }
+  &:last-of-type {
+    padding-bottom: 10px;
   }
+}
 
-  @media screen and (min-width: $bp-medium) {
+@media screen and (min-width: $bp-medium) {
+  .card-list {
     display: flex; /* Basic row layout */
     flex-wrap: wrap;
     padding: 0 ($card-gutter-large * .5);
-
-    .card-item {
-      position: relative;
-      width: 50%;
-      padding: 0 ($card-gutter-large * .5) 30px ($card-gutter-large * .5);
-
-      &:last-of-type {
-        padding-bottom: $card-gutter-large;
-      }
-    }
   }
 
-  @media screen and (min-width: $bp-larger) {
-    .card-item {
-      width: 33.333%;
-    }
-  }
-
-
-  /* FEATURED CARD (Introducing a larger 'feature' card for the first item) */
-  .card-item.featured {
-    display: block;
-    width: 100%; /* Overrides previous card-item width media queries */
-  }
-
-  @media screen and (min-width: $bp-medium) {
-    margin-top: $card-margin-offset; /* Pushes content up */
-
-    .card-item.featured {
-      position: relative;
-      height: 720px;
-    }
-  }
-
-
-  /* CARD IMAGE */
-  .card-image {
+  .card-item {
     position: relative;
-    display: block;
-    overflow: hidden;
-    cursor: pointer;
+    width: 50%;
+    padding: 0 ($card-gutter-large * .5) 30px ($card-gutter-large * .5);
 
-    .rimage {
-      height: $card-image-height;
-    }
-    .image-hover {
-      display: none; /* Remove these hover styles on smaller screens */
-      height: $card-image-height;
+    &:last-of-type {
+      padding-bottom: $card-gutter-large;
     }
   }
+}
 
-  @media screen and (min-width: $bp-medium) {
-    .card-item.featured {
-      .card-image {
-        &, .rimage {
-          height: 100%;
-        }
+@media screen and (min-width: $bp-larger) {
+  .card-item {
+    width: 33.333%;
+  }
+}
+
+
+
+
+/* FEATURED CARD (Introducing a larger 'feature' card for the first item) */
+.card-item.featured {
+  display: block;
+  width: 100%; /* Overrides previous card-item width media queries */
+}
+
+@media screen and (min-width: $bp-medium) {
+  .card-list {
+    margin-top: $card-margin-offset; /* Pushes content up */
+  }
+
+  .card-item.featured {
+    position: relative;
+    height: 720px;
+  }
+}
+
+
+/* CARD IMAGE */
+.card-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+
+  .rimage {
+    height: $card-image-height;
+  }
+  .image-hover {
+    display: none; /* Remove these hover styles on smaller screens */
+    height: $card-image-height;
+  }
+}
+
+@media screen and (min-width: $bp-medium) {
+  .card-item.featured {
+    .card-image {
+      &, .rimage {
+        height: 100%;
       }
     }
   }
+}
 
-  @media screen and (min-width: $bp-large) {
-    .card-item:not(.featured) {
-      .card-image {
+@media screen and (min-width: $bp-large) {
+  .card-item:not(.featured) {
+    .card-image {
+      .rimage {
+        transition: transform $hover-duration-quick ease-out;
+      }
+      &:hover {
         .rimage {
-          transition: transform $hover-duration-quick ease-out;
+          transform: scale($hover-scale-up);
         }
-        &:hover {
-          .rimage {
-            transform: scale($hover-scale-up);
-          }
-        }
-      }
-    }
-
-    /* Show hovers styles for larger screens but hide them for the featured card */
-    .card-item {
-      .image-hover {
-        display: flex;
-      }
-    }
-    .card-item.featured {
-      .image-hover {
-        display: none;
       }
     }
   }
 
-
-  /* CARD DETAILS */
-  .card-details {
-
+  /* Show hovers styles for larger screens but hide them for the featured card */
+  .card-item {
+    .image-hover {
+      display: flex;
+    }
   }
+  .card-item.featured {
+    .image-hover {
+      display: none;
+    }
+  }
+}
+
+
+/* CARD DETAILS */
+.card-details {
 
 }

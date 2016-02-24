@@ -37,82 +37,29 @@
   }
 
   .related-content-item {
-    margin-bottom: $gutter-small;
+    display: inline-block;
 
-    &:last-of-type {
-      margin-bottom: 0;
+    .card-item {
+      width: 100%;
     }
   }
 
-  .work-item {
-    .image {
-      overflow: hidden;
-      display: block;
-
-      .rimage {
-        height: $work-item-image-height;
-        transition: transform $hover-duration-quick ease-in-out;
-      }
-
-      &:hover {
-        .rimage {
-          transform: scale($hover-scale-up);
-        }
-      }
-
-      .image-hover {
-        display: none;
-      }
-    }
-  }
-
-  .blog-post-list-item {
-    padding: 0;
-  }
 
   @media screen and (min-width: $bp-medium) {
-    padding: $gutter; /* Test this, same as footer? */
+
+    .related-content-item {
+      width: 50%;
+    }
 
     .more-juice-title {
       font-size: 40px;
     }
 
-    .work-item {
-      .card-details {
-        height: $work-item-exerpt-height;
-      }
-    }
 
-    .related-content-item {
-      display: flex;
-      width: calc(50% - (#{$gutter} / 2));
-      margin-right: $gutter;
-      margin-bottom: 0;
-      vertical-align: top;
-
-      &:nth-child(2n + 1) {
-        margin-right: 0;
-      }
-    }
-
-    .work-item {
-      .card-details {
-        position: relative;
-      }
-
-      .link {
-        position: absolute;
-        bottom: $padding-medium;
-      }
-    }
   }
 
   @media screen and (min-width: $bp-large) {
-    .work-item {
-      .link {
-        bottom: $padding-large;
-      }
-    }
+
   }
 
 }
