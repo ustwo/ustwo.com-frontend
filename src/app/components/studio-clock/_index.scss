@@ -1,0 +1,48 @@
+ .clock {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    margin: 20px 0;
+
+    .hour {
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -4px 0 -4px -25%;
+      padding: 3px 0 3px 25%;
+      background: #fff;
+      -webkit-transform-origin: 50% 100%;
+      -ms-transform-origin: 50% 100%;
+      transform-origin: 100% 50%;
+      transition: all 4s cubic-bezier(0.000, 0.645, 0.890, 1);
+      transform: rotate(90deg);
+    }
+
+    .minute {
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -40% -2px 0;
+      padding: 40% 2px 0;
+      background: #fff;
+      -webkit-transform-origin: 50% 100%;
+      -ms-transform-origin: 50% 100%;
+      transform-origin: 50% 100%;
+      transition: all 4s cubic-bezier(0.000, 0.645, 0.890, 1);
+    }
+
+    &.in-view {
+      .hour {
+        transform: rotate(90deg) !important;
+      }
+      .minute {
+        transform: rotate(0deg) !important;
+      }
+    }
+
+  }
+
