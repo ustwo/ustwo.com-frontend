@@ -34,7 +34,7 @@ const PageWhatWeDo = React.createClass({
         colours: get(page, 'colors'),
         zebra: false
       })}
-      <div className="work-items-list">
+      <div className="card-list work-items-list">
         {this.renderCaseStudies(caseStudies)}
       </div>
     </article>;

@@ -18,26 +18,18 @@
 
   .hero + .single-column {
     background: white;
-    margin: 0;
-    padding-top: 100px;
-    padding-bottom: calc(100px + 14vh);
-    padding-left: 6.25%;
-    padding-right: 6.25%;
 
+    /* Following modified padding-bottom because the grid content is pushed up
+       over the single-column content, more white space needed */
     @media screen and (min-width: $bp-medium) {
-
+      padding-bottom: calc(50px + 14vh);
     }
-
     @media screen and (min-width: $bp-large) {
-
+      padding-bottom: calc(100px + 14vh);
     }
   }
 
   .single-column .content {
     text-align: center;
-  }
-
-  .work-items-list {
-    transform: translateY(-14vh);
   }
 }

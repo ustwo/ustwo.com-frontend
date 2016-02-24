@@ -9,16 +9,9 @@
   $padding-small: $card-padding-small;
   $padding-medium: $card-padding-medium;
   $padding-large: $card-padding-large;
-  $gutter-large: $blog-gutter-large;
+  $gutter-large: $card-gutter-large;
   $category-tag-height: $category-tag-height;
   $image-height: $blog-post-list-item-image-height;
-
-  padding: 10px 10px 0 10px;
-  vertical-align: top;
-
-  &:last-of-type {
-    padding-bottom: 10px;
-  }
 
   .image {
     display: block;
@@ -39,11 +32,8 @@
   .image-hover {
     display: none;
     height: 245px;
-  }
-
-  &:not(:first-child) {
-    display: flex;
-    flex-direction: column;
+    left: $card-gutter-large * .5;
+    right: $card-gutter-large * .5;
   }
 
   .details {
@@ -95,9 +85,6 @@
   }
 
   &:first-child {
-    padding: 0;
-    width: 100%;
-
     .category-tag {
       position: relative;
     }
@@ -105,13 +92,6 @@
 
 
   @media screen and (min-width: $bp-medium) {
-    position: relative;
-    padding: 0 0 30px;
-
-    &:last-of-type {
-      padding-bottom: $gutter-large;
-    }
-
     .blog-catgory {
       transform: translateY(-21px);
     }
@@ -146,11 +126,6 @@
     }
 
     &:first-child {
-      position: relative;
-      height: 720px;
-      padding-bottom: 0;
-      margin-bottom: $gutter-large;
-
       .image,
       .image .rimage {
         height: 100%;
@@ -159,7 +134,7 @@
       .details {
         position: absolute;
         top: 0;
-        left: 0;
+        left: $card-gutter-large * .5;
         width: 530px;
         display: block;
       }
@@ -195,47 +170,6 @@
     }
     .details {
       padding: $padding-large;
-    }
-  }
-}
-
-.work-item:first-child {
-  position: relative;
-  width: 100%;
-  padding-bottom: 0;
-}
-
-@media screen and (min-width: $bp-medium) {
-  .work-items-list {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: $blog-margin-offset;
-    padding: 0 $blog-gutter-large;
-    max-width: 1380px;
-    margin: 0 auto;
-  }
-  .work-item:first-child {
-    height: 720px;
-  }
-  .work-item:not(:first-child) {
-    width: calc(50% - (#{$blog-gutter-large} / 2));
-    margin-right: $blog-gutter-large;
-
-    &:nth-child(2n + 1) {
-      margin-right: 0;
-    }
-  }
-}
-
-@media screen and (min-width: $bp-larger) {
-  .work-item:not(:first-child) {
-    width: calc(33.333% - (#{$blog-gutter-large} * 2 / 3));
-
-    &:nth-child(2n + 1) {
-      margin-right: $blog-gutter-large;
-    }
-    &:nth-child(3n + 4) {
-      margin-right: 0;
     }
   }
 }

@@ -23,7 +23,7 @@ const WorkItem = React.createClass({
     const link = `/what-we-do/${get(data, 'slug')}`;
     const category = get(data, 'type');
 
-    return <div className={classnames('work-item', `work-item-${id}`, `work-label-${kebabCase(category).toLowerCase()}`)}>
+    return <div className={classnames('card-item', 'work-item', `work-item-${id}`, `work-label-${kebabCase(category).toLowerCase()}`)}>
       <a href={link} onClick={Flux.override(link)} className="image">
         <Rimage
           wrap='div'
