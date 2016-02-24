@@ -39,6 +39,13 @@ const Hero = React.createClass({
     }
     return output;
   },
+  renderSubheading() {
+    let subheading;
+    if(this.props.subheading) {
+      subheading = <p className="subheading">{this.props.subheading}</p>
+    }
+    return subheading;
+  },
   renderDownChevron() {
     let chevron;
     if (this.props.showDownChevron) {
@@ -64,6 +71,7 @@ const Hero = React.createClass({
         <h1 className="title">
           <WordAnimation delay={1} duration={0.5}>{title}</WordAnimation>
         </h1>
+        {this.renderSubheading()}
       </EntranceTransition>
       {this.renderImage()}
       {children}

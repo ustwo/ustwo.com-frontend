@@ -77,6 +77,7 @@ const PageEventHub = React.createClass({
         title={get(page, 'display_title')}
         transitionImage={true}
         eventLabel="events"
+        subheading={get(page, 'hero.attr.subheading.value')}
         showDownChevron={false} >
       </Hero>
       <section className="event-hub-event-list">
