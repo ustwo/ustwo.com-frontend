@@ -43,3 +43,31 @@
     background-color: rgba($colour, .7);
   }
 }
+
+@mixin blog-highlight-bubble($type) {
+  &:after {
+
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    width: 110px;
+    height: 110px;
+    padding-top: 65px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 12px;
+    font-family: $PxGroteskBold;
+    background-color: #ccc;
+
+    @if $type == 'pinned' {
+      content: "Pinned";
+      background-color: $softPot;
+    }
+
+    @if $type == 'featured' {
+      content: 'Featured';
+      background-color: $softHoney;
+    }
+  }
+}
