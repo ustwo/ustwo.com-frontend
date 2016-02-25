@@ -2,6 +2,9 @@
  *  CARD LIST
  *  Grid of 'cards' such as for blog and what-we-do
  *
+ *  Notes: 'featured' only shows a different style when inside the .card-list. It should appear
+ *  as normal when isolated, e.g. Related content, therefore .card-list specificity is needed each
+ *  time a style is declared for 'featured'.
  */
 
 /* Core Layout */
@@ -52,19 +55,21 @@
 
 
 /* Featured Card (Introducing a larger 'feature' card as the first item) */
-.card-item.featured {
-  display: block;
-  width: 100%; /* Overrides previous card-item width media queries */
+.card-list {
+  .card-item.featured {
+    display: block;
+    width: 100%; /* Overrides previous card-item width media queries */
+  }
 }
 
 @media screen and (min-width: $bp-medium) {
   .card-list {
     margin-top: $card-margin-offset; /* Pushes content up */
-  }
 
-  .card-item.featured {
-    position: relative;
-    height: 720px;
+    .card-item.featured {
+      position: relative;
+      height: 720px;
+    }
   }
 }
 
@@ -87,10 +92,12 @@
 }
 
 @media screen and (min-width: $bp-medium) {
-  .card-item.featured {
-    .card-image {
-      &, .rimage {
-        height: 100%;
+  .card-list {
+    .card-item.featured {
+      .card-image {
+        &, .rimage {
+          height: 100%;
+        }
       }
     }
   }
@@ -116,9 +123,11 @@
       display: flex;
     }
   }
-  .card-item.featured {
-    .image-hover {
-      display: none;
+  .card-list {
+    .card-item.featured {
+      .image-hover {
+        display: none;
+      }
     }
   }
 }
@@ -141,13 +150,15 @@
   }
 
   /* When the card-item is featured and on large screens, the details panel is position in the corner */
-  .card-item.featured {
-    .card-details {
-      position: absolute;
-      top: 0;
-      left: $card-gutter-large * .5;
-      width: 530px;
-      display: block;
+  .card-list {
+    .card-item.featured {
+      .card-details {
+        position: absolute;
+        top: 0;
+        left: $card-gutter-large * .5;
+        width: 530px;
+        display: block;
+      }
     }
   }
 }
@@ -166,8 +177,10 @@
     position: absolute;
     top: - $category-tag-height * .5;
   }
+}
 
-  &.featured {
+.card-list {
+  .card-item.featured {
     .category-tag {
       position: relative;
     }
