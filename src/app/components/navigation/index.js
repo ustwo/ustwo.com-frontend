@@ -52,7 +52,7 @@ const Navigation = React.createClass({
     const headerHeight = 68; // css: height of header is 68px
     let amount;
     if (section === 'blog') {
-      amount = innerHeight - (innerHeight * .14) - headerHeight; // css: content on /blog is pushed up by 14vh
+      amount = innerHeight - (innerHeight * .14) - headerHeight; // css: content on /blog is pushed up 14vh
       if (page === 'post') {
         amount = 450 - 70 - headerHeight; // css: height of blog post hero is 450px and it's pushed up 70px
       }
@@ -72,6 +72,9 @@ const Navigation = React.createClass({
   componentWillReceiveProps(nextProps) {
     const { section } = nextProps;
     window.removeEventListener('scroll', this.addHeaderBackground);
+    this.setState({
+      'scrolled': false
+    });
     if (section !== 'home') {
       window.addEventListener('scroll', this.addHeaderBackground);
     }
