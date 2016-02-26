@@ -19,14 +19,13 @@ const StudioContact = React.createClass({
     return { date: date };
   },
   componentDidMount: function() {
-    this.start();
+    this.startClock();
   },
-  start: function() {
+  startClock: function() {
     var self = this;
-    (function tick() {
+    window.setInterval(function () {
       self.setState({ date: moment() });
-      requestAnimationFrame(tick);
-    }());
+    }.bind(this), 60000);
   },
   onClick() {
     this.props.onClick && this.props.onClick();

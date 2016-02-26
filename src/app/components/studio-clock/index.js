@@ -34,9 +34,9 @@ const StudioClock = React.createClass({
     var minute = date.minutes() * 6 + second / 60;
     var hour = ((date.hours() % 12) / 12) * 360 + 90 + minute / 12;
 
-    return <div className={this.state.clockInView ? "clock" : "clock in-view"}>
-        <div className="hour" style={{"transform": "rotate(" + hour + "deg)", background: colour}} />
+    return <div className={this.state.clockInView ? "clock" : "clock set-to-twelve"}>
         <div className="minute" style={{"transform": "rotate(" + minute + "deg)"}} />
+        <div className="hour" style={{"transform": "rotate(" + hour + "deg)", background: colour}} />
     </div>
   }
 });
