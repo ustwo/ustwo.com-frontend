@@ -18,13 +18,13 @@ const WorkItem = React.createClass({
     };
   },
   render() {
-    const { data, image, className } = this.props;
+    const { data, image, className, featured } = this.props;
     const id = data.id;
     const link = `/what-we-do/${get(data, 'slug')}`;
     const category = get(data, 'type');
 
-    return <div className={classnames('card-item', 'work-item', `work-item-${id}`, `work-label-${kebabCase(category).toLowerCase()}`, {
-        featured: id === 9305 // Temporary, we need ability to choose which case study is 'featured' in backend
+    return <div className={classnames('card-item', 'work-item', `work-item-${id}`, `work-label-${kebabCase(category)}`, {
+        featured: featured
       })}>
       <a href={link} onClick={Flux.override(link)} className="card-image">
         <Rimage
