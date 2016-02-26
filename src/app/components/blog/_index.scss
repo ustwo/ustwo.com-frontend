@@ -9,7 +9,8 @@
   .blog-label-#{$category} {
 
     /* Card items on /blog */
-    &.card-item {
+    &.card-item,
+    &.search-result-list-item {
       @include card-item-category-colours($colour);
     }
 
