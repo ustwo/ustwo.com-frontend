@@ -69,27 +69,29 @@
 }
 
 /* Add some 'highlighted'/larger posts within the grid */
-.blog-post-list {
-  .card-item {
-    @media screen and (min-width: $bp-medium) and (max-width: ($bp-larger - 1px)) {
-      &:nth-child(4) {
-        @include pinned-post();
-        .card-image {
-          width: 50%;
-        }
-        .card-details {
-          width: calc(50% - (#{$card-gutter-large} * .5));
+.page-blog:not(.categorised) {
+  .blog-post-list {
+    .card-item {
+      @media screen and (min-width: $bp-medium) and (max-width: ($bp-larger - 1px)) {
+        &:nth-child(4) {
+          @include pinned-post();
+          .card-image {
+            width: 50%;
+          }
+          .card-details {
+            width: calc(50% - (#{$card-gutter-large} * .5));
+          }
         }
       }
-    }
-    @media screen and (min-width: $bp-larger) {
-      &:nth-child(5) {
-        @include pinned-post();
-        .card-image {
-          width: 66.666%;
-        }
-        .card-details {
-          width: calc(33.333% - (#{$card-gutter-large} * .5));
+      @media screen and (min-width: $bp-larger) {
+        &:nth-child(5) {
+          @include pinned-post();
+          .card-image {
+            width: 66.666%;
+          }
+          .card-details {
+            width: calc(33.333% - (#{$card-gutter-large} * .5));
+          }
         }
       }
     }
