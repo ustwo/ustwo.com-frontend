@@ -18,13 +18,15 @@ const WorkItem = React.createClass({
     };
   },
   render() {
-    const { data, image, className } = this.props;
+    const { data, image, className, featured } = this.props;
     const id = data.id;
     const link = `/what-we-do/${get(data, 'slug')}`;
     const category = get(data, 'type');
 
-    return <div className={classnames('work-item', `work-item-${id}`, `work-label-${kebabCase(category).toLowerCase()}`)}>
-      <a href={link} onClick={Flux.override(link)} className="image">
+    return <div className={classnames('card-item', 'work-item', `work-item-${id}`, `work-label-${kebabCase(category)}`, {
+        featured: featured
+      })}>
+      <a href={link} onClick={Flux.override(link)} className="card-image">
         <Rimage
           wrap='div'
           sizes={get(image, 'media_details.sizes')}
@@ -32,7 +34,7 @@ const WorkItem = React.createClass({
         />
         <ImageHover autoAnim={500} hover={this.state.hover} />
       </a>
-      <div className="details">
+      <div className="card-details">
         <div className="category-tag">
           {category}
         </div>
@@ -45,7 +47,7 @@ const WorkItem = React.createClass({
           >{get(data, 'name')}</a>
         </h3>
         <div
-          className="desc"
+          className="excerpt"
           dangerouslySetInnerHTML={{__html: get(data, 'excerpt')}}
         />
         <div className="tail">

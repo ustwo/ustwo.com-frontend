@@ -96,7 +96,7 @@
 
   @media screen and (min-width: $bp-large) {
     position: absolute;
-    top: calc(100% + #{$blog-margin-offset} - #{$blog-controls-margin-bottom} - #{$blog-controls-dropdown-offset});
+    top: calc(100% + #{$card-margin-offset} - #{$blog-controls-margin-bottom} - #{$blog-controls-dropdown-offset});
     left: 50%;
     height: auto;
     margin-left: - $blog-controls-search-width - ($blog-controls-search-margin * .5);

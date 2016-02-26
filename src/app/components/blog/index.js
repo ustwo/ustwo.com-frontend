@@ -157,7 +157,7 @@ const PageBlog = React.createClass({
       >
         {this.renderHero()}
       </TransitionManager>
-      <section className="blog-post-list">
+      <section className="card-list blog-post-list">
         {this.renderPosts()}
         <LoadMoreButton
           loading={isLoadingMorePosts}
