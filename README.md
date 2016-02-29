@@ -90,7 +90,7 @@ shared variables and task composition on top of shell scripting.
 We have *everything* served up from a CDN, and by that we mean that ustwo.com is
 pointed at the CDN URL on a DNS level! Needless to say this guarantees great
 load speeds across the globe and at very little cost. Call it the "CDN first"
-approach if you will and look out for a blog post soon...
+approach if you will – check out our [blog post about this here](https://ustwo.com/blog/open-sourcing-our-website).
 
 Unless you have a lot of user dependent dynamic content (and it's not feasible
 moving these areas to subdomains) the trick is to remove caching from all layers
