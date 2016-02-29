@@ -58,7 +58,6 @@
     margin: 0 auto;
     padding: 40px 0 0 0;
     background: #fff;
-    margin-bottom: 30px;
 
     ul,
     ol {
@@ -159,7 +158,7 @@
       border-top: none;
       border-left: none;
       border-right: none;
-
+      border-color: $softPassion;
     }
     .single-column {
     h3 {
@@ -190,6 +189,24 @@
       }
     }
 
+    .quote-block {
+
+      .quote-mark svg {
+          fill: $softPassion;
+      }
+
+      .quote {
+        color: $softPassion;
+      }
+
+      .source {
+        color: #646464;
+      }
+
+    }
+
+
+
     .footer-image {
       margin-top: 40px;
     }
@@ -198,6 +215,16 @@
 
   
   @media screen and (min-width: $bp-medium) {
+    padding-bottom: 80px;
+
+    .social.rule {
+      display: none;
+    }
+
+    .social-media-sharing.bottom {
+      display: none;
+    }
+
     .hero-image {
       height: 450px;
     }

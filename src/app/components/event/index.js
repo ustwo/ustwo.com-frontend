@@ -60,6 +60,8 @@ const PageEvent = React.createClass({
           sizes={get(image, 'media_details.sizes')}
           altText={get(image, 'alt_text')}
         />
+        <hr className='social rule' />
+        {this.renderSocialMediaSharing('bottom')}
       </div>
     </article>
 	}
