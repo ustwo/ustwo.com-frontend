@@ -24,6 +24,7 @@ const _state = Object.assign({
   takeover: Nulls.takeover,
   postsPagination: Defaults.postsPagination,
   postsPaginationTotal: Nulls.postsPaginationTotal,
+  eventsStudio: Defaults.eventsStudio,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -101,6 +102,12 @@ const Store = Object.assign(
         _state.postsPagination = Defaults.postsPagination;
         _state.postsPaginationTotal = Nulls.postsPaginationTotal;
       }
+      if(newPage !== 'events') {
+        _state.eventsStudio = Defaults.eventsStudio;
+        _state.posts = Nulls.posts;
+        _state.postsPagination = Defaults.postsPagination;
+        _state.postsPaginationTotal = Nulls.postsPaginationTotal;
+      }
       _state.currentPage = newPage;
       _state.currentParams = newParams || Nulls.params;
       _state.currentHash = newHash || Nulls.hash;
@@ -115,7 +122,11 @@ const Store = Object.assign(
         // - it doesn't exist in the store OR
         // - it exists in the store with a different slug OR
         // - posts have a different blog category
-        return (!_state[item.type] || (item.slug && _state[item.type].slug && _state[item.type].slug !== item.slug) || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory));
+        // - events have a different studio
+        return (!_state[item.type] 
+                || (item.slug && _state[item.type].slug && _state[item.type].slug !== item.slug) 
+                || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory) 
+                || (item.slug !== _state.eventsStudio))
       });
 
       DataLoader(itemsToLoad, applyData).then(() => {
@@ -217,14 +228,24 @@ const Store = Object.assign(
         Store.emit('change', _state);
       } else {
         const pageNo = ++_state.postsPagination;
+        const studio = _state.eventsStudio;
         let url;
-        url = `ustwo/v1/events?per_page=5&page=${pageNo}`;
+        if (studio === 'all') {
+          url = `ustwo/v1/events?per_page=5&page=${pageNo}`;
+        } else {
+          url = `ustwo/v1/events?per_page=5&studio=${studio}&page=${pageNo}`;
+        }
         DataLoader([{
           url: url,
           type: 'events'
         }], applyMoreEvents).then(() => Store.emit('change', _state));
       }
-    }
+    },
+    setEventsStudioTo(id) {
+      _state.eventsStudio = id;
+      _state.postsPagination = Defaults.postsPagination;
+      Store.emit('change', _state);
+    },
   }
 );
 

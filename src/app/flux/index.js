@@ -94,6 +94,9 @@ const Flux = Object.assign(
         case 'blog/search-results':
           Flux.setSearchQueryTo(params[0]);
           break;
+        case 'events':
+          Flux.setEventsStudioTo(params[0] || 'all');
+          break;
       }
       Track('set', 'page', path);
       Track('send', 'pageview');

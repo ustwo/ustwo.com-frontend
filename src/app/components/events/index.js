@@ -4,6 +4,8 @@ import React from 'react';
 import get from 'lodash/object/get';
 import map from 'lodash/collection/map';
 import take from 'lodash/array/take';
+import classnames from 'classnames';
+import isEqual from 'lodash/lang/isEqual';
 
 import Hero from 'app/components/hero';
 import SVG from 'app/components/svg';
@@ -11,12 +13,15 @@ import EventsControls from 'app/components/events-controls';
 import EventsListItem from 'app/components/events-list-item';
 import ArchivedEventsListItem from 'app/components/events-archived-list-item';
 import LoadMoreButton from 'app/components/load-more-button';
+import LoadingIcon from 'app/components/loading-icon';
 
 const PageEvents = React.createClass({
   getInitialState() {
     return {
+      isFilteredByStudio: this.props.eventsStudio !== 'all',
       isLoadingInitialEvents: true,
-      isLoadingMoreEvents: false
+      isLoadingMoreEvents: false,
+      isLoadingStudioEvents: false
     };
   },
   componentWillMount() {
@@ -27,13 +32,29 @@ const PageEvents = React.createClass({
     }
   },
   componentWillReceiveProps(nextProps) {
-    const { events: currentEvents } = this.props;
-    const { events: nextEvents } = nextProps;
+    const { events: currentEvents, eventsStudio: currentEventsStudio } = this.props;
+    const { events: nextEvents, eventsStudio: nextEventsStudios } = nextProps;
     const { isLoadingInitialEvents } = this.state;
 
     if (isLoadingInitialEvents && nextEvents) {
       this.setState({
         isLoadingInitialEvents: false
+      });
+    }
+
+    // applies when studio is changed
+    if (currentEventsStudio !== nextEventsStudios) {
+      this.setState({
+        isLoadingStudioEvents: true
+      });
+    }
+
+    const currentEventsSample = take(currentEvents, 6).map(event => event.id);
+    const nextEventsSample = take(nextEvents, 6).map(event => event.id);
+    if (!isEqual(currentEventsSample, nextEventsSample)) {
+      this.setState({
+        isLoadingStudioEvents: false,
+        isFilteredByStudio: currentEventsStudio !== 'all'
       });
     }
 
@@ -112,12 +133,17 @@ const PageEvents = React.createClass({
   },
   render() {
     const {
+      isFilteredByStudio,
       isLoadingInitialEvents,
-      isLoadingMoreEvents
+      isLoadingMoreEvents,
+      isLoadingStudioEvents
     } = this.state;
     const { postsPagination, postsPaginationTotal } = this.props;
 		const {page, currentParams, events, archivedEvents, studios} = this.props;
-    return <article className="page-events">
+    const classes = classnames('page-events', this.props.className, {
+      loading: isLoadingInitialEvents || isLoadingStudioEvents
+    });
+    return <article className={classes}>
     	<Hero
 	      title={get(page, 'display_title')}
         transitionImage={true}
@@ -129,6 +155,7 @@ const PageEvents = React.createClass({
           currentParams={currentParams}
         /> 
     	</Hero>
+      <LoadingIcon />
       <section className="events-list">
 			  {this.renderEvents()}
         <LoadMoreButton

@@ -25,7 +25,7 @@
     background-color: $offWhite;
     padding: 40px;
     text-align: center;
-
+    
     h2 {
       margin-bottom: 20px;
     }
@@ -37,7 +37,6 @@
         transition: color 0.2s ease-in-out;
         border-bottom: 2px solid;
         border-color: #333;
-
       }
     }
 
@@ -49,7 +48,7 @@
   }
 
   .archived-events {
-    margin-top: 60px;
+    margin-top: 120px;
 
     h2.sub-title {
       text-align: center;
@@ -87,6 +86,28 @@
 
   }
 
+  .loading-icon {
+    position: absolute;
+    left: 50%;
+    display: block;
+    visibility: hidden;
+  }
+  
+  &.loading {
+
+    .loading-icon {
+      visibility: visible;
+    }
+    .events-list {
+      opacity: 0;
+      transform: translateY(100px);
+      transition-delay: .62s, .5s;
+    }
+    .load-more-button {
+      display: none;
+    }
+  }
+
   @media screen and (min-width: $bp-medium) {
 
     .events-list {
@@ -99,34 +120,21 @@
     .archived-events-list {
       display: flex;
       flex-wrap: wrap;
-      padding: 0 $events-gutter-large $events-gutter-large $events-gutter-large;
+      padding: $events-gutter-large;
+    }
 
-      .archived-events-list-item {
-        width: calc(50% - (#{$events-gutter-large} / 2));
-        margin-right: $events-gutter-large;
-
-        &:nth-child(2n) {
-          margin-right: 0;
-        }
-      }
+    .loading-icon {
+      margin-top: -14px;
     }
   }
 
   @media screen and (min-width: $bp-large) {
 
-    .archived-events-list {
-      .archived-events-list-item {
-        width: calc(33.333% - (#{$events-gutter-large} * 2 / 3));
-
-        &:nth-child(1n) {
-          margin-right: $events-gutter-large;
-        }
-        &:nth-child(3n) {
-          margin-right: 0;
-        }
-      }
+    .load-more-button {
+      padding: 0;
     }
   }
+
 
 }
 

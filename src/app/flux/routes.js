@@ -86,12 +86,14 @@ const routes = {
     patterns: ['/events?studio=:studio'],
     data: studio => [{
       url: `ustwo/v1/pages/events`,
-      type: 'page',
-      slug: 'events'
+      type: 'page'
     }, {
       url: `ustwo/v1/events?per_page=5&studio=${studio}`,
       type: 'events',
       slug: `events/${studio}`
+    }, {
+      url: 'ustwo/v1/events?per_page=3&archived=true',
+      type: 'archivedEvents'
     }]
   },
   events: {
@@ -99,11 +101,11 @@ const routes = {
     patterns: ['/events'],
     data: () => [{
       url: 'ustwo/v1/pages/events',
-      type: 'page',
-      slug: 'events'
+      type: 'page'
     }, {
       url: 'ustwo/v1/events?per_page=5',
-      type: 'events'
+      type: 'events',
+      slug: 'events'
     }, {
       url: 'ustwo/v1/events?per_page=3&archived=true',
       type: 'archivedEvents'
@@ -115,7 +117,7 @@ const routes = {
     data: eid => [{
       url: 'ustwo/v1/pages/events',
       type: 'page',
-      slug: 'events'
+      slug: 'event'
     }, {
       url: `ustwo/v1/events/${eid}`,
       type: 'event',

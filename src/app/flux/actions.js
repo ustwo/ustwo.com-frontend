@@ -46,6 +46,9 @@ const Actions = {
   loadMoreEvents() {
     Store.loadMoreEvents();
   },
+  setEventsStudioTo(id) {
+    Store.setEventsStudioTo(id);
+  }
 };
 
 export default Actions;
