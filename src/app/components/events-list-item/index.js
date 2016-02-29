@@ -13,24 +13,13 @@ import Rimage from 'app/components/rimage';
 
 const EventListItem = React.createClass({
 
-  truncateExcerpt(excerpt, featured) {
-    var limit = 90;
-    if(featured) {
-      limit = 290;
-    }
-    if(excerpt.length > limit) {
-      excerpt = excerpt.substring(0,limit) + '...';
-    }
-
-    return excerpt;
-  },
   render() {
     const {data: event, featured} = this.props;
     const start_time = get(event, 'start_time');
     const end_time = get(event, 'end_time');
     const uri = `/events/${get(event, 'slug')}`;
     const image = getFeaturedImage(event);
-    const excerpt = this.truncateExcerpt(get(event, 'excerpt'), featured);
+    const excerpt = get(event, 'excerpt');
     const classes = classnames(
       'events-list-item',
       { featured: featured }
@@ -51,7 +40,7 @@ const EventListItem = React.createClass({
             spritemapID="locationpin"
           />
           <span className="location">
-            <a href="#">{get(event, 'studio.name')}</a>
+            <a href={uri} onClick={Flux.override(uri)}>{get(event, 'studio.name')}</a>
           </span>
           <span className="time">{moment.unix(start_time).format('h:mma')}-{moment.unix(end_time).format('h:mma')}</span>
         </p>

@@ -12,8 +12,7 @@
   vertical-align: top;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  margin-bottom: 30px;
+  padding: 10px 10px 0 10px;
   width: 100%;
 
   .date {
@@ -38,6 +37,13 @@
 
     .title {
       margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      max-height: 70px;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+
       a {
         transition: color $hover-duration-quick ease-in-out;
       }
@@ -51,6 +57,15 @@
         margin-right: 5px;
         margin-top: -1px;
         vertical-align: middle;
+    }
+
+    .excerpt p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      max-height: 70px;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
 
     p.meta {
@@ -111,6 +126,19 @@
   &.featured {
     padding: 0;
 
+    .details {
+
+      .title {
+        max-height: 150px;
+        -webkit-line-clamp: 4;
+      }
+
+      .excerpt p {
+        max-height: 140px;
+        -webkit-line-clamp: 5;
+      }
+    }
+
     .event-image {
 
       .rimage {
@@ -125,6 +153,7 @@
     width: 100%;
     background-color: $offWhite;
     overflow: hidden;
+    margin-bottom: 30px;
 
     .date {
       order: 1;

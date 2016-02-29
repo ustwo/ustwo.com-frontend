@@ -11,7 +11,7 @@
   $category-tag-height: $blog-category-tag-height;
   $image-height: $events-list-item-image-height;
 
-  padding: 10px 10px 0 10px;
+  padding: 0 10px 10px 10px;
   vertical-align: top;
 
   .post-image {
@@ -81,6 +81,8 @@
   }
 
   @media screen and (min-width: $bp-medium) {
+    width: calc(50% - (#{$events-gutter-large} / 2));
+    margin-right: $events-gutter-large;
     position: relative;
     padding: 0 0 30px;
 
@@ -113,14 +115,29 @@
       }
     }
 
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+
   }
 
   @media screen and (min-width: $bp-large) {
+    width: calc(33.333% - (#{$events-gutter-large} * 2 / 3));
+
     .excerpt {
       height: 84.2px;
     }
+
     .details {
       padding: $padding-large;
+    }
+
+    &:nth-child(1n) {
+      margin-right: $events-gutter-large;
+    }
+
+    &:nth-child(3n) {
+      margin-right: 0;
     }
   }
 }
