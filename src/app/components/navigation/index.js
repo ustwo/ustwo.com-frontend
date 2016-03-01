@@ -71,10 +71,12 @@ const Navigation = React.createClass({
   },
   componentWillReceiveProps(nextProps) {
     const { section } = nextProps;
-    window.removeEventListener('scroll', this.addHeaderBackground);
-    this.setState({
-      'scrolled': false
-    });
+    if (nextProps.section !== this.props.section) {
+      window.removeEventListener('scroll', this.addHeaderBackground);
+      this.setState({
+        'scrolled': false
+      });
+    }
     if (section !== 'home') {
       window.addEventListener('scroll', this.addHeaderBackground);
     }
