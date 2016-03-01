@@ -84,7 +84,8 @@
         }
       }
       @media screen and (min-width: $bp-larger) {
-        &:nth-child(5) {
+        &:nth-child(5),
+        &:nth-child(12) {
           @include pinned-post();
           .card-image {
             width: 66.666%;

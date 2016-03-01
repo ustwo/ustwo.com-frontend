@@ -29,13 +29,26 @@ const JobItem = React.createClass({
   },
   renderLocation() {
     const { colour, job } = this.props;
+    const responseCity = get(job, 'location.city');
+    const responseRegion = get(job, 'location.region');
+    let location;
+    if (responseRegion === 'London') {
+      location = 'London';
+    } else if (responseRegion === 'New York') {
+      location = 'New York';
+    } else if (responseCity === 'Malmo') {
+      location = 'Malmö';
+    } else {
+      location = responseCity;
+    }
     return <div className="location" style={{ color: colour }}>
       <SVG
         className="location-icon"
         spritemapID="locationpin"
         style={{ fill: colour }}
       />
-      {get(job, 'location.city')}
+
+      {location}
     </div>;
   },
   renderStatus() {
