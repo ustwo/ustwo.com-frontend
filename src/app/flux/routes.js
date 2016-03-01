@@ -57,7 +57,7 @@ const routes = {
       type: 'page',
       slug: 'blog'
     }, {
-      url: 'ustwo/v1/posts?per_page=13',
+      url: 'ustwo/v1/posts?per_page=12',
       type: 'posts',
       slug: 'posts/all'
     }]
