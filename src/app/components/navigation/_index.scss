@@ -66,6 +66,9 @@
         border-bottom: 2px solid $nonBlack;
       }
     }
+    .navigation-toggle {
+      fill: $nonBlack;
+    }
   }
   &.scrolled {
     background-color: white;
