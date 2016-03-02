@@ -7,6 +7,7 @@ import get from 'lodash/object/get';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import renderModules from 'app/lib/module-renderer';
 import moment from 'moment';
+import Meta from "react-helmet";
 
 import Rimage from 'app/components/rimage';
 import SocialMediaSharing from 'app/components/social-media-sharing';
@@ -31,6 +32,28 @@ const PageEvent = React.createClass({
     const end_time = get(event, 'end_time');
 
     return <article className={classes}>
+      <Meta
+        title={get(event, 'seo.title') || ''}
+        meta={[{
+          name: "description",
+          content: get(event, 'seo.desc') || ''
+        }, {
+          name: "keywords",
+          content: get(event, 'seo.keywords') || ''
+        }, {
+          name: "og:type",
+          content: 'website'
+        }, {
+          name: "og:title",
+          content: get(event, 'seo.title') || ''
+        }, {
+          name: "og:description",
+          content: get(event, 'seo.desc') || ''
+        }, {
+          name: "og:image",
+          content: get(event, 'seo.image') || ''
+        }]}
+      />
       <Rimage
         wrap='div'
         className='hero-image'
