@@ -10,6 +10,10 @@
   list-style: none;
   transition: background-color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
 
+  .clock { 
+    display: none;
+  }
+
   .studio-title {
     margin: 0;
     padding: 20px 6.25%;
@@ -110,19 +114,21 @@
       }
 
       .map {
-        margin-top: 0;
         position: absolute;
-        bottom: 50px;
       }
     }
   }
 
   @media screen and (min-width: $bp-large) {
-    height: 180px;
+    height: auto;
+
+    .clock {
+      display: block;
+    }
 
     .studio-details {
       .map {
-        bottom: 0;
+        position: relative;
       }
     }
   }
