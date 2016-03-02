@@ -20,7 +20,7 @@
 
   /* Each menu item has a different colour as defined here */
   $i: 1;
-  @each $colour in $rain, $pot, $blu, $honey {
+  @each $colour in $rain, $pot, $blu, $softPassion, $honey {
     &:nth-child(#{$i}) {
       color: #{$colour};
       &.selected a {
