@@ -89,7 +89,7 @@ const PageJoinUs = React.createClass({
 
       return <div key="job-section">
         <div className="current-openings">
-          <h2>Current Openings</h2>
+          <h2>We're Hiring</h2>
         </div>
         <section className="jobs">
           <nav className="jobs-studio-tabs">
