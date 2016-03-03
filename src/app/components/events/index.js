@@ -149,12 +149,12 @@ const PageEvents = React.createClass({
         transitionImage={true}
         eventLabel="events"
         subheading={get(page, 'hero.attr.subheading.value')}
-        showDownChevron={false} >
-        <EventsControls
-          studios={studios}
-          currentParams={currentParams}
-        /> 
+        showDownChevron={true} >
     	</Hero>
+      <EventsControls
+        studios={studios}
+        currentParams={currentParams}
+      /> 
       <LoadingIcon />
       <section className="events-list">
 			  {this.renderEvents()}

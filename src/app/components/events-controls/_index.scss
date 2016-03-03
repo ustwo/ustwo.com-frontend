@@ -5,7 +5,6 @@
 
 .events-controls {
   z-index: 1;
-  bottom: 0;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -13,10 +12,6 @@
   text-align: center;
   width: 100%;
   background-color: $lightGrey;
-  white-space: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar; 
 
   li {
     display: inline-block;
@@ -28,13 +23,16 @@
     color: $softPassion;
     transition: opacity $hover-duration-quick ease-in-out;
 
-
     &[aria-selected="true"] {
       border-bottom: 4px solid;
     }
 
     &:hover:not([aria-selected="true"]) {
       opacity: $hover-fade-back;
+    }
+
+    &:not(:first-child) {
+      display: none;
     }
   }
 
@@ -44,6 +42,10 @@
 
     li {
       color: #fff;
+
+      &:not(:first-child) {
+        display: inline-block;
+      }
     }
   }
 
