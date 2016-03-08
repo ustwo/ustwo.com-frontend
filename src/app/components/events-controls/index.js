@@ -11,9 +11,16 @@ import spannify from 'app/lib/spannify';
 
 const EventsControls = React.createClass({
   getStudios() {
+    const { studios } = this.props;
+    if(studios) {
       return [{
         name: 'All studios'
-      }].concat(this.props.studios);
+      }].concat(studios);
+    } else {
+      return [{
+        name: 'All studios'
+      }];
+    }
   },
   getSelectedStudio(studioSlugFromUrl, studioSlugs) {
     let selected = 'all-studios';

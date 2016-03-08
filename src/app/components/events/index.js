@@ -138,8 +138,7 @@ const PageEvents = React.createClass({
       isLoadingMoreEvents,
       isLoadingStudioEvents
     } = this.state;
-    const { postsPagination, postsPaginationTotal } = this.props;
-		const {page, currentParams, events, archivedEvents, studios} = this.props;
+		const { page, currentParams, events, archivedEvents, studios, postsPagination, postsPaginationTotal } = this.props;
     const classes = classnames('page-events', this.props.className, {
       loading: isLoadingInitialEvents || isLoadingStudioEvents
     });
