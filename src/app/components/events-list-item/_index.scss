@@ -40,7 +40,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      max-height: 70px;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
 
@@ -63,7 +62,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      max-height: 70px;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
     }
@@ -83,7 +81,7 @@
       }
 
       .time {
-        padding-left: 20px;
+        padding-left: 15px;
       }
     }
 
@@ -120,7 +118,6 @@
         transform: scale($hover-scale-up);
       }
     }
-
   }
 
   &.featured {
@@ -129,12 +126,10 @@
     .details {
 
       .title {
-        max-height: 150px;
         -webkit-line-clamp: 4;
       }
 
       .excerpt p {
-        max-height: 140px;
         -webkit-line-clamp: 5;
       }
     }
