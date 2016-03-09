@@ -3,6 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import moment from 'moment';
+import kebabCase from 'lodash/string/kebabCase';
 
 import StudioClock from 'app/components/studio-clock';
 
@@ -36,8 +37,9 @@ const StudioContact = React.createClass({
       backgroundColor: studio.color,
       borderBottomColor: studio.color
     } : {};
+    const studioClassName = kebabCase(studio.name);
     const mapurl = `https://maps.google.com/maps?z=12&t=m&q=loc:${studio.location.lat}+${studio.location.long}`;
-    return <li className={classnames('studio', { open: open })} style={style}>
+    return <li className={classnames('studio', studioClassName, { open: open })} style={style}>
       <StudioClock date={this.state.date} offset={studio.timezone.offset} colour={studio.color} />
       <h4 className="studio-title" onClick={this.onClick}>{studio.name}</h4>
       <div className="studio-details">

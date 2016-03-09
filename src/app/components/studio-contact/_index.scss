@@ -10,7 +10,14 @@
   list-style: none;
   transition: background-color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
 
-  .clock { 
+  &.malmo {
+    .postal-code {
+      float: left;
+      margin-right: 7px;
+    }
+  }
+
+  .clock {
     display: none;
   }
 
