@@ -179,9 +179,11 @@
 
   @media screen and (min-width: $bp-large) {
     .content {
+      padding: 0 6%;
 
       .general {
         width: 20%;
+        margin-top: 140px;
       }
       .studios {
         width: 80%;

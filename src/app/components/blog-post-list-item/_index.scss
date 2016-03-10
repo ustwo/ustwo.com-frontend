@@ -5,74 +5,10 @@
  */
 
 .blog-post-list-item {
-  $padding-small: $card-padding-small;
-  $padding-medium: $card-padding-medium;
-  $padding-large: $card-padding-large;
-  $gutter-large: $blog-gutter-large;
-  $category-tag-height: $blog-category-tag-height;
-  $image-height: $blog-post-list-item-image-height;
-
-  padding: 10px 10px 0 10px;
-  vertical-align: top;
-
-  &:last-of-type {
-    padding-bottom: 10px;
-  }
-
-  .post-image {
-    display: block;
-    overflow: hidden;
-
-    .rimage {
-      height: 245px;
-      cursor: pointer;
-    }
-
-    .link {
-      display: block;
-      height: 100%;
-    }
-  }
-
-  &:not(.featured) {
-    display: flex;
-    flex-direction: column;
-
-    .post-image {
-      .rimage {
-        transition: transform $hover-duration-quick ease-out;
-      }
-      &:hover {
-        .rimage {
-          transform: scale($hover-scale-up);
-        }
-      }
-    }
-  }
-
-  .details {
-    position: relative;
-    padding: $padding-small;
-    background-color: $offWhite;
-  }
-
-  .blog-category-tag {
-    position: absolute;
-    top: - $category-tag-height * .5;
-  }
-
-  .title {
-    margin-bottom: 5px;
-    font-size: 24px;
-
-    a {
-      transition: color $hover-duration-quick ease-in-out;
-    }
-  }
 
   .meta {
-    margin-bottom: $padding-small - 5px;
-    margin-top: 5px;
+    margin-top: $card-padding-small * .75;
+    margin-bottom: 0;
     color: $darkGrey;
     font-family: $PxGroteskBold;
     font-size: 16px;
@@ -86,88 +22,15 @@
     display: none;
   }
 
-  .tail {
-    text-align: right;
-    overflow: auto;
-
-    a {
-      display: inline-block;
-      float: left;
-      text-align: left;
-      border-bottom: 2px solid;
-    }
-  }
-
-  /* Hero/featured blog post */
-  &.featured {
-    padding: 0;
-    width: 100%;
-
-    .blog-category-tag {
-      position: relative;
-    }
-  }
-
-
   @media screen and (min-width: $bp-medium) {
-    position: relative;
-    padding: 0 0 30px;
-
-    &:last-of-type {
-      padding-bottom: $gutter-large;
-    }
-
-    .blog-catgory {
-      transform: translateY(-21px);
-    }
-
     .excerpt {
       overflow: hidden;
       display: block;
       display: -webkit-box;
       height: 76.2px;
-      margin: 0 auto 10px auto;
-      font-size: 26px;
-      line-height: 1.4;
       text-overflow: ellipsis;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
-
-      p {
-        padding: 0;
-        margin: 0;
-      }
-    }
-
-    .details {
-      display: flex;
-      flex: 1 0 auto;
-      flex-direction: column;
-      padding: $padding-medium;
-
-      .tail {
-        margin-top: auto;
-      }
-    }
-
-    &.featured {
-      position: relative;
-      height: 720px;
-      padding-bottom: 0;
-      margin-bottom: $gutter-large;
-
-      .post-image,
-      .post-image .rimage {
-        height: 100%;
-      }
-
-      .details {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 530px;
-        display: block;
-      }
     }
   }
 
@@ -175,8 +38,63 @@
     .excerpt {
       height: 84.2px;
     }
-    .details {
-      padding: $padding-large;
+  }
+}
+
+
+
+@mixin pinned-post() {
+  width: 100%;
+
+  .card-image {
+    position: absolute;
+    right: $card-gutter-large * .5;
+    bottom: 30px;
+    top: 0;
+
+    .rimage,
+    .image-hover {
+      height: 100%;
+    }
+  }
+
+  .card-details {
+    height: 490px;
+
+    .category-tag {
+      position: relative;
+      align-self: flex-start; /* This stops the box (bg colour) from flexing and thus stop appearing like a block element */
+    }
+  }
+}
+
+/* Add some 'highlighted'/larger posts within the grid */
+.page-blog:not(.categorised) {
+  .blog-post-list {
+    .card-item {
+      @media screen and (min-width: $bp-medium) and (max-width: ($bp-larger - 1px)) {
+        &:nth-child(4) {
+          @include pinned-post();
+          .card-image {
+            width: 50%;
+          }
+          .card-details {
+            width: calc(50% - (#{$card-gutter-large} * .5));
+          }
+        }
+      }
+      @media screen and (min-width: $bp-larger) {
+        &:nth-child(5),
+        &:nth-child(12) {
+          @include pinned-post();
+          .card-image {
+            width: 66.666%;
+          }
+          .card-details {
+            width: calc(33.333% - (#{$card-gutter-large} * .5));
+          }
+        }
+      }
     }
   }
 }

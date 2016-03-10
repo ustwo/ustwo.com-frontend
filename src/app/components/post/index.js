@@ -11,7 +11,7 @@ import Flux from 'app/flux';
 
 import Rimage from 'app/components/rimage';
 import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
-import BlogCategoryTag from 'app/components/blog-category-tag';
+import CategoryTag from 'app/components/category-tag';
 import SocialMediaSharing from 'app/components/social-media-sharing';
 import RelatedContent from 'app/components/related-content';
 
@@ -35,7 +35,7 @@ const PagePost = React.createClass({
         altText={get(image, 'alt_text')}
       />
       <div className='content-container'>
-        <BlogCategoryTag
+        <CategoryTag
           category={get(category, 'name', 'category')}
         />
         <h1 className='title'>{he.decode(get(post, 'title.rendered', ''))}</h1>

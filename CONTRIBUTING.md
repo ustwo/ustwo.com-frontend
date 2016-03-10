@@ -145,10 +145,8 @@ If you really need them, then go bananas ![image](http://www.sherv.net/cm/emo/fu
 
 ## SVG vector graphics and animations
 
-We're keeping our vector icons in an external [SVG spritemap](./src/app/images/spritemap.svg), loaded using the `use xlink:href` method. There's a React component named (surprisingly) `SVG` to cleanly link and include these.
+We're keeping our vector icons in an external [SVG spritemap](./src/app/images/spritemap.svg), loaded using the `use xlink:href` method. There's a React component named (surprisingly) `SVG` to cleanly link and include these. For a step by step guide to optimising the svg code and using the sprites, follow the instructions in [ASSETS.md](./docs/ASSETS.md).
 
 To make these work on IE we're using [SVG4everybody](https://github.com/jonathantneal/svg4everybody).
-
-If you need to include a new SVG, make sure to optimise markup with [SVGOMG](https://jakearchibald.github.io/svgomg/).
 
 Also, for animation sequences (like the down chevron or the close `x`), we're using SVG sequences with a bespoke component called `SVGSequenceAnimation`. Unfortunately right now it's not possible to manipulate external SVGs, so these need to be inlined.

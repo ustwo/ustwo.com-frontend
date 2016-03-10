@@ -6,7 +6,7 @@
  */
 
 .page-post {
-  $category-tag-height: $blog-category-tag-height;
+  $category-tag-height: $category-tag-height;
 
   .hero-image {
     position: relative;
@@ -63,7 +63,6 @@
     padding: 40px 0;
     background: #fff;
 
-
     ul,
     ol {
       line-height: 1.5;
@@ -95,7 +94,7 @@
       text-align: center;
     }
 
-    .blog-category-tag {
+    .category-tag {
       position: absolute;
       top: - $category-tag-height * .5;
       left: 50%;
@@ -133,6 +132,14 @@
 
     }
     .single-column {
+
+  	  h3 {
+  	    padding-bottom: 20px;
+  	    line-height: 30px;
+  	    text-transform: inherit;
+  	    font-family: $PxGroteskBold;
+  	  }
+
       .title {
         color: $nonBlack;
       }
@@ -152,6 +159,10 @@
         img {
           height: auto;
         }
+      }
+
+      & + .single-column {
+        padding-top: 0;
       }
     }
     .author {

@@ -34,7 +34,9 @@ const PageWhatWeDo = React.createClass({
         colours: get(page, 'colors'),
         zebra: false
       })}
-      {this.renderCaseStudies(caseStudies)}
+      <div className="card-list work-items-list">
+        {this.renderCaseStudies(caseStudies)}
+      </div>
     </article>;
   },
   renderCaseStudies(caseStudies) {
@@ -42,11 +44,12 @@ const PageWhatWeDo = React.createClass({
     return caseStudies.map(caseStudy => {
       const attachments = get(page, '_embedded.wp:attachment');
       const image = getFeaturedImage(caseStudy, attachments);
-
+      const featured = caseStudies.indexOf(caseStudy) === 0;
       return <WorkItem
         key={caseStudy.slug}
         data={caseStudy}
         image={image}
+        featured={featured}
       />;
     });
   }

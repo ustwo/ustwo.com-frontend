@@ -5,18 +5,22 @@
  *  Notes: Should this component be called header?
  */
 
+.nav-wrapper {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+}
+
 .header {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 40;
   display: block;
   height: $nav-height;
 
   .navigation {
+    position: relative;
+    z-index: 2;
     background: transparent;
-    color: $white;
+    color: white;
+    transition: color .2s ease-in-out;
   }
 
   .logo {
@@ -29,10 +33,47 @@
     svg {
       width: 100px;
       height: $nav-height;
-      fill: $nonBlack;
-      fill: $white;
+      fill: white;
+      transition: fill .2s ease-in-out;
     }
   }
+
+  .navigation-link {
+    display: block;
+    font-family: $PxGroteskRegular;
+    font-size: 16px;
+    line-height: 24px;
+
+    a:hover,
+    &.selected a {
+      border-bottom: 2px solid white;
+      transition: border-bottom .2s ease-in-out;
+    }
+  }
+
+  /* Invert the logo and text for some pages AND when scrolled past page hero */
+  &.inverted,
+  &.scrolled {
+    .navigation {
+      color: $nonBlack;
+    }
+    .logo svg {
+      fill: $nonBlack;
+    }
+    .navigation-link {
+      a:hover,
+      &.selected a {
+        border-bottom: 2px solid $nonBlack;
+      }
+    }
+    .navigation-toggle {
+      fill: $nonBlack;
+    }
+  }
+  &.scrolled {
+    background-color: white;
+  }
+  /* End */
 
   .navigation-toggle {
     position: absolute;
@@ -94,6 +135,7 @@
   }
 }
 
+/* TEMP */
 /* Invert colours on some pages that have lighter backgrounds */
 .header.takeover,
 .header.case-study,
@@ -107,11 +149,11 @@
     .navigation-toggle {
       fill: $nonBlack;
     }
-    .navigation-link {
-      &.selected a,
-      a:hover {
-        border-bottom: 2px solid $nonBlack;
-      }
+  }
+  .navigation-link {
+    &.selected a,
+    a:hover {
+      border-bottom: 2px solid $nonBlack;
     }
   }
 }
@@ -124,7 +166,7 @@
 
   &.show {
     .header {
-      transition: transform 0.5s ease-out;
+      transition: transform 0.5s ease-out, background-color .2s ease-in-out;
       transform: translateY(0px);
     }
   }

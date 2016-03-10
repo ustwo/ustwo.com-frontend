@@ -10,17 +10,17 @@ import Flux from 'app/flux';
 
 import Rimage from 'app/components/rimage';
 import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
-import BlogCategoryTag from 'app/components/blog-category-tag';
+import CategoryTag from 'app/components/category-tag';
 
 const SearchResultListItem = React.createClass({
   render() {
     const { data: post } = this.props;
-    const category = get(post, '_embedded.wp:term.0.0.name', 'category');
+    const category = get(post, '_embedded.wp:term.0.0', {});
     const uri = `/blog/${get(post, 'slug')}`;
     const image = getFeaturedImage(post);
     const classes = classnames(
       'search-result-list-item',
-      `blog-label-${kebabCase(category)}`
+      `blog-label-${get(category, 'slug', 'category')}`
     );
 
     return <li className={classes}>
@@ -33,7 +33,7 @@ const SearchResultListItem = React.createClass({
         />
       </a>
       <div className="content">
-        <BlogCategoryTag
+        <CategoryTag
           category={get(category, 'name', 'category')}
         />
         <h2 className="title">

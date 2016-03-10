@@ -110,29 +110,30 @@ const App = React.createClass({
           takeover={this.showTakeover()}
         />
         <FourOhFour {...this.state} />
+        {this.renderModal()}
       </div>;
     } else {
       content = <div className={appClasses}>
         <Meta
-          title={get(state, 'page.seo.title') || ''}
+          title={get(state, 'page.seo.title') || get(state, 'post.seo.title') || ''}
           meta={[{
             name: "description",
-            content: get(state, 'page.seo.desc') || ''
+            content: get(state, 'page.seo.desc') || get(state, 'post.seo.desc') || ''
           }, {
             name: "keywords",
-            content: get(state, 'page.seo.keywords') || ''
+            content: get(state, 'page.seo.keywords') || get(state, 'post.seo.keywords') || ''
           }, {
             name: "og:type",
             content: 'website'
           }, {
             name: "og:title",
-            content: get(state, 'page.seo.title') || ''
+            content: get(state, 'page.seo.title') || get(state, 'post.seo.title') || ''
           }, {
             name: "og:description",
-            content: get(state, 'page.seo.desc') || ''
+            content: get(state, 'page.seo.desc') || get(state, 'post.seo.desc') || ''
           }, {
             name: "og:image",
-            content: get(state, 'page.seo.image') || ''
+            content: get(state, 'page.seo.image') || get(state, 'post.seo.image') || ''
           }]}
         />
         <EntranceTransition className="nav-wrapper">

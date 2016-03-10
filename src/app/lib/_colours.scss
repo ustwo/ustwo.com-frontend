@@ -40,6 +40,7 @@ $nonBlack    : #333333;
 /* other */
 $twitter     : #32abe2;
 $facebook    : #3a5998;
+$linkedin    : #007bb5;
 $notfound    : #f7e370;
 
 
@@ -81,6 +82,13 @@ $blog-categories: (
   innovation: $passion
 );
 
+$work-categories: (
+  client: $blu,
+  games: $pot,
+  venture: $ohra,
+  ustwo: $piglet
+);
+
 $feature-card-colours:  $navy $softNavy,
                         $honey $softHoney,
                         $pot $softPot,
@@ -90,5 +98,6 @@ $feature-card-colours:  $navy $softNavy,
 
 $social-media-colours: (
   twitter: $twitter,
-  facebook: $facebook
+  facebook: $facebook,
+  linkedin: $linkedin
 );

@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: calc(100vh + #{$blog-margin-offset});
+    height: calc(100vh + #{$card-margin-offset});
 
     .searched-term {
       transform: translateY(0);
@@ -135,7 +135,7 @@
     }
 
     .search-transition-manager {
-      margin-top: calc(-50vh - #{$blog-margin-offset});
+      margin-top: calc(-50vh - #{$card-margin-offset});
     }
   }
 

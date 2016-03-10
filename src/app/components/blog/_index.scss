@@ -8,24 +8,13 @@
 @each $category, $colour in $blog-categories {
   .blog-label-#{$category} {
 
-    .blog-category-tag {
-      background-color: $colour;
+    /* Card items on /blog */
+    &.card-item,
+    &.search-result-list-item {
+      @include card-item-category-colours($colour);
     }
 
-    .title a:hover {
-      color: $colour;
-    }
-
-    .tail a {
-      border-color: $colour;
-      font-family: $PxGroteskBold;
-      transition: color $hover-duration-quick ease-in-out;
-
-      &:hover {
-        color: $colour;
-      }
-    }
-
+    /* Styles on post pages and search results */
     &.page-post {
       .content-container {
         .rule,
@@ -60,7 +49,7 @@
 }
 
 .page-blog {
-  background-color: #eaeaea;
+  background-color: $lightGrey;
 
   .hero-transition-manager {
     display: flex;
@@ -165,8 +154,6 @@
   }
 
   .blog-post-list {
-    max-width: 1380px;
-    margin: 0 auto;
     opacity: 1;
     transform: translateY(0px);
     transition: opacity .2s ease-in-out, transform .32s ease-in-out;
@@ -239,21 +226,6 @@
 
 
   @media screen and (min-width: $bp-medium) {
-    .blog-post-list {
-      display: flex;
-      flex-wrap: wrap;
-      margin-top: $blog-margin-offset;
-      padding: 0 $blog-gutter-large;
-
-      .blog-post-list-item:not(.featured) {
-        width: calc(50% - (#{$blog-gutter-large} / 2));
-        margin-right: $blog-gutter-large;
-
-        &:nth-child(2n + 1) {
-          margin-right: 0;
-        }
-      }
-    }
 
     &.categorised {
       .down-chevron {
@@ -267,15 +239,6 @@
         .message,
         .blog-post-list-item {
           position: relative;
-
-          &:not(.featured) {
-            &:nth-child(2n + 1) {
-              margin-right: $blog-gutter-large;
-            }
-            &:nth-child(2n) {
-              margin-right: 0;
-            }
-          }
         }
       }
     }
@@ -286,34 +249,6 @@
       .load {
         padding: 0 150px;
         width: auto;
-      }
-    }
-  }
-
-  @media screen and (min-width: $bp-larger) {
-    .blog-post-list {
-      .blog-post-list-item:not(.featured) {
-        width: calc(33.333% - (#{$blog-gutter-large} * 2 / 3));
-
-        &:nth-child(2n + 1) {
-          margin-right: $blog-gutter-large;
-        }
-        &:nth-child(3n + 4) {
-          margin-right: 0;
-        }
-      }
-    }
-    &.categorised {
-      .blog-post-list {
-        .blog-post-list-item:not(.featured) {
-          &:nth-child(2n),
-          &:nth-child(3n + 4) {
-            margin-right: $blog-gutter-large;
-          }
-          &:nth-child(3n) {
-            margin-right: 0;
-          }
-        }
       }
     }
   }

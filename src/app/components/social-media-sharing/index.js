@@ -14,6 +14,7 @@ const SocialMediaSharing = React.createClass({
     const facebookLink = `https://www.facebook.com/sharer/sharer.php?u=${uri}`;
     const twitterText = `${encodeURIComponent(title)} via @ustwo`
     const twitterLink = `https://twitter.com/intent/tweet?text=${twitterText}&url=${uri}`;
+    const linkedinLink = `https://www.linkedin.com/shareArticle?mini=true&url=${uri}`;
 
     return <ul className={classnames('social-media-sharing', className)}>
       <li className="channel facebook">
@@ -33,6 +34,16 @@ const SocialMediaSharing = React.createClass({
         >
           <div className="svg-container">
             <SVG className="logo" title="twitter logo" spritemapID="twitter" />
+          </div>
+        </a>
+      </li>
+      <li className="channel linkedin">
+        <a
+          target="_blank"
+          href={linkedinLink}
+        >
+          <div className="svg-container">
+            <SVG className="logo" title="linkedin logo" spritemapID="linkedin" />
           </div>
         </a>
       </li>
