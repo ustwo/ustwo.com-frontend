@@ -126,6 +126,10 @@
     .loading-icon {
       margin-top: -14px;
     }
+
+    .down-chevron {
+      display: none;
+    }
   }
 
   @media screen and (min-width: $bp-large) {
