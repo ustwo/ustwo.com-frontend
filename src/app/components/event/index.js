@@ -61,19 +61,21 @@ const PageEvent = React.createClass({
         altText={get(image, 'alt_text')}
       />
       <div className='content-container'>
-        <p className="date-time">
-          <span className="date">{moment.unix(start_time).format('D MMMM')}</span> <span className="time">{moment.unix(start_time).format('h:mma')}–{moment.unix(end_time).format('h:mma')}</span>
-        </p>
-        {this.renderSocialMediaSharing('side')}
-        <h1 className='title'>{get(event, 'name')}</h1>
-        <p className="location">
-          <SVG
-            className="location-icon"
-            spritemapID="locationpin"
-          />
-          <span><a href="#">{get(event, 'studio.name')}</a></span>
-        </p>
-        <a href="mailto:events@ustwo.com" className="im-in">I'm in</a>
+          <p className="date-time">
+            <span className="date">{moment.unix(start_time).format('D MMMM')}</span> <span className="time">{moment.unix(start_time).format('h:mma')}–{moment.unix(end_time).format('h:mma')}</span>
+          </p>
+          {this.renderSocialMediaSharing('side')}
+          <h1 className='title'>{get(event, 'name')}</h1>
+          <p className="location">
+            <SVG
+              className="location-icon"
+              spritemapID="locationpin"
+            />
+            <span><a href="#">{get(event, 'studio.name')}</a></span>
+          </p>
+        <section className="single-column">
+          <a href="mailto:events@ustwo.com" className="im-in">I'm in</a>
+        </section>
         {renderModules({
           modules: get(event, 'page_builder', [])
         })}
