@@ -98,8 +98,8 @@ const PageEvents = React.createClass({
       } else {
         output = <div className="no-events-found">
           <h2>Soz, No Talky</h2>
-          <p>We currently have no events coming up. Interested in hosting an event, 
-          <br />inviting us to one or giving a talky? <a href="mailto:events@ustwo.com">Let us know! </a></p>
+          <p>We don't have any events on the horizon right now. If you're interested in hosting an event, 
+          <br />or giving a talk - <a href="mailto:events@ustwo.com">let us know! </a></p>
           <SVG
             className="flying-cow"
             spritemapID="flyingCow"
