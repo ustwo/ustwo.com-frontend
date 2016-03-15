@@ -65,7 +65,7 @@ const PageEvent = React.createClass({
           <span className="date">{moment.unix(start_time).format('D MMMM')}</span> <span className="time">{moment.unix(start_time).format('h:mma')}–{moment.unix(end_time).format('h:mma')}</span>
         </p>
         {this.renderSocialMediaSharing('side')}
-        <h3 className='title'>{get(event, 'name')}</h3>
+        <h1 className='title'>{get(event, 'name')}</h1>
         <p className="location">
           <SVG
             className="location-icon"
