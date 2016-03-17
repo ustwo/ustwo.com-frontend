@@ -8,6 +8,9 @@
  */
 
 .blog-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 1;
   bottom: calc(#{$blog-controls-margin-bottom} + 9vh);
   position: absolute;
@@ -15,8 +18,6 @@
   transform: translateX(-50%);
 
   .blog-search-button {
-    position: absolute;
-    left: 0;
     display: flex;
     align-items: center;
     height: $blog-controls-line-height;
@@ -24,6 +25,7 @@
     background: transparent;
     border: 0;
     padding: 0;
+    margin-bottom: 20px;
 
     .search-icon {
       fill: #fff;
@@ -34,18 +36,18 @@
   }
 
   .blog-filter {
-    margin-left: $blog-controls-search-width + $blog-controls-search-margin;
+    text-transform: uppercase;
 
     .selected {
       width: $blog-controls-item-width;
-      padding: 0 $blog-controls-horizontal-padding;
+      padding: 0 0 0 50px;
 
       &:after {
 
-        @include arrow-icon(#333);
+        @include arrow-icon($midGrey);
 
         position: absolute;
-        right: $blog-controls-horizontal-padding;
+        left: $blog-controls-horizontal-padding;
         top: 50%;
         content: "";
         display: block;
@@ -58,6 +60,7 @@
       cursor: pointer;
       height: $blog-controls-line-height;
       line-height: $blog-controls-line-height;
+      color: $nonBlack;
       background-color: #fff;
     }
 
