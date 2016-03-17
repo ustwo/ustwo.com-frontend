@@ -46,11 +46,12 @@
   .submit {
     width: auto;
     padding: 0 20px;
-    background: $blu;
+    background: $offWhite;
 
     .submit-text {
       display: inline;
       line-height:$input-height;
+      color: $nonBlack;
     }
 
     &:after {
@@ -59,11 +60,11 @@
 
     &:active {
       /* TODO: Use a 'darken' function here but the sass one doesn't seem to be working. Bad-sass! */
-      background: #007dc0;
+      background: $lightGrey;
     }
 
     &:after {
-      @include arrow-icon($white);
+      @include arrow-icon($nonBlack);
       width: 13px;
       height: 10px;
       margin-left: 10px;
