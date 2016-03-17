@@ -126,7 +126,7 @@ const Store = Object.assign(
         return (!_state[item.type] 
                 || (item.slug && _state[item.type].slug && _state[item.type].slug !== item.slug) 
                 || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory) 
-                || (item.slug !== _state.eventsStudio))
+                || (item.slug && item.slug !== _state.eventsStudio))
       });
 
       DataLoader(itemsToLoad, applyData).then(() => {
