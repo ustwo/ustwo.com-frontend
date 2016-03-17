@@ -63,27 +63,10 @@
       border-color: $softPassion;
       margin: 30px auto;
     }
-  }
 
-  .archived-events-list {
-    max-width: 1380px;
-    margin: 0 auto;
-    margin-top: 50px;
-    opacity: 1;
-    transform: translateY(0px);
-    transition: opacity .2s ease-in-out, transform .32s ease-in-out;
-
-    .archived-events-list {
-      position: relative;
-
-      &:nth-child(2n + 1) {
-        margin-right: $events-gutter-large;
-      }
-      &:nth-child(2n) {
-        margin-right: 0;
-      }
+    .card-list {
+      margin-top: 0;
     }
-
   }
 
   .loading-icon {

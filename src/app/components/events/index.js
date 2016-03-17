@@ -123,7 +123,7 @@ const PageEvents = React.createClass({
         output = <div className='archived-events'>
           <h2 className='sub-title'>Previous Talkies</h2>
           <hr className='rule' />
-          <section className='archived-events-list'>
+          <section className='card-list'>
             {events}
           </section>
         </div>;
