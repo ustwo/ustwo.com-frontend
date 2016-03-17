@@ -154,7 +154,6 @@ const PageEvents = React.createClass({
         studios={studios}
         currentParams={currentParams}
       /> 
-      <LoadingIcon />
       <section className="events-list">
 			  {this.renderEvents()}
         <LoadMoreButton

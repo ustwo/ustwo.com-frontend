@@ -68,19 +68,9 @@
       margin-top: 0;
     }
   }
-
-  .loading-icon {
-    position: absolute;
-    left: 50%;
-    display: block;
-    visibility: hidden;
-  }
   
   &.loading {
 
-    .loading-icon {
-      visibility: visible;
-    }
     .events-list {
       opacity: 0;
       transform: translateY(100px);
@@ -106,10 +96,6 @@
       padding: $events-gutter-large;
     }
 
-    .loading-icon {
-      margin-top: -14px;
-    }
-
     .down-chevron {
       display: none;
     }
@@ -121,7 +107,5 @@
       padding: 0;
     }
   }
-
-
 }
 
