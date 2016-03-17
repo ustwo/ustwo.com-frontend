@@ -10,7 +10,7 @@ const EventsSubscription = React.createClass({
       <SVG className="icon" spritemapID="ticket" />
       <h2>ustwo Events</h2>
       <p>Give us your email and we'll keep you in the loop with our latest talkies and events</p>
-      <a href="mailto:events@ustwo.com" className="submit">
+      <a href="http://eepurl.com/brTeM1" className="submit">
         <span className="submit-text">Subscribe</span>
       </a>
     </div>;
