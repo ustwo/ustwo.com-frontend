@@ -6,7 +6,7 @@ import map from 'lodash/collection/map';
 import take from 'lodash/array/take';
 import classnames from 'classnames';
 import isEqual from 'lodash/lang/isEqual';
-
+import Flux from 'app/flux';
 import Hero from 'app/components/hero';
 import SVG from 'app/components/svg';
 import EventsControls from 'app/components/events-controls';
@@ -45,7 +45,7 @@ const PageEvents = React.createClass({
     // applies when studio is changed
     if (currentEventsStudio !== nextEventsStudios) {
       this.setState({
-        isLoadingStudioEvents: true
+        isLoadingStudioEvents: false
       });
     }
 

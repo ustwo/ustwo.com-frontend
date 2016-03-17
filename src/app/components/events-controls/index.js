@@ -8,6 +8,7 @@ import pluck from 'lodash/collection/pluck';
 import includes from 'lodash/collection/includes';
 import kebabCase from 'lodash/string/kebabCase';
 import spannify from 'app/lib/spannify';
+import Flux from 'app/flux';
 
 const EventsControls = React.createClass({
   getStudios() {
