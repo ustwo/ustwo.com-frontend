@@ -45,7 +45,7 @@ const PageEvents = React.createClass({
     // applies when studio is changed
     if (currentEventsStudio !== nextEventsStudios) {
       this.setState({
-        isLoadingStudioEvents: true
+        isLoadingStudioEvents: false
       });
     }
 
