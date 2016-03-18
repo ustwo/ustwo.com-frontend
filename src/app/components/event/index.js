@@ -73,7 +73,7 @@ const PageEvent = React.createClass({
             />
             <span><a href="#">{get(event, 'studio.name')}</a></span>
           </p>
-        <section className="single-column">
+        <section className="single-column im-in-single-column">
           <a href="mailto:events@ustwo.com" className="im-in">I'm in</a>
         </section>
         {renderModules({

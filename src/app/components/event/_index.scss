@@ -125,11 +125,14 @@
     }
 
     a.im-in {
+      &:last-of-type { 
+        margin-top: 50px;
+      }
       text-align: center;
       padding: 18px 60px;
       background-color: $softPassion;
       color: #fff;
-      margin: 50px auto;
+      margin: 100px auto;
       display: block;
       width: 200px;
     }
@@ -161,6 +164,11 @@
       border-color: $softPassion;
     }
     .single-column {
+    &.im-in-single-column {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
     h3 {
       padding-bottom: 20px;
       line-height: 30px;
