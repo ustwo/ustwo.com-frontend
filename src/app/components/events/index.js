@@ -8,6 +8,7 @@ import classnames from 'classnames';
 import isEqual from 'lodash/lang/isEqual';
 import Flux from 'app/flux';
 import Hero from 'app/components/hero';
+import Video from 'app/components/video';
 import SVG from 'app/components/svg';
 import EventsControls from 'app/components/events-controls';
 import EventsListItem from 'app/components/events-list-item';
@@ -148,7 +149,12 @@ const PageEvents = React.createClass({
         transitionImage={true}
         eventLabel="events"
         subheading={get(page, 'hero.attr.subheading.value')}
-        showDownChevron={true} >
+        showDownChevron={true} 
+      >
+        <Video
+          src={get(page, 'featured_video')}
+         // sizes={get(image, 'media_details.sizes')}
+        />
     	</Hero>
       <EventsControls
         studios={studios}

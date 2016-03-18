@@ -9,6 +9,17 @@
 
   .hero {
     background-color: $softPassion;
+    .video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+
+  p.subheading {
+    position: relative;
+    z-index: 2;
   }
 
   .events-list {
@@ -17,6 +28,8 @@
     opacity: 1;
     transform: translateY(0px);
     transition: opacity .2s ease-in-out, transform .32s ease-in-out;
+    position: relative;
+    z-index: 2;
   }
 
   .no-events-found {
