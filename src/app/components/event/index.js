@@ -24,8 +24,16 @@ const PageEvent = React.createClass({
       />
     );
   },
+  renderImInButton() {
+    const { event } = this.props;
+    const ticket_url = get(event, 'ticket_url');
+
+    if(ticket_url) {
+      return <a href={ticket_url} className="im-in">I'm in</a>;
+    }
+  },
 	render() {
-		const {event} = this.props;
+		const { event } = this.props;
     const image = getFeaturedImage(event);
     const classes = classnames('page-event', this.props.className);
     const start_time = get(event, 'start_time');
@@ -74,12 +82,12 @@ const PageEvent = React.createClass({
             <span><a href="#">{get(event, 'studio.name')}</a></span>
           </p>
         <section className="single-column im-in-single-column">
-          <a href="mailto:events@ustwo.com" className="im-in">I'm in</a>
+          {this.renderImInButton()}
         </section>
         {renderModules({
           modules: get(event, 'page_builder', [])
         })}
-        <a href="mailto:events@ustwo.com" className="im-in">I'm in</a>
+        {this.renderImInButton()}
         <Rimage
           className='footer-image'
           sizes={get(image, 'media_details.sizes')}
