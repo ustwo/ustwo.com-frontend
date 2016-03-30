@@ -23,7 +23,7 @@
     svg {
       width: 60px;
       height: 60px;
-      fill: $nonBlack;
+      fill: $marshPassion;
     }
 
     &:focus {
@@ -39,50 +39,35 @@
 
   .list {
     margin: 0;
-    padding: 0;
+    padding: 30px 50px;
     clear: both;
     list-style-type: none;
 
     li {
       position: relative;
-      width: auto;
+      width: 200px;
       height: $blog-controls-line-height;
       background-color: $offWhite;
       line-height: $blog-controls-line-height;
+      color: white;
+      text-align: center;
+      margin: 0 auto 15px auto;
 
       &:hover {
         background-color: $nonBlack;
         color: #fff;
       }
 
-      &:after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: $blog-controls-horizontal-padding;
-        display: block;
-        width: $blog-controls-tag-size;
-        height: $blog-controls-tag-size;
-        margin-top: -($blog-controls-tag-size * .5);
-        border-radius: 50%;
-      }
-
       /* This spits out the blog category class and its paired colour from the
       $blog-categories object in variables.scss */
       @each $category, $colour in $blog-categories {
-        &.#{$category}:after {
+        &.#{$category} {
           background-color: #{$colour};
         }
       }
 
       &.all {
-        &:after {
-          background-color: $nonBlack;
-        }
-
-        &:hover:after {
-          background-color: #fff;
-        }
+        background-color: $nonBlack;
       }
     }
 
@@ -96,16 +81,14 @@
 
   @media screen and (min-width: $bp-large) {
     position: absolute;
-    top: calc(100% + #{$card-margin-offset} - #{$blog-controls-margin-bottom} - #{$blog-controls-dropdown-offset});
+    /* 100%: starts at bottom of screen, bring up by the first blog post offset, then up again by the gap between blog post and dropdown, then arbitrary number to position */
+    /* top: calc(100% + #{$card-margin-offset} - #{$blog-controls-margin-bottom} - 160px); */
+    top: calc(100% + #{$card-margin-offset} - #{$blog-controls-margin-bottom} - 160px);
     left: 50%;
+    transform: translate(-50%, 0);
     height: auto;
-    margin-left: - $blog-controls-search-width - ($blog-controls-search-margin * .5);
     box-shadow: 0 0 4px 2px rgba(0,0,0,.1);
     cursor: pointer;
-
-    .close-button {
-      display: none;
-    }
 
     .scroll-wrapper {
       height: auto;
@@ -121,8 +104,8 @@
 /* TODO: The modal wrapper. Move out of the component and into blog? */
 @media screen and (min-width: $bp-large) {
   .modal-blog-categories {
-    position: absolute;
-    background: transparent;
-    cursor: default;
+    position: absolute !important;
+    background: transparent !important;
+    // cursor: default !important;
   }
 }
