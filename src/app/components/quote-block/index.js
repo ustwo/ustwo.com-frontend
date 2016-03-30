@@ -16,7 +16,7 @@ const QuoteBlock = React.createClass({
         className="quote"
         dangerouslySetInnerHTML={{ __html: children }}
       />
-    <p className="source">By {source}</p>
+    <p className="source">{source}</p>
     </div>;
   }
 });
