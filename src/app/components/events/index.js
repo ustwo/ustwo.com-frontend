@@ -167,9 +167,7 @@ const PageEvents = React.createClass({
           onClick={this.onClickLoadMore}
           disabled={postsPagination >= postsPaginationTotal}
         />
-		  </section>
-      
-        {this.renderArchivedEvents()}
+		  </section>      
     </article>;
 	}
 });
