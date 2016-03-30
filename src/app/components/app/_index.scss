@@ -20,6 +20,7 @@
 .app {
 
   .app-content {
+    transition: filter .2s ease-in-out;
 
     /* Takeover bound by viewport size */
     &.takeover {
@@ -27,9 +28,10 @@
       overflow: hidden;
     }
 
-    /* TODO: When is this used? */
+    /* When blog categories dropdown is open */
     &.disabled {
       pointer-events: none;
+      filter: brightness(0.7);
     }
 
     /* For when mobile navigation-overlay is visible to prevent scrolling of the page underneath */
