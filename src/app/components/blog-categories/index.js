@@ -15,7 +15,6 @@ const blogCategories = {
   development: 'Development',
   process: 'Process',
   ux: 'UX',
-  apps: 'Apps',
   innovation: 'Innovation',
   product: 'Product'
 }
