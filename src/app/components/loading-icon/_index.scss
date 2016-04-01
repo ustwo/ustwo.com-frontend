@@ -2,12 +2,17 @@
  *  LOADING ICON
  *  Small loading spinner, originally intended for inside category dropdown
  *
- *  TODO: Currently just rotates between black and white, need to implement it to cycle through the ustwo colour palette.
+ *  PLEASE NOTE: Look at lib/spinner-keyframe-generator if any modifications are
+ *  required for the @keyframes. If the number of cycles is changed and new keyframes
+ *  pasted at below, then don't forget to change the number of $cycles below.
+ *
  */
 
 .loading-icon {
   $size: $loading-spinner-size;
-  $duration: 1.2s;
+  $cycle-duration: 1.2s;
+  $cycles: 5;
+  $duration: $cycle-duration * $cycles;
 
   box-sizing: content-box;
   position: relative;
@@ -38,7 +43,7 @@
       .bg {
         left: 0;
         border-left: ($size * .5) solid #fff;
-        animation: SpinnerLeft $duration infinite linear;
+        animation: spinner-multicoloured-left $duration infinite linear;
       }
     }
 
@@ -49,7 +54,7 @@
       .bg {
         right: 0;
         border-right: ($size * .5) solid #fff;
-        animation: SpinnerRight $duration infinite linear;
+        animation: spinner-multicoloured-right $duration infinite linear;
       }
     }
   }
@@ -57,38 +62,501 @@
 }
 
 
-@keyframes SpinnerLeft {
+/* PASTE GENERATED KEYFRAMES HERE USING lib/spinner-keyframe-generator */
+
+@keyframes spinner-multicoloured-left {
+  0% {
+    border-color: #000;
+  }
+  10% {
+    border-color: #000;
+  }
+  10% {
+    border-color: #000;
+  }
+  15% {
+    border-color: #ed0082;
+  }
+  0% {
+    background-color: #6114cc;
+  }
+  5% {
+    background-color: #009cf3;
+  }
   0% {
     transform: rotate(0deg);
   }
-  25% {
+  5% {
     transform: rotate(0deg);
   }
-  50% {
+  5% {
+    transform: rotate(0deg);
+  }
+  10% {
     transform: rotate(180deg);
+  }
+  15% {
+    transform: rotate(180deg);
+  }
+  20% {
+    transform: rotate(360deg);
+  }
+  20% {
+    border-color: #ed0082;
+  }
+  30% {
+    border-color: #ed0082;
+  }
+  30% {
+    border-color: #ed0082;
+  }
+  35% {
+    border-color: #ff5519;
+  }
+  20% {
+    background-color: #009cf3;
+  }
+  25% {
+    background-color: #14c04d;
+  }
+  20% {
+    transform: rotate(360deg);
+  }
+  25% {
+    transform: rotate(360deg);
+  }
+  25% {
+    transform: rotate(360deg);
+  }
+  30% {
+    transform: rotate(540deg);
+  }
+  35% {
+    transform: rotate(540deg);
+  }
+  40% {
+    transform: rotate(720deg);
+  }
+  40% {
+    border-color: #ff5519;
+  }
+  50% {
+    border-color: #ff5519;
+  }
+  50% {
+    border-color: #ff5519;
+  }
+  55% {
+    border-color: #ffbf02;
+  }
+  40% {
+    background-color: #14c04d;
+  }
+  45% {
+    background-color: #16d6d9;
+  }
+  40% {
+    transform: rotate(720deg);
+  }
+  45% {
+    transform: rotate(720deg);
+  }
+  45% {
+    transform: rotate(720deg);
+  }
+  50% {
+    transform: rotate(900deg);
+  }
+  55% {
+    transform: rotate(900deg);
+  }
+  60% {
+    transform: rotate(1080deg);
+  }
+  60% {
+    border-color: #ffbf02;
+  }
+  70% {
+    border-color: #ffbf02;
+  }
+  70% {
+    border-color: #ffbf02;
   }
   75% {
-    transform: rotate(180deg);
+    border-color: #96cc29;
+  }
+  60% {
+    background-color: #16d6d9;
+  }
+  65% {
+    background-color: #e60c29;
+  }
+  60% {
+    transform: rotate(1080deg);
+  }
+  65% {
+    transform: rotate(1080deg);
+  }
+  65% {
+    transform: rotate(1080deg);
+  }
+  70% {
+    transform: rotate(1260deg);
+  }
+  75% {
+    transform: rotate(1260deg);
+  }
+  80% {
+    transform: rotate(1440deg);
+  }
+  80% {
+    border-color: #96cc29;
+  }
+  90% {
+    border-color: #96cc29;
+  }
+  90% {
+    border-color: #96cc29;
+  }
+  95% {
+    border-color: #000;
+  }
+  95% {
+    border-color: #000;
   }
   100% {
-    transform: rotate(360deg);
+    border-color: #000;
+  }
+  80% {
+    background-color: #e60c29;
+  }
+  85% {
+    background-color: #6114cc;
+  }
+  85% {
+    background-color: #6114cc;
+  }
+  100% {
+    background-color: #6114cc;
+  }
+  80% {
+    transform: rotate(1440deg);
+  }
+  85% {
+    transform: rotate(1440deg);
+  }
+  85% {
+    transform: rotate(1440deg);
+  }
+  90% {
+    transform: rotate(1620deg);
+  }
+  95% {
+    transform: rotate(1620deg);
+  }
+  100% {
+    transform: rotate(1800deg);
   }
 }
 
-@keyframes SpinnerRight {
+@keyframes spinner-multicoloured-right {
+  0% {
+    border-color: #000;
+  }
+  5% {
+    border-color: #000;
+  }
+  5% {
+    border-color: #000;
+  }
+  10% {
+    border-color: #ed0082;
+  }
+  0% {
+    background-color: #009cf3;
+  }
+  15% {
+    background-color: #009cf3;
+  }
+  15% {
+    background-color: #009cf3;
+  }
+  20% {
+    background-color: #14c04d;
+  }
   0% {
     transform: rotate(0deg);
   }
-  25% {
+  5% {
     transform: rotate(180deg);
+  }
+  10% {
+    transform: rotate(180deg);
+  }
+  15% {
+    transform: rotate(360deg);
+  }
+  15% {
+    transform: rotate(360deg);
+  }
+  20% {
+    transform: rotate(360deg);
+  }
+  20% {
+    border-color: #ed0082;
+  }
+  25% {
+    border-color: #ed0082;
+  }
+  25% {
+    border-color: #ed0082;
+  }
+  30% {
+    border-color: #ff5519;
+  }
+  20% {
+    background-color: #14c04d;
+  }
+  35% {
+    background-color: #14c04d;
+  }
+  35% {
+    background-color: #14c04d;
+  }
+  40% {
+    background-color: #16d6d9;
+  }
+  20% {
+    transform: rotate(360deg);
+  }
+  25% {
+    transform: rotate(540deg);
+  }
+  30% {
+    transform: rotate(540deg);
+  }
+  35% {
+    transform: rotate(720deg);
+  }
+  35% {
+    transform: rotate(720deg);
+  }
+  40% {
+    transform: rotate(720deg);
+  }
+  40% {
+    border-color: #ff5519;
+  }
+  45% {
+    border-color: #ff5519;
+  }
+  45% {
+    border-color: #ff5519;
   }
   50% {
-    transform: rotate(180deg);
+    border-color: #ffbf02;
+  }
+  40% {
+    background-color: #16d6d9;
+  }
+  55% {
+    background-color: #16d6d9;
+  }
+  55% {
+    background-color: #16d6d9;
+  }
+  60% {
+    background-color: #e60c29;
+  }
+  40% {
+    transform: rotate(720deg);
+  }
+  45% {
+    transform: rotate(900deg);
+  }
+  50% {
+    transform: rotate(900deg);
+  }
+  55% {
+    transform: rotate(1080deg);
+  }
+  55% {
+    transform: rotate(1080deg);
+  }
+  60% {
+    transform: rotate(1080deg);
+  }
+  60% {
+    border-color: #ffbf02;
+  }
+  65% {
+    border-color: #ffbf02;
+  }
+  65% {
+    border-color: #ffbf02;
+  }
+  70% {
+    border-color: #96cc29;
+  }
+  60% {
+    background-color: #e60c29;
   }
   75% {
-    transform: rotate(360deg);
+    background-color: #e60c29;
+  }
+  75% {
+    background-color: #e60c29;
+  }
+  80% {
+    background-color: #6114cc;
+  }
+  60% {
+    transform: rotate(1080deg);
+  }
+  65% {
+    transform: rotate(1260deg);
+  }
+  70% {
+    transform: rotate(1260deg);
+  }
+  75% {
+    transform: rotate(1440deg);
+  }
+  75% {
+    transform: rotate(1440deg);
+  }
+  80% {
+    transform: rotate(1440deg);
+  }
+  80% {
+    border-color: #96cc29;
+  }
+  85% {
+    border-color: #96cc29;
+  }
+  85% {
+    border-color: #96cc29;
+  }
+  90% {
+    border-color: #000;
+  }
+  90% {
+    border-color: #000;
   }
   100% {
-    transform: rotate(360deg);
+    border-color: #000;
+  }
+  80% {
+    background-color: #6114cc;
+  }
+  95% {
+    background-color: #6114cc;
+  }
+  95% {
+    background-color: #6114cc;
+  }
+  100% {
+    background-color: #009cf3;
+  }
+  80% {
+    transform: rotate(1440deg);
+  }
+  85% {
+    transform: rotate(1620deg);
+  }
+  90% {
+    transform: rotate(1620deg);
+  }
+  95% {
+    transform: rotate(1800deg);
+  }
+  95% {
+    transform: rotate(1800deg);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+.jumping-boxes:hover li div {
+  animation: jumping 1.7s infinite linear;
+}
+@keyframes jumping {
+  19% {
+    bottom: 0;
+  }
+  21% {
+    bottom: 11px;
+  }
+  26% {
+    bottom: 19px;
+  }
+  33% {
+    bottom: 24px;
+  }
+  39% {
+    bottom: 26px;
+  }
+  45% {
+    bottom: 27px;
+  }
+  49% {
+    bottom: 27px;
+  }
+  49% {
+    bottom: 27px;
+  }
+  52% {
+    bottom: 25px;
+  }
+  56% {
+    bottom: 20px;
+  }
+  61% {
+    bottom: 14px;
+  }
+  64% {
+    bottom: 7px;
+  }
+  67% {
+    bottom: 2px;
+  }
+  68% {
+    bottom: 0;
+  }
+  0% {
+    transform: scale(1, 1);
+  }
+  19% {
+    transform: scale(1.25, 0.25);
+  }
+  19% {
+    transform: scale(1.25, 0.25);
+  }
+  34% {
+    transform: scale(0.8, 1.13);
+  }
+  34% {
+    transform: scale(0.8, 1.13);
+  }
+  54% {
+    transform: scale(1, 1);
+  }
+  54% {
+    transform: scale(1, 1);
+  }
+  68% {
+    transform: scale(1, 0.8);
+  }
+  68% {
+    transform: scale(1, 0.8);
+  }
+  73% {
+    transform: scale(1.5, 0.25);
+  }
+  73% {
+    transform: scale(1.5, 0.25);
+  }
+  88% {
+    transform: scale(1, 1);
   }
 }
