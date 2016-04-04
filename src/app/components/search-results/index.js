@@ -15,7 +15,8 @@ const PageSearchResults = React.createClass({
   mixins: [getScrollTrackerMixin('search-results')],
   getInitialState() {
     return {
-      loading: true
+      loading: true,
+      startAnimation: false
     };
   },
   componentWillMount() {
@@ -33,8 +34,13 @@ const PageSearchResults = React.createClass({
     }
   },
   render() {
+    setTimeout(function() {
+      this.setState({
+        startAnimation: true
+      });
+    }.bind(this), 10);
     const pageClasses = classnames('page-search-results', {
-      'shown': this.props.transitionState === 'shown'
+      'shown': this.state.startAnimation
     });
     return (
       <article className={pageClasses}>

@@ -64,7 +64,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 50vh;
+    top: 40vh;
     z-index: 1;
     margin: 10vh auto 0 auto;
   }
@@ -104,7 +104,7 @@
         transform: translateY(80px);
       }
 
-      &.show {
+      &.shown {
         li {
           opacity: 1;
           transform: translateY(0);

@@ -1,0 +1,159 @@
+/**
+ *  Ornithopter v.0.3.0
+ *  by Phil Linnell, phil@ustwo.com
+ *
+ *  A stylus function that generates css keyframes and a css 'animation' declaration.
+ *
+ *  Each 'animation' defined (e.g. 'spin' in the example below) generates a set of keyframes
+ *  within an @keyframes rule. The real power of ornithoper is realised when multiple animations
+ *  are defined (that overlap) and, furthermore, when complex timing-functions are defined within each of those
+ *  animation segments (see below for more about this).
+ *
+ *  PLEASE NOTE: This version of Ornithopter is a prototype. There are many limitations and errors
+ *  that will be massively improved upon in the next version, a PostCSS plugin. One crippling limitation is the
+ *  inability to overlap two animation segments that use the transform declaration.
+ *
+ *  @example
+ *
+ *    $animation-name = {
+ *      name: animation-name,
+ *      total-duration: 1s,
+ *      iteration: infinite,
+ *      timingFunction: linear,
+ *      animations: {
+ *        spin: {
+ *          property: transform rotate,
+ *          from: 0deg,
+ *          to: 360deg,
+ *          duration: .5s,
+ *          delay: .5s,
+ *        }
+ *      }
+ *    }
+ *
+ *    div { ornithopter($animation) };
+ *
+ *    //=>
+ *
+ *    @keyframes animation-name {
+ *      0% {
+ *        transform: rotate(0deg);
+ *      }
+ *      50% {
+ *        transform: rotate(0deg);
+ *      }
+ *      100% {
+ *        transform: rotate(360deg);
+ *      }
+ *    }
+ *
+ *    div { animation: animation-name 1s infinite linear };
+ *
+ *  Timing Functions
+ *
+ *  Cubic beziers can be added to each animation unit with the 'curve' property.
+ *  The 'accuracy' value effectively equates to points on the curve graph, a
+ *  keyframe is generated for each point, thus a higher accuracy produces more
+ *  keyframes and a smoother curve.
+ *
+ *    curve: {
+ *      c1: 0 1,
+ *      c2: 0.86 1,
+ *      accuracy: 5
+ *    }
+ *
+ */
+
+vendors = official; /* Prevent stylus from vendor prefixing @keyframes */
+
+ornithopter(a) {
+
+  @keyframes {a.name} {
+
+     for type, i in a.animations {
+
+      $prop = a.animations[type].property;
+      $duration = a.animations[type].duration;
+      $delay = a.animations[type].delay;
+      $from = a.animations[type].from;
+      $to = a.animations[type].to;
+      $total = $duration + $delay;
+
+      $per-delay = $delay / a.total-duration * 100%;
+      $per-duration = $duration / a.total-duration * 100%;
+
+      if (a.animations[type].property[0] == transform) {
+        $prop = 'transform';
+        $transform-type = a.animations[type].property[1];
+        $from = $transform-type + "(" + $from + ")";
+        $to = $transform-type + "(" + $to + ")";
+      }
+
+      /* Start all animations */
+      if ($delay > 0) {
+        {round($per-delay)} {
+          {$prop}: $from;
+        }
+      } else {
+        0% {
+          {$prop}: $from;
+        }
+      }
+
+      /* Animations' keyframes */
+      if (a.animations[type].curve) {
+        $accuracy = a.animations[type].curve.accuracy;
+        for i in ($accuracy)..1 {
+          /* Return sets of coordinates between 0 and 1 equal to animation's accuracy */
+          t = i * (1 / ($accuracy + 1));
+          d = 1
+
+          b0 = t * t * t
+          b1 = 3 * t * t * (1 - t)
+          b2 = 3 * t * (1 - t) * (1 - t)
+          b3 = (1 - t) * (1 - t) * (1 - t)
+
+          p0 = 0 0;
+          p1x = a.animations[type].curve.c1[0];
+          p1y = a.animations[type].curve.c1[1];
+          p2x = a.animations[type].curve.c2[0];
+          p2y = a.animations[type].curve.c2[1];
+          p3 = 1 1;
+
+          x = p0[0] * (b0 * d) + p1x * (b1 * d) + p2x * (b2 * d) + p3[0] * (b3 * d);
+          y = p0[1] * (b0 * d) + p1y * (b1 * d) + p2y * (b2 * d) + p3[1] * (b3 * d);
+
+          {round(($per-delay) + (x * $per-duration))} {
+
+            if ($prop == transform) {
+              $to2 = a.animations[type].to; /* Need this as $to already overriden in if(transform) above */
+              $from2 = a.animations[type].from;
+              $new-to = $transform-type + "(" + round($to2 * y) + ")";
+              $new-from = $transform-type + "(" + round($from2 - ($from2 * y)) + ")";
+              if ($to > $from) {
+                {$prop}: $new-to;
+              } else {
+                {$prop}: $new-from;
+              }
+            } else {
+              $new-to = round($to * y);
+              $new-from = round($from * y);
+              if ($to > $from) {
+                {$prop}: $new-to;
+              } else {
+                {$prop}: $from - $new-from;
+              }
+            }
+          }
+        }
+      }
+
+      /* End all animations */
+      {round($total / a.total-duration * 100%)} {
+        {$prop}: $to;
+      }
+    }
+  }
+
+  animation: unquote(a.name + " " + a.total-duration + "s " + a.iteration + " " + a.timingFunction);
+}
