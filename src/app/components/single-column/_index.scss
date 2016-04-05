@@ -50,12 +50,6 @@
     }
   }
 
-  &:first-of-type {
-    .title {
-      font-size: 36px;
-    }
-  }
-
   &.intro {
     padding: 118px 6.25% 55px;
   }
@@ -73,13 +67,6 @@
     &.intro {
       padding: 168px 6.25% 100px;
     }
-
-    &:first-of-type {
-
-      .title {
-        font-size: 40px;
-      }
-    }
   }
 
   @media screen and (min-width: $bp-large) {
@@ -88,13 +75,6 @@
 
     &.intro {
       padding: 168px 6.25% 100px;
-    }
-
-    &:first-of-type {
-
-      .title {
-        font-size: 60px;
-      }
     }
   }
 
