@@ -18,14 +18,14 @@
   position: relative;
   display: inline-block;
   width: $size;
-  height: $size;
+  height: $size + 1px;
 
   .half {
     overflow: hidden;
     position: absolute;
     top: 0;
     width: $size * .5;
-    height: $size;
+    height: $size + 1px;
 
     .bg {
       position: absolute;
@@ -66,497 +66,186 @@
 
 @keyframes spinner-multicoloured-left {
   0% {
-    border-color: #000;
-  }
-  10% {
-    border-color: #000;
-  }
-  10% {
-    border-color: #000;
-  }
-  15% {
-    border-color: #ed0082;
-  }
-  0% {
-    background-color: #6114cc;
-  }
-  5% {
-    background-color: #009cf3;
-  }
-  0% {
     transform: rotate(0deg);
+    border-color: #000;
+    background-color: #16D6D9;
   }
   5% {
     transform: rotate(0deg);
-  }
-  5% {
-    transform: rotate(0deg);
+    background-color: #96cc29;
   }
   10% {
     transform: rotate(180deg);
+    border-color: #000;
   }
   15% {
     transform: rotate(180deg);
+    border-color: #ed0082;
   }
   20% {
     transform: rotate(360deg);
-  }
-  20% {
     border-color: #ed0082;
-  }
-  30% {
-    border-color: #ed0082;
-  }
-  30% {
-    border-color: #ed0082;
-  }
-  35% {
-    border-color: #ff5519;
-  }
-  20% {
-    background-color: #009cf3;
+    background-color: #96cc29;
   }
   25% {
+    transform: rotate(360deg);
     background-color: #14c04d;
-  }
-  20% {
-    transform: rotate(360deg);
-  }
-  25% {
-    transform: rotate(360deg);
-  }
-  25% {
-    transform: rotate(360deg);
   }
   30% {
     transform: rotate(540deg);
+    border-color: #ed0082;
   }
   35% {
     transform: rotate(540deg);
+    border-color: #ff5519;
   }
   40% {
     transform: rotate(720deg);
-  }
-  40% {
     border-color: #ff5519;
-  }
-  50% {
-    border-color: #ff5519;
-  }
-  50% {
-    border-color: #ff5519;
-  }
-  55% {
-    border-color: #ffbf02;
-  }
-  40% {
     background-color: #14c04d;
   }
   45% {
-    background-color: #16d6d9;
-  }
-  40% {
     transform: rotate(720deg);
-  }
-  45% {
-    transform: rotate(720deg);
-  }
-  45% {
-    transform: rotate(720deg);
+    background-color: #6114CC;
   }
   50% {
     transform: rotate(900deg);
+    border-color: #ff5519;
   }
   55% {
     transform: rotate(900deg);
+    border-color: #ffbf02;
   }
   60% {
     transform: rotate(1080deg);
-  }
-  60% {
     border-color: #ffbf02;
-  }
-  70% {
-    border-color: #ffbf02;
-  }
-  70% {
-    border-color: #ffbf02;
-  }
-  75% {
-    border-color: #96cc29;
-  }
-  60% {
-    background-color: #16d6d9;
+    background-color: #6114CC;
   }
   65% {
+    transform: rotate(1080deg);
     background-color: #e60c29;
-  }
-  60% {
-    transform: rotate(1080deg);
-  }
-  65% {
-    transform: rotate(1080deg);
-  }
-  65% {
-    transform: rotate(1080deg);
   }
   70% {
     transform: rotate(1260deg);
+    border-color: #ffbf02;
   }
   75% {
     transform: rotate(1260deg);
+    border-color: #143FCC;
   }
   80% {
     transform: rotate(1440deg);
-  }
-  80% {
-    border-color: #96cc29;
-  }
-  90% {
-    border-color: #96cc29;
-  }
-  90% {
-    border-color: #96cc29;
-  }
-  95% {
-    border-color: #000;
-  }
-  95% {
-    border-color: #000;
-  }
-  100% {
-    border-color: #000;
-  }
-  80% {
     background-color: #e60c29;
-  }
-  85% {
-    background-color: #6114cc;
-  }
-  85% {
-    background-color: #6114cc;
-  }
-  100% {
-    background-color: #6114cc;
-  }
-  80% {
-    transform: rotate(1440deg);
+    border-color: #143FCC;
   }
   85% {
     transform: rotate(1440deg);
-  }
-  85% {
-    transform: rotate(1440deg);
+    background-color: #16D6D9;
   }
   90% {
     transform: rotate(1620deg);
+    border-color: #143FCC;
   }
   95% {
     transform: rotate(1620deg);
+    border-color: #000;
   }
   100% {
     transform: rotate(1800deg);
+    border-color: #000;
+    background-color: #16D6D9;
   }
 }
 
 @keyframes spinner-multicoloured-right {
   0% {
-    border-color: #000;
-  }
-  5% {
-    border-color: #000;
-  }
-  5% {
-    border-color: #000;
-  }
-  10% {
-    border-color: #ed0082;
-  }
-  0% {
-    background-color: #009cf3;
-  }
-  15% {
-    background-color: #009cf3;
-  }
-  15% {
-    background-color: #009cf3;
-  }
-  20% {
-    background-color: #14c04d;
-  }
-  0% {
     transform: rotate(0deg);
+    border-color: #000;
+    background-color: #96CC29;
   }
   5% {
     transform: rotate(180deg);
+    border-color: #000;
   }
   10% {
     transform: rotate(180deg);
+    border-color: #ed0082;
   }
   15% {
     transform: rotate(360deg);
-  }
-  15% {
-    transform: rotate(360deg);
+    background-color: #96CC29;
   }
   20% {
     transform: rotate(360deg);
-  }
-  20% {
     border-color: #ed0082;
-  }
-  25% {
-    border-color: #ed0082;
-  }
-  25% {
-    border-color: #ed0082;
-  }
-  30% {
-    border-color: #ff5519;
-  }
-  20% {
     background-color: #14c04d;
-  }
-  35% {
-    background-color: #14c04d;
-  }
-  35% {
-    background-color: #14c04d;
-  }
-  40% {
-    background-color: #16d6d9;
-  }
-  20% {
-    transform: rotate(360deg);
   }
   25% {
     transform: rotate(540deg);
+    border-color: #ed0082;
   }
   30% {
     transform: rotate(540deg);
+    border-color: #ff5519;
   }
   35% {
     transform: rotate(720deg);
-  }
-  35% {
-    transform: rotate(720deg);
+    background-color: #14c04d;
   }
   40% {
     transform: rotate(720deg);
-  }
-  40% {
     border-color: #ff5519;
-  }
-  45% {
-    border-color: #ff5519;
-  }
-  45% {
-    border-color: #ff5519;
-  }
-  50% {
-    border-color: #ffbf02;
-  }
-  40% {
-    background-color: #16d6d9;
-  }
-  55% {
-    background-color: #16d6d9;
-  }
-  55% {
-    background-color: #16d6d9;
-  }
-  60% {
-    background-color: #e60c29;
-  }
-  40% {
-    transform: rotate(720deg);
+    background-color: #6114CC;
   }
   45% {
     transform: rotate(900deg);
+    border-color: #ff5519;
   }
   50% {
     transform: rotate(900deg);
+    border-color: #ffbf02;
   }
   55% {
     transform: rotate(1080deg);
-  }
-  55% {
-    transform: rotate(1080deg);
+    background-color: #6114CC;
   }
   60% {
     transform: rotate(1080deg);
-  }
-  60% {
     border-color: #ffbf02;
-  }
-  65% {
-    border-color: #ffbf02;
-  }
-  65% {
-    border-color: #ffbf02;
-  }
-  70% {
-    border-color: #96cc29;
-  }
-  60% {
     background-color: #e60c29;
-  }
-  75% {
-    background-color: #e60c29;
-  }
-  75% {
-    background-color: #e60c29;
-  }
-  80% {
-    background-color: #6114cc;
-  }
-  60% {
-    transform: rotate(1080deg);
   }
   65% {
     transform: rotate(1260deg);
+    border-color: #ffbf02;
   }
   70% {
     transform: rotate(1260deg);
+    border-color: #143FCC;
   }
   75% {
     transform: rotate(1440deg);
-  }
-  75% {
-    transform: rotate(1440deg);
+    background-color: #e60c29;
   }
   80% {
     transform: rotate(1440deg);
-  }
-  80% {
-    border-color: #96cc29;
-  }
-  85% {
-    border-color: #96cc29;
-  }
-  85% {
-    border-color: #96cc29;
-  }
-  90% {
-    border-color: #000;
-  }
-  90% {
-    border-color: #000;
-  }
-  100% {
-    border-color: #000;
-  }
-  80% {
-    background-color: #6114cc;
-  }
-  95% {
-    background-color: #6114cc;
-  }
-  95% {
-    background-color: #6114cc;
-  }
-  100% {
-    background-color: #009cf3;
-  }
-  80% {
-    transform: rotate(1440deg);
+    border-color: #143FCC;
+    background-color: #16D6D9;
   }
   85% {
     transform: rotate(1620deg);
+    border-color: #143FCC;
   }
   90% {
     transform: rotate(1620deg);
+    border-color: #000;
   }
   95% {
     transform: rotate(1800deg);
-  }
-  95% {
-    transform: rotate(1800deg);
+    background-color: #16D6D9;
   }
   100% {
     transform: rotate(1800deg);
-  }
-}
-.jumping-boxes:hover li div {
-  animation: jumping 1.7s infinite linear;
-}
-@keyframes jumping {
-  19% {
-    bottom: 0;
-  }
-  21% {
-    bottom: 11px;
-  }
-  26% {
-    bottom: 19px;
-  }
-  33% {
-    bottom: 24px;
-  }
-  39% {
-    bottom: 26px;
-  }
-  45% {
-    bottom: 27px;
-  }
-  49% {
-    bottom: 27px;
-  }
-  49% {
-    bottom: 27px;
-  }
-  52% {
-    bottom: 25px;
-  }
-  56% {
-    bottom: 20px;
-  }
-  61% {
-    bottom: 14px;
-  }
-  64% {
-    bottom: 7px;
-  }
-  67% {
-    bottom: 2px;
-  }
-  68% {
-    bottom: 0;
-  }
-  0% {
-    transform: scale(1, 1);
-  }
-  19% {
-    transform: scale(1.25, 0.25);
-  }
-  19% {
-    transform: scale(1.25, 0.25);
-  }
-  34% {
-    transform: scale(0.8, 1.13);
-  }
-  34% {
-    transform: scale(0.8, 1.13);
-  }
-  54% {
-    transform: scale(1, 1);
-  }
-  54% {
-    transform: scale(1, 1);
-  }
-  68% {
-    transform: scale(1, 0.8);
-  }
-  68% {
-    transform: scale(1, 0.8);
-  }
-  73% {
-    transform: scale(1.5, 0.25);
-  }
-  73% {
-    transform: scale(1.5, 0.25);
-  }
-  88% {
-    transform: scale(1, 1);
+    border-color: #000;
+    background-color: #96CC29;
   }
 }

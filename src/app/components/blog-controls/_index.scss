@@ -36,6 +36,7 @@
   }
 
   .blog-filter {
+    position: relative;
     text-transform: uppercase;
 
     .selected {
@@ -77,7 +78,6 @@
     bottom: calc(#{$blog-controls-margin-bottom} - #{$card-margin-offset});
 
     .blog-filter {
-      position: relative;
 
       .selected {
         width: $blog-controls-item-width;
