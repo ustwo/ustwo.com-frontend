@@ -1,0 +1,533 @@
+/*
+ *  SPINNER KEYFRAME GENERATOR
+ *  Compile the following stylus to generate @keyframes and two animation declartions
+ *  which should be pasted into to components/loading-icon/_index.scss in the
+ *  appropriate places. See README.md for more information.
+ *
+ */
+
+@import 'lib/ornithopter';
+
+size = 28px;
+cycle-duration = 1.5; // seconds
+cycles = 5;
+
+$colour = {
+  first: #000,
+  second: #96CC29,
+  third: #ED0082,
+  fourth: #14C04D,
+  fifth: #FF5519,
+  sixth: #6114CC,
+  seventh: #FFBF02,
+  eighth: #E60C29,
+  ninth: #143FCC,
+  tenth: #16D6D9,
+}
+
+$spinner-multicoloured-left = {
+  name: spinner-multicoloured-left,
+  total-duration: cycle-duration * cycles,
+  iteration: infinite,
+  timingFunction: linear,
+  animations: {
+    colorBorderA: {
+      property: border-color,
+      from: $colour.first,
+      to: $colour.first,
+      duration: cycle-duration * .5,
+      delay: 0
+    }
+    colorBorderB: {
+      property: border-color,
+      from: $colour.first,
+      to: $colour.third,
+      duration: cycle-duration * .25,
+      delay: cycle-duration * .5
+      }
+    color: {
+      property: background-color,
+      from: $colour.tenth,
+      to: $colour.second,
+      duration: (cycle-duration * .25),
+      delay: 0
+    }
+    fix: {
+      property: transform rotate,
+      from: 0deg,
+      to: 0deg,
+      duration: cycle-duration * 0.25,
+      delay: 0
+    }
+    spinA: {
+      property: transform rotate,
+      from: 0deg,
+      to: 180deg,
+      duration: cycle-duration * 0.25,
+      delay: cycle-duration * .25
+    }
+    spinB: {
+      property: transform rotate,
+      from: 180deg,
+      to: 360deg,
+      duration: cycle-duration * 0.25,
+      delay: cycle-duration * .75
+    }
+
+    colorBorderA1: {
+      property: border-color,
+      from: $colour.third,
+      to: $colour.third,
+      duration: cycle-duration * .5,
+      delay: (cycle-duration * 1)
+    }
+    colorBorderB1: {
+      property: border-color,
+      from: $colour.third,
+      to: $colour.fifth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * .5) + (cycle-duration * 1)
+    }
+    color1: {
+      property: background-color,
+      from: $colour.second,
+      to: $colour.fourth,
+      duration: (cycle-duration * .25),
+      delay: (cycle-duration * 1)
+    }
+    fix1: {
+      property: transform rotate,
+      from: 0deg + (360 * 1),
+      to: 0deg + (360 * 1),
+      duration: cycle-duration * 0.25,
+      delay: 0 + (cycle-duration * 1)
+    }
+    spinA1: {
+      property: transform rotate,
+      from: 0deg + (360 * 1),
+      to: 180deg + (360 * 1),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .25) + (cycle-duration * 1)
+    }
+    spinB1: {
+      property: transform rotate,
+      from: 180deg + (360 * 1),
+      to: 360deg + (360 * 1),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .75) + (cycle-duration * 1)
+    }
+
+    colorBorderA2: {
+      property: border-color,
+      from: $colour.fifth,
+      to: $colour.fifth,
+      duration: cycle-duration * .5,
+      delay: (cycle-duration * 2)
+    }
+    colorBorderB2: {
+      property: border-color,
+      from: $colour.fifth,
+      to: $colour.seventh,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 2) + (cycle-duration * .5)
+    }
+    color2: {
+      property: background-color,
+      from: $colour.fourth,
+      to: $colour.sixth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 2)
+    }
+    fix2: {
+      property: transform rotate,
+      from: 0deg + (360 * 2),
+      to: 0deg + (360 * 2),
+      duration: cycle-duration * 0.25,
+      delay: 0 + (cycle-duration * 2)
+    }
+    spinA2: {
+      property: transform rotate,
+      from: 0deg + (360 * 2),
+      to: 180deg + (360 * 2),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .25) + (cycle-duration * 2)
+    }
+    spinB2: {
+      property: transform rotate,
+      from: 180deg + (360 * 2),
+      to: 360deg + (360 * 2),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .75) + (cycle-duration * 2)
+    }
+
+    colorBorderA3: {
+      property: border-color,
+      from: $colour.seventh,
+      to: $colour.seventh,
+      duration: cycle-duration * .5,
+      delay: (cycle-duration * 3)
+    }
+    colorBorderB3: {
+      property: border-color,
+      from: $colour.seventh,
+      to: $colour.ninth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 3) + (cycle-duration * .5)
+    }
+    color3: {
+      property: background-color,
+      from: $colour.sixth,
+      to: $colour.eighth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 3)
+    }
+    fix3: {
+      property: transform rotate,
+      from: 0deg + (360 * 3),
+      to: 0deg + (360 * 3),
+      duration: cycle-duration * 0.25,
+      delay: 0 + (cycle-duration * 3)
+    }
+    spinA3: {
+      property: transform rotate,
+      from: 0deg + (360 * 3),
+      to: 180deg + (360 * 3),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .25) + (cycle-duration * 3)
+    }
+    spinB3: {
+      property: transform rotate,
+      from: 180deg + (360 * 3),
+      to: 360deg + (360 * 3),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .75) + (cycle-duration * 3)
+    }
+
+    colorBorderA4: {
+      property: border-color,
+      from: $colour.ninth,
+      to: $colour.ninth,
+      duration: cycle-duration * .5,
+      delay: (cycle-duration * 4)
+    }
+    colorBorderB4: {
+      property: border-color,
+      from: $colour.ninth,
+      to: $colour.first,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 4) + (cycle-duration * .5)
+    }
+    colorBorderBFix4: {
+      property: border-color,
+      from: $colour.first,
+      to: $colour.first,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 4) + (cycle-duration * .75)
+    }
+    color4: {
+      property: background-color,
+      from: $colour.eighth,
+      to: $colour.tenth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 4)
+    }
+    colorFix4: {
+      property: background-color,
+      from: $colour.tenth,
+      to: $colour.tenth,
+      duration: cycle-duration * .75,
+      delay: (cycle-duration * 4) + (cycle-duration * .25)
+    }
+    fix4: {
+      property: transform rotate,
+      from: 0deg + (360 * 4),
+      to: 0deg + (360 * 4),
+      duration: cycle-duration * 0.25,
+      delay: 0 + (cycle-duration * 4)
+    }
+    spinA4: {
+      property: transform rotate,
+      from: 0deg + (360 * 4),
+      to: 180deg + (360 * 4),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .25) + (cycle-duration * 4)
+    }
+    spinB4: {
+      property: transform rotate,
+      from: 180deg + (360 * 4),
+      to: 360deg + (360 * 4),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .75) + (cycle-duration * 4)
+    }
+  }
+}
+
+$spinner-multicoloured-right = {
+  name: spinner-multicoloured-right,
+  total-duration: cycle-duration * cycles,
+  iteration: infinite,
+  timingFunction: linear,
+  animations: {
+    colorBorderA: {
+      property: border-color,
+      from: $colour.first,
+      to: $colour.first,
+      duration: cycle-duration * .25,
+      delay: 0
+    }
+    colorBorderB: {
+      property: border-color,
+      from: $colour.first,
+      to: $colour.third,
+      duration: cycle-duration * .25,
+      delay: cycle-duration * .25
+    }
+    colorA: {
+      property: background-color,
+      from: $colour.second,
+      to: $colour.second,
+      duration: cycle-duration * .75,
+      delay: 0
+    }
+    colorB: {
+      property: background-color,
+      from: $colour.second,
+      to: $colour.fourth,
+      duration: cycle-duration * .25,
+      delay: cycle-duration * .75
+    }
+    spinA: {
+      property: transform rotate,
+      from: 0deg,
+      to: 180deg,
+      duration: cycle-duration * 0.25,
+      delay: 0
+    }
+    spinB: {
+      property: transform rotate,
+      from: 180deg,
+      to: 360deg,
+      duration: cycle-duration * 0.25,
+      delay: cycle-duration * .5
+    }
+    fix: {
+      property: transform rotate,
+      from: 360deg,
+      to: 360deg,
+      duration: cycle-duration * 0.25,
+      delay: cycle-duration * .75
+    }
+
+    colorBorderA1: {
+      property: border-color,
+      from: $colour.third,
+      to: $colour.third,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 1)
+    }
+    colorBorderB1: {
+      property: border-color,
+      from: $colour.third,
+      to: $colour.fifth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 1) + (cycle-duration * .25)
+    }
+    colorA1: {
+      property: background-color,
+      from: $colour.fourth,
+      to: $colour.fourth,
+      duration: cycle-duration * .75,
+      delay: (cycle-duration * 1)
+    }
+    colorB1: {
+      property: background-color,
+      from: $colour.fourth,
+      to: $colour.sixth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 1) + (cycle-duration * .75)
+    }
+    spinA1: {
+      property: transform rotate,
+      from: 0deg + (360 * 1),
+      to: 180deg + (360 * 1),
+      duration: cycle-duration * 0.25,
+      delay: 0 + (cycle-duration * 1)
+    }
+    spinB1: {
+      property: transform rotate,
+      from: 180deg + (360 * 1),
+      to: 360deg + (360 * 1),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .5) + (cycle-duration * 1)
+    }
+    fix1: {
+      property: transform rotate,
+      from: 360deg + (360 * 1),
+      to: 360deg + (360 * 1),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .75) + (cycle-duration * 1)
+    }
+
+    colorBorderA2: {
+      property: border-color,
+      from: $colour.fifth,
+      to: $colour.fifth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 2)
+    }
+    colorBorderB2: {
+      property: border-color,
+      from: $colour.fifth,
+      to: $colour.seventh,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 2) + (cycle-duration * .25)
+    }
+    colorA2: {
+      property: background-color,
+      from: $colour.sixth,
+      to: $colour.sixth,
+      duration: cycle-duration * .75,
+      delay: (cycle-duration * 2)
+    }
+    colorB2: {
+      property: background-color,
+      from: $colour.sixth,
+      to: $colour.eighth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 2) + (cycle-duration * .75)
+    }
+    spinA2: {
+      property: transform rotate,
+      from: 0deg + (360 * 2),
+      to: 180deg + (360 * 2),
+      duration: cycle-duration * 0.25,
+      delay: 0 + (cycle-duration * 2)
+    }
+    spinB2: {
+      property: transform rotate,
+      from: 180deg + (360 * 2),
+      to: 360deg + (360 * 2),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .5) + (cycle-duration * 2)
+    }
+    fix2: {
+      property: transform rotate,
+      from: 360deg + (360 * 2),
+      to: 360deg + (360 * 2),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .75) + (cycle-duration * 2)
+    }
+
+    colorBorderA3: {
+      property: border-color,
+      from: $colour.seventh,
+      to: $colour.seventh,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 3)
+    }
+    colorBorderB3: {
+      property: border-color,
+      from: $colour.seventh,
+      to: $colour.ninth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 3) + (cycle-duration * .25)
+    }
+    colorA3: {
+      property: background-color,
+      from: $colour.eighth,
+      to: $colour.eighth,
+      duration: cycle-duration * .75,
+      delay: (cycle-duration * 3)
+    }
+    colorB3: {
+      property: background-color,
+      from: $colour.eighth,
+      to: $colour.tenth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 3) + (cycle-duration * .75)
+    }
+    spinA3: {
+      property: transform rotate,
+      from: 0deg + (360 * 3),
+      to: 180deg + (360 * 3),
+      duration: cycle-duration * 0.25,
+      delay: 0 + (cycle-duration * 3)
+    }
+    spinB3: {
+      property: transform rotate,
+      from: 180deg + (360 * 3),
+      to: 360deg + (360 * 3),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .5) + (cycle-duration * 3)
+    }
+    fix3: {
+      property: transform rotate,
+      from: 360deg + (360 * 3),
+      to: 360deg + (360 * 3),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .75) + (cycle-duration * 3)
+    }
+
+    colorBorderA4: {
+      property: border-color,
+      from: $colour.ninth,
+      to: $colour.ninth,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 4)
+    }
+    colorBorderB4: {
+      property: border-color,
+      from: $colour.ninth,
+      to: $colour.first,
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 4) + (cycle-duration * .25)
+    }
+    colorBorderBFix4: {
+      property: border-color,
+      from: $colour.first,
+      to: $colour.first,
+      duration: cycle-duration * .5,
+      delay: (cycle-duration * 4) + (cycle-duration * .5)
+    }
+    colorA4: {
+      property: background-color,
+      from: $colour.tenth,
+      to: $colour.tenth,
+      duration: cycle-duration * .75,
+      delay: (cycle-duration * 4)
+    }
+    colorB4: {
+      property: background-color,
+      from: $colour.tenth,
+      to: $colour.second
+      duration: cycle-duration * .25,
+      delay: (cycle-duration * 4) + (cycle-duration * .75)
+    }
+    spinA4: {
+      property: transform rotate,
+      from: 0deg + (360 * 4),
+      to: 180deg + (360 * 4),
+      duration: cycle-duration * 0.25,
+      delay: 0 + (cycle-duration * 4)
+    }
+    spinB4: {
+      property: transform rotate,
+      from: 180deg + (360 * 4),
+      to: 360deg + (360 * 4),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .5) + (cycle-duration * 4)
+    }
+    fix4: {
+      property: transform rotate,
+      from: 360deg + (360 * 4),
+      to: 360deg + (360 * 4),
+      duration: cycle-duration * 0.25,
+      delay: (cycle-duration * .75) + (cycle-duration * 4)
+    }
+  }
+}
+
+div {
+  ornithopter($spinner-multicoloured-left);
+  ornithopter($spinner-multicoloured-right);
+}

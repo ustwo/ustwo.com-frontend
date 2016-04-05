@@ -70,7 +70,7 @@
         }
       }
 
-      &.show {
+      &.add.show {
         .blog-controls {
           opacity: 1;
           transition-duration: .5s;
@@ -182,7 +182,6 @@
     }
   }
 
-  &.loading,
   &.empty {
     .blog-post-list {
       max-width: none;
@@ -209,9 +208,6 @@
     }
 
     .blog-controls .blog-filter {
-      .selected:after {
-        display: none;
-      }
       .loading-icon {
         display: block;
       }

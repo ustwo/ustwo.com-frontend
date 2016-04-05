@@ -2,25 +2,30 @@
  *  LOADING ICON
  *  Small loading spinner, originally intended for inside category dropdown
  *
- *  TODO: Currently just rotates between black and white, need to implement it to cycle through the ustwo colour palette.
+ *  PLEASE NOTE: Look at lib/spinner-keyframe-generator if any modifications are
+ *  required for the @keyframes. If the number of cycles is changed and new keyframes
+ *  pasted at below, then don't forget to change the number of $cycles below.
+ *
  */
 
 .loading-icon {
   $size: $loading-spinner-size;
-  $duration: 1.2s;
+  $cycle-duration: 1.2s;
+  $cycles: 5;
+  $duration: $cycle-duration * $cycles;
 
   box-sizing: content-box;
   position: relative;
   display: inline-block;
   width: $size;
-  height: $size;
+  height: $size + 1px;
 
   .half {
     overflow: hidden;
     position: absolute;
     top: 0;
     width: $size * .5;
-    height: $size;
+    height: $size + 1px;
 
     .bg {
       position: absolute;
@@ -38,7 +43,7 @@
       .bg {
         left: 0;
         border-left: ($size * .5) solid #fff;
-        animation: SpinnerLeft $duration infinite linear;
+        animation: spinner-multicoloured-left $duration infinite linear;
       }
     }
 
@@ -49,7 +54,7 @@
       .bg {
         right: 0;
         border-right: ($size * .5) solid #fff;
-        animation: SpinnerRight $duration infinite linear;
+        animation: spinner-multicoloured-right $duration infinite linear;
       }
     }
   }
@@ -57,38 +62,190 @@
 }
 
 
-@keyframes SpinnerLeft {
+/* PASTE GENERATED KEYFRAMES HERE USING lib/spinner-keyframe-generator */
+
+@keyframes spinner-multicoloured-left {
   0% {
     transform: rotate(0deg);
+    border-color: #000;
+    background-color: #16D6D9;
+  }
+  5% {
+    transform: rotate(0deg);
+    background-color: #96cc29;
+  }
+  10% {
+    transform: rotate(180deg);
+    border-color: #000;
+  }
+  15% {
+    transform: rotate(180deg);
+    border-color: #ed0082;
+  }
+  20% {
+    transform: rotate(360deg);
+    border-color: #ed0082;
+    background-color: #96cc29;
   }
   25% {
-    transform: rotate(0deg);
+    transform: rotate(360deg);
+    background-color: #14c04d;
+  }
+  30% {
+    transform: rotate(540deg);
+    border-color: #ed0082;
+  }
+  35% {
+    transform: rotate(540deg);
+    border-color: #ff5519;
+  }
+  40% {
+    transform: rotate(720deg);
+    border-color: #ff5519;
+    background-color: #14c04d;
+  }
+  45% {
+    transform: rotate(720deg);
+    background-color: #6114CC;
   }
   50% {
-    transform: rotate(180deg);
+    transform: rotate(900deg);
+    border-color: #ff5519;
+  }
+  55% {
+    transform: rotate(900deg);
+    border-color: #ffbf02;
+  }
+  60% {
+    transform: rotate(1080deg);
+    border-color: #ffbf02;
+    background-color: #6114CC;
+  }
+  65% {
+    transform: rotate(1080deg);
+    background-color: #e60c29;
+  }
+  70% {
+    transform: rotate(1260deg);
+    border-color: #ffbf02;
   }
   75% {
-    transform: rotate(180deg);
+    transform: rotate(1260deg);
+    border-color: #143FCC;
+  }
+  80% {
+    transform: rotate(1440deg);
+    background-color: #e60c29;
+    border-color: #143FCC;
+  }
+  85% {
+    transform: rotate(1440deg);
+    background-color: #16D6D9;
+  }
+  90% {
+    transform: rotate(1620deg);
+    border-color: #143FCC;
+  }
+  95% {
+    transform: rotate(1620deg);
+    border-color: #000;
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(1800deg);
+    border-color: #000;
+    background-color: #16D6D9;
   }
 }
 
-@keyframes SpinnerRight {
+@keyframes spinner-multicoloured-right {
   0% {
     transform: rotate(0deg);
+    border-color: #000;
+    background-color: #96CC29;
+  }
+  5% {
+    transform: rotate(180deg);
+    border-color: #000;
+  }
+  10% {
+    transform: rotate(180deg);
+    border-color: #ed0082;
+  }
+  15% {
+    transform: rotate(360deg);
+    background-color: #96CC29;
+  }
+  20% {
+    transform: rotate(360deg);
+    border-color: #ed0082;
+    background-color: #14c04d;
   }
   25% {
-    transform: rotate(180deg);
+    transform: rotate(540deg);
+    border-color: #ed0082;
+  }
+  30% {
+    transform: rotate(540deg);
+    border-color: #ff5519;
+  }
+  35% {
+    transform: rotate(720deg);
+    background-color: #14c04d;
+  }
+  40% {
+    transform: rotate(720deg);
+    border-color: #ff5519;
+    background-color: #6114CC;
+  }
+  45% {
+    transform: rotate(900deg);
+    border-color: #ff5519;
   }
   50% {
-    transform: rotate(180deg);
+    transform: rotate(900deg);
+    border-color: #ffbf02;
+  }
+  55% {
+    transform: rotate(1080deg);
+    background-color: #6114CC;
+  }
+  60% {
+    transform: rotate(1080deg);
+    border-color: #ffbf02;
+    background-color: #e60c29;
+  }
+  65% {
+    transform: rotate(1260deg);
+    border-color: #ffbf02;
+  }
+  70% {
+    transform: rotate(1260deg);
+    border-color: #143FCC;
   }
   75% {
-    transform: rotate(360deg);
+    transform: rotate(1440deg);
+    background-color: #e60c29;
+  }
+  80% {
+    transform: rotate(1440deg);
+    border-color: #143FCC;
+    background-color: #16D6D9;
+  }
+  85% {
+    transform: rotate(1620deg);
+    border-color: #143FCC;
+  }
+  90% {
+    transform: rotate(1620deg);
+    border-color: #000;
+  }
+  95% {
+    transform: rotate(1800deg);
+    background-color: #16D6D9;
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(1800deg);
+    border-color: #000;
+    background-color: #96CC29;
   }
 }
