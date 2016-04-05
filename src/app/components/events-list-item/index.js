@@ -27,8 +27,8 @@ const EventListItem = React.createClass({
 
     return <div className={classes}>
       <h3 className="date">
-        <span className="day">{moment.unix(start_time).format('DD')}</span>
-        <span className="month">{moment.unix(start_time).format('MMMM')}</span>
+        <span className="day">{moment.unix(start_time).utc().format('DD')}</span>
+        <span className="month">{moment.unix(start_time).utc().format('MMMM')}</span>
       </h3>
       <div className="details">
         <h2 className="title">
@@ -42,7 +42,7 @@ const EventListItem = React.createClass({
           <span className="location">
             <a href={uri} onClick={Flux.override(uri)}>{get(event, 'studio.name')}</a>
           </span>
-          <span className="time">{moment.unix(start_time).format('h:mma')}-{moment.unix(end_time).format('h:mma')}</span>
+          <span className="time">{moment.unix(start_time).utc().format('h:mma')}-{moment.unix(end_time).utc().format('h:mma')}</span>
         </p>
         <div className="excerpt" dangerouslySetInnerHTML={{__html: excerpt}} />
         <div className="tail"><a className="read-more" href={uri} onClick={Flux.override(uri)}>Read more & RSVP</a></div>

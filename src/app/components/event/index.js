@@ -29,16 +29,19 @@ const PageEvent = React.createClass({
     const ticket_url = get(event, 'ticket_url');
 
     if(ticket_url) {
-      return <a href={ticket_url} className="im-in">I'm in</a>;
+      return <a href={ticket_url} className="im-in">Tickets</a>;
     }
   },
 	render() {
-		const { event } = this.props;
+	const { event } = this.props;
     const image = getFeaturedImage(event);
     const classes = classnames('page-event', this.props.className);
     const start_time = get(event, 'start_time');
     const end_time = get(event, 'end_time');
-
+    const studio = get(event, 'studio');
+    console.debug(studio);
+    const mapurl = `https://maps.google.com/maps?z=12&t=m&q=loc:${studio.location.lat}+${studio.location.long}`;
+    
     return <article className={classes}>
       <Meta
         title={get(event, 'seo.title') || ''}
@@ -70,7 +73,7 @@ const PageEvent = React.createClass({
       />
       <div className='content-container'>
           <p className="date-time">
-            <span className="date">{moment.unix(start_time).format('D MMMM')}</span> <span className="time">{moment.unix(start_time).format('h:mma')}–{moment.unix(end_time).format('h:mma')}</span>
+            <span className="date">{moment.unix(start_time).utc().format('D MMMM')}</span> <span className="time">{moment.unix(start_time).utc().format('h:mma')}–{moment.unix(end_time).utc().format('h:mma')}</span>
           </p>
           {this.renderSocialMediaSharing('side')}
           <h1 className='title'>{get(event, 'name')}</h1>
@@ -79,7 +82,7 @@ const PageEvent = React.createClass({
               className="location-icon"
               spritemapID="locationpin"
             />
-            <span><a href="#">{get(event, 'studio.name')}</a></span>
+            <span><a href={mapurl}>{get(event, 'studio.name')}</a></span>
           </p>
         <section className="single-column im-in-single-column">
           {this.renderImInButton()}
@@ -88,11 +91,6 @@ const PageEvent = React.createClass({
           modules: get(event, 'page_builder', [])
         })}
         {this.renderImInButton()}
-        <Rimage
-          className='footer-image'
-          sizes={get(image, 'media_details.sizes')}
-          altText={get(image, 'alt_text')}
-        />
         <hr className='social rule' />
         {this.renderSocialMediaSharing('bottom')}
       </div>

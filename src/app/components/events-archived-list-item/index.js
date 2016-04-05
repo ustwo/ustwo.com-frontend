@@ -17,7 +17,7 @@ const ArchivedEventListItem = React.createClass({
     const image = getFeaturedImage(event);
     const excerpt = get(event, 'excerpt');
     const start_time = get(event, 'start_time');
-    const formattedDate = moment.unix(start_time).format('D MMMM YYYY');
+    const formattedDate = moment.unix(start_time).utc().format('D MMMM YYYY');
     const classes = classnames(
       'card-item',
       'archived-events-list-item'
