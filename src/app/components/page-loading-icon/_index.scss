@@ -1,8 +1,8 @@
 /*
- *  LOADING ICON
- *  Small loading spinner, originally intended for inside category dropdown
+ *  PAGE LOADING ICON
+ *  Jumping blocks animation
  *
- *  TODO: Currently just rotates between black and white, need to implement it to cycle through the ustwo colour palette.
+ *  TODO: Once Ornithoper PostCSS plugin is complete, use it to generate keyframes only using the transform property for better performance.
  */
 
 $loader-size: 12px;
@@ -13,7 +13,7 @@ $loader-color: $offWhite;
 @keyframes loader {
   19% {
     bottom: 0;
-    transform: scale(1.25, 0.25);
+    transform: scale(1.25, .25);
   }
   21% {
     bottom: $loader-jump * .4;
@@ -55,11 +55,11 @@ $loader-color: $offWhite;
     bottom: $loader-jump * .07;
   }
   68% {
-    transform: scale(1, 0.8);
+    transform: scale(1, .8);
     bottom: 0;
   }
   73% {
-    transform: scale(1.5, 0.25);
+    transform: scale(1.5, .25);
   }
   88% {
     transform: scale(1, 1);
@@ -85,18 +85,18 @@ $loader-color: $offWhite;
       width: $loader-size;
       height: $loader-size;
       background: $loader-color;
-      animation: loader 2s infinite ;
+      animation: loader 1.5s infinite;
       transform-origin: 50% bottom;
     }
 
     &:nth-child(2) div {
-      animation-delay: 0.08s;
+      animation-delay: .08s;
     }
     &:nth-child(3) div {
-      animation-delay: 0.16s;
+      animation-delay: .16s;
     }
     &:nth-child(4) div {
-      animation-delay: 0.24s;
+      animation-delay: .24s;
     }
   }
 
