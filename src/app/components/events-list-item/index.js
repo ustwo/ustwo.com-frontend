@@ -18,6 +18,9 @@ const EventListItem = React.createClass({
     const start_time = get(event, 'start_time');
     const end_time = get(event, 'end_time');
     const uri = `/events/${get(event, 'slug')}`;
+    const studio = get(event, 'studio');
+	const mapurl = `https://maps.google.com/maps?z=12&t=m&q=loc:${get(event, 'studio.location.lat')}+${get(event, 'studio.location.long')}`;   
+
     const image = getFeaturedImage(event);
     const excerpt = get(event, 'excerpt');
     const classes = classnames(
@@ -40,7 +43,7 @@ const EventListItem = React.createClass({
             spritemapID="locationpin"
           />
           <span className="location">
-            <a href={uri} onClick={Flux.override(uri)}>{get(event, 'studio.name')}</a>
+            <a href={mapurl}>{get(event, 'studio.name')}</a>
           </span>
           <span className="time">{moment.unix(start_time).utc().format('h:mma')}-{moment.unix(end_time).utc().format('h:mma')}</span>
         </p>

@@ -39,8 +39,7 @@ const PageEvent = React.createClass({
     const start_time = get(event, 'start_time');
     const end_time = get(event, 'end_time');
     const studio = get(event, 'studio');
-    console.debug(studio);
-    const mapurl = `https://maps.google.com/maps?z=12&t=m&q=loc:${studio.location.lat}+${studio.location.long}`;
+	const mapurl = `https://maps.google.com/maps?z=12&t=m&q=loc:${get(event, 'studio.location.lat')}+${get(event, 'studio.location.long')}`;   
     
     return <article className={classes}>
       <Meta
