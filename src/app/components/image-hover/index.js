@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import SVGSequenceAnimation from 'app/lib/svg-sequence-animation';
 
 const ImageHover = React.createClass({
-  mixins: [SVGSequenceAnimation({ fadeInDuration: 20, fps: 60 })],
+  mixins: [SVGSequenceAnimation({ fadeInDuration: 30, fps: 40 })],
   triggerAnim() {
     this.resetAnim();
     this.anim();
