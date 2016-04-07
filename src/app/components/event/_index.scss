@@ -129,12 +129,13 @@
         margin-top: 50px;
       }
       text-align: center;
-      padding: 18px 60px;
+      padding: 18px 40px;
       background-color: $softPassion;
       color: #fff;
       margin: 0 auto;
       display: block;
       width: 200px;
+      font-size: 18px;
     }
 
     .excerpt {
@@ -164,10 +165,11 @@
       border-color: $softPassion;
     }
     .single-column {
-    &.im-in-single-column {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
+	  padding-top: 42px;
+      &.im-in-single-column {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
 
     h3 {
       padding-bottom: 20px;
@@ -223,8 +225,6 @@
 
   
   @media screen and (min-width: $bp-medium) {
-    padding-bottom: 80px;
-
     .social.rule {
       display: none;
     }

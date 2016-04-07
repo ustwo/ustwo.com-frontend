@@ -29,7 +29,7 @@ const PageEvent = React.createClass({
     const ticket_url = get(event, 'ticket_url');
 
     if(ticket_url) {
-      return <a href={ticket_url} className="im-in">Tickets</a>;
+      return <a href={ticket_url} className="im-in">Get tickets</a>;
     }
   },
 	render() {
@@ -89,7 +89,6 @@ const PageEvent = React.createClass({
         {renderModules({
           modules: get(event, 'page_builder', [])
         })}
-        {this.renderImInButton()}
         <hr className='social rule' />
         {this.renderSocialMediaSharing('bottom')}
       </div>
