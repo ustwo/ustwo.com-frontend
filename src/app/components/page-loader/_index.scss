@@ -42,7 +42,7 @@
     @include page-loader-spinner(#fff, $blu);
   }
   &.loading-join-us {
-    @include page-loader-spinner(#000, $honey);
+    @include page-loader-spinner(#fff, $honey);
   }
   &.loading-events {
     @include page-loader-spinner(#fff, $softPassion);

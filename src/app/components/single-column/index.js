@@ -3,15 +3,24 @@ import classnames from 'classnames';
 
 const SingleColumn = React.createClass({
   renderTitle() {
-    const { title, headingColour } = this.props;
+    const { title, headingColour, headingType } = this.props;
     let output;
     if (title && title.length) {
-      output = <h2
-        className="title"
-        style={{ color: headingColour }}
-      >
-        {title}
-      </h2>;
+      if (headingType === 'h1') {
+        output = <h1
+          className="title"
+          style={{ color: headingColour }}
+        >
+          {title}
+        </h1>;
+      } else {
+        output = <h2
+          className="title"
+          style={{ color: headingColour }}
+        >
+          {title}
+        </h2>;
+      }
     }
     return output;
   },

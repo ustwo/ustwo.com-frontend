@@ -24,6 +24,7 @@ function renderHeader(moduleData, index, options) {
     key={`module-header-${heading}-${index}`}
     className='intro'
     title={heading}
+    headingType='h1'
     headingColour={get(colours, 'primary')}
     ruleColour={get(colours, 'secondary')}
     backgroundColour={getBackgroundColour(options)}
