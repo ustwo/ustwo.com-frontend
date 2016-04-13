@@ -23,7 +23,7 @@ import Video from 'app/components/video';
 import Flux from 'app/flux';
 
 function getSelectedStudio(studioSlugFromUrl, studioSlugs) {
-  let selected = 'all-studios';
+  let selected = 'london';
   if(includes(studioSlugs, studioSlugFromUrl)) {
     selected = studioSlugFromUrl;
   }
@@ -62,26 +62,23 @@ const PageJoinUs = React.createClass({
       })}
     </article>;
   },
-  getStudios() {
-    return [{
-      name: 'All studios'
-    }].concat(this.props.studios);
-  },
   renderStudioTabs(selectedStudioSlug) {
-    return map(this.getStudios(), studio => {
+    return map(this.props.studios, studio => {
+      console.log(studio)
       const studioSlug = kebabCase(studio.name);
       const studioName = spannify(studio.name);
-      const uri = this.generateStudioUri(studioSlug);
+      const uri = `/join-us/${studioSlug}`;
+      let studioSelected;
+      if (studioSlug === selectedStudioSlug) {
+        studioSelected = {color: studio.color, borderColor: studio.color}
+      }
       return <li
         key={`tab-${studioSlug}`}
         className={studioSlug}
         aria-selected={studioSlug === selectedStudioSlug}
+        style={studioSelected}
       ><a href={uri} onClick={Flux.overrideNoScroll(uri)}>{studioName}</a></li>;
     });
-  },
-  generateStudioUri(studio) {
-    const uri = studio !== 'all-studios' ? '/'+studio : '';
-    return `/join-us${uri}`;
   },
   getJobSectionRenderer(selectedStudioSlug) {
     return () => {
@@ -103,7 +100,7 @@ const PageJoinUs = React.createClass({
     };
   },
   renderStudioJobs(selectedStudioSlug) {
-    return map(this.getStudios(), studio => {
+    return map(this.props.studios, studio => {
       const studioSlug = kebabCase(studio.name);
       return <StudioJobs
         key={`jobs-${studioSlug}`}
@@ -118,17 +115,11 @@ const PageJoinUs = React.createClass({
   getJobsForStudio(studio) {
     const allJobs = this.props.jobs || [];
     const { name } = studio;
-    let jobs;
-    if (name === 'All studios') {
-      jobs = allJobs;
-    } else {
-      jobs = filter(allJobs, job => {
-        const studioMatchesCity = get(job, 'location.city', '') === name;
-        const studioMatchesRegion = (get(job, 'location.region') || '').includes(name);
-        return studioMatchesCity || studioMatchesRegion;
-      });
-    }
-    return jobs;
+    return filter(allJobs, job => {
+      const studioMatchesCity = get(job, 'location.city', '') === name;
+      const studioMatchesRegion = (get(job, 'location.region') || '').includes(name);
+      return studioMatchesCity || studioMatchesRegion;
+    });
   }
 });
 

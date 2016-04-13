@@ -42,12 +42,6 @@ const JobItem = React.createClass({
       location = responseCity;
     }
     return <div className="location" style={{ color: colour }}>
-      <SVG
-        className="location-icon"
-        spritemapID="locationpin"
-        style={{ fill: colour }}
-      />
-
       {location}
     </div>;
   },

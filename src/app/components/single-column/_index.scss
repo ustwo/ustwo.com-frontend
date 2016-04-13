@@ -11,7 +11,7 @@
  */
 
 .single-column {
-  padding: 30px 6.25%;
+  padding: $vertical-spacing 6.25%;
 
   a {
     font-family: $PxGroteskBold;
@@ -61,8 +61,8 @@
   }
 
   @media screen and (min-width: $bp-medium) {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: $vertical-spacing-medium;
+    padding-bottom: $vertical-spacing-medium;
 
     &.intro {
       padding: 168px 6.25% 100px;
@@ -70,8 +70,8 @@
   }
 
   @media screen and (min-width: $bp-large) {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: $vertical-spacing-large;
+    padding-bottom: $vertical-spacing-large;
 
     &.intro {
       padding: 168px 6.25% 100px;
