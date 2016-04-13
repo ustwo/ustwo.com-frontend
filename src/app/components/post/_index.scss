@@ -132,6 +132,8 @@
 
     }
     .single-column {
+      padding-top: $vertical-spacing * .5;
+      padding-bottom: $vertical-spacing * .5;
 
   	  h3 {
   	    padding-bottom: 20px;
@@ -211,6 +213,11 @@
       height: 450px;
     }
 
+    .single-column {
+      padding-top: $vertical-spacing-medium * .5;
+      padding-bottom: $vertical-spacing-medium * .5;
+    }
+
     .social-media-sharing {
       &.side {
         display: block;
@@ -228,6 +235,13 @@
       margin-top: -70px;
       margin-left: 80px;
       margin-right: 80px;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .single-column {
+      padding-top: $vertical-spacing-large * .5;
+      padding-bottom: $vertical-spacing-large * .5;
     }
   }
 

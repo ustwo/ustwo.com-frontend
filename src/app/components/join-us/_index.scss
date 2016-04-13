@@ -63,11 +63,12 @@
   }
 
   .current-openings {
-    height: 172px;
-    background: $blu;
+    padding-top: $vertical-spacing;
+    padding-bottom: 10px;
+    background-color: $lightGrey;
 
     h2 {
-      @extend .h1;
+      color: $nonBlack;
 
       @media screen and (min-width: $bp-large) {
         font-size: 60px;
@@ -83,12 +84,12 @@
   .jobs {
     position: relative;
     padding: 10px 15px 40px 15px;
-    background: $blu;
+    background-color: $lightGrey;
   }
 
   .jobs-studio-tabs {
     display: none;
-    margin: 30px 0;
+    margin: 0 0 30px 0;
     text-align: center;
 
     li {
@@ -98,7 +99,7 @@
       font-family: $Futura;
       font-size: 24px;
       text-transform: uppercase;
-      color: #fff;
+      color: $nonBlack;
       transition: opacity $hover-duration-quick ease-in-out;
 
       &[aria-selected="true"] {
@@ -122,7 +123,8 @@
     }
 
     .current-openings {
-      height: 240px;
+      padding-top: $vertical-spacing-medium;
+      padding-bottom: 40px;
     }
 
     .benefits {
@@ -135,12 +137,6 @@
 
     .jobs-studio-tabs {
       display: block;
-
-      li.all-studios {
-        span:last-child {
-          display: none;
-        }
-      }
     }
   }
 
@@ -150,17 +146,16 @@
     }
 
     .jobs-studio-tabs {
-      margin: 45px 0;
+      margin: 0 0 45px 0;
 
       li {
         font-size: 26px;
-
-        &.all-studios {
-          span:last-child {
-            display: inline;
-          }
-        }
       }
+    }
+
+    .current-openings {
+      padding-top: $vertical-spacing-large;
+      padding-bottom: 60px;
     }
   }
 

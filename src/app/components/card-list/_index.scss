@@ -2,9 +2,6 @@
  *  CARD LIST
  *  Grid of 'cards' such as for blog and what-we-do
  *
- *  Notes: 'featured' only shows a different style when inside the .card-list. It should appear
- *  as normal when isolated, e.g. Related content, therefore .card-list specificity is needed each
- *  time a style is declared for 'featured'.
  */
 
 /* Core Layout */
@@ -54,22 +51,10 @@
 
 
 
-/* Featured Card (Introducing a larger 'feature' card as the first item) */
-.card-list {
-  .card-item.featured {
-    display: block;
-    width: 100%; /* Overrides previous card-item width media queries */
-  }
-}
 
 @media screen and (min-width: $bp-medium) {
   .card-list {
     margin-top: $card-margin-offset; /* Pushes content up */
-
-    .card-item.featured {
-      position: relative;
-      height: 720px;
-    }
   }
 }
 
@@ -91,48 +76,14 @@
   }
 }
 
-@media screen and (min-width: $bp-medium) {
-  .card-list {
-    .card-item.featured {
-      .card-image {
-        &, .rimage {
-          height: 100%;
-        }
-      }
-    }
-  }
-}
-
 @media screen and (min-width: $bp-large) {
-  .card-item:not(.featured) {
-    .card-image {
-      .rimage {
-        transition: transform $hover-duration-quick ease-out;
-      }
-      &:hover {
-        .rimage {
-          transform: scale($hover-scale-up);
-        }
-      }
-    }
-  }
-
-  /* Show hovers styles for larger screens but hide them for the featured card */
+  /* Show hovers styles for larger screens */
   .card-item {
     .image-hover {
       display: flex;
     }
   }
-  .card-list {
-    .card-item.featured {
-      .image-hover {
-        display: none;
-      }
-    }
-  }
 }
-
-
 
 /* Card Details */
 .card-details {
@@ -147,19 +98,6 @@
     flex: 1 0 auto;
     flex-direction: column;
     padding: $card-padding-medium;
-  }
-
-  /* When the card-item is featured and on large screens, the details panel is position in the corner */
-  .card-list {
-    .card-item.featured {
-      .card-details {
-        position: absolute;
-        top: 0;
-        left: $card-gutter-large * .5;
-        width: 530px;
-        display: block;
-      }
-    }
   }
 }
 
@@ -178,15 +116,6 @@
     top: - $category-tag-height * .5;
   }
 }
-
-.card-list {
-  .card-item.featured {
-    .category-tag {
-      position: relative;
-    }
-  }
-}
-
 
 
 /* Text styles */
