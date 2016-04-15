@@ -12,7 +12,7 @@
   $work-item-exerpt-height: $blog-post-list-item-excerpt-height;
   $work-item-image-height: $blog-post-list-item-image-height;
 
-  padding: $gutter $gutter-small $gutter-small $gutter-small;
+  padding: $vertical-spacing 0;
   background: $nonBlack;
 
   .wrapper {
@@ -47,6 +47,8 @@
 
   @media screen and (min-width: $bp-medium) {
 
+    padding: $vertical-spacing-medium 0;
+
     .related-content-item {
       width: 50%;
     }
@@ -59,7 +61,7 @@
   }
 
   @media screen and (min-width: $bp-large) {
-
+    padding: $vertical-spacing-large 0;
   }
 
 }

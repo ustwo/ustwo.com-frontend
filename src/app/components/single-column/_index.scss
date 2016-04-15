@@ -54,6 +54,10 @@
     padding: 118px 6.25% 55px;
   }
 
+  iframe {
+    max-width: 100%;
+  }
+
   @media screen and (min-width: $bp-small) {
     &.intro {
       padding: 168px 6.25% 100px;
