@@ -5,6 +5,7 @@
 
 .events-controls {
   z-index: 1;
+  display: none;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -37,6 +38,7 @@
   }
 
   @media screen and (min-width: $bp-medium) {
+    display: block;
     bottom: calc(#{$events-controls-margin-bottom} - #{$events-margin-offset});
     background-color: transparent;
 
