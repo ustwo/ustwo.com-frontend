@@ -55,11 +55,6 @@
     }
   }
 
-  .rimage {
-    transform: none;
-    webkit-transform: none;
-  }
-
   .video {
     height: 200%;
     width: 200%; 
@@ -80,6 +75,8 @@
       width: auto;
       min-width: 50%;
       min-height: 50%;
+      transform: none;
+      webkit-transform: none;
     }
   }
 
