@@ -15,6 +15,7 @@ import EventsListItem from 'app/components/events-list-item';
 import ArchivedEventsListItem from 'app/components/events-archived-list-item';
 import LoadMoreButton from 'app/components/load-more-button';
 import LoadingIcon from 'app/components/loading-icon';
+import getFeaturedImage from 'app/lib/get-featured-image';
 
 const PageEvents = React.createClass({
   getInitialState() {
@@ -143,6 +144,8 @@ const PageEvents = React.createClass({
     const classes = classnames('page-events', this.props.className, {
       loading: isLoadingInitialEvents || isLoadingStudioEvents
     });
+    const image = getFeaturedImage(page);
+
     return <article className={classes}>
     	<Hero
 	      title={get(page, 'display_title')}
@@ -153,7 +156,7 @@ const PageEvents = React.createClass({
       >
         <Video
           src={get(page, 'featured_video')}
-         // sizes={get(image, 'media_details.sizes')}
+          sizes={get(image, 'media_details.sizes')}
         />
     	</Hero>
       <EventsControls
