@@ -6,7 +6,7 @@
  */
 
 .nav-wrapper {
-  position: fixed;
+  position: absolute;
   z-index: 9999;
   width: 100%;
 }
@@ -52,27 +52,27 @@
   }
 
   /* Invert the logo and text for some pages AND when scrolled past page hero */
-  &.inverted,
-  &.scrolled {
-    .navigation {
-      color: $nonBlack;
-    }
-    .logo svg {
-      fill: $nonBlack;
-    }
-    .navigation-link {
-      a:hover,
-      &.selected a {
-        border-bottom: 2px solid $nonBlack;
-      }
-    }
-    .navigation-toggle {
-      fill: $nonBlack;
-    }
-  }
-  &.scrolled {
-    background-color: white;
-  }
+  // &.inverted,
+  // &.scrolled {
+  //   .navigation {
+  //     color: $nonBlack;
+  //   }
+  //   .logo svg {
+  //     fill: $nonBlack;
+  //   }
+  //   .navigation-link {
+  //     a:hover,
+  //     &.selected a {
+  //       border-bottom: 2px solid $nonBlack;
+  //     }
+  //   }
+  //   .navigation-toggle {
+  //     fill: $nonBlack;
+  //   }
+  // }
+  // &.scrolled {
+  //   background-color: white;
+  // }
   /* End */
 
   .navigation-toggle {
