@@ -46,7 +46,7 @@ const JobItem = React.createClass({
     </div>;
   },
   renderStatus() {
-    const { open, colour } = this.props;
+    const { job, open, colour } = this.props;
     const loaded = this.getLoadedState();
     return <div className="status">
       <div className="status-text">
