@@ -63,14 +63,21 @@
       list-style: none;
       padding: 0;
       margin: 45px 0;
+      width: 150px;
 
       .channel {
         display: inline-block;
         margin-right: 22px;
+        margin-bottom: 22px;
 
-        &:last-child {
+        &:nth-child(3n+3) {
           margin-right: 0;
         }
+
+        &:nth-last-child(-n+2) {
+          margin-bottom: 0;
+        }
+
         a {
           display: flex;
           align-items: center;
@@ -106,6 +113,12 @@
           a:hover {
             background-color: #069;
             border-color: #069;
+          }
+        }
+        &.instagram {
+          a:hover {
+            background-color: #517fa4;
+            border-color: #517fa4;
           }
         }
       }
