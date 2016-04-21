@@ -5,9 +5,9 @@ import moment from 'moment';
 
 const StudioClock = React.createClass({
   getInitialState: function(){
-      return {
-          clockInView:false
-      }
+    return {
+      clockInView: false
+    }
   },
   componentDidMount: function() {
     window.addEventListener('scroll', this.handleScroll);
@@ -17,9 +17,12 @@ const StudioClock = React.createClass({
   },
   handleScroll: function(event) {
     var elements = document.getElementsByClassName('clock');
+
     for(var i = 0; i != elements.length; i++) {
       if(elements[i].getBoundingClientRect().top <= window.innerHeight*0.75 && elements[i].getBoundingClientRect().top > 0) {
-        this.setState( { clockInView : true } );
+        this.setState({
+          clockInView: true
+        });
       }
     }
   },

@@ -4,7 +4,20 @@
  *
  *  Notes: Requires functionality and visual states to handle the full submission within the website rather
  *  than the current 'first-slice' which sends the user to a mailchimp page for confirmation.
+ *
+ *  Animation icon: height = 240px, width = 6237px with 27 frames. Divide dimensions by 3.
  */
+
+
+@keyframes iconAnimation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -2002px 0;
+  }
+}
+
 
 .subscription {
   $height: 400px;
@@ -19,12 +32,17 @@
   border-bottom: 1px solid $nonBlack;
   font-size: 18px;
 
-  /* SVG */
   .icon {
-    width: 90px;
-    height: 70px;
+    width: 77px;
+    height: 80px;
     margin-bottom: 30px;
-    fill: $white;
+    background: url("/images/news-icon-strip-animation.png") no-repeat 0 0;
+    background-size: 2079px 80px;
+
+    &.animate {
+      animation: iconAnimation 1.5s steps(26) 1;
+      animation-fill-mode: forwards;
+    }
   }
 
   h2,
