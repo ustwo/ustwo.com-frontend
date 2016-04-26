@@ -29,6 +29,11 @@ import RelatedContent from 'app/components/related-content';
 
 const PageHome = React.createClass({
   mixins: [getScrollTrackerMixin('home')],
+  getInitialState() {
+    return {
+      chevronLoaded: false
+    }
+  },
   animateChevron(event) {
     if(this.refs.downChevron) {
       this.refs.downChevron.resetAnim();
@@ -115,7 +120,10 @@ const PageHome = React.createClass({
     this.setupScrollMagic();
     this.animTimeout = setTimeout(() => {
       this.animateChevron();
-    }, 2500);
+      this.setState({
+        chevronLoaded: true
+      })
+    }, 1500);
   },
   componentWillUnmount() {
     this.teardownScrollMagic();
@@ -133,7 +141,7 @@ const PageHome = React.createClass({
         <path d="M195.864 143.667c19.556-14.667 39.556-28.89 59.11-43.556 2.224 2.67 6.224 8 8.446 10.67-22.222 16.89-45.778 32.45-67.556 50.67-21.778-17.78-44.89-33.33-67.11-50.22 2.22-2.66 6.22-8 8-11.11 20 14.67 39.555 29.33 59.11 43.56z"/>
       </g></svg></div>);
     } else {
-      Chevron = <DownChevron ref="downChevron" onClick={this.onClickDownChevron} />;
+      Chevron = <DownChevron ref="downChevron" onClick={this.onClickDownChevron} customClass={this.state.chevronLoaded ? 'loaded' : ''} />;
     }
     // End Chevron
     return (

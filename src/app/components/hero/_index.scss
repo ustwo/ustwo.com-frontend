@@ -43,7 +43,7 @@
 
   .down-chevron {
     position: absolute;
-    bottom: 40px;
+    top: 80%;
     left: 0;
     display: flex;
     justify-content: center;
@@ -57,19 +57,19 @@
 
   .video {
     height: 200%;
-    width: 200%; 
-    position: absolute; 
+    width: 200%;
+    position: absolute;
     left: -50%;
-    top: -50%; 
+    top: -50%;
     z-index: 1;
 
     img {
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
-      bottom: 0; 
-      margin: auto; 
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
       overflow-x: hidden;
       height: auto;
       width: auto;
