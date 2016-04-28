@@ -3,6 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import get from 'lodash/object/get';
+import kebabCase from 'lodash/string/kebabCase';
 
 import Flux from 'app/flux';
 import Nulls from 'app/flux/nulls';
@@ -78,8 +79,9 @@ const Navigation = React.createClass({
   //   window.addEventListener('scroll', this.addHeaderBackground);
   // },
   render() {
-    const { section, page, takeover, customClass } = this.props;
-    const headerClasses = classnames('header', section, page, {
+    const { section, page, subpage, takeover, customClass } = this.props;
+    console.log(subpage);
+    const headerClasses = classnames('header', section, page, kebabCase(subpage), {
       'takeover': takeover
       // ,
       // 'scrolled': this.state.scrolled

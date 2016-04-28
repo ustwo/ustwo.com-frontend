@@ -5,14 +5,17 @@
  *  Notes: Should this component be called header?
  */
 
-.nav-wrapper {
-  position: absolute;
-  z-index: 9999;
-  width: 100%;
-}
+// .nav-wrapper {
+//   position: absolute;
+//   z-index: 9999;
+//   width: 100%;
+// }
 
 .header {
+  position: absolute;
+  z-index: 9999;
   display: block;
+  width: 100%;
   height: $nav-height;
 
   .navigation {
@@ -133,6 +136,45 @@
 
       &:first-child {
         margin-left: 0;
+      }
+    }
+
+    &.post {
+      position: relative;
+      background-color: #fff;
+
+      .navigation {
+        color: $nonBlack;
+
+        .logo svg,
+        .navigation-toggle {
+          fill: $nonBlack;
+        }
+      }
+      .navigation-link {
+        &.selected a,
+        a:hover {
+          border-bottom: 2px solid $nonBlack;
+        }
+      }
+
+      @each $category, $colour in $blog-categories {
+        &.#{$category} {
+          .navigation {
+            color: #{$colour};
+
+            .logo svg,
+            .navigation-toggle {
+              fill: #{$colour};
+            }
+          }
+          .navigation-link {
+            &.selected a,
+            a:hover {
+              border-bottom: 2px solid #{$colour};
+            }
+          }
+        }
       }
     }
   }

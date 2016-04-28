@@ -107,6 +107,7 @@ const App = React.createClass({
           pages={state.navMain}
           section={state.currentPage.split('/')[0]}
           page={state.currentPage.split('/')[1]}
+          subpage={get(state.post, '_embedded.wp:term.0.0.slug', [])}
           takeover={this.showTakeover()}
         />
         <FourOhFour {...this.state} />
@@ -141,6 +142,7 @@ const App = React.createClass({
             pages={state.navMain}
             section={state.currentPage.split('/')[0]}
             page={state.currentPage.split('/')[1]}
+            subpage={get(state.post, '_embedded.wp:term.0.0.slug', [])}
             takeover={this.showTakeover()}
           />
         </EntranceTransition>
