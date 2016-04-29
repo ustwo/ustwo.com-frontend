@@ -92,7 +92,7 @@
           &:hover {
             color: $softPassion;
           }
-        
+
       }
     }
   }
@@ -112,6 +112,15 @@
     &:hover {
       .rimage {
         transform: scale($hover-scale-up);
+      }
+    }
+
+    > a {
+      position: relative;
+      display: block;
+
+      .image-hover {
+        background: rgba($softPassion, .7);
       }
     }
   }
@@ -193,6 +202,6 @@
         }
       }
     }
-    
+
   }
 }

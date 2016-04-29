@@ -23,7 +23,7 @@
     z-index: 2;
     background: transparent;
     color: white;
-    transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out, background-color .2s ease-in-out;
   }
 
   .logo {
@@ -49,6 +49,7 @@
 
     a {
       padding-bottom: 3px;
+      transition: color .2s ease-in-out;
     }
 
     a:hover,
@@ -57,36 +58,13 @@
     }
   }
 
-  /* Invert the logo and text for some pages AND when scrolled past page hero */
-  // &.inverted,
-  // &.scrolled {
-  //   .navigation {
-  //     color: $nonBlack;
-  //   }
-  //   .logo svg {
-  //     fill: $nonBlack;
-  //   }
-  //   .navigation-link {
-  //     a:hover,
-  //     &.selected a {
-  //       border-bottom: 2px solid $nonBlack;
-  //     }
-  //   }
-  //   .navigation-toggle {
-  //     fill: $nonBlack;
-  //   }
-  // }
-  // &.scrolled {
-  //   background-color: white;
-  // }
-  /* End */
-
   .navigation-toggle {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     z-index: 2;
+    transition: fill .2s ease-in-out;
   }
 
   .menu {
@@ -139,12 +117,14 @@
       }
     }
 
-    &.post {
+    /* Header is not overlayed onto content for post and event pages */
+    &.post,
+    &.event {
       position: relative;
-      background-color: #fff;
 
       .navigation {
         color: $nonBlack;
+        background-color: #fff;
 
         .logo svg,
         .navigation-toggle {
@@ -155,25 +135,6 @@
         &.selected a,
         a:hover {
           border-bottom: 2px solid $nonBlack;
-        }
-      }
-
-      @each $category, $colour in $blog-categories {
-        &.#{$category} {
-          .navigation {
-            color: #{$colour};
-
-            .logo svg,
-            .navigation-toggle {
-              fill: #{$colour};
-            }
-          }
-          .navigation-link {
-            &.selected a,
-            a:hover {
-              border-bottom: 2px solid #{$colour};
-            }
-          }
         }
       }
     }
