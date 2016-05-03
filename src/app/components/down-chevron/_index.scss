@@ -7,137 +7,318 @@
  */
 
 @keyframes bumpChevron {
+  // 0% {
+  //   margin-top: 0;
+  // }
+  // 57.5% {
+  //   margin-top: 0;
+  // }
+  // 57.5% {
+  //   margin-top: 0;
+  // }
+  // 57.9% {
+  //   margin-top: -4px;
+  // }
+  // 58.9% {
+  //   margin-top: -6px;
+  // }
+  // 60.3% {
+  //   margin-top: -8px;
+  // }
+  // 61.7% {
+  //   margin-top: -9px;
+  // }
+  // 63% {
+  //   margin-top: -9px;
+  // }
+  // 63.8% {
+  //   margin-top: -9px;
+  // }
+  // 63.8% {
+  //   margin-top: -9px;
+  //   transform: scale(1, 1);
+  // }
+  // 64.9% {
+  //   margin-top: -8px;
+  // }
+  // 66.2% {
+  //   margin-top: -7px;
+  // }
+  // 67.6% {
+  //   margin-top: -5px;
+  //   transform: scale(1, 1);
+  // }
+  // 68.8% {
+  //   margin-top: -2px;
+  // }
+  // 69.7% {
+  //   margin-top: -1px;
+  // }
+  // 70% {
+  //   margin-top: 0;
+  //   transform: scale(0.9, 1.1);
+  // }
+  // 70% {
+  //   margin-top: 0;
+  // }
+  // 70.4% {
+  //   margin-top: -4px;
+  // }
+  // 71.4% {
+  //   margin-top: -6px;
+  // }
+  // 72.8% {
+  //   margin-top: -8px;
+  // }
+  // 74.2% {
+  //   margin-top: -9px;
+  // }
+  // 75.5% {
+  //   margin-top: -9px;
+  //   transform: scale(1, 1);
+  // }
+  // 75.3% {
+  //   margin-top: -9px;
+  // }
+  // 76.3% {
+  //   margin-top: -9px;
+  // }
+  // 77.4% {
+  //   margin-top: -8px;
+  // }
+  // 78.7% {
+  //   margin-top: -7px;
+  // }
+  // 80.1% {
+  //   margin-top: -5px;
+  //   transform: scale(1, 1);
+  // }
+  // 81.3% {
+  //   margin-top: -2px;
+  // }
+  // 82.2% {
+  //   margin-top: -1px;
+  // }
+  // 82.5% {
+  //   margin-top: 0;
+  //   transform: scale(0.9, 1.1);
+  // }
+  // 82.5% {
+  //   margin-top: 0;
+  // }
+  // 82.9% {
+  //   margin-top: -4px;
+  // }
+  // 83.9% {
+  //   margin-top: -6px;
+  // }
+  // 85.3% {
+  //   margin-top: -8px;
+  // }
+  // 86.7% {
+  //   margin-top: -9px;
+  //   transform: scale(1, 1);
+  // }
+  // 88% {
+  //   margin-top: -9px;
+  // }
+  // 88.8% {
+  //   margin-top: -9px;
+  // }
+  // 88.8% {
+  //   margin-top: -9px;
+  // }
+  // 89.9% {
+  //   margin-top: -8px;
+  // }
+  // 91.2% {
+  //   margin-top: -7px;
+  // }
+  // 92.6% {
+  //   margin-top: -5px;
+  //   transform: scale(1, 1);
+  // }
+  // 93.8% {
+  //   margin-top: -2px;
+  // }
+  // 94.7% {
+  //   margin-top: -1px;
+  // }
+  // 95% {
+  //   margin-top: 0;
+  //   transform: scale(0.9, 1.1);
+  // }
+  // 100% {
+  //   transform: scale(1, 1);
+  // }
+
   0% {
-    transform: translateY(-0);
+    margin-top: 0;
   }
   62.5% {
-    transform: translateY(-0);
+    margin-top: 0;
   }
   62.5% {
-    transform: translateY(-0);
+    margin-top: 0;
   }
-  62.9% {
-    transform: translateY(-4px);
+  63.6% {
+    margin-top: 1px;
   }
-  63.9% {
-    transform: translateY(-6px);
+  65% {
+    margin-top: 2px;
   }
-  65.3% {
-    transform: translateY(-8px);
+  66.3% {
+    margin-top: 4px;
   }
-  66.7% {
-    transform: translateY(-9px);
+  67.5% {
+    margin-top: 7px;
   }
-  68% {
-    transform: translateY(-9px);
-  }
-  68.8% {
-    transform: translateY(-9px);
+  68.4% {
+    margin-top: 8px;
   }
   68.8% {
-    transform: translateY(-9px);
+    margin-top: 9px;
   }
-  69.9% {
-    transform: translateY(-8px);
+  64.6% {
+    transform: scale(1, 1);
   }
-  71.2% {
-    transform: translateY(-7px);
+  68.8% {
+    transform: scale(0.9, 1.1);
   }
-  72.6% {
-    transform: translateY(-5px);
+  68.8% {
+    transform: scale(0.9, 1.1);
   }
-  73.8% {
-    transform: translateY(-2px);
+  72.9% {
+    transform: scale(1, 1);
   }
-  74.7% {
-    transform: translateY(-1px);
+  68.8% {
+    margin-top: 9px;
+  }
+  69.2% {
+    margin-top: 5px;
+  }
+  70.2% {
+    margin-top: 3px;
+  }
+  71.5% {
+    margin-top: 1px;
+  }
+  73% {
+    margin-top: 0px;
+  }
+  74.2% {
+    margin-top: 0px;
   }
   75% {
-    transform: translateY(-0);
+    margin-top: 0;
   }
   75% {
-    transform: translateY(-0);
+    margin-top: 0;
   }
-  75.4% {
-    transform: translateY(-4px);
+  76.1% {
+    margin-top: 1px;
   }
-  76.4% {
-    transform: translateY(-6px);
+  77.5% {
+    margin-top: 2px;
   }
-  77.8% {
-    transform: translateY(-8px);
+  78.8% {
+    margin-top: 4px;
   }
-  79.2% {
-    transform: translateY(-9px);
+  80% {
+    margin-top: 7px;
   }
-  80.5% {
-    transform: translateY(-9px);
-  }
-  81.3% {
-    transform: translateY(-9px);
+  80.9% {
+    margin-top: 8px;
   }
   81.3% {
-    transform: translateY(-9px);
+    margin-top: 9px;
   }
-  82.4% {
-    transform: translateY(-8px);
+  77.1% {
+    transform: scale(1, 1);
   }
-  83.7% {
-    transform: translateY(-7px);
+  81.3% {
+    transform: scale(0.9, 1.1);
   }
-  85.1% {
-    transform: translateY(-5px);
+  81.3% {
+    transform: scale(0.9, 1.1);
   }
-  86.3% {
-    transform: translateY(-2px);
+  85.4% {
+    transform: scale(1, 1);
   }
-  87.2% {
-    transform: translateY(-1px);
+  81.3% {
+    margin-top: 9px;
+  }
+  81.7% {
+    margin-top: 5px;
+  }
+  82.7% {
+    margin-top: 3px;
+  }
+  84% {
+    margin-top: 1px;
+  }
+  85.5% {
+    margin-top: 0px;
+  }
+  86.7% {
+    margin-top: 0px;
   }
   87.5% {
-    transform: translateY(-0);
+    margin-top: 0;
   }
   87.5% {
-    transform: translateY(-0);
+    margin-top: 0;
   }
-  87.9% {
-    transform: translateY(-4px);
+  88.6% {
+    margin-top: 1px;
   }
-  88.9% {
-    transform: translateY(-6px);
+  90% {
+    margin-top: 2px;
   }
-  90.3% {
-    transform: translateY(-8px);
+  91.3% {
+    margin-top: 4px;
   }
-  91.7% {
-    transform: translateY(-9px);
+  92.5% {
+    margin-top: 7px;
   }
-  93% {
-    transform: translateY(-9px);
-  }
-  93.8% {
-    transform: translateY(-9px);
+  93.4% {
+    margin-top: 8px;
   }
   93.8% {
-    transform: translateY(-9px);
+    margin-top: 9px;
   }
-  94.9% {
-    transform: translateY(-8px);
+  89.6% {
+    transform: scale(1, 1);
   }
-  96.2% {
-    transform: translateY(-7px);
+  93.8% {
+    transform: scale(0.9, 1.1);
   }
-  97.6% {
-    transform: translateY(-5px);
+  93.8% {
+    transform: scale(0.9, 1.1);
   }
-  98.8% {
-    transform: translateY(-2px);
+  97.9% {
+    transform: scale(1, 1);
   }
-  99.7% {
-    transform: translateY(-1px);
+  93.8% {
+    margin-top: 9px;
+  }
+  94.2% {
+    margin-top: 5px;
+  }
+  95.2% {
+    margin-top: 3px;
+  }
+  96.5% {
+    margin-top: 1px;
+  }
+  98% {
+    margin-top: 0px;
+  }
+  99.2% {
+    margin-top: 0px;
   }
   100% {
-    transform: translateY(-0);
+    margin-top: 0;
   }
 }
 
@@ -152,7 +333,7 @@
   }
 
   &.loaded {
-    animation: bumpChevron 5s infinite;
+    animation: bumpChevron 4.2s infinite;
   }
 }
 
