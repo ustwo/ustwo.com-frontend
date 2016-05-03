@@ -1,14 +1,37 @@
 'use strict';
 
 import React from 'react';
-
+import classnames from 'classnames';
 import SVG from 'app/components/svg';
 
 const Subscription = React.createClass({
+  getInitialState() {
+    return {
+      logoInView: false
+    }
+  },
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  handleScroll(event) {
+    const container = document.getElementsByClassName('icon');
+
+    if(container[0].getBoundingClientRect().top <= window.innerHeight*0.75 && container[0].getBoundingClientRect().top > 0) {
+      this.setState({
+        logoInView: true
+      });
+    }
+  },
   render() {
+    const classes = classnames('icon', {
+      animate: this.state.logoInView
+    });
     const labelText = "Enter your email...";
     return <div className="subscription">
-      <SVG className="icon" spritemapID="subscriptionIcon" />
+      <div className={classes}></div>
       <h2>ustwo News</h2>
       <p>Give us your email and we’ll keep you in the loop with our latest projects and thoughts</p>
       <form

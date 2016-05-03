@@ -23,7 +23,7 @@
   margin-top: 5px;
   background: #fff;
   list-style: none;
-  transition: height .6s ease-in-out;
+  transition: height .5s ease-in-out;
 
   .title {
     position: relative;
@@ -77,6 +77,7 @@
       height: 3px;
       top: 6px;
       left: 0;
+      transition: transform .5s linear;
     }
 
     .vert {
@@ -84,6 +85,7 @@
       left: 6px;
       width: 3px;
       height: 15px;
+      transition: transform .25s linear;
     }
   }
 
@@ -107,11 +109,6 @@
   }
 
   &.open {
-    .status-icon {
-      .vert {
-        display: none;
-      }
-    }
 
     &.loading {
       .status-icon {
@@ -119,6 +116,18 @@
 
         .vert {
           display: block;
+        }
+      }
+    }
+
+    &:not(.loading) {
+      .status-icon {
+        .horiz {
+          transform: rotateZ(180deg);
+        }
+        .vert {
+          transform: rotateZ(90deg);
+          transition-delay: .25s;
         }
       }
     }

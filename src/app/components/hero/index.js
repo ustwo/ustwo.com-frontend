@@ -10,13 +10,20 @@ import Rimage from 'app/components/rimage';
 import Track from 'app/adaptors/server/track';
 
 const Hero = React.createClass({
+  getInitialState() {
+    return {
+      chevronLoaded: false
+    }
+  },
   componentDidMount() {
     if (this.props.showDownChevron) {
-      const duration = this.props.transitionImage ? 2500 : 1700;
       this.animTimeout = setTimeout(() => {
         this.refs.downChevron.resetAnim();
         this.refs.downChevron.anim();
-      }, duration);
+        this.setState({
+          chevronLoaded: true
+        });
+      }, 1500);
     }
   },
   componentWillUnmount() {
@@ -52,6 +59,7 @@ const Hero = React.createClass({
       chevron = <DownChevron
         ref="downChevron"
         onClick={this.onClickDownChevron}
+        customClass={this.state.chevronLoaded ? 'loaded' : ''}
       />;
     }
     return chevron;

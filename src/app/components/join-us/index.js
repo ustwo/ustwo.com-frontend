@@ -64,7 +64,6 @@ const PageJoinUs = React.createClass({
   },
   renderStudioTabs(selectedStudioSlug) {
     return map(this.props.studios, studio => {
-      console.log(studio)
       const studioSlug = kebabCase(studio.name);
       const studioName = spannify(studio.name);
       const uri = `/join-us/${studioSlug}`;
