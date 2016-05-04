@@ -95,11 +95,17 @@
       max-width: 750px;
       padding: 0 40px;
     }
+    .down-chevron {
+      top: 76%;
+    }
   }
   @media screen and (min-width: $bp-large) {
     .title {
       max-width: 1080px;
       padding: 0 80px;
+    }
+    .down-chevron {
+      top: 80%;
     }
   }
 }
