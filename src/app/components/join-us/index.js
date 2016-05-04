@@ -69,14 +69,14 @@ const PageJoinUs = React.createClass({
       const uri = `/join-us/${studioSlug}`;
       let studioSelected;
       if (studioSlug === selectedStudioSlug) {
-        studioSelected = {color: studio.color, borderColor: studio.color}
+        studioSelected = {color: studio.color}
       }
-      return <li
+      return <div
         key={`tab-${studioSlug}`}
         className={studioSlug}
         aria-selected={studioSlug === selectedStudioSlug}
         style={studioSelected}
-      ><a href={uri} onClick={Flux.overrideNoScroll(uri)}>{studioName}</a></li>;
+      ><a href={uri} onClick={Flux.overrideNoScroll(uri)}>{studioName}</a></div>;
     });
   },
   getJobSectionRenderer(selectedStudioSlug) {
