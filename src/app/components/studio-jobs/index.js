@@ -50,7 +50,7 @@ const StudioJobs = React.createClass({
         open={this.state.selectedJob === job.shortcode}
         onClick={this.generateOnClickJobItemHandler(job)}
       />
-  );
+    );
   },
   generateOnClickJobItemHandler(job) {
     return () => {

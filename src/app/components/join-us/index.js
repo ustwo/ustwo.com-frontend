@@ -32,13 +32,19 @@ function getSelectedStudio(studioSlugFromUrl, studioSlugs) {
 
 const PageJoinUs = React.createClass({
   mixins: [getScrollTrackerMixin('join-us')],
+
+  getInitialState() {
+    return {
+      selectedStudioSlug: 'london',
+      underlineWidth: 0,
+      underlineLeft: 0
+    }
+  },
+
   render() {
     const { page, currentParams, studios, currentPage, footer, loaded, modal, isMobile, fixedHeight, documentScrollPosition, viewportDimensions } = this.props;
     const classes = classnames('page-join-us', this.props.className);
     const image = getFeaturedImage(page);
-    const studioSlugFromUrl = get(currentParams, 'lid');
-    const studioSlugs = map(pluck(studios, 'name'), kebabCase);
-    const selectedStudioSlug = getSelectedStudio(studioSlugFromUrl, studioSlugs);
     const title = get(page, 'display_title');
 
     return (
@@ -62,7 +68,7 @@ const PageJoinUs = React.createClass({
             colours: get(page, 'colors'),
             zebra: false,
             placeholderContents: {
-              WORKABLE_LIST: this.getJobSectionRenderer(selectedStudioSlug)
+              WORKABLE_LIST: this.getJobSectionRenderer(this.state.selectedStudioSlug)
             }
           })}
           <Footer data={footer} studios={studios} currentPage={currentPage}/>
@@ -71,18 +77,34 @@ const PageJoinUs = React.createClass({
       </article>
     );
   },
-  componentDidUpdate() {
-    let getActiveTab = React.findDOMNode(this.refs.activeTab);
-    let getUnderline = React.findDOMNode(this.refs.underline);
-
-    getUnderline.style.width = `${getActiveTab.offsetWidth}px`;
-    getUnderline.style.left = `${getActiveTab.offsetLeft}px`;
+  componentDidMount() {
+    const { currentParams, studios } = this.props;
+    const studioSlugFromUrl = get(currentParams, 'lid');
+    const studioSlugs = map(pluck(studios, 'name'), kebabCase);
+    this.setState({ selectedStudioSlug: getSelectedStudio(studioSlugFromUrl, studioSlugs) });
+  },
+  componentWillReceiveProps(nextProps) {
+    const { currentParams, studios } = nextProps;
+    const studioSlugFromUrl = get(currentParams, 'lid');
+    const studioSlugs = map(pluck(studios, 'name'), kebabCase);
+    this.setState({ selectedStudioSlug: getSelectedStudio(studioSlugFromUrl, studioSlugs) });
+    if (this.activeTab) {
+      this.setState({
+        underlineWidth: `${this.activeTab.offsetWidth}px`,
+        underlineLeft: `${this.activeTab.offsetLeft}px`
+      });
+    }
   },
   handleClick() {
-    let getStudioTabs = React.findDOMNode(this.refs.studioTabs);
-    getStudioTabs.classList.remove('animate');
+    if (this.activeTab) {
+      this.setState({
+        underlineWidth: `${this.activeTab.offsetWidth}px`,
+        underlineLeft: `${this.activeTab.offsetLeft}px`
+      });
+    }
+    this.studioTabs.classList.remove('animate');
     setTimeout(() => {
-      getStudioTabs.classList.add('animate')
+      this.studioTabs.classList.add('animate')
     }, 0);
   },
   renderStudioTabs(selectedStudioSlug) {
@@ -93,8 +115,12 @@ const PageJoinUs = React.createClass({
       const studioName = spannify(studio.name);
       const uri = `/join-us/${studioSlug}`;
       if (studioSlug === selectedStudioSlug) {
-        studioSelectedColor = {color: studio.color}
-        studioSelectedBackgroundColor = {backgroundColor: studio.color}
+        studioSelectedColor = { color: studio.color }
+        studioSelectedBackgroundColor = {
+          backgroundColor: studio.color,
+          width: this.state.underlineWidth,
+          left: this.state.underlineLeft
+        }
       }
 
       return (
@@ -102,7 +128,7 @@ const PageJoinUs = React.createClass({
           key={`tab-${studioSlug}`}
           aria-selected={studioSlug === selectedStudioSlug}
           className={`tab ${studioSlug} ${studioSlug === selectedStudioSlug ? 'active' : ''}`}
-          ref={studioSlug === selectedStudioSlug ? 'activeTab' : ''}
+          ref={(ref) => studioSlug === selectedStudioSlug ? this.activeTab = ref : ''}
           onClick={this.handleClick.bind(this)}
           style={studioSelectedColor}>
           <a
@@ -113,14 +139,13 @@ const PageJoinUs = React.createClass({
     });
 
     return (
-      <nav className="jobs-studio-tabs" ref="studioTabs">
+      <nav className="jobs-studio-tabs" ref={(ref) => this.studioTabs = ref}>
         {tabs}
-        <div className="underline" style={studioSelectedBackgroundColor} ref="underline"></div>
+        <div className="underline" style={studioSelectedBackgroundColor} ref={(ref) => this.underline = ref}></div>
       </nav>
     );
   },
   getJobSectionRenderer(selectedStudioSlug) {
-    // console.log(selectedStudioSlug);
 
     return () => {
       const sizes = { hardcoded: { url: '/images/joinus/current_openings.jpg' }};
@@ -131,18 +156,12 @@ const PageJoinUs = React.createClass({
             <h2>We're Hiring</h2>
           </div>
           <section className="jobs">
-            {this.renderStudioTabs(selectedStudioSlug)}
+            <nav className="jobs-studio-tabs">
+              {this.renderStudioTabs(selectedStudioSlug)}
+            </nav>
             <div className="jobs-container">
               {this.renderStudioJobs(selectedStudioSlug)}
             </div>
-            <section className="jobs">
-              <nav className="jobs-studio-tabs">
-                {this.renderStudioTabs(selectedStudioSlug)}
-              </nav>
-              <div className="jobs-container">
-                {this.renderStudioJobs(selectedStudioSlug)}
-              </div>
-            </section>
           </section>
         </div>
       );
