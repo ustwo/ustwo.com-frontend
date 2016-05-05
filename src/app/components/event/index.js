@@ -29,7 +29,7 @@ const PageEvent = React.createClass({
     const ticket_url = get(event, 'ticket_url');
 
     if(ticket_url) {
-      return <a href={ticket_url} className="im-in">Get tickets</a>;
+      return <a href={ticket_url} className="im-in" target="_blank">Get tickets</a>;
     }
   },
 	render() {
