@@ -14,6 +14,21 @@
   }
 }
 
+@keyframes underlineScale {
+  10% {
+    transform: scaleX(1);
+  }
+  40% {
+    transform: scaleX(0.5)
+  }
+  60% {
+    transform: scaleX(0.5);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 .page-join-us {
   height: 100%;
 
@@ -32,7 +47,7 @@
 
   .single-column {
     background-color: #fff;
-    
+
     hr {
       @include page-background-colour(join);
     }
@@ -95,7 +110,7 @@
     margin-bottom: 30px;
     text-align: center;
 
-    > div:not(.underline) {
+    .tab {
       display: inline-block;
       margin: 0 20px 10px 20px;
       cursor: pointer;
@@ -103,11 +118,7 @@
       font-size: 24px;
       text-transform: uppercase;
       color: $nonBlack;
-      transition: opacity $hover-duration-quick ease-in-out;
-
-      // &[aria-selected="true"] {
-      //   border-bottom: 4px solid;
-      // }
+      transition: opacity $hover-duration-quick ease-in-out, color .32s ease-in-out;
 
       &:hover:not([aria-selected="true"]) {
         opacity: $hover-fade-back;
@@ -151,7 +162,11 @@
         bottom: 0;
         height: 4px;
         width: 150px;
-        transition: background-color .32s ease-in-out;
+        transition: all .3s ease-in-out;
+      }
+
+      &.animate .underline {
+        animation: underlineScale .5s 1;
       }
     }
   }

@@ -43,7 +43,6 @@ const PageJoinUs = React.createClass({
 
     return (
       <article className={classes}>
-
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
             <ScrollWrapper
@@ -72,33 +71,57 @@ const PageJoinUs = React.createClass({
       </article>
     );
   },
+  componentDidUpdate() {
+    let getActiveTab = React.findDOMNode(this.refs.activeTab);
+    let getUnderline = React.findDOMNode(this.refs.underline);
+
+    getUnderline.style.width = `${getActiveTab.offsetWidth}px`;
+    getUnderline.style.left = `${getActiveTab.offsetLeft}px`;
+  },
+  handleClick() {
+    let getStudioTabs = React.findDOMNode(this.refs.studioTabs);
+    getStudioTabs.classList.remove('animate');
+    setTimeout(() => {
+      getStudioTabs.classList.add('animate')
+    }, 0);
+  },
   renderStudioTabs(selectedStudioSlug) {
-    let studioSelectedColor;
+    let studioSelectedBackgroundColor;
     const tabs = map(this.props.studios, studio => {
+      let studioSelectedColor;
       const studioSlug = kebabCase(studio.name);
       const studioName = spannify(studio.name);
       const uri = `/join-us/${studioSlug}`;
       if (studioSlug === selectedStudioSlug) {
-        studioSelectedColor = {backgroundColor: studio.color}
+        studioSelectedColor = {color: studio.color}
+        studioSelectedBackgroundColor = {backgroundColor: studio.color}
       }
+
       return (
         <div
           key={`tab-${studioSlug}`}
-          className={studioSlug}
           aria-selected={studioSlug === selectedStudioSlug}
-          style={studioSelected}
-        ><a href={uri} onClick={Flux.overrideNoScroll(uri)}>{studioName}</a></div>
+          className={`tab ${studioSlug} ${studioSlug === selectedStudioSlug ? 'active' : ''}`}
+          ref={studioSlug === selectedStudioSlug ? 'activeTab' : ''}
+          onClick={this.handleClick.bind(this)}
+          style={studioSelectedColor}>
+          <a
+            href={uri}
+            onClick={Flux.overrideNoScroll(uri)}>{studioName}</a>
+        </div>
       );
     });
 
     return (
-      <nav className="jobs-studio-tabs">
+      <nav className="jobs-studio-tabs" ref="studioTabs">
         {tabs}
-        <div className="underline" style={studioSelectedColor}></div>
+        <div className="underline" style={studioSelectedBackgroundColor} ref="underline"></div>
       </nav>
     );
   },
   getJobSectionRenderer(selectedStudioSlug) {
+    // console.log(selectedStudioSlug);
+
     return () => {
       const sizes = { hardcoded: { url: '/images/joinus/current_openings.jpg' }};
 
@@ -109,16 +132,17 @@ const PageJoinUs = React.createClass({
           </div>
           <section className="jobs">
             {this.renderStudioTabs(selectedStudioSlug)}
-          <div className="jobs-container">
-            {this.renderStudioJobs(selectedStudioSlug)}
-          </div>
-          <section className="jobs">
-            <nav className="jobs-studio-tabs">
-              {this.renderStudioTabs(selectedStudioSlug)}
-            </nav>
             <div className="jobs-container">
               {this.renderStudioJobs(selectedStudioSlug)}
             </div>
+            <section className="jobs">
+              <nav className="jobs-studio-tabs">
+                {this.renderStudioTabs(selectedStudioSlug)}
+              </nav>
+              <div className="jobs-container">
+                {this.renderStudioJobs(selectedStudioSlug)}
+              </div>
+            </section>
           </section>
         </div>
       );
