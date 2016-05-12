@@ -92,6 +92,28 @@
     }
   }
 
+  /* Header is not overlayed onto content for post and event pages */
+  &.post,
+  &.event {
+    position: relative;
+
+    .navigation {
+      color: $nonBlack;
+      background-color: #fff;
+
+      .logo svg,
+      .navigation-toggle {
+        fill: $nonBlack;
+      }
+    }
+    .navigation-link {
+      &.selected a,
+      a:hover {
+        border-bottom: 2px solid $nonBlack;
+      }
+    }
+  }
+
   @media screen and (min-width: $bp-large) {
     .navigation-toggle {
       display: none;
@@ -114,28 +136,6 @@
 
       &:first-child {
         margin-left: 0;
-      }
-    }
-
-    /* Header is not overlayed onto content for post and event pages */
-    &.post,
-    &.event {
-      position: relative;
-
-      .navigation {
-        color: $nonBlack;
-        background-color: #fff;
-
-        .logo svg,
-        .navigation-toggle {
-          fill: $nonBlack;
-        }
-      }
-      .navigation-link {
-        &.selected a,
-        a:hover {
-          border-bottom: 2px solid $nonBlack;
-        }
       }
     }
   }
