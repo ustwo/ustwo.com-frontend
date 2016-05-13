@@ -47,3 +47,13 @@ input {
 button {
   background: transparent;
 }
+
+blockquote {
+  margin: 20px;
+}
+
+@media screen and (min-width: $bp-large) {
+  blockquote {
+    margin: 20px 40px;
+  }
+}

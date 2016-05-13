@@ -86,7 +86,7 @@
     }
 
     .title {
-      padding: 0 30px;
+      padding: 0 15px;
     }
 
     .location-icon {
@@ -153,40 +153,6 @@
       border-right: none;
       border-color: $softPassion;
     }
-    .single-column {
-	  padding-top: 42px;
-      &.im-in-single-column {
-        padding-top: 0;
-        padding-bottom: 0;
-      }
-
-    h3 {
-      padding-bottom: 20px;
-      line-height: 30px;
-      text-transform: inherit;
-      font-family: $PxGroteskBold;
-    }
-      .title {
-        color: $nonBlack;
-      }
-
-      .content {
-        a {
-          border-bottom-width: 2px;
-          border-bottom-style: solid;
-          font-family: $PxGroteskBold;
-        }
-        video,
-        img,
-        iframe {
-          max-width: 100%;
-        }
-        video,
-        img {
-          height: auto;
-        }
-      }
-    }
 
     .quote-block {
 
@@ -204,12 +170,51 @@
 
     }
 
-
-
     .footer-image {
       margin-top: 40px;
     }
 
+  }
+
+  .single-column {
+    padding-top: $vertical-spacing * .5;
+    padding-bottom: $vertical-spacing * .5;
+
+    &.im-in-single-column {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    h3 {
+      padding-bottom: 20px;
+      line-height: 30px;
+      text-transform: inherit;
+      font-family: $PxGroteskBold;
+    }
+    .title {
+      color: $nonBlack;
+    }
+
+    .content {
+      a {
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        font-family: $PxGroteskBold;
+      }
+      video,
+      img,
+      iframe {
+        max-width: 100%;
+      }
+      video,
+      img {
+        height: auto;
+      }
+    }
+
+    & + .single-column + .single-column {
+      padding-top: 0;
+    }
   }
 
 
@@ -239,6 +244,15 @@
       }
     }
 
+    .single-column {
+      padding-top: $vertical-spacing-medium * .5;
+      padding-bottom: $vertical-spacing-medium * .5;
+
+      .title {
+        padding: 0 30px;
+      }
+    }
+
     .content-container {
       margin-top: -70px;
       margin-left: 80px;
@@ -261,6 +275,11 @@
 
     .content-container ul.social-media-sharing {
       right: 80px;
+    }
+
+    .single-column {
+      padding-top: $vertical-spacing-large * .5;
+      padding-bottom: $vertical-spacing-large * .5;
     }
 
   }
