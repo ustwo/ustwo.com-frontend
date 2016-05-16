@@ -50,6 +50,7 @@ const PageJoinUs = React.createClass({
         <Video
           src={get(page, 'featured_video')}
           sizes={get(image, 'media_details.sizes')}
+          isVideoBackground={true}
         />
       </Hero>
       {renderModules({

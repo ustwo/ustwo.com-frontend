@@ -5,6 +5,7 @@ import SingleColumn from 'app/components/single-column';
 import QuoteBlock from 'app/components/quote-block';
 import Rimage from 'app/components/rimage';
 import Grid from 'app/components/grid';
+import Video from 'app/components/video';
 
 function getBackgroundColour(options) {
   const { colours, zebra, getStripe } = options;
@@ -88,6 +89,13 @@ function renderPlaceholder(moduleData, index, options) {
   }
 }
 
+function renderVideo(moduleData, index, options) {
+  console.debug('video module data: ', moduleData);
+  return  <Video
+    videoId={get(moduleData, 'attr.video_id.value')}
+  />;
+}
+
 function renderModules(options) {
   const { modules, zebra } = options;
 
@@ -97,7 +105,8 @@ function renderModules(options) {
     image: renderImage,
     blockquote: renderBlockquote,
     grid: renderGrid,
-    placeholder: renderPlaceholder
+    placeholder: renderPlaceholder,
+    video: renderVideo
   };
 
   let isStripe;

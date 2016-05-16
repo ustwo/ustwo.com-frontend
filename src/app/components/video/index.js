@@ -6,7 +6,31 @@ import Rimage from 'app/components/rimage';
 const posterURL = "/images/transparent.png";
 const Video = React.createClass({
   render() {
+    const { isVideoBackground } = this.props;
+    if(isVideoBackground) {
+      return this.renderVideoBackground();
+    } else {
+      return this.renderVideoEmbed();
+    }
+  },
+  renderVideoEmbed() {
+    const { videoId } = this.props;
+    let src = "https://player.vimeo.com/video/" + videoId;
     return <div className="video">
+      <iframe 
+        src={src}
+        width="1280" 
+        height="720" 
+        frameborder="0" 
+        title="Monument Valley - Behind the Scenes" 
+        webkitallowfullscreen
+        mozallowfullscreen
+        allowfullscreen>
+      </iframe>
+    </div>
+  },
+  renderVideoBackground() {
+    return <div className="videoBackground">
       <MediaQuery maxWidth={768}>
         {this.renderImage()}
       </MediaQuery>
@@ -14,7 +38,7 @@ const Video = React.createClass({
         {this.renderVideo()}
       </MediaQuery>
     </div>;
-  },
+  }, 
   renderImage() {
     const { sizes } = this.props;
     return <Rimage sizes={sizes} />;
@@ -29,6 +53,7 @@ const Video = React.createClass({
     }
     return video;
   }
+
 });
 
 export default Video;
