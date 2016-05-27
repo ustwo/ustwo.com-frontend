@@ -5,7 +5,8 @@ const Sandbox = React.createClass({
     return <div className="sandbox">
       <style>{`
         body {
-          background: #ccc;
+          background: #009CF3;
+          padding: 100px;
         }
       `}</style>
       <LoadingIcon className="test-class" />

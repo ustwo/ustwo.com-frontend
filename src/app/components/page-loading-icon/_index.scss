@@ -5,98 +5,40 @@
  *  TODO: Once Ornithoper PostCSS plugin is complete, use it to generate keyframes only using the transform property for better performance.
  */
 
-$loader-size: 12px;
-$loader-jump: $loader-size * 2.25;
-$loader-bg: #fff;
-$loader-color: $offWhite;
+$loader-size: 60px;
+$loader-box-size: 12px;
 
-@keyframes loader {
-  19% {
-    bottom: 0;
-    transform: scale(1.25, .25);
-  }
-  21% {
-    bottom: $loader-jump * .4;
-  }
-  26% {
-    bottom: $loader-jump * .7;
-  }
-  33% {
-    bottom: $loader-jump * .88;
-  }
-  34% {
-    transform: scale(0.8, 1.13);
-  }
-  39% {
-    bottom: $loader-jump * .96;
-  }
-  45% {
-    bottom: $loader-jump;
-  }
-  49% {
-    bottom: $loader-jump;
-  }
-  52% {
-    bottom: $loader-jump * .92;
-  }
-  54% {
-    transform: scale(1, 1);
-  }
-  56% {
-    bottom: $loader-jump * .74;
-  }
-  61% {
-    bottom: $loader-jump * .48;
-  }
-  64% {
-    bottom: $loader-jump * .26;
-  }
-  67% {
-    bottom: $loader-jump * .07;
-  }
-  68% {
-    transform: scale(1, .8);
-    bottom: 0;
-  }
-  73% {
-    transform: scale(1.5, .25);
-  }
-  88% {
-    transform: scale(1, 1);
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
   }
 }
 
 .page-loading-icon {
-  li {
-    position: relative;
+  position: relative;
+  width: $loader-size;
+  height: $loader-size;
+
+  div {
+    position: absolute;
     width: $loader-size;
-    height: $loader-size + $loader-jump;
-    display: inline-block;
-    margin-left: $loader-size * .75;
+    height: $loader-size;
+    animation: spinner 1s infinite;
+    transform-origin: 50% 50%;
 
-    &:first-child {
-      margin-left: 0;
-    }
-
-    div {
+    &:after {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: $loader-size;
-      height: $loader-size;
-      background: $loader-color;
-      animation: loader 1.5s infinite;
-      transform-origin: 50% bottom;
+      left: 50%;
+      top: 0;
+      content: "";
+      width: $loader-box-size;
+      height: $loader-box-size;
+      background: #fff;
+      transform: translateX(- $loader-box-size * .5);
     }
 
-    &:nth-child(2) div {
-      animation-delay: .08s;
-    }
-    &:nth-child(3) div {
-      animation-delay: .16s;
-    }
-    &:nth-child(4) div {
-      animation-delay: .24s;
+    &:nth-child(2) {
+      animation-delay: .5s;
     }
   }
 }
