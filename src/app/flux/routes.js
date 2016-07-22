@@ -83,9 +83,6 @@ const routes = {
       url: `ustwo/v1/events?per_page=5&studio=${studio}`,
       type: 'events',
       slug: `events/${studio}`
-    }, {
-      url: 'ustwo/v1/events?per_page=3&archived=true',
-      type: 'archivedEvents'
     }]
   },
   events: {

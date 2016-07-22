@@ -8,5 +8,7 @@ export default {
 	postsPaginationTotal: null,
 	posts: null,
 	eventsPaginationTotal: null,
-	events: null
+	events: null,
+	archivedEventsPaginationTotal: null,
+	archivedEvents: null
 };
