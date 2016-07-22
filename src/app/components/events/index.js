@@ -47,7 +47,7 @@ const PageEvents = React.createClass({
     // applies when studio is changed
     if (currentEventsStudio !== nextEventsStudios) {
       this.setState({
-        isLoadingStudioEvents: false
+        isLoadingStudioEvents: true
       });
     }
 
@@ -74,10 +74,10 @@ const PageEvents = React.createClass({
     });
   },
   getEvents() {
-    const { postsPagination, postsPaginationTotal } = this.props;
+    const { eventsPagination, eventsPaginationTotal } = this.props;
     let { events } = this.props;
-    if (postsPagination > 1 && postsPagination < postsPaginationTotal) {
-      events = take(events, (postsPagination * 12) + 1);
+    if (eventsPagination > 1 && eventsPagination < eventsPaginationTotal) {
+      events = take(events, (eventsPagination * 12) + 1);
     }
     return events;
   },
@@ -140,7 +140,7 @@ const PageEvents = React.createClass({
       isLoadingMoreEvents,
       isLoadingStudioEvents
     } = this.state;
-		const { page, currentParams, events, archivedEvents, studios, postsPagination, postsPaginationTotal } = this.props;
+		const { page, currentParams, events, archivedEvents, studios, eventsPagination, eventsPaginationTotal } = this.props;
     const classes = classnames('page-events', this.props.className, {
       loading: isLoadingInitialEvents || isLoadingStudioEvents
     });
@@ -169,7 +169,7 @@ const PageEvents = React.createClass({
         <LoadMoreButton
           loading={isLoadingMoreEvents}
           onClick={this.onClickLoadMore}
-          disabled={postsPagination >= postsPaginationTotal}
+          disabled={eventsPagination >= eventsPaginationTotal}
         />
 		  </section>  
       {this.renderArchivedEvents()}

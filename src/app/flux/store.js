@@ -25,6 +25,8 @@ const _state = Object.assign({
   postsPagination: Defaults.postsPagination,
   postsPaginationTotal: Nulls.postsPaginationTotal,
   eventsStudio: Defaults.eventsStudio,
+  eventsPagination: Defaults.eventsPagination,
+  eventsPaginationTotal: Nulls.eventsPaginationTotal,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -36,6 +38,7 @@ function applyData(response, type) {
   changeSet[type] = response.data;
   if (response.postsPaginationTotal) {
     changeSet.postsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
+    changeSet.eventsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
   }
   Object.assign(_state, changeSet);
   log('Loaded', type, _state[type]);
@@ -104,9 +107,9 @@ const Store = Object.assign(
       }
       if(newPage !== 'events') {
         _state.eventsStudio = Defaults.eventsStudio;
-        _state.posts = Nulls.posts;
-        _state.postsPagination = Defaults.postsPagination;
-        _state.postsPaginationTotal = Nulls.postsPaginationTotal;
+        _state.events = Nulls.events;
+        _state.eventsPagination = Defaults.eventsPagination;
+        _state.eventsPaginationTotal = Nulls.eventsPaginationTotal;
       }
       _state.currentPage = newPage;
       _state.currentParams = newParams || Nulls.params;
@@ -224,10 +227,10 @@ const Store = Object.assign(
       Store.emit('change', _state);
     },
     loadMoreEvents() {
-      if (_state.postsPagination === _state.postsPaginationTotal) {
+      if (_state.eventsPagination === _state.eventsPaginationTotal) {
         Store.emit('change', _state);
       } else {
-        const pageNo = ++_state.postsPagination;
+        const pageNo = ++_state.eventsPagination;
         const studio = _state.eventsStudio;
         let url;
         if (studio === 'all') {
@@ -243,7 +246,7 @@ const Store = Object.assign(
     },
     setEventsStudioTo(id) {
       _state.eventsStudio = id;
-      _state.postsPagination = Defaults.postsPagination;
+      _state.eventsPagination = Defaults.eventsPagination;
       Store.emit('change', _state);
     },
   }
