@@ -46,6 +46,9 @@ const Actions = {
   loadMoreEvents() {
     Store.loadMoreEvents();
   },
+  loadMoreArchivedEvents() {
+    Store.loadMoreArchivedEvents();
+  },
   setEventsStudioTo(id) {
     Store.setEventsStudioTo(id);
   }

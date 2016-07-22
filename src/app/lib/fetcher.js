@@ -27,6 +27,8 @@ function fetcher (config) {
       return response.json().then(data => {
         return {
           postsPaginationTotal: response.headers.get('X-WP-TotalPages'),
+          eventsPaginationTotal: response.headers.get('X-WP-TotalPages'),
+          archivedEventsPaginationTotal: response.headers.get('X-WP-TotalPages'),
           data: data
         }
       });

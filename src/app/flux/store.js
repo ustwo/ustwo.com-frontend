@@ -27,6 +27,8 @@ const _state = Object.assign({
   eventsStudio: Defaults.eventsStudio,
   eventsPagination: Defaults.eventsPagination,
   eventsPaginationTotal: Nulls.eventsPaginationTotal,
+  archivedEventsPagination: Defaults.archivedEventsPagination,
+  archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -38,7 +40,12 @@ function applyData(response, type) {
   changeSet[type] = response.data;
   if (response.postsPaginationTotal) {
     changeSet.postsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
-    changeSet.eventsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
+    if(type === 'events') {
+      changeSet.eventsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
+    }
+    if(type === 'archivedEvents') {
+      changeSet.archivedEventsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
+    }
   }
   Object.assign(_state, changeSet);
   log('Loaded', type, _state[type]);
@@ -72,9 +79,15 @@ function applyRelatedContent(response) {
   Store.emit('change', _state);
 }
 
-function applyMoreEvents(response, type) {
+function applyMoreEvents(response) {
   _state.events = _state.events.concat(response.data);
   log('Added more events', response.data);
+  Store.emit('change', _state);
+}
+
+function applyMoreArchivedEvents(response) {
+  _state.archivedEvents = _state.archivedEvents.concat(response.data);
+  log('Added more archived events', response.data);
   Store.emit('change', _state);
 }
 
@@ -110,6 +123,9 @@ const Store = Object.assign(
         _state.events = Nulls.events;
         _state.eventsPagination = Defaults.eventsPagination;
         _state.eventsPaginationTotal = Nulls.eventsPaginationTotal;
+        _state.archivedEvents = Nulls.archivedEvents;
+        _state.archviedEventsPagination = Defaults.archviedEventsPagination;
+        _state.archivedEventsPaginationTotal = Nulls.archivedEventsPaginationTotal;
       }
       _state.currentPage = newPage;
       _state.currentParams = newParams || Nulls.params;
@@ -242,6 +258,19 @@ const Store = Object.assign(
           url: url,
           type: 'events'
         }], applyMoreEvents).then(() => Store.emit('change', _state));
+      }
+    },
+    loadMoreArchivedEvents() {
+      if(_state.archivedEventsPagination === _state.archivedEventsPaginationTotal) {
+        Store.emit('change', _state);
+      } else {
+        const pageNo = ++_state.archivedEventsPagination;
+        let url;
+        url = `ustwo/v1/events?archived=true&per_page=3&page=${pageNo}`;
+        DataLoader([{
+          url: url,
+          type: 'archivedEvents'
+        }], applyMoreArchivedEvents).then(() => Store.emit('change', _state));
       }
     },
     setEventsStudioTo(id) {

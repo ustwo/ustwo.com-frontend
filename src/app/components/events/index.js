@@ -23,6 +23,7 @@ const PageEvents = React.createClass({
       isFilteredByStudio: this.props.eventsStudio !== 'all',
       isLoadingInitialEvents: true,
       isLoadingMoreEvents: false,
+      isLoadingMoreArchivedEvents: false,
       isLoadingStudioEvents: false
     };
   },
@@ -34,8 +35,8 @@ const PageEvents = React.createClass({
     }
   },
   componentWillReceiveProps(nextProps) {
-    const { events: currentEvents, eventsStudio: currentEventsStudio } = this.props;
-    const { events: nextEvents, eventsStudio: nextEventsStudios } = nextProps;
+    const { events: currentEvents, archivedEvents: currentArchivedEvents, eventsStudio: currentEventsStudio } = this.props;
+    const { events: nextEvents, archivedEvents: nextArchivedEvents, eventsStudio: nextEventsStudios } = nextProps;
     const { isLoadingInitialEvents } = this.state;
 
     if (isLoadingInitialEvents && nextEvents) {
@@ -66,8 +67,15 @@ const PageEvents = React.createClass({
         isLoadingMoreEvents: false
       });
     }
+
+    const archivedEventsAdded = (currentArchivedEvents && nextArchivedEvents) && (currentArchivedEvents.length < nextArchivedEvents.length);
+    if(archivedEventsAdded) {
+      this.setState({
+        isLoadingMoreArchivedEvents: false
+      });
+    }
   },
-  onClickLoadMore() {
+  onClickLoadMoreEvents() {
     Flux.loadMoreEvents();
     this.setState({
       isLoadingMoreEvents: true
@@ -80,6 +88,12 @@ const PageEvents = React.createClass({
       events = take(events, (eventsPagination * 12) + 1);
     }
     return events;
+  },
+  onClickLoadMoreArchivedEvents() {
+    Flux.loadMoreArchivedEvents();
+    this.setState({
+      isLoadingMoreArchivedEvents: true
+    });
   },
   getArchivedEvents() {
     const { archivedEvents } = this.props;
@@ -138,9 +152,19 @@ const PageEvents = React.createClass({
       isFilteredByStudio,
       isLoadingInitialEvents,
       isLoadingMoreEvents,
+      isLoadingMoreArchivedEvents,
       isLoadingStudioEvents
     } = this.state;
-		const { page, currentParams, events, archivedEvents, studios, eventsPagination, eventsPaginationTotal } = this.props;
+		const { 
+      page, 
+      currentParams, 
+      events, 
+      archivedEvents, 
+      studios, 
+      eventsPagination, 
+      eventsPaginationTotal,
+      archivedEventsPagination,
+      archivedEventsPaginationTotal } = this.props;
     const classes = classnames('page-events', this.props.className, {
       loading: isLoadingInitialEvents || isLoadingStudioEvents
     });
@@ -168,11 +192,16 @@ const PageEvents = React.createClass({
 			  {this.renderEvents()}
         <LoadMoreButton
           loading={isLoadingMoreEvents}
-          onClick={this.onClickLoadMore}
+          onClick={this.onClickLoadMoreEvents}
           disabled={eventsPagination >= eventsPaginationTotal}
         />
 		  </section>  
       {this.renderArchivedEvents()}
+      <LoadMoreButton
+        loading={isLoadingMoreArchivedEvents}
+        onClick={this.onClickLoadMoreArchivedEvents}
+        disabled={archivedEventsPagination >= archivedEventsPaginationTotal}
+      />
     </article>;
 	}
 });
