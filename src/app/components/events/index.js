@@ -6,6 +6,7 @@ import map from 'lodash/collection/map';
 import take from 'lodash/array/take';
 import classnames from 'classnames';
 import isEqual from 'lodash/lang/isEqual';
+import isEmpty from 'lodash/lang/isEmpty';
 import Flux from 'app/flux';
 import Hero from 'app/components/hero';
 import Video from 'app/components/video';
@@ -54,7 +55,8 @@ const PageEvents = React.createClass({
 
     const currentEventsSample = take(currentEvents, 6).map(event => event.id);
     const nextEventsSample = take(nextEvents, 6).map(event => event.id);
-    if (!isEqual(currentEventsSample, nextEventsSample)) {
+
+    if (isEmpty(currentEventsSample, nextEventsSample) || !isEqual(currentEventsSample, nextEventsSample)) {
       this.setState({
         isLoadingStudioEvents: false,
         isFilteredByStudio: currentEventsStudio !== 'all'
