@@ -90,7 +90,6 @@ function renderPlaceholder(moduleData, index, options) {
 }
 
 function renderVideo(moduleData, index, options) {
-  console.debug('video module data: ', moduleData);
   return  <Video
     videoId={get(moduleData, 'attr.video_id.value')}
   />;
