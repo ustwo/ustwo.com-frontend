@@ -79,6 +79,12 @@ function applyData(response, type) {
   changeSet[type] = response.data;
   if (response.postsPaginationTotal) {
     changeSet.postsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
+    if(type === 'events') {
+      changeSet.eventsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
+    }
+    if(type === 'archivedEvents') {
+      changeSet.archivedEventsPaginationTotal = parseInt(response.postsPaginationTotal, 10);
+    }
   }
   Object.assign(_state, changeSet);
   log('Loaded', type, _state[type]);
