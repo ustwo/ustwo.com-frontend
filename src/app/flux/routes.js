@@ -1,11 +1,3 @@
-/**
-  Example route definitions
-  {
-    '/': function () {},
-    '/projects': function () {},
-    '/projects/:pid': function (pid) {}
-  }
-*/
 const routes = {
   home: {
     id: 'home',
