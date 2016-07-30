@@ -290,12 +290,12 @@ CSS has extra tasks to speed up the development cycle. `css-watch` starts a
 
         $ make -i sync css-watch
 
-Open `https://192.168.99.100:3000` in your browser and start editing scss and
+Open `http://192.168.99.100:3000` in your browser and start editing scss and
 let the toolchain compile and push changes to the browser.
 
 *Note*: `browser-sync` uses a self-signed certificate so using `local.ustwo.com`
 or the raw IP will make the browser complain. If you need to overcome this
-please add a forward rule to Virtualbox so you can use `https://localhost:3000`.
+please add a forward rule to Virtualbox so you can use `http://localhost:3000`.
 
 ## Test
 
