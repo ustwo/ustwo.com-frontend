@@ -58,13 +58,13 @@ include tasks/*.mk
 ###############################################################################
 
 ## Porcelain ##################################################################
-install: network-create vault-create assets-create app-create sandbox-create proxy-create
+install: network-create vault-create assets-create app-create sandbox-create diversity-create proxy-create
 build-all: compiler-build sandbox-build build
 vault: vault-save
 build: app-build assets-build sandbox-build
 test: assets-unit-test assets-integration-test
 push: app-push assets-push sandbox-push
-pull: app-pull assets-pull sandbox-pull
+pull: app-pull assets-pull sandbox-pull diversity-pull
 clean-no-confirm:
 	@$(DOCKER_RM) $(shell $(DOCKER) ps -aq $(project_filters))
 	@$(MAKE) network-rm
