@@ -20,7 +20,7 @@
       transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
       -webkit-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
       -ms-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
-      z-index: 30;
+      z-index: 15;
     }
 
     .minute {
@@ -38,7 +38,7 @@
       transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
       -webkit-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
       -ms-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
-      z-index: 20;
+      z-index: 15;
     }
 
     .moon {
