@@ -2,6 +2,7 @@
 
 import React from 'react';
 import moment from 'moment';
+import SVG from 'app/components/svg';
 
 const StudioClock = React.createClass({
   getInitialState: function(){
@@ -26,6 +27,10 @@ const StudioClock = React.createClass({
       }
     }
   },
+  renderMoon: function(date) {
+    var meridiem = moment.localeData().meridiem(date.hours())
+    if(moment.localeData().isPM(meridiem)) return <SVG className="moon" spritemapID="moon" />
+  },
   render() {
     var colour = this.props.colour;
     var date = this.props.date;
@@ -40,6 +45,7 @@ const StudioClock = React.createClass({
     return <div className={this.state.clockInView ? "clock" : "clock set-to-twelve"}>
         <div className="minute" style={{"transform": "rotate(" + minute + "deg)"}} />
         <div className="hour" style={{"transform": "rotate(" + hour + "deg)", background: colour}} />
+        {this.renderMoon(date)}
     </div>
   }
 });
