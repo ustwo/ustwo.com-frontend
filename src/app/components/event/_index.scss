@@ -45,7 +45,7 @@
   .content-container {
     position: relative;
     margin: 0 auto;
-    padding: 40px 0 0 0;
+    padding: 40px 0;
     background: #fff;
 
     ul,
@@ -55,6 +55,7 @@
         margin-bottom: 10px;
       }
     }
+
     ul {
       list-style: square;
 
@@ -62,6 +63,7 @@
         list-style: none;
       }
     }
+
     .title,
     .excerpt,
     .meta,
@@ -70,6 +72,7 @@
       margin: 30px auto;
       max-width: 676px;
     }
+
     .title,
     .excerpt,
     .meta,
@@ -136,6 +139,7 @@
         margin-top: 10px;
       }
     }
+
     .meta {
       margin: 10px auto 20px;
       font-size: 18px;
@@ -145,6 +149,7 @@
         color: #969696;
       }
     }
+
     .rule {
       width: 184px;
       border-bottom: 4px solid;
@@ -258,7 +263,6 @@
       margin-left: 80px;
       margin-right: 80px;
     }
-
   }
 
   @media screen and (min-width: $bp-huge) {
@@ -281,6 +285,5 @@
       padding-top: $vertical-spacing-large * .5;
       padding-bottom: $vertical-spacing-large * .5;
     }
-
   }
 }
