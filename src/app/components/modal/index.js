@@ -9,7 +9,7 @@ const Modal = React.createClass({
   },
   render() {
     const { className, belowHeader, children } = this.props;
-    const classes = classnames('modal', className, {
+    const classes = classnames('modal', className.replace('shown',''), {
       'below-header': belowHeader
     });
     return <div
