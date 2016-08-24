@@ -25,15 +25,31 @@
     text-decoration: line-through;
   }
 
-  .excerpt p {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+  .excerpt {  
+    p {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
   }
 
-  .tail a {
-    border-bottom: 2px solid $softPassion;
+  .tail {
+    margin-top: auto;
+
+    a {
+      border-bottom: 2px solid $softPassion;
+    }
   }
- }
+
+  @media screen and (min-width: $bp-medium) {
+    .excerpt {
+      margin: auto auto ($card-padding-small * .75);
+    }
+
+    .tail {
+      margin-top: 0px;
+    }
+  }
+}
