@@ -44,10 +44,11 @@
     .moon {
       height: 30px;
       width: 30px;
-      top: 20%;
-      left: 10%;
+      top: 15%;
+      left: 15%;
       position: absolute;
       fill: $nonBlack;
+      transform: scale(0.8);
     }
 
     &.set-to-twelve {
