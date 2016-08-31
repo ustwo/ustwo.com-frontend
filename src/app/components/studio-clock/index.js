@@ -28,8 +28,8 @@ const StudioClock = React.createClass({
     }
   },
   renderMoon: function(date) {
-    var meridiem = moment.localeData().meridiem(date.hours())
-    if(moment.localeData().isPM(meridiem)) return <SVG className="moon" spritemapID="moon" />
+    var showMoon = this.props.showMoon;
+    if(showMoon) return <SVG className="moon" spritemapID="moon" />
   },
   render() {
     var colour = this.props.colour;

@@ -31,6 +31,17 @@ const StudioContact = React.createClass({
   onClick() {
     this.props.onClick && this.props.onClick();
   },
+  studioIsOpen(studio) {
+    var currentDate = this.state.date.utcOffset(studio.timezone.offset);
+    var currentTime = moment(currentDate.format('HH:mmA'), 'HH:mmA');
+    var openingTime = moment(studio.opening_time, 'HH:mmA');
+    var closingTime = moment(studio.closing_time, 'HH:mmA');
+
+    if(moment(currentDate).weekday() === 6 || moment(currentDate).weekday() === 7) return false;
+    if(moment(currentTime).isBetween(openingTime, closingTime)) return true;
+
+    return false;
+  },
   render() {
     const { studio, open } = this.props;
     const style = open ? {
@@ -39,8 +50,12 @@ const StudioContact = React.createClass({
     } : {};
     const studioClassName = kebabCase(studio.name);
     const mapurl = `https://maps.google.com/maps?z=12&t=m&q=loc:${studio.location.lat}+${studio.location.long}`;
+    var showMoon = true;
+    if(this.studioIsOpen(studio)) {
+      showMoon = false;
+    }
     return <li className={classnames('studio', studioClassName, { open: open })} style={style}>
-      <StudioClock date={this.state.date} offset={studio.timezone.offset} colour={studio.color} />
+      <StudioClock date={this.state.date} offset={studio.timezone.offset} colour={studio.color} showMoon={showMoon} />
       <h4 className="studio-title" onClick={this.onClick}>{studio.name}</h4>
       <div className="studio-details">
         <div className="vcard">
