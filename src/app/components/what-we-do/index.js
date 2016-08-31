@@ -11,12 +11,14 @@ import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
 import WorkItem from 'app/components/work-item';
 import Hero from 'app/components/hero';
+import TestimonialCarousel from 'app/components/testimonial-carousel';
 
 const PageWhatWeDo = React.createClass({
   mixins: [getScrollTrackerMixin('what-we-do')],
   render() {
     const { page } = this.props;
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
+    const testimonials = get(page, '_embedded.ustwo:testimonials', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', this.props.className);
 
@@ -34,6 +36,7 @@ const PageWhatWeDo = React.createClass({
         colours: get(page, 'colors'),
         zebra: false
       })}
+      <TestimonialCarousel testimonials={testimonials}/>
       <div className="card-list work-items-list">
         {this.renderCaseStudies(caseStudies)}
       </div>
