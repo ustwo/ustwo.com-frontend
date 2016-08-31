@@ -74,4 +74,10 @@
       <ellipse cx="66.6" cy="20.8" rx="5.3" ry="5.1"/>
     </g>
   </symbol>
+  <symbol id="arrow" viewbox="0 0 20 20">
+    <title>Arrow</title>
+    <g fill-rule="evenodd">
+      <path d="M22.68 39.5l-1.5 1.5L.933 20.753 21.44.247 23 1.807 3.994 20.815 22.68 39.5z"/>
+    </g>
+  </symbol>
 </svg>
