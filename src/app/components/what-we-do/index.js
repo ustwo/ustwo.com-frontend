@@ -18,7 +18,6 @@ const PageWhatWeDo = React.createClass({
   render() {
     const { page } = this.props;
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
-    const testimonials = get(page, '_embedded.ustwo:testimonials', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', this.props.className);
 
@@ -36,11 +35,18 @@ const PageWhatWeDo = React.createClass({
         colours: get(page, 'colors'),
         zebra: false
       })}
-      <TestimonialCarousel testimonials={testimonials}/>
+      {this.renderTestimonialCarousel()}
       <div className="card-list work-items-list">
         {this.renderCaseStudies(caseStudies)}
       </div>
     </article>;
+  },
+  renderTestimonialCarousel() {
+    const { page } = this.props;
+    const testimonials = get(page, '_embedded.ustwo:testimonials', []);
+    if(testimonials.length > 0) {
+      return <TestimonialCarousel testimonials={testimonials}/>
+    }
   },
   renderCaseStudies(caseStudies) {
     const { page } = this.props;
