@@ -54,13 +54,13 @@ const PageEvent = React.createClass({
           property: "og:type",
           content: 'website'
         }, {
-          name: "og:title",
+          property: "og:title",
           content: get(event, 'seo.title') || ''
         }, {
-          name: "og:description",
+          property: "og:description",
           content: get(event, 'seo.desc') || ''
         }, {
-          name: "og:image",
+          property: "og:image",
           content: get(event, 'seo.image') || ''
         }]}
       />
