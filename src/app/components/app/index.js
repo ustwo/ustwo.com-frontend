@@ -126,13 +126,13 @@ const App = React.createClass({
             property: "og:type",
             content: 'website'
           }, {
-            name: "og:title",
+            property: "og:title",
             content: get(state, 'page.seo.title') || get(state, 'post.seo.title') || ''
           }, {
-            name: "og:description",
+            property: "og:description",
             content: get(state, 'page.seo.desc') || get(state, 'post.seo.desc') || ''
           }, {
-            name: "og:image",
+            property: "og:image",
             content: get(state, 'page.seo.image') || get(state, 'post.seo.image') || ''
           }]}
         />
