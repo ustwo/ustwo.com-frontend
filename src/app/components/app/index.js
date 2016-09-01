@@ -123,7 +123,7 @@ const App = React.createClass({
             name: "keywords",
             content: get(state, 'page.seo.keywords') || get(state, 'post.seo.keywords') || ''
           }, {
-            name: "og:type",
+            property: "og:type",
             content: 'website'
           }, {
             name: "og:title",
