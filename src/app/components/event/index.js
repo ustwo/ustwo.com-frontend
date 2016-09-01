@@ -51,7 +51,7 @@ const PageEvent = React.createClass({
           name: "keywords",
           content: get(event, 'seo.keywords') || ''
         }, {
-          name: "og:type",
+          property: "og:type",
           content: 'website'
         }, {
           name: "og:title",
