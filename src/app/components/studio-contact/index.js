@@ -37,7 +37,7 @@ const StudioContact = React.createClass({
     var openingTime = moment(studio.opening_time, 'HH:mmA');
     var closingTime = moment(studio.closing_time, 'HH:mmA');
 
-    if(moment(currentDate).weekday() === 6 || moment(currentDate).weekday() === 7) return false;
+    if(moment(currentDate).isoWeekday() === 6 || moment(currentDate).isoWeekday() === 7) return false;
     if(moment(currentTime).isBetween(openingTime, closingTime)) return true;
 
     return false;
