@@ -1,150 +1,154 @@
 /*
- *  Testimonial Carousel
+ *  TESTIMONIAL CAROUSEL
  *	Displays testimonials in a carousel
  *
  */
-.testimonials {
-	height: 600px;
-	padding: 30px;
-	background-color: $marshPassion;
-	color: $white;
+ .testimonials {
+ 	height: 600px;
+ 	padding: 30px;
+ 	background-color: $marshPassion;
+ 	color: $white;
 
-	.wrapper {
-		position: relative;
-		height: 100%;
-		max-width: $bp-huge;
-		margin: 0 auto;
+ 	.wrapper {
+ 		position: relative;
+ 		height: 100%;
+ 		max-width: $bp-huge;
+ 		margin: 0 auto;
 
-		.testimonial-carousel {
-			position: relative;
-			max-width: $bp-large;
-			height: 100%;
-			margin: 0 auto;
+ 		.testimonial-carousel {
+ 			position: relative;
+ 			max-width: $bp-large;
+ 			height: 100%;
+ 			margin: 0 auto;
 
-		  .testimonial {
-		  	position: absolute;
-			  top: 0;
-			  bottom: 0;
-			  left:0;
-			  right:0;
-			  width: 100%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-		  	max-width: $bp-medium;
-			  margin: auto;
-		  	transition: all 1s ease-in-out;
+ 			.testimonial {
+ 				position: absolute;
+ 				top: 0;
+ 				bottom: 0;
+ 				left:0;
+ 				right:0;
+ 				width: 100%;
+ 				display: flex;
+ 				align-items: center;
+ 				justify-content: center;
+ 				max-width: $bp-medium;
+ 				margin: auto;
+ 				transition: all 1s ease-in-out;
 
-		  	p {
-					display: -webkit-box;
-		  		overflow: hidden;
-		  		font-size: 23px;
-			    text-overflow: ellipsis;
-			    -webkit-line-clamp: 10;
-			    -webkit-box-orient: vertical;
-		  	}
+ 				p {
+ 					display: -webkit-box;
+ 					overflow: hidden;
+ 					font-size: 23px;
+ 					text-overflow: ellipsis;
+ 					-webkit-line-clamp: 10;
+ 					-webkit-box-orient: vertical;
+ 				}
 
-				&.add {
-					opacity: 0;
-				}
+ 				span {
+ 					font-size: 18px;
+ 				}
 
-				&.show {
-					transition-delay: 0.5s;
-					opacity: 1;
-				}
+ 				&.add {
+ 					opacity: 0;
+ 				}
 
-				&.hide {
-				  transition-delay: 0s;
-				  opacity: 0;
-				}
+ 				&.show {
+ 					transition-delay: 0.5s;
+ 					opacity: 1;
+ 				}
 
-		  }
+ 				&.hide {
+ 					transition-delay: 0s;
+ 					opacity: 0;
+ 				}
 
-			.quote-mark-top, .quote-mark-bottom {
-				position: absolute;
-	  		margin-top: -30px;
+ 			}
 
-				svg {
-					width: 130px;
-	  			height: 90px;
-	  			overflow: visible;
-		      opacity: 0.3;	
-		      fill: $offWhite;
-				}
-			}
+ 			.quote-mark-top, .quote-mark-bottom {
+ 				position: absolute;
+ 				margin-top: -30px;
 
-		  .quote-mark-bottom {
-	  		right: 0;
-		    bottom: 0;
-		    margin-bottom: -30px;
-			  transform: rotate(180deg);
-				-webkit-transform: rotate(180deg);
-				-moz-transform: rotate(180deg);
-				-o-transform: rotate(180deg);
-				-ms-transform: rotate(180deg);
+ 				svg {
+ 					width: 130px;
+ 					height: 90px;
+ 					overflow: visible;
+ 					opacity: 0.3;	
+ 					fill: $offWhite;
+ 				}
+ 			}
 
-	    	svg {
+ 			.quote-mark-bottom {
+ 				right: 0;
+ 				bottom: 0;
+ 				margin-bottom: -30px;
+ 				transform: rotate(180deg);
+ 				-webkit-transform: rotate(180deg);
+ 				-moz-transform: rotate(180deg);
+ 				-o-transform: rotate(180deg);
+ 				-ms-transform: rotate(180deg);
 
-	    	}
-	    }
-	 	}
+ 				svg {
 
-		.button-next, .button-prev {
-			top: 0px;
-			position: absolute;
-			height: 100%;
-			display: none;
-			overflow: visible;
+ 				}
+ 			}
+ 		}
 
-				svg {
-					height: 41px;
-	    		width: 30px;
-	  	  	overflow: visible;
-	    		fill: $white;
-				}
-		}
+ 		.button-next, .button-prev {
+ 			top: 0px;
+ 			position: absolute;
+ 			height: 100%;
+ 			display: none;
+ 			overflow: visible;
 
-		.button-next {
-			right: 0px;
-			transform: rotate(180deg);
-			-webkit-transform: rotate(180deg);
-			-moz-transform: rotate(180deg);
-			-o-transform: rotate(180deg);
-			-ms-transform: rotate(180deg);
-		}
-	}
+ 			svg {
+ 				height: 41px;
+ 				width: 30px;
+ 				overflow: visible;
+ 				fill: $white;
+ 			}
+ 		}
 
-	@media screen and (min-width: $bp-medium) {
-		height: 400px;
+ 		.button-next {
+ 			right: 0px;
+ 			transform: rotate(180deg);
+ 			-webkit-transform: rotate(180deg);
+ 			-moz-transform: rotate(180deg);
+ 			-o-transform: rotate(180deg);
+ 			-ms-transform: rotate(180deg);
+ 		}
+ 	}
 
-		.wrapper {
+ 	@media screen and (min-width: $bp-medium) {
+ 		height: 400px;
 
-			.testimonial-carousel {
+ 		.wrapper {
 
-				.testimonial {
+ 			.testimonial-carousel {
 
-					p {
-						-webkit-line-clamp: 5;
-					}
-				}
-			}
-		}
+ 				.testimonial {
 
-	}
+ 					p {
+ 						-webkit-line-clamp: 5;
+ 					}
+ 				}
+ 			}
+ 		}
 
-	@media screen and (min-width: $bp-large) {
-		.wrapper {
+ 	}
 
-			.button-next, .button-prev {
-				display: block;
-			}
-		}
+ 	@media screen and (min-width: $bp-large) {
+ 		.wrapper {
 
-		.testimonial-carousel {
+ 			.button-next, .button-prev {
+ 				display: block;
+ 			}
+ 		}
 
-			.testimonial {
-				padding: 0;
-			}
-		}
-	}
-}
+ 		.testimonial-carousel {
+
+ 			.testimonial {
+ 				padding: 0;
+ 			}
+ 		}
+ 	}
+ }
