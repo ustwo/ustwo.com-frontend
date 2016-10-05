@@ -103,14 +103,22 @@ const Flux = Object.assign(
     },
     override(url) {
       return (e) => {
-        e.preventDefault();
-        Flux.navigate(url);
+        var openInNewTab = (e.button === 1 || e.shiftKey || e.ctrlKey || e.metaKey) ? true : false;
+
+        if(!openInNewTab) {
+          e.preventDefault();
+          Flux.navigate(url);
+        }
       };
     },
     overrideNoScroll(url) {
       return (e) => {
-        e.preventDefault();
-        Flux.navigate(url, true);
+        var openInNewTab = (e.button === 1 || e.shiftKey || e.ctrlKey || e.metaKey) ? true : false;
+
+        if(!openInNewTab) {
+          e.preventDefault();
+          Flux.navigate(url, true);
+        }
       };
     }
   }
