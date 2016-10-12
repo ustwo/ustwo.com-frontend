@@ -148,10 +148,15 @@ const Store = Object.assign(
                 || (item.slug && item.slug !== _state.eventsStudio))
       });
 
-      DataLoader(itemsToLoad, applyData).then(() => {
-        Store.emit('change', _state);
-        Store.initiateAsyncLoadsFor(itemsToLoad);
-      });
+      DataLoader(itemsToLoad, applyData)
+        .then(() => {
+          Store.emit('change', _state);
+          Store.initiateAsyncLoadsFor(itemsToLoad);
+        })
+        .catch((error) => {
+          log('Fetch error', error, error.stack);
+          Flux.navigate('notfound', null, true);
+        });
     },
     initiateAsyncLoadsFor(itemsToLoad) {
       itemsToLoad.filter(item => item.async).forEach(item => {
