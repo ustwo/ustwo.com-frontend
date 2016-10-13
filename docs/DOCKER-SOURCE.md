@@ -1,6 +1,7 @@
-# Docker Machine
+# Docker Source with Virtualbox
 
-Before the Docker native client we used docker-machine. Here are the steps for this original setup process.
+Before the Docker native client we installed docker with homebrew.
+Here are the steps for this original setup process.
 
 ## Docker dependencies
 

@@ -154,9 +154,9 @@ clients without Javascript (or with overzealous ad blockers)
 
 ### Docker
 
-In order to get up and running you need Docker. The easiest way to get all
-this set up is by using the official [Docker native client
-installer](https://docs.docker.com/engine/installation/).
+In order to get up and running you need Docker. The best way to install
+Docker is to follow the current
+[Docker documentation](https://docker.github.io/engine/installation/)
 
 Then add the following aliases to your `/etc/hosts` file:
 
@@ -166,7 +166,7 @@ Then add the following aliases to your `/etc/hosts` file:
 ```
 
 *Note*: For setup without the native docker client, skip this step and see
-[DOCKER-MACHINE.md][18].
+[DOCKER-SOURCE.md][18].
 
 ### Credentials / Vault
 
