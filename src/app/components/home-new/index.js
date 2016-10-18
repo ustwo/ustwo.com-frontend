@@ -8,6 +8,7 @@ import ScrollMagic from 'app/adaptors/server/scroll-magic';
 
 import ScreenBlock from 'app/components/screen-block';
 import SVG from 'app/components/svg';
+import FramesUstwoLogo from 'app/components/frames-ustwo-logo';
 
 const PageHomeNew = React.createClass({
 
@@ -52,6 +53,7 @@ const PageHomeNew = React.createClass({
             <img src="/images/home-new-temp.jpg" />
           </div> Replace this with Rimage */}
           <SVG title="ustwo logo" spritemapID="ustwologo" style={{ fill: '#FFFFFF' }} />
+          <FramesUstwoLogo scrollProgress={this.state.scrollProgressLogo} reverse={true} />
           <div>We're a Digital Product Studio</div> {/* Replace this with something like get(page, 'hero.attr.heading.value') */}
         </ScreenBlock>
 
