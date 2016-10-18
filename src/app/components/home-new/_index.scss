@@ -1,0 +1,168 @@
+/*
+ *  PAGE: HOME NEW
+ *  Homepage init
+ *
+ *  TODO: Once transferred to the real homepage, remove all instances of 'new'
+ */
+
+.page-home-new {
+  overflow:hidden;
+  transform: translateZ(0); /* hardware accelerate background-color change on scroll */
+
+  .screen-block:not(.hero) {
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-direction: column;
+      overflow: visible;
+
+      @media screen and (min-width: $bp-large) {
+        display: block;
+      }
+    }
+
+    h2 {
+      margin-bottom: 10px;
+
+      @media screen and (min-width: $bp-large) {
+        margin-bottom: 20px;
+      }
+    }
+
+    .text-block {
+      margin: 0 6.25%;
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      .text-block {
+        margin: 0 12.5%;
+      }
+    }
+
+    @media screen and (min-width: $bp-large) {
+      .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 0 4%;
+      }
+
+      .block-parent {
+        flex: 5;
+      }
+
+      .text-block {
+        flex: 3;
+        margin: 0 30px;
+      }
+
+    }
+
+    @media screen and (min-width: $bp-larger) {
+      .wrapper {
+        padding: 0 6%;
+      }
+
+      .text-block {
+        margin: 0 50px;
+      }
+    }
+
+    .block-parent {
+      .block-child {
+        .image-container {
+          width: 87.5%;
+          position: relative;
+          background-repeat: no-repeat;
+          background-position: 50% 50%;
+          background-size: contain;
+          height: 300px;
+          margin: 0 6.25%;
+
+          @media screen and (min-width: $bp-small) {
+            height: 400px;
+          }
+
+          @media screen and (min-width: $bp-medium) {
+            height: 450px;
+          }
+
+          @media screen and (min-width: $bp-larger) {
+            height: 525px;
+          }
+
+          @media screen and (min-width: $bp-huge) {
+            height: 600px;
+          }
+        }
+      }
+    }
+
+    &:nth-child(2n+1) {
+
+      @media screen and (min-width: $bp-large) {
+        padding-right: 0;
+
+        .block-parent {
+          order: 2;
+        }
+      }
+    }
+
+    .full-screen-background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+      }
+    }
+
+  }
+
+  .screen-block.welcome {
+    .headline-image {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      transition: opacity 0.8s ease-in-out;
+      backface-visibility: hidden;
+      opacity: 1;
+      display: block;
+      max-width: 520px;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: contain;
+
+      @media screen and (min-width: $bp-medium) {
+        max-width: 660px;
+      }
+
+      &.add {
+        opacity: 0;
+      }
+      &.show {
+        opacity: 1;
+      }
+      &.hide {
+        opacity: 0;
+      }
+    }
+  }
+}
