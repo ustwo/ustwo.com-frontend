@@ -64,6 +64,13 @@ const Hero = React.createClass({
     }
     return chevron;
   },
+  renderLogo() {
+    let logo;
+    if (this.props.logo) {
+      logo = this.props.logo;
+    }
+    return logo;
+  },
   onClickDownChevron() {
     Track('send', {
       'hitType': 'event',
@@ -73,18 +80,26 @@ const Hero = React.createClass({
     });
   },
   render() {
-    const { className, title, children } = this.props;
-    return <section className={classnames('hero', className)}>
-      <EntranceTransition className="title-entrance">
-        <h1 className="title">
-          <WordAnimation delay={1} duration={0.5}>{title}</WordAnimation>
-        </h1>
-        {this.renderSubheading()}
-      </EntranceTransition>
-      {this.renderImage()}
-      {children}
-      {this.renderDownChevron()}
-    </section>;
+    const { className, title, children, scrollProgress } = this.props;
+    const titleStyle = {
+      opacity: 1 - scrollProgress,
+      transform: `translateY(${100 * scrollProgress}%)`
+    }
+
+    return (
+      <section className={classnames('hero', className)}>
+        {this.renderLogo()}
+        <EntranceTransition className="title-entrance">
+          <h1 className="title" style={titleStyle}>
+            <WordAnimation delay={1} duration={0.5}>{title}</WordAnimation>
+          </h1>
+          {this.renderSubheading()}
+        </EntranceTransition>
+        {this.renderImage()}
+        {children}
+        {this.renderDownChevron()}
+      </section>
+    );
   }
 });
 

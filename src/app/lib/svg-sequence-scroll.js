@@ -11,13 +11,13 @@ function SVGSequenceScroll(props) {
     },
     componentDidMount() {
       this.hideAllFrames();
-      let svgElement = React.findDOMNode(this.refs.svgFrames);
-      this.setState({ totalFrames: svgElement.childNodes.length });
+      let frames = React.findDOMNode(this.refs.frames);
+      this.setState({ totalFrames: frames.childNodes.length });
     },
     hideAllFrames() {
-      let svg = React.findDOMNode(this.refs.svgFrames);
-      for (let i = 0; i < svg.childNodes.length; i++) {
-        svg.childNodes[i].style.display = 'none';
+      let frames = React.findDOMNode(this.refs.frames);
+      for (let i = 0; i < frames.childNodes.length; i++) {
+        frames.childNodes[i].style.display = 'none';
       }
     },
     initiateSequence() {
@@ -37,7 +37,9 @@ function SVGSequenceScroll(props) {
       window.cancelAnimationFrame(this.frameRequest);
       this.frameRequest = window.requestAnimationFrame(() => {
         this.hideAllFrames();
-        React.findDOMNode(this.refs.svgFrames).getElementById('Frame' + currentFrame).style.display = 'inline-block';
+
+        let frames = React.findDOMNode(this.refs.frames);
+        frames.childNodes[currentFrame - 1].style.display = 'inline-block';
       });
     }
   }

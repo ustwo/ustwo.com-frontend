@@ -5,6 +5,14 @@
  */
 
 .frames-ustwo-logo {
-  width: 100px;
-  height: 50px;
+  padding: 0 30px;
+
+  [id*='Frame'] {
+    max-width: 400px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }

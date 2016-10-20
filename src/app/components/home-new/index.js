@@ -9,28 +9,56 @@ import ScrollMagic from 'app/adaptors/server/scroll-magic';
 import ScreenBlock from 'app/components/screen-block';
 import SVG from 'app/components/svg';
 import FramesUstwoLogo from 'app/components/frames-ustwo-logo';
+import Hero from 'app/components/hero';
+import Video from 'app/components/video';
+
+// TEMP
+const sizes = {
+  "thumbnail": {
+    "file": "header_image_v2-300x300.png",
+    "width": 300,
+    "height": 300,
+    "mime-type": "image/png",
+    "source_url": "https://usweb-cdn.ustwo.com/ustwo-production/uploads/2011/06/header_image_v2-300x300.png"
+  },
+  "small": {
+    "file": "header_image_v2-576x480.png",
+    "width": 576,
+    "height": 480,
+    "mime-type": "image/png",
+    "source_url": "https://usweb-cdn.ustwo.com/ustwo-production/uploads/2011/06/header_image_v2-576x480.png",
+    "name": "small"
+  },
+  "small_crop": {
+    "file": "header_image_v2-640x480.png",
+    "width": 640,
+    "height": 480,
+    "mime-type": "image/png",
+    "source_url": "https://usweb-cdn.ustwo.com/ustwo-production/uploads/2011/06/header_image_v2-640x480.png"
+  }
+};
 
 const PageHomeNew = React.createClass({
 
   getInitialState() {
     return {
-      scrollProgressLogo: 0
+      scrollProgress: 0
     }
   },
 
   componentDidMount() {
     const controller = new ScrollMagic.Controller();
 
-    const scrollProgressLogo = (e) => {
-      this.setState({ scrollProgressLogo: e.progress });
+    const scrollProgress = (e) => {
+      this.setState({ scrollProgress: e.progress });
     }
 
-    const sceneLogo = new ScrollMagic.Scene({
+    const scene = new ScrollMagic.Scene({
       triggerElement: "#first",
-      duration: "50%",
+      duration: "60%",
       triggerHook: 'onLeave'
     })
-    .on("progress", scrollProgressLogo)
+    .on("progress", scrollProgress)
     .addTo(controller);
 
   },
@@ -38,24 +66,29 @@ const PageHomeNew = React.createClass({
   render() {
     const { page } = this.props;
     const classes = classnames('page-home-new', this.props.className);
+    const logoStyles = {
+      transform: `translateY(${100 * this.state.scrollProgress}%)`
+    }
+    const logo = <FramesUstwoLogo style={logoStyles} scrollProgress={this.state.scrollProgress} reverse={true} />;
 
     return (
       <article className={classes} id="first">
 
         {/* Block 1 */}
-        <ScreenBlock
-          ref="blockWelcome"
-          customClass="welcome"
-          textColour={get(page, 'colors.primary')}
-          bgColour="#CCCCCC"
+        <Hero
+          title="We're a Digital Product Studio"
+          transitionImage={true}
+          eventLabel='home-new'
+          logo={logo}
+          scrollProgress={this.state.scrollProgress}
         >
-          {/* <div className="full-screen-background">
-            <img src="/images/home-new-temp.jpg" />
-          </div> Replace this with Rimage */}
-          <SVG title="ustwo logo" spritemapID="ustwologo" style={{ fill: '#FFFFFF' }} />
-          <FramesUstwoLogo scrollProgress={this.state.scrollProgressLogo} reverse={true} />
-          <div>We're a Digital Product Studio</div> {/* Replace this with something like get(page, 'hero.attr.heading.value') */}
-        </ScreenBlock>
+          <Video
+            src="/images/temp/home-new-video.mp4"
+            sizes={sizes}
+            isVideoBackground={true}
+          />
+        </Hero>
+
 
         {/* Block 2 */}
         <ScreenBlock

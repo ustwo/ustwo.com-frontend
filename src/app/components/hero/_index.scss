@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh; /* This is for IE as content doesn't center */
   min-height: 100vh;
 
@@ -21,7 +22,13 @@
     max-width: 550px;
     padding: 0 20px;
     text-align: center;
-    color: $offWhite;
+    color: $honey;
+  }
+
+  > [class*="frames-"] {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 30px;
   }
 
   .rimage {
