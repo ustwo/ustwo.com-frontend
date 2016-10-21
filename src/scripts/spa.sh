@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 echo "Compiling the SPA..."
@@ -14,13 +14,10 @@ fi
 
 mkdir -p $base/public/js
 
-if [[ -z $FLUSH_CACHE ]]; then
+if [[ $FLUSH_CACHE == "true" ]]; then
   if [[ -d $base/public/.cache-spa ]]; then
-    rsync -r $base/public/.cache-spa/ \
-             $base/node_modules/persistify/node_modules/flat-cache/.cache/
+    rm -rf $base/public/.cache-spa
   fi
-else
-  rm -rf $base/public/.cache-spa
 fi
 
 persistify $input \
@@ -38,10 +35,9 @@ persistify $input \
            --external scrollmagic \
            --external react-responsive \
            --verbose \
+           --cache-dir $base/public/.cache-spa \
            --outfile $filename
 
-rsync -r $base/node_modules/persistify/node_modules/flat-cache/.cache/ \
-         $base/public/.cache-spa/
 
 if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename

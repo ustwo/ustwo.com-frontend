@@ -17,8 +17,10 @@ RUN apt-get update -yqq \
 RUN mkdir /root/.parallel \
  && touch /root/.parallel/will-cite
 
-WORKDIR /usr/local/bin
-RUN curl -L "https://github.com/ustwo/docker-sass/releases/download/v$SASSC_VERSION/alpine-sassc-$SASSC_VERSION.tar.gz" | tar xvz
+#WORKDIR /usr/local/bin
+#RUN curl -L "https://github.com/ustwo/docker-sass/releases/download/v$SASSC_VERSION/alpine-sassc-$SASSC_VERSION.tar.gz" | tar xvz
+RUN npm install -g node-sass \
+ && ln -s /usr/local/bin/node-sass /usr/local/bin/sassc
 
 WORKDIR /home/ustwo
 COPY package.compiler.json /home/ustwo/package.json
