@@ -36,6 +36,7 @@ app-create:
 	@echo "Creating $(app_name)"
 	@$(DOCKER_PROC) \
 		--name $(app_name) \
+		-p 8888:8888 \
 		$(app_volumes) \
 		--restart always \
 		$(project_labels) \

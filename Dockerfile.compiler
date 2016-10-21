@@ -1,4 +1,4 @@
-FROM ustwo/nodejs:4.1.1
+FROM node:6.9.1-slim
 MAINTAINER Arnau Siches <arnau@ustwo.com>
 
 ENV TERM xterm-256color
@@ -7,12 +7,12 @@ ENV SASSC_VERSION 3.2.5
 ENV LIBSASS_VERSION 3.2.5
 ENV NODE_PATH /home/ustwo/src
 
-RUN apk add --update \
+RUN apt-get update -yqq \
+ && apt-get install -yqq \
           curl \
           grep \
           rsync \
-          parallel \
- && rm -rf /var/cache/apk/*
+          parallel
 
 RUN mkdir /root/.parallel \
  && touch /root/.parallel/will-cite
