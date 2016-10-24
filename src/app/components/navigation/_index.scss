@@ -12,7 +12,8 @@
 // }
 
 .header {
-  position: absolute;
+  position: fixed;
+  top: 0;
   z-index: 9999;
   display: block;
   width: 100%;
@@ -38,6 +39,18 @@
       height: $nav-height;
       fill: white;
       transition: fill .2s ease-in-out;
+    }
+
+    /* If homepage */
+    .frames-ustwo-logo {
+      padding: 0;
+      height: 68px;
+      display: flex;
+      align-items: center;
+
+      [id*='Frame'] {
+        max-width: 100px;
+      }
     }
   }
 

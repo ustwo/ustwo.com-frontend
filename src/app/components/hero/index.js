@@ -83,7 +83,7 @@ const Hero = React.createClass({
     const { className, title, children, scrollProgress } = this.props;
     const titleStyle = {
       opacity: 1 - scrollProgress,
-      transform: `translateY(${100 * scrollProgress}%)`
+      transform: `translate3d(0, ${25 * scrollProgress}vh, 0)`
     }
 
     return (

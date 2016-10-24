@@ -5,11 +5,21 @@
  *  TODO: Once transferred to the real homepage, remove all instances of 'new'
  */
 
+
+ 
 .page-home-new {
   overflow:hidden;
   transform: translateZ(0); /* hardware accelerate background-color change on scroll */
 
+  .hero {
+    background-color: $rain;
+  }
+
   .screen-block:not(.hero) {
+
+    &.about {
+      background-color: $blu;
+    }
 
     .wrapper {
       display: flex;

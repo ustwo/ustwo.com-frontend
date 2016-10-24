@@ -55,7 +55,7 @@ const PageHomeNew = React.createClass({
 
     const scene = new ScrollMagic.Scene({
       triggerElement: "#first",
-      duration: "60%",
+      duration: "50%",
       triggerHook: 'onLeave'
     })
     .on("progress", scrollProgress)
@@ -67,7 +67,7 @@ const PageHomeNew = React.createClass({
     const { page } = this.props;
     const classes = classnames('page-home-new', this.props.className);
     const logoStyles = {
-      transform: `translateY(${100 * this.state.scrollProgress}%)`
+      transform: `translate3d(0, ${25 * this.state.scrollProgress}vh, 0)`
     }
     const logo = <FramesUstwoLogo style={logoStyles} scrollProgress={this.state.scrollProgress} reverse={true} />;
 
