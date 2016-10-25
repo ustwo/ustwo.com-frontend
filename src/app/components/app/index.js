@@ -94,7 +94,8 @@ const App = React.createClass({
   render() {
     const state = this.state;
     const appClasses = classnames('app', {
-      'app-404': state.currentPage === 'notfound'
+      'app-404': state.currentPage === 'notfound',
+      'scroll-wipes': state.currentPage === 'home'
     });
     const contentClasses = classnames('app-content', {
       'takeover': this.showTakeover(),

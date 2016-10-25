@@ -25,19 +25,21 @@ const Navigation = React.createClass({
     }
   },
   componentDidMount() {
-    const controller = new ScrollMagic.Controller();
+    if (this.props.section === 'home') {
+      const controller = new ScrollMagic.Controller();
 
-    const scrollProgress = (e) => {
-      this.setState({ scrollProgress: e.progress });
+      const scrollProgress = (e) => {
+        this.setState({ scrollProgress: e.progress });
+      }
+
+      const scene = new ScrollMagic.Scene({
+        triggerElement: "#first",
+        duration: "100%",
+        triggerHook: 'onLeave'
+      })
+      .on("progress", scrollProgress)
+      .addTo(controller);
     }
-
-    const scene = new ScrollMagic.Scene({
-      triggerElement: "#first",
-      duration: "100%",
-      triggerHook: 'onLeave'
-    })
-    .on("progress", scrollProgress)
-    .addTo(controller);
   },
   onClickLogo(event) {
     const { takeover } = this.props;

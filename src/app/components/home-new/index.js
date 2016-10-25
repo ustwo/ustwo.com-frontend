@@ -53,13 +53,24 @@ const PageHomeNew = React.createClass({
       this.setState({ scrollProgress: e.progress });
     }
 
-    const scene = new ScrollMagic.Scene({
-      triggerElement: "#first",
-      duration: "50%",
+    new ScrollMagic.Scene({
+      triggerElement: '#first',
+      duration: '50%',
       triggerHook: 'onLeave'
     })
-    .on("progress", scrollProgress)
+    .on('progress', scrollProgress)
     .addTo(controller);
+
+    const slides = document.querySelectorAll("section.panel");
+
+    for (let i = 0; i < slides.length - 1; i++) {
+      new ScrollMagic.Scene({
+        triggerElement: slides[i],
+        triggerHook: 'onLeave'
+      })
+      .setPin(slides[i])
+      .addTo(controller);
+    }
 
   },
 
@@ -89,7 +100,6 @@ const PageHomeNew = React.createClass({
           />
         </Hero>
 
-
         {/* Block 2 */}
         <ScreenBlock
           ref="blockAbout"
@@ -99,6 +109,19 @@ const PageHomeNew = React.createClass({
         >
           We work as Partners to the biggest, smartest brands
         </ScreenBlock>
+
+
+        <div id="section-wipes">
+          <section className="panel blue">
+          	<b>ONE</b>
+          </section>
+          <section className="panel red">
+          	<b>TWO</b>
+          </section>
+          <section className="panel yellow">
+          	<b>THREE</b>
+          </section>
+        </div>
 
       </article>
     );

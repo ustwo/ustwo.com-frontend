@@ -43,12 +43,14 @@ const Footer = React.createClass({
   renderStudios() {
     const studios = this.props.studios;
     return studios && studios.map(studio => {
-      return <StudioContact
-        key={`studio-${kebabCase(studio.name)}`}
-        studio={studio}
-        open={this.state.selectedStudio === studio.id}
-        onClick={this.generateOnClickStudioHandler(studio)}
-      />;
+      return (
+        <StudioContact
+          key={`studio-${kebabCase(studio.name)}`}
+          studio={studio}
+          open={this.state.selectedStudio === studio.id}
+          onClick={this.generateOnClickStudioHandler(studio)}
+        />
+      );
     });
   },
   generateOnClickStudioHandler(studio) {
@@ -67,56 +69,62 @@ const Footer = React.createClass({
         break;
       case 'events/event':
         return <EventsSubscription />;
-        break; 
+        break;
       default:
         return <Subscription />;
     }
   },
   renderSocialMediaChannel(url, channel) {
-    return <li key={channel} className={classnames('channel', channel)}>
-      <a
-        href={url}
-        onClick={this.onClickSocial(channel)}
-        target="_blank"
-      >
-        <SVG
-          className="logo"
-          title={`${channel} logo`}
-          spritemapID={channel}
-        />
-      </a>
-    </li>;
+    return (
+      <li key={channel} className={classnames('channel', channel)}>
+        <a
+          href={url}
+          onClick={this.onClickSocial(channel)}
+          target="_blank"
+        >
+          <SVG
+            className="logo"
+            title={`${channel} logo`}
+            spritemapID={channel}
+          />
+        </a>
+      </li>
+    );
   },
   render() {
     const generalContact = last(get(this.props, 'data.contacts'));
     const generalEmail = get(generalContact, 'methods.0.uri');
-    return <footer className="footer">
-      {this.renderSubscription()}
-      <div className="content">
-        <div className="general">
-          <a
-            className="email-cta"
-            href={generalEmail}
-            onClick={this.onClickShowContacts}
-          >
-            {get(this.props, 'data.contact_link_text')}
-          </a>
-          <ul className="social">
-            {map(get(this.props, 'data.social', {}), this.renderSocialMediaChannel)}
+    const classes = classnames('footer', `footer-${this.props.currentPage}`);
+
+    return (
+      <footer className={classes}>
+        {this.renderSubscription()}
+        <div className="content">
+          <div className="general">
+            <a
+              className="email-cta"
+              href={generalEmail}
+              onClick={this.onClickShowContacts}
+            >
+              {get(this.props, 'data.contact_link_text')}
+            </a>
+            <ul className="social">
+              {map(get(this.props, 'data.social', {}), this.renderSocialMediaChannel)}
+            </ul>
+          </div>
+          <ul className="studios">
+            {this.renderStudios()}
           </ul>
+          <div className="copyright">
+            <ul>
+              <li dangerouslySetInnerHTML={{ __html: get(this.props, 'data.copyright') }} />
+              <li dangerouslySetInnerHTML={{ __html: get(this.props, 'data.legal') }} />
+              <li dangerouslySetInnerHTML={{ __html: get(this.props, 'data.cookie') }} />
+            </ul>
+          </div>
         </div>
-        <ul className="studios">
-          {this.renderStudios()}
-        </ul>
-        <div className="copyright">
-          <ul>
-            <li dangerouslySetInnerHTML={{ __html: get(this.props, 'data.copyright') }} />
-            <li dangerouslySetInnerHTML={{ __html: get(this.props, 'data.legal') }} />
-            <li dangerouslySetInnerHTML={{ __html: get(this.props, 'data.cookie') }} />
-          </ul>
-        </div>
-      </div>
-    </footer>;
+      </footer>
+    );
   }
 });
 

@@ -6,13 +6,17 @@
  */
 
 
- 
+
 .page-home-new {
-  overflow:hidden;
-  transform: translateZ(0); /* hardware accelerate background-color change on scroll */
+  // overflow: hidden;
+  // transform: translateZ(0); /* hardware accelerate background-color change on scroll */
 
   .hero {
     background-color: $rain;
+
+    .title {
+      color: $honey;
+    }
   }
 
   .screen-block:not(.hero) {
@@ -175,4 +179,22 @@
       }
     }
   }
+
+  #section-wipes {
+    width: 100%;
+    height: 100%;
+  }
+
+  .panel {
+    width:100%;
+    height: 100%;
+
+    &.blue {
+      background: blue;
+    }
+    &.red {
+      background: red;
+    }
+	}
+
 }

@@ -12,6 +12,11 @@ body {
   overflow-x: hidden;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 *,
 *:before,
 *:after {

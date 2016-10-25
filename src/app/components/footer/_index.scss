@@ -165,7 +165,7 @@
 
 
   @media screen and (min-width: $bp-medium) {
-    
+
     .content,
     .subscription {
       max-width: $max-app-width;
@@ -232,5 +232,10 @@
         }
       }
     }
+  }
+
+  &.footer-home {
+    position: relative;
+    top: 300%;
   }
 }
