@@ -3,6 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import getFeaturedImage from 'app/lib/get-featured-image';
+import blendColours from 'app/lib/blend-colours';
 import get from 'lodash/object/get';
 import ScrollMagic from 'app/adaptors/server/scroll-magic';
 
@@ -72,6 +73,27 @@ const PageHomeNew = React.createClass({
       .addTo(controller);
     }
 
+
+
+    // Colour blend
+
+    const colourBlendElement = React.findDOMNode(this.refs.scrollContainer);
+
+    // Set initial colour of colour blend element
+    colourBlendElement.style.backgroundColor = '#009CF3';
+
+    new ScrollMagic.Scene({
+      triggerElement: '.screen-block.about',
+      triggerHook: 'onLeave',
+      duration: '100%'
+    })
+    .on('progress', (e) => {
+      window.requestAnimationFrame(() => {
+        colourBlendElement.style.backgroundColor = `#${blendColours('#009CF3', '#8fdba3', e.progress)}`;
+      });
+    })
+    .addTo(controller);
+
   },
 
   render() {
@@ -100,27 +122,29 @@ const PageHomeNew = React.createClass({
           />
         </Hero>
 
-        {/* Block 2 */}
-        <ScreenBlock
-          ref="blockAbout"
-          customClass="about"
-          textColour={get(page, 'colors.primary')}
-          bgColour={get(page, 'colors.bg')}
-        >
-          We work as Partners to the biggest, smartest brands
-        </ScreenBlock>
+        <div className="scroll-container" ref="scrollContainer">
 
+          {/* Block 2 */}
+          <ScreenBlock
+            ref="blockAbout"
+            customClass="about"
+            textColour={get(page, 'colors.primary')}
+            bgColour='transparent'
+          >
+            We work as Partners to the biggest, smartest brands
+          </ScreenBlock>
 
-        <div id="section-wipes">
-          <section className="panel blue">
-          	<b>ONE</b>
-          </section>
-          <section className="panel red">
-          	<b>TWO</b>
-          </section>
-          <section className="panel yellow">
-          	<b>THREE</b>
-          </section>
+          <div id="section-wipes">
+            <section className="panel blue">
+            	<b>ONE</b>
+            </section>
+            <section className="panel red">
+            	<b>TWO</b>
+            </section>
+            <section className="panel yellow">
+            	<b>THREE</b>
+            </section>
+          </div>
         </div>
 
       </article>

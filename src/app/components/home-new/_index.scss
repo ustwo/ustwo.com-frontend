@@ -22,7 +22,7 @@
   .screen-block:not(.hero) {
 
     &.about {
-      background-color: $blu;
+      background-color: transparent;
     }
 
     .wrapper {
@@ -180,9 +180,15 @@
     }
   }
 
+  /* Some scrollmagic stuff */
+
+  .scroll-container {
+    height: 200%;
+  }
+
   #section-wipes {
     width: 100%;
-    height: 100%;
+    height: 50%; /* As this belongs inside scroll-container which is 200% */
   }
 
   .panel {
@@ -190,10 +196,14 @@
     height: 100%;
 
     &.blue {
-      background: blue;
+      background: transparent;
     }
     &.red {
       background: red;
+    }
+    &.yellow {
+      position: relative;
+      background: yellow;
     }
 	}
 
