@@ -7,10 +7,9 @@ import MediaQuery from 'react-responsive';
 
 import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 import getFeaturedImage from 'app/lib/get-featured-image';
+import blendColours from 'app/lib/blend-colours';
 
 import ScrollMagic from 'app/adaptors/server/scroll-magic';
-import hexRgb from 'hex-rgb';
-import rgbHex from 'rgb-hex';
 import Tracking from 'app/adaptors/server/tracking';
 import window from 'app/adaptors/server/window';
 import Track from 'app/adaptors/server/track';
@@ -97,21 +96,9 @@ const PageHome = React.createClass({
       // .addIndicators() // add indicators (requires plugin)
       .on('progress', (e) => {
         window.requestAnimationFrame(() => {
-          pageElement.style.backgroundColor = '#' + this.blendColours(hexColour1, hexColour2, e.progress);
+          pageElement.style.backgroundColor = '#' + blendColours(hexColour1, hexColour2, e.progress);
         });
     });
-  },
-  blendColours(colour1, colour2, percentage) {
-    let rgbColour1 = hexRgb(colour1);
-    let rgbColour2 = hexRgb(colour2);
-
-    let rgbColour3 = [
-      (1 - percentage) * rgbColour1[0] + percentage * rgbColour2[0],
-      (1 - percentage) * rgbColour1[1] + percentage * rgbColour2[1],
-      (1 - percentage) * rgbColour1[2] + percentage * rgbColour2[2]
-    ];
-
-    return rgbHex(rgbColour3[0], rgbColour3[1], rgbColour3[2]);
   },
   componentWillMount() {
     this.Tracking = new Tracking();
