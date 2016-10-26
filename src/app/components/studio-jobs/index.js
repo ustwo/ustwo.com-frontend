@@ -2,7 +2,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import find from 'lodash/collection/find';
 import kebabCase from 'lodash/string/kebabCase';
 import getFeaturedImage from 'app/lib/get-featured-image';

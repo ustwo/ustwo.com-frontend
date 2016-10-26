@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import moment from 'moment';
 import classnames from 'classnames';

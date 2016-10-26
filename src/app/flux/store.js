@@ -4,7 +4,7 @@ import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
 import some from 'lodash/collection/some';
 import capitalize from 'lodash/string/capitalize';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import camelCase from 'lodash/string/camelCase';
 
 import log from 'app/lib/log';

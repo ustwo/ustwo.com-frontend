@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import he from 'he';
 import TransitionManager from 'react-transition-manager';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import reduce from 'lodash/collection/reduce';
 
 import Track from 'app/adaptors/server/track';

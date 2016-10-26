@@ -7,7 +7,7 @@ import map from 'lodash/collection/map';
 import filter from 'lodash/collection/filter';
 import pluck from 'lodash/collection/pluck';
 import includes from 'lodash/collection/includes';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import kebabCase from 'lodash/string/kebabCase';
 import spannify from 'app/lib/spannify';
 import getFeaturedImage from 'app/lib/get-featured-image';

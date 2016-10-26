@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import he from 'he';
 import classnames from 'classnames';
 import moment from 'moment';

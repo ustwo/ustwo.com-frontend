@@ -1,5 +1,5 @@
 import React from 'react';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
 import SingleColumn from 'app/components/single-column';
 import QuoteBlock from 'app/components/quote-block';

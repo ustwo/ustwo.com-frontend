@@ -2,7 +2,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import map from 'lodash/collection/map';
 import last from 'lodash/array/last';
 import kebabCase from 'lodash/string/kebabCase';

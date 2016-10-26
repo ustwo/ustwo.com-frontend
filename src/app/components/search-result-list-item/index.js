@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import he from 'he';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import kebabCase from 'lodash/string/kebabCase';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import getAuthor from 'app/lib/get-author';

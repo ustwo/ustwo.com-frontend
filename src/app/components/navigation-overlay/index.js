@@ -2,7 +2,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
 import Flux from 'app/flux';
 

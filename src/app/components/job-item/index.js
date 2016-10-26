@@ -3,7 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import ellipsize from 'ellipsize';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
 import SVG from 'app/components/svg';
 

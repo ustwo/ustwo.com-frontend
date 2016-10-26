@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
 import WorkItem from 'app/components/work-item';
 import BlogPostListItem from 'app/components/blog-post-list-item';

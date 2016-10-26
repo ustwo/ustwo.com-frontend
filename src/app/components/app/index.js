@@ -5,7 +5,7 @@ import React from 'react';
 import Meta from "react-helmet";
 import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import find from 'lodash/collection/find';
 import includes from 'lodash/collection/includes';
 

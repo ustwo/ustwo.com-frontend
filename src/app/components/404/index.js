@@ -2,7 +2,7 @@
 
 import React from 'react';
 import find from 'lodash/collection/find';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
 import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 

@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import map from 'lodash/collection/map';
 import take from 'lodash/array/take';
 import classnames from 'classnames';

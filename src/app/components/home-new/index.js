@@ -4,7 +4,7 @@ import React from 'react';
 import classnames from 'classnames';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import blendColours from 'app/lib/blend-colours';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import ScrollMagic from 'app/adaptors/server/scroll-magic';
 
 import ScreenBlock from 'app/components/screen-block';

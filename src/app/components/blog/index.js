@@ -4,7 +4,7 @@ import React from 'react';
 import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
 import find from 'lodash/collection/find';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import take from 'lodash/array/take';
 import isEqual from 'lodash/lang/isEqual';
 

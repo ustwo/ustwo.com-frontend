@@ -1,4 +1,4 @@
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import find from 'lodash/collection/find';
 
 export default (data, attachments) => {

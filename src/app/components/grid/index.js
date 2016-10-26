@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import kebabCase from 'lodash/string/kebabCase';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import QS from 'app/lib/query-string';
 
 import GridCell from 'app/components/grid-cell';

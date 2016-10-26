@@ -1,5 +1,5 @@
 import React from 'react';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
 import ScrollTracker from 'app/adaptors/server/scroll-tracker';
 

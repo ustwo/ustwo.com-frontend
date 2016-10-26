@@ -3,7 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import he from 'he';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import renderModules from 'app/lib/module-renderer';
 import moment from 'moment';
