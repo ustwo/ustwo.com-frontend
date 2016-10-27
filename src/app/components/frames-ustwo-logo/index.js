@@ -2,120 +2,167 @@
 
 import React from 'react';
 
-import SVGSequenceScroll from 'app/lib/svg-sequence-scroll';
-
 const FramesUstwoLogo = React.createClass({
-  mixins: [SVGSequenceScroll()],
-  render() {
 
-    this.initiateSequence();
+  getInitialState() {
+    return {
+      currentFrame: 0,
+      totalFrames: 0
+    }
+  },
+
+  componentDidMount() {
+    let frames = React.findDOMNode(this.refs.frames);
+    this.setState({ totalFrames: frames.childNodes.length });
+
+    this.hideAllFrames();
+  },
+
+  componentWillReceiveProps() {
+    let framePosition = Math.floor(this.props.scrollProgress * this.state.totalFrames);
+
+    if (framePosition === 0) {
+      framePosition = 1;
+    }
+
+    console.log("framePosition")
+    console.log(framePosition);
+
+    if (this.props.reverse) {
+      this.setState({ currentFrame: this.state.totalFrames - framePosition + 1 });
+    } else {
+      this.setState({ currentFrame: framePosition });
+    }
+  },
+
+  componentDidUpdate() {
+    let frames = React.findDOMNode(this.refs.frames);
+
+    console.log("currentFrame");
+    console.log(this.state.currentFrame);
+
+    window.cancelAnimationFrame(this.frameRequest);
+    this.frameRequest = window.requestAnimationFrame(() => {
+      this.hideAllFrames();
+      frames.childNodes[this.state.currentFrame - 1].style.display = 'inline-block';
+    });
+  },
+
+  hideAllFrames() {
+    let frames = React.findDOMNode(this.refs.frames);
+    for (let i = 0; i < frames.childNodes.length; i++) {
+      frames.childNodes[i].style.display = 'none';
+    }
+  },
+
+  render() {
 
     return (
       <div className="frames-ustwo-logo" style={this.props.style}>
-        <div ref="frames">
-          <div id="Frame1">
+        <div ref="frames" id="frames">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN01.png" />
           </div>
-          <div id="Frame2">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN02.png" />
           </div>
-          <div id="Frame3">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN03.png" />
           </div>
-          <div id="Frame4">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN04.png" />
           </div>
-          <div id="Frame5">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN05.png" />
           </div>
-          <div id="Frame6">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN06.png" />
           </div>
-          <div id="Frame7">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN07.png" />
           </div>
-          <div id="Frame8">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN08.png" />
           </div>
-          <div id="Frame9">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN09.png" />
           </div>
-          <div id="Frame10">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN10.png" />
           </div>
-          <div id="Frame11">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN11.png" />
           </div>
-          <div id="Frame12">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN12.png" />
           </div>
-          <div id="Frame13">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN13.png" />
           </div>
-          <div id="Frame14">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN14.png" />
           </div>
-          <div id="Frame15">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN15.png" />
           </div>
-          <div id="Frame16">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN16.png" />
           </div>
-          <div id="Frame17">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN17.png" />
           </div>
-          <div id="Frame18">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN18.png" />
           </div>
-          <div id="Frame19">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN19.png" />
           </div>
-          <div id="Frame20">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN20.png" />
           </div>
-          <div id="Frame21">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN21.png" />
           </div>
-          <div id="Frame22">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN22.png" />
           </div>
-          <div id="Frame23">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN23.png" />
           </div>
-          <div id="Frame24">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN24.png" />
           </div>
-          <div id="Frame25">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN25.png" />
           </div>
-          <div id="Frame26">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN26.png" />
           </div>
-          <div id="Frame27">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN27.png" />
           </div>
-          <div id="Frame28">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN28.png" />
           </div>
-          <div id="Frame29">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN29.png" />
           </div>
-          <div id="Frame30">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN30.png" />
           </div>
-          <div id="Frame31">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN31.png" />
           </div>
-          <div id="Frame32">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN32.png" />
           </div>
-          <div id="Frame33">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN33.png" />
           </div>
-          <div id="Frame34">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN34.png" />
           </div>
-          <div id="Frame35">
+          <div>
             <img src="/images/temp/ustwo_logo_draw_IN35.png" />
           </div>
         </div>

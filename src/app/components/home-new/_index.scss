@@ -187,12 +187,10 @@
   }
 
   #section-wipes {
-    width: 100%;
     height: 50%; /* As this belongs inside scroll-container which is 200% */
   }
 
   .panel {
-    width:100%;
     height: 100%;
 
     &.blue {

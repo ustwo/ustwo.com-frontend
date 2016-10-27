@@ -7,12 +7,12 @@
 .frames-ustwo-logo {
   padding: 0 70px;
 
-  [id*='Frame'] {
+  > div {
     max-width: 400px;
   }
 
   img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
   }
 }

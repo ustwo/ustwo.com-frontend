@@ -12,6 +12,9 @@ import SVG from 'app/components/svg';
 import FramesUstwoLogo from 'app/components/frames-ustwo-logo';
 import Hero from 'app/components/hero';
 import Video from 'app/components/video';
+import WordAnimation from 'app/components/word-animation';
+import EntranceTransition from 'app/components/entrance-transition';
+import BoldHeader from 'app/components/bold-header';
 
 // TEMP
 const sizes = {
@@ -48,7 +51,12 @@ const PageHomeNew = React.createClass({
   },
 
   componentDidMount() {
+
+    // Setup Scrollmagic
     const controller = new ScrollMagic.Controller();
+
+
+    // Track scroll progress to animate logo
 
     const scrollProgress = (e) => {
       this.setState({ scrollProgress: e.progress });
@@ -62,6 +70,9 @@ const PageHomeNew = React.createClass({
     .on('progress', scrollProgress)
     .addTo(controller);
 
+
+    // Wipes
+
     const slides = document.querySelectorAll("section.panel");
 
     for (let i = 0; i < slides.length - 1; i++) {
@@ -74,13 +85,11 @@ const PageHomeNew = React.createClass({
     }
 
 
-
     // Colour blend
 
     const colourBlendElement = React.findDOMNode(this.refs.scrollContainer);
 
-    // Set initial colour of colour blend element
-    colourBlendElement.style.backgroundColor = '#009CF3';
+    colourBlendElement.style.backgroundColor = '#009CF3'; // Set initial colour of colour blend element
 
     new ScrollMagic.Scene({
       triggerElement: '.screen-block.about',
@@ -131,7 +140,15 @@ const PageHomeNew = React.createClass({
             textColour={get(page, 'colors.primary')}
             bgColour='transparent'
           >
-            We work as Partners to the biggest, smartest brands
+            <EntranceTransition className="title-entrance">
+              <div className="headline-text title">
+                <BoldHeader colour="white">
+                  <WordAnimation delay={1} duration={0.4}>
+                    We work as Partners to the biggest, smartest brands
+                  </WordAnimation>
+                </BoldHeader>
+              </div>
+            </EntranceTransition>
           </ScreenBlock>
 
           <div id="section-wipes">
