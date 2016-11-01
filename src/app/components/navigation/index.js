@@ -29,7 +29,8 @@ const Navigation = React.createClass({
       const controller = new ScrollMagic.Controller();
 
       const scrollProgress = (e) => {
-        this.setState({ scrollProgress: e.progress });
+        let value = Math.round(e.progress * 100) / 100;
+        this.setState({ scrollProgress: value });
       }
 
       const scene = new ScrollMagic.Scene({

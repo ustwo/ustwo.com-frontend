@@ -18,28 +18,20 @@ const FramesUstwoLogo = React.createClass({
     this.hideAllFrames();
   },
 
-  componentWillReceiveProps() {
-    let framePosition = Math.floor(this.props.scrollProgress * this.state.totalFrames);
+  componentWillReceiveProps(nextProps) {
+    let framePosition = Math.ceil(nextProps.scrollProgress * this.state.totalFrames);
 
     if (framePosition === 0) {
       framePosition = 1;
     }
 
-    console.log("framePosition")
-    console.log(framePosition);
-
-    if (this.props.reverse) {
+    if (nextProps.reverse) {
       this.setState({ currentFrame: this.state.totalFrames - framePosition + 1 });
     } else {
       this.setState({ currentFrame: framePosition });
     }
-  },
 
-  componentDidUpdate() {
     let frames = React.findDOMNode(this.refs.frames);
-
-    console.log("currentFrame");
-    console.log(this.state.currentFrame);
 
     window.cancelAnimationFrame(this.frameRequest);
     this.frameRequest = window.requestAnimationFrame(() => {

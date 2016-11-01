@@ -59,7 +59,8 @@ const PageHomeNew = React.createClass({
     // Track scroll progress to animate logo
 
     const scrollProgress = (e) => {
-      this.setState({ scrollProgress: e.progress });
+      let value = Math.round(e.progress * 100) / 100;
+      this.setState({ scrollProgress: value });
     }
 
     new ScrollMagic.Scene({
@@ -98,7 +99,7 @@ const PageHomeNew = React.createClass({
     })
     .on('progress', (e) => {
       window.requestAnimationFrame(() => {
-        colourBlendElement.style.backgroundColor = `#${blendColours('#009CF3', '#8fdba3', e.progress)}`;
+        colourBlendElement.style.background = `linear-gradient(45deg, #${blendColours('#0065c9', '#76d377', e.progress)} 0%, #${blendColours('#00ccda', '#68d79e', e.progress)} 100%)`;
       });
     })
     .addTo(controller);
