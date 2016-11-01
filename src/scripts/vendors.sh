@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 echo "Compiling the SPA vendors..."
@@ -8,13 +8,10 @@ filename="$base/public/js/vendors.js"
 
 mkdir -p $base/public/js
 
-if [[ -z $FLUSH_CACHE ]]; then
+if [[ $FLUSH_CACHE == "true" ]]; then
   if [[ -d $base/public/.cache-vendors ]]; then
-    rsync -r $base/public/.cache-vendors/ \
-             $base/node_modules/persistify/node_modules/flat-cache/.cache/
+    rm -rf $base/public/.cache-vendors/
   fi
-else
-  rm -rf $base/public/.cache-vendors
 fi
 
 persistify --require babelify/polyfill \
@@ -28,10 +25,8 @@ persistify --require babelify/polyfill \
            --require scrollmagic \
            --require react-responsive \
            --verbose \
+           --cache-dir $base/public/.cache-vendors \
            --outfile $filename
-
-rsync -r $base/node_modules/persistify/node_modules/flat-cache/.cache/ \
-         $base/public/.cache-vendors/
 
 if [[ -z "$VERBOSE" ]]; then
   uglifyjs --mangle --comments --stats -o $filename -- $filename

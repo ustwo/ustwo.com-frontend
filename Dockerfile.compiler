@@ -1,24 +1,23 @@
-FROM ustwo/nodejs:4.1.1
+FROM node:6.9.1-slim
 MAINTAINER Arnau Siches <arnau@ustwo.com>
 
 ENV TERM xterm-256color
 ENV NODE_ENV production
-ENV SASSC_VERSION 3.2.5
-ENV LIBSASS_VERSION 3.2.5
 ENV NODE_PATH /home/ustwo/src
+ENV SHELL /bin/bash
 
-RUN apk add --update \
+RUN apt-get update -yqq \
+ && apt-get install -yqq \
           curl \
           grep \
           rsync \
-          parallel \
- && rm -rf /var/cache/apk/*
+          parallel
 
 RUN mkdir /root/.parallel \
  && touch /root/.parallel/will-cite
 
-WORKDIR /usr/local/bin
-RUN curl -L "https://github.com/ustwo/docker-sass/releases/download/v$SASSC_VERSION/alpine-sassc-$SASSC_VERSION.tar.gz" | tar xvz
+RUN npm install -g node-sass \
+ && ln -s /usr/local/bin/node-sass /usr/local/bin/sassc
 
 WORKDIR /home/ustwo
 COPY package.compiler.json /home/ustwo/package.json
