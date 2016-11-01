@@ -25,7 +25,7 @@ const Navigation = React.createClass({
     }
   },
   componentDidMount() {
-    if (this.props.section === 'home') {
+    if (this.props.section === 'home-new') {
       const controller = new ScrollMagic.Controller();
 
       const scrollProgress = (e) => {
@@ -70,7 +70,7 @@ const Navigation = React.createClass({
   },
   renderLogo() {
     let logo;
-    if (this.props.section === 'home') {
+    if (this.props.section === 'home-new') {
       logo = <FramesUstwoLogo scrollProgress={this.state.scrollProgress} reverse={false} />
     } else {
       logo = <SVG title="ustwo logo" spritemapID="ustwologo" />
