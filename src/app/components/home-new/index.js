@@ -76,14 +76,28 @@ const PageHomeNew = React.createClass({
 
     const slides = document.querySelectorAll("section.panel");
 
-    for (let i = 0; i < slides.length - 1; i++) {
+    slides.forEach(slide => {
+
       new ScrollMagic.Scene({
-        triggerElement: slides[i],
+        triggerElement: slide,
         triggerHook: 'onLeave'
       })
-      .setPin(slides[i])
+      .setPin(slide)
       .addTo(controller);
-    }
+
+      /* refactor to just use one scene per slide? */
+      new ScrollMagic.Scene({
+        triggerElement: slide,
+        triggerHook: 'onEnter',
+        duration: '10%',
+        offset: React.findDOMNode(this).clientHeight * 0.6
+      })
+      .on('progress', (e) => {
+        slide.getElementsByClassName('panel-content')[0].style.opacity = e.progress;
+        slide.getElementsByClassName('panel-content')[0].style.zIndex = 5;
+      })
+      .addTo(controller);
+    });
 
 
     // Colour blend
@@ -152,17 +166,27 @@ const PageHomeNew = React.createClass({
             </EntranceTransition>
           </ScreenBlock>
 
-          <div id="section-wipes">
-            <section className="panel blue">
-            	<b>ONE</b>
+          <div className="section-wipes">
+            <section className="panel go-park">
+            	<div className="panel-content">
+                <h2>Go Park</h2>
+                <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic games Monument Valley and Land's End, or innovative technical platform Wayfindr, we create products with passion from conception to launch and beyond.</p>
+              </div>
             </section>
-            <section className="panel red">
-            	<b>TWO</b>
+            <section className="panel sky-kids">
+            	<div className="panel-content">
+                <h2>Sky Kids</h2>
+                <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic games Monument Valley and Land's End, or innovative technical platform Wayfindr, we create products with passion from conception to launch and beyond.</p>
+              </div>
             </section>
-            <section className="panel yellow">
-            	<b>THREE</b>
+            <section className="panel wayfindr">
+            	<div className="panel-content">
+                <h2>Wayfindr</h2>
+                <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic games Monument Valley and Land's End, or innovative technical platform Wayfindr, we create products with passion from conception to launch and beyond.</p>
+              </div>
             </section>
           </div>
+
         </div>
 
       </article>
