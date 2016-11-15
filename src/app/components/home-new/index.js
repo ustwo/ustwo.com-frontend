@@ -114,6 +114,8 @@ const PageHomeNew = React.createClass({
     const rightSplitBlock1 = (1 - this.state.scrollProgressBlock1) * 10;
     const leftSplitBlock2 = this.state.scrollProgressBlock2 * 10;
     const rightSplitBlock2 = (1 - this.state.scrollProgressBlock2) * 10;
+    const leftSplitBlock3 = this.state.scrollProgressBlock3 * 10;
+    const rightSplitBlock3 = (1 - this.state.scrollProgressBlock3) * 10;
 
     const block2Styles = new Prefixer(userAgent).prefix({
       backgroundImage: `linear-gradient(228deg, #ff5519, #ed0082)`,
@@ -123,6 +125,10 @@ const PageHomeNew = React.createClass({
     const block3Styles = new Prefixer(userAgent).prefix({
       backgroundImage: `linear-gradient(228deg, #14c04d, #96cc29)`,
       clipPath: `polygon(0 ${leftSplitBlock2}vh, 100% ${rightSplitBlock2}vh, 100% 100%, 0 100%)`,
+    });
+
+    const homeFooterStyles = new Prefixer(userAgent).prefix({
+      clipPath: `polygon(0 ${leftSplitBlock3}vh, 100% ${rightSplitBlock3}vh, 100% 100%, 0 100%)`
     });
 
     return (
@@ -163,6 +169,8 @@ const PageHomeNew = React.createClass({
             </li>
           </ul>
         </div>
+
+        <div className="home-footer" style={homeFooterStyles}></div>
 
       </article>
     );

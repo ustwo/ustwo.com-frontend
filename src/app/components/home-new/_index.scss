@@ -201,4 +201,12 @@
     z-index: 2;
   }
 
+  .home-footer {
+    position: relative;
+    z-index: 2;
+    height: 100px;
+    margin-top: -100px;
+    background-color: $footerBg;
+  }
+
 }
