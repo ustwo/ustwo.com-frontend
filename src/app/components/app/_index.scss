@@ -19,14 +19,14 @@
 
 .app {
 
-  &.scroll-wipes {
-    &,
-    .app-content,
-    .page-loader-container,
-    .page-loader-container > [class*='page'] {
-      height: 100%;
-    }
-  }
+  // &.scroll-wipes {
+  //   &,
+  //   .app-content,
+  //   .page-loader-container,
+  //   .page-loader-container > [class*='page'] {
+  //     height: 100%;
+  //   }
+  // }
 
   .app-content {
     transition: filter .2s ease-in-out;

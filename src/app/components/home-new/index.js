@@ -15,6 +15,7 @@ import Video from 'app/components/video';
 import WordAnimation from 'app/components/word-animation';
 import EntranceTransition from 'app/components/entrance-transition';
 import BoldHeader from 'app/components/bold-header';
+import Prefixer from 'inline-style-prefixer';
 
 // TEMP
 const sizes = {
@@ -41,12 +42,27 @@ const sizes = {
     "source_url": "https://usweb-cdn.ustwo.com/ustwo-production/uploads/2011/06/header_image_v2-640x480.png"
   }
 };
+// End TEMP
+
+const userAgent = { userAgent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/25.0.1216.0 Safari/537.2' }
+
+function scrollProgress(component, i) {
+  return (e) => {
+    let obj = {};
+    let key = `scrollProgressBlock${i+1}`;
+    let value = Math.round(e.progress * 100) / 100;
+    obj[key] = value;
+    component.setState(obj);
+  }
+}
 
 const PageHomeNew = React.createClass({
 
   getInitialState() {
     return {
-      scrollProgress: 0
+      scrollProgressBlock1: 0,
+      scrollProgressBlock2: 0,
+      scrollProgressBlock3: 0
     }
   },
 
@@ -55,89 +71,71 @@ const PageHomeNew = React.createClass({
     // Setup Scrollmagic
     const controller = new ScrollMagic.Controller();
 
+    // Get scroll progress for each block
+    const blocks = document.querySelectorAll('.block-wrapper');
 
-    // Track scroll progress to animate logo
-
-    const scrollProgress = (e) => {
-      let value = Math.round(e.progress * 100) / 100;
-      this.setState({ scrollProgress: value });
-    }
-
-    new ScrollMagic.Scene({
-      triggerElement: '#first',
-      duration: '50%',
-      triggerHook: 'onLeave'
-    })
-    .on('progress', scrollProgress)
-    .addTo(controller);
-
-
-    // Wipes
-
-    const slides = document.querySelectorAll("section.panel");
-
-    slides.forEach(slide => {
-
+    blocks.forEach((block, i) => {
       new ScrollMagic.Scene({
-        triggerElement: slide,
+        triggerElement: block,
+        duration: '100%',
         triggerHook: 'onLeave'
       })
-      .setPin(slide)
-      .addTo(controller);
-
-      /* refactor to just use one scene per slide? */
-      new ScrollMagic.Scene({
-        triggerElement: slide,
-        triggerHook: 'onEnter',
-        duration: '10%',
-        offset: React.findDOMNode(this).clientHeight * 0.6
-      })
-      .on('progress', (e) => {
-        slide.getElementsByClassName('panel-content')[0].style.opacity = e.progress;
-        slide.getElementsByClassName('panel-content')[0].style.zIndex = 5;
-      })
+      .on('progress', scrollProgress(this, i))
       .addTo(controller);
     });
 
 
     // Colour blend
 
-    const colourBlendElement = React.findDOMNode(this.refs.scrollContainer);
-
-    colourBlendElement.style.backgroundColor = '#009CF3'; // Set initial colour of colour blend element
-
-    new ScrollMagic.Scene({
-      triggerElement: '.screen-block.about',
-      triggerHook: 'onLeave',
-      duration: '100%'
-    })
-    .on('progress', (e) => {
-      window.requestAnimationFrame(() => {
-        colourBlendElement.style.background = `linear-gradient(45deg, #${blendColours('#0065c9', '#76d377', e.progress)} 0%, #${blendColours('#00ccda', '#68d79e', e.progress)} 100%)`;
-      });
-    })
-    .addTo(controller);
+    // const colourBlendElement = React.findDOMNode(this.refs.scrollContainer);
+    //
+    // colourBlendElement.style.backgroundColor = '#009CF3'; // Set initial colour of colour blend element
+    //
+    // new ScrollMagic.Scene({
+    //   triggerElement: '.screen-block.about',
+    //   triggerHook: 'onLeave',
+    //   duration: '100%'
+    // })
+    // .on('progress', (e) => {
+    //   window.requestAnimationFrame(() => {
+    //     colourBlendElement.style.background = `linear-gradient(45deg, #${blendColours('#0065c9', '#76d377', e.progress)} 0%, #${blendColours('#00ccda', '#68d79e', e.progress)} 100%)`;
+    //   });
+    // })
+    // .addTo(controller);
 
   },
 
   render() {
-    const { page } = this.props;
     const classes = classnames('page-home-new', this.props.className);
-    const logoStyles = {
-      transform: `translate3d(0, ${25 * this.state.scrollProgress}vh, 0)`
-    }
-    const logo = <FramesUstwoLogo style={logoStyles} scrollProgress={this.state.scrollProgress} reverse={true} />;
+    const logoStyles = { transform: `translate3d(0, ${25 * this.state.scrollProgressBlock1}vh, 0)` }
+    const logo = <FramesUstwoLogo style={logoStyles} scrollProgress={this.state.scrollProgressBlock1} reverse={true} />;
+
+    const leftSplitBlock1 = this.state.scrollProgressBlock1 * 10;
+    const rightSplitBlock1 = (1 - this.state.scrollProgressBlock1) * 10;
+    const leftSplitBlock2 = this.state.scrollProgressBlock2 * 10;
+    const rightSplitBlock2 = (1 - this.state.scrollProgressBlock2) * 10;
+
+    const block2Styles = new Prefixer(userAgent).prefix({
+      backgroundImage: `linear-gradient(228deg, #ff5519, #ed0082)`,
+      clipPath: `polygon(0 ${leftSplitBlock1}vh, 100% ${rightSplitBlock1}vh, 100% 100%, 0 100%)`,
+    });
+
+    const block3Styles = new Prefixer(userAgent).prefix({
+      backgroundImage: `linear-gradient(228deg, #14c04d, #96cc29)`,
+      clipPath: `polygon(0 ${leftSplitBlock2}vh, 100% ${rightSplitBlock2}vh, 100% 100%, 0 100%)`,
+    });
 
     return (
-      <article className={classes} id="first">
+      <article className={classes} id="hero">
 
-        {/* Block 1 */}
+        {/* Hero */}
         <Hero
           title="We're a Digital Product Studio"
           transitionImage={true}
           eventLabel='home-new'
           logo={logo}
-          scrollProgress={this.state.scrollProgress}
+          scrollProgress={this.state.scrollProgressBlock1}
+          className="block-wrapper block1"
         >
           <Video
             src="/images/temp/home-new-video.mp4"
@@ -146,47 +144,24 @@ const PageHomeNew = React.createClass({
           />
         </Hero>
 
-        <div className="scroll-container" ref="scrollContainer">
+        {/* Block 1 - Client */}
+        <div className="block-wrapper block2">
+          <ul className="carousel carousel--client" style={block2Styles}>
+            <li>
+              <h2>Slide 1</h2>
+              <p>Some content</p>
+            </li>
+          </ul>
+        </div>
 
-          {/* Block 2 */}
-          <ScreenBlock
-            ref="blockAbout"
-            customClass="about"
-            textColour={get(page, 'colors.primary')}
-            bgColour='transparent'
-          >
-            <EntranceTransition className="title-entrance">
-              <div className="headline-text title">
-                <BoldHeader colour="white">
-                  <WordAnimation delay={1} duration={0.4}>
-                    We work as Partners to the biggest, smartest brands
-                  </WordAnimation>
-                </BoldHeader>
-              </div>
-            </EntranceTransition>
-          </ScreenBlock>
-
-          <div className="section-wipes">
-            <section className="panel go-park">
-            	<div className="panel-content">
-                <h2>Go Park</h2>
-                <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic games Monument Valley and Land's End, or innovative technical platform Wayfindr, we create products with passion from conception to launch and beyond.</p>
-              </div>
-            </section>
-            <section className="panel sky-kids">
-            	<div className="panel-content">
-                <h2>Sky Kids</h2>
-                <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic games Monument Valley and Land's End, or innovative technical platform Wayfindr, we create products with passion from conception to launch and beyond.</p>
-              </div>
-            </section>
-            <section className="panel wayfindr">
-            	<div className="panel-content">
-                <h2>Wayfindr</h2>
-                <p>We invest time, money and passion to learn by doing – creating products for ourselves and the world. Whether our iconic games Monument Valley and Land's End, or innovative technical platform Wayfindr, we create products with passion from conception to launch and beyond.</p>
-              </div>
-            </section>
-          </div>
-
+        {/* Block 2 - Own IP */}
+        <div className="block-wrapper block3">
+          <ul className="carousel carousel--own-ip" style={block3Styles}>
+            <li>
+              <h2>Slide 1</h2>
+              <p>Some content</p>
+            </li>
+          </ul>
         </div>
 
       </article>

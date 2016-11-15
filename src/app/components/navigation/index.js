@@ -34,7 +34,7 @@ const Navigation = React.createClass({
       }
 
       const scene = new ScrollMagic.Scene({
-        triggerElement: "#first",
+        triggerElement: "#hero",
         duration: "100%",
         triggerHook: 'onLeave'
       })

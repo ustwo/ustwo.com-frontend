@@ -180,51 +180,25 @@
     }
   }
 
-  /* Some scrollmagic stuff */
 
-  .scroll-container {
-    height: 200%;
+
+  /* Carousels */
+
+  .block-wrapper {
+    position: relative;
+    height: 100vh;
   }
 
-  .section-wipes {
-    height: 50%; /* As this belongs inside scroll-container which is 200% */
-  }
-
-  .panel {
+  .carousel {
+    position: absolute;
+    height: 110vh;
+    top: -10vh;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    height: 100%;
-    transform-origin: 50% 100%;
-    background-attachment: fixed;
-    background-position: 10% 50%;
-    background-repeat: no-repeat;
-    background-size: auto 50%;
-
-    .panel-content {
-      opacity: 0;
-      width: 50%;
-      padding: 0 5%;
-      z-index: -1;
-      position: fixed;
-      top: 40%;
-    }
-
-    &.go-park {
-      background-color: transparent;
-      background-attachment: scroll;
-      background-image: url('/images/temp/go-park.png');
-    }
-    &.sky-kids {
-      background-color: #ccc;
-      background-image: url('/images/temp/sky-kids.png');
-    }
-    &.wayfindr {
-      color: white;
-      position: relative;
-      background-color: #031930;
-      background-image: url('/images/temp/wayfindr.png');
-    }
-	}
+    justify-content: center;
+    color: white;
+    position: relative;
+    z-index: 2;
+  }
 
 }
