@@ -28,6 +28,11 @@
     }
     .studio-blurb {
       display: none;
+      
+      a {
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+      }
     }
     .photo {
       height: 200px;

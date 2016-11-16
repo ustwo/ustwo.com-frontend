@@ -1,12 +1,15 @@
-FROM ustwo/nodejs:4.1.1
+FROM node:6.9.1-slim
 MAINTAINER Arnau Siches <arnau@ustwo.com>
 
 ENV NODE_PATH /home/ustwo/src
 
+WORKDIR /home/ustwo
+
+RUN mkdir -p /home/ustwo/public
 COPY package.app.json /home/ustwo/package.json
 RUN npm install --production
+
 COPY src /home/ustwo/src
-RUN mkdir -p /home/ustwo/public
 
 EXPOSE 8888
 

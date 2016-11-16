@@ -13,5 +13,5 @@ export default function (requiredData, apply) {
         apply(params.get ? params.get(data) : data, CamelCase(params.type));
       }
     });
-  })).catch(error => log('Fetch error', error, error.stack));
+  }));
 }

@@ -8,15 +8,19 @@ import Flux from 'app/flux';
 
 const NavigationLink = React.createClass({
   onClick(e) {
-    e.preventDefault();
-    this.props.onClick && this.props.onClick();
-    Track('send', {
-      'hitType': 'event',          // Required.
-      'eventCategory': 'nav',   // Required.
-      'eventAction': 'click_nav_link',     // Required.
-      'eventLabel': this.props.gaId, // TODO: Remove once GA has been hooked into router
-    });
-    Flux.navigate(this.props.url);
+    var openInNewTab = (e.button === 1 || e.shiftKey || e.ctrlKey || e.metaKey) ? true : false;
+
+    if(!openInNewTab) {
+      e.preventDefault();
+      this.props.onClick && this.props.onClick();
+      Track('send', {
+        'hitType': 'event',               // Required.
+        'eventCategory': 'nav',           // Required.
+        'eventAction': 'click_nav_link',  // Required.
+        'eventLabel': this.props.gaId,    // TODO: Remove once GA has been hooked into router
+      });
+      Flux.navigate(this.props.url);
+    }
   },
   render() {
     const { selected, url, children } = this.props;

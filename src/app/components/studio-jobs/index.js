@@ -68,6 +68,7 @@ const StudioJobs = React.createClass({
   render() {
     const { studio, selected } = this.props;
     const id = kebabCase(studio.name);
+    const studioRecruitmentDescription = get(studio, 'recruitment-desc');
     const classes = classnames('studio-jobs', `${id}-jobs`, {
       selected: selected
     });
@@ -78,7 +79,7 @@ const StudioJobs = React.createClass({
         <div className="studio-info">
           <div className="info" style={{ backgroundColor: studio.color }}>
             <p className="excerpt">{get(studio, 'recruitment-title')}</p>
-            <p className="studio-blurb">{get(studio, 'recruitment-desc')}</p>
+            <p className="studio-blurb" dangerouslySetInnerHTML={{__html: studioRecruitmentDescription}}></p>
           </div>
           <Rimage
             className="photo"

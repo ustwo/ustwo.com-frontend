@@ -47,7 +47,7 @@ const Video = React.createClass({
     const { src } = this.props;
     let video;
     if(src && src.length) {
-      video = <video src={src} poster={posterURL} autoPlay loop />;
+      video = <video src={src} poster={posterURL} autoPlay loop muted />;
     } else {
       video = this.renderImage();
     }

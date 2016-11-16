@@ -36,7 +36,7 @@
     "mocha": "2.3.2",
     "moment": "2.10.6",
     "normalize-libsass": "1.0.3",
-    "persistify": "*",
+    "persistify": "1.1.1",
     "react": "0.13.3",
     "react-helmet": "1.1.0",
     "react-responsive": "1.0.1",
