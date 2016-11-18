@@ -109,7 +109,7 @@ const PageHomeNew = React.createClass({
   render() {
     const classes = classnames('page-home-new', this.props.className);
     const logoStyles = { transform: `translate3d(0, ${25 * this.state.scrollProgressBlock1}vh, 0)` }
-    const logo = <FramesUstwoLogo style={logoStyles} scrollProgress={this.state.scrollProgressBlock1} reverse={true} />;
+    const logo = <FramesUstwoLogo componentStyle={logoStyles} scrollProgress={this.state.scrollProgressBlock1} isReverse={true} />;
 
     const leftSplitBlock1 = this.state.scrollProgressBlock1 * 10;
     const rightSplitBlock1 = (1 - this.state.scrollProgressBlock1) * 10;

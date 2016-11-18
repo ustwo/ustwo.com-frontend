@@ -71,7 +71,7 @@ const Navigation = React.createClass({
   renderLogo() {
     let logo;
     if (this.props.section === 'home-new') {
-      logo = <FramesUstwoLogo scrollProgress={this.state.scrollProgress} reverse={false} />
+      logo = <FramesUstwoLogo scrollProgress={this.state.scrollProgress} isReverse={false} />
     } else {
       logo = <SVG title="ustwo logo" spritemapID="ustwologo" />
     }

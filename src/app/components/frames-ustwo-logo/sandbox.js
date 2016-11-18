@@ -7,9 +7,9 @@ const Sandbox = React.createClass({
     return (
       <div className="sandbox">
         <FramesUstwoLogo
-           style={logoStyles}
+           componentStyle={logoStyles}
            scrollProgress={0.9}
-           reverse={false}
+           isReverse={false}
         />
       </div>
     );
