@@ -27,8 +27,9 @@ const PageEvent = React.createClass({
   renderImInButton() {
     const { event } = this.props;
     const ticket_url = get(event, 'ticket_url');
+    const ticket_sold_out = get(event, 'ticket_sold_out');
 
-    if(ticket_url) {
+    if(ticket_url && !ticket_sold_out) {
       return <a href={ticket_url} className="im-in" target="_blank">Get tickets</a>;
     }
   },
