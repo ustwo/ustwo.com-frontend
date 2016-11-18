@@ -1,5 +1,6 @@
 import Rimage from 'app/components/rimage';
 import React from 'react/addons';
+import ReactDOM from 'react-dom';
 
 describe('Rimage', () => {
   const { TestUtils } = React.addons;
@@ -18,7 +19,7 @@ describe('Rimage', () => {
   }
   let props;
   let rimage = () => TestUtils.renderIntoDocument(React.createElement(Rimage, props));
-  let renderedDOM = () => React.findDOMNode(rimage());
+  let renderedDOM = () => ReactDOM.findDOMNode(rimage());
 
   beforeEach(() => {
     props = { sizes: sizes };

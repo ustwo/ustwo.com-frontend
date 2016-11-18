@@ -22,6 +22,7 @@ router.get('/:component.js', (req, res, next) => {
   b.transform(aliasify, aliasifyConfig);
 
   b.require('react', {expose: 'react'});
+  b.require('react-dom', {expose: 'react-dom'});
   b.require(filename, {expose: 'index'});
   b.require(sandbox, {expose: 'sandbox'});
 

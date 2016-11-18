@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import spannify from 'app/lib/spannify';
 import animate from 'app/lib/animate';
@@ -33,7 +34,7 @@ const WordAnimation = React.createClass({
   },
   startAnimation() {
     const props = this.props;
-    const words = React.findDOMNode(this).children;
+    const words = ReactDOM.findDOMNode(this).children;
     if (!this.state.animationShown && words.length) {
       for(let i = 0; i < words.length; i++) {
         let word = words[i];

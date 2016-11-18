@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 const FramesUstwoLogo = React.createClass({
 
@@ -12,7 +13,7 @@ const FramesUstwoLogo = React.createClass({
   },
 
   componentDidMount() {
-    let frames = React.findDOMNode(this.refs.frames);
+    let frames = ReactDOM.findDOMNode(this.refs.frames);
     this.setState({ totalFrames: frames.childNodes.length });
 
     this.hideAllFrames();
@@ -31,7 +32,7 @@ const FramesUstwoLogo = React.createClass({
       this.setState({ currentFrame: framePosition });
     }
 
-    let frames = React.findDOMNode(this.refs.frames);
+    let frames = ReactDOM.findDOMNode(this.refs.frames);
 
     window.cancelAnimationFrame(this.frameRequest);
     this.frameRequest = window.requestAnimationFrame(() => {
@@ -41,7 +42,7 @@ const FramesUstwoLogo = React.createClass({
   },
 
   hideAllFrames() {
-    let frames = React.findDOMNode(this.refs.frames);
+    let frames = ReactDOM.findDOMNode(this.refs.frames);
     for (let i = 0; i < frames.childNodes.length; i++) {
       frames.childNodes[i].style.display = 'none';
     }

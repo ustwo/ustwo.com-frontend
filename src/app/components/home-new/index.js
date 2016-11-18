@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import blendColours from 'app/lib/blend-colours';
@@ -87,7 +88,7 @@ const PageHomeNew = React.createClass({
 
     // Colour blend
 
-    // const colourBlendElement = React.findDOMNode(this.refs.scrollContainer);
+    // const colourBlendElement = ReactDOM.findDOMNode(this.refs.scrollContainer);
     //
     // colourBlendElement.style.backgroundColor = '#009CF3'; // Set initial colour of colour blend element
     //

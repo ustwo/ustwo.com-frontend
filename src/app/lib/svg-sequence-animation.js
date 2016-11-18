@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 function SVGSequenceAnimation(props) {
   return {
@@ -15,7 +16,7 @@ function SVGSequenceAnimation(props) {
     },
     componentDidMount() {
       const autoAnim = this.props.autoAnim;
-      let svgElement = React.findDOMNode(this.refs.animsvg);
+      let svgElement = ReactDOM.findDOMNode(this.refs.animsvg);
       this.setState({totalFrames: svgElement.childNodes.length});
       if(autoAnim) {
         if(autoAnim) {
@@ -35,7 +36,7 @@ function SVGSequenceAnimation(props) {
       this.resetAnim();
     },
     hideAllFrames() {
-      let svg = React.findDOMNode(this.refs.animsvg);
+      let svg = ReactDOM.findDOMNode(this.refs.animsvg);
       for (let i = 0; i < svg.childNodes.length; i++) {
         svg.childNodes[i].style.display = 'none';
       }
@@ -45,7 +46,7 @@ function SVGSequenceAnimation(props) {
       window.cancelAnimationFrame(this.frameRequest);
       this.frameRequest = window.requestAnimationFrame(() => {
         this.hideAllFrames();
-        React.findDOMNode(this.refs.animsvg).getElementById(this.state.frameName+frameNumber).style.display = 'inline-block';
+        ReactDOM.findDOMNode(this.refs.animsvg).getElementById(this.state.frameName+frameNumber).style.display = 'inline-block';
       });
     },
     goToProgressRatio(progressRatio) {

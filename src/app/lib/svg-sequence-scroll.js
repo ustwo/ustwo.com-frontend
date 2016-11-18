@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 function SVGSequenceScroll(props) {
   return {
@@ -11,11 +12,11 @@ function SVGSequenceScroll(props) {
     },
     componentDidMount() {
       this.hideAllFrames();
-      let frames = React.findDOMNode(this.refs.frames);
+      let frames = ReactDOM.findDOMNode(this.refs.frames);
       this.setState({ totalFrames: frames.childNodes.length });
     },
     hideAllFrames() {
-      let frames = React.findDOMNode(this.refs.frames);
+      let frames = ReactDOM.findDOMNode(this.refs.frames);
       for (let i = 0; i < frames.childNodes.length; i++) {
         frames.childNodes[i].style.display = 'none';
       }
@@ -38,7 +39,7 @@ function SVGSequenceScroll(props) {
       this.frameRequest = window.requestAnimationFrame(() => {
         this.hideAllFrames();
 
-        let frames = React.findDOMNode(this.refs.frames);
+        let frames = ReactDOM.findDOMNode(this.refs.frames);
         frames.childNodes[currentFrame - 1].style.display = 'inline-block';
       });
     }

@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 
 import Flux from 'app/flux';
@@ -9,13 +10,13 @@ import SVG from 'app/components/svg';
 
 const Search = React.createClass({
   componentDidMount() {
-    const input = React.findDOMNode(this.refs.input);
+    const input = ReactDOM.findDOMNode(this.refs.input);
     input.focus();
     input.addEventListener('keyup', this.onKeyup);
     input.addEventListener('keydown', this.onKeydown);
   },
   componentWillUnmount() {
-    const input = React.findDOMNode(this.refs.input);
+    const input = ReactDOM.findDOMNode(this.refs.input);
     input.removeEventListener('keyup', this.onKeyup);
     input.removeEventListener('keydown', this.onKeydown);
   },

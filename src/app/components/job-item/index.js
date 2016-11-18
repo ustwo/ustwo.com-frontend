@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import ellipsize from 'ellipsize';
 import { get } from 'lodash';
@@ -10,9 +11,9 @@ import SVG from 'app/components/svg';
 const JobItem = React.createClass({
   componentDidUpdate() {
     const { props, open } = this.props;
-    const el = React.findDOMNode(this);
-    const title = React.findDOMNode(this.refs.title);
-    const description = React.findDOMNode(this.refs.description);
+    const el = ReactDOM.findDOMNode(this);
+    const title = ReactDOM.findDOMNode(this.refs.title);
+    const description = ReactDOM.findDOMNode(this.refs.description);
     let newHeight;
     if (open && this.getLoadedState()) {
       newHeight = title.clientHeight + description.clientHeight;

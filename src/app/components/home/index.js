@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import { get } from 'lodash';
 import MediaQuery from 'react-responsive';
@@ -42,7 +43,7 @@ const PageHome = React.createClass({
   setupScrollMagic() {
     const { page } = this.props;
     const blocks = get(page, 'page_builder', []);
-    let pageElement = React.findDOMNode(this);
+    let pageElement = ReactDOM.findDOMNode(this);
     this.Tracking.addPageScrollTracking('home', pageElement);
 
     if (!env.Modernizr.touchevents && window.innerWidth > 480) {
@@ -54,7 +55,7 @@ const PageHome = React.createClass({
           }
         }
       };
-      let blockWelcomeDom = React.findDOMNode(this.refs.blockWelcome);
+      let blockWelcomeDom = ReactDOM.findDOMNode(this.refs.blockWelcome);
       blockWelcomeDom.style.backgroundColor = 'transparent';
       // set initial colour – we need to do this due to having an offset
       pageElement.style.backgroundColor = get(page, 'colors.bg');
@@ -68,7 +69,7 @@ const PageHome = React.createClass({
 
       this.colourBlockScenes = [];
       blocks.forEach((block, index) => {
-        const blockDom = React.findDOMNode(this.refs[`block${index}`]);
+        const blockDom = ReactDOM.findDOMNode(this.refs[`block${index}`]);
         const previousBlock = blocks[index - 1] || blockWelcome;
         blockDom.style.backgroundColor = 'transparent';
         this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, blockDom, get(previousBlock, 'attr.background_colour.value'), get(block, 'attr.background_colour.value')));

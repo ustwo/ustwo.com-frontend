@@ -1,12 +1,13 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 
 const EntranceTransition = React.createClass({
   componentDidMount() {
     this.timeout = setTimeout(() => {
-      React.findDOMNode(this).classList.add('show');
+      ReactDOM.findDOMNode(this).classList.add('show');
     }, 10);
   },
   componentWillUnmount() {

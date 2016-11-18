@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { create as createFragment } from 'react/lib/ReactFragment';
 import classnames from 'classnames';
 import first from 'lodash/array/first';
@@ -25,7 +26,7 @@ const Rimage = React.createClass({
   },
   componentDidMount() {
     const { sizes, size: currentSize } = this.state;
-    const el = React.findDOMNode(this);
+    const el = ReactDOM.findDOMNode(this);
     const newSize = this.getNewSize(sizes, el.clientWidth);
     const newSizeUrl = this.getImageUrl(newSize);
     const newSizeIsBigger = findIndex(sizes, newSize) > findIndex(currentSize);
@@ -40,7 +41,7 @@ const Rimage = React.createClass({
   },
   componentWillReceiveProps(props) {
     const sizes = this.getSizesArray(props.sizes);
-    const el = React.findDOMNode(this);
+    const el = ReactDOM.findDOMNode(this);
     this.setState({
       sizes: sizes,
       size: this.getNewSize(sizes, el.clientWidth)
