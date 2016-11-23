@@ -19,7 +19,7 @@ function FramesUstwoLogo({ scrollProgress, componentStyle, isReverse }) {
     const style = { display: (i === currentFrame - 1) ? 'inline-block' : 'none' }
     const number = (i < 10) ? `0${i}` : i;
     frames.push(
-      <img src={`/images/temp/ustwo_logo_draw_IN${number}.png`} style={style} />
+      <img key={`frame${i}`} src={`/images/temp/ustwo_logo_draw_IN${number}.png`} style={style} />
     );
   }
 

@@ -12,5 +12,5 @@ window.env = env;
 Flux.init();
 ReactDOM.render(
   <App state={state} />,
-  document.body
+  document.querySelector('.app-wrapper')
 );

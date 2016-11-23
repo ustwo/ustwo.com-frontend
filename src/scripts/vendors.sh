@@ -16,12 +16,12 @@ fi
 
 persistify --require babelify/polyfill \
            --require react \
+           --require react-dom \
            --require svg4everybody \
            --require classnames \
            --require ellipsize \
            --require es6-promise \
            --require moment \
-           --require react-transition-manager \
            --require scrollmagic \
            --require react-responsive \
            --verbose \
