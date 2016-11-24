@@ -24,10 +24,12 @@
     "react-helmet": "3.2.2",
     "react-responsive": "1.2.1",
     "react-transition-manager": "1.3.2",
+    "react-swipe": "5.0.6",
     "rgb-hex": "1.0.0",
     "route-pattern": "0.0.6",
     "scrollmagic": "2.0.5",
     "svg4everybody": "1.0.0",
+    "swipe-js-iso": "2.0.3",
     "urllite": "0.5.0"
   }
 }

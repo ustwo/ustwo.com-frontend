@@ -34,6 +34,7 @@ persistify $input \
            --external moment \
            --external scrollmagic \
            --external react-responsive \
+           --external react-swipe \
            --verbose \
            --cache-dir $base/public/.cache-spa \
            --outfile $filename

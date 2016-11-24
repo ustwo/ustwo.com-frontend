@@ -1,12 +1,13 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import blendColours from 'app/lib/blend-colours';
 import { get } from 'lodash';
 import ScrollMagic from 'app/adaptors/server/scroll-magic';
+import ReactSwipe from 'react-swipe';
 
 import ScreenBlock from 'app/components/screen-block';
 import SVG from 'app/components/svg';
@@ -43,6 +44,16 @@ const sizes = {
     "source_url": "https://usweb-cdn.ustwo.com/ustwo-production/uploads/2011/06/header_image_v2-640x480.png"
   }
 };
+
+const carouselContent = [
+  {
+    title: "Cardboard Design Lab",
+    text: "ustwo partnered with the Google Cardboard team to design and develop Cardboard Design Lab, an immersive experience that demonstrates the fundamental guidelines for VR design and development - in VR."
+  }, {
+    title: "Android Wear",
+    text: "In 2014 we delivered the first official watch faces for Android Wear, and in doing so set the new benchmark for watch face design. Today we support 5 applications with over half a million installs."
+  }
+];
 // End TEMP
 
 const userAgent = { userAgent: 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/25.0.1216.0 Safari/537.2' }
@@ -63,7 +74,8 @@ const PageHomeNew = React.createClass({
     return {
       scrollProgressBlock1: 0,
       scrollProgressBlock2: 0,
-      scrollProgressBlock3: 0
+      scrollProgressBlock3: 0,
+      activeItem: 0
     }
   },
 
@@ -106,6 +118,18 @@ const PageHomeNew = React.createClass({
 
   },
 
+  next() {
+    let carouselItem = this.refs.carousel;
+    carouselItem.next();
+    this.setState({ activeItem: carouselItem.getPos() });
+  },
+
+  prev() {
+    let carouselItem = this.refs.carousel;
+    carouselItem.prev();
+    this.setState({ activeItem: carouselItem.getPos() });
+  },
+
   render() {
     const classes = classnames('page-home-new', this.props.className);
     const logoStyles = { transform: `translate3d(0, ${25 * this.state.scrollProgressBlock1}vh, 0)` }
@@ -132,6 +156,33 @@ const PageHomeNew = React.createClass({
       clipPath: `polygon(0 ${leftSplitBlock3}vh, 100% ${rightSplitBlock3}vh, 100% 100%, 0 100%)`
     });
 
+    const swipeOptions = {
+      auto: 0,
+      speed: 300,
+      disableScroll: 'true',
+      continuous: 'true'
+    };
+
+    const carouselStyle = {
+      wrapper: {
+        width: "100%"
+      }
+    }
+
+    const carouselItems = [];
+    for (let i = 0; i < 3; i++) {
+      const classes = classnames('carousel__item', {
+        active: this.state.activeItem === i
+      });
+      carouselItems.push(
+        <div className={classes}>
+          <div className="carousel__control carousel__control--next" onClick={::this.next}></div>
+          <div className="carousel__item__content">A{i}</div>
+          <div className="carousel__control carousel__control--prev" onClick={::this.prev}></div>
+        </div>
+      );
+    }
+
     return (
       <article className={classes} id="hero">
 
@@ -153,22 +204,23 @@ const PageHomeNew = React.createClass({
 
         {/* Block 1 - Client */}
         <div className="block-wrapper block2">
-          <ul className="carousel carousel--client" style={block2Styles}>
-            <li>
-              <h2>Slide 1</h2>
-              <p>Some content</p>
-            </li>
-          </ul>
+          <div className="carousel-wrapper" style={block2Styles}>
+            <p>
+              We work in partnership with leading global brands to transform their digital offering.
+              We help them meet their customers’ needs by inventing, prototyping, building and
+              launching new products and services.
+            </p>
+            <ReactSwipe ref="carousel" className="carousel" swipeOptions={swipeOptions} style={carouselStyle}>
+              {carouselItems}
+            </ReactSwipe>
+          </div>
         </div>
 
         {/* Block 2 - Own IP */}
         <div className="block-wrapper block3">
-          <ul className="carousel carousel--own-ip" style={block3Styles}>
-            <li>
-              <h2>Slide 1</h2>
-              <p>Some content</p>
-            </li>
-          </ul>
+          <div className="carousel-wrapper" style={block3Styles}>
+            B
+          </div>
         </div>
 
         <div className="home-footer" style={homeFooterStyles}></div>

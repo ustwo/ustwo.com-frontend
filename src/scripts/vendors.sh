@@ -24,6 +24,7 @@ persistify --require babelify/polyfill \
            --require moment \
            --require scrollmagic \
            --require react-responsive \
+           --require react-swipe \
            --verbose \
            --cache-dir $base/public/.cache-vendors \
            --outfile $filename
