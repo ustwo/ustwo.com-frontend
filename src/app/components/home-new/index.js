@@ -52,6 +52,9 @@ const carouselContent = [
   }, {
     title: "Android Wear",
     text: "In 2014 we delivered the first official watch faces for Android Wear, and in doing so set the new benchmark for watch face design. Today we support 5 applications with over half a million installs."
+  }, {
+    title: "Something else here",
+    text: "Wicket jettster veila endor iego snivvian askajian. Kamino nagai sio hssis saffa. Lando solo wat 4-lom stass kuat paaerduag klatooinian. Cal kyp woostoid zabrak jinn bibble darth vurk."
   }
 ];
 // End TEMP
@@ -75,7 +78,8 @@ const PageHomeNew = React.createClass({
       scrollProgressBlock1: 0,
       scrollProgressBlock2: 0,
       scrollProgressBlock3: 0,
-      activeItem: 0
+      activeItem: 0,
+      nextVisible: true
     }
   },
 
@@ -130,6 +134,32 @@ const PageHomeNew = React.createClass({
     this.setState({ activeItem: carouselItem.getPos() });
   },
 
+  isNextItem(i, totalItems) {
+    return i - 1 === this.state.activeItem || (totalItems === this.state.activeItem && i === 0)
+  },
+
+  renderItems() {
+    const carouselItems = carouselContent.map((item, i) => {
+      const totalItems = carouselContent.length - 1;
+      const classes = classnames('carousel__item', {
+        active: this.state.activeItem === i,
+        next: this.isNextItem(i, totalItems),
+        visible: this.isNextItem(i, totalItems) && this.state.nextVisible
+      });
+
+      return (
+        <div className={classes}>
+          <div className="carousel__item__inner">
+            <div className="carousel__control carousel__control--next" onClick={::this.next}></div>
+            <div className="carousel__item__content">{item.title} {i}</div>
+            <div className="carousel__control carousel__control--prev" onClick={::this.prev}></div>
+          </div>
+        </div>
+      );
+    });
+    return carouselItems;
+  },
+
   render() {
     const classes = classnames('page-home-new', this.props.className);
     const logoStyles = { transform: `translate3d(0, ${25 * this.state.scrollProgressBlock1}vh, 0)` }
@@ -157,31 +187,15 @@ const PageHomeNew = React.createClass({
     });
 
     const swipeOptions = {
-      auto: 0,
       speed: 300,
-      disableScroll: 'true',
-      continuous: 'true'
+      disableScroll: false,
+      stopPropagation: false,
+      continuous: true,
+      callback: () => { this.setState({ nextVisible: false }) },
+      transitionEnd: () => { this.setState({ nextVisible: true }) }
     };
 
-    const carouselStyle = {
-      wrapper: {
-        width: "100%"
-      }
-    }
-
-    const carouselItems = [];
-    for (let i = 0; i < 3; i++) {
-      const classes = classnames('carousel__item', {
-        active: this.state.activeItem === i
-      });
-      carouselItems.push(
-        <div className={classes}>
-          <div className="carousel__control carousel__control--next" onClick={::this.next}></div>
-          <div className="carousel__item__content">A{i}</div>
-          <div className="carousel__control carousel__control--prev" onClick={::this.prev}></div>
-        </div>
-      );
-    }
+    const carouselStyle = { wrapper: { width: "100%" } }
 
     return (
       <article className={classes} id="hero">
@@ -210,8 +224,12 @@ const PageHomeNew = React.createClass({
               We help them meet their customers’ needs by inventing, prototyping, building and
               launching new products and services.
             </p>
-            <ReactSwipe ref="carousel" className="carousel" swipeOptions={swipeOptions} style={carouselStyle}>
-              {carouselItems}
+            <ReactSwipe
+              ref="carousel"
+              className="carousel"
+              swipeOptions={swipeOptions}
+              style={carouselStyle}>
+              {this.renderItems()}
             </ReactSwipe>
           </div>
         </div>
