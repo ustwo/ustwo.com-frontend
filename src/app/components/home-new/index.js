@@ -48,13 +48,16 @@ const sizes = {
 const carouselContent = [
   {
     title: "Cardboard Design Lab",
-    text: "ustwo partnered with the Google Cardboard team to design and develop Cardboard Design Lab, an immersive experience that demonstrates the fundamental guidelines for VR design and development - in VR."
+    text: "ustwo partnered with the Google Cardboard team to design and develop Cardboard Design Lab, an immersive experience that demonstrates the fundamental guidelines for VR design and development - in VR.",
+    image: "/images/temp/home-cardboard.png"
   }, {
     title: "Android Wear",
-    text: "In 2014 we delivered the first official watch faces for Android Wear, and in doing so set the new benchmark for watch face design. Today we support 5 applications with over half a million installs."
+    text: "In 2014 we delivered the first official watch faces for Android Wear, and in doing so set the new benchmark for watch face design. Today we support 5 applications with over half a million installs.",
+    image: "/images/temp/home-watches.png"
   }, {
-    title: "Something else here",
-    text: "Wicket jettster veila endor iego snivvian askajian. Kamino nagai sio hssis saffa. Lando solo wat 4-lom stass kuat paaerduag klatooinian. Cal kyp woostoid zabrak jinn bibble darth vurk."
+    title: "Dice",
+    text: "Wicket jettster veila endor iego snivvian askajian. Kamino nagai sio hssis saffa. Lando solo wat 4-lom stass kuat paaerduag klatooinian. Cal kyp woostoid zabrak jinn bibble darth vurk.",
+    image: "/images/temp/home-dice.png"
   }
 ];
 // End TEMP
@@ -79,7 +82,8 @@ const PageHomeNew = React.createClass({
       scrollProgressBlock2: 0,
       scrollProgressBlock3: 0,
       activeItem: 0,
-      nextVisible: true
+      nextVisible: true,
+      prevVisible: true
     }
   },
 
@@ -135,24 +139,34 @@ const PageHomeNew = React.createClass({
   },
 
   isNextItem(i, totalItems) {
-    return i - 1 === this.state.activeItem || (totalItems === this.state.activeItem && i === 0)
+    return i - 1 === this.state.activeItem || (totalItems === this.state.activeItem && i === 0);
+  },
+
+  isPrevItem(i, totalItems) {
+    return i + 1 === this.state.activeItem || (this.state.activeItem === 0 && i === totalItems);
   },
 
   renderItems() {
     const carouselItems = carouselContent.map((item, i) => {
       const totalItems = carouselContent.length - 1;
-      const classes = classnames('carousel__item', {
+      const classes = classnames('carousel-item', {
         active: this.state.activeItem === i,
         next: this.isNextItem(i, totalItems),
-        visible: this.isNextItem(i, totalItems) && this.state.nextVisible
+        prev: this.isPrevItem(i, totalItems),
+        nextVisible: this.isNextItem(i, totalItems) && this.state.nextVisible,
+        prevVisible: this.isPrevItem(i, totalItems) && this.state.prevVisible
       });
 
       return (
         <div className={classes}>
-          <div className="carousel__item__inner">
-            <div className="carousel__control carousel__control--next" onClick={::this.next}></div>
-            <div className="carousel__item__content">{item.title} {i}</div>
-            <div className="carousel__control carousel__control--prev" onClick={::this.prev}></div>
+          <div className="carousel-item-inner">
+            <div className="carousel-control carousel-control-next" onClick={::this.next}></div>
+            <div className="carousel-content">
+              <img src={item.image} alt={`Image of ${item.title}`} />
+              <h2>{item.title}</h2>
+              <p>{item.text}</p>
+            </div>
+            <div className="carousel-control carousel-control-prev" onClick={::this.prev}></div>
           </div>
         </div>
       );
@@ -191,8 +205,18 @@ const PageHomeNew = React.createClass({
       disableScroll: false,
       stopPropagation: false,
       continuous: true,
-      callback: () => { this.setState({ nextVisible: false }) },
-      transitionEnd: () => { this.setState({ nextVisible: true }) }
+      callback: () => {
+        this.setState({
+          nextVisible: false,
+          prevVisible: false
+        })
+      },
+      transitionEnd: () => {
+        this.setState({
+          nextVisible: true,
+          prevVisible: true
+        })
+      }
     };
 
     const carouselStyle = { wrapper: { width: "100%" } }

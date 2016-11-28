@@ -189,101 +189,6 @@ $carousel-offset: 70px;
     height: 100vh;
   }
 
-  .carousel-wrapper {
-    position: absolute;
-    height: 110vh;
-    top: -10vh;
-    color: white;
-    position: relative;
-    z-index: 2;
-    padding: 0 10%;
-    width: 100%;
-    overflow: hidden;
-
-    > p {
-      padding-top: 120px;
-    }
-  }
-
-  .carousel {
-    margin: 0 auto;
-
-    > div {
-      margin-top: 40px;
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .carousel__item {
-    position: relative;
-    font-weight: bold;
-    color: white;
-    font-size: 30px;
-    text-align: center;
-
-
-    &.active {
-      .carousel__control {
-        display: none;
-      }
-    }
-
-    &:nth-child(1) .carousel__item__inner {
-      border: 1px solid white;
-
-      .carousel__control {
-        background-color: white;
-      }
-    }
-    &:nth-child(2) .carousel__item__inner {
-      border: 1px solid blue;
-
-      .carousel__control {
-        background-color: blue;
-      }
-    }
-    &:nth-child(3) .carousel__item__inner {
-      border: 1px solid green;
-
-      .carousel__control {
-        background-color: green;
-      }
-    }
-  }
-
-  .carousel__item__inner {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50vh;
-  }
-
-  .carousel__item__content {
-    text-align: center;
-    flex: 1;
-  }
-
-  .carousel__item.next {
-    .carousel__item__inner {
-      transform: translateX(100px);
-    }
-
-    &.visible {
-      .carousel__item__inner {
-        transform: translateX(0);
-        transition: transform .32s ease-in-out;
-      }
-    }
-  }
-
-  .carousel__control {
-    width: 10vw;
-    height: 50vh;
-    cursor: pointer;
-  }
-
   .home-footer {
     position: relative;
     z-index: 2;
@@ -292,4 +197,152 @@ $carousel-offset: 70px;
     background-color: $footerBg;
   }
 
+}
+
+
+
+
+.carousel-wrapper {
+  position: absolute;
+  height: 110vh;
+  top: -10vh;
+  color: white;
+  position: relative;
+  z-index: 2;
+  padding: 0 15%;
+  width: 100%;
+  overflow: hidden;
+
+  > p {
+    padding-top: 120px;
+  }
+}
+
+.carousel {
+  margin: 0 auto;
+
+  > div {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.carousel-item {
+  position: relative;
+  font-weight: bold;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+
+
+  &.active {
+    .carousel-control {
+      display: none;
+    }
+  }
+
+  // &:nth-child(1) .carousel-item-inner {
+  //   border: 1px solid white;
+  //
+  //   .carousel-control {
+  //     background-color: white;
+  //   }
+  // }
+  // &:nth-child(2) .carousel-item-inner {
+  //   border: 1px solid blue;
+  //
+  //   .carousel-control {
+  //     background-color: blue;
+  //   }
+  // }
+  // &:nth-child(3) .carousel-item-inner {
+  //   border: 1px solid green;
+  //
+  //   .carousel-control {
+  //     background-color: green;
+  //   }
+  // }
+}
+
+.carousel-item-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50vh;
+}
+
+.carousel-content {
+  text-align: center;
+  flex: 1;
+
+  > img {
+    max-height: 44vh;
+    width: auto;
+  }
+
+  > h2 {
+    margin-bottom: 30px;
+  }
+
+  > p {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.carousel-item.active {
+  z-index: 1;
+}
+
+.carousel-item.next,
+.carousel-item.prev {
+  z-index: 2;
+}
+
+// @media screen and (min-width: $bp-large) {
+  .carousel-item.next {
+    .carousel-item-inner {
+      transform: translateX(10vw);
+    }
+
+    &.nextVisible {
+      .carousel-item-inner {
+        transform: translateX(0);
+        transition: transform .2s ease-in-out;
+      }
+    }
+  }
+
+  .carousel-item.prev {
+    .carousel-item-inner {
+      transform: translateX(-10vw);
+    }
+
+    &.prevVisible {
+      .carousel-item-inner {
+        transform: translateX(0);
+        transition: transform .2s ease-in-out;
+      }
+    }
+  }
+// }
+
+
+.carousel-control {
+  width: 30%;
+  height: 50vh;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  z-index: 99;
+}
+
+.carousel-control-next {
+  left: 0;
+}
+
+.carousel-control-prev {
+  right: 0;
 }
