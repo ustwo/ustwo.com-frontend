@@ -82,9 +82,7 @@ const PageHomeNew = React.createClass({
       scrollProgressBlock2: 0,
       scrollProgressBlock3: 0,
       activeItem: 0,
-      direction: null,
-      nextVisible: true,
-      prevVisible: true
+      direction: null
     }
   },
 
@@ -128,19 +126,17 @@ const PageHomeNew = React.createClass({
   },
 
   next() {
-    let carouselItem = this.refs.carousel;
-    carouselItem.next();
+    this.refs.carousel.next();
     this.setState({
-      activeItem: carouselItem.getPos(),
+      activeItem: this.refs.carousel.getPos(),
       direction: 'next'
     });
   },
 
   prev() {
-    let carouselItem = this.refs.carousel;
-    carouselItem.prev();
+    this.refs.carousel.prev();
     this.setState({
-      activeItem: carouselItem.getPos(),
+      activeItem: this.refs.carousel.getPos(),
       direction: 'prev'
     });
   },
@@ -159,9 +155,7 @@ const PageHomeNew = React.createClass({
       const classes = classnames('carousel-item', {
         active: this.state.activeItem === i,
         next: this.isNextItem(i, totalItems),
-        prev: this.isPrevItem(i, totalItems),
-        nextVisible: this.isNextItem(i, totalItems) && this.state.nextVisible,
-        prevVisible: this.isPrevItem(i, totalItems) && this.state.prevVisible
+        prev: this.isPrevItem(i, totalItems)
       });
 
       return (
@@ -186,47 +180,30 @@ const PageHomeNew = React.createClass({
     const logoStyles = { transform: `translate3d(0, ${25 * this.state.scrollProgressBlock1}vh, 0)` }
     const logo = <FramesUstwoLogo componentStyle={logoStyles} scrollProgress={this.state.scrollProgressBlock1} isReverse={true} />;
 
-    const leftSplitBlock1 = this.state.scrollProgressBlock1 * 10;
-    const rightSplitBlock1 = (1 - this.state.scrollProgressBlock1) * 10;
-    const leftSplitBlock2 = this.state.scrollProgressBlock2 * 10;
-    const rightSplitBlock2 = (1 - this.state.scrollProgressBlock2) * 10;
-    const leftSplitBlock3 = this.state.scrollProgressBlock3 * 10;
-    const rightSplitBlock3 = (1 - this.state.scrollProgressBlock3) * 10;
-
     const block2Styles = new Prefixer(userAgent).prefix({
       backgroundImage: `linear-gradient(228deg, #ff5519, #ed0082)`,
-      clipPath: `polygon(0 ${leftSplitBlock1}vh, 100% ${rightSplitBlock1}vh, 100% 100%, 0 100%)`,
+      clipPath: `polygon(0 ${this.state.scrollProgressBlock1 * 10}vh, 100% ${(1 - this.state.scrollProgressBlock1) * 10}vh, 100% 100%, 0 100%)`,
     });
 
     const block3Styles = new Prefixer(userAgent).prefix({
       backgroundImage: `linear-gradient(228deg, #14c04d, #96cc29)`,
-      clipPath: `polygon(0 ${leftSplitBlock2}vh, 100% ${rightSplitBlock2}vh, 100% 100%, 0 100%)`,
+      clipPath: `polygon(0 ${this.state.scrollProgressBlock2 * 10}vh, 100% ${(1 - this.state.scrollProgressBlock2) * 10}vh, 100% 100%, 0 100%)`,
     });
 
     const homeFooterStyles = new Prefixer(userAgent).prefix({
-      clipPath: `polygon(0 ${leftSplitBlock3}vh, 100% ${rightSplitBlock3}vh, 100% 100%, 0 100%)`
+      clipPath: `polygon(0 ${this.state.scrollProgressBlock3 * 10}vh, 100% ${(1 - this.state.scrollProgressBlock3) * 10}vh, 100% 100%, 0 100%)`
     });
 
     const swipeOptions = {
       speed: 300,
       disableScroll: false,
       stopPropagation: false,
-      continuous: true,
-      callback: () => {
-        this.setState({
-          nextVisible: false,
-          prevVisible: false
-        })
-      },
-      transitionEnd: () => {
-        this.setState({
-          nextVisible: true,
-          prevVisible: true
-        })
-      }
+      continuous: true
     };
 
-    const carouselStyle = { wrapper: { width: "100%" } }
+    const carouselStyle = {
+      wrapper: { width: "100%" }
+    }
 
     return (
       <article className={classes} id="hero">

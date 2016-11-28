@@ -202,6 +202,8 @@ $carousel-offset: 70px;
 
 
 
+/* TODO: refactor to make carousel a standalone component */
+
 .carousel-wrapper {
   position: absolute;
   height: 110vh;
@@ -347,11 +349,11 @@ $carousel-offset: 70px;
 }
 
 .carousel.next-direction .carousel-item.next .carousel-item-inner {
-  animation: NextItem .3s 1; /* duration is equal to duration of slide defined in js */ 
+  animation: NextItem .3s 1; /* duration is equal to duration of slide defined in js */
 }
 
 .carousel.prev-direction .carousel-item.prev .carousel-item-inner {
-  animation: PrevItem .3s 1; /* duration is equal to duration of slide defined in js */ 
+  animation: PrevItem .3s 1; /* duration is equal to duration of slide defined in js */
 }
 
 .carousel-control {
