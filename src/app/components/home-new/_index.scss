@@ -210,7 +210,6 @@ $carousel-offset: 70px;
   position: relative;
   z-index: 2;
   padding: 0 15%;
-  width: 100%;
   overflow: hidden;
 
   > p {
@@ -302,33 +301,58 @@ $carousel-offset: 70px;
 }
 
 // @media screen and (min-width: $bp-large) {
-  .carousel-item.next {
-    .carousel-item-inner {
-      transform: translateX(10vw);
-    }
-
-    &.nextVisible {
-      .carousel-item-inner {
-        transform: translateX(0);
-        transition: transform .2s ease-in-out;
-      }
-    }
-  }
-
-  .carousel-item.prev {
-    .carousel-item-inner {
-      transform: translateX(-10vw);
-    }
-
-    &.prevVisible {
-      .carousel-item-inner {
-        transform: translateX(0);
-        transition: transform .2s ease-in-out;
-      }
-    }
-  }
+  // .carousel-item.next {
+  //   .carousel-item-inner {
+  //     transform: translateX(10vw);
+  //   }
+  //
+  //   &.nextVisible {
+  //     .carousel-item-inner {
+  //       transform: translateX(0);
+  //       transition: transform .2s ease-in-out;
+  //     }
+  //   }
+  // }
+  //
+  // .carousel-item.prev {
+  //   .carousel-item-inner {
+  //     transform: translateX(-10vw);
+  //   }
+  //
+  //   &.prevVisible {
+  //     .carousel-item-inner {
+  //       transform: translateX(0);
+  //       transition: transform .2s ease-in-out;
+  //     }
+  //   }
+  // }
 // }
 
+@keyframes NextItem {
+  from {
+    transform: translateX(70vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes PrevItem {
+  from {
+    transform: translateX(-70vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.carousel.next-direction .carousel-item.next .carousel-item-inner {
+  animation: NextItem .3s 1; /* duration is equal to duration of slide defined in js */ 
+}
+
+.carousel.prev-direction .carousel-item.prev .carousel-item-inner {
+  animation: PrevItem .3s 1; /* duration is equal to duration of slide defined in js */ 
+}
 
 .carousel-control {
   width: 30%;

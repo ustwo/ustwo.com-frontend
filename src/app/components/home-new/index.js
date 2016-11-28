@@ -82,6 +82,7 @@ const PageHomeNew = React.createClass({
       scrollProgressBlock2: 0,
       scrollProgressBlock3: 0,
       activeItem: 0,
+      direction: null,
       nextVisible: true,
       prevVisible: true
     }
@@ -129,13 +130,19 @@ const PageHomeNew = React.createClass({
   next() {
     let carouselItem = this.refs.carousel;
     carouselItem.next();
-    this.setState({ activeItem: carouselItem.getPos() });
+    this.setState({
+      activeItem: carouselItem.getPos(),
+      direction: 'next'
+    });
   },
 
   prev() {
     let carouselItem = this.refs.carousel;
     carouselItem.prev();
-    this.setState({ activeItem: carouselItem.getPos() });
+    this.setState({
+      activeItem: carouselItem.getPos(),
+      direction: 'prev'
+    });
   },
 
   isNextItem(i, totalItems) {
@@ -250,7 +257,7 @@ const PageHomeNew = React.createClass({
             </p>
             <ReactSwipe
               ref="carousel"
-              className="carousel"
+              className={`carousel ${this.state.direction}-direction`}
               swipeOptions={swipeOptions}
               style={carouselStyle}>
               {this.renderItems()}
