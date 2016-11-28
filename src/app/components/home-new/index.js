@@ -160,13 +160,13 @@ const PageHomeNew = React.createClass({
       return (
         <div className={classes}>
           <div className="carousel-item-inner">
-            <div className="carousel-control carousel-control-next" onClick={::this.next}></div>
+            <div className="carousel-control carousel-control-next" onClick={this.next.bind(this)}></div>
             <div className="carousel-content">
               <img src={item.image} alt={`Image of ${item.title}`} />
               <h2>{item.title}</h2>
               <p>{item.text}</p>
             </div>
-            <div className="carousel-control carousel-control-prev" onClick={::this.prev}></div>
+            <div className="carousel-control carousel-control-prev" onClick={this.prev.bind(this)}></div>
           </div>
         </div>
       );

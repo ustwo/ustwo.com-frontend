@@ -18,22 +18,27 @@ function renderApp(req, res) {
   if (isomorphic) {
     bootstrapper(`${req.protocol}://${req.hostname}${req.originalUrl}`, req.get('Host-API'), `http://${process.env.DOCKER_PROXY_HOST}`)
       .then((state) => {
-        const App = React.createFactory(require('app/components/app'));
-        console.log('Rendering HTML to string...');
-        const AppString = ReactDOMServer.renderToString(App({
-          state: omit(state, 'takeover')
-        }));
-        console.log('Done');
-        const head = Helmet.rewind();
-        res
-          .status(state.statusCode)
-          .render('app', {
-            title: head.title,
-            meta: head.meta,
-            link: head.link,
-            state: JSON.stringify(state),
-            app: AppString
-          });
+        try {
+          const App = React.createFactory(require('app/components/app'));
+          console.log('Rendering HTML to string...');
+          const AppString = ReactDOMServer.renderToString(App({
+            state: omit(state, 'takeover')
+          }));
+          console.log('Done');
+          const head = Helmet.rewind();
+          res
+            .status(state.statusCode)
+            .render('app', {
+              title: head.title,
+              meta: head.meta,
+              link: head.link,
+              state: JSON.stringify(state),
+              app: AppString
+            });
+        } catch (e) {
+          console.log(e);
+          res.send(e);
+        }
       })
       .catch(error => log('server route error', error, error.stack));
   } else {
