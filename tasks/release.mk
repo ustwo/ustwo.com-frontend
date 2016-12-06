@@ -21,9 +21,9 @@ release-pull-snapshots:
 	$(DOCKER) pull $(sandbox_snapshot)
 
 release-tag-snapshots:
-	$(DOCKER) tag -f $(app_snapshot) $(app_image)
-	$(DOCKER) tag -f $(assets_snapshot) $(assets_image)
-	$(DOCKER) tag -f $(sandbox_snapshot) $(sandbox_image)
+	$(DOCKER) tag $(app_snapshot) $(app_image)
+	$(DOCKER) tag $(assets_snapshot) $(assets_image)
+	$(DOCKER) tag $(sandbox_snapshot) $(sandbox_image)
 
 release-tag-create:
 ifeq ("$(VERSION)", "dev")
