@@ -152,47 +152,21 @@ clients without Javascript (or with overzealous ad blockers)
 
 ## Setup
 
-### Docker dependencies
+### Docker
 
-The project is managed via Docker containers. Right now we're using Docker
-version 1.9.0 with Docker Machine version 0.5.0.
+In order to get up and running you need Docker. The best way to install
+Docker is to follow the current
+[Docker documentation](https://docker.github.io/engine/installation/)
 
-Commands below assume OS X and preference to install libraries via Homebrew.
-You can of course install Docker Machine and Virtualbox in any other way
-you want (like Docker Toolbox / [Kitematic][7]).
+Then add the following aliases to your `/etc/hosts` file:
 
-* Install [Docker Machine][8]
+```
+127.0.0.1 local.ustwo.com
+127.0.0.1 staging.ustwo.com
+```
 
-        $ brew install docker-machine
-
-* Install [Docker Engine][9]
-
-        $ brew install docker
-
-* Install [Virtualbox][10]
-
-*Note*: Beware, the version might matter. Our latest known working version is
-5.0.4.
-
-### Docker environment
-
-* Create Docker host VM
-
-        $ docker-machine create --driver virtualbox dev
-
-* Set up Docker environment to VM – needs to be done for every new shell session
-
-        $ eval "$(docker-machine env dev)"
-
-* Set up `/etc/hosts` aliases
-
-        192.168.99.100 local.ustwo.com
-        192.168.99.100 staging.ustwo.com
-
-*Note*: The IP number above depends on your local instance. Check
-`docker-machine ip dev`.
-
-*Note 2*: You need the environment to be set to dev to use Make commands!
+*Note*: For setup without the native docker client, skip this step and see
+[DOCKER-SOURCE.md][18].
 
 ### Credentials / Vault
 
@@ -403,3 +377,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 [15]: https://github.com/jonathantneal/svg4everybody
 [16]: https://circleci.com/gh/ustwo/ustwo.com-frontend.png?circle-token=6b4747fb91e70c0c1e3050879f6b5eebdf34dec3
 [17]: https://circleci.com/gh/ustwo/ustwo.com-frontend
+[18]: ./docs/DOCKER-MACHINE.md
