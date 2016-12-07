@@ -85,7 +85,7 @@ const Hero = React.createClass({
     if (scrollProgress) {
       titleStyle = {
         opacity: 1 - scrollProgress,
-        transform: `translate3d(0, ${25 * scrollProgress}vh, 0)`
+        transform: `translate3d(0, ${35 * scrollProgress}vh, 0)`
       }
     }
 

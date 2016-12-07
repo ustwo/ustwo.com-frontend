@@ -5,8 +5,6 @@
  *  TODO: Once transferred to the real homepage, remove all instances of 'new'
  */
 
-$carousel-offset: 70px;
-
 .page-home-new {
   // overflow: hidden;
   // transform: translateZ(0); /* hardware accelerate background-color change on scroll */
@@ -16,6 +14,7 @@ $carousel-offset: 70px;
 
     .title {
       color: $honey;
+      font-size: 56px;
     }
   }
 
@@ -180,195 +179,60 @@ $carousel-offset: 70px;
     }
   }
 
-
-
-  /* Carousels */
-
   .block-wrapper {
     position: relative;
     height: 100vh;
   }
 
-  .home-footer {
-    position: relative;
-    z-index: 2;
-    height: 100px;
-    margin-top: -100px;
-    background-color: $footerBg;
-  }
+  .panel {
+    height: 100vh;
 
-}
+    &:nth-child(1) {
+      background: red;
+    }
 
-
-
-
-/* TODO: refactor to make carousel a standalone component */
-
-.carousel-wrapper {
-  position: absolute;
-  height: 110vh;
-  top: -10vh;
-  color: white;
-  position: relative;
-  z-index: 2;
-  padding: 0 15%;
-  overflow: hidden;
-
-  > p {
-    padding-top: 120px;
-  }
-}
-
-.carousel {
-  margin: 0 auto;
-
-  > div {
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.carousel-item {
-  position: relative;
-  font-weight: bold;
-  color: white;
-  font-size: 30px;
-  text-align: center;
-
-
-  &.active {
-    .carousel-control {
-      display: none;
+    &:nth-child(2) {
+      background: green;
     }
   }
 
-  // &:nth-child(1) .carousel-item-inner {
-  //   border: 1px solid white;
-  //
-  //   .carousel-control {
-  //     background-color: white;
-  //   }
-  // }
-  // &:nth-child(2) .carousel-item-inner {
-  //   border: 1px solid blue;
-  //
-  //   .carousel-control {
-  //     background-color: blue;
-  //   }
-  // }
-  // &:nth-child(3) .carousel-item-inner {
-  //   border: 1px solid green;
-  //
-  //   .carousel-control {
-  //     background-color: green;
-  //   }
-  // }
-}
+  .videoBackground {
 
-.carousel-item-inner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50vh;
-}
-
-.carousel-content {
-  text-align: center;
-  flex: 1;
-
-  > img {
-    max-height: 44vh;
-    width: auto;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #000;
+      opacity: .1;
+    }
   }
 
-  > h2 {
-    margin-bottom: 30px;
+  #block-description {
+    position: relative;
+    height: 300vh;
+
+    .description-inner {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+    }
+
+    h2 {
+      opacity: 0;
+      transition: opacity .32s ease-in-out;
+    }
+
+    &.scrolling {
+      h2 {
+        position: fixed;
+        top: 0;
+        opacity: 1;
+      }
+    }
   }
 
-  > p {
-    width: 90%;
-    margin: 0 auto;
-  }
-}
-
-.carousel-item.active {
-  z-index: 1;
-}
-
-.carousel-item.next,
-.carousel-item.prev {
-  z-index: 2;
-}
-
-// @media screen and (min-width: $bp-large) {
-  // .carousel-item.next {
-  //   .carousel-item-inner {
-  //     transform: translateX(10vw);
-  //   }
-  //
-  //   &.nextVisible {
-  //     .carousel-item-inner {
-  //       transform: translateX(0);
-  //       transition: transform .2s ease-in-out;
-  //     }
-  //   }
-  // }
-  //
-  // .carousel-item.prev {
-  //   .carousel-item-inner {
-  //     transform: translateX(-10vw);
-  //   }
-  //
-  //   &.prevVisible {
-  //     .carousel-item-inner {
-  //       transform: translateX(0);
-  //       transition: transform .2s ease-in-out;
-  //     }
-  //   }
-  // }
-// }
-
-@keyframes NextItem {
-  from {
-    transform: translateX(70vw);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes PrevItem {
-  from {
-    transform: translateX(-70vw);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-.carousel.next-direction .carousel-item.next .carousel-item-inner {
-  animation: NextItem .3s 1; /* duration is equal to duration of slide defined in js */
-}
-
-.carousel.prev-direction .carousel-item.prev .carousel-item-inner {
-  animation: PrevItem .3s 1; /* duration is equal to duration of slide defined in js */
-}
-
-.carousel-control {
-  width: 30%;
-  height: 50vh;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  z-index: 99;
-}
-
-.carousel-control-next {
-  left: 0;
-}
-
-.carousel-control-prev {
-  right: 0;
 }
