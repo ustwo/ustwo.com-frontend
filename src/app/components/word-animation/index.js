@@ -23,12 +23,18 @@ const WordAnimation = React.createClass({
     }
   },
   componentDidMount() {
-    if (this.text) {
+    if (this.text && this.props.trigger == undefined) {
+      this.startAnimation();
+    }
+    if (this.text && this.props.trigger) {
       this.startAnimation();
     }
   },
   componentDidUpdate() {
-    if (!this.state.animationShown && this.text) {
+    if (!this.state.animationShown && this.text && this.props.trigger == undefined) {
+      this.startAnimation();
+    }
+    if (!this.state.animationShown && this.text && this.props.trigger) {
       this.startAnimation();
     }
   },

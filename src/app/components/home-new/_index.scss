@@ -14,7 +14,10 @@
 
     .title {
       color: $honey;
-      font-size: 56px;
+
+      @media screen and (min-width: $bp-large) {
+        font-size: 56px;
+      }
     }
   }
 
@@ -232,6 +235,61 @@
         top: 0;
         opacity: 1;
       }
+    }
+  }
+
+  .large-logo-wrapper {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 30px;
+    width: 30vw;
+    min-width: 200px;
+
+    svg {
+      fill: white;
+      width: 100%;
+    }
+  }
+
+  .hero {
+    @media screen and (min-width: $bp-large) {
+      .title {
+        padding: 0 180px;
+      }
+    }
+  }
+
+  .colour-blend {
+    position: relative;
+
+    .block-wrapper {
+      z-index: 2;
+    }
+  }
+
+  .colour-blend-background {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+  }
+
+  .colour-blend.scrolling .colour-blend-background {
+    position: fixed;
+  }
+
+  .block-client-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+      color: white;
+      width: 60vw;
+      text-align: center;
+      margin: 0 auto;
+      min-width: 280px;
     }
   }
 

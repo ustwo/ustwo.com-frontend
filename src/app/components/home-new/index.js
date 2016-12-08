@@ -37,7 +37,8 @@ const PageHomeNew = React.createClass({
 
   getInitialState() {
     return {
-      scrollProgressBlockHome: 0
+      scrollProgressBlockHome: 0,
+      clientIntroTrigger: false
     }
   },
 
@@ -62,28 +63,59 @@ const PageHomeNew = React.createClass({
 
     // Colour blend
 
-    // const colourBlendElement = ReactDOM.findDOMNode(this.refs.scrollContainer);
-    //
-    // colourBlendElement.style.backgroundColor = '#009CF3'; // Set initial colour of colour blend element
-    //
-    // new ScrollMagic.Scene({
-    //   triggerElement: '.screen-block.about',
-    //   triggerHook: 'onLeave',
-    //   duration: '100%'
-    // })
-    // .on('progress', (e) => {
-    //   window.requestAnimationFrame(() => {
-    //     colourBlendElement.style.background = `linear-gradient(45deg, #${blendColours('#0065c9', '#76d377', e.progress)} 0%, #${blendColours('#00ccda', '#68d79e', e.progress)} 100%)`;
-    //   });
-    // })
-    // .addTo(controller);
+    new ScrollMagic.Scene({
+      triggerElement: '.colour-blend',
+      triggerHook: 'onLeave',
+      duration: '200%'
+    })
+    .setClassToggle(".colour-blend", "scrolling")
+    .addTo(controller);
+
+
+    const colourBlendBackground = ReactDOM.findDOMNode(this.refs.colourBlendBackground);
+
+    colourBlendBackground.style.backgroundColor = `linear-gradient(45deg, #16D6D9, 0%, #96CC29, 100%)`; // Set initial colour of colour blend element
+
+    new ScrollMagic.Scene({
+      triggerElement: '.colour-blend',
+      triggerHook: 'onLeave',
+      duration: '100%',
+      offset: '100%'
+    })
+    .on('progress', (e) => {
+      window.requestAnimationFrame(() => {
+        colourBlendBackground.style.background = `linear-gradient(45deg, #${blendColours('#16D6D9', '#009CF3', e.progress)} 0%, #${blendColours('#96CC29', '#16D6D9', e.progress)} 100%)`;
+      });
+      if (e.progress > 0.5) {
+        this.setState({
+          clientIntroTrigger: true
+        })
+      }
+    })
+    .addTo(controller);
 
   },
 
   render() {
     const classes = classnames('page-home-new', this.props.className);
-    const logoStyles = { transform: `translate3d(0, ${35 * this.state.scrollProgressBlockHome}vh, 0)` }
-    const logo = <FramesUstwoLogo componentStyle={logoStyles} scrollProgress={this.state.scrollProgressBlockHome} isReverse={true} />;
+    const logoStyles = {
+      opacity: 1 - this.state.scrollProgressBlockHome,
+      transform: `translate3d(0, ${30 * this.state.scrollProgressBlockHome}vh, 0)`
+    }
+    // const logo = <FramesUstwoLogo componentStyle={logoStyles} scrollProgress={this.state.scrollProgressBlockHome} isReverse={true} />;
+    const logo = (
+      <div className="large-logo-wrapper" style={logoStyles}>
+        <SVG title="ustwo logo" spritemapID="ustwologo" />
+      </div>
+    );
+
+    let titleStyle;
+    // if (scrollProgress) {
+    //   titleStyle = {
+    //     opacity: 1 - scrollProgress,
+    //     transform: `translate3d(0, ${35 * scrollProgress}vh, 0)`
+    //   }
+    // }
 
     return (
       <article className={classes} id="hero">
@@ -107,9 +139,22 @@ const PageHomeNew = React.createClass({
           </Hero>
         </div>
 
-        {/* Carousel 1 - Client */}
+        <div className="colour-blend" ref="colourBlend">
+          <div className="block-wrapper block-client-intro">
+              <h2 className="title" style={titleStyle}>
+                <WordAnimation delay={1} duration={0.5} trigger={this.state.clientIntroTrigger}>And then some text here that introduces the client carousel section</WordAnimation>
+              </h2>
+          </div>
+          {/* Carousel 1 - Client */}
+          <div className="block-wrapper">
+            <Carousel data={carouselContentClient} />
+          </div>
+          <div className="colour-blend-background" ref="colourBlendBackground"></div>
+        </div>
+
+        {/* Carousel 2 - Ventures */}
         <div className="block-wrapper">
-          <Carousel data={carouselContentClient} styles={carouselStylesClient} />
+          <Carousel data={carouselContentVentures} styles={carouselStylesVentures} />
         </div>
 
       </article>
@@ -168,12 +213,9 @@ const carouselContentVentures = [
     image: "/images/temp/home-dice.png"
   }
 ];
-const carouselStylesClient = {
-  backgroundImage: `linear-gradient(228deg, #ff5519, #ed0082)`,
-};
 
-const blockVentureStyles = {
-  backgroundImage: `linear-gradient(228deg, #14c04d, #96cc29)`,
+const carouselStylesVentures = {
+  backgroundImage: `linear-gradient(228deg, #ff5519, #ed0082)`,
 };
 
 // Attempt at making my own component for tracking scroll position of any element
