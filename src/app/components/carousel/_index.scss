@@ -30,7 +30,7 @@
   font-weight: bold;
   color: white;
   font-size: 30px;
-  text-align: center;
+
 }
 
 .carousel-item-inner {
@@ -38,26 +38,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50vh;
+  height: 100vh;
+  background-size: auto 65%;
+  background-position: 70% 50%;
+  background-repeat: no-repeat;
 }
 
 .carousel-content {
-  text-align: center;
-  flex: 1;
-
-  > img {
-    max-height: 44vh;
-    width: auto;
-  }
+  margin-left: 5vw;
+  width: 30vw;
 
   > h2 {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
+}
 
-  > p {
-    width: 90%;
-    margin: 0 auto;
-  }
+.carousel-number {
+  width: 25vw;
+  border-bottom: 4px solid white;
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
 }
 
 .carousel-item.active {
@@ -70,8 +72,8 @@
 }
 
 .carousel-control {
-  width: 30%;
-  height: 50vh;
+  width: 10%;
+  height: 100vh;
   cursor: pointer;
   position: absolute;
   top: 0;
@@ -84,4 +86,10 @@
 
 .carousel-control-prev {
   left: 0;
+}
+
+.carousel-item-sky-kids {
+  .carousel-content {
+    margin-top: 90px;
+  }
 }

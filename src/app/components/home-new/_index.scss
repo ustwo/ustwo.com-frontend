@@ -275,8 +275,10 @@
     z-index: 1;
   }
 
-  .colour-blend.scrolling .colour-blend-background {
-    position: fixed;
+  .colour-blend.scrolling {
+    .colour-blend-background {
+      position: fixed;
+    }
   }
 
   .block-client-intro {
@@ -291,6 +293,10 @@
       margin: 0 auto;
       min-width: 280px;
     }
+  }
+
+  .block-client-intro {
+
   }
 
 }

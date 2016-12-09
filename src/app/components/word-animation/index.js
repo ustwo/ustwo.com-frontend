@@ -13,13 +13,15 @@ const WordAnimation = React.createClass({
     }
   },
   componentWillMount() {
+    let baseStyle = { opacity: 0 }
     if (this.props.children) {
-      this.text = spannify(this.props.children, 'word');
+      this.text = spannify(this.props.children, 'word', baseStyle);
     }
   },
   componentWillReceiveProps(nextProps) {
+    let baseStyle = { opacity: 0 }
     if (!this.text && nextProps.children) {
-      this.text = spannify(nextProps.children, 'word');
+      this.text = spannify(nextProps.children, 'word', baseStyle);
     }
   },
   componentDidMount() {

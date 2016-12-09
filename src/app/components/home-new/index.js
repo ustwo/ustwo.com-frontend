@@ -74,19 +74,25 @@ const PageHomeNew = React.createClass({
 
     const colourBlendBackground = ReactDOM.findDOMNode(this.refs.colourBlendBackground);
 
-    colourBlendBackground.style.backgroundColor = `linear-gradient(45deg, #16D6D9, 0%, #96CC29, 100%)`; // Set initial colour of colour blend element
+    // colourBlendBackground.style.background = `linear-gradient(115deg, #16D6D9 0%, #96CC29 100%)`; // Set initial colour of colour blend element
+    colourBlendBackground.style.background = `linear-gradient(115deg, #16D6D9 0%, #96CC29 100%)`;
 
     new ScrollMagic.Scene({
       triggerElement: '.colour-blend',
-      triggerHook: 'onLeave',
-      duration: '100%',
-      offset: '100%'
+      triggerHook: 'onEnter',
+      duration: '200%'
     })
     .on('progress', (e) => {
-      window.requestAnimationFrame(() => {
-        colourBlendBackground.style.background = `linear-gradient(45deg, #${blendColours('#16D6D9', '#009CF3', e.progress)} 0%, #${blendColours('#96CC29', '#16D6D9', e.progress)} 100%)`;
-      });
       if (e.progress > 0.5) {
+        let value = (e.progress - 0.5) * 2;
+        window.requestAnimationFrame(() => {
+          colourBlendBackground.style.background = `linear-gradient(115deg, #${blendColours('#16D6D9', '#143FCC', value)} 0%, #${blendColours('#96CC29', '#16D6D9', value)} 100%)`;
+        });
+      } else {
+        window.requestAnimationFrame(() => {
+        });
+      }
+      if (e.progress > 0.25) {
         this.setState({
           clientIntroTrigger: true
         })
@@ -140,16 +146,20 @@ const PageHomeNew = React.createClass({
         </div>
 
         <div className="colour-blend" ref="colourBlend">
-          <div className="block-wrapper block-client-intro">
-              <h2 className="title" style={titleStyle}>
-                <WordAnimation delay={1} duration={0.5} trigger={this.state.clientIntroTrigger}>And then some text here that introduces the client carousel section</WordAnimation>
-              </h2>
+
+          <div className="block-wrapper block-client-intro" ref="blockClientIntro">
+            <h2 className="title" style={titleStyle}>
+              <WordAnimation delay={1} duration={0.5} trigger={this.state.clientIntroTrigger}>And then some text here that introduces the client carousel section</WordAnimation>
+            </h2>
           </div>
+
           {/* Carousel 1 - Client */}
           <div className="block-wrapper">
             <Carousel data={carouselContentClient} />
           </div>
+
           <div className="colour-blend-background" ref="colourBlendBackground"></div>
+
         </div>
 
         {/* Carousel 2 - Ventures */}
@@ -194,14 +204,17 @@ const sizes = {
 const carouselContentClient = [
   {
     title: "Sky Kids",
+    name: "sky-kids",
     text: "We partnered with Sky to create a fun, intuitive and safe way for kids to enjoy their favourite TV shows",
     image: "/images/temp/home-skykids.png"
   }, {
     title: "Ford GoPark",
+    name: "go-park",
     text: "Tackling the problem of parking head-on, GoPark is an app and service that integrates vehicles and the city in new and meaningful ways.",
     image: "/images/temp/home-gopark.png"
   }, {
     title: "Foursquare",
+    name: "foursquare",
     text: "text",
     image: "/images/temp/home-foursquare.png"
   }
@@ -209,13 +222,26 @@ const carouselContentClient = [
 const carouselContentVentures = [
   {
     title: "Dice",
-    text: "text",
+    name: "dice",
+    text: "Music, tickets, gigs, no fees, bands, venues, app, buy",
     image: "/images/temp/home-dice.png"
+  },
+  {
+    title: "ustwo Games",
+    name: "ustwo-games",
+    text: "Monument Valley is a computer game what got built by ustwo games",
+    image: "/images/temp/home-ustwo-games.png"
+  },
+  {
+    title: "Pause",
+    name: "pause",
+    text: "Darth binks shaak mon marek croke secura shi'ido veknoid. Vedder t88 rhen aramandi.",
+    image: "/images/temp/home-pause.png"
   }
 ];
 
 const carouselStylesVentures = {
-  backgroundImage: `linear-gradient(228deg, #ff5519, #ed0082)`,
+  backgroundImage: `linear-gradient(115deg, #ff5519, #ed0082)`,
 };
 
 // Attempt at making my own component for tracking scroll position of any element
