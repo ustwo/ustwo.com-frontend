@@ -16,6 +16,17 @@
   overflow:hidden;
   transform: translateZ(0); /* hardware accelerate background-color change on scroll */
 
+  .hero {
+
+    .title {
+      color: $honey;
+
+      @media screen and (min-width: $bp-large) {
+        font-size: 56px;
+      }
+    }
+  }
+
   .screen-block:not(.hero) {
 
     .wrapper {
@@ -120,6 +131,12 @@
     }
   }
 
+  .screen-block.hero {
+    .wrapper {
+      padding: 0;
+    }
+  }
+
   .screen-block.welcome {
     .headline-image {
       position: absolute;
@@ -150,6 +167,18 @@
       &.hide {
         opacity: 0;
       }
+    }
+  }
+
+  .large-logo-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 40vw;
+    min-width: 260px;
+
+    svg {
+      fill: white;
+      width: 100%;
     }
   }
 }

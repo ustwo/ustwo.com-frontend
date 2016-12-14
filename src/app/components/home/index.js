@@ -21,25 +21,41 @@ import SVG from 'app/components/svg';
 import WordAnimation from 'app/components/word-animation';
 import EntranceTransition from 'app/components/entrance-transition';
 import Rimage from 'app/components/rimage';
-
+import Hero from 'app/components/hero';
+import Video from 'app/components/video';
 import BoldHeader from 'app/components/bold-header';
 import HomeTextBlock from 'app/components/home-text-block';
 import ScreenBlock from 'app/components/screen-block';
 import RelatedContent from 'app/components/related-content';
 
+function scrollProgress(component, name) {
+  return (e) => {
+    let obj = {};
+    let key = `scrollProgressBlock${name}`;
+    let value = Math.round(e.progress * 100) / 100;
+    obj[key] = value;
+    component.setState(obj);
+  }
+}
+
 const PageHome = React.createClass({
+
   mixins: [getScrollTrackerMixin('home')],
+
   getInitialState() {
     return {
-      chevronLoaded: false
+      chevronLoaded: false,
+      scrollProgressBlockHome: 0
     }
   },
+
   animateChevron(event) {
     if(this.refs.downChevron) {
       this.refs.downChevron.resetAnim();
       this.refs.downChevron.anim();
     }
   },
+
   setupScrollMagic() {
     const { page } = this.props;
     const blocks = get(page, 'page_builder', []);
@@ -63,8 +79,9 @@ const PageHome = React.createClass({
       this.scrollSceneChevron = new ScrollMagic.Scene({
           triggerElement: blockWelcomeDom,
           triggerHook: 'onLeave',
-          duration: () => {return blockWelcomeDom.clientHeight * 0.7}
+          duration: () => { return blockWelcomeDom.clientHeight }
         })
+        .on('progress', scrollProgress(this, 'Home'))
         .addTo(scrollController);
 
       this.colourBlockScenes = [];
@@ -76,6 +93,7 @@ const PageHome = React.createClass({
       });
     }
   },
+
   teardownScrollMagic() {
     this.Tracking.removePageScrollTracking();
 
@@ -86,6 +104,7 @@ const PageHome = React.createClass({
       });
     }
   },
+
   createColourBlockScene(scrollController, pageElement, blockReference, hexColour1, hexColour2) {
     return new ScrollMagic.Scene({
         triggerElement: blockReference,
@@ -94,16 +113,17 @@ const PageHome = React.createClass({
         duration: () => {return blockReference.clientHeight * 0.5}
       })
       .addTo(scrollController)
-      // .addIndicators() // add indicators (requires plugin)
       .on('progress', (e) => {
         window.requestAnimationFrame(() => {
           pageElement.style.backgroundColor = '#' + blendColours(hexColour1, hexColour2, e.progress);
         });
     });
   },
+
   componentWillMount() {
     this.Tracking = new Tracking();
   },
+
   componentDidMount() {
     this.setupScrollMagic();
     this.animTimeout = setTimeout(() => {
@@ -113,14 +133,13 @@ const PageHome = React.createClass({
       })
     }, 1500);
   },
+
   componentWillUnmount() {
     this.teardownScrollMagic();
     clearTimeout(this.animTimeout);
   },
-  render() {
-    const { page } = this.props;
-    const classes = classnames('page-home', this.props.className);
-    const featuredImage = getFeaturedImage(page);
+
+  renderChevron() {
     // Show only the final frame of the Chevron animation on mobile
     let Chevron;
     if (window.innerWidth <= 480) {
@@ -132,58 +151,107 @@ const PageHome = React.createClass({
       Chevron = <DownChevron ref="downChevron" onClick={this.onClickDownChevron} customClass={this.state.chevronLoaded ? 'loaded' : ''} />;
     }
     // End Chevron
+
+    // Transition Chevron on scroll
+    const chevronStyles = {
+      transform: `translate3d(0, ${40 * this.state.scrollProgressBlockHome}vh, 0)`,
+      opacity: 1 - this.state.scrollProgressBlockHome * 2
+    }
+
+    return (
+      <div className="chevron-wrapper" style={chevronStyles}>
+        {Chevron}
+      </div>
+    );
+  },
+
+  render() {
+    const { page } = this.props;
+    const classes = classnames('page-home', this.props.className);
+    const featuredImage = getFeaturedImage(page);
+
+    const logoStyles = {
+      opacity: 1 - this.state.scrollProgressBlockHome,
+      transform: `translate3d(0, ${30 * this.state.scrollProgressBlockHome}vh, 0)`
+    }
+
+    const logo = (
+      <EntranceTransition className="logo-entrance">
+        <div className="large-logo-wrapper" style={logoStyles}>
+          <SVG title="ustwo logo" spritemapID="ustwologo" />
+        </div>
+      </EntranceTransition>
+    );
+
+    const image = getFeaturedImage(page);
+
     return (
       <article className={classes}>
-        <ScreenBlock ref="blockWelcome" customClass="welcome" textColour={get(page, 'colors.primary')} bgColour={get(page, 'colors.bg')}>
-          <EntranceTransition className="image-entrance">
-            <Rimage wrap="div" className="headline-image" sizes={get(featuredImage, 'media_details.sizes')} />
-          </EntranceTransition>
-          <EntranceTransition className="title-entrance">
-            <div className="headline-text title">
-              <BoldHeader colour="white">
-                <WordAnimation delay={1} duration={0.4}>
-                  {get(page, 'hero.attr.heading.value')}
-                </WordAnimation>
-              </BoldHeader>
-            </div>
-          </EntranceTransition>
-          {Chevron}
+
+        <ScreenBlock ref="blockWelcome" customClass="hero" textColour={get(page, 'colors.primary')} bgColour={get(page, 'colors.bg')}>
+          <Hero
+            title={get(page, 'hero.attr.heading.value')}
+            transitionImage={true}
+            eventLabel='home-new'
+            logo={logo}
+            scrollProgress={this.state.scrollProgressBlockHome}
+            className="block-wrapper block1"
+            ref="blockHome"
+          >
+            <Video
+              src={get(page, 'featured_video')}
+              sizes={get(image, 'media_details.sizes')}
+              isVideoBackground={true}
+              tint={true}
+            />
+          </Hero>
+          {this.renderChevron()}
         </ScreenBlock>
+
         {this.renderFeatureBlocks()}
         {this.renderRelatedContent()}
+
       </article>
     );
   },
+
   renderFeatureBlocks() {
     const { page } = this.props;
+
     return get(page, 'page_builder').map((block, index) => {
       const blockAttrs = get(block, 'attr');
-      return <ScreenBlock key={`block${index}`} ref={`block${index}`} textColour={get(blockAttrs, 'text_colour.value')} bgColour={get(blockAttrs, 'background_colour.value')}>
-        <div className="block-parent">
-          <div className="block-child">
-            <MediaQuery maxWidth={480}>
-              <Rimage wrap="div" className="image-container" sizes={get(blockAttrs, 'image_jpg.value.0.sizes')} />
-            </MediaQuery>
-            <MediaQuery minWidth={481}>
-              <Rimage wrap="div" className="image-container" sizes={get(blockAttrs, 'image_png.value.0.sizes')} />
-            </MediaQuery>
+
+      return (
+        <ScreenBlock key={`block${index}`} ref={`block${index}`} textColour={get(blockAttrs, 'text_colour.value')} bgColour={get(blockAttrs, 'background_colour.value')}>
+          <div className="block-parent">
+            <div className="block-child">
+              <MediaQuery maxWidth={480}>
+                <Rimage wrap="div" className="image-container" sizes={get(blockAttrs, 'image_jpg.value.0.sizes')} />
+              </MediaQuery>
+              <MediaQuery minWidth={481}>
+                <Rimage wrap="div" className="image-container" sizes={get(blockAttrs, 'image_png.value.0.sizes')} />
+              </MediaQuery>
+            </div>
           </div>
-        </div>
-        <div className="text-block">
-          <HomeTextBlock title={get(blockAttrs, 'heading.value')} colour={get(blockAttrs, 'text_colour.value')}>
-            {get(block, 'attr.description.value')}
-          </HomeTextBlock>
-        </div>
-      </ScreenBlock>;
+          <div className="text-block">
+            <HomeTextBlock title={get(blockAttrs, 'heading.value')} colour={get(blockAttrs, 'text_colour.value')}>
+              {get(block, 'attr.description.value')}
+            </HomeTextBlock>
+          </div>
+        </ScreenBlock>
+      );
     });
   },
+
   renderRelatedContent() {
     let relatedContent;
+
     if(this.props.relatedContent.length) {
       relatedContent = <RelatedContent content={this.props.relatedContent} />
     }
     return relatedContent;
   },
+
   onClickDownChevron() {
     Track('send', {
       'hitType': 'event',

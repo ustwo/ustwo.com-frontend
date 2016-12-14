@@ -24,7 +24,7 @@
     text-align: center;
     color: white;
   }
-  
+
   .rimage {
     position: absolute;
     left: 50%;
@@ -42,13 +42,14 @@
     padding: 0 40px;
   }
 
-  .down-chevron {
+  .chevron-wrapper {
     position: absolute;
     top: 73%;
     left: 0;
     display: flex;
     justify-content: center;
     width: 100%;
+    z-index: 2;
 
     svg {
       width: 100px;

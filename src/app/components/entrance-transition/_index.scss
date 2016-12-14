@@ -9,6 +9,7 @@
 .js {
   .entrance-transition {
     opacity: 0;
+    transition: opacity .32s ease-in-out;
 
     &.show {
       opacity: 1;

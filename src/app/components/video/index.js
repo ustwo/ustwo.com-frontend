@@ -1,18 +1,21 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
-
 import Rimage from 'app/components/rimage';
 
 const posterURL = "/images/transparent.png";
+
 const Video = React.createClass({
+
   render() {
     const { isVideoBackground } = this.props;
+
     if(isVideoBackground) {
       return this.renderVideoBackground();
     } else {
       return this.renderVideoEmbed();
     }
   },
+
   renderVideoEmbed() {
     const { videoId, videoFrom } = this.props;
     let src;
@@ -27,40 +30,54 @@ const Video = React.createClass({
         src = "https://player.vimeo.com/video/" + videoId;
     }
     return <div className="video">
-      <iframe 
+      <iframe
         src={src}
-        width="1280" 
+        width="1280"
         height="720"
-        frameborder="0" 
-        title="Monument Valley - Behind the Scenes" 
+        frameborder="0"
+        title="Monument Valley - Behind the Scenes"
         webkitallowfullscreen
         mozallowfullscreen
         allowfullscreen>
       </iframe>
     </div>
   },
+
+  renderTint() {
+    if (this.props.tint) {
+      return (<div className="videoBackground-tint"></div>);
+    }
+  },
+
   renderVideoBackground() {
-    return <div className="videoBackground">
-      <MediaQuery maxWidth={768}>
-        {this.renderImage()}
-      </MediaQuery>
-      <MediaQuery minWidth={769}>
-        {this.renderVideo()}
-      </MediaQuery>
-    </div>;
-  }, 
+    return (
+      <div className="videoBackground">
+        <MediaQuery maxWidth={768}>
+          {this.renderImage()}
+        </MediaQuery>
+        <MediaQuery minWidth={769}>
+          {this.renderVideo()}
+          {this.renderTint()}
+        </MediaQuery>
+      </div>
+    );
+  },
+
   renderImage() {
     const { sizes } = this.props;
-    return <Rimage sizes={sizes} />;
+    return (<Rimage sizes={sizes} />);
   },
+
   renderVideo() {
     const { src } = this.props;
     let video;
+
     if(src && src.length) {
       video = <video src={src} poster={posterURL} autoPlay loop muted />;
     } else {
       video = this.renderImage();
     }
+
     return video;
   }
 

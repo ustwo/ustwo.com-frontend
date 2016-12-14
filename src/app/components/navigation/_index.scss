@@ -18,6 +18,7 @@
   width: 100%;
   height: $nav-height;
 
+  /* For fixed headers */
   &.home-new {
     position: fixed;
     top: 0;

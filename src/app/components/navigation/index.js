@@ -8,6 +8,7 @@ import kebabCase from 'lodash/string/kebabCase';
 import Flux from 'app/flux';
 import Nulls from 'app/flux/nulls';
 
+import window from 'app/adaptors/server/window';
 import ScrollMagic from 'app/adaptors/server/scroll-magic';
 import Track from 'app/adaptors/server/track';
 import SVG from 'app/components/svg';
@@ -34,9 +35,7 @@ const Navigation = React.createClass({
       }
 
       const scene = new ScrollMagic.Scene({
-        triggerElement: "#hero",
-        duration: "100%",
-        triggerHook: 'onLeave'
+        duration: window.innerHeight
       })
       .on("progress", scrollProgress)
       .addTo(controller);
@@ -83,7 +82,7 @@ const Navigation = React.createClass({
       'takeover': takeover
     });
     return (
-      <header className={headerClasses}>
+      <header className={headerClasses} ref="navigation">
         <nav className={classnames('navigation', customClass)}>
           <div className="logo">
             <a href="/" onClick={this.onClickLogo}>
