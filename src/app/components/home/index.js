@@ -140,29 +140,33 @@ const PageHome = React.createClass({
   },
 
   renderChevron() {
-    // Show only the final frame of the Chevron animation on mobile
     let Chevron;
     if (window.innerWidth <= 480) {
-      Chevron = (<div className="down-chevron">
-        <svg ref="animsvg" title="Down arrow" role="img" viewBox="0 0 400 200"><g>
-        <path d="M195.864 143.667c19.556-14.667 39.556-28.89 59.11-43.556 2.224 2.67 6.224 8 8.446 10.67-22.222 16.89-45.778 32.45-67.556 50.67-21.778-17.78-44.89-33.33-67.11-50.22 2.22-2.66 6.22-8 8-11.11 20 14.67 39.555 29.33 59.11 43.56z"/>
-      </g></svg></div>);
+      return (
+        <div className="down-chevron" style={chevronStyles}>
+          <svg ref="animsvg" title="Down arrow" role="img" viewBox="0 0 400 200">
+            <g>
+              <path d="M195.864 143.667c19.556-14.667 39.556-28.89 59.11-43.556 2.224 2.67 6.224 8 8.446 10.67-22.222 16.89-45.778 32.45-67.556 50.67-21.778-17.78-44.89-33.33-67.11-50.22 2.22-2.66 6.22-8 8-11.11 20 14.67 39.555 29.33 59.11 43.56z" />
+            </g>
+          </svg>
+        </div>
+      );
     } else {
-      Chevron = <DownChevron ref="downChevron" onClick={this.onClickDownChevron} customClass={this.state.chevronLoaded ? 'loaded' : ''} />;
-    }
-    // End Chevron
+      // Transition Chevron on scroll
+      const chevronStyles = {
+        paddingTop: `${30 * this.state.scrollProgressBlockHome}vh`,
+        opacity: 1 - this.state.scrollProgressBlockHome * 2
+      }
 
-    // Transition Chevron on scroll
-    const chevronStyles = {
-      transform: `translate3d(0, ${40 * this.state.scrollProgressBlockHome}vh, 0)`,
-      opacity: 1 - this.state.scrollProgressBlockHome * 2
+      return (
+        <DownChevron
+          ref="downChevron"
+          onClick={this.onClickDownChevron}
+          customClass={this.state.chevronLoaded ? 'loaded' : ''}
+          customStyles={chevronStyles}
+        />
+      );
     }
-
-    return (
-      <div className="chevron-wrapper" style={chevronStyles}>
-        {Chevron}
-      </div>
-    );
   },
 
   render() {
