@@ -12,7 +12,7 @@ global.navigator = window.navigator;
 // React
 global.React = require('react');
 global.ReactDOM = require('react-dom');
-global.ReactTestUtils = require('react/lib/ReactTestUtils');
+global.ReactTestUtils = require('react-dom/lib/ReactTestUtils');
 
 // test libs
 global.chai = require("chai");

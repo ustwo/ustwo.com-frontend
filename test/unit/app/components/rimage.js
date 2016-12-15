@@ -1,9 +1,8 @@
 import Rimage from 'app/components/rimage';
-import React from 'react/addons';
-import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM, { TestUtils } from 'react-dom';
 
 describe('Rimage', () => {
-  const { TestUtils } = React.addons;
   const NullSize = {
     'file': null,
     'height': null,
