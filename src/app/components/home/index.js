@@ -40,16 +40,16 @@ function scrollProgress(component, name) {
 
 // TEMP: Hard coded gradient colours
 // TODO: Add a secondary background colour option in backend
-const blockColours = [{
-  backgroundA: '#14C04D',
-  backgroundB: '#FFBF02'
-}, {
-  backgroundA: '#FFBF02',
-  backgroundB: '#FF5519'
-}, {
-  backgroundA: '#FF5519',
-  backgroundB: '#ED0082'
-}]
+// const blockColours = [{
+//   backgroundA: '#14C04D',
+//   backgroundB: '#FFBF02'
+// }, {
+//   backgroundA: '#FFBF02',
+//   backgroundB: '#FF5519'
+// }, {
+//   backgroundA: '#FF5519',
+//   backgroundB: '#ED0082'
+// }]
 
 const PageHome = React.createClass({
 
@@ -103,12 +103,12 @@ const PageHome = React.createClass({
         const previousBlock = blocks[index - 1] || blockWelcome;
 
         // TEMP: Part of the hardcoded gradient colours
-        const cur = blockColours[index];
-        const prev = blockColours[index - 1] || blockColours[0];
+        // const cur = blockColours[index];
+        // const prev = blockColours[index - 1] || blockColours[0];
 
         blockDom.style.backgroundColor = 'transparent';
-        // this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, blockDom, get(previousBlock, 'attr.background_colour.value'), get(block, 'attr.background_colour.value')));
-        this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, blockDom, prev.backgroundA, cur.backgroundA, prev.backgroundB, cur.backgroundB));
+        this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, blockDom, get(previousBlock, 'attr.background_colour.value'), get(block, 'attr.background_colour.value')));
+        // this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, blockDom, prev.backgroundA, cur.backgroundA, prev.backgroundB, cur.backgroundB));
       });
     }
   },
@@ -134,8 +134,8 @@ const PageHome = React.createClass({
       .addTo(scrollController)
       .on('progress', (e) => {
         window.requestAnimationFrame(() => {
-          pageElement.style.background = `linear-gradient(45deg, #${blendColours(hexColour1, hexColour2, e.progress)} 0%, #${blendColours(hexColour1b, hexColour2b, e.progress)} 100%)`;
-          // pageElement.style.backgroundColor = '#' + blendColours(hexColour1, hexColour2, e.progress);
+          // pageElement.style.background = `linear-gradient(45deg, #${blendColours(hexColour1, hexColour2, e.progress)} 0%, #${blendColours(hexColour1b, hexColour2b, e.progress)} 100%)`;
+          pageElement.style.backgroundColor = '#' + blendColours(hexColour1, hexColour2, e.progress);
         });
     });
   },
