@@ -1,6 +1,7 @@
 import Rimage from 'app/components/rimage';
 import React from 'react';
-import ReactDOM, { TestUtils } from 'react-dom';
+import ReactDOM from 'react-dom';
+import ReactTestUtils from 'react-addons-test-utils';
 
 describe('Rimage', () => {
   const NullSize = {
@@ -17,7 +18,7 @@ describe('Rimage', () => {
     'large': Object.assign({}, NullSize, { name: 'large', height: 1200, width: 1800, source_url: 'large_url' })
   }
   let props;
-  let rimage = () => TestUtils.renderIntoDocument(React.createElement(Rimage, props));
+  let rimage = () => ReactTestUtils.renderIntoDocument(React.createElement(Rimage, props));
   let renderedDOM = () => ReactDOM.findDOMNode(rimage());
 
   beforeEach(() => {
