@@ -27,6 +27,7 @@ persistify $input \
            --external babelify/polyfill \
            --external react \
            --external react-dom \
+           --external react-addons-test-utils \
            --external svg4everybody \
            --external classnames \
            --external ellipsize \

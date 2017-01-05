@@ -17,6 +17,7 @@ fi
 persistify --require babelify/polyfill \
            --require react \
            --require react-dom \
+           --require react-addons-test-utils \
            --require svg4everybody \
            --require classnames \
            --require ellipsize \

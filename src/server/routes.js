@@ -24,17 +24,18 @@ function renderApp(req, res) {
           const AppString = ReactDOMServer.renderToString(App({
             state: omit(state, 'takeover')
           }));
-          console.log('Done');
+          console.log('...Done');
           const head = Helmet.rewind();
           res
             .status(state.statusCode)
             .render('app', {
-              title: head.title,
-              meta: head.meta,
-              link: head.link,
+              title: head.title.toString(),
+              meta: head.meta.toString(),
+              link: head.link.toString(),
               state: JSON.stringify(state),
               app: AppString
             });
+          console.log('App Rendered');
         } catch (e) {
           console.log(e);
           res.send(e);
