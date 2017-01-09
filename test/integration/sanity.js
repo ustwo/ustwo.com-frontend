@@ -75,6 +75,7 @@ const blogLink = 'Blog';
 const featuredBlogPost = '.blog-post-list-item.featured';
 const blogReadmore = 'Read more';
 const blogSlug = 'blog';
+const blogURL = baseURL + '/blog';
 const logoLink = '.navigation .logo a';
 const pageHome = '.page-home';
 const homeHeadline = 'DIGITAL PRODUCT STUDIO';
@@ -82,6 +83,7 @@ const joinLink = 'Join';
 const jobsPage = '.page-container';
 const jobOpenings = 'WE\'RE HIRING';
 const joinSlug = 'join';
+const joinURL = baseURL + '/join-us';
 const workURL = baseURL + '/what-we-do';
 const workItem = '.page-work .work-item';
 const workReadmore = 'Read more';
@@ -186,24 +188,24 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
 
   it('should go to the Blog page and look for Featured post', () => {
     return browser
-      .openPageByMenuLink(blogLink)
+      .get(blogURL)
       .waitForElementByCss(featuredBlogPost, wd.asserters.textInclude(blogReadmore), 15000)
       .url().should.eventually.include(blogSlug);
   });
 
-  it('should return to the home page', () => {
-    if (desired.browserName !== 'android') {
-      browser.setWindowSize(800, 600)
-    }
-    return browser
-      .elementByCss(logoLink)
-      .click()
-      .waitForElementByCss(pageHome, wd.asserters.textInclude(homeHeadline), 10000);
-  });
+  // it('should return to the home page', () => {
+  //   if (desired.browserName !== 'android') {
+  //     browser.setWindowSize(800, 600)
+  //   }
+  //   return browser
+  //     .elementByCss(logoLink)
+  //     .click()
+  //     .waitForElementByCss(pageHome, wd.asserters.textInclude(homeHeadline), 10000);
+  // });
 
   it('should go to the Join us page and look for job listing title', () => {
     return browser
-      .openPageByMenuLink(joinLink)
+      .get(joinURL)
       .waitForElementByCss(jobsPage, wd.asserters.textInclude(jobOpenings), 15000)
       .url().should.eventually.include(joinSlug);
   });

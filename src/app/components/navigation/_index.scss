@@ -30,6 +30,10 @@
     background: transparent;
     color: white;
     transition: color .2s ease-in-out, background-color .2s ease-in-out;
+
+    a {
+      display: block;
+    }
   }
 
   .logo {
