@@ -26,6 +26,7 @@
     "react-helmet": "3.3.0",
     "react-mixin": "3.0.5",
     "react-responsive": "1.2.1",
+    "react-scroll": "1.4.4",
     "react-swipe": "5.0.6",
     "react-transition-manager": "1.3.2",
     "rgb-hex": "1.0.0",

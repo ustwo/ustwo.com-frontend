@@ -31,7 +31,6 @@ import PageLoader from 'app/components/page-loader';
 
 const pageMap = {
   'home': require('app/components/home'),
-  'home-new': require('app/components/home-new'),
   'what-we-do': require('app/components/what-we-do'),
   'what-we-do/case-study': require('app/components/case-study'),
   'blog': require('app/components/blog'),
@@ -95,8 +94,7 @@ const App = React.createClass({
   render() {
     const state = this.state;
     const appClasses = classnames('app', {
-      'app-404': state.currentPage === 'notfound',
-      'scroll-wipes': state.currentPage === 'home-new'
+      'app-404': state.currentPage === 'notfound'
     });
     const contentClasses = classnames('app-content', {
       'takeover': this.showTakeover(),

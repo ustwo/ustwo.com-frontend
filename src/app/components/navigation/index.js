@@ -9,7 +9,6 @@ import Flux from 'app/flux';
 import Nulls from 'app/flux/nulls';
 
 import window from 'app/adaptors/server/window';
-import ScrollMagic from 'app/adaptors/server/scroll-magic';
 import Track from 'app/adaptors/server/track';
 import SVG from 'app/components/svg';
 import NavigationLink from 'app/components/navigation-link';
@@ -19,27 +18,6 @@ import FramesUstwoLogo from 'app/components/frames-ustwo-logo';
 const Navigation = React.createClass({
   openOverlay() {
     Flux.showNavOverlay();
-  },
-  getInitialState() {
-    return {
-      scrollProgress: 0
-    }
-  },
-  componentDidMount() {
-    if (this.props.section === 'home-new') {
-      const controller = new ScrollMagic.Controller();
-
-      const scrollProgress = (e) => {
-        let value = Math.round(e.progress * 100) / 100;
-        this.setState({ scrollProgress: value });
-      }
-
-      const scene = new ScrollMagic.Scene({
-        duration: window.innerHeight
-      })
-      .on("progress", scrollProgress)
-      .addTo(controller);
-    }
   },
   onClickLogo(event) {
     const { takeover } = this.props;
@@ -67,15 +45,6 @@ const Navigation = React.createClass({
       </NavigationLink>;
     });
   },
-  renderLogo() {
-    let logo;
-    if (this.props.section === 'home-new') {
-      logo = <FramesUstwoLogo scrollProgress={this.state.scrollProgress} isReverse={false} />
-    } else {
-      logo = <SVG title="ustwo logo" spritemapID="ustwologo" />
-    }
-    return logo;
-  },
   render() {
     const { section, page, takeover, customClass } = this.props;
     const headerClasses = classnames('header', section, page, {
@@ -86,7 +55,7 @@ const Navigation = React.createClass({
         <nav className={classnames('navigation', customClass)}>
           <div className="logo">
             <a href="/" onClick={this.onClickLogo}>
-              {this.renderLogo()}
+              <SVG title="ustwo logo" spritemapID="ustwologo" />
             </a>
           </div>
           <NavigationToggle onOpen={this.openOverlay} />

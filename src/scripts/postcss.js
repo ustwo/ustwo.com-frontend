@@ -8,7 +8,7 @@ const filepath = process.argv[2];
 const filename = path.basename(filepath);
 const content = fs.readFileSync(filepath, 'utf-8');
 
-const processor = postcss([autoprefixer({browsers: 'last 2 versions'})]);
+const processor = postcss([autoprefixer({browsers: 'last 5 versions'})]);
 
 let config = {
   from: filename,
