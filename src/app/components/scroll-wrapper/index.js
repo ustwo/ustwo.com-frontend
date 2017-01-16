@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import Scroll from 'react-scroll'; /* Animate and scroll to location in document */
+import env from 'app/adaptors/server/env';
 
 /* Return a range of 0 to 1 to show scroll progress of the element passing throught the viewport */
 /* TODO: increase this range to include as the element is being scrolled in */
@@ -24,6 +25,18 @@ function getMousePosition(component) {
       coordinateX: Math.round((e.pageX / component.state.elementAttributes.width - 0.5) * 200) / 100,
       coordinateY: Math.round((e.pageY / component.state.elementAttributes.height - 0.5) * 200) / 100
     };
+
+    component.setState({ mousePosition });
+  }
+}
+
+function getDeviceRotation(component) {
+  return (e) => {
+    mousePosition = {
+      coordinateX: Math.round((e.accelerationX / component.state.elementAttributes.width - 0.5) * 200) / 100,
+      coordinateY: Math.round((e.accelerationY / component.state.elementAttributes.height - 0.5) * 200) / 100
+    };
+
     component.setState({ mousePosition });
   }
 }
@@ -85,9 +98,12 @@ class ScrollWrapper extends Component {
   componentDidMount() {
     getElementAttributes(this);
 
-    if (this.props.getMousePosition) {
+    if (this.props.getMousePosition && !env.Modernizr.touchevents) {
       this.scrollWrapper.addEventListener('mousemove', getMousePosition(this));
     }
+    // if (this.props.getMousePosition && env.Modernizr.touchevents) {
+    //   this.scrollWrapper.addEventListener('devicemotion', getDeviceRotation(this));
+    // }
   }
 
   componentWillUnmount() {
