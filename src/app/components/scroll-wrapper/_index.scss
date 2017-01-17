@@ -6,4 +6,36 @@
 
 .scroll-wrapper {
   position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  .scroll-wrapper-inner {
+    flex: 1;
+    max-width: 1000px;
+    display: flex;
+
+    > *:first-child {
+      width: 100%;
+    }
+  }
+
+  .home-next-slide,
+  .home-prev-slide {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    z-index: 1;
+  }
+
+  .home-next-slide {
+    bottom: 0;
+    height: 70vh;
+    cursor: url('/images/cursor-arrow-down.png'), auto;
+  }
+  .home-prev-slide {
+    top: 0;
+    height: 30vh;
+    cursor: url('/images/cursor-arrow-up.png'), auto;
+  }
 }

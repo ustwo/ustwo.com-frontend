@@ -1,11 +1,11 @@
-'use strict';
-
 import React, { Component } from 'react';
 import classnames from 'classnames';
-
+import Video from 'app/components/video';
 import ScrollWrapper from 'app/components/scroll-wrapper';
+
 import HomeIntro from 'app/components/home-intro';
 import HomeWelcomeMessage from 'app/components/home-welcome-message';
+import HomeCarouselProducts from 'app/components/home-carousel-products';
 import HomeMoreMessage from 'app/components/home-more-message';
 
 function getViewportDimensions(component) {
@@ -65,10 +65,26 @@ class PageHome extends Component {
         />
 
         <ScrollWrapper
-          component={HomeMoreMessage}
+          component={HomeCarouselProducts}
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
+          getMousePosition={true}
         />
+
+        <div className="home-ventures-wrapper">
+          <ScrollWrapper
+            component={HomeMoreMessage}
+            documentScrollPosition={this.state.documentScrollPosition}
+            viewportDimensions={this.state.viewportDimensions}
+          />
+
+          <ScrollWrapper
+            component={HomeCarouselProducts}
+            documentScrollPosition={this.state.documentScrollPosition}
+            viewportDimensions={this.state.viewportDimensions}
+            getMousePosition={true}
+          />
+        </div>
 
       </article>
     );

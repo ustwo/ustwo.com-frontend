@@ -1,0 +1,26 @@
+/*
+ *  HOME INTRO
+ *  First screen/above the fold
+ *
+ */
+
+.home-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  cursor: url('/images/temp/cursor-arrow.png'), auto;
+}
+
+.home-intro-logo {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  z-index: 1;
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

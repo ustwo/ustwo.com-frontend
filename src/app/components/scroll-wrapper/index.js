@@ -7,13 +7,13 @@ import env from 'app/adaptors/server/env';
 /* Return a range of 0 to 1 to show scroll progress of the element passing throught the viewport */
 /* TODO: increase this range to include as the element is being scrolled in */
 function getScrollProgress(top, height, scrollPosition) {
-  if (scrollPosition < (top - height)) {
+  if (scrollPosition < top - height) {
     return 0;
   }
-  if (scrollPosition > (top - height) && scrollPosition < (top + height)) {
-    return Math.round((scrollPosition - top) / height * 100) / 100;
+  if (scrollPosition > top - height && scrollPosition < top + height) {
+    return Math.round(scrollPosition / (top + height) * 100) / 100;
   }
-  if (scrollPosition > (top + height)) {
+  if (scrollPosition > top + height) {
     return 1;
   }
 }
@@ -57,7 +57,6 @@ function goToNextSlide(component) {
   let position = element.top + element.height;
 
   return () => {
-    console.log("I'm here");
     Scroll.animateScroll.scrollTo(position);
   };
 }
@@ -116,13 +115,15 @@ class ScrollWrapper extends Component {
     let scrollProgress = getScrollProgress(this.state.elementAttributes.top, this.state.elementAttributes.height, this.props.documentScrollPosition);
 
     return (
-      <div class="scroll-wrapper" ref={(ref) => this.scrollWrapper = ref}>
-        {this.props.component({
-          scrollProgress,
-          mousePosition: this.state.mousePosition,
-          handleNextClick: goToNextSlide(this),
-          handlePrevClick: goToPrevSlide(this)
-        })}
+      <div className="scroll-wrapper" ref={(ref) => this.scrollWrapper = ref}>
+        <div className="scroll-wrapper-inner">
+          {this.props.component({
+            scrollProgress,
+            mousePosition: this.state.mousePosition
+          })}
+        </div>
+        <div className="home-prev-slide" onClick={goToPrevSlide(this)}></div>
+        <div className="home-next-slide" onClick={goToNextSlide(this)}></div>
       </div>
     );
   }
