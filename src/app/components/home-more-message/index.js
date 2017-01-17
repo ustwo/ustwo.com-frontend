@@ -3,11 +3,12 @@ import React from 'react';
 function HomeMoreMessage({ scrollProgress }) {
   return (
     <div className="home-text-block more-message">
+      <div className="home-section-title">Want moar?</div>
       <h1>
-        We create our own&nbsp;
-        <span className="home-gradient-text-cold">products</span>,&nbsp;
-        <span className="home-gradient-text-lukewarm">services</span> and business&nbsp;
-        <span className="home-gradient-text-hot">ventures</span>
+        We build and&nbsp;
+        <span className="home-gradient-text-cold">invest</span> in new&nbsp;
+        <span className="home-gradient-text-lukewarm">ventures</span> that make a&nbsp;
+        <span className="home-gradient-text-hot">difference</span>
       </h1>
     </div>
   );

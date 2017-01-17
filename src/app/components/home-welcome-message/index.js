@@ -7,8 +7,9 @@ function HomeWelcomeMessage({ scrollProgress }) {
   }
 
   return (
-    <div className="home-text-block welcome-message">
-      <h1 style={styles}>
+    <div className="home-text-block welcome-message" style={styles}>
+      <div className="home-section-title">Hi. We're ustwo.</div>
+      <h1>
         We make digital&nbsp;
         <span className="home-gradient-text-cold">products</span> and&nbsp;
         <span className="home-gradient-text-lukewarm">services</span> for the&nbsp;

@@ -25,9 +25,19 @@
 .home-ventures-wrapper {
   background: linear-gradient(-225deg, #333, #304179);
 
-  h1 {
-    color: white;
+  h1,
+  h2 {
+    color: white
   }
+
+  .home-section-title {
+    color: #ccc;
+  }
+}
+
+.home-section-title {
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 
 .home-text-block {

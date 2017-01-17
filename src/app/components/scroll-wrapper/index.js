@@ -30,16 +30,16 @@ function getMousePosition(component) {
   }
 }
 
-function getDeviceRotation(component) {
-  return (e) => {
-    mousePosition = {
-      coordinateX: Math.round((e.accelerationX / component.state.elementAttributes.width - 0.5) * 200) / 100,
-      coordinateY: Math.round((e.accelerationY / component.state.elementAttributes.height - 0.5) * 200) / 100
-    };
-
-    component.setState({ mousePosition });
-  }
-}
+// function getDeviceRotation(component) {
+//   return (e) => {
+//     mousePosition = {
+//       coordinateX: Math.round((e.accelerationX / component.state.elementAttributes.width - 0.5) * 200) / 100,
+//       coordinateY: Math.round((e.accelerationY / component.state.elementAttributes.height - 0.5) * 200) / 100
+//     };
+//
+//     component.setState({ mousePosition });
+//   }
+// }
 
 /* Save the element dimensions and offset to viewport to state */
 function getElementAttributes(component) {
@@ -114,13 +114,15 @@ class ScrollWrapper extends Component {
   render() {
     let scrollProgress = getScrollProgress(this.state.elementAttributes.top, this.state.elementAttributes.height, this.props.documentScrollPosition);
 
+    let component = React.cloneElement(this.props.component, {
+      scrollProgress,
+      mousePosition: this.state.mousePosition
+    })
+
     return (
       <div className="scroll-wrapper" ref={(ref) => this.scrollWrapper = ref}>
         <div className="scroll-wrapper-inner">
-          {this.props.component({
-            scrollProgress,
-            mousePosition: this.state.mousePosition
-          })}
+          {component}
         </div>
         <div className="home-prev-slide" onClick={goToPrevSlide(this)}></div>
         <div className="home-next-slide" onClick={goToNextSlide(this)}></div>

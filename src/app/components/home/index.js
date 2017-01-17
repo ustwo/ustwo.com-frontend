@@ -5,7 +5,7 @@ import ScrollWrapper from 'app/components/scroll-wrapper';
 
 import HomeIntro from 'app/components/home-intro';
 import HomeWelcomeMessage from 'app/components/home-welcome-message';
-import HomeCarouselProducts from 'app/components/home-carousel-products';
+import HomeCarousel from 'app/components/home-carousel';
 import HomeMoreMessage from 'app/components/home-more-message';
 
 function getViewportDimensions(component) {
@@ -52,38 +52,40 @@ class PageHome extends Component {
       <article className={classes} id="scroll-container">
 
         <ScrollWrapper
-          component={HomeIntro}
+          component={<HomeIntro />}
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           getMousePosition={true}
         />
 
         <ScrollWrapper
-          component={HomeWelcomeMessage}
+          component={<HomeWelcomeMessage />}
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
         />
 
         <ScrollWrapper
-          component={HomeCarouselProducts}
+          component={<HomeCarousel carouselItems={dataProducts} />}
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           getMousePosition={true}
         />
 
         <div className="home-ventures-wrapper">
+
           <ScrollWrapper
-            component={HomeMoreMessage}
+            component={<HomeMoreMessage />}
             documentScrollPosition={this.state.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
           />
 
           <ScrollWrapper
-            component={HomeCarouselProducts}
+            component={<HomeCarousel carouselItems={dataVentures} />}
             documentScrollPosition={this.state.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
             getMousePosition={true}
           />
+
         </div>
 
       </article>
@@ -92,3 +94,39 @@ class PageHome extends Component {
 };
 
 export default PageHome;
+
+const dataProducts = [{
+  title: "Sky Kids",
+  category: "Client Work",
+  imageURL: ""
+},{
+  title: "Harvey Nichols",
+  category: "Client Work",
+  imageURL: ""
+},{
+  title: "Foursquare",
+  category: "Client Work",
+  imageURL: ""
+},{
+  title: "Ford GoPark",
+  category: "Client Work",
+  imageURL: ""
+}];
+
+const dataVentures = [{
+  title: "ustwo Games",
+  category: "ustwo Venture",
+  imageURL: ""
+},{
+  title: "Dice",
+  category: "ustwo Venture",
+  imageURL: ""
+},{
+  title: "Pause",
+  category: "ustwo Venture",
+  imageURL: ""
+},{
+  title: "Moodnotes",
+  category: "ustwo Venture",
+  imageURL: ""
+}];
