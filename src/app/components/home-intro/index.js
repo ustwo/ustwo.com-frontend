@@ -1,3 +1,4 @@
+
 import React from 'react';
 import SVG from 'app/components/svg';
 import Video from 'app/components/video';
@@ -31,11 +32,11 @@ function HomeIntro({ scrollProgress, mousePosition }) {
 
   return (
     <div className="home-intro">
-      <Video
+      {/*}<Video
         src="/images/temp/home-intro-video.mp4"
         sizes={tempSizes}
         isVideoBackground={true}
-      />
+      />*/}
       <div className="home-intro-logo">
         {logoLayers}
       </div>

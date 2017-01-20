@@ -6,6 +6,7 @@
 
 .home-carousel {
   position: relative;
+  flex: 1;
 }
 
 .home-carousel-item {
@@ -13,37 +14,239 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 70%;
-  background: rgba(0,0,0,.1);
-  opacity: 0;
-  transition: opacity .32s ease-in-out .32s;
 
-  &.active {
-    opacity: 1;
-    transition-delay: 0s;
+  h2,
+  .home-section-title {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    opacity: 0;
+    transition: all .32s ease-in-out;
+  }
+
+  &.even {
+    right: -30px;
+    padding-right: 76px;
+
+    h2,
+    .home-section-title {
+
+    }
+  }
+
+  &.odd {
+    left: -30px;
+    padding-left: 76px;
+
+    h2,
+    .home-section-title {
+
+    }
+  }
+
+  @media screen and (min-width: $bp-small) {
+
+    .home-carousel-item-image {
+      width: 285px;
+      height: 200px;
+    }
+
+    &.even {
+      right: 0;
+      padding-right: 69px;
+    }
+
+    &.odd {
+      left: 0;
+      padding-left: 69px;
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+
+    .home-carousel-item-image {
+      width: 485px;
+      height: 300px;
+    }
+
+    &.even {
+      right: 40px;
+      padding-right: 115px;
+    }
+
+    &.odd {
+      left: 40px;
+      padding-left: 115px;
+    }
+  }
+
+  @media screen and (min-width: $bp-larger) {
+
+    .home-carousel-item-image {
+      width: 519px;
+      height: 352px;
+    }
+
+    &.even {
+      left: 60px;
+      right: auto;
+      padding-left: 77px;
+      padding-right: 0;
+
+      h2,
+      .home-section-title {
+        left: 0;
+      }
+    }
+
+    &.odd {
+      right: 60px;
+      left: auto;
+      padding-right: 77px;
+      padding-left: 0;
+      display: flex;
+      align-items: flex-end;
+
+      h2,
+      .home-section-title {
+        right: 0;
+        text-align: right;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-larger) {
+
+    .home-carousel-item-image {
+      width: 590px;
+      height: 400px;
+    }
+
+    &.even {
+      right: 120px;
+      padding-left: 100px;
+    }
+
+    &.odd {
+      left: 120px;
+      padding-right: 100px;
+    }
+  }
+
+  .home-carousel-item-image {
+    animation: itemOut .32s 1;
+    animation-fill-mode: forwards;
+    transform: scale(1.1);
+    opacity: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 
   /* left aligned */
   &.even {
-    left: 0;
     top: 10%;
   }
 
   /* right aligned */
   &.odd {
-    right: 0;
     bottom: 10%;
+
+    h2,
+    .home-section-title {
+      transition-delay: .2s;
+    }
+
+    .home-carousel-item-image {
+      animation-delay: .2s;
+    }
+  }
+
+  &.active {
+
+    h2,
+    .home-section-title {
+      opacity: 1;
+    }
+
+    .home-carousel-item-image {
+      animation: itemIn .32s 1;
+      animation-fill-mode: forwards;
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    &.odd {
+
+      h2,
+      .home-section-title {
+        transition-delay: .2s
+      }
+
+      .home-carousel-item-image {
+        animation-delay: .2s;
+      }
+    }
+  }
+
+  h2, .h2 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  @media screen and (min-width: $bp-smaller) {
+    h2, .h2 {
+      font-size: 26px;
+      line-height: 30px;
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    h2, .h2 {
+      font-size: 40px;
+      line-height: 45px;
+    }
+  }
+
+  @media screen and (min-width: $bp-larger) {
+    h2, .h2 {
+      font-size: 50px;
+      line-height: 50px;
+    }
   }
 }
 
-.home-carousel-item-image {
-  width: 80%;
-  height: 300px;
-  background: rgba(0,0,0,.3);
-  transform: rotateX(15deg);
-  transition: transform .2s ease-in-out;
+.home-carousel-next {
+  width: 50px;
+  height: 50px;
+  background: red;
+  position: absolute;
+  bottom: 20%;
+  left: 20%;
+  z-index: 100;
+  cursor: pointer;
+}
 
-  &:hover {
-    transform: rotateX(0);
+@keyframes itemIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes itemOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.1);
+    opacity: 0;
   }
 }

@@ -96,37 +96,61 @@ class PageHome extends Component {
 export default PageHome;
 
 const dataProducts = [{
+  title: "Ford GoPark",
+  category: "Client Work",
+  imageURL: "/images/showcase/ford-gopark.jpg"
+},{
   title: "Sky Kids",
   category: "Client Work",
-  imageURL: ""
+  imageURL: "/images/showcase/sky-kids.jpg"
 },{
-  title: "Harvey Nichols",
+  title: "Adidas Go",
   category: "Client Work",
-  imageURL: ""
+  imageURL: "/images/showcase/adidas-go.jpg"
+},{
+  title: "Google Cardboard ",
+  category: "Client Work",
+  imageURL: "/images/showcase/google-cardboard.jpg"
+},{
+  title: "Harvey-nichols",
+  category: "Client Work",
+  imageURL: "/images/showcase/harvey-nichols.jpg"
 },{
   title: "Foursquare",
   category: "Client Work",
-  imageURL: ""
+  imageURL: "/images/showcase/foursquare.jpg"
 },{
-  title: "Ford GoPark",
+  title: "NBC Sprout",
   category: "Client Work",
-  imageURL: ""
+  imageURL: "/images/showcase/nbc-sprout.jpg"
+},{
+  title: "Android wear",
+  category: "Client Work",
+  imageURL: "/images/showcase/android-wear.jpg"
 }];
 
 const dataVentures = [{
   title: "ustwo Games",
   category: "ustwo Venture",
-  imageURL: ""
+  imageURL: "/images/showcase/ustwo-games.jpg"
 },{
   title: "Dice",
   category: "ustwo Venture",
-  imageURL: ""
-},{
-  title: "Pause",
-  category: "ustwo Venture",
-  imageURL: ""
+  imageURL: "/images/showcase/dice.jpg"
 },{
   title: "Moodnotes",
   category: "ustwo Venture",
-  imageURL: ""
+  imageURL: "/images/showcase/moodnotes.jpg"
+},{
+  title: "Wayfindr",
+  category: "ustwo Venture",
+  imageURL: "/images/showcase/wayfindr.jpg"
+},{
+  title: "Pause",
+  category: "ustwo Venture",
+  imageURL: "/images/showcase/pause.jpg"
+},{
+  title: "Watch This",
+  category: "ustwo Venture",
+  imageURL: "/images/showcase/watch-this.jpg"
 }];

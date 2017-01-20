@@ -9,12 +9,21 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 0 5%;
+  padding: 0 20px;
+
+  @media screen and (min-width: $bp-medium) {
+    padding: 0 40px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    padding: 0 60px;
+  }
 
   .scroll-wrapper-inner {
     flex: 1;
-    max-width: 1000px;
+    max-width: 1200px;
     display: flex;
+    justify-content: center;
 
     > *:first-child {
       width: 100%;
@@ -31,12 +40,12 @@
 
   .home-next-slide {
     bottom: 0;
-    height: 70vh;
+    height: 25vh;
     cursor: url('/images/cursor-arrow-down.png'), auto;
   }
   .home-prev-slide {
     top: 0;
-    height: 30vh;
+    height: 25vh;
     cursor: url('/images/cursor-arrow-up.png'), auto;
   }
 }

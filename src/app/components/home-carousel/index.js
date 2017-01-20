@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 
-const itemsRefreshInterval = 5; /* Value in seconds */
+const itemsRefreshInterval = 10; /* Value in seconds */
 
 class HomeCarousel extends Component {
 
@@ -11,30 +11,33 @@ class HomeCarousel extends Component {
 
     this.state = {
       currentStartItem: 0,
-      tick: 0
+      tick: itemsRefreshInterval
     }
+  }
+
+  nextItems() {
+    this.setState({ tick: 0 });
   }
 
   ticker() {
-    if (this.props.scrollProgress > 0.5) {
-      this.setState({ tick: this.state.tick + 1 });
-    }
-  }
+    if (this.props.scrollProgress > 0.5 && this.props.scrollProgress < 1) {
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props != nextProps) {
-      this.timer;
+      if (this.state.tick === 0) {
+        this.setState({ tick: itemsRefreshInterval });
+
+        if (this.state.currentStartItem === this.props.carouselItems.length - 2) {
+          this.setState({ currentStartItem: 0 });
+        } else {
+          this.setState({ currentStartItem: this.state.currentStartItem + 2 });
+        }
+      }
+
+      this.setState({ tick: this.state.tick - 0.5 });
     }
   }
 
   componentDidMount() {
-    this.timer = setInterval(this.ticker.bind(this), 1000);
-    // TODO: Where does this go?
-    // if (this.state.tick === itemsRefreshInterval) {
-    //   this.setState({
-    //     currentStartItem: this.state.currentStartItem + 2
-    //   });
-    // }
+    this.timer = setInterval(this.ticker.bind(this), 500);
   }
 
   componentWillUnmount() {
@@ -43,10 +46,6 @@ class HomeCarousel extends Component {
 
   render() {
     const { scrollProgress, mousePosition } = this.props;
-    console.log(this.props.scrollProgress)
-    console.log(this.state.tick);
-
-    // const itemsTotal = this.props.carouselItems.length();
 
     let showItems = this.props.carouselItems.map((item, i) => {
       let extraClasses = {
@@ -63,7 +62,9 @@ class HomeCarousel extends Component {
         <div className={classes}>
           <div className="home-section-title">{item.category}</div>
           <h2>{item.title}</h2>
-          <div className="home-carousel-item-image"></div>
+          <div className="home-carousel-item-image">
+            <img src={item.imageURL} alt={item.title} />
+          </div>
         </div>
       );
     });
@@ -71,6 +72,7 @@ class HomeCarousel extends Component {
     return (
       <div className="home-carousel">
         {showItems}
+        <button className="home-carousel-next" onClick={this.nextItems.bind(this)}></button>
       </div>
     );
   }

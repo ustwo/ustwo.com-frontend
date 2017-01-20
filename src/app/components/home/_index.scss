@@ -9,16 +9,31 @@
 }
 
 .page-home {
-  @media screen and (min-width: $bp-small) {
-    h1, .h1 {font-size: 24px;}
+
+  h1, .h1 {
+    font-size: 30px;
+    line-height: 35px;
+  }
+
+  @media screen and (min-width: $bp-smaller) {
+    h1, .h1 {
+      font-size: 36px;
+      line-height: 40px;
+    }
   }
 
   @media screen and (min-width: $bp-medium) {
-    h1, .h1 {font-size: 36px;}
+    h1, .h1 {
+      font-size: 50px;
+      line-height: 60px;
+    }
   }
 
-  @media screen and (min-width: $bp-large) {
-    h1, .h1 {font-size: 40px;}
+  @media screen and (min-width: $bp-larger) {
+    h1, .h1 {
+      font-size: 60px;
+      line-height: 70px;
+    }
   }
 }
 
@@ -37,7 +52,21 @@
 
 .home-section-title {
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
+
+  @media screen and (min-width: $bp-medium) {
+
+  }
+
+  @media screen and (min-width: $bp-large) {
+
+  }
+
+  @media screen and (min-width: $bp-larger) {
+
+  }
 }
 
 .home-text-block {
@@ -45,10 +74,6 @@
   flex-direction: column;
   justify-content: center;
   height: 100vh;
-
-  h1 {
-    width: 80%;
-  }
 }
 
 [class*="home-gradient-text"] {
