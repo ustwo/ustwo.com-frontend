@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 
-const itemsRefreshInterval = 10; /* Value in seconds */
+const itemsRefreshInterval = 100; /* Value in seconds */
 
 class HomeCarousel extends Component {
 
@@ -60,8 +60,10 @@ class HomeCarousel extends Component {
 
       return (
         <div className={classes}>
-          <div className="home-section-title">{item.category}</div>
-          <h2>{item.title}</h2>
+          <div className="home-carousel-item-text">
+            <div className="home-section-title">{item.category}</div>
+            <h2>{item.title}</h2>
+          </div>
           <div className="home-carousel-item-image">
             <img src={item.imageURL} alt={item.title} />
           </div>
@@ -72,7 +74,9 @@ class HomeCarousel extends Component {
     return (
       <div className="home-carousel">
         {showItems}
-        <button className="home-carousel-next" onClick={this.nextItems.bind(this)}></button>
+        <div className="home-carousel-controls">
+          <button className="home-carousel-controls-button" onClick={this.nextItems.bind(this)}></button>
+        </div>
       </div>
     );
   }

@@ -112,13 +112,13 @@ const dataProducts = [{
   category: "Client Work",
   imageURL: "/images/showcase/google-cardboard.jpg"
 },{
-  title: "Harvey-nichols",
-  category: "Client Work",
-  imageURL: "/images/showcase/harvey-nichols.jpg"
-},{
   title: "Foursquare",
   category: "Client Work",
   imageURL: "/images/showcase/foursquare.jpg"
+},{
+  title: "Harvey Nichols",
+  category: "Client Work",
+  imageURL: "/images/showcase/harvey-nichols.jpg"
 },{
   title: "NBC Sprout",
   category: "Client Work",

@@ -10,27 +10,31 @@
 
 .page-home {
 
-  h1, .h1 {
+  h2 {
+    color: #111;
+  }
+
+  h1 {
     font-size: 30px;
     line-height: 35px;
   }
 
   @media screen and (min-width: $bp-smaller) {
-    h1, .h1 {
+    h1 {
       font-size: 36px;
       line-height: 40px;
     }
   }
 
   @media screen and (min-width: $bp-medium) {
-    h1, .h1 {
+    h1 {
       font-size: 50px;
       line-height: 60px;
     }
   }
 
   @media screen and (min-width: $bp-larger) {
-    h1, .h1 {
+    h1 {
       font-size: 60px;
       line-height: 70px;
     }
