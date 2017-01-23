@@ -123,21 +123,33 @@ $home-carousel-controls-button-size: 48px;
   }
 }
 
-.home-carousel-controls {
+.home-carousel-controls-button {
   position: absolute;
   bottom: 30px;
   z-index: 100;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.home-carousel-controls-button {
   width: $home-carousel-controls-button-size;
   height: $home-carousel-controls-button-size;
   background: #ddd;
   cursor: pointer;
   border-radius: 50%;
+}
+
+.home-carousel-controls-next,
+.home-carousel-controls-prev {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 20vh;
+  cursor: pointer;
+}
+
+.home-carousel-controls-next {
+  right: 0;
+}
+
+.home-carousel-controls-prev {
+  left: 0;
 }
 
 @media screen and (min-width: $bp-smaller) {
@@ -264,14 +276,11 @@ $home-carousel-controls-button-size: 48px;
     width: $home-carousel-width;
     height: $home-carousel-height;
   }
-  .home-carousel-controls {
+  .home-carousel-controls-button {
     top: 50%;
     left: auto;
     right: calc(5% + #{$home-carousel-width} + #{$home-carousel-padding} + #{$home-carousel-controls-padding});
-    width: auto;
     transform: translateY(calc(#{$home-carousel-overlap} + #{$home-carousel-controls-padding}));
-  }
-  .home-carousel-controls-button {
     width: $home-carousel-controls-button-size;
     height: $home-carousel-controls-button-size;
   }
@@ -304,7 +313,7 @@ $home-carousel-controls-button-size: 48px;
     width: $home-carousel-width;
     height: $home-carousel-height;
   }
-  .home-carousel-controls {
+  .home-carousel-controls-button {
     right: calc(5% + #{$home-carousel-width} + #{$home-carousel-padding} + #{$home-carousel-controls-padding});
     transform: translateY(calc(#{$home-carousel-overlap} + #{$home-carousel-controls-padding}));
   }

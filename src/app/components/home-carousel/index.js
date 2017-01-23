@@ -2,7 +2,31 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 
-const itemsRefreshInterval = 100; /* Value in seconds */
+const itemsRefreshInterval = 3; /* Value in seconds */
+
+function goToNextItems(component) {
+  component.setState({ tick: itemsRefreshInterval });
+
+  if (component.state.currentStartItem === component.props.carouselItems.length - 2) {
+    component.setState({ currentStartItem: 0 });
+  } else {
+    component.setState({ currentStartItem: component.state.currentStartItem + 2 });
+  }
+}
+
+function goToPrevItems(component) {
+  component.setState({ tick: itemsRefreshInterval });
+
+  if (component.state.currentStartItem === 0) {
+    component.setState({ currentStartItem: component.props.carouselItems.length - 2 });
+  } else {
+    component.setState({ currentStartItem: component.state.currentStartItem - 2 });
+  }
+}
+
+function pauseCarousel(component) {
+  component.setState({ paused: component.state.paused ? false : true })
+}
 
 class HomeCarousel extends Component {
 
@@ -11,28 +35,21 @@ class HomeCarousel extends Component {
 
     this.state = {
       currentStartItem: 0,
-      tick: itemsRefreshInterval
+      tick: itemsRefreshInterval,
+      paused: false
     }
-  }
-
-  nextItems() {
-    this.setState({ tick: 0 });
   }
 
   ticker() {
     if (this.props.scrollProgress > 0.5 && this.props.scrollProgress < 1) {
 
       if (this.state.tick === 0) {
-        this.setState({ tick: itemsRefreshInterval });
-
-        if (this.state.currentStartItem === this.props.carouselItems.length - 2) {
-          this.setState({ currentStartItem: 0 });
-        } else {
-          this.setState({ currentStartItem: this.state.currentStartItem + 2 });
-        }
+        goToNextItems(this);
       }
 
-      this.setState({ tick: this.state.tick - 0.5 });
+      if (!this.state.paused) {
+        this.setState({ tick: this.state.tick - 0.5 });
+      }
     }
   }
 
@@ -71,12 +88,16 @@ class HomeCarousel extends Component {
       );
     });
 
+    let ticker = Math.round(this.state.tick / itemsRefreshInterval * 360);
+
     return (
       <div className="home-carousel">
         {showItems}
-        <div className="home-carousel-controls">
-          <button className="home-carousel-controls-button" onClick={this.nextItems.bind(this)}></button>
-        </div>
+        <button className="home-carousel-controls-button" onClick={() => pauseCarousel(this)}>
+          {ticker}
+        </button>
+        <button className="home-carousel-controls-next" onClick={() => goToNextItems(this)}></button>
+        <button className="home-carousel-controls-prev" onClick={() => goToPrevItems(this)}></button>
       </div>
     );
   }
