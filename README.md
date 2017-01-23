@@ -345,7 +345,7 @@ To read up on our coding style and general contribution guide, have a look at
 ## License
 
 ustwo.com website front end and tools
-Copyright (C) 2015 ustwo
+Copyright (C) 2015-2017 ustwo fampany limited.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
