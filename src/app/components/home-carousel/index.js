@@ -98,9 +98,7 @@ class HomeCarousel extends Component {
 
     return (
       <div className={classes}>
-        <div className="home-carousel-items">
           {showItems}
-        </div>
         <button className="home-carousel-controls-button" onClick={() => pauseCarousel(this)}>
           <TimerUI timer={ticker} paused={this.state.paused} darkStyle={this.props.darkStyle} />
         </button>
