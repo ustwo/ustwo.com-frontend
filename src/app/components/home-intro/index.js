@@ -3,12 +3,13 @@ import React from 'react';
 import SVG from 'app/components/svg';
 import Video from 'app/components/video';
 
-const rainbowColours = ['#ED0082', '#E60C29', '#FF5519', '#FFBF02', '#96CC29', '#14C04D', '#16D6D9', '#009CF3', '#143FCC', '#6114CC', '#111111'];
+// const rainbowColours = ['#ED0082', '#E60C29', '#FF5519', '#FFBF02', '#96CC29', '#14C04D', '#16D6D9', '#009CF3', '#143FCC', '#6114CC', '#111111'];
+const colours = ['#000000', '#FFFFFF'];
 
 function HomeIntro({ scrollProgress, mousePosition }) {
   /* TODO: reverse the axis to change apparent persepective */
-  const logoLayers = rainbowColours.map((colour, i) => {
-    let modifier = 2 * ((rainbowColours.length - i) * (rainbowColours.length - i) * 0.1);
+  const logoLayers = colours.map((colour, i) => {
+    let modifier = 2 * ((colours.length - i) * (colours.length - i) * 0.9);
 
     /* Reverse signs for mousePosition */
     let coordinateX, coordinateY
@@ -32,11 +33,11 @@ function HomeIntro({ scrollProgress, mousePosition }) {
 
   return (
     <div className="home-intro">
-      {/*}<Video
+      <Video
         src="/images/temp/home-intro-video.mp4"
         sizes={tempSizes}
         isVideoBackground={true}
-      />*/}
+      />
       <div className="home-intro-logo">
         {logoLayers}
       </div>

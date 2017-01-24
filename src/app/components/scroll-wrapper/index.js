@@ -53,7 +53,7 @@ function getElementAttributes(component) {
 }
 
 function goToNextSlide(component) {
-  const element = component.state.elementAttributes;
+  let element = component.state.elementAttributes;
   let position = element.top + element.height;
 
   return () => {
@@ -62,7 +62,7 @@ function goToNextSlide(component) {
 }
 
 function goToPrevSlide(component) {
-  const element = component.state.elementAttributes;
+  let element = component.state.elementAttributes;
   /* TODO: using element.height here is not strictly speaking accurate. What we need is the
            previous element's height but it will have to do for now */
   let position = element.top - element.height;

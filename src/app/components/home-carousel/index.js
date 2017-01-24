@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import ScrollWrapper from 'app/components/scroll-wrapper';
+import TimerUI from 'app/components/timer-ui';
 
-const itemsRefreshInterval = 3; /* Value in seconds */
+const itemsRefreshInterval = 5000;
+const tickerFrequency = 50;
 
 function goToNextItems(component) {
   component.setState({ tick: itemsRefreshInterval });
@@ -48,13 +50,13 @@ class HomeCarousel extends Component {
       }
 
       if (!this.state.paused) {
-        this.setState({ tick: this.state.tick - 0.5 });
+        this.setState({ tick: this.state.tick - tickerFrequency });
       }
     }
   }
 
   componentDidMount() {
-    this.timer = setInterval(this.ticker.bind(this), 500);
+    this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
   }
 
   componentWillUnmount() {
@@ -73,7 +75,7 @@ class HomeCarousel extends Component {
       let alignment = i % 2 === 0 ? 'even' : 'odd';
       extraClasses[alignment] = true;
 
-      const classes = classnames('home-carousel-item', extraClasses);
+      let classes = classnames('home-carousel-item', extraClasses);
 
       return (
         <div className={classes}>
@@ -88,13 +90,19 @@ class HomeCarousel extends Component {
       );
     });
 
-    let ticker = Math.round(this.state.tick / itemsRefreshInterval * 360);
+    let ticker = this.state.tick / itemsRefreshInterval * 360;
+
+    let classes = classnames('home-carousel', {
+      darkStyle: this.props.darkStyle
+    });
 
     return (
-      <div className="home-carousel">
-        {showItems}
+      <div className={classes}>
+        <div className="home-carousel-items">
+          {showItems}
+        </div>
         <button className="home-carousel-controls-button" onClick={() => pauseCarousel(this)}>
-          {ticker}
+          <TimerUI timer={ticker} paused={this.state.paused} darkStyle={this.props.darkStyle} />
         </button>
         <button className="home-carousel-controls-next" onClick={() => goToNextItems(this)}></button>
         <button className="home-carousel-controls-prev" onClick={() => goToPrevItems(this)}></button>

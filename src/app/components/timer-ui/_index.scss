@@ -1,0 +1,178 @@
+/*
+ *  Timer UI
+ *  Circular time indicator
+ *
+ */
+
+.timer-ui {
+  $size: 64px;
+  $border: 4px;
+
+  position: relative;
+  box-sizing: content-box;
+  position: relative;
+  display: inline-block;
+  width: $size;
+  height: $size;
+  background: linear-gradient(to bottom, $blu 0%, $pot 100%);
+  border-radius: $size * 0.5;
+
+  .half {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: $size * .5;
+    height: $size;
+
+    .bg {
+      position: absolute;
+      width: $size * .5;
+      height: $size;
+      border-radius: $size;
+      transform-origin: 50% 50%;
+      transform: rotate(0deg);
+    }
+
+    &.left {
+      left: 0;
+      border-radius: 50% 0 0 50%;
+
+      .bg {
+        left: 0;
+        border-left: ($size * .5) solid #ccc;
+      }
+    }
+
+    &.right {
+      right: 0;
+      border-radius: 0 50% 50% 0;
+
+      .bg {
+        right: 0;
+        border-right: ($size * .5) solid #ccc;
+      }
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: $border;
+    top: $border;
+    width: $size - (2 * $border);
+    height: $size - (2 * $border);
+    border-radius: $size - (2 * $border) * 0.5;
+    background: #fff;
+  }
+
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: $size;
+    height: $size;
+    opacity: 0;
+    transform: scale(0.4);
+    animation-fill-mode: forwards;
+    animation-duration: .2s;
+    animation-iteration-count: 1;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .icon.pause {
+    &:before {
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 20px solid #333;
+      margin-left: 3px;
+    }
+    &:after {
+      display: none;
+    }
+  }
+
+  .icon.play {
+    &:before,
+    &:after {
+      width: 6px;
+      height: 18px;
+      background-color: #333;
+    }
+
+    &:before {
+      margin-left: -6px;
+    }
+    &:after {
+      margin-left: 6px;
+    }
+  }
+
+  &.pause .icon.pause,
+  &.play .icon.play {
+    animation-name: IconIn;
+    animation-delay: .1s;
+  }
+
+  &.pause .icon.play,
+  &.play .icon.pause {
+    animation-name: IconOut;
+  }
+
+
+
+  /* Dark Style */
+
+  &.darkStyle {
+    &:after {
+      background: #313b5c; /* This appears on the gradient background declared above, so best guess colour! */
+    }
+
+    .half.left .bg,
+    .half.right .bg {
+      border-color: #666;
+    }
+
+    .icon.pause:before {
+      border-left: 20px solid #fff;
+    }
+    .icon.play {
+      &:before,
+      &:after {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+@keyframes IconIn {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes IconOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
