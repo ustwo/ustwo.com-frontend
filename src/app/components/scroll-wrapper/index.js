@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import Scroll from 'react-scroll'; /* Animate and scroll to location in document */
 import env from 'app/adaptors/server/env';
 
@@ -117,10 +118,14 @@ class ScrollWrapper extends Component {
     let component = React.cloneElement(this.props.component, {
       scrollProgress,
       mousePosition: this.state.mousePosition
-    })
+    });
+
+    let classes = classnames('scroll-wrapper', {
+      fullWidth: this.props.fullWidth
+    });
 
     return (
-      <div className="scroll-wrapper" ref={(ref) => this.scrollWrapper = ref}>
+      <div className={classes} ref={(ref) => this.scrollWrapper = ref}>
         <div className="scroll-wrapper-inner">
           {component}
         </div>

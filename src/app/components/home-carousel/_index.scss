@@ -1,13 +1,13 @@
 /*
  *  HOME CAROUSEL
- *  Showcase
+ *  Showcase Clients and Ventures
  *
  */
 
  /* Initial variables (will change inside media queries) */
 $home-carousel-width: 285px;
 $home-carousel-height: 200px;
-$home-carousel-overlap: -10px;
+$home-carousel-margin: 10px;
 $home-carousel-padding: 76px;
 $home-carousel-controls-button-size: 48px;
 
@@ -15,14 +15,25 @@ $home-carousel-controls-button-size: 48px;
   position: relative;
   flex: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
+}
+
+.home-carousel-items {
+  position: relative;
+  max-width: $grid-max-width;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: $bp-small) {
+    flex-direction: column;
+  }
 }
 
 .home-carousel-item {
-
   position: absolute;
+  top: 50%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -38,7 +49,7 @@ $home-carousel-controls-button-size: 48px;
   }
 
   &.even {
-    transform: translate(40px, -((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+    transform: translate(40px, -($home-carousel-height + $home-carousel-margin));
     padding-left: $home-carousel-padding;
     z-index: 2;
 
@@ -51,7 +62,7 @@ $home-carousel-controls-button-size: 48px;
   }
 
   &.odd {
-    transform: translate(-40px, ((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+    transform: translate(-40px, $home-carousel-margin);
     padding-right: $home-carousel-padding;
     z-index: 1;
 
@@ -62,15 +73,6 @@ $home-carousel-controls-button-size: 48px;
 
     .home-carousel-item-image {
       align-items: flex-start;
-      animation-delay: .2s;
-    }
-
-    .home-carousel-item-text {
-      transition-delay: .2s;
-    }
-
-    .home-carousel-item-image {
-      // animation-delay: .2s;
       transition-delay: .2s;
     }
   }
@@ -140,22 +142,24 @@ $home-carousel-controls-button-size: 48px;
   top: 0;
   z-index: 100;
   height: 100vh;
-  width: 20vh;
+  width: 10vw;
   cursor: pointer;
 }
 
 .home-carousel-controls-next {
   right: 0;
+  cursor: url('/images/cursor-arrow-right.png'), auto;
 }
 
 .home-carousel-controls-prev {
   left: 0;
+  cursor: url('/images/cursor-arrow-left.png'), auto;
 }
 
 @media screen and (min-width: $bp-smaller) {
   $home-carousel-width: 285px;
   $home-carousel-height: 200px;
-  $home-carousel-overlap: -10px;
+  $home-carousel-margin: 10px;
   $home-carousel-padding: 69px;
   $home-carousel-controls-button-size: 56px;
 
@@ -167,13 +171,13 @@ $home-carousel-controls-button-size: 48px;
 
     &.even {
       padding-left: $home-carousel-padding;
-      transform: translate(20px, -((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+      transform: translate(20px, -($home-carousel-height + $home-carousel-margin));
       // align-items: flex-end;
     }
 
     &.odd {
       padding-right: $home-carousel-padding;
-      transform: translate(-20px, ((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+      transform: translate(-20px, $home-carousel-margin);
     }
   }
   .home-carousel-item-image {
@@ -189,17 +193,17 @@ $home-carousel-controls-button-size: 48px;
 @media screen and (min-width: $bp-small) {
   $home-carousel-width: 357px;
   $home-carousel-height: 242px;
-  $home-carousel-overlap: -10px;
+  $home-carousel-margin: 10px;
   $home-carousel-controls-size: 56px;
 
   .home-carousel-item {
     &.even {
-      transform: translate(0, -((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+      transform: translate(0, -($home-carousel-height + $home-carousel-margin));
       align-self: flex-end;
     }
 
     &.odd {
-      transform: translate(0, ((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+      transform: translate(0, $home-carousel-margin);
       align-self: flex-start;
     }
   }
@@ -212,7 +216,7 @@ $home-carousel-controls-button-size: 48px;
 @media screen and (min-width: $bp-medium) {
   $home-carousel-width: 485px;
   $home-carousel-height: 340px;
-  $home-carousel-overlap: -20px;
+  $home-carousel-margin: 20px;
   $home-carousel-padding: 115px;
 
   .home-carousel-item {
@@ -224,25 +228,31 @@ $home-carousel-controls-button-size: 48px;
     &.even {
       right: 5%;
       padding-left: $home-carousel-padding;
-      transform: translate(0, -((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+      transform: translate(0, -($home-carousel-height + $home-carousel-margin));
     }
 
     &.odd {
       left: 5%;
       padding-right: $home-carousel-padding;
-      transform: translate(0, ((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+      transform: translate(0, $home-carousel-margin);
     }
   }
   .home-carousel-item-image {
     width: $home-carousel-width;
     height: $home-carousel-height;
   }
+  .home-carousel-controls-next {
+    right: -40px;
+  }
+  .home-carousel-controls-prev {
+    left: -40px;
+  }
 }
 
 @media screen and (min-width: $bp-large) {
   $home-carousel-width: 519px;
   $home-carousel-height: 352px;
-  $home-carousel-overlap: 50px;
+  $home-carousel-margin: -50px;
   $home-carousel-padding: 77px;
   $home-carousel-controls-padding: 30px;
   $home-carousel-controls-button-size: 64px;
@@ -252,7 +262,7 @@ $home-carousel-controls-button-size: 48px;
       left: 5%;
       right: auto;
       padding-left: $home-carousel-padding;
-      transform: translate(0, -((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+      transform: translate(0, -($home-carousel-height + $home-carousel-margin));
 
       .home-carousel-item-text {
         left: 0;
@@ -265,7 +275,7 @@ $home-carousel-controls-button-size: 48px;
       padding-right: $home-carousel-padding;
       display: flex;
       align-items: flex-end;
-      transform: translate(0, ((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+      transform: translate(0, $home-carousel-margin);
 
       .home-carousel-item-text {
         right: 0;
@@ -280,16 +290,22 @@ $home-carousel-controls-button-size: 48px;
     top: 50%;
     left: auto;
     right: calc(5% + #{$home-carousel-width} + #{$home-carousel-padding} + #{$home-carousel-controls-padding});
-    transform: translateY(calc(#{$home-carousel-overlap} + #{$home-carousel-controls-padding}));
+    transform: translateY(calc(#{$home-carousel-controls-padding} - #{$home-carousel-margin}));
     width: $home-carousel-controls-button-size;
     height: $home-carousel-controls-button-size;
+  }
+  .home-carousel-controls-next {
+    right: -60px;
+  }
+  .home-carousel-controls-prev {
+    left: -60px;
   }
 }
 
 @media screen and (min-width: $bp-larger) {
   $home-carousel-width: 590px;
   $home-carousel-height: 400px;
-  $home-carousel-overlap: 70px;
+  $home-carousel-margin: -70px;
   $home-carousel-padding: 100px;
   $home-carousel-controls-padding: 50px;
 
@@ -301,12 +317,12 @@ $home-carousel-controls-button-size: 48px;
 
     &.even {
       padding-left: $home-carousel-padding;
-      transform: translate(0, -((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+      transform: translate(0, -($home-carousel-height + $home-carousel-margin));
     }
 
     &.odd {
       padding-right: $home-carousel-padding;
-      transform: translate(0, ((0.5*$home-carousel-height) - ($home-carousel-overlap)));
+      transform: translate(0, $home-carousel-margin);
     }
   }
   .home-carousel-item-image {
@@ -315,7 +331,7 @@ $home-carousel-controls-button-size: 48px;
   }
   .home-carousel-controls-button {
     right: calc(5% + #{$home-carousel-width} + #{$home-carousel-padding} + #{$home-carousel-controls-padding});
-    transform: translateY(calc(#{$home-carousel-overlap} + #{$home-carousel-controls-padding}));
+    transform: translateY(calc(#{$home-carousel-controls-padding} - #{$home-carousel-margin}));
   }
 }
 

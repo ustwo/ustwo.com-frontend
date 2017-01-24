@@ -98,10 +98,12 @@ class HomeCarousel extends Component {
 
     return (
       <div className={classes}>
+        <div className="home-carousel-items">
           {showItems}
-        <button className="home-carousel-controls-button" onClick={() => pauseCarousel(this)}>
-          <TimerUI timer={ticker} paused={this.state.paused} darkStyle={this.props.darkStyle} />
-        </button>
+          <button className="home-carousel-controls-button" onClick={() => pauseCarousel(this)}>
+            <TimerUI timer={ticker} paused={this.state.paused} darkStyle={this.props.darkStyle} />
+          </button>
+        </div>
         <button className="home-carousel-controls-next" onClick={() => goToNextItems(this)}></button>
         <button className="home-carousel-controls-prev" onClick={() => goToPrevItems(this)}></button>
       </div>

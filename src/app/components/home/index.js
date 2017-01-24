@@ -69,6 +69,7 @@ class PageHome extends Component {
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           getMousePosition={true}
+          fullWidth={true}
         />
 
         <div className="home-ventures-wrapper">
@@ -80,10 +81,11 @@ class PageHome extends Component {
           />
 
           <ScrollWrapper
-            component={<HomeCarousel carouselItems={dataVentures} />}
+            component={<HomeCarousel carouselItems={dataVentures} darkStyle={true} />}
             documentScrollPosition={this.state.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
             getMousePosition={true}
+            fullWidth={true}
           />
 
         </div>

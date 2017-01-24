@@ -21,12 +21,18 @@
 
   .scroll-wrapper-inner {
     flex: 1;
-    max-width: 1200px;
+    max-width: $grid-max-width;
     display: flex;
     justify-content: center;
 
     > *:first-child {
       width: 100%;
+    }
+  }
+
+  &.fullWidth {
+    .scroll-wrapper-inner {
+      max-width: none;
     }
   }
 
