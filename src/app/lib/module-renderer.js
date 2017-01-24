@@ -92,6 +92,7 @@ function renderPlaceholder(moduleData, index, options) {
 function renderVideo(moduleData, index, options) {
   return  <Video
     videoId={get(moduleData, 'attr.video_id.value')}
+    videoFrom={get(moduleData, 'attr.video_from.value')}
   />;
 }
 

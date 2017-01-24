@@ -14,13 +14,23 @@ const Video = React.createClass({
     }
   },
   renderVideoEmbed() {
-    const { videoId } = this.props;
-    let src = "https://player.vimeo.com/video/" + videoId;
+    const { videoId, videoFrom } = this.props;
+    let src;
+    switch(videoFrom) {
+      case 'vimeo':
+        src = "https://player.vimeo.com/video/" + videoId;
+        break;
+      case 'youtube':
+          src = "https://www.youtube.com/embed/" + videoId;
+          break;
+      default:
+        src = "https://player.vimeo.com/video/" + videoId;
+    }
     return <div className="video">
       <iframe 
         src={src}
         width="1280" 
-        height="720" 
+        height="720"
         frameborder="0" 
         title="Monument Valley - Behind the Scenes" 
         webkitallowfullscreen
