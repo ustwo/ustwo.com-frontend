@@ -4,8 +4,9 @@ import Video from 'app/components/video';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 
 import HomeIntro from 'app/components/home-intro';
-import HomeWelcomeMessage from 'app/components/home-welcome-message';
+import HomeTextBlock from 'app/components/home-text-block';
 import HomeCarousel from 'app/components/home-carousel';
+import HomeWelcomeMessage from 'app/components/home-welcome-message';
 import HomeMoreMessage from 'app/components/home-more-message';
 
 function getViewportDimensions(component) {
@@ -65,10 +66,9 @@ class PageHome extends Component {
         />
 
         <ScrollWrapper
-          component={<HomeWelcomeMessage />}
+          component={<HomeTextBlock content={textBlockIntro} />}
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
-          className="scroll-wrapper-home-welcome-message"
         />
 
         <ScrollWrapper
@@ -84,10 +84,9 @@ class PageHome extends Component {
           <div className="home-ventures-wrapper-bg"></div>
 
           <ScrollWrapper
-            component={<HomeMoreMessage />}
+            component={<HomeTextBlock content={textBlockMore} />}
             documentScrollPosition={this.state.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
-            className="scroll-wrapper-home-more-message"
           />
 
           <ScrollWrapper
@@ -170,3 +169,13 @@ const dataVentures = [{
   category: "ustwo Venture",
   imageURL: "/images/showcase/watch-this.jpg"
 }];
+
+const textBlockIntro = {
+  title: `Hi. We're ustwo.`,
+  text: <HomeWelcomeMessage />
+}
+
+const textBlockMore = {
+  title: `Want moar?`,
+  text: <HomeMoreMessage />
+}

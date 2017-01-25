@@ -5,16 +5,21 @@ import classnames from 'classnames';
 import Scroll from 'react-scroll'; /* Animate and scroll to location in document */
 import env from 'app/adaptors/server/env';
 
-/* Return a range of 0 to 1 to show scroll progress of the element passing throught the viewport */
-/* TODO: increase this range to include as the element is being scrolled in */
+/* Get Scroll Progress:
+   Return a range of 0 to 1 to show scroll progress of the element passing throught the viewport.
+   Starts when element is halfway on the screen and ends when it is halfway off.
+   So scroll progress lasts the height of the element.
+   As an example, you could utilise children of element parallaxing in for 0 to 0.33, hold position,
+   then parallax out from 0.67 to 1. */
 function getScrollProgress(top, height, scrollPosition) {
-  if (scrollPosition < top - height) {
+  if (scrollPosition < top - (height * 0.5)) {
     return 0;
   }
-  if (scrollPosition > top - height && scrollPosition < top + height) {
-    return Math.round(scrollPosition / (top + height) * 100) / 100;
+  if (scrollPosition > top - (height * 0.5) && scrollPosition < top + (height * 0.5)) {
+    let result = (scrollPosition - (top - (height * 0.5))) / height;
+    return Math.round(result * 100) / 100;
   }
-  if (scrollPosition > top + height) {
+  if (scrollPosition > top + (height * 0.5)) {
     return 1;
   }
 }
@@ -120,7 +125,7 @@ class ScrollWrapper extends Component {
       mousePosition: this.state.mousePosition
     });
 
-    let classes = classnames('scroll-wrapper', this.props.className, {
+    let classes = classnames('scroll-wrapper', {
       fullWidth: this.props.fullWidth
     });
 
