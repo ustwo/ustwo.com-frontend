@@ -8,6 +8,7 @@ import HomeTextBlock from 'app/components/home-text-block';
 import HomeCarousel from 'app/components/home-carousel';
 import HomeWelcomeMessage from 'app/components/home-welcome-message';
 import HomeMoreMessage from 'app/components/home-more-message';
+import HomeSmorgasbord from 'app/components/home-smorgasbord';
 
 function getViewportDimensions(component) {
   return (e) => {
@@ -69,6 +70,7 @@ class PageHome extends Component {
           component={<HomeTextBlock content={textBlockIntro} />}
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
+          className="scroll-wrapper-home-welcome-message"
         />
 
         <ScrollWrapper
@@ -87,6 +89,7 @@ class PageHome extends Component {
             component={<HomeTextBlock content={textBlockMore} />}
             documentScrollPosition={this.state.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
+            className="scroll-wrapper-home-more-message"
           />
 
           <ScrollWrapper
@@ -99,9 +102,11 @@ class PageHome extends Component {
 
         </div>
 
-        <div className="smorgasbord" style={{ height: `1200px` }}>
-
-        </div>
+        <ScrollWrapper
+          component={<HomeSmorgasbord />}
+          documentScrollPosition={this.state.documentScrollPosition}
+          viewportDimensions={this.state.viewportDimensions}
+        />
 
       </article>
     );

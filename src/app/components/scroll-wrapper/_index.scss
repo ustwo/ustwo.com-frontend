@@ -57,3 +57,12 @@
     cursor: url('/images/cursor-arrow-up.png'), auto;
   }
 }
+
+.scroll-wrapper-home-welcome-message,
+.scroll-wrapper-home-more-message {
+  height: 70vh;
+
+  .home-next-slide {
+    // bottom: -15vh;
+  }
+}

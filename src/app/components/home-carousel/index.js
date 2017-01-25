@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import TimerUI from 'app/components/timer-ui';
+import transitionOnScroll from 'app/lib/transition-on-scroll';
 
 const itemsRefreshInterval = 5000;
 const tickerFrequency = 50;
+const distance = 80;
 
 function goToNextItems(component) {
   component.setState({ tick: itemsRefreshInterval });
@@ -77,26 +79,27 @@ class HomeCarousel extends Component {
 
       let classes = classnames('home-carousel-item', extraClasses);
 
-      let styles;
+      let styles, x, y, textStyles;
       if (alignment === 'even') {
-        let x = (mousePosition.coordinateX - 0.5) * ((mousePosition.coordinateX * 2) * (mousePosition.coordinateX * 2));
-        let y = (mousePosition.coordinateY - 0.5) * ((mousePosition.coordinateY * 2) * (mousePosition.coordinateY * 2));
-
-        styles = {
-          transform: `translate3d(${x}px,${y}px,0)`
+        x = (mousePosition.coordinateX - 0.5) * ((mousePosition.coordinateX * 2) * (mousePosition.coordinateX * 2));
+        y = (mousePosition.coordinateY - 0.5) * ((mousePosition.coordinateY * 2) * (mousePosition.coordinateY * 2));
+        textStyles = {
+          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 1, 1, 1, distance, true)}px,0)`
         }
       } else {
-        let x = (mousePosition.coordinateX + 0.5) * ((mousePosition.coordinateX * 2) * (mousePosition.coordinateX * 2));
-        let y = (mousePosition.coordinateY + 0.5) * ((mousePosition.coordinateY * 2) * (mousePosition.coordinateY * 2));
-
-        styles = {
-          transform: `translate3d(${x}px,${y}px,0)`
+        x = (mousePosition.coordinateX + 0.5) * ((mousePosition.coordinateX * 2) * (mousePosition.coordinateX * 2));
+        y = (mousePosition.coordinateY + 0.5) * ((mousePosition.coordinateY * 2) * (mousePosition.coordinateY * 2));
+        textStyles = {
+          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0.1, 1, 1, 1, distance, true)}px,0)`
         }
+      }
+      styles = {
+        transform: `translate3d(${x}px,${y}px,0)`
       }
 
       return (
         <div className={classes}>
-          <div className="home-carousel-item-text">
+          <div className="home-carousel-item-text" style={textStyles}>
             <div className="home-section-title">{item.category}</div>
             <h2>{item.title}</h2>
           </div>
@@ -113,11 +116,15 @@ class HomeCarousel extends Component {
       darkStyle: this.props.darkStyle
     });
 
+    let controlStyles = {
+      opacity: transitionOnScroll(scrollProgress, 0, 0, 0.85, 1)
+    };
+
     return (
       <div className={classes}>
         <div className="home-carousel-items">
           {showItems}
-          <button className="home-carousel-controls-button" onClick={() => pauseCarousel(this)}>
+          <button className="home-carousel-controls-button" onClick={() => pauseCarousel(this)} style={controlStyles}>
             <TimerUI timer={ticker} paused={this.state.paused} darkStyle={this.props.darkStyle} />
           </button>
         </div>

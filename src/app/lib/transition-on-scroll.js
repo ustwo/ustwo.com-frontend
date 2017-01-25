@@ -1,10 +1,10 @@
 export default (scrollProgress, inStart, inEnd, outStart, outEnd, modifier, transition) => {
 
   let value;
-  if (scrollProgress >= inStart && scrollProgress < inEnd) {
-    value = scrollProgress / inEnd;
+  if (scrollProgress >= 0 && scrollProgress <= inEnd) {
+    value = (scrollProgress - inStart) / inEnd;
     if (transition) { value = 1 - value }
-  } else if (scrollProgress > outStart && scrollProgress <= outEnd) {
+  } else if (scrollProgress >= outStart && scrollProgress <= outEnd) {
     value = (1 - scrollProgress) / (outEnd - outStart);
     if (transition) { value = (1 - value) * -1 }
   } else {

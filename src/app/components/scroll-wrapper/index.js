@@ -125,7 +125,7 @@ class ScrollWrapper extends Component {
       mousePosition: this.state.mousePosition
     });
 
-    let classes = classnames('scroll-wrapper', {
+    let classes = classnames('scroll-wrapper', this.props.className, {
       fullWidth: this.props.fullWidth
     });
 
