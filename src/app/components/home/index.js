@@ -31,13 +31,16 @@ class PageHome extends Component {
 
     this.state = {
       documentScrollPosition: 0,
-      viewportDimensions: {}
+      viewportDimensions: {},
+      venturesActive: false
     }
   }
 
   componentDidMount() {
     window.addEventListener('scroll', getDocumentScrollPosition(this));
     window.addEventListener('resize', getViewportDimensions(this));
+    this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
+    this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.25);
   }
 
   componentWillUnmount() {
@@ -47,6 +50,9 @@ class PageHome extends Component {
 
   render() {
     const classes = classnames('page-home', this.props.className);
+    const venturesClasses = classnames('home-ventures-wrapper', {
+      active: this.state.documentScrollPosition > this.venturesPositionFromTop && this.state.documentScrollPosition < this.venturesPositionFromTop + this.venturesHeight
+    });
 
     return (
       <article className={classes} id="scroll-container">
@@ -62,6 +68,7 @@ class PageHome extends Component {
           component={<HomeWelcomeMessage />}
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
+          className="scroll-wrapper-home-welcome-message"
         />
 
         <ScrollWrapper
@@ -72,12 +79,15 @@ class PageHome extends Component {
           fullWidth={true}
         />
 
-        <div className="home-ventures-wrapper">
+        <div className={venturesClasses} ref={(ref) => this.venturesWrapper = ref }>
+
+          <div className="home-ventures-wrapper-bg"></div>
 
           <ScrollWrapper
             component={<HomeMoreMessage />}
             documentScrollPosition={this.state.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
+            className="scroll-wrapper-home-more-message"
           />
 
           <ScrollWrapper
@@ -87,6 +97,10 @@ class PageHome extends Component {
             getMousePosition={true}
             fullWidth={true}
           />
+
+        </div>
+
+        <div className="smorgasbord" style={{ height: `1200px` }}>
 
         </div>
 

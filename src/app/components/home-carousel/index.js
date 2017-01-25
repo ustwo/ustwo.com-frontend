@@ -77,6 +77,23 @@ class HomeCarousel extends Component {
 
       let classes = classnames('home-carousel-item', extraClasses);
 
+      let styles;
+      if (alignment === 'even') {
+        let x = (mousePosition.coordinateX - 0.5) * ((mousePosition.coordinateX * 2) * (mousePosition.coordinateX * 2));
+        let y = (mousePosition.coordinateY - 0.5) * ((mousePosition.coordinateY * 2) * (mousePosition.coordinateY * 2));
+
+        styles = {
+          transform: `translate3d(${x}px,${y}px,0)`
+        }
+      } else {
+        let x = (mousePosition.coordinateX + 0.5) * ((mousePosition.coordinateX * 2) * (mousePosition.coordinateX * 2));
+        let y = (mousePosition.coordinateY + 0.5) * ((mousePosition.coordinateY * 2) * (mousePosition.coordinateY * 2));
+
+        styles = {
+          transform: `translate3d(${x}px,${y}px,0)`
+        }
+      }
+
       return (
         <div className={classes}>
           <div className="home-carousel-item-text">
@@ -84,7 +101,7 @@ class HomeCarousel extends Component {
             <h2>{item.title}</h2>
           </div>
           <div className="home-carousel-item-image">
-            <img src={item.imageURL} alt={item.title} />
+            <img src={item.imageURL} style={styles} alt={item.title} />
           </div>
         </div>
       );

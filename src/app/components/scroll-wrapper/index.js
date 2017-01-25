@@ -23,8 +23,8 @@ function getScrollProgress(top, height, scrollPosition) {
 function getMousePosition(component) {
   return (e) => {
     let mousePosition = {
-      coordinateX: Math.round((e.pageX / component.state.elementAttributes.width - 0.5) * 200) / 100,
-      coordinateY: Math.round((e.pageY / component.state.elementAttributes.height - 0.5) * 200) / 100
+      coordinateX: Math.round((e.clientX / component.state.elementAttributes.width - 0.5) * 200) / 100,
+      coordinateY: Math.round((e.clientY / component.state.elementAttributes.height - 0.5) * 200) / 100
     };
 
     component.setState({ mousePosition });
@@ -120,7 +120,7 @@ class ScrollWrapper extends Component {
       mousePosition: this.state.mousePosition
     });
 
-    let classes = classnames('scroll-wrapper', {
+    let classes = classnames('scroll-wrapper', this.props.className, {
       fullWidth: this.props.fullWidth
     });
 

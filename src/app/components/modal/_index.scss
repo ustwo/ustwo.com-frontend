@@ -44,7 +44,7 @@
 .modal {
   z-index: 99999;
 
-  @media screen and (min-width: $bp-large) {
-    z-index: 50;
-  }
+  // @media screen and (min-width: $bp-large) {
+  //   z-index: 50;
+  // }
 }

@@ -4,10 +4,6 @@
  *
  */
 
-.header.home {
-  display: none;
-}
-
 .page-home {
 
   h2 {
@@ -23,6 +19,7 @@
     h1 {
       font-size: 36px;
       line-height: 40px;
+      width: 80%;
     }
   }
 
@@ -30,6 +27,7 @@
     h1 {
       font-size: 50px;
       line-height: 60px;
+      width: auto;
     }
   }
 
@@ -37,12 +35,25 @@
     h1 {
       font-size: 60px;
       line-height: 70px;
+      width: 80%;
     }
   }
 }
 
 .home-ventures-wrapper {
-  background: linear-gradient(-225deg, #333, #304179);
+
+  .home-ventures-wrapper-bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    // transform: translate3d(0,100px,0);
+    background: linear-gradient(-225deg, #333, #304179);
+  }
 
   h1,
   h2 {
@@ -51,6 +62,14 @@
 
   .home-section-title {
     color: #ccc;
+  }
+
+  &.active {
+    .home-ventures-wrapper-bg {
+      z-index: 0;
+      opacity: 1;
+      // transform: translate3d(0,0,0);
+    }
   }
 }
 

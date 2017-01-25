@@ -11,7 +11,6 @@ import Nulls from 'app/flux/nulls';
 import window from 'app/adaptors/server/window';
 import Track from 'app/adaptors/server/track';
 import SVG from 'app/components/svg';
-import NavigationLink from 'app/components/navigation-link';
 import NavigationToggle from 'app/components/navigation-toggle';
 import FramesUstwoLogo from 'app/components/frames-ustwo-logo';
 
@@ -32,19 +31,6 @@ const Navigation = React.createClass({
     }
     Flux.navigate('/');
   },
-  renderNavigationLinks() {
-    return get(this.props, 'pages', []).map(link => {
-      return <NavigationLink
-        key={link.id}
-        url={link.slug === 'home' ? '/' : `/${link.slug}`}
-        colour={link.colour}
-        selected={link.slug === this.props.section}
-        gaId={link.ga}
-      >
-        {link.title}
-      </NavigationLink>;
-    });
-  },
   render() {
     const { section, page, takeover, customClass } = this.props;
     const headerClasses = classnames('header', section, page, {
@@ -59,9 +45,6 @@ const Navigation = React.createClass({
             </a>
           </div>
           <NavigationToggle onOpen={this.openOverlay} />
-          <div className="menu">
-            <ul>{this.renderNavigationLinks()}</ul>
-          </div>
         </nav>
       </header>
     );

@@ -21,12 +21,13 @@
 
   .scroll-wrapper-inner {
     flex: 1;
+    width: 100%;
     max-width: $grid-max-width;
     display: flex;
     justify-content: center;
 
     > *:first-child {
-      width: 100%;
+      width: 100vw;
     }
   }
 
@@ -42,6 +43,7 @@
     left: 0;
     width: 100vw;
     z-index: 1;
+    display: none;
   }
 
   .home-next-slide {
@@ -53,5 +55,14 @@
     top: 0;
     height: 25vh;
     cursor: url('/images/cursor-arrow-up.png'), auto;
+  }
+}
+
+.scroll-wrapper-home-welcome-message,
+.scroll-wrapper-home-more-message {
+  height: 85vh;
+
+  .home-next-slide {
+    bottom: -15vh;
   }
 }

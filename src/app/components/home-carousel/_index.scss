@@ -10,12 +10,34 @@ $home-carousel-height: 200px;
 $home-carousel-margin: 10px;
 $home-carousel-padding: 76px;
 $home-carousel-controls-button-size: 48px;
+$home-carousel-duration: .32s;
 
 .home-carousel {
   position: relative;
   flex: 1;
   display: flex;
   justify-content: center;
+}
+
+.home-carousel-item-text {
+  position: absolute;
+  top: 40px;
+  z-index: 1;
+  width: 35%;
+  opacity: 0;
+  transition: opacity $home-carousel-duration ease-in-out;
+}
+
+.home-carousel-item-image {
+  display: flex;
+  width: $home-carousel-width;
+  height: $home-carousel-height;
+
+  img {
+    width: 100%;
+    height: auto;
+    box-shadow: 10px 10px 40px rgba(0,0,0,.3);
+  }
 }
 
 .home-carousel-items {
@@ -48,6 +70,13 @@ $home-carousel-controls-button-size: 48px;
     margin-bottom: 5px;
   }
 
+  .home-carousel-item-image {
+    opacity: 1;
+    transform: scale(1);
+    animation: itemOut $home-carousel-duration 1;
+    animation-fill-mode: forwards;
+  }
+
   &.even {
     transform: translate(40px, -($home-carousel-height + $home-carousel-margin));
     padding-left: $home-carousel-padding;
@@ -68,12 +97,11 @@ $home-carousel-controls-button-size: 48px;
 
     .home-carousel-item-text {
       left: 70%;
-      transition-delay: .2s;
     }
 
     .home-carousel-item-image {
       align-items: flex-start;
-      transition-delay: .2s;
+      animation-delay: $home-carousel-duration * .5;
     }
   }
 
@@ -88,7 +116,26 @@ $home-carousel-controls-button-size: 48px;
     }
 
     .home-carousel-item-image {
-      opacity: 1;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: itemIn $home-carousel-duration 1;
+      animation-fill-mode: forwards;
+    }
+
+    &.even {
+      .home-carousel-item-image {
+        animation-delay: $home-carousel-duration;
+      }
+    }
+
+    &.odd {
+      .home-carouse-item-text {
+        transition-delay: $home-carousel-duration;
+      }
+
+      .home-carousel-item-image {
+        animation-delay: $home-carousel-duration + ($home-carousel-duration * .5);
+      }
     }
 
     &:hover {
@@ -97,31 +144,6 @@ $home-carousel-controls-button-size: 48px;
         z-index: 3;
       }
     }
-  }
-}
-
-.home-carousel-item-text {
-  position: absolute;
-  top: 40px;
-  z-index: 1;
-  width: 35%;
-  opacity: 0;
-  transition: opacity .32s ease-in-out;
-}
-
-.home-carousel-item-image {
-  display: flex;
-  width: $home-carousel-width;
-  height: $home-carousel-height;
-  opacity: 0;
-  transition: opacity .32s ease-in-out;
-  // animation: itemIn .32s 1;
-  // animation-fill-mode: forwards;
-  // transform: scale(1);
-
-  img {
-    width: 100%;
-    height: auto;
   }
 }
 
