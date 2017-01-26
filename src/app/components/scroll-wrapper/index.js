@@ -7,19 +7,19 @@ import env from 'app/adaptors/server/env';
 
 /* Get Scroll Progress:
    Return a range of 0 to 1 to show scroll progress of the element passing throught the viewport.
-   Starts when element is halfway on the screen and ends when it is halfway off.
-   So scroll progress lasts the height of the element.
-   As an example, you could utilise children of element parallaxing in for 0 to 0.33, hold position,
-   then parallax out from 0.67 to 1. */
+   Starts when element is halfway on the screen and ends when it is completely off.
+   So scroll progress lasts 1.5 * height of the element.
+   As an example, to parallax children inside the element: in for 0 to 0.25, hold position,
+   then parallax out from 0.5 to 0.75. */
 function getScrollProgress(top, height, scrollPosition) {
   if (scrollPosition < top - (height * 0.5)) {
     return 0;
   }
-  if (scrollPosition > top - (height * 0.5) && scrollPosition < top + (height * 0.5)) {
-    let result = (scrollPosition - (top - (height * 0.5))) / height;
+  if (scrollPosition > top - (height * 0.5) && scrollPosition < top + height) {
+    let result = (scrollPosition - (top - (height * 0.5))) / (height * 1.5);
     return Math.round(result * 100) / 100;
   }
-  if (scrollPosition > top + (height * 0.5)) {
+  if (scrollPosition > top + height) {
     return 1;
   }
 }

@@ -1,119 +1,121 @@
 /*
- *  NAVIGATION / HEADER
+ *  NAVIGATION
  *  Includes the site navigation and logo
  *
- *  Notes: Should this component be called header?
  */
 
-// .nav-wrapper {
-//   position: absolute;
-//   z-index: 9999;
-//   width: 100%;
-// }
+$nav-items-height: 46px;
 
-.header {
+.navigation {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 9999;
   display: block;
-  height: $nav-height;
+  height: $nav-height-small;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
-  .navigation {
-    position: relative;
-    z-index: 2;
+  &.home-intro-visible {
+    top: 100vh;
+    position: absolute;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    height: $nav-height-large;
+  }
+
+  button {
     display: flex;
-    justify-content: flex-end;
-    background: transparent;
-    color: white;
-    transition: color .2s ease-in-out, background-color .2s ease-in-out;
-
-    a {
-      display: block;
-    }
+    align-items: center;
+    justify-content: center;
   }
 
   .logo {
     overflow: hidden;
-    display: block;
-    width: 100px;
-    height: $nav-height;
-    margin-left: 20px;
+    margin-bottom: 2px;
 
     svg {
-      width: 100px;
-      height: $nav-height;
-      fill: white;
+      fill: $nonBlack;
       transition: fill .2s ease-in-out;
-    }
+      width: 112px;
+      height: $nav-items-height;
 
-    /* If new homepage */
-    .frames-ustwo-logo {
-      padding: 0;
-      height: 68px;
-      display: flex;
-      align-items: center;
-
-      [id*='Frame'] {
-        max-width: 100px;
-      }
-    }
-  }
-
-  .navigation-toggle {
-    transition: fill .2s ease-in-out;
-  }
-
-
-  &.takeover {
-    .navigation-toggle {
-      display: none;
-    }
-  }
-
-  /* Header is not overlayed onto content for post and event pages */
-  &.post,
-  &.event {
-    position: relative;
-
-    .navigation {
-      color: $nonBlack;
-      background-color: #fff;
-
-      .logo svg,
-      .navigation-toggle {
-        fill: $nonBlack;
+      @media screen and (min-width: $bp-medium) {
+        width: 112px;
+        height: $nav-items-height;
       }
     }
   }
 }
+
+.navigation-toggle {
+  position: relative;
+  margin: 0 25px 0 0;
+
+  svg {
+    pointer-events: none; /* Fixes intermittent issue on touch devices? */
+    fill: #fff;
+    transition: fill .2s ease-in-out;
+    width: $nav-items-height;
+    height: $nav-items-height;
+
+    @media screen and (min-width: $bp-medium) {
+      width: $nav-items-height;
+      height: $nav-items-height;
+    }
+  }
+
+  .menu-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
 
 /* TEMP */
 /* Invert colours on some pages that have lighter backgrounds */
-.header.takeover,
-.header.case-study,
-.header.search,
-.app-404 .header {
-  .navigation {
-    color: $nonBlack;
+// .navigation.takeover,
+// .navigation.case-study,
+// .navigation.search,
+// .app-404 .navigation {
+//   .navigation {
+//     color: $nonBlack;
+//
+//     .logo svg,
+//     .navigation-toggle {
+//       fill: $nonBlack;
+//     }
+//   }
+// }
+// .navigation {
+//
+//     &.post,
+//     &.event {
+//       position: relative;
+//       color: $nonBlack;
+//       background-color: #fff;
+//
+//       .logo svg,
+//       .navigation-toggle {
+//         fill: $nonBlack;
+//       }
+//     }
+// }
 
-    .logo svg,
-    .navigation-toggle {
-      fill: $nonBlack;
-    }
-  }
-}
-
-/* If js is supported, header animates in when class 'show' is added */
-.js .nav-wrapper {
-  .header {
-    transform: translateY(-68px);
-  }
-
-  &.show {
-    .header {
-      transition: transform 0.5s ease-out, background-color .2s ease-in-out;
-      transform: translateY(0px);
-    }
-  }
-}
+/* If js is supported, navigation animates in when class 'show' is added */
+// .js .nav-wrapper {
+//   .navigation {
+//     transform: translateY(-68px);
+//   }
+//
+//   &.show {
+//     .navigation {
+//       transition: transform 0.5s ease-out, background-color .2s ease-in-out;
+//       transform: translateY(0px);
+//     }
+//   }
+// }

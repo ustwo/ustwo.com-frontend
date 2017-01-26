@@ -1,6 +1,4 @@
-'use strict';
-
-import React from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import { get } from 'lodash';
 import kebabCase from 'lodash/string/kebabCase';
@@ -11,13 +9,12 @@ import Nulls from 'app/flux/nulls';
 import window from 'app/adaptors/server/window';
 import Track from 'app/adaptors/server/track';
 import SVG from 'app/components/svg';
-import NavigationToggle from 'app/components/navigation-toggle';
 import FramesUstwoLogo from 'app/components/frames-ustwo-logo';
 
-const Navigation = React.createClass({
+class Navigation extends Component {
   openOverlay() {
     Flux.showNavOverlay();
-  },
+  }
   onClickLogo(event) {
     const { takeover } = this.props;
     event.preventDefault();
@@ -30,25 +27,24 @@ const Navigation = React.createClass({
       });
     }
     Flux.navigate('/');
-  },
+  }
   render() {
     const { section, page, takeover, customClass } = this.props;
-    const headerClasses = classnames('header', section, page, {
+    const navClasses = classnames('navigation', customClass, section, page, {
       'takeover': takeover
     });
     return (
-      <header className={headerClasses} ref="navigation">
-        <nav className={classnames('navigation', customClass)}>
-          <div className="logo">
-            <a href="/" onClick={this.onClickLogo}>
-              <SVG title="ustwo logo" spritemapID="ustwologo" />
-            </a>
-          </div>
-          <NavigationToggle onOpen={this.openOverlay} />
-        </nav>
-      </header>
+      <nav className={navClasses}>
+        <button className="logo" onClick={this.onClickLogo}>
+          <SVG title="ustwo logo" spritemapID="ustwologo" />
+        </button>
+        <button onClick={this.openOverlay.bind(this)} className="navigation-toggle">
+          <SVG title="Open menu" spritemapID="menuopen-dark" />
+          <SVG title="Menu ring" spritemapID="menu-ring" className="menu-ring" />
+        </button>
+      </nav>
     );
   }
-});
+};
 
 export default Navigation;

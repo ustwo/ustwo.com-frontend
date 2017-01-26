@@ -43,6 +43,12 @@ class PageHome extends Component {
     window.addEventListener('resize', getViewportDimensions(this));
     this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
     this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.25);
+
+    console.log(this.homeIntro.offsetHeight);
+
+    // if (this.state.documentScrollPosition < this.ref.homeIntro.getBoundingClientRect().height) {
+    //   Flux.hideHomeIntroMenu();
+    // }
   }
 
   componentWillUnmount() {
@@ -64,6 +70,8 @@ class PageHome extends Component {
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           getMousePosition={true}
+          className="scroll-wrapper-home-intro"
+          ref={(ref) => this.homeIntro = ref}
         />
 
         <ScrollWrapper

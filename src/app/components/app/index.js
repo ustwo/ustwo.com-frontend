@@ -93,7 +93,7 @@ const App = React.createClass({
   },
   render() {
     const state = this.state;
-    const appClasses = classnames('app', {
+    const appClasses = classnames('app', `page-${this.state.currentPage}`, {
       'app-404': state.currentPage === 'notfound'
     });
     const contentClasses = classnames('app-content', {
