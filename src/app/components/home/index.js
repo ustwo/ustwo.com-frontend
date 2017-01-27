@@ -43,10 +43,6 @@ class PageHome extends Component {
     window.addEventListener('resize', getViewportDimensions(this));
     this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
     this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.25);
-
-    // if (this.state.documentScrollPosition < this.ref.homeIntro.getBoundingClientRect().height) {
-    //   Flux.hideHomeIntroMenu();
-    // }
   }
 
   componentWillUnmount() {

@@ -18,6 +18,7 @@ const _state = Object.assign({
   currentHash: Nulls.section,
   blogCategory: Defaults.blogCategory,
   searchMode: Defaults.searchMode,
+  hideHomeIntroMenu: Defaults.hideHomeIntroMenu,
   searchQuery: Nulls.searchQuery,
   modal: Nulls.modal,
   colours: Nulls.colours,
@@ -142,9 +143,9 @@ const Store = Object.assign(
         // - it exists in the store with a different slug OR
         // - posts have a different blog category
         // - events have a different studio
-        return (!_state[item.type] 
-                || (item.slug && _state[item.type].slug && _state[item.type].slug !== item.slug) 
-                || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory) 
+        return (!_state[item.type]
+                || (item.slug && _state[item.type].slug && _state[item.type].slug !== item.slug)
+                || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory)
                 || (item.slug && item.slug !== _state.eventsStudio))
       });
 
@@ -212,6 +213,10 @@ const Store = Object.assign(
           type: 'job'
         }], applyJobDetailData).then(() => Store.emit('change', _state));
       }
+    },
+    hideHomeIntroMenu() {
+      _state.hideHomeIntroMenu = false;
+      Store.emit('change', _state);
     },
     showSearch() {
       _state.searchMode = true;
