@@ -13,7 +13,6 @@ $nav-items-height: 46px;
   z-index: 9999;
   display: block;
   height: $nav-height-small;
-  z-index: 2;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -72,6 +71,7 @@ $nav-items-height: 46px;
     position: absolute;
     top: 0;
     left: 0;
+    fill: $pot;
   }
 }
 

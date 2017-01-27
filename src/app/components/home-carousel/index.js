@@ -87,6 +87,13 @@ class HomeCarousel extends Component {
         transform: `translate3d(${x}px,${y}px,0)`
       }
 
+      let visualContent;
+      if (item.videoURL) {
+        visualContent = <video src={item.videoURL} autoplay loop muted playsinline></video>
+      } else {
+        visualContent = <img src={item.imageURL} style={styles} alt={item.title} />
+      }
+
       return (
         <div className={classes}>
           <div className="home-carousel-item-text" style={textStyles}>
@@ -94,7 +101,7 @@ class HomeCarousel extends Component {
             <h2>{item.title}</h2>
           </div>
           <div className="home-carousel-item-image">
-            <img src={item.imageURL} style={styles} alt={item.title} />
+            {visualContent}
           </div>
         </div>
       );

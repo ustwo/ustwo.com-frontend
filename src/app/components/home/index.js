@@ -148,13 +148,15 @@ const dataProducts = [{
 },{
   title: "Android wear",
   category: "Client Work",
-  imageURL: "/images/showcase/android-wear.jpg"
+  imageURL: "/images/showcase/android-wear.jpg",
+  videoURL: "/images/home/android-wear.mp4"
 }];
 
 const dataVentures = [{
   title: "ustwo Games",
   category: "ustwo Venture",
-  imageURL: "/images/showcase/ustwo-games.jpg"
+  imageURL: "/images/showcase/ustwo-games.jpg",
+  videoURL: "/images/home/monument-valley.mp4"
 },{
   title: "Dice",
   category: "ustwo Venture",

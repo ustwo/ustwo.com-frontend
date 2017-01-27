@@ -50,8 +50,15 @@ const Video = React.createClass({
   },
 
   renderVideoBackground() {
+    let styles;
+    if (this.props.imageCSS) {
+      styles = {
+        backgroundImage: `url(${this.props.imageCSS})`
+      }
+    }
+
     return (
-      <div className="videoBackground">
+      <div className="videoBackground" style={styles}>
         <MediaQuery maxWidth={768}>
           {this.renderImage()}
         </MediaQuery>
@@ -64,8 +71,10 @@ const Video = React.createClass({
   },
 
   renderImage() {
-    const { sizes } = this.props;
-    return (<Rimage sizes={sizes} />);
+    if (!this.props.imageCSS) {
+      const { sizes } = this.props;
+      return (<Rimage sizes={sizes} />)
+    }
   },
 
   renderVideo() {

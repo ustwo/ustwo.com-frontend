@@ -33,7 +33,8 @@ $home-carousel-duration: .32s;
   width: $home-carousel-width;
   height: $home-carousel-height;
 
-  img {
+  img,
+  video {
     width: 100%;
     height: auto;
     box-shadow: 10px 10px 40px rgba(0,0,0,.3);
@@ -81,6 +82,7 @@ $home-carousel-duration: .32s;
     transform: translate(40px, -($home-carousel-height + $home-carousel-margin));
     padding-left: $home-carousel-padding;
     z-index: 2;
+    left: auto;
 
     .home-carousel-item-text {
       left: 0;
@@ -94,6 +96,7 @@ $home-carousel-duration: .32s;
     transform: translate(-40px, $home-carousel-margin);
     padding-right: $home-carousel-padding;
     z-index: 1;
+    left: auto;
 
     .home-carousel-item-text {
       left: 70%;
@@ -123,12 +126,16 @@ $home-carousel-duration: .32s;
     }
 
     &.even {
+      left: 0;
+
       .home-carousel-item-image {
         animation-delay: $home-carousel-duration;
       }
     }
 
     &.odd {
+      left: 0;
+
       .home-carouse-item-text {
         transition-delay: $home-carousel-duration;
       }
@@ -185,7 +192,6 @@ $home-carousel-duration: .32s;
     &.even {
       padding-left: $home-carousel-padding;
       transform: translate(20px, -($home-carousel-height + $home-carousel-margin));
-      // align-items: flex-end;
     }
 
     &.odd {
@@ -240,12 +246,14 @@ $home-carousel-duration: .32s;
 
     &.even {
       right: 5%;
+      left: auto;
       padding-left: $home-carousel-padding;
       transform: translate(0, -($home-carousel-height + $home-carousel-margin));
     }
 
     &.odd {
       left: 5%;
+      right: auto;
       padding-right: $home-carousel-padding;
       transform: translate(0, $home-carousel-margin);
     }
@@ -370,7 +378,7 @@ $home-carousel-duration: .32s;
       height: 0;
       border-top: 12px solid transparent;
       border-bottom: 12px solid transparent;
-      border-left: 20px solid #333;
+      border-left: 20px solid #000;
       margin-left: 3px;
     }
     &:after {
@@ -383,7 +391,7 @@ $home-carousel-duration: .32s;
     &:after {
       width: 6px;
       height: 18px;
-      background-color: #333;
+      background-color: #000;
     }
 
     &:before {

@@ -46,8 +46,8 @@ function HomeIntro({ scrollProgress, mousePosition }) {
     <div className="home-intro" style={styles}>
       <Video
         src="/images/temp/home-intro-video.mp4"
-        sizes={tempSizes}
         isVideoBackground={true}
+        imageCSS="/images/home/header-fallback-image.jpg"
       />
       <div className="home-intro-logo" style={logoStyles}>
         {logoLayers}
@@ -57,28 +57,3 @@ function HomeIntro({ scrollProgress, mousePosition }) {
 }
 
 module.exports = HomeIntro;
-
-const tempSizes = {
-  "thumbnail": {
-    "file": "header_image_v2-300x300.png",
-    "width": 300,
-    "height": 300,
-    "mime-type": "image/png",
-    "source_url": "https://usweb-cdn.ustwo.com/ustwo-production/uploads/2011/06/header_image_v2-300x300.png"
-  },
-  "small": {
-    "file": "header_image_v2-576x480.png",
-    "width": 576,
-    "height": 480,
-    "mime-type": "image/png",
-    "source_url": "https://usweb-cdn.ustwo.com/ustwo-production/uploads/2011/06/header_image_v2-576x480.png",
-    "name": "small"
-  },
-  "small_crop": {
-    "file": "header_image_v2-640x480.png",
-    "width": 640,
-    "height": 480,
-    "mime-type": "image/png",
-    "source_url": "https://usweb-cdn.ustwo.com/ustwo-production/uploads/2011/06/header_image_v2-640x480.png"
-  }
-};

@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   padding: 0 20px;
+  overflow: hidden;
 
   @media screen and (min-width: $bp-medium) {
     padding: 0 40px;
