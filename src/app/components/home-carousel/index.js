@@ -18,16 +18,6 @@ function goToNextItems(component) {
   }
 }
 
-function goToPrevItems(component) {
-  component.setState({ tick: itemsRefreshInterval });
-
-  if (component.state.currentStartItem === 0) {
-    component.setState({ currentStartItem: component.props.carouselItems.length - 2 });
-  } else {
-    component.setState({ currentStartItem: component.state.currentStartItem - 2 });
-  }
-}
-
 function pauseCarousel(component) {
   component.setState({ paused: component.state.paused ? false : true })
 }
@@ -116,16 +106,25 @@ class HomeCarousel extends Component {
       darkStyle: this.props.darkStyle
     });
 
+    let timerControlClasses = classnames('home-carousel-timer-control', {
+      pause: this.state.paused,
+      play: !this.state.paused
+    });
+
     return (
       <div className={classes}>
         <div className="home-carousel-items">
           {showItems}
-          <button className="home-carousel-controls-button" onClick={() => pauseCarousel(this)}>
-            <TimerUI timer={ticker} paused={this.state.paused} darkStyle={this.props.darkStyle} />
-          </button>
+          <div className="home-carousel-ui">
+            <button className={timerControlClasses} onClick={() => pauseCarousel(this)}>
+              <div className="icon play"></div>
+              <div className="icon pause"></div>
+            </button>
+            <button className="home-carousel-shuffle" onClick={() => goToNextItems(this)}>
+              <TimerUI timer={ticker} darkStyle={this.props.darkStyle} />
+            </button>
+          </div>
         </div>
-        <button className="home-carousel-controls-next" onClick={() => goToNextItems(this)}></button>
-        <button className="home-carousel-controls-prev" onClick={() => goToPrevItems(this)}></button>
       </div>
     );
   }

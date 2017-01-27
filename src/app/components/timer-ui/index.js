@@ -1,7 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
+import SVG from 'app/components/svg';
 
-function TimerUI({ timer, paused, darkStyle }) {
+function TimerUI({ timer, darkStyle }) {
 
   let rotateRight = timer >= 180 ? 360 - timer : 180;
   let rotateLeft = timer <= 180 ? 180 - timer : 0;
@@ -14,11 +15,7 @@ function TimerUI({ timer, paused, darkStyle }) {
     transform: `rotate(${rotateLeft}deg)`
   };
 
-  let classes = classnames('timer-ui', {
-    darkStyle,
-    pause: paused,
-    play: !paused
-  });
+  let classes = classnames('timer-ui', { darkStyle });
 
   return (
     <div className={classes}>
@@ -28,8 +25,7 @@ function TimerUI({ timer, paused, darkStyle }) {
       <div className="half right">
         <div className="bg" style={stylesRight}></div>
       </div>
-      <div className="icon play"></div>
-      <div className="icon pause"></div>
+      <SVG title="Shuffle icon" spritemapID="shuffle" />
     </div>
   );
 }

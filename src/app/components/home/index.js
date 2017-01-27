@@ -82,7 +82,6 @@ class PageHome extends Component {
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           getMousePosition={true}
-          fullWidth={true}
         />
 
       <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
@@ -101,7 +100,6 @@ class PageHome extends Component {
             documentScrollPosition={this.state.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
             getMousePosition={true}
-            fullWidth={true}
           />
 
         </div>

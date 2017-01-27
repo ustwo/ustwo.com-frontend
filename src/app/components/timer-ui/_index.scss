@@ -11,11 +11,20 @@
   position: relative;
   box-sizing: content-box;
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: $size;
   height: $size;
   background: linear-gradient(to bottom, $blu 0%, $pot 100%);
   border-radius: $size * 0.5;
+
+  svg {
+    position: relative;
+    z-index: 1;
+    width: 48px;
+    height: 48px;
+  }
 
   .half {
     overflow: hidden;
@@ -63,70 +72,6 @@
     height: $size - (2 * $border);
     border-radius: $size - (2 * $border) * 0.5;
     background: #fff;
-  }
-
-  .icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: $size;
-    height: $size;
-    opacity: 0;
-    transform: scale(0.4);
-    animation-fill-mode: forwards;
-    animation-duration: .2s;
-    animation-iteration-count: 1;
-
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-
-  .icon.pause {
-    &:before {
-      width: 0;
-      height: 0;
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid transparent;
-      border-left: 20px solid #333;
-      margin-left: 3px;
-    }
-    &:after {
-      display: none;
-    }
-  }
-
-  .icon.play {
-    &:before,
-    &:after {
-      width: 6px;
-      height: 18px;
-      background-color: #333;
-    }
-
-    &:before {
-      margin-left: -6px;
-    }
-    &:after {
-      margin-left: 6px;
-    }
-  }
-
-  &.pause .icon.pause,
-  &.play .icon.play {
-    animation-name: IconIn;
-    animation-delay: .1s;
-  }
-
-  &.pause .icon.play,
-  &.play .icon.pause {
-    animation-name: IconOut;
   }
 }
 
