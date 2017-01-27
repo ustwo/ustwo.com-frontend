@@ -12,10 +12,10 @@ import env from 'app/adaptors/server/env';
    As an example, to parallax children inside the element: in for 0 to 0.25, hold position,
    then parallax out from 0.5 to 0.75. */
 function getScrollProgress(top, height, scrollPosition) {
-  if (scrollPosition < top - (height * 0.5)) {
+  if (scrollPosition <= top - (height * 0.5)) {
     return 0;
   }
-  if (scrollPosition > top - (height * 0.5) && scrollPosition < top + height) {
+  if (scrollPosition > top - (height * 0.5) && scrollPosition <= top + height) {
     let result = (scrollPosition - (top - (height * 0.5))) / (height * 1.5);
     return Math.round(result * 100) / 100;
   }

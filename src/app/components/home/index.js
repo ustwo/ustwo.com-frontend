@@ -44,8 +44,6 @@ class PageHome extends Component {
     this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
     this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.25);
 
-    console.log(this.homeIntro.offsetHeight);
-
     // if (this.state.documentScrollPosition < this.ref.homeIntro.getBoundingClientRect().height) {
     //   Flux.hideHomeIntroMenu();
     // }
@@ -57,9 +55,8 @@ class PageHome extends Component {
   }
 
   render() {
-    const classes = classnames('page-home', this.props.className);
-    const venturesClasses = classnames('home-ventures-wrapper', {
-      active: this.state.documentScrollPosition > this.venturesPositionFromTop && this.state.documentScrollPosition < this.venturesPositionFromTop + this.venturesHeight
+    const classes = classnames('page-home', this.props.className, {
+      venturesActive: this.state.documentScrollPosition > this.venturesPositionFromTop && this.state.documentScrollPosition < this.venturesPositionFromTop + this.venturesHeight
     });
 
     return (
@@ -71,7 +68,6 @@ class PageHome extends Component {
           viewportDimensions={this.state.viewportDimensions}
           getMousePosition={true}
           className="scroll-wrapper-home-intro"
-          ref={(ref) => this.homeIntro = ref}
         />
 
         <ScrollWrapper
@@ -89,7 +85,7 @@ class PageHome extends Component {
           fullWidth={true}
         />
 
-        <div className={venturesClasses} ref={(ref) => this.venturesWrapper = ref }>
+      <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
 
           <div className="home-ventures-wrapper-bg"></div>
 

@@ -45,7 +45,7 @@ class HomeCarousel extends Component {
   }
 
   ticker() {
-    if (this.props.scrollProgress > 0.5 && this.props.scrollProgress < 1) {
+    if (this.props.scrollProgress >= 0.25 && this.props.scrollProgress <= 0.75) {
 
       if (this.state.tick === 0) {
         goToNextItems(this);
@@ -116,15 +116,11 @@ class HomeCarousel extends Component {
       darkStyle: this.props.darkStyle
     });
 
-    let controlStyles = {
-      opacity: transitionOnScroll(scrollProgress, 0, 0, 0.85, 1)
-    };
-
     return (
       <div className={classes}>
         <div className="home-carousel-items">
           {showItems}
-          <button className="home-carousel-controls-button" onClick={() => pauseCarousel(this)} style={controlStyles}>
+          <button className="home-carousel-controls-button" onClick={() => pauseCarousel(this)}>
             <TimerUI timer={ticker} paused={this.state.paused} darkStyle={this.props.darkStyle} />
           </button>
         </div>

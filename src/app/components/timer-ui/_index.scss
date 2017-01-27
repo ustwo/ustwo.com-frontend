@@ -128,32 +128,32 @@
   &.play .icon.pause {
     animation-name: IconOut;
   }
-
+}
 
 
   /* Dark Style */
 
-  &.darkStyle {
+.timer-ui.darkStyle {
+  &:after {
+    background: #313b5c; /* This appears on the gradient background declared above, so best guess colour! */
+  }
+
+  .half.left .bg,
+  .half.right .bg {
+    border-color: #666;
+  }
+
+  .icon.pause:before {
+    border-left: 20px solid #fff;
+  }
+  .icon.play {
+    &:before,
     &:after {
-      background: #313b5c; /* This appears on the gradient background declared above, so best guess colour! */
-    }
-
-    .half.left .bg,
-    .half.right .bg {
-      border-color: #666;
-    }
-
-    .icon.pause:before {
-      border-left: 20px solid #fff;
-    }
-    .icon.play {
-      &:before,
-      &:after {
-        background-color: #fff;
-      }
+      background-color: #fff;
     }
   }
 }
+
 
 @keyframes IconIn {
   from {

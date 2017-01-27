@@ -50,8 +50,7 @@
     width: 100vw;
     height: 100vh;
     opacity: 0;
-    transition: all .3s ease-in-out;
-    // transform: translate3d(0,100px,0);
+    transition: all .32s ease-in-out;
     background: linear-gradient(-225deg, #333, #304179);
   }
 
@@ -63,12 +62,18 @@
   .home-section-title {
     color: #ccc;
   }
+}
 
-  &.active {
+.page-home {
+
+  &.venturesActive {
     .home-ventures-wrapper-bg {
       z-index: 0;
       opacity: 1;
-      // transform: translate3d(0,0,0);
+    }
+    .home-carousel-controls-button {
+      opacity: 0;
+      transition: opacity .15s ease-in-out;
     }
   }
 }
