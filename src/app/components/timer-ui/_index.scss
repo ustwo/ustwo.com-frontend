@@ -4,9 +4,58 @@
  *
  */
 
+@mixin timer-ui-size($size, $border) {
+  width: $size;
+  height: $size;
+
+  svg {
+    width: $size * 0.75;
+    height: $size * 0.75;
+  }
+
+  .half {
+    width: $size * .5;
+    height: $size;
+
+    .bg {
+      width: $size * .5;
+      height: $size;
+      border-radius: $size;
+    }
+
+    &.left {
+      .bg {
+        border-left: ($size * .5) solid #ccc;
+      }
+    }
+
+    &.right {
+      .bg {
+        border-right: ($size * .5) solid #ccc;
+      }
+    }
+  }
+
+  &:after {
+    left: $border;
+    top: $border;
+    width: $size - (2 * $border);
+    height: $size - (2 * $border);
+    border-radius: $size - (2 * $border) * 0.5;
+  }
+}
+
 .timer-ui {
-  $size: 64px;
-  $border: 4px;
+  $size-small: 56px;
+  $border-small: 3px;
+  $size-large: 64px;
+  $border-large: 4px;
+
+  @include timer-ui-size($size-small, $border-small);
+
+  @media screen and (min-width: $bp-medium) {
+    @include timer-ui-size($size-large, $border-large);
+  }
 
   position: relative;
   box-sizing: content-box;
@@ -14,30 +63,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: $size;
-  height: $size;
   background: linear-gradient(to bottom, $blu 0%, $pot 100%);
-  border-radius: $size * 0.5;
+  border-radius: 50%;
 
   svg {
     position: relative;
     z-index: 1;
-    width: 48px;
-    height: 48px;
   }
 
   .half {
     overflow: hidden;
     position: absolute;
     top: 0;
-    width: $size * .5;
-    height: $size;
 
     .bg {
       position: absolute;
-      width: $size * .5;
-      height: $size;
-      border-radius: $size;
       transform-origin: 50% 50%;
       transform: rotate(0deg);
     }
@@ -48,7 +88,6 @@
 
       .bg {
         left: 0;
-        border-left: ($size * .5) solid #ccc;
       }
     }
 
@@ -58,7 +97,6 @@
 
       .bg {
         right: 0;
-        border-right: ($size * .5) solid #ccc;
       }
     }
   }
@@ -66,11 +104,6 @@
   &:after {
     content: "";
     position: absolute;
-    left: $border;
-    top: $border;
-    width: $size - (2 * $border);
-    height: $size - (2 * $border);
-    border-radius: $size - (2 * $border) * 0.5;
     background: #fff;
   }
 }

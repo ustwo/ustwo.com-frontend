@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import Video from 'app/components/video';
 import ScrollWrapper from 'app/components/scroll-wrapper';
+import Flux from 'app/flux';
 
 import HomeIntro from 'app/components/home-intro';
 import HomeTextBlock from 'app/components/home-text-block';
@@ -55,6 +56,10 @@ class PageHome extends Component {
       venturesActive: this.state.documentScrollPosition > this.venturesPositionFromTop && this.state.documentScrollPosition < this.venturesPositionFromTop + this.venturesHeight
     });
 
+    // if (this.state.documentScrollPosition > window.innerHeight) {
+    //   Flux.hideHomeIntroMenu();
+    // }
+
     return (
       <article className={classes} id="scroll-container">
 
@@ -78,9 +83,10 @@ class PageHome extends Component {
           documentScrollPosition={this.state.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           getMousePosition={true}
+          className="scroll-wrapper-home-carousel-products"
         />
 
-      <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
+        <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
 
           <div className="home-ventures-wrapper-bg"></div>
 
@@ -96,6 +102,7 @@ class PageHome extends Component {
             documentScrollPosition={this.state.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
             getMousePosition={true}
+            className="scroll-wrapper-home-carousel-ventures"
           />
 
         </div>

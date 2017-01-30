@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Scroll from 'react-scroll'; /* Animate and scroll to location in document */
 import env from 'app/adaptors/server/env';
 
 /* Get Scroll Progress:
@@ -56,26 +55,6 @@ function getElementAttributes(component) {
     top: component.scrollWrapper.offsetTop
   };
   component.setState({ elementAttributes });
-}
-
-function goToNextSlide(component) {
-  let element = component.state.elementAttributes;
-  let position = element.top + element.height;
-
-  return () => {
-    Scroll.animateScroll.scrollTo(position);
-  };
-}
-
-function goToPrevSlide(component) {
-  let element = component.state.elementAttributes;
-  /* TODO: using element.height here is not strictly speaking accurate. What we need is the
-           previous element's height but it will have to do for now */
-  let position = element.top - element.height;
-
-  return () => {
-    Scroll.animateScroll.scrollTo(position);
-  };
 }
 
 class ScrollWrapper extends Component {
@@ -134,8 +113,6 @@ class ScrollWrapper extends Component {
         <div className="scroll-wrapper-inner">
           {component}
         </div>
-        <div className="home-prev-slide" onClick={goToPrevSlide(this)}></div>
-        <div className="home-next-slide" onClick={goToNextSlide(this)}></div>
       </div>
     );
   }

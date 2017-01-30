@@ -9,7 +9,6 @@ $home-carousel-width: 285px;
 $home-carousel-height: 200px;
 $home-carousel-margin: 10px;
 $home-carousel-padding: 76px;
-$home-carousel-controls-button-size: 48px;
 $home-carousel-duration: .32s;
 
 .home-carousel {
@@ -23,15 +22,22 @@ $home-carousel-duration: .32s;
   position: absolute;
   top: 40px;
   z-index: 1;
-  width: 35%;
+  width: 45%;
   opacity: 0;
-  transition: opacity $home-carousel-duration ease-in-out;
+  // transition: opacity $home-carousel-duration ease-in-out;
+}
+
+.home-carousel-visual-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .home-carousel-item-image {
   display: flex;
   width: $home-carousel-width;
   height: $home-carousel-height;
+  overflow: hidden;
 
   img,
   video {
@@ -57,6 +63,7 @@ $home-carousel-duration: .32s;
 .home-carousel-item {
   position: absolute;
   top: 50%;
+  left: 0;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -72,20 +79,18 @@ $home-carousel-duration: .32s;
   }
 
   .home-carousel-item-image {
-    opacity: 1;
-    transform: scale(1);
-    animation: itemOut $home-carousel-duration 1;
-    animation-fill-mode: forwards;
+    opacity: 0;
+    // transform: scale(1);
+    // animation: itemOut $home-carousel-duration 1;
+    // animation-fill-mode: forwards;
   }
 
   &.even {
     transform: translate(40px, -($home-carousel-height + $home-carousel-margin));
-    padding-left: $home-carousel-padding;
     z-index: 2;
-    left: auto;
 
     .home-carousel-item-text {
-      left: 0;
+      left: -40px;
     }
     .home-carousel-item-image {
       align-items: flex-end;
@@ -94,12 +99,11 @@ $home-carousel-duration: .32s;
 
   &.odd {
     transform: translate(-40px, $home-carousel-margin);
-    padding-right: $home-carousel-padding;
     z-index: 1;
-    left: auto;
+    left: 0;
 
     .home-carousel-item-text {
-      left: 70%;
+      right: -40px;
     }
 
     .home-carousel-item-image {
@@ -119,29 +123,29 @@ $home-carousel-duration: .32s;
     }
 
     .home-carousel-item-image {
-      opacity: 0;
-      transform: scale(0.9);
-      animation: itemIn $home-carousel-duration 1;
-      animation-fill-mode: forwards;
+      opacity: 1;
+      // transform: scale(0.9);
+      // animation: itemIn $home-carousel-duration 1;
+      // animation-fill-mode: forwards;
     }
 
     &.even {
-      left: 0;
+      // left: 0;
 
       .home-carousel-item-image {
-        animation-delay: $home-carousel-duration;
+        // animation-delay: $home-carousel-duration;
       }
     }
 
     &.odd {
-      left: 0;
+      // left: 0;
 
       .home-carouse-item-text {
-        transition-delay: $home-carousel-duration;
+        // transition-delay: $home-carousel-duration;
       }
 
       .home-carousel-item-image {
-        animation-delay: $home-carousel-duration + ($home-carousel-duration * .5);
+        // animation-delay: $home-carousel-duration + ($home-carousel-duration * .5);
       }
     }
 
@@ -154,20 +158,13 @@ $home-carousel-duration: .32s;
   }
 }
 
-.home-carousel-ui {
-  position: absolute;
-  bottom: 30px;
-  height: $home-carousel-controls-button-size;
-  z-index: 100;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 .home-carousel-shuffle {
-  width: $home-carousel-controls-button-size;
-  height: $home-carousel-controls-button-size;
   cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  z-index: 100;
+  transition: opacity .15s ease-in-out;
 }
 
 .home-carousel-timer-control {
@@ -181,7 +178,6 @@ $home-carousel-duration: .32s;
   $home-carousel-height: 200px;
   $home-carousel-margin: 10px;
   $home-carousel-padding: 69px;
-  $home-carousel-controls-button-size: 56px;
 
   .home-carousel-item {
     h2 {
@@ -190,11 +186,19 @@ $home-carousel-duration: .32s;
     }
 
     &.even {
+      .home-carousel-item-text {
+        left: 0;
+      }
+
       padding-left: $home-carousel-padding;
       transform: translate(20px, -($home-carousel-height + $home-carousel-margin));
     }
 
     &.odd {
+      .home-carousel-item-text {
+        right: 0;
+      }
+
       padding-right: $home-carousel-padding;
       transform: translate(-20px, $home-carousel-margin);
     }
@@ -202,10 +206,6 @@ $home-carousel-duration: .32s;
   .home-carousel-item-image {
     width: $home-carousel-width;
     height: $home-carousel-height;
-  }
-  .home-carousel-shuffle {
-    width: $home-carousel-controls-button-size;
-    height: $home-carousel-controls-button-size;
   }
 }
 
@@ -262,6 +262,10 @@ $home-carousel-duration: .32s;
     width: $home-carousel-width;
     height: $home-carousel-height;
   }
+
+  .home-carousel-shuffle {
+    bottom: 30px;
+  }
 }
 
 @media screen and (min-width: $bp-large) {
@@ -270,7 +274,6 @@ $home-carousel-duration: .32s;
   $home-carousel-margin: -50px;
   $home-carousel-padding: 77px;
   $home-carousel-controls-padding: 30px;
-  $home-carousel-controls-button-size: 64px;
 
   .home-carousel-item {
     &.even {
@@ -301,15 +304,12 @@ $home-carousel-duration: .32s;
     width: $home-carousel-width;
     height: $home-carousel-height;
   }
-  .home-carousel-ui {
+  .home-carousel-shuffle {
     top: 50%;
+    bottom: auto;
     left: auto;
     right: calc(5% + #{$home-carousel-width} + #{$home-carousel-padding} + #{$home-carousel-controls-padding});
     transform: translateY(calc(#{$home-carousel-controls-padding} - #{$home-carousel-margin}));
-  }
-  .home-carousel-shuffle {
-    width: $home-carousel-controls-button-size;
-    height: $home-carousel-controls-button-size;
   }
 }
 
@@ -340,98 +340,8 @@ $home-carousel-duration: .32s;
     width: $home-carousel-width;
     height: $home-carousel-height;
   }
-  .home-carousel-ui {
+  .home-carousel-shuffle {
     right: calc(5% + #{$home-carousel-width} + #{$home-carousel-padding} + #{$home-carousel-controls-padding});
     transform: translateY(calc(#{$home-carousel-controls-padding} - #{$home-carousel-margin}));
-  }
-}
-
-.home-carousel-timer-control {
-  position: relative;
-
-  .icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 20px;
-    height: 20px;
-    opacity: 0;
-    transform: scale(0.4);
-    animation-fill-mode: forwards;
-    animation-duration: .2s;
-    animation-iteration-count: 1;
-
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-
-  .icon.pause {
-    &:before {
-      width: 0;
-      height: 0;
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid transparent;
-      border-left: 20px solid #000;
-      margin-left: 3px;
-    }
-    &:after {
-      display: none;
-    }
-  }
-
-  .icon.play {
-    &:before,
-    &:after {
-      width: 6px;
-      height: 18px;
-      background-color: #000;
-    }
-
-    &:before {
-      margin-left: -6px;
-    }
-    &:after {
-      margin-left: 6px;
-    }
-  }
-
-  &.pause .icon.pause,
-  &.play .icon.play {
-    animation-name: IconIn;
-    animation-delay: .1s;
-  }
-
-  &.pause .icon.play,
-  &.play .icon.pause {
-    animation-name: IconOut;
-  }
-}
-
-@keyframes itemIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes itemOut {
-  from {
-    transform: scale(1);
-    opacity: 1;
-  }
-  to {
-    transform: scale(1.1);
-    opacity: 0;
   }
 }

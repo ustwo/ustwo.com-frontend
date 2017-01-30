@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import TimerUI from 'app/components/timer-ui';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
+import Video from 'app/components/video';
 
 const itemsRefreshInterval = 5000;
 const tickerFrequency = 50;
@@ -18,9 +19,9 @@ function goToNextItems(component) {
   }
 }
 
-function pauseCarousel(component) {
-  component.setState({ paused: component.state.paused ? false : true })
-}
+// function pauseCarousel(component) {
+//   component.setState({ paused: component.state.paused ? false : true })
+// }
 
 class HomeCarousel extends Component {
 
@@ -67,20 +68,22 @@ class HomeCarousel extends Component {
       let alignment = i % 2 === 0 ? 'even' : 'odd';
       extraClasses[alignment] = true;
 
+      let modifier = 2;
+
       let classes = classnames('home-carousel-item', extraClasses);
 
       let styles, x, y, textStyles;
       if (alignment === 'even') {
-        x = (mousePosition.coordinateX - 0.5) * ((mousePosition.coordinateX * 2) * (mousePosition.coordinateX * 2));
-        y = (mousePosition.coordinateY - 0.5) * ((mousePosition.coordinateY * 2) * (mousePosition.coordinateY * 2));
+        x = (mousePosition.coordinateX - 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
+        y = (mousePosition.coordinateY - 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
         textStyles = {
-          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 1, 1, 1, distance, true)}px,0)`
+          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
         }
       } else {
-        x = (mousePosition.coordinateX + 0.5) * ((mousePosition.coordinateX * 2) * (mousePosition.coordinateX * 2));
-        y = (mousePosition.coordinateY + 0.5) * ((mousePosition.coordinateY * 2) * (mousePosition.coordinateY * 2));
+        x = (mousePosition.coordinateX + 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
+        y = (mousePosition.coordinateY + 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
         textStyles = {
-          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0.1, 1, 1, 1, distance, true)}px,0)`
+          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
         }
       }
       styles = {
@@ -89,9 +92,9 @@ class HomeCarousel extends Component {
 
       let visualContent;
       if (item.videoURL) {
-        visualContent = <video src={item.videoURL} autoplay loop muted playsinline></video>
+        visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} />
       } else {
-        visualContent = <img src={item.imageURL} style={styles} alt={item.title} />
+        visualContent = <img src={item.imageURL} alt={item.title} />
       }
 
       return (
@@ -101,7 +104,9 @@ class HomeCarousel extends Component {
             <h2>{item.title}</h2>
           </div>
           <div className="home-carousel-item-image">
-            {visualContent}
+            <div className="home-carousel-visual-content" style={styles}>
+              {visualContent}
+            </div>
           </div>
         </div>
       );
@@ -113,24 +118,13 @@ class HomeCarousel extends Component {
       darkStyle: this.props.darkStyle
     });
 
-    let timerControlClasses = classnames('home-carousel-timer-control', {
-      pause: this.state.paused,
-      play: !this.state.paused
-    });
-
     return (
       <div className={classes}>
         <div className="home-carousel-items">
           {showItems}
-          <div className="home-carousel-ui">
-            <button className={timerControlClasses} onClick={() => pauseCarousel(this)}>
-              <div className="icon play"></div>
-              <div className="icon pause"></div>
-            </button>
-            <button className="home-carousel-shuffle" onClick={() => goToNextItems(this)}>
-              <TimerUI timer={ticker} darkStyle={this.props.darkStyle} />
-            </button>
-          </div>
+          <button className="home-carousel-shuffle" onClick={() => goToNextItems(this)}>
+            <TimerUI timer={ticker} darkStyle={this.props.darkStyle} />
+          </button>
         </div>
       </div>
     );

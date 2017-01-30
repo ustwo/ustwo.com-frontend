@@ -65,16 +65,20 @@
 }
 
 .page-home {
-
   &.venturesActive {
     .home-ventures-wrapper-bg {
       z-index: 0;
       opacity: 1;
     }
-    .home-carousel-controls-button {
-      opacity: 0;
-      transition: opacity .15s ease-in-out;
+    .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
+      opacity: 1;
     }
+    .scroll-wrapper-home-carousel-products .home-carousel-shuffle {
+      opacity: 0;
+    }
+  }
+  .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
+    opacity: 0;
   }
 }
 

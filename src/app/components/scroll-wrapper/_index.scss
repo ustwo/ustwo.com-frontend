@@ -31,33 +31,9 @@
       width: 100vw;
     }
   }
-
-  .home-next-slide,
-  .home-prev-slide {
-    position: absolute;
-    left: 0;
-    width: 100vw;
-    z-index: 1;
-    display: none;
-  }
-
-  .home-next-slide {
-    bottom: 0;
-    height: 25vh;
-    cursor: url('/images/cursor-arrow-down.png'), auto;
-  }
-  .home-prev-slide {
-    top: 0;
-    height: 25vh;
-    cursor: url('/images/cursor-arrow-up.png'), auto;
-  }
 }
 
 .scroll-wrapper-home-welcome-message,
 .scroll-wrapper-home-more-message {
-  height: 80vh;
-
-  .home-next-slide {
-    // bottom: -15vh;
-  }
+  height: 85vh;
 }

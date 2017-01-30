@@ -3,6 +3,7 @@ import React from 'react';
 import SVG from 'app/components/svg';
 import Video from 'app/components/video';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
+import Scroll from 'react-scroll'; /* Animate and scroll to location in document */
 
 // const rainbowColours = ['#ED0082', '#E60C29', '#FF5519', '#FFBF02', '#96CC29', '#14C04D', '#16D6D9', '#009CF3', '#143FCC', '#6114CC', '#111111'];
 const colours = ['#000000', '#FFFFFF'];
@@ -35,7 +36,7 @@ function HomeIntro({ scrollProgress, mousePosition }) {
   });
 
   let styles = {
-    opacity: transitionOnScroll(scrollProgress, 0, 0, 0.5, 1)
+    opacity: transitionOnScroll(scrollProgress, 0, 0, 0.75, 1)
   }
 
   let logoStyles = {
@@ -43,7 +44,7 @@ function HomeIntro({ scrollProgress, mousePosition }) {
   }
 
   return (
-    <div className="home-intro" style={styles}>
+    <div className="home-intro" style={styles} onClick={() => Scroll.animateScroll.scrollTo(window.innerHeight)}>
       <Video
         src="/images/temp/home-intro-video.mp4"
         isVideoBackground={true}
