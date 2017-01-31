@@ -19,9 +19,6 @@ const Actions = {
   showNavOverlay() {
     Store.showNavOverlay();
   },
-  hideHomeIntroMenu() {
-    Store.hideHomeIntroMenu();
-  },
   closeTakeover() {
     Store.closeTakeover();
   },

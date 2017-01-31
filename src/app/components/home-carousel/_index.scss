@@ -9,7 +9,7 @@ $home-carousel-width: 285px;
 $home-carousel-height: 200px;
 $home-carousel-margin: 10px;
 $home-carousel-padding: 76px;
-$home-carousel-duration: .32s;
+$home-carousel-duration: .2s;
 
 .home-carousel {
   position: relative;
@@ -20,7 +20,7 @@ $home-carousel-duration: .32s;
 
 .home-carousel-item-text {
   position: absolute;
-  top: 40px;
+  top: 60px;
   z-index: 1;
   width: 45%;
   opacity: 0;
@@ -30,14 +30,12 @@ $home-carousel-duration: .32s;
 .home-carousel-visual-content {
   width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
 .home-carousel-item-image {
   display: flex;
   width: $home-carousel-width;
   height: $home-carousel-height;
-  overflow: hidden;
 
   img,
   video {
@@ -78,11 +76,15 @@ $home-carousel-duration: .32s;
     margin-bottom: 5px;
   }
 
+  .home-carousel-item-text {
+    opacity: 0;
+    transition: opacity $home-carousel-duration ease-in-out $home-carousel-duration;
+  }
+
   .home-carousel-item-image {
     opacity: 0;
-    // transform: scale(1);
-    // animation: itemOut $home-carousel-duration 1;
-    // animation-fill-mode: forwards;
+    transform: scale(0.9);
+    transition: all $home-carousel-duration ease-in-out;
   }
 
   &.even {
@@ -94,6 +96,7 @@ $home-carousel-duration: .32s;
     }
     .home-carousel-item-image {
       align-items: flex-end;
+      transition-delay: 0s;
     }
   }
 
@@ -108,44 +111,51 @@ $home-carousel-duration: .32s;
 
     .home-carousel-item-image {
       align-items: flex-start;
-      animation-delay: $home-carousel-duration * .5;
+      transition-delay: $home-carousel-duration;
     }
   }
+
 
   &:not(.active) {
     z-index: 0;
   }
 
+  &.previous {
+    z-index: 5;
+
+    .home-carousel-item-image {
+      transform: scale(1.1);
+    }
+  }
+
+  &.previous + &.previous {
+    z-index: 4;
+  }
+
   &.active {
 
-    .home-carousel-item-text {
+    .home-carousel-item-text,
+    .home-carousel-item-image {
       opacity: 1;
     }
 
     .home-carousel-item-image {
-      opacity: 1;
-      // transform: scale(0.9);
-      // animation: itemIn $home-carousel-duration 1;
-      // animation-fill-mode: forwards;
+      transform: scale(1);
     }
 
     &.even {
       // left: 0;
 
       .home-carousel-item-image {
-        // animation-delay: $home-carousel-duration;
+        transition-delay: $home-carousel-duration * 2;
       }
     }
 
     &.odd {
       // left: 0;
 
-      .home-carouse-item-text {
-        // transition-delay: $home-carousel-duration;
-      }
-
       .home-carousel-item-image {
-        // animation-delay: $home-carousel-duration + ($home-carousel-duration * .5);
+        transition-delay: $home-carousel-duration * 3;
       }
     }
 
@@ -343,5 +353,23 @@ $home-carousel-duration: .32s;
   .home-carousel-shuffle {
     right: calc(5% + #{$home-carousel-width} + #{$home-carousel-padding} + #{$home-carousel-controls-padding});
     transform: translateY(calc(#{$home-carousel-controls-padding} - #{$home-carousel-margin}));
+  }
+}
+
+@keyframes itemIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes itemOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

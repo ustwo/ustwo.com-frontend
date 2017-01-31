@@ -7,7 +7,8 @@ import Video from 'app/components/video';
 
 const itemsRefreshInterval = 5000;
 const tickerFrequency = 50;
-const distance = 80;
+const transitionDuration = 300;
+const distance = 60;
 
 function goToNextItems(component) {
   component.setState({ tick: itemsRefreshInterval });
@@ -60,9 +61,16 @@ class HomeCarousel extends Component {
     const { scrollProgress, mousePosition } = this.props;
 
     let showItems = this.props.carouselItems.map((item, i) => {
+
+      let isPrevious = false;
+      if (this.state.currentStartItem === 0 && (i === this.props.carouselItems.length - 2 || i === this.props.carouselItems.length - 1)
+          || i === this.state.currentStartItem - 2 || i === this.state.currentStartItem - 1) {
+        isPrevious = true;
+      }
+
       let extraClasses = {
         active: i === this.state.currentStartItem || i - 1 === this.state.currentStartItem ? true : false,
-        next: i - 2 === this.state.currentStartItem || i - 3 === this.state.currentStartItem ? true : false
+        previous: isPrevious
       }
 
       let alignment = i % 2 === 0 ? 'even' : 'odd';

@@ -7,7 +7,7 @@
 $nav-items-height: 46px;
 
 .navigation {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   z-index: 9999;
@@ -47,6 +47,15 @@ $nav-items-height: 46px;
         height: $nav-items-height;
       }
     }
+  }
+
+  &.home {
+    top: 100vh;
+  }
+
+  &.sticky {
+    position: fixed;
+    top: 0;
   }
 }
 

@@ -18,7 +18,6 @@ const _state = Object.assign({
   currentHash: Nulls.section,
   blogCategory: Defaults.blogCategory,
   searchMode: Defaults.searchMode,
-  hideHomeIntroMenu: Defaults.hideHomeIntroMenu,
   searchQuery: Nulls.searchQuery,
   modal: Nulls.modal,
   colours: Nulls.colours,
@@ -213,10 +212,6 @@ const Store = Object.assign(
           type: 'job'
         }], applyJobDetailData).then(() => Store.emit('change', _state));
       }
-    },
-    hideHomeIntroMenu() {
-      _state.hideHomeIntroMenu = false;
-      Store.emit('change', _state);
     },
     showSearch() {
       _state.searchMode = true;

@@ -10,7 +10,7 @@ const colours = ['#000000', '#FFFFFF'];
 const distance = -250;
 
 function HomeIntro({ scrollProgress, mousePosition }) {
-  /* TODO: reverse the axis to change apparent persepective */
+
   const logoLayers = colours.map((colour, i) => {
     let modifier = 3 * ((colours.length - i) * (colours.length - i) * 0.9);
 
@@ -28,29 +28,29 @@ function HomeIntro({ scrollProgress, mousePosition }) {
     }
 
     let styles = {
-      transform: `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, 0)`,
+      // transform: `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, 0)`,
       fill: colour
     }
 
     return (<SVG title="ustwo logo layer" className={`layer-${i}`} spritemapID="ustwologo" style={styles} />);
   });
 
-  let styles = {
-    opacity: transitionOnScroll(scrollProgress, 0, 0, 0.75, 1)
-  }
+  // let styles = {
+  //   opacity: transitionOnScroll(scrollProgress, 0, 0, 0.75, 1)
+  // }
 
-  let logoStyles = {
-    transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0, 0.5, 1, distance, true)}px,0)`
-  }
+  // let logoStyles = {
+  //   transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0, 0.5, 1, distance, true)}px,0)`
+  // }
 
   return (
-    <div className="home-intro" style={styles} onClick={() => Scroll.animateScroll.scrollTo(window.innerHeight)}>
+    <div className="home-intro" onClick={() => Scroll.animateScroll.scrollTo(window.innerHeight)}>
       <Video
         src="/images/temp/home-intro-video.mp4"
         isVideoBackground={true}
         imageCSS="/images/home/header-fallback-image.jpg"
       />
-      <div className="home-intro-logo" style={logoStyles}>
+    <div className="home-intro-logo">
         {logoLayers}
       </div>
     </div>

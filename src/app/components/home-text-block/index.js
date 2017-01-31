@@ -6,7 +6,7 @@ const distance = '100'; /* pixels */
 function HomeTextBlock({ scrollProgress, content }) {
 
   let styles = {
-    opacity: transitionOnScroll(scrollProgress, 0, 0.2, 0.77, 1),
+    // opacity: transitionOnScroll(scrollProgress, 0, 0.2, 0.77, 1),
     transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.5, 1, 1, distance, true)}px,0)`
   }
 

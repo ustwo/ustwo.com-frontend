@@ -12,9 +12,15 @@ import SVG from 'app/components/svg';
 import FramesUstwoLogo from 'app/components/frames-ustwo-logo';
 
 class Navigation extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   openOverlay() {
     Flux.showNavOverlay();
   }
+
   onClickLogo(event) {
     const { takeover } = this.props;
     event.preventDefault();
@@ -28,11 +34,16 @@ class Navigation extends Component {
     }
     Flux.navigate('/');
   }
+
   render() {
-    const { section, page, takeover, customClass } = this.props;
+    const { section, page, takeover, customClass, documentScrollPosition } = this.props;
     const navClasses = classnames('navigation', customClass, section, page, {
-      'takeover': takeover
+      takeover,
+      sticky: documentScrollPosition > window.innerHeight ? true : false
     });
+
+    console.log(documentScrollPosition);
+
     return (
       <nav className={navClasses}>
         <button className="logo" onClick={this.onClickLogo}>
