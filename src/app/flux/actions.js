@@ -51,6 +51,9 @@ const Actions = {
   },
   setEventsStudioTo(id) {
     Store.setEventsStudioTo(id);
+  },
+  whereIsVentures(where) {
+    Store.whereIsVentures(where);
   }
 };
 

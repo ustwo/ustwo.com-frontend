@@ -36,10 +36,12 @@ class Navigation extends Component {
   }
 
   render() {
-    const { section, page, takeover, customClass, documentScrollPosition } = this.props;
+    const { section, page, takeover, customClass, documentScrollPosition, whereIsVentures } = this.props;
+
     const navClasses = classnames('navigation', customClass, section, page, {
       takeover,
-      sticky: documentScrollPosition > window.innerHeight ? true : false
+      sticky: documentScrollPosition > window.innerHeight ? true : false,
+      invert: whereIsVentures && documentScrollPosition > whereIsVentures.from && documentScrollPosition < whereIsVentures.to ? true : false
     });
 
     return (
@@ -48,8 +50,8 @@ class Navigation extends Component {
           <SVG title="ustwo logo" spritemapID="ustwologo" />
         </button>
         <button onClick={this.openOverlay.bind(this)} className="navigation-toggle">
-          <SVG title="Open menu" spritemapID="menuopen-dark" />
-          <SVG title="Menu ring" spritemapID="menu-ring" className="menu-ring" />
+          <SVG title="Open menu" spritemapID="menuopen-dark" className="navigation-toggle-main" />
+          <SVG title="Menu ring" spritemapID="menu-ring" className="navigation-toggle-ring" />
         </button>
       </nav>
     );

@@ -15,7 +15,7 @@ class HomeSmorgasbord extends Component {
     let { scrollProgress } = this.props;
 
     let styles = {
-      opacity: transitionOnScroll(scrollProgress, 0, 0.23, 0.77, 1),
+      // opacity: transitionOnScroll(scrollProgress, 0, 0.23, 0.77, 1),
       transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 1, 1, distance, true)}px,0)`
     }
 

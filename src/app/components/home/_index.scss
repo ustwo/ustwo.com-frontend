@@ -50,7 +50,7 @@
     width: 100vw;
     height: 100vh;
     opacity: 0;
-    transition: all .32s ease-in-out;
+    transition: all .2s ease-in-out;
     background: linear-gradient(-225deg, #333, #304179);
   }
 
@@ -87,18 +87,6 @@
   margin-bottom: 10px;
   font-size: 14px;
   letter-spacing: 1px;
-
-  @media screen and (min-width: $bp-medium) {
-
-  }
-
-  @media screen and (min-width: $bp-large) {
-
-  }
-
-  @media screen and (min-width: $bp-larger) {
-
-  }
 }
 
 .home-text-block {

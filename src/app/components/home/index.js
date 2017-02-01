@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import Video from 'app/components/video';
 import ScrollWrapper from 'app/components/scroll-wrapper';
+import Flux from 'app/flux';
 
 import HomeIntro from 'app/components/home-intro';
 import HomeTextBlock from 'app/components/home-text-block';
@@ -9,6 +10,7 @@ import HomeCarousel from 'app/components/home-carousel';
 import HomeWelcomeMessage from 'app/components/home-welcome-message';
 import HomeMoreMessage from 'app/components/home-more-message';
 import HomeSmorgasbord from 'app/components/home-smorgasbord';
+import HomeLoader from 'app/components/home-loader';
 
 function getViewportDimensions(component) {
   return (e) => {
@@ -27,30 +29,48 @@ class PageHome extends Component {
 
     this.state = {
       viewportDimensions: {},
-      venturesActive: false
+      venturesActive: false,
+      loaded: false
     }
   }
 
+  componentWillMount() {
+    setTimeout(() => {
+      this.setState({ loaded: true });
+    }.bind(this), 3000);
+  }
+
   componentDidMount() {
-    // window.addEventListener('resize', getViewportDimensions(this));
-    this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
-    this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.25);
+    // if (this.state.loaded) {
+      window.addEventListener('resize', getViewportDimensions(this));
+      this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
+      this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.25);
+
+      const whereIsVentures = {
+        from: this.venturesPositionFromTop,
+        to: this.venturesPositionFromTop + this.venturesHeight
+      }
+      Flux.whereIsVentures(whereIsVentures);
+    // }
   }
 
   componentWillUnmount() {
-    // window.removeEventListener('resize', getViewportDimensions(this));
+    window.removeEventListener('resize', getViewportDimensions(this));
   }
 
   render() {
     const classes = classnames('page-home', this.props.className, {
-      venturesActive: this.props.documentScrollPosition > this.venturesPositionFromTop && this.props.documentScrollPosition < this.venturesPositionFromTop + this.venturesHeight
+      venturesActive: this.props.documentScrollPosition > this.venturesPositionFromTop && this.props.documentScrollPosition < this.venturesPositionFromTop + this.venturesHeight,
+      loading: !this.state.loaded
     });
 
     return (
       <article className={classes} id="scroll-container">
 
+        <HomeLoader loaded={this.state.loaded} />
+
         <ScrollWrapper
-          component={<HomeIntro />}
+          component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.loaded} />}
           documentScrollPosition={this.props.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           getMousePosition={true}

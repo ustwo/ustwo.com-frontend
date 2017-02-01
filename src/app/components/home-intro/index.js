@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { Component } from 'react';
 import SVG from 'app/components/svg';
 import Video from 'app/components/video';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
@@ -9,52 +9,67 @@ import Scroll from 'react-scroll'; /* Animate and scroll to location in document
 const colours = ['#000000', '#FFFFFF'];
 const distance = -250;
 
-function HomeIntro({ scrollProgress, mousePosition }) {
+class HomeIntro extends Component {
 
-  const logoLayers = colours.map((colour, i) => {
-    let modifier = 3 * ((colours.length - i) * (colours.length - i) * 0.9);
+  constructor(props) {
+    super(props);
+  }
 
-    /* Reverse signs for mousePosition */
-    let coordinateX, coordinateY
-    if (mousePosition.coordinateX > 0) {
-      coordinateX = Math.abs(mousePosition.coordinateX) * -1;
-    } else {
-      coordinateX = Math.abs(mousePosition.coordinateX);
+  render() {
+
+    const { scrollProgress, mousePosition, scrolling, loaded } = this.props;
+
+    const logoLayers = colours.map((colour, i) => {
+      let modifier = 3 * ((colours.length - i) * (colours.length - i) * 0.9);
+
+      /* Reverse signs for mousePosition */
+      let coordinateX, coordinateY
+      if (mousePosition.coordinateX > 0) {
+        coordinateX = Math.abs(mousePosition.coordinateX) * -1;
+      } else {
+        coordinateX = Math.abs(mousePosition.coordinateX);
+      }
+      if (mousePosition.coordinateY > 0) {
+        coordinateY = Math.abs(mousePosition.coordinateY) * -1;
+      } else {
+        coordinateY = Math.abs(mousePosition.coordinateY);
+      }
+
+      let transform, display;
+      if (scrolling && i != colours.length - 1) {
+        display = `none`;
+      }
+
+      if (!scrolling) {
+        transform = `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, 0)`;
+      }
+
+      let styles = {
+        transform: transform,
+        fill: colour,
+        display: display
+      }
+
+      return (<SVG title="ustwo logo layer" className={`layer-${i}`} spritemapID="ustwologo" style={styles} />);
+    });
+
+    let logoStyles = { opacity: 1 - scrollProgress };
+
+    if (loaded) {
+      this.refs.homeIntroVideo.play();
     }
-    if (mousePosition.coordinateY > 0) {
-      coordinateY = Math.abs(mousePosition.coordinateY) * -1;
-    } else {
-      coordinateY = Math.abs(mousePosition.coordinateY);
-    }
 
-    let styles = {
-      // transform: `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, 0)`,
-      fill: colour
-    }
-
-    return (<SVG title="ustwo logo layer" className={`layer-${i}`} spritemapID="ustwologo" style={styles} />);
-  });
-
-  // let styles = {
-  //   opacity: transitionOnScroll(scrollProgress, 0, 0, 0.75, 1)
-  // }
-
-  // let logoStyles = {
-  //   transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0, 0.5, 1, distance, true)}px,0)`
-  // }
-
-  return (
-    <div className="home-intro" onClick={() => Scroll.animateScroll.scrollTo(window.innerHeight)}>
-      <Video
-        src="/images/temp/home-intro-video.mp4"
-        isVideoBackground={true}
-        imageCSS="/images/home/header-fallback-image.jpg"
-      />
-    <div className="home-intro-logo">
-        {logoLayers}
+    return (
+      <div className="home-intro" onClick={() => Scroll.animateScroll.scrollTo(window.innerHeight)}>
+        <div className="videoBackground" style={{ backgroundImage: `url('/images/home/header-fallback-image.jpg')` }}>
+          <video ref="homeIntroVideo" src="/images/temp/home-intro-video.mp4" poster="/images/transparent.png" loop muted></video>
+        </div>
+        <div className="home-intro-logo">
+          {logoLayers}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-module.exports = HomeIntro;
+export default HomeIntro;

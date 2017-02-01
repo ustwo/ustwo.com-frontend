@@ -9,8 +9,8 @@
   height: $size;
 
   svg {
-    width: $size * 0.75;
-    height: $size * 0.75;
+    width: $size * 0.7;
+    height: $size * 0.7;
   }
 
   .half {
@@ -69,6 +69,8 @@
   svg {
     position: relative;
     z-index: 1;
+    fill: $nonBlack;
+    transition: fill .2s ease-in-out;
   }
 
   .half {
@@ -121,14 +123,8 @@
     border-color: #666;
   }
 
-  .icon.pause:before {
-    border-left: 20px solid #fff;
-  }
-  .icon.play {
-    &:before,
-    &:after {
-      background-color: #fff;
-    }
+  svg {
+    fill: white;
   }
 }
 
