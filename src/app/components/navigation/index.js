@@ -42,8 +42,6 @@ class Navigation extends Component {
       sticky: documentScrollPosition > window.innerHeight ? true : false
     });
 
-    console.log(documentScrollPosition);
-
     return (
       <nav className={navClasses}>
         <button className="logo" onClick={this.onClickLogo}>

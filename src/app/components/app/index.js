@@ -48,32 +48,51 @@ const spinnerBlacklist = ['legal', 'blog/search-results'];
 
 function getDocumentScrollPosition(component) {
   return () => {
-    component.setState({ documentScrollPosition: document.scrollingElement.scrollTop });
+    component.setState({
+      documentScrollPosition: document.scrollingElement.scrollTop,
+    });
   }
 }
 
 const App = React.createClass({
+
   getInitialState() {
     const state = this.props.state;
     state['documentScrollPosition'] = 0;
+    state['scrolling'] = false;
 
     return state;
   },
+
   componentDidMount() {
     Store.on('change', this.onChangeStore);
     window.addEventListener('scroll', getDocumentScrollPosition(this));
+
+    /* is the user scrolling? Turn off some unperformant css, e.g. box-shadow? */
+    window.onscroll = () => {
+      this.setState({ scrolling: true })
+    };
+    setInterval(() => {
+      if (this.state.scrolling) {
+        this.setState({ scrolling: false })
+      }
+    }, 200);
   },
+
   componentWillUnmount() {
     Store.removeListener('change', this.onChangeStore);
     window.removeEventListener('scroll', getDocumentScrollPosition(this));
   },
+
   onChangeStore(state) {
     this.setState(state);
   },
+
   showTakeover() {
     const { currentPage, takeover } = this.state;
     return currentPage === 'home' && takeover && !takeover.seen;
   },
+
   renderModal() {
     const { takeover, modal: modalType } = this.state;
     let modal;
@@ -103,6 +122,7 @@ const App = React.createClass({
     }
     return modal;
   },
+
   render() {
     const state = this.state;
     const appClasses = classnames('app', `page-${this.state.currentPage}`, {
@@ -180,8 +200,9 @@ const App = React.createClass({
     }
     return content;
   },
+
   getPage(pageId) {
-    const { currentPage, page: pageData, post, caseStudy, documentScrollPosition} = this.state;
+    const { currentPage, page: pageData, post, caseStudy, documentScrollPosition, scrolling} = this.state;
     let page;
     if(!includes(spinnerBlacklist, currentPage) && !pageData && !post && !caseStudy) {
       page = <PageLoader key="loader" pageId={pageId} />;
