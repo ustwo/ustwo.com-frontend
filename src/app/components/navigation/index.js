@@ -15,25 +15,39 @@ class Navigation extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      menuOpen: false
+    }
   }
 
   openOverlay() {
     Flux.showNavOverlay();
   }
 
-  onClickLogo(event) {
-    const { takeover } = this.props;
-    event.preventDefault();
-    if (takeover !== Nulls.takeover) {
-      Track('send', {
-        'hitType': 'event',          // Required.
-        'eventCategory': 'takeover',   // Required.
-        'eventAction': 'click_ustwo_logo',  // Required.
-        'eventLabel': takeover.name // Name of the takeover as set in WordPress
-      });
+  toggleMenu() {
+    if (this.state.menuOpen) {
+      this.setState({ menuOpen: false });
+      Flux.closeModal();
+    } else {
+      this.setState({ menuOpen: true });
+      Flux.showNavOverlay();
     }
-    Flux.navigate('/');
   }
+
+  // onClickLogo(event) {
+  //   const { takeover } = this.props;
+  //   event.preventDefault();
+  //   if (takeover !== Nulls.takeover) {
+  //     Track('send', {
+  //       'hitType': 'event',          // Required.
+  //       'eventCategory': 'takeover',   // Required.
+  //       'eventAction': 'click_ustwo_logo',  // Required.
+  //       'eventLabel': takeover.name // Name of the takeover as set in WordPress
+  //     });
+  //   }
+  //   Flux.navigate('/');
+  // }
 
   render() {
     const { section, page, takeover, customClass, documentScrollPosition, whereIsVentures } = this.props;
@@ -41,15 +55,16 @@ class Navigation extends Component {
     const navClasses = classnames('navigation', customClass, section, page, {
       takeover,
       sticky: documentScrollPosition > window.innerHeight ? true : false,
-      invert: whereIsVentures && documentScrollPosition > whereIsVentures.from && documentScrollPosition < whereIsVentures.to ? true : false
+      invert: whereIsVentures && documentScrollPosition > whereIsVentures.from && documentScrollPosition < whereIsVentures.to ? true : false,
+      menuOpen: this.state.menuOpen
     });
 
     return (
       <nav className={navClasses}>
-        <button className="logo" onClick={this.onClickLogo}>
+        <button className="logo" onClick={this.toggleMenu.bind(this)}>
           <SVG title="ustwo logo" spritemapID="ustwologo" />
         </button>
-        <button onClick={this.openOverlay.bind(this)} className="navigation-toggle">
+        <button onClick={this.toggleMenu.bind(this)} className="navigation-toggle">
           <SVG title="Open menu" spritemapID="menuopen-dark" className="navigation-toggle-main" />
           <SVG title="Menu ring" spritemapID="menu-ring" className="navigation-toggle-ring" />
         </button>

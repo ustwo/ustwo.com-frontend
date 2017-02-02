@@ -1,37 +1,37 @@
 /*
  *  NAVIGATION OVERLAY MENU ITEM
- *  A menu item for mobile nav
+ *  A menu item
  *
  */
 
 .navigation-overlay-link {
-  color: $nonBlack;
-  font-size: 24px;
-  line-height: 2.5em;
+  color: white;
   width: 100%;
   list-style: none;
+  @extend .h3;
+  font-size: 36px;
 
-  a {
-    @extend .h3;
+  @media screen and (min-width: $bp-small) {
+    font-size: 50px;
   }
-  &.selected a {
-    border-bottom: 4px solid $nonBlack;
+
+  @media screen and (min-width: $bp-large) {
+    font-size: 60px;
   }
+
+
 
   /* Each menu item has a different colour as defined here */
-  $i: 1;
-  @each $colour in $rain, $pot, $blu, $softPassion, $honey {
-    &:nth-child(#{$i}) {
-      color: #{$colour};
-      &.selected a {
-        border-color: #{$colour};
-      }
-    }
-    $i: $i + 1;
-  }
+  // $i: 1;
+  // @each $colour in $rain, $pot, $blu, $softPassion, $honey {
+  //   &:nth-child(#{$i}) {
+  //     color: #{$colour};
+  //     &.selected a {
+  //       border-color: #{$colour};
+  //     }
+  //   }
+  //   $i: $i + 1;
+  // }
 
-  @media screen and (min-width: $bp-medium) {
-    line-height: 3.5em;
-  }
 
 }

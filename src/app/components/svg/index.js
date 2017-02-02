@@ -1,8 +1,6 @@
-'use strict';
+import React, { Component } from 'react';
 
-import React from 'react';
-
-const SVG = React.createClass({
+class SVG extends Component {
   render() {
     const { className, role, title, spritemapID, style } = this.props;
     return (
@@ -10,13 +8,13 @@ const SVG = React.createClass({
         className={className}
         role={role || 'img'}
         title={title}
-        dangerouslySetInnerHTML={{
-          __html: `<title>${title}</title><use xlink:href='/images/spritemap.svg#${spritemapID}' />`
-        }}
         style={style}
-      />
+      >
+        <title>{title}</title>
+        <use xlinkHref={`/images/spritemap.svg#${spritemapID}`} />
+      </svg>
     );
   }
-});
+};
 
 export default SVG;

@@ -1,6 +1,6 @@
 /*
  *  NAVIGATION OVERLAY
- *  Mobile menu
+ *  Menu
  *
  */
 
@@ -14,8 +14,7 @@
   z-index: 100;
   display: block;
   height: 100vh;
-  background-color: #fff;
-  text-align: center;
+  background-image: linear-gradient(241deg, #96cc29, #16d5d9);
 
   .close-button {
     fill: $nonBlack;
@@ -27,7 +26,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: calc(100% - 75px - 100px);
     margin: 0;
     padding: 0;
   }
