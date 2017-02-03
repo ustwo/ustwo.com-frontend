@@ -3,7 +3,7 @@ import React from 'react';
 function HomeMoreMessage() {
   return (
     <h1>
-      We build and <span className="home-gradient-text-cold">invest</span> in new <span className="home-gradient-text-lukewarm">ventures</span> that make a <span className="home-gradient-text-hot">difference</span>
+      And build and <span className="home-gradient-text-cold">invest</span> in new <span className="home-gradient-text-lukewarm">ventures</span> that make a <span className="home-gradient-text-hot">difference</span>
     </h1>
   );
 }

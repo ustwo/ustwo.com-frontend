@@ -21,6 +21,7 @@ class HomeIntro extends Component {
 
     const logoLayers = colours.map((colour, i) => {
       let modifier = 3 * ((colours.length - i) * (colours.length - i) * 0.9);
+      let modifierRotate = 2 * ((colours.length - (i-1)) * (colours.length - (i-1)));
 
       /* Reverse signs for mousePosition */
       let coordinateX, coordinateY
@@ -41,7 +42,7 @@ class HomeIntro extends Component {
       }
 
       if (!scrolling) {
-        transform = `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, 0)`;
+        transform = `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, 0) rotateY(${coordinateX * modifierRotate}deg) rotateX(${coordinateY * modifierRotate}deg)`;
       }
 
       let styles = {
