@@ -4,19 +4,6 @@
  *
  */
 
-.page-home {
-  .home-loader {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-  }
-
-  &.loading {
-    .home-loader {
-      opacity: 1;
-    }
-  }
-}
-
 .home-loader {
   position: absolute;
   left: 0;
@@ -31,8 +18,15 @@
   color: white;
   z-index: 999;
 
-  .home-intro-logo svg {
-    fill: white;
+  .home-intro-logo {
+    width: 40%;
+
+    svg {
+      fill: white;
+    }
+  }
+  .ustwo-logo-sequence g {
+    display: none;
   }
 
   &.hide {

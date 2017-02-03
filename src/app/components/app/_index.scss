@@ -20,7 +20,7 @@
 .app {
 
   .app-content {
-    transition: filter .2s ease-in-out;
+    transition: opacity .5s ease-in-out;
 
     /* Takeover bound by viewport size */
     &.takeover {
@@ -44,17 +44,17 @@
     .page-loader-container {
       .page-loader,
       > article {
-        transition: opacity .3s ease-in-out;
-
-        &.add {
-          opacity: 0;
-        }
-        &.show {
-          opacity: 1;
-        }
+        // transition: opacity .3s ease-in-out;
+        //
+        // &.add {
+        //   opacity: 0;
+        // }
+        // &.show {
+        //   opacity: 1;
+        // }
         &.hide {
-          opacity: 0;
-          transition: opacity .3s ease-in-out .3s;
+          // opacity: 0;
+          // transition: opacity .3s ease-in-out .3s;
 
           .loading-icon {
             animation: page-loader-exit .6s 1;

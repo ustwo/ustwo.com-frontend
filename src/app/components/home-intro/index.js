@@ -50,7 +50,7 @@ class HomeIntro extends Component {
         display: display
       }
 
-      return (<SVG title="ustwo logo layer" className={`layer-${i}`} spritemapID="ustwologo" style={styles} />);
+      return (<SVG title="ustwo logo layer" className={`layer-${i}`} spritemapID="ustwologo" style={styles} viewBox="0 0 112 32" />);
     });
 
     let logoStyles = { opacity: 1 - scrollProgress };

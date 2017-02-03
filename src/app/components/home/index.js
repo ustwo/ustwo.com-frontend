@@ -30,17 +30,18 @@ class PageHome extends Component {
     this.state = {
       viewportDimensions: {},
       venturesActive: false,
-      loaded: false
+      contentLoaded: false
     }
   }
 
   componentWillMount() {
     setTimeout(() => {
-      this.setState({ loaded: true });
-    }.bind(this), 3000);
+      this.setState({ contentLoaded: true });
+    }.bind(this), 4000);
   }
 
   componentDidMount() {
+
     // if (this.state.loaded) {
       window.addEventListener('resize', getViewportDimensions(this));
       this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
@@ -61,16 +62,16 @@ class PageHome extends Component {
   render() {
     const classes = classnames('page-home', this.props.className, {
       venturesActive: this.props.documentScrollPosition > this.venturesPositionFromTop && this.props.documentScrollPosition < this.venturesPositionFromTop + this.venturesHeight,
-      loading: !this.state.loaded
+      loaded: this.state.contentLoaded
     });
 
     return (
       <article className={classes} id="scroll-container">
 
-        <HomeLoader loaded={this.state.loaded} />
+        <HomeLoader loaded={this.state.contentLoaded} />
 
         <ScrollWrapper
-          component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.loaded} />}
+          component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.contentLoaded} />}
           documentScrollPosition={this.props.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           getMousePosition={true}

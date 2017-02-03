@@ -40,6 +40,33 @@
   }
 }
 
+.app-content {
+  .home-intro-logo {
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+  }
+
+  &.show {
+    .home-intro-logo {
+      opacity: 1;
+    }
+  }
+
+}
+
+.page-home {
+  .home-loader {
+    opacity: 1;
+    transition: opacity .8s ease-in-out;
+  }
+
+  &.loaded {
+    .home-loader {
+      opacity: 0;
+    }
+  }
+}
+
 .home-ventures-wrapper {
 
   .home-ventures-wrapper-bg {

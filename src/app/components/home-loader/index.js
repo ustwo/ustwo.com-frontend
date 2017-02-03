@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import SVG from 'app/components/svg';
+import UstwoLogoSequence from 'app/components/ustwo-logo-sequence';
 
 class HomeLoader extends Component {
 
@@ -26,7 +27,7 @@ class HomeLoader extends Component {
     return (
       <div className={classes}>
         <div className="home-intro-logo">
-          <SVG title="ustwo logo layer" spritemapID="ustwologo" />
+          <UstwoLogoSequence autoAnim={500} />
         </div>
       </div>
     );

@@ -60,11 +60,16 @@ const App = React.createClass({
     const state = this.props.state;
     state['documentScrollPosition'] = 0;
     state['scrolling'] = false;
+    state['show'] = false;
 
     return state;
   },
 
   componentDidMount() {
+    setTimeout(() => {
+      this.setState({ show: true });
+    }.bind(this), 200);
+
     Store.on('change', this.onChangeStore);
     window.addEventListener('scroll', getDocumentScrollPosition(this));
 
@@ -129,6 +134,7 @@ const App = React.createClass({
       'app-404': state.currentPage === 'notfound'
     });
     const contentClasses = classnames('app-content', {
+      'show': state.show,
       'takeover': this.showTakeover(),
       'disabled': !!state.modal,
       'mobile-no-scroll': state.modal || this.showTakeover()
@@ -182,13 +188,7 @@ const App = React.createClass({
           />
         </EntranceTransition>
         <PageContainer key={state.currentPage} extraClasses={contentClasses}>
-          <TransitionManager
-            component="div"
-            className="page-loader-container"
-            duration={700}
-          >
-            {this.getPage(state.currentPage)}
-          </TransitionManager>
+          {this.getPage(state.currentPage)}
           <Footer data={state.footer} studios={state.studios} currentPage={this.state.currentPage}/>
         </PageContainer>
         <TransitionManager
