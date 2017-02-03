@@ -24,6 +24,10 @@ $home-carousel-duration: .2s;
   z-index: 1;
   width: 45%;
   opacity: 0;
+
+  h2 {
+    color: #111;
+  }
   // transition: opacity $home-carousel-duration ease-in-out;
 }
 
@@ -52,6 +56,7 @@ $home-carousel-duration: .2s;
   flex: 1;
   justify-content: center;
   align-items: center;
+  perspective: 2000px;
 
   @media screen and (min-width: $bp-small) {
     flex-direction: column;
@@ -66,6 +71,7 @@ $home-carousel-duration: .2s;
   justify-content: center;
   flex-direction: column;
   cursor: pointer;
+  transition: transform .2s ease-in-out;
 
   h2 {
     font-size: 24px;
@@ -133,6 +139,19 @@ $home-carousel-duration: .2s;
   }
 
   &.active {
+    z-index: 7;
+
+    &:hover {
+      z-index: 9;
+    }
+
+    & + &.active {
+      z-index: 6;
+
+      &:hover {
+        z-index: 8;
+      }
+    }
 
     .home-carousel-item-text,
     .home-carousel-item-image {
@@ -156,13 +175,6 @@ $home-carousel-duration: .2s;
 
       .home-carousel-item-image {
         transition-delay: $home-carousel-duration * 3;
-      }
-    }
-
-    &:hover {
-      &.odd,
-      &.even {
-        z-index: 3;
       }
     }
   }
@@ -290,10 +302,14 @@ $home-carousel-duration: .2s;
       left: 5%;
       right: auto;
       padding-left: $home-carousel-padding;
-      transform: translate(0, -($home-carousel-height + $home-carousel-margin));
+      transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(10deg);
 
       .home-carousel-item-text {
         left: 0;
+      }
+
+      &:hover {
+        transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(0deg);
       }
     }
 
@@ -303,10 +319,14 @@ $home-carousel-duration: .2s;
       padding-right: $home-carousel-padding;
       display: flex;
       align-items: flex-end;
-      transform: translate(0, $home-carousel-margin);
+      transform: translate(0, $home-carousel-margin) rotateY(-10deg);
 
       .home-carousel-item-text {
         right: 0;
+      }
+
+      &:hover {
+        transform: translate(0, $home-carousel-margin) rotateY(0deg);
       }
     }
   }
@@ -338,12 +358,20 @@ $home-carousel-duration: .2s;
 
     &.even {
       padding-left: $home-carousel-padding;
-      transform: translate(0, -($home-carousel-height + $home-carousel-margin));
+      transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(10deg);
+
+      &:hover {
+        transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(0deg);
+      }
     }
 
     &.odd {
       padding-right: $home-carousel-padding;
-      transform: translate(0, $home-carousel-margin);
+      transform: translate(0, $home-carousel-margin) rotateY(-10deg);
+
+      &:hover {
+        transform: translate(0, $home-carousel-margin) rotateY(0deg);
+      }
     }
   }
   .home-carousel-item-image {

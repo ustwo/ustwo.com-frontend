@@ -118,6 +118,7 @@ class PageHome extends Component {
           component={<HomeSmorgasbord />}
           documentScrollPosition={this.props.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
+          className="scroll-wrapper-home-smorgasbord"
         />
 
       </article>

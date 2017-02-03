@@ -6,10 +6,6 @@
 
 .page-home {
 
-  h2 {
-    color: #111;
-  }
-
   h1 {
     font-size: 30px;
     line-height: 35px;
@@ -82,8 +78,8 @@
   }
 
   h1,
-  h2 {
-    color: white
+  .home-carousel-item-text h2 {
+    color: white;
   }
 
   .home-section-title {
@@ -94,7 +90,6 @@
 .page-home {
   &.venturesActive {
     .home-ventures-wrapper-bg {
-      z-index: 0;
       opacity: 1;
     }
     .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
@@ -102,6 +97,9 @@
     }
     .scroll-wrapper-home-carousel-products .home-carousel-shuffle {
       opacity: 0;
+    }
+    [class*="home-gradient-text"] {
+      cursor: url('/images/icon-question-mark-light.svg'), auto;
     }
   }
   .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
@@ -126,6 +124,7 @@
   color: transparent;
   -webkit-background-clip: text; /* Seems we can't rely on autoprefixer for this */
   background-clip: text;
+  cursor: url('/images/icon-question-mark-dark.svg'), auto;
 }
 
 .home-gradient-text-cold {

@@ -4,7 +4,46 @@
  *
  */
 
+.scroll-wrapper-home-smorgasbord {
+  height: auto;
+}
+
 .home-smorgasbord {
-  height: 1500px;
-  padding-top: 20vh;
+  padding: 30vh 0;
+
+  h1 {
+    margin-bottom: 30vh;
+  }
+}
+
+.smorgasbord-block {
+  height: 400px;
+  margin-bottom: 20px;
+  background-color: #eee;
+}
+
+@media screen and (min-width: $bp-medium) {
+  .smorgasbord-block {
+    height: 430px;
+  }
+  .smorgasbord-block-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .smorgasbord-block {
+      flex: 1;
+      margin-right: 20px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $bp-large) {
+  .smorgasbord-block {
+    height: 480px;
+  }
 }

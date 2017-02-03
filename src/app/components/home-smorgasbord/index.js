@@ -23,7 +23,12 @@ class HomeSmorgasbord extends Component {
       <div className="home-smorgasbord" style={styles}>
         <div className="home-section-title">Still Hungry?</div>
         <h1>More <span className="home-gradient-text-cold">yes</span><br /> More <span className="home-gradient-text-lukewarm">can</span><br /> More <span className="home-gradient-text-hot">wow</span></h1>
-
+        <div className="smorgasbord-block smorgasbord-video"></div>
+        <div className="smorgasbord-block-wrapper">
+          <div className="smorgasbord-block smorgasbord-event"></div>
+          <div className="smorgasbord-block smorgasbord-studios"></div>
+        </div>
+        <div className="smorgasbord-block smorgasbord-news"></div>
       </div>
     );
   }
