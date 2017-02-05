@@ -1,0 +1,36 @@
+/*
+ *  USTWO LOGO SEQUENCE CUTOUT
+ *  Inverse SVG (cutout) so we can animate coloured background inside the letters
+ *
+ */
+
+.ustwo-logo-sequence-cutout {
+  position: relative;
+  font-size: 0;
+  flex: 1;
+
+  .ustwo-logo-sequence-cutout-bg {
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+  }
+
+  &.show {
+    .ustwo-logo-sequence-cutout-bg {
+      opacity: 1;
+    }
+  }
+}
+
+.ustwo-logo-sequence-cutout-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 4;
+}
+
+.ustwo-logo-sequence-cutout-svg {
+  position: relative;
+  z-index: 5;
+}

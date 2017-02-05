@@ -37,7 +37,7 @@ class PageHome extends Component {
   componentWillMount() {
     setTimeout(() => {
       this.setState({ contentLoaded: true });
-    }.bind(this), 4000);
+    }.bind(this), 5000);
   }
 
   componentDidMount() {

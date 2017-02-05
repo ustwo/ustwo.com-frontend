@@ -31,13 +31,13 @@
     /* When blog categories dropdown is open */
     &.disabled {
       pointer-events: none;
-      filter: brightness(0.7);
+      // filter: brightness(0.7);
     }
 
     /* For when mobile navigation-overlay is visible to prevent scrolling of the page underneath */
     &.mobile-no-scroll {
-      position: fixed;
-      overflow: hidden;
+      // position: fixed;
+      // overflow: hidden;
       opacity: 0;
     }
 

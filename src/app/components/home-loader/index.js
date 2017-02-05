@@ -1,36 +1,38 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import SVG from 'app/components/svg';
-import UstwoLogoSequence from 'app/components/ustwo-logo-sequence';
+import UstwoLogoSequenceCutout from 'app/components/ustwo-logo-sequence-cutout';
 
 class HomeLoader extends Component {
 
   constructor(props) {
     super(props);
 
-    this.state = { hide: false }
+    this.state = { show: true }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.loaded) {
       setTimeout(() => {
-        this.setState({ hide: true });
+        this.setState({ show: false });
       }.bind(this), 1000);
     }
   }
 
   render() {
-    let classes = classnames('home-loader', {
-      hide: this.state.hide
-    });
-
-    return (
-      <div className={classes}>
-        <div className="home-intro-logo">
-          <UstwoLogoSequence autoAnim={500} />
+    let content;
+    if (this.state.show) {
+      content = (
+        <div className="home-loader">
+          <div className="home-intro-logo">
+            <UstwoLogoSequenceCutout autoAnim={5} loop={true} />
+          </div>
         </div>
-      </div>
-    );
+      )
+    } else {
+      content = <div />
+    }
+    return content;
   }
 
 }

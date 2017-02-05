@@ -49,8 +49,10 @@ $nav-items-height: 46px;
     }
   }
 
-  &.invert {
-    .logo svg {
+  &.invert,
+  &.menuOpen {
+    .logo svg,
+    .navigation-toggle-main {
       fill: white;
     }
   }
@@ -74,6 +76,7 @@ $nav-items-height: 46px;
 .navigation-toggle-ring {
   width: $nav-items-height;
   height: $nav-items-height;
+  transition: fill .2s ease-in-out;
 
   @media screen and (min-width: $bp-medium) {
     width: $nav-items-height;
@@ -93,12 +96,6 @@ $nav-items-height: 46px;
   left: 0;
   fill: $pot;
 }
-
-
-.navigation.invert .navigation-toggle-main {
-  fill: white;
-}
-
 
 /* TEMP */
 /* Invert colours on some pages that have lighter backgrounds */

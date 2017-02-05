@@ -12,12 +12,14 @@ const Modal = React.createClass({
     const classes = classnames('modal', className.replace('shown',''), {
       'below-header': belowHeader
     });
-    return <div
-      className={classes}
-      onClick={this.onClick}
-    >
-      {children}
-    </div>;
+    return (
+      <div
+        className={classes}
+        onClick={this.onClick}
+      >
+        {children}
+      </div>
+    );
   }
 });
 
