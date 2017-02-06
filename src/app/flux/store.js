@@ -31,6 +31,7 @@ const _state = Object.assign({
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
   whereIsVentures: Defaults.whereIsVentures,
   menuHover: Defaults.menuHover,
+  showRollover: Defaults.showRollover,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -291,6 +292,10 @@ const Store = Object.assign(
     },
     menuHover(name) {
       _state.menuHover = `menu-hover-${name}`;
+      Store.emit('change', _state);
+    },
+    showRollover(name) {
+      _state.showRollover = `rollover-${name}`;
       Store.emit('change', _state);
     }
   }

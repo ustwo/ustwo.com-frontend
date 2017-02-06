@@ -6,5 +6,6 @@ export default {
 	eventsPagination: 1,
 	archivedEventsPagination: 1,
 	whereIsVentures: {},
-	menuHover: ''
+	menuHover: '',
+	showRollover: ''
 };

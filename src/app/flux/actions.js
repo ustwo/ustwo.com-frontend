@@ -57,6 +57,9 @@ const Actions = {
   },
   menuHover(name) {
     Store.menuHover(name);
+  },
+  showRollover(name) {
+    Store.showRollover(name);
   }
 };
 

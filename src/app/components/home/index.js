@@ -9,6 +9,7 @@ import HomeTextBlock from 'app/components/home-text-block';
 import HomeCarousel from 'app/components/home-carousel';
 import HomeWelcomeMessage from 'app/components/home-welcome-message';
 import HomeMoreMessage from 'app/components/home-more-message';
+import HomeSmorgasbordMessage from 'app/components/home-smorgasbord-message';
 import HomeSmorgasbord from 'app/components/home-smorgasbord';
 import HomeLoader from 'app/components/home-loader';
 
@@ -115,9 +116,14 @@ class PageHome extends Component {
         </div>
 
         <ScrollWrapper
-          component={<HomeSmorgasbord />}
+          component={<HomeTextBlock content={textBlockSmorgasbord} />}
           documentScrollPosition={this.props.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
+          className="scroll-wrapper-home-smorgasbord-message"
+        />
+
+        <ScrollWrapper
+          component={<HomeSmorgasbord />}
           className="scroll-wrapper-home-smorgasbord"
         />
 
@@ -198,4 +204,9 @@ const textBlockIntro = {
 const textBlockMore = {
   title: `Want moar?`,
   text: <HomeMoreMessage />
+}
+
+const textBlockSmorgasbord = {
+  title: `Still hungry?`,
+  text: <HomeSmorgasbordMessage />
 }

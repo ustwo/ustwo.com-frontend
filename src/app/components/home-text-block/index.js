@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
+import Flux from 'app/flux';
 
 const distance = '100'; /* pixels */
 
-function HomeTextBlock({ scrollProgress, content }) {
+class HomeTextBlock extends Component {
 
-  let styles = {
-    // opacity: transitionOnScroll(scrollProgress, 0, 0.2, 0.77, 1),
-    transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.5, 1, 1, distance, true)}px,0)`
+  showRollover(name) {
+    return () => {
+      Flux.showRollover(name);
+    }
   }
 
-  return (
-    <div className="home-text-block" style={styles}>
-      <div className="home-section-title">{content.title}</div>
-      {content.text}
-    </div>
-  );
+  render() {
+    const { children, scrollProgress, content } = this.props;
+
+    let styles = {
+      transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.5, 1, 1, distance, true)}px,0)`
+    }
+
+    let textComponent = React.cloneElement(content.text, {
+      showRollover: this.showRollover
+    });
+
+    return (
+      <div className="home-text-block" style={styles}>
+        <div className="home-section-title">{content.title}</div>
+        {textComponent}
+        <div className="home-text-block-rollover"></div>
+      </div>
+    );
+  }
 }
 
-module.exports = HomeTextBlock;
+export default HomeTextBlock;

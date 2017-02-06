@@ -133,7 +133,7 @@ const App = React.createClass({
     const appClasses = classnames('app', `page-${this.state.currentPage}`, {
       'app-404': state.currentPage === 'notfound'
     });
-    const contentClasses = classnames('app-content', state.menuHover, {
+    const contentClasses = classnames('app-content', state.menuHover, state.showRollover, {
       'show': state.show,
       'takeover': this.showTakeover(),
       'disabled': !!state.modal,
