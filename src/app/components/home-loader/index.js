@@ -25,7 +25,7 @@ class HomeLoader extends Component {
       content = (
         <div className="home-loader">
           <div className="home-intro-logo">
-            <UstwoLogoSequenceCutout autoAnim={5} loop={true} />
+            <UstwoLogoSequenceCutout autoAnim={5} />
           </div>
         </div>
       )

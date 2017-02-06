@@ -5,8 +5,8 @@ import classnames from 'classnames';
 import SVGSequenceAnimation from 'app/lib/svg-sequence-animation';
 import blendColours from 'app/lib/blend-colours';
 
-const tickerFrequency = 50;
-const timerTotal = 1000;
+const tickerFrequency = 30;
+const timerTotal = 600;
 
 const leftColours = ['16D6D9', '14C04D', '96CC29', 'FFBF02', 'FF5519', 'E60C29', 'ED0082', '6114CC', '143FCC', '009CF3'];
 const rightColours = ['96CC29', 'FFBF02', 'FF5519', 'E60C29', 'ED0082', '6114CC', '143FCC', '009CF3', '16D6D9', '14C04D'];
@@ -46,7 +46,7 @@ const UstwoLogoSequenceCutout = React.createClass({
 
     setTimeout(() => {
       this.setState({ show: true })
-    }.bind(this), 600);
+    }.bind(this), 100);
   },
 
   componentWillUnmount() {
