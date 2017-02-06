@@ -23,9 +23,15 @@ class NavigationOverlayLink extends Component {
     const classes = classnames('navigation-overlay-link', {
       selected: selected
     });
+    /* TEMP: to replace What we do with work for the purposes of demoing */
+    let alternativeText;
+    if (children === 'What We Do') {
+      alternativeText = 'work';
+    }
+    /* END */
     return (
       <li className={classes}>
-        <a href={url} onClick={this.onClick}>{children}</a>
+        <a href={url} onClick={this.onClick}>{alternativeText ? alternativeText : children}</a>
       </li>
     );
   }
