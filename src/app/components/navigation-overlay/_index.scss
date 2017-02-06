@@ -15,6 +15,7 @@
   display: block;
   height: 100vh;
   background-image: linear-gradient(241deg, #96cc29, #16d5d9);
+  transition: background-image .2s ease-in-out;
   display: flex;
 
   .menu {
@@ -25,5 +26,35 @@
     flex-direction: column;
     margin: 0 0 0 10%;
     padding: 0;
+  }
+}
+
+.menu-hover-home + .app__modal {
+  .navigation-overlay {
+    background-image: linear-gradient(241deg, #96cc29, #16d5d9);
+  }
+}
+
+.menu-hover-what-we-do + .app__modal {
+  .navigation-overlay {
+    background-image: linear-gradient(241deg, #FA7D78, #6114CC);
+  }
+}
+
+.menu-hover-events + .app__modal {
+  .navigation-overlay {
+    background-image: linear-gradient(241deg, #ED0082, #FA7D78);
+  }
+}
+
+.menu-hover-blog + .app__modal {
+  .navigation-overlay {
+    background-image: linear-gradient(241deg, #009CF3, #16D5D9);
+  }
+}
+
+.menu-hover-join-us + .app__modal {
+  .navigation-overlay {
+    background-image: linear-gradient(241deg, #FA7D78, #FFBF00);
   }
 }

@@ -5,5 +5,6 @@ export default {
 	eventsStudio: 'all',
 	eventsPagination: 1,
 	archivedEventsPagination: 1,
-	whereIsVentures: {}
+	whereIsVentures: {},
+	menuHover: ''
 };
