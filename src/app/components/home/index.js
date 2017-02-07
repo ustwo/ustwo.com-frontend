@@ -13,16 +13,6 @@ import HomeSmorgasbordMessage from 'app/components/home-smorgasbord-message';
 import HomeSmorgasbord from 'app/components/home-smorgasbord';
 import HomeLoader from 'app/components/home-loader';
 
-function getViewportDimensions(component) {
-  return (e) => {
-    let viewportDimensions = {
-      width: e.target.visualViewport.clientWidth,
-      height: e.target.visualViewport.clientHeight
-    };
-    component.setState({ viewportDimensions });
-  }
-}
-
 class PageHome extends Component {
 
   constructor(props) {
@@ -35,16 +25,24 @@ class PageHome extends Component {
     }
   }
 
-  componentWillMount() {
-    setTimeout(() => {
-      this.setState({ contentLoaded: true });
-    }.bind(this), 5000);
+  getViewportDimensions() {
+    return (e) => {
+      let viewportDimensions = {
+        width: e.target.visualViewport.clientWidth,
+        height: e.target.visualViewport.clientHeight
+      };
+      this.setState({ viewportDimensions });
+    }
   }
 
   componentDidMount() {
 
+    setTimeout(() => {
+      this.setState({ contentLoaded: true });
+    }.bind(this), 5000);
+
     // if (this.state.loaded) {
-      window.addEventListener('resize', getViewportDimensions(this));
+      window.addEventListener('resize', this.getViewportDimensions());
       this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
       this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.25);
 
@@ -57,7 +55,7 @@ class PageHome extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', getViewportDimensions(this));
+    window.removeEventListener('resize', this.getViewportDimensions());
   }
 
   render() {

@@ -106,7 +106,7 @@ class HomeCarousel extends Component {
       }
 
       return (
-        <div className={classes}>
+        <div className={classes} key={`carousel-item-${i}`}>
           <div className="home-carousel-item-text" style={textStyles}>
             <div className="home-section-title">{item.category}</div>
             <h2>{item.title}</h2>

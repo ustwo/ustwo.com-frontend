@@ -12,7 +12,7 @@ const Video = React.createClass({
     }
   },
 
-  componentWillMount() {
+  componentDidMount() {
     if (window.innerWidth < 769) {
       this.setState({ mobile: true });
     }
