@@ -36,6 +36,11 @@
     z-index: -1000;
     overflow: hidden;
   }
+
+  &.imageCSS {
+    background-size: cover;
+    background-position: 50%;
+  }
 }
 
 .videoBackground-tint {

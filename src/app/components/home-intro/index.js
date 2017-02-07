@@ -56,15 +56,14 @@ class HomeIntro extends Component {
 
     let logoStyles = { opacity: 1 - scrollProgress };
 
-    if (loaded) {
-      this.refs.homeIntroVideo.play();
-    }
-
     return (
       <div className="home-intro" onClick={() => Scroll.animateScroll.scrollTo(window.innerHeight)}>
-        <div className="videoBackground" style={{ backgroundImage: `url('/images/home/header-fallback-image.jpg')` }}>
-          <video ref="homeIntroVideo" src="/images/temp/home-intro-video.mp4" poster="/images/transparent.png" loop muted></video>
-        </div>
+        <Video
+          src="/images/temp/home-intro-video.mp4"
+          isVideoBackground={true}
+          loaded={loaded}
+          imageCSS="/images/home/header-fallback-image.jpg"
+        />
         <div className="home-intro-logo">
           {logoLayers}
         </div>

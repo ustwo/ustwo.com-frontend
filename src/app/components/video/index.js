@@ -1,10 +1,22 @@
 import React from 'react';
-import MediaQuery from 'react-responsive';
+import classnames from 'classnames';
 import Rimage from 'app/components/rimage';
 
 const posterURL = "/images/transparent.png";
 
 const Video = React.createClass({
+
+  getInitialState() {
+    return {
+      mobile: false
+    }
+  },
+
+  componentWillMount() {
+    if (window.innerWidth < 769) {
+      this.setState({ mobile: true });
+    }
+  },
 
   render() {
     const { isVideoBackground } = this.props;
@@ -57,15 +69,25 @@ const Video = React.createClass({
       }
     }
 
-    return (
-      <div className="videoBackground" style={styles}>
-        <MediaQuery maxWidth={768}>
-          {this.renderImage()}
-        </MediaQuery>
-        <MediaQuery minWidth={769}>
+    let content;
+    if (this.state.mobile) {
+      content = this.renderImage();
+    } else {
+      content = (
+        <div>
           {this.renderVideo()}
           {this.renderTint()}
-        </MediaQuery>
+        </div>
+      );
+    }
+
+    let classes = classnames('videoBackground', {
+      imageCSS: this.props.imageCSS
+    });
+
+    return (
+      <div className={classes} style={styles}>
+        {content}
       </div>
     );
   },
@@ -78,11 +100,18 @@ const Video = React.createClass({
   },
 
   renderVideo() {
-    const { src } = this.props;
-    let video;
+    const { src, loaded } = this.props;
 
+    let video;
     if(src && src.length) {
-      video = <video src={src} poster={posterURL} autoPlay loop muted />;
+      if (loaded === undefined) {
+        video = <video src={src} poster={posterURL} autoPlay loop muted />;
+      } else {
+        if (this.props.loaded) {
+          this.refs.video.play();
+        }
+        video = <video ref="video" src={src} poster={posterURL} loop muted />;
+      }
     } else {
       video = this.renderImage();
     }
