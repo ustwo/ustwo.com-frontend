@@ -44,6 +44,28 @@
 
 @media screen and (min-width: $bp-large) {
   .smorgasbord-block {
-    height: 480px;
+    height: 560px;
   }
+}
+
+.smorgasbord-video,
+.smorgasbord-studios {
+  background-position: 50%;
+  background-size: cover;
+}
+
+.smorgasbord-video {
+  background-image: url('/images/temp/smorgs-video.jpg');
+}
+
+.smorgasbord-studios {
+  background-image: url('/images/temp/smorgs-studios.jpg');
+}
+
+.smorgasbord-event {
+  background-color: $softPassion;
+}
+
+.smorgasbord-blog {
+  background-color: $blu;
 }

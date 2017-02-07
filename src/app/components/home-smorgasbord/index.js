@@ -15,9 +15,9 @@ class HomeSmorgasbord extends Component {
         <div className="smorgasbord-block smorgasbord-video"></div>
         <div className="smorgasbord-block-wrapper">
           <div className="smorgasbord-block smorgasbord-event"></div>
-          <div className="smorgasbord-block smorgasbord-studios"></div>
+          <div className="smorgasbord-block smorgasbord-blog"></div>
         </div>
-        <div className="smorgasbord-block smorgasbord-news"></div>
+        <div className="smorgasbord-block smorgasbord-studios"></div>
       </div>
     );
   }

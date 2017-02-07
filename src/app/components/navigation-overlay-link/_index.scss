@@ -5,6 +5,7 @@
  */
 
 .navigation-overlay-link {
+  position: relative;
   color: white;
   width: 100%;
   list-style: none;
@@ -18,6 +19,20 @@
 
   @media screen and (min-width: $bp-large) {
     font-size: 60px;
+  }
+
+  &:hover {
+    &:before {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: white;
+      left: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+    }
   }
 
 

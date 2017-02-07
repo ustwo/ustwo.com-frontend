@@ -76,25 +76,22 @@ class HomeCarousel extends Component {
       let alignment = i % 2 === 0 ? 'even' : 'odd';
       extraClasses[alignment] = true;
 
-      let modifier = 2;
+      let modifier = 3;
 
       let classes = classnames('home-carousel-item', extraClasses);
 
-      let styles, x, y, textStyles;
+      let x, y;
       if (alignment === 'even') {
         x = (mousePosition.coordinateX - 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
         y = (mousePosition.coordinateY - 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
-        textStyles = {
-          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
-        }
       } else {
         x = (mousePosition.coordinateX + 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
         y = (mousePosition.coordinateY + 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
-        textStyles = {
-          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
-        }
       }
-      styles = {
+      let textStyles = {
+        transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
+      }
+      let imageStyles = {
         transform: `translate3d(${x}px,${y}px,0)`
       }
 
@@ -112,7 +109,7 @@ class HomeCarousel extends Component {
             <h2>{item.title}</h2>
           </div>
           <div className="home-carousel-item-image">
-            <div className="home-carousel-visual-content" style={styles}>
+            <div className="home-carousel-visual-content" style={imageStyles}>
               {visualContent}
             </div>
           </div>
