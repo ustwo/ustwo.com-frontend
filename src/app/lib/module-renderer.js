@@ -6,6 +6,7 @@ import QuoteBlock from 'app/components/quote-block';
 import Rimage from 'app/components/rimage';
 import Grid from 'app/components/grid';
 import Video from 'app/components/video';
+import CodeHighlighter from 'app/components/code-highlighter';
 
 function getBackgroundColour(options) {
   const { colours, zebra, getStripe } = options;
@@ -96,6 +97,10 @@ function renderVideo(moduleData, index, options) {
   />;
 }
 
+function renderCode(moduleData, index, options) {
+  return <CodeHighlighter code={get(moduleData, 'attr.code.value')} language={get(moduleData, 'attr.language.value')} />
+}
+
 function renderModules(options) {
   const { modules, zebra } = options;
 
@@ -106,7 +111,8 @@ function renderModules(options) {
     blockquote: renderBlockquote,
     grid: renderGrid,
     placeholder: renderPlaceholder,
-    video: renderVideo
+    video: renderVideo,
+    code: renderCode
   };
 
   let isStripe;
