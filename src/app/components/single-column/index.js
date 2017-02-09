@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import getAppleTitles from 'app/lib/apple-titles';
 
 const SingleColumn = React.createClass({
   renderTitle() {
@@ -11,14 +12,14 @@ const SingleColumn = React.createClass({
           className="title"
           style={{ color: headingColour }}
         >
-          {title}
+          {getAppleTitles(title)}
         </h1>;
       } else {
         output = <h2
           className="title"
           style={{ color: headingColour }}
         >
-          {title}
+          {getAppleTitles(title)}
         </h2>;
       }
     }
