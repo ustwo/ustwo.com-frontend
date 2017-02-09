@@ -14,6 +14,10 @@
       max-width: 600px;
       opacity: .7;
     }
+
+    .down-chevron {
+      z-index: 2;
+    }
   }
 
   .hero + .single-column {
