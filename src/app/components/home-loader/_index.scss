@@ -19,8 +19,14 @@
   z-index: 999;
 
   .home-intro-logo {
+    height: auto;
 
     svg {
+      position: relative;
+      top: auto;
+      left: auto;
+      right: auto;
+      bottom: auto;
       fill: black;
     }
   }

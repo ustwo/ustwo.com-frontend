@@ -16,6 +16,7 @@ $nav-items-height: 46px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  cursor: pointer;
 
   &.home-intro-visible {
     top: 100vh;
@@ -34,6 +35,7 @@ $nav-items-height: 46px;
 
   .logo {
     overflow: hidden;
+    margin-right: 10px;
     margin-bottom: 2px;
 
     svg {
@@ -46,14 +48,6 @@ $nav-items-height: 46px;
         width: 112px;
         height: $nav-items-height;
       }
-    }
-  }
-
-  &.invert,
-  &.menuOpen {
-    .logo svg,
-    .navigation-toggle-main {
-      fill: white;
     }
   }
 
@@ -72,29 +66,85 @@ $nav-items-height: 46px;
   margin: 0 25px 0 0;
 }
 
-.navigation-toggle-main,
 .navigation-toggle-ring {
+  position: relative;
+  z-index: 2;
   width: $nav-items-height;
   height: $nav-items-height;
-  transition: fill .2s ease-in-out;
-
-  @media screen and (min-width: $bp-medium) {
-    width: $nav-items-height;
-    height: $nav-items-height;
-  }
 }
 
 .navigation-toggle-main {
+  position: absolute;
+  z-index: 1;
   pointer-events: none; /* Fixes intermittent issue on touch devices? */
-  fill: $nonBlack;
-  transition: fill .2s ease-in-out;
+  border-radius: 50%;
+  border: 3px solid $nonBlack;
+  width: 30px;
+  height: 30px;
+  transition: all .2s ease-in-out;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 3px;
+    background-color: $nonBlack;
+    transition: all .2s ease-in-out;
+  }
+
+  &:before {
+    margin-top: -3px;
+  }
+  &:after {
+    margin-top: 3px;
+  }
 }
 
 .navigation-toggle-ring {
-  position: absolute;
-  top: 0;
-  left: 0;
   fill: $pot;
+  transition: all .2s ease-in-out;
+}
+
+.navigation {
+  &.invert,
+  &.menuOpen {
+    .logo svg {
+      fill: white;
+    }
+    .navigation-toggle-main {
+      border-color: white;
+
+      &:before,
+      &:after {
+        background-color: white;
+      }
+    }
+  }
+}
+
+.navigation {
+  &.menuOpen {
+    .navigation-toggle-main {
+      &:before,
+      &:after {
+        margin-top: 0;
+        width: 16px;
+      }
+      &:before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      &:after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+    .navigation-toggle-ring {
+      opacity: 0;
+    }
+  }
 }
 
 /* TEMP */

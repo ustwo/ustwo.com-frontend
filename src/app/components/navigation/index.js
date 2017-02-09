@@ -60,12 +60,12 @@ class Navigation extends Component {
     });
 
     return (
-      <nav className={navClasses}>
-        <button className="logo" onClick={this.toggleMenu.bind(this)}>
+      <nav className={navClasses} onClick={this.toggleMenu.bind(this)}>
+        <button className="logo">
           <SVG title="ustwo logo" spritemapID="ustwologo" />
         </button>
-        <button onClick={this.toggleMenu.bind(this)} className="navigation-toggle">
-          <SVG title="Open menu" spritemapID="menuopen-dark" className="navigation-toggle-main" />
+        <button className="navigation-toggle">
+          <div className="navigation-toggle-main"></div>
           <SVG title="Menu ring" spritemapID="menu-ring" className="navigation-toggle-ring" />
         </button>
       </nav>

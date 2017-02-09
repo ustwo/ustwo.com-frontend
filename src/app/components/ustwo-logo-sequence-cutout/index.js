@@ -58,13 +58,16 @@ const UstwoLogoSequenceCutout = React.createClass({
       show: this.state.show
     });
 
-    let progress = Math.round(((timerTotal - this.state.tick) / timerTotal) * 100) / 100;
+    let styles;
+    if (this.props.show) {
+      let progress = Math.round(((timerTotal - this.state.tick) / timerTotal) * 100) / 100;
 
-    let leftColour = blendColours(leftColours[this.state.iterate], leftColours[this.state.iterate+1], progress);
-    let rightColour = blendColours(rightColours[this.state.iterate], rightColours[this.state.iterate+1], progress);
+      let leftColour = blendColours(leftColours[this.state.iterate], leftColours[this.state.iterate+1], progress);
+      let rightColour = blendColours(rightColours[this.state.iterate], rightColours[this.state.iterate+1], progress);
 
-    let styles = {
-      background: `linear-gradient(to right, #${leftColour}, #${rightColour})`,
+      styles = {
+        background: `linear-gradient(to right, #${leftColour}, #${rightColour})`,
+      }
     }
 
     return (

@@ -24,10 +24,11 @@
   width: 70%;
   perspective: 200px;
   display: flex;
+  align-items: center;
 
   svg {
     position: absolute;
-    top: 0;
+    top: auto;
     left: 0;
     fill: white;
     width: 100%;

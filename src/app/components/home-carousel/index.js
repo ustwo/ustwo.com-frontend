@@ -5,7 +5,7 @@ import TimerUI from 'app/components/timer-ui';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
 import Video from 'app/components/video';
 
-const itemsRefreshInterval = 5000;
+const itemsRefreshInterval = 500000;
 const tickerFrequency = 50;
 const transitionDuration = 300;
 const distance = 60;
