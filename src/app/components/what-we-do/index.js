@@ -12,6 +12,7 @@ import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 import WorkItem from 'app/components/work-item';
 import Hero from 'app/components/hero';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
+import Video from 'app/components/video';
 
 const PageWhatWeDo = React.createClass({
   mixins: [getScrollTrackerMixin('what-we-do')],
@@ -25,11 +26,15 @@ const PageWhatWeDo = React.createClass({
       <Hero
         title={get(page, 'display_title')}
         transitionImage={true}
-        sizes={get(image, 'media_details.sizes')}
-        altText={get(image, 'alt_text')}
         eventLabel='what-we-do'
         showDownChevron={true}
-      />
+      >
+        <Video
+          src={get(page, 'featured_video')}
+          sizes={get(image, 'media_details.sizes')}
+          isVideoBackground={true}
+        />
+      </Hero>
       {renderModules({
         modules: get(page, 'page_builder', []),
         colours: get(page, 'colors'),
