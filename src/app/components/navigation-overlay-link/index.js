@@ -35,7 +35,7 @@ class NavigationOverlayLink extends Component {
 
     return (
       <li className={classes}>
-        <a href={url} onClick={this.onClick} onMouseEnter={() => Flux.menuHover(mouseOver)}>{alternativeText ? alternativeText : children}</a>
+        <a href={url} onClick={this.onClick.bind(this)} onMouseEnter={() => Flux.menuHover(mouseOver)}>{alternativeText ? alternativeText : children}</a>
       </li>
     );
   }
