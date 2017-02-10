@@ -1,15 +1,13 @@
-'use strict';
-
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import env from 'app/adaptors/server/env';
 
-/* Get Scroll Progress:
-   Return a range of 0 to 1 to show scroll progress of the element passing throught the viewport.
-   Starts when element is halfway on the screen and ends when it is completely off.
-   So scroll progress lasts 1.5 * height of the element.
-   As an example, to parallax children inside the element: in for 0 to 0.25, hold position,
-   then parallax out from 0.5 to 0.75. */
+/*
+  Get Scroll Progress:
+  Return a range of 0 to 1 to show scroll progress of the component passing throught the viewport.
+  Starts when element is halfway on the screen and ends when it is completely off.
+  So scroll progress lasts 1.5 * height of the element.
+  TODO: More flexibility, e.g. allow start as soon as element comes into view?
+*/
 function getScrollProgress(top, height, scrollPosition) {
   if (scrollPosition <= top - (height * 0.5)) {
     return 0;
@@ -23,10 +21,15 @@ function getScrollProgress(top, height, scrollPosition) {
   }
 }
 
-/* Returns coordinates of mouse position inside element with scale -1 to 1 on each axis, (top-left is [-1, -1]) */
+/*
+  Get Mouse Position:
+  Return coordinates of mouse position inside element: -1 to 1 on each axis,
+  e.g. top-left is [-1, -1]
+  TODO: Extend/Change component to cater for touch devices, i.e. use accelerometre
+*/
 function getMousePosition(component) {
   return (e) => {
-    let mousePosition = {
+    const mousePosition = {
       coordinateX: Math.round((e.clientX / component.state.elementAttributes.width - 0.5) * 200) / 100,
       coordinateY: Math.round((e.clientY / component.state.elementAttributes.height - 0.5) * 200) / 100
     };
@@ -35,21 +38,13 @@ function getMousePosition(component) {
   }
 }
 
-// function getDeviceRotation(component) {
-//   return (e) => {
-//     mousePosition = {
-//       coordinateX: Math.round((e.accelerationX / component.state.elementAttributes.width - 0.5) * 200) / 100,
-//       coordinateY: Math.round((e.accelerationY / component.state.elementAttributes.height - 0.5) * 200) / 100
-//     };
-//
-//     component.setState({ mousePosition });
-//   }
-// }
-
-/* Save the element dimensions and offset to viewport to state */
+/*
+  Get Element Attributes:
+  Return element dimensions and offset from top
+*/
 function getElementAttributes(component) {
-  let rect = component.scrollWrapper.getBoundingClientRect();
-  let elementAttributes = {
+  const rect = component.scrollWrapper.getBoundingClientRect();
+  const elementAttributes = {
     width: rect.width,
     height: rect.height,
     top: component.scrollWrapper.offsetTop
@@ -74,39 +69,28 @@ class ScrollWrapper extends Component {
     }
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-    // Stop it
-    // return nextProps.documentScrollPosition >= 0;
-  // }
-
   componentDidMount() {
     getElementAttributes(this);
 
-    if (this.props.getMousePosition && !env.Modernizr.touchevents) {
+    if (this.props.requireMousePosition) {
       this.scrollWrapper.addEventListener('mousemove', getMousePosition(this));
     }
-    // if (this.props.getMousePosition && env.Modernizr.touchevents) {
-    //   this.scrollWrapper.addEventListener('devicemotion', getDeviceRotation(this));
-    // }
   }
 
   componentWillUnmount() {
-    if (this.props.getMousePosition) {
+    if (this.props.requireMousePosition) {
       this.introRef.removeEventListener('mousemove', getMousePosition(this));
     }
   }
 
   render() {
-    let scrollProgress = getScrollProgress(this.state.elementAttributes.top, this.state.elementAttributes.height, this.props.documentScrollPosition);
+    const scrollProgress = getScrollProgress(this.state.elementAttributes.top, this.state.elementAttributes.height, this.props.documentScrollPosition);
+    const mousePosition = this.state.mousePosition;
 
-    let component = React.cloneElement(this.props.component, {
-      scrollProgress,
-      mousePosition: this.state.mousePosition
-    });
+    /* Pass down the above props to the child component */
+    const component = React.cloneElement(this.props.component, { scrollProgress, mousePosition });
 
-    let classes = classnames('scroll-wrapper', this.props.className, {
-      fullWidth: this.props.fullWidth
-    });
+    const classes = classnames('scroll-wrapper', this.props.className);
 
     return (
       <div className={classes} ref={(ref) => this.scrollWrapper = ref}>

@@ -1,3 +1,8 @@
+/*
+  A somewhat crazy, unintuitive function that returns a value to be used for inline CSS such as
+  parallaxing or fade in/outs
+  TODO: Revisit this!
+*/
 export default (scrollProgress, inStart, inEnd, outStart, outEnd, modifier, transition) => {
 
   let value;

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
-import ScrollWrapper from 'app/components/scroll-wrapper';
-import transitionOnScroll from 'app/lib/transition-on-scroll';
 
 class HomeSmorgasbord extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
+
+    /* TODO: All sorts. This will be a more complex component. Or at least will house more complex components. */
   }
 
   render() {

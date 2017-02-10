@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Video from 'app/components/video';
-import ScrollWrapper from 'app/components/scroll-wrapper';
 import Flux from 'app/flux';
 
+import ScrollWrapper from 'app/components/scroll-wrapper';
+import Video from 'app/components/video';
 import HomeIntro from 'app/components/home-intro';
 import HomeTextBlock from 'app/components/home-text-block';
 import HomeCarousel from 'app/components/home-carousel';
@@ -25,9 +25,10 @@ class PageHome extends Component {
     }
   }
 
+  /* Used in the resize listener */
   getViewportDimensions() {
     return (e) => {
-      let viewportDimensions = {
+      const viewportDimensions = {
         width: e.target.visualViewport.clientWidth,
         height: e.target.visualViewport.clientHeight
       };
@@ -37,21 +38,29 @@ class PageHome extends Component {
 
   componentDidMount() {
 
+    /*
+      Sets home-loader to be seen for a fixed time
+      TODO: Work out strategy here. It is a loader but ALSO an intro animation. We will want a minimum
+      time for it to be seen but also allow for the video and home content to load before we hide it.
+    */
     setTimeout(() => {
       this.setState({ contentLoaded: true });
-    }.bind(this), 5000);
+    }.bind(this), 4000);
 
-    // if (this.state.loaded) {
-      window.addEventListener('resize', this.getViewportDimensions());
-      this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
-      this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.25);
+    /* Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync */
+    window.addEventListener('resize', this.getViewportDimensions());
 
-      const whereIsVentures = {
-        from: this.venturesPositionFromTop,
-        to: this.venturesPositionFromTop + this.venturesHeight
-      }
-      Flux.whereIsVentures(whereIsVentures);
-    // }
+    /*
+      The following are calculations for the ventures (dark background) section so we know when it
+      comes into view and we can show/hide it accordingly.
+    */
+    this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
+    this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.25);
+    const whereIsVentures = {
+      from: this.venturesPositionFromTop,
+      to: this.venturesPositionFromTop + this.venturesHeight
+    }
+    Flux.whereIsVentures(whereIsVentures);
   }
 
   componentWillUnmount() {
@@ -60,12 +69,33 @@ class PageHome extends Component {
 
   render() {
     const classes = classnames('page-home', this.props.className, {
+      /* venturesActive shows or hides the dark background depending on when it falls in/out of view */
       venturesActive: this.props.documentScrollPosition > this.venturesPositionFromTop && this.props.documentScrollPosition < this.venturesPositionFromTop + this.venturesHeight,
+      /* when 'loaded', hide home-loader */
       loaded: this.state.contentLoaded
     });
 
+    /*
+      Text block contents
+      TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS.
+    */
+    const textBlockIntro = {
+      title: `Hi. We're ustwo.`,
+      text: <HomeWelcomeMessage />
+    }
+
+    const textBlockMore = {
+      title: `Want moar?`,
+      text: <HomeMoreMessage />
+    }
+
+    const textBlockSmorgasbord = {
+      title: `Still hungry?`,
+      text: <HomeSmorgasbordMessage />
+    }
+
     return (
-      <article className={classes} id="scroll-container">
+      <article className={classes}>
 
         <HomeLoader loaded={this.state.contentLoaded} />
 
@@ -73,7 +103,7 @@ class PageHome extends Component {
           component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.contentLoaded} />}
           documentScrollPosition={this.props.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
-          getMousePosition={true}
+          requireMousePosition={true}
           className="scroll-wrapper-home-intro"
         />
 
@@ -88,7 +118,7 @@ class PageHome extends Component {
           component={<HomeCarousel carouselItems={dataProducts} />}
           documentScrollPosition={this.props.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
-          getMousePosition={true}
+          requireMousePosition={true}
           className="scroll-wrapper-home-carousel-products"
         />
 
@@ -107,7 +137,7 @@ class PageHome extends Component {
             component={<HomeCarousel carouselItems={dataVentures} darkStyle={true} />}
             documentScrollPosition={this.props.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
-            getMousePosition={true}
+            requireMousePosition={true}
             className="scroll-wrapper-home-carousel-ventures"
           />
 
@@ -132,6 +162,10 @@ class PageHome extends Component {
 
 export default PageHome;
 
+/*
+  Hard coded data
+  TODO: Integrate with CMS
+*/
 const dataProducts = [{
   title: "Ford GoPark",
   category: "Client Work",
@@ -193,18 +227,3 @@ const dataVentures = [{
   category: "ustwo Venture",
   imageURL: "/images/showcase/watch-this.jpg"
 }];
-
-const textBlockIntro = {
-  title: `Hi. We're ustwo.`,
-  text: <HomeWelcomeMessage />
-}
-
-const textBlockMore = {
-  title: `Want moar?`,
-  text: <HomeMoreMessage />
-}
-
-const textBlockSmorgasbord = {
-  title: `Still hungry?`,
-  text: <HomeSmorgasbordMessage />
-}

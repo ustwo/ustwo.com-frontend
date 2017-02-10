@@ -1,30 +1,27 @@
-'use strict';
-
 import React from 'react';
 import classnames from 'classnames';
 import SVGSequenceAnimation from 'app/lib/svg-sequence-animation';
 import blendColours from 'app/lib/blend-colours';
 
-const tickerFrequency = 30;
-const timerTotal = 600;
-
+const tickerFrequency = 25;
+const timerTotal = 300;
 const leftColours = ['16D6D9', '14C04D', '96CC29', 'FFBF02', 'FF5519', 'E60C29', 'ED0082', '6114CC', '143FCC', '009CF3'];
 const rightColours = ['96CC29', 'FFBF02', 'FF5519', 'E60C29', 'ED0082', '6114CC', '143FCC', '009CF3', '16D6D9', '14C04D'];
 
 function goToNextIteration(component) {
   component.setState({ tick: timerTotal });
 
-  if (component.state.iterate === leftColours.length - 1) {
+  if (component.state.iterate === leftColours.length - 2) {
     component.setState({ iterate: 0 });
   } else {
     component.setState({ iterate: component.state.iterate + 1 });
   }
 }
 
-
 const UstwoLogoSequenceCutout = React.createClass({
 
-  mixins: [SVGSequenceAnimation({ fps: 30 })],
+  /* TODO: Create a wrapper component instead of using mixins */
+  mixins: [SVGSequenceAnimation({ fps: 25 })],
 
   getInitialState() {
     return {
@@ -35,6 +32,7 @@ const UstwoLogoSequenceCutout = React.createClass({
   },
 
   ticker() {
+    /* Manage how often we cycle through iterations (sets of background colours) */
     if (this.state.tick === 0) {
       goToNextIteration(this);
     }
@@ -44,9 +42,10 @@ const UstwoLogoSequenceCutout = React.createClass({
   componentDidMount() {
     this.timer = setInterval(this.ticker, tickerFrequency);
 
+    /* Use change in state to control the 'show' class allowing for css transition in */
     setTimeout(() => {
       this.setState({ show: true })
-    }.bind(this), 100);
+    }.bind(this), 1000);
   },
 
   componentWillUnmount() {
@@ -58,15 +57,16 @@ const UstwoLogoSequenceCutout = React.createClass({
       show: this.state.show
     });
 
+    const progress = Math.round(((timerTotal - this.state.tick) / timerTotal) * 100) / 100;
+
+    const leftColour = blendColours(leftColours[this.state.iterate], leftColours[this.state.iterate+1], progress);
+    const rightColour = blendColours(rightColours[this.state.iterate], rightColours[this.state.iterate+1], progress);
+
+    /* Apply background css behind the SVG cutout */
     let styles;
-    if (this.props.show) {
-      let progress = Math.round(((timerTotal - this.state.tick) / timerTotal) * 100) / 100;
-
-      let leftColour = blendColours(leftColours[this.state.iterate], leftColours[this.state.iterate+1], progress);
-      let rightColour = blendColours(rightColours[this.state.iterate], rightColours[this.state.iterate+1], progress);
-
+    if (this.state.show) {
       styles = {
-        background: `linear-gradient(to right, #${leftColour}, #${rightColour})`,
+        background: `linear-gradient(to right, #${leftColour}, #${rightColour})`
       }
     }
 
@@ -76,8 +76,8 @@ const UstwoLogoSequenceCutout = React.createClass({
         <div className="ustwo-logo-sequence-cutout-bg" style={styles}></div>
 
         <svg ref="animsvg" className="ustwo-logo-sequence-cutout-svg" title="ustwo logo sequence" role="img" viewBox="0 0 112 32">
-          <g id="Frame1">
-            <path d="M34.79,42.18V10.1h112V42.18h-112Zm4.77-16.74c2.64-1.15,3.24-4.13,1.29-5.83A1,1,0,0,0,40,19.36a23.51,23.51,0,0,0-2.64,1.52c-0.68.45-.65,0.88,0,1.37s1.35,1,2.07,1.4a0.7,0.7,0,0,1,.34,1.05A5.69,5.69,0,0,0,39.56,25.43Z" transform="translate(-34.79 -10.1)"/>
+          <g id="Frame1" style={{ display: `inline-block` }}>
+            <rect width="112" height="32" style={{ fill: `#000000` }} />
           </g>
           <g id="Frame2">
             <path d="M34.79,42.18V10.1h112V42.18h-112Zm4.77-16.74c2.64-1.15,3.24-4.13,1.29-5.83A1,1,0,0,0,40,19.36a23.51,23.51,0,0,0-2.64,1.52c-0.68.45-.65,0.88,0,1.37s1.35,1,2.07,1.4a0.7,0.7,0,0,1,.34,1.05A5.69,5.69,0,0,0,39.56,25.43Z" transform="translate(-34.79 -10.1)"/>

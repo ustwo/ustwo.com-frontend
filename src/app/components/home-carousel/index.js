@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import transitionOnScroll from 'app/lib/transition-on-scroll';
+
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import TimerUI from 'app/components/timer-ui';
-import transitionOnScroll from 'app/lib/transition-on-scroll';
 import Video from 'app/components/video';
 
-const itemsRefreshInterval = 500000;
+const itemsRefreshInterval = 8000;
 const tickerFrequency = 50;
 const transitionDuration = 300;
 const distance = 60;
@@ -20,10 +21,6 @@ function goToNextItems(component) {
   }
 }
 
-// function pauseCarousel(component) {
-//   component.setState({ paused: component.state.paused ? false : true })
-// }
-
 class HomeCarousel extends Component {
 
   constructor(props) {
@@ -37,6 +34,7 @@ class HomeCarousel extends Component {
   }
 
   ticker() {
+    /* Start the ticker when half of the carousel comes into view and stop it when it's off out */
     if (this.props.scrollProgress >= 0.25 && this.props.scrollProgress <= 0.75) {
 
       if (this.state.tick === 0) {
@@ -60,8 +58,9 @@ class HomeCarousel extends Component {
   render() {
     const { scrollProgress, mousePosition } = this.props;
 
-    let showItems = this.props.carouselItems.map((item, i) => {
+    const showItems = this.props.carouselItems.map((item, i) => {
 
+      /* Determine all the classes to be added */
       let isPrevious = false;
       if (this.state.currentStartItem === 0 && (i === this.props.carouselItems.length - 2 || i === this.props.carouselItems.length - 1)
           || i === this.state.currentStartItem - 2 || i === this.state.currentStartItem - 1) {
@@ -73,13 +72,13 @@ class HomeCarousel extends Component {
         previous: isPrevious
       }
 
-      let alignment = i % 2 === 0 ? 'even' : 'odd';
+      const alignment = i % 2 === 0 ? 'even' : 'odd';
       extraClasses[alignment] = true;
 
-      let modifier = 3;
+      const classes = classnames('home-carousel-item', extraClasses);
 
-      let classes = classnames('home-carousel-item', extraClasses);
-
+      /* Move the images according to mouse position */
+      const modifier = 3;
       let x, y;
       if (alignment === 'even') {
         x = (mousePosition.coordinateX - 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
@@ -88,13 +87,16 @@ class HomeCarousel extends Component {
         x = (mousePosition.coordinateX + 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
         y = (mousePosition.coordinateY + 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
       }
-      let textStyles = {
-        transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
-      }
-      let imageStyles = {
+      const imageStyles = {
         transform: `translate3d(${x}px,${y}px,0)`
       }
 
+      /* Parallax */
+      const textStyles = {
+        transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
+      }
+
+      /* Show either an image or video depending on if there is a videoURL */
       let visualContent;
       if (item.videoURL) {
         visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} />
@@ -117,9 +119,10 @@ class HomeCarousel extends Component {
       );
     });
 
-    let ticker = this.state.tick / itemsRefreshInterval * 360;
+    /* Pass down the ticker props in degree value for the circular timer */
+    const ticker = this.state.tick / itemsRefreshInterval * 360;
 
-    let classes = classnames('home-carousel', {
+    const classes = classnames('home-carousel', {
       darkStyle: this.props.darkStyle
     });
 

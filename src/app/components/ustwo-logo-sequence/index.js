@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import classnames from 'classnames';
 import SVGSequenceAnimation from 'app/lib/svg-sequence-animation';

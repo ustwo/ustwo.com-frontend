@@ -100,14 +100,14 @@ const Video = React.createClass({
   },
 
   renderVideo() {
-    const { src, loaded } = this.props;
+    const { src, play } = this.props;
 
     let video;
     if(src && src.length) {
-      if (loaded === undefined) {
-        video = <video src={src} poster={posterURL} autoPlay loop muted />;
+      if (play === undefined) {
+        video = <video ref="video" src={src} poster={posterURL} autoPlay loop muted />;
       } else {
-        if (this.props.loaded) {
+        if (this.props.play) {
           this.refs.video.play();
         }
         video = <video ref="video" src={src} poster={posterURL} loop muted />;

@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class HomeWelcomeMessage extends Component {
-  render() {
-    return (
-      <h1>
-        <span>We make digital </span><span className="home-gradient-text-cold" onMouseEnter={this.props.showRollover('products')} onMouseLeave={this.props.showRollover('hidden')}>products</span><span> and </span><span className="home-gradient-text-lukewarm" onMouseEnter={this.props.showRollover('services')} onMouseLeave={this.props.showRollover('hidden')}>services</span><span> for the smartest </span><span className="home-gradient-text-hot" onMouseEnter={this.props.showRollover('brands')} onMouseLeave={this.props.showRollover('hidden')}>brands</span>
-      </h1>
-    );
-  }
+function HomeWelcomeMessage({ showRollover }) {
+  return (
+    <h1>
+      <span>We make digital </span>
+      <span className="home-gradient-text-cold" onMouseEnter={showRollover('products')} onMouseLeave={showRollover('hidden')}>products</span>
+      <span> and </span>
+      <span className="home-gradient-text-lukewarm" onMouseEnter={showRollover('services')} onMouseLeave={showRollover('hidden')}>services</span>
+      <span> for the smartest </span>
+      <span className="home-gradient-text-hot" onMouseEnter={showRollover('brands')} onMouseLeave={showRollover('hidden')}>brands</span>
+    </h1>
+  );
 }
 
 export default HomeWelcomeMessage;
