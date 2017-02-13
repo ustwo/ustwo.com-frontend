@@ -4,27 +4,32 @@
  *
  */
 
-$nav-items-height: 46px;
+$nav-height-small: 20px;
+$nav-height-medium: 24px;
+$nav-height-large: 26px;
 
 .navigation {
   position: absolute;
   top: 0;
+  margin: 21px 0;
   right: 0;
   z-index: 9999;
-  display: block;
-  height: $nav-height-small;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
 
+  @media screen and (min-width: $bp-medium) {
+    margin: 29px 0;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    margin: 27px 0;
+  }
+
   &.home-intro-visible {
     top: 100vh;
     position: absolute;
-  }
-
-  @media screen and (min-width: $bp-medium) {
-    height: $nav-height-large;
   }
 
   button {
@@ -35,18 +40,17 @@ $nav-items-height: 46px;
 
   .logo {
     overflow: hidden;
-    margin-right: 10px;
-    margin-bottom: 2px;
 
     svg {
       fill: $nonBlack;
       transition: fill .2s ease-in-out;
-      width: 112px;
-      height: $nav-items-height;
+      height: $nav-height-small;
 
       @media screen and (min-width: $bp-medium) {
-        width: 112px;
-        height: $nav-items-height;
+        height: $nav-height-medium;
+      }
+      @media screen and (min-width: $bp-large) {
+        height: $nav-height-large;
       }
     }
   }
@@ -63,24 +67,28 @@ $nav-items-height: 46px;
 
 .navigation-toggle {
   position: relative;
-  margin: 0 25px 0 0;
-}
+  margin: 0 22px 0 12px;
 
-.navigation-toggle-ring {
-  position: relative;
-  z-index: 2;
-  width: $nav-items-height;
-  height: $nav-items-height;
+  @media screen and (min-width: $bp-smaller) {
+    margin: 0 22px 0 14px;
+  }
+  @media screen and (min-width: $bp-medium) {
+    margin: 0 33px 0 16px;
+  }
+  @media screen and (min-width: $bp-large) {
+    margin: 0 34px 0 18px;
+  }
 }
 
 .navigation-toggle-main {
-  position: absolute;
+  position: relative;
   z-index: 1;
   pointer-events: none; /* Fixes intermittent issue on touch devices? */
   border-radius: 50%;
-  border: 3px solid $nonBlack;
-  width: 30px;
-  height: 30px;
+  border: 2px solid $nonBlack;
+  width: $nav-height-small;
+  height: $nav-height-small;
+  box-sizing: content-box;
   transition: all .2s ease-in-out;
 
   &:before,
@@ -90,23 +98,62 @@ $nav-items-height: 46px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 12px;
-    height: 3px;
+    width: 10px;
+    height: 2px;
     background-color: $nonBlack;
     transition: all .2s ease-in-out;
   }
 
   &:before {
-    margin-top: -3px;
+    margin-top: -2px;
   }
   &:after {
-    margin-top: 3px;
+    margin-top: 2px;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    width: $nav-height-medium;
+    height: $nav-height-medium;
+
+    &:before,
+    &:after {
+      width: 12px;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    border: 3px solid $nonBlack;
+    width: $nav-height-large;
+    height: $nav-height-large;
+
+    &:before,
+    &:after {
+      height: 3px;
+      width: 14px;
+    }
+
+    &:before {
+      margin-top: -3px;
+    }
+    &:after {
+      margin-top: 3px;
+    }
   }
 }
 
 .navigation-toggle-ring {
+  position: absolute;
+  z-index: 2;
   fill: $pot;
   transition: all .2s ease-in-out;
+  width: 36px;
+
+  @media screen and (min-width: $bp-medium) {
+    width: 42px;
+  }
+  @media screen and (min-width: $bp-large) {
+    width: 48px;
+  }
 }
 
 .navigation {
