@@ -11,11 +11,11 @@
     line-height: 35px;
   }
 
-  @media screen and (min-width: $bp-smaller) {
+  @media screen and (min-width: $bp-small) {
     h1 {
       font-size: 36px;
       line-height: 40px;
-      width: 80%;
+      // width: 80%;
     }
   }
 
@@ -23,7 +23,7 @@
     h1 {
       font-size: 50px;
       line-height: 60px;
-      width: auto;
+      // width: auto;
     }
   }
 

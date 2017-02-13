@@ -143,16 +143,27 @@ $nav-height-large: 26px;
 
 .navigation-toggle-ring {
   position: absolute;
+  left: 0;
+  top: 0;
   z-index: 2;
   fill: $pot;
   transition: all .2s ease-in-out;
   width: 36px;
+  height: 36px;
+  margin-left: -6px;
+  margin-top: -6px;
 
   @media screen and (min-width: $bp-medium) {
     width: 42px;
+    height: 42px;
+    margin-left: -7px;
+    margin-top: -7px;
   }
   @media screen and (min-width: $bp-large) {
     width: 48px;
+    height: 48px;
+    margin-left: -8px;
+    margin-top: -8px;
   }
 }
 

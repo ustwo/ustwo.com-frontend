@@ -78,18 +78,18 @@ class HomeCarousel extends Component {
       const classes = classnames('home-carousel-item', extraClasses);
 
       /* Move the images according to mouse position */
-      const modifier = 3;
-      let x, y;
-      if (alignment === 'even') {
-        x = (mousePosition.coordinateX - 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
-        y = (mousePosition.coordinateY - 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
-      } else {
-        x = (mousePosition.coordinateX + 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
-        y = (mousePosition.coordinateY + 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
-      }
-      const imageStyles = {
-        transform: `translate3d(${x}px,${y}px,0)`
-      }
+      // const modifier = 3;
+      // let x, y;
+      // if (alignment === 'even') {
+      //   x = (mousePosition.coordinateX - 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
+      //   y = (mousePosition.coordinateY - 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
+      // } else {
+      //   x = (mousePosition.coordinateX + 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
+      //   y = (mousePosition.coordinateY + 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
+      // }
+      // const imageStyles = {
+      //   transform: `translate3d(${x}px,${y}px,0)`
+      // }
 
       /* Parallax */
       const textStyles = {
@@ -111,7 +111,7 @@ class HomeCarousel extends Component {
             <h2>{item.title}</h2>
           </div>
           <div className="home-carousel-item-image">
-            <div className="home-carousel-visual-content" style={imageStyles}>
+            <div className="home-carousel-visual-content">
               {visualContent}
             </div>
           </div>
