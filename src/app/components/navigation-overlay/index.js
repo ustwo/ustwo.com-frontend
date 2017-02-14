@@ -30,7 +30,7 @@ const NavigationOverlay = React.createClass({
   render() {
     return (
       <nav className="navigation-overlay" onClick={this.onClickContent}>
-        <ul className="menu">
+        <ul className="menu-items">
           {this.renderNavigationOverlayLinks()}
         </ul>
       </nav>

@@ -187,7 +187,7 @@ const Store = Object.assign(
       Store.emit('change', _state);
     },
     showNavOverlay() {
-      _state.modal = 'navigation';
+      _state.modal = 'menu';
       Store.emit('change', _state);
     },
     closeTakeover() {

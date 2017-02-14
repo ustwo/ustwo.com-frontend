@@ -55,7 +55,7 @@ class PageHome extends Component {
       comes into view and we can show/hide it accordingly.
     */
     this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
-    this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.25);
+    this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.35);
     const whereIsVentures = {
       from: this.venturesPositionFromTop,
       to: this.venturesPositionFromTop + this.venturesHeight

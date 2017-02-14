@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { get } from 'lodash';
-import kebabCase from 'lodash/string/kebabCase';
+import Scroll from 'react-scroll';
 
 import Flux from 'app/flux';
 import Nulls from 'app/flux/nulls';
@@ -21,33 +20,28 @@ class Navigation extends Component {
     }
   }
 
-  openOverlay() {
-    Flux.showNavOverlay();
-  }
-
   toggleMenu() {
-    if (this.state.menuOpen) {
-      this.setState({ menuOpen: false });
-      Flux.closeModal();
+    if (this.props.documentScrollPosition < window.innerHeight) {
+      Scroll.animateScroll.scrollTo(window.innerHeight);
+      Scroll.Events.scrollEvent.register('end', function(to, element) {
+        if (this.state.menuOpen) {
+          this.setState({ menuOpen: false });
+          Flux.closeModal();
+        } else {
+          this.setState({ menuOpen: true });
+          Flux.showNavOverlay();
+        }
+      }.bind(this));
     } else {
-      this.setState({ menuOpen: true });
-      Flux.showNavOverlay();
+      if (this.state.menuOpen) {
+        this.setState({ menuOpen: false });
+        Flux.closeModal();
+      } else {
+        this.setState({ menuOpen: true });
+        Flux.showNavOverlay();
+      }
     }
   }
-
-  // onClickLogo(event) {
-  //   const { takeover } = this.props;
-  //   event.preventDefault();
-  //   if (takeover !== Nulls.takeover) {
-  //     Track('send', {
-  //       'hitType': 'event',          // Required.
-  //       'eventCategory': 'takeover',   // Required.
-  //       'eventAction': 'click_ustwo_logo',  // Required.
-  //       'eventLabel': takeover.name // Name of the takeover as set in WordPress
-  //     });
-  //   }
-  //   Flux.navigate('/');
-  // }
 
   render() {
     const { section, page, takeover, customClass, documentScrollPosition, whereIsVentures } = this.props;

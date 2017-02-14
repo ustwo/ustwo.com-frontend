@@ -100,15 +100,13 @@ const App = React.createClass({
 
   renderModal() {
     const { takeover, modal: modalType } = this.state;
-    let modal;
+    let modal, className, content;
     if (this.showTakeover()) {
       modal = <TakeOver key="takeover" takeover={takeover} />;
     } else if (modalType) {
-      let content;
-      let className;
       switch(modalType) {
-        case 'navigation':
-          className = 'navigation';
+        case 'menu':
+          className = 'menu';
           content = <NavigationOverlay
             pages={this.state.navMain}
             section={this.state.currentPage.split('/')[0]}
@@ -125,7 +123,15 @@ const App = React.createClass({
       }
       modal = <Modal key={modalType} className={className}>{content}</Modal>;
     }
-    return modal;
+    return (
+      <TransitionManager
+        component="div"
+        className="app__modal"
+        duration={320}
+      >
+        {modal}
+      </TransitionManager>
+    );
   },
 
   render() {
@@ -139,6 +145,11 @@ const App = React.createClass({
       'disabled': !!state.modal,
       'mobile-no-scroll': state.modal || this.showTakeover()
     });
+    if (!!state.modal) {
+      document.body.style.overflow = "hidden";
+    } else if (state.modal === null) {
+      document.body.style.overflow = "auto";
+    }
     let content;
     if (state.currentPage === 'notfound') {
       content = <div className={appClasses}>
@@ -191,13 +202,7 @@ const App = React.createClass({
           {this.getPage(state.currentPage)}
           <Footer data={state.footer} studios={state.studios} currentPage={this.state.currentPage}/>
         </PageContainer>
-        <TransitionManager
-          component="div"
-          className="app__modal"
-          duration={500}
-        >
-          {this.renderModal()}
-        </TransitionManager>
+        {this.renderModal()}
       </div>;
     }
     return content;

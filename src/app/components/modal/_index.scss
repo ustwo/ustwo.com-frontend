@@ -10,17 +10,18 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
-  z-index: 50;
+  // background: rgba(0,0,0,0.4);
+  z-index: 9998;
   cursor: pointer;
   transition: opacity .2s ease-in-out;
+  opacity: 0;
+  transform: translateZ(0);
 
   &.below-header {
     z-index: 30;
   }
-
-  &.add {
-    opacity: 0;
+  > * {
+    cursor: auto;
   }
 
   &.show {
@@ -31,20 +32,7 @@
     opacity: 0;
   }
 
-  > * {
-    cursor: auto;
-  }
-
   &.tray {
     transition-duration: .4s;
   }
-}
-
-
-.modal {
-  z-index: 9998;
-
-  // @media screen and (min-width: $bp-large) {
-  //   z-index: 50;
-  // }
 }

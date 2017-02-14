@@ -20,7 +20,7 @@
 .app {
 
   .app-content {
-    transition: opacity .5s ease-in-out;
+    // transition: opacity .32s ease-in-out;
 
     /* Takeover bound by viewport size */
     &.takeover {
@@ -36,9 +36,7 @@
 
     /* For when mobile navigation-overlay is visible to prevent scrolling of the page underneath */
     &.mobile-no-scroll {
-      // position: fixed;
-      // overflow: hidden;
-      opacity: 0;
+      // opacity: 0;
     }
 
     .page-loader-container {
@@ -75,16 +73,5 @@
     left: 0;
     right: 0;
     height: 100%;
-  }
-
-  @media screen and (min-width: $bp-large) {
-    .app-content {
-      /* Reset to normal behaviour for larger screens */
-      &.mobile-no-scroll {
-        position: relative;
-        overflow: auto;
-        opacity: 1;
-      }
-    }
   }
 }
