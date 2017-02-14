@@ -7,5 +7,5 @@ export default {
 	archivedEventsPagination: 1,
 	whereIsVentures: {},
 	menuHover: '',
-	showRollover: ''
+	showPopup: ''
 };

@@ -20,6 +20,7 @@ const _state = Object.assign({
   searchMode: Defaults.searchMode,
   searchQuery: Nulls.searchQuery,
   modal: Nulls.modal,
+  popup: Nulls.popup,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
   postsPagination: Defaults.postsPagination,
@@ -31,7 +32,6 @@ const _state = Object.assign({
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
   whereIsVentures: Defaults.whereIsVentures,
   menuHover: Defaults.menuHover,
-  showRollover: Defaults.showRollover,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -135,6 +135,7 @@ const Store = Object.assign(
       _state.currentHash = newHash || Nulls.hash;
       _state.statusCode = newStatusCode;
       _state.modal = null;
+      _state.popup = null;
       _state.relatedContent = [];
       Store.emit('change', _state);
     },
@@ -294,8 +295,12 @@ const Store = Object.assign(
       _state.menuHover = `menu-hover-${name}`;
       Store.emit('change', _state);
     },
-    showRollover(name) {
-      _state.showRollover = `rollover-${name}`;
+    showPopup(name) {
+      _state.popup = name;
+      Store.emit('change', _state);
+    },
+    closePopup() {
+      _state.popup = Nulls.popup;
       Store.emit('change', _state);
     }
   }

@@ -1,0 +1,33 @@
+/*
+ *  Popup
+ *
+ */
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+
+  &.show {
+    opacity: 1;
+  }
+
+  &.hide {
+    opacity: 0;
+  }
+
+  &.invest,
+  &.ventures,
+  &.difference {
+    background: rgba(0,0,0,0.8);
+    color: white;
+  }
+}

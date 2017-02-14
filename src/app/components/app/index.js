@@ -29,6 +29,7 @@ import FourOhFour from 'app/components/404';
 import BlogCategories from 'app/components/blog-categories';
 import NavigationOverlay from 'app/components/navigation-overlay';
 import PageLoader from 'app/components/page-loader';
+import Popup from 'app/components/popup';
 
 const pageMap = {
   'home': require('app/components/home'),
@@ -134,20 +135,37 @@ const App = React.createClass({
     );
   },
 
+  renderPopup() {
+    const { popup: popupType } = this.state;
+    let popup;
+    if (!!popupType) {
+      popup = <Popup key={popupType} type={popupType} className={popupType} />;
+    }
+    return (
+      <TransitionManager
+        component="div"
+        className="app__popup"
+        duration={320}
+      >
+        {popup}
+      </TransitionManager>
+    );
+  },
+
   render() {
     const state = this.state;
     const appClasses = classnames('app', `page-${this.state.currentPage}`, {
       'app-404': state.currentPage === 'notfound'
     });
-    const contentClasses = classnames('app-content', state.menuHover, state.showRollover, {
+    const contentClasses = classnames('app-content', state.menuHover, state.showPopup, {
       'show': state.show,
       'takeover': this.showTakeover(),
       'disabled': !!state.modal,
       'mobile-no-scroll': state.modal || this.showTakeover()
     });
-    if (!!state.modal) {
+    if (!!state.modal || !!state.popup) {
       document.body.style.overflow = "hidden";
-    } else if (state.modal === null) {
+    } else if (state.modal === null || state.popup === null) {
       document.body.style.overflow = "auto";
     }
     let content;
@@ -203,6 +221,7 @@ const App = React.createClass({
           <Footer data={state.footer} studios={state.studios} currentPage={this.state.currentPage}/>
         </PageContainer>
         {this.renderModal()}
+        {this.renderPopup()}
       </div>;
     }
     return content;

@@ -58,8 +58,11 @@ const Actions = {
   menuHover(name) {
     Store.menuHover(name);
   },
-  showRollover(name) {
-    Store.showRollover(name);
+  showPopup(name) {
+    Store.showPopup(name);
+  },
+  closePopup() {
+    Store.closePopup();
   }
 };
 

@@ -1,14 +1,14 @@
 import React from 'react';
 
-function HomeSmorgasbordMessage({ showRollover }) {
+function HomeSmorgasbordMessage({ showPopup }) {
   return (
     <h1>
       <span>More </span>
-      <span className="home-gradient-text-cold" onMouseEnter={showRollover('yes')} onMouseLeave={showRollover('hidden')}>yes</span><br />
+      <span className="home-gradient-text-cold" onClick={showPopup('yes')}>yes</span><br />
       <span>More </span>
-      <span className="home-gradient-text-lukewarm" onMouseEnter={showRollover('can')} onMouseLeave={showRollover('hidden')}>can</span><br />
+      <span className="home-gradient-text-lukewarm" onClick={showPopup('can')}>can</span><br />
       <span>More </span>
-      <span className="home-gradient-text-hot" onMouseEnter={showRollover('wow')} onMouseLeave={showRollover('hidden')}>wow</span>
+      <span className="home-gradient-text-hot" onClick={showPopup('wow')}>wow</span>
     </h1>
   );
 }

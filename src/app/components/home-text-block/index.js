@@ -6,9 +6,9 @@ const distance = '100';
 
 class HomeTextBlock extends Component {
 
-  showRollover(name) {
+  showPopup(name) {
     return () => {
-      Flux.showRollover(name);
+      Flux.showPopup(name);
     }
   }
 
@@ -20,9 +20,9 @@ class HomeTextBlock extends Component {
       transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.5, 1, 1, distance, true)}px,0)`
     }
 
-    /* Pass down showRollover function to child component */
+    /* Pass down showPopup function to child component */
     let textComponent = React.cloneElement(content.text, {
-      showRollover: this.showRollover
+      showPopup: this.showPopup
     });
 
     return (
