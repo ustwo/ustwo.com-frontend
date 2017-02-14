@@ -73,9 +73,7 @@ const UstwoLogoSequenceCutout = React.createClass({
     return (
       <div className={classes} style={this.props.customStyles}>
 
-        <div className="ustwo-logo-sequence-cutout-bg" style={styles}></div>
-
-        <svg ref="animsvg" className="ustwo-logo-sequence-cutout-svg" title="ustwo logo sequence" role="img" viewBox="0 0 112 32">
+        <svg ref="animsvg" className="ustwo-logo-sequence-cutout-svg" title="ustwo logo sequence" role="img" viewBox="0 0 112 32" style={styles}>
           <g id="Frame1" style={{ display: `inline-block` }}>
             <rect width="112" height="32" style={{ fill: `#000000` }} />
           </g>

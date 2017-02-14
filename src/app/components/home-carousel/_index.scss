@@ -24,12 +24,19 @@ $large-screen-right-indent: 7%;
 
 .home-carousel-item-text {
   position: absolute;
-  top: 60px;
+  top: 30px;
   z-index: 1;
   width: 45%;
 
   h2 {
     color: #111;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    top: 40px;
+  }
+  @media screen and (min-width: $bp-large) {
+    top: 60px;
   }
 }
 
@@ -273,9 +280,9 @@ $large-screen-right-indent: 7%;
 }
 
 @media screen and (min-width: $bp-medium) {
-  $home-carousel-width: 485px;
-  $home-carousel-height: 340px;
-  $home-carousel-margin: 20px;
+  $home-carousel-width: 442px;
+  $home-carousel-height: 310px;
+  $home-carousel-margin: 10px;
   $home-carousel-padding: 115px;
 
   .home-carousel-item {
