@@ -71,3 +71,21 @@
     }
   }
 }
+
+@mixin page-background-colour($page) {
+  @if $page == 'home' {
+    background-image: linear-gradient(241deg, $jeezz, $mare);
+  }
+  @if $page == 'work' {
+    background-image: linear-gradient(241deg, $honey, $piglet);
+  }
+  @if $page == 'events' {
+    background-image: linear-gradient(241deg, $piglet, $passion);
+  }
+  @if $page == 'blog' {
+    background-image: linear-gradient(241deg, $blu, $mare);
+  }
+  @if $page == 'join' {
+    background-image: linear-gradient(241deg, $piglet, $rain);
+  }
+}

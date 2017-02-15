@@ -31,7 +31,6 @@ const _state = Object.assign({
   archivedEventsPagination: Defaults.archivedEventsPagination,
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
   whereIsVentures: Defaults.whereIsVentures,
-  menuHover: Defaults.menuHover,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -289,10 +288,6 @@ const Store = Object.assign(
     },
     whereIsVentures(where) {
       _state.whereIsVentures = where;
-      Store.emit('change', _state);
-    },
-    menuHover(name) {
-      _state.menuHover = `menu-hover-${name}`;
       Store.emit('change', _state);
     },
     showPopup(name) {

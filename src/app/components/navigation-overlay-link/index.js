@@ -16,6 +16,7 @@ class NavigationOverlayLink extends Component {
       'eventLabel': this.props.gaId, // TODO: Remove once GA has been hooked into router
     });
     Flux.navigate(this.props.url);
+    Flux.closeModal();
   }
 
   render() {
@@ -35,7 +36,7 @@ class NavigationOverlayLink extends Component {
 
     return (
       <li className={classes}>
-        <a href={url} onClick={this.onClick.bind(this)} onMouseEnter={() => Flux.menuHover(mouseOver)}>{alternativeText ? alternativeText : children}</a>
+        <a href={url} onClick={this.onClick.bind(this)}>{alternativeText ? alternativeText : children}</a>
       </li>
     );
   }

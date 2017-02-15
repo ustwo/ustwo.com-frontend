@@ -9,7 +9,7 @@ $nav-height-medium: 24px;
 $nav-height-large: 26px;
 
 .navigation {
-  position: absolute;
+  position: fixed;
   top: 0;
   margin: 21px 0;
   right: 0;
@@ -25,11 +25,6 @@ $nav-height-large: 26px;
 
   @media screen and (min-width: $bp-large) {
     margin: 27px 0;
-  }
-
-  &.home-intro-visible {
-    top: 100vh;
-    position: absolute;
   }
 
   button {
@@ -55,13 +50,9 @@ $nav-height-large: 26px;
     }
   }
 
-  &.home {
+  &.notSticky {
+    position: absolute;
     top: 100vh;
-  }
-
-  &.sticky {
-    position: fixed;
-    top: 0;
   }
 }
 
@@ -165,6 +156,26 @@ $nav-height-large: 26px;
     margin-left: -8px;
     margin-top: -8px;
   }
+}
+
+.navigation.home .navigation-toggle-ring {
+  fill: $jeezz;
+}
+
+.navigation.what-we-do .navigation-toggle-ring {
+  fill: $honey;
+}
+
+.navigation.events .navigation-toggle-ring {
+  fill: $piglet;
+}
+
+.navigation.blog .navigation-toggle-ring {
+  fill: $blu;
+}
+
+.navigation.join-us .navigation-toggle-ring {
+  fill: $rain;
 }
 
 .navigation {

@@ -157,7 +157,7 @@ const App = React.createClass({
     const appClasses = classnames('app', `page-${this.state.currentPage}`, {
       'app-404': state.currentPage === 'notfound'
     });
-    const contentClasses = classnames('app-content', state.menuHover, state.showPopup, {
+    const contentClasses = classnames('app-content', state.showPopup, {
       'show': state.show,
       'takeover': this.showTakeover(),
       'disabled': !!state.modal,
@@ -178,6 +178,7 @@ const App = React.createClass({
           takeover={this.showTakeover()}
           documentScrollPosition={this.state.documentScrollPosition}
           whereIsVentures={this.state.whereIsVentures}
+          modal={this.state.modal}
         />
         <FourOhFour {...this.state} />
         {this.renderModal()}
@@ -214,6 +215,7 @@ const App = React.createClass({
             takeover={this.showTakeover()}
             documentScrollPosition={this.state.documentScrollPosition}
             whereIsVentures={this.state.whereIsVentures}
+            modal={this.state.modal}
           />
         </EntranceTransition>
         <PageContainer key={state.currentPage} extraClasses={contentClasses}>

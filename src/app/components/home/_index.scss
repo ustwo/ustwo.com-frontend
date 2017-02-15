@@ -5,6 +5,7 @@
  */
 
 .page-home {
+  background-color: $offWhite;
 
   h1 {
     font-size: 30px;
@@ -69,12 +70,12 @@
     position: fixed;
     left: 0;
     top: 0;
-    z-index: -1;
     width: 100vw;
     height: 100vh;
     opacity: 0;
     transition: all .32s ease-in-out;
     background: linear-gradient(-225deg, #333, #304179);
+    visibility: hidden;
   }
 
   h1,
@@ -91,6 +92,7 @@
   &.venturesActive {
     .home-ventures-wrapper-bg {
       opacity: 1;
+      visibility: visible;
     }
     .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
       opacity: 1;

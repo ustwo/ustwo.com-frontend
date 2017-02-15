@@ -14,7 +14,6 @@
   z-index: 100;
   display: block;
   height: 100vh;
-  background-image: linear-gradient(241deg, #96cc29, #16d5d9);
   transition: background-image .2s ease-in-out;
   display: flex;
 
@@ -29,32 +28,22 @@
   }
 }
 
-.menu-hover-home + .app__modal {
-  .navigation-overlay {
-    background-image: linear-gradient(241deg, #96cc29, #16d5d9);
-  }
+.navigation-overlay.home {
+  @include page-background-colour(home);
 }
 
-.menu-hover-what-we-do + .app__modal {
-  .navigation-overlay {
-    background-image: linear-gradient(241deg, #FA7D78, #6114CC);
-  }
+.navigation-overlay.what-we-do {
+  @include page-background-colour(work);
 }
 
-.menu-hover-events + .app__modal {
-  .navigation-overlay {
-    background-image: linear-gradient(241deg, #ED0082, #FA7D78);
-  }
+.navigation-overlay.events {
+  @include page-background-colour(events);
 }
 
-.menu-hover-blog + .app__modal {
-  .navigation-overlay {
-    background-image: linear-gradient(241deg, #009CF3, #16D5D9);
-  }
+.navigation-overlay.blog {
+  @include page-background-colour(blog);
 }
 
-.menu-hover-join-us + .app__modal {
-  .navigation-overlay {
-    background-image: linear-gradient(241deg, #FA7D78, #FFBF00);
-  }
+.navigation-overlay.join-us {
+  @include page-background-colour(join);
 }

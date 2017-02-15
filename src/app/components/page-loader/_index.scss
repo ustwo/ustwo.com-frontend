@@ -4,22 +4,6 @@
  *
  */
 
-@mixin page-loader-spinner($fg, $bg) {
-  background-color: $bg;
-
-  .loading-icon .half {
-    .bg {
-      background-color: $fg;
-    }
-    &.left,
-    &.right {
-      .bg {
-        border-color: $bg;
-      }
-    }
-  }
-}
-
 .page-loader {
   position: fixed;
   top: 0;
@@ -33,18 +17,22 @@
   background-color: $offWhite;
 
   &.loading-home {
-    @include page-loader-spinner(#fff, #6114CC);
+    @include page-background-colour(home);
   }
+
   &.loading-what-we-do {
-    @include page-loader-spinner(#fff, $pot);
+    @include page-background-colour(work);
   }
-  &.loading-blog {
-    @include page-loader-spinner(#fff, $blu);
-  }
-  &.loading-join-us {
-    @include page-loader-spinner(#fff, $honey);
-  }
+
   &.loading-events {
-    @include page-loader-spinner(#fff, $softPassion);
+    @include page-background-colour(events);
+  }
+
+  &.loading-blog {
+    @include page-background-colour(blog);
+  }
+
+  &.loading-join-us {
+    @include page-background-colour(join);
   }
 }

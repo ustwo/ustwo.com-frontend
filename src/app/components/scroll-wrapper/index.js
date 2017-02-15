@@ -79,7 +79,7 @@ class ScrollWrapper extends Component {
 
   componentWillUnmount() {
     if (this.props.requireMousePosition) {
-      this.introRef.removeEventListener('mousemove', getMousePosition(this));
+      this.scrollWrapper.removeEventListener('mousemove', getMousePosition(this));
     }
   }
 

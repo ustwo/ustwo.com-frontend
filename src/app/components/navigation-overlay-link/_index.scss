@@ -21,17 +21,26 @@
     font-size: 60px;
   }
 
+  &:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+  }
+
   &:hover {
     &:before {
-      content: "";
-      position: absolute;
-      width: 15px;
-      height: 15px;
+      border: 1px solid white;
+    }
+  }
+
+  &.selected {
+    &:before {
       background-color: white;
-      left: -30px;
-      top: 50%;
-      transform: translateY(-50%);
-      border-radius: 50%;
     }
   }
 

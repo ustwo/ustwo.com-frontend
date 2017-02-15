@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import classnames from 'classnames';
 import { get } from 'lodash';
@@ -28,8 +26,10 @@ const NavigationOverlay = React.createClass({
   },
 
   render() {
+    const classes = classnames('navigation-overlay', this.props.section);
+
     return (
-      <nav className="navigation-overlay" onClick={this.onClickContent}>
+      <nav className={classes} onClick={this.onClickContent}>
         <ul className="menu-items">
           {this.renderNavigationOverlayLinks()}
         </ul>

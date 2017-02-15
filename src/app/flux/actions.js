@@ -55,9 +55,6 @@ const Actions = {
   whereIsVentures(where) {
     Store.whereIsVentures(where);
   },
-  menuHover(name) {
-    Store.menuHover(name);
-  },
   showPopup(name) {
     Store.showPopup(name);
   },
