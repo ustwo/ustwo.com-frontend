@@ -1,72 +1,85 @@
 /*
- *  CODE HIGHLIGHTER: GitHub Gist Theme
- *  Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
+ *  CODE HIGHLIGHTER: Monokai Sublime Theme
+ *  Author: noformnocontent http://nn.mit-license.org/
  *
  */
 
 .hljs {
   display: block;
-  background: white;
-  padding: 0.5em;
-  color: #333333;
   overflow-x: auto;
+  padding: 0.5em;
+  background: #23241f;
+  -webkit-font-smoothing: initial;
+  -moz-osx-font-smoothing: initial;
 }
 
-.hljs-comment,
-.hljs-meta {
-  color: #969896;
+.hljs,
+.hljs-tag,
+.hljs-subst {
+  color: #f8f8f2;
 }
 
-.hljs-string,
-.hljs-variable,
-.hljs-template-variable,
 .hljs-strong,
-.hljs-emphasis,
-.hljs-quote {
-  color: #df5000;
+.hljs-emphasis {
+  color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-quote,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal,
+.hljs-link {
+  color: #ae81ff;
+}
+
+.hljs-code,
+.hljs-title,
+.hljs-section,
+.hljs-selector-class {
+  color: #a6e22e;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
 }
 
 .hljs-keyword,
 .hljs-selector-tag,
-.hljs-type {
-  color: #a71d5d;
+.hljs-name,
+.hljs-attr {
+  color: #f92672;
 }
 
-.hljs-literal,
 .hljs-symbol,
-.hljs-bullet,
 .hljs-attribute {
-  color: #0086b3;
+  color: #66d9ef;
 }
 
-.hljs-section,
-.hljs-name {
-  color: #63a35c;
+.hljs-params,
+.hljs-class .hljs-title {
+  color: #f8f8f2;
 }
 
-.hljs-tag {
-  color: #333333;
-}
-
-.hljs-title,
-.hljs-attr,
+.hljs-string,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
 .hljs-selector-id,
-.hljs-selector-class,
 .hljs-selector-attr,
-.hljs-selector-pseudo {
-  color: #795da3;
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-variable {
+  color: #e6db74;
 }
 
-.hljs-addition {
-  color: #55a532;
-  background-color: #eaffea;
-}
-
-.hljs-deletion {
-  color: #bd2c00;
-  background-color: #ffecec;
-}
-
-.hljs-link {
-  text-decoration: underline;
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+  color: #75715e;
 }
