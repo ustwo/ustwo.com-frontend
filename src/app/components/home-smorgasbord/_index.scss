@@ -53,6 +53,31 @@
   }
 }
 
+.smorgasbord-blog,
+.smorgasbord-event {
+  padding: 30px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.smorgasbord-subtitle {
+  text-transform: uppercase;
+  // margin: 100px 0 20px;
+}
+
+.smorgasbord-title {
+  @extend .h3;
+  margin-bottom: 100px;
+}
+
+.smorgasbord-event {
+  background-image: url('/images/bg-pattern.png');
+  background-repeat: repeat;
+}
+
 @media screen and (min-width: $bp-medium) {
   .smorgasbord-block {
     height: 430px;
@@ -104,5 +129,5 @@
 }
 
 .smorgasbord-blog {
-  background-color: $blu;
+  background-image: linear-gradient(225deg, #53baf3, $blu);
 }

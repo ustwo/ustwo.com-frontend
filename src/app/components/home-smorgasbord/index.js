@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
@@ -37,8 +38,18 @@ class HomeSmorgasbord extends Component {
           ></video>
         </div>
         <div className="smorgasbord-block-wrapper">
-          <div className="smorgasbord-block smorgasbord-event"></div>
-          <div className="smorgasbord-block smorgasbord-blog"></div>
+          <div className="smorgasbord-block smorgasbord-event">
+            <h3>Event</h3>
+            <div className="smorgasbord-subtitle">16 January</div>
+            <div className="smorgasbord-title">#ANGSTFEST – MISERY LOVES COMPANY</div>
+            <button>View details</button>
+          </div>
+          <div className="smorgasbord-block smorgasbord-blog">
+            <h3>Blog</h3>
+            <div className="smorgasbord-subtitle">Culture</div>
+            <div className="smorgasbord-title">How to break up with your team</div>
+            <button>View details</button>
+          </div>
         </div>
         <div className="smorgasbord-block smorgasbord-studios"></div>
       </div>

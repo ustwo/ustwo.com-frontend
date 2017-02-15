@@ -86,12 +86,12 @@ class PageHome extends Component {
     }
 
     const textBlockMore = {
-      title: `Want moar?`,
+      title: `Still hungry?`,
       text: <HomeMoreMessage />
     }
 
     const textBlockSmorgasbord = {
-      title: `Still hungry?`,
+      title: `Want moar?`,
       text: <HomeSmorgasbordMessage />
     }
 
@@ -188,7 +188,8 @@ const dataProducts = [{
 },{
   title: "Foursquare",
   category: "Client Work",
-  imageURL: "/images/showcase/foursquare.jpg"
+  imageURL: "/images/showcase/foursquare.jpg",
+  videoURL: "/images/home/foursquare.mp4"
 },{
   title: "Harvey Nichols",
   category: "Client Work",

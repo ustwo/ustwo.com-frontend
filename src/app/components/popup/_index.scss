@@ -10,10 +10,11 @@
   right: 0;
   bottom: 0;
   z-index: 2;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.9);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: column;
   opacity: 0;
   transition: opacity .2s ease-in-out;
 
@@ -28,7 +29,25 @@
   &.invest,
   &.ventures,
   &.difference {
-    background: rgba(0,0,0,0.8);
+    background: rgba(50,58,86,0.9);
     color: white;
+  }
+
+  img {
+    width: 65%;
+  }
+
+  p {
+    margin-bottom: 40px;
+    width: 50%;
+    text-align: center;
+  }
+
+  .close-button {
+    margin-top: 40px;
+  }
+
+  &.products {
+
   }
 }
