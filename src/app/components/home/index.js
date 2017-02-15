@@ -216,7 +216,8 @@ const dataVentures = [{
 },{
   title: "Moodnotes",
   category: "ustwo Venture",
-  imageURL: "/images/showcase/moodnotes.jpg"
+  imageURL: "/images/showcase/moodnotes.jpg",
+  videoURL: "/images/home/moodnotes.mp4"
 },{
   title: "Wayfindr",
   category: "ustwo Venture",

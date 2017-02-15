@@ -12,17 +12,28 @@
     line-height: 1;
   }
 
+  h2 {
+    font-size: 24px;
+    line-height: 1;
+  }
+
   @media screen and (min-width: $bp-small) {
     h1 {
       font-size: 46px;
-      // width: 80%;
+    }
+    h2 {
+      font-size: 26px;
+      line-height: 30px;
     }
   }
 
   @media screen and (min-width: $bp-medium) {
     h1 {
       font-size: 60px;
-      // width: auto;
+    }
+    h2 {
+      font-size: 40px;
+      line-height: 45px;
     }
   }
 
@@ -30,6 +41,10 @@
     h1 {
       font-size: 70px;
       width: 90%;
+    }
+    h2 {
+      font-size: 50px;
+      line-height: 50px;
     }
   }
 }
@@ -137,4 +152,8 @@
 
 .home-gradient-text-hot {
   background-image: linear-gradient(to right, $honey, $piglet);
+}
+
+.home-gradient-text-hot-reverse {
+  background-image: linear-gradient(to right, $piglet, $honey);
 }

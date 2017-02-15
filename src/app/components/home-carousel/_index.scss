@@ -83,11 +83,6 @@ $large-screen-right-indent: 7%;
   transition: transform .2s ease-in-out;
   perspective: 1000px;
 
-  h2 {
-    font-size: 24px;
-    line-height: 24px;
-  }
-
   .home-section-title {
     margin-bottom: 5px;
   }
@@ -227,10 +222,6 @@ $large-screen-right-indent: 7%;
   $home-carousel-padding: 69px;
 
   .home-carousel-item {
-    h2 {
-      font-size: 26px;
-      line-height: 30px;
-    }
 
     &.even {
       padding-left: $home-carousel-padding;
@@ -286,11 +277,6 @@ $large-screen-right-indent: 7%;
   $home-carousel-padding: 115px;
 
   .home-carousel-item {
-    h2 {
-      font-size: 40px;
-      line-height: 45px;
-    }
-
     &.even {
       right: 5%;
       left: auto;
@@ -404,10 +390,6 @@ $large-screen-right-indent: 7%;
   $home-carousel-padding: $home-carousel-grid + $home-carousel-gutter;
 
   .home-carousel-item {
-    h2 {
-      font-size: 50px;
-      line-height: 50px;
-    }
 
     &.even {
       padding-left: $home-carousel-padding;

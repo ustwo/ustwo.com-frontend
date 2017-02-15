@@ -13,4 +13,18 @@
   .home-text-block {
     padding: 180px 0;
   }
+
+  h2 .plane {
+    fill: $honey;
+    width: 40px;
+    height: 40px;
+  }
+
+  @media screen and (min-width: $bp-larger) {
+    h2 {
+      font-size: 60px;
+      line-height: 60px;
+      width: 90%;
+    }
+  }
 }
