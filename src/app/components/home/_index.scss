@@ -8,31 +8,28 @@
   background-color: $offWhite;
 
   h1 {
-    font-size: 30px;
-    line-height: 35px;
+    font-size: 40px;
+    line-height: 1;
   }
 
   @media screen and (min-width: $bp-small) {
     h1 {
-      font-size: 36px;
-      line-height: 40px;
+      font-size: 46px;
       // width: 80%;
     }
   }
 
   @media screen and (min-width: $bp-medium) {
     h1 {
-      font-size: 50px;
-      line-height: 60px;
+      font-size: 60px;
       // width: auto;
     }
   }
 
   @media screen and (min-width: $bp-larger) {
     h1 {
-      font-size: 60px;
-      line-height: 70px;
-      width: 80%;
+      font-size: 70px;
+      width: 90%;
     }
   }
 }
@@ -68,6 +65,7 @@
 
   .home-ventures-wrapper-bg {
     position: fixed;
+    z-index: 0;
     left: 0;
     top: 0;
     width: 100vw;
