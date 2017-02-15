@@ -40,6 +40,11 @@
     }
   }
 
+  .contact-underline-style {
+    height: 2px;
+    width: 100%;
+  }
+
   .studio-details {
     overflow: hidden;
     height: 0;
@@ -67,7 +72,6 @@
       .map {
         display: inline-block;
         margin-top: 20px;
-        border-bottom: 2px solid $darkGrey;
         font-size: 14px;
         transition: border-color $hover-duration-quick ease-in-out;
 
@@ -83,10 +87,6 @@
     }
     .studio-details {
       height: 160px;
-
-      .map {
-        border-bottom-color: $offWhite;
-      }
     }
   }
 
@@ -99,10 +99,6 @@
     &.open {
       background-color: transparent !important;
       border-bottom-color: transparent !important;
-
-      .studio-details .map {
-        border-bottom-color: $darkGrey;
-      }
     }
     .studio-title {
       padding: 0 0 15px;
@@ -119,10 +115,6 @@
       .vcard {
         padding: 0;
       }
-
-      .map {
-        position: absolute;
-      }
     }
   }
 
@@ -131,12 +123,6 @@
 
     .clock {
       display: block;
-    }
-
-    .studio-details {
-      .map {
-        position: relative;
-      }
     }
   }
 

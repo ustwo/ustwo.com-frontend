@@ -54,8 +54,24 @@ const StudioContact = React.createClass({
     if(this.studioIsOpen(studio)) {
       showMoon = false;
     }
+    let colour;
+    if (studio.name === 'London') {
+      colour = `linear-gradient(to right, #009CF3, #16D6D9)`;
+    }
+    if (studio.name === 'Malmö') {
+      colour = `linear-gradient(to right, #FFBF02, #FF5519)`;
+    }
+    if (studio.name === 'New York') {
+      colour = `linear-gradient(to right, #E60C29, #ED0082)`;
+    }
+    if (studio.name === 'Sydney') {
+      colour = `linear-gradient(to right, #16D6D9, #96CC29)`;
+    }
+    let underlineStyles = {
+      backgroundImage: colour
+    }
     return <li className={classnames('studio', studioClassName, { open: open })} style={style}>
-      <StudioClock date={this.state.date} offset={studio.timezone.offset} colour={studio.color} showMoon={showMoon} />
+      <StudioClock date={this.state.date} offset={studio.timezone.offset} colour={colour} showMoon={showMoon} />
       <h4 className="studio-title" onClick={this.onClick}>{studio.name}</h4>
       <div className="studio-details">
         <div className="vcard">
@@ -74,6 +90,7 @@ const StudioContact = React.createClass({
             href={mapurl}
           >
             Google Maps
+            <div className="contact-underline-style" style={underlineStyles}></div>
           </a>
         </div>
       </div>
