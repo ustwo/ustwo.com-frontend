@@ -5,17 +5,13 @@
  */
 
 .footer {
-  background-color: $footerBg;
+  background-color: $nonBlack;
   font-family: PxGrotesk-Regular, Arial, sans-serif;
   color: $offWhite;
 
   .content {
     overflow: auto;
     padding: 40px 0 0 0;
-
-    .general {
-      padding: 0 6.25%;
-    }
 
     .contact-title {
       font-size: 24px;
@@ -62,21 +58,10 @@
     .social {
       list-style: none;
       padding: 0;
-      margin: 45px 0;
-      width: 150px;
 
       .channel {
         display: inline-block;
-        margin-right: 22px;
-        margin-bottom: 22px;
-
-        &:nth-child(3n+3) {
-          margin-right: 0;
-        }
-
-        &:nth-last-child(-n+2) {
-          margin-bottom: 0;
-        }
+        margin: 0 10px;
 
         a {
           display: flex;
@@ -84,8 +69,8 @@
           justify-content: center;
           height: 35px;
           width: 35px;
-          border: 1px solid #fff;
-          background-color: transparent;
+          border-radius: 50%;
+          background: rgba(255,255,255,.05);
           transition: all $hover-duration-quick ease-in-out;
         }
         .logo {
@@ -140,17 +125,21 @@
       border-top: 1px solid $nonBlack;
     }
 
-    .copyright {
+    .small-print {
       clear: both;
-      padding-top: 60px;
-      text-align: center;
+      display: flex;
+      padding: 60px 0;
+      color: #666;
       font-size: 12px;
-      color: #999;
+      line-height: 1.5;
 
-      ul {
-        padding: 30px 0;
-        border-top: 1px solid #333;
-        font-size: 12px;
+      .copyright {
+        flex: 3;
+      }
+
+      .social {
+        flex: 2;
+        display: flex;
       }
 
       li {
@@ -175,12 +164,6 @@
     .content {
       padding: 100px 6% 0 6%;
 
-      .general {
-        float: left;
-        width: 33%;
-        padding: 0;
-      }
-
       .contact-title {
         margin-bottom: 15px;
       }
@@ -190,8 +173,6 @@
       }
 
       .studios {
-        float: left;
-        width: 67%;
         border-top: none;
 
         .studio {
@@ -206,36 +187,22 @@
     .content {
       padding: 0 6%;
 
-      .general {
-        width: 20%;
-        margin-top: 140px;
-      }
       .studios {
-        width: 80%;
 
         .studio {
           width: 25%;
         }
       }
-    }
-  }
+      .small-print {
 
-  @media screen and (min-width: $bp-larger) {
-    .content {
+        .social {
+          margin-left: 80px;
 
-      .copyright {
-        ul {
           li {
             display: inline-block;
-            width: 33%;
           }
         }
       }
     }
-  }
-
-  &.footer-home-new {
-    position: relative;
-    // top: 400%;
   }
 }

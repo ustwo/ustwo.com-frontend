@@ -12,6 +12,7 @@ import HomeMoreMessage from 'app/components/home-more-message';
 import HomeSmorgasbordMessage from 'app/components/home-smorgasbord-message';
 import HomeSmorgasbord from 'app/components/home-smorgasbord';
 import HomeLoader from 'app/components/home-loader';
+import ContactBlock from 'app/components/contact-block';
 
 class PageHome extends Component {
 
@@ -154,6 +155,8 @@ class PageHome extends Component {
           component={<HomeSmorgasbord />}
           className="scroll-wrapper-home-smorgasbord"
         />
+
+        <ContactBlock />
 
       </article>
     );

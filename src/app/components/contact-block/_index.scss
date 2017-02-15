@@ -1,0 +1,16 @@
+/*
+ *  CONTACT BLOCK
+ *
+ */
+
+.contact-block {
+  background-color: $veryDarkGrey;
+  background-image: url('/images/bg-pattern.png');
+  background-repeat: repeat;
+  color: white;
+  @include core-layout();
+
+  .home-text-block {
+    padding: 180px 0;
+  }
+}

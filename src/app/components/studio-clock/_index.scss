@@ -1,77 +1,85 @@
- .clock {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    margin: 20px 0;
+/*
+ *  CLOCK
+ *  Studio times in Footer
+ *
+ *  TODO: Understand why vendor prefixes are used here as we have autoprefixer
+ */
 
-    .hour {
-      width: 0;
-      height: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin: -1px 0 -2px -25%;
-      padding: 1px 0 2px 25%;
-      background: #fff;
-      -webkit-transform-origin: 50% 100%;
-      -ms-transform-origin: 50% 100%;
-      transform-origin: 100% 50%;
-      transform: rotate(90deg);
-      transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
-      -webkit-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
-      -ms-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
-      z-index: 5;
-    }
+.clock {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  margin: 80px 0 40px;
+  background-image: linear-gradient(to bottom, #111111, #161616);
+  border-radius: 50%;
 
-    .minute {
-      width: 0;
-      height: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin: -40% -1px 0;
-      padding: 40% 1px 0;
-      background: #fff;
-      -webkit-transform-origin: 50% 100%;
-      -ms-transform-origin: 50% 100%;
-      transform-origin: 50% 100%;
-      transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
-      -webkit-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
-      -ms-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
-      z-index: 5;
-    }
-
-    .moon {
-      height: 30px;
-      width: 30px;
-      top: 15%;
-      left: 15%;
-      position: absolute;
-      fill: $nonBlack;
-      transform: scale(0.8);
-    }
-
-    &.set-to-twelve {
-      .hour {
-        transform: rotate(90deg) !important;
-      }
-      .minute {
-        transform: rotate(0deg) !important;
-      }
-    }
-
-    &:before {
-      content: '';
-      width: 2px;
-      height: 2px;
-      border-radius: 50%;
-      position: absolute;
-      left: 50%;
-      bottom: 50%;
-      background: #fff;
-      margin-bottom: -1px;
-      margin-left: -1px;
-    }
-
+  .hour {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -1px 0 -2px -25%;
+    padding: 0px 0 4px 25%;
+    background: #fff;
+    -webkit-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    transform-origin: 100% 50%;
+    transform: rotate(90deg);
+    transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
+    -webkit-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
+    -ms-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
+    z-index: 5;
   }
 
+  .minute {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -40% -1px 0;
+    padding: 40% 1px 0;
+    background: #fff;
+    -webkit-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
+    -webkit-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
+    -ms-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
+    z-index: 5;
+  }
+
+  .moon {
+    height: 30px;
+    width: 30px;
+    top: 15%;
+    left: 15%;
+    position: absolute;
+    fill: rgba(255,255,255,.2);
+    transform: scale(0.8);
+  }
+
+  &.set-to-twelve {
+    .hour {
+      transform: rotate(90deg) !important;
+    }
+    .minute {
+      transform: rotate(0deg) !important;
+    }
+  }
+
+  &:before {
+    content: '';
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    background: #fff;
+    margin-bottom: -1px;
+    margin-left: -1px;
+  }
+
+}

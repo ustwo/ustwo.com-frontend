@@ -13,9 +13,6 @@ const Actions = {
   setSearchQueryTo(string) {
     Store.setSearchQueryTo(string);
   },
-  showContacts() {
-    Store.showContacts();
-  },
   showNavOverlay() {
     Store.showNavOverlay();
   },

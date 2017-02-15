@@ -182,10 +182,6 @@ const Store = Object.assign(
       _state.searchQuery = string;
       Store.emit('change', _state);
     },
-    showContacts() {
-      _state.modal = 'contacts';
-      Store.emit('change', _state);
-    },
     showNavOverlay() {
       _state.modal = 'menu';
       Store.emit('change', _state);

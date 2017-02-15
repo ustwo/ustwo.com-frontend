@@ -29,7 +29,6 @@ class HomeTextBlock extends Component {
       <div className="home-text-block" style={styles}>
         <div className="home-section-title">{content.title}</div>
         {textComponent}
-        <div className="home-text-block-rollover"></div>
       </div>
     );
   }
