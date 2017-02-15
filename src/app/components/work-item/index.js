@@ -8,6 +8,7 @@ import Flux from 'app/flux';
 import Rimage from 'app/components/rimage';
 import ImageHover from 'app/components/image-hover';
 import classnames from 'classnames';
+import getAppleTitles from 'app/lib/apple-titles';
 
 import kebabCase from 'lodash/string/kebabCase';
 
@@ -44,7 +45,7 @@ const WorkItem = React.createClass({
             onMouseEnter={this.onMouseEnter}
             onMouseLeave={this.onMouseLeave}
             onClick={Flux.override(link)}
-          >{get(data, 'name')}</a>
+          >{getAppleTitles(get(data, 'name'))}</a>
         </h3>
         <div
           className="excerpt"
