@@ -5,9 +5,9 @@ import Highlight from 'react-highlight'
 
 const CodeHighlighter = React.createClass({
   render() {
-    const {code, language} = this.props;
+    const {code} = this.props;
     return (
-      <Highlight className={language}>
+      <Highlight>
         {code}
       </Highlight>
     )

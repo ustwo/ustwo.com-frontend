@@ -98,7 +98,9 @@ function renderVideo(moduleData, index, options) {
 }
 
 function renderCode(moduleData, index, options) {
-  return <CodeHighlighter code={get(moduleData, 'attr.code.value')} language={get(moduleData, 'attr.language.value')} />
+  return <CodeHighlighter
+    code={get(moduleData, 'attr.body.value')}
+  />;
 }
 
 function renderModules(options) {
