@@ -43,6 +43,7 @@
     "react-addons-test-utils": "15.4.1",
     "react-dom": "15.4.1",
     "react-helmet": "3.3.0",
+    "react-highlight": "0.5.1",
     "react-mixin": "3.0.5",
     "react-responsive": "1.2.1",
     "react-scroll": "1.4.4",
