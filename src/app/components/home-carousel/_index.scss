@@ -80,7 +80,7 @@ $large-screen-right-indent: 7%;
   justify-content: center;
   flex-direction: column;
   cursor: pointer;
-  transition: transform .2s ease-in-out;
+  transition: transform .15s ease-in-out;
   perspective: 1000px;
 
   .home-section-title {
@@ -137,7 +137,6 @@ $large-screen-right-indent: 7%;
 
     &.even {
       .home-carousel-item-image {
-        // transform: rotateY(-$transition-rotation);
         // transition-delay: $home-carousel-duration * 4;
       }
     }
@@ -145,6 +144,7 @@ $large-screen-right-indent: 7%;
     &.odd {
       .home-carousel-item-image {
         // transform: rotateY($transition-rotation);
+        transition-delay: $home-carousel-duration;
       }
     }
   }
@@ -175,26 +175,18 @@ $large-screen-right-indent: 7%;
 
     .home-carousel-item-image {
       visibility: visible;
-      // transition-duration: .1s;
-      // transition-timing-function: cubic-bezier(0,1,.5,1);
       transform: rotateY(0deg) !important;
     }
 
     &.even {
-      // left: 0;
-
       .home-carousel-item-image {
-        // animation: ItemIn $home-carousel-duration * 1.5 1;
         transition-delay: $home-carousel-duration;
       }
     }
 
     &.odd {
-      // left: 0;
-
       .home-carousel-item-image {
-        // animation: ItemOut $home-carousel-duration * 1.5 1;
-        transition-delay: $home-carousel-duration;
+        transition-delay: $home-carousel-duration * 2;
       }
     }
   }
@@ -322,12 +314,15 @@ $large-screen-right-indent: 7%;
       }
 
       .home-carousel-item-image {
-        // animation: ItemOut $home-carousel-duration * 1.5 1;
         transform: rotateY($transition-rotation) scale($transition-scale) rotateX(-$transition-rotationX);
       }
 
       &:hover {
         transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(0deg);
+      }
+
+      &.otherIsHovered {
+        transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(15deg);
       }
     }
 
@@ -344,7 +339,6 @@ $large-screen-right-indent: 7%;
       }
 
       .home-carousel-item-image {
-        // animation: ItemIn $home-carousel-duration * 1.5 1;
         transform: rotateY(-$transition-rotation) scale($transition-scale) rotateX($transition-rotationX);
       }
 

@@ -29,7 +29,8 @@ class HomeCarousel extends Component {
     this.state = {
       currentStartItem: 0,
       tick: itemsRefreshInterval,
-      paused: false
+      paused: false,
+      otherIsHovered: false
     }
   }
 
@@ -43,6 +44,22 @@ class HomeCarousel extends Component {
 
       if (!this.state.paused) {
         this.setState({ tick: this.state.tick - tickerFrequency });
+      }
+    }
+  }
+
+  itemHoverEnter(alignment, isActive) {
+    return () => {
+      if (alignment === 'odd' && isActive) {
+        this.setState({ otherIsHovered: true })
+      }
+    }
+  }
+
+  itemHoverLeave(alignment, isActive) {
+    return () => {
+      if (alignment === 'odd' && isActive) {
+        this.setState({ otherIsHovered: false })
       }
     }
   }
@@ -67,12 +84,15 @@ class HomeCarousel extends Component {
         isPrevious = true;
       }
 
+      let isActive = i === this.state.currentStartItem || i - 1 === this.state.currentStartItem ? true : false;
+      let alignment = i % 2 === 0 ? 'even' : 'odd';
+
       let extraClasses = {
-        active: i === this.state.currentStartItem || i - 1 === this.state.currentStartItem ? true : false,
-        previous: isPrevious
+        active: isActive,
+        previous: isPrevious,
+        otherIsHovered: this.state.otherIsHovered && isActive && alignment === 'even' ? true : false
       }
 
-      const alignment = i % 2 === 0 ? 'even' : 'odd';
       extraClasses[alignment] = true;
 
       const classes = classnames('home-carousel-item', extraClasses);
@@ -105,7 +125,7 @@ class HomeCarousel extends Component {
       }
 
       return (
-        <div className={classes} key={`carousel-item-${i}`}>
+        <div className={classes} key={`carousel-item-${i}`} onMouseEnter={this.itemHoverEnter(alignment, isActive)} onMouseLeave={this.itemHoverLeave(alignment, isActive)}>
           <div className="home-carousel-item-text" style={textStyles}>
             <div className="home-section-title">{item.category}</div>
             <h2>{item.title}</h2>
