@@ -57,6 +57,12 @@ const Actions = {
   },
   closePopup() {
     Store.closePopup();
+  },
+  showRollover(name) {
+    Store.showRollover(name);
+  },
+  menuHover(name) {
+    Store.menuHover(name);
   }
 };
 

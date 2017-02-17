@@ -10,6 +10,12 @@ function showPopup(name) {
   }
 }
 
+function showRollover(name) {
+  return () => {
+    Flux.showRollover(name);
+  }
+}
+
 function HomeTextBlock({ children, scrollProgress, content }) {
   /* Parallax */
   let styles = {
@@ -18,7 +24,8 @@ function HomeTextBlock({ children, scrollProgress, content }) {
 
   /* Pass down showPopup function to child component */
   let textComponent = React.cloneElement(content.text, {
-    showPopup: showPopup
+    showPopup: showPopup,
+    showRollover: showRollover
   });
 
   return (

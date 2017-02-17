@@ -6,7 +6,7 @@ import ScrollWrapper from 'app/components/scroll-wrapper';
 import TimerUI from 'app/components/timer-ui';
 import Video from 'app/components/video';
 
-const itemsRefreshInterval = 8000;
+const itemsRefreshInterval = 5000;
 const tickerFrequency = 50;
 const transitionDuration = 300;
 const distance = 60;

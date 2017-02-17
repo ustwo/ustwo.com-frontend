@@ -21,6 +21,8 @@ const _state = Object.assign({
   searchQuery: Nulls.searchQuery,
   modal: Nulls.modal,
   popup: Nulls.popup,
+  showRollover: Defaults.showRollover,
+  menuHover: Defaults.menuHover,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
   postsPagination: Defaults.postsPagination,
@@ -292,6 +294,14 @@ const Store = Object.assign(
     },
     closePopup() {
       _state.popup = Nulls.popup;
+      Store.emit('change', _state);
+    },
+    showRollover(name) {
+      _state.showRollover = `rollover-${name}`;
+      Store.emit('change', _state);
+    },
+    menuHover(name) {
+      _state.menuHover = `menu-hover-${name}`;
       Store.emit('change', _state);
     }
   }

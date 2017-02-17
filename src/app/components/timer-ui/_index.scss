@@ -25,13 +25,13 @@
 
     &.left {
       .bg {
-        border-left: ($size * .5) solid #ccc;
+        border-left: ($size * .5) solid #e5e5e5;
       }
     }
 
     &.right {
       .bg {
-        border-right: ($size * .5) solid #ccc;
+        border-right: ($size * .5) solid #e5e5e5;
       }
     }
   }
@@ -108,7 +108,7 @@
   &:after {
     content: "";
     position: absolute;
-    background: #fff;
+    background: $offWhite; /* This needs to be the same colour as the background colour */
   }
 }
 

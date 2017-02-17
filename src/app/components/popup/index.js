@@ -47,7 +47,7 @@ class Popup extends Component {
     }
 
     return (
-      <div className={classes}>
+      <div className={classes} onClick={this.onClick}>
         <CloseButton
           onClose={this.onClick}
           autoAnim={10}

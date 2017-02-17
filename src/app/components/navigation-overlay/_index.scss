@@ -28,22 +28,27 @@
   }
 }
 
-.navigation-overlay.home {
+.navigation-overlay.home,
+.menu-hover-home + .app__modal .navigation-overlay {
   @include page-background-colour(home);
 }
 
-.navigation-overlay.what-we-do {
+.navigation-overlay.what-we-do,
+.menu-hover-what-we-do + .app__modal .navigation-overlay {
   @include page-background-colour(work);
 }
 
-.navigation-overlay.events {
+.navigation-overlay.events,
+.menu-hover-events + .app__modal .navigation-overlay {
   @include page-background-colour(events);
 }
 
-.navigation-overlay.blog {
+.navigation-overlay.blog,
+.menu-hover-blog + .app__modal .navigation-overlay {
   @include page-background-colour(blog);
 }
 
-.navigation-overlay.join-us {
+.navigation-overlay.join-us,
+.menu-hover-join-us + .app__modal .navigation-overlay {
   @include page-background-colour(join);
 }
