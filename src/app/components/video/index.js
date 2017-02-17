@@ -18,6 +18,16 @@ const Video = React.createClass({
     }
   },
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.play != undefined) {
+      if (nextProps.play) {
+        this.refs.video.play();
+      } else {
+        this.refs.video.pause();
+      }
+    }
+  },
+
   render() {
     const { isVideoBackground } = this.props;
 
@@ -47,7 +57,7 @@ const Video = React.createClass({
         width="1280"
         height="720"
         frameborder="0"
-        title="Monument Valley - Behind the Scenes"
+        title="Video"
         webkitallowfullscreen
         mozallowfullscreen
         allowfullscreen>
@@ -105,11 +115,8 @@ const Video = React.createClass({
     let video;
     if(src && src.length) {
       if (play === undefined) {
-        video = <video ref="video" src={src} poster={posterURL} autoPlay loop muted />;
+        video = <video src={src} poster={posterURL} autoPlay loop muted />;
       } else {
-        if (this.props.play) {
-          this.refs.video.play();
-        }
         video = <video ref="video" src={src} poster={posterURL} loop muted />;
       }
     } else {

@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import Flux from 'app/flux';
 
 import ScrollWrapper from 'app/components/scroll-wrapper';
-import Video from 'app/components/video';
 import HomeIntro from 'app/components/home-intro';
 import HomeTextBlock from 'app/components/home-text-block';
 import HomeCarousel from 'app/components/home-carousel';
@@ -46,7 +45,7 @@ class PageHome extends Component {
     */
     setTimeout(() => {
       this.setState({ contentLoaded: true });
-    }.bind(this), 4000);
+    }.bind(this), 5000);
 
     /* Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync */
     window.addEventListener('resize', this.getViewportDimensions());
@@ -207,28 +206,29 @@ const dataProducts = [{
 
 const dataVentures = [{
   title: "ustwo Games",
-  category: "ustwo Venture",
+  category: "Venture",
   imageURL: "/images/showcase/ustwo-games.jpg",
   videoURL: "/images/home/monument-valley.mp4"
 },{
   title: "Dice",
-  category: "ustwo Venture",
+  category: "Venture",
   imageURL: "/images/showcase/dice.jpg"
 },{
   title: "Moodnotes",
-  category: "ustwo Venture",
+  category: "Venture",
   imageURL: "/images/showcase/moodnotes.jpg",
   videoURL: "/images/home/moodnotes.mp4"
 },{
   title: "Wayfindr",
-  category: "ustwo Venture",
+  category: "Venture",
   imageURL: "/images/showcase/wayfindr.jpg"
 },{
   title: "Pause",
-  category: "ustwo Venture",
-  imageURL: "/images/showcase/pause.jpg"
+  category: "Venture",
+  imageURL: "/images/showcase/pause.jpg",
+  videoURL: "/images/home/pause.mp4"
 },{
   title: "Watch This",
-  category: "ustwo Venture",
+  category: "Venture",
   imageURL: "/images/showcase/watch-this.jpg"
 }];

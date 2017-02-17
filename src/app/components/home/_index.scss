@@ -101,27 +101,6 @@
   }
 }
 
-.page-home {
-  &.venturesActive {
-    .home-ventures-wrapper-bg {
-      opacity: 1;
-      visibility: visible;
-    }
-    .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
-      opacity: 1;
-    }
-    .scroll-wrapper-home-carousel-products .home-carousel-shuffle {
-      opacity: 0;
-    }
-    [class*="home-gradient-text"] {
-      cursor: url('/images/icon-question-mark-light.svg'), auto;
-    }
-  }
-  .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
-    opacity: 0;
-  }
-}
-
 .home-section-title {
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -139,7 +118,6 @@
   color: transparent;
   -webkit-background-clip: text; /* Seems we can't rely on autoprefixer for this */
   background-clip: text;
-  cursor: url('/images/icon-question-mark-dark.svg'), auto;
 }
 
 .home-gradient-text-cold {
@@ -156,4 +134,30 @@
 
 .home-gradient-text-hot-reverse {
   background-image: linear-gradient(to right, $piglet, $honey);
+}
+
+.question-cursor {
+  cursor: url('/images/icon-question-mark-dark.svg'), auto;
+}
+
+
+.page-home {
+  &.venturesActive {
+    .home-ventures-wrapper-bg {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
+      opacity: 1;
+    }
+    .scroll-wrapper-home-carousel-products .home-carousel-shuffle {
+      opacity: 0;
+    }
+    .question-cursor {
+      cursor: url('/images/icon-question-mark-light.svg'), auto;
+    }
+  }
+  .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
+    opacity: 0;
+  }
 }

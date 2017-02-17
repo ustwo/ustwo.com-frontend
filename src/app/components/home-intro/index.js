@@ -14,12 +14,12 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
     Create stack of logos in a sort of 3D space that move dependant on the mouse position.
   */
   const logoLayers = colours.map((fill, i) => {
-    let modifier = 3 * ((colours.length - i) * (colours.length - i) * 0.9);
-    let modifierRotate = 2 * ((colours.length - (i-1)) * (colours.length - (i-1)));
+    let modifier = 5 * ((colours.length - i) * (colours.length - i));
+    let modifierRotate = 2 * ((colours.length - (i - 1)) * (colours.length - (i - 1)));
 
     /* Reverse signs for mousePosition */
-    let coordinateX = mousePosition.coordinateX > 0 ? Math.abs(mousePosition.coordinateX) * -1 : Math.abs(mousePosition.coordinateX);
-    let coordinateY = mousePosition.coordinateY > 0 ? Math.abs(mousePosition.coordinateY) * -1 : Math.abs(mousePosition.coordinateY);
+    let coordinateX = mousePosition.coordinateX * -1;
+    let coordinateY = mousePosition.coordinateY * -1;
 
     /* Hide all layers except the top one when scrolling to reduce perfomance hit (especially if layers are CSS blurred) */
     let transform, display;
@@ -45,13 +45,17 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
   });
 
   /* TODO: Pause the video when scrolled away, i.e. scrollProgress === 1 */
+  let playVideo = loaded;
+  if (scrollProgress === 1) {
+    playVideo = false;
+  }
 
   return (
     <div className="home-intro" onClick={() => Scroll.animateScroll.scrollTo(window.innerHeight)}>
       <Video
         src="/images/temp/home-intro-video.mp4"
         isVideoBackground={true}
-        play={loaded}
+        play={playVideo}
         imageCSS="/images/home/header-fallback-image.jpg"
       />
       <div className="home-intro-logo">

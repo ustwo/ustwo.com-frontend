@@ -6,10 +6,13 @@
 
 .scroll-wrapper-home-smorgasbord {
   height: auto;
+  background-image: url('/images/icon-juicy-dark.svg');
+  background-position: 50% calc(100% - 80px);
+  background-repeat: no-repeat;
 }
 
 .home-smorgasbord {
-  padding: 0 0 30vh 0;
+  padding: 0 0 210px 0;
 
   h1 {
     margin-bottom: 30vh;

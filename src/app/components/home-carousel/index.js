@@ -10,14 +10,15 @@ const itemsRefreshInterval = 8000;
 const tickerFrequency = 50;
 const transitionDuration = 300;
 const distance = 60;
+const numberOfItemsInView = 2;
 
 function goToNextItems(component) {
   component.setState({ tick: itemsRefreshInterval });
 
-  if (component.state.currentStartItem === component.props.carouselItems.length - 2) {
+  if (component.state.currentStartItem === component.props.carouselItems.length - numberOfItemsInView) {
     component.setState({ currentStartItem: 0 });
   } else {
-    component.setState({ currentStartItem: component.state.currentStartItem + 2 });
+    component.setState({ currentStartItem: component.state.currentStartItem + numberOfItemsInView });
   }
 }
 
@@ -79,8 +80,8 @@ class HomeCarousel extends Component {
 
       /* Determine all the classes to be added */
       let isPrevious = false;
-      if (this.state.currentStartItem === 0 && (i === this.props.carouselItems.length - 2 || i === this.props.carouselItems.length - 1)
-          || i === this.state.currentStartItem - 2 || i === this.state.currentStartItem - 1) {
+      if (this.state.currentStartItem === 0 && (i === this.props.carouselItems.length - numberOfItemsInView || i === this.props.carouselItems.length - 1)
+          || i === this.state.currentStartItem - numberOfItemsInView || i === this.state.currentStartItem - 1) {
         isPrevious = true;
       }
 

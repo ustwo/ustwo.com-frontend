@@ -3,8 +3,8 @@ import classnames from 'classnames';
 import SVGSequenceAnimation from 'app/lib/svg-sequence-animation';
 import blendColours from 'app/lib/blend-colours';
 
-const tickerFrequency = 25;
-const timerTotal = 300;
+const tickerFrequency = 50;
+const timerTotal = 400;
 const leftColours = ['16D6D9', '14C04D', '96CC29', 'FFBF02', 'FF5519', 'E60C29', 'ED0082', '6114CC', '143FCC', '009CF3'];
 const rightColours = ['96CC29', 'FFBF02', 'FF5519', 'E60C29', 'ED0082', '6114CC', '143FCC', '009CF3', '16D6D9', '14C04D'];
 

@@ -50,7 +50,7 @@ class Popup extends Component {
       <div className={classes}>
         <CloseButton
           onClose={this.onClick}
-          autoAnim={500}
+          autoAnim={10}
           style={{ fill: invert ? 'white' : 'black' }}
         />
         <img src={`/images/temp/${image}`} />

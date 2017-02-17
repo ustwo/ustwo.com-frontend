@@ -16,9 +16,12 @@
 
   h2 .plane {
     fill: $honey;
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
+    transform: translateY(5px);
+    margin-left: 5px;
   }
+
 
   @media screen and (min-width: $bp-larger) {
     h2 {
@@ -26,5 +29,26 @@
       line-height: 60px;
       width: 90%;
     }
+    h2 .plane {
+      fill: $honey;
+      transform: translateY(2px);
+      margin-left: 10px;
+    }
+  }
+}
+
+.contact-block-email {
+  position: relative;
+  display: inline-block;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    width: 100%;
+    background-image: linear-gradient(to right, $piglet, $honey);
   }
 }

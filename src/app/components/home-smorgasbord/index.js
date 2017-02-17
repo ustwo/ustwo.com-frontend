@@ -15,10 +15,10 @@ class HomeSmorgasbord extends Component {
   toggleVideo() {
     return () => {
       if (this.state.videoPlaying) {
-        this.refs.video.pause();
+        this.refs.smorgasbordVideo.pause();
         this.setState({ videoPlaying: false })
       } else {
-        this.refs.video.play();
+        this.refs.smorgasbordVideo.play();
         this.setState({ videoPlaying: true })
       }
     }
@@ -32,7 +32,7 @@ class HomeSmorgasbord extends Component {
         <div className="smorgasbord-block smorgasbord-video">
           <div className={videoControlClasses} onClick={this.toggleVideo()}></div>
           <video
-            ref="video"
+            ref="smorgasbordVideo"
             src="https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=164"
             poster="/images/temp/smorgs-video.jpg"
           ></video>

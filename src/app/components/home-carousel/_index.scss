@@ -49,12 +49,12 @@ $large-screen-right-indent: 7%;
   display: flex;
   width: $home-carousel-width;
   height: $home-carousel-height;
+  box-shadow: 10px 10px 40px rgba(0,0,0,.3);
 
   img,
   video {
     width: 100%;
     height: auto;
-    box-shadow: 10px 10px 40px rgba(0,0,0,.3);
   }
 }
 
@@ -105,9 +105,7 @@ $large-screen-right-indent: 7%;
       left: -40px;
     }
     .home-carousel-item-image {
-      transform: rotateY(-$transition-rotation) scale($transition-scale) rotateX($transition-rotationX);
       align-items: flex-end;
-      // transition-delay: 0s;
     }
   }
 
@@ -121,9 +119,7 @@ $large-screen-right-indent: 7%;
     }
 
     .home-carousel-item-image {
-      transform: rotateY($transition-rotation) scale($transition-scale) rotateX(-$transition-rotationX);
       align-items: flex-start;
-      // transition-delay: $home-carousel-duration;
     }
   }
 
@@ -137,13 +133,13 @@ $large-screen-right-indent: 7%;
 
     &.even {
       .home-carousel-item-image {
-        // transition-delay: $home-carousel-duration * 4;
+
       }
     }
 
     &.odd {
+      .home-carousel-item-text,
       .home-carousel-item-image {
-        // transform: rotateY($transition-rotation);
         transition-delay: $home-carousel-duration;
       }
     }
@@ -170,7 +166,6 @@ $large-screen-right-indent: 7%;
 
     .home-carousel-item-text {
       visibility: visible;
-      transition-delay: $home-carousel-duration;
     }
 
     .home-carousel-item-image {
@@ -179,12 +174,14 @@ $large-screen-right-indent: 7%;
     }
 
     &.even {
+      .home-carousel-item-text,
       .home-carousel-item-image {
         transition-delay: $home-carousel-duration;
       }
     }
 
     &.odd {
+      .home-carousel-item-text,
       .home-carousel-item-image {
         transition-delay: $home-carousel-duration * 2;
       }
@@ -287,7 +284,6 @@ $large-screen-right-indent: 7%;
     width: $home-carousel-width;
     height: $home-carousel-height;
   }
-
   .home-carousel-shuffle {
     bottom: 30px;
   }
@@ -391,6 +387,10 @@ $large-screen-right-indent: 7%;
 
       &:hover {
         transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(0deg);
+      }
+
+      &.otherIsHovered {
+        transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(15deg);
       }
     }
 

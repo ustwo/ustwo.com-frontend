@@ -7,7 +7,7 @@ class ContactBlock extends Component {
       <div className="contact-block">
         <div className="home-text-block">
           <div className="home-section-title">Make something awesome</div>
-          <h2>Interested in what ustwo can do for you? Get in touch <span className="home-gradient-text-hot-reverse">work@ustwo.com </span><SVG className="plane" spritemapID="plane" /></h2>
+          <h2>Interested in what ustwo can do for you? Get in touch <span className="contact-block-email home-gradient-text-hot-reverse">work@ustwo.com</span><SVG className="plane" spritemapID="plane" /></h2>
         </div>
       </div>
     )
