@@ -19,7 +19,7 @@ const Video = React.createClass({
   },
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.play != undefined) {
+    if (nextProps.play != undefined && !this.state.mobile) {
       if (nextProps.play) {
         this.refs.video.play();
       } else {

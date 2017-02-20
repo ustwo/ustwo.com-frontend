@@ -31,11 +31,11 @@ class HomeSmorgasbord extends Component {
       <div className="home-smorgasbord">
         <div className="smorgasbord-block smorgasbord-video">
           <div className={videoControlClasses} onClick={this.toggleVideo()}></div>
-          <video
+          {/*<video
             ref="smorgasbordVideo"
             src="https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=164"
             poster="/images/temp/smorgs-video.jpg"
-          ></video>
+          ></video>*/}
         </div>
         <div className="smorgasbord-block-wrapper">
           <div className="smorgasbord-block smorgasbord-event">
