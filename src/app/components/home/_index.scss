@@ -8,7 +8,7 @@
   background-color: $offWhite;
 
   h1 {
-    font-size: 40px;
+    font-size: 30px;
     line-height: 1;
   }
 
@@ -17,9 +17,9 @@
     line-height: 1;
   }
 
-  @media screen and (min-width: $bp-small) {
+  @media screen and (min-width: $bp-smaller) {
     h1 {
-      font-size: 46px;
+      font-size: 40px;
     }
     h2 {
       font-size: 26px;
@@ -104,8 +104,12 @@
 .home-section-title {
   text-transform: uppercase;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 1px;
+
+  @media screen and (min-width: $bp-medium) {
+    font-size: 14px;
+  }
 }
 
 .home-text-block {

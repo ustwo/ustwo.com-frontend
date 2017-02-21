@@ -46,12 +46,12 @@
 }
 
 .timer-ui {
-  $size-small: 56px;
-  $border-small: 3px;
+  $size: 50px;
+  $border: 3px;
   $size-large: 64px;
   $border-large: 4px;
 
-  @include timer-ui-size($size-small, $border-small);
+  @include timer-ui-size($size, $border);
 
   @media screen and (min-width: $bp-medium) {
     @include timer-ui-size($size-large, $border-large);

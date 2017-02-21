@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import Scroll, { Link, Element } from 'react-scroll'; /* Animate and scroll to location in document */
 import Flux from 'app/flux';
 
 import ScrollWrapper from 'app/components/scroll-wrapper';
@@ -99,20 +100,24 @@ class PageHome extends Component {
 
         <HomeLoader loaded={this.state.contentLoaded} />
 
-        <ScrollWrapper
-          component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.contentLoaded} />}
-          documentScrollPosition={this.props.documentScrollPosition}
-          viewportDimensions={this.state.viewportDimensions}
-          requireMousePosition={true}
-          className="scroll-wrapper-home-intro"
-        />
+        <Link to="homeTextBlock" smooth={true} duration={640}>
+          <ScrollWrapper
+            component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.contentLoaded} />}
+            documentScrollPosition={this.props.documentScrollPosition}
+            viewportDimensions={this.state.viewportDimensions}
+            requireMousePosition={true}
+            className="scroll-wrapper-home-intro"
+          />
+        </Link>
 
-        <ScrollWrapper
-          component={<HomeTextBlock content={textBlockIntro} />}
-          documentScrollPosition={this.props.documentScrollPosition}
-          viewportDimensions={this.state.viewportDimensions}
-          className="scroll-wrapper-home-welcome-message"
-        />
+        <Element name="homeTextBlock">
+          <ScrollWrapper
+            component={<HomeTextBlock content={textBlockIntro} />}
+            documentScrollPosition={this.props.documentScrollPosition}
+            viewportDimensions={this.state.viewportDimensions}
+            className="scroll-wrapper-home-welcome-message"
+          />
+        </Element>
 
         <ScrollWrapper
           component={<HomeCarousel carouselItems={dataProducts} />}
@@ -173,9 +178,15 @@ const dataProducts = [{
   category: "Client Work",
   imageURL: "/images/showcase/ford-gopark.jpg"
 },{
-  title: "Sky Kids",
+  title: "Android wear",
   category: "Client Work",
-  imageURL: "/images/showcase/sky-kids.jpg"
+  imageURL: "/images/showcase/android-wear.jpg",
+  videoURL: "/images/home/android-wear.mp4"
+},{
+  title: "Foursquare",
+  category: "Client Work",
+  imageURL: "/images/showcase/foursquare.jpg",
+  videoURL: "/images/home/foursquare.mp4"
 },{
   title: "Adidas Go",
   category: "Client Work",
@@ -185,23 +196,17 @@ const dataProducts = [{
   category: "Client Work",
   imageURL: "/images/showcase/google-cardboard.jpg"
 },{
-  title: "Foursquare",
-  category: "Client Work",
-  imageURL: "/images/showcase/foursquare.jpg",
-  videoURL: "/images/home/foursquare.mp4"
-},{
   title: "Harvey Nichols",
   category: "Client Work",
   imageURL: "/images/showcase/harvey-nichols.jpg"
 },{
+  title: "Sky Kids",
+  category: "Client Work",
+  imageURL: "/images/showcase/sky-kids.jpg"
+},{
   title: "NBC Sprout",
   category: "Client Work",
   imageURL: "/images/showcase/nbc-sprout.jpg"
-},{
-  title: "Android wear",
-  category: "Client Work",
-  imageURL: "/images/showcase/android-wear.jpg",
-  videoURL: "/images/home/android-wear.mp4"
 }];
 
 const dataVentures = [{

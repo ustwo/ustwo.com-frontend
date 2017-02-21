@@ -5,8 +5,8 @@
  */
 
  /* Initial variables (will change inside media queries) */
-$home-carousel-width: 285px;
-$home-carousel-height: 200px;
+$home-carousel-width: 257px;
+$home-carousel-height: 180px;
 $home-carousel-margin: 10px;
 $home-carousel-padding: 76px;
 $home-carousel-duration: .12s;
@@ -14,6 +14,12 @@ $transition-rotation: 20deg;
 $transition-scale: 0.87;
 $transition-rotationX: 16deg;
 $large-screen-right-indent: 7%;
+$home-carousel-small-screen-offset: 95px;
+
+.scroll-wrapper-home-carousel-products,
+.scroll-wrapper-home-carousel-ventures {
+  padding: 0;
+}
 
 .home-carousel {
   position: relative;
@@ -45,6 +51,14 @@ $large-screen-right-indent: 7%;
   height: 100%;
 }
 
+.home-carousel-visual-content-image {
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
 .home-carousel-item-image {
   display: flex;
   width: $home-carousel-width;
@@ -53,8 +67,8 @@ $large-screen-right-indent: 7%;
 
   img,
   video {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
   }
 }
 
@@ -66,6 +80,7 @@ $large-screen-right-indent: 7%;
   justify-content: center;
   align-items: center;
   perspective: 2000px;
+  overflow: hidden;
 
   @media screen and (min-width: $bp-small) {
     flex-direction: column;
@@ -84,7 +99,7 @@ $large-screen-right-indent: 7%;
   perspective: 1000px;
 
   .home-section-title {
-    margin-bottom: 5px;
+    margin-bottom: 7px;
   }
 
   .home-carousel-item-text {
@@ -98,28 +113,32 @@ $large-screen-right-indent: 7%;
   }
 
   &.even {
-    transform: translate(40px, -($home-carousel-height + $home-carousel-margin));
+    transform: translate($home-carousel-small-screen-offset, -($home-carousel-height + $home-carousel-margin));
     z-index: 2;
 
     .home-carousel-item-text {
-      left: -40px;
+      left: -($home-carousel-small-screen-offset - 20px);
     }
     .home-carousel-item-image {
       align-items: flex-end;
+      transform: rotateY(-$transition-rotation) scale($transition-scale) rotateX(-$transition-rotationX); /* flip back starting point */
     }
   }
 
   &.odd {
-    transform: translate(-40px, $home-carousel-margin);
+    transform: translate(-95px, $home-carousel-margin);
     z-index: 1;
-    left: 0;
+    right: 0;
 
     .home-carousel-item-text {
-      right: -40px;
+      left: 100%;
+      margin-left: -55px;
     }
 
     .home-carousel-item-image {
       align-items: flex-start;
+      align-self: flex-end;
+      transform: rotateY($transition-rotation) scale($transition-scale) rotateX($transition-rotationX); /* flip back starting point */
     }
   }
 
@@ -130,12 +149,6 @@ $large-screen-right-indent: 7%;
 
   &.previous {
     z-index: 5;
-
-    &.even {
-      .home-carousel-item-image {
-
-      }
-    }
 
     &.odd {
       .home-carousel-item-text,
@@ -192,8 +205,8 @@ $large-screen-right-indent: 7%;
 .home-carousel-shuffle {
   cursor: pointer;
   position: absolute;
-  bottom: 0;
-  right: 5%;
+  bottom: 10px;
+  right: 20px;
   z-index: 100;
   transition: opacity .2s ease-in-out;
 }
@@ -207,50 +220,29 @@ $large-screen-right-indent: 7%;
 @media screen and (min-width: $bp-smaller) {
   $home-carousel-width: 285px;
   $home-carousel-height: 200px;
-  $home-carousel-margin: 10px;
+  $home-carousel-margin: 15px;
   $home-carousel-padding: 69px;
 
   .home-carousel-item {
 
     &.even {
-      padding-left: $home-carousel-padding;
-      transform: translate(20px, -($home-carousel-height + $home-carousel-margin));
+      transform: translate(-($home-carousel-width * .5) + 50px, -($home-carousel-height + $home-carousel-margin));
+      left: 50%;
 
       .home-carousel-item-text {
         left: 0;
+        margin-left: -70px;
       }
     }
 
     &.odd {
-      padding-right: $home-carousel-padding;
-      transform: translate(-20px, $home-carousel-margin);
+      transform: translate(($home-carousel-width * .5) - 50px, $home-carousel-margin);
+      right: 50%;
 
       .home-carousel-item-text {
         right: 0;
+        margin-left: -95px;
       }
-    }
-  }
-  .home-carousel-item-image {
-    width: $home-carousel-width;
-    height: $home-carousel-height;
-  }
-}
-
-@media screen and (min-width: $bp-small) {
-  $home-carousel-width: 357px;
-  $home-carousel-height: 242px;
-  $home-carousel-margin: 10px;
-  $home-carousel-controls-size: 56px;
-
-  .home-carousel-item {
-    &.even {
-      transform: translate(0, -($home-carousel-height + $home-carousel-margin));
-      align-self: flex-end;
-    }
-
-    &.odd {
-      transform: translate(0, $home-carousel-margin);
-      align-self: flex-start;
     }
   }
   .home-carousel-item-image {
@@ -260,23 +252,25 @@ $large-screen-right-indent: 7%;
 }
 
 @media screen and (min-width: $bp-medium) {
-  $home-carousel-width: 442px;
-  $home-carousel-height: 310px;
-  $home-carousel-margin: 10px;
+  $home-carousel-width: 485px;
+  $home-carousel-height: 340px;
+  $home-carousel-margin: 20px;
   $home-carousel-padding: 115px;
 
   .home-carousel-item {
     &.even {
       right: 5%;
       left: auto;
-      padding-left: $home-carousel-padding;
       transform: translate(0, -($home-carousel-height + $home-carousel-margin));
+
+      .home-carousel-item-text {
+        margin-left: -$home-carousel-padding;
+      }
     }
 
     &.odd {
       left: 5%;
       right: auto;
-      padding-right: $home-carousel-padding;
       transform: translate(0, $home-carousel-margin);
     }
   }
@@ -300,13 +294,14 @@ $large-screen-right-indent: 7%;
 
   .home-carousel-item {
     &.even {
-      left: 0;
+      left: 60px;
       right: auto;
       padding-left: $home-carousel-padding;
       transform: translate(0, -($home-carousel-height + $home-carousel-margin));
 
       .home-carousel-item-text {
         left: 0;
+        margin: 0;
       }
 
       .home-carousel-item-image {
@@ -330,12 +325,12 @@ $large-screen-right-indent: 7%;
       align-items: flex-end;
       transform: translate(0, $home-carousel-margin) rotateY(-15deg);
 
-      .home-carousel-item-text {
-        left: $home-carousel-width - $home-carousel-grid;
-      }
-
       .home-carousel-item-image {
         transform: rotateY(-$transition-rotation) scale($transition-scale) rotateX($transition-rotationX);
+      }
+
+      .home-carousel-item-text {
+        left: $home-carousel-width - $home-carousel-grid;
       }
 
       &:hover {

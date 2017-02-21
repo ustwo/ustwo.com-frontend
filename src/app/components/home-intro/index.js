@@ -1,6 +1,6 @@
 import React from 'react';
-import Scroll from 'react-scroll'; /* Animate and scroll to location in document */
 import transitionOnScroll from 'app/lib/transition-on-scroll';
+import env from 'app/adaptors/server/env';
 
 import SVG from 'app/components/svg';
 import Video from 'app/components/video';
@@ -23,11 +23,22 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
 
     /* Hide all layers except the top one when scrolling to reduce perfomance hit (especially if layers are CSS blurred) */
     let transform, display;
-    if (scrolling && i != colours.length - 1) {
-      display = `none`;
+    // if (scrolling && i != colours.length - 1) {
+    //   display = `none`;
+    // }
+
+    let translateZ;
+    if (i != colours.length - 1) {
+      let value = 10 + Math.abs(coordinateX * 20);
+      translateZ = `-${value}px`;
+    } else {
+      translateZ = 0;
     }
-    if (!scrolling) {
-      transform = `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, 0) rotateY(${coordinateX * modifierRotate}deg) rotateX(${coordinateY * modifierRotate}deg)`;
+
+    if (!env.Modernizr.touchevents) {
+      transform = `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, ${translateZ}) rotateY(${coordinateX * modifierRotate}deg) rotateX(${coordinateY * modifierRotate}deg)`;
+    } else {
+      transform = `translate3d(${modifier}px, ${modifier}px, 0) rotateY(${modifierRotate}deg) rotateX(${modifierRotate}deg)`;
     }
 
     let styles = { transform, fill, display }
@@ -44,14 +55,13 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
     );
   });
 
-  /* TODO: Pause the video when scrolled away, i.e. scrollProgress === 1 */
   let playVideo = loaded;
   if (scrollProgress === 1) {
     playVideo = false;
   }
 
   return (
-    <div className="home-intro" onClick={() => Scroll.animateScroll.scrollTo(window.innerHeight)}>
+    <div className="home-intro">
       <Video
         src="https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165"
         isVideoBackground={true}
