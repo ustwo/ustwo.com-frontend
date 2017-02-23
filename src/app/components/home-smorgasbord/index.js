@@ -40,7 +40,7 @@ class HomeSmorgasbord extends Component {
         </div>
         <div className="smorgasbord-block-wrapper">
           <div className="smorgasbord-block smorgasbord-event">
-            <h3>ustwo Events</h3>
+            <h5>ustwo Events</h5>
             <div className="smorgasbord-post">
               <div className="smorgasbord-subtitle">LONDON</div>
               <div className="smorgasbord-title">Yo Illo Talks: Going viral</div>
@@ -48,7 +48,7 @@ class HomeSmorgasbord extends Component {
             <button>All Events</button>
           </div>
           <div className="smorgasbord-block smorgasbord-blog">
-            <h3>Blog</h3>
+            <h5>Blog</h5>
             <div className="smorgasbord-post">
               <div className="smorgasbord-subtitle">Culture</div>
               <div className="smorgasbord-title">How to break up with your team</div>

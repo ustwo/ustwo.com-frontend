@@ -74,23 +74,23 @@ $home-carousel-small-screen-offset: 95px;
 }
 
 .view-carousel-related-page {
-  display: inline-block;
-  border: 1px solid $nonBlack;
-  padding: 0 37px 0 12px;
-  margin: 0 auto;
-  width: 200px;
-  text-transform: uppercase;
-  height: 40px;
-  line-height: 40px;
-  font-size: 14px;
-  background-image: url('/images/icon-right-dark.svg');
-  background-repeat: no-repeat;
-  background-position: calc(100% - 12px) 50%;
-  background-size: 16px auto;
+  display: flex;
+  align-items: center;
   transition: opacity .2s ease-in-out;
 
-  @media screen and (min-width: $bp-medium) {
-    width: auto;
+  button {
+    display: inline-block;
+    border: 1px solid $nonBlack;
+    padding: 0 37px 0 12px;
+    margin: 0 auto;
+    text-transform: uppercase;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    background-image: url('/images/icon-right-dark.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) 50%;
+    background-size: 16px auto;
   }
 }
 
@@ -102,6 +102,7 @@ $home-carousel-small-screen-offset: 95px;
   justify-content: center;
   align-items: center;
   perspective: 2000px;
+  -webkit-font-smoothing: antialiased;
   overflow: hidden;
 
   @media screen and (min-width: $bp-small) {
@@ -118,7 +119,7 @@ $home-carousel-small-screen-offset: 95px;
   flex-direction: column;
   cursor: pointer;
   transition: transform .15s ease-in-out;
-  perspective: 1000px;
+  perspective: 2000px;
 
   .home-section-title {
     margin-bottom: 7px;

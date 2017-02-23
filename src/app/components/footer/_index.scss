@@ -132,14 +132,20 @@
       color: #666;
       font-size: 12px;
       line-height: 1.5;
+      flex-direction: column;
 
       .copyright {
         flex: 3;
+        padding: 0 14px;
+        order: 2;
       }
 
       .social {
         flex: 2;
         display: flex;
+        margin-bottom: 15px;
+        justify-content: center;
+        order: 1;
       }
 
       li {
@@ -147,6 +153,20 @@
 
         a {
           text-decoration: underline;
+        }
+      }
+
+      @media screen and (min-width: $bp-medium) {
+        flex-direction: row;
+
+        .copyright {
+          padding: 0;
+          order: 1;
+        }
+
+        .social {
+          margin-bottom: 0;
+          order: 2;
         }
       }
     }

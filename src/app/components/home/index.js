@@ -102,7 +102,7 @@ class PageHome extends Component {
     }
 
     const textBlockSmorgasbord = {
-      title: `More yes, more can , more wow`,
+      title: `More yes, more can, more wow`,
       text: <HomeSmorgasbordMessage />
     }
 

@@ -3,12 +3,12 @@ import React from 'react';
 function HomeSmorgasbordMessage({ showPopup, showRollover }) {
   return (
     <h1>
-      <span>We work </span><span
+      <span
         className="home-gradient-text-cold question-cursor"
         onClick={showPopup('yes')}
         onMouseEnter={showRollover('yes')}
         onMouseLeave={showRollover('hidden')}
-      >together</span><span> to unleash the </span><span
+      >Together</span><span> we work to unleash the </span><span
         className="home-gradient-text-lukewarm question-cursor"
         onClick={showPopup('can')}
         onMouseEnter={showRollover('can')}

@@ -62,13 +62,6 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
     );
   });
 
-  let videoSrc;
-  if (isMobile()) {
-    videoSrc = 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=164';
-  } else {
-    videoSrc = 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
-  }
-
   let playVideo = loaded;
   if (scrollProgress === 1) {
     playVideo = false;
@@ -77,7 +70,7 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
   return (
     <div className="home-intro">
       <Video
-        src={videoSrc}
+        src="https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165"
         isVideoBackground={true}
         play={playVideo}
         imageCSS="/images/home/header-fallback-image.jpg"

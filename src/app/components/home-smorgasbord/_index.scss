@@ -26,6 +26,11 @@
   margin-bottom: 20px;
   background-color: #eee;
 
+  h5 {
+    font-family: "futura-pt", Futura, Arial, sans-serif;
+    text-transform: uppercase;
+  }
+
   @media screen and (min-width: $bp-medium) {
     height: 400px;
   }
@@ -50,6 +55,11 @@
   background: url('/images/icon-play-large-dark.svg') no-repeat 50% 50%;
   transition: all .2s ease-in-out;
   cursor: pointer;
+  display: none;
+
+  @media screen and (min-width: $bp-medium) {
+    display: block;
+  }
 
   &.videoPlaying {
     opacity: 0;
@@ -68,7 +78,7 @@
   left: 0;
   right: 0;
   width: 100% !important;
-  font-size: 30px !important;
+  font-size: 26px !important;
   text-align: center;
   color: white;
   transition: all .2s ease-in-out;
@@ -113,7 +123,14 @@
 }
 
 .smorgasbord-title {
-  @extend .h3;
+  @extend .h4;
+  font-family: "futura-pt", Futura, Arial, sans-serif;
+  text-transform: uppercase;
+
+  @media screen and (min-width: $bp-medium) {
+    font-size: 40px;
+    line-height: 1;
+  }
 }
 
 .smorgasbord-event {

@@ -37,6 +37,12 @@
     }
   }
 
+  @media screen and (min-width: $bp-large) {
+    h1 {
+      width: 80%;
+    }
+  }
+
   @media screen and (min-width: $bp-larger) {
     h1 {
       font-size: 70px;
@@ -112,7 +118,7 @@
     color: #ccc;
   }
 
-  .view-carousel-related-page {
+  .view-carousel-related-page button {
     color: white;
     border-color: white;
     background-image: url('/images/icon-right-light.svg');
@@ -141,15 +147,14 @@
   -webkit-background-clip: text; /* Seems we can't rely on autoprefixer for this */
   background-clip: text;
   position: relative;
-  display: inline-flex;
-  
+
   &:after {
     content: "";
     height: 2px;
     width: 100%;
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 10%;
   }
 }
 

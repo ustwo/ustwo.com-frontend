@@ -174,7 +174,7 @@ class HomeCarousel extends Component {
             <TimerUI timer={ticker} darkStyle={this.props.darkStyle} />
           </button>
         </div>
-        <button className="view-carousel-related-page">All {viewPage}</button>
+        <div className="view-carousel-related-page"><button>All {viewPage}</button></div>
       </div>
     );
   }
