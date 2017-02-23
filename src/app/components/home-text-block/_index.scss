@@ -15,6 +15,10 @@
   h1 span {
     opacity: 1;
     transition: opacity .2s ease-in-out;
+
+    &:not([class*="home-gradient-text"]) {
+      pointer-events: none;
+    }
   }
 }
 

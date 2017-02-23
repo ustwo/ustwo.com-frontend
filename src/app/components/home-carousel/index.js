@@ -23,6 +23,10 @@ function goToNextItems(component) {
   }
 }
 
+function isCarouselInView(component) {
+  return component.props.scrollProgress >= 0.25 && component.props.scrollProgress <= 0.75
+}
+
 class HomeCarousel extends Component {
 
   constructor(props) {
@@ -31,22 +35,19 @@ class HomeCarousel extends Component {
     this.state = {
       currentStartItem: 0,
       tick: itemsRefreshInterval,
-      paused: false,
       otherIsHovered: false
     }
   }
 
   ticker() {
     /* Start the ticker when half of the carousel comes into view and stop it when it's off out */
-    if (this.props.scrollProgress >= 0.25 && this.props.scrollProgress <= 0.75) {
+    if (isCarouselInView(this)) {
 
       if (this.state.tick === 0) {
         goToNextItems(this);
       }
 
-      if (!this.state.paused) {
-        this.setState({ tick: this.state.tick - tickerFrequency });
-      }
+      this.setState({ tick: this.state.tick - tickerFrequency });
     }
   }
 
@@ -121,10 +122,16 @@ class HomeCarousel extends Component {
         }
       }
 
+      /* Play/Pause the video */
+      let playVideo = false;
+      if (isActive && isCarouselInView(this)) {
+        playVideo = true;
+      }
+
       /* Show either an image or video depending on if there is a videoURL */
       let visualContent;
       if (item.videoURL) {
-        visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} />
+        visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} />
       } else {
         visualContent = <div className="home-carousel-visual-content-image" style={{ backgroundImage: `url(${item.imageURL})` }} />
       }

@@ -68,8 +68,8 @@ $home-carousel-small-screen-offset: 95px;
 
   img,
   video {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
   }
 }
 
@@ -312,6 +312,12 @@ $home-carousel-small-screen-offset: 95px;
   }
 
   .home-carousel-item {
+    img,
+    video {
+      width: 100%;
+      height: auto;
+    }
+
     &.even {
       left: 60px;
       right: auto;
@@ -406,6 +412,11 @@ $home-carousel-small-screen-offset: 95px;
   $home-carousel-padding: $home-carousel-grid + $home-carousel-gutter;
 
   .home-carousel-item {
+    img,
+    video {
+      width: auto;
+      height: 100%;
+    }
 
     &.even {
       left: 0;

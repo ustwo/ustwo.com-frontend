@@ -90,6 +90,18 @@
     background: linear-gradient(-225deg, #333, #304179);
     transform: translateZ(0);
   }
+  .scroll-wrapper-home-more-message {
+    > * {
+      opacity: 0;
+      transition: opacity .32s ease-in-out;
+    }
+  }
+  .scroll-wrapper-home-smorgasbord-message {
+    > * {
+      opacity: 1;
+      transition: opacity .32s ease-in-out;
+    }
+  }
 
   h1,
   .home-carousel-item-text h2 {
@@ -129,8 +141,8 @@
   -webkit-background-clip: text; /* Seems we can't rely on autoprefixer for this */
   background-clip: text;
   position: relative;
-  display: inline-block;
-
+  display: inline-flex;
+  
   &:after {
     content: "";
     height: 2px;
@@ -178,6 +190,16 @@
   &.venturesActive {
     .home-ventures-wrapper-bg {
       opacity: 1;
+    }
+    .scroll-wrapper-home-more-message {
+      > * {
+        opacity: 1;
+      }
+    }
+    .scroll-wrapper-home-smorgasbord-message {
+      > * {
+        opacity: 0;
+      }
     }
     .scroll-wrapper-home-carousel-ventures {
       .view-carousel-related-page,

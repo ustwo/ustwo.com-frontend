@@ -15,6 +15,11 @@ import HomeSmorgasbord from 'app/components/home-smorgasbord';
 import HomeLoader from 'app/components/home-loader';
 import ContactBlock from 'app/components/contact-block';
 
+function isVenturesInView(component) {
+  return (component.props.documentScrollPosition > component.venturesPositionFromTop) &&
+         (component.props.documentScrollPosition < component.venturesPositionFromTop + component.venturesHeight)
+}
+
 class PageHome extends Component {
 
   constructor(props) {
@@ -61,7 +66,8 @@ class PageHome extends Component {
       comes into view and we can show/hide it accordingly.
     */
     this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
-    this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.35);
+    /* Remove some height from the offsetTop here so the bg is activated as the content comes into view */
+    this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.2);
     const whereIsVentures = {
       from: this.venturesPositionFromTop,
       to: this.venturesPositionFromTop + this.venturesHeight
@@ -76,7 +82,7 @@ class PageHome extends Component {
   render() {
     const classes = classnames('page-home', this.props.className, {
       /* venturesActive shows or hides the dark background depending on when it falls in/out of view */
-      venturesActive: this.props.documentScrollPosition > this.venturesPositionFromTop && this.props.documentScrollPosition < this.venturesPositionFromTop + this.venturesHeight,
+      venturesActive: isVenturesInView(this),
       /* when 'loaded', hide home-loader */
       loaded: this.state.contentLoaded
     });
@@ -181,66 +187,66 @@ export default PageHome;
 const dataProducts = [{
   title: "Ford GoPark",
   category: "Client Work",
-  imageURL: "/images/showcase/ford-gopark.jpg"
+  imageURL: "/images/home/ford-gopark.jpg"
 },{
   title: "Android wear",
   category: "Client Work",
-  imageURL: "/images/showcase/android-wear.jpg",
+  imageURL: "/images/home/android-wear.jpg",
   videoURL: "/images/home/android-wear.mp4"
 },{
   title: "Foursquare",
   category: "Client Work",
-  imageURL: "/images/showcase/foursquare.jpg",
+  imageURL: "/images/home/foursquare.jpg",
   videoURL: "/images/home/foursquare.mp4"
 },{
   title: "Adidas Go",
   category: "Client Work",
-  imageURL: "/images/showcase/adidas-go.jpg"
+  imageURL: "/images/home/adidas-go.jpg"
 },{
   title: "Google Cardboard ",
   category: "Client Work",
-  imageURL: "/images/showcase/google-cardboard.jpg"
+  imageURL: "/images/home/google-cardboard.jpg"
 },{
   title: "Harvey Nichols",
   category: "Client Work",
-  imageURL: "/images/showcase/harvey-nichols.jpg",
+  imageURL: "/images/home/harvey-nichols.jpg",
   videoURL: "/images/home/harvey-nichols.mp4"
 },{
   title: "Sky Kids",
   category: "Client Work",
-  imageURL: "/images/showcase/sky-kids.jpg",
+  imageURL: "/images/home/sky-kids.jpg",
   videoURL: "/images/home/sky-kids.mp4"
 },{
   title: "NBC Sprout",
   category: "Client Work",
-  imageURL: "/images/showcase/nbc-sprout.jpg"
+  imageURL: "/images/home/nbc-sprout.jpg"
 }];
 
 const dataVentures = [{
   title: "ustwo Games",
   category: "Venture",
-  imageURL: "/images/showcase/ustwo-games.jpg",
+  imageURL: "/images/home/ustwo-games.jpg",
   videoURL: "/images/home/monument-valley.mp4"
 },{
   title: "Dice",
   category: "Venture",
-  imageURL: "/images/showcase/dice.jpg"
+  imageURL: "/images/home/dice.jpg"
 },{
   title: "Moodnotes",
   category: "Venture",
-  imageURL: "/images/showcase/moodnotes.jpg",
+  imageURL: "/images/home/moodnotes.jpg",
   videoURL: "/images/home/moodnotes.mp4"
 },{
   title: "Wayfindr",
   category: "Venture",
-  imageURL: "/images/showcase/wayfindr.jpg"
+  imageURL: "/images/home/wayfindr.jpg"
 },{
   title: "Pause",
   category: "Venture",
-  imageURL: "/images/showcase/pause.jpg",
+  imageURL: "/images/home/pause.jpg",
   videoURL: "/images/home/pause.mp4"
 },{
   title: "Watch This",
   category: "Venture",
-  imageURL: "/images/showcase/watch-this.jpg"
+  imageURL: "/images/home/watch-this.jpg"
 }];

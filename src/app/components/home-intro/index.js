@@ -9,6 +9,10 @@ import Video from 'app/components/video';
 // const rainbowColours = ['#ED0082', '#E60C29', '#FF5519', '#FFBF02', '#96CC29', '#14C04D', '#16D6D9', '#009CF3', '#143FCC', '#6114CC', '#111111'];
 const colours = ['#000000', '#FFFFFF'];
 
+function isMobile() {
+  return window.innerWidth < 768;
+}
+
 function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
 
   /*
@@ -36,11 +40,11 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
       translateZ = 0;
     }
 
-    if (window.innerWidth > 768) {
+    if (!isMobile()) {
       transform = `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, ${translateZ}) rotateY(${coordinateX * modifierRotate}deg) rotateX(${coordinateY * modifierRotate}deg)`;
     }
 
-    if (i != colours.length - 1 && window.innerWidth < 769) {
+    if (i != colours.length - 1 && isMobile()) {
       display = 'none'
     }
 
@@ -58,6 +62,13 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
     );
   });
 
+  let videoSrc;
+  if (isMobile()) {
+    videoSrc = 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=164';
+  } else {
+    videoSrc = 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
+  }
+
   let playVideo = loaded;
   if (scrollProgress === 1) {
     playVideo = false;
@@ -66,7 +77,7 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
   return (
     <div className="home-intro">
       <Video
-        src="https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165"
+        src={videoSrc}
         isVideoBackground={true}
         play={playVideo}
         imageCSS="/images/home/header-fallback-image.jpg"
