@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="40px" viewBox="0 0 42 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>Custom Cursor Down</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="**Symbols**" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon-Board" transform="translate(-290.000000, -182.000000)"></g>
+        <g id="Custom-Cursor-Down">
+            <g id="Group-2" opacity="0.300000012" transform="translate(8.000000, 4.000000)" fill="#000000">
+                <polygon id="Rectangle-6" transform="translate(14.000000, 15.500000) rotate(90.000000) translate(-14.000000, -15.500000) " points="-1.5 13.5 29.5 13.5 29.5 17.5 -1.5 17.5"></polygon>
+                <path d="M8.29289322,27.4350288 L8.29289322,12.0208153 L4.29289322,12.0208153 L4.29289322,29.4350288 L4.29289322,31.4350288 L23.7071068,31.4350288 L23.7071068,27.4350288 L8.29289322,27.4350288 Z" id="Combined-Shape" transform="translate(14.000000, 21.727922) scale(1, -1) rotate(135.000000) translate(-14.000000, -21.727922) "></path>
+            </g>
+            <polygon id="Rectangle-6" fill="#F8F8F8" transform="translate(20.000000, 19.000000) rotate(90.000000) translate(-20.000000, -19.000000) " points="4 17 36 17 36 21 4 21"></polygon>
+            <path d="M14.2928932,30.4350288 L14.2928932,15.0208153 L10.2928932,15.0208153 L10.2928932,32.4350288 L10.2928932,34.4350288 L29.7071068,34.4350288 L29.7071068,30.4350288 L14.2928932,30.4350288 Z" id="Combined-Shape" fill="#F8F8F8" transform="translate(20.000000, 24.727922) scale(1, -1) rotate(135.000000) translate(-20.000000, -24.727922) "></path>
+        </g>
+    </g>
+</svg>

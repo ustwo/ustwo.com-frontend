@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import Scroll, { Link, Element } from 'react-scroll'; /* Animate and scroll to location in document */
 import Flux from 'app/flux';
+import window from 'app/adaptors/server/window';
 
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import HomeIntro from 'app/components/home-intro';
@@ -44,9 +45,13 @@ class PageHome extends Component {
       TODO: Work out strategy here. It is a loader but ALSO an intro animation. We will want a minimum
       time for it to be seen but also allow for the video and home content to load before we hide it.
     */
-    setTimeout(() => {
+    if (window.innerWidth > 768) {
+      setTimeout(() => {
+        this.setState({ contentLoaded: true });
+      }.bind(this), 5000);
+    } else {
       this.setState({ contentLoaded: true });
-    }.bind(this), 5000);
+    }
 
     /* Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync */
     window.addEventListener('resize', this.getViewportDimensions());
@@ -91,7 +96,7 @@ class PageHome extends Component {
     }
 
     const textBlockSmorgasbord = {
-      title: `Want moar?`,
+      title: `More yes, more can , more wow`,
       text: <HomeSmorgasbordMessage />
     }
 
@@ -198,11 +203,13 @@ const dataProducts = [{
 },{
   title: "Harvey Nichols",
   category: "Client Work",
-  imageURL: "/images/showcase/harvey-nichols.jpg"
+  imageURL: "/images/showcase/harvey-nichols.jpg",
+  videoURL: "/images/home/harvey-nichols.mp4"
 },{
   title: "Sky Kids",
   category: "Client Work",
-  imageURL: "/images/showcase/sky-kids.jpg"
+  imageURL: "/images/showcase/sky-kids.jpg",
+  videoURL: "/images/home/sky-kids.mp4"
 },{
   title: "NBC Sprout",
   category: "Client Work",

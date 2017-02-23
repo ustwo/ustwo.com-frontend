@@ -13,7 +13,7 @@ $home-carousel-duration: .12s;
 $transition-rotation: 20deg;
 $transition-scale: 0.87;
 $transition-rotationX: 16deg;
-$large-screen-right-indent: 7%;
+$large-screen-right-indent: 130px;
 $home-carousel-small-screen-offset: 95px;
 
 .scroll-wrapper-home-carousel-products,
@@ -26,6 +26,7 @@ $home-carousel-small-screen-offset: 95px;
   flex: 1;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .home-carousel-item-text {
@@ -67,8 +68,29 @@ $home-carousel-small-screen-offset: 95px;
 
   img,
   video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.view-carousel-related-page {
+  display: inline-block;
+  border: 1px solid $nonBlack;
+  padding: 0 37px 0 12px;
+  margin: 0 auto;
+  width: 200px;
+  text-transform: uppercase;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  background-image: url('/images/icon-right-dark.svg');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) 50%;
+  background-size: 16px auto;
+  transition: opacity .2s ease-in-out;
+
+  @media screen and (min-width: $bp-medium) {
     width: auto;
-    height: 100%;
   }
 }
 
@@ -149,13 +171,6 @@ $home-carousel-small-screen-offset: 95px;
 
   &.previous {
     z-index: 5;
-
-    &.odd {
-      .home-carousel-item-text,
-      .home-carousel-item-image {
-        transition-delay: $home-carousel-duration;
-      }
-    }
   }
 
   &.previous + &.previous {
@@ -196,7 +211,7 @@ $home-carousel-small-screen-offset: 95px;
     &.odd {
       .home-carousel-item-text,
       .home-carousel-item-image {
-        transition-delay: $home-carousel-duration * 2;
+        transition-delay: $home-carousel-duration;
       }
     }
   }
@@ -285,12 +300,16 @@ $home-carousel-small-screen-offset: 95px;
 
 @media screen and (min-width: $bp-large) {
   $home-carousel-width: 519px;
-  $home-carousel-height: 352px;
+  $home-carousel-height: 292px;
   $home-carousel-margin: -50px;
   $home-carousel-controls-padding: 30px;
   $home-carousel-grid: 57px;
   $home-carousel-gutter: 20px;
   $home-carousel-padding: $home-carousel-grid + $home-carousel-gutter;
+
+  .home-carousel-items {
+    overflow: visible;
+  }
 
   .home-carousel-item {
     &.even {
@@ -331,6 +350,7 @@ $home-carousel-small-screen-offset: 95px;
 
       .home-carousel-item-text {
         left: $home-carousel-width - $home-carousel-grid;
+        margin-left: -10px;
       }
 
       &:hover {
@@ -349,6 +369,17 @@ $home-carousel-small-screen-offset: 95px;
         .home-carousel-item-image {
           transform: rotateY(-$transition-rotation) scale($transition-scale);
         }
+        .home-carousel-item-text,
+        .home-carousel-item-image {
+          transition-delay: $home-carousel-duration;
+        }
+      }
+    }
+
+    &.active.odd {
+      .home-carousel-item-text,
+      .home-carousel-item-image {
+        transition-delay: $home-carousel-duration * 2;
       }
     }
   }
@@ -377,6 +408,7 @@ $home-carousel-small-screen-offset: 95px;
   .home-carousel-item {
 
     &.even {
+      left: 0;
       padding-left: $home-carousel-padding;
       transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(0deg);
 

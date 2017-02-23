@@ -1,6 +1,7 @@
 import React from 'react';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
 import env from 'app/adaptors/server/env';
+import window from 'app/adaptors/server/window';
 
 import SVG from 'app/components/svg';
 import Video from 'app/components/video';
@@ -35,10 +36,12 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
       translateZ = 0;
     }
 
-    if (!env.Modernizr.touchevents) {
+    if (window.innerWidth > 768) {
       transform = `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, ${translateZ}) rotateY(${coordinateX * modifierRotate}deg) rotateX(${coordinateY * modifierRotate}deg)`;
-    } else {
-      transform = `translate3d(${modifier}px, ${modifier}px, 0) rotateY(${modifierRotate}deg) rotateX(${modifierRotate}deg)`;
+    }
+
+    if (i != colours.length - 1 && window.innerWidth < 769) {
+      display = 'none'
     }
 
     let styles = { transform, fill, display }

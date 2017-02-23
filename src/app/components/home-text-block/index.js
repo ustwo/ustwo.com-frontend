@@ -1,4 +1,5 @@
 import React from 'react';
+import window from 'app/adaptors/server/window';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
 import Flux from 'app/flux';
 
@@ -18,8 +19,11 @@ function showRollover(name) {
 
 function HomeTextBlock({ children, scrollProgress, content }) {
   /* Parallax */
-  let styles = {
-    transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.5, 1, 1, distance, true)}px,0)`
+  let styles = {};
+  if (window.innerWidth > 768) {
+    styles = {
+      transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.5, 1, 1, distance, true)}px,0)`
+    }
   }
 
   /* Pass down showPopup function to child component */

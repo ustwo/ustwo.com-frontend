@@ -26,29 +26,35 @@ class HomeSmorgasbord extends Component {
 
   render() {
     const videoControlClasses = classnames('smorgasbord-video-controls', { videoPlaying: this.state.videoPlaying });
+    const videoTitleClasses = classnames('smorgasbord-video-title', { videoPlaying: this.state.videoPlaying });
 
     return (
       <div className="home-smorgasbord">
         <div className="smorgasbord-block smorgasbord-video">
           <div className={videoControlClasses} onClick={this.toggleVideo()}></div>
-          {/*<video
+          <video
             ref="smorgasbordVideo"
             src="https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=164"
             poster="/images/temp/smorgs-video.jpg"
-          ></video>*/}
+          ></video>
+          <h1 className={videoTitleClasses}>Inside ustwo</h1>
         </div>
         <div className="smorgasbord-block-wrapper">
           <div className="smorgasbord-block smorgasbord-event">
-            <h3>Event</h3>
-            <div className="smorgasbord-subtitle">16 January</div>
-            <div className="smorgasbord-title">#ANGSTFEST – MISERY LOVES COMPANY</div>
-            <button>View details</button>
+            <h3>ustwo Events</h3>
+            <div className="smorgasbord-post">
+              <div className="smorgasbord-subtitle">LONDON</div>
+              <div className="smorgasbord-title">Yo Illo Talks: Going viral</div>
+            </div>
+            <button>All Events</button>
           </div>
           <div className="smorgasbord-block smorgasbord-blog">
             <h3>Blog</h3>
-            <div className="smorgasbord-subtitle">Culture</div>
-            <div className="smorgasbord-title">How to break up with your team</div>
-            <button>View details</button>
+            <div className="smorgasbord-post">
+              <div className="smorgasbord-subtitle">Culture</div>
+              <div className="smorgasbord-title">How to break up with your team</div>
+            </div>
+            <button>All Posts</button>
           </div>
         </div>
         <div className="smorgasbord-block smorgasbord-studios"></div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
+import window from 'app/adaptors/server/window';
 
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import TimerUI from 'app/components/timer-ui';
@@ -74,13 +75,13 @@ class HomeCarousel extends Component {
   }
 
   render() {
-    const { scrollProgress, mousePosition } = this.props;
+    const { scrollProgress, mousePosition, carouselItems, className } = this.props;
 
     const showItems = this.props.carouselItems.map((item, i) => {
 
       /* Determine all the classes to be added */
       let isPrevious = false;
-      if (this.state.currentStartItem === 0 && (i === this.props.carouselItems.length - numberOfItemsInView || i === this.props.carouselItems.length - 1)
+      if (this.state.currentStartItem === 0 && (i === carouselItems.length - numberOfItemsInView || i === carouselItems.length - 1)
           || i === this.state.currentStartItem - numberOfItemsInView || i === this.state.currentStartItem - 1) {
         isPrevious = true;
       }
@@ -113,8 +114,11 @@ class HomeCarousel extends Component {
       // }
 
       /* Parallax */
-      const textStyles = {
-        transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
+      let textStyles = {};
+      if (window.innerWidth > 768) {
+        textStyles = {
+          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
+        }
       }
 
       /* Show either an image or video depending on if there is a videoURL */
@@ -140,6 +144,14 @@ class HomeCarousel extends Component {
       );
     });
 
+    let viewPage;
+    if (className.includes('products')) {
+      viewPage = 'Client Work';
+    }
+    if (className.includes('ventures')) {
+      viewPage = 'Ventures';
+    }
+
     /* Pass down the ticker props in degree value for the circular timer */
     const ticker = this.state.tick / itemsRefreshInterval * 360;
 
@@ -155,6 +167,7 @@ class HomeCarousel extends Component {
             <TimerUI timer={ticker} darkStyle={this.props.darkStyle} />
           </button>
         </div>
+        <button className="view-carousel-related-page">All {viewPage}</button>
       </div>
     );
   }

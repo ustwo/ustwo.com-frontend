@@ -88,7 +88,7 @@
     opacity: 0;
     transition: all .32s ease-in-out;
     background: linear-gradient(-225deg, #333, #304179);
-    visibility: hidden;
+    transform: translateZ(0);
   }
 
   h1,
@@ -98,6 +98,12 @@
 
   .home-section-title {
     color: #ccc;
+  }
+
+  .view-carousel-related-page {
+    color: white;
+    border-color: white;
+    background-image: url('/images/icon-right-light.svg');
   }
 }
 
@@ -122,22 +128,45 @@
   color: transparent;
   -webkit-background-clip: text; /* Seems we can't rely on autoprefixer for this */
   background-clip: text;
+  position: relative;
+  display: inline-block;
+
+  &:after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
 }
 
 .home-gradient-text-cold {
-  background-image: linear-gradient(to right, $blu, $mare);
+  &,
+  &:after {
+    background-image: linear-gradient(to right, $blu, $mare);
+  }
 }
 
 .home-gradient-text-lukewarm {
-  background-image: linear-gradient(to right, $mare, $jeezz);
+  &,
+  &:after {
+    background-image: linear-gradient(to right, $mare, $jeezz);
+  }
 }
 
 .home-gradient-text-hot {
-  background-image: linear-gradient(to right, $honey, $piglet);
+  &,
+  &:after {
+    background-image: linear-gradient(to right, $honey, $piglet);
+  }
 }
 
 .home-gradient-text-hot-reverse {
-  background-image: linear-gradient(to right, $piglet, $honey);
+  &,
+  &:after {
+    background-image: linear-gradient(to right, $piglet, $honey);
+  }
 }
 
 .question-cursor {
@@ -149,19 +178,27 @@
   &.venturesActive {
     .home-ventures-wrapper-bg {
       opacity: 1;
-      visibility: visible;
     }
-    .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
-      opacity: 1;
+    .scroll-wrapper-home-carousel-ventures {
+      .view-carousel-related-page,
+      .home-carousel-shuffle {
+        opacity: 1;
+      }
     }
-    .scroll-wrapper-home-carousel-products .home-carousel-shuffle {
-      opacity: 0;
+    .scroll-wrapper-home-carousel-products {
+      .view-carousel-related-page,
+      .home-carousel-shuffle {
+        opacity: 0;
+      }
     }
     .question-cursor {
       cursor: url('/images/icon-question-mark-light.svg'), auto;
     }
   }
-  .scroll-wrapper-home-carousel-ventures .home-carousel-shuffle {
-    opacity: 0;
+  .scroll-wrapper-home-carousel-ventures {
+    .view-carousel-related-page,
+    .home-carousel-shuffle {
+      opacity: 0;
+    }
   }
 }

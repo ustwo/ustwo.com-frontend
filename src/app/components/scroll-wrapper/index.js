@@ -86,9 +86,10 @@ class ScrollWrapper extends Component {
   render() {
     const scrollProgress = getScrollProgress(this.state.elementAttributes.top, this.state.elementAttributes.height, this.props.documentScrollPosition);
     const mousePosition = this.state.mousePosition;
+    const className = this.props.className;
 
     /* Pass down the above props to the child component */
-    const component = React.cloneElement(this.props.component, { scrollProgress, mousePosition });
+    const component = React.cloneElement(this.props.component, { scrollProgress, mousePosition, className });
 
     const classes = classnames('scroll-wrapper', this.props.className);
 

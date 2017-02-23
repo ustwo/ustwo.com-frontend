@@ -34,12 +34,12 @@
   }
 
   img {
-    width: 65%;
+    width: 85%;
   }
 
   p {
     margin-bottom: 40px;
-    width: 50%;
+    width: 90%;
     text-align: center;
   }
 
@@ -49,5 +49,14 @@
 
   &.products {
 
+  }
+
+  @media screen and (min-width: $bp-large) {
+    img {
+      width: 65%;
+    }
+    p {
+      width: 50%;
+    }
   }
 }
