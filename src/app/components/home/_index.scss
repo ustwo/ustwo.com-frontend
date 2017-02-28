@@ -186,11 +186,6 @@
   }
 }
 
-.question-cursor {
-  cursor: url('/images/icon-question-mark-dark.svg'), auto;
-}
-
-
 .page-home {
   &.venturesActive {
     .home-ventures-wrapper-bg {
@@ -217,9 +212,6 @@
       .home-carousel-shuffle {
         opacity: 0;
       }
-    }
-    .question-cursor {
-      cursor: url('/images/icon-question-mark-light.svg'), auto;
     }
   }
   .scroll-wrapper-home-carousel-ventures {

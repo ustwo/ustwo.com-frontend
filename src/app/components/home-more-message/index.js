@@ -1,23 +1,17 @@
 import React from 'react';
 
-function HomeMoreMessage({ showPopup, showRollover }) {
+function HomeMoreMessage({ showPopup }) {
   return (
     <h1>
       <span>We build and </span><span
-        className="home-gradient-text-cold question-cursor"
+        className="home-gradient-text-cold home-text-block-button"
         onClick={showPopup('invest')}
-        onMouseEnter={showRollover('invest')}
-        onMouseLeave={showRollover('hidden')}
       >invest</span><span> in new </span><span
-        className="home-gradient-text-lukewarm question-cursor"
+        className="home-gradient-text-lukewarm home-text-block-button"
         onClick={showPopup('ventures')}
-        onMouseEnter={showRollover('ventures')}
-        onMouseLeave={showRollover('hidden')}
       >ventures</span><span> that make a </span><span
-        className="home-gradient-text-hot question-cursor"
+        className="home-gradient-text-hot home-text-block-button"
         onClick={showPopup('difference')}
-        onMouseEnter={showRollover('difference')}
-        onMouseLeave={showRollover('hidden')}
       >difference</span>
     </h1>
   );

@@ -1,23 +1,17 @@
 import React from 'react';
 
-function HomeSmorgasbordMessage({ showPopup, showRollover }) {
+function HomeSmorgasbordMessage({ showPopup }) {
   return (
     <h1>
       <span
-        className="home-gradient-text-cold question-cursor"
+        className="home-gradient-text-cold home-text-block-button"
         onClick={showPopup('yes')}
-        onMouseEnter={showRollover('yes')}
-        onMouseLeave={showRollover('hidden')}
       >Together</span><span> we work to unleash the </span><span
-        className="home-gradient-text-lukewarm question-cursor"
+        className="home-gradient-text-lukewarm home-text-block-button"
         onClick={showPopup('can')}
-        onMouseEnter={showRollover('can')}
-        onMouseLeave={showRollover('hidden')}
       >collective</span><span> </span><span
-        className="home-gradient-text-hot question-cursor"
+        className="home-gradient-text-hot home-text-block-button"
         onClick={showPopup('wow')}
-        onMouseEnter={showRollover('wow')}
-        onMouseLeave={showRollover('hidden')}
       >genius</span><span>. No Big Deal.</span>
     </h1>
   );

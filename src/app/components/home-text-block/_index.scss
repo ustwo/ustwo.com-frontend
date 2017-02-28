@@ -22,27 +22,6 @@
   }
 }
 
-.app-content {
-  &[class*="rollover-"] {
-    .home-text-block h1 span {
-      opacity: 0.2;
-
-      &[class*="home-gradient-text"]:hover {
-        opacity: 1;
-      }
-    }
-    .home-text-block-rollover {
-      opacity: 1;
-      z-index: 5;
-    }
-  }
-}
-
-/* Fix as we have rollover-hidden instead of absense of a class */
-.app-content {
-  &.rollover-hidden {
-    .home-text-block h1 span {
-      opacity: 1;
-    }
-  }
+.home-text-block-button {
+  cursor: pointer;
 }
