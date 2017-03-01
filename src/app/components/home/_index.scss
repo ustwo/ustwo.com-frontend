@@ -142,20 +142,21 @@
   justify-content: center;
 }
 
-[class*="home-gradient-text"] {
+[class*="home-gradient-text"],
+.home-text-block-button {
   color: transparent;
   -webkit-background-clip: text; /* Seems we can't rely on autoprefixer for this */
   background-clip: text;
   position: relative;
 
-  &:after {
-    content: "";
-    height: 2px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 10%;
-  }
+  // &:after {
+  //   content: "";
+  //   height: 2px;
+  //   width: 100%;
+  //   position: absolute;
+  //   left: 0;
+  //   bottom: 10%;
+  // }
 }
 
 .home-gradient-text-cold {

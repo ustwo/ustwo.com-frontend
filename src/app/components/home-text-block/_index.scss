@@ -17,11 +17,19 @@
     transition: opacity .2s ease-in-out;
 
     &:not([class*="home-gradient-text"]) {
-      pointer-events: none;
+      // pointer-events: none;
     }
   }
 }
 
 .home-text-block-button {
   cursor: pointer;
+  position: relative;
+  display: inline-block;
+
+  .text-underline {
+    display: block;
+    position: absolute;
+    bottom: -3px;
+  }
 }

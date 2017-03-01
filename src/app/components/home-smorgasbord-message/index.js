@@ -1,18 +1,22 @@
 import React from 'react';
+import TextUnderline from '../text-underline';
 
 function HomeSmorgasbordMessage({ showPopup }) {
   return (
     <h1>
-      <span
-        className="home-gradient-text-cold home-text-block-button"
-        onClick={showPopup('yes')}
-      >Together</span><span> we work to unleash the </span><span
-        className="home-gradient-text-lukewarm home-text-block-button"
-        onClick={showPopup('can')}
-      >collective</span><span> </span><span
-        className="home-gradient-text-hot home-text-block-button"
-        onClick={showPopup('wow')}
-      >genius</span><span>. No Big Deal.</span>
+      <TextUnderline
+        showPopup={showPopup}
+        word="together"
+        color="cold"
+      /><span> we work to unleash the </span><TextUnderline
+        showPopup={showPopup}
+        word="collective"
+        color="lukewarm"
+      /><span> </span><TextUnderline
+        showPopup={showPopup}
+        word="genius"
+        color="hot"
+      /><span>. No Big Deal.</span>
     </h1>
   );
 }
