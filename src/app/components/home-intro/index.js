@@ -76,7 +76,9 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
         imageCSS="/images/home/header-fallback-image.jpg"
       />
       <div className="home-intro-logo">
-        {logoLayers}
+        <div className="home-intro-logo-wrapper">
+          {logoLayers}
+        </div>
       </div>
     </div>
   );

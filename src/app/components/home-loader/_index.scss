@@ -8,26 +8,27 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 1;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(241deg, #000000, #0e0d10 29%, #322d37);
   color: white;
   z-index: 999;
 
   .home-intro-logo {
-    height: auto;
+    .home-loader-sequence {
+      fill: white;
+    }
+    .home-loader-background {
+      fill: white;
+      opacity: 0.05;
 
-    svg {
-      position: relative;
-      top: auto;
-      left: auto;
-      right: auto;
-      bottom: auto;
-      fill: black;
+      g {
+        display: block !important;
+      }
     }
   }
   .ustwo-logo-sequence g {
@@ -36,5 +37,16 @@
 
   &.hide {
     display: none;
+  }
+
+  h1 {
+    position: absolute;
+    top: calc(50% + 60px);
+    font-family: "PxGrotesk-Regular", "Arial", sans-serif;
+    font-size: 14px;
+    color: white;
+    opacity: 0.5;
+    letter-spacing: 0.9px;
+	  text-align: center;
   }
 }

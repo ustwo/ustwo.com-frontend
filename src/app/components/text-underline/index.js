@@ -61,7 +61,7 @@ class TextUnderline extends Component {
     ctx.canvas.height = height;
 
     for(let x = underlineOffset; x < width - underlineOffset + 1; x++) {
-      let y = 3 * Math.sin(x / 20) + (height - 5);
+      let y = 2 * Math.sin(x / 20) + (height - 5);
       let progress = x / width;
       ctx.beginPath(x, y);
       ctx.moveTo(x, y);

@@ -55,21 +55,29 @@
   }
 }
 
-.app-content {
-  .home-intro-logo {
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-  }
+.page-home {
+  .app-content {
+    .home-loader {
+      > * {
+        opacity: 0;
+        transition: opacity .32s ease-in-out;
+      }
+    }
 
-  &.show {
-    .home-intro-logo {
-      opacity: 1;
+    &.show {
+      .home-loader {
+        > * {
+          opacity: 1;
+        }
+        h1 {
+          transition-delay: .1s;
+        }
+      }
     }
   }
 
 }
-
-.page-home {
+.page-home-content {
   .home-loader {
     opacity: 1;
     transition: opacity .32s ease-in-out;
@@ -187,7 +195,7 @@
   }
 }
 
-.page-home {
+.page-home-content {
   &.venturesActive {
     .home-ventures-wrapper-bg {
       opacity: 1;

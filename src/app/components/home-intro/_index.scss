@@ -18,13 +18,17 @@
 
 .home-intro-logo {
   position: relative;
-  height: 80px;
   z-index: 1;
-  max-width: 280px;
-  width: 45%;
   perspective: 200px;
-  display: flex;
-  align-items: center;
+  width: 100%;
+  width: 225px;
+  height: 64px;
+
+  // > div {
+  //   position: absolute;
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  // }
 
   svg {
     position: absolute;
@@ -32,6 +36,8 @@
     left: 0;
     fill: white;
     width: 100%;
+    width: 225px;
+    height: 64px;
 
     &.layer-0 {
       filter: blur(3px);

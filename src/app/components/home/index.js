@@ -53,7 +53,7 @@ class PageHome extends Component {
     if (window.innerWidth > 768) {
       setTimeout(() => {
         this.setState({ contentLoaded: true });
-      }.bind(this), 5000);
+      }.bind(this), 4000);
     } else {
       this.setState({ contentLoaded: true });
     }
@@ -80,7 +80,7 @@ class PageHome extends Component {
   }
 
   render() {
-    const classes = classnames('page-home', this.props.className, {
+    const classes = classnames('page-home-content', this.props.className, {
       /* venturesActive shows or hides the dark background depending on when it falls in/out of view */
       venturesActive: isVenturesInView(this),
       /* when 'loaded', hide home-loader */
@@ -111,7 +111,7 @@ class PageHome extends Component {
 
         <HomeLoader loaded={this.state.contentLoaded} />
 
-        <Link to="homeTextBlock" smooth={true} duration={640}>
+        <Link to="homeTextBlock" smooth={true} duration={500}>
           <ScrollWrapper
             component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.contentLoaded} />}
             documentScrollPosition={this.props.documentScrollPosition}
