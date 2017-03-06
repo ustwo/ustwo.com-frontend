@@ -35,22 +35,33 @@ class PageHome extends Component {
 
   /* Used in the resize listener */
   getViewportDimensions() {
-    return (e) => {
-      const viewportDimensions = {
-        width: e.target.visualViewport.clientWidth,
-        height: e.target.visualViewport.clientHeight
-      };
-      this.setState({
-        viewportDimensions,
-        isMobile: window.innerWidth < 480 ? true : false
-      });
+    const viewportDimensions = {
+      width: window.visualViewport.clientWidth,
+      height: window.visualViewport.clientHeight
+    };
+    this.setState({
+      viewportDimensions,
+      isMobile: window.innerWidth < 480 ? true : false
+    });
+  }
+
+  whereIsVentures() {
+    /*
+      For the ventures (dark background) section so we know when it
+      comes into view and we can show/hide it accordingly.
+    */
+    this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
+    /* Remove some height from the offsetTop here so the bg is activated as the content comes into view */
+    this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.state.viewportDimensions.height * 0.5);
+    const whereIsVentures = {
+      from: this.venturesPositionFromTop,
+      to: this.venturesPositionFromTop + this.venturesHeight
     }
+    Flux.whereIsVentures(whereIsVentures);
   }
 
   componentWillMount() {
-    this.setState({
-      isMobile: window.innerWidth < 480 ? true : false
-    });
+    this.getViewportDimensions();
   }
 
   componentDidMount() {
@@ -60,29 +71,18 @@ class PageHome extends Component {
       TODO: Work out strategy here. It is a loader but ALSO an intro animation. We will want a minimum
       time for it to be seen but also allow for the video and home content to load before we hide it.
     */
-    // if (window.innerWidth > 768) {
-      setTimeout(() => {
-        this.setState({ contentLoaded: true });
-      }.bind(this), 5500);
-    // } else {
-    //   this.setState({ contentLoaded: true });
-    // }
+    setTimeout(() => {
+      this.setState({ contentLoaded: true });
+    }.bind(this), 5500);
 
     /* Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync */
-    window.addEventListener('resize', this.getViewportDimensions());
+    window.addEventListener('resize', () => {
+      this.getViewportDimensions();
+      this.whereIsVentures();
+    });
 
-    /*
-      The following are calculations for the ventures (dark background) section so we know when it
-      comes into view and we can show/hide it accordingly.
-    */
-    this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
-    /* Remove some height from the offsetTop here so the bg is activated as the content comes into view */
-    this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.venturesHeight * 0.2);
-    const whereIsVentures = {
-      from: this.venturesPositionFromTop,
-      to: this.venturesPositionFromTop + this.venturesHeight
-    }
-    Flux.whereIsVentures(whereIsVentures);
+
+    this.whereIsVentures();
   }
 
   componentWillUnmount() {

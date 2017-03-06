@@ -20,6 +20,7 @@ $nav-height-large: 26px;
   align-items: center;
   cursor: pointer;
   background-color: rgba(248,248,248,.9); /* this is rgb value for $offWhite (#F8F8F8) */
+  transition: background-color .2s ease-in-out;
 
   @media screen and (min-width: $bp-medium) {
     margin: 29px 0;
@@ -184,6 +185,8 @@ $nav-height-large: 26px;
 .navigation {
   &.invert,
   &.menuOpen {
+    background-color: rgba(50, 55, 71, .9);
+
     .logo svg {
       fill: white;
     }

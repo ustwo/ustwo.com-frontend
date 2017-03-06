@@ -16,7 +16,7 @@ function HomeTextBlock({ children, scrollProgress, content }) {
   let styles = {};
   if (window.innerWidth > 768) {
     styles = {
-      transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.5, 1, 1, distance, true)}px,0)`
+      transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.5, 0.5, 1, distance, true)}px,0)`
     }
   }
 

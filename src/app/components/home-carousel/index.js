@@ -10,7 +10,7 @@ import Video from 'app/components/video';
 const itemsRefreshInterval = 5000;
 const tickerFrequency = 50;
 const transitionDuration = 300;
-const distance = 60;
+const distance = 40;
 
 function goToNextItems(component) {
   component.setState({ tick: itemsRefreshInterval });
@@ -129,7 +129,7 @@ class HomeCarousel extends Component {
       let textStyles = {};
       if (!isMobile) {
         textStyles = {
-          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
+          transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.5, 0.5, 1, distance, true)}px,0)`
         }
       }
 

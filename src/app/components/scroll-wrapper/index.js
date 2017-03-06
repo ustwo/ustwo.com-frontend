@@ -9,11 +9,11 @@ import classnames from 'classnames';
   TODO: More flexibility, e.g. allow start as soon as element comes into view?
 */
 function getScrollProgress(top, height, scrollPosition) {
-  if (scrollPosition <= top - (height * 0.5)) {
+  if (scrollPosition <= top - height) {
     return 0;
   }
-  if (scrollPosition > top - (height * 0.5) && scrollPosition <= top + height) {
-    let result = (scrollPosition - (top - (height * 0.5))) / (height * 1.5);
+  if (scrollPosition > top - height && scrollPosition <= top + height) {
+    let result = (scrollPosition - (top - height)) / (height * 2);
     return Math.round(result * 100) / 100;
   }
   if (scrollPosition > top + height) {
