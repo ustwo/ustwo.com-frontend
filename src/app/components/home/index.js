@@ -50,13 +50,13 @@ class PageHome extends Component {
       TODO: Work out strategy here. It is a loader but ALSO an intro animation. We will want a minimum
       time for it to be seen but also allow for the video and home content to load before we hide it.
     */
-    if (window.innerWidth > 768) {
+    // if (window.innerWidth > 768) {
       setTimeout(() => {
         this.setState({ contentLoaded: true });
-      }.bind(this), 4000);
-    } else {
-      this.setState({ contentLoaded: true });
-    }
+      }.bind(this), 5500);
+    // } else {
+    //   this.setState({ contentLoaded: true });
+    // }
 
     /* Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync */
     window.addEventListener('resize', this.getViewportDimensions());

@@ -21,7 +21,7 @@ function goToNextIteration(component) {
 const UstwoLogoSequence = React.createClass({
 
   /* TODO: Create a wrapper component instead of using mixins */
-  mixins: [SVGSequenceAnimation({ fps: 25 })],
+  mixins: [SVGSequenceAnimation({ fps: 18 })],
 
   getInitialState() {
     return {

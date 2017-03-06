@@ -24,7 +24,7 @@ function goToNextItems(component) {
 }
 
 function isCarouselInView(component) {
-  return component.props.scrollProgress >= 0.25 && component.props.scrollProgress <= 0.75
+  return component.props.scrollProgress >= 0.2 && component.props.scrollProgress <= 0.75
 }
 
 class HomeCarousel extends Component {

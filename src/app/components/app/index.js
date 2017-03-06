@@ -69,7 +69,7 @@ const App = React.createClass({
   componentDidMount() {
     setTimeout(() => {
       this.setState({ show: true });
-    }.bind(this), 200);
+    }.bind(this), 1000);
 
     Store.on('change', this.onChangeStore);
     window.addEventListener('scroll', getDocumentScrollPosition(this));

@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
-import SVG from 'app/components/svg';
+import React from 'react';
 
-class ContactBlock extends Component {
-  render() {
-    return (
-      <div className="contact-block">
-        <div className="home-text-block">
-          <div className="home-section-title">Make something awesome</div>
-          <h2>Interested in what ustwo can do for you? Get in touch <span className="contact-block-email home-gradient-text-hot-reverse">work@ustwo.com</span><SVG className="plane" spritemapID="plane" /></h2>
-        </div>
+function ContactBlock() {
+  return (
+    <div className="contact-block">
+      <div className="home-text-block">
+        <div className="home-section-title">Make something awesome</div>
+        <h2>Get in touch <br /><span className="contact-block-email home-gradient-text-hot-reverse">work@ustwo.com</span></h2>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default ContactBlock;

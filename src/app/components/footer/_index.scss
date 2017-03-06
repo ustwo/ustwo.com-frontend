@@ -208,9 +208,11 @@
       padding: 0 6%;
 
       .studios {
+        display: flex;
+        justify-content: space-between;
 
         .studio {
-          width: 25%;
+          width: auto;
         }
       }
       .small-print {

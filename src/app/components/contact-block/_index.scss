@@ -5,8 +5,6 @@
 
 .contact-block {
   background-color: $veryDarkGrey;
-  background-image: url('/images/bg-pattern.png');
-  background-repeat: repeat;
   color: white;
   @include core-layout();
 
@@ -28,6 +26,13 @@
     }
   }
 
+  @media screen and (min-width: $bp-large) {
+    .home-text-block {
+      background-image: url('/images/contact-illustration.svg');
+      background-repeat: no-repeat;
+      background-position: 90% 50%;
+    }
+  }
 
   @media screen and (min-width: $bp-larger) {
     .home-text-block {

@@ -60,7 +60,7 @@
     .home-loader {
       > * {
         opacity: 0;
-        transition: opacity .32s ease-in-out;
+        transition: opacity .5s ease-in-out;
       }
     }
 
@@ -70,7 +70,7 @@
           opacity: 1;
         }
         h1 {
-          transition-delay: .1s;
+          transition-delay: .5s;
         }
       }
     }
