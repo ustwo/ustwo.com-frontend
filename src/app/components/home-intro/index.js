@@ -50,11 +50,16 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
 
     let styles = { transform, fill, display }
 
+    let classes;
+    if (i === 0) {
+      classes = 'layer-background'
+    }
+
     return (
       <SVG
         title="ustwo logo layer"
         key={`layer-${i}`}
-        className={`layer-${i}`}
+        className={classes}
         spritemapID="ustwologo"
         style={styles}
         viewBox="0 0 112 32"

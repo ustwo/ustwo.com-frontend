@@ -39,20 +39,24 @@
   }
 
   svg {
-    position: absolute;
+    position: relative;
+    z-index: 2;
     top: auto;
     left: 0;
     fill: white;
     width: 100%;
 
-    &.layer-0 {
-      filter: blur(3px);
-      opacity: 0.5;
+    &.layer-background {
+      position: absolute;
+      top: 0;
     }
   }
 
-  svg:first-child {
-    position: relative;
+  .home-intro-logo-wrapper {
+    .layer-background {
+      filter: blur(3px);
+      opacity: 0.5;
+    }
   }
 
   @media screen and (max-width: $bp-medium) {
