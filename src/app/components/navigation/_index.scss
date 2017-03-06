@@ -23,12 +23,12 @@ $nav-height-large: 26px;
   transition: background-color .2s ease-in-out;
 
   @media screen and (min-width: $bp-medium) {
-    margin: 29px 0;
+    padding: 29px 0;
     background-color: transparent;
   }
 
   @media screen and (min-width: $bp-large) {
-    margin: 27px 0;
+    padding: 27px 0;
   }
 
   button {
@@ -197,6 +197,10 @@ $nav-height-large: 26px;
       &:after {
         background-color: white;
       }
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      background-color: transparent;
     }
   }
 }

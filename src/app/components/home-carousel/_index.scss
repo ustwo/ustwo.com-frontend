@@ -134,6 +134,10 @@ $home-carousel-small-screen-offset: 95px;
   .home-carousel-item-text {
     visibility: hidden;
     transition: visibility $home-carousel-duration linear;
+
+    > * {
+      transition: opacity .2s ease-in-out;
+    }
   }
 
   .home-carousel-item-image {

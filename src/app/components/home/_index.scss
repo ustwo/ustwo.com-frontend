@@ -215,11 +215,21 @@
       .home-carousel-shuffle {
         opacity: 1;
       }
+      @media screen and (max-width: $bp-medium) {
+        .home-carousel-item-text > * {
+          opacity: 1;
+        }
+      }
     }
     .scroll-wrapper-home-carousel-products {
       .view-carousel-related-page,
       .home-carousel-shuffle {
         opacity: 0;
+      }
+      @media screen and (max-width: $bp-medium) {
+        .home-carousel-item-text > * {
+          opacity: 0;
+        }
       }
     }
   }
@@ -227,6 +237,11 @@
     .view-carousel-related-page,
     .home-carousel-shuffle {
       opacity: 0;
+    }
+    @media screen and (max-width: $bp-medium) {
+      .home-carousel-item-text > * {
+        opacity: 0;
+      }
     }
   }
 }

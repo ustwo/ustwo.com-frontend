@@ -36,8 +36,8 @@ class PageHome extends Component {
   /* Used in the resize listener */
   getViewportDimensions() {
     const viewportDimensions = {
-      width: window.visualViewport.clientWidth,
-      height: window.visualViewport.clientHeight
+      width: window.innerWidth,
+      height: window.innerHeight
     };
     this.setState({
       viewportDimensions,
@@ -73,7 +73,7 @@ class PageHome extends Component {
     */
     setTimeout(() => {
       this.setState({ contentLoaded: true });
-    }.bind(this), 5500);
+    }.bind(this), 995500);
 
     /* Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync */
     window.addEventListener('resize', () => {
@@ -122,7 +122,7 @@ class PageHome extends Component {
 
         <HomeLoader loaded={this.state.contentLoaded} />
 
-        <Link to="homeTextBlock" smooth={true} duration={500}>
+        <Link to="homeTextBlock" smooth={true} duration={1000}>
           <ScrollWrapper
             component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.contentLoaded} isMobile={isMobile} />}
             documentScrollPosition={this.props.documentScrollPosition}

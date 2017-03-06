@@ -42,7 +42,7 @@ class HomeLoader extends Component {
             </svg>
             <UstwoLogoSequence autoAnim={2500} />
           </div>
-          <h1>Digital Products, services & businesses</h1>
+          <h1>Digital Products, <br />services & businesses</h1>
         </div>
       );
     }

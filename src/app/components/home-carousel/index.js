@@ -141,10 +141,14 @@ class HomeCarousel extends Component {
 
       /* Show either an image or video depending on if there is a videoURL */
       let visualContent;
-      if (item.videoURL) {
-        visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} />
+      if (isMobile) {
+        visualContent = <img src={item.imageURL} className="home-carousel-visual-content-image" />
       } else {
-        visualContent = isMobile ? <img src={item.imageURL} className="home-carousel-visual-content-image" /> : <div className="home-carousel-visual-content-image" style={{ backgroundImage: `url(${item.imageURL})` }} />
+        if (item.videoURL) {
+          visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} />
+        } else {
+          visualContent = <div className="home-carousel-visual-content-image" style={{ backgroundImage: `url(${item.imageURL})` }} />
+        }
       }
 
       return (

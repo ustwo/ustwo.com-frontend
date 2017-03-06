@@ -4,9 +4,11 @@ import SVGSequenceAnimation from 'app/lib/svg-sequence-animation';
 import blendColours from 'app/lib/blend-colours';
 
 const tickerFrequency = 50;
-const timerTotal = 500;
-const leftColours = ['16D6D9', '14C04D', '96CC29', 'FFBF02', 'FF5519', 'E60C29', 'ED0082', '6114CC', '143FCC', '009CF3'];
-const rightColours = ['96CC29', 'FFBF02', 'FF5519', 'E60C29', 'ED0082', '6114CC', '143FCC', '009CF3', '16D6D9', '14C04D'];
+const timerTotal = 700;
+// const leftColours = ['#16D6D9', '#14C04D', '#96CC29', '#FFBF02', '#FF5519', '#E60C29', '#ED0082', '#6114CC', '#143FCC', '#009CF3'];
+// const rightColours = ['#96CC29', '#FFBF02', '#FF5519', '#E60C29', '#ED0082', '#6114CC', '#143FCC', '#009CF3', '#16D6D9', '#14C04D'];
+const leftColours = ['#ED0082', '#143FCC', '#009CF3', '#96CC29', '#FF5519', '#ED0082'];
+const rightColours = ['#FFBF02', '#E60C29', '#6114CC', '#009CF3', '#14C04D', '#FFBF02'];
 
 function goToNextIteration(component) {
   component.setState({ tick: timerTotal });
