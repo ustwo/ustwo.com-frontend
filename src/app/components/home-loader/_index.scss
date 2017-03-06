@@ -48,7 +48,7 @@
 
   h1 {
     position: absolute;
-    top: calc(50% + 30px);
+    top: calc(50% + 35px);
     font-family: "PxGrotesk-Regular", "Arial", sans-serif;
     font-size: 14px;
     color: rgba(255,255,255,.5);
@@ -61,6 +61,10 @@
     }
 
     @media screen and (min-width: $bp-large) {
+      top: calc(50% + 52px);
+    }
+
+    @media screen and (min-width: $bp-larger) {
       top: calc(50% + 60px);
     }
   }
