@@ -20,15 +20,23 @@
   position: relative;
   z-index: 1;
   perspective: 200px;
-  width: 100%;
-  width: 225px;
-  height: 64px;
+  width: 120px;
 
-  // > div {
-  //   position: absolute;
-  //   left: 50%;
-  //   transform: translateX(-50%);
-  // }
+  @media screen and (min-width: $bp-smaller) {
+    width: 140px;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    width: 155px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    width: 190px;
+  }
+
+  @media screen and (min-width: $bp-larger) {
+    width: 225px;
+  }
 
   svg {
     position: absolute;
@@ -36,13 +44,15 @@
     left: 0;
     fill: white;
     width: 100%;
-    width: 225px;
-    height: 64px;
 
     &.layer-0 {
       filter: blur(3px);
       opacity: 0.5;
     }
+  }
+
+  svg:first-child {
+    position: relative;
   }
 
   @media screen and (max-width: $bp-medium) {
