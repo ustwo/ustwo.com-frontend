@@ -6,23 +6,8 @@ const posterURL = "/images/transparent.png";
 
 const Video = React.createClass({
 
-  getInitialState() {
-    return {
-      mobile: false
-    }
-  },
-
-  componentDidMount() {
-    if (window.innerWidth < 769) {
-      this.setState({ mobile: true });
-    }
-    if (this.props.enableMobile) {
-      this.setState({ mobile: false })
-    }
-  },
-
   componentWillReceiveProps(nextProps) {
-    if (nextProps.play != undefined && !this.state.mobile) {
+    if (nextProps.play != undefined && !this.props.isMobile) {
       if (nextProps.play) {
         this.refs.video.play();
       } else {
@@ -83,7 +68,7 @@ const Video = React.createClass({
     }
 
     let content;
-    if (this.state.mobile) {
+    if (this.props.isMobile) {
       content = this.renderImage();
     } else {
       content = (

@@ -9,11 +9,7 @@ import Video from 'app/components/video';
 // const rainbowColours = ['#ED0082', '#E60C29', '#FF5519', '#FFBF02', '#96CC29', '#14C04D', '#16D6D9', '#009CF3', '#143FCC', '#6114CC', '#111111'];
 const colours = ['#000000', '#FFFFFF'];
 
-function isMobile() {
-  return window.innerWidth < 768;
-}
-
-function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
+function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded, isMobile }) {
 
   /*
     Create stack of logos in a sort of 3D space that move dependant on the mouse position.
@@ -40,11 +36,11 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
       translateZ = 0;
     }
 
-    if (!isMobile()) {
+    if (!isMobile) {
       transform = `translate3d(${coordinateX * modifier}px, ${coordinateY * modifier}px, ${translateZ}) rotateY(${coordinateX * modifierRotate}deg) rotateX(${coordinateY * modifierRotate}deg)`;
     }
 
-    if (i != colours.length - 1 && isMobile()) {
+    if (i != colours.length - 1 && isMobile) {
       display = 'none'
     }
 
@@ -72,10 +68,17 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, loaded }) {
     playVideo = false;
   }
 
+  let src;
+  if (isMobile) {
+    src= 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=165';
+  } else {
+    src= 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
+  }
+
   return (
     <div className="home-intro">
       <Video
-        src="https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165"
+        src={src}
         isVideoBackground={true}
         play={playVideo}
         imageCSS="/images/home/header-fallback-image.jpg"

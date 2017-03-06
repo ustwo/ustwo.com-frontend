@@ -11,15 +11,14 @@ const itemsRefreshInterval = 5000;
 const tickerFrequency = 50;
 const transitionDuration = 300;
 const distance = 60;
-const numberOfItemsInView = 2;
 
 function goToNextItems(component) {
   component.setState({ tick: itemsRefreshInterval });
 
-  if (component.state.currentStartItem === component.props.carouselItems.length - numberOfItemsInView) {
+  if (component.state.currentStartItem === component.props.carouselItems.length - component.state.numberOfItemsInView) {
     component.setState({ currentStartItem: 0 });
   } else {
-    component.setState({ currentStartItem: component.state.currentStartItem + numberOfItemsInView });
+    component.setState({ currentStartItem: component.state.currentStartItem + component.state.numberOfItemsInView });
   }
 }
 
@@ -35,7 +34,8 @@ class HomeCarousel extends Component {
     this.state = {
       currentStartItem: 0,
       tick: itemsRefreshInterval,
-      otherIsHovered: false
+      otherIsHovered: false,
+      numberOfItemsInView: 2
     }
   }
 
@@ -67,6 +67,14 @@ class HomeCarousel extends Component {
     }
   }
 
+  componentWillMount() {
+    this.setState({ numberOfItemsInView: this.props.isMobile ? 1 : 2 });
+  }
+
+  componentWillReceiveProps() {
+    this.setState({ numberOfItemsInView: this.props.isMobile ? 1 : 2 });
+  }
+
   componentDidMount() {
     this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
   }
@@ -76,29 +84,32 @@ class HomeCarousel extends Component {
   }
 
   render() {
-    const { scrollProgress, mousePosition, carouselItems, className } = this.props;
+    const { scrollProgress, mousePosition, carouselItems, className, isMobile } = this.props;
+    const { currentStartItem, otherIsHovered, numberOfItemsInView } = this.state;
 
     const showItems = this.props.carouselItems.map((item, i) => {
 
       /* Determine all the classes to be added */
       let isPrevious = false;
-      if (this.state.currentStartItem === 0 && (i === carouselItems.length - numberOfItemsInView || i === carouselItems.length - 1)
-          || i === this.state.currentStartItem - numberOfItemsInView || i === this.state.currentStartItem - 1) {
+      if (currentStartItem === 0 && (i === carouselItems.length - numberOfItemsInView || i === carouselItems.length - 1)
+          || i === currentStartItem - numberOfItemsInView || i === currentStartItem - 1) {
         isPrevious = true;
       }
 
-      let isActive = i === this.state.currentStartItem || i - 1 === this.state.currentStartItem ? true : false;
-      let alignment = i % 2 === 0 ? 'even' : 'odd';
+      let isActive = i === currentStartItem || i - (numberOfItemsInView - 1) === currentStartItem ? true : false;
+      let alignment = i % numberOfItemsInView === 0 ? 'even' : 'odd';
+      let otherIsHovered = otherIsHovered && isActive && alignment === 'even' ? true : false;
 
       let extraClasses = {
         active: isActive,
         previous: isPrevious,
-        otherIsHovered: this.state.otherIsHovered && isActive && alignment === 'even' ? true : false
+        otherIsHovered: otherIsHovered
       }
 
       extraClasses[alignment] = true;
 
       const classes = classnames('home-carousel-item', extraClasses);
+
 
       /* Move the images according to mouse position */
       // const modifier = 3;
@@ -116,7 +127,7 @@ class HomeCarousel extends Component {
 
       /* Parallax */
       let textStyles = {};
-      if (window.innerWidth > 768) {
+      if (!isMobile) {
         textStyles = {
           transform: `translate3d(0,${transitionOnScroll(scrollProgress, 0, 0.33, 0.33, 1, distance, true)}px,0)`
         }
@@ -133,19 +144,19 @@ class HomeCarousel extends Component {
       if (item.videoURL) {
         visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} />
       } else {
-        visualContent = <div className="home-carousel-visual-content-image" style={{ backgroundImage: `url(${item.imageURL})` }} />
+        visualContent = isMobile ? <img src={item.imageURL} className="home-carousel-visual-content-image" /> : <div className="home-carousel-visual-content-image" style={{ backgroundImage: `url(${item.imageURL})` }} />
       }
 
       return (
         <div className={classes} key={`carousel-item-${i}`} onMouseEnter={this.itemHoverEnter(alignment, isActive)} onMouseLeave={this.itemHoverLeave(alignment, isActive)}>
-          <div className="home-carousel-item-text" style={textStyles}>
-            <div className="home-section-title">{item.category}</div>
-            <h2>{item.title}</h2>
-          </div>
           <div className="home-carousel-item-image">
             <div className="home-carousel-visual-content">
               {visualContent}
             </div>
+          </div>
+          <div className="home-carousel-item-text" style={textStyles}>
+            <div className="home-section-title">{item.category}</div>
+            <h2>{item.title}</h2>
           </div>
         </div>
       );

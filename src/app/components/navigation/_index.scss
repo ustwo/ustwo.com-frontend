@@ -11,16 +11,19 @@ $nav-height-large: 26px;
 .navigation {
   position: fixed;
   top: 0;
-  margin: 21px 0;
+  padding: 20px 0;
   right: 0;
+  left: 0;
   z-index: 9999;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   cursor: pointer;
+  background-color: rgba(248,248,248,.9); /* this is rgb value for $offWhite (#F8F8F8) */
 
   @media screen and (min-width: $bp-medium) {
     margin: 29px 0;
+    background-color: transparent;
   }
 
   @media screen and (min-width: $bp-large) {

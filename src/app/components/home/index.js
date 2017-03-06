@@ -28,7 +28,8 @@ class PageHome extends Component {
     this.state = {
       viewportDimensions: {},
       venturesActive: false,
-      contentLoaded: false
+      contentLoaded: false,
+      isMobile: null
     }
   }
 
@@ -39,8 +40,17 @@ class PageHome extends Component {
         width: e.target.visualViewport.clientWidth,
         height: e.target.visualViewport.clientHeight
       };
-      this.setState({ viewportDimensions });
+      this.setState({
+        viewportDimensions,
+        isMobile: window.innerWidth < 480 ? true : false
+      });
     }
+  }
+
+  componentWillMount() {
+    this.setState({
+      isMobile: window.innerWidth < 480 ? true : false
+    });
   }
 
   componentDidMount() {
@@ -80,6 +90,7 @@ class PageHome extends Component {
   }
 
   render() {
+    const { isMobile } = this.state;
     const classes = classnames('page-home-content', this.props.className, {
       /* venturesActive shows or hides the dark background depending on when it falls in/out of view */
       venturesActive: isVenturesInView(this),
@@ -113,7 +124,7 @@ class PageHome extends Component {
 
         <Link to="homeTextBlock" smooth={true} duration={500}>
           <ScrollWrapper
-            component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.contentLoaded} />}
+            component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.contentLoaded} isMobile={isMobile} />}
             documentScrollPosition={this.props.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
             requireMousePosition={true}
@@ -131,7 +142,7 @@ class PageHome extends Component {
         </Element>
 
         <ScrollWrapper
-          component={<HomeCarousel carouselItems={dataProducts} />}
+          component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} />}
           documentScrollPosition={this.props.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           requireMousePosition={true}
@@ -150,7 +161,7 @@ class PageHome extends Component {
           />
 
           <ScrollWrapper
-            component={<HomeCarousel carouselItems={dataVentures} darkStyle={true} />}
+            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile}m darkStyle={true} />}
             documentScrollPosition={this.props.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
             requireMousePosition={true}
