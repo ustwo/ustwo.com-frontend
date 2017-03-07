@@ -132,7 +132,7 @@ class PageHome extends Component {
           />
         </Link>
 
-        <Element name="homeTextBlock">
+        <Element name="homeTextBlock" className="home-welcome-wrapper">
           <ScrollWrapper
             component={<HomeTextBlock content={textBlockIntro} />}
             documentScrollPosition={this.props.documentScrollPosition}
@@ -142,10 +142,9 @@ class PageHome extends Component {
         </Element>
 
         <ScrollWrapper
-          component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} />}
+          component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!isVenturesInView(this)} />}
           documentScrollPosition={this.props.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
-          requireMousePosition={true}
           className="scroll-wrapper-home-carousel-products"
         />
 
@@ -161,10 +160,9 @@ class PageHome extends Component {
           />
 
           <ScrollWrapper
-            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile}m darkStyle={true} />}
+            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={isVenturesInView(this)} />}
             documentScrollPosition={this.props.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
-            requireMousePosition={true}
             className="scroll-wrapper-home-carousel-ventures"
           />
 

@@ -22,10 +22,6 @@ function goToNextItems(component) {
   }
 }
 
-function isCarouselInView(component) {
-  return component.props.scrollProgress >= 0.2 && component.props.scrollProgress <= 0.75
-}
-
 class HomeCarousel extends Component {
 
   constructor(props) {
@@ -41,7 +37,7 @@ class HomeCarousel extends Component {
 
   ticker() {
     /* Start the ticker when half of the carousel comes into view and stop it when it's off out */
-    if (isCarouselInView(this)) {
+    if (this.props.inView && this.props.scrollProgress > 0.3) {
 
       if (this.state.tick === 0) {
         goToNextItems(this);
@@ -84,7 +80,7 @@ class HomeCarousel extends Component {
   }
 
   render() {
-    const { scrollProgress, mousePosition, carouselItems, className, isMobile } = this.props;
+    const { scrollProgress, carouselItems, className, isMobile, inView } = this.props;
     const { currentStartItem, otherIsHovered, numberOfItemsInView } = this.state;
 
     const showItems = this.props.carouselItems.map((item, i) => {
@@ -135,7 +131,7 @@ class HomeCarousel extends Component {
 
       /* Play/Pause the video */
       let playVideo = false;
-      if (isActive && isCarouselInView(this)) {
+      if (isActive && inView && scrollProgress > 0.3) {
         playVideo = true;
       }
 
