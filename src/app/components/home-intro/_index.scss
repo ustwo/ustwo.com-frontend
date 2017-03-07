@@ -8,6 +8,10 @@
   padding: 0;
 }
 
+.home-intro-link {
+  display: block;
+}
+
 .home-intro {
   display: flex;
   align-items: center;
@@ -19,23 +23,27 @@
 .home-intro-logo {
   position: relative;
   z-index: 1;
-  perspective: 200px;
-  width: 120px;
 
-  @media screen and (min-width: $bp-smaller) {
-    width: 140px;
-  }
+  .home-intro-logo-wrapper,
+  .ustwo-logo-sequence {
+    perspective: 200px;
+    width: 120px;
 
-  @media screen and (min-width: $bp-medium) {
-    width: 155px;
-  }
+    @media screen and (min-width: $bp-smaller) {
+      width: 140px;
+    }
 
-  @media screen and (min-width: $bp-large) {
-    width: 190px;
-  }
+    @media screen and (min-width: $bp-medium) {
+      width: 155px;
+    }
 
-  @media screen and (min-width: $bp-larger) {
-    width: 225px;
+    @media screen and (min-width: $bp-large) {
+      width: 190px;
+    }
+
+    @media screen and (min-width: $bp-larger) {
+      width: 225px;
+    }
   }
 
   svg {
@@ -61,5 +69,48 @@
 
   @media screen and (max-width: $bp-medium) {
     transform: translate3d(0,0,0) !important;
+  }
+}
+
+
+/*  */
+@media screen and (max-width: $bp-medium) {
+  .home-loader {
+    height: 100%;
+  }
+  .home-intro-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: 1;
+
+    .scroll-wrapper {
+      height: 100%;
+      display: block;
+    }
+    .scroll-wrapper-inner {
+      display: block;
+      height: 100%;
+    }
+    .home-intro {
+      position: absolute;
+      height: 100%;
+      display: block;
+    }
+    .home-intro-logo {
+      height: 100%;
+      display:flex;
+      align-items: center;
+      justify-content: center
+    }
+    .videoBackground {
+      height: 100%;
+    }
+  }
+
+  .scroll-wrapper-home-welcome-message {
+    margin-top: 100vh;
   }
 }

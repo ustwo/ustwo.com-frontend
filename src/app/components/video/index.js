@@ -105,7 +105,7 @@ const Video = React.createClass({
       if (play === undefined) {
         video = <video src={src} poster={posterURL} autoPlay loop muted />;
       } else {
-        video = <video ref="video" src={src} poster={posterURL} loop muted />;
+        video = <video ref="video" src={src} poster={posterURL} playsInline loop muted />;
       }
     } else {
       video = this.renderImage();
