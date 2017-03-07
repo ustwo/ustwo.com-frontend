@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Scroll, { Link, Element } from 'react-scroll'; /* Animate and scroll to location in document */
+import Scroll, { Link, Element } from 'react-scroll'; // Animate and scroll to location in document
 import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
 
@@ -12,13 +12,7 @@ import HomeWelcomeMessage from 'app/components/home-welcome-message';
 import HomeMoreMessage from 'app/components/home-more-message';
 import HomeSmorgasbordMessage from 'app/components/home-smorgasbord-message';
 import HomeSmorgasbord from 'app/components/home-smorgasbord';
-import HomeLoader from 'app/components/home-loader';
 import ContactBlock from 'app/components/contact-block';
-
-function isVenturesInView(component) {
-  return (component.props.documentScrollPosition > component.venturesPositionFromTop) &&
-         (component.props.documentScrollPosition < component.venturesPositionFromTop + component.venturesHeight)
-}
 
 class PageHome extends Component {
 
@@ -27,13 +21,15 @@ class PageHome extends Component {
 
     this.state = {
       viewportDimensions: {},
+      venturesPosition: {},
       venturesActive: false,
-      contentLoaded: false,
       isMobile: null
     }
   }
 
-  /* Used in the resize listener */
+  // We need to find out viewportDimensions and if ventures is active (therefore know where it is)
+  // Update all of it if we resize
+
   getViewportDimensions() {
     const viewportDimensions = {
       width: window.innerWidth,
@@ -45,19 +41,16 @@ class PageHome extends Component {
     });
   }
 
-  whereIsVentures() {
-    /*
-      For the ventures (dark background) section so we know when it
-      comes into view and we can show/hide it accordingly.
-    */
-    this.venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
-    /* Remove some height from the offsetTop here so the bg is activated as the content comes into view */
-    this.venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.state.viewportDimensions.height * 0.5);
-    const whereIsVentures = {
-      from: this.venturesPositionFromTop,
-      to: this.venturesPositionFromTop + this.venturesHeight
+  getVenturesPosition() {
+    const venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
+    const venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.state.viewportDimensions.height * 0.5);
+
+    const venturesPosition = {
+      from: venturesPositionFromTop,
+      to: venturesPositionFromTop + venturesHeight
     }
-    Flux.whereIsVentures(whereIsVentures);
+
+    this.setState({ venturesPosition });
   }
 
   componentWillMount() {
@@ -65,53 +58,47 @@ class PageHome extends Component {
   }
 
   componentDidMount() {
+    this.getVenturesPosition();
+    Flux.isVenturesInView(this.state.venturesActive);
 
-    /*
-      Sets home-loader to be seen for a fixed time
-      TODO: Work out strategy here. It is a loader but ALSO an intro animation. We will want a minimum
-      time for it to be seen but also allow for the video and home content to load before we hide it.
-    */
-    setTimeout(() => {
-      this.setState({ contentLoaded: true });
-    }.bind(this), 5500);
-
-    /* Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync */
+    // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
     window.addEventListener('resize', () => {
       this.getViewportDimensions();
-      this.whereIsVentures();
+      this.getVenturesPosition();
     });
+  }
 
+  componentWillReceiveProps() {
+    const { documentScrollPosition } = this.props;
+    const { venturesPosition } = this.state;
 
-    this.whereIsVentures();
+    // See if ventures is in view
+    const venturesActive = (documentScrollPosition > venturesPosition.from) && (documentScrollPosition < venturesPosition.to);
+    this.setState({ venturesActive });
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.getViewportDimensions());
+    window.removeEventListener('resize', () => {
+      this.getViewportDimensions();
+      this.getVenturesPosition();
+    });
   }
 
   render() {
     const { isMobile } = this.state;
     const classes = classnames('page-home-content', this.props.className, {
-      /* venturesActive shows or hides the dark background depending on when it falls in/out of view */
-      venturesActive: isVenturesInView(this),
-      /* when 'loaded', hide home-loader */
-      loaded: this.state.contentLoaded
+      venturesActive: this.state.venturesActive // venturesActive shows or hides the dark background depending on when it falls in/out of view
     });
 
-    /*
-      Text block contents
-      TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS.
-    */
+    // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
     const textBlockIntro = {
       title: `Hi. We're ustwo.`,
       text: <HomeWelcomeMessage />
     }
-
     const textBlockMore = {
       title: `Still hungry?`,
       text: <HomeMoreMessage />
     }
-
     const textBlockSmorgasbord = {
       title: `More yes, more can, more wow`,
       text: <HomeSmorgasbordMessage />
@@ -120,11 +107,9 @@ class PageHome extends Component {
     return (
       <article className={classes}>
 
-        <HomeLoader loaded={this.state.contentLoaded} />
-
         <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
           <ScrollWrapper
-            component={<HomeIntro scrolling={this.props.scrolling} loaded={this.state.contentLoaded} isMobile={isMobile} />}
+            component={<HomeIntro scrolling={this.props.scrolling} appLoaded={this.props.appLoaded} isMobile={isMobile} />}
             documentScrollPosition={this.props.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
             requireMousePosition={true}
@@ -142,7 +127,7 @@ class PageHome extends Component {
         </Element>
 
         <ScrollWrapper
-          component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!isVenturesInView(this)} />}
+          component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!this.state.venturesActive} />}
           documentScrollPosition={this.props.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           className="scroll-wrapper-home-carousel-products"
@@ -160,7 +145,7 @@ class PageHome extends Component {
           />
 
           <ScrollWrapper
-            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={isVenturesInView(this)} />}
+            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={this.state.venturesActive} />}
             documentScrollPosition={this.props.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
             className="scroll-wrapper-home-carousel-ventures"
@@ -189,10 +174,7 @@ class PageHome extends Component {
 
 export default PageHome;
 
-/*
-  Hard coded data
-  TODO: Integrate with CMS
-*/
+// Hard coded data, TODO: Integrate with CMS
 const dataProducts = [{
   title: "Ford GoPark",
   category: "Client Work",

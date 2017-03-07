@@ -74,4 +74,36 @@
     right: 0;
     height: 100%;
   }
+
+
+  // Transition the loader in
+  .home-loader {
+    > * {
+      opacity: 0;
+      transition: opacity .5s ease-in-out;
+    }
+  }
+
+  &.show {
+    .home-loader {
+      > * {
+        opacity: 1;
+      }
+      h1 {
+        transition-delay: .75s;
+      }
+    }
+  }
+
+  // Fade the loader out when it's finished
+  .home-loader {
+    opacity: 1;
+    transition: opacity .32s ease-in-out;
+  }
+
+  &.loaded {
+    .home-loader {
+      opacity: 0;
+    }
+  }
 }

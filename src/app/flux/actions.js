@@ -49,8 +49,8 @@ const Actions = {
   setEventsStudioTo(id) {
     Store.setEventsStudioTo(id);
   },
-  whereIsVentures(where) {
-    Store.whereIsVentures(where);
+  isVenturesInView(where) {
+    Store.isVenturesInView(where);
   },
   showPopup(name) {
     Store.showPopup(name);

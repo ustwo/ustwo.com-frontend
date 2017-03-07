@@ -55,41 +55,6 @@
   }
 }
 
-.page-home {
-  .app-content {
-    .home-loader {
-      > * {
-        opacity: 0;
-        transition: opacity .5s ease-in-out;
-      }
-    }
-
-    &.show {
-      .home-loader {
-        > * {
-          opacity: 1;
-        }
-        h1 {
-          transition-delay: .75s;
-        }
-      }
-    }
-  }
-
-}
-.page-home-content {
-  .home-loader {
-    opacity: 1;
-    transition: opacity .32s ease-in-out;
-  }
-
-  &.loaded {
-    .home-loader {
-      opacity: 0;
-    }
-  }
-}
-
 .home-ventures-wrapper {
 
   .home-ventures-wrapper-bg {

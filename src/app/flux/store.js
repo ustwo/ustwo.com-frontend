@@ -31,7 +31,7 @@ const _state = Object.assign({
   eventsPaginationTotal: Nulls.eventsPaginationTotal,
   archivedEventsPagination: Defaults.archivedEventsPagination,
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
-  whereIsVentures: Defaults.whereIsVentures,
+  isVenturesInView: Defaults.isVenturesInView,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -283,8 +283,8 @@ const Store = Object.assign(
       _state.eventsPagination = Defaults.eventsPagination;
       Store.emit('change', _state);
     },
-    whereIsVentures(where) {
-      _state.whereIsVentures = where;
+    isVenturesInView(bool) {
+      _state.isVenturesInView = bool;
       Store.emit('change', _state);
     },
     showPopup(name) {

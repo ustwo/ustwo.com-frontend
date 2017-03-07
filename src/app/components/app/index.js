@@ -30,6 +30,7 @@ import BlogCategories from 'app/components/blog-categories';
 import NavigationOverlay from 'app/components/navigation-overlay';
 import PageLoader from 'app/components/page-loader';
 import Popup from 'app/components/popup';
+import HomeLoader from 'app/components/home-loader';
 
 const pageMap = {
   'home': require('app/components/home'),
@@ -62,6 +63,7 @@ const App = React.createClass({
     state['documentScrollPosition'] = 0;
     state['scrolling'] = false;
     state['show'] = false;
+    state['appLoaded'] = false;
 
     return state;
   },
@@ -70,6 +72,12 @@ const App = React.createClass({
     setTimeout(() => {
       this.setState({ show: true });
     }.bind(this), 1000);
+
+    document.body.style.overflow = "hidden";
+    // TODO: Remove timeout and actually act as a loader (of the video)
+    setTimeout(() => {
+      this.setState({ appLoaded: true });
+    }.bind(this), 5500);
 
     Store.on('change', this.onChangeStore);
     window.addEventListener('scroll', getDocumentScrollPosition(this));
@@ -155,17 +163,18 @@ const App = React.createClass({
   render() {
     const state = this.state;
     const appClasses = classnames('app', `page-${this.state.currentPage}`, {
+      'show': state.show,
+      'loaded': state.appLoaded,
       'app-404': state.currentPage === 'notfound'
     });
     const contentClasses = classnames('app-content', state.showPopup, state.showRollover, state.menuHover, {
-      'show': state.show,
       'takeover': this.showTakeover(),
       'disabled': !!state.modal,
-      'mobile-no-scroll': state.modal || this.showTakeover()
+      'mobile-no-scroll': state.modal || this.showTakeover(),
     });
     if (!!state.modal || !!state.popup) {
       document.body.style.overflow = "hidden";
-    } else if (state.modal === null || state.popup === null) {
+    } else if (state.modal === null && state.appLoaded || state.popup === null && state.appLoaded) {
       document.body.style.overflow = "auto";
     }
     let content;
@@ -224,6 +233,7 @@ const App = React.createClass({
         </PageContainer>
         {this.renderModal()}
         {this.renderPopup()}
+        <HomeLoader loaded={this.state.appLoaded} />
       </div>;
     }
     return content;
