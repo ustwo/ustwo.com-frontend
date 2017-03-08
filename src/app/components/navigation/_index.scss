@@ -185,8 +185,6 @@ $nav-height-large: 26px;
 .navigation {
   &.invert,
   &.menuOpen {
-    background-color: rgba(50, 55, 71, .9);
-
     .logo svg {
       fill: white;
     }
@@ -203,10 +201,16 @@ $nav-height-large: 26px;
       background-color: transparent;
     }
   }
+  &.invert {
+    background: linear-gradient(90deg, #333, #313c61);
+    opacity: 0.9;
+  }
 }
 
 .navigation {
   &.menuOpen {
+    background: none;
+
     .navigation-toggle-main {
       &:before,
       &:after {

@@ -11,9 +11,8 @@ $home-carousel-margin: 10px;
 $home-carousel-padding: 76px;
 $home-carousel-duration: .12s;
 $home-carousel-boxShadow-spread: 50px;
-$transition-rotation: 20deg;
-$transition-scale: 0.87;
-$transition-rotationX: 16deg;
+$home-carousel-transition-scale: 0.95;
+$home-carousel-transition-scale-further: 0.9;
 $large-screen-right-indent: 130px;
 $home-carousel-small-screen-offset: 95px;
 
@@ -29,6 +28,7 @@ $home-carousel-small-screen-offset: 95px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  transform: translateZ(0);
 }
 
 .home-carousel-item-text {
@@ -49,6 +49,7 @@ $home-carousel-small-screen-offset: 95px;
 .home-carousel-visual-content {
   width: 100%;
   height: 100%;
+  max-width: 470px;
 
   > div,
   > img {
@@ -95,10 +96,6 @@ $home-carousel-small-screen-offset: 95px;
   position: relative;
   -webkit-font-smoothing: antialiased;
   margin-left: 20px;
-
-  @media screen and (min-width: $bp-small) {
-    flex-direction: column;
-  }
 }
 
 .home-carousel-shuffle {
@@ -116,10 +113,6 @@ $home-carousel-small-screen-offset: 95px;
   margin-right: 30px;
 }
 
-
-
-
-
 .home-carousel-item {
   display: flex;
   justify-content: center;
@@ -131,66 +124,27 @@ $home-carousel-small-screen-offset: 95px;
     margin-bottom: 7px;
   }
 
-  .home-carousel-item-text {
-    visibility: hidden;
-    transition: visibility $home-carousel-duration linear;
+  .videoBackground {
+    position: relative;
 
-    > * {
-      transition: opacity .2s ease-in-out;
-    }
-  }
-
-  .home-carousel-item-image {
-    visibility: hidden;
-    transition: all $home-carousel-duration cubic-bezier(0,.5,.6,1);
-
-    .videoBackground {
+    video {
       position: relative;
-
-      video {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-      }
+      top: auto;
+      left: auto;
+      transform: none;
     }
   }
 
   &.active {
     display: block;
-
-    .home-carousel-item-text {
-      visibility: visible;
-    }
-
-    .home-carousel-item-image {
-      visibility: visible;
-      transform: rotateY(0deg) !important;
-    }
-
-    &.even {
-      .home-carousel-item-text,
-      .home-carousel-item-image {
-        transition-delay: $home-carousel-duration;
-      }
-    }
-
-    &.odd {
-      .home-carousel-item-text,
-      .home-carousel-item-image {
-        transition-delay: $home-carousel-duration;
-      }
-    }
   }
 }
 
 
 
-
-
-@media screen and (min-width: $bp-small) {
-  $home-carousel-width: 320px;
-  $home-carousel-height: 217px; /* 224 */
+@media screen and (min-width: $bp-tablet) {
+  $home-carousel-width: 380px;
+  $home-carousel-height: 258px; /* 266 */
   $home-carousel-margin: 20px;
   $home-carousel-padding: 115px;
 
@@ -200,7 +154,6 @@ $home-carousel-small-screen-offset: 95px;
     flex: 1;
     justify-content: center;
     align-items: center;
-    perspective: 2000px;
     margin-left: 0;
   }
 
@@ -210,15 +163,33 @@ $home-carousel-small-screen-offset: 95px;
     z-index: 1;
     width: 45%;
     margin-top: 0;
+    visibility: hidden;
+    transition: visibility $home-carousel-duration linear;
+  }
+
+  .home-carousel-item-image {
+    visibility: hidden;
+    transition: all $home-carousel-duration linear;
+  }
+
+  &.active {
+    display: block;
+
+    .home-carousel-item-text,
+    .home-carousel-item-image {
+      visibility: visible;
+    }
   }
 
   .home-carousel-item {
     position: absolute;
     top: 50%;
     left: 0;
-    transition: transform .15s ease-in-out;
-    perspective: 2000px;
     display: block;
+
+    .home-carousel-item-image {
+      transform: scale($home-carousel-transition-scale);
+    }
 
     &.even {
       right: 5%;
@@ -232,7 +203,6 @@ $home-carousel-small-screen-offset: 95px;
       }
       .home-carousel-item-image {
         align-items: flex-end;
-        transform: rotateY(-$transition-rotation) scale($transition-scale) rotateX(-$transition-rotationX); /* flip back starting point */
       }
     }
 
@@ -252,7 +222,6 @@ $home-carousel-small-screen-offset: 95px;
       .home-carousel-item-image {
         align-items: flex-start;
         align-self: flex-end;
-        transform: rotateY($transition-rotation) scale($transition-scale) rotateX($transition-rotationX); /* flip back starting point */
       }
     }
 
@@ -282,6 +251,15 @@ $home-carousel-small-screen-offset: 95px;
           z-index: 8;
         }
       }
+
+      .home-carousel-item-image {
+        transform: scale(1);
+      }
+
+      .home-carousel-item-text,
+      .home-carousel-item-image {
+        transition-delay: $home-carousel-duration;
+      }
     }
 
     &.previous {
@@ -292,7 +270,6 @@ $home-carousel-small-screen-offset: 95px;
         }
       }
     }
-
     &.active.odd {
       .home-carousel-item-text,
       .home-carousel-item-image {
@@ -316,6 +293,10 @@ $home-carousel-small-screen-offset: 95px;
     }
   }
 
+  .home-carousel-visual-content {
+    max-width: none;
+  }
+
   .home-carousel-visual-content-image {
     background-size: cover;
     background-position: 50%;
@@ -328,45 +309,6 @@ $home-carousel-small-screen-offset: 95px;
     bottom: 30px;
   }
 }
-
-
-@media screen and (min-width: 550px) {
-  $home-carousel-width: 380px;
-  $home-carousel-height: 258px; /* 266 */
-  $home-carousel-margin: 20px;
-  $home-carousel-padding: 115px;
-
-  .home-carousel-items {
-    height: (2 * $home-carousel-height) + $home-carousel-margin;
-  }
-
-  .home-carousel-item {
-    &.even {
-      transform: translate(0, -($home-carousel-height + $home-carousel-margin));
-
-      .home-carousel-item-text {
-        margin-left: -$home-carousel-padding;
-      }
-      .home-carousel-item-image {
-        transform: rotateY(-$transition-rotation) scale($transition-scale) rotateX(-$transition-rotationX); /* flip back starting point */
-      }
-    }
-
-    &.odd {
-      transform: translate(0, $home-carousel-margin);
-
-      .home-carousel-item-image {
-        transform: rotateY($transition-rotation) scale($transition-scale) rotateX($transition-rotationX); /* flip back starting point */
-      }
-    }
-  }
-
-  .home-carousel-item-image {
-    width: $home-carousel-width;
-    height: $home-carousel-height;
-  }
-}
-
 
 @media screen and (min-width: $bp-medium) {
   $home-carousel-width: 485px;
@@ -385,17 +327,10 @@ $home-carousel-small-screen-offset: 95px;
       .home-carousel-item-text {
         margin-left: -$home-carousel-padding;
       }
-      .home-carousel-item-image {
-        transform: rotateY(-$transition-rotation) scale($transition-scale) rotateX(-$transition-rotationX); /* flip back starting point */
-      }
     }
 
     &.odd {
       transform: translate(0, $home-carousel-margin);
-
-      .home-carousel-item-image {
-        transform: rotateY($transition-rotation) scale($transition-scale) rotateX($transition-rotationX); /* flip back starting point */
-      }
     }
   }
 
@@ -406,6 +341,11 @@ $home-carousel-small-screen-offset: 95px;
 }
 
 
+
+
+
+
+/* DIFFERENT LAYOUT */
 
 @media screen and (min-width: $bp-large) {
   $home-carousel-width: 519px;
@@ -420,6 +360,11 @@ $home-carousel-small-screen-offset: 95px;
     height: (2 * $home-carousel-height) + $home-carousel-margin;
   }
 
+  home-carousel-item-image {
+    transforom: transform .32s ease-in-out;
+    transition-delay: 0s;
+  }
+
   .home-carousel-item {
 
     &.even {
@@ -432,17 +377,8 @@ $home-carousel-small-screen-offset: 95px;
         left: 0;
         margin: 0;
       }
-
       .home-carousel-item-image {
-        transform: rotateY($transition-rotation) scale($transition-scale) rotateX(-$transition-rotationX);
-      }
-
-      &:hover {
-        transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(0deg);
-      }
-
-      &.otherIsHovered {
-        transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(15deg);
+        transform: scale($home-carousel-transition-scale);
       }
     }
 
@@ -452,47 +388,93 @@ $home-carousel-small-screen-offset: 95px;
       padding-right: $home-carousel-padding;
       display: flex;
       align-items: flex-end;
-      transform: translate(0, $home-carousel-margin) rotateY(-15deg);
-
-      .home-carousel-item-image {
-        transform: rotateY(-$transition-rotation) scale($transition-scale) rotateX($transition-rotationX);
-      }
+      transform: translate(0, $home-carousel-margin);
 
       .home-carousel-item-text {
         left: $home-carousel-width - $home-carousel-grid;
         margin-left: -10px;
       }
-
-      &:hover {
-        transform: translate(0, $home-carousel-margin) rotateY(0deg);
+      .home-carousel-item-image {
+        transform: scale($home-carousel-transition-scale-further);
       }
     }
 
     &.previous {
-      &.even {
+      &.odd {
+        .home-carousel-item-text,
         .home-carousel-item-image {
-          transform: rotateY($transition-rotation) scale($transition-scale);
+          transition-delay: 0s;
         }
       }
-
-      &.odd {
-        .home-carousel-item-image {
-          transform: rotateY(-$transition-rotation) scale($transition-scale);
-        }
+      &.even {
         .home-carousel-item-text,
         .home-carousel-item-image {
           transition-delay: $home-carousel-duration;
         }
       }
     }
+    &.active {
+      &.odd {
+        .home-carousel-item-text,
+        .home-carousel-item-image {
+          transition-delay: $home-carousel-duration;
+        }
+      }
+      &.even {
+        .home-carousel-item-text,
+        .home-carousel-item-image {
+          transition-delay: $home-carousel-duration * 2;
+        }
+      }
+    }
 
-    &.active.odd {
-      .home-carousel-item-text,
-      .home-carousel-item-image {
-        transition-delay: $home-carousel-duration * 2;
+    &.active {
+
+      &.even {
+        .home-carousel-item-image {
+          transform: scale(1);
+        }
+      }
+      &.odd {
+        .home-carousel-item-image {
+          transform: scale($home-carousel-transition-scale);
+        }
+
+        &:hover {
+          .home-carousel-item-image {
+            transform: scale(1);
+            transition-delay: 0s;
+          }
+        }
+      }
+
+      &.even.otherIsHovered {
+        .home-carousel-item-image {
+          transform: scale($home-carousel-transition-scale);
+          transition-delay: 0s;
+        }
+      }
+
+      &.justBeenHovered {
+        .home-carousel-item-image {
+          transition-delay: 0s;
+        }
+      }
+    }
+
+    &.active {
+      &.odd {
+        z-index: 6;
+      }
+    }
+
+    &.previous {
+      &.even {
+        z-index: 7;
       }
     }
   }
+
   .home-carousel-item-image {
     width: $home-carousel-width;
     height: $home-carousel-height;
@@ -501,6 +483,7 @@ $home-carousel-small-screen-offset: 95px;
       position: absolute;
     }
   }
+
   .home-carousel-shuffle {
     top: 50%;
     bottom: auto;
@@ -532,34 +515,24 @@ $home-carousel-small-screen-offset: 95px;
     &.even {
       left: 0;
       padding-left: $home-carousel-padding;
-      transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(0deg);
-
-      &:hover {
-        transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(0deg);
-      }
-
-      &.otherIsHovered {
-        transform: translate(0, -($home-carousel-height + $home-carousel-margin)) rotateY(15deg);
-      }
+      transform: translate(0, -($home-carousel-height + $home-carousel-margin));
     }
 
     &.odd {
       padding-right: $home-carousel-padding;
-      transform: translate(0, $home-carousel-margin) rotateY(-15deg);
+      transform: translate(0, $home-carousel-margin);
 
       .home-carousel-item-text {
         left: $home-carousel-width - $home-carousel-grid;
       }
-
-      &:hover {
-        transform: translate(0, $home-carousel-margin) rotateY(0deg);
-      }
     }
   }
+
   .home-carousel-item-image {
     width: $home-carousel-width;
     height: $home-carousel-height;
   }
+
   .home-carousel-shuffle {
     right: calc(#{$large-screen-right-indent} + #{$home-carousel-width} + #{$home-carousel-padding} + #{$home-carousel-controls-padding});
     transform: translateY(calc(#{$home-carousel-controls-padding} - #{$home-carousel-margin}));

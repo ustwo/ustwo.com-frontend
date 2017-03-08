@@ -31,7 +31,8 @@ class HomeCarousel extends Component {
       currentStartItem: 0,
       tick: itemsRefreshInterval,
       otherIsHovered: false,
-      numberOfItemsInView: 2
+      numberOfItemsInView: 2,
+      justBeenHovered: false
     }
   }
 
@@ -50,7 +51,7 @@ class HomeCarousel extends Component {
   itemHoverEnter(alignment, isActive) {
     return () => {
       if (alignment === 'odd' && isActive) {
-        this.setState({ otherIsHovered: true })
+        this.setState({ otherIsHovered: true });
       }
     }
   }
@@ -58,8 +59,12 @@ class HomeCarousel extends Component {
   itemHoverLeave(alignment, isActive) {
     return () => {
       if (alignment === 'odd' && isActive) {
-        this.setState({ otherIsHovered: false })
+        this.setState({ otherIsHovered: false });
       }
+      this.setState({ justBeenHovered: true });
+      setTimeout(() => {
+        this.setState({ justBeenHovered: false });
+      }.bind(this), 500);
     }
   }
 
@@ -81,7 +86,7 @@ class HomeCarousel extends Component {
 
   render() {
     const { scrollProgress, carouselItems, className, isMobile, inView } = this.props;
-    const { currentStartItem, otherIsHovered, numberOfItemsInView } = this.state;
+    const { currentStartItem, otherIsHovered, numberOfItemsInView, justBeenHovered } = this.state;
 
     const showItems = this.props.carouselItems.map((item, i) => {
 
@@ -92,14 +97,15 @@ class HomeCarousel extends Component {
         isPrevious = true;
       }
 
-      let isActive = i === currentStartItem || i - (numberOfItemsInView - 1) === currentStartItem ? true : false;
+      let isActive = i === currentStartItem || i - (numberOfItemsInView - 1) === currentStartItem;
       let alignment = i % numberOfItemsInView === 0 ? 'even' : 'odd';
-      let otherIsHovered = otherIsHovered && isActive && alignment === 'even' ? true : false;
+      let isHovered = otherIsHovered && isActive && alignment === 'even';
 
       let extraClasses = {
         active: isActive,
         previous: isPrevious,
-        otherIsHovered: otherIsHovered
+        otherIsHovered: isHovered,
+        justBeenHovered: justBeenHovered
       }
 
       extraClasses[alignment] = true;
@@ -148,7 +154,11 @@ class HomeCarousel extends Component {
       }
 
       return (
-        <div className={classes} key={`carousel-item-${i}`} onMouseEnter={this.itemHoverEnter(alignment, isActive)} onMouseLeave={this.itemHoverLeave(alignment, isActive)}>
+        <div
+          className={classes}
+          key={`carousel-item-${i}`}
+          onMouseEnter={this.itemHoverEnter(alignment, isActive)}
+          onMouseLeave={this.itemHoverLeave(alignment, isActive)}>
           <div className="home-carousel-item-image">
             <div className="home-carousel-visual-content">
               {visualContent}

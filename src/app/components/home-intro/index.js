@@ -15,8 +15,8 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, appLoaded, isMobi
     Create stack of logos in a sort of 3D space that move dependant on the mouse position.
   */
   const logoLayers = colours.map((fill, i) => {
-    let modifier = 5 * ((colours.length - i) * (colours.length - i));
-    let modifierRotate = 2 * ((colours.length - (i - 1)) * (colours.length - (i - 1)));
+    let modifier = 5 * ((colours.length - i) * 2);
+    let modifierRotate = 2 * ((colours.length - (i - 1)) * 2);
 
     /* Reverse signs for mousePosition */
     let coordinateX = mousePosition.coordinateX * -1;
@@ -30,7 +30,7 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, appLoaded, isMobi
 
     let translateZ;
     if (i != colours.length - 1) {
-      let value = 10 + Math.abs(coordinateX * 20);
+      let value = 10 + Math.abs(coordinateX * 10);
       translateZ = `-${value}px`;
     } else {
       translateZ = 0;

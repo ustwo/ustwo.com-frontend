@@ -77,7 +77,7 @@ const App = React.createClass({
     // TODO: Remove timeout and actually act as a loader (of the video)
     setTimeout(() => {
       this.setState({ appLoaded: true });
-    }.bind(this), 5500);
+    }.bind(this), 6500);
 
     Store.on('change', this.onChangeStore);
     window.addEventListener('scroll', getDocumentScrollPosition(this));
