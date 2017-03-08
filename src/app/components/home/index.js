@@ -27,9 +27,6 @@ class PageHome extends Component {
     }
   }
 
-  // We need to find out viewportDimensions and if ventures is active (therefore know where it is)
-  // Update all of it if we resize
-
   getViewportDimensions() {
     const viewportDimensions = {
       width: window.innerWidth,
@@ -37,10 +34,12 @@ class PageHome extends Component {
     };
     this.setState({
       viewportDimensions,
-      isMobile: window.innerWidth < 480 ? true : false
+      isMobile: window.innerWidth < 600 ? true : false
     });
   }
 
+  // We need to find out viewportDimensions and if ventures is active (therefore know where it is)
+  // Update all of it if we resize
   getVenturesPosition() {
     const venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
     const venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.state.viewportDimensions.height * 0.5);
@@ -49,8 +48,8 @@ class PageHome extends Component {
       from: venturesPositionFromTop,
       to: venturesPositionFromTop + venturesHeight
     }
-
     this.setState({ venturesPosition });
+    Flux.venturesPosition(venturesPosition);
   }
 
   componentWillMount() {
@@ -59,22 +58,12 @@ class PageHome extends Component {
 
   componentDidMount() {
     this.getVenturesPosition();
-    Flux.isVenturesInView(this.state.venturesActive);
 
     // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
     window.addEventListener('resize', () => {
       this.getViewportDimensions();
       this.getVenturesPosition();
     });
-  }
-
-  componentWillReceiveProps() {
-    const { documentScrollPosition } = this.props;
-    const { venturesPosition } = this.state;
-
-    // See if ventures is in view
-    const venturesActive = (documentScrollPosition > venturesPosition.from) && (documentScrollPosition < venturesPosition.to);
-    this.setState({ venturesActive });
   }
 
   componentWillUnmount() {
@@ -85,9 +74,13 @@ class PageHome extends Component {
   }
 
   render() {
-    const { isMobile } = this.state;
+    const { documentScrollPosition } = this.props;
+    const { venturesPosition, isMobile } = this.state;
+
+    const venturesActive = (documentScrollPosition > venturesPosition.from) && (documentScrollPosition < venturesPosition.to);
+
     const classes = classnames('page-home-content', this.props.className, {
-      venturesActive: this.state.venturesActive // venturesActive shows or hides the dark background depending on when it falls in/out of view
+      venturesActive: venturesActive // venturesActive shows or hides the dark background depending on when it falls in/out of view
     });
 
     // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
@@ -127,7 +120,7 @@ class PageHome extends Component {
         </Element>
 
         <ScrollWrapper
-          component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!this.state.venturesActive} />}
+          component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} />}
           documentScrollPosition={this.props.documentScrollPosition}
           viewportDimensions={this.state.viewportDimensions}
           className="scroll-wrapper-home-carousel-products"
@@ -145,7 +138,7 @@ class PageHome extends Component {
           />
 
           <ScrollWrapper
-            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={this.state.venturesActive} />}
+            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={venturesActive} />}
             documentScrollPosition={this.props.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
             className="scroll-wrapper-home-carousel-ventures"

@@ -88,6 +88,7 @@ function HomeIntro({ scrollProgress, mousePosition, scrolling, appLoaded, isMobi
           {logoLayers}
         </div>
       </div>
+      <div className="home-intro-down-arrow"></div>
     </div>
   );
 }

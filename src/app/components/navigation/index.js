@@ -32,11 +32,13 @@ class Navigation extends Component {
   }
 
   render() {
-    const { section, page, takeover, customClass, documentScrollPosition, whereIsVentures } = this.props;
+    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition } = this.props;
+
+    const venturesActive = venturesPosition && (documentScrollPosition > venturesPosition.from) && (documentScrollPosition < venturesPosition.to);
 
     const navClasses = classnames('navigation', customClass, section, page, {
-      notSticky: documentScrollPosition < window.innerHeight && section === 'home' ? true : false,
-      invert: whereIsVentures && documentScrollPosition > whereIsVentures.from && documentScrollPosition < whereIsVentures.to ? true : false,
+      notSticky: documentScrollPosition < window.innerHeight && section === 'home',
+      invert: venturesActive,
       menuOpen: this.props.modal === 'menu',
       takeover
     });

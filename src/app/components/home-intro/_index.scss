@@ -72,6 +72,17 @@
   }
 }
 
+.home-intro-down-arrow {
+  position: absolute;
+  z-index: 2;
+  bottom: 60px;
+  left: calc(50% - 9px);
+  width: 19px;
+  height: 45px;
+  background: url('/images/icon-down.svg') no-repeat 0 0;
+  background-size: 100% auto;
+}
+
 
 /*  */
 @media screen and (max-width: $bp-medium) {

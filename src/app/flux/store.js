@@ -31,6 +31,7 @@ const _state = Object.assign({
   eventsPaginationTotal: Nulls.eventsPaginationTotal,
   archivedEventsPagination: Defaults.archivedEventsPagination,
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
+  venturesPosition: Defaults.venturesPosition,
   isVenturesInView: Defaults.isVenturesInView,
   relatedContent: []
 }, window.state);
@@ -283,8 +284,8 @@ const Store = Object.assign(
       _state.eventsPagination = Defaults.eventsPagination;
       Store.emit('change', _state);
     },
-    isVenturesInView(bool) {
-      _state.isVenturesInView = bool;
+    venturesPosition(position) {
+      _state.venturesPosition = position;
       Store.emit('change', _state);
     },
     showPopup(name) {

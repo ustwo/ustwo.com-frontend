@@ -7,5 +7,5 @@ export default {
 	archivedEventsPagination: 1,
 	showPopup: '',
 	menuHover: '',
-	isVenturesInView: false,
+	venturesPosition: {}
 };
