@@ -14,12 +14,8 @@ class HomeSmorgasbord extends Component {
     return (
       <div className="home-smorgasbord">
         <div className="smorgasbord-block smorgasbord-video">
-          <video
-            ref="smorgasbordVideo"
-            src="https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=164"
-            poster="/images/temp/smorgs-video.jpg"
-          ></video>
-        </div>
+          <iframe src="https://player.vimeo.com/video/189642924?color=ED0082&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
         <div className="smorgasbord-block-wrapper">
           <div className="smorgasbord-block smorgasbord-event">
             <h5>ustwo Events</h5>

@@ -13,7 +13,7 @@
   background: rgba(255,255,255,0.9);
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: column;
   opacity: 0;
   transition: opacity .2s ease-in-out;
@@ -25,38 +25,46 @@
   &.hide {
     opacity: 0;
   }
+}
 
+.popup-content {
+  position: relative;
+  width: 80%;
+  max-width: 390px;
+  text-align: center;
+  box-shadow: 10px 10px 40px rgba(0,0,0,.3);
+  padding: 30px;
+  box-sizing: content-box;
+  background-color: $offWhite;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    padding: 50px;
+  }
+}
+
+.popup {
   &.invest,
   &.ventures,
   &.difference {
     background: rgba(50,58,86,0.9);
     color: white;
-  }
 
-  img {
-    width: 85%;
-  }
+    .popup-content {
+      background-color: #2f3b55;
 
-  p {
-    margin-bottom: 40px;
-    width: 90%;
-    text-align: center;
-  }
-
-  .close-button {
-    margin-top: 40px;
-  }
-
-  &.products {
-
-  }
-
-  @media screen and (min-width: $bp-large) {
-    img {
-      width: 65%;
-    }
-    p {
-      width: 50%;
+      .close-button {
+        fill: $nonBlack;
+      }
     }
   }
 }

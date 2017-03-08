@@ -39,37 +39,16 @@
 
 .smorgasbord-video {
   position: relative;
-  height: auto;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
 
-  video {
-    width: 100%;
-  }
-}
-
-.smorgasbord-video-controls {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  background: url('/images/icon-play-large-dark.svg') no-repeat 50% 50%;
-  transition: all .2s ease-in-out;
-  cursor: pointer;
-  display: none;
-
-  @media screen and (min-width: $bp-medium) {
-    display: block;
-  }
-
-  &.videoPlaying {
-    opacity: 0;
-    background: url('/images/icon-pause-large-dark.svg') no-repeat 50% 50%;
-    transition: all .2s ease-in-out;
-
-    &:hover {
-      opacity: 1;
-    }
+  iframe {
+    position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+    border: none;
   }
 }
 

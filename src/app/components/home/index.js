@@ -34,7 +34,7 @@ class PageHome extends Component {
     };
     this.setState({
       viewportDimensions,
-      isMobile: window.innerWidth < 600 ? true : false
+      isMobile: window.innerWidth < 600
     });
   }
 
@@ -171,66 +171,80 @@ export default PageHome;
 const dataProducts = [{
   title: "Ford GoPark",
   category: "Client Work",
-  imageURL: "/images/home/ford-gopark.jpg"
+  imageURL: "/images/home/ford-gopark.jpg",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Android wear",
   category: "Client Work",
   imageURL: "/images/home/android-wear.jpg",
-  videoURL: "/images/home/android-wear.mp4"
+  videoURL: "/images/home/android-wear.mp4",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Foursquare",
   category: "Client Work",
   imageURL: "/images/home/foursquare.jpg",
-  videoURL: "/images/home/foursquare.mp4"
+  videoURL: "/images/home/foursquare.mp4",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Adidas Go",
   category: "Client Work",
-  imageURL: "/images/home/adidas-go.jpg"
+  imageURL: "/images/home/adidas-go.jpg",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Google Cardboard ",
   category: "Client Work",
-  imageURL: "/images/home/google-cardboard.jpg"
+  imageURL: "/images/home/google-cardboard.jpg",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Harvey Nichols",
   category: "Client Work",
   imageURL: "/images/home/harvey-nichols.jpg",
-  videoURL: "/images/home/harvey-nichols.mp4"
+  videoURL: "/images/home/harvey-nichols.mp4",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Sky Kids",
   category: "Client Work",
   imageURL: "/images/home/sky-kids.jpg",
-  videoURL: "/images/home/sky-kids.mp4"
+  videoURL: "/images/home/sky-kids.mp4",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "NBC Sprout",
   category: "Client Work",
-  imageURL: "/images/home/nbc-sprout.jpg"
+  imageURL: "/images/home/nbc-sprout.jpg",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 }];
 
 const dataVentures = [{
   title: "ustwo Games",
   category: "Venture",
   imageURL: "/images/home/ustwo-games.jpg",
-  videoURL: "/images/home/monument-valley.mp4"
+  videoURL: "/images/home/monument-valley.mp4",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Dice",
   category: "Venture",
-  imageURL: "/images/home/dice.jpg"
+  imageURL: "/images/home/dice.jpg",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Moodnotes",
   category: "Venture",
   imageURL: "/images/home/moodnotes.jpg",
-  videoURL: "/images/home/moodnotes.mp4"
+  videoURL: "/images/home/moodnotes.mp4",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Wayfindr",
   category: "Venture",
-  imageURL: "/images/home/wayfindr.jpg"
+  imageURL: "/images/home/wayfindr.jpg",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Pause",
   category: "Venture",
   imageURL: "/images/home/pause.jpg",
-  videoURL: "/images/home/pause.mp4"
+  videoURL: "/images/home/pause.mp4",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Watch This",
   category: "Venture",
-  imageURL: "/images/home/watch-this.jpg"
+  imageURL: "/images/home/watch-this.jpg",
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 }];

@@ -29,10 +29,15 @@ $home-carousel-small-screen-offset: 95px;
   justify-content: center;
   flex-direction: column;
   transform: translateZ(0);
+  max-width: 455px;
+  margin: 0 auto;
 }
 
 .home-carousel-item-text {
+  position: relative;
+  z-index: 20;
   margin-top: 25px;
+  width: 75%;
 
   h2 {
     color: #111;
@@ -46,10 +51,13 @@ $home-carousel-small-screen-offset: 95px;
   }
 }
 
+.home-carousel-item-description {
+  display: none;
+}
+
 .home-carousel-visual-content {
   width: 100%;
   height: 100%;
-  max-width: 470px;
 
   > div,
   > img {
@@ -101,7 +109,7 @@ $home-carousel-small-screen-offset: 95px;
 .home-carousel-shuffle {
   cursor: pointer;
   position: absolute;
-  bottom: 0;
+  bottom: 105px;
   right: 20px;
   z-index: 100;
   transition: opacity .2s ease-in-out;
@@ -140,13 +148,29 @@ $home-carousel-small-screen-offset: 95px;
   }
 }
 
-
+@media screen and (min-width: 450px) {
+  .home-carousel {
+    padding: 0 20px;
+  }
+  .home-carousel-items {
+    margin-left: 0;
+  }
+  .home-carousel-shuffle {
+    right: 20px;
+  }
+}
 
 @media screen and (min-width: $bp-tablet) {
   $home-carousel-width: 380px;
   $home-carousel-height: 258px; /* 266 */
   $home-carousel-margin: 20px;
   $home-carousel-padding: 115px;
+
+  .home-carousel {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
 
   .home-carousel-items {
     height: (2 * $home-carousel-height) + $home-carousel-margin;
@@ -165,6 +189,15 @@ $home-carousel-small-screen-offset: 95px;
     margin-top: 0;
     visibility: hidden;
     transition: visibility $home-carousel-duration linear;
+  }
+
+  .home-carousel-item-description {
+    display: block;
+    font-size: 16px;
+    padding-top: 20px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all .2s ease-in;
   }
 
   .home-carousel-item-image {
@@ -238,7 +271,7 @@ $home-carousel-small-screen-offset: 95px;
     }
 
     &.active {
-      z-index: 7;
+      z-index: 8;
 
       &:hover {
         z-index: 9;
@@ -276,6 +309,35 @@ $home-carousel-small-screen-offset: 95px;
         transition-delay: $home-carousel-duration * 2;
       }
     }
+
+    &:after {
+      content: "";
+      width: 100px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(-90deg, white, transparent);
+      opacity: 0;
+    }
+
+    &.even:after {
+      right: auto;
+      left: 0;
+      background: linear-gradient(-90deg, transparent, white);
+    }
+
+    &:hover {
+      &:after {
+        opacity: .5;
+        transition: opacity .32s ease-in-out;
+      }
+
+      .home-carousel-item-description {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   }
 
   .home-carousel-item-image {
@@ -306,7 +368,8 @@ $home-carousel-small-screen-offset: 95px;
   }
 
   .home-carousel-shuffle {
-    bottom: 30px;
+    right: 70px;
+    bottom: -5px;
   }
 }
 
@@ -365,7 +428,21 @@ $home-carousel-small-screen-offset: 95px;
     transition-delay: 0s;
   }
 
+  .home-carousel-item-description {
+    font-size: 18px;
+  }
+
   .home-carousel-item {
+
+    &.even:after {
+      left: $home-carousel-padding;
+      right: auto;
+    }
+
+    &.odd:after {
+      left: auto;
+      right: $home-carousel-padding;
+    }
 
     &.even {
       left: 60px;
@@ -489,7 +566,7 @@ $home-carousel-small-screen-offset: 95px;
     bottom: auto;
     left: auto;
     right: calc(#{$large-screen-right-indent} + #{$home-carousel-width} + #{$home-carousel-padding} + #{$home-carousel-controls-padding});
-    transform: translateY(calc(#{$home-carousel-controls-padding} - #{$home-carousel-margin}));
+    transform: translateY(#{$home-carousel-controls-padding});
   }
 }
 
@@ -510,7 +587,21 @@ $home-carousel-small-screen-offset: 95px;
     height: (2 * $home-carousel-height) + $home-carousel-margin;
   }
 
+  .home-carousel-item-description {
+    font-size: 20px;
+  }
+
   .home-carousel-item {
+
+    &.even:after {
+      left: $home-carousel-padding;
+      right: auto;
+    }
+
+    &.odd:after {
+      left: auto;
+      right: $home-carousel-padding;
+    }
 
     &.even {
       left: 0;
@@ -535,6 +626,6 @@ $home-carousel-small-screen-offset: 95px;
 
   .home-carousel-shuffle {
     right: calc(#{$large-screen-right-indent} + #{$home-carousel-width} + #{$home-carousel-padding} + #{$home-carousel-controls-padding});
-    transform: translateY(calc(#{$home-carousel-controls-padding} - #{$home-carousel-margin}));
+    transform: translateY(65px);
   }
 }

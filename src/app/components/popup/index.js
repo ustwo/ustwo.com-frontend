@@ -48,13 +48,14 @@ class Popup extends Component {
 
     return (
       <div className={classes} onClick={this.onClick}>
-        <CloseButton
-          onClose={this.onClick}
-          autoAnim={10}
-          style={{ fill: invert ? 'white' : 'black' }}
-        />
-        <img src={`/images/temp/${image}`} />
-        <p>{text}</p>
+        <div className="popup-content">
+          <CloseButton
+            onClose={this.onClick}
+            autoAnim={10}
+            style={{ fill: invert ? 'white' : 'black' }}
+          />
+          <p>{text}</p>
+        </div>
       </div>
     );
   }

@@ -11,6 +11,7 @@ const itemsRefreshInterval = 5000;
 const tickerFrequency = 50;
 const transitionDuration = 300;
 const distance = 40;
+const sizeOfTextBlock = 0.3;
 
 function goToNextItems(component) {
   component.setState({ tick: itemsRefreshInterval });
@@ -32,13 +33,14 @@ class HomeCarousel extends Component {
       tick: itemsRefreshInterval,
       otherIsHovered: false,
       numberOfItemsInView: 2,
-      justBeenHovered: false
+      justBeenHovered: false,
+      paused: false
     }
   }
 
   ticker() {
     /* Start the ticker when half of the carousel comes into view and stop it when it's off out */
-    if (this.props.inView && this.props.scrollProgress > 0.3) {
+    if (this.props.inView && this.props.scrollProgress > sizeOfTextBlock && !this.state.paused) {
 
       if (this.state.tick === 0) {
         goToNextItems(this);
@@ -53,6 +55,7 @@ class HomeCarousel extends Component {
       if (alignment === 'odd' && isActive) {
         this.setState({ otherIsHovered: true });
       }
+      this.setState({ paused: true });
     }
   }
 
@@ -61,7 +64,10 @@ class HomeCarousel extends Component {
       if (alignment === 'odd' && isActive) {
         this.setState({ otherIsHovered: false });
       }
-      this.setState({ justBeenHovered: true });
+      this.setState({
+        justBeenHovered: true,
+        paused: false
+       });
       setTimeout(() => {
         this.setState({ justBeenHovered: false });
       }.bind(this), 500);
@@ -105,7 +111,7 @@ class HomeCarousel extends Component {
         active: isActive,
         previous: isPrevious,
         otherIsHovered: isHovered,
-        justBeenHovered: justBeenHovered
+        justBeenHovered: justBeenHovered && isActive
       }
 
       extraClasses[alignment] = true;
@@ -136,10 +142,7 @@ class HomeCarousel extends Component {
       }
 
       /* Play/Pause the video */
-      let playVideo = false;
-      if (isActive && inView && scrollProgress > 0.3) {
-        playVideo = true;
-      }
+      let playVideo = isActive && inView && scrollProgress > sizeOfTextBlock;
 
       /* Show either an image or video depending on if there is a videoURL */
       let visualContent;
@@ -167,6 +170,7 @@ class HomeCarousel extends Component {
           <div className="home-carousel-item-text" style={textStyles}>
             <div className="home-section-title">{item.category}</div>
             <h2>{item.title}</h2>
+            <div className="home-carousel-item-description">{item.description}</div>
           </div>
         </div>
       );
@@ -191,10 +195,10 @@ class HomeCarousel extends Component {
       <div className={classes}>
         <div className="home-carousel-items">
           {showItems}
-          <button className="home-carousel-shuffle" onClick={() => goToNextItems(this)}>
-            <TimerUI timer={ticker} darkStyle={this.props.darkStyle} />
-          </button>
         </div>
+        <button className="home-carousel-shuffle" onClick={() => goToNextItems(this)}>
+          <TimerUI timer={ticker} darkStyle={this.props.darkStyle} />
+        </button>
         <div className="view-carousel-related-page"><button>All {viewPage}</button></div>
       </div>
     );
