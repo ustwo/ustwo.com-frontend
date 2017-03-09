@@ -66,7 +66,7 @@
     height: 100vh;
     opacity: 0;
     transition: opacity .32s ease-in-out;
-    background: linear-gradient(-225deg, #333, #304179);
+    background: linear-gradient(-225deg, $v-gradient1, $v-gradient2);
     transform: translateZ(0);
   }
   .scroll-wrapper-home-more-message {
@@ -96,6 +96,18 @@
     color: white;
     border-color: white;
     background-image: url('/images/icon-right-light.svg');
+  }
+
+  @media screen and (min-width: $bp-tablet) {
+    .home-carousel-item {
+      &:after {
+        background: linear-gradient(-90deg, $v-solid, transparent);
+      }
+
+      &.even:after {
+        background: linear-gradient(-90deg, transparent, $v-solid);
+      }
+    }
   }
 }
 

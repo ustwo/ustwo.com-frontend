@@ -31,6 +31,11 @@ class Navigation extends Component {
     }
   }
 
+  onClickLogo(event) {
+    event.preventDefault();
+    Flux.navigate('/');
+  }
+
   render() {
     const { section, page, takeover, customClass, documentScrollPosition, venturesPosition } = this.props;
 
@@ -44,11 +49,20 @@ class Navigation extends Component {
     });
 
     return (
-      <nav className={navClasses} onClick={this.toggleMenu.bind(this)}>
-        <button className="logo">
+      <nav className={navClasses}>
+        <div className="menu-no-js">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/work">Work</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/join-us">Join us</a></li>
+          </ul>
+        </div>
+        <a className="logo" href="/" onClick={this.onClickLogo}>
           <SVG title="ustwo logo" spritemapID="ustwologo" />
-        </button>
-        <button className="navigation-toggle">
+        </a>
+        <button className="navigation-toggle" onClick={this.toggleMenu.bind(this)}>
           <div className="navigation-toggle-main"></div>
           <svg className="navigation-toggle-ring" title="menu ring" role="img" viewBox="0 0 46 46">
             <g>

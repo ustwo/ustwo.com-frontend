@@ -4,6 +4,24 @@
  *
  */
 
+html {
+ .menu-no-js {
+   display: block;
+
+   li {
+     display: inline-block;
+     margin: 0 10px;
+
+     a {
+      display: block;
+     }
+   }
+ }
+ &.js .menu-no-js {
+   display: none;
+ }
+}
+
 $nav-height-small: 20px;
 $nav-height-medium: 24px;
 $nav-height-large: 26px;
@@ -18,7 +36,6 @@ $nav-height-large: 26px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  cursor: pointer;
   background-color: rgba(248,248,248,.9); /* this is rgb value for $offWhite (#F8F8F8) */
   transition: background-color .32s ease-in-out;
 
@@ -38,6 +55,7 @@ $nav-height-large: 26px;
 
   .logo {
     overflow: hidden;
+    cursor: pointer;
 
     svg {
       fill: $nonBlack;
@@ -62,6 +80,7 @@ $nav-height-large: 26px;
 .navigation-toggle {
   position: relative;
   margin: 0 22px 0 12px;
+  cursor: pointer;
 
   @media screen and (min-width: $bp-smaller) {
     margin: 0 22px 0 14px;

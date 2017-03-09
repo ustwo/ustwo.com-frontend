@@ -9,7 +9,7 @@ $home-carousel-width: 257px;
 $home-carousel-height: 180px;
 $home-carousel-margin: 10px;
 $home-carousel-padding: 76px;
-$home-carousel-duration: .12s;
+$home-carousel-duration: .2s;
 $home-carousel-boxShadow-spread: 50px;
 $home-carousel-transition-scale: 0.95;
 $home-carousel-transition-scale-further: 0.9;
@@ -319,6 +319,7 @@ $home-carousel-small-screen-offset: 95px;
       bottom: 0;
       background: linear-gradient(-90deg, white, transparent);
       opacity: 0;
+      transition: opacity .15s ease-in-out;
     }
 
     &.even:after {
@@ -330,7 +331,7 @@ $home-carousel-small-screen-offset: 95px;
     &:hover {
       &:after {
         opacity: .5;
-        transition: opacity .32s ease-in-out;
+        transition-duration: .32s;
       }
 
       .home-carousel-item-description {

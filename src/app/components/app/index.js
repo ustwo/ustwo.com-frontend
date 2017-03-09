@@ -73,11 +73,13 @@ const App = React.createClass({
       this.setState({ show: true });
     }.bind(this), 1000);
 
-    document.body.style.overflow = "hidden";
-    // TODO: Remove timeout and actually act as a loader (of the video)
-    setTimeout(() => {
-      this.setState({ appLoaded: true });
-    }.bind(this), 6500);
+    if (!this.state.appLoaded) {
+      document.body.style.overflow = "hidden";
+      // TODO: Remove timeout and actually act as a loader (of the video)
+      setTimeout(() => {
+        this.setState({ appLoaded: true });
+      }.bind(this), 6500);
+    }
 
     Store.on('change', this.onChangeStore);
     window.addEventListener('scroll', getDocumentScrollPosition(this));

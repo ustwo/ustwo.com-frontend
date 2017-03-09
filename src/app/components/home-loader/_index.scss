@@ -4,6 +4,15 @@
  *
  */
 
+html {
+  .home-loader {
+    display: none;
+  }
+  &.js .home-loader {
+    display: flex;
+  }
+}
+
 .home-loader {
   position: absolute;
   left: 0;

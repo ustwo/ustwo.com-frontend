@@ -9,8 +9,10 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <%= meta %>
     <%= link %>
-    <link rel="stylesheet" href="/css/ustwo.css">
     <style>
+      body {
+        background-image: linear-gradient(241deg, #000000, #0e0d10 29%, #322d37);
+      }
       .home-loader {
         position: absolute;
         left: 0;
@@ -26,6 +28,22 @@
         z-index: 999;
       }
     </style>
+    <noscript id="deferred-styles">
+      <link rel="stylesheet" type="text/css" href="/css/ustwo.css">
+    </noscript>
+    <script>
+      var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+          webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+      else window.addEventListener('load', loadDeferredStyles);
+    </script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/touch-icon-iphone.png">
