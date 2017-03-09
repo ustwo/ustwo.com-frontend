@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
+import Subscription from 'app/components/subscription';
+
 class HomeSmorgasbord extends Component {
 
   constructor(props) {
@@ -34,7 +36,7 @@ class HomeSmorgasbord extends Component {
             <button>All Posts</button>
           </div>
         </div>
-        <div className="smorgasbord-block smorgasbord-studios"></div>
+        <Subscription />
       </div>
     );
   }

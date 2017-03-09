@@ -20,17 +20,19 @@
 
 
 .subscription {
-  $height: 400px;
-  $input-height: 50px;
-  $submit-button-width-small: 50px;
+  $input-height: 40px;
+  $submit-button-width-small: 40px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: $height;
+  padding: 50px 0;
+  height: auto;
   border-bottom: 1px solid $nonBlack;
   font-size: 18px;
+  background-image: linear-gradient(to right, #143fcc, #6114cc);
+  color: white;
 
   .icon {
     width: 77px;
@@ -56,13 +58,13 @@
 
   p {
     max-width: 480px;
-    padding: 0 20px;
+    padding: 0;
+    margin-bottom: 50px;
   }
 
   form {
     display: flex;
-    width: 320px;
-    padding: 0 10px;
+    max-width: 480px;
   }
 
   .label {
@@ -77,57 +79,33 @@
 
   .email {
     flex: 1;
-    padding: 0 20px;
-    color: $nonBlack;
+    background: transparent;
+    color: white;
+    border-bottom: 2px solid white;
+    margin-right: 20px;
+    padding: 0;
   }
 
   .submit {
     width: $submit-button-width-small;
-    background: $blu;
+    background: transparent;
+    border: 1px solid white;
 
     .submit-text {
       display: none;
     }
 
     &:active {
-      /* TODO: Use a 'darken' function here but the sass one doesn't seem to be working. Bad-sass! */
-      background: #007dc0;
-    }
 
-    &:after {
-      @include arrow-icon($white);
-
-      content: "";
-      position: relative;
-      display: inline-block;
-      width: $submit-button-width-small;
-      background-size: 13px 10px;
-      background-repeat: no-repeat;
-      background-position: 50%;
-      transform: rotate(-90deg) scale(0.8);
     }
   }
 
   @media screen and (min-width: $bp-small) {
 
-    form {
-      width: 480px;
-    }
-
-    .submit {
-      width: auto;
-      padding: 0 20px;
-
-      .submit-text {
-        display: inline;
-      }
-
-      &:after {
-        width: 13px;
-        height: 10px;
-        margin-left: 10px;
-      }
-    }
   }
+}
 
+.subscription-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
 }
