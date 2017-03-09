@@ -32,11 +32,11 @@ $nav-height-large: 26px;
   padding: 20px 0;
   right: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 4000;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: rgba(248,248,248,.9); /* this is rgb value for $offWhite (#F8F8F8) */
+  background-color: $offWhite-semiTransparent;
   transition: background-color .32s ease-in-out;
 
   @media screen and (min-width: $bp-medium) {
@@ -59,6 +59,7 @@ $nav-height-large: 26px;
 
     svg {
       fill: $nonBlack;
+      width: 100px;
       // transition: fill .2s ease-in-out;
       height: $nav-height-small;
 

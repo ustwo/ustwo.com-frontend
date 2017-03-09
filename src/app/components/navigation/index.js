@@ -37,7 +37,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition } = this.props;
+    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup } = this.props;
 
     const venturesActive = venturesPosition && (documentScrollPosition > venturesPosition.from) && (documentScrollPosition < venturesPosition.to);
 

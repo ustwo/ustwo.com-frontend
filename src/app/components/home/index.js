@@ -102,7 +102,7 @@ class PageHome extends Component {
 
         <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
           <ScrollWrapper
-            component={<HomeIntro scrolling={this.props.scrolling} appLoaded={this.props.appLoaded} isMobile={isMobile} />}
+            component={<HomeIntro scrolling={this.props.scrolling} appLoaded={this.props.appLoaded} isMobile={isMobile} popup={this.props.popup} />}
             documentScrollPosition={this.props.documentScrollPosition}
             viewportDimensions={this.state.viewportDimensions}
             requireMousePosition={true}
