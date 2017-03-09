@@ -31,6 +31,7 @@ import NavigationOverlay from 'app/components/navigation-overlay';
 import PageLoader from 'app/components/page-loader';
 import Popup from 'app/components/popup';
 import HomeLoader from 'app/components/home-loader';
+import ScrollWrapper from 'app/components/scroll-wrapper';
 
 const pageMap = {
   'home': require('app/components/home'),
@@ -64,8 +65,25 @@ const App = React.createClass({
     state['scrolling'] = false;
     state['show'] = false;
     state['appLoaded'] = false;
+    state['viewportDimensions'] = {};
+    state['isMobile'] = null;
 
     return state;
+  },
+
+  getViewportDimensions() {
+    const viewportDimensions = {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+    this.setState({
+      viewportDimensions,
+      isMobile: window.innerWidth < 600
+    });
+  },
+
+  componentWillMount() {
+    this.getViewportDimensions();
   },
 
   componentDidMount() {
@@ -80,6 +98,10 @@ const App = React.createClass({
         this.setState({ appLoaded: true });
       }.bind(this), 6500);
     }
+
+    window.addEventListener('resize', () => {
+      this.getViewportDimensions();
+    });
 
     Store.on('change', this.onChangeStore);
     window.addEventListener('scroll', getDocumentScrollPosition(this));
@@ -98,6 +120,9 @@ const App = React.createClass({
   componentWillUnmount() {
     Store.removeListener('change', this.onChangeStore);
     window.removeEventListener('scroll', getDocumentScrollPosition(this));
+    window.removeEventListener('resize', () => {
+      this.getViewportDimensions();
+    });
   },
 
   onChangeStore(state) {
@@ -146,10 +171,18 @@ const App = React.createClass({
   },
 
   renderPopup() {
-    const { popup: popupType } = this.state;
+    const { popup: popupType, documentScrollPosition, viewportDimensions } = this.state;
     let popup;
     if (!!popupType) {
-      popup = <Popup key={popupType} type={popupType} className={popupType} />;
+      popup = (
+        <Popup
+          key={popupType}
+          type={popupType}
+          className={popupType}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+        />
+      );
     }
     return (
       <TransitionManager

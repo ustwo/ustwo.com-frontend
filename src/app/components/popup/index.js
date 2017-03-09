@@ -1,59 +1,23 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import Flux from 'app/flux';
-
+import PopupBackground from 'app/components/popup-background';
 import CloseButton from 'app/components/close-button';
-
-function renderBackgroundImages(images, viewportSize) {
-
-  // TODO: Refactor this
-  // let columns = 2;
-  // let rows = 3;
-  // if (viewport > 500) {
-  //   columns = 3;
-  // } else if (viewport > 768) {
-  //   columns = 4;
-  // } else if (viewport > 1024) {
-  //   columns = 5;
-  // }
-  // const totalImages = images.length();
-
-  const renderImages = images.map((image, i) => {
-    return (
-      <div className="popup-image">
-        <img src={`/images/home/popups/${image}`} />
-      </div>
-    );
-  });
-
-  return (
-    <div className="popup-grid">
-      {renderImages}
-    </div>
-  );
-}
+import ScrollWrapper from 'app/components/scroll-wrapper';
 
 class Popup extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = { viewportSize: 0 }
-  }
 
   onClick() {
     Flux.closePopup();
   }
 
-  componentDidMount() {
-    this.setState({ viewportSize: window.innerWidth });
-  }
-
   render() {
-    const { className, children, type } = this.props;
+    const { className, children, type, documentScrollPosition, viewportDimensions } = this.props;
     const classes = classnames('popup', `popup-${type}`, className.replace('shown',''));
 
     const { text, images, invert } = popupData[type];
+
+    const popupBackground = (<PopupBackground images={images} />);
 
     return (
       <div className={classes} onClick={this.onClick}>
@@ -65,7 +29,13 @@ class Popup extends Component {
           />
           <p>{text}</p>
         </div>
-        {renderBackgroundImages(images, this.state.viewportSize)}
+        <ScrollWrapper
+          component={popupBackground}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+          requireMousePosition={true}
+          className="scroll-wrapper-popup"
+        />
       </div>
     );
   }

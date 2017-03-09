@@ -27,7 +27,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 0;
+  padding: 50px 30px;
   height: auto;
   border-bottom: 1px solid $nonBlack;
   font-size: 18px;
@@ -37,7 +37,7 @@
   .icon {
     width: 77px;
     height: 80px;
-    margin-bottom: 30px;
+    margin: 0 auto 30px auto;
     background: url("/images/news-icon-strip-animation.png") no-repeat 0 0;
     background-size: 2079px 80px;
 

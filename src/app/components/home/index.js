@@ -20,29 +20,16 @@ class PageHome extends Component {
     super(props);
 
     this.state = {
-      viewportDimensions: {},
       venturesPosition: {},
-      venturesActive: false,
-      isMobile: null
+      venturesActive: false
     }
-  }
-
-  getViewportDimensions() {
-    const viewportDimensions = {
-      width: window.innerWidth,
-      height: window.innerHeight
-    };
-    this.setState({
-      viewportDimensions,
-      isMobile: window.innerWidth < 600
-    });
   }
 
   // We need to find out viewportDimensions and if ventures is active (therefore know where it is)
   // Update all of it if we resize
   getVenturesPosition() {
     const venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
-    const venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.state.viewportDimensions.height * 0.5);
+    const venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.props.viewportDimensions.height * 0.5);
 
     const venturesPosition = {
       from: venturesPositionFromTop,
@@ -52,30 +39,24 @@ class PageHome extends Component {
     Flux.venturesPosition(venturesPosition);
   }
 
-  componentWillMount() {
-    this.getViewportDimensions();
-  }
-
   componentDidMount() {
     this.getVenturesPosition();
 
     // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
     window.addEventListener('resize', () => {
-      this.getViewportDimensions();
       this.getVenturesPosition();
     });
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', () => {
-      this.getViewportDimensions();
       this.getVenturesPosition();
     });
   }
 
   render() {
-    const { documentScrollPosition } = this.props;
-    const { venturesPosition, isMobile } = this.state;
+    const { documentScrollPosition, viewportDimensions, scrolling, appLoaded, popup, isMobile } = this.props;
+    const { venturesPosition } = this.state;
 
     const venturesActive = (documentScrollPosition > venturesPosition.from) && (documentScrollPosition < venturesPosition.to);
 
@@ -102,9 +83,9 @@ class PageHome extends Component {
 
         <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
           <ScrollWrapper
-            component={<HomeIntro scrolling={this.props.scrolling} appLoaded={this.props.appLoaded} isMobile={isMobile} popup={this.props.popup} />}
-            documentScrollPosition={this.props.documentScrollPosition}
-            viewportDimensions={this.state.viewportDimensions}
+            component={<HomeIntro scrolling={scrolling} appLoaded={appLoaded} isMobile={isMobile} popup={popup} />}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
             requireMousePosition={true}
             className="scroll-wrapper-home-intro"
           />
@@ -113,16 +94,16 @@ class PageHome extends Component {
         <Element name="homeTextBlock" className="home-welcome-wrapper">
           <ScrollWrapper
             component={<HomeTextBlock content={textBlockIntro} />}
-            documentScrollPosition={this.props.documentScrollPosition}
-            viewportDimensions={this.state.viewportDimensions}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
             className="scroll-wrapper-home-welcome-message"
           />
         </Element>
 
         <ScrollWrapper
           component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} />}
-          documentScrollPosition={this.props.documentScrollPosition}
-          viewportDimensions={this.state.viewportDimensions}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
           className="scroll-wrapper-home-carousel-products"
         />
 
@@ -132,15 +113,15 @@ class PageHome extends Component {
 
           <ScrollWrapper
             component={<HomeTextBlock content={textBlockMore} />}
-            documentScrollPosition={this.props.documentScrollPosition}
-            viewportDimensions={this.state.viewportDimensions}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
             className="scroll-wrapper-home-more-message"
           />
 
           <ScrollWrapper
             component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={venturesActive} />}
-            documentScrollPosition={this.props.documentScrollPosition}
-            viewportDimensions={this.state.viewportDimensions}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
             className="scroll-wrapper-home-carousel-ventures"
           />
 
@@ -148,8 +129,8 @@ class PageHome extends Component {
 
         <ScrollWrapper
           component={<HomeTextBlock content={textBlockSmorgasbord} />}
-          documentScrollPosition={this.props.documentScrollPosition}
-          viewportDimensions={this.state.viewportDimensions}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
           className="scroll-wrapper-home-smorgasbord-message"
         />
 
