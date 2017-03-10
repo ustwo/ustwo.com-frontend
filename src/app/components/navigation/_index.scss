@@ -22,9 +22,9 @@ html {
  }
 }
 
-$nav-height-small: 20px;
+$nav-height-small: 22px;
 $nav-height-medium: 24px;
-$nav-height-large: 26px;
+$nav-height-large: 30px;
 
 .navigation {
   position: fixed;
@@ -37,7 +37,7 @@ $nav-height-large: 26px;
   justify-content: flex-end;
   align-items: center;
   background-color: $offWhite-semiTransparent;
-  transition: background-color .32s ease-in-out;
+  transition: background-color .2s linear;
 
   @media screen and (min-width: $bp-medium) {
     padding: 29px 0;
@@ -58,9 +58,10 @@ $nav-height-large: 26px;
     cursor: pointer;
 
     svg {
+      vertical-align: bottom;
       fill: $nonBlack;
       width: 100px;
-      // transition: fill .2s ease-in-out;
+      transition: fill .2s linear;
       height: $nav-height-small;
 
       @media screen and (min-width: $bp-medium) {
@@ -80,17 +81,14 @@ $nav-height-large: 26px;
 
 .navigation-toggle {
   position: relative;
-  margin: 0 22px 0 12px;
+  margin: 0 18px 0 12px;
   cursor: pointer;
 
   @media screen and (min-width: $bp-smaller) {
     margin: 0 22px 0 14px;
   }
   @media screen and (min-width: $bp-medium) {
-    margin: 0 33px 0 16px;
-  }
-  @media screen and (min-width: $bp-large) {
-    margin: 0 34px 0 18px;
+    margin: 0 26px 0 16px;
   }
 }
 
@@ -103,7 +101,7 @@ $nav-height-large: 26px;
   width: $nav-height-small;
   height: $nav-height-small;
   box-sizing: content-box;
-  // transition: all .2s ease-in-out;
+  transition: all .2s linear;
 
   &:before,
   &:after {
@@ -115,7 +113,7 @@ $nav-height-large: 26px;
     width: 10px;
     height: 2px;
     background-color: $nonBlack;
-    // transition: all .2s ease-in-out;
+    transition: all .2s linear;
   }
 
   &:before {
@@ -125,7 +123,7 @@ $nav-height-large: 26px;
     margin-top: 2px;
   }
 
-  @media screen and (min-width: $bp-medium) {
+  @media screen and (min-width: $bp-smaller) {
     width: $nav-height-medium;
     height: $nav-height-medium;
 
@@ -162,22 +160,23 @@ $nav-height-large: 26px;
   z-index: 2;
   fill: $pot;
   // transition: all .2s ease-in-out;
-  width: 36px;
-  height: 36px;
-  margin-left: -6px;
-  margin-top: -6px;
+  width: 40px;
+  height: 40px;
+  margin-left: -7px;
+  margin-top: -7px;
 
-  @media screen and (min-width: $bp-medium) {
+  @media screen and (min-width: $bp-smaller) {
     width: 42px;
     height: 42px;
     margin-left: -7px;
     margin-top: -7px;
   }
+
   @media screen and (min-width: $bp-large) {
-    width: 48px;
-    height: 48px;
-    margin-left: -8px;
-    margin-top: -8px;
+    width: 54px;
+    height: 54px;
+    margin-left: -9px;
+    margin-top: -9px;
   }
 }
 
@@ -243,7 +242,6 @@ $nav-height-large: 26px;
       &:before,
       &:after {
         margin-top: 0;
-        width: 16px;
       }
       &:before {
         transform: translate(-50%, -50%) rotate(45deg);

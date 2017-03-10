@@ -17,10 +17,18 @@ const NavigationOverlay = React.createClass({
         <NavigationOverlayLink
           key={link.id}
           url={link.slug === 'home' ? '/' : `/${link.slug}`}
-          selected={link.slug === this.props.section}
+          selected={link.id === this.props.section}
         >
           {link.title}
         </NavigationOverlayLink>
+      );
+    });
+  },
+
+  renderBg() {
+    return get(this.props, 'pages', []).map(link => {
+      return (
+        <div className={`navigation-overlay-bg-${link.slug}`}></div>
       );
     });
   },
@@ -33,6 +41,7 @@ const NavigationOverlay = React.createClass({
         <ul className="menu-items">
           {this.renderNavigationOverlayLinks()}
         </ul>
+        {this.renderBg()}
       </nav>
     );
   }

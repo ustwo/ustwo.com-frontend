@@ -12,7 +12,7 @@
   height: 100%;
   z-index: 3999;
   cursor: pointer;
-  transition: opacity .2s ease-in-out;
+  transition: opacity .2s linear;
   opacity: 0;
   transform: translateZ(0);
 

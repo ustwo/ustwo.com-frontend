@@ -27,7 +27,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 30px;
+  padding: 50px 30px 68px 30px;
   height: auto;
   border-bottom: 1px solid $nonBlack;
   font-size: 18px;
@@ -84,19 +84,30 @@
     border-bottom: 2px solid white;
     margin-right: 20px;
     padding: 0;
+
+    &::-webkit-input-placeholder {
+      color: white;
+    }
+    &::-moz-placeholder {
+      color: white;
+    }
+    &:-ms-input-placeholder {
+      color: white;
+    }
+    &:-moz-placeholder {
+      color: white;
+    }
   }
 
   .submit {
     width: $submit-button-width-small;
     background: transparent;
     border: 1px solid white;
+    background: transparent url("/images/icon-right-light.svg") no-repeat 50% 50%;
+    background-size: 16px 16px;
 
     .submit-text {
       display: none;
-    }
-
-    &:active {
-
     }
   }
 
@@ -106,6 +117,13 @@
 }
 
 .subscription-wrapper {
-  max-width: 480px;
+  max-width: 320px;
   margin: 0 auto;
+
+  @media screen and (min-width: $bp-tablet) {
+    max-width: 480px;
+  }
+  @media screen and (min-width: $bp-medium) {
+    max-width: 510px;
+  }
 }

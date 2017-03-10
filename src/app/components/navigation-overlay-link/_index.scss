@@ -24,12 +24,28 @@
   &:before {
     content: "";
     position: absolute;
-    width: 15px;
-    height: 15px;
-    left: -30px;
+    width: 8px;
+    height: 8px;
+    left: -16px;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    &:before {
+      width: 13px;
+      height: 13px;
+      left: -28px;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    &:before {
+      width: 15px;
+      height: 15px;
+      left: -30px;
+    }
   }
 
   &:hover {

@@ -74,19 +74,19 @@
 
 @mixin page-background-colour($page) {
   @if $page == 'home' {
-    background-image: linear-gradient(241deg, $jeezz, $mare);
+    background-image: linear-gradient(30deg, $mare, $jeezz);
   }
   @if $page == 'work' {
-    background-image: linear-gradient(241deg, $honey, $piglet);
+    background-image: linear-gradient(30deg, $rain, $softPassion);
   }
   @if $page == 'events' {
-    background-image: linear-gradient(241deg, $piglet, $passion);
+    background-image: linear-gradient(30deg, $piglet, $softPassion);
   }
   @if $page == 'blog' {
-    background-image: linear-gradient(241deg, $blu, $mare);
+    background-image: linear-gradient(30deg, $blu, $mare);
   }
   @if $page == 'join' {
-    background-image: linear-gradient(241deg, $piglet, $rain);
+    background-image: linear-gradient(30deg, $honey, $softPassion);
   }
 }
 

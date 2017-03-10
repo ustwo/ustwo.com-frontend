@@ -55,7 +55,7 @@ class PageHome extends Component {
   }
 
   render() {
-    const { documentScrollPosition, viewportDimensions, scrolling, appLoaded, popup, isMobile } = this.props;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, appLoaded, popup, isMobile } = this.props;
     const { venturesPosition } = this.state;
 
     const venturesActive = (documentScrollPosition > venturesPosition.from) && (documentScrollPosition < venturesPosition.to);
@@ -135,7 +135,7 @@ class PageHome extends Component {
         />
 
         <ScrollWrapper
-          component={<HomeSmorgasbord />}
+          component={<HomeSmorgasbord data={page.featured_content} />}
           className="scroll-wrapper-home-smorgasbord"
         />
 
