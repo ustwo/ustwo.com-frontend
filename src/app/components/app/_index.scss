@@ -19,6 +19,10 @@
 
 .app {
 
+  &.overflow-hidden {
+    overflow: hidden;
+  }
+
   .app-content {
     // transition: opacity .32s ease-in-out;
 

@@ -1,12 +1,13 @@
 import React from 'react';
 
-function PopupBackground({ images, mousePosition }) {
+function PopupBackground({ images, screenPosition, isMobile }) {
 
   const renderImages = images.map((image, i) => {
 
-    /* Move the images according to mouse position */
-    let x = mousePosition.coordinateX * 3;
-    let y = mousePosition.coordinateY * 3;
+    let modifier = isMobile ? 30 : 3;
+
+    let x = screenPosition.coordinateX * modifier;
+    let y = screenPosition.coordinateY * modifier;
 
     const imageStyles = {
       transform: `translate3d(${x}px,${y}px,0)`

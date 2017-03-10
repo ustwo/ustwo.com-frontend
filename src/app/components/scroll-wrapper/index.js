@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import env from 'app/adaptors/server/env';
 
 /*
   Get Scroll Progress:
@@ -29,12 +30,26 @@ function getScrollProgress(top, height, scrollPosition) {
 */
 function getMousePosition(component) {
   return (e) => {
-    const mousePosition = {
+    const screenPosition = {
       coordinateX: Math.round((e.clientX / component.state.elementAttributes.width - 0.5) * 200) / 100,
       coordinateY: Math.round((e.clientY / component.state.elementAttributes.height - 0.5) * 200) / 100
     };
 
-    component.setState({ mousePosition });
+    component.setState({ screenPosition });
+  }
+}
+
+function getGyroscopePosition(component) {
+  return (e) => {
+    const screenPosition = {
+      coordinateX: Math.round((e.gamma / 90) * 100) / 100,
+      coordinateY: Math.round((e.beta / 90) * 100) / 100
+    }
+
+    // console.log('X: ' + screenPosition.coordinateX);
+    // console.log('Y: ' + screenPosition.coordinateY);
+
+    component.setState({ screenPosition });
   }
 }
 
@@ -59,7 +74,7 @@ class ScrollWrapper extends Component {
 
     this.state = {
       elementAttributes: {},
-      mousePosition: {}
+      screenPosition: {}
     }
   }
 
@@ -72,31 +87,35 @@ class ScrollWrapper extends Component {
   componentDidMount() {
     getElementAttributes(this);
 
-    if (this.props.requireMousePosition) {
-      this.scrollWrapper.addEventListener('mousemove', getMousePosition(this));
+    if (this.props.requireScreenPosition) {
+      if (env.Modernizr.touchevents) {
+        window.addEventListener('deviceorientation', getGyroscopePosition(this), true);
+      } else {
+        this.scrollWrapper.addEventListener('mousemove', getMousePosition(this));
+      }
     }
   }
 
   componentWillUnmount() {
-    if (this.props.requireMousePosition) {
+    if (this.props.requireScreenPosition) {
       this.scrollWrapper.removeEventListener('mousemove', getMousePosition(this));
     }
   }
 
   render() {
-    const scrollProgress = getScrollProgress(this.state.elementAttributes.top, this.state.elementAttributes.height, this.props.documentScrollPosition);
-    const mousePosition = this.state.mousePosition;
-    const className = this.props.className;
+    const { screenPosition, elementAttributes } = this.state;
+    const { component, className, documentScrollPosition } = this.props;
+    const scrollProgress = getScrollProgress(elementAttributes.top, elementAttributes.height, documentScrollPosition);
 
     /* Pass down the above props to the child component */
-    const component = React.cloneElement(this.props.component, { scrollProgress, mousePosition, className });
+    const renderComponent = React.cloneElement(component, { scrollProgress, screenPosition, className });
 
-    const classes = classnames('scroll-wrapper', this.props.className);
+    const classes = classnames('scroll-wrapper', className);
 
     return (
       <div className={classes} ref={(ref) => this.scrollWrapper = ref}>
         <div className="scroll-wrapper-inner">
-          {component}
+          {renderComponent}
         </div>
       </div>
     );

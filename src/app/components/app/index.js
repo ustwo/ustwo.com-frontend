@@ -171,7 +171,7 @@ const App = React.createClass({
   },
 
   renderPopup() {
-    const { popup: popupType, documentScrollPosition, viewportDimensions } = this.state;
+    const { popup: popupType, documentScrollPosition, viewportDimensions, isMobile } = this.state;
     let popup;
     if (!!popupType) {
       popup = (
@@ -181,6 +181,7 @@ const App = React.createClass({
           className={popupType}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
+          isMobile={isMobile}
         />
       );
     }
@@ -200,7 +201,8 @@ const App = React.createClass({
     const appClasses = classnames('app', `page-${this.state.currentPage}`, {
       'show': state.show,
       'loaded': state.appLoaded,
-      'app-404': state.currentPage === 'notfound'
+      'app-404': state.currentPage === 'notfound',
+      'overflow-hidden': state.popup
     });
     const contentClasses = classnames('app-content', state.showPopup, state.showRollover, state.menuHover, {
       'takeover': this.showTakeover(),
@@ -214,44 +216,8 @@ const App = React.createClass({
     }
     let content;
     if (state.currentPage === 'notfound') {
-      content = <div className={appClasses}>
-        <Navigation
-          pages={state.navMain}
-          section={state.currentPage.split('/')[0]}
-          page={state.currentPage.split('/')[1]}
-          takeover={this.showTakeover()}
-          documentScrollPosition={state.documentScrollPosition}
-          venturesPosition={state.venturesPosition}
-          modal={this.state.modal}
-        />
-        <FourOhFour {...this.state} />
-        {this.renderModal()}
-      </div>;
-    } else {
-      content = <div className={appClasses}>
-        <Meta
-          title={get(state, 'page.seo.title') || get(state, 'post.seo.title') || ''}
-          meta={[{
-            name: "description",
-            content: get(state, 'page.seo.desc') || get(state, 'post.seo.desc') || ''
-          }, {
-            name: "keywords",
-            content: get(state, 'page.seo.keywords') || get(state, 'post.seo.keywords') || ''
-          }, {
-            property: "og:type",
-            content: 'website'
-          }, {
-            property: "og:title",
-            content: get(state, 'page.seo.title') || get(state, 'post.seo.title') || ''
-          }, {
-            property: "og:description",
-            content: get(state, 'page.seo.desc') || get(state, 'post.seo.desc') || ''
-          }, {
-            property: "og:image",
-            content: get(state, 'page.seo.image') || get(state, 'post.seo.image') || ''
-          }]}
-        />
-        <EntranceTransition className="nav-wrapper">
+      content = (
+        <div className={appClasses}>
           <Navigation
             pages={state.navMain}
             section={state.currentPage.split('/')[0]}
@@ -261,15 +227,55 @@ const App = React.createClass({
             venturesPosition={state.venturesPosition}
             modal={this.state.modal}
           />
-        </EntranceTransition>
-        <PageContainer key={state.currentPage} extraClasses={contentClasses}>
-          {this.getPage(state.currentPage)}
-          <Footer data={state.footer} studios={state.studios} currentPage={this.state.currentPage}/>
-        </PageContainer>
-        {this.renderModal()}
-        {this.renderPopup()}
-        <HomeLoader loaded={this.state.appLoaded} />
-      </div>;
+          <FourOhFour {...this.state} />
+          {this.renderModal()}
+        </div>
+      );
+    } else {
+      content = (
+        <div className={appClasses}>
+          <Meta
+            title={get(state, 'page.seo.title') || get(state, 'post.seo.title') || ''}
+            meta={[{
+              name: "description",
+              content: get(state, 'page.seo.desc') || get(state, 'post.seo.desc') || ''
+            }, {
+              name: "keywords",
+              content: get(state, 'page.seo.keywords') || get(state, 'post.seo.keywords') || ''
+            }, {
+              property: "og:type",
+              content: 'website'
+            }, {
+              property: "og:title",
+              content: get(state, 'page.seo.title') || get(state, 'post.seo.title') || ''
+            }, {
+              property: "og:description",
+              content: get(state, 'page.seo.desc') || get(state, 'post.seo.desc') || ''
+            }, {
+              property: "og:image",
+              content: get(state, 'page.seo.image') || get(state, 'post.seo.image') || ''
+            }]}
+          />
+          <EntranceTransition className="nav-wrapper">
+            <Navigation
+              pages={state.navMain}
+              section={state.currentPage.split('/')[0]}
+              page={state.currentPage.split('/')[1]}
+              takeover={this.showTakeover()}
+              documentScrollPosition={state.documentScrollPosition}
+              venturesPosition={state.venturesPosition}
+              modal={this.state.modal}
+            />
+          </EntranceTransition>
+          <PageContainer key={state.currentPage} extraClasses={contentClasses}>
+            {this.getPage(state.currentPage)}
+            <Footer data={state.footer} studios={state.studios} currentPage={this.state.currentPage}/>
+          </PageContainer>
+          {this.renderModal()}
+          {this.renderPopup()}
+          <HomeLoader loaded={this.state.appLoaded} />
+        </div>
+      );
     }
     return content;
   },

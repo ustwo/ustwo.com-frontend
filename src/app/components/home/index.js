@@ -86,7 +86,7 @@ class PageHome extends Component {
             component={<HomeIntro scrolling={scrolling} appLoaded={appLoaded} isMobile={isMobile} popup={popup} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
-            requireMousePosition={true}
+            requireScreenPosition={true}
             className="scroll-wrapper-home-intro"
           />
         </Link>

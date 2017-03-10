@@ -12,12 +12,12 @@ class Popup extends Component {
   }
 
   render() {
-    const { className, children, type, documentScrollPosition, viewportDimensions } = this.props;
+    const { className, children, type, documentScrollPosition, viewportDimensions, isMobile } = this.props;
     const classes = classnames('popup', `popup-${type}`, className.replace('shown',''));
 
     const { text, images, invert } = popupData[type];
 
-    const popupBackground = (<PopupBackground images={images} />);
+    const popupBackground = (<PopupBackground images={images} isMobile={isMobile} />);
 
     return (
       <div className={classes} onClick={this.onClick}>
@@ -33,7 +33,7 @@ class Popup extends Component {
           component={popupBackground}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
-          requireMousePosition={true}
+          requireScreenPosition={true}
           className="scroll-wrapper-popup"
         />
       </div>
