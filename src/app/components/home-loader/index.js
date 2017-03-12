@@ -18,7 +18,7 @@ class HomeLoader extends Component {
       However, we want to remove it completely AFTER the transition so we have a timeout before
       setting the state to show:false.
     */
-    if (nextProps.loaded) {
+    if (!nextProps.loading) {
       setTimeout(() => {
         this.setState({ hide: true });
       }.bind(this), 1000);

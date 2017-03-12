@@ -19,7 +19,7 @@
 
   .menu-items {
     position: relative;
-    z-index: 1;
+    z-index: 11;
     clear: both;
     display: flex;
     align-items: center;
@@ -38,7 +38,7 @@
   }
 }
 
-[class*="navigation-overlay-bg"] {
+.navigation-overlay-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -46,37 +46,37 @@
   bottom: 0;
   opacity: 0;
   transition: opacity .2s linear;
+
+  &.hovered {
+    opacity: 1;
+  }
 }
 
 .navigation-overlay.home,
-.menu-hover-home + .app__modal .navigation-overlay-bg-home {
+.navigation-overlay-bg-home {
   @include page-background-colour(home);
-  opacity: 1;
 }
 
 .navigation-overlay.what-we-do,
-.menu-hover-what-we-do + .app__modal .navigation-overlay-bg-what-we-do {
+.navigation-overlay-bg-what-we-do {
   @include page-background-colour(work);
-  opacity: 1;
 }
 
 .navigation-overlay.events,
-.menu-hover-events + .app__modal .navigation-overlay-bg-events {
+.navigation-overlay-bg-events {
   @include page-background-colour(events);
-  opacity: 1;
 }
 
 .navigation-overlay.blog,
-.menu-hover-blog + .app__modal .navigation-overlay-bg-blog {
+.navigation-overlay-bg-blog {
   @include page-background-colour(blog);
-  opacity: 1;
 }
 
 .navigation-overlay.join-us,
-.menu-hover-join-us + .app__modal .navigation-overlay-bg-join-us {
+.navigation-overlay-bg-join-us {
   @include page-background-colour(join);
-  opacity: 1;
 }
+
 
 $menu-transition-bg-duration: .2s;
 $menu-transition-item-duration: .2s;
@@ -119,4 +119,77 @@ $menu-transition-item-delay: .15s;
       }
     }
   }
+}
+
+.navigation-overlay-link {
+  position: relative;
+  color: white;
+  width: 100%;
+  list-style: none;
+  @extend .h3;
+  font-size: 36px;
+  line-height: 1.6em;
+
+  @media screen and (min-width: $bp-small) {
+    font-size: 50px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    font-size: 60px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    &:before {
+      width: 13px;
+      height: 13px;
+      left: -28px;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    &:before {
+      width: 15px;
+      height: 15px;
+      left: -30px;
+    }
+  }
+
+  &:hover {
+    &:before {
+      border: 2px solid white;
+    }
+  }
+
+  &.selected {
+    &:before {
+      background-color: white;
+    }
+  }
+
+
+
+  /* Each menu item has a different colour as defined here */
+  // $i: 1;
+  // @each $colour in $rain, $pot, $blu, $softPassion, $honey {
+  //   &:nth-child(#{$i}) {
+  //     color: #{$colour};
+  //     &.selected a {
+  //       border-color: #{$colour};
+  //     }
+  //   }
+  //   $i: $i + 1;
+  // }
+
+
 }

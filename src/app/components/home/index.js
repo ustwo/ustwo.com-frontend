@@ -55,7 +55,7 @@ class PageHome extends Component {
   }
 
   render() {
-    const { page, documentScrollPosition, viewportDimensions, scrolling, appLoaded, popup, isMobile } = this.props;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, appLoading, popup, isMobile } = this.props;
     const { venturesPosition } = this.state;
 
     const venturesActive = (documentScrollPosition > venturesPosition.from) && (documentScrollPosition < venturesPosition.to);
@@ -83,7 +83,7 @@ class PageHome extends Component {
 
         <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
           <ScrollWrapper
-            component={<HomeIntro scrolling={scrolling} appLoaded={appLoaded} isMobile={isMobile} popup={popup} />}
+            component={<HomeIntro scrolling={scrolling} appLoaded={!appLoading} isMobile={isMobile} popup={popup} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}
