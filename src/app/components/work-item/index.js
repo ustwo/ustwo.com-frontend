@@ -21,7 +21,7 @@ const WorkItem = React.createClass({
   render() {
     const { data, image, className, featured } = this.props;
     const id = data.id;
-    const link = `/what-we-do/${get(data, 'slug')}`;
+    const link = `/work/${get(data, 'slug')}`;
     const category = get(data, 'categories.0.name');
 
     return <div className={classnames('card-item', 'work-item', `work-item-${id}`, `work-label-${kebabCase(category)}`, {

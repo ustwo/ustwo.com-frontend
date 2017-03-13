@@ -57,8 +57,8 @@
   @include page-background-colour(home);
 }
 
-.navigation-overlay.what-we-do,
-.navigation-overlay-bg-what-we-do {
+.navigation-overlay.work,
+.navigation-overlay-bg-work {
   @include page-background-colour(work);
 }
 

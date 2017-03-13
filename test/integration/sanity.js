@@ -84,10 +84,10 @@ const jobsPage = '.page-container';
 const jobOpenings = 'WE\'RE HIRING';
 const joinSlug = 'join';
 const joinURL = baseURL + '/join-us';
-const workURL = baseURL + '/what-we-do';
+const workURL = baseURL + '/work';
 const workItem = '.page-work .work-item';
 const workReadmore = 'Read more';
-const workSlug = 'what';
+const workSlug = 'work';
 const sandboxURL = baseURL + '/sandbox';
 const sandboxComponentList = 'body > ol';
 const sandboxComponentName = 'blog';
@@ -210,7 +210,7 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
       .url().should.eventually.include(joinSlug);
   });
 
-  it('should go to the What We Do page and look for case studies', () => {
+  it('should go to the Work page and look for case studies', () => {
     return browser
       .get(workURL)
       .waitForElementByCss(workItem, wd.asserters.textInclude(workReadmore), 15000)

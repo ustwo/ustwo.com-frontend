@@ -35,8 +35,8 @@ import ScrollWrapper from 'app/components/scroll-wrapper';
 
 const pageMap = {
   'home': require('app/components/home'),
-  'what-we-do': require('app/components/what-we-do'),
-  'what-we-do/case-study': require('app/components/case-study'),
+  'work': require('app/components/work'),
+  'work/case-study': require('app/components/case-study'),
   'blog': require('app/components/blog'),
   'blog/post': require('app/components/post'),
   'blog/search-results': require('app/components/search-results'),
@@ -83,8 +83,9 @@ const App = React.createClass({
   },
 
   componentWillMount() {
+    const { page } = this.state;
     this.setState({
-      appLoading: this.state.page.slug === 'home'
+      appLoading: page.slug && page.slug === 'home'
     });
     this.getViewportDimensions();
   },

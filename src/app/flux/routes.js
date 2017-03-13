@@ -10,17 +10,17 @@ const routes = {
     }]
   },
   work: {
-    id: 'what-we-do',
-    patterns: ['/what-we-do'],
+    id: 'work',
+    patterns: ['/work'],
     data: () => [{
-      url: 'ustwo/v1/pages/what-we-do',
+      url: 'ustwo/v1/pages/work',
       type: 'page',
-      slug: 'what-we-do'
+      slug: 'work'
     }]
   },
   caseStudy: {
-    id: 'what-we-do/case-study',
-    patterns: ['/what-we-do/:cid'],
+    id: 'work/case-study',
+    patterns: ['/work/:cid'],
     data: slug => [{
       url: `ustwo/v1/case-studies/${slug}`,
       type: 'caseStudy',

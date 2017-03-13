@@ -8,10 +8,10 @@ const pages = [{
   title: 'Home'
 }, {
   id: 2,
-  slug: 'what-we-do',
+  slug: 'whork',
   colour: 'blue',
-  ga: 'what_we_do',
-  title: 'What we do'
+  ga: 'work',
+  title: 'Work'
 }, {
   id: 3,
   slug: 'join-us',
@@ -24,7 +24,7 @@ const Sandbox = React.createClass({
   render() {
     return <div className="sandbox">
       <NavigationOverlay
-        section="what-we-do"
+        section="work"
         pages={pages}
       />
     </div>;

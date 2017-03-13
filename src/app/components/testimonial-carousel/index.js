@@ -1,21 +1,22 @@
-'use strict';
-
-import React from 'react';
+import React, { Component } from 'react';
 import map from 'lodash/collection/map';
 import SVG from 'app/components/svg';
 import TransitionManager from 'react-transition-manager';
 
-const TestimonialCarousel = React.createClass({
-  getInitialState() {
+class TestimonialCarousel extends Component {
+
+  constructor(props) {
+    super(props);
     const testimonials = this.props.testimonials;
     const index = 0;
     const testimonial = testimonials[index];
 
-    return {
+    this.state = {
       index: index,
       testimonial: this.renderTestimonial(testimonial)
     };
-  },
+  }
+
   onClickPrev() {
     const testimonials = this.props.testimonials;
     const index = (testimonials.length + this.state.index - 1) % testimonials.length
@@ -25,7 +26,8 @@ const TestimonialCarousel = React.createClass({
       index: index,
       testimonial: this.renderTestimonial(testimonial)
     });
-  },
+  }
+
   onClickNext() {
     const testimonials = this.props.testimonials;
     const index = (testimonials.length + this.state.index + 1) % testimonials.length
@@ -35,9 +37,11 @@ const TestimonialCarousel = React.createClass({
       index: index,
       testimonial: this.renderTestimonial(testimonial)
     });
-  },
+  }
+
   renderTestimonial(testimonial) {
-    return <div>
+    return (
+      <div>
         <p>{ testimonial.testimonial }</p>
         <span className="testimonial-name">&#8212; { testimonial.source.name }</span>
         <span>,&nbsp;</span>
@@ -45,7 +49,9 @@ const TestimonialCarousel = React.createClass({
         <span>&nbsp;</span>
         <span className="testimonial-company">{ testimonial.source.company }</span>
       </div>
-  },
+    );
+  }
+
   renderTestimonials() {
     const testimonialSlug = `testimonial-${this.state.index}`;
     return (
@@ -55,28 +61,31 @@ const TestimonialCarousel = React.createClass({
         </TransitionManager>
       </div>
     );
-  },
-  render() {
-    return <section className="testimonials">
-      <div className="wrapper">
-        <button className="button-prev" onClick={this.onClickPrev}>
-          <SVG role="presentation" spritemapID="arrow" />
-        </button>
-        <div className="testimonial-carousel">
-          <div className="quote-mark-top">
-            <SVG role="presentation" spritemapID="quotemark" />
-          </div>
-          { this.renderTestimonials() }
-          <div className="quote-mark-bottom">
-            <SVG role="presentation" spritemapID="quotemark" />
-          </div>
-        </div>
-        <button className="button-next"  onClick={this.onClickNext}>
-          <SVG role="presentation" spritemapID="arrow" />
-        </button>
-      </div>
-    </section>
   }
-});
+
+  render() {
+    return (
+      <section className="testimonials">
+        <div className="wrapper">
+          <button className="button-prev" onClick={this.onClickPrev}>
+            <SVG role="presentation" spritemapID="arrow" />
+          </button>
+          <div className="testimonial-carousel">
+            <div className="quote-mark-top">
+              <SVG role="presentation" spritemapID="quotemark" />
+            </div>
+            { this.renderTestimonials() }
+            <div className="quote-mark-bottom">
+              <SVG role="presentation" spritemapID="quotemark" />
+            </div>
+          </div>
+          <button className="button-next"  onClick={this.onClickNext}>
+            <SVG role="presentation" spritemapID="arrow" />
+          </button>
+        </div>
+      </section>
+    );
+  }
+};
 
 export default TestimonialCarousel;

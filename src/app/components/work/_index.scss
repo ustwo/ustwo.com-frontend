@@ -1,0 +1,38 @@
+/*
+ *  PAGE: WORK
+ *  Landing page to see ustwo proposition to potential clients and showcase past projects
+ *  and areas of interest/verticals
+ *
+ */
+
+.page-work {
+
+  .hero {
+    @include page-background-colour(work);
+
+    .rimage {
+      max-width: 600px;
+      opacity: .7;
+    }
+
+    .down-chevron {
+      z-index: 2;
+    }
+  }
+
+  .hero + .single-column {
+    background: white;
+  }
+
+  .single-column .content {
+    text-align: left;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .card-list {
+      margin-top: 0px;
+      padding-top: 100px;
+    }
+  }
+
+}

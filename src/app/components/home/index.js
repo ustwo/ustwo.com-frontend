@@ -43,13 +43,13 @@ class PageHome extends Component {
     this.getVenturesPosition();
 
     // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
-    window.addEventListener('resize', () => {
+    this.homeContent.addEventListener('resize', () => {
       this.getVenturesPosition();
     });
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', () => {
+    this.homeContent.removeEventListener('resize', () => {
       this.getVenturesPosition();
     });
   }
@@ -79,7 +79,7 @@ class PageHome extends Component {
     }
 
     return (
-      <article className={classes}>
+      <article className={classes} ref={(ref) => this.homeContent = ref}>
 
         <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
           <ScrollWrapper

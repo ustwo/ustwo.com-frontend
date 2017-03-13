@@ -7,6 +7,10 @@ import Flux from 'app/flux';
 
 import ModalContentMixin from 'app/lib/modal-content-mixin';
 
+function tempChangeWorkName(slug) {
+  return slug === 'what-we-do' ? 'work' : slug
+}
+
 const NavigationOverlay = React.createClass({
 
   mixins: [ModalContentMixin],
@@ -22,6 +26,7 @@ const NavigationOverlay = React.createClass({
       hoveredItem: name
     });
   },
+
   mouseLeave(currentPage) {
     this.setState({
       hoveredItem: currentPage
@@ -44,19 +49,13 @@ const NavigationOverlay = React.createClass({
 
   renderNavigationOverlayLinks() {
     return get(this.props, 'pages', []).map(link => {
-      const url = link.slug === 'home' ? '/' : `/${link.slug}`;
+      const slug = tempChangeWorkName(link.slug);
+      const url = slug === 'home' ? '/' : `/${slug}`;
+      const mouseOver = url === '/' ? 'home' : url.slice(1);
       const classes = classnames('navigation-overlay-link', {
-        selected: link.slug === this.props.section
+        selected: slug === this.props.section
       });
 
-      /* TEMP: to replace What we do with work for the purposes of demoing */
-      let alternativeText;
-      if (link.title === 'What We Do') {
-        alternativeText = 'work';
-      }
-      /* END */
-
-      let mouseOver = url === '/' ? 'home' : url.slice(1);
 
       return (
         <li className={classes} key={link.id}>
@@ -66,7 +65,7 @@ const NavigationOverlay = React.createClass({
             onMouseEnter={() => this.mouseEnter(mouseOver)}
             onMouseLeave={() => this.mouseLeave(this.props.section)}
           >
-            {alternativeText ? alternativeText : link.title}
+            {link.title === 'What We Do' ? 'Work' : link.title}
           </a>
         </li>
       );
@@ -76,8 +75,10 @@ const NavigationOverlay = React.createClass({
 
   renderBg() {
     return get(this.props, 'pages', []).map(link => {
-      const classes = classnames('navigation-overlay-bg', `navigation-overlay-bg-${link.slug}`, {
-        hovered: link.slug === this.state.hoveredItem
+      const slug = tempChangeWorkName(link.slug);
+
+      const classes = classnames('navigation-overlay-bg', `navigation-overlay-bg-${slug}`, {
+        hovered: slug === this.state.hoveredItem
       })
       return (
         <div className={classes}></div>
