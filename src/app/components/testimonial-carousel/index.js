@@ -1,88 +1,56 @@
 import React, { Component } from 'react';
-import map from 'lodash/collection/map';
+import classnames from 'classnames';
 import SVG from 'app/components/svg';
-import TransitionManager from 'react-transition-manager';
 
 class TestimonialCarousel extends Component {
 
   constructor(props) {
     super(props);
-    const testimonials = this.props.testimonials;
-    const index = 0;
-    const testimonial = testimonials[index];
 
     this.state = {
-      index: index,
-      testimonial: this.renderTestimonial(testimonial)
+      numberOfItems: this.props.testimonials.length,
+      currentItem: 0
     };
   }
 
-  onClickPrev() {
-    const testimonials = this.props.testimonials;
-    const index = (testimonials.length + this.state.index - 1) % testimonials.length
-    const testimonial = testimonials[index];
+  nextItem() {
+    const { numberOfItems, currentItem } = this.state;
 
-    this.setState({
-      index: index,
-      testimonial: this.renderTestimonial(testimonial)
-    });
-  }
-
-  onClickNext() {
-    const testimonials = this.props.testimonials;
-    const index = (testimonials.length + this.state.index + 1) % testimonials.length
-    const testimonial = testimonials[index];
-
-    this.setState({
-      index: index,
-      testimonial: this.renderTestimonial(testimonial)
-    });
-  }
-
-  renderTestimonial(testimonial) {
-    return (
-      <div>
-        <p>{ testimonial.testimonial }</p>
-        <span className="testimonial-name">&#8212; { testimonial.source.name }</span>
-        <span>,&nbsp;</span>
-        <span className="testimonial-title">{ testimonial.source.title }</span>
-        <span>&nbsp;</span>
-        <span className="testimonial-company">{ testimonial.source.company }</span>
-      </div>
-    );
+    if (currentItem === numberOfItems - 1) {
+      this.setState({ currentItem: 0 })
+    } else {
+      this.setState({ currentItem: currentItem + 1 });
+    }
   }
 
   renderTestimonials() {
-    const testimonialSlug = `testimonial-${this.state.index}`;
-    return (
-      <div className={this.props.className}>
-        <TransitionManager component="div" duration={1500}>
-          <div key={testimonialSlug} className={`testimonial ${testimonialSlug}`}>{ this.state.testimonial }</div>
-        </TransitionManager>
-      </div>
-    );
+    return this.props.testimonials.map((testimonial, i) => {
+      const classes = classnames('testimonial-item', {
+        active: i === this.state.currentItem
+      })
+
+      return (
+        <div key={`testimonial-${i}`} className={classes}>
+          <p>{ testimonial.testimonial }</p>
+          <span className="testimonial-name">&#8212; { testimonial.source.name }</span>
+          <span>,&nbsp;</span>
+          <span className="testimonial-title">{ testimonial.source.title }</span>
+          <span>&nbsp;</span>
+          <span className="testimonial-company">{ testimonial.source.company }</span>
+        </div>
+      );
+    });
   }
 
   render() {
     return (
-      <section className="testimonials">
-        <div className="wrapper">
-          <button className="button-prev" onClick={this.onClickPrev}>
-            <SVG role="presentation" spritemapID="arrow" />
-          </button>
-          <div className="testimonial-carousel">
-            <div className="quote-mark-top">
-              <SVG role="presentation" spritemapID="quotemark" />
-            </div>
-            { this.renderTestimonials() }
-            <div className="quote-mark-bottom">
-              <SVG role="presentation" spritemapID="quotemark" />
-            </div>
-          </div>
-          <button className="button-next"  onClick={this.onClickNext}>
-            <SVG role="presentation" spritemapID="arrow" />
-          </button>
+      <section className="testimonial-carousel">
+        <div className="testimonial-content">
+          {this.renderTestimonials()}
         </div>
+        <button className="tesimonial-button-next" onClick={() => this.nextItem()}>
+          <SVG spritemapID="shuffle" />
+        </button>
       </section>
     );
   }

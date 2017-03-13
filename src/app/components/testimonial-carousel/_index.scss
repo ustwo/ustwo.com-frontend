@@ -3,152 +3,77 @@
  *	Displays testimonials in a carousel
  *
  */
- .testimonials {
- 	height: 600px;
- 	padding: 30px;
- 	background-color: $marshPassion;
- 	color: $white;
 
- 	.wrapper {
- 		position: relative;
- 		height: 100%;
- 		max-width: $bp-huge;
- 		margin: 0 auto;
+.testimonial-carousel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 600px;
+  background-image: linear-gradient(212deg, #000000, #322d37);
+  color: $offWhite;
+}
 
- 		.testimonial-carousel {
- 			position: relative;
- 			max-width: $bp-large;
- 			height: 100%;
- 			margin: 0 auto;
+.testimonial-content {
+  text-align: center;
+}
 
- 			.testimonial {
- 				position: absolute;
- 				top: 0;
- 				bottom: 0;
- 				left:0;
- 				right:0;
- 				width: 100%;
- 				display: flex;
- 				align-items: center;
- 				justify-content: center;
- 				max-width: $bp-medium;
- 				margin: auto;
- 				transition: all 1s ease-in-out;
+.testimonial-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity .2s linear;
 
- 				p {
- 					display: -webkit-box;
- 					overflow: hidden;
- 					font-size: 23px;
- 					text-overflow: ellipsis;
- 					-webkit-line-clamp: 10;
- 					-webkit-box-orient: vertical;
- 				}
+  p {
+    font-size: 30px;
+    line-height: 1.33;
+  }
 
- 				span {
- 					font-size: 18px;
- 				}
+  span {
+    font-size: 20px;
+    line-height: 1.5;
+  }
 
- 				&.add {
- 					opacity: 0;
- 				}
+  &.active {
+    opacity: 1;
+    transition-delay: .2s;
+  }
+}
 
- 				&.show {
- 					transition-delay: 0.5s;
- 					opacity: 1;
- 				}
+.tesimonial-button-next {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateY(-50%);
 
- 				&.hide {
- 					transition-delay: 0s;
- 					opacity: 0;
- 				}
+  svg {
+    fill: white;
+    width: 40px;
+    height: 40px;
+  }
+}
 
- 			}
+@media screen and (min-width: $bp-medium) {
+  .testimonial-item {
+    width: 515px;
 
- 			.quote-mark-top, .quote-mark-bottom {
- 				position: absolute;
- 				margin-top: -30px;
+    p {
+      font-size: 40px;
+    }
+  }
+}
 
- 				svg {
- 					width: 130px;
- 					height: 90px;
- 					overflow: visible;
- 					opacity: 0.3;	
- 					fill: $offWhite;
- 				}
- 			}
+@media screen and (min-width: $bp-large) {
+  .testimonial-item {
+    width: 630px;
+  }
+}
 
- 			.quote-mark-bottom {
- 				right: 0;
- 				bottom: 0;
- 				margin-bottom: -30px;
- 				transform: rotate(180deg);
- 				-webkit-transform: rotate(180deg);
- 				-moz-transform: rotate(180deg);
- 				-o-transform: rotate(180deg);
- 				-ms-transform: rotate(180deg);
-
- 				svg {
-
- 				}
- 			}
- 		}
-
- 		.button-next, .button-prev {
- 			top: 0px;
- 			position: absolute;
- 			height: 100%;
- 			display: none;
- 			overflow: visible;
-
- 			svg {
- 				height: 41px;
- 				width: 30px;
- 				overflow: visible;
- 				fill: $white;
- 			}
- 		}
-
- 		.button-next {
- 			right: 0px;
- 			transform: rotate(180deg);
- 			-webkit-transform: rotate(180deg);
- 			-moz-transform: rotate(180deg);
- 			-o-transform: rotate(180deg);
- 			-ms-transform: rotate(180deg);
- 		}
- 	}
-
- 	@media screen and (min-width: $bp-medium) {
- 		height: 400px;
-
- 		.wrapper {
-
- 			.testimonial-carousel {
-
- 				.testimonial {
-
- 					p {
- 						-webkit-line-clamp: 5;
- 					}
- 				}
- 			}
- 		}
-
- 	}
-
- 	@media screen and (min-width: $bp-large) {
- 		.wrapper {
-
- 			.button-next, .button-prev {
- 				display: block;
- 			}
- 		}
-
- 		.testimonial-carousel {
-
- 			.testimonial {
- 				padding: 0;
- 			}
- 		}
- 	}
- }
+@media screen and (min-width: $bp-larger) {
+  .testimonial-item {
+    width: 1000px;
+  }
+}
