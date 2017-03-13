@@ -217,7 +217,7 @@ const App = React.createClass({
     } else if (state.modal === null && !state.appLoading || state.popup === null && !state.appLoading) {
       document.body.style.overflow = "auto";
     }
-    let content;
+    let content, loader;
     if (state.currentPage === 'notfound') {
       content = (
         <div className={appClasses}>
@@ -235,6 +235,7 @@ const App = React.createClass({
         </div>
       );
     } else {
+      const loader = state.appLoading ? <HomeLoader loading={this.state.appLoading} /> : <div />
       content = (
         <div className={appClasses}>
           <Meta
@@ -271,12 +272,18 @@ const App = React.createClass({
             />
           </EntranceTransition>
           <PageContainer key={state.currentPage} extraClasses={contentClasses}>
-            {this.getPage(state.currentPage)}
+            <TransitionManager
+              component="div"
+              className="page-transition"
+              duration={1000}
+            >
+              {this.getPage(state.currentPage)}
+            </TransitionManager>
             <Footer data={state.footer} studios={state.studios} currentPage={this.state.currentPage}/>
           </PageContainer>
           {this.renderModal()}
           {this.renderPopup()}
-          <HomeLoader loading={this.state.appLoading} />
+          {loader}
         </div>
       );
     }

@@ -8,7 +8,7 @@
   background-color: $lightGrey;
 
   .hero {
-    background-color: $pot;
+    @include page-background-colour(work);
 
     .rimage {
       max-width: 600px;

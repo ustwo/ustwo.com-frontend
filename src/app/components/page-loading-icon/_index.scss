@@ -33,7 +33,7 @@ $loader-box-size: 12px;
       content: "";
       width: $loader-box-size;
       height: $loader-box-size;
-      background: #fff;
+      background: $nonBlack;
       transform: translateX(- $loader-box-size * .5);
     }
 

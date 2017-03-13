@@ -59,9 +59,10 @@
     display: flex;
     height: 100vh;
     min-height: 100vh;
-    background: $blu;
 
     .hero {
+      @include page-background-colour(blog);
+      
       .blog-controls {
         transition: opacity .32s ease-in-out;
       }

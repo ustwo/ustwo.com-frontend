@@ -7,7 +7,7 @@
 .page-join-us {
 
   .hero {
-    background-color: $honey;
+    @include page-background-colour(join);
 
     .rimage {
       max-width: 800px;
