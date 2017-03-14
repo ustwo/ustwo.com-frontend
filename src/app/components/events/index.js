@@ -116,7 +116,7 @@ const PageEvents = React.createClass({
       } else {
         output = <div className="no-events-found">
           <h2>Soz, No Talky</h2>
-          <p>We don't have any events on the horizon right now. If you're interested in hosting an event, 
+          <p>We don't have any events on the horizon right now. If you're interested in hosting an event,
           <br />or giving a talk - <a href="mailto:events@ustwo.com">let us know! </a></p>
           <SVG
             className="flying-cow"
@@ -157,13 +157,13 @@ const PageEvents = React.createClass({
       isLoadingMoreArchivedEvents,
       isLoadingStudioEvents
     } = this.state;
-		const { 
-      page, 
-      currentParams, 
-      events, 
-      archivedEvents, 
-      studios, 
-      eventsPagination, 
+		const {
+      page,
+      currentParams,
+      events,
+      archivedEvents,
+      studios,
+      eventsPagination,
       eventsPaginationTotal,
       archivedEventsPagination,
       archivedEventsPaginationTotal } = this.props;
@@ -171,25 +171,27 @@ const PageEvents = React.createClass({
       loading: isLoadingInitialEvents || isLoadingStudioEvents
     });
     const image = getFeaturedImage(page);
-
+    const video = (
+      <Video
+        src={get(page, 'featured_video')}
+        sizes={get(image, 'media_details.sizes')}
+        isVideoBackground={true}
+      />
+    );
+    
     return <article className={classes}>
     	<Hero
 	      title={get(page, 'display_title')}
         transitionImage={true}
         eventLabel="events"
         subheading={get(page, 'hero.attr.subheading.value')}
-        showDownChevron={true} 
-      >
-        <Video
-          src={get(page, 'featured_video')}
-          sizes={get(image, 'media_details.sizes')}
-          isVideoBackground={true}
-        />
-    	</Hero>
+        showDownIndicator={true}
+        video={video}
+      ></Hero>
       <EventsControls
         studios={studios}
         currentParams={currentParams}
-      /> 
+      />
       <section className="events-list">
 			  {this.renderEvents()}
         <LoadMoreButton
@@ -197,7 +199,7 @@ const PageEvents = React.createClass({
           onClick={this.onClickLoadMoreEvents}
           disabled={eventsPagination >= eventsPaginationTotal}
         />
-		  </section>  
+		  </section>
       {this.renderArchivedEvents()}
       <LoadMoreButton
         loading={isLoadingMoreArchivedEvents}

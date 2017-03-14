@@ -21,7 +21,7 @@ class PageWork extends Component {
   renderTestimonialCarousel() {
     const { page } = this.props;
     const testimonials = get(page, '_embedded.ustwo:testimonials', []);
-    
+
     if(testimonials.length > 0) {
       return (
         <TestimonialCarousel testimonials={testimonials}/>
@@ -53,6 +53,13 @@ class PageWork extends Component {
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
+    const video = (
+      <Video
+        src={get(page, 'featured_video')}
+        sizes={get(image, 'media_details.sizes')}
+        isVideoBackground={true}
+      />
+    );
 
     return (
       <article className={classes}>
@@ -60,14 +67,9 @@ class PageWork extends Component {
           title={get(page, 'display_title')}
           transitionImage={true}
           eventLabel='work'
-          showDownChevron={true}
-        >
-          <Video
-            src={get(page, 'featured_video')}
-            sizes={get(image, 'media_details.sizes')}
-            isVideoBackground={true}
-          />
-        </Hero>
+          showDownIndicator={true}
+          video={video}
+        ></Hero>
 
         {this.renderWhatWeDo()}
 

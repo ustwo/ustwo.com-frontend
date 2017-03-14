@@ -27,7 +27,7 @@ const PageWhatWeDo = React.createClass({
         title={get(page, 'display_title')}
         transitionImage={true}
         eventLabel='what-we-do'
-        showDownChevron={true}
+        showDownIndicator={true}
       >
         <Video
           src={get(page, 'featured_video')}

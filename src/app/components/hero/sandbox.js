@@ -36,23 +36,23 @@ const Sandbox = React.createClass({
         }
       `}</style>
       {renderVariations({
-        'With down chevron': <Hero
+        'With down Indicator': <Hero
             title="This is a title"
-            showDownChevron={true}
+            showDownIndicator={true}
             sizes={sizes}
           />,
         'With children': <Hero
             title="This is a title"
-            showDownChevron={false}
+            showDownIndicator={false}
             sizes={sizes}
           >Some children</Hero>,
         'Without image': <Hero
             title="This is a title"
-            showDownChevron={true}
+            showDownIndicator={true}
           />,
         'With video': <Hero
             title="This is a title"
-            showDownChevron={true}
+            showDownIndicator={true}
           >
             <Video
               src="https://player.vimeo.com/external/143640008.sd.mp4?s=c2766105f03ee623f8b53fc274a33b563d30067d&profile_id=112"

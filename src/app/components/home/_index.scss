@@ -88,7 +88,7 @@
     color: white;
   }
 
-  .home-section-title {
+  .section-title {
     color: #ccc;
   }
 
@@ -108,17 +108,6 @@
         background: linear-gradient(-90deg, transparent, $v-solid);
       }
     }
-  }
-}
-
-.home-section-title {
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  font-size: 12px;
-  letter-spacing: 1px;
-
-  @media screen and (min-width: $bp-medium) {
-    font-size: 14px;
   }
 }
 

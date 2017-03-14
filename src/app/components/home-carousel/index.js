@@ -168,7 +168,7 @@ class HomeCarousel extends Component {
             </div>
           </div>
           <div className="home-carousel-item-text" style={textStyles}>
-            <div className="home-section-title">{item.category}</div>
+            <div className="section-title">{item.category}</div>
             <h2>{item.title}</h2>
             <div className="home-carousel-item-description">{item.description}</div>
           </div>

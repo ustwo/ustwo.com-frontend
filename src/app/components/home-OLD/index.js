@@ -16,7 +16,7 @@ import window from 'app/adaptors/server/window';
 import Track from 'app/adaptors/server/track';
 import env from 'app/adaptors/server/env';
 
-import DownChevron from 'app/components/down-chevron';
+import DownIndicator from 'app/components/down-indicator';
 import SVG from 'app/components/svg';
 import WordAnimation from 'app/components/word-animation';
 import EntranceTransition from 'app/components/entrance-transition';
@@ -57,15 +57,15 @@ const PageHome = React.createClass({
 
   getInitialState() {
     return {
-      chevronLoaded: false,
+      IndicatorLoaded: false,
       scrollProgressBlockHome: 0
     }
   },
 
-  animateChevron(event) {
-    if(this.refs.downChevron) {
-      this.refs.downChevron.resetAnim();
-      this.refs.downChevron.anim();
+  animateIndicator(event) {
+    if(this.refs.downIndicator) {
+      this.refs.downIndicator.resetAnim();
+      this.refs.downIndicator.anim();
     }
   },
 
@@ -89,7 +89,7 @@ const PageHome = React.createClass({
       // set initial colour – we need to do this due to having an offset
       pageElement.style.backgroundColor = get(page, 'colors.bg');
 
-      this.scrollSceneChevron = new ScrollMagic.Scene({
+      this.scrollSceneIndicator = new ScrollMagic.Scene({
           triggerElement: blockWelcomeDom,
           triggerHook: 'onLeave',
           duration: () => { return blockWelcomeDom.clientHeight }
@@ -117,7 +117,7 @@ const PageHome = React.createClass({
     this.Tracking.removePageScrollTracking();
 
     if (!env.Modernizr.touchevents && window.innerWidth > 480) {
-      this.scrollSceneChevron.remove();
+      this.scrollSceneIndicator.remove();
       this.colourBlockScenes.forEach((scene) => {
         scene.remove();
       });
@@ -147,9 +147,9 @@ const PageHome = React.createClass({
   componentDidMount() {
     this.setupScrollMagic();
     this.animTimeout = setTimeout(() => {
-      this.animateChevron();
+      this.animateIndicator();
       this.setState({
-        chevronLoaded: true
+        IndicatorLoaded: true
       })
     }, 1500);
   },
@@ -159,11 +159,11 @@ const PageHome = React.createClass({
     clearTimeout(this.animTimeout);
   },
 
-  renderChevron() {
-    let Chevron;
+  renderIndicator() {
+    let Indicator;
     if (window.innerWidth <= 480) {
       return (
-        <div className="down-chevron" style={chevronStyles}>
+        <div className="down-indicator" style={IndicatorStyles}>
           <svg ref="animsvg" title="Down arrow" role="img" viewBox="0 0 400 200">
             <g>
               <path d="M195.864 143.667c19.556-14.667 39.556-28.89 59.11-43.556 2.224 2.67 6.224 8 8.446 10.67-22.222 16.89-45.778 32.45-67.556 50.67-21.778-17.78-44.89-33.33-67.11-50.22 2.22-2.66 6.22-8 8-11.11 20 14.67 39.555 29.33 59.11 43.56z" />
@@ -172,18 +172,18 @@ const PageHome = React.createClass({
         </div>
       );
     } else {
-      // Transition Chevron on scroll
-      const chevronStyles = {
+      // Transition Indicator on scroll
+      const IndicatorStyles = {
         paddingTop: `${30 * this.state.scrollProgressBlockHome}vh`,
         opacity: 1 - this.state.scrollProgressBlockHome * 2
       }
 
       return (
-        <DownChevron
-          ref="downChevron"
-          onClick={this.onClickDownChevron}
-          customClass={this.state.chevronLoaded ? 'loaded' : ''}
-          customStyles={chevronStyles}
+        <DownIndicator
+          ref="downIndicator"
+          onClick={this.onClickDownIndicator}
+          customClass={this.state.IndicatorLoaded ? 'loaded' : ''}
+          customStyles={IndicatorStyles}
         />
       );
     }
@@ -229,7 +229,7 @@ const PageHome = React.createClass({
               tint={true}
             />
           </Hero>
-          {this.renderChevron()}
+          {this.renderIndicator()}
         </ScreenBlock>
 
         {this.renderFeatureBlocks()}
@@ -276,11 +276,11 @@ const PageHome = React.createClass({
     return relatedContent;
   },
 
-  onClickDownChevron() {
+  onClickDownIndicator() {
     Track('send', {
       'hitType': 'event',
       'eventCategory': 'hub_page',
-      'eventAction': 'click_animated_chevron',
+      'eventAction': 'click_animated_Indicator',
       'eventLabel': 'home'
     });
   }

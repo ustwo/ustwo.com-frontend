@@ -202,7 +202,7 @@ const App = React.createClass({
 
   render() {
     const state = this.state;
-    const appClasses = classnames('app', `page-${this.state.currentPage}`, {
+    const appClasses = classnames('app', `page-${state.currentPage}`, {
       'show': state.show,
       'loaded': !state.appLoading,
       'app-404': state.currentPage === 'notfound',
@@ -229,14 +229,15 @@ const App = React.createClass({
             takeover={this.showTakeover()}
             documentScrollPosition={state.documentScrollPosition}
             venturesPosition={state.venturesPosition}
-            modal={this.state.modal}
+            modal={state.modal}
+            viewportDimensions={state.viewportDimensions}
           />
           <FourOhFour {...this.state} />
           {this.renderModal()}
         </div>
       );
     } else {
-      const loader = state.appLoading ? <HomeLoader loading={this.state.appLoading} /> : <div />
+      const loader = state.appLoading ? <HomeLoader loading={state.appLoading} /> : <div />
       content = (
         <div className={appClasses}>
           <Meta
@@ -269,7 +270,8 @@ const App = React.createClass({
               takeover={this.showTakeover()}
               documentScrollPosition={state.documentScrollPosition}
               venturesPosition={state.venturesPosition}
-              modal={this.state.modal}
+              modal={state.modal}
+              viewportDimensions={state.viewportDimensions}
             />
           </EntranceTransition>
           <PageContainer key={state.currentPage} extraClasses={contentClasses}>
@@ -280,7 +282,7 @@ const App = React.createClass({
             >
               {this.getPage(state.currentPage)}
             </TransitionManager>
-            <Footer data={state.footer} studios={state.studios} currentPage={this.state.currentPage}/>
+            <Footer data={state.footer} studios={state.studios} currentPage={state.currentPage}/>
           </PageContainer>
           {this.renderModal()}
           {this.renderPopup()}

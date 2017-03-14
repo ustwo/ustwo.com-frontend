@@ -5,6 +5,7 @@ import window from 'app/adaptors/server/window';
 
 import SVG from 'app/components/svg';
 import Video from 'app/components/video';
+import DownIndicator from 'app/components/down-indicator';
 
 // const rainbowColours = ['#ED0082', '#E60C29', '#FF5519', '#FFBF02', '#96CC29', '#14C04D', '#16D6D9', '#009CF3', '#143FCC', '#6114CC', '#111111'];
 const colours = ['#000000', '#FFFFFF'];
@@ -82,7 +83,7 @@ function HomeIntro({ scrollProgress, screenPosition, scrolling, appLoaded, isMob
           {logoLayers}
         </div>
       </div>
-      <div className="home-intro-down-arrow"></div>
+      <DownIndicator />
     </div>
   );
 }

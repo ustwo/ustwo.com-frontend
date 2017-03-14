@@ -1,4 +1,4 @@
-import DownChevron from './';
+import DownIndicator from './';
 import renderVariations from 'app/lib/sandbox/render-variations';
 
 const Sandbox = React.createClass({
@@ -10,9 +10,9 @@ const Sandbox = React.createClass({
         }
       `}</style>
       {renderVariations({
-        '500ms timeout': <DownChevron autoAnim={500} />,
-        '1.5s timeout': <DownChevron autoAnim={1500} />,
-        'With onClick handler': <DownChevron autoAnim={500} onClick={() => alert('clicked')} />
+        '500ms timeout': <DownIndicator />,
+        '1.5s timeout': <DownIndicator />,
+        'With onClick handler': <DownIndicator autoAnim={500} onClick={() => alert('clicked')} />
       })}
     </div>;
   }

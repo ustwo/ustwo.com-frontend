@@ -1,36 +1,21 @@
-'use strict';
-
-import React from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 
 import EntranceTransition from 'app/components/entrance-transition';
 import WordAnimation from 'app/components/word-animation';
-import DownChevron from 'app/components/down-chevron';
+import DownIndicator from 'app/components/down-indicator';
 import Rimage from 'app/components/rimage';
 import Track from 'app/adaptors/server/track';
 
-const Hero = React.createClass({
-  getInitialState() {
-    return {
-      chevronLoaded: false
+class Hero extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      IndicatorLoaded: false
     }
-  },
-  componentDidMount() {
-    if (this.props.showDownChevron) {
-      this.animTimeout = setTimeout(() => {
-        this.refs.downChevron.resetAnim();
-        this.refs.downChevron.anim();
-        this.setState({
-          chevronLoaded: true
-        });
-      }, 1500);
-    }
-  },
-  componentWillUnmount() {
-    if (this.props.showDownChevron) {
-      clearTimeout(this.animTimeout);
-    }
-  },
+  }
+
   renderImage() {
     const { sizes, altText, transitionImage } = this.props;
     const image = <Rimage sizes={sizes} altText={altText} />;
@@ -45,42 +30,44 @@ const Hero = React.createClass({
       output = image;
     }
     return output;
-  },
+  }
+
+  renderVideo() {
+    return this.props.video ? this.props.video : null;
+  }
+
   renderSubheading() {
-    let subheading;
-    if(this.props.subheading) {
-      subheading = <p className="subheading">{this.props.subheading}</p>
+    return this.props.subheading ? <p className="subheading">{this.props.subheading}</p> : null;
+  }
+
+  renderDownIndicator() {
+    let indicator;
+    if (this.props.showDownIndicator) {
+      indicator = (
+        <DownIndicator
+          ref="downIndicator"
+          onClick={this.onClickDownIndicator}
+        />
+      );
     }
-    return subheading;
-  },
-  renderDownChevron() {
-    let chevron;
-    if (this.props.showDownChevron) {
-      chevron = <DownChevron
-        ref="downChevron"
-        onClick={this.onClickDownChevron}
-        customClass={this.state.chevronLoaded ? 'loaded' : ''}
-      />;
-    }
-    return chevron;
-  },
+    return indicator;
+  }
+
   renderLogo() {
-    let logo;
-    if (this.props.logo) {
-      logo = this.props.logo;
-    }
-    return logo;
-  },
-  onClickDownChevron() {
+    return this.props.logo ? this.props.logo : null;
+  }
+
+  onClickDownIndicator() {
     Track('send', {
       'hitType': 'event',
       'eventCategory': 'hub_page',
-      'eventAction': 'click_animated_chevron',
+      'eventAction': 'click_animated_Indicator',
       'eventLabel': this.props.eventLabel
     });
-  },
+  }
+
   render() {
-    const { className, title, children, scrollProgress } = this.props;
+    const { className, title, children, scrollProgress, eventLabel } = this.props;
     let titleStyle;
     if (scrollProgress) {
       titleStyle = {
@@ -89,21 +76,27 @@ const Hero = React.createClass({
       }
     }
 
+    const sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
+
     return (
       <section className={classnames('hero', className)}>
-        {this.renderLogo()}
-        <EntranceTransition className="title-entrance">
-          <h1 className="title" style={titleStyle}>
-            <WordAnimation delay={1} duration={0.5}>{title}</WordAnimation>
-          </h1>
-          {this.renderSubheading()}
-        </EntranceTransition>
+        <div className="hero-inner-wrapper">
+          {this.renderLogo()}
+          <EntranceTransition className="title-entrance">
+            <div className="section-title">{sectionTitle}</div>
+            <h1 className="title" style={titleStyle}>
+              <WordAnimation delay={1} duration={0.5}>{title}</WordAnimation>
+            </h1>
+            {this.renderSubheading()}
+          </EntranceTransition>
+          {children}
+          {this.renderDownIndicator()}
+        </div>
+        {this.renderVideo()}
         {this.renderImage()}
-        {children}
-        {this.renderDownChevron()}
       </section>
     );
   }
-});
+};
 
 export default Hero;

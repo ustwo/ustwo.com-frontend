@@ -14,7 +14,7 @@ import getFeaturedImage from 'app/lib/get-featured-image';
 import renderModules from 'app/lib/module-renderer';
 import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
-import DownChevron from 'app/components/down-chevron';
+import DownIndicator from 'app/components/down-indicator';
 import SVG from 'app/components/svg';
 import Hero from 'app/components/hero';
 import StudioJobs from 'app/components/studio-jobs';
@@ -39,20 +39,22 @@ const PageJoinUs = React.createClass({
     const studioSlugFromUrl = get(currentParams, 'lid');
     const studioSlugs = map(pluck(studios, 'name'), kebabCase);
     const selectedStudioSlug = getSelectedStudio(studioSlugFromUrl, studioSlugs);
-
+    const video = (
+      <Video
+        src={get(page, 'featured_video')}
+        sizes={get(image, 'media_details.sizes')}
+        isVideoBackground={true}
+      />
+    );
+    
     return <article className={classes}>
       <Hero
         title={get(page, 'display_title')}
         transitionImage={true}
         eventLabel='join-us'
-        showDownChevron={true}
-      >
-        <Video
-          src={get(page, 'featured_video')}
-          sizes={get(image, 'media_details.sizes')}
-          isVideoBackground={true}
-        />
-      </Hero>
+        showDownIndicator={true}
+        video={video}
+      ></Hero>
       {renderModules({
         modules: get(page, 'page_builder', []),
         colours: get(page, 'colors'),

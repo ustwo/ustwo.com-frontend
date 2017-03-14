@@ -149,6 +149,6 @@ We're keeping our vector icons in an external [SVG spritemap](./src/app/images/s
 
 To make these work on IE we're using [SVG4everybody](https://github.com/jonathantneal/svg4everybody).
 
-Also, for animation sequences (like the down chevron or the close `x`), we're using SVG sequences with a bespoke component called `SVGSequenceAnimation`. Unfortunately right now it's not possible to manipulate external SVGs, so these need to be inlined.
+Also, for animation sequences (like the down Indicator or the close `x`), we're using SVG sequences with a bespoke component called `SVGSequenceAnimation`. Unfortunately right now it's not possible to manipulate external SVGs, so these need to be inlined.
 
 The component `loading-icon` has a relatively large and complex css animation. Therefore a stylus plugin called Ornithopter has been used to generate these keyframes thus making maintenance easier. Please see the [README.md](./src/app/lib/spinner-keyframe-generator/README.md) for this library if any changes need to be made.

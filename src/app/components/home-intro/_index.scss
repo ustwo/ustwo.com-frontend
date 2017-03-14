@@ -72,17 +72,6 @@
   }
 }
 
-.home-intro-down-arrow {
-  position: absolute;
-  z-index: 2;
-  bottom: 60px;
-  left: calc(50% - 32px);
-  width: 64px;
-  height: 64px;
-  background: url('/images/icon-down-loop.gif') no-repeat 0 0;
-  background-size: 100% auto;
-}
-
 
 /*  */
 @media screen and (max-width: $bp-medium) {

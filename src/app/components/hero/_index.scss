@@ -13,13 +13,51 @@
   flex-direction: column;
   height: 100vh; /* This is for IE as content doesn't center */
   min-height: 100vh;
+  @include core-layout();
+
+  .hero-inner-wrapper {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: auto;
+
+    .down-indicator {
+      left: 0;
+    }
+  }
+
+  .videoBackground {
+    max-width: none;
+  }
+
+  .section-title {
+    color: white;
+    position: relative;
+    z-index: 4;
+  }
 
   .title {
     position: relative;
     z-index: 2;
-    max-width: 550px;
-    padding: 0 20px;
     color: white;
+    font-size: 40px;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+
+    .title {
+      font-size: 60px;
+      max-width: 75%;
+    }
+  }
+
+  @media screen and (min-width: $bp-larger) {
+
+    .title {
+      font-size: 70px;
+    }
   }
 
   .rimage {
@@ -37,21 +75,6 @@
     text-align: center;
     color: $offWhite;
     padding: 0 40px;
-  }
-
-  .down-chevron {
-    position: absolute;
-    top: 73%;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    z-index: 2;
-
-    svg {
-      width: 100px;
-      height: 50px;
-    }
   }
 
   .video {
@@ -91,25 +114,17 @@
 
   @media screen and (min-width: $bp-medium) {
     .title {
-      max-width: 750px;
-      padding: 0 40px;
-    }
-    .down-chevron {
-      top: 76%;
+
     }
   }
   @media screen and (min-width: $bp-large) {
     .title {
-      max-width: 1080px;
-      padding: 0 80px;
-    }
-    .down-chevron {
-      top: 80%;
+
     }
   }
   @media screen and (min-width: $bp-larger) {
     .title {
-      padding: 0 180px;
+
     }
   }
 }

@@ -105,7 +105,7 @@ const PageBlog = React.createClass({
         sizes={get(image, 'media_details.sizes')}
         altText={get(image, 'alt_text')}
         eventLabel="blog"
-        showDownChevron={false}
+        showDownIndicator={false}
       >
         <BlogControls
           className={classnames({ show: page })}

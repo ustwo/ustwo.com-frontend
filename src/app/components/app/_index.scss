@@ -129,3 +129,14 @@
     transition: opacity .32s linear;
   }
 }
+
+.section-title {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+
+  @media screen and (min-width: $bp-medium) {
+    font-size: 14px;
+  }
+}

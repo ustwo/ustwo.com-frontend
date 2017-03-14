@@ -37,14 +37,14 @@ class Navigation extends Component {
   }
 
   render() {
-    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup } = this.props;
+    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions } = this.props;
 
     const venturesActive = venturesPosition && (documentScrollPosition > venturesPosition.from) && (documentScrollPosition < venturesPosition.to);
 
     const navClasses = classnames('navigation', customClass, section, page, {
       notSticky: documentScrollPosition < window.innerHeight && section === 'home',
-      invert: venturesActive,
-      menuOpen: this.props.modal === 'menu',
+      invert: venturesActive || documentScrollPosition < viewportDimensions.height, // Assuming hero is 100% height at the top of the screen,
+      menuOpen: modal === 'menu',
       takeover
     });
 
@@ -59,9 +59,9 @@ class Navigation extends Component {
             <li><a href="/join-us">Join us</a></li>
           </ul>
         </div>
-        <a className="logo" href="/" onClick={this.onClickLogo}>
+        <button className="logo" onClick={this.toggleMenu.bind(this)}>
           <SVG title="ustwo logo" spritemapID="ustwologo" />
-        </a>
+        </button>
         <button className="navigation-toggle" onClick={this.toggleMenu.bind(this)}>
           <div className="navigation-toggle-main"></div>
           <svg className="navigation-toggle-ring" title="menu ring" role="img" viewBox="0 0 46 46">
