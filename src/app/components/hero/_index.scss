@@ -10,18 +10,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   height: 100vh; /* This is for IE as content doesn't center */
   min-height: 100vh;
-  @include core-layout();
+  padding: 0 20px;
+
+  @media screen and (min-width: $bp-medium) {
+    padding: 0 40px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    padding: 0 60px;
+  }
+
+  // .down-indicator {
+  //   opacity: 0;
+  //   transition: opacity .2s linear;
+  // }
 
   .hero-inner-wrapper {
+    width: 100%;
+    max-width: $grid-max-width;
     position: relative;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex: auto;
 
     .down-indicator {
       left: 0;
@@ -45,11 +57,16 @@
     font-size: 40px;
   }
 
+  &.notFullScreen {
+    height: 60vh;
+    min-height: 60vh;
+  }
+
   @media screen and (min-width: $bp-medium) {
 
     .title {
       font-size: 60px;
-      max-width: 75%;
+      max-width: 80%;
     }
   }
 
@@ -70,11 +87,10 @@
   }
 
   .subheading {
-    margin-top: 50px;
-    max-width: 700px;
-    text-align: center;
+    margin-top: 30px;
+    max-width: 80%;
+    text-align: left;
     color: $offWhite;
-    padding: 0 40px;
   }
 
   .video {
@@ -134,4 +150,11 @@
     transition: opacity .8s ease-in-out;
     transition-delay: 1.3s;
   }
+
+  // .shown .hero {
+  //   .down-indicator {
+  //     opacity: 1;
+  //     transition-delay: 3s;
+  //   }
+  // }
 }

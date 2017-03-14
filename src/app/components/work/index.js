@@ -55,7 +55,7 @@ class PageWork extends Component {
     const classes = classnames('page-work', className);
     const video = (
       <Video
-        src={get(page, 'featured_video')}
+        src="/images/work-header-video.mp4"
         sizes={get(image, 'media_details.sizes')}
         isVideoBackground={true}
       />

@@ -107,22 +107,26 @@ const PageEvents = React.createClass({
     if (events) {
       if (events.length) {
         output = events.map((eventData, index) => {
-          return <EventsListItem
-            className="events-list"
-            featured={index === 0}
-            data={eventData}
-          />;
+          return (
+            <EventsListItem
+              className="events-list"
+              featured={index === 0}
+              data={eventData}
+            />
+          );
         });
       } else {
-        output = <div className="no-events-found">
-          <h2>Soz, No Talky</h2>
-          <p>We don't have any events on the horizon right now. If you're interested in hosting an event,
-          <br />or giving a talk - <a href="mailto:events@ustwo.com">let us know! </a></p>
-          <SVG
-            className="flying-cow"
-            spritemapID="flyingCow"
-          />
-        </div>;
+        output = (
+          <div className="no-events-found">
+            <h2>Soz, No Talky</h2>
+            <p>We don't have any events on the horizon right now. If you're interested in hosting an event,
+            <br />or giving a talk - <a href="mailto:events@ustwo.com">let us know! </a></p>
+            <SVG
+              className="flying-cow"
+              spritemapID="flyingCow"
+            />
+          </div>
+        );
       }
     }
     return output;
@@ -133,18 +137,22 @@ const PageEvents = React.createClass({
     if (archivedEvents) {
       if (archivedEvents.length) {
         events = archivedEvents.map((archivedEventData, index) => {
-          return <ArchivedEventsListItem
-            className='archived-events-list'
-            data={archivedEventData}
-          />;
+          return (
+            <ArchivedEventsListItem
+              className='archived-events-list'
+              data={archivedEventData}
+            />
+          );
         });
-        output = <div className='archived-events'>
-          <h2 className='sub-title'>Previous Talkies</h2>
-          <hr className='rule' />
-          <section className='card-list'>
-            {events}
-          </section>
-        </div>;
+        output = (
+          <div className='archived-events'>
+            <h2 className='sub-title'>Previous Talkies</h2>
+            <hr className='rule' />
+            <section className='card-list'>
+              {events}
+            </section>
+          </div>
+        );
       }
     }
     return output;
@@ -171,42 +179,31 @@ const PageEvents = React.createClass({
       loading: isLoadingInitialEvents || isLoadingStudioEvents
     });
     const image = getFeaturedImage(page);
-    const video = (
-      <Video
-        src={get(page, 'featured_video')}
-        sizes={get(image, 'media_details.sizes')}
-        isVideoBackground={true}
-      />
-    );
-    
-    return <article className={classes}>
-    	<Hero
-	      title={get(page, 'display_title')}
-        transitionImage={true}
-        eventLabel="events"
-        subheading={get(page, 'hero.attr.subheading.value')}
-        showDownIndicator={true}
-        video={video}
-      ></Hero>
-      <EventsControls
-        studios={studios}
-        currentParams={currentParams}
-      />
-      <section className="events-list">
-			  {this.renderEvents()}
+
+    return (
+      <article className={classes}>
+      	<Hero
+  	      title={get(page, 'display_title')}
+          eventLabel="events"
+          subheading={get(page, 'hero.attr.subheading.value')}
+          notFullScreen={true}
+        ></Hero>
+        <section className="events-list">
+  			  {this.renderEvents()}
+          <LoadMoreButton
+            loading={isLoadingMoreEvents}
+            onClick={this.onClickLoadMoreEvents}
+            disabled={eventsPagination >= eventsPaginationTotal}
+          />
+  		  </section>
+        {this.renderArchivedEvents()}
         <LoadMoreButton
-          loading={isLoadingMoreEvents}
-          onClick={this.onClickLoadMoreEvents}
-          disabled={eventsPagination >= eventsPaginationTotal}
+          loading={isLoadingMoreArchivedEvents}
+          onClick={this.onClickLoadMoreArchivedEvents}
+          disabled={archivedEventsPagination >= archivedEventsPaginationTotal}
         />
-		  </section>
-      {this.renderArchivedEvents()}
-      <LoadMoreButton
-        loading={isLoadingMoreArchivedEvents}
-        onClick={this.onClickLoadMoreArchivedEvents}
-        disabled={archivedEventsPagination >= archivedEventsPaginationTotal}
-      />
-    </article>;
+      </article>
+    );
 	}
 });
 

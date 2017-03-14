@@ -1,19 +1,20 @@
-'use strict';
-
-import React from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 
 import PageLoadingIcon from 'app/components/page-loading-icon';
 
-const PageLoader = React.createClass({
+class PageLoader extends Component {
   render() {
-    const props = this.props;
+    const { pageId, className } = this.props;
+    const classes = classnames('page-loader', `loading-${pageId}`, className);
     return (
-      <section className={classnames("page-loader", `loading-${this.props.pageId}`)}>
-        <PageLoadingIcon pageId={this.props.pageId} />
-      </section>
+      <div className={classes}>
+        <div className="page-loader-icon">
+          <img src="/images/page-loader-placeholder.gif" />
+        </div>
+      </div>
     );
   }
-});
+};
 
 export default PageLoader;

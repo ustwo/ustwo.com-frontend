@@ -202,7 +202,8 @@ $nav-height-large: 30px;
 
 .navigation {
   &.invert,
-  &.menuOpen {
+  &.menuOpen,
+  &.overHero:not(.home) {
     .logo svg {
       fill: white;
     }
@@ -228,7 +229,8 @@ $nav-height-large: 30px;
 @media screen and (min-width: $bp-medium) {
   .navigation {
     &,
-    &.invert {
+    &.invert,
+    &.overHero:not(.home) {
       background: none;
     }
   }

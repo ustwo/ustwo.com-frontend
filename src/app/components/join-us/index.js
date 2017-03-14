@@ -39,31 +39,25 @@ const PageJoinUs = React.createClass({
     const studioSlugFromUrl = get(currentParams, 'lid');
     const studioSlugs = map(pluck(studios, 'name'), kebabCase);
     const selectedStudioSlug = getSelectedStudio(studioSlugFromUrl, studioSlugs);
-    const video = (
-      <Video
-        src={get(page, 'featured_video')}
-        sizes={get(image, 'media_details.sizes')}
-        isVideoBackground={true}
-      />
+
+    return (
+      <article className={classes}>
+        <Hero
+          title={get(page, 'display_title')}
+          transitionImage={true}
+          eventLabel='join-us'
+          showDownIndicator={true}
+        ></Hero>
+        {renderModules({
+          modules: get(page, 'page_builder', []),
+          colours: get(page, 'colors'),
+          zebra: false,
+          placeholderContents: {
+            WORKABLE_LIST: this.getJobSectionRenderer(selectedStudioSlug)
+          }
+        })}
+      </article>
     );
-    
-    return <article className={classes}>
-      <Hero
-        title={get(page, 'display_title')}
-        transitionImage={true}
-        eventLabel='join-us'
-        showDownIndicator={true}
-        video={video}
-      ></Hero>
-      {renderModules({
-        modules: get(page, 'page_builder', []),
-        colours: get(page, 'colors'),
-        zebra: false,
-        placeholderContents: {
-          WORKABLE_LIST: this.getJobSectionRenderer(selectedStudioSlug)
-        }
-      })}
-    </article>;
   },
   renderStudioTabs(selectedStudioSlug) {
     return map(this.props.studios, studio => {
@@ -74,44 +68,50 @@ const PageJoinUs = React.createClass({
       if (studioSlug === selectedStudioSlug) {
         studioSelected = {color: studio.color}
       }
-      return <div
-        key={`tab-${studioSlug}`}
-        className={studioSlug}
-        aria-selected={studioSlug === selectedStudioSlug}
-        style={studioSelected}
-      ><a href={uri} onClick={Flux.overrideNoScroll(uri)}>{studioName}</a></div>;
+      return (
+        <div
+          key={`tab-${studioSlug}`}
+          className={studioSlug}
+          aria-selected={studioSlug === selectedStudioSlug}
+          style={studioSelected}
+        ><a href={uri} onClick={Flux.overrideNoScroll(uri)}>{studioName}</a></div>
+      );
     });
   },
   getJobSectionRenderer(selectedStudioSlug) {
     return () => {
       const sizes = { hardcoded: { url: '/images/joinus/current_openings.jpg' }};
 
-      return <div key="job-section">
-        <div className="current-openings">
-          <h2>We're Hiring</h2>
-        </div>
-        <section className="jobs">
-          <nav className="jobs-studio-tabs">
-            {this.renderStudioTabs(selectedStudioSlug)}
-          </nav>
-          <div className="jobs-container">
-            {this.renderStudioJobs(selectedStudioSlug)}
+      return (
+        <div key="job-section">
+          <div className="current-openings">
+            <h2>We're Hiring</h2>
           </div>
-        </section>
-      </div>;
+          <section className="jobs">
+            <nav className="jobs-studio-tabs">
+              {this.renderStudioTabs(selectedStudioSlug)}
+            </nav>
+            <div className="jobs-container">
+              {this.renderStudioJobs(selectedStudioSlug)}
+            </div>
+          </section>
+        </div>
+      );
     };
   },
   renderStudioJobs(selectedStudioSlug) {
     return map(this.props.studios, studio => {
       const studioSlug = kebabCase(studio.name);
-      return <StudioJobs
-        key={`jobs-${studioSlug}`}
-        studio={studio}
-        studios={this.props.studios}
-        jobs={this.getJobsForStudio(studio)}
-        selected={studioSlug === selectedStudioSlug}
-        contactEmail={get(find(get(find(get(this.props, 'footer.contacts', []), 'type', 'general'), 'methods', []), 'type', 'email'), 'uri', '')}
-      />;
+      return (
+        <StudioJobs
+          key={`jobs-${studioSlug}`}
+          studio={studio}
+          studios={this.props.studios}
+          jobs={this.getJobsForStudio(studio)}
+          selected={studioSlug === selectedStudioSlug}
+          contactEmail={get(find(get(find(get(this.props, 'footer.contacts', []), 'type', 'general'), 'methods', []), 'type', 'email'), 'uri', '')}
+        />
+      );
     });
   },
   getJobsForStudio(studio) {

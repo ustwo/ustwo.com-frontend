@@ -8,11 +8,21 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  z-index: 30;
+  z-index: 5000;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 100%;
   background-color: $offWhite;
+}
+
+.page-loader-icon {
+  width: 60px;
+  height: 60px;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 }

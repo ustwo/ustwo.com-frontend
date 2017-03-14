@@ -67,7 +67,7 @@ class Hero extends Component {
   }
 
   render() {
-    const { className, title, children, scrollProgress, eventLabel } = this.props;
+    const { className, title, children, scrollProgress, eventLabel, notFullScreen } = this.props;
     let titleStyle;
     if (scrollProgress) {
       titleStyle = {
@@ -75,21 +75,23 @@ class Hero extends Component {
         transform: `translate3d(0, ${35 * scrollProgress}vh, 0)`
       }
     }
-
     const sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
+    const classes = classnames('hero', className, { notFullScreen });
 
     return (
-      <section className={classnames('hero', className)}>
+      <section className={classes}>
         <div className="hero-inner-wrapper">
           {this.renderLogo()}
           <EntranceTransition className="title-entrance">
-            <div className="section-title">{sectionTitle}</div>
+            <div className="section-title">
+              <WordAnimation delay={0.32} duration={0.2}>{sectionTitle}</WordAnimation>
+            </div>
             <h1 className="title" style={titleStyle}>
-              <WordAnimation delay={1} duration={0.5}>{title}</WordAnimation>
+              <WordAnimation delay={0.5} duration={0.32}>{title}</WordAnimation>
             </h1>
             {this.renderSubheading()}
+            {children}
           </EntranceTransition>
-          {children}
           {this.renderDownIndicator()}
         </div>
         {this.renderVideo()}

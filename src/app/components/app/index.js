@@ -28,10 +28,10 @@ import TakeOver from 'app/components/take-over';
 import FourOhFour from 'app/components/404';
 import BlogCategories from 'app/components/blog-categories';
 import NavigationOverlay from 'app/components/navigation-overlay';
-import PageLoader from 'app/components/page-loader';
 import Popup from 'app/components/popup';
 import HomeLoader from 'app/components/home-loader';
 import ScrollWrapper from 'app/components/scroll-wrapper';
+import PageContent from 'app/components/page-content';
 
 const pageMap = {
   'home': require('app/components/home'),
@@ -84,6 +84,7 @@ const App = React.createClass({
 
   componentWillMount() {
     const { page } = this.state;
+
     this.setState({
       appLoading: page.slug && page.slug === 'home'
     });
@@ -91,11 +92,13 @@ const App = React.createClass({
   },
 
   componentDidMount() {
+    const { page, currentPage, post, caseStudy, appLoading, scrolling } = this.state;
+
     setTimeout(() => {
       this.setState({ show: true });
     }.bind(this), 1000);
 
-    if (this.state.appLoading) {
+    if (appLoading) {
       document.body.style.overflow = "hidden";
       // TODO: Remove timeout and actually act as a loader (of the video)
       setTimeout(() => {
@@ -115,7 +118,7 @@ const App = React.createClass({
       this.setState({ scrolling: true })
     };
     setInterval(() => {
-      if (this.state.scrolling) {
+      if (scrolling) {
         this.setState({ scrolling: false })
       }
     }, 200);
@@ -147,10 +150,12 @@ const App = React.createClass({
       switch(modalType) {
         case 'menu':
           className = 'menu';
-          content = <NavigationOverlay
-            pages={this.state.navMain}
-            section={this.state.currentPage.split('/')[0]}
-          />;
+          content = (
+            <NavigationOverlay
+              pages={this.state.navMain}
+              section={this.state.currentPage.split('/')[0]}
+            />
+          );
           break;
         case 'contacts':
           className = 'tray';
@@ -202,42 +207,48 @@ const App = React.createClass({
 
   render() {
     const state = this.state;
-    const appClasses = classnames('app', `page-${state.currentPage}`, {
-      'show': state.show,
-      'loaded': !state.appLoading,
-      'app-404': state.currentPage === 'notfound',
-      'overflow-hidden': state.popup
+    const { currentPage, show, appLoading, popup, showPopup, showRollover, menuHover, modal, viewportDimensions,
+      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios } =this.state;
+
+    const appClasses = classnames('app', `page-${currentPage}`, {
+      'show': show,
+      'loaded': !appLoading,
+      'app-404': currentPage === 'notfound',
+      'overflow-hidden': popup
     });
-    const contentClasses = classnames('app-content', state.showPopup, state.showRollover, state.menuHover, {
+    const contentClasses = classnames('app-content', showPopup, showRollover, menuHover, {
       'takeover': this.showTakeover(),
-      'disabled': !!state.modal,
-      'mobile-no-scroll': state.modal || this.showTakeover(),
+      'disabled': !!modal,
+      'mobile-no-scroll': modal || this.showTakeover(),
     });
-    if (!!state.modal || !!state.popup) {
+    if (!!modal || !!popup) {
       document.body.style.overflow = "hidden";
-    } else if (state.modal === null && !state.appLoading || state.popup === null && !state.appLoading) {
+    } else if (modal === null && !appLoading || popup === null && !appLoading) {
       document.body.style.overflow = "auto";
     }
     let content, loader;
+
+    const pageLoading = !includes(spinnerBlacklist, currentPage) && !page && !post && !caseStudy;
+
     if (state.currentPage === 'notfound') {
       content = (
         <div className={appClasses}>
           <Navigation
-            pages={state.navMain}
-            section={state.currentPage.split('/')[0]}
-            page={state.currentPage.split('/')[1]}
+            pages={navMain}
+            section={currentPage.split('/')[0]}
+            page={currentPage.split('/')[1]}
             takeover={this.showTakeover()}
-            documentScrollPosition={state.documentScrollPosition}
-            venturesPosition={state.venturesPosition}
-            modal={state.modal}
-            viewportDimensions={state.viewportDimensions}
+            documentScrollPosition={documentScrollPosition}
+            venturesPosition={venturesPosition}
+            modal={modal}
+            viewportDimensions={viewportDimensions}
           />
           <FourOhFour {...this.state} />
           {this.renderModal()}
         </div>
       );
     } else {
-      const loader = state.appLoading ? <HomeLoader loading={state.appLoading} /> : <div />
+      const loader = appLoading ? <HomeLoader loading={appLoading} /> : <div />
       content = (
         <div className={appClasses}>
           <Meta
@@ -264,25 +275,24 @@ const App = React.createClass({
           />
           <EntranceTransition className="nav-wrapper">
             <Navigation
-              pages={state.navMain}
-              section={state.currentPage.split('/')[0]}
-              page={state.currentPage.split('/')[1]}
+              pages={navMain}
+              section={currentPage.split('/')[0]}
+              page={currentPage.split('/')[1]}
               takeover={this.showTakeover()}
-              documentScrollPosition={state.documentScrollPosition}
-              venturesPosition={state.venturesPosition}
-              modal={state.modal}
-              viewportDimensions={state.viewportDimensions}
+              documentScrollPosition={documentScrollPosition}
+              venturesPosition={venturesPosition}
+              modal={modal}
+              viewportDimensions={viewportDimensions}
             />
           </EntranceTransition>
-          <PageContainer key={state.currentPage} extraClasses={contentClasses}>
-            <TransitionManager
-              component="div"
-              className="page-transition"
-              duration={1000}
-            >
-              {this.getPage(state.currentPage)}
-            </TransitionManager>
-            <Footer data={state.footer} studios={state.studios} currentPage={state.currentPage}/>
+          <PageContainer key={currentPage} extraClasses={contentClasses}>
+            <PageContent
+              pageMap={pageMap}
+              pageState={this.state}
+              currentPage={currentPage}
+              pageLoading={pageLoading}
+            />
+            <Footer data={footer} studios={studios} currentPage={currentPage}/>
           </PageContainer>
           {this.renderModal()}
           {this.renderPopup()}
@@ -291,18 +301,6 @@ const App = React.createClass({
       );
     }
     return content;
-  },
-
-  getPage(pageId) {
-    const { currentPage, page: pageData, post, caseStudy, documentScrollPosition, scrolling} = this.state;
-    let page;
-    if(!includes(spinnerBlacklist, currentPage) && !pageData && !post && !caseStudy) {
-      page = <PageLoader key="loader" pageId={pageId} />;
-    } else {
-      //   page = React.createElement(pageMap[pageId], Object.assign({ key: `page-${pageId}` }, this.state));
-      page = React.createElement(pageMap[pageId], this.state);
-    }
-    return page;
   }
 });
 

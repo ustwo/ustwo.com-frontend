@@ -9,13 +9,8 @@
 
 .blog-controls {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  z-index: 1;
-  bottom: calc(#{$blog-controls-margin-bottom} + 9vh);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 
   .blog-search-button {
     display: flex;
@@ -25,13 +20,11 @@
     background: transparent;
     border: 0;
     padding: 0;
-    margin-bottom: 20px;
 
     .search-icon {
       fill: #fff;
-      width: $blog-controls-line-height;
-      height: $blog-controls-line-height;
-      margin: 0 auto;
+      width: 30px;
+      height: 30px;
     }
   }
 
@@ -40,15 +33,18 @@
     text-transform: uppercase;
 
     .selected {
-      width: $blog-controls-item-width;
-      padding: 0 0 0 50px;
+      width: 200px;
+      padding: 0 15px;
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
 
       &:after {
 
-        @include arrow-icon($midGrey);
+        @include arrow-icon($white);
 
         position: absolute;
-        left: $blog-controls-horizontal-padding;
+        right: $blog-controls-horizontal-padding;
         top: 50%;
         content: "";
         display: block;
@@ -59,10 +55,8 @@
     }
     .selected {
       cursor: pointer;
-      height: $blog-controls-line-height;
-      line-height: $blog-controls-line-height;
-      color: $nonBlack;
-      background-color: #fff;
+      height: 38px;
+      line-height: 38px;
     }
 
     .loading-icon {

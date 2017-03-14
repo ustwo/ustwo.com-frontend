@@ -121,17 +121,17 @@ $menu-transition-item-delay: .15s;
   }
 
   &.hide {
-    transition-delay: .32s;
+    transition-delay: .2s;
 
     .navigation-overlay-link:hover {
       &:before {
         background-color: white;
-        transition: background-color .15s linear;
+        transition: background-color .06s linear;
       }
     }
     .navigation-overlay-link:not(:hover) {
       opacity: 0;
-      transition: opacity .15s linear .15s;
+      transition: opacity .06s linear .06s;
     }
   }
 }
