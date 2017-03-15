@@ -17,7 +17,7 @@
 .popup-services,
 .popup-together {
   .popup-image img {
-    box-shadow: 10px 10px 40px rgba(0,0,0,.3);
+    @include box-shadow();
   }
 }
 

@@ -34,5 +34,57 @@
       padding-top: 100px;
     }
   }
+}
 
+.work-whatwedo {
+
+}
+
+.work-intro {
+  @include core-gutter();
+  padding-top: 40px;
+  padding-bottom: 60px;
+
+  @media screen and (min-width: $bp-medium) {
+    padding-top: 80px;
+  }
+  @media screen and (min-width: $bp-large) {
+    padding-top: 90px;
+  }
+  @media screen and (min-width: $bp-larger) {
+    padding-top: 120px;
+  }
+}
+
+.work-intro-extra {
+  display: none;
+
+  @media screen and (min-width: $bp-medium) {
+    display: block;
+  }
+}
+
+.work-contact {
+  display: none;
+  @include core-gutter();
+
+  @media screen and (min-width: $bp-large) {
+    display: block;
+  }
+}
+
+.work-process-item {
+  background-color: white;
+  padding: 20px;
+  @include box-shadow();
+  @include core-gutter('margin');
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.work-process {
+  overflow: hidden;
+  visibility: visible;
+  position: relative;
+  margin-bottom: 95px;
 }

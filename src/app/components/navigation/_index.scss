@@ -220,7 +220,8 @@ $nav-height-large: 30px;
       background-color: transparent;
     }
   }
-  &.invert {
+  &.invert,
+  &.overHero:not(.home) {
     background: linear-gradient(90deg, #333, #313c61);
     opacity: 0.9;
   }
@@ -229,8 +230,7 @@ $nav-height-large: 30px;
 @media screen and (min-width: $bp-medium) {
   .navigation {
     &,
-    &.invert,
-    &.overHero:not(.home) {
+    &.invert {
       background: none;
     }
   }

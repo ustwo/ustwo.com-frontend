@@ -52,7 +52,7 @@
   width: 90%;
   max-width: 490px;
   text-align: center;
-  box-shadow: 10px 10px 40px rgba(0,0,0,.3);
+  @include box-shadow();
   padding: 25px;
   background-color: $offWhite;
 

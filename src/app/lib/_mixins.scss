@@ -90,22 +90,42 @@
   }
 }
 
+@mixin core-gutter($type: 'padding') {
+  @if $type == 'padding' {
+    padding: 0 20px;
+
+    @media screen and (min-width: $bp-medium) {
+      padding: 0 40px;
+    }
+
+    @media screen and (min-width: $bp-large) {
+      padding: 0 60px;
+    }
+  } @else {
+    margin: 0 20px;
+
+    @media screen and (min-width: $bp-medium) {
+      margin: 0 40px;
+    }
+
+    @media screen and (min-width: $bp-large) {
+      margin: 0 60px;
+    }
+  }
+}
+
 @mixin core-layout() {
   display: flex;
   justify-content: center;
-  padding: 0 20px;
-
-  @media screen and (min-width: $bp-medium) {
-    padding: 0 40px;
-  }
-
-  @media screen and (min-width: $bp-large) {
-    padding: 0 60px;
-  }
+  @include core-gutter();
 
   > div {
     flex: 1;
     width: 100%;
     max-width: $grid-max-width;
   }
+}
+
+@mixin box-shadow() {
+  box-shadow: 10px 10px 40px rgba(0,0,0,.3);
 }
