@@ -15,7 +15,10 @@
 
 .popup-products,
 .popup-services,
-.popup-together {
+.popup-together,
+.popup-collective,
+.popup-together,
+.popup-own-products {
   .popup-image img {
     @include box-shadow();
   }
@@ -109,6 +112,101 @@
 }
 
 
+
+.popup-own-products {
+  .popup-image {
+    &:nth-child(1) {
+      top: 5%;
+      left: 15%;
+      width: 45%;
+      max-width: 340px;
+    }
+    &:nth-child(2) {
+      left: 1%;
+      bottom: 7%;
+      width: 50%;
+      max-width: 320px;
+    }
+    &:nth-child(3) {
+      right: 5%;
+      top: 15%;
+      width: 40%;
+      max-width: 350px;
+    }
+    &:nth-child(4) {
+      bottom: 0;
+      right: 7%;
+      width: 55%;
+      max-width: 310px;
+    }
+  }
+}
+
+
+.popup-ventures {
+  .popup-image {
+    &:nth-child(1) {
+      top: 3%;
+      left: 6%;
+      width: 50%;
+      max-width: 450px;
+    }
+    &:nth-child(2) {
+      left: 3%;
+      bottom: 4%;
+      width: 50%;
+      max-width: 370px;
+    }
+    &:nth-child(3) {
+      right: 26%;
+      top: 15%;
+      width: 35%;
+      max-width: 210px;
+    }
+    &:nth-child(4) {
+      top: 10%;
+      right: 5%;
+      width: 35%;
+      max-width: 210px;
+    }
+    &:nth-child(5) {
+      bottom: 2%;
+      right: 7%;
+      width: 55%;
+      max-width: 240px;
+    }
+  }
+}
+
+
+.popup-collective {
+  .popup-image {
+    &:nth-child(1) {
+      top: 2%;
+      left: 3%;
+      width: 55%;
+      max-width: 450px;
+    }
+    &:nth-child(2) {
+      left: 5%;
+      bottom: 15%;
+      width: 50%;
+      max-width: 400px;
+    }
+    &:nth-child(3) {
+      right: 5%;
+      top: 10%;
+      width: 40%;
+      max-width: 300px;
+    }
+    &:nth-child(4) {
+      bottom: 0;
+      right: 0;
+      width: 50%;
+      max-width: 450px;
+    }
+  }
+}
 
 .popup-brands,
 .popup-invest {

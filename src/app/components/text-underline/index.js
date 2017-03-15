@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import blendColours from 'app/lib/blend-colours';
+import { kebabCase } from 'lodash';
 
 const underlineOffset = 3;
 const underlineWidth = 2;
@@ -109,7 +110,7 @@ class TextUnderline extends Component {
     return (
       <span
         className="home-text-block-button"
-        onClick={showPopup(word)}
+        onClick={showPopup(kebabCase(word))}
         ref={(ref) => this.wrapper = ref}
         style={style}
       >{word}<canvas

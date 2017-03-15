@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { camelCase } from 'lodash';
 import classnames from 'classnames';
 import Flux from 'app/flux';
 import PopupBackground from 'app/components/popup-background';
@@ -14,8 +15,7 @@ class Popup extends Component {
   render() {
     const { className, children, type, documentScrollPosition, viewportDimensions, isMobile } = this.props;
     const classes = classnames('popup', `popup-${type}`, className.replace('shown',''));
-
-    const { text, images, invert } = popupData[type];
+    const { text, images, invert } = popupData[camelCase(type)];
 
     const popupBackground = (<PopupBackground images={images} isMobile={isMobile} />);
 
@@ -98,21 +98,18 @@ const popupData = {
   ventures: {
     text: 'We partner with the world’s leading experts and entrepreneurs, offering our expertise, technology or investment to create great new companies.',
     images: [
-      'logo-amaliah.svg',
-      'logo-tribe.svg',
-      'logo-hoop.svg',
-      'logo-tray.png',
-      'logo-curiscope.png',
-      'logo-marvel.svg',
-      'logo-everpress.svg',
-      'logo-marku.svg',
+      'ventures-ustwo-games.jpg',
+      'ventures-dice.jpg',
+      'ventures-wayfindr.jpg',
     ],
     invert: true
   },
-  difference: {
+  ownProducts: {
     text: 'Our work has set the standards, won the awards and most important of all been used by tens of millions of people.',
     images: [
-      'popup-difference-1.png',
+      'difference-pause.jpg',
+      'ventures-moodnotes.jpg',
+      'difference-crow.jpg'
     ],
     invert: true
   },
@@ -128,7 +125,10 @@ const popupData = {
   collective: {
     text: 'Our work has set the standards, won the awards and most important of all been used by tens of millions of people.',
     images: [
-      'popup-difference-1.png',
+      'ustwobies-1.jpg',
+      'ustwobies-2.jpg',
+      'ustwobies-3.jpg',
+      'ustwobies-4.jpg'
     ]
   },
   genius: {

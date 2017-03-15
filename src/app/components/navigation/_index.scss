@@ -225,12 +225,16 @@ $nav-height-large: 30px;
     background: linear-gradient(90deg, #333, #313c61);
     opacity: 0.9;
   }
+  &.menuOpen {
+    background: transparent !important;
+  }
 }
 
 @media screen and (min-width: $bp-medium) {
   .navigation {
     &,
-    &.invert {
+    &.invert,
+    &.overHero:not(.home) {
       background: none;
     }
   }

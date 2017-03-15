@@ -197,13 +197,13 @@ const dataProducts = [{
 
 const dataVentures = [{
   title: "ustwo Games",
-  category: "Venture",
+  category: "Business",
   imageURL: "/images/home/ustwo-games.jpg",
   videoURL: "/images/home/monument-valley.mp4",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Dice",
-  category: "Venture",
+  category: "Business",
   imageURL: "/images/home/dice.jpg",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
@@ -225,7 +225,7 @@ const dataVentures = [{
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 },{
   title: "Watch This",
-  category: "Venture",
+  category: "Own Product",
   imageURL: "/images/home/watch-this.jpg",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 }];

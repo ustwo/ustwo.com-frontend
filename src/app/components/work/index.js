@@ -33,6 +33,17 @@ class PageWork extends Component {
       wrapper: { width: "100%" }
     }
 
+    let renderContent;
+    if (this.props.isMobile) {
+      renderContent = (
+        <ReactSwipe className="carousel" swipeOptions={{continuous: false}}>
+          {workProcess}
+        </ReactSwipe>
+      );
+    } else {
+      renderContent = workProcess;
+    }
+
     return (
       <div className="work-whatwedo">
         <div className="work-intro">
@@ -43,9 +54,7 @@ class PageWork extends Component {
           {workData.contact}
         </div>
         <div className="work-process">
-          <ReactSwipe className="carousel" swipeOptions={{continuous: false}}>
-            {workProcess}
-          </ReactSwipe>
+          {renderContent}
         </div>
       </div>
     );
@@ -71,7 +80,7 @@ class PageWork extends Component {
       const featured = caseStudies.indexOf(caseStudy) === 0;
 
       return (
-          <WorkItem
+        <WorkItem
           key={caseStudy.slug}
           data={caseStudy}
           image={image}
@@ -91,13 +100,14 @@ class PageWork extends Component {
         src="/images/work-header-video.mp4"
         sizes={get(image, 'media_details.sizes')}
         isVideoBackground={true}
+        play={true}
       />
     );
 
     return (
       <article className={classes}>
         <Hero
-          title={get(page, 'display_title')}
+          title="We build products and services that make a difference"
           transitionImage={true}
           eventLabel='work'
           showDownIndicator={true}
@@ -121,24 +131,23 @@ export default PageWork;
 
 const workData = {
   intro: {
-    statement: "We'll help you find the best, most direct and most rewarding way to build truly loved digital products and services.",
+    statement: 'We use technology, design and digital product thinking to solve the business problems that matter. Our goal is to transform people’s lives by keeping the user at the heart of it all.',
     extra: [
-      'Working with ustwo is an essentially human experience. We invest in understanding users and in ways of working that get the most from you and your team, while delivering impact for your business.',
-      'We believe the real genius is found in the collective, and we’re on a mission to help our clients launch digital products and services that have a meaningful impact on the world.'
+      'We work with you all the way through the product life cycle.'
     ]
   },
   contact: 'Get in touch or explore more below to find ways we can work together.',
   process: [{
     title: 'Discovery',
     image: '/images/illustration-discovery.svg',
-    text: 'Discover what your users want the most, validate the opportunity, and refine your goals.'
+    text: 'Innovate and stay ahead. Refine business goals and validate opportunities by understanding what your customers want most.'
   },{
     title: 'Design and Build',
     image: '/images/illustration-design-and-build.svg',
-    text: 'Agile software development, premium execution and world-class engineering.'
+    text: 'Stand out from the competition. Truly agile software development, exceptional execution and world-class engineering.'
   },{
     title: 'Launch and Scale',
     image: '/images/illustration-launch-and-scale.svg',
-    text: 'Measure your product out in the market, refine, grow and improve. Prove your return on investment.'
+    text: 'Stay relevant and respond to customer needs. Get your product out in the market – refine, grow and prove your return on investment.'
   }]
 }

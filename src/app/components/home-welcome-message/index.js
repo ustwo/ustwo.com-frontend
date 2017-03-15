@@ -12,7 +12,7 @@ function HomeWelcomeMessage({ showPopup }) {
         showPopup={showPopup}
         word="services"
         color="lukewarm"
-      /><span> for the smartest </span><TextUnderline
+      /><span> for the world's best </span><TextUnderline
         showPopup={showPopup}
         word="brands"
         color="hot"

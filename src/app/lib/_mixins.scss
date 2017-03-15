@@ -92,24 +92,30 @@
 
 @mixin core-gutter($type: 'padding') {
   @if $type == 'padding' {
-    padding: 0 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 
     @media screen and (min-width: $bp-medium) {
-      padding: 0 40px;
+      padding-left: 40px;
+      padding-right: 40px;
     }
 
     @media screen and (min-width: $bp-large) {
-      padding: 0 60px;
+      padding-left: 60px;
+      padding-right: 60px;
     }
   } @else {
-    margin: 0 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 
     @media screen and (min-width: $bp-medium) {
-      margin: 0 40px;
+      margin-left: 40px;
+      margin-right: 40px;
     }
 
     @media screen and (min-width: $bp-large) {
-      margin: 0 60px;
+      margin-left: 60px;
+      margin-right: 60px;
     }
   }
 }
