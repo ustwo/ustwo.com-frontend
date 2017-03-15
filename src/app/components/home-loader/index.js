@@ -21,7 +21,7 @@ class HomeLoader extends Component {
     if (!nextProps.loading) {
       setTimeout(() => {
         this.setState({ hide: true });
-      }.bind(this), 1000);
+      }.bind(this), 100000);
     }
   }
 

@@ -58,7 +58,7 @@ class PageHome extends Component {
     const { page, documentScrollPosition, viewportDimensions, scrolling, appLoading, popup, isMobile } = this.props;
     const { venturesPosition } = this.state;
 
-    const venturesActive = (documentScrollPosition > venturesPosition.from) && (documentScrollPosition < venturesPosition.to);
+    const venturesActive = (documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition < venturesPosition.to);
 
     const classes = classnames('page-home-content', this.props.className, {
       venturesActive: venturesActive // venturesActive shows or hides the dark background depending on when it falls in/out of view

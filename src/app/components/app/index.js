@@ -52,7 +52,7 @@ const spinnerBlacklist = ['legal', 'blog/search-results'];
 function getDocumentScrollPosition(component) {
   return () => {
     component.setState({
-      documentScrollPosition: document.scrollingElement.scrollTop,
+      documentScrollPosition: document.scrollingElement.scrollTop
     });
   }
 }
@@ -62,7 +62,7 @@ const App = React.createClass({
   getInitialState() {
     const state = this.props.state;
     state['documentScrollPosition'] = 0;
-    state['scrolling'] = false;
+    state['isScrolling'] = false;
     state['show'] = false;
     state['appLoading'] = false;
     state['viewportDimensions'] = {};
@@ -78,7 +78,7 @@ const App = React.createClass({
     };
     this.setState({
       viewportDimensions,
-      isMobile: window.innerWidth < 600
+      isMobile: viewportDimensions.width < 600
     });
   },
 
@@ -92,7 +92,7 @@ const App = React.createClass({
   },
 
   componentDidMount() {
-    const { page, currentPage, post, caseStudy, appLoading, scrolling } = this.state;
+    const { page, currentPage, post, caseStudy, appLoading, isScrolling } = this.state;
 
     setTimeout(() => {
       this.setState({ show: true });
@@ -113,15 +113,14 @@ const App = React.createClass({
     Store.on('change', this.onChangeStore);
     window.addEventListener('scroll', getDocumentScrollPosition(this));
 
-    /* is the user scrolling? Turn off some unperformant css, e.g. box-shadow? */
     window.onscroll = () => {
-      this.setState({ scrolling: true })
+      this.setState({ isScrolling: true })
     };
-    setInterval(() => {
-      if (scrolling) {
-        this.setState({ scrolling: false })
-      }
-    }, 200);
+    if (isScrolling) {
+      setInterval(() => {
+        this.setState({ isScrolling: false });
+      }, 200);
+    }
   },
 
   componentWillUnmount() {

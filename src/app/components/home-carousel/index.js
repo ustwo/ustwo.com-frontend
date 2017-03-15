@@ -34,7 +34,8 @@ class HomeCarousel extends Component {
       otherIsHovered: false,
       numberOfItemsInView: 2,
       justBeenHovered: false,
-      paused: false
+      paused: false,
+      videoToPlay: null
     }
   }
 
@@ -91,7 +92,7 @@ class HomeCarousel extends Component {
   }
 
   render() {
-    const { scrollProgress, carouselItems, className, isMobile, inView } = this.props;
+    const { scrollProgress, carouselItems, className, isMobile, inView, isScrolling } = this.props;
     const { currentStartItem, otherIsHovered, numberOfItemsInView, justBeenHovered } = this.state;
 
     const showItems = this.props.carouselItems.map((item, i) => {
@@ -142,7 +143,7 @@ class HomeCarousel extends Component {
       }
 
       /* Play/Pause the video */
-      let playVideo = isActive && inView && scrollProgress > sizeOfTextBlock;
+      let playVideo = this.state.videoToPlay === i && !isScrolling;
 
       /* Show either an image or video depending on if there is a videoURL */
       let visualContent;
@@ -160,6 +161,8 @@ class HomeCarousel extends Component {
         <div
           className={classes}
           key={`carousel-item-${i}`}
+          onMouseOver={() => this.setState({ videoToPlay: i })}
+          onMouseOut={() => this.setState({ videoToPlay: null })}
           onMouseEnter={this.itemHoverEnter(alignment, isActive)}
           onMouseLeave={this.itemHoverLeave(alignment, isActive)}>
           <div className="home-carousel-item-image">

@@ -54,33 +54,8 @@
   }
 }
 
+/* Inverted styles on ventures background */
 .home-ventures-wrapper {
-
-  .home-ventures-wrapper-bg {
-    position: fixed;
-    z-index: 0;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0;
-    transition: opacity .32s ease-in-out;
-    background: linear-gradient(-225deg, $v-gradient1, $v-gradient2);
-    transform: translateZ(0);
-  }
-  .scroll-wrapper-home-more-message {
-    > * {
-      opacity: 0;
-      transition: opacity .32s ease-in-out;
-    }
-  }
-  .scroll-wrapper-home-smorgasbord-message {
-    > * {
-      opacity: 1;
-      transition: opacity .32s ease-in-out;
-    }
-  }
-
   h1,
   .home-carousel-item-text h2,
   .home-carousel-item-description {
@@ -161,53 +136,45 @@
   }
 }
 
+
+
+/* Transitions around venturesActive */
 .page-home-content {
+  backface-visibility: hidden;
+
+  .home-ventures-wrapper-bg,
+  .scroll-wrapper-home-carousel-products,
+  .scroll-wrapper-home-carousel-ventures {
+    perspective: 1000;
+    transition: opacity .2s linear;
+  }
+  .home-ventures-wrapper-bg {
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transform: translateZ(0);
+    background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
+  }
+  .scroll-wrapper-home-carousel-products {
+    opacity: 1;
+  }
+  .scroll-wrapper-home-carousel-ventures {
+    opacity: 0;
+  }
+
   &.venturesActive {
     .home-ventures-wrapper-bg {
       opacity: 1;
     }
-    .scroll-wrapper-home-more-message {
-      > * {
-        opacity: 1;
-      }
-    }
-    .scroll-wrapper-home-smorgasbord-message {
-      > * {
-        opacity: 0;
-      }
-    }
-    .scroll-wrapper-home-carousel-ventures {
-      .view-carousel-related-page,
-      .home-carousel-shuffle {
-        opacity: 1;
-      }
-      @media screen and (max-width: $bp-medium) {
-        .home-carousel-item-text > * {
-          opacity: 1;
-        }
-      }
-    }
     .scroll-wrapper-home-carousel-products {
-      .view-carousel-related-page,
-      .home-carousel-shuffle {
-        opacity: 0;
-      }
-      @media screen and (max-width: $bp-medium) {
-        .home-carousel-item-text > * {
-          opacity: 0;
-        }
-      }
-    }
-  }
-  .scroll-wrapper-home-carousel-ventures {
-    .view-carousel-related-page,
-    .home-carousel-shuffle {
       opacity: 0;
     }
-    @media screen and (max-width: $bp-medium) {
-      .home-carousel-item-text > * {
-        opacity: 0;
-      }
+    .scroll-wrapper-home-carousel-ventures {
+      opacity: 1;
     }
   }
 }

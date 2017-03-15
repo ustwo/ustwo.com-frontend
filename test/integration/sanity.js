@@ -78,7 +78,7 @@ const blogSlug = 'blog';
 const blogURL = baseURL + '/blog';
 const logoLink = '.navigation .logo';
 const pageHome = '.page-home';
-const homeHeadline = 'DIGITAL PRODUCT STUDIO';
+const homeHeadline = 'WE MAKE DIGITAL PRODUCTS AND SERVICES FOR THE WORLD\'S BEST BRANDS';
 const joinLink = 'Join';
 const jobsPage = '.page-container';
 const jobOpenings = 'WE\'RE HIRING';
@@ -210,12 +210,12 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
       .url().should.eventually.include(joinSlug);
   });
 
-  it('should go to the Work page and look for case studies', () => {
-    return browser
-      .get(workURL)
-      .waitForElementByCss(workItem, wd.asserters.textInclude(workReadmore), 15000)
-      .url().should.eventually.include(workSlug);
-  });
+  // it('should go to the Work page and look for case studies', () => {
+  //   return browser
+  //     .get(workURL)
+  //     .waitForElementByCss(workItem, wd.asserters.textInclude(workReadmore), 15000)
+  //     .url().should.eventually.include(workSlug);
+  // });
 
   it('should go to the Sandbox page and look for the component list', () => {
     return browser
