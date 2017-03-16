@@ -73,7 +73,7 @@
 }
 
 .smorgasbord-blog,
-.smorgasbord-event {
+.smorgasbord-events {
   padding: 30px;
   color: white;
   display: flex;
@@ -113,7 +113,7 @@
   }
 }
 
-.smorgasbord-event {
+.smorgasbord-events {
   background-image: url('/images/bg-pattern.png');
   background-repeat: repeat;
 }
@@ -143,7 +143,8 @@
 
 @media screen and (min-width: $bp-large) {
   .smorgasbord-block {
-    height: 560px;
+    height: 480px;
+    font-size: 40px;
   }
   .smorgasbord-video {
     height: auto;
@@ -165,7 +166,7 @@
   background-position: left top;
 }
 
-.smorgasbord-event {
+.smorgasbord-events {
   background-color: $softPassion;
 }
 

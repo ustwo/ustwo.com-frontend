@@ -18,7 +18,9 @@
   }
 
   .clock {
-    display: none;
+    position: absolute;
+    right: 20px;
+    top: 0;
   }
 
   .studio-title {
@@ -31,12 +33,13 @@
 
     &::after {
       content: '+';
-      position: absolute;
-      top: 6px;
-      right: 6.25%;
-      display: block;
-      font-size: 45px;
+      position: relative;
+      top: auto;
+      right: auto;
+      display: inline-block;
+      font-size: 25px;
       color: $offWhite;
+      margin-left: 10px;
     }
   }
 
@@ -122,7 +125,9 @@
     height: auto;
 
     .clock {
-      display: block;
+      position: relative;
+      right: auto;
+      top: auto;
     }
   }
 

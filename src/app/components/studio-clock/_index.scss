@@ -6,10 +6,9 @@
  */
 
 .clock {
-  width: 180px;
-  height: 180px;
+  width: 60px;
+  height: 60px;
   position: relative;
-  margin: 80px 0 40px;
   background-image: linear-gradient(to bottom, #111111, #161616);
   border-radius: 50%;
 
@@ -82,4 +81,14 @@
     margin-left: -1px;
   }
 
+  @media screen and (min-width: $bp-medium) {
+    width: 140px;
+    height: 140px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    width: 180px;
+    height: 180px;
+    margin: 80px 0 40px;
+  }
 }

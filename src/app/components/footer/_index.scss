@@ -83,37 +83,37 @@
         }
 
         &.facebook {
-          a:hover {
+          a {
             background-color: #3A5998;
             border-color: #3A5998;
           }
         }
         &.twitter {
-          a:hover {
+          a {
             background-color: #32ABE2;
             border-color: #32ABE2;
           }
         }
         &.linkedin {
-          a:hover {
+          a {
             background-color: #069;
             border-color: #069;
           }
         }
         &.github {
-          a:hover {
+          a {
             background-color: #4183c4;
             border-color: #4183c4;
           }
         }
         &.instagram {
-          a:hover {
-            background-color: #4c68d7;
+          a {
+            background-image: linear-gradient(223deg, #5335d3, #ee5933 50%, #f8d168);
             border-color: #4c68d7;
           }
         }
         &.dribbble {
-          a:hover {
+          a {
             background-color: #ea4c89;
             border-color: #ea4c89;
           }
@@ -133,6 +133,12 @@
       font-size: 12px;
       line-height: 1.5;
       flex-direction: column;
+      position: relative;
+      z-index: 2;
+
+      a {
+        text-decoration: underline;
+      }
 
       .copyright {
         flex: 3;

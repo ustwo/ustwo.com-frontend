@@ -27,7 +27,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 30px 68px 30px;
   height: auto;
   border-bottom: 1px solid $nonBlack;
   font-size: 18px;
@@ -82,7 +81,7 @@
     background: transparent;
     color: white;
     border-bottom: 2px solid white;
-    margin-right: 20px;
+    margin-right: 10px;
     padding: 0;
 
     &::-webkit-input-placeholder {
@@ -112,13 +111,21 @@
   }
 
   @media screen and (min-width: $bp-small) {
-
+    .email {
+      margin-right: 20px;
+    }
   }
 }
 
 .subscription-wrapper {
   max-width: 320px;
   margin: 0 auto;
+  padding: 50px 20px 68px 20px;
+
+  @media screen and (min-width: $bp-small) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 
   @media screen and (min-width: $bp-tablet) {
     max-width: 480px;
