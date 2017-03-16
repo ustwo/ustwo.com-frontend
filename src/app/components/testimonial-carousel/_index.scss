@@ -32,22 +32,41 @@
     line-height: 1.33;
   }
 
-  span {
-    font-size: 20px;
-    line-height: 1.5;
-  }
-
   &.active {
     opacity: 1;
     transition-delay: .2s;
   }
 }
 
+.testimonial-name {
+  font-size: 20px;
+}
+
+.testimonial-smallprint {
+  color: $offWhite;
+  margin-top: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.testimonial-title {
+  opacity: .6;
+}
+
+.testimonial-company {
+  color: transparent;
+  -webkit-background-clip: text; /* Seems we can't rely on autoprefixer for this */
+  background-clip: text;
+  position: relative;
+  background-image: linear-gradient(to right, $mare, $jeezz);
+}
+
+
 .tesimonial-button-next {
   position: absolute;
-  bottom: 30px;
+  bottom: 50px;
   left: 50%;
-  transform: translateY(-50%);
+  transform: translateX(-50%);
 
   svg {
     fill: white;
@@ -63,6 +82,9 @@
     p {
       font-size: 40px;
     }
+  }
+  .tesimonial-button-next {
+    bottom: 60px;
   }
 }
 

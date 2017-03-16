@@ -31,12 +31,12 @@ class TestimonialCarousel extends Component {
 
       return (
         <div key={`testimonial-${i}`} className={classes}>
-          <p>{ testimonial.testimonial }</p>
-          <span className="testimonial-name">&#8212; { testimonial.source.name }</span>
-          <span>,&nbsp;</span>
-          <span className="testimonial-title">{ testimonial.source.title }</span>
-          <span>&nbsp;</span>
-          <span className="testimonial-company">{ testimonial.source.company }</span>
+          <p>{testimonial.testimonial}</p>
+          <div className="testimonial-name">{testimonial.source.name}</div>
+          <div className="testimonial-smallprint">
+            <span className="testimonial-title">{testimonial.source.title}&nbsp;</span>
+            <span className="testimonial-company">{testimonial.source.company}</span>
+          </div>
         </div>
       );
     });
