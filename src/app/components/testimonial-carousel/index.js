@@ -10,7 +10,7 @@ const TestimonialCarousel = React.createClass({
     const testimonials = this.props.testimonials;
     const index = 0;
     const testimonial = testimonials[index];
-    
+
     return {
       index: index,
       testimonial: this.renderTestimonial(testimonial)
@@ -39,7 +39,11 @@ const TestimonialCarousel = React.createClass({
   renderTestimonial(testimonial) {
     return <div>
         <p>{ testimonial.testimonial }</p>
-        <span>&#8212; { testimonial.source }</span>
+        <span className="testimonial-name">&#8212; { testimonial.source.name }</span>
+        <span>,&nbsp;</span>
+        <span className="testimonial-title">{ testimonial.source.title }</span>
+        <span>&nbsp;</span>
+        <span className="testimonial-company">{ testimonial.source.company }</span>
       </div>
   },
   renderTestimonials() {
