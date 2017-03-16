@@ -29,7 +29,6 @@ import FourOhFour from 'app/components/404';
 import BlogCategories from 'app/components/blog-categories';
 import NavigationOverlay from 'app/components/navigation-overlay';
 import Popup from 'app/components/popup';
-import HomeLoader from 'app/components/home-loader';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import PageContent from 'app/components/page-content';
 
@@ -64,7 +63,6 @@ const App = React.createClass({
     state['documentScrollPosition'] = 0;
     state['isScrolling'] = false;
     state['show'] = false;
-    state['appLoading'] = false;
     state['viewportDimensions'] = {};
     state['isMobile'] = null;
 
@@ -83,28 +81,15 @@ const App = React.createClass({
   },
 
   componentWillMount() {
-    const { page } = this.state;
-
-    this.setState({
-      appLoading: page.slug && page.slug === 'home'
-    });
     this.getViewportDimensions();
   },
 
   componentDidMount() {
-    const { page, currentPage, post, caseStudy, appLoading, isScrolling } = this.state;
+    const { page, currentPage, post, caseStudy, isScrolling } = this.state;
 
     setTimeout(() => {
       this.setState({ show: true });
     }.bind(this), 1000);
-
-    if (appLoading) {
-      document.body.style.overflow = "hidden";
-      // TODO: Remove timeout and actually act as a loader (of the video)
-      setTimeout(() => {
-        this.setState({ appLoading: false });
-      }.bind(this), 6500);
-    }
 
     window.addEventListener('resize', () => {
       this.getViewportDimensions();
@@ -206,26 +191,26 @@ const App = React.createClass({
 
   render() {
     const state = this.state;
-    const { currentPage, show, appLoading, popup, showPopup, showRollover, menuHover, modal, viewportDimensions,
+    const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions,
       page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios } =this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
       'show': show,
-      'loaded': !appLoading,
       'app-404': currentPage === 'notfound',
       'overflow-hidden': popup
     });
     const contentClasses = classnames('app-content', showPopup, showRollover, menuHover, {
+      'show': state.show,
       'takeover': this.showTakeover(),
       'disabled': !!modal,
       'mobile-no-scroll': modal || this.showTakeover(),
     });
     if (!!modal || !!popup) {
       document.body.style.overflow = "hidden";
-    } else if (modal === null && !appLoading || popup === null && !appLoading) {
+    } else if (modal === null || popup === null) {
       document.body.style.overflow = "auto";
     }
-    let content, loader;
+    let content;
 
     const pageLoading = !includes(spinnerBlacklist, currentPage) && !page && !post && !caseStudy;
 
@@ -247,7 +232,6 @@ const App = React.createClass({
         </div>
       );
     } else {
-      const loader = appLoading ? <HomeLoader loading={appLoading} /> : <div />
       content = (
         <div className={appClasses}>
           <Meta
@@ -295,7 +279,6 @@ const App = React.createClass({
           </PageContainer>
           {this.renderModal()}
           {this.renderPopup()}
-          {loader}
         </div>
       );
     }

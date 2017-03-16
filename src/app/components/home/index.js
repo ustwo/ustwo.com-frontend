@@ -4,6 +4,7 @@ import Scroll, { Link, Element } from 'react-scroll'; // Animate and scroll to l
 import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
 
+import HomeLoader from 'app/components/home-loader';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import HomeIntro from 'app/components/home-intro';
 import HomeTextBlock from 'app/components/home-text-block';
@@ -20,6 +21,7 @@ class PageHome extends Component {
     super(props);
 
     this.state = {
+      contentLoaded: false,
       venturesPosition: {},
       venturesActive: false
     }
@@ -42,6 +44,15 @@ class PageHome extends Component {
   componentDidMount() {
     this.getVenturesPosition();
 
+    if (!this.state.contentLoaded) {
+      document.body.style.overflow = "hidden";
+      // TODO: Remove timeout and actually act as a loader (of the video)
+      setTimeout(() => {
+        this.setState({ contentLoaded: true });
+      }.bind(this), 6500);
+    }
+
+
     // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
     this.homeContent.addEventListener('resize', () => {
       this.getVenturesPosition();
@@ -55,13 +66,14 @@ class PageHome extends Component {
   }
 
   render() {
-    const { page, documentScrollPosition, viewportDimensions, scrolling, appLoading, popup, isMobile } = this.props;
-    const { venturesPosition } = this.state;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile } = this.props;
+    const { venturesPosition, contentLoaded } = this.state;
 
     const venturesActive = (documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition < venturesPosition.to);
 
     const classes = classnames('page-home-content', this.props.className, {
-      venturesActive: venturesActive // venturesActive shows or hides the dark background depending on when it falls in/out of view
+      venturesActive: venturesActive, // venturesActive shows or hides the dark background depending on when it falls in/out of view
+      loaded: contentLoaded
     });
 
     // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
@@ -81,9 +93,11 @@ class PageHome extends Component {
     return (
       <article className={classes} ref={(ref) => this.homeContent = ref}>
 
+        <HomeLoader contentLoaded={contentLoaded} />
+
         <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
           <ScrollWrapper
-            component={<HomeIntro scrolling={scrolling} appLoaded={!appLoading} isMobile={isMobile} popup={popup} />}
+            component={<HomeIntro scrolling={scrolling} appLoaded={contentLoaded} isMobile={isMobile} popup={popup} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}
