@@ -1,19 +1,16 @@
 import React from 'react';
-import TextUnderline from '../text-underline';
+import GradientWords from '../gradient-words';
 
 function HomeMoreMessage({ showPopup }) {
   return (
     <h1>
-      <span>We </span><TextUnderline
-        showPopup={showPopup}
-        word="invest"
+      <span>We invest in </span><GradientWords
+        word="startups"
         color="cold"
-      /><span> in and launch our </span><TextUnderline
-        showPopup={showPopup}
-        word="own products"
+      /><span>, build our own </span><GradientWords
+        word="products"
         color="lukewarm"
-      /><span>, businesses and </span><TextUnderline
-        showPopup={showPopup}
+      /><span> and launch new </span><GradientWords
         word="ventures"
         color="hot"
       />

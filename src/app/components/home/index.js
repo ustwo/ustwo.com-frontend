@@ -15,15 +15,29 @@ import HomeSmorgasbordMessage from 'app/components/home-smorgasbord-message';
 import HomeSmorgasbord from 'app/components/home-smorgasbord';
 import ContactBlock from 'app/components/contact-block';
 
+const minimumLoaderTime = 5500;
+const tickerFrequency = 500;
+
 class PageHome extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      contentLoaded: false,
+      loaderTicker: minimumLoaderTime,
       venturesPosition: {},
       venturesActive: false
+    }
+  }
+
+  ticker() {
+    const { loaderTicker } = this.state;
+
+    if (loaderTicker > 0) {
+      this.setState({ loaderTicker: loaderTicker - tickerFrequency });
+    } else {
+      console.log('timer done');
+      clearInterval(this.timer);
     }
   }
 
@@ -44,14 +58,16 @@ class PageHome extends Component {
   componentDidMount() {
     this.getVenturesPosition();
 
-    if (!this.state.contentLoaded) {
-      document.body.style.overflow = "hidden";
+    // if (!this.state.contentLoaded) {
+    //   document.body.style.overflow = "hidden";
+    // }
       // TODO: Remove timeout and actually act as a loader (of the video)
-      setTimeout(() => {
-        this.setState({ contentLoaded: true });
-      }.bind(this), 6500);
-    }
+    //   setTimeout(() => {
+    //     this.setState({ contentLoaded: true });
+    //   }.bind(this), 6500);
+    // }
 
+    this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
 
     // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
     this.homeContent.addEventListener('resize', () => {
@@ -66,14 +82,14 @@ class PageHome extends Component {
   }
 
   render() {
-    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile } = this.props;
-    const { venturesPosition, contentLoaded } = this.state;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, backgroundVideoReady } = this.props;
+    const { venturesPosition, contentLoaded, loaderTicker } = this.state;
 
     const venturesActive = (documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition < venturesPosition.to);
 
     const classes = classnames('page-home-content', this.props.className, {
       venturesActive: venturesActive, // venturesActive shows or hides the dark background depending on when it falls in/out of view
-      loaded: contentLoaded
+      loaded: backgroundVideoReady && loaderTicker === 0
     });
 
     // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
@@ -82,7 +98,7 @@ class PageHome extends Component {
       text: <HomeWelcomeMessage />
     }
     const textBlockMore = {
-      title: `Still hungry?`,
+      title: `We’re Different.`,
       text: <HomeMoreMessage />
     }
     const textBlockSmorgasbord = {
@@ -93,11 +109,11 @@ class PageHome extends Component {
     return (
       <article className={classes} ref={(ref) => this.homeContent = ref}>
 
-        <HomeLoader contentLoaded={contentLoaded} />
+        <HomeLoader contentLoaded={backgroundVideoReady && loaderTicker === 0} />
 
         <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
           <ScrollWrapper
-            component={<HomeIntro scrolling={scrolling} appLoaded={contentLoaded} isMobile={isMobile} popup={popup} />}
+            component={<HomeIntro scrolling={scrolling} contentLoaded={backgroundVideoReady && loaderTicker === 0} isMobile={isMobile} popup={popup} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}

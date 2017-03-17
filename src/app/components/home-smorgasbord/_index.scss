@@ -26,6 +26,7 @@
   height: 300px;
   margin-bottom: 20px;
   background-color: #eee;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
 
   h5 {
     font-family: "futura-pt", Futura, Arial, sans-serif;
@@ -76,12 +77,11 @@
 .smorgasbord-events {
   padding: 30px;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
 
   button {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
     display: inline-block;
     border: 1px solid white;
     padding: 0 37px 0 12px;

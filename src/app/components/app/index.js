@@ -192,7 +192,7 @@ const App = React.createClass({
   render() {
     const state = this.state;
     const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions,
-      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios } =this.state;
+      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios, backgroundVideoReady } =this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
       'show': show,

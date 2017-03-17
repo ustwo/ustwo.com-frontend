@@ -1,19 +1,16 @@
 import React from 'react';
-import TextUnderline from '../text-underline';
+import GradientWords from '../gradient-words';
 
 function HomeSmorgasbordMessage({ showPopup }) {
   return (
     <h1>
-      <TextUnderline
-        showPopup={showPopup}
+      <GradientWords
         word="together"
         color="cold"
-      /><span> we work to unleash the </span><TextUnderline
-        showPopup={showPopup}
+      /><span> we work to unleash the </span><GradientWords
         word="collective"
         color="lukewarm"
-      /><span> </span><TextUnderline
-        showPopup={showPopup}
+      /><span> </span><GradientWords
         word="genius"
         color="hot"
       /><span>. No Big Deal.</span>

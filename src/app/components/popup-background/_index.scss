@@ -13,17 +13,6 @@
   }
 }
 
-.popup-products,
-.popup-services,
-.popup-together,
-.popup-collective,
-.popup-together,
-.popup-own-products {
-  .popup-image img {
-    @include box-shadow();
-  }
-}
-
 .popup-products {
   .popup-image {
     &:nth-child(1) {
@@ -209,7 +198,7 @@
 }
 
 .popup-brands,
-.popup-invest {
+.popup-startups {
   .popup-image {
     img {
       width: 80px;
@@ -249,7 +238,7 @@
 
 @media screen and (min-width: $bp-smaller) {
   .popup-brands,
-  .popup-invest {
+  .popup-startups {
     .popup-image {
       img {
         width: 100px;
@@ -292,7 +281,7 @@
     }
   }
 
-  .popup-invest {
+  .popup-startups {
     .popup-image {
       img {
         width: 140px;
@@ -360,7 +349,7 @@
     }
   }
 
-  .popup-invest {
+  .popup-startups {
     .popup-image {
       img {
         width: 180px;

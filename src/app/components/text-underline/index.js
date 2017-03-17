@@ -101,8 +101,9 @@ class TextUnderline extends Component {
   }
 
   render() {
-    const { showPopup, word } = this.props;
+    const { showPopup, word, data } = this.props;
     const { color1, color2 } = this.state;
+    const getData = data ? data : word;
     const style = {
       backgroundImage: `linear-gradient(to right, ${color1}, ${color2})`
     }
@@ -110,7 +111,7 @@ class TextUnderline extends Component {
     return (
       <span
         className="home-text-block-button"
-        onClick={showPopup(kebabCase(word))}
+        onClick={showPopup(kebabCase(getData))}
         ref={(ref) => this.wrapper = ref}
         style={style}
       >{word}<canvas

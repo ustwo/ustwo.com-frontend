@@ -7,5 +7,6 @@ export default {
 	archivedEventsPagination: 1,
 	showPopup: '',
 	menuHover: '',
-	venturesPosition: {}
+	venturesPosition: {},
+	backgroundVideoReady: false
 };

@@ -1,0 +1,12 @@
+/*
+ *  GRADIENT WORDS
+ *  CHunky text with gradient fill
+ *
+ */
+
+.gradient-words {
+  color: transparent;
+  -webkit-background-clip: text; /* Seems we can't rely on autoprefixer for this */
+  background-clip: text;
+  position: relative;
+}

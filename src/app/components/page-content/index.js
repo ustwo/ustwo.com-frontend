@@ -10,9 +10,13 @@ class PageContent extends Component {
     super(props);
 
     this.state = {
-      loading: false,
-      ticker: tickerStart
+      ticker: tickerStart,
+      renderPage: false
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.ticker === 0;
   }
 
   ticker() {
@@ -21,22 +25,19 @@ class PageContent extends Component {
     if (ticker > 0) {
       this.setState({ ticker: ticker - tickerFrequency });
     } else {
-      this.setState({ ticker: tickerStart });
       clearInterval(this.timer);
     }
   }
 
   componentDidMount() {
-    if (this.props.pageLoading) {
-      this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
-    }
+    this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
   }
 
   render() {
     const { currentPage, pageLoading, pageState, pageMap } = this.props;
 
     let content;
-    if (!pageLoading && this.state.ticker === tickerStart) {
+    if (!this.props.pageLoading && this.state.ticker === 0) {
       content = React.createElement(pageMap[currentPage], pageState);
     } else {
       content = (

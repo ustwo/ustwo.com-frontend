@@ -91,7 +91,7 @@ class PageWork extends Component {
   }
 
   render() {
-    const { page, className } = this.props;
+    const { page, className, backgroundVideoReady } = this.props;
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
@@ -100,7 +100,7 @@ class PageWork extends Component {
         src="/images/work-header-video.mp4"
         sizes={get(image, 'media_details.sizes')}
         isVideoBackground={true}
-        play={true}
+        play={backgroundVideoReady}
       />
     );
 

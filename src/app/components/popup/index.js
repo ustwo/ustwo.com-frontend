@@ -81,7 +81,7 @@ const popupData = {
       'logo-harvey-nichols.svg',
     ]
   },
-  invest: {
+  startups: {
     text: 'We’re on a mission to help partners launch digital products and services that have a meaningful impact on the world.',
     images: [
       'logo-amaliah.svg',

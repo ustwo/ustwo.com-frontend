@@ -33,6 +33,7 @@ const _state = Object.assign({
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
   venturesPosition: Defaults.venturesPosition,
   isVenturesInView: Defaults.isVenturesInView,
+  backgroundVideoReady: Defaults.backgroundVideoReady,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -298,6 +299,10 @@ const Store = Object.assign(
     },
     menuHover(name) {
       _state.menuHover = `menu-hover-${name}`;
+      Store.emit('change', _state);
+    },
+    backgroundVideoReady(bool) {
+      _state.backgroundVideoReady = bool;
       Store.emit('change', _state);
     }
   }

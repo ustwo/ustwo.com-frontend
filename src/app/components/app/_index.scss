@@ -116,4 +116,7 @@
   @media screen and (min-width: $bp-medium) {
     font-size: 14px;
   }
+  @media screen and (min-width: $bp-larger) {
+    font-size: 16px;
+  }
 }

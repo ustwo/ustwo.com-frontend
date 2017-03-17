@@ -73,13 +73,25 @@
   }
 }
 
+.work-process {
+  @include core-gutter('margin');
+  justify-content: space-between;
+
+  @media screen and (min-width: $bp-large) {
+    display: flex;
+  }
+}
+
 .work-process-item {
   background-color: white;
   padding: 20px;
   @include box-shadow();
-  @include core-gutter('margin');
   margin-top: 20px;
   margin-bottom: 40px;
+
+  @media screen and (min-width: $bp-large) {
+    width: 30%;
+  }
 }
 
 .work-process {

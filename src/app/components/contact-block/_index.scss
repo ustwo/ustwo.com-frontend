@@ -10,6 +10,12 @@
 
   .home-text-block {
     padding: 60px 0;
+
+    @extend .h1;
+  }
+
+  h2 {
+    font-size: 26px;
   }
 
   h2 .plane {
@@ -20,9 +26,21 @@
     margin-left: 5px;
   }
 
+  @media screen and (min-width: $bp-small) {
+    .home-text-block {
+      padding: 80px 0;
+    }
+  }
+
   @media screen and (min-width: $bp-medium) {
     .home-text-block {
-      padding: 100px 0;
+      padding: 150px 0;
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .home-text-block {
+      padding: 150px 0;
     }
   }
 
@@ -39,8 +57,6 @@
       padding: 180px 0;
     }
     h2 {
-      font-size: 60px;
-      line-height: 60px;
       width: 90%;
     }
     h2 .plane {

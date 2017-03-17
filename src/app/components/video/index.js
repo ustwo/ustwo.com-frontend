@@ -1,20 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import Rimage from 'app/components/rimage';
+import Flux from 'app/flux';
 
 const posterURL = "/images/transparent.png";
 
-const Video = React.createClass({
+class Video extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      canPlayVideo: false
+    }
+  }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.play != undefined && !this.props.isMobile) {
+    if (this.video && nextProps.play != undefined) {
       if (nextProps.play) {
-        this.refs.video.play();
+        this.video.play();
       } else {
-        this.refs.video.pause();
+        this.video.pause();
       }
     }
-  },
+  }
+
+  componentDidMount() {
+    if (this.props.isVideoBackground && this.props.play != undefined) {
+      this.video.addEventListener("canplaythrough", () => {
+        Flux.backgroundVideoReady(true);
+      }, false);
+    };
+  }
+
+  componentWillUnmount() {
+    Flux.backgroundVideoReady(false);
+  }
 
   render() {
     const { isVideoBackground } = this.props;
@@ -24,7 +45,7 @@ const Video = React.createClass({
     } else {
       return this.renderVideoEmbed();
     }
-  },
+  }
 
   renderVideoEmbed() {
     const { videoId, videoFrom } = this.props;
@@ -39,63 +60,44 @@ const Video = React.createClass({
       default:
         src = "https://player.vimeo.com/video/" + videoId;
     }
-    return <div className="video">
-      <iframe
-        src={src}
-        width="1280"
-        height="720"
-        frameborder="0"
-        title="Video"
-        webkitallowfullscreen
-        mozallowfullscreen
-        allowfullscreen>
-      </iframe>
-    </div>
-  },
-
-  renderTint() {
-    if (this.props.tint) {
-      return (<div className="videoBackground-tint"></div>);
-    }
-  },
+    return (
+      <div className="video">
+        <iframe
+          src={src}
+          width="1280"
+          height="720"
+          frameborder="0"
+          title="Video"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen>
+        </iframe>
+      </div>
+    );
+  }
 
   renderVideoBackground() {
+    const { imageCSS } = this.props;
+
     let styles;
-    if (this.props.imageCSS) {
-      styles = {
-        backgroundImage: `url(${this.props.imageCSS})`
-      }
+    if (imageCSS) {
+      styles = { backgroundImage: `url(${imageCSS})` }
     }
-
-    let content;
-    if (this.props.isMobile) {
-      content = this.renderImage();
-    } else {
-      content = (
-        <div>
-          {this.renderVideo()}
-          {this.renderTint()}
-        </div>
-      );
-    }
-
-    let classes = classnames('videoBackground', {
-      imageCSS: this.props.imageCSS
-    });
+    let classes = classnames('videoBackground', { imageCSS });
 
     return (
       <div className={classes} style={styles}>
-        {content}
+        {this.renderVideo()}
       </div>
     );
-  },
+  }
 
   renderImage() {
     if (!this.props.imageCSS) {
       const { sizes } = this.props;
       return (<Rimage sizes={sizes} />)
     }
-  },
+  }
 
   renderVideo() {
     const { src, play } = this.props;
@@ -103,9 +105,9 @@ const Video = React.createClass({
     let video;
     if(src && src.length) {
       if (play === undefined) {
-        video = <video src={src} poster={posterURL} autoPlay loop muted />;
+        video = (<video src={src} poster={posterURL} autoPlay loop muted />);
       } else {
-        video = <video ref="video" src={src} poster={posterURL} playsInline loop muted />;
+        video = (<video ref={(ref) => this.video = ref} src={src} poster={posterURL} playsInline loop muted />);
       }
     } else {
       video = this.renderImage();
@@ -114,6 +116,6 @@ const Video = React.createClass({
     return video;
   }
 
-});
+};
 
 export default Video;
