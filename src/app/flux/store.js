@@ -34,6 +34,8 @@ const _state = Object.assign({
   venturesPosition: Defaults.venturesPosition,
   isVenturesInView: Defaults.isVenturesInView,
   backgroundVideoReady: Defaults.backgroundVideoReady,
+  homeIntroVideoViewed: Defaults.homeIntroVideoViewed,
+  homeLoaderShown: Defaults.homeLoaderShown,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -303,6 +305,14 @@ const Store = Object.assign(
     },
     backgroundVideoReady(bool) {
       _state.backgroundVideoReady = bool;
+      Store.emit('change', _state);
+    },
+    homeIntroVideoViewed() {
+      _state.homeIntroVideoViewed = true;
+      Store.emit('change', _state);
+    },
+    homeLoaderShown() {
+      _state.homeLoaderShown = true;
       Store.emit('change', _state);
     }
   }

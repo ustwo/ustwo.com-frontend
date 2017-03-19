@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import Flux from 'app/flux';
 
 import UstwoLogoSequence from 'app/components/ustwo-logo-sequence';
 
@@ -23,6 +24,10 @@ class HomeLoader extends Component {
         this.setState({ hide: true });
       }.bind(this), 1000);
     }
+  }
+
+  componentWillUnmount() {
+    Flux.homeLoaderShown();
   }
 
   render() {

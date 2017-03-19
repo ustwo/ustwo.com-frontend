@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import Scroll, { Link, Element } from 'react-scroll'; // Animate and scroll to location in document
 import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
+import { get } from 'lodash';
 
 import HomeLoader from 'app/components/home-loader';
 import ScrollWrapper from 'app/components/scroll-wrapper';
@@ -36,7 +37,7 @@ class PageHome extends Component {
     if (loaderTicker > 0) {
       this.setState({ loaderTicker: loaderTicker - tickerFrequency });
     } else {
-      console.log('timer done');
+      Flux.homeIntroVideoViewed(true);
       clearInterval(this.timer);
     }
   }
@@ -67,7 +68,9 @@ class PageHome extends Component {
     //   }.bind(this), 6500);
     // }
 
-    this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
+    if (!this.props.homeIntroVideoViewed) {
+      this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
+    }
 
     // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
     this.homeContent.addEventListener('resize', () => {
@@ -82,7 +85,7 @@ class PageHome extends Component {
   }
 
   render() {
-    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, backgroundVideoReady } = this.props;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, backgroundVideoReady, homeIntroVideoViewed } = this.props;
     const { venturesPosition, contentLoaded, loaderTicker } = this.state;
 
     const venturesActive = (documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition < venturesPosition.to);
@@ -91,6 +94,8 @@ class PageHome extends Component {
       venturesActive: venturesActive, // venturesActive shows or hides the dark background depending on when it falls in/out of view
       loaded: backgroundVideoReady && loaderTicker === 0
     });
+
+    const showHomeLoader = !homeIntroVideoViewed ? <HomeLoader contentLoaded={backgroundVideoReady && loaderTicker === 0} /> : <div />
 
     // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
     const textBlockIntro = {
@@ -109,11 +114,11 @@ class PageHome extends Component {
     return (
       <article className={classes} ref={(ref) => this.homeContent = ref}>
 
-        <HomeLoader contentLoaded={backgroundVideoReady && loaderTicker === 0} />
+        {showHomeLoader}
 
         <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
           <ScrollWrapper
-            component={<HomeIntro scrolling={scrolling} contentLoaded={backgroundVideoReady && loaderTicker === 0} isMobile={isMobile} popup={popup} />}
+            component={<HomeIntro scrolling={scrolling} contentLoaded={backgroundVideoReady && loaderTicker === 0 || homeIntroVideoViewed} isMobile={isMobile} popup={popup} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}
@@ -165,7 +170,7 @@ class PageHome extends Component {
         />
 
         <ScrollWrapper
-          component={<HomeSmorgasbord data={page.featured_content} />}
+          component={<HomeSmorgasbord data={get(page, 'featured_content')} />}
           className="scroll-wrapper-home-smorgasbord"
         />
 

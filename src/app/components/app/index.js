@@ -191,7 +191,7 @@ const App = React.createClass({
 
   render() {
     const state = this.state;
-    const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions,
+    const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions, homeIntroVideoViewed, homeLoaderShown,
       page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios, backgroundVideoReady } =this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
@@ -210,10 +210,9 @@ const App = React.createClass({
     } else if (modal === null || popup === null) {
       document.body.style.overflow = "auto";
     }
-    let content;
-
     const pageLoading = !includes(spinnerBlacklist, currentPage) && !page && !post && !caseStudy;
 
+    let content;
     if (state.currentPage === 'notfound') {
       content = (
         <div className={appClasses}>
@@ -274,6 +273,9 @@ const App = React.createClass({
               pageState={this.state}
               currentPage={currentPage}
               pageLoading={pageLoading}
+              homeIntroVideoViewed={homeIntroVideoViewed}
+              homeLoaderShown={homeLoaderShown}
+              backgroundVideoReady={backgroundVideoReady}
             />
             <Footer data={footer} studios={studios} currentPage={currentPage}/>
           </PageContainer>

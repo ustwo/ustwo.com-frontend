@@ -63,6 +63,12 @@ const Actions = {
   },
   backgroundVideoReady(bool) {
     Store.backgroundVideoReady(bool);
+  },
+  homeIntroVideoViewed() {
+    Store.homeIntroVideoViewed();
+  },
+  homeLoaderShown() {
+    Store.homeLoaderShown();
   }
 };
 

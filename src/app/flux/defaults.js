@@ -8,5 +8,7 @@ export default {
 	showPopup: '',
 	menuHover: '',
 	venturesPosition: {},
-	backgroundVideoReady: false
+	homeIntroVideoViewed: false,
+	backgroundVideoReady: false,
+	homeLoaderShown: false
 };

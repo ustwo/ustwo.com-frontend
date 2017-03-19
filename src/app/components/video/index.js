@@ -30,7 +30,7 @@ class Video extends Component {
       this.video.addEventListener("canplaythrough", () => {
         Flux.backgroundVideoReady(true);
       }, false);
-    };
+    }
   }
 
   componentWillUnmount() {

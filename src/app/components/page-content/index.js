@@ -34,10 +34,10 @@ class PageContent extends Component {
   }
 
   render() {
-    const { currentPage, pageLoading, pageState, pageMap } = this.props;
+    const { currentPage, pageLoading, pageState, pageMap, homeLoaderShown, backgroundVideoReady } = this.props;
 
     let content;
-    if (!this.props.pageLoading && this.state.ticker === 0) {
+    if ((currentPage === 'home' && !homeLoaderShown) || (!this.props.pageLoading && this.state.ticker === 0)) {
       content = React.createElement(pageMap[currentPage], pageState);
     } else {
       content = (
