@@ -210,6 +210,7 @@ const App = React.createClass({
     } else if (modal === null || popup === null) {
       document.body.style.overflow = "auto";
     }
+
     const pageLoading = !includes(spinnerBlacklist, currentPage) && !page && !post && !caseStudy;
 
     let content;

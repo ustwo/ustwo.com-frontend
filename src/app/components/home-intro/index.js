@@ -10,7 +10,7 @@ import DownIndicator from 'app/components/down-indicator';
 // const rainbowColours = ['#ED0082', '#E60C29', '#FF5519', '#FFBF02', '#96CC29', '#14C04D', '#16D6D9', '#009CF3', '#143FCC', '#6114CC', '#111111'];
 const colours = ['#000000', '#FFFFFF'];
 
-function HomeIntro({ scrollProgress, screenPosition, scrolling, contentLoaded, isMobile, popup }) {
+function HomeIntro({ scrollProgress, screenPosition, scrolling, loaded, isMobile, popup }) {
 
   /*
     Create stack of logos in a sort of 3D space that move dependant on the mouse position.
@@ -58,7 +58,7 @@ function HomeIntro({ scrollProgress, screenPosition, scrolling, contentLoaded, i
     );
   });
 
-  let playVideo = contentLoaded;
+  let playVideo = loaded;
   if (scrollProgress === 1 || !!popup) {
     playVideo = false;
   }

@@ -9,17 +9,11 @@ class HomeLoader extends Component {
   constructor(props) {
     super(props);
 
-    /* Show loader as default */
     this.state = { hide: false }
   }
 
   componentWillReceiveProps(nextProps) {
-    /*
-      As the parent component becomes 'loaded' we hide this component using css on page-home.
-      However, we want to remove it completely AFTER the transition so we have a timeout before
-      setting the state to show:false.
-    */
-    if (nextProps.contentLoaded) {
+    if (nextProps.loaded) {
       setTimeout(() => {
         this.setState({ hide: true });
       }.bind(this), 1000);
@@ -31,13 +25,16 @@ class HomeLoader extends Component {
   }
 
   render() {
+    const classes = classnames('home-loader', {
+      hide: this.props.loaded
+    })
+
     let content;
-    /* Then throw it away when we know it's not longer visible */
     if (this.state.hide) {
       content = <div />;
     } else {
       content = (
-        <div className="home-loader">
+        <div className={classes}>
           <div className="home-intro-logo">
             <svg className="home-loader-background layer-background" role="img" viewBox="0 0 112 32">
               <g>

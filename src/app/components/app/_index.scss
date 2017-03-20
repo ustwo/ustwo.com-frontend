@@ -44,33 +44,6 @@
     &.mobile-no-scroll {
       // opacity: 0;
     }
-
-    .page-loader-container {
-      .page-loader,
-      > article {
-        // transition: opacity .3s ease-in-out;
-        //
-        // &.add {
-        //   opacity: 0;
-        // }
-        // &.show {
-        //   opacity: 1;
-        // }
-        &.hide {
-          // opacity: 0;
-          // transition: opacity .3s ease-in-out .3s;
-
-          .loading-icon {
-            animation: page-loader-exit .6s 1;
-          }
-        }
-      }
-      > article {
-        &.show {
-          // transition-duration: 0s;
-        }
-      }
-    }
   }
 
   /* 404 page bound by viewport size */
@@ -79,31 +52,6 @@
     left: 0;
     right: 0;
     height: 100%;
-  }
-}
-
-.page-transition {
-  min-height: 100%;
-  width: 100%;
-}
-
-.page-content > article,
-.page-loader {
-  opacity: 0;
-  transition: opacity .2s linear;
-
-  &.add {
-    opacity: 0;
-  }
-
-  &.show {
-    opacity: 1;
-    transition-delay: .2s;
-  }
-
-  &.hide {
-    opacity: 0;
-    transition-delay: 0s;
   }
 }
 

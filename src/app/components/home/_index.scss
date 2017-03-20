@@ -139,11 +139,17 @@
 
     &.show {
       .home-loader {
+        transition: opacity .5s linear;
+
         > * {
           opacity: 1;
         }
         h1 {
           transition-delay: .75s;
+        }
+
+        &.hide {
+          opacity: 0;
         }
       }
     }

@@ -26,3 +26,20 @@
     height: auto;
   }
 }
+
+.page-loader {
+  transition: opacity .5s linear;
+
+  .page-loader-icon {
+    transition: opacity .32s linear;
+  }
+
+  &.hide {
+    opacity: 0;
+    transition-delay: .2s;
+
+    .page-loader-icon {
+      opacity: 0;
+    }
+  }
+}
