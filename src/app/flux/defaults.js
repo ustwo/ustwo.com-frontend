@@ -10,5 +10,6 @@ export default {
 	venturesPosition: {},
 	homeIntroVideoViewed: false,
 	backgroundVideoReady: false,
-	homeLoaderShown: false
+	homeLoaderShown: false,
+	overflow: ''
 };

@@ -36,6 +36,7 @@ const _state = Object.assign({
   backgroundVideoReady: Defaults.backgroundVideoReady,
   homeIntroVideoViewed: Defaults.homeIntroVideoViewed,
   homeLoaderShown: Defaults.homeLoaderShown,
+  overflow: Defaults.overflow,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -313,6 +314,16 @@ const Store = Object.assign(
     },
     homeLoaderShown() {
       _state.homeLoaderShown = true;
+      Store.emit('change', _state);
+    },
+    overflowHidden() {
+      console.log('hidden store')
+      _state.overflow = 'hidden';
+      Store.emit('change', _state);
+    },
+    overflowAuto() {
+      console.log('auto store');
+      _state.overflow = 'auto';
       Store.emit('change', _state);
     }
   }

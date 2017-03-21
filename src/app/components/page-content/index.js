@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import PageLoader from 'app/components/page-loader';
-import TransitionManager from 'react-transition-manager';
-import HomeLoader from 'app/components/home-loader';
+import LoaderWrapper from 'app/components/loader-wrapper';
 
 const tickerTotalPage = 3000;
 const tickerTotalHome = 5500;
@@ -18,7 +16,7 @@ class PageContent extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.ticker === 0 || nextProps.pageLoading != this.props.pageLoading;
+    return nextState.ticker === 0 || nextProps.dataLoading != this.props.dataLoading;
   }
 
   ticker() {
@@ -40,28 +38,19 @@ class PageContent extends Component {
   }
 
   render() {
-    const { currentPage, pageLoading, pageState, pageMap, homeLoaderShown, backgroundVideoReady } = this.props;
+    const { currentPage, dataLoading, pageState, pageMap, homeLoaderShown, backgroundVideoReady } = this.props;
     const heroReady = currentPage === 'home' || currentPage === 'work' ? backgroundVideoReady : true;
-
-    let loaded, renderLoader;
-    loaded = !pageLoading && this.state.ticker === 0 && heroReady;
-
-    if (currentPage === 'home' && !homeLoaderShown) {
-      renderLoader = (<HomeLoader loaded={loaded} />);
-    } else {
-      renderLoader = (<PageLoader loaded={loaded} key="loader" pageId={currentPage} />);
-    }
-
+    const loaded = !dataLoading && this.state.ticker === 0 && heroReady;
 
     let props = pageState;
     props.loaded = loaded;
 
-    const renderPage = !pageLoading ? React.createElement(pageMap[currentPage], props) : (<div />);
+    const renderPage = !dataLoading ? React.createElement(pageMap[currentPage], props) : (<div />);
 
     return (
       <div className="page-content">
         {renderPage}
-        {renderLoader}
+        <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} />
       </div>
     );
   }

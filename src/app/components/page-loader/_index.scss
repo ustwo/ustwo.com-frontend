@@ -1,19 +1,15 @@
 /*
- *  LOADER
+ *  PAGE LOADER
  *  Interstitial page loading animation
  *
  */
 
 .page-loader {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  z-index: 5000;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  min-height: 100%;
   background-color: $offWhite;
 }
 
@@ -24,22 +20,5 @@
   img {
     width: 100%;
     height: auto;
-  }
-}
-
-.page-loader {
-  transition: opacity .5s linear;
-
-  .page-loader-icon {
-    transition: opacity .32s linear;
-  }
-
-  &.hide {
-    opacity: 0;
-    transition-delay: .2s;
-
-    .page-loader-icon {
-      opacity: 0;
-    }
   }
 }

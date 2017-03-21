@@ -69,6 +69,12 @@ const Actions = {
   },
   homeLoaderShown() {
     Store.homeLoaderShown();
+  },
+  overflowHidden() {
+    Store.overflowHidden();
+  },
+  overflowAuto() {
+    Store.overflowAuto();
   }
 };
 
