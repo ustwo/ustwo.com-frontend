@@ -192,7 +192,7 @@ const App = React.createClass({
   render() {
     const state = this.state;
     const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions, homeIntroVideoViewed, homeLoaderShown,
-      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios, backgroundVideoReady, overflow } =this.state;
+      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow } =this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
       'show': show,
@@ -276,7 +276,7 @@ const App = React.createClass({
               dataLoading={dataLoading}
               homeIntroVideoViewed={homeIntroVideoViewed}
               homeLoaderShown={homeLoaderShown}
-              backgroundVideoReady={backgroundVideoReady}
+              heroVideoReady={heroVideoReady}
             />
             <Footer data={footer} studios={studios} currentPage={currentPage}/>
           </PageContainer>

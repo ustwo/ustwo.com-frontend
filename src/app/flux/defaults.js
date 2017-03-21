@@ -9,7 +9,7 @@ export default {
 	menuHover: '',
 	venturesPosition: {},
 	homeIntroVideoViewed: false,
-	backgroundVideoReady: false,
+	heroVideoReady: false,
 	homeLoaderShown: false,
 	overflow: ''
 };

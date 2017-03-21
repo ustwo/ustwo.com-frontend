@@ -105,10 +105,11 @@
   justify-content: center;
   @include core-gutter();
 
-  > div {
+  > * {
     flex: 1;
     width: 100%;
     max-width: $grid-max-width;
+    margin: 0 auto;
   }
 }
 

@@ -56,15 +56,6 @@
 }
 
 .section-title {
-  text-transform: uppercase;
+  @extend .h5;
   margin-bottom: 10px;
-  font-size: 12px;
-  letter-spacing: 1px;
-
-  @media screen and (min-width: $bp-medium) {
-    font-size: 14px;
-  }
-  @media screen and (min-width: $bp-larger) {
-    font-size: 16px;
-  }
 }

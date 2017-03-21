@@ -6,6 +6,10 @@
 
 .blog-post-list-item {
 
+  h2 {
+    @extend .h4;
+  }
+
   .meta {
     margin-top: $card-padding-small * .75;
     margin-bottom: 0;

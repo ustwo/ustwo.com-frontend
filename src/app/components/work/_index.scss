@@ -7,6 +7,10 @@
 
 .page-work {
 
+  h2 {
+    @extend .h3;
+  }
+
   .hero {
     @include page-background-colour(work);
 

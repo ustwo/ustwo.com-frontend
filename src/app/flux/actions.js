@@ -61,8 +61,8 @@ const Actions = {
   menuHover(name) {
     Store.menuHover(name);
   },
-  backgroundVideoReady(bool) {
-    Store.backgroundVideoReady(bool);
+  heroVideoReady(bool) {
+    Store.heroVideoReady(bool);
   },
   homeIntroVideoViewed() {
     Store.homeIntroVideoViewed();

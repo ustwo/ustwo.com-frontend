@@ -14,23 +14,23 @@ function HomeSmorgasbord({ data }) {
       <div className="smorgasbord-block-wrapper">
 
         <div className="smorgasbord-block smorgasbord-events">
-          <h5>ustwo Events</h5>
+          <h4>ustwo Events</h4>
           <div className="smorgasbord-post">
             <div className="smorgasbord-subtitle">{event.studio.name}</div>
-            <div className="smorgasbord-title">
+            <h3 className="smorgasbord-title">
               <a href={event.uri} onClick={Flux.override(event.uri)}>{event.name}</a>
-            </div>
+            </h3>
           </div>
           <button>All Events</button>
         </div>
 
         <div className="smorgasbord-block smorgasbord-blog">
-          <h5>Blog</h5>
+          <h4>Blog</h4>
           <div className="smorgasbord-post">
-            <div className="smorgasbord-subtitle"></div>
-            <div className="smorgasbord-title">
+            <div className="smorgasbord-subtitle">&nbsp;</div>
+            <h3 className="smorgasbord-title">
               <a href={post.uri} onClick={Flux.override(post.uri)}>{post.name}</a>
-            </div>
+            </h3>
           </div>
           <button>All Posts</button>
         </div>

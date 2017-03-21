@@ -41,6 +41,9 @@ $home-carousel-small-screen-offset: 95px;
 
   h2 {
     color: #111;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   @media screen and (min-width: $bp-medium) {
@@ -85,14 +88,13 @@ $home-carousel-small-screen-offset: 95px;
   margin-top: 70px;
 
   button {
+    @extend .h5;
     display: inline-block;
     border: 1px solid $nonBlack;
     padding: 0 37px 0 12px;
     margin: 0 auto;
-    text-transform: uppercase;
     height: 40px;
     line-height: 40px;
-    font-size: 14px;
     background-image: url('/images/icon-right-dark.svg');
     background-repeat: no-repeat;
     background-position: calc(100% - 12px) 50%;
@@ -109,7 +111,7 @@ $home-carousel-small-screen-offset: 95px;
 .home-carousel-shuffle {
   cursor: pointer;
   position: absolute;
-  bottom: 105px;
+  bottom: 85px;
   right: 20px;
   z-index: 100;
   transition: opacity .2s ease-in-out;
@@ -160,6 +162,10 @@ $home-carousel-small-screen-offset: 95px;
   }
 }
 
+
+
+
+
 @media screen and (min-width: $bp-tablet) {
   $home-carousel-width: 380px;
   $home-carousel-height: 258px; /* 266 */
@@ -188,6 +194,11 @@ $home-carousel-small-screen-offset: 95px;
     width: 45%;
     visibility: hidden;
     transition: visibility $home-carousel-duration linear;
+
+    h2 {
+      overflow: visible;
+      white-space: pre-wrap;
+    }
   }
 
   .home-carousel-item-description {
@@ -428,6 +439,10 @@ $home-carousel-small-screen-offset: 95px;
     transition-delay: 0s;
   }
 
+  .home-carousel-item-text {
+    top: 50px;
+  }
+
   .home-carousel-item-description {
     font-size: 18px;
   }
@@ -451,6 +466,7 @@ $home-carousel-small-screen-offset: 95px;
       transform: translate(0, -($home-carousel-height + $home-carousel-margin));
 
       .home-carousel-item-text {
+        margin-left: 0;
         left: 0;
       }
       .home-carousel-item-image {

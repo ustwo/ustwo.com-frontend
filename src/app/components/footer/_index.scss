@@ -6,12 +6,13 @@
 
 .footer {
   background-color: $nonBlack;
-  font-family: PxGrotesk-Regular, Arial, sans-serif;
   color: $offWhite;
 
   .content {
     overflow: auto;
-    padding: 40px 0 0 0;
+    @include core-layout();
+    flex-direction: column;
+    padding: 40px 6% 0 6%;
 
     .contact-title {
       font-size: 24px;
@@ -126,12 +127,11 @@
     }
 
     .small-print {
+      @extend .small-print-copy;
       clear: both;
       display: flex;
       padding: 60px 0;
       color: #666;
-      font-size: 12px;
-      line-height: 1.5;
       flex-direction: column;
       position: relative;
       z-index: 2;
@@ -142,8 +142,11 @@
 
       .copyright {
         flex: 3;
-        padding: 0 14px;
         order: 2;
+
+        span {
+          padding-right: 8px;
+        }
       }
 
       .social {
@@ -183,7 +186,6 @@
 
     .content,
     .subscription {
-      max-width: $max-app-width;
       margin: 0 auto;
     }
 

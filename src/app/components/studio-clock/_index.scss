@@ -9,7 +9,7 @@
   width: 60px;
   height: 60px;
   position: relative;
-  background-image: linear-gradient(to bottom, #111111, #161616);
+  background-image: linear-gradient(to bottom, #111, rgba(255, 255, 255, 0.025));
   border-radius: 50%;
 
   .hour {

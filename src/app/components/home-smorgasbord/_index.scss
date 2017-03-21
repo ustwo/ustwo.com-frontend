@@ -28,11 +28,6 @@
   background-color: #eee;
   box-shadow: 0 0 20px rgba(0, 0, 0, .1);
 
-  h5 {
-    font-family: "futura-pt", Futura, Arial, sans-serif;
-    text-transform: uppercase;
-  }
-
   @media screen and (min-width: $bp-medium) {
     height: 400px;
   }
@@ -75,20 +70,32 @@
 
 .smorgasbord-blog,
 .smorgasbord-events {
-  padding: 30px;
+  height: 360px;
+  padding: 20px;
   color: white;
+  display: flex;
+  flex-direction: column;
+
+  .smorgasbord-post {
+    flex: 1;
+    margin-top: 40px;
+
+  }
+  @media screen and (min-width: $bp-large) {
+    padding: 30px;
+
+    .smorgasbord-post {
+      margin-top: 60px;
+    }
+  }
 
   button {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
+    @extend .h5;
     display: inline-block;
     border: 1px solid white;
     padding: 0 37px 0 12px;
-    text-transform: uppercase;
     height: 40px;
     line-height: 40px;
-    font-size: 14px;
     background-image: url('/images/icon-right-light.svg');
     background-repeat: no-repeat;
     background-position: calc(100% - 12px) 50%;
@@ -98,18 +105,16 @@
 }
 
 .smorgasbord-subtitle {
-  text-transform: uppercase;
-  // margin: 100px 0 20px;
+  @extend .h5;
 }
 
 .smorgasbord-title {
-  @extend .h4;
-  font-family: "futura-pt", Futura, Arial, sans-serif;
-  text-transform: uppercase;
-
-  @media screen and (min-width: $bp-medium) {
-    font-size: 40px;
-    line-height: 1;
+  a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
   }
 }
 

@@ -8,55 +8,35 @@ import Video from 'app/components/video';
 import DownIndicator from 'app/components/down-indicator';
 
 // const rainbowColours = ['#ED0082', '#E60C29', '#FF5519', '#FFBF02', '#96CC29', '#14C04D', '#16D6D9', '#009CF3', '#143FCC', '#6114CC', '#111111'];
-const colours = ['#000000', '#FFFFFF'];
 
-function HomeIntro({ scrollProgress, screenPosition, scrolling, loaded, isMobile, popup }) {
+function renderLogoBackground(screenPosition, isMobile) {
 
-  /*
-    Create stack of logos in a sort of 3D space that move dependant on the mouse position.
-  */
-  const logoLayers = colours.map((fill, i) => {
+  const modifier = isMobile ? 20 : 15;
+  const modifierTranslate = modifier;
+  const modifierRotate = modifier - 5;
 
-    const modifier = isMobile ? 20 : 15;
-    const modifierTranslate = modifier * (colours.length - i);
-    const modifierRotate = (modifier - 5) * (colours.length - i);
+  const { coordinateX, coordinateY } = screenPosition;
 
-    const { coordinateX, coordinateY } = screenPosition;
+  let value = 10 + Math.abs(coordinateX * 10);
+  let translateZ = `-${value}px`;
 
-    /* Hide all layers except the top one when scrolling to reduce perfomance hit (especially if layers are CSS blurred) */
-    // let display;
-    // if (scrolling && i != colours.length - 1) {
-    //   display = `none`;
-    // }
 
-    let translateZ;
-    if (i != colours.length - 1) {
-      let value = 10 + Math.abs(coordinateX * 10);
-      translateZ = `-${value}px`;
-    } else {
-      translateZ = 0;
-    }
+  const transform = `translate3d(${coordinateX * modifierTranslate}px, ${coordinateY * modifierTranslate}px, ${translateZ}) rotateY(${coordinateX * modifierRotate}deg) rotateX(${coordinateY * modifierRotate}deg)`;
 
-    const transform = `translate3d(${coordinateX * modifierTranslate}px, ${coordinateY * modifierTranslate}px, ${translateZ}) rotateY(${coordinateX * modifierRotate}deg) rotateX(${coordinateY * modifierRotate}deg)`;
+  let styles = { transform, fill: '#000000' }
 
-    let styles = { transform, fill }
+  return (
+    <SVG
+      title="ustwo logo layer"
+      className="layer-background"
+      spritemapID="ustwologo"
+      style={styles}
+      viewBox="0 0 112 32"
+    />
+  );
+}
 
-    let classes;
-    if (i === 0) {
-      classes = 'layer-background'
-    }
-
-    return (
-      <SVG
-        title="ustwo logo layer"
-        key={`layer-${i}`}
-        className={classes}
-        spritemapID="ustwologo"
-        style={styles}
-        viewBox="0 0 112 32"
-      />
-    );
-  });
+function HomeIntro({ scrollProgress, screenPosition, loaded, isMobile, popup }) {
 
   let playVideo = loaded;
   if (scrollProgress === 1 || !!popup) {
@@ -77,10 +57,16 @@ function HomeIntro({ scrollProgress, screenPosition, scrolling, loaded, isMobile
         isVideoBackground={true}
         play={playVideo}
         imageCSS="/images/home/header-fallback-image.jpg"
+        heroVideo={true}
       />
       <div className="home-intro-logo">
         <div className="home-intro-logo-wrapper">
-          {logoLayers}
+          {renderLogoBackground(screenPosition, isMobile)}
+          <SVG
+            title="ustwo logo layer"
+            spritemapID="ustwologo"
+            viewBox="0 0 112 32"
+          />
         </div>
       </div>
       <DownIndicator />

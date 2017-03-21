@@ -6,36 +6,6 @@
 
 .page-home {
 
-  h1 {
-    font-size: 30px;
-    line-height: 1;
-  }
-
-  h2 {
-    font-size: 24px;
-    line-height: 1;
-  }
-
-  @media screen and (min-width: $bp-smaller) {
-    h1 {
-      font-size: 40px;
-    }
-    h2 {
-      font-size: 26px;
-      line-height: 30px;
-    }
-  }
-
-  @media screen and (min-width: $bp-medium) {
-    h1 {
-      font-size: 60px;
-    }
-    h2 {
-      font-size: 40px;
-      line-height: 45px;
-    }
-  }
-
   @media screen and (min-width: $bp-large) {
     h1 {
       width: 80%;
@@ -44,12 +14,7 @@
 
   @media screen and (min-width: $bp-larger) {
     h1 {
-      font-size: 70px;
       width: 90%;
-    }
-    h2 {
-      font-size: 50px;
-      line-height: 50px;
     }
   }
 }

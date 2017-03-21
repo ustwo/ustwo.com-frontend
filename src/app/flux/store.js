@@ -33,7 +33,7 @@ const _state = Object.assign({
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
   venturesPosition: Defaults.venturesPosition,
   isVenturesInView: Defaults.isVenturesInView,
-  backgroundVideoReady: Defaults.backgroundVideoReady,
+  heroVideoReady: Defaults.heroVideoReady,
   homeIntroVideoViewed: Defaults.homeIntroVideoViewed,
   homeLoaderShown: Defaults.homeLoaderShown,
   overflow: Defaults.overflow,
@@ -304,8 +304,8 @@ const Store = Object.assign(
       _state.menuHover = `menu-hover-${name}`;
       Store.emit('change', _state);
     },
-    backgroundVideoReady(bool) {
-      _state.backgroundVideoReady = bool;
+    heroVideoReady(bool) {
+      _state.heroVideoReady = bool;
       Store.emit('change', _state);
     },
     homeIntroVideoViewed() {

@@ -6,9 +6,7 @@
 
 .studio {
   position: relative;
-  border-bottom: 1px solid $nonBlack;
   list-style: none;
-  transition: background-color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
 
   &.malmo {
     .postal-code {
@@ -25,7 +23,8 @@
 
   .studio-title {
     margin: 0;
-    padding: 20px 6.25%;
+    margin-top: 20px;
+    padding: 20px 0;
     font-size: 24px;
     font-family: $PxGroteskRegular;
     text-transform: capitalize;
@@ -51,20 +50,20 @@
   .studio-details {
     overflow: hidden;
     height: 0;
-    padding: 0 6.25%;
+    padding: 0;
     transition: height 0.3s ease-in-out;
+    @extend .small-body-copy;
+    line-height: 20px;
+
+    @media screen and (min-width: $bp-medium) {
+      line-height: 22px;
+    }
 
     .vcard {
       padding: 0;
 
-      p {
-        font-size: 14px;
-      }
-
       .adr {
-
         p {
-          font-size: 14px;
           margin: 0;
         }
         abbr {
@@ -75,7 +74,6 @@
       .map {
         display: inline-block;
         margin-top: 20px;
-        font-size: 14px;
         transition: border-color $hover-duration-quick ease-in-out;
 
         &:hover {
@@ -95,17 +93,21 @@
 
   @media screen and (min-width: $bp-medium) {
     height: 230px;
-    border-bottom: none;
     vertical-align: top;
     transition-duration: 0s;
+    margin-bottom: 50px;
 
     &.open {
       background-color: transparent !important;
-      border-bottom-color: transparent !important;
     }
     .studio-title {
       padding: 0 0 15px;
       cursor: auto;
+      font-family: $PxGroteskRegular;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 16px;
 
       &::after {
         display: none;
@@ -123,6 +125,7 @@
 
   @media screen and (min-width: $bp-large) {
     height: auto;
+    margin-bottom: 9;
 
     .clock {
       position: relative;

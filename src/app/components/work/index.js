@@ -101,6 +101,7 @@ class PageWork extends Component {
         sizes={get(image, 'media_details.sizes')}
         isVideoBackground={true}
         play={loaded}
+        heroVideo={true}
       />
     );
 
@@ -138,7 +139,7 @@ const workData = {
   },
   contact: 'Get in touch or explore more below to find ways we can work together.',
   process: [{
-    title: 'Discovery',
+    title: 'Discovery & Strategy',
     image: '/images/illustration-discovery.svg',
     text: 'Innovate and stay ahead. Refine business goals and validate opportunities by understanding what your customers want most.'
   },{

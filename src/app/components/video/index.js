@@ -26,15 +26,15 @@ class Video extends Component {
   }
 
   componentDidMount() {
-    if (this.props.isVideoBackground && this.props.play != undefined) {
+    if (this.props.heroVideo) {
       this.video.addEventListener("canplaythrough", () => {
-        Flux.backgroundVideoReady(true);
+        Flux.heroVideoReady(true);
       }, false);
     }
   }
 
   componentWillUnmount() {
-    Flux.backgroundVideoReady(false);
+    Flux.heroVideoReady(false);
   }
 
   render() {
