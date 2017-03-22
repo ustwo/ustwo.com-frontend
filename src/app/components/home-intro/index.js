@@ -43,6 +43,13 @@ function HomeIntro({ scrollProgress, screenPosition, loaded, isMobile, popup }) 
     playVideo = false;
   }
 
+  let fallbackImage;
+  if (isMobile) {
+    fallbackImage = '/images/home-header-fallback-mobile.jpg';
+  } else {
+    fallbackImage = '/images/home-header-fallback.jpg';
+  }
+
   let src;
   if (isMobile) {
     src= 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=165';
@@ -56,8 +63,9 @@ function HomeIntro({ scrollProgress, screenPosition, loaded, isMobile, popup }) 
         src={src}
         isVideoBackground={true}
         play={playVideo}
-        imageCSS="/images/home/header-fallback-image.jpg"
+        imageCSS={fallbackImage}
         heroVideo={true}
+        isMobile={isMobile}
       />
       <div className="home-intro-logo">
         <div className="home-intro-logo-wrapper">

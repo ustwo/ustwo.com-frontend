@@ -317,12 +317,10 @@ const Store = Object.assign(
       Store.emit('change', _state);
     },
     overflowHidden() {
-      console.log('hidden store')
       _state.overflow = 'hidden';
       Store.emit('change', _state);
     },
     overflowAuto() {
-      console.log('auto store');
       _state.overflow = 'auto';
       Store.emit('change', _state);
     }

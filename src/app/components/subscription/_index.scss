@@ -83,6 +83,11 @@
     border-bottom: 2px solid white;
     margin-right: 10px;
     padding: 0;
+    width: 150px;
+
+    @media screen and (min-width: $bp-small) {
+      width: auto;
+    }
 
     &::-webkit-input-placeholder {
       color: white;

@@ -24,7 +24,7 @@ class LoaderWrapper extends Component {
 
     let renderLoader;
     if (this.state.hide) {
-      renderLoader = null;
+      renderLoader = (<div />);
     } else {
       if (currentPage === 'home' && !homeLoaderShown) {
         renderLoader = (<HomeLoader />);

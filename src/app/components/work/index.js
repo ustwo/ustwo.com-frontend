@@ -91,17 +91,33 @@ class PageWork extends Component {
   }
 
   render() {
-    const { page, className, loaded } = this.props;
+    const { page, className, loaded, isMobile } = this.props;
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
+
+    let fallbackImage;
+    if (isMobile) {
+      fallbackImage = '/images/work-header-fallback.jpg';
+    } else {
+      fallbackImage = '/images/work-header-fallback.jpg';
+    }
+
+    let src;
+    if (isMobile) {
+      src = 'https://player.vimeo.com/external/209403984.sd.mp4?s=fa5d1e9fcb9e3f78d55423329a605fc7db82541f&profile_id=164';
+    } else {
+      src = 'https://player.vimeo.com/external/209403984.hd.mp4?s=f3eb84f4b6d45960e28df740875cddd9605b8cf6&profile_id=174';
+    }
+
     const video = (
       <Video
-        src="/images/work-header-video.mp4"
-        sizes={get(image, 'media_details.sizes')}
+        src={src}
         isVideoBackground={true}
         play={loaded}
         heroVideo={true}
+        imageCSS={fallbackImage}
+        isMobile={isMobile}
       />
     );
 

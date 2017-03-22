@@ -64,7 +64,7 @@ const App = React.createClass({
     state['isScrolling'] = false;
     state['show'] = false;
     state['viewportDimensions'] = {};
-    state['isMobile'] = null;
+    state['isMobile'] = true;
 
     return state;
   },
@@ -192,7 +192,7 @@ const App = React.createClass({
   render() {
     const state = this.state;
     const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions, homeIntroVideoViewed, homeLoaderShown,
-      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow } =this.state;
+      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow } = this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
       'show': show,
