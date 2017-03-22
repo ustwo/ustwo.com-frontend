@@ -8,7 +8,9 @@ class LoaderWrapper extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { hide: false }
+    this.state = {
+      hide: false
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -20,16 +22,16 @@ class LoaderWrapper extends Component {
   }
 
   render() {
-    const { currentPage, homeLoaderShown, loaded, viewportDimensions } = this.props;
+    const { currentPage, homeLoaderShown, loaded, viewportDimensions , heightStyle} = this.props;
 
     let renderLoader;
     if (this.state.hide) {
       renderLoader = (<div />);
     } else {
       if (currentPage === 'home' && !homeLoaderShown) {
-        renderLoader = (<HomeLoader viewportDimensions={viewportDimensions} />);
+        renderLoader = (<HomeLoader heightStyle={heightStyle} />);
       } else {
-        renderLoader = (<PageLoader viewportDimensions={viewportDimensions} key="loader" pageId={currentPage} />);
+        renderLoader = (<PageLoader heightStyle={heightStyle} key="loader" pageId={currentPage} />);
       }
     }
 
@@ -38,7 +40,7 @@ class LoaderWrapper extends Component {
     });
 
     return (
-      <div className={classes}>
+      <div className={classes} style={heightStyle}>
         {renderLoader}
       </div>
     );

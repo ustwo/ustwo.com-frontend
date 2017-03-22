@@ -204,7 +204,7 @@ const App = React.createClass({
   render() {
     const state = this.state;
     const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions, homeIntroVideoViewed, homeLoaderShown,
-      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow } = this.state;
+      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow, isMobile } = this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
       'show': show,
@@ -221,6 +221,13 @@ const App = React.createClass({
       document.body.style.overflow = "hidden";
     } else if (modal === null || popup === null || overflow === 'auto') {
       document.body.style.overflow = "auto";
+    }
+    if (isMobile) {
+      if (overflow === 'hidden') {
+        document.body.style.position = "fixed";
+      } else if (overflow === 'auto') {
+        document.body.style.position = "initial";
+      }
     }
 
     const dataLoading = !includes(spinnerBlacklist, currentPage) && !page && !post && !caseStudy;

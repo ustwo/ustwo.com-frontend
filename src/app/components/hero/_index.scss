@@ -10,8 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* This is for IE as content doesn't center */
-  min-height: 100vh;
+  height: 100%; /* This is for IE as content doesn't center */
   padding: 0 20px;
 
   @media screen and (min-width: $bp-medium) {
@@ -31,7 +30,7 @@
     width: 100%;
     max-width: $grid-max-width;
     position: relative;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
 

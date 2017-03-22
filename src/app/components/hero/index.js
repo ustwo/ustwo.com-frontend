@@ -8,13 +8,6 @@ import Rimage from 'app/components/rimage';
 import Track from 'app/adaptors/server/track';
 
 class Hero extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      IndicatorLoaded: false
-    }
-  }
 
   renderImage() {
     const { sizes, altText, transitionImage } = this.props;
@@ -67,7 +60,7 @@ class Hero extends Component {
   }
 
   render() {
-    const { className, title, children, scrollProgress, eventLabel, notFullScreen } = this.props;
+    const { className, title, children, scrollProgress, eventLabel, notFullScreen, heightStyle } = this.props;
     let titleStyle;
     if (scrollProgress) {
       titleStyle = {
@@ -75,12 +68,13 @@ class Hero extends Component {
         transform: `translate3d(0, ${35 * scrollProgress}vh, 0)`
       }
     }
+    const innerHeight = heightStyle ? heightStyle : null;
     const sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
     const classes = classnames('hero', className, { notFullScreen });
 
     return (
       <section className={classes}>
-        <div className="hero-inner-wrapper">
+        <div className="hero-inner-wrapper" style={innerHeight}>
           {this.renderLogo()}
           <EntranceTransition className="title-entrance">
             <div className="section-title">

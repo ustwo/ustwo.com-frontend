@@ -7,6 +7,14 @@ const posterURL = "/images/transparent.png";
 
 class Video extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      canPlayMobileVideo: true
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.video) {
       if (nextProps.play) {
@@ -17,6 +25,15 @@ class Video extends Component {
     }
   }
 
+  componentWillMount() {
+    if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+      this.setState({
+        // See if playsInline attribute is valid (i.e. anything before iOS10)
+        canPlayMobileVideo: 'playsInline' in document.createElement('video')
+      });
+    }
+  }
+
   componentDidMount() {
     const { heroVideo, isMobile } = this.props;
 
@@ -24,10 +41,6 @@ class Video extends Component {
 
       if (isMobile) {
         Flux.heroVideoReady(true);
-        // this.video.addEventListener('loadedmetadata', () => {
-        //   setTimeout(() => {
-        //   }, 1000);
-        // }, false);
       } else {
         if (this.video.readyState != 4) {
           this.video.addEventListener('canplaythrough', () => {
@@ -112,8 +125,15 @@ class Video extends Component {
     const { src, play } = this.props;
 
     let video;
-    if(src && src.length) {
-      video = (<video ref={(ref) => this.video = ref} src={src} poster={posterURL} playsInline loop muted />);
+    if(src && src.length && this.state.canPlayMobileVideo) {
+      video = (
+        <video
+          ref={(ref) => this.video = ref}
+          src={src}
+          poster={posterURL}
+          onClick={(e) => e.preventDefault()}
+          playsInline loop muted />
+      );
     } else {
       video = this.renderImage();
     }

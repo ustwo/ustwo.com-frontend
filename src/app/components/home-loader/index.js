@@ -6,14 +6,6 @@ import UstwoLogoSequence from 'app/components/ustwo-logo-sequence';
 
 class HomeLoader extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      height: this.props.viewportDimensions.height
-    }
-  }
-
   componentDidMount() {
     Flux.overflowHidden();
   }
@@ -24,10 +16,6 @@ class HomeLoader extends Component {
   }
 
   render() {
-    const styles = {
-      height: `${this.state.height}px`
-    }
-
     return (
       <div className="home-loader">
         <div className="home-intro-logo">

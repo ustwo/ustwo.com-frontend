@@ -27,17 +27,19 @@ class Navigation extends Component {
   }
 
   toggleMenu() {
-    if (this.props.documentScrollPosition < window.innerHeight && this.props.section === 'home') {
-      Scroll.animateScroll.scrollTo(window.innerHeight);
+    const { viewportDimensions, documentScrollPosition, section, modal } = this.props;
+
+    if (documentScrollPosition < viewportDimensions.height && section === 'home') {
+      Scroll.animateScroll.scrollTo(viewportDimensions.height);
       Scroll.Events.scrollEvent.register('end', () => {
-        if (this.props.modal === 'menu') {
+        if (modal === 'menu') {
           Flux.closeModal();
         } else {
           Flux.showNavOverlay();
         }
       });
     } else {
-      if (this.props.modal === 'menu') {
+      if (modal === 'menu') {
         Flux.closeModal();
       } else {
         Flux.showNavOverlay();
