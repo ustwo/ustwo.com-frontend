@@ -20,16 +20,16 @@ class LoaderWrapper extends Component {
   }
 
   render() {
-    const { currentPage, homeLoaderShown, loaded } = this.props;
+    const { currentPage, homeLoaderShown, loaded, viewportDimensions } = this.props;
 
     let renderLoader;
     if (this.state.hide) {
       renderLoader = (<div />);
     } else {
       if (currentPage === 'home' && !homeLoaderShown) {
-        renderLoader = (<HomeLoader />);
+        renderLoader = (<HomeLoader viewportDimensions={viewportDimensions} />);
       } else {
-        renderLoader = (<PageLoader key="loader" pageId={currentPage} />);
+        renderLoader = (<PageLoader viewportDimensions={viewportDimensions} key="loader" pageId={currentPage} />);
       }
     }
 

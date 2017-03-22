@@ -5,54 +5,6 @@ import Flux from 'app/flux';
 
 const posterURL = "/images/transparent.png";
 
-// function initVideo(vid){
-//   vid.play();
-//
-//   if(vid.readyState !== 4){
-//     vid.addEventListener('canplaythrough', onCanPlay(vid), false);
-//     vid.addEventListener('load', onCanPlay(vid), false);
-//     setTimeout(() => {
-//   		vid.pause();
-//   	}, 1);
-//   } else {
-//
-//   }
-// }
-//
-// function onCanPlay(vid) {
-//   return () => {
-//     vid.removeEventListener('canplaythrough', onCanPlay, false);
-// 	  vid.removeEventListener('load', onCanPlay, false);
-//     Flux.heroVideoReady(true);
-//   }
-// }
-
-// function initVideo(vid) {
-//   if(vid.readyState !== 4){ //HAVE_ENOUGH_DATA
-//     vid.addEventListener('canplaythrough', onCanPlay(vid), false);
-//     vid.addEventListener('load', onCanPlay(vid), false); //add load event as well to avoid errors, sometimes 'canplaythrough' won't dispatch.
-//   }
-// }
-//
-// function onCanPlay(vid) {
-//   // vid.removeEventListener('canplaythrough', onCanPlay, false);
-//   // vid.removeEventListener('load', onCanPlay, false);
-//   //video is ready
-//   Flux.heroVideoReady(true);
-//   console.log('can play');
-// }
-
-// function eventWindowLoaded(vid) {
-//
-//   //  vid.addEventListener('progress',updateLoadingStatus,false);
-//    vid.addEventListener('canplaythrough', () => {
-//      console.log('READY canplaythrough');
-//      Flux.heroVideoReady(true);
-//    }, false);
-//
-// }
-
-
 class Video extends Component {
 
   componentWillReceiveProps(nextProps) {

@@ -38,7 +38,7 @@ class PageContent extends Component {
   }
 
   render() {
-    const { currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady } = this.props;
+    const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady } = this.props;
     const heroReady = currentPage === 'home' || currentPage === 'work' ? heroVideoReady : true;
     const loaded = !dataLoading && this.state.ticker === 0 && heroReady;
 
@@ -50,7 +50,7 @@ class PageContent extends Component {
     return (
       <div className="page-content">
         {renderPage}
-        <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} />
+        <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} viewportDimensions={viewportDimensions} />
       </div>
     );
   }

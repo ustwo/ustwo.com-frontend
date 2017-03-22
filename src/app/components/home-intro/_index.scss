@@ -18,11 +18,14 @@
   justify-content: center;
   height: 100vh;
   cursor: pointer;
+  left: 0;
 }
 
 .home-intro-logo {
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
 
   .home-intro-logo-wrapper,
   .ustwo-logo-sequence {

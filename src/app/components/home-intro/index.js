@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
 import env from 'app/adaptors/server/env';
 import window from 'app/adaptors/server/window';
@@ -36,50 +36,66 @@ function renderLogoBackground(screenPosition, isMobile) {
   );
 }
 
-function HomeIntro({ scrollProgress, screenPosition, loaded, isMobile, popup }) {
+class HomeIntro extends Component {
 
-  let playVideo = loaded;
-  if (scrollProgress === 1 || !!popup) {
-    playVideo = false;
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      height: this.props.viewportDimensions.height
+    }
   }
 
-  let fallbackImage;
-  if (isMobile) {
-    fallbackImage = '/images/home-header-fallback-mobile.jpg';
-  } else {
-    fallbackImage = '/images/home-header-fallback.jpg';
-  }
+  render() {
+    const { scrollProgress, screenPosition, loaded, isMobile, popup } = this.props;
 
-  let src;
-  if (isMobile) {
-    src= 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=165';
-  } else {
-    src= 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
-  }
+    let playVideo = loaded;
+    if (scrollProgress === 1 || !!popup) {
+      playVideo = false;
+    }
 
-  return (
-    <div className="home-intro">
-      <Video
-        src={src}
-        isVideoBackground={true}
-        play={playVideo}
-        imageCSS={fallbackImage}
-        heroVideo={true}
-        isMobile={isMobile}
-      />
-      <div className="home-intro-logo">
-        <div className="home-intro-logo-wrapper">
-          {renderLogoBackground(screenPosition, isMobile)}
-          <SVG
-            title="ustwo logo layer"
-            spritemapID="ustwologo"
-            viewBox="0 0 112 32"
-          />
+    let fallbackImage;
+    if (isMobile) {
+      fallbackImage = '/images/home-header-fallback-mobile.jpg';
+    } else {
+      fallbackImage = '/images/home-header-fallback.jpg';
+    }
+
+    let src;
+    if (isMobile) {
+      src= 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=165';
+    } else {
+      src= 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
+    }
+
+    const styles = {
+      height: `${this.state.height}px`
+    }
+
+    return (
+      <div className="home-intro" style={styles}>
+        <Video
+          src={src}
+          isVideoBackground={true}
+          play={playVideo}
+          imageCSS={fallbackImage}
+          heroVideo={true}
+          isMobile={isMobile}
+        />
+        <div className="home-intro-logo" style={styles}>
+          <div className="home-intro-logo-wrapper">
+            {renderLogoBackground(screenPosition, isMobile)}
+            <SVG
+              title="ustwo logo layer"
+              spritemapID="ustwologo"
+              viewBox="0 0 112 32"
+            />
+          </div>
         </div>
+        <DownIndicator />
       </div>
-      <DownIndicator />
-    </div>
-  );
+    );
+  }
 }
 
 export default HomeIntro;

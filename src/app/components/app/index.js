@@ -70,10 +70,16 @@ const App = React.createClass({
   },
 
   getViewportDimensions() {
+
     const viewportDimensions = {
       width: window.innerWidth,
       height: window.innerHeight
     };
+    // window.addEventListener("orientationchange", function() {
+    //   if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+    //     viewportDimensions.height = document.documentElement.innerHTML;
+    //   }
+    // }, false);
     this.setState({
       viewportDimensions,
       isMobile: viewportDimensions.width < 600
@@ -106,6 +112,12 @@ const App = React.createClass({
         this.setState({ isScrolling: false });
       }, 200);
     }
+
+    window.addEventListener("orientationchange", function() {
+      if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+        document.documentElement.innerHTML = document.documentElement.innerHTML;
+      }
+    }, false);
   },
 
   componentWillUnmount() {
@@ -277,6 +289,7 @@ const App = React.createClass({
               homeIntroVideoViewed={homeIntroVideoViewed}
               homeLoaderShown={homeLoaderShown}
               heroVideoReady={heroVideoReady}
+              viewportDimensions={viewportDimensions}
             />
             <Footer data={footer} studios={studios} currentPage={currentPage}/>
           </PageContainer>
