@@ -11,8 +11,7 @@ class PageContent extends Component {
     super(props);
 
     this.state = {
-      ticker: this.props.currentPage === 'home' && !this.props.homeLoaderShown ? tickerTotalHome : tickerTotalPage,
-      height: this.props.viewportDimensions.height
+      ticker: this.props.currentPage === 'home' && !this.props.homeLoaderShown ? tickerTotalHome : tickerTotalPage
     }
   }
 
@@ -42,19 +41,15 @@ class PageContent extends Component {
     const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady } = this.props;
     const heroReady = currentPage === 'home' || currentPage === 'work' ? heroVideoReady : true;
     const loaded = !dataLoading && this.state.ticker === 0 && heroReady;
-    const heightStyle = {
-      height: `${this.state.height}px`
-    }
     let props = pageState;
     props.loaded = loaded;
-    props.heightStyle = heightStyle;
 
     const renderPage = !dataLoading ? React.createElement(pageMap[currentPage], props) : (<div />);
 
     return (
       <div className="page-content">
         {renderPage}
-        <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} heightStyle={heightStyle} />
+        <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} />
       </div>
     );
   }

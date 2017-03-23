@@ -14,11 +14,11 @@ class PageLoader extends Component {
   }
 
   render() {
-    const { pageId, heightStyle } = this.props;
+    const { pageId } = this.props;
     const classes = classnames('page-loader', `loading-${pageId}`);
 
     return (
-      <div className={classes} style={heightStyle}>
+      <div className={classes}>
         <div className="page-loader-icon">
           <img src="/images/page-loader-placeholder.gif" />
         </div>

@@ -22,16 +22,16 @@ class LoaderWrapper extends Component {
   }
 
   render() {
-    const { currentPage, homeLoaderShown, loaded, viewportDimensions , heightStyle} = this.props;
+    const { currentPage, homeLoaderShown, loaded, viewportDimensions } = this.props;
 
     let renderLoader;
     if (this.state.hide) {
       renderLoader = (<div />);
     } else {
       if (currentPage === 'home' && !homeLoaderShown) {
-        renderLoader = (<HomeLoader heightStyle={heightStyle} />);
+        renderLoader = (<HomeLoader />);
       } else {
-        renderLoader = (<PageLoader heightStyle={heightStyle} key="loader" pageId={currentPage} />);
+        renderLoader = (<PageLoader key="loader" pageId={currentPage} />);
       }
     }
 
@@ -40,7 +40,7 @@ class LoaderWrapper extends Component {
     });
 
     return (
-      <div className={classes} style={heightStyle}>
+      <div className={classes}>
         {renderLoader}
       </div>
     );

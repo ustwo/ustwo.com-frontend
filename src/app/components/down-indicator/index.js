@@ -2,7 +2,9 @@ import React from 'react';
 
 function DownIndicator({ onClick }) {
   return (
-    <div className="down-indicator" onClick={onClick}></div>
+    <div className="down-indicator" onClick={onClick}>
+      <div className="down-indicator-icon">,</div>
+    </div>
   );
 };
 

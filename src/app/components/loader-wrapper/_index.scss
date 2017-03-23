@@ -8,9 +8,11 @@
 .loader-wrapper {
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
   z-index: 5000;
   height: 100%;
+  display: flex;
   transition: opacity .5s linear;
 
   .page-loader-icon {

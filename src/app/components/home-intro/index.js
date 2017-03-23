@@ -67,13 +67,9 @@ class HomeIntro extends Component {
     } else {
       src= 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
     }
-
-    const styles = {
-      height: `${this.state.height}px`
-    }
-
+    
     return (
-      <div className="home-intro" style={styles}>
+      <div className="home-intro">
         <Video
           src={src}
           isVideoBackground={true}
@@ -82,7 +78,7 @@ class HomeIntro extends Component {
           heroVideo={true}
           isMobile={isMobile}
         />
-        <div className="home-intro-logo" style={styles}>
+        <div className="home-intro-logo">
           <div className="home-intro-logo-wrapper">
             {renderLogoBackground(screenPosition, isMobile)}
             <SVG

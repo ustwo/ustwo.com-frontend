@@ -56,6 +56,7 @@
   background-color: $lightGrey;
 
   .hero-transition-manager {
+    
     .hero {
       @include page-background-colour(blog);
 

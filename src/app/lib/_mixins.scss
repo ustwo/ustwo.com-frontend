@@ -92,11 +92,11 @@
 
 @mixin core-gutter($type: 'padding') {
   @if $type == 'padding' {
-    padding-left: 6%;
-    padding-right: 6%;
+    padding-left: $core-padding;
+    padding-right: $core-padding;
   } @else {
-    margin-left: 6%;
-    margin-right: 6%;
+    margin-left: $core-padding;
+    margin-right: $core-padding;
   }
 }
 
@@ -115,4 +115,12 @@
 
 @mixin box-shadow() {
   box-shadow: 10px 10px 40px rgba(0,0,0,.3);
+}
+
+@mixin iosHeightFix($height) {
+  height: $height * 1%;
+
+  + * {
+    margin-top: #{$height}vh;
+  }
 }

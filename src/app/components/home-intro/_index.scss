@@ -19,6 +19,10 @@
   height: 100vh;
   cursor: pointer;
   left: 0;
+
+  .down-indicator {
+    left: calc(50% - 13px);
+  }
 }
 
 .home-intro-logo {
@@ -76,7 +80,7 @@
 }
 
 
-/*  */
+/* NOTE: max-width */
 @media screen and (max-width: $bp-medium) {
   .home-loader {
     height: 100% !important;
@@ -85,11 +89,11 @@
     margin-top: 100vh;
   }
   .home-intro-link {
+    @include iosHeightFix(100);
     position: absolute;
     left: 0;
     top: 0;
     width: 100vw;
-    height: 100%;
     z-index: 1;
 
     .scroll-wrapper {
@@ -114,9 +118,5 @@
     .videoBackground {
       height: 100vh;
     }
-  }
-
-  .scroll-wrapper-home-welcome-message {
-    margin-top: 100vh;
   }
 }

@@ -8,9 +8,15 @@
 .down-indicator {
   position: absolute;
   z-index: 2;
-  bottom: 60px;
-  left: calc(50% - 32px);
-  width: 64px;
+  bottom: 20px;
+
+  @media screen and (min-width: $bp-medium) {
+    bottom: 40px;
+  }
+}
+
+.down-indicator-icon {
+  width: 25px;
   height: 64px;
   background: url('/images/icon-down-loop.gif') no-repeat 0 0;
   background-size: 100% auto;

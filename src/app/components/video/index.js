@@ -25,20 +25,16 @@ class Video extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    const { heroVideo, isMobile } = this.props;
+
     if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
       this.setState({
         // See if playsInline attribute is valid (i.e. anything before iOS10)
         canPlayMobileVideo: 'playsInline' in document.createElement('video')
       });
     }
-  }
-
-  componentDidMount() {
-    const { heroVideo, isMobile } = this.props;
-
     if (heroVideo) {
-
       if (isMobile) {
         Flux.heroVideoReady(true);
       } else {

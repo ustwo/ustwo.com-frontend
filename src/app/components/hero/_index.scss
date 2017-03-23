@@ -8,18 +8,9 @@
   overflow: hidden;
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100%; /* This is for IE as content doesn't center */
-  padding: 0 20px;
-
-  @media screen and (min-width: $bp-medium) {
-    padding: 0 40px;
-  }
-
-  @media screen and (min-width: $bp-large) {
-    padding: 0 60px;
-  }
+  justify-content: center;
+  height: 100vh;
 
   // .down-indicator {
   //   opacity: 0;
@@ -27,16 +18,15 @@
   // }
 
   .hero-inner-wrapper {
+    @include core-layout();
     width: 100%;
-    max-width: $grid-max-width;
-    position: relative;
-    height: 100%;
+    // max-width: $grid-max-width;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
     display: flex;
     align-items: center;
-
-    .down-indicator {
-      left: 0;
-    }
   }
 
   .videoBackground {
@@ -53,26 +43,12 @@
     position: relative;
     z-index: 2;
     color: white;
-    font-size: 40px;
-  }
-
-  &.notFullScreen {
-    height: 60vh;
-    min-height: 60vh;
   }
 
   @media screen and (min-width: $bp-medium) {
 
     .title {
-      font-size: 60px;
       max-width: 80%;
-    }
-  }
-
-  @media screen and (min-width: $bp-larger) {
-
-    .title {
-      font-size: 70px;
     }
   }
 
@@ -156,4 +132,30 @@
   //     transition-delay: 3s;
   //   }
   // }
+}
+
+/* NOTE: max-width */
+@media screen and (max-width: $bp-medium) {
+  .hero {
+    @include iosHeightFix(100);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
+  }
+  .hero-inner-wrapper {
+    position: absolute;
+    height: 100%;
+    display: block;
+
+    .videoBackground {
+      height: 100vh;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+  }
 }
