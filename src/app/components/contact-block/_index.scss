@@ -4,6 +4,7 @@
  */
 
 .contact-block {
+  position: relative;
   background-color: $veryDarkGrey;
   color: white;
   @include core-layout();

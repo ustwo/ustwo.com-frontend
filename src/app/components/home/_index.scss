@@ -50,7 +50,10 @@
   }
 }
 
-
+.home-main-content-wrapper {
+  position: relative;
+  background-color: $offWhite;
+}
 
 /* Transitions around venturesActive */
 .page-home-content {

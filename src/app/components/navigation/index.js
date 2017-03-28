@@ -5,7 +5,6 @@ import Scroll from 'react-scroll';
 import Flux from 'app/flux';
 import Nulls from 'app/flux/nulls';
 
-import window from 'app/adaptors/server/window';
 import Track from 'app/adaptors/server/track';
 import SVG from 'app/components/svg';
 import FramesUstwoLogo from 'app/components/frames-ustwo-logo';
@@ -55,10 +54,10 @@ class Navigation extends Component {
   render() {
     const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions, pageLoading } = this.props;
 
-    const venturesActive = venturesPosition && (documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition < venturesPosition.to);
+    const venturesActive = venturesPosition && (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
 
     const navClasses = classnames('navigation', customClass, section, page, {
-      notSticky: documentScrollPosition < window.innerHeight && section === 'home',
+      notSticky: documentScrollPosition < viewportDimensions.height && section === 'home',
       invert: venturesActive,
       overHero: documentScrollPosition < viewportDimensions.height - this.state.height, // Assuming hero is 100% height at the top of the screen,
       menuOpen: modal === 'menu',

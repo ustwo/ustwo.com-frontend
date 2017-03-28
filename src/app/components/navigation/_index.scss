@@ -28,6 +28,8 @@ $nav-height-large: 30px;
 
 .navigation {
   position: fixed;
+  pointer-events: auto;
+  opacity: 1;
   top: 0;
   padding: 20px 0;
   right: 0;
@@ -37,7 +39,7 @@ $nav-height-large: 30px;
   justify-content: flex-end;
   align-items: center;
   background-color: $offWhite-semiTransparent;
-  transition: background-color .2s linear;
+  transition: all .2s linear;
 
   @media screen and (min-width: $bp-medium) {
     padding: 29px 0;
@@ -74,8 +76,8 @@ $nav-height-large: 30px;
   }
 
   &.notSticky {
-    position: absolute;
-    top: 100vh;
+    opacity: 0;
+    pointer-events: none;
   }
 }
 

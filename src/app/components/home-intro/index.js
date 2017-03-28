@@ -50,7 +50,7 @@ class HomeIntro extends Component {
     const { scrollProgress, screenPosition, loaded, isMobile, popup } = this.props;
 
     let playVideo = loaded;
-    if (scrollProgress === 1 || !!popup) {
+    if (scrollProgress > 0.5 || !!popup) {
       playVideo = false;
     }
 
@@ -67,9 +67,25 @@ class HomeIntro extends Component {
     } else {
       src= 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
     }
-    
+
+    let logoStyles;
+    if (!isMobile) {
+      logoStyles = {
+        opacity: (0.75 - scrollProgress) * 4,
+        transform: `translate3d(0,${((0.5 - scrollProgress) * 4) * 50}px,0)`
+      };
+    }
+
+    let videoStyles;
+    if (!isMobile) {
+      videoStyles = {
+        // opacity: (0.75 - scrollProgress) * 4,
+        // transform: `translate3d(0,${((0.5 - scrollProgress) * 4) * 80}px,0)`
+      }
+    }
+
     return (
-      <div className="home-intro">
+      <div className="home-intro" style={videoStyles}>
         <Video
           src={src}
           isVideoBackground={true}
@@ -78,7 +94,7 @@ class HomeIntro extends Component {
           heroVideo={true}
           isMobile={isMobile}
         />
-        <div className="home-intro-logo">
+        <div className="home-intro-logo" style={logoStyles}>
           <div className="home-intro-logo-wrapper">
             {renderLogoBackground(screenPosition, isMobile)}
             <SVG

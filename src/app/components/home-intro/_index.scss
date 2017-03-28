@@ -6,10 +6,20 @@
 
 .scroll-wrapper-home-intro {
   padding: 0;
+  background-color: $offWhite;
+}
+
+.home-welcome-wrapper {
+  margin-top: 100vh;
 }
 
 .home-intro-link {
   display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .home-intro {
@@ -85,20 +95,13 @@
   .home-loader {
     height: 100% !important;
   }
-  .home-welcome-wrapper {
-    margin-top: 100vh;
-  }
   .home-intro-link {
     @include iosHeightFix(100);
-    position: absolute;
-    left: 0;
-    top: 0;
     width: 100vw;
-    z-index: 1;
 
     .scroll-wrapper {
-      height: 100%;
       display: block;
+      height: 100%;
     }
     .scroll-wrapper-inner {
       display: block;
@@ -106,8 +109,8 @@
     }
     .home-intro {
       position: absolute;
-      height: 100%;
       display: block;
+      height: 100%;
     }
     .home-intro-logo {
       height: 100%;

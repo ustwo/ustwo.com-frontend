@@ -59,7 +59,7 @@ class PageHome extends Component {
     const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed } = this.props;
     const { venturesPosition } = this.state;
 
-    const venturesActive = (documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition < venturesPosition.to);
+    const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
 
     const classes = classnames('page-home-content', this.props.className, {
       venturesActive: venturesActive, // venturesActive shows or hides the dark background depending on when it falls in/out of view
@@ -93,53 +93,55 @@ class PageHome extends Component {
           />
         </Link>
 
-        <Element name="homeTextBlock" className="home-welcome-wrapper">
-          <ScrollWrapper
-            component={<HomeTextBlock content={textBlockIntro} />}
-            documentScrollPosition={documentScrollPosition}
-            viewportDimensions={viewportDimensions}
-            className="scroll-wrapper-home-welcome-message"
-          />
-        </Element>
-
-        <ScrollWrapper
-          component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} />}
-          documentScrollPosition={documentScrollPosition}
-          viewportDimensions={viewportDimensions}
-          className="scroll-wrapper-home-carousel-products"
-        />
-
-        <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
-
-          <div className="home-ventures-wrapper-bg"></div>
+        <div className="home-main-content-wrapper">
+          <Element name="homeTextBlock" className="home-welcome-wrapper">
+            <ScrollWrapper
+              component={<HomeTextBlock content={textBlockIntro} />}
+              documentScrollPosition={documentScrollPosition}
+              viewportDimensions={viewportDimensions}
+              className="scroll-wrapper-home-welcome-message"
+            />
+          </Element>
 
           <ScrollWrapper
-            component={<HomeTextBlock content={textBlockMore} />}
+            component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
-            className="scroll-wrapper-home-more-message"
+            className="scroll-wrapper-home-carousel-products"
+          />
+
+          <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
+
+            <div className="home-ventures-wrapper-bg"></div>
+
+            <ScrollWrapper
+              component={<HomeTextBlock content={textBlockMore} />}
+              documentScrollPosition={documentScrollPosition}
+              viewportDimensions={viewportDimensions}
+              className="scroll-wrapper-home-more-message"
+            />
+
+            <ScrollWrapper
+              component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={venturesActive} />}
+              documentScrollPosition={documentScrollPosition}
+              viewportDimensions={viewportDimensions}
+              className="scroll-wrapper-home-carousel-ventures"
+            />
+
+          </div>
+
+          <ScrollWrapper
+            component={<HomeTextBlock content={textBlockSmorgasbord} />}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
+            className="scroll-wrapper-home-smorgasbord-message"
           />
 
           <ScrollWrapper
-            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={venturesActive} />}
-            documentScrollPosition={documentScrollPosition}
-            viewportDimensions={viewportDimensions}
-            className="scroll-wrapper-home-carousel-ventures"
+            component={<HomeSmorgasbord data={get(page, 'featured_content')} />}
+            className="scroll-wrapper-home-smorgasbord"
           />
-
         </div>
-
-        <ScrollWrapper
-          component={<HomeTextBlock content={textBlockSmorgasbord} />}
-          documentScrollPosition={documentScrollPosition}
-          viewportDimensions={viewportDimensions}
-          className="scroll-wrapper-home-smorgasbord-message"
-        />
-
-        <ScrollWrapper
-          component={<HomeSmorgasbord data={get(page, 'featured_content')} />}
-          className="scroll-wrapper-home-smorgasbord"
-        />
 
         <ContactBlock />
 
