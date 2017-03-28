@@ -142,7 +142,7 @@ class PageHome extends Component {
           />
 
           <ScrollWrapper
-            component={<HomeSmorgasbord data={get(page, 'featured_content')} isMoble={isMobile} />}
+            component={<HomeSmorgasbord data={get(page, 'featured_content')} />}
             className="scroll-wrapper-home-smorgasbord"
           />
         </div>

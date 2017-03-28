@@ -92,7 +92,7 @@ class HomeCarousel extends Component {
   }
 
   render() {
-    const { scrollProgress, carouselItems, className, isMobile, inView, isScrolling } = this.props;
+    const { scrollProgress, carouselItems, className, isMobile, inView } = this.props;
     const { currentStartItem, otherIsHovered, numberOfItemsInView, justBeenHovered } = this.state;
 
     const showItems = this.props.carouselItems.map((item, i) => {
@@ -143,15 +143,15 @@ class HomeCarousel extends Component {
       }
 
       /* Play/Pause the video */
-      let playVideo = this.state.videoToPlay === i && !isScrolling;
+      let playVideo = this.state.videoToPlay === i;
 
       /* Show either an image or video depending on if there is a videoURL */
       let visualContent;
-      if (isMobile) {
+      if (window.innerWidth < 600) {
         visualContent = <img src={item.imageURL} className="home-carousel-visual-content-image" />
       } else {
         if (item.videoURL) {
-          visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} />
+          visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} preload="metadata" />
         } else {
           visualContent = <div className="home-carousel-visual-content-image" style={{ backgroundImage: `url(${item.imageURL})` }} />
         }

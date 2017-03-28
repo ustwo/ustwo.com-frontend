@@ -118,7 +118,8 @@ class Video extends Component {
   }
 
   renderVideo() {
-    const { src, play } = this.props;
+    const { src, play, preload } = this.props;
+    const preloadAttribute = preload ? preload : 'auto';
 
     let video;
     if(src && src.length && this.state.canPlayMobileVideo) {
@@ -128,7 +129,9 @@ class Video extends Component {
           src={src}
           poster={posterURL}
           onClick={(e) => e.preventDefault()}
-          playsInline loop muted />
+          preload={preloadAttribute}
+          playsInline loop muted
+        />
       );
     } else {
       video = this.renderImage();

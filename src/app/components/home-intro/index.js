@@ -62,11 +62,11 @@ class HomeIntro extends Component {
     }
 
     let src;
-    // if (isMobile) {
-    //   src= 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=165';
-    // } else {
+    if (window.innerWidth < 600) {
       src= 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=164';
-    // }
+    } else {
+      src= 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
+    }
 
     const logoStyles = {
       opacity: (0.75 - scrollProgress) * 4,
@@ -86,6 +86,7 @@ class HomeIntro extends Component {
           imageCSS={fallbackImage}
           heroVideo={true}
           isMobile={isMobile}
+          preload="metadata"
         />
         <div className="home-intro-logo" style={logoStyles}>
           <div className="home-intro-logo-wrapper">
