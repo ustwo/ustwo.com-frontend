@@ -44,6 +44,10 @@ class PageWork extends Component {
       renderContent = workProcess;
     }
 
+    // const styles = {
+    //   marginTop: `${this.props.fixedHeightOnLoad}px`
+    // }
+
     return (
       <div className="work-whatwedo">
         <div className="work-intro">
@@ -91,7 +95,7 @@ class PageWork extends Component {
   }
 
   render() {
-    const { page, className, loaded, isMobile } = this.props;
+    const { page, className, loaded, isMobile, fixedHeightOnLoad } = this.props;
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
@@ -129,6 +133,7 @@ class PageWork extends Component {
           eventLabel='work'
           showDownIndicator={true}
           video={video}
+          fixedHeightOnLoad={fixedHeightOnLoad}
         ></Hero>
 
         {this.renderWhatWeDo()}

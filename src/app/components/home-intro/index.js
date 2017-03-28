@@ -47,7 +47,7 @@ class HomeIntro extends Component {
   }
 
   render() {
-    const { scrollProgress, screenPosition, loaded, isMobile, popup } = this.props;
+    const { scrollProgress, screenPosition, loaded, isMobile, popup, viewportDimensions, fixedHeightOnLoad } = this.props;
 
     let playVideo = loaded;
     if (scrollProgress > 0.5 || !!popup) {
@@ -68,24 +68,17 @@ class HomeIntro extends Component {
       src= 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
     }
 
-    let logoStyles;
-    if (!isMobile) {
-      logoStyles = {
-        opacity: (0.75 - scrollProgress) * 4,
-        transform: `translate3d(0,${((0.5 - scrollProgress) * 4) * 50}px,0)`
-      };
-    }
+    const logoStyles = {
+      opacity: (0.75 - scrollProgress) * 4,
+      transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
+    };
 
-    let videoStyles;
-    if (!isMobile) {
-      videoStyles = {
-        // opacity: (0.75 - scrollProgress) * 4,
-        // transform: `translate3d(0,${((0.5 - scrollProgress) * 4) * 80}px,0)`
-      }
+    const styles = {
+      height: fixedHeightOnLoad
     }
 
     return (
-      <div className="home-intro" style={videoStyles}>
+      <div className="home-intro" style={styles}>
         <Video
           src={src}
           isVideoBackground={true}

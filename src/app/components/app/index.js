@@ -65,6 +65,7 @@ const App = React.createClass({
     state['show'] = false;
     state['viewportDimensions'] = {};
     state['isMobile'] = true;
+    state['fixedHeightOnLoad'] = window.innerHeight;
 
     return state;
   },

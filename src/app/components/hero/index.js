@@ -60,7 +60,7 @@ class Hero extends Component {
   }
 
   render() {
-    const { className, title, children, scrollProgress, eventLabel, notFullScreen } = this.props;
+    const { className, title, children, scrollProgress, eventLabel, notFullScreen, fixedHeightOnLoad } = this.props;
     let titleStyle;
     if (scrollProgress) {
       titleStyle = {
@@ -71,8 +71,10 @@ class Hero extends Component {
     const sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
     const classes = classnames('hero', className, { notFullScreen });
 
+    const styles = fixedHeightOnLoad ? { height: `${fixedHeightOnLoad}px` } : null;
+
     return (
-      <section className={classes}>
+      <section className={classes} style={styles}>
         <div className="hero-inner-wrapper">
           {this.renderLogo()}
           <EntranceTransition className="title-entrance">

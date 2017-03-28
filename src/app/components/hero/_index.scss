@@ -12,11 +12,6 @@
   justify-content: center;
   height: 100vh;
 
-  // .down-indicator {
-  //   opacity: 0;
-  //   transition: opacity .2s linear;
-  // }
-
   .hero-inner-wrapper {
     @include core-layout();
     width: 100%;
@@ -137,10 +132,6 @@
 /* NOTE: max-width */
 @media screen and (max-width: $bp-medium) {
   .hero {
-    @include iosHeightFix(100);
-    position: absolute;
-    left: 0;
-    top: 0;
     width: 100vw;
     z-index: 1;
   }

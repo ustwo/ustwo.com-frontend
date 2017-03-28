@@ -22,7 +22,7 @@ class PageHome extends Component {
 
     this.state = {
       venturesPosition: {},
-      venturesActive: false
+      venturesActive: false,
     }
   }
 
@@ -56,7 +56,7 @@ class PageHome extends Component {
   }
 
   render() {
-    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed } = this.props;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, fixedHeightOnLoad } = this.props;
     const { venturesPosition } = this.state;
 
     const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
@@ -65,6 +65,10 @@ class PageHome extends Component {
       venturesActive: venturesActive, // venturesActive shows or hides the dark background depending on when it falls in/out of view
       loaded: loaded
     });
+
+    const mainContentstyles = {
+      marginTop: `${fixedHeightOnLoad}px`
+    }
 
     // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
     const textBlockIntro = {
@@ -85,7 +89,7 @@ class PageHome extends Component {
 
         <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
           <ScrollWrapper
-            component={<HomeIntro viewportDimensions={viewportDimensions} scrolling={scrolling} loaded={loaded} isMobile={isMobile} popup={popup} />}
+            component={<HomeIntro viewportDimensions={viewportDimensions} scrolling={scrolling} loaded={loaded} isMobile={isMobile} popup={popup} fixedHeightOnLoad={fixedHeightOnLoad} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}
@@ -93,7 +97,7 @@ class PageHome extends Component {
           />
         </Link>
 
-        <div className="home-main-content-wrapper">
+        <div className="home-main-content-wrapper" style={mainContentstyles}>
           <Element name="homeTextBlock" className="home-welcome-wrapper">
             <ScrollWrapper
               component={<HomeTextBlock content={textBlockIntro} />}
