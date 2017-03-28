@@ -15,7 +15,7 @@
 }
 
 .home-smorgasbord {
-  padding: 0 0 210px 0;
+  padding: 0 0 100px 0;
 
   h1 {
     margin-bottom: 30vh;
@@ -23,49 +23,25 @@
 }
 
 .smorgasbord-block {
-  height: 300px;
   margin-bottom: 20px;
   background-color: #eee;
   box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+}
+
+.smorgasbord-block:not(.smorgasbord-video) {
+  height: 300px;
 
   @media screen and (min-width: $bp-medium) {
-    height: 400px;
+    height: 430px;
+  }
+  @media screen and (min-width: $bp-large) {
+    height: 480px;
+    font-size: 40px;
   }
 }
 
 .smorgasbord-video {
   position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	height: 0;
-
-  iframe {
-    position: absolute;
-  	top: 0;
-  	left: 0;
-  	width: 100%;
-  	height: 100%;
-    border: none;
-  }
-}
-
-.smorgasbord-video-title {
-  position: absolute;
-  top: 60%;
-  left: 0;
-  right: 0;
-  width: 100% !important;
-  font-size: 26px !important;
-  text-align: center;
-  color: white;
-  transition: all .2s ease-in-out;
-
-  &.videoPlaying {
-    opacity: 0;
-  }
-
-  @media screen and (min-width: $bp-medium) {
-    font-size: 50px !important;
-  }
 }
 
 .smorgasbord-blog,
@@ -124,12 +100,6 @@
 }
 
 @media screen and (min-width: $bp-medium) {
-  .smorgasbord-block {
-    height: 430px;
-  }
-  .smorgasbord-video {
-    height: auto;
-  }
   .smorgasbord-block-wrapper {
     display: flex;
     justify-content: space-between;
@@ -146,25 +116,11 @@
   }
 }
 
-@media screen and (min-width: $bp-large) {
-  .smorgasbord-block {
-    height: 480px;
-    font-size: 40px;
-  }
-  .smorgasbord-video {
-    height: auto;
-  }
-}
 
-.smorgasbord-video,
 .smorgasbord-studios {
   background-position: 50%;
   background-size: cover;
 }
-
-// .smorgasbord-video {
-  // background-image: url('/images/temp/smorgs-video.jpg');
-// }
 
 .smorgasbord-studios {
   background-image: url('/images/temp/smorgs-studios.jpg');

@@ -16,6 +16,7 @@
 @import '../../node_modules/normalize-libsass/normalize';
 @import "lib/environment";
 @import "lib/typography";
+@import "lib/react-html5video";
 
 /* Components */
 @import "components/app/index";
@@ -49,7 +50,6 @@
 @import "components/navigation-overlay/index";
 @import "components/footer/index";
 @import "components/modal/index";
-@import "components/take-over/index";
 @import "components/work/index";
 @import "components/case-study/index";
 @import "components/post/index";

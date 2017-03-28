@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import postcss from 'postcss';
+import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
 
 const isVerbose = !!process.env.VERBOSE
@@ -8,7 +9,7 @@ const filepath = process.argv[2];
 const filename = path.basename(filepath);
 const content = fs.readFileSync(filepath, 'utf-8');
 
-const processor = postcss([autoprefixer({browsers: 'last 5 versions'})]);
+const processor = postcss([autoprefixer({browsers: 'last 2 versions'}), cssnano({ mergeRules: false })]);
 
 let config = {
   from: filename,

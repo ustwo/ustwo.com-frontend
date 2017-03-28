@@ -5,12 +5,8 @@ import blendColours from 'app/lib/blend-colours';
 
 const tickerFrequency = 50;
 const timerTotal = 1000;
-// const leftColours = ['#16D6D9', '#14C04D', '#96CC29', '#FFBF02', '#FF5519', '#E60C29', '#ED0082', '#6114CC', '#143FCC', '#009CF3'];
-// const rightColours = ['#96CC29', '#FFBF02', '#FF5519', '#E60C29', '#ED0082', '#6114CC', '#143FCC', '#009CF3', '#16D6D9', '#14C04D'];
-// const leftColours = ['#ED0082', '#143FCC', '#009CF3', '#96CC29', '#FF5519', '#ED0082'];
-// const rightColours = ['#FFBF02', '#E60C29', '#6114CC', '#009CF3', '#14C04D', '#FFBF02'];
-const leftColours = ['#96CC29', '#16D6D9', '#FA7D78', '#FFBF02', '#96CC29'];
-const rightColours = ['#16D6D9', '#009CF3', '#6114CC', '#ED0082', '#16D6D9'];
+const leftColours = ['#96CC29', '#16D6D9', '#FA7D78', '#FFBF02', '#F5E664', '#A5FAAF', '#96CC29'];
+const rightColours = ['#16D6D9', '#009CF3', '#6114CC', '#ED0082', '#FF5519', '#FFBF02', '#16D6D9'];
 
 function goToNextIteration(component) {
   component.setState({ tick: timerTotal });

@@ -1,15 +1,33 @@
 import React from 'react';
 import Flux from 'app/flux';
+import { DefaultPlayer as Video } from 'react-html5video';
 
 import Subscription from 'app/components/subscription';
 
-function HomeSmorgasbord({ data }) {
+function HomeSmorgasbord({ data, isMobile }) {
   const { event, post } = data;
+
+  let src;
+  if (isMobile) {
+    src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=164';
+  } else {
+    src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=165';
+  }
 
   return (
     <div className="home-smorgasbord">
       <div className="smorgasbord-block smorgasbord-video">
-        <iframe src="https://player.vimeo.com/video/189642924?color=ED0082&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <Video
+          controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+          poster="/images/ustwo-roadshow-first-frame.jpg"
+          onCanPlayThrough={() => {
+              // Do stuff
+          }}
+          preload="metadata"
+        >
+          <source src={src} type="video/webm" />
+        </Video>
+
       </div>
       <div className="smorgasbord-block-wrapper">
 
