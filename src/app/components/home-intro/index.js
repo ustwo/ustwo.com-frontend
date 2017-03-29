@@ -86,7 +86,7 @@ class HomeIntro extends Component {
           imageCSS={fallbackImage}
           heroVideo={true}
           isMobile={isMobile}
-          preload="metadata"
+          preload="auto"
         />
         <div className="home-intro-logo" style={logoStyles}>
           <div className="home-intro-logo-wrapper">

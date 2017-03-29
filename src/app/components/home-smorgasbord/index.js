@@ -1,5 +1,6 @@
 import React from 'react';
 import Flux from 'app/flux';
+import window from 'app/adaptors/server/window';
 import { DefaultPlayer as Video } from 'react-html5video';
 
 import Subscription from 'app/components/subscription';
@@ -7,18 +8,22 @@ import Subscription from 'app/components/subscription';
 function HomeSmorgasbord({ data }) {
   const { event, post } = data;
 
+  let src;
+  if (window.innerWidth < 600) {
+    src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=164';
+  } else {
+    src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=165';
+  }
+
   return (
     <div className="home-smorgasbord">
       <div className="smorgasbord-block smorgasbord-video">
         <Video
           controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
           poster="/images/ustwo-roadshow-first-frame.jpg"
-          onCanPlayThrough={() => {
-              // Do stuff
-          }}
-          preload="none"
+          preload="metadata"
         >
-          <source src="https://player.vimeo.com/external/189642924.m3u8?s=05fbc96ffb3aa37260ba1db42719232a6ac918d6" type="video/webm" />
+          <source src={src} type="video/webm" />
         </Video>
 
       </div>
