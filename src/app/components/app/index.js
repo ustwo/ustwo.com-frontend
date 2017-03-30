@@ -20,7 +20,6 @@ import Store from 'app/flux/store';
 import Nulls from 'app/flux/nulls';
 import PageContainer from 'app/components/page-container';
 import Navigation from 'app/components/navigation';
-import Footer from 'app/components/footer';
 import Modal from 'app/components/modal';
 import EntranceTransition from 'app/components/entrance-transition';
 import ContactTray from 'app/components/contact-tray';
@@ -49,10 +48,18 @@ const pageMap = {
 const spinnerBlacklist = ['legal', 'blog/search-results'];
 
 function getDocumentScrollPosition(component) {
-  return () => {
+  return (e) => {
+
     component.setState({
+      isScrolling: true,
       documentScrollPosition: document.scrollingElement.scrollTop
     });
+
+    let timeout = null;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      component.setState({ isScrolling: false });
+    }, 1200);
   }
 }
 
@@ -65,19 +72,16 @@ const App = React.createClass({
     state['show'] = false;
     state['viewportDimensions'] = {};
     state['isMobile'] = window.innerWidth < 600;
-    state['fixedHeightOnLoad'] = window.innerHeight;
+    state['isScrolling'] = false;
 
     return state;
   },
 
   getViewportDimensions() {
-
     const viewportDimensions = {
       width: window.innerWidth,
       height: window.innerHeight
     };
-
-    console.log('resizing')
 
     this.setState({
       viewportDimensions,
@@ -101,19 +105,32 @@ const App = React.createClass({
     window.addEventListener('scroll', getDocumentScrollPosition(this));
 
     /* Get new dimensions when device orientationchange etc */
+    // if (!isScrolling) {
     window.addEventListener('resize', () => {
-      this.getViewportDimensions();
+        this.getViewportDimensions();
     });
+    // window.addEventListener('orientationchange', () => {
+    //     this.getViewportDimensions();
+    // });
+    // }
 
     Store.on('change', this.onChangeStore);
 
     /* TODO: What do we need this for?  */
-    window.addEventListener("orientationchange", function() {
-      if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
-        document.documentElement.innerHTML = document.documentElement.innerHTML;
-      }
-    }, false);
+    // window.addEventListener("orientationchange", function() {
+    //   if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+    //     document.documentElement.innerHTML = document.documentElement.innerHTML;
+    //   }
+    // }, false);
   },
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.isScrolling) {
+  //     setTimeout(() => {
+  //       this.setState({ isScrolling: false })
+  //     }, 50)
+  //   }
+  // },
 
   componentWillUnmount() {
     Store.removeListener('change', this.onChangeStore);
@@ -121,6 +138,9 @@ const App = React.createClass({
     window.removeEventListener('resize', () => {
       this.getViewportDimensions();
     });
+    // window.removeEventListener('orientationchange', () => {
+    //   this.getViewportDimensions();
+    // });
   },
 
   onChangeStore(state) {
@@ -288,7 +308,6 @@ const App = React.createClass({
               heroVideoReady={heroVideoReady}
               viewportDimensions={viewportDimensions}
             />
-            <Footer data={footer} studios={studios} currentPage={currentPage}/>
           </PageContainer>
           {this.renderModal()}
           {this.renderPopup()}

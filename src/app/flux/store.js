@@ -32,7 +32,6 @@ const _state = Object.assign({
   archivedEventsPagination: Defaults.archivedEventsPagination,
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
   venturesPosition: Defaults.venturesPosition,
-  isVenturesInView: Defaults.isVenturesInView,
   heroVideoReady: Defaults.heroVideoReady,
   homeIntroVideoViewed: Defaults.homeIntroVideoViewed,
   homeLoaderShown: Defaults.homeLoaderShown,

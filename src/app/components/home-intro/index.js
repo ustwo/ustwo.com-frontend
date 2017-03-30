@@ -38,16 +38,8 @@ function renderLogoBackground(screenPosition, isMobile) {
 
 class HomeIntro extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      height: this.props.viewportDimensions.height
-    }
-  }
-
   render() {
-    const { scrollProgress, screenPosition, loaded, isMobile, popup, viewportDimensions, fixedHeightOnLoad } = this.props;
+    const { scrollProgress, screenPosition, loaded, isMobile, popup, viewportDimensions, currentPage, studios, footer } = this.props;
 
     let playVideo = loaded;
     if (scrollProgress > 0.5 || !!popup) {
@@ -73,12 +65,8 @@ class HomeIntro extends Component {
       transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
     };
 
-    const styles = {
-      height: fixedHeightOnLoad
-    }
-
     return (
-      <div className="home-intro" style={styles}>
+      <div className="home-intro">
         <Video
           src={src}
           isVideoBackground={true}

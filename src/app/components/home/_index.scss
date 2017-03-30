@@ -55,9 +55,44 @@
   background-color: $offWhite;
 }
 
+.home-pinned-header-wrapper {
+  height: 100%;
+	// width: 100%;
+  top: auto;
+  left: auto;
+  bottom: auto;
+  right: auto;
+  margin: 0px;
+  display: block;
+  position: relative;
+  box-sizing: content-box;
+  // min-height: 790px;
+  // height: 790px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.home-pinned-header-inner {
+  position: fixed;
+  margin: auto;
+  top: 0px;
+  left: 0px;
+  bottom: auto;
+  right: auto;
+  box-sizing: border-box;
+  height: 100%;
+}
+
 /* Transitions around venturesActive */
 .page-home-content {
   backface-visibility: hidden;
+
+  .scrollmagic-pin-spacer {
+    &,
+    > div {
+      height: 100%;
+    }
+  }
 
   .home-ventures-wrapper-bg,
   .scroll-wrapper-home-carousel-products,

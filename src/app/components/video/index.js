@@ -9,58 +9,56 @@ class Video extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      canPlayMobileVideo: true
-    }
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.video) {
       if (nextProps.play) {
         this.video.play();
+
+        // this.setState({ videoPlaying: this.video.play })
+
+        // console.log('playing' + this.video.play());
+
       } else {
         this.video.pause();
       }
     }
   }
 
+  // componentWillMount() {
+  //   if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+  //     this.setState({
+  //       // See if playsInline attribute is valid (i.e. anything before iOS10)
+  //       // canPlayMobileVideo: 'playsInline' in document.createElement('video')
+  //       canPlayMobileVideo: false
+  //     });
+  //   }
+  // }
+
   componentDidMount() {
     const { heroVideo, isMobile } = this.props;
 
-    if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
-      this.setState({
-        // See if playsInline attribute is valid (i.e. anything before iOS10)
-        canPlayMobileVideo: 'playsInline' in document.createElement('video')
-      });
-    }
     if (heroVideo) {
-      if (isMobile) {
-        Flux.heroVideoReady(true);
-      } else {
-        if (this.video.readyState != 4) {
-          this.video.addEventListener('canplaythrough', () => {
-            Flux.heroVideoReady(true);
-          }, false);
-        } else {
-          Flux.heroVideoReady(true);
-        }
-      }
+      Flux.heroVideoReady(true);
+
+
+
+      // if (isMobile) {
+      // } else {
+      //   if (this.video.readyState != 4) {
+      //     this.video.addEventListener('canplaythrough', () => {
+      //       Flux.heroVideoReady(true);
+      //     }, false);
+      //   } else {
+      //     Flux.heroVideoReady(true);
+      //   }
+      // }
     }
   }
 
   componentWillUnmount() {
     Flux.heroVideoReady(false);
-  }
-
-  render() {
-    const { isVideoBackground } = this.props;
-
-    if(isVideoBackground) {
-      return this.renderVideoBackground();
-    } else {
-      return this.renderVideoEmbed();
-    }
   }
 
   renderVideoEmbed() {
@@ -100,6 +98,8 @@ class Video extends Component {
       styles = { backgroundImage: `url(${imageCSS})` }
     }
     const classes = classnames('videoBackground', { imageCSS });
+
+    /* This is before video plays - should show the first frame */
     const fallback = isMobile ? <img className="video-mobile-fallback" src={imageCSS} /> : null;
 
     return (
@@ -122,7 +122,7 @@ class Video extends Component {
     const preloadAttribute = preload ? preload : 'auto';
 
     let video;
-    if(src && src.length && this.state.canPlayMobileVideo) {
+    if(src && src.length) {
       video = (
         <video
           ref={(ref) => this.video = ref}
@@ -138,6 +138,16 @@ class Video extends Component {
     }
 
     return video;
+  }
+
+  render() {
+    const { isVideoBackground } = this.props;
+
+    if(isVideoBackground) {
+      return this.renderVideoBackground();
+    } else {
+      return this.renderVideoEmbed();
+    }
   }
 
 };

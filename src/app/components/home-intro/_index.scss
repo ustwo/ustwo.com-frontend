@@ -7,6 +7,11 @@
 .scroll-wrapper-home-intro {
   padding: 0;
   background-color: $offWhite;
+  height: 100%;
+
+  .scroll-wrapper-inner {
+    height: 100%;
+  }
 }
 
 .home-welcome-wrapper {
@@ -15,11 +20,12 @@
 
 .home-intro-link {
   display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  height: 100%;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
 }
 
 .home-intro {

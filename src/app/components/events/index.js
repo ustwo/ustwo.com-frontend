@@ -17,6 +17,7 @@ import ArchivedEventsListItem from 'app/components/events-archived-list-item';
 import LoadMoreButton from 'app/components/load-more-button';
 import LoadingIcon from 'app/components/loading-icon';
 import getFeaturedImage from 'app/lib/get-featured-image';
+import Footer from 'app/components/footer';
 
 const PageEvents = React.createClass({
   getInitialState() {
@@ -174,7 +175,9 @@ const PageEvents = React.createClass({
       eventsPagination,
       eventsPaginationTotal,
       archivedEventsPagination,
-      archivedEventsPaginationTotal } = this.props;
+      archivedEventsPaginationTotal,
+      currentPage,
+      footer } = this.props;
     const classes = classnames('page-events', this.props.className, {
       loading: isLoadingInitialEvents || isLoadingStudioEvents
     });
@@ -202,6 +205,7 @@ const PageEvents = React.createClass({
           onClick={this.onClickLoadMoreArchivedEvents}
           disabled={archivedEventsPagination >= archivedEventsPaginationTotal}
         />
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
       </article>
     );
 	}

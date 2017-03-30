@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import window from 'app/adaptors/server/window';
 
 import EntranceTransition from 'app/components/entrance-transition';
 import WordAnimation from 'app/components/word-animation';
@@ -8,6 +9,14 @@ import Rimage from 'app/components/rimage';
 import Track from 'app/adaptors/server/track';
 
 class Hero extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      height: window.innerHeight
+    }
+  }
 
   renderImage() {
     const { sizes, altText, transitionImage } = this.props;
@@ -60,7 +69,7 @@ class Hero extends Component {
   }
 
   render() {
-    const { className, title, children, scrollProgress, eventLabel, notFullScreen, fixedHeightOnLoad } = this.props;
+    const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions } = this.props;
     let titleStyle;
     if (scrollProgress) {
       titleStyle = {
@@ -71,7 +80,9 @@ class Hero extends Component {
     const sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
     const classes = classnames('hero', className, { notFullScreen });
 
-    const styles = fixedHeightOnLoad ? { height: `${fixedHeightOnLoad}px` } : null;
+    const styles = {
+      height: `${this.state.height}px`
+    };
 
     return (
       <section className={classes} style={styles}>

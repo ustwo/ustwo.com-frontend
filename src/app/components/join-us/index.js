@@ -21,6 +21,7 @@ import StudioJobs from 'app/components/studio-jobs';
 import Rimage from 'app/components/rimage';
 import Video from 'app/components/video';
 import Flux from 'app/flux';
+import Footer from 'app/components/footer';
 
 function getSelectedStudio(studioSlugFromUrl, studioSlugs) {
   let selected = 'london';
@@ -33,7 +34,7 @@ function getSelectedStudio(studioSlugFromUrl, studioSlugs) {
 const PageJoinUs = React.createClass({
   mixins: [getScrollTrackerMixin('join-us')],
   render() {
-    const { page, currentParams, studios } = this.props;
+    const { page, currentParams, studios, currentPage, footer } = this.props;
     const classes = classnames('page-join-us', this.props.className);
     const image = getFeaturedImage(page);
     const studioSlugFromUrl = get(currentParams, 'lid');
@@ -56,6 +57,7 @@ const PageJoinUs = React.createClass({
             WORKABLE_LIST: this.getJobSectionRenderer(selectedStudioSlug)
           }
         })}
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
       </article>
     );
   },

@@ -14,6 +14,7 @@ import HomeMoreMessage from 'app/components/home-more-message';
 import HomeSmorgasbordMessage from 'app/components/home-smorgasbord-message';
 import HomeSmorgasbord from 'app/components/home-smorgasbord';
 import ContactBlock from 'app/components/contact-block';
+import Footer from 'app/components/footer';
 
 class PageHome extends Component {
 
@@ -44,9 +45,10 @@ class PageHome extends Component {
     this.getVenturesPosition();
 
     // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
-    this.homeContent.addEventListener('resize', () => {
+    window.addEventListener('resize', () => {
       this.getVenturesPosition();
-    });
+    }, false);
+
   }
 
   componentWillUnmount() {
@@ -56,7 +58,7 @@ class PageHome extends Component {
   }
 
   render() {
-    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, fixedHeightOnLoad } = this.props;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, footer, studios, currentPage } = this.props;
     const { venturesPosition } = this.state;
 
     const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
@@ -65,10 +67,6 @@ class PageHome extends Component {
       venturesActive: venturesActive, // venturesActive shows or hides the dark background depending on when it falls in/out of view
       loaded: loaded
     });
-
-    const mainContentstyles = {
-      marginTop: `${fixedHeightOnLoad}px`
-    }
 
     // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
     const textBlockIntro = {
@@ -87,17 +85,21 @@ class PageHome extends Component {
     return (
       <article className={classes} ref={(ref) => this.homeContent = ref}>
 
-        <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
-          <ScrollWrapper
-            component={<HomeIntro viewportDimensions={viewportDimensions} scrolling={scrolling} loaded={loaded} isMobile={isMobile} popup={popup} fixedHeightOnLoad={fixedHeightOnLoad} />}
-            documentScrollPosition={documentScrollPosition}
-            viewportDimensions={viewportDimensions}
-            requireScreenPosition={true}
-            className="scroll-wrapper-home-intro"
-          />
-        </Link>
+        <div className="home-pinned-header-wrapper">
+          <div className="home-pinned-header-inner">
+            <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
+              <ScrollWrapper
+                component={<HomeIntro viewportDimensions={viewportDimensions} scrolling={scrolling} loaded={loaded} isMobile={isMobile} popup={popup} />}
+                documentScrollPosition={documentScrollPosition}
+                viewportDimensions={viewportDimensions}
+                requireScreenPosition={true}
+                className="scroll-wrapper-home-intro"
+              />
+            </Link>
+          </div>
+        </div>
 
-        <div className="home-main-content-wrapper" style={mainContentstyles}>
+        <div className="home-main-content-wrapper">
           <Element name="homeTextBlock" className="home-welcome-wrapper">
             <ScrollWrapper
               component={<HomeTextBlock content={textBlockIntro} />}
@@ -148,6 +150,8 @@ class PageHome extends Component {
         </div>
 
         <ContactBlock />
+
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
 
       </article>
     );

@@ -8,6 +8,7 @@ import WorkItem from 'app/components/work-item';
 import Hero from 'app/components/hero';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import Video from 'app/components/video';
+import Footer from 'app/components/footer';
 
 class PageWork extends Component {
 
@@ -95,7 +96,7 @@ class PageWork extends Component {
   }
 
   render() {
-    const { page, className, loaded, isMobile, fixedHeightOnLoad } = this.props;
+    const { page, className, loaded, isMobile, footer, studios, currentPage } = this.props;
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
@@ -133,7 +134,6 @@ class PageWork extends Component {
           eventLabel='work'
           showDownIndicator={true}
           video={video}
-          fixedHeightOnLoad={fixedHeightOnLoad}
         ></Hero>
 
         {this.renderWhatWeDo()}
@@ -143,6 +143,8 @@ class PageWork extends Component {
         <div className="card-list work-items-list">
           {this.renderCaseStudies(caseStudies)}
         </div>
+
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
 
       </article>
     );

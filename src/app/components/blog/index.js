@@ -18,6 +18,7 @@ import Hero from 'app/components/hero';
 import BlogPostListItem from 'app/components/blog-post-list-item';
 import BlogControls from 'app/components/blog-controls';
 import LoadMoreButton from 'app/components/load-more-button';
+import Footer from 'app/components/footer';
 
 const PageBlog = React.createClass({
   mixins: [getScrollTrackerMixin('blog')],
@@ -141,7 +142,7 @@ const PageBlog = React.createClass({
       isLoadingMorePosts,
       isLoadingCategoryPosts
     } = this.state;
-    const { postsPagination, postsPaginationTotal } = this.props;
+    const { postsPagination, postsPaginationTotal, footer, studios, currentPage } = this.props;
     const { posts } = this.props;
     const classes = classnames('page-blog', this.props.className, {
       categorised: isCategorised,
@@ -149,23 +150,26 @@ const PageBlog = React.createClass({
       empty: posts && !posts.length
     });
 
-    return <article className={classes}>
-      <TransitionManager
-        component="div"
-        className="hero-transition-manager"
-        duration={1000}
-      >
-        {this.renderHero()}
-      </TransitionManager>
-      <section className="card-list blog-post-list">
-        {this.renderPosts()}
-        <LoadMoreButton
-          loading={isLoadingMorePosts}
-          onClick={this.onClickLoadMore}
-          disabled={postsPagination >= postsPaginationTotal}
-        />
-      </section>
-    </article>;
+    return (
+      <article className={classes}>
+        <TransitionManager
+          component="div"
+          className="hero-transition-manager"
+          duration={1000}
+        >
+          {this.renderHero()}
+        </TransitionManager>
+        <section className="card-list blog-post-list">
+          {this.renderPosts()}
+          <LoadMoreButton
+            loading={isLoadingMorePosts}
+            onClick={this.onClickLoadMore}
+            disabled={postsPagination >= postsPaginationTotal}
+          />
+        </section>
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
+      </article>
+    );
   },
 });
 

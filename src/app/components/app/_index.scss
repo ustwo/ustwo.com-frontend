@@ -60,3 +60,12 @@
   @extend .h5;
   margin-bottom: 10px;
 }
+
+
+.app-wrapper,
+.app,
+.app-content,
+.page-content,
+.page-home-content {
+  height: 100%;
+}
