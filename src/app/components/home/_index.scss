@@ -21,6 +21,8 @@
 
 /* Inverted styles on ventures background */
 .home-ventures-wrapper {
+  pointer-events: none;
+
   h1,
   .home-carousel-item-text h2,
   .home-carousel-item-description {

@@ -151,7 +151,7 @@ class HomeCarousel extends Component {
         visualContent = <img src={item.imageURL} className="home-carousel-visual-content-image" />
       } else {
         if (item.videoURL) {
-          visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} preload="metadata" />
+          visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} preload="none" />
         } else {
           visualContent = <div className="home-carousel-visual-content-image" style={{ backgroundImage: `url(${item.imageURL})` }} />
         }
