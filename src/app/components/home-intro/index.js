@@ -62,7 +62,7 @@ class HomeIntro extends Component {
 
     const logoStyles = {
       opacity: (0.75 - scrollProgress) * 4,
-      transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
+      // transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
     };
 
     return (

@@ -43,10 +43,10 @@ const UstwoLogoSequence = React.createClass({
     /* Use change in state to control the 'show' class allowing for css transition in */
     setTimeout(() => {
       this.setState({ show: true });
-    }.bind(this), 1000);
+    }.bind(this), 100);
     setTimeout(() => {
       this.timer = setInterval(this.ticker, tickerFrequency);
-    }.bind(this), 2500);
+    }.bind(this), 1500);
   },
 
   componentWillUnmount() {

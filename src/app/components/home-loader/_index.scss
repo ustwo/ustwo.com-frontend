@@ -3,15 +3,15 @@
  *  Loading the page
  *
  */
-
-html {
-  .home-loader {
-    display: none;
-  }
-  &.js .home-loader {
-    display: flex;
-  }
-}
+//
+// html {
+//   .home-loader {
+//     display: none;
+//   }
+//   &.js .home-loader {
+//     display: flex;
+//   }
+// }
 
 .home-loader {
   width: 100vw;
@@ -34,6 +34,10 @@ html {
 
   .home-intro-logo {
     position: relative;
+
+    > svg {
+      width: 155px;
+    }
 
     .home-loader-sequence {
       fill: white;

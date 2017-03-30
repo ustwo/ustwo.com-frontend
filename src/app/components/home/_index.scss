@@ -81,6 +81,7 @@
   right: auto;
   box-sizing: border-box;
   height: 100%;
+  width: 100%;
 }
 
 /* Transitions around venturesActive */
@@ -131,30 +132,30 @@
   }
 }
 
-.page-home {
-  .app-content {
-    .home-loader {
-      > * {
-        opacity: 0;
-        transition: opacity .2s linear;
-      }
-    }
-
-    &.show {
-      .home-loader {
-        transition: opacity .5s linear;
-
-        > * {
-          opacity: 1;
-        }
-        h1 {
-          transition-delay: .75s;
-        }
-      }
-    }
-  }
-
-}
+// .page-home {
+//   .app-content {
+//     .home-loader {
+//       > * {
+//         opacity: 0;
+//         transition: opacity .2s linear;
+//       }
+//     }
+//
+//     &.show {
+//       .home-loader {
+//         transition: opacity .5s linear;
+//
+//         > * {
+//           opacity: 1;
+//         }
+//         h1 {
+//           transition-delay: .75s;
+//         }
+//       }
+//     }
+//   }
+//
+// }
 .page-home-content {
   .home-loader {
     opacity: 1;

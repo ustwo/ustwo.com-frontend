@@ -96,10 +96,12 @@ const App = React.createClass({
   componentDidMount() {
     const { page, currentPage, post, caseStudy, isScrolling } = this.state;
 
+    document.getElementById('first-view').style.display = 'none';
+    this.setState({ show: true });
+
     /* Animate css in */
-    setTimeout(() => {
-      this.setState({ show: true });
-    }.bind(this), 1000);
+    // setTimeout(() => {
+    // }.bind(this), 1000);
 
     /* Get dimensions of viewport to calculte mousePosition and scrollPosition (for example) */
     window.addEventListener('scroll', getDocumentScrollPosition(this));

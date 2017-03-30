@@ -9,7 +9,9 @@ html {
 }
 
 body {
+  position: relative;
   overflow-x: hidden;
+  background-image: linear-gradient(241deg, #000000, #0e0d10 29%, #322d37);
   background-color: $nonBlack;
 }
 
