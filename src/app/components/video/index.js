@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import Rimage from 'app/components/rimage';
 import Flux from 'app/flux';
+import env from 'app/adaptors/server/env';
 
 const posterURL = "/images/transparent.png";
 
@@ -15,11 +16,6 @@ class Video extends Component {
     if (this.video) {
       if (nextProps.play) {
         this.video.play();
-
-        // this.setState({ videoPlaying: this.video.play })
-
-        // console.log('playing' + this.video.play());
-
       } else {
         this.video.pause();
       }
@@ -40,20 +36,17 @@ class Video extends Component {
     const { heroVideo, isMobile } = this.props;
 
     if (heroVideo) {
-      Flux.heroVideoReady(true);
-
-
-
-      // if (isMobile) {
-      // } else {
-      //   if (this.video.readyState != 4) {
-      //     this.video.addEventListener('canplaythrough', () => {
-      //       Flux.heroVideoReady(true);
-      //     }, false);
-      //   } else {
-      //     Flux.heroVideoReady(true);
-      //   }
-      // }
+      if (env.Modernizr.touchevents) {
+        Flux.heroVideoReady(true);
+      } else {
+        if (this.video.readyState != 4) {
+          this.video.addEventListener('canplaythrough', () => {
+            Flux.heroVideoReady(true);
+          }, false);
+        } else {
+          Flux.heroVideoReady(true);
+        }
+      }
     }
   }
 

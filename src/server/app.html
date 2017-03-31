@@ -26,8 +26,8 @@
         z-index: 99999;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -50,27 +50,55 @@
       #first-view-svg g {
         display: block !important;
       }
+      #first-view h1 {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: calc(50% + 35px);
+        font-family: "PxGrotesk-Regular", "Arial", sans-serif;
+        font-size: 14px;
+        color: rgba(255,255,255,.5);
+        letter-spacing: 0.9px;
+    	  text-align: center;
+        line-height: 1.3;
+      }
       @media screen and (min-width: 375px) {
         #first-view-svg {
           width: 140px;
+        }
+      }
+      @media screen and (min-width: 480px) {
+        #first-view br {
+          display: none;
         }
       }
       @media screen and (min-width: 768px) {
         #first-view-svg {
           width: 155px;
         }
+        #first-view h1 {
+          top: calc(50% + 45px);
+        }
       }
       @media screen and (min-width: 1024px) {
         #first-view-svg {
           width: 190px;
+        }
+        #first-view h1 {
+          top: calc(50% + 52px);
         }
       }
       @media screen and (min-width: 1280px) {
         #first-view-svg {
           width: 225px;
         }
+        #first-view h1 {
+          top: calc(50% + 60px);
+        }
       }
     </style>
+    <script type="text/javascript" src="//use.typekit.com/yeb1wrp.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -97,8 +125,6 @@
         document.documentElement.className += " iPhone";
       }
     </script>
-    <script type="text/javascript" src="//use.typekit.com/yeb1wrp.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   </head>
   <body>
     <div id="first-view">
@@ -110,6 +136,7 @@
           </g>
         </svg>
       </div>
+      <h1>Digital Products, <br />services &amp; businesses</h1>
     </div>
     <div class="app-wrapper"><%= app %></div>
     <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>

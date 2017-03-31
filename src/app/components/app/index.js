@@ -111,10 +111,6 @@ const App = React.createClass({
     window.addEventListener('resize', () => {
         this.getViewportDimensions();
     });
-    // window.addEventListener('orientationchange', () => {
-    //     this.getViewportDimensions();
-    // });
-    // }
 
     Store.on('change', this.onChangeStore);
 

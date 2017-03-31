@@ -38,8 +38,27 @@ function renderLogoBackground(screenPosition, isMobile) {
 
 class HomeIntro extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fixedHeight: window.innerHeight
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', () => {
+      this.setstate({ fixedHeight: window.innerHeight })
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize');
+  }
+
   render() {
     const { scrollProgress, screenPosition, loaded, isMobile, popup, viewportDimensions, currentPage, studios, footer } = this.props;
+    const { fixedHeight } = this.state;
 
     let playVideo = loaded;
     if (scrollProgress > 0.5 || !!popup) {
@@ -65,8 +84,13 @@ class HomeIntro extends Component {
       transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
     };
 
+    let styles;
+    if (env.Modernizr.touchevents) {
+      styles = { height: fixedHeight }
+    }
+
     return (
-      <div className="home-intro">
+      <div className="home-intro" style={styles}>
         <Video
           src={src}
           isVideoBackground={true}
