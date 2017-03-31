@@ -23,7 +23,7 @@ function HomeSmorgasbord({ data }) {
           poster="/images/ustwo-roadshow-first-frame.jpg"
           preload="metadata"
         >
-          <source src={src} />
+          <source src={src} type="video/mp4" />
         </Video>
 
       </div>

@@ -73,6 +73,7 @@ const App = React.createClass({
     state['viewportDimensions'] = {};
     state['isMobile'] = window.innerWidth < 600;
     state['isScrolling'] = false;
+    state['fixedHeight'] = window.innerHeight;
 
     return state;
   },
@@ -94,7 +95,7 @@ const App = React.createClass({
   },
 
   componentDidMount() {
-    const { page, currentPage, post, caseStudy, isScrolling } = this.state;
+    const { page, currentPage, post, caseStudy, isScrolling, fixedHeight } = this.state;
 
     document.getElementById('first-view').style.display = 'none';
     this.setState({ show: true });
@@ -109,8 +110,16 @@ const App = React.createClass({
     /* Get new dimensions when device orientationchange etc */
     // if (!isScrolling) {
     window.addEventListener('resize', () => {
-        this.getViewportDimensions();
+      this.getViewportDimensions();
     });
+
+    window.addEventListener('orientationchange', () => {
+      this.setstate({ fixedHeight: window.innerHeight });
+    });
+
+    if (env.Modernizr.touchevents) {
+      document.body.style.height = `${fixedHeight}px`;
+    }
 
     Store.on('change', this.onChangeStore);
 

@@ -45,10 +45,6 @@ class PageWork extends Component {
       renderContent = workProcess;
     }
 
-    // const styles = {
-    //   marginTop: `${this.props.fixedHeightOnLoad}px`
-    // }
-
     return (
       <div className="work-whatwedo">
         <div className="work-intro">

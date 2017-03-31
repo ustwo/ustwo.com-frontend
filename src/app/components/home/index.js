@@ -58,7 +58,7 @@ class PageHome extends Component {
   }
 
   render() {
-    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, footer, studios, currentPage } = this.props;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, footer, studios, currentPage, fixedHeight } = this.props;
     const { venturesPosition } = this.state;
 
     const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
@@ -89,7 +89,7 @@ class PageHome extends Component {
           <div className="home-pinned-header-inner">
             <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
               <ScrollWrapper
-                component={<HomeIntro viewportDimensions={viewportDimensions} scrolling={scrolling} loaded={loaded} isMobile={isMobile} popup={popup} />}
+                component={<HomeIntro viewportDimensions={viewportDimensions} scrolling={scrolling} loaded={loaded} isMobile={isMobile} popup={popup} fixedHeight={fixedHeight} />}
                 documentScrollPosition={documentScrollPosition}
                 viewportDimensions={viewportDimensions}
                 requireScreenPosition={true}

@@ -38,27 +38,8 @@ function renderLogoBackground(screenPosition, isMobile) {
 
 class HomeIntro extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      fixedHeight: window.innerHeight
-    }
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', () => {
-      this.setstate({ fixedHeight: window.innerHeight })
-    });
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize');
-  }
-
   render() {
-    const { scrollProgress, screenPosition, loaded, isMobile, popup, viewportDimensions, currentPage, studios, footer } = this.props;
-    const { fixedHeight } = this.state;
+    const { scrollProgress, screenPosition, loaded, isMobile, popup, viewportDimensions, currentPage, studios, footer, fixedHeight } = this.props;
 
     let playVideo = loaded;
     if (scrollProgress > 0.5 || !!popup) {
@@ -99,6 +80,7 @@ class HomeIntro extends Component {
           heroVideo={true}
           isMobile={isMobile}
           preload="auto"
+          fixedHeight={fixedHeight}
         />
         <div className="home-intro-logo" style={logoStyles}>
           <div className="home-intro-logo-wrapper">

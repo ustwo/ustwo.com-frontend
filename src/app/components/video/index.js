@@ -84,12 +84,16 @@ class Video extends Component {
   }
 
   renderVideoBackground() {
-    const { imageCSS, isMobile } = this.props;
+    const { imageCSS, isMobile, fixedHeight } = this.props;
 
     let styles;
     if (imageCSS && !isMobile) {
       styles = { backgroundImage: `url(${imageCSS})` }
     }
+    if (env.Modernizr.touchevents) {
+      styles = { height: fixedHeight }
+    }
+
     const classes = classnames('videoBackground', { imageCSS });
 
     /* This is before video plays - should show the first frame */
