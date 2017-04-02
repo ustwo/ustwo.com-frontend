@@ -49,35 +49,45 @@ $nav-height-large: 30px;
     padding: 27px 0;
   }
 
-  button {
+  &.notSticky {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.navigation-button {
+  display: flex;
+
+  > div {
+    pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .logo {
-    overflow: hidden;
-    cursor: pointer;
-
-    svg {
-      vertical-align: bottom;
-      fill: $nonBlack;
-      width: 100px;
-      transition: fill .2s linear;
-      height: $nav-height-small;
-
-      @media screen and (min-width: $bp-medium) {
-        height: $nav-height-medium;
-      }
-      @media screen and (min-width: $bp-large) {
-        height: $nav-height-large;
-      }
-    }
-  }
-
-  &.notSticky {
-    opacity: 0;
+  .svg-sequence {
     pointer-events: none;
+  }
+}
+
+.navigation-logo {
+  overflow: hidden;
+  cursor: pointer;
+
+  svg {
+    pointer-events: none;
+    vertical-align: bottom;
+    fill: $nonBlack;
+    width: 100px;
+    transition: fill .2s linear;
+    height: $nav-height-small;
+
+    @media screen and (min-width: $bp-medium) {
+      height: $nav-height-medium;
+    }
+    @media screen and (min-width: $bp-large) {
+      height: $nav-height-large;
+    }
   }
 }
 
@@ -95,6 +105,7 @@ $nav-height-large: 30px;
 }
 
 .navigation-toggle-main {
+  pointer-events: none;
   position: relative;
   z-index: 1;
   pointer-events: none; /* Fixes intermittent issue on touch devices? */
@@ -206,7 +217,7 @@ $nav-height-large: 30px;
   &.invert,
   &.menuOpen,
   &.overHero:not(.home) {
-    .logo svg {
+    .navigation-logo svg {
       fill: white;
     }
     .navigation-toggle-main {
