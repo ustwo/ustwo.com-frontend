@@ -143,9 +143,7 @@ const App = React.createClass({
     window.removeEventListener('resize', () => {
       this.getViewportDimensions();
     });
-    // window.removeEventListener('orientationchange', () => {
-    //   this.getViewportDimensions();
-    // });
+    window.removeEventListener('orientationchange');
   },
 
   onChangeStore(state) {
@@ -249,8 +247,6 @@ const App = React.createClass({
         document.body.style.position = "initial";
       }
     }
-
-    console.log('app: ' + loaded);
 
     const navigation = (
       <Navigation

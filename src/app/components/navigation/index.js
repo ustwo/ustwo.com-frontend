@@ -29,8 +29,6 @@ class Navigation extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.loaded)
-
     if (nextProps.loaded) {
       this.setState({ paused: false });
 

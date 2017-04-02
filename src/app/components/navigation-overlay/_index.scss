@@ -45,7 +45,7 @@
   right: 0;
   bottom: 0;
   opacity: 0;
-  transition: opacity .2s linear;
+  transition: opacity .32s ease-in-out;
 
   &.hovered {
     opacity: 1;
@@ -154,9 +154,14 @@ $menu-transition-item-delay: .15s;
     width: 8px;
     height: 8px;
     left: -16px;
+    margin-top: -4px;
     top: 50%;
-    transform: translateY(-50%);
     border-radius: 50%;
+    border: 2px solid white;
+    transform: scale(0);
+    opacity: 0;
+    transition: .5s ease-in-out;
+    transform-origin: 50% 50%;
   }
 
   @media screen and (min-width: $bp-medium) {
@@ -164,6 +169,7 @@ $menu-transition-item-delay: .15s;
       width: 13px;
       height: 13px;
       left: -28px;
+      margin-top: -6px;
     }
   }
 
@@ -172,18 +178,22 @@ $menu-transition-item-delay: .15s;
       width: 15px;
       height: 15px;
       left: -30px;
+      margin-top: -7px;
     }
   }
 
   &:hover {
     &:before {
-      border: 2px solid white;
+      opacity: 1;
+      transform: scale(1);
     }
   }
 
   &.selected {
     &:before {
+      opacity: 1;
       background-color: white;
+      transform: scale(1);
     }
   }
 
