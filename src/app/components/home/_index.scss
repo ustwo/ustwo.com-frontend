@@ -100,7 +100,7 @@
   .home-ventures-wrapper-bg,
   .scroll-wrapper-home-carousel-products,
   .scroll-wrapper-home-carousel-ventures {
-    perspective: 1000;
+    transform: translate3d(0,0,0);
     transition: opacity .2s linear;
   }
   .home-ventures-wrapper-bg {
