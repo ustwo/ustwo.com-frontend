@@ -66,16 +66,14 @@ function getDocumentScrollPosition(component) {
 const App = React.createClass({
 
   getInitialState() {
-    const state = this.props.state;
-    state['documentScrollPosition'] = 0;
-    state['isScrolling'] = false;
-    state['show'] = false;
-    state['viewportDimensions'] = {};
-    state['isMobile'] = window.innerWidth < 600;
-    state['isScrolling'] = false;
-    state['fixedHeight'] = window.innerHeight;
-
-    return state;
+    return Object.assign({
+      documentScrollPosition: 0,
+      isScrolling: false,
+      show: false,
+      viewportDimensions: {},
+      isMobile: window.innerWidth < 600,
+      fixedHeight: window.innerHeight
+    }, this.props.state);
   },
 
   getViewportDimensions() {
@@ -226,7 +224,7 @@ const App = React.createClass({
   render() {
     const state = this.state;
     const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions, homeIntroVideoViewed, homeLoaderShown,
-      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow, isMobile } = this.state;
+      page, post, caseStudy, navMain, documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow, isMobile, loaded } = this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
       'show': show,
@@ -252,6 +250,8 @@ const App = React.createClass({
       }
     }
 
+    console.log('app: ' + loaded);
+
     const navigation = (
       <Navigation
         pages={navMain}
@@ -262,6 +262,7 @@ const App = React.createClass({
         venturesPosition={venturesPosition}
         modal={modal}
         viewportDimensions={viewportDimensions}
+        loaded={loaded}
       />
     );
 

@@ -24,15 +24,13 @@ function SVGSequenceAnimation(props) {
 
       if (autoAnim) {
         setTimeout(this.anim, autoAnim);
-      } else {
-        this.anim();
-      }
-
-      if (this.state.fadeInDuration > 0) {
+      } else if (this.state.fadeInDuration > 0) {
         for (let i = 1; i <= this.state.fadeInDuration; i++) {
           // TODO: add tween function support
           svgElement.getElementById(this.state.frameName + i).style.opacity = i / this.state.fadeInDuration;
         }
+      } else {
+        this.anim();
       }
 
       this.resetAnim();

@@ -25,7 +25,19 @@ class Navigation extends Component {
   componentDidMount() {
     this.setState({
       height: this.navigation.getBoundingClientRect().height
-    })
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.loaded)
+
+    if (nextProps.loaded) {
+      this.setState({ paused: false });
+
+      setTimeout(() => {
+        this.setState({ paused: true });
+      }, 1000);
+    }
   }
 
   toggleMenu() {
@@ -63,7 +75,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions, pageLoading } = this.props;
+    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions } = this.props;
 
     const venturesActive = venturesPosition && (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
 
@@ -72,7 +84,6 @@ class Navigation extends Component {
       invert: venturesActive,
       overHero: documentScrollPosition < viewportDimensions.height - this.state.height, // Assuming hero is 100% height at the top of the screen,
       menuOpen: modal === 'menu',
-      pageLoading: pageLoading,
       takeover
     });
 
