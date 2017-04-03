@@ -5,7 +5,18 @@
  *
  */
 
+ .scroll-wrapper-work-hero {
+   padding: 0;
+   background-color: $offWhite;
+   height: 100%;
+
+   .scroll-wrapper-inner {
+     height: 100%;
+   }
+ }
+
 .page-work {
+  height: 100%;
 
   h2 {
     @extend .h3;
@@ -75,33 +86,4 @@
   @media screen and (min-width: $bp-large) {
     display: block;
   }
-}
-
-.work-process {
-  justify-content: space-between;
-
-  @media screen and (min-width: $bp-large) {
-    display: flex;
-  }
-}
-
-.work-process-item {
-  background-color: white;
-  padding: 20px;
-  @include box-shadow();
-  margin-top: 20px;
-  margin-bottom: 40px;
-  margin-left: 6vw; /* This is to replacement the core-gutter mixin (left/right percentage padding) */
-  margin-right: 6vw;
-
-  @media screen and (min-width: $bp-large) {
-    width: 30%;
-  }
-}
-
-.work-process {
-  overflow: hidden;
-  visibility: visible;
-  position: relative;
-  margin-bottom: 95px;
 }

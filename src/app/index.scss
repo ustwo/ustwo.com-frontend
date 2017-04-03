@@ -19,6 +19,9 @@
 @import "lib/react-html5video";
 
 /* Components */
+@import "components/scroll-wrapper/index";
+@import "components/loader-wrapper/index";
+@import "components/page-content/index";
 @import "components/app/index";
 @import "components/close-button/index";
 @import "components/loading-icon/index";
@@ -82,10 +85,6 @@
 @import "components/home-new/index";
 @import "components/frames-ustwo-logo/index";
 @import "components/carousel/index";
-
-@import "components/scroll-wrapper/index";
-@import "components/page-content/index";
-@import "components/loader-wrapper/index";
 
 @import "components/home/index";
 @import "components/home-intro/index";

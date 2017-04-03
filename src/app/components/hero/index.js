@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import window from 'app/adaptors/server/window';
+import env from 'app/adaptors/server/env';
 
 import EntranceTransition from 'app/components/entrance-transition';
 import WordAnimation from 'app/components/word-animation';
@@ -9,14 +10,6 @@ import Rimage from 'app/components/rimage';
 import Track from 'app/adaptors/server/track';
 
 class Hero extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      height: window.innerHeight
-    }
-  }
 
   renderImage() {
     const { sizes, altText, transitionImage } = this.props;
@@ -69,30 +62,31 @@ class Hero extends Component {
   }
 
   render() {
-    const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions } = this.props;
-    let titleStyle;
+    const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions, fixedHeight } = this.props;
+    let transitionStyles;
     if (scrollProgress) {
-      titleStyle = {
-        opacity: 1 - scrollProgress,
-        transform: `translate3d(0, ${35 * scrollProgress}vh, 0)`
-      }
+      transitionStyles = {
+        opacity: (0.75 - scrollProgress) * 4,
+        transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
+      };
     }
     const sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
     const classes = classnames('hero', className, { notFullScreen });
 
-    const styles = {
-      height: `${this.state.height}px`
-    };
+    let styles;
+    if (fixedHeight && env.Modernizr.touchevents) {
+      styles = { height: fixedHeight }
+    }
 
     return (
-      <section className={classes} style={styles}>
+      <section className={classes} styles={styles}>
         <div className="hero-inner-wrapper">
           {this.renderLogo()}
           <EntranceTransition className="title-entrance">
-            <div className="section-title">
+            <div className="section-title" style={transitionStyles}>
               <WordAnimation delay={0.32} duration={0.2}>{sectionTitle}</WordAnimation>
             </div>
-            <h1 className="title" style={titleStyle}>
+            <h1 className="title" style={transitionStyles}>
               <WordAnimation delay={0.5} duration={0.32}>{title}</WordAnimation>
             </h1>
             {this.renderSubheading()}

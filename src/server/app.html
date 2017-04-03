@@ -18,8 +18,8 @@
     <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png">
     <style>
       body {
-        background-image: linear-gradient(241deg, #000000, #0e0d10 29%, #322d37);
         background: #111;
+        background-image: linear-gradient(241deg, #000000, #0e0d10 29%, #322d37);
       }
       #first-view {
         position: absolute;
@@ -31,7 +31,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-image: linear-gradient(241deg, #000000, #0e0d10 29%, #322d37);
         color: white;
       }
       .app-wrapper {
@@ -50,18 +49,6 @@
       #first-view-svg g {
         display: block !important;
       }
-      #first-view h1 {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        top: calc(50% + 35px);
-        font-family: "PxGrotesk-Regular", "Arial", sans-serif;
-        font-size: 14px;
-        color: rgba(255,255,255,.5);
-        letter-spacing: 0.9px;
-    	  text-align: center;
-        line-height: 1.3;
-      }
       @media screen and (min-width: 375px) {
         #first-view-svg {
           width: 140px;
@@ -76,24 +63,15 @@
         #first-view-svg {
           width: 155px;
         }
-        #first-view h1 {
-          top: calc(50% + 45px);
-        }
       }
       @media screen and (min-width: 1024px) {
         #first-view-svg {
           width: 190px;
         }
-        #first-view h1 {
-          top: calc(50% + 52px);
-        }
       }
       @media screen and (min-width: 1280px) {
         #first-view-svg {
           width: 225px;
-        }
-        #first-view h1 {
-          top: calc(50% + 60px);
         }
       }
     </style>
@@ -136,7 +114,6 @@
           </g>
         </svg>
       </div>
-      <h1>Digital Products, <br />services &amp; businesses</h1>
     </div>
     <div class="app-wrapper"><%= app %></div>
     <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>

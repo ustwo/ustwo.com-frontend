@@ -29,7 +29,7 @@ class Navigation extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.loaded) {
+    if (nextProps.loaded != this.props.loaded) {
       this.setState({ paused: false });
 
       setTimeout(() => {

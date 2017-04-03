@@ -41,6 +41,7 @@ $nav-height-large: 30px;
   transition: opacity .2s ease-in-out;
 
   &:before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -67,6 +68,7 @@ $nav-height-large: 30px;
 
 .navigation-button {
   display: flex;
+  z-index: 1;
 
   > div {
     pointer-events: none;

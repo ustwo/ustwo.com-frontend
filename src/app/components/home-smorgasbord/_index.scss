@@ -7,16 +7,18 @@
 .scroll-wrapper-home-smorgasbord {
   height: auto;
   background-image: url('/images/juicy-icon-loop.gif');
-  background-position: 50% calc(100% - 80px);
+  background-position: 50% calc(100% - 50px);
   background-repeat: no-repeat;
   background-size: 64px 64px;
   max-width: 1100px;
   margin: 0 auto;
+
+  @media screen and (min-width: $bp-medium) {
+    padding-bottom: 15%;
+  }
 }
 
 .home-smorgasbord {
-  padding: 0 0 100px 0;
-
   h1 {
     margin-bottom: 30vh;
   }
@@ -42,6 +44,10 @@
 
 .smorgasbord-video {
   position: relative;
+
+  > div {
+    line-height: 0;
+  }
 }
 
 .smorgasbord-blog,

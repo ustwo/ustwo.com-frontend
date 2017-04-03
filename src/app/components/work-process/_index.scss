@@ -3,6 +3,45 @@
  *
  */
 
+
+.work-process {
+  justify-content: space-between;
+  overflow: hidden;
+  visibility: visible;
+  position: relative;
+  margin-bottom: 95px;
+
+  @media screen and (min-width: $bp-large) {
+    @include core-gutter();
+    display: flex;
+  }
+}
+
+.work-process-item {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  margin-left: 6vw; /* This is to replacement the core-gutter mixin (left/right percentage padding) */
+  margin-right: 6vw;
+
+  @media screen and (min-width: $bp-large) {
+    width: 30%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  h2 {
+    margin-bottom: 15px;
+  }
+}
+
+.work-process.touchDevice {
+  .work-process-item {
+    @include box-shadow();
+    background-color: white;
+  }
+}
+
 .work-process-pagination {
   display: flex;
   justify-content: center;

@@ -90,7 +90,7 @@ class Video extends Component {
     if (imageCSS && !isMobile) {
       styles = { backgroundImage: `url(${imageCSS})` }
     }
-    if (env.Modernizr.touchevents) {
+    if (fixedHeight && env.Modernizr.touchevents) {
       styles = { height: fixedHeight }
     }
 

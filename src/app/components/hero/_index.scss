@@ -10,11 +10,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 
   .hero-inner-wrapper {
     @include core-layout();
     width: 100%;
+    height: 100%;
     // max-width: $grid-max-width;
     position: absolute;
     top: 0;
@@ -25,6 +26,7 @@
   }
 
   .videoBackground {
+    height: 100%;
     max-width: none;
   }
 

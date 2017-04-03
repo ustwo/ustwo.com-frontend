@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactSwipe from 'react-swipe';
+import classnames from 'classnames';
 import { kebabCase } from 'lodash';
+import env from 'app/adaptors/server/env';
 
 class WorkProcess extends Component {
 
@@ -14,7 +16,7 @@ class WorkProcess extends Component {
   }
 
   componentDidMount() {
-    if (this.props.isMobile) {
+    if (env.Modernizr.touchevents) {
       this.setState({
         numberOfSlides: this.carousel.getNumSlides(),
         currentSlide: this.carousel.getPos()
@@ -44,15 +46,17 @@ class WorkProcess extends Component {
     });
 
     let renderContent;
-    if (isMobile) {
+    if (env.Modernizr.touchevents) {
+
       const swipeOptions = {
         speed: 300,
         disableScroll: true,
-        continuous: true,
-        transitionEnd: function(index, elem) {
-          this.setState({
-            currentSlide: this.carousel.getPos()
-          });
+        continuous: false,
+        callback: () => {
+          console.log('lock scroll')
+        },
+        transitionEnd: (i) => {
+          this.setState({ currentSlide: i })
         }
       };
 
@@ -69,9 +73,13 @@ class WorkProcess extends Component {
         );
       }
 
+      const classes = classnames('work-process', {
+        touchDevice: env.Modernizr.touchevents
+      });
+
       renderContent = (
-        <div className="work-process">
-          <ReactSwipe key={3} callback={this.onSlide} className="carousel" id='carouselId' ref={(ref) => this.carousel = ref} swipeOptions={{continuous: false}}>
+        <div className={classes}>
+          <ReactSwipe key={3} callback={this.onSlide} className="carousel" id='carouselId' ref={(ref) => this.carousel = ref} swipeOptions={swipeOptions}>
             {workProcess}
           </ReactSwipe>
           <ul className="work-process-pagination">
