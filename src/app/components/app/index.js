@@ -9,6 +9,7 @@ import { get } from 'lodash';
 import find from 'lodash/collection/find';
 import includes from 'lodash/collection/includes';
 import Flux from 'app/flux';
+import disableScroll from 'app/lib/disable-scroll';
 
 // TODO: see if there's a better way to get fonts in
 import 'app/adaptors/server/localfont';
@@ -93,7 +94,7 @@ const App = React.createClass({
   },
 
   componentDidMount() {
-    const { page, currentPage, post, caseStudy, isScrolling, fixedHeight } = this.state;
+    const { page, currentPage, post, caseStudy, isScrolling, fixedHeight, modal, popup, overflow } = this.state;
 
     document.getElementById('first-view').style.display = 'none';
     this.setState({ show: true });
@@ -127,6 +128,18 @@ const App = React.createClass({
     //     document.documentElement.innerHTML = document.documentElement.innerHTML;
     //   }
     // }, false);
+  },
+
+  componentDidUpdate(prevProps, prevState) {
+    const { modal, popup, overflow } = this.state;
+
+    if (prevState.modal != modal || prevState.popup != popup || prevState.overflow != overflow) {
+      if (modal || popup || overflow === 'hidden') {
+        disableScroll.on();
+      } else if (modal === null || popup === null || overflow === 'auto') {
+        disableScroll.off();
+      }
+    }
   },
 
   // componentDidUpdate(prevProps, prevState) {
@@ -235,18 +248,18 @@ const App = React.createClass({
       'disabled': !!modal,
       'mobile-no-scroll': modal || this.showTakeover(),
     });
-    if (!!modal || !!popup || overflow === 'hidden') {
-      document.body.style.overflow = "hidden";
-    } else if (modal === null || popup === null || overflow === 'auto') {
-      document.body.style.overflow = "auto";
-    }
-    if (isMobile) {
-      if (overflow === 'hidden') {
-        document.body.style.position = "fixed";
-      } else if (overflow === 'auto') {
-        document.body.style.position = "initial";
-      }
-    }
+
+    // else if (modal === null || popup === null || overflow === 'auto') {
+    //   // document.body.style.overflow = "auto";
+    //   noScroll.off();
+    // }
+    // if (isMobile) {
+    //   if (overflow === 'hidden') {
+    //     document.body.style.position = "fixed";
+    //   } else if (overflow === 'auto') {
+    //     document.body.style.position = "initial";
+    //   }
+    // }
 
     const navigation = (
       <Navigation

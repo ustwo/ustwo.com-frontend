@@ -53,7 +53,7 @@ class WorkProcess extends Component {
         disableScroll: true,
         continuous: false,
         callback: () => {
-          console.log('lock scroll')
+          console.log('swipe')
         },
         transitionEnd: (i) => {
           this.setState({ currentSlide: i })
