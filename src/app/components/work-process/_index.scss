@@ -1,0 +1,23 @@
+/*
+ *  WORK PROCESS
+ *
+ */
+
+.work-process-pagination {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+
+  > li {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    opacity: .2;
+    margin: 0 8px;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}

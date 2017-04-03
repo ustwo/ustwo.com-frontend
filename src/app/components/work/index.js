@@ -1,49 +1,20 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { get, kebabCase } from 'lodash';
+import { get } from 'lodash';
 import getFeaturedImage from 'app/lib/get-featured-image';
-import ReactSwipe from 'react-swipe';
 
 import WorkItem from 'app/components/work-item';
 import Hero from 'app/components/hero';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import Video from 'app/components/video';
 import Footer from 'app/components/footer';
+import WorkProcess from 'app/components/work-process';
 
 class PageWork extends Component {
 
   renderWhatWeDo() {
+    const { isMobile } = this.props;
     const workIntroExtra = workData.intro.extra.map(item => <p className="work-intro-extra">{item}</p>);
-    const workProcess = workData.process.map(item => {
-      return (
-        <div className={`work-process-item ${kebabCase(item.title)}`}>
-          <img src={item.image} alt={`${item.title} icon`} />
-          <h2>{item.title}</h2>
-          <p>{item.text}</p>
-        </div>
-      );
-    });
-    const swipeOptions = {
-      speed: 300,
-      disableScroll: false,
-      stopPropagation: false,
-      continuous: true
-    };
-
-    const carouselStyle = {
-      wrapper: { width: "100%" }
-    }
-
-    let renderContent;
-    if (this.props.isMobile) {
-      renderContent = (
-        <ReactSwipe className="carousel" swipeOptions={{continuous: false}}>
-          {workProcess}
-        </ReactSwipe>
-      );
-    } else {
-      renderContent = workProcess;
-    }
 
     return (
       <div className="work-whatwedo">
@@ -54,9 +25,7 @@ class PageWork extends Component {
         <div className="work-contact">
           {workData.contact}
         </div>
-        <div className="work-process">
-          {renderContent}
-        </div>
+        <WorkProcess data={workData.process} isMobile={isMobile} />
       </div>
     );
   }
@@ -96,6 +65,8 @@ class PageWork extends Component {
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
+
+    console.log(caseStudies);
 
     let fallbackImage;
     if (isMobile) {

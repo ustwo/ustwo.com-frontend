@@ -78,7 +78,6 @@
 }
 
 .work-process {
-  @include core-gutter('margin');
   justify-content: space-between;
 
   @media screen and (min-width: $bp-large) {
@@ -92,6 +91,8 @@
   @include box-shadow();
   margin-top: 20px;
   margin-bottom: 40px;
+  margin-left: 6vw; /* This is to replacement the core-gutter mixin (left/right percentage padding) */
+  margin-right: 6vw;
 
   @media screen and (min-width: $bp-large) {
     width: 30%;
