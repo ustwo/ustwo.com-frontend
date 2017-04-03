@@ -90,7 +90,9 @@ class WorkProcess extends Component {
     } else {
       renderContent = (
         <div className="work-process">
-          {workProcess}
+          <div className="work-process-wrapper">
+            {workProcess}
+          </div>
         </div>
       );
     }

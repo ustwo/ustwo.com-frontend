@@ -20,12 +20,14 @@ class PageWork extends Component {
 
     return (
       <div className="work-whatwedo">
-        <div className="work-intro">
-          <p className="work-intro-statement">{workData.intro.statement}</p>
-          {workIntroExtra}
-        </div>
-        <div className="work-contact">
-          {workData.contact}
+        <div className="work-whatwedo-wrapper">
+          <div className="work-intro">
+            <p className="work-intro-statement">{workData.intro.statement}</p>
+            {workIntroExtra}
+          </div>
+          <div className="work-contact">
+            {workData.contact}
+          </div>
         </div>
         <WorkProcess data={workData.process} isMobile={isMobile} />
       </div>
@@ -50,6 +52,8 @@ class PageWork extends Component {
       const attachments = get(page, '_embedded.wp:attachment');
       const image = getFeaturedImage(caseStudy, attachments);
       const featured = caseStudies.indexOf(caseStudy) === 0;
+
+
 
       return (
         <WorkItem

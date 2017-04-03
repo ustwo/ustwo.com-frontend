@@ -4,6 +4,12 @@
  *
  */
 
+.scroll-wrapper-work-hero {
+  .scroll-wrapper-inner {
+    max-width: none;
+  }
+}
+
 .hero {
   overflow: hidden;
   position: relative;
