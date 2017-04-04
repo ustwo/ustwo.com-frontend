@@ -53,6 +53,7 @@
 
 .home-main-content-wrapper {
   position: relative;
+  z-index: 1;
   background-color: $offWhite;
 }
 
@@ -71,6 +72,8 @@
   // height: 790px;
   padding-top: 0px;
   padding-bottom: 0px;
+  position: relative;
+  z-index: 1;
 }
 
 .home-pinned-header-inner {
@@ -107,6 +110,7 @@
     z-index: 0;
     left: 0;
     top: 0;
+    visibility: hidden;
     width: 100vw;
     height: 100vh;
     opacity: 0;
@@ -123,6 +127,7 @@
   &.venturesActive {
     .home-ventures-wrapper-bg {
       opacity: 1;
+      visibility: visible;
     }
     .scroll-wrapper-home-carousel-products {
       opacity: 0;

@@ -46,20 +46,17 @@ class HomeIntro extends Component {
       playVideo = false;
     }
 
-    let fallbackImage;
-    if (isMobile) {
-      fallbackImage = '/images/home-header-fallback-mobile.jpg';
-    } else {
-      fallbackImage = '/images/home-header-fallback.jpg';
-    }
+    const hide = scrollProgress === 1;
 
-    let src;
+    let fallbackImage, src;
     if (window.innerWidth < 600) {
       src = 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=165';
       // src = '/images/home/home-mobile.mp4';
+      fallbackImage = '/images/home-header-fallback-mobile.jpg';
     } else {
       src = 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
       // src = '/images/home/home.mp4';
+      fallbackImage = '/images/home-header-fallback.jpg';
     }
 
     const logoStyles = {
@@ -83,6 +80,7 @@ class HomeIntro extends Component {
           isMobile={isMobile}
           preload="auto"
           fixedHeight={fixedHeight}
+          hide={hide}
         />
         <div className="home-intro-logo" style={logoStyles}>
           <div className="home-intro-logo-wrapper">

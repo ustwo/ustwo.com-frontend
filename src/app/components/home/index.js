@@ -23,13 +23,14 @@ class PageHome extends Component {
 
     this.state = {
       venturesPosition: {},
-      venturesActive: false,
     }
   }
 
   // We need to find out viewportDimensions and if ventures is active (therefore know where it is)
   // Update all of it if we resize
   getVenturesPosition() {
+    const { documentScrollPosition, viewportDimensions } = this.props;
+
     const venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
     const venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.props.viewportDimensions.height * 0.5);
 
@@ -37,6 +38,7 @@ class PageHome extends Component {
       from: venturesPositionFromTop,
       to: venturesPositionFromTop + venturesHeight
     }
+
     this.setState({ venturesPosition });
     Flux.venturesPosition(venturesPosition);
   }
@@ -45,28 +47,20 @@ class PageHome extends Component {
     this.getVenturesPosition();
 
     // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
-    window.addEventListener('resize', () => {
-      this.getVenturesPosition();
-    }, false);
-
+    window.addEventListener('resize', this.getVenturesPosition.bind(this), false);
   }
 
   componentWillUnmount() {
-    this.homeContent.removeEventListener('resize', () => {
-      this.getVenturesPosition();
-    });
+    window.removeEventListener('resize', this.getVenturesPosition.bind(this), false);
   }
 
   render() {
     const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, footer, studios, currentPage, fixedHeight } = this.props;
     const { venturesPosition } = this.state;
 
-    const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
+    const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to)
 
-    const classes = classnames('page-home-content', this.props.className, {
-      venturesActive: venturesActive, // venturesActive shows or hides the dark background depending on when it falls in/out of view
-      loaded: loaded
-    });
+    const classes = classnames('page-home-content', this.props.className, { venturesActive, loaded });
 
     // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
     const textBlockIntro = {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Hero from 'app/components/hero';
 import Video from 'app/components/video';
 import SVG from 'app/components/svg';
+import window from 'app/adaptors/server/window';
 
 class WorkHero extends Component {
 
@@ -50,13 +51,15 @@ class WorkHero extends Component {
     const { isMobile, fixedHeight, scrollProgress } = this.props;
 
     let fallbackImage, src;
-    if (isMobile) {
+    if (window.innerWidth < 600) {
       fallbackImage = '/images/work-header-fallback.jpg';
       src = 'https://player.vimeo.com/external/209403984.sd.mp4?s=fa5d1e9fcb9e3f78d55423329a605fc7db82541f&profile_id=164';
     } else {
       fallbackImage = '/images/work-header-fallback.jpg';
       src = 'https://player.vimeo.com/external/209403984.hd.mp4?s=f3eb84f4b6d45960e28df740875cddd9605b8cf6&profile_id=174';
     }
+
+    const hide = scrollProgress === 1;
 
     const video = (
       <Video
@@ -67,6 +70,7 @@ class WorkHero extends Component {
         imageCSS={fallbackImage}
         isMobile={isMobile}
         fixedHeight={fixedHeight}
+        hide={hide}
       />
     );
 

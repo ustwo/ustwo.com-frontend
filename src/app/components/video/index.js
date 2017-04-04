@@ -86,12 +86,12 @@ class Video extends Component {
   renderVideoBackground() {
     const { imageCSS, isMobile, fixedHeight } = this.props;
 
-    let styles;
+    let styles = {};
     if (imageCSS && !isMobile) {
-      styles = { backgroundImage: `url(${imageCSS})` }
+      styles['backgroundImage'] = `url(${imageCSS})`;
     }
     if (fixedHeight && env.Modernizr.touchevents) {
-      styles = { height: fixedHeight }
+      styles['height'] = fixedHeight;
     }
 
     const classes = classnames('videoBackground', { imageCSS });
@@ -115,13 +115,19 @@ class Video extends Component {
   }
 
   renderVideo() {
-    const { src, play, preload } = this.props;
+    const { src, play, preload, hide } = this.props;
     const preloadAttribute = preload ? preload : 'auto';
+
+    let styles;
+    if (hide) {
+      styles = { opacity: 0 };
+    }
 
     let video;
     if(src && src.length) {
       video = (
         <video
+          style={styles}
           ref={(ref) => this.video = ref}
           src={src}
           poster={posterURL}

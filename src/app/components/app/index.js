@@ -49,22 +49,6 @@ const pageMap = {
 
 const spinnerBlacklist = ['legal', 'blog/search-results'];
 
-function getDocumentScrollPosition(component) {
-  return (e) => {
-
-    component.setState({
-      isScrolling: true,
-      documentScrollPosition: document.scrollingElement.scrollTop
-    });
-
-    let timeout = null;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      component.setState({ isScrolling: false });
-    }, 1200);
-  }
-}
-
 const App = React.createClass({
 
   getInitialState() {
@@ -76,6 +60,19 @@ const App = React.createClass({
       isMobile: window.innerWidth < 600,
       fixedHeight: window.innerHeight
     }, this.props.state);
+  },
+
+  getDocumentScrollPosition() {
+    this.setState({
+      isScrolling: true,
+      documentScrollPosition: document.scrollingElement.scrollTop
+    });
+
+    let timeout = null;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      this.setState({ isScrolling: false });
+    }, 1200);
   },
 
   getViewportDimensions() {
@@ -90,6 +87,11 @@ const App = React.createClass({
     });
   },
 
+  setFixedHeight() {
+    this.setState({ fixedHeight: window.innerHeight });
+    console.log('change: ' + window.innerHeight);
+  },
+
   componentWillMount() {
     this.getViewportDimensions();
   },
@@ -99,23 +101,14 @@ const App = React.createClass({
 
     document.getElementById('first-view').style.display = 'none';
     this.setState({ show: true });
-
-    /* Animate css in */
-    // setTimeout(() => {
-    // }.bind(this), 1000);
+    this.getViewportDimensions();
 
     /* Get dimensions of viewport to calculte mousePosition and scrollPosition (for example) */
-    window.addEventListener('scroll', getDocumentScrollPosition(this));
-
+    window.addEventListener('scroll', this.getDocumentScrollPosition.bind(this), false);
     /* Get new dimensions when device orientationchange etc */
-    // if (!isScrolling) {
-    window.addEventListener('resize', () => {
-      this.getViewportDimensions();
-    });
+    window.addEventListener('resize', this.getViewportDimensions.bind(this), false);
 
-    window.addEventListener('orientationchange', () => {
-      this.setstate({ fixedHeight: window.innerHeight });
-    });
+    window.addEventListener('orientationchange', this.setFixedHeight.bind(this), false);
 
     if (env.Modernizr.touchevents) {
       document.body.style.height = `${fixedHeight}px`;
@@ -137,8 +130,10 @@ const App = React.createClass({
     if (prevState.modal != modal || prevState.popup != popup || prevState.overflow != overflow) {
       if (modal || popup || overflow === 'hidden') {
         disableScroll.on();
+        console.log('disableScroll on');
       } else if (modal === null || popup === null || overflow === 'auto') {
         disableScroll.off();
+        console.log('disableScroll off');
       }
     }
   },
@@ -153,11 +148,9 @@ const App = React.createClass({
 
   componentWillUnmount() {
     Store.removeListener('change', this.onChangeStore);
-    window.removeEventListener('scroll', getDocumentScrollPosition(this));
-    window.removeEventListener('resize', () => {
-      this.getViewportDimensions();
-    });
-    window.removeEventListener('orientationchange');
+    window.removeEventListener('scroll', this.getDocumentScrollPosition.bind(this), false);
+    window.removeEventListener('resize', this.getViewportDimensions.bind(this), false);
+    window.removeEventListener('orientationchange', this.setFixedHeight.bind(this), false);
   },
 
   onChangeStore(state) {
