@@ -36,6 +36,7 @@ const _state = Object.assign({
   homeIntroVideoViewed: Defaults.homeIntroVideoViewed,
   homeLoaderShown: Defaults.homeLoaderShown,
   overflow: Defaults.overflow,
+  videoOverlaySrc: Defaults.videoOverlaySrc,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -227,6 +228,11 @@ const Store = Object.assign(
     },
     showBlogCategories() {
       _state.modal = 'blogCategories';
+      Store.emit('change', _state);
+    },
+    showVideoOverlay(src) {
+      _state.modal = 'videoOverlay';
+      _state.videoOverlaySrc = src;
       Store.emit('change', _state);
     },
     loadMorePosts() {

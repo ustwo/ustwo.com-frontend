@@ -78,7 +78,7 @@ class Navigation extends Component {
     const venturesActive = venturesPosition && (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
 
     const navClasses = classnames('navigation', customClass, section, page, {
-      notSticky: modal === null && documentScrollPosition < viewportDimensions.height && section === 'home',
+      notSticky: modal === null && documentScrollPosition < (viewportDimensions.height - 1) && section === 'home',
       invert: venturesActive,
       overHero: documentScrollPosition < viewportDimensions.height - (this.state.height * 0.5), // Assuming hero is 100% height at the top of the screen,
       menuOpen: modal === 'menu',

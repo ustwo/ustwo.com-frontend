@@ -37,7 +37,7 @@
   }
 
   .section-title {
-    color: white;
+    color: $offWhite;
     position: relative;
     z-index: 4;
   }
@@ -45,7 +45,7 @@
   .title {
     position: relative;
     z-index: 2;
-    color: white;
+    color: $offWhite;
   }
 
   @media screen and (min-width: $bp-medium) {
@@ -121,6 +121,11 @@
 
     }
   }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
 }
 
 .js {

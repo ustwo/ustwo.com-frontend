@@ -230,14 +230,14 @@ $nav-height-large: 30px;
   &.menuOpen,
   &.overHero:not(.home) {
     .navigation-logo svg {
-      fill: white;
+      fill: $offWhite;
     }
     .navigation-toggle-main {
-      border-color: white;
+      border-color: $offWhite;
 
       &:before,
       &:after {
-        background-color: white;
+        background-color: $offWhite;
       }
     }
 

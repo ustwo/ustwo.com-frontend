@@ -25,4 +25,12 @@
       width: 100vw;
     }
   }
+
+  &.scroll-wrapper-home-welcome-message {
+    padding-top: 28%;
+
+    @media screen and (min-width: $bp-medium) {
+      padding-top: 18%;
+    }
+  }
 }

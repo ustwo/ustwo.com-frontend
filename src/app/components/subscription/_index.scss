@@ -31,7 +31,7 @@
   border-bottom: 1px solid $nonBlack;
   font-size: 18px;
   background-image: linear-gradient(to right, #143fcc, #6114cc);
-  color: white;
+  color: $offWhite;
 
   .icon {
     width: 77px;
@@ -79,7 +79,7 @@
   .email {
     flex: 1;
     background: transparent;
-    color: white;
+    color: $offWhite;
     border-bottom: 2px solid white;
     margin-right: 10px;
     padding: 0;
@@ -90,16 +90,16 @@
     }
 
     &::-webkit-input-placeholder {
-      color: white;
+      color: $offWhite;
     }
     &::-moz-placeholder {
-      color: white;
+      color: $offWhite;
     }
     &:-ms-input-placeholder {
-      color: white;
+      color: $offWhite;
     }
     &:-moz-placeholder {
-      color: white;
+      color: $offWhite;
     }
   }
 

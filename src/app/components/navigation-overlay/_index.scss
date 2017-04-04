@@ -125,7 +125,7 @@ $menu-transition-item-delay: .15s;
 
     .navigation-overlay-link:hover {
       &:before {
-        background-color: white;
+        background-color: $offWhite;
         transition: background-color .06s linear;
       }
     }
@@ -138,7 +138,7 @@ $menu-transition-item-delay: .15s;
 
 .navigation-overlay-link {
   position: relative;
-  color: white;
+  color: $offWhite;
   width: 100%;
   list-style: none;
   @extend .h1;
@@ -192,7 +192,7 @@ $menu-transition-item-delay: .15s;
   &.selected {
     &:before {
       opacity: 1;
-      background-color: white;
+      background-color: $offWhite;
       transform: scale(1);
     }
   }

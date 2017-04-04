@@ -20,7 +20,7 @@
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(241deg, #000000, #0e0d10 29%, #322d37);
-  color: white;
+  color: $offWhite;
   z-index: 999;
 
   .ustwo-logo-sequence {
@@ -36,10 +36,10 @@
     position: relative;
 
     .home-loader-sequence {
-      fill: white;
+      fill: $offWhite;
     }
     .home-loader-background {
-      fill: white;
+      fill: $offWhite;
       opacity: 0.05;
 
       g {

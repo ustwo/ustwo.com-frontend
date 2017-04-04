@@ -11,5 +11,6 @@ export default {
 	homeIntroVideoViewed: false,
 	heroVideoReady: false,
 	homeLoaderShown: false,
-	overflow: ''
+	overflow: '',
+	videoOverlaySrc: ''
 };

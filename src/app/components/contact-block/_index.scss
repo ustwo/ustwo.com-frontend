@@ -6,7 +6,7 @@
 .contact-block {
   position: relative;
   background-color: $veryDarkGrey;
-  color: white;
+  color: $offWhite;
   @include core-layout();
 
   .home-text-block {

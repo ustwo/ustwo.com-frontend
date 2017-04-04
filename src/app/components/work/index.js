@@ -3,14 +3,15 @@ import classnames from 'classnames';
 import { get } from 'lodash';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import env from 'app/adaptors/server/env';
+import Flux from 'app/flux';
 
 import WorkItem from 'app/components/work-item';
-import Hero from 'app/components/hero';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import Video from 'app/components/video';
 import Footer from 'app/components/footer';
 import WorkProcess from 'app/components/work-process';
 import ScrollWrapper from 'app/components/scroll-wrapper';
+import WorkHero from 'app/components/work-hero';
 
 class PageWork extends Component {
 
@@ -53,8 +54,6 @@ class PageWork extends Component {
       const image = getFeaturedImage(caseStudy, attachments);
       const featured = caseStudies.indexOf(caseStudy) === 0;
 
-
-
       return (
         <WorkItem
           key={caseStudy.slug}
@@ -67,46 +66,10 @@ class PageWork extends Component {
   }
 
   render() {
-    const { page, className, loaded, isMobile, footer, studios, currentPage, fixedHeight, scrollProgress, documentScrollPosition, viewportDimensions, popup } = this.props;
+    const { page, className, loaded, isMobile, footer, studios, currentPage, fixedHeight, documentScrollPosition, viewportDimensions, popup, modal } = this.props;
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
-
-    let playVideo = loaded;
-    if (scrollProgress > 0.5 || !!popup) {
-      playVideo = false;
-    }
-
-    let fallbackImage;
-    if (isMobile) {
-      fallbackImage = '/images/work-header-fallback.jpg';
-    } else {
-      fallbackImage = '/images/work-header-fallback.jpg';
-    }
-
-    let src;
-    if (isMobile) {
-      src = 'https://player.vimeo.com/external/209403984.sd.mp4?s=fa5d1e9fcb9e3f78d55423329a605fc7db82541f&profile_id=164';
-    } else {
-      src = 'https://player.vimeo.com/external/209403984.hd.mp4?s=f3eb84f4b6d45960e28df740875cddd9605b8cf6&profile_id=174';
-    }
-
-    const video = (
-      <Video
-        src={src}
-        isVideoBackground={true}
-        play={playVideo}
-        heroVideo={true}
-        imageCSS={fallbackImage}
-        isMobile={isMobile}
-        fixedHeight={fixedHeight}
-      />
-    );
-
-    let styles;
-    if (env.Modernizr.touchevents) {
-      styles = { height: fixedHeight }
-    }
 
     return (
       <article className={classes}>
@@ -114,18 +77,7 @@ class PageWork extends Component {
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
             <ScrollWrapper
-              component={
-                <Hero
-                  title="We build products and services that make a difference"
-                  transitionImage={true}
-                  eventLabel='work'
-                  showDownIndicator={true}
-                  video={video}
-                  fixedHeight={fixedHeight}
-                  scrollProgress={scrollProgress}
-                  isMobile={isMobile}
-                />
-              }
+              component={<WorkHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} />}
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               requireScreenPosition={true}

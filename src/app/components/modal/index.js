@@ -5,8 +5,26 @@ import Flux from 'app/flux';
 
 class Modal extends Component {
 
-  onClick() {
-    Flux.closeModal();
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      disableClose: false
+    }
+  }
+
+  closeModal() {
+    if (!this.state.disableClose) {
+      Flux.closeModal();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps != this.props) {
+      if (nextProps.className.includes('video-overlay')) {
+        this.setState({ disableClose: true });
+      }
+    }
   }
 
   render() {
@@ -16,7 +34,7 @@ class Modal extends Component {
     });
 
     return (
-      <div className={classes} onClick={this.onClick}>
+      <div className={classes} onClick={this.closeModal.bind(this)}>
         {this.props.children}
       </div>
     );

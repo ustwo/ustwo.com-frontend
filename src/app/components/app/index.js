@@ -31,6 +31,7 @@ import NavigationOverlay from 'app/components/navigation-overlay';
 import Popup from 'app/components/popup';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import PageContent from 'app/components/page-content';
+import VideoOverlay from 'app/components/video-overlay';
 
 const pageMap = {
   'home': require('app/components/home'),
@@ -169,12 +170,12 @@ const App = React.createClass({
   },
 
   renderModal() {
-    const { takeover, modal: modalType } = this.state;
-    let modal, className, content;
+    const { takeover, modal } = this.state;
+    let modalContent, className, content;
     if (this.showTakeover()) {
-      modal = <TakeOver key="takeover" takeover={takeover} />;
-    } else if (modalType) {
-      switch(modalType) {
+      modalContent = <TakeOver key="takeover" takeover={takeover} />;
+    } else if (modal) {
+      switch(modal) {
         case 'menu':
           className = 'menu';
           content = (
@@ -192,8 +193,16 @@ const App = React.createClass({
           className = 'modal-blog-categories';
           content = <BlogCategories />;
           break;
+        case 'videoOverlay':
+          className = 'modal-video-overlay';
+          content = (
+            <VideoOverlay
+              src={this.state.videoOverlaySrc}
+            />
+          );
+          break;
       }
-      modal = <Modal key={modalType} className={className}>{content}</Modal>;
+      modalContent = <Modal key={modal} className={className}>{content}</Modal>;
     }
     return (
       <TransitionManager
@@ -201,7 +210,7 @@ const App = React.createClass({
         className="app__modal"
         duration={320}
       >
-        {modal}
+        {modalContent}
       </TransitionManager>
     );
   },

@@ -1,0 +1,51 @@
+/*
+ *  VIDEO OVERLAY
+ *
+ */
+
+.modal-video-overlay {
+  background-color: rgba(0,0,0,.8);
+  z-index: 99999; // Go above menu
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.video-overlay {
+  position: relative;
+  width: 80%;
+  max-width: 1200px;
+  line-height: 0;
+
+  .close-button {
+    position: absolute;
+    right: -35px;
+    top: -35px;
+
+    svg {
+      fill: $offWhite;
+    }
+  }
+
+  @media screen and (min-width: $bp-tablet) {
+    .close-button {
+      right: -45px;
+      top: -45px;
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .close-button {
+      right: -50px;
+      top: -50px;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .close-button {
+      right: -60px;
+      top: -60px;
+    }
+  }
+}

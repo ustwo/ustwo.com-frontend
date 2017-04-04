@@ -48,7 +48,7 @@
 .work-process.touchDevice {
   .work-process-item {
     @include box-shadow();
-    background-color: white;
+    background-color: $offWhite;
   }
 }
 

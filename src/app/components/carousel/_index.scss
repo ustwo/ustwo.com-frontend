@@ -7,7 +7,7 @@
 .carousel-wrapper {
   position: absolute;
   height: 100vh;
-  color: white;
+  color: $offWhite;
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -28,7 +28,7 @@
 .carousel-item {
   position: relative;
   font-weight: bold;
-  color: white;
+  color: $offWhite;
   font-size: 30px;
 
 }

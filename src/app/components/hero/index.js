@@ -83,14 +83,16 @@ class Hero extends Component {
         <div className="hero-inner-wrapper">
           {this.renderLogo()}
           <EntranceTransition className="title-entrance">
-            <div className="section-title" style={transitionStyles}>
-              <WordAnimation delay={0.32} duration={0.2}>{sectionTitle}</WordAnimation>
+            <div className="hero-content" style={transitionStyles}>
+              <div className="section-title">
+                <WordAnimation delay={0.32} duration={0.2}>{sectionTitle}</WordAnimation>
+              </div>
+              <h1 className="title">
+                <WordAnimation delay={0.5} duration={0.32}>{title}</WordAnimation>
+              </h1>
+              {this.renderSubheading()}
+              {children}
             </div>
-            <h1 className="title" style={transitionStyles}>
-              <WordAnimation delay={0.5} duration={0.32}>{title}</WordAnimation>
-            </h1>
-            {this.renderSubheading()}
-            {children}
             {this.renderDownIndicator()}
           </EntranceTransition>
           {this.renderVideo()}

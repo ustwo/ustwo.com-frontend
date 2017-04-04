@@ -6,7 +6,7 @@
 
 .scroll-wrapper-home-intro {
   padding: 0;
-  background-color: $offWhite;
+  background-color: $nonBlack;
   height: 100%;
 
   .scroll-wrapper-inner {
@@ -70,7 +70,7 @@
     z-index: 2;
     top: auto;
     left: 0;
-    fill: white;
+    fill: $offWhite;
     width: 100%;
 
     &.layer-background {

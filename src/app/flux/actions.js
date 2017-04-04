@@ -75,6 +75,9 @@ const Actions = {
   },
   overflowAuto() {
     Store.overflowAuto();
+  },
+  showVideoOverlay(src) {
+    Store.showVideoOverlay(src);
   }
 };
 
