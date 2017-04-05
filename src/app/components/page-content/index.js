@@ -40,7 +40,8 @@ class PageContent extends Component {
   render() {
     const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady } = this.props;
     const heroReady = currentPage === 'home' || currentPage === 'work' ? heroVideoReady : true;
-    const loaded = !dataLoading && this.state.ticker === 0 && heroReady;
+    let loaded = !dataLoading && this.state.ticker === 0 && heroReady;
+    
     let props = pageState;
     props.loaded = loaded;
 

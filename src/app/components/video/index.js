@@ -40,9 +40,7 @@ class Video extends Component {
         Flux.heroVideoReady(true);
       } else {
         if (this.video.readyState != 4) {
-          this.video.addEventListener('canplaythrough', () => {
-            Flux.heroVideoReady(true);
-          }, false);
+          this.video.addEventListener('canplaythrough', () => Flux.heroVideoReady(true), false);
         } else {
           Flux.heroVideoReady(true);
         }
@@ -51,6 +49,7 @@ class Video extends Component {
   }
 
   componentWillUnmount() {
+    this.video.addEventListener('canplaythrough', () => Flux.heroVideoReady(false), false);
     Flux.heroVideoReady(false);
   }
 
@@ -84,15 +83,23 @@ class Video extends Component {
   }
 
   renderVideoBackground() {
-    const { imageCSS, isMobile, fixedHeight } = this.props;
+    const { imageCSS, isMobile, fixedHeight, hide } = this.props;
 
     let styles = {};
-    if (imageCSS && !isMobile) {
+    if (imageCSS) {
       styles['backgroundImage'] = `url(${imageCSS})`;
     }
     if (fixedHeight && env.Modernizr.touchevents) {
       styles['height'] = fixedHeight;
     }
+    if (hide) {
+      styles['opacity'] = 0;
+    }
+
+    // setTimeout(() => {
+    //
+    // }, 500);
+
 
     const classes = classnames('videoBackground', { imageCSS });
 
@@ -115,19 +122,13 @@ class Video extends Component {
   }
 
   renderVideo() {
-    const { src, play, preload, hide } = this.props;
+    const { src, play, preload } = this.props;
     const preloadAttribute = preload ? preload : 'auto';
-
-    let styles;
-    if (hide) {
-      styles = { opacity: 0 };
-    }
 
     let video;
     if(src && src.length) {
       video = (
         <video
-          style={styles}
           ref={(ref) => this.video = ref}
           src={src}
           poster={posterURL}

@@ -99,7 +99,6 @@
     }
   }
 
-  .home-ventures-wrapper-bg,
   .scroll-wrapper-home-carousel-products,
   .scroll-wrapper-home-carousel-ventures {
     transform: translate3d(0,0,0);
@@ -110,10 +109,11 @@
     z-index: 0;
     left: 0;
     top: 0;
-    visibility: hidden;
     width: 100vw;
     height: 100vh;
     opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s linear 0s, visibility 0s linear .2s;
     transform: translateZ(0);
     background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
   }
@@ -128,6 +128,7 @@
     .home-ventures-wrapper-bg {
       opacity: 1;
       visibility: visible;
+      transition-delay: 0s, 0s;
     }
     .scroll-wrapper-home-carousel-products {
       opacity: 0;
