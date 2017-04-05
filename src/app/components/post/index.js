@@ -14,48 +14,54 @@ import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
 import CategoryTag from 'app/components/category-tag';
 import SocialMediaSharing from 'app/components/social-media-sharing';
 import RelatedContent from 'app/components/related-content';
+import Footer from 'app/components/footer';
+import ContactBlock from 'app/components/contact-block';
 
 const PagePost = React.createClass({
   mixins: [getScrollTrackerMixin('post')],
   render() {
-    const {post} = this.props;
+    const { post, footer, studios, currentPage } = this.props;
     const category = get(post, '_embedded.wp:term.0.0', []);
     const image = getFeaturedImage(post);
     const classes = classnames('page-post', this.props.className, `blog-label-${get(category, 'slug', 'uncategorised')}`);
-    return <article className={classes}>
-      <style>{`
-        .page-post .content-container a {
-          border-bottom-color: #14C04D;
-        }
-      `}</style>
-      <Rimage
-        wrap='div'
-        className='hero-image'
-        sizes={get(image, 'media_details.sizes')}
-        altText={get(image, 'alt_text')}
-      />
-      <div className='content-container'>
-        <CategoryTag
-          category={get(category, 'name', 'category')}
+    return (
+      <article className={classes}>
+        <style>{`
+          .page-post .content-container a {
+            border-bottom-color: #14C04D;
+          }
+        `}</style>
+        <Rimage
+          wrap='div'
+          className='hero-image'
+          sizes={get(image, 'media_details.sizes')}
+          altText={get(image, 'alt_text')}
         />
-        <h1 className='title'>{he.decode(get(post, 'title.rendered', ''))}</h1>
-        {this.renderSocialMediaSharing('side')}
-        <BlogPostMetaInformation
-          author={getAuthor(post)}
-          date={get(post, 'date')}
-        />
-        <hr className='rule' />
-        {renderModules({
-          modules: get(post, 'page_builder', []),
-          colours: get(post, 'colors'),
-          zebra: false
-        })}
-        <hr className='rule' />
-        {this.renderSocialMediaSharing('bottom')}
-        {this.renderAuthorInformation()}
-      </div>
-      {this.renderRelatedContent()}
-    </article>
+        <div className='content-container'>
+          <CategoryTag
+            category={get(category, 'name', 'category')}
+          />
+          <h1 className='title'>{he.decode(get(post, 'title.rendered', ''))}</h1>
+          {this.renderSocialMediaSharing('side')}
+          <BlogPostMetaInformation
+            author={getAuthor(post)}
+            date={get(post, 'date')}
+          />
+          <hr className='rule' />
+          {renderModules({
+            modules: get(post, 'page_builder', []),
+            colours: get(post, 'colors'),
+            zebra: false
+          })}
+          <hr className='rule' />
+          {this.renderSocialMediaSharing('bottom')}
+          {this.renderAuthorInformation()}
+        </div>
+        {this.renderRelatedContent()}
+        <ContactBlock />
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
+      </article>
+    );
   },
   renderRelatedContent() {
     let relatedContent;
