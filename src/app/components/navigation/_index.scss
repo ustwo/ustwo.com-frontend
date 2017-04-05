@@ -36,9 +36,13 @@ $nav-height-large: 30px;
   left: 0;
   z-index: 4000;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  transition: opacity .2s ease-in-out;
+  transition: all .2s ease-in-out;
+
+  &.subPage {
+    transition: none; /* to avoid seeing the switch back to left: auto when fading out */
+  }
 
   &:before {
     content: "";
@@ -52,7 +56,22 @@ $nav-height-large: 30px;
     transition: all .2s linear;
   }
 
+  .navigation-subpage-nav {
+    opacity: 0;
+    visibility: hidden;
+
+    button {
+      text-transform: uppercase;
+      margin-left: 20px;
+      padding-left: 30px;
+      background: url('/images/icon-left-dark.svg') no-repeat 0 50%;
+      background-size: 20px auto;
+      cursor: pointer;
+    }
+  }
+
   @media screen and (min-width: $bp-medium) {
+    left: auto;
     padding: 29px 0;
   }
 
@@ -242,8 +261,6 @@ $nav-height-large: 30px;
     }
 
     @media screen and (min-width: $bp-medium) {
-      left: auto;
-      
       &:before {
         background-color: transparent;
       }
@@ -297,7 +314,37 @@ $nav-height-large: 30px;
       opacity: 0;
     }
   }
+
+  &.pageControls {
+    left: 0;
+    background-color: $offWhite;
+	  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+    .navigation-subpage-nav {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .2s linear, visibility 0s linear;
+    }
+
+    &,
+    &.overHero {
+      .navigation-logo svg {
+        fill: $nonBlack;
+      }
+      .navigation-toggle-main {
+        border-color: $nonBlack;
+
+        &:before,
+        &:after {
+          background-color: $nonBlack;
+        }
+      }
+    }
+  }
 }
+
+
+
 
 /* TEMP */
 /* Invert colours on some pages that have lighter backgrounds */

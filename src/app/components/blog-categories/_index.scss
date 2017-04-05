@@ -81,14 +81,13 @@
 
   @media screen and (min-width: $bp-large) {
     position: absolute;
-    /* 100%: starts at bottom of screen, bring up by the first blog post offset, then up again by the gap between blog post and dropdown, then arbitrary number to position */
-    /* top: calc(100% + #{$card-margin-offset} - #{$blog-controls-margin-bottom} - 160px); */
-    top: calc(100% + #{$card-margin-offset} - #{$blog-controls-margin-bottom} - 160px);
+    top: 0;
     left: 50%;
     transform: translate(-50%, 0);
     height: auto;
     box-shadow: 0 0 4px 2px rgba(0,0,0,.1);
     cursor: pointer;
+    width: 440px;
 
     .scroll-wrapper {
       height: auto;

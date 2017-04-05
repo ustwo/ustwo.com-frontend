@@ -31,9 +31,6 @@ const BlogControls = React.createClass({
   render() {
     const { className, blogCategory: currentCategory } = this.props;
     return <div className={classnames('blog-controls', className)}>
-      <button onClick={this.onClickSearch} className="blog-search-button">
-        <SVG className="search-icon" spritemapID="search" />
-      </button>
       <div className="blog-filter">
         <div
           className="selected"

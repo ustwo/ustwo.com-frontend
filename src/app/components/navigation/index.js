@@ -64,6 +64,10 @@ class Navigation extends Component {
     Flux.navigate('/');
   }
 
+  subPageBack(event) {
+    event.preventDefault();
+  }
+
   mouseEnter() {
     this.setState({ paused: false });
   }
@@ -75,14 +79,22 @@ class Navigation extends Component {
   render() {
     const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions } = this.props;
 
-    const venturesActive = section === 'home' && venturesPosition && (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
+    const venturesActive = venturesPosition && (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
+    const homePage = section === 'home';
+    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog';
+    const subPage = page === 'post' || page === 'case-study' || page === 'event';
+    const blogEvent = (section === 'blog' || section === 'events') && !subPage;
+    const scrolled = documentScrollPosition > 0;
+    const scrolledBefore100 = documentScrollPosition < viewportDimensions.height - (this.state.height * 0.5);
 
     const navClasses = classnames('navigation', customClass, section, page, {
-      notSticky: modal === null && documentScrollPosition < (viewportDimensions.height - 1) && section === 'home',
-      invert: venturesActive,
-      overHero: documentScrollPosition < viewportDimensions.height - (this.state.height * 0.5), // Assuming hero is 100% height at the top of the screen,
+      takeover,
+      notSticky: modal === null && documentScrollPosition < (viewportDimensions.height - 1) && homePage,
       menuOpen: modal === 'menu',
-      takeover
+      invert: venturesActive && homePage,
+      overHero: scrolledBefore100 && heroPage,
+      pageControls: subPage && scrolled,
+      subPage
     });
 
     let color;
@@ -114,6 +126,9 @@ class Navigation extends Component {
             <li><a href="/events">Events</a></li>
             <li><a href="/join-us">Join us</a></li>
           </ul>
+        </div>
+        <div className="navigation-subpage-nav">
+          <button onClick={this.toggleMenu.bind(this)}>Back</button>
         </div>
         <button
           className="navigation-button"

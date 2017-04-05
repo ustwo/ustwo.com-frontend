@@ -12,6 +12,8 @@ import Meta from "react-helmet";
 import Rimage from 'app/components/rimage';
 import SocialMediaSharing from 'app/components/social-media-sharing';
 import SVG from 'app/components/svg';
+import Footer from 'app/components/footer';
+import ContactBlock from 'app/components/contact-block';
 
 const PageEvent = React.createClass({
   renderSocialMediaSharing(position) {
@@ -34,14 +36,14 @@ const PageEvent = React.createClass({
     }
   },
 	render() {
-	const { event } = this.props;
+    const { event, footer, studios, currentPage } = this.props;
     const image = getFeaturedImage(event);
     const classes = classnames('page-event', this.props.className);
     const start_time = get(event, 'start_time');
     const end_time = get(event, 'end_time');
     const studio = get(event, 'studio');
-	const mapurl = `https://maps.google.com/maps?z=12&t=m&q=loc:${get(event, 'studio.location.lat')}+${get(event, 'studio.location.long')}`;   
-    
+    const mapurl = `https://maps.google.com/maps?z=12&t=m&q=loc:${get(event, 'studio.location.lat')}+${get(event, 'studio.location.long')}`;
+
     return <article className={classes}>
       <Meta
         title={get(event, 'seo.title') || ''}
@@ -93,6 +95,7 @@ const PageEvent = React.createClass({
         <hr className='social rule' />
         {this.renderSocialMediaSharing('bottom')}
       </div>
+      <Footer data={footer} studios={studios} currentPage={currentPage}/>
     </article>
 	}
 });

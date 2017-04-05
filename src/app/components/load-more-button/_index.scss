@@ -8,8 +8,8 @@
   display: block;
   padding: 40px 0 60px;
   text-align: center;
-  @include core-gutter();
-
+  margin: 0 auto;
+  
   &.hidden {
     display: none;
   }

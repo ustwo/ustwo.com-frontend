@@ -96,7 +96,7 @@
     .events-list {
       display: flex;
       flex-wrap: wrap;
-      padding: 0 $events-gutter-large $events-gutter-large $events-gutter-large;
+      padding: 0 0 $events-gutter-large 0;
     }
 
     .archived-events-list {
