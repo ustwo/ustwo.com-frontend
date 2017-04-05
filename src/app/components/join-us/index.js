@@ -73,13 +73,13 @@ const PageJoinUs = React.createClass({
     );
   },
   renderStudioTabs(selectedStudioSlug) {
-    return map(this.props.studios, studio => {
+    let studioSelectedColor;
+    const tabs = map(this.props.studios, studio => {
       const studioSlug = kebabCase(studio.name);
       const studioName = spannify(studio.name);
       const uri = `/join-us/${studioSlug}`;
-      let studioSelected;
       if (studioSlug === selectedStudioSlug) {
-        studioSelected = {color: studio.color}
+        studioSelectedColor = {backgroundColor: studio.color}
       }
       return (
         <div
@@ -90,6 +90,13 @@ const PageJoinUs = React.createClass({
         ><a href={uri} onClick={Flux.overrideNoScroll(uri)}>{studioName}</a></div>
       );
     });
+
+    return (
+      <nav className="jobs-studio-tabs">
+        {tabs}
+        <div className="underline" style={studioSelectedColor}></div>
+      </nav>
+    );
   },
   getJobSectionRenderer(selectedStudioSlug) {
     return () => {
@@ -99,6 +106,11 @@ const PageJoinUs = React.createClass({
         <div key="job-section">
           <div className="current-openings">
             <h2>We're Hiring</h2>
+          </div>
+          <section className="jobs">
+            {this.renderStudioTabs(selectedStudioSlug)}
+          <div className="jobs-container">
+            {this.renderStudioJobs(selectedStudioSlug)}
           </div>
           <section className="jobs">
             <nav className="jobs-studio-tabs">

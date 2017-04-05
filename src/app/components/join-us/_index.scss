@@ -92,10 +92,10 @@
 
   .jobs-studio-tabs {
     display: none;
-    margin: 0 0 30px 0;
+    margin-bottom: 30px;
     text-align: center;
 
-    > div {
+    > div:not(.underline) {
       display: inline-block;
       margin: 0 20px 10px 20px;
       cursor: pointer;
@@ -105,9 +105,9 @@
       color: $nonBlack;
       transition: opacity $hover-duration-quick ease-in-out;
 
-      &[aria-selected="true"] {
-        border-bottom: 4px solid;
-      }
+      // &[aria-selected="true"] {
+      //   border-bottom: 4px solid;
+      // }
 
       &:hover:not([aria-selected="true"]) {
         opacity: $hover-fade-back;
@@ -139,7 +139,20 @@
     }
 
     .jobs-studio-tabs {
+      position: relative;
       display: block;
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+
+      .underline {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 4px;
+        width: 150px;
+        transition: background-color .32s ease-in-out;
+      }
     }
   }
 
@@ -149,7 +162,7 @@
     }
 
     .jobs-studio-tabs {
-      margin: 0 0 45px 0;
+      margin-bottom: 45px;
 
       li {
         font-size: 26px;
