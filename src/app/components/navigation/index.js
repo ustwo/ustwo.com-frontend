@@ -66,6 +66,21 @@ class Navigation extends Component {
 
   subPageBack(event) {
     event.preventDefault();
+
+    let navigateTo;
+    switch(this.props.page) {
+      case 'post':
+        navigateTo = '/blog';
+        break;
+      case 'case-study':
+        navigateTo = '/work';
+        break;
+      case 'event':
+        navigateTo = '/events';
+        break;
+    }
+
+    Flux.navigate(navigateTo);
   }
 
   mouseEnter() {
@@ -128,7 +143,7 @@ class Navigation extends Component {
           </ul>
         </div>
         <div className="navigation-subpage-nav">
-          <button onClick={this.toggleMenu.bind(this)}>Back</button>
+          <button onClick={this.subPageBack.bind(this)}>Back</button>
         </div>
         <button
           className="navigation-button"
