@@ -35,7 +35,7 @@ class Video extends Component {
   componentDidMount() {
     const { heroVideo, isMobile } = this.props;
 
-    if (heroVideo) {
+    if (heroVideo && this.video) {
       if (env.Modernizr.touchevents) {
         Flux.heroVideoReady(true);
       } else {
@@ -49,7 +49,9 @@ class Video extends Component {
   }
 
   componentWillUnmount() {
-    this.video.addEventListener('canplaythrough', () => Flux.heroVideoReady(false), false);
+    if (this.video) {
+      this.video.removeEventListener('canplaythrough', () => Flux.heroVideoReady(false), false);
+    }
     Flux.heroVideoReady(false);
   }
 
