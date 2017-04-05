@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import LoaderWrapper from 'app/components/loader-wrapper';
 
-const tickerTotalPage = 3000;
-const tickerTotalHome = 5500;
+const tickerTotalPage = 2000;
+const tickerTotalHome = 5000;
 const tickerFrequency = 500;
 
 class PageContent extends Component {
@@ -41,7 +41,7 @@ class PageContent extends Component {
     const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady } = this.props;
     const heroReady = currentPage === 'home' || currentPage === 'work' ? heroVideoReady : true;
     let loaded = !dataLoading && this.state.ticker === 0 && heroReady;
-    
+
     let props = pageState;
     props.loaded = loaded;
 
