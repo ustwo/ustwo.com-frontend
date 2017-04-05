@@ -17,13 +17,16 @@
   }
 
   .events-list {
-    max-width: 1380px;
-    margin: 0 auto;
     opacity: 1;
     transform: translateY(0px);
     transition: opacity .2s ease-in-out, transform .32s ease-in-out;
     position: relative;
     z-index: 2;
+    margin-top: -$hero-offsetSize-small;
+
+    @media screen and (min-width: $bp-tablet) {
+      margin-top: -$hero-offsetSize;
+    }
   }
 
   .no-events-found {

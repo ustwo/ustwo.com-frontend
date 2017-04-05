@@ -19,6 +19,7 @@ import BlogPostListItem from 'app/components/blog-post-list-item';
 import BlogControls from 'app/components/blog-controls';
 import LoadMoreButton from 'app/components/load-more-button';
 import Footer from 'app/components/footer';
+import ContactBlock from 'app/components/contact-block';
 
 const PageBlog = React.createClass({
   mixins: [getScrollTrackerMixin('blog')],
@@ -103,7 +104,7 @@ const PageBlog = React.createClass({
         <Hero
           key="hero"
           title={get(page, 'display_title')}
-          eventLabel="blog"
+          eventLabel="ustwo blog"
           showDownIndicator={false}
           notFullScreen={true}
         >
@@ -160,13 +161,16 @@ const PageBlog = React.createClass({
           {this.renderHero()}
         </TransitionManager>
         <section className="card-list blog-post-list">
-          {this.renderPosts()}
-          <LoadMoreButton
-            loading={isLoadingMorePosts}
-            onClick={this.onClickLoadMore}
-            disabled={postsPagination >= postsPaginationTotal}
-          />
+          <div className="card-list-inner">
+            {this.renderPosts()}
+            <LoadMoreButton
+              loading={isLoadingMorePosts}
+              onClick={this.onClickLoadMore}
+              disabled={postsPagination >= postsPaginationTotal}
+            />
+          </div>
         </section>
+        <ContactBlock />
         <Footer data={footer} studios={studios} currentPage={currentPage}/>
       </article>
     );

@@ -94,7 +94,9 @@ class PageWork extends Component {
           {this.renderTestimonialCarousel()}
 
           <div className="card-list work-items-list">
-            {this.renderCaseStudies(caseStudies)}
+            <div className="card-list-inner">
+              {this.renderCaseStudies(caseStudies)}
+            </div>
           </div>
 
           <Footer data={footer} studios={studios} currentPage={currentPage}/>

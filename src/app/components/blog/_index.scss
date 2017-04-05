@@ -55,8 +55,16 @@
 .page-blog {
   background-color: $lightGrey;
 
+  .blog-post-list {
+    margin-top: -$hero-offsetSize-small;
+
+    @media screen and (min-width: $bp-tablet) {
+      margin-top: -$hero-offsetSize;
+    }
+  }
+
   .hero-transition-manager {
-    
+
     .hero {
       @include page-background-colour(blog);
 
@@ -78,7 +86,11 @@
           transition-duration: .5s;
           transition-delay: 2s;
           position: absolute;
-          bottom: 40px;
+          bottom: calc(#{$hero-offsetSize-small} + 60px);
+
+          @media screen and (min-width: $bp-tablet) {
+            bottom: calc(#{$hero-offsetSize} + 60px);
+          }
         }
       }
 

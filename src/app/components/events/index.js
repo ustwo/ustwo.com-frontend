@@ -18,6 +18,7 @@ import LoadMoreButton from 'app/components/load-more-button';
 import LoadingIcon from 'app/components/loading-icon';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import Footer from 'app/components/footer';
+import ContactBlock from 'app/components/contact-block';
 
 const PageEvents = React.createClass({
   getInitialState() {
@@ -150,7 +151,9 @@ const PageEvents = React.createClass({
             <h2 className='sub-title'>Previous Talkies</h2>
             <hr className='rule' />
             <section className='card-list'>
-              {events}
+              <div className="card-list-inner">
+                {events}
+              </div>
             </section>
           </div>
         );
@@ -187,12 +190,16 @@ const PageEvents = React.createClass({
       <article className={classes}>
       	<Hero
   	      title={get(page, 'display_title')}
-          eventLabel="events"
+          eventLabel="ustwo events"
           subheading={get(page, 'hero.attr.subheading.value')}
           notFullScreen={true}
         ></Hero>
         <section className="events-list">
-  			  {this.renderEvents()}
+          <section className='card-list'>
+            <div className="card-list-inner">
+              {this.renderEvents()}
+            </div>
+          </section>
           <LoadMoreButton
             loading={isLoadingMoreEvents}
             onClick={this.onClickLoadMoreEvents}
@@ -205,6 +212,7 @@ const PageEvents = React.createClass({
           onClick={this.onClickLoadMoreArchivedEvents}
           disabled={archivedEventsPagination >= archivedEventsPaginationTotal}
         />
+        <ContactBlock />
         <Footer data={footer} studios={studios} currentPage={currentPage}/>
       </article>
     );

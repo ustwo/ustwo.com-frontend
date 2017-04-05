@@ -49,6 +49,24 @@
     color: $offWhite;
   }
 
+  &.notFullScreen {
+    .hero-inner-wrapper {
+      position: relative;
+
+      .hero-content {
+        height: 100vh;
+        padding-bottom: $hero-offsetSize-small;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media screen and (min-width: $bp-tablet) {
+          padding-bottom: $hero-offsetSize;
+        }
+      }
+    }
+  }
+
   @media screen and (min-width: $bp-medium) {
 
     .title {

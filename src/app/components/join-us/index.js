@@ -21,6 +21,7 @@ import Flux from 'app/flux';
 import Footer from 'app/components/footer';
 import JoinUsHero from 'app/components/join-us-hero';
 import ScrollWrapper from 'app/components/scroll-wrapper';
+import ContactBlock from 'app/components/contact-block';
 
 function getSelectedStudio(studioSlugFromUrl, studioSlugs) {
   let selected = 'london';
@@ -71,6 +72,8 @@ const PageJoinUs = React.createClass({
               WORKABLE_LIST: this.getJobSectionRenderer(this.state.selectedStudioSlug)
             }
           })}
+
+          <ContactBlock />
           <Footer data={footer} studios={studios} currentPage={currentPage}/>
 
         </div>
