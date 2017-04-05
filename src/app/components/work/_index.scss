@@ -83,38 +83,73 @@
   }
 }
 
-.work-whatwedo-wrapper {
+.work-whatwedo,
+.work-contact {
   @include core-layout();
   flex-direction: column;
 }
 
+.work-contact {
+  margin-bottom: 60px;
+
+  @media screen and (min-width: $bp-large) {
+    margin-bottom: 100px;
+  }
+}
+
+.work-contact-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 285px;
+	height: 60px;
+	background-image: linear-gradient(258deg, $softPassion, $rain);
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+
+  svg {
+    width: 40px;
+    height: 50px;
+    fill: #fff;
+    transform: scale(0.7);
+  }
+}
+
+.work-contact-button-text {
+  margin-right: 5px;
+}
+
 .work-intro {
   padding-top: 40px;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
+
+  p {
+    font-size: 18px;
+    line-height: 1.4;
+  }
 
   @media screen and (min-width: $bp-medium) {
-    padding-top: 80px;
+    padding-top: 90px;
+    padding-bottom: 50px;
+
+    p {
+      width: 80%;
+      font-size: 22px;
+    }
   }
   @media screen and (min-width: $bp-large) {
     padding-top: 90px;
+
+    p {
+      width: 70%;
+    }
   }
   @media screen and (min-width: $bp-larger) {
     padding-top: 120px;
-  }
-}
 
-.work-intro-extra {
-  display: none;
-
-  @media screen and (min-width: $bp-medium) {
-    display: block;
-  }
-}
-
-.work-contact {
-  display: none;
-
-  @media screen and (min-width: $bp-large) {
-    display: block;
+    p {
+      font-size: 24px;
+    }
   }
 }

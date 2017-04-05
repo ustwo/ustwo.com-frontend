@@ -20,7 +20,7 @@
 
   .hero-inner-wrapper {
     @include core-layout();
-    width: 100%;
+    width: 100vw;
     height: 100%;
     // max-width: $grid-max-width;
     position: absolute;
@@ -33,6 +33,7 @@
 
   .videoBackground {
     height: 100%;
+    width: 100vw;
     max-width: none;
   }
 

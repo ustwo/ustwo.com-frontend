@@ -75,7 +75,7 @@ class Navigation extends Component {
   render() {
     const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions } = this.props;
 
-    const venturesActive = venturesPosition && (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
+    const venturesActive = section === 'home' && venturesPosition && (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
 
     const navClasses = classnames('navigation', customClass, section, page, {
       notSticky: modal === null && documentScrollPosition < (viewportDimensions.height - 1) && section === 'home',

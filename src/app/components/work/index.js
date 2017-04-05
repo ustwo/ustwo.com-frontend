@@ -12,6 +12,7 @@ import Footer from 'app/components/footer';
 import WorkProcess from 'app/components/work-process';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import WorkHero from 'app/components/work-hero';
+import SVG from 'app/components/svg';
 
 class PageWork extends Component {
 
@@ -20,17 +21,17 @@ class PageWork extends Component {
     const workIntroExtra = workData.intro.extra.map(item => <p className="work-intro-extra">{item}</p>);
 
     return (
-      <div className="work-whatwedo">
-        <div className="work-whatwedo-wrapper">
+      <div className="work-whatwedo-wrapper">
+        <div className="work-whatwedo">
           <div className="work-intro">
             <p className="work-intro-statement">{workData.intro.statement}</p>
             {workIntroExtra}
           </div>
-          <div className="work-contact">
-            {workData.contact}
-          </div>
         </div>
         <WorkProcess data={workData.process} isMobile={isMobile} />
+        <div className="work-contact">
+          <button className="work-contact-button"><div className="work-contact-button-text">{workData.contact}</div> <SVG spritemapID="plane" /></button>
+        </div>
       </div>
     );
   }
@@ -114,7 +115,7 @@ const workData = {
       'We work with you all the way through the product life cycle.'
     ]
   },
-  contact: 'Get in touch or explore more below to find ways we can work together.',
+  contact: 'Get in touch',
   process: [{
     title: 'Discovery & Strategy',
     image: '/images/illustration-discovery.svg',
