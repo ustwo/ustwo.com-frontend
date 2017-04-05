@@ -5,6 +5,11 @@
  */
 
 .studio-jobs {
+  margin: 20px 0;
+
+  @media screen and (min-width: $bp-medium) {
+    margin: 0;
+  }
 
   h3 {
     margin-top: 25px;
@@ -28,7 +33,7 @@
     }
     .studio-blurb {
       display: none;
-      
+
       a {
         border-bottom-width: 2px;
         border-bottom-style: solid;
@@ -152,6 +157,29 @@
         top: 50%;
         margin-top: -20px;
       }
+    }
+  }
+}
+
+.studio-jobs {
+  &.london-jobs {
+    .studio-info {
+      @include page-background-colour(london);
+    }
+  }
+  &.malmo-jobs {
+    .studio-info {
+      @include page-background-colour(malmo);
+    }
+  }
+  &.new-york-jobs {
+    .studio-info {
+      @include page-background-colour(newyork);
+    }
+  }
+  &.sydney-jobs {
+    .studio-info {
+      @include page-background-colour(sydney);
     }
   }
 }

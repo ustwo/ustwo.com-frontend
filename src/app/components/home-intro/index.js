@@ -11,7 +11,7 @@ import DownIndicator from 'app/components/down-indicator';
 
 function renderLogoBackground(screenPosition, isMobile) {
 
-  const modifier = isMobile ? 20 : 15;
+  const modifier = isMobile ? 30 : 20;
   const modifierTranslate = modifier;
   const modifierRotate = modifier - 5;
 

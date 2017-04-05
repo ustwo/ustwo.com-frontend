@@ -14,14 +14,13 @@ import getFeaturedImage from 'app/lib/get-featured-image';
 import renderModules from 'app/lib/module-renderer';
 import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
-import DownIndicator from 'app/components/down-indicator';
 import SVG from 'app/components/svg';
-import Hero from 'app/components/hero';
 import StudioJobs from 'app/components/studio-jobs';
 import Rimage from 'app/components/rimage';
-import Video from 'app/components/video';
 import Flux from 'app/flux';
 import Footer from 'app/components/footer';
+import JoinUsHero from 'app/components/join-us-hero';
+import ScrollWrapper from 'app/components/scroll-wrapper';
 
 function getSelectedStudio(studioSlugFromUrl, studioSlugs) {
   let selected = 'london';
@@ -34,30 +33,42 @@ function getSelectedStudio(studioSlugFromUrl, studioSlugs) {
 const PageJoinUs = React.createClass({
   mixins: [getScrollTrackerMixin('join-us')],
   render() {
-    const { page, currentParams, studios, currentPage, footer } = this.props;
+    const { page, currentParams, studios, currentPage, footer, loaded, modal, isMobile, fixedHeight, documentScrollPosition, viewportDimensions } = this.props;
     const classes = classnames('page-join-us', this.props.className);
     const image = getFeaturedImage(page);
     const studioSlugFromUrl = get(currentParams, 'lid');
     const studioSlugs = map(pluck(studios, 'name'), kebabCase);
     const selectedStudioSlug = getSelectedStudio(studioSlugFromUrl, studioSlugs);
+    const title = get(page, 'display_title');
 
     return (
       <article className={classes}>
-        <Hero
-          title={get(page, 'display_title')}
-          transitionImage={true}
-          eventLabel='join-us'
-          showDownIndicator={true}
-        ></Hero>
-        {renderModules({
-          modules: get(page, 'page_builder', []),
-          colours: get(page, 'colors'),
-          zebra: false,
-          placeholderContents: {
-            WORKABLE_LIST: this.getJobSectionRenderer(selectedStudioSlug)
-          }
-        })}
-        <Footer data={footer} studios={studios} currentPage={currentPage}/>
+
+        <div className="home-pinned-header-wrapper">
+          <div className="home-pinned-header-inner">
+            <ScrollWrapper
+              component={<JoinUsHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title={title} />}
+              documentScrollPosition={documentScrollPosition}
+              viewportDimensions={viewportDimensions}
+              requireScreenPosition={true}
+              className="scroll-wrapper-join-us-hero"
+            />
+          </div>
+        </div>
+
+        <div className="home-main-content-wrapper">
+
+          {renderModules({
+            modules: get(page, 'page_builder', []),
+            colours: get(page, 'colors'),
+            zebra: false,
+            placeholderContents: {
+              WORKABLE_LIST: this.getJobSectionRenderer(selectedStudioSlug)
+            }
+          })}
+          <Footer data={footer} studios={studios} currentPage={currentPage}/>
+
+        </div>
       </article>
     );
   },

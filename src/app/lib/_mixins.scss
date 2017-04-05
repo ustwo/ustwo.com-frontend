@@ -88,6 +88,18 @@
   @if $page == 'join' {
     background-image: linear-gradient(30deg, $honey, $softPassion);
   }
+  @if $page == 'london' {
+    background-image: linear-gradient(30deg, $blu, $mare);
+  }
+  @if $page == 'malmo' {
+    background-image: linear-gradient(30deg, $honey, $softPassion);
+  }
+  @if $page == 'newyork' {
+    background-image: linear-gradient(30deg, $piglet, $softPassion);
+  }
+  @if $page == 'sydney' {
+    background-image: linear-gradient(30deg, $mare, $jeezz);
+  }
 }
 
 @mixin core-gutter($type: 'padding') {

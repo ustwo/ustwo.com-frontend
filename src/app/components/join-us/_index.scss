@@ -4,9 +4,21 @@
  *
  */
 
+.scroll-wrapper-join-us-hero {
+  padding: 0;
+  height: 100%;
+
+  .scroll-wrapper-inner {
+    height: 100%;
+    max-width: none;
+  }
+}
+
 .page-join-us {
+  height: 100%;
 
   .hero {
+    height: 100%;
     @include page-background-colour(join);
 
     .rimage {
@@ -15,6 +27,14 @@
 
     .down-indicator {
       z-index: 2;
+    }
+  }
+
+  .single-column {
+    background-color: #fff;
+    
+    hr {
+      @include page-background-colour(join);
     }
   }
 
@@ -42,42 +62,32 @@
     }
   }
 
-  .current-openings,
-  .benefits {
+  .current-openings {
     display: flex;
     align-items: center;
     text-align: center;
 
     h2 {
       padding: 0 20px;
-      color: #fff;
-      line-height: 1.2;
     }
   }
 
   .current-openings {
     padding-top: $vertical-spacing;
     padding-bottom: 10px;
-    background-color: $lightGrey;
 
     h2 {
-      color: $nonBlack;
-
-      @media screen and (min-width: $bp-large) {
-        font-size: 60px;
-      }
+      @extend .h3;
     }
   }
 
-  .benefits {
-    height: 156px;
-    background: $ohra;
+  .home-main-content-wrapper {
+    background-color: $offWhite;
   }
 
   .jobs {
     position: relative;
     padding: 10px 15px 40px 15px;
-    background-color: $lightGrey;
   }
 
   .jobs-studio-tabs {

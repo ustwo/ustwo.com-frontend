@@ -20,26 +20,25 @@
   }
 
   .wrapper {
-    max-width: 680px;
+    max-width: 790px;
     margin: 0 auto;
   }
 
   .title {
-    color: $marshPassion;
     max-width: 820px;
     text-align: center;
+    @extend .h3;
   }
 
   hr {
     width: 120px;
     margin: 30px auto;
-    border: 2px solid $mare;
+    height: 3px;
+    border: none;
   }
 
   .content {
-    max-width: 680px;
     margin: 0 auto;
-    font-size: 20px;
 
     ul, ol {
       padding-left: 40px;
