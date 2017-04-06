@@ -313,7 +313,7 @@ $home-carousel-small-screen-offset: 95px;
       }
     }
 
-    &:after {
+    .home-carousel-item-image:after {
       content: "";
       width: 200px;
       position: absolute;
@@ -323,16 +323,17 @@ $home-carousel-small-screen-offset: 95px;
       background: linear-gradient(-90deg, white, transparent);
       opacity: 0;
       transition: opacity .15s ease-in-out;
+      z-index: 10;
     }
 
-    &.even:after {
+    &.even .home-carousel-item-image:after {
       right: auto;
       left: 0;
       background: linear-gradient(-90deg, transparent, white);
     }
 
     &:hover {
-      &:after {
+      .home-carousel-item-image:after {
         opacity: .5;
         transition-duration: .32s;
       }
@@ -345,6 +346,7 @@ $home-carousel-small-screen-offset: 95px;
   }
 
   .home-carousel-item-image {
+    position: relative;
     width: $home-carousel-width;
     height: $home-carousel-height;
 
@@ -442,14 +444,14 @@ $home-carousel-small-screen-offset: 95px;
 
   .home-carousel-item {
 
-    &.even:after {
-      left: $home-carousel-padding;
+    &.even .home-carousel-item-image:after {
+      left: 0;
       right: auto;
     }
 
-    &.odd:after {
+    &.odd .home-carousel-item-image:after {
       left: auto;
-      right: $home-carousel-padding;
+      right: 0;
     }
 
     &.even {
@@ -597,14 +599,14 @@ $home-carousel-small-screen-offset: 95px;
 
   .home-carousel-item {
 
-    &.even:after {
-      left: $home-carousel-padding;
+    &.even .home-carousel-item-image:after {
+      left: 0;
       right: auto;
     }
 
-    &.odd:after {
+    &.odd .home-carousel-item-image:after {
       left: auto;
-      right: $home-carousel-padding;
+      right: 0;
     }
 
     &.even {

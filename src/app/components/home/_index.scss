@@ -40,11 +40,11 @@
 
   @media screen and (min-width: $bp-tablet) {
     .home-carousel-item {
-      &:after {
+      .home-carousel-item-image:after {
         background: linear-gradient(-90deg, $v-solid, transparent);
       }
 
-      &.even:after {
+      &.even .home-carousel-item-image:after {
         background: linear-gradient(-90deg, transparent, $v-solid);
       }
     }
