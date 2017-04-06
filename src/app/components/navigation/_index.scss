@@ -344,6 +344,24 @@ $nav-height-large: 30px;
       }
     }
   }
+
+  &.notfound {
+    &:before {
+      display: none;
+    }
+
+    .navigation-logo svg {
+      fill: $offWhite;
+    }
+    .navigation-toggle-main {
+      border-color: $offWhite;
+
+      &:before,
+      &:after {
+        background-color: $offWhite;
+      }
+    }
+  }
 }
 
 

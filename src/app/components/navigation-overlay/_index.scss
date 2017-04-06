@@ -77,6 +77,10 @@
   @include page-background-colour(join);
 }
 
+.navigation-overlay.notfound,
+.navigation-overlay-bg-notfound {
+  @include page-background-colour(notfound);
+}
 
 $menu-transition-bg-duration: .2s;
 $menu-transition-item-duration: .2s;
