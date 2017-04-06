@@ -31,8 +31,23 @@
   left: 0;
 
   .down-indicator {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
     left: calc(50% - 13px);
   }
+}
+
+.home-intro-video {
+  flex: 1;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .home-intro-logo {

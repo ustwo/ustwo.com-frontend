@@ -70,7 +70,6 @@ $home-carousel-small-screen-offset: 95px;
 
 .home-carousel-item-image {
   display: flex;
-
   width: 100%;
   height: auto;
 
@@ -88,7 +87,7 @@ $home-carousel-small-screen-offset: 95px;
   margin-top: 70px;
 
   button {
-    @include buttonStyle('arrow');
+    @include buttonStyle(true);
     @include buttonColor();
     margin: 0 auto;
     display: inline-block;

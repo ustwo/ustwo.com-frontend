@@ -12,9 +12,11 @@
   background-size: 64px 64px;
   max-width: 1100px;
   margin: 0 auto;
+  padding-top: 0;
+  padding-bottom: 46%;
 
   @media screen and (min-width: $bp-medium) {
-    padding-bottom: 15%;
+    padding-bottom: 20%;
   }
 }
 
@@ -72,16 +74,9 @@
   }
 
   button {
-    @extend .h5;
-    display: inline-block;
-    border: 1px solid white;
-    padding: 0 37px 0 12px;
-    height: 40px;
-    line-height: 40px;
+    @include buttonStyle(true);
+    @include buttonColor('invert');
     background-image: url('/images/icon-right-light.svg');
-    background-repeat: no-repeat;
-    background-position: calc(100% - 12px) 50%;
-    background-size: 16px auto;
     align-self: flex-start;
   }
 }

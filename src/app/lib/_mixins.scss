@@ -150,14 +150,14 @@
   }
 }
 
-@mixin buttonStyle($type: 'normal') {
+@mixin buttonStyle($arrow: false) {
   height: 40px;
   line-height: 40px;
   outline: 0;
   @extend .h5;
   padding: 0 15px;
 
-  @if $type == 'arrow' {
+  @if $arrow == true {
     padding: 0 40px 0 15px;
     background-image: url('/images/icon-right-dark.svg');
     background-repeat: no-repeat;

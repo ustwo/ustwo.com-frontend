@@ -9,21 +9,15 @@ import DownIndicator from 'app/components/down-indicator';
 
 // const rainbowColours = ['#ED0082', '#E60C29', '#FF5519', '#FFBF02', '#96CC29', '#14C04D', '#16D6D9', '#009CF3', '#143FCC', '#6114CC', '#111111'];
 
-function renderLogoBackground(screenPosition, isMobile) {
-
-  const modifier = isMobile ? 30 : 20;
-  const modifierTranslate = modifier;
-  const modifierRotate = modifier - 5;
-
+function renderLogoBackground(screenPosition) {
   const { coordinateX, coordinateY } = screenPosition;
-
-  let value = 10 + Math.abs(coordinateX * 10);
-  let translateZ = `-${value}px`;
-
-
-  const transform = `translate3d(${coordinateX * modifierTranslate}px, ${coordinateY * modifierTranslate}px, ${translateZ}) rotateY(${coordinateX * modifierRotate}deg) rotateX(${coordinateY * modifierRotate}deg)`;
-
-  let styles = { transform, fill: '#000000' }
+  const modifier = env.Modernizr.touchevents ? 20 : 10;
+  const x = env.Modernizr.touchevents ? coordinateX : coordinateX * -1;
+  const y = env.Modernizr.touchevents ? coordinateY : coordinateY * -1;
+  const value = 10 + Math.abs(coordinateX * 10);
+  const transform = `translate3d(${x * modifier}px, ${y * modifier}px, 0)`;
+  const styles = { transform, fill: '#000000' }
+  // const translateZ = `-${value}px`;
 
   return (
     <SVG
@@ -42,7 +36,7 @@ class HomeIntro extends Component {
     const { scrollProgress, screenPosition, loaded, isMobile, popup, viewportDimensions, currentPage, studios, footer, fixedHeight } = this.props;
 
     let playVideo = loaded;
-    if (scrollProgress > 0.5 || !!popup) {
+    if (scrollProgress > 0.5 && env.Modernizr.touchevents || !!popup) {
       playVideo = false;
     }
 
@@ -59,10 +53,14 @@ class HomeIntro extends Component {
       fallbackImage = '/images/home-header-fallback.jpg';
     }
 
-    const logoStyles = {
+    const transitionStyles = {
       opacity: (0.75 - scrollProgress) * 4,
       transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
     };
+
+    const videoTransitionStyles = {
+      transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
+    }
 
     let styles;
     if (env.Modernizr.touchevents) {
@@ -71,20 +69,22 @@ class HomeIntro extends Component {
 
     return (
       <div className="home-intro" style={styles}>
-        <Video
-          src={src}
-          isVideoBackground={true}
-          play={playVideo}
-          imageCSS={fallbackImage}
-          heroVideo={true}
-          isMobile={isMobile}
-          preload="auto"
-          fixedHeight={fixedHeight}
-          hide={hide}
-        />
-        <div className="home-intro-logo" style={logoStyles}>
+        <div className="home-intro-video" style={videoTransitionStyles}>
+          <Video
+            src={src}
+            isVideoBackground={true}
+            play={playVideo}
+            imageCSS={fallbackImage}
+            heroVideo={true}
+            isMobile={isMobile}
+            preload="auto"
+            fixedHeight={fixedHeight}
+            hide={hide}
+          />
+        </div>
+        <div className="home-intro-logo" style={transitionStyles}>
           <div className="home-intro-logo-wrapper">
-            {renderLogoBackground(screenPosition, isMobile)}
+            {renderLogoBackground(screenPosition)}
             <SVG
               title="ustwo logo layer"
               spritemapID="ustwologo"
@@ -92,7 +92,7 @@ class HomeIntro extends Component {
             />
           </div>
         </div>
-        <DownIndicator />
+        <div className="hero-down-indicator" style={transitionStyles}><DownIndicator /></div>
       </div>
     );
   }

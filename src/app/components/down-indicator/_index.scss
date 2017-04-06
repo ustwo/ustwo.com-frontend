@@ -5,16 +5,6 @@
  *  Notes: Currently used only for indicating 'down'
  */
 
-.down-indicator {
-  position: absolute;
-  z-index: 2;
-  bottom: 20px;
-
-  @media screen and (min-width: $bp-medium) {
-    bottom: 40px;
-  }
-}
-
 .down-indicator-icon {
   width: 25px;
   height: 64px;

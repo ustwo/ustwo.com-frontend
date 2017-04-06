@@ -110,6 +110,6 @@
 }
 
 .work-verticals-button {
-  @include buttonStyle('arrow');
+  @include buttonStyle(true);
   @include buttonColor();
 }

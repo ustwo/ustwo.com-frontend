@@ -93,7 +93,9 @@ class Hero extends Component {
               {this.renderSubheading()}
               {children}
             </div>
-            {this.renderDownIndicator()}
+            <div className="hero-down-indicator" style={transitionStyles}>
+              {this.renderDownIndicator()}
+            </div>
           </EntranceTransition>
           {this.renderVideo()}
         </div>
