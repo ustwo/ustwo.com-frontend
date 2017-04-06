@@ -88,14 +88,10 @@ $home-carousel-small-screen-offset: 95px;
   margin-top: 70px;
 
   button {
-    @include buttonStyle();
-    display: inline-block;
-    padding: 0 40px 0 15px;
+    @include buttonStyle('arrow');
+    @include buttonColor();
     margin: 0 auto;
-    background-image: url('/images/icon-right-dark.svg');
-    background-repeat: no-repeat;
-    background-position: calc(100% - 13px) 50%;
-    background-size: 16px auto;
+    display: inline-block;
   }
 }
 

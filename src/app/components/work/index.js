@@ -14,6 +14,7 @@ import ScrollWrapper from 'app/components/scroll-wrapper';
 import WorkHero from 'app/components/work-hero';
 import SVG from 'app/components/svg';
 import ContactBlock from 'app/components/contact-block';
+import WorkVerticals from 'app/components/work-verticals';
 
 class PageWork extends Component {
 
@@ -104,6 +105,8 @@ class PageWork extends Component {
             </div>
           </div>
 
+          <WorkVerticals data={workData.verticals} />
+
           <ContactBlock />
           <Footer data={footer} studios={studios} currentPage={currentPage}/>
 
@@ -136,5 +139,19 @@ const workData = {
     title: 'Launch & Scale',
     image: '/images/illustration-launch-and-scale.svg',
     text: 'Stay relevant and respond to customer needs. Get your product out in the market – refine, grow and prove your return on investment.'
-  }]
+  }],
+  verticals: {
+    title: 'Areas of Interest',
+    introText: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
+    auto: {
+      type: 'Expertise',
+      title: 'Auto',
+      text: 'The ustwo Auto team explore user experience in the automotive space with client engagements and our own research and experimental projects, building services and products around the connected car.'
+    },
+    health: {
+      type: 'Expertise',
+      title: 'Health',
+      text: 'ustwo collaborates with clients, healthcare professionals and academic experts to create lasting, meaningful digital health solutions.'
+    }
+  }
 }

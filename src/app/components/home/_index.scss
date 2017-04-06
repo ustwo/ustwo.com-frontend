@@ -33,7 +33,8 @@
   }
 
   .view-carousel-related-page button {
-    @include buttonStyle('invert');
+    @include buttonStyle();
+    @include buttonColor('invert');
     background-image: url('/images/icon-right-light.svg');
   }
 

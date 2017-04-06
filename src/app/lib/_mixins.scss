@@ -132,12 +132,7 @@
   box-shadow: 10px 10px 40px rgba(0,0,0,.3);
 }
 
-@mixin buttonStyle($type: 'dark') {
-  height: 40px;
-  line-height: 40px;
-  outline: 0;
-  @extend .h5;
-
+@mixin buttonColor($color: 'dark') {
   border: 1px solid $nonBlack;
   color: $nonBlack;
 
@@ -145,12 +140,28 @@
     box-shadow: inset 0 0 0 1px $nonBlack;
   }
 
-  @if $type == 'invert' {
+  @if $color == 'invert' {
     border: 1px solid $offWhite;
     color: $offWhite;
 
     &:hover {
       box-shadow: inset 0 0 0 1px $offWhite;
     }
+  }
+}
+
+@mixin buttonStyle($type: 'normal') {
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  @extend .h5;
+  padding: 0 15px;
+
+  @if $type == 'arrow' {
+    padding: 0 40px 0 15px;
+    background-image: url('/images/icon-right-dark.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 13px) 50%;
+    background-size: 16px auto;
   }
 }

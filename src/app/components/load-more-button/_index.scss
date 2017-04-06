@@ -24,6 +24,7 @@
 .load-more-button {
   button {
     @include buttonStyle();
+    @include buttonColor();
     display: inline-block;
     width: 100%;
 
@@ -33,7 +34,7 @@
       width: 15px;
       height: 15px;
       margin-top: -2px;
-      margin-left: 5px;
+      margin-left: 15px;
       transform-origin: 50% 50%;
 
       &:before,

@@ -127,4 +127,59 @@
       <path d="M13 20l6-3.5-6-3.5z" stroke-width="4" stroke="#F8F8F8"/>
     </g>
   </symbol>
+  <symbol id="iconExpertiseEducation" viewbox="0 0 64 64">
+    <title>Icon Expertise Education</title>
+    <g fill="none" fill-rule="evenodd">
+      <g stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M32.017 14.91L55.6 17.649v34.59l-23.584-3.043zM8.031 17.649l23.584-2.739v34.286L8.031 52.239zM49.082 40.594l-9.434-.608M49.082 34.053l-9.434-.609M49.082 26.421l-9.434-.609M25.096 39.986l-9.433 1.217M25.096 33.444l-9.433 1.217M25.096 25.812l-9.433 1.218"/>
+        <path d="M32.274 15.253l-22.062-2.524v4.237M32.017 15.138L53.47 12.73v3.4"/>
+      </g>
+    </g>
+  </symbol>
+  <symbol id="iconExpertiseVr" viewbox="0 0 64 64">
+    <title>Icon Expertise VR</title>
+    <g fill="none" fill-rule="evenodd">
+      <g stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M26.792 31.988c0 3.59-2.936 6.499-6.559 6.499-3.622 0-6.559-2.91-6.559-6.499 0-3.588 2.937-6.498 6.56-6.498 3.622 0 6.558 2.91 6.558 6.498zM47.639 31.988c0 3.59-2.937 6.499-6.56 6.499-3.622 0-6.558-2.91-6.558-6.499 0-3.588 2.936-6.498 6.559-6.498 3.622 0 6.559 2.91 6.559 6.498z"/>
+        <path d="M61.14 44.158c0 2.087-1.723 3.795-3.83 3.795h-9.003l-10.565-4.605H25.901l-10.565 4.605H5.831C3.724 47.953 2 46.245 2 44.158 2 23.23 7.92 19.419 7.92 19.419c33.215-3.226 47.3 0 47.3 0s5.92 7.262 5.92 24.739z"/>
+      </g>
+    </g>
+  </symbol>
+  <symbol id="iconExpertiseTransport" viewbox="0 0 64 64">
+    <title>Icon Expertise Transport</title>
+    <g fill="none" fill-rule="evenodd">
+      <g stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M31.925 9.958c12.579.017 22.771 9.998 23.007 22.508.247 13.06-10.127 23.123-22.339 23.445-12.778.337-23.375-9.766-23.61-22.53C8.745 20.427 19.13 10.005 31.925 9.958z"/>
+        <path d="M27.996 55.22V42.275c0-3.53-2.889-6.419-6.42-6.419H8.98M35.835 54.994V42.2c0-3.49 2.855-6.344 6.344-6.344h12.45"/>
+        <path d="M32.013 25.305c-4.296.002-7.688 3.388-7.688 7.674 0 4.228 3.5 7.732 7.71 7.72 4.223-.012 7.692-3.506 7.687-7.742-.006-4.28-3.405-7.655-7.71-7.652z"/>
+      </g>
+    </g>
+  </symbol>
+  <symbol id="iconExpertiseRetail" viewbox="0 0 64 64">
+    <title>Icon Expertise Retail</title>
+    <g fill="none" fill-rule="evenodd">
+      <g stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M33.631 29.436h21.914c1.792 0 3.257 1.442 3.257 3.205v17.093c0 1.763-1.465 3.205-3.257 3.205h-31.13c-1.79 0-3.256-1.442-3.256-3.205v-8.049M58.358 36h-32.3M58.358 38h-34.2M29.369 21.747c-1.806 0-3.27-1.44-3.27-3.217 0-1.776 1.464-3.216 3.27-3.216 1.805 0 3.27 1.44 3.27 3.216 0 1.777-1.465 3.217-3.27 3.217zm8.58-11.66L23.315 10 2 30.973l14.723 14.488 21.315-20.973-.089-14.4z"/>
+      </g>
+    </g>
+  </symbol>
+  <symbol id="iconExpertiseHealth" viewbox="0 0 64 64">
+    <title>Icon Expertise Health</title>
+    <g stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32.494 53.815s20.722-12.628 20.722-28.309c0-6.355-4.638-11.506-10.36-11.506-5.723 0-10.362 3.412-10.362 8.45"/>
+      <path d="M4 36.193h14.611l4.594-11.987 10.718 18.688 4.287-10.13H61"/>
+      <path d="M32.494 53.815S11.772 41.187 11.772 25.506C11.772 19.151 16.411 14 22.133 14c5.723 0 10.361 3.412 10.361 8.45"/>
+    </g>
+  </symbol>
+  <symbol id="iconExpertiseEntertainment" viewbox="0 0 64 64">
+    <title>Icon Expertise Entertainment</title>
+    <g fill="none" fill-rule="evenodd">
+      <path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 44.453h54V13H5z"/>
+      <path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M45.836 50.91L30.82 44.452l-14 6.456"/>
+      <path d="M11.967 24.415l12.168 12.207" fill="#FFF"/>
+      <path d="M11.967 24.415l12.168 12.207" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14.922 18.217l18.079 18.135" fill="#FFF"/>
+      <path d="M14.922 18.217l18.079 18.135" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </symbol>
 </svg>
