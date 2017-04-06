@@ -13,6 +13,7 @@ import WorkProcess from 'app/components/work-process';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import WorkHero from 'app/components/work-hero';
 import SVG from 'app/components/svg';
+import ContactBlock from 'app/components/contact-block';
 
 class PageWork extends Component {
 
@@ -30,7 +31,11 @@ class PageWork extends Component {
         </div>
         <WorkProcess data={workData.process} isMobile={isMobile} />
         <div className="work-contact">
-          <button className="work-contact-button"><div className="work-contact-button-text">{workData.contact}</div> <SVG spritemapID="plane" /></button>
+          <button className="work-contact-button">
+            <div className="work-contact-button-wrapper">
+              <div className="work-contact-button-text">{workData.contact}</div> <SVG spritemapID="plane" />
+            </div>
+          </button>
         </div>
       </div>
     );
@@ -99,6 +104,7 @@ class PageWork extends Component {
             </div>
           </div>
 
+          <ContactBlock />
           <Footer data={footer} studios={studios} currentPage={currentPage}/>
 
         </div>

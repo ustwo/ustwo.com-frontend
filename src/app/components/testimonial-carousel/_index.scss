@@ -28,7 +28,7 @@
   transition: opacity .2s linear;
 
   p {
-    font-size: 30px;
+    font-size: 20px;
     line-height: 1.33;
   }
 
@@ -72,6 +72,14 @@
     fill: $offWhite;
     width: 40px;
     height: 40px;
+  }
+}
+
+@media screen and (min-width: $bp-small) {
+  .testimonial-item {
+    p {
+      font-size: 30px;
+    }
   }
 }
 

@@ -7,14 +7,19 @@
 .scroll-wrapper {
   position: relative;
   // height: 100vh;
-  padding-top: 40%;
-  padding-bottom: 40%;
+  padding-top: 60%;
+  padding-bottom: 60%;
   z-index: 1;
   @include core-layout();
 
+  @media screen and (min-width: $bp-small) {
+    padding-top: 50%;
+    padding-bottom: 50%;
+  }
+
   @media screen and (min-width: $bp-medium) {
-    padding-top: 30%;
-    padding-bottom: 30%;
+    padding-top: 35%;
+    padding-bottom: 35%;
   }
 
   .scroll-wrapper-inner {

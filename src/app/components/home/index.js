@@ -58,7 +58,7 @@ class PageHome extends Component {
     const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, footer, studios, currentPage, fixedHeight } = this.props;
     const { venturesPosition } = this.state;
 
-    const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from - (viewportDimensions.height * .15)) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to)
+    const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to)
 
     const classes = classnames('page-home-content', this.props.className, { venturesActive, loaded });
 

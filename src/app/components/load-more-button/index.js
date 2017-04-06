@@ -19,7 +19,9 @@ const LoadMoreButton = React.createClass({
         onClick={this.onClick}
         className={buttonClasses}
       >
-        Gimme more <div className="loader"></div>
+        <div className="load-more-button-wrapper">
+          Gimme more <div className="loader"></div>
+        </div>
       </button>
     </div>;
   }

@@ -21,7 +21,7 @@ function HomeSmorgasbord({ data }) {
         <Video
           controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
           poster="/images/ustwo-roadshow-first-frame.jpg"
-          preload="metadata"
+          preload="none"
         >
           <source src={src} type="video/mp4" />
         </Video>

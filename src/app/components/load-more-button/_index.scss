@@ -9,26 +9,23 @@
   padding: 40px 0 60px;
   text-align: center;
   margin: 0 auto;
-  
+
   &.hidden {
     display: none;
   }
+}
 
+.load-more-button-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.load-more-button {
   button {
+    @include buttonStyle();
     display: inline-block;
     width: 100%;
-    height: 40px;
-    border: none;
-    outline: 0;
-    border: 1px solid $nonBlack;
-    line-height: 40px;
-    color: $nonBlack;
-    font-family: $PxGroteskBold;
-    font-size: 14px;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     .loader {
       position: relative;

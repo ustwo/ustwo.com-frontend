@@ -88,16 +88,13 @@ $home-carousel-small-screen-offset: 95px;
   margin-top: 70px;
 
   button {
-    @extend .h5;
+    @include buttonStyle();
     display: inline-block;
-    border: 1px solid $nonBlack;
-    padding: 0 37px 0 12px;
+    padding: 0 40px 0 15px;
     margin: 0 auto;
-    height: 40px;
-    line-height: 40px;
     background-image: url('/images/icon-right-dark.svg');
     background-repeat: no-repeat;
-    background-position: calc(100% - 12px) 50%;
+    background-position: calc(100% - 13px) 50%;
     background-size: 16px auto;
   }
 }

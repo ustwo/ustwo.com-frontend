@@ -128,3 +128,26 @@
 @mixin box-shadow() {
   box-shadow: 10px 10px 40px rgba(0,0,0,.3);
 }
+
+@mixin buttonStyle($type: 'dark') {
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  @extend .h5;
+
+  border: 1px solid $nonBlack;
+  color: $nonBlack;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px $nonBlack;
+  }
+
+  @if $type == 'invert' {
+    border: 1px solid $offWhite;
+    color: $offWhite;
+
+    &:hover {
+      box-shadow: inset 0 0 0 1px $offWhite;
+    }
+  }
+}
