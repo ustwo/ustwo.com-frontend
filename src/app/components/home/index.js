@@ -68,7 +68,7 @@ class PageHome extends Component {
       text: <HomeWelcomeMessage />
     }
     const textBlockMore = {
-      title: `We’re Different.`,
+      title: `We don't just talk. We do.`,
       text: <HomeMoreMessage />
     }
     const textBlockSmorgasbord = {

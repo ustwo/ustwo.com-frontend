@@ -121,9 +121,9 @@ export default PageWork;
 
 const workData = {
   intro: {
-    statement: 'We use technology, design and digital product thinking to solve the business problems that matter. Our goal is to transform people’s lives by keeping the user at the heart of it all.',
+    statement: 'From strategy through to launching products, getting ideas out into the world is what matters. We solve business challenges with digital products and services that are transformational and loved.',
     extra: [
-      'We work with you all the way through the product life cycle.'
+      'We join with you as one team to bring business strategy, product design, team coaching and world-class engineering to the full product lifecycle. True change doesn’t happen flying solo.'
     ]
   },
   contact: 'Get in touch',
@@ -134,11 +134,11 @@ const workData = {
   },{
     title: 'Design & Build',
     image: '/images/illustration-design-and-build.svg',
-    text: 'Stand out from the competition. Truly agile software development, exceptional execution and world-class engineering.'
+    text: 'We design for the unknown and help organisations stand out from the competition. Truly agile software development, exceptional execution and world-class engineering.'
   },{
     title: 'Launch & Scale',
     image: '/images/illustration-launch-and-scale.svg',
-    text: 'Stay relevant and respond to customer needs. Get your product out in the market – refine, grow and prove your return on investment.'
+    text: 'Stay relevant and respond to customer needs. Get your product out in the market - refine, grow and prove your return on investment.'
   }],
   verticals: {
     title: 'Areas of Interest',
