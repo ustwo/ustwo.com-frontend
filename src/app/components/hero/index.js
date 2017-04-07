@@ -27,8 +27,14 @@ class Hero extends Component {
     return output;
   }
 
-  renderVideo() {
-    return this.props.video ? this.props.video : null;
+  renderVideo(videoTransitionStyles) {
+    if (this.props.video) {
+      return (
+        <div className="hero-video" style={videoTransitionStyles}>
+          {this.props.video}
+        </div>
+      );
+    }
   }
 
   renderSubheading() {
@@ -63,12 +69,17 @@ class Hero extends Component {
 
   render() {
     const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions, fixedHeight } = this.props;
-    let transitionStyles;
+    const transform = `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`;
+
+    let transitionStyles, videoTransitionStyles;
     if (scrollProgress) {
       transitionStyles = {
         opacity: (0.75 - scrollProgress) * 4,
-        transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
+        transform: transform
       };
+      videoTransitionStyles = {
+        transform: transform
+      }
     }
     const sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
     const classes = classnames('hero', className, { notFullScreen });
@@ -97,7 +108,7 @@ class Hero extends Component {
               {this.renderDownIndicator()}
             </div>
           </EntranceTransition>
-          {this.renderVideo()}
+          {this.renderVideo(videoTransitionStyles)}
         </div>
         {this.renderImage()}
       </section>

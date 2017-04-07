@@ -17,6 +17,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  transform: translateZ(0);
 
   .hero-inner-wrapper {
     @include core-layout();
@@ -31,10 +32,16 @@
     align-items: center;
   }
 
-  .videoBackground {
+  .hero-video {
     height: 100%;
     width: 100vw;
     max-width: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
   }
 
   .section-title {
@@ -162,26 +169,26 @@
 }
 
 /* NOTE: max-width */
-@media screen and (max-width: $bp-medium) {
-  .hero {
-    width: 100vw;
-    z-index: 1;
-  }
-  .hero-inner-wrapper {
-    position: absolute;
-    height: 100%;
-    display: block;
-
-    .videoBackground {
-      height: 100vh;
-      width: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 1;
-    }
-  }
-}
+// @media screen and (max-width: $bp-medium) {
+//   .hero {
+//     width: 100vw;
+//     z-index: 1;
+//   }
+//   .hero-inner-wrapper {
+//     position: absolute;
+//     height: 100%;
+//     display: block;
+//
+//     .hero-video {
+//       height: 100vh;
+//       width: 100%;
+//       position: absolute;
+//       left: 0;
+//       top: 0;
+//       z-index: 1;
+//     }
+//   }
+// }
 
 .hero-down-indicator {
   position: absolute;

@@ -53,13 +53,14 @@ class HomeIntro extends Component {
       fallbackImage = '/images/home-header-fallback.jpg';
     }
 
+    const transform = `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`;
     const transitionStyles = {
       opacity: (0.75 - scrollProgress) * 4,
-      transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
+      transform: transform
     };
 
     const videoTransitionStyles = {
-      transform: `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`
+      transform: transform
     }
 
     let styles;

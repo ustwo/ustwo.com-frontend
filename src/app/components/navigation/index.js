@@ -104,7 +104,7 @@ class Navigation extends Component {
 
     const navClasses = classnames('navigation', customClass, section, page, {
       takeover,
-      notSticky: modal === null && documentScrollPosition < (viewportDimensions.height - 1) && homePage,
+      notSticky: modal === null && scrolledBefore100 && homePage,
       menuOpen: modal === 'menu',
       invert: venturesActive && homePage,
       overHero: scrolledBefore100 && heroPage,

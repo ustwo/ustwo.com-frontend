@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import env from 'app/adaptors/server/env';
+
 import Hero from 'app/components/hero';
 import Video from 'app/components/video';
 import SVG from 'app/components/svg';
@@ -27,7 +29,7 @@ class WorkHero extends Component {
       this.setState({
         playVideo: !(nextProps.modal === 'videoOverlay')
       });
-      if (nextProps.scrollProgress > 0.5) {
+      if (nextProps.scrollProgress > 0.5 && env.Modernizr.touchevents) {
         this.setState({ playVideo: false })
       }
     } else {

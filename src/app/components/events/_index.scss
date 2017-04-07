@@ -29,6 +29,24 @@
     }
   }
 
+  .hero-content {
+
+    @media screen and (min-width: $bp-large) {
+      background: url('/images/events/ustwo-talkies.svg') no-repeat right 20%;
+    }
+    @media screen and (min-width: $bp-larger) {
+      background-position: calc(100% - 200px) 20%;
+    }
+
+    .subheading {
+      max-width: 640px;
+    }
+  }
+
+  .card-list {
+    margin: 0 auto;
+  }
+
   .no-events-found {
     width: 100%;
     margin: 0 auto;
