@@ -20,7 +20,15 @@ class PageLoader extends Component {
     return (
       <div className={classes}>
         <div className="page-loader-icon">
-          <img src="/images/page-loader-placeholder.gif" />
+          <div className="page-loader-icon-inner">
+            <div className="half left">
+              <div className="bg"></div>
+            </div>
+            <div className="half right">
+              <div className="bg"></div>
+            </div>
+          </div>
+          <div className="page-loader-icon-images" />
         </div>
       </div>
     );

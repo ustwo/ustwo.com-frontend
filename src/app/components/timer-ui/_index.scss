@@ -4,69 +4,21 @@
  *
  */
 
-@mixin timer-ui-size($size, $border) {
-  width: $size;
-  height: $size;
-
-  svg {
-    width: $size * 0.5;
-    height: $size * 0.5;
-  }
-
-  .half {
-    width: $size * .5;
-    height: $size;
-
-    .bg {
-      width: $size * .5;
-      height: $size;
-      border-radius: $size;
-    }
-
-    &.left {
-      .bg {
-        border-left: ($size * .5) solid #e5e5e5;
-      }
-    }
-
-    &.right {
-      .bg {
-        border-right: ($size * .5) solid #e5e5e5;
-      }
-    }
-  }
-
-  &:after {
-    left: $border;
-    top: $border;
-    width: $size - (2 * $border);
-    height: $size - (2 * $border);
-    border-radius: $size - (2 * $border) * 0.5;
-  }
-}
-
 .timer-ui {
   $size: 50px;
   $border: 3px;
   $size-large: 64px;
   $border-large: 4px;
 
-  @include timer-ui-size($size, $border);
+  @include spinner-core();
+  @include spinner-size($size, $border);
 
   @media screen and (min-width: $bp-medium) {
-    @include timer-ui-size($size-large, $border-large);
+    @include spinner-size($size-large, $border-large);
   }
 
-  position: relative;
-  box-sizing: content-box;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // background-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
   background: url('/images/timer-bg.png') no-repeat 50% 50%;
   background-size: 100% auto;
-  border-radius: 50%;
 
   svg {
     position: relative;
@@ -75,39 +27,7 @@
     transition: fill .2s ease-in-out;
   }
 
-  .half {
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-
-    .bg {
-      position: absolute;
-      transform-origin: 50% 50%;
-      transform: rotate(0deg);
-    }
-
-    &.left {
-      left: 0;
-      border-radius: 50% 0 0 50%;
-
-      .bg {
-        left: 0;
-      }
-    }
-
-    &.right {
-      right: 0;
-      border-radius: 0 50% 50% 0;
-
-      .bg {
-        right: 0;
-      }
-    }
-  }
-
   &:after {
-    content: "";
-    position: absolute;
     background: $offWhite; /* This needs to be the same colour as the background colour */
   }
 }
