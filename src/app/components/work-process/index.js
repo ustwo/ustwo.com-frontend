@@ -3,6 +3,7 @@ import ReactSwipe from 'react-swipe';
 import classnames from 'classnames';
 import { kebabCase } from 'lodash';
 import env from 'app/adaptors/server/env';
+import goToCapability from 'app/lib/go-to-capability';
 
 class WorkProcess extends Component {
 
@@ -41,6 +42,7 @@ class WorkProcess extends Component {
           <img src={item.image} alt={`${item.title} icon`} />
           <h2>{item.title}</h2>
           <p>{item.text}</p>
+          <button onClick={() => goToCapability(item.name)} className="work-process-item-button">Read More</button>
         </div>
       );
     });

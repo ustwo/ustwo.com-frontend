@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import Scroll from 'react-scroll';
-
 import Flux from 'app/flux';
 import Nulls from 'app/flux/nulls';
-
 import Track from 'app/adaptors/server/track';
 import SVG from 'app/components/svg';
 import FramesUstwoLogo from 'app/components/frames-ustwo-logo';

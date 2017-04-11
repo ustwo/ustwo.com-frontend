@@ -128,14 +128,17 @@ const workData = {
   },
   contact: 'Get in touch',
   process: [{
+    name: 'discovery',
     title: 'Discovery & Strategy',
     image: '/images/illustration-discovery.svg',
     text: 'Innovate and stay ahead. Refine business goals and validate opportunities by understanding what your customers want most.'
   },{
+    name: 'design',
     title: 'Design & Build',
     image: '/images/illustration-design-and-build.svg',
     text: 'We design for the unknown and help organisations stand out from the competition. Truly agile software development, exceptional execution and world-class engineering.'
   },{
+    name: 'launch',
     title: 'Launch & Scale',
     image: '/images/illustration-launch-and-scale.svg',
     text: 'Stay relevant and respond to customer needs. Get your product out in the market - refine, grow and prove your return on investment.'
