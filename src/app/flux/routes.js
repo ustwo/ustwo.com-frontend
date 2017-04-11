@@ -18,6 +18,33 @@ const routes = {
       slug: 'work'
     }]
   },
+  discoveryStrategy: {
+    id: 'work/discovery-strategy',
+    patterns: ['/work/discovery-strategy'],
+    data: () => [{
+      url: 'ustwo/v1/pages/work',
+      type: 'page',
+      slug: 'discovery-strategy'
+    }]
+  },
+  designBuild: {
+    id: 'work/design-build',
+    patterns: ['/work/design-build'],
+    data: () => [{
+      url: 'ustwo/v1/pages/work',
+      type: 'page',
+      slug: 'design-build'
+    }]
+  },
+  launchScale: {
+    id: 'work/launch-scale',
+    patterns: ['/work/launch-scale'],
+    data: () => [{
+      url: 'ustwo/v1/pages/work',
+      type: 'page',
+      slug: 'launch-scale'
+    }]
+  },
   caseStudy: {
     id: 'work/case-study',
     patterns: ['/work/:cid'],

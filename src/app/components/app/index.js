@@ -37,6 +37,9 @@ const pageMap = {
   'home': require('app/components/home'),
   'work': require('app/components/work'),
   'work/case-study': require('app/components/case-study'),
+  'work/discovery-strategy': require('app/components/work-discovery-strategy'),
+  'work/design-build': require('app/components/work-design-build'),
+  'work/launch-scale': require('app/components/work-launch-scale'),
   'blog': require('app/components/blog'),
   'blog/post': require('app/components/post'),
   'blog/search-results': require('app/components/search-results'),
@@ -130,10 +133,8 @@ const App = React.createClass({
     if (prevState.modal != modal || prevState.popup != popup || prevState.overflow != overflow) {
       if (modal || popup || overflow === 'hidden') {
         disableScroll.on();
-        console.log('disableScroll on');
       } else if (modal === null || popup === null || overflow === 'auto') {
         disableScroll.off();
-        console.log('disableScroll off');
       }
     }
   },

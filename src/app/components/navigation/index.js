@@ -73,11 +73,16 @@ class Navigation extends Component {
         navigateTo = '/blog';
         break;
       case 'case-study':
+      case 'discovery-strategy':
+      case 'design-build':
+      case 'launch-scale':
         navigateTo = '/work';
         break;
       case 'event':
         navigateTo = '/events';
         break;
+      default:
+        navigateTo = '/';
     }
 
     Flux.navigate(navigateTo);
@@ -94,10 +99,11 @@ class Navigation extends Component {
   render() {
     const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions } = this.props;
 
+    const capability = ['discovery-strategy', 'design-build', 'launch-scale'];
     const venturesActive = venturesPosition && (documentScrollPosition - viewportDimensions.height > venturesPosition.from) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
     const homePage = section === 'home';
     const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog';
-    const subPage = page === 'post' || page === 'case-study' || page === 'event';
+    const subPage = page === 'post' || page === 'case-study' || page === 'event' || capability.includes(page);
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
     const scrolledBefore100 = documentScrollPosition < viewportDimensions.height - (this.state.height * 0.5);
