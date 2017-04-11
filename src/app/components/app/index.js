@@ -39,7 +39,8 @@ const pageMap = {
   'legal': require('app/components/legal'),
   'join-us': require('app/components/join-us'),
   'events': require('app/components/events'),
-  'events/event': require('app/components/event')
+  'events/event': require('app/components/event'),
+  'ev': require('app/components/page')
 };
 
 const spinnerBlacklist = ['legal', 'blog/search-results'];
