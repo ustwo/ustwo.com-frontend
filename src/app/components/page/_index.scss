@@ -1,0 +1,30 @@
+/*
+ *  PAGE
+ *  Generic page
+ *
+ */
+
+.page {
+  background-color: $lightGrey;
+
+  .hero {
+    background-color: $darkGrey;
+
+    .rimage {
+      max-width: 600px;
+      opacity: .7;
+    }
+
+    .down-chevron {
+      z-index: 2;
+    }
+  }
+
+  .hero + .single-column {
+    background: white;
+  }
+
+  .single-column .content {
+    text-align: left;
+  }
+}

@@ -137,6 +137,15 @@ const routes = {
       type: 'jobs'
     }]
   },
+  ev: {
+    id: 'ev',
+    patterns: ['/ev'],
+    data: () => [{
+      url: 'ustwo/v1/pages/ev',
+      type: 'page',
+      slug: 'ev'
+    }]
+  },
   notfound: {
     id: 'notfound',
     pattern: '/404',
