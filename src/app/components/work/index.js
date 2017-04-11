@@ -12,9 +12,9 @@ import Footer from 'app/components/footer';
 import WorkProcess from 'app/components/work-process';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import WorkHero from 'app/components/work-hero';
-import SVG from 'app/components/svg';
 import ContactBlock from 'app/components/contact-block';
 import WorkVerticals from 'app/components/work-verticals';
+import ContactButton from 'app/components/contact-button';
 
 class PageWork extends Component {
 
@@ -32,11 +32,7 @@ class PageWork extends Component {
         </div>
         <WorkProcess data={workData.process} isMobile={isMobile} />
         <div className="work-contact">
-          <button className="work-contact-button">
-            <div className="work-contact-button-wrapper">
-              <div className="work-contact-button-text">{workData.contact}</div> <SVG spritemapID="plane" />
-            </div>
-          </button>
+          <ContactButton />
         </div>
       </div>
     );
@@ -126,7 +122,6 @@ const workData = {
       'We join with you as one team to bring business strategy, product design, team coaching and world-class engineering to the full product lifecycle. True change doesn’t happen flying solo.'
     ]
   },
-  contact: 'Get in touch',
   process: [{
     name: 'discovery',
     title: 'Discovery & Strategy',

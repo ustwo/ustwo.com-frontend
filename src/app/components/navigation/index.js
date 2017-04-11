@@ -110,7 +110,7 @@ class Navigation extends Component {
       takeover,
       notSticky: modal === null && scrolledBefore100 && homePage,
       menuOpen: modal === 'menu',
-      invert: venturesActive && homePage,
+      invert: venturesActive && homePage || capability.includes(page),
       overHero: scrolledBefore100 && heroPage && !subPage,
       pageControls: subPage && scrolled,
       subPage

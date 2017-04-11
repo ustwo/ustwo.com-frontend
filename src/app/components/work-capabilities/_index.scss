@@ -1,0 +1,12 @@
+/*
+ *  WORK CAPABILITIES
+ *
+ */
+
+.work-capabilities {
+  height: 180px;
+
+  @media screen and (min-width: $bp-tablet) {
+    height: 250px;
+  }
+}

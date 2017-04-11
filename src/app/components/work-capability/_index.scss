@@ -1,0 +1,67 @@
+/*
+ *  WORK CAPABILITY
+ *
+ */
+
+.work-capability {
+  color: $offWhite;
+	background-image: linear-gradient(319deg, #252e47, #1a1a1a);
+  padding-top: 100px;
+  @include core-layout();
+
+  > * {
+    max-width: 1000px;
+  }
+
+  h1 {
+    @extend .h1-alt;
+    text-align: center;
+
+    span:last-child {
+      display: block;
+    }
+  }
+
+  h2 {
+    @extend .h2-alt;
+  }
+
+  @media screen and (min-width: $bp-tablet) {
+    padding-top: 140px;
+  }
+}
+
+.work-capability-contact {
+  padding: 60px 0;
+  text-align: center;
+
+  p {
+    max-width: 520px;
+    margin: 0 auto 40px auto;
+  }
+
+  @media screen and (min-width: $bp-tablet) {
+    padding: 120px 0;
+  }
+}
+
+.work-capability-block {
+  margin-bottom: 60px;
+
+  p {
+    margin-bottom: 50px;
+  }
+
+  @media screen and (min-width: $bp-tablet) {
+    display: flex;
+
+    &:nth-child(2n + 2) {
+      .work-capability-block-text {
+        order: 2;
+      }
+      img {
+        order: 1;
+      }
+    }
+  }
+}
