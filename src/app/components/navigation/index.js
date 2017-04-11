@@ -107,7 +107,7 @@ class Navigation extends Component {
       notSticky: modal === null && scrolledBefore100 && homePage,
       menuOpen: modal === 'menu',
       invert: venturesActive && homePage,
-      overHero: scrolledBefore100 && heroPage,
+      overHero: scrolledBefore100 && heroPage && !subPage,
       pageControls: subPage && scrolled,
       subPage
     });

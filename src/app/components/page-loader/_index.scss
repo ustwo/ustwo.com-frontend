@@ -4,7 +4,7 @@
  *
  */
 
-$page-loader-icon-transition-duration: 1.8s;
+$page-loader-icon-transition-duration: 1.6s;
 $page-loader-icon-size: 58px;
 $page-loader-icon-border: 3px;
 
@@ -165,7 +165,7 @@ $page-loader-icon-border: 3px;
   10% {
     transform: rotate(10deg);
   }
-  15% {
+  20% {
     transform: rotate(30deg);
   }
   25% {
