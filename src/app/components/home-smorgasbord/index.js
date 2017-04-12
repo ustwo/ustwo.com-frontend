@@ -6,7 +6,13 @@ import { DefaultPlayer as Video } from 'react-html5video';
 import Subscription from 'app/components/subscription';
 
 function HomeSmorgasbord({ data }) {
-  const { event, post } = data;
+
+  let event = {};
+  let post = {};
+  if (data) {
+    event = data.event;
+    post = data.post;
+  }
 
   let src;
   if (window.innerWidth < 600) {

@@ -23,7 +23,6 @@ class LoaderWrapper extends Component {
 
   render() {
     const { currentPage, homeLoaderShown, loaded, viewportDimensions } = this.props;
-    const workCapabilities = ['work/discovery-strategy', 'work/design-build', 'work/launch-scale'];
 
     let renderLoader;
     if (this.state.hide) {
@@ -31,8 +30,6 @@ class LoaderWrapper extends Component {
     } else {
       if (currentPage === 'home' && !homeLoaderShown) {
         renderLoader = (<HomeLoader />);
-      } else  if (workCapabilities.includes(currentPage)) {
-        renderLoader = (<PageLoader key="loader" pageId={currentPage} workSubpage={true} />);
       } else {
         renderLoader = (<PageLoader key="loader" pageId={currentPage} />);
       }

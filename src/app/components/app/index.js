@@ -317,18 +317,24 @@ const App = React.createClass({
           <EntranceTransition className="nav-wrapper">
             {navigation}
           </EntranceTransition>
-          <PageContainer key={currentPage} extraClasses={contentClasses}>
-            <PageContent
-              pageMap={pageMap}
-              pageState={this.state}
-              currentPage={currentPage}
-              dataLoading={dataLoading}
-              homeIntroVideoViewed={homeIntroVideoViewed}
-              homeLoaderShown={homeLoaderShown}
-              heroVideoReady={heroVideoReady}
-              viewportDimensions={viewportDimensions}
-            />
-          </PageContainer>
+          <TransitionManager
+            component="div"
+            className="transition-page"
+            duration={1000}
+          >
+            <PageContainer key={currentPage} extraClasses={contentClasses}>
+              <PageContent
+                pageMap={pageMap}
+                pageState={this.state}
+                currentPage={currentPage}
+                dataLoading={dataLoading}
+                homeIntroVideoViewed={homeIntroVideoViewed}
+                homeLoaderShown={homeLoaderShown}
+                heroVideoReady={heroVideoReady}
+                viewportDimensions={viewportDimensions}
+              />
+            </PageContainer>
+          </TransitionManager>
           {this.renderModal()}
           {this.renderPopup()}
         </div>

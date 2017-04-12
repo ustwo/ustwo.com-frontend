@@ -15,10 +15,6 @@ $page-loader-icon-border: 3px;
   justify-content: center;
   align-items: center;
   background-color: $offWhite;
-
-  &.workSubpage {
-    background-image: linear-gradient(319deg, $c-gradient1, $c-gradient2);
-  }
 }
 
 .page-loader-icon-inner {

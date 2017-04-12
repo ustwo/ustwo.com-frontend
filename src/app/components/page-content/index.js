@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import LoaderWrapper from 'app/components/loader-wrapper';
 
-const tickerTotalPage = 2000;
+const tickerTotalPage = 1500;
 const tickerTotalHome = 5000;
 const tickerFrequency = 500;
 
@@ -11,7 +11,17 @@ class PageContent extends Component {
     super(props);
 
     this.state = {
+      showPage: true,
       ticker: this.props.currentPage === 'home' && !this.props.homeLoaderShown ? tickerTotalHome : tickerTotalPage
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currentPage != this.props.currentPage) {
+      setTimeout(() => {
+        console.log(nextProps.currentPage);
+        this.setState({ showPage: false });
+      }, 1000);
     }
   }
 
@@ -33,6 +43,10 @@ class PageContent extends Component {
     }
   }
 
+  componentWillUnmount() {
+    console.log('unmount');
+  }
+
   componentDidMount() {
     this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
   }
@@ -40,17 +54,14 @@ class PageContent extends Component {
   render() {
     const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady } = this.props;
     const heroReady = currentPage === 'home' || currentPage === 'work' ? heroVideoReady : true;
-    const workCapabilities = ['work/discovery-strategy', 'work/design-build', 'work/launch-scale'];
-    const loaded = workCapabilities.includes(currentPage) ? !dataLoading : !dataLoading && this.state.ticker === 0 && heroReady
+    const loaded = !dataLoading && this.state.ticker === 0 && heroReady;
 
     let props = pageState;
     props.loaded = loaded;
 
-    const renderPage = !dataLoading ? React.createElement(pageMap[currentPage], props) : (<div />);
-
     return (
       <div className="page-content">
-        {renderPage}
+        {React.createElement(pageMap[currentPage], props)}
         <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} />
       </div>
     );

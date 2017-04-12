@@ -14,8 +14,8 @@ class PageLoader extends Component {
   }
 
   render() {
-    const { pageId, workSubpage } = this.props;
-    const classes = classnames('page-loader', `loading-${pageId}`, { workSubpage });
+    const { pageId } = this.props;
+    const classes = classnames('page-loader', `loading-${pageId}`);
 
     return (
       <div className={classes}>
