@@ -3,12 +3,6 @@ import classnames from 'classnames';
 import SVG from 'app/components/svg';
 
 function TimerUI({ timer, darkStyle, loaded }) {
-
-  let style;
-  if (loaded) {
-    background: `url('/images/timer-bg.png') no-repeat 50% 50%`
-  }
-
   let rotateRight = timer >= 180 ? 360 - timer : 180;
   let rotateLeft = timer <= 180 ? 180 - timer : 0;
 
@@ -23,7 +17,7 @@ function TimerUI({ timer, darkStyle, loaded }) {
   let classes = classnames('timer-ui', { darkStyle });
 
   return (
-    <div className={classes} style={style}>
+    <div className={classes}>
       <div className="half left">
         <div className="bg" style={stylesLeft}></div>
       </div>

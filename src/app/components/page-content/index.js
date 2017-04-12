@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import LoaderWrapper from 'app/components/loader-wrapper';
 
 const tickerTotalPage = 1500;
-const tickerTotalHome = 3000;
+const tickerTotalHome = 3500;
 const tickerFrequency = 500;
 
 class PageContent extends Component {

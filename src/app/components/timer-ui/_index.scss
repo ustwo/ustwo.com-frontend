@@ -17,6 +17,7 @@
     @include spinner-size($size-large, $border-large);
   }
 
+  background: url('/images/timer-bg.png') no-repeat 50% 50%;
   background-size: 100% auto;
 
   svg {
