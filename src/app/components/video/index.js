@@ -101,7 +101,7 @@ class Video extends Component {
     const classes = classnames('videoBackground', { imageCSS });
 
     /* This is before video plays - should show the first frame */
-    const fallback = isMobile ? <img className="video-mobile-fallback" src={imageCSS} /> : null;
+    const fallback = isMobile ? <img onLoad={() => Flux.heroVideoFallbackLoaded()} className="video-mobile-fallback" src={imageCSS} /> : null;
 
     return (
       <div className={classes} style={styles}>

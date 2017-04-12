@@ -34,7 +34,7 @@ class Subscription extends Component {
     let iconStyle;
     if (loaded) {
       iconStyle = {
-        background: `url("/images/news-icon-strip-animation.png") no-repeat 0 0`
+        backgroundImage: `url("/images/news-icon-strip-animation.png")`
       }
     }
     const labelText = "Enter your email...";

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import LoaderWrapper from 'app/components/loader-wrapper';
+import env from 'app/adaptors/server/env';
 
 const tickerTotalPage = 1500;
 const tickerTotalHome = 3500;
@@ -52,8 +53,9 @@ class PageContent extends Component {
   }
 
   render() {
-    const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown } = this.props;
-    const loaded = !dataLoading && this.state.ticker === 0;
+    const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady } = this.props;
+    const heroReady = (currentPage === 'home' || currentPage === 'work') && !env.Modernizr.touchevents ? heroVideoReady : true;
+    const loaded = !dataLoading && this.state.ticker === 0 && heroReady;
     const props = pageState;
     props.loaded = loaded;
 

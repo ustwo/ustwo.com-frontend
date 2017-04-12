@@ -55,10 +55,10 @@ class WorkHero extends Component {
     let fallbackImage, src;
     if (window.innerWidth < 600) {
       fallbackImage = '/images/work-header-fallback.jpg';
-      src = 'https://player.vimeo.com/external/209403984.sd.mp4?s=fa5d1e9fcb9e3f78d55423329a605fc7db82541f&profile_id=164';
+      src = 'https://player.vimeo.com/external/212965200.sd.mp4?s=026d651935662354859c3f0929f8fa8153b11d2d&profile_id=165';
     } else {
       fallbackImage = '/images/work-header-fallback.jpg';
-      src = 'https://player.vimeo.com/external/209403984.hd.mp4?s=f3eb84f4b6d45960e28df740875cddd9605b8cf6&profile_id=174';
+      src = 'https://player.vimeo.com/external/209403984.sd.mp4?s=fa5d1e9fcb9e3f78d55423329a605fc7db82541f&profile_id=165';
     }
 
     const hide = scrollProgress === 1;

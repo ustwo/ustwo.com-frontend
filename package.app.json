@@ -15,8 +15,6 @@
     "glob": "5.0.15",
     "he": "0.5.0",
     "hex-rgb": "1.0.0",
-    "highlight.js": "9.10.0",
-    "inline-style-prefixer": "2.0.4",
     "isomorphic-fetch": "2.1.1",
     "lodash": "3.10.0",
     "moment": "2.10.6",
@@ -26,7 +24,6 @@
     "react-helmet": "3.3.0",
     "react-highlight": "0.9.0",
     "react-html5video": "2.1.0",
-    "react-mixin": "3.0.5",
     "react-responsive": "1.2.1",
     "react-scroll": "1.4.4",
     "react-swipe": "5.0.6",
@@ -35,7 +32,6 @@
     "route-pattern": "0.0.6",
     "scrollmagic": "2.0.5",
     "svg4everybody": "1.0.0",
-    "swipe-js-iso": "2.0.3",
     "urllite": "0.5.0"
   }
 }

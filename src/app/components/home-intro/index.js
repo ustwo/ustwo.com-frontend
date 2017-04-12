@@ -67,7 +67,7 @@ class HomeIntro extends Component {
     if (env.Modernizr.touchevents) {
       styles = { height: fixedHeight }
     }
-    
+
     return (
       <div className="home-intro" style={styles}>
         <div className="home-intro-video" style={videoTransitionStyles}>
