@@ -27,16 +27,23 @@ class Subscription extends Component {
   // }
 
   render() {
+    const { loaded } = this.props;
     const classes = classnames('icon', {
       animate: this.state.logoInView
     });
+    let iconStyle;
+    if (loaded) {
+      iconStyle = {
+        background: `url("/images/news-icon-strip-animation.png") no-repeat 0 0`
+      }
+    }
     const labelText = "Enter your email...";
     return (
       <div className="subscription">
         <div className="subscription-wrapper">
-          <div className={classes} ref={(ref) => this.icon = ref}></div>
+          <div className={classes} ref={(ref) => this.icon = ref} style={iconStyle}></div>
           <h2>ustwo News</h2>
-          <p>Give us your email and we’ll keep you in the loop with our latest projects and thoughts</p>
+          <p>Give us your email and we'll keep you in the loop with our latest projects and thoughts</p>
           <form
             method="POST"
             action="//ustwo.us10.list-manage.com/subscribe/post?u=7f1269c0305abed7c91a24b97&amp;id=a4ba15109f"

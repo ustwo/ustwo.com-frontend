@@ -67,32 +67,21 @@ class HomeIntro extends Component {
     if (env.Modernizr.touchevents) {
       styles = { height: fixedHeight }
     }
-
-    let video;
-    if (loaded) {
-      video = (
-        <Video
-          src={src}
-          isVideoBackground={true}
-          play={playVideo}
-          imageCSS={fallbackImage}
-          heroVideo={true}
-          isMobile={isMobile}
-          preload="auto"
-          fixedHeight={fixedHeight}
-          hide={hide}
-        />
-      );
-    } else {
-      video = (
-        <div />
-      )
-    }
-
+    
     return (
       <div className="home-intro" style={styles}>
         <div className="home-intro-video" style={videoTransitionStyles}>
-          {video}
+          <Video
+            src={src}
+            isVideoBackground={true}
+            play={playVideo}
+            imageCSS={fallbackImage}
+            heroVideo={true}
+            isMobile={isMobile}
+            preload="auto"
+            fixedHeight={fixedHeight}
+            hide={hide}
+          />
         </div>
         <div className="home-intro-logo" style={transitionStyles}>
           <div className="home-intro-logo-wrapper">

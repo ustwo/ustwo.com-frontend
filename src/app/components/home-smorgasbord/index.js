@@ -5,15 +5,7 @@ import { DefaultPlayer as Video } from 'react-html5video';
 
 import Subscription from 'app/components/subscription';
 
-function HomeSmorgasbord({ data }) {
-
-  // let event = {};
-  // let post = {};
-  // if (data) {
-  //   event = data.event;
-  //   post = data.post;
-  // }
-
+function HomeSmorgasbord({ data, loaded }) {
   const { event, post } = data;
 
   let src;
@@ -21,6 +13,19 @@ function HomeSmorgasbord({ data }) {
     src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=164';
   } else {
     src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=165';
+  }
+
+  let moreJuiceStyle, blogBlockStyle, eventBlockStyle;
+  if (loaded) {
+    moreJuiceStyle = {
+      backgroundImage: `url('/images/juicy-icon-loop.gif')`
+    }
+    blogBlockStyle = {
+      backgroundImage: `background-image: url('/images/squiggle.png'), linear-gradient(225deg, #53baf3, $blu);`
+    }
+    eventBlockStyle = {
+      backgroundImage: `url('/images/bg-pattern.png')`
+    }
   }
 
   return (
@@ -36,7 +41,7 @@ function HomeSmorgasbord({ data }) {
       </div>
       <div className="smorgasbord-block-wrapper">
 
-        <div className="smorgasbord-block smorgasbord-events">
+        <div className="smorgasbord-block smorgasbord-events" style={eventBlockStyle}>
           <h4>ustwo Events</h4>
           <div className="smorgasbord-post">
             <div className="smorgasbord-subtitle">{event.studio.name}</div>
@@ -47,7 +52,7 @@ function HomeSmorgasbord({ data }) {
           <button>All Events</button>
         </div>
 
-        <div className="smorgasbord-block smorgasbord-blog">
+        <div className="smorgasbord-block smorgasbord-blog" style={blogBlockStyle}>
           <h4>Blog</h4>
           <div className="smorgasbord-post">
             <div className="smorgasbord-subtitle">&nbsp;</div>
@@ -59,7 +64,9 @@ function HomeSmorgasbord({ data }) {
         </div>
 
       </div>
-      <Subscription />
+      <Subscription loaded={loaded} />
+
+      <div className="more-juice" style={moreJuiceStyle}></div>
     </div>
   );
 }

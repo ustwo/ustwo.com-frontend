@@ -92,7 +92,7 @@ class HomeCarousel extends Component {
   }
 
   render() {
-    const { scrollProgress, carouselItems, className, isMobile, inView } = this.props;
+    const { scrollProgress, carouselItems, className, isMobile, inView, loaded } = this.props;
     const { currentStartItem, otherIsHovered, numberOfItemsInView, justBeenHovered } = this.state;
 
     const showItems = this.props.carouselItems.map((item, i) => {
@@ -148,12 +148,16 @@ class HomeCarousel extends Component {
       /* Show either an image or video depending on if there is a videoURL */
       let visualContent;
       if (window.innerWidth < 600) {
-        visualContent = <img src={item.imageURL} className="home-carousel-visual-content-image" />
+        if (loaded) {
+          visualContent = <img src={item.imageURL} className="home-carousel-visual-content-image" />
+        }
       } else {
         if (item.videoURL) {
-          visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} preload="none" />
+          visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} preload="none" loaded={loaded} />
         } else {
-          visualContent = <div className="home-carousel-visual-content-image" style={{ backgroundImage: `url(${item.imageURL})` }} />
+          if (loaded) {
+            visualContent = <img src={item.imageURL} className="home-carousel-visual-content-image" />
+          }
         }
       }
 
@@ -200,7 +204,7 @@ class HomeCarousel extends Component {
           {showItems}
         </div>
         <button className="home-carousel-shuffle" onClick={() => goToNextItems(this)}>
-          <TimerUI timer={ticker} darkStyle={this.props.darkStyle} />
+          <TimerUI timer={ticker} darkStyle={this.props.darkStyle} loaded={loaded} />
         </button>
         <div className="view-carousel-related-page"><button>All {viewPage}</button></div>
       </div>

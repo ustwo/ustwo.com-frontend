@@ -85,10 +85,10 @@ class Video extends Component {
   }
 
   renderVideoBackground() {
-    const { imageCSS, isMobile, fixedHeight, hide } = this.props;
+    const { imageCSS, isMobile, fixedHeight, hide, loaded } = this.props;
 
     let styles = {};
-    if (imageCSS) {
+    if (loaded && imageCSS) {
       styles['backgroundImage'] = `url(${imageCSS})`;
     }
     if (fixedHeight && env.Modernizr.touchevents) {
@@ -97,11 +97,6 @@ class Video extends Component {
     if (hide) {
       styles['opacity'] = 0;
     }
-
-    // setTimeout(() => {
-    //
-    // }, 500);
-
 
     const classes = classnames('videoBackground', { imageCSS });
 

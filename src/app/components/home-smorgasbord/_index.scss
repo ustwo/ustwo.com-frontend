@@ -4,19 +4,27 @@
  *
  */
 
-.scroll-wrapper-home-smorgasbord {
-  height: auto;
-  background-image: url('/images/juicy-icon-loop.gif');
-  background-position: 50% calc(100% - 50px);
+.more-juice {
+  background-position: 50%;
   background-repeat: no-repeat;
   background-size: 64px 64px;
-  max-width: 1100px;
+  width:64px;
+  height: 64px;
   margin: 0 auto;
-  padding-top: 0;
-  padding-bottom: 46%;
+  padding: 70px 0;
 
   @media screen and (min-width: $bp-medium) {
-    padding-bottom: 20%;
+    padding: 160px 0;
+  }
+}
+
+.scroll-wrapper-home-smorgasbord {
+  padding-top: 0;
+  padding-bottom: 0;
+
+  @media screen and (min-width: $bp-medium) {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
 
@@ -96,7 +104,6 @@
 }
 
 .smorgasbord-events {
-  background-image: url('/images/bg-pattern.png');
   background-repeat: repeat;
 }
 
@@ -133,7 +140,6 @@
 }
 
 .smorgasbord-blog {
-  background-image: url('/images/squiggle.png'), linear-gradient(225deg, #53baf3, $blu);
   background-position: left top;
   background-repeat: no-repeat;
   background-size: 100% auto;

@@ -37,7 +37,6 @@
     width: 77px;
     height: 80px;
     margin: 0 auto 30px auto;
-    background: url("/images/news-icon-strip-animation.png") no-repeat 0 0;
     background-size: 2079px 80px;
 
     &.animate {
@@ -110,7 +109,7 @@
     @include buttonColor('invert');
     background: transparent url("/images/icon-right-light.svg") no-repeat 50% 50%;
     padding: 0 20px 0 20px;
-    background-size: 15px 15px;    
+    background-size: 15px 15px;
 
     .submit-text {
       display: none;

@@ -104,7 +104,7 @@ class PageHome extends Component {
           </Element>
 
           <ScrollWrapper
-            component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} />}
+            component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} loaded={loaded} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             className="scroll-wrapper-home-carousel-products"
@@ -122,7 +122,7 @@ class PageHome extends Component {
             />
 
             <ScrollWrapper
-              component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={venturesActive} />}
+              component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={venturesActive} loaded={loaded} />}
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               className="scroll-wrapper-home-carousel-ventures"
@@ -138,7 +138,7 @@ class PageHome extends Component {
           />
 
           <ScrollWrapper
-            component={<HomeSmorgasbord data={get(page, 'featured_content')} />}
+            component={<HomeSmorgasbord data={get(page, 'featured_content')} loaded={loaded} />}
             className="scroll-wrapper-home-smorgasbord"
           />
         </div>
