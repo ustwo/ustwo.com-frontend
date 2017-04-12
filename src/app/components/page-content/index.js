@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import LoaderWrapper from 'app/components/loader-wrapper';
 
 const tickerTotalPage = 1500;
-const tickerTotalHome = 5000;
+const tickerTotalHome = 3000;
 const tickerFrequency = 500;
 
 class PageContent extends Component {
@@ -52,11 +52,9 @@ class PageContent extends Component {
   }
 
   render() {
-    const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady } = this.props;
-    const heroReady = currentPage === 'home' || currentPage === 'work' ? heroVideoReady : true;
-    const loaded = !dataLoading && this.state.ticker === 0 && heroReady;
-
-    let props = pageState;
+    const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown } = this.props;
+    const loaded = !dataLoading && this.state.ticker === 0;
+    const props = pageState;
     props.loaded = loaded;
 
     return (

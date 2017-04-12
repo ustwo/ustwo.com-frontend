@@ -3,8 +3,8 @@ import classnames from 'classnames';
 import SVGSequenceAnimation from 'app/lib/svg-sequence-animation';
 import blendColours from 'app/lib/blend-colours';
 
-const tickerFrequency = 50;
-const timerTotal = 1000;
+const tickerFrequency = 100;
+const timerTotal = 2000;
 const leftColours = ['#96CC29', '#16D6D9', '#FA7D78', '#FFBF02', '#F5E664', '#A5FAAF', '#96CC29'];
 const rightColours = ['#16D6D9', '#009CF3', '#6114CC', '#ED0082', '#FF5519', '#FFBF02', '#16D6D9'];
 
@@ -43,10 +43,10 @@ const UstwoLogoSequence = React.createClass({
     /* Use change in state to control the 'show' class allowing for css transition in */
     setTimeout(() => {
       this.setState({ show: true });
-    }.bind(this), 100);
+    }.bind(this), 1);
     setTimeout(() => {
       this.timer = setInterval(this.ticker, tickerFrequency);
-    }.bind(this), 1500);
+    }.bind(this), 1000);
   },
 
   componentWillUnmount() {

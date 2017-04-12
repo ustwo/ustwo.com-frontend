@@ -102,7 +102,6 @@ const App = React.createClass({
   componentDidMount() {
     const { page, currentPage, post, caseStudy, isScrolling, fixedHeight, modal, popup, overflow } = this.state;
 
-    document.getElementById('first-view').style.display = 'none';
     this.setState({ show: true });
     this.getViewportDimensions();
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
 import { DefaultPlayer as Video } from 'react-html5video';
@@ -7,12 +7,14 @@ import Subscription from 'app/components/subscription';
 
 function HomeSmorgasbord({ data }) {
 
-  let event = {};
-  let post = {};
-  if (data) {
-    event = data.event;
-    post = data.post;
-  }
+  // let event = {};
+  // let post = {};
+  // if (data) {
+  //   event = data.event;
+  //   post = data.post;
+  // }
+
+  const { event, post } = data;
 
   let src;
   if (window.innerWidth < 600) {
@@ -26,7 +28,6 @@ function HomeSmorgasbord({ data }) {
       <div className="smorgasbord-block smorgasbord-video">
         <Video
           controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-          poster="/images/ustwo-roadshow-first-frame.jpg"
           preload="none"
         >
           <source src={src} type="video/mp4" />
@@ -62,5 +63,37 @@ function HomeSmorgasbord({ data }) {
     </div>
   );
 }
+
+HomeSmorgasbord.propTypes = {
+  data: PropTypes.shape({
+    event: {
+      name: PropTypes.string,
+      uri: PropTypes.string,
+      studio: {
+        name: PropTypes.string
+      }
+    },
+    post: {
+      name: PropTypes.string,
+      uri: PropTypes.string,
+    }
+  })
+};
+
+HomeSmorgasbord.defaultProps = {
+  data: {
+    event: {
+      name: '',
+      uri: '',
+      studio: {
+        name: ''
+      }
+    },
+    post: {
+      name: '',
+      uri: '',
+    }
+  }
+};
 
 export default HomeSmorgasbord;

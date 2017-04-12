@@ -68,20 +68,31 @@ class HomeIntro extends Component {
       styles = { height: fixedHeight }
     }
 
+    let video;
+    if (loaded) {
+      video = (
+        <Video
+          src={src}
+          isVideoBackground={true}
+          play={playVideo}
+          imageCSS={fallbackImage}
+          heroVideo={true}
+          isMobile={isMobile}
+          preload="auto"
+          fixedHeight={fixedHeight}
+          hide={hide}
+        />
+      );
+    } else {
+      video = (
+        <div />
+      )
+    }
+
     return (
       <div className="home-intro" style={styles}>
         <div className="home-intro-video" style={videoTransitionStyles}>
-          <Video
-            src={src}
-            isVideoBackground={true}
-            play={playVideo}
-            imageCSS={fallbackImage}
-            heroVideo={true}
-            isMobile={isMobile}
-            preload="auto"
-            fixedHeight={fixedHeight}
-            hide={hide}
-          />
+          {video}
         </div>
         <div className="home-intro-logo" style={transitionStyles}>
           <div className="home-intro-logo-wrapper">
