@@ -107,13 +107,14 @@ class Navigation extends Component {
     const scrolledBefore100 = documentScrollPosition < viewportDimensions.height - (this.state.height * 0.5);
 
     const navClasses = classnames('navigation', customClass, section, page, {
-      takeover,
+      takeover: takeover,
       notSticky: modal === null && scrolledBefore100 && homePage,
       menuOpen: modal === 'menu',
       invert: venturesActive && homePage || capability.includes(page),
       overHero: scrolledBefore100 && heroPage && !subPage,
-      pageControls: subPage && scrolled,
-      subPage
+      pageControls: subPage,
+      scrolled: scrolled,
+      subPage: subPage
     });
 
     let color;
@@ -138,6 +139,8 @@ class Navigation extends Component {
         break;
     }
 
+    const subPageText = capability.includes(page) ? 'Work' : 'Back';
+
     return (
       <nav className={navClasses} ref={(ref) => this.navigation = ref}>
         <div className="menu-no-js">
@@ -150,7 +153,7 @@ class Navigation extends Component {
           </ul>
         </div>
         <div className="navigation-subpage-nav">
-          <button onClick={this.subPageBack.bind(this)}>Back</button>
+          <button onClick={this.subPageBack.bind(this)}>{subPageText}</button>
         </div>
         <button
           className="navigation-button"

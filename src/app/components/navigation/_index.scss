@@ -41,7 +41,7 @@ $nav-height-large: 30px;
   transition: all .2s ease-in-out;
 
   &.subPage {
-    transition: none; /* to avoid seeing the switch back to left: auto when fading out */
+    // transition: none; /* to avoid seeing the switch back to left: auto when fading out */
   }
 
   &:before {
@@ -66,7 +66,9 @@ $nav-height-large: 30px;
       text-transform: uppercase;
       margin-left: 20px;
       padding-left: 30px;
-      background: url('/images/icon-left-dark.svg') no-repeat 0 50%;
+      background-image: url('/images/icon-left-dark.svg');
+      background-position: 0 50%;
+      background-repeat: no-repeat;
       background-size: 20px auto;
       cursor: pointer;
     }
@@ -319,9 +321,14 @@ $nav-height-large: 30px;
 
   &.subPage.pageControls:not(.menuOpen) {
     left: 0;
-    background-color: $offWhite;
-	  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     transition: all .2s linear;
+
+    &.scrolled {
+      &:before {
+        background-color: $offWhite;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+    }
 
     .navigation-subpage-nav {
       opacity: 1;
@@ -340,6 +347,32 @@ $nav-height-large: 30px;
         &:before,
         &:after {
           background-color: $nonBlack;
+        }
+      }
+    }
+
+    &.invert {
+
+      &:before {
+        background-image: linear-gradient(319deg, $c-gradient1, $c-gradient2);
+      }
+
+      &,
+      &.overHero {
+        .navigation-logo svg {
+          fill: $offWhite;
+        }
+        .navigation-toggle-main {
+          border-color: $offWhite;
+
+          &:before,
+          &:after {
+            background-color: $offWhite;
+          }
+        }
+        .navigation-subpage-nav button {
+          color: $offWhite;
+          background-image: url('/images/icon-left-light.svg');
         }
       }
     }

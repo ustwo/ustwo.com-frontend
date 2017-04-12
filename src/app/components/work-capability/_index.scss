@@ -5,7 +5,7 @@
 
 .work-capability {
   color: $offWhite;
-	background-image: linear-gradient(319deg, #252e47, #1a1a1a);
+	background-image: linear-gradient(319deg, $c-gradient1, $c-gradient2);
   padding-top: 100px;
   @include core-layout();
 
