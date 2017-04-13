@@ -44,10 +44,6 @@ class PageContent extends Component {
     }
   }
 
-  componentWillUnmount() {
-    console.log('unmount');
-  }
-
   componentDidMount() {
     this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
   }

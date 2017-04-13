@@ -40,7 +40,7 @@ class WorkProcess extends Component {
       return (
         <div className={`work-process-item ${kebabCase(item.title)}`}>
           <img src={item.image} alt={`${item.title} icon`} />
-          <h2>{item.title}</h2>
+          <h2 onClick={() => goToCapability(item.name)}>{item.title}</h2>
           <p>{item.text}</p>
           <button onClick={() => goToCapability(item.name)} className="work-process-item-button">Read More</button>
         </div>

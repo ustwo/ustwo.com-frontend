@@ -1,17 +1,25 @@
 import React from 'react';
+import classnames from 'classnames';
 import WorkCapabilities from 'app/components/work-capabilities';
 import ContactButton from 'app/components/contact-button';
 
 function WorkCapability({ data }) {
 
-  const blocks = data.blocks.map(block => {
+  const blocks = data.blocks.map((block, i) => {
+    const totalBlocks = data.blocks.length;
+    const classes = classnames('work-capability-block', {
+      last: i + 1 === totalBlocks
+    });
+
     return (
-      <div className="work-capability-block">
+      <div className={classes}>
         <div className="work-capability-block-text">
           <h2>{block.title}</h2>
           <p>{block.text}</p>
         </div>
-        <img src={block.imageURL} alt={block.title} />
+        <div className="work-capability-block-image">
+          <img src={block.imageURL} alt={block.title} />
+        </div>
       </div>
     );
   });

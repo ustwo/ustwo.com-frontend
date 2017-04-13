@@ -354,7 +354,7 @@ $nav-height-large: 30px;
     &.invert {
 
       &:before {
-        background-image: linear-gradient(319deg, $c-gradient1, $c-gradient2);
+        background: $c-solid;
       }
 
       &,
