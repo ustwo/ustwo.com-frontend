@@ -45,6 +45,7 @@ class HomeIntro extends Component {
     let fallbackImage, src;
     if (window.innerWidth < 600) {
       src = 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=165';
+      // TODO: remove this and the file
       // src = '/images/home/home-mobile.mp4';
       fallbackImage = '/images/home-header-fallback-mobile.jpg';
     } else {

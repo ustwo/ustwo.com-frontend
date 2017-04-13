@@ -32,19 +32,6 @@
 .page-join-us {
   height: 100%;
 
-  .hero {
-    height: 100%;
-    @include page-background-colour(join);
-
-    .rimage {
-      max-width: 800px;
-    }
-
-    .down-indicator {
-      z-index: 2;
-    }
-  }
-
   .single-column {
     background-color: #fff;
 

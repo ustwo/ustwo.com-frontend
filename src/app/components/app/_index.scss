@@ -58,7 +58,11 @@
 
 .section-title {
   @extend .h5;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+
+  @media scree and (min-width: $bp-small) {
+    margin-bottom: 10px;
+  }
 }
 
 

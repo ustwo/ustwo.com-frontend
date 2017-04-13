@@ -68,7 +68,7 @@ class Hero extends Component {
   }
 
   render() {
-    const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions, fixedHeight } = this.props;
+    const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions, fixedHeight, heroImage } = this.props;
     const transform = `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`;
 
     let transitionStyles, videoTransitionStyles;
@@ -89,9 +89,17 @@ class Hero extends Component {
       styles = { height: fixedHeight }
     }
 
+    let showHeroImage;
+    if (heroImage) {
+      showHeroImage = (
+        <div className="hero-image" style={transitionStyles} />
+      );
+    }
+
     return (
-      <section className={classes} styles={styles}>
+      <section className={classes} style={styles}>
         <div className="hero-inner-wrapper">
+          {showHeroImage}
           {this.renderLogo()}
           <EntranceTransition className="title-entrance">
             <div className="hero-content" style={transitionStyles}>

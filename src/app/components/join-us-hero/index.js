@@ -22,7 +22,8 @@ class JoinUsHero extends Component {
           fixedHeight={fixedHeight}
           isMobile={isMobile}
           scrollProgress={scrollProgress}
-        ></Hero>
+          heroImage={true}
+        />
       </div>
     )
   }
