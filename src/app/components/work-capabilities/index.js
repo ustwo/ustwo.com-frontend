@@ -4,7 +4,7 @@ import goToCapability from 'app/lib/go-to-capability';
 
 function WorkCapabilities({ selected }) {
   const items = workCapabilitiesData.map(item => {
-    const classes = classnames('work-capabilities-item', {
+    const classes = classnames('work-capabilities-item', item.name, {
       selected: item.name === selected
     });
 

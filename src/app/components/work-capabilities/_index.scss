@@ -5,8 +5,74 @@
 
 .work-capabilities {
   height: 180px;
+  margin: 30px 0;
+
+  ul {
+  }
+
+  li {
+    list-style-type: none;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,.4);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 150px 150px;
+
+    &:not(.selected) {
+      display: none;
+    }
+
+    &.discovery {
+      background-image: url('/images/illustration-discovery.svg');
+    }
+    &.design {
+      background-image: url('/images/illustration-design-and-build.svg');
+    }
+    &.launch {
+      background-image: url('/images/illustration-launch-and-scale.svg');
+    }
+
+    button {
+      display: none;
+    }
+  }
 
   @media screen and (min-width: $bp-tablet) {
     height: 250px;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      background-image: url('/images/work/capabilities-line-bg.png');
+      background-repeat: repeat-x;
+      background-position: 0 50%;
+      background-size: auto 3px;
+    }
+
+    li {
+      position: relative;
+      width: 240px;
+      height: 240px;
+      margin: 0;
+      background-color: #1a1b21;
+      background-size: 200px 200px;
+
+      &:not(.selected) {
+        display: block;
+        background: none;
+      }
+
+      button {
+        display: block;
+        position: absolute;
+        bottom: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+        line-height: 1.2;
+      }
+    }
   }
 }

@@ -2,21 +2,12 @@ import React from 'react';
 import classnames from 'classnames';
 import SVGSequenceAnimation from 'app/lib/svg-sequence-animation';
 import blendColours from 'app/lib/blend-colours';
+import goToNextIteration from 'app/lib/next-iteration';
 
 const tickerFrequency = 50;
 const timerTotal = 400;
 const leftColours = ['16D6D9', '14C04D', '96CC29', 'FFBF02', 'FF5519', 'E60C29', 'ED0082', '6114CC', '143FCC', '009CF3'];
 const rightColours = ['96CC29', 'FFBF02', 'FF5519', 'E60C29', 'ED0082', '6114CC', '143FCC', '009CF3', '16D6D9', '14C04D'];
-
-function goToNextIteration(component) {
-  component.setState({ tick: timerTotal });
-
-  if (component.state.iterate === leftColours.length - 2) {
-    component.setState({ iterate: 0 });
-  } else {
-    component.setState({ iterate: component.state.iterate + 1 });
-  }
-}
 
 const UstwoLogoSequenceCutout = React.createClass({
 
@@ -34,7 +25,7 @@ const UstwoLogoSequenceCutout = React.createClass({
   ticker() {
     /* Manage how often we cycle through iterations (sets of background colours) */
     if (this.state.tick === 0) {
-      goToNextIteration(this);
+      goToNextIteration(this, timerTotal, leftColours.length);
     }
     this.setState({ tick: this.state.tick - tickerFrequency });
   },
