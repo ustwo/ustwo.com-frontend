@@ -3,6 +3,14 @@
  *
  */
 
+.scroll-wrapper-contact-block {
+  padding: 0;
+
+  .scroll-wrapper-inner {
+    max-width: none;
+  }
+}
+
 .contact-block {
   position: relative;
   z-index: 10;
@@ -129,7 +137,7 @@
     left: 0;
     width: 440px;
     height: 220px;
-    background: url('/images/sky-background.png') repeat-x 440px 0;
+    background: url('/images/sky-background.png') repeat-x 0 0;
     background-size: 220px 220px;
     animation: buildingsMove 20s infinite;
     animation-timing-function: linear;
@@ -140,16 +148,119 @@
     left: 0;
     width: 220px;
     height: 220px;
-    background: url('/images/plane-loop.gif') no-repeat 50% 50%;
-    background-size: 220px 220px;
+    transform-style: preserve-3d;
+    perspective: 2000px;
+
+    .plane {
+      position: absolute;
+      top: 50%;
+      left: 30%;
+      width:100px;
+      height:100px;
+      transform-style: preserve-3d;
+      transform-origin: 50% top;
+      transform: rotateX(-30deg) rotateY(-14deg);
+      overflow: visible;
+      animation: planeSway 3s infinite;
+      animation-timing-function: linear;
+    }
+
+    .right {
+      position: absolute;
+      top:0;
+      left:0;
+      z-index: 2;
+      width: 114px;
+      height: 50px;
+      /* background: red; */
+      transform: rotateX(80deg) translateY(3px) rotateZ(-4deg);
+      transform-origin: 50% 0;
+      -webkit-backface-visibility: visible;
+      overflow: visible;
+    }
+
+    .left {
+      position: absolute;
+      top:0;
+      left:0;
+      z-index: 2;
+      width: 114px;
+      height: 50px;
+      /* background: green; */
+      transform: rotateX(-80deg) translateY(3px) rotateZ(-4deg);
+      transform-origin: 50% 0;
+      overflow: visible;
+
+    }
+
+
+    .bottom1 {
+      position: absolute;
+      top:0;
+      left:0;
+      z-index: 1;
+      /* background: blue; */
+      width: 114px;
+      height: 50px;
+      transform-origin: 50% 50%;
+      transform: rotateX(10deg) rotateY(-4deg) rotateZ(0deg) translateZ(2px);
+      overflow: visible
+    }
+
+    .bottom2 {
+      position: absolute;
+      top:0;
+      left:0;
+      z-index: 1;
+      /* background: blue; */
+      width: 114px;
+      height: 50px;
+      transform-origin: 50% 50%;
+      transform: rotateX(-10deg) rotateY(4deg) rotateZ(0deg) translateZ(-2px);
+      overflow: visible;
+    }
+
+    .cls-1 {
+      // fill: white;
+      // opacity: 0.3;
+    }
+
+    .cls-2 {
+      fill: white;
+    }
+
+    .right,
+    .left {
+      .cls-1 {
+        // opacity: 0.8;
+      }
+    }
   }
 }
 
 @keyframes buildingsMove {
   from {
-    background-position: 440px 0
+    transform: translateX(0);
   }
   to {
-    background-position: 0 0
+    transform: translateX(-220px);
+  }
+}
+
+@keyframes planeSway {
+  0% {
+    transform: rotateX(-20deg) rotateY(-14deg);
+  }
+  25% {
+    transform: rotateX(-16deg) rotateY(-14deg);
+  }
+  50% {
+    transform: rotateX(-20deg) rotateY(-14deg);
+  }
+  75% {
+    transform: rotateX(-24deg) rotateY(-14deg);
+  }
+  100% {
+    transform: rotateX(-20deg) rotateY(-14deg);
   }
 }
