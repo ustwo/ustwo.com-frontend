@@ -151,8 +151,6 @@ class PageHome extends Component {
           className="scroll-wrapper-contact-block"
         />
 
-
-
         <Footer data={footer} studios={studios} currentPage={currentPage}/>
 
       </article>

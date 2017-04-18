@@ -16,6 +16,7 @@ import SocialMediaSharing from 'app/components/social-media-sharing';
 import RelatedContent from 'app/components/related-content';
 import Footer from 'app/components/footer';
 import ContactBlock from 'app/components/contact-block';
+import ScrollWrapper from 'app/components/scroll-wrapper';
 
 const PagePost = React.createClass({
   mixins: [getScrollTrackerMixin('post')],
@@ -58,7 +59,13 @@ const PagePost = React.createClass({
           {this.renderAuthorInformation()}
         </div>
         {this.renderRelatedContent()}
-        <ContactBlock />
+        <ScrollWrapper
+          component={<ContactBlock />}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+          requireScreenPosition={true}
+          className="scroll-wrapper-contact-block"
+        />
         <Footer data={footer} studios={studios} currentPage={currentPage}/>
       </article>
     );

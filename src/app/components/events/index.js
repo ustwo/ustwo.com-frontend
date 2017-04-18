@@ -19,6 +19,7 @@ import LoadingIcon from 'app/components/loading-icon';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import Footer from 'app/components/footer';
 import ContactBlock from 'app/components/contact-block';
+import ScrollWrapper from 'app/components/scroll-wrapper';
 
 const PageEvents = React.createClass({
   getInitialState() {
@@ -212,7 +213,13 @@ const PageEvents = React.createClass({
           onClick={this.onClickLoadMoreArchivedEvents}
           disabled={archivedEventsPagination >= archivedEventsPaginationTotal}
         />
-        <ContactBlock />
+        <ScrollWrapper
+          component={<ContactBlock />}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+          requireScreenPosition={true}
+          className="scroll-wrapper-contact-block"
+        />
         <Footer data={footer} studios={studios} currentPage={currentPage}/>
       </article>
     );
