@@ -181,7 +181,9 @@ const PageEvents = React.createClass({
       archivedEventsPagination,
       archivedEventsPaginationTotal,
       currentPage,
-      footer } = this.props;
+      footer,
+      documentScrollPosition, 
+      viewportDimensions } = this.props;
     const classes = classnames('page-events', this.props.className, {
       loading: isLoadingInitialEvents || isLoadingStudioEvents
     });

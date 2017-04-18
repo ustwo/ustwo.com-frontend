@@ -21,7 +21,7 @@ import ScrollWrapper from 'app/components/scroll-wrapper';
 const PagePost = React.createClass({
   mixins: [getScrollTrackerMixin('post')],
   render() {
-    const { post, footer, studios, currentPage } = this.props;
+    const { post, footer, studios, currentPage, documentScrollPosition, viewportDimensions } = this.props;
     const category = get(post, '_embedded.wp:term.0.0', []);
     const image = getFeaturedImage(post);
     const classes = classnames('page-post', this.props.className, `blog-label-${get(category, 'slug', 'uncategorised')}`);

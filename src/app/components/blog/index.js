@@ -144,7 +144,7 @@ const PageBlog = React.createClass({
       isLoadingMorePosts,
       isLoadingCategoryPosts
     } = this.state;
-    const { postsPagination, postsPaginationTotal, footer, studios, currentPage } = this.props;
+    const { postsPagination, postsPaginationTotal, footer, studios, currentPage, documentScrollPosition, viewportDimensions } = this.props;
     const { posts } = this.props;
     const classes = classnames('page-blog', this.props.className, {
       categorised: isCategorised,
