@@ -15,17 +15,18 @@ function HomeSmorgasbord({ data, loaded }) {
     src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=165';
   }
 
-  let moreJuiceStyle, blogBlockStyle, eventBlockStyle;
+  let moreJuiceStyle, blogBlockStyle, eventBlockStyle, videoPoster;
   if (loaded) {
     moreJuiceStyle = {
       backgroundImage: `url('/images/juicy-icon-loop.gif')`
     }
     blogBlockStyle = {
-      backgroundImage: `background-image: url('/images/squiggle.png'), linear-gradient(225deg, #53baf3, $blu);`
+      backgroundImage: `url('/images/squiggle.png'), linear-gradient(225deg, #53baf3, #009CF3)`
     }
     eventBlockStyle = {
       backgroundImage: `url('/images/bg-pattern.png')`
     }
+    videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
   }
 
   return (
@@ -34,6 +35,7 @@ function HomeSmorgasbord({ data, loaded }) {
         <Video
           controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
           preload="none"
+          poster={videoPoster}
         >
           <source src={src} type="video/mp4" />
         </Video>
