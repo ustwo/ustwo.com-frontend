@@ -3,8 +3,13 @@
  *
  */
 
+$WorkCapabilitiesIconSizeSmall: 180px;
+$WorkCapabilitiesIconSizeMedium: 200px;
+$WorkCapabilitiesIconSizeLarge: 240px;
+
 .work-capabilities {
-  height: 180px;
+  position: relative;
+  height: $WorkCapabilitiesIconSizeSmall;
   margin: 30px 0;
 
   ul {
@@ -12,14 +17,14 @@
 
   li {
     list-style-type: none;
-    width: 180px;
-    height: 180px;
+    width: $WorkCapabilitiesIconSizeSmall;
+    height: $WorkCapabilitiesIconSizeSmall;
     border-radius: 50%;
     margin: 0 auto;
-    background-color: rgba(0,0,0,.4);
+    background-color: #1a1b21;
     background-repeat: no-repeat;
     background-position: 50%;
-    background-size: 150px 150px;
+    background-size: ($WorkCapabilitiesIconSizeSmall - 30px) ($WorkCapabilitiesIconSizeSmall - 30px);
 
     &:not(.selected) {
       display: none;
@@ -40,25 +45,21 @@
     }
   }
 
-  @media screen and (min-width: $bp-tablet) {
-    height: 250px;
+  @media screen and (min-width: $bp-medium) {
+    height: $WorkCapabilitiesIconSizeMedium;
 
     ul {
       display: flex;
       justify-content: space-between;
-      background-image: url('/images/work/capabilities-line-bg.png');
-      background-repeat: repeat-x;
-      background-position: 0 50%;
-      background-size: auto 3px;
     }
 
     li {
       position: relative;
-      width: 240px;
-      height: 240px;
+      width: $WorkCapabilitiesIconSizeMedium;
+      height: $WorkCapabilitiesIconSizeMedium;
       margin: 0;
       background-color: #1a1b21;
-      background-size: 200px 200px;
+      background-size: ($WorkCapabilitiesIconSizeMedium - 40px) ($WorkCapabilitiesIconSizeMedium - 40px);
 
       &:not(.selected) {
         display: block;
@@ -72,6 +73,81 @@
         left: 50%;
         transform: translateX(-50%);
         line-height: 1.2;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    height: $WorkCapabilitiesIconSizeLarge;
+
+    li {
+      width: $WorkCapabilitiesIconSizeLarge;
+      height: $WorkCapabilitiesIconSizeLarge;
+      background-size: ($WorkCapabilitiesIconSizeLarge - 40px) ($WorkCapabilitiesIconSizeLarge - 40px);
+    }
+  }
+}
+
+@media screen and (min-width: $bp-medium) {
+  .work-capabilities-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .capabilities-dotted {
+      position: relative;
+      width: 50%;
+      height: 3px;
+      background-image: url('/images/work/capabilities-line-bg.png');
+      background-repeat: repeat-x;
+      background-position: 0 50%;
+      background-size: auto 3px;
+      margin-left: ($WorkCapabilitiesIconSizeMedium * .5) + 18px;
+      margin-right: 18px;
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        width: 24px;
+      	height: 24px;
+      	opacity: 0.3;
+      	border: solid 3px #979797;
+        border-radius: 50%;
+        margin-top: -10px;
+      }
+
+      &:before {
+        left: -32px;
+      }
+      &:after {
+        right: -32px;
+      }
+
+      &:last-child {
+        margin-right: ($WorkCapabilitiesIconSizeMedium * .5) + 18px;
+        margin-left: 18px;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $bp-large) {
+  .work-capabilities-bg {
+
+    .capabilities-dotted {
+      margin-left: ($WorkCapabilitiesIconSizeLarge * .5) + 18px;
+
+      &:last-child {
+        margin-right: ($WorkCapabilitiesIconSizeLarge * .5) + 18px;
       }
     }
   }
