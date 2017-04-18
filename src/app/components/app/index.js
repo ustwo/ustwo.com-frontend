@@ -136,6 +136,11 @@ const App = React.createClass({
         disableScroll.off();
       }
     }
+
+    if (prevState.currentPage != this.state.currentPage && env.Modernizr.touchevents) {
+      this.setState({ fixedHeight: window.innerHeight })
+      document.body.style.height = `${window.innerHeight}px`;
+    }
   },
 
   // componentDidUpdate(prevProps, prevState) {
