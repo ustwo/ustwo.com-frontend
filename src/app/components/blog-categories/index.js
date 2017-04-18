@@ -21,16 +21,20 @@ const blogCategories = {
 
 const BlogCategories = React.createClass({
   mixins: [ModalContentMixin],
+
   renderBlogCategories() {
     return map(blogCategories, (name, id) => {
       const uri = (id === 'all') ? '/blog' : `/blog?category=${id}`;
-      return <li key={`blog-category-${id}`} className={id}>
-        <a href={uri} onClick={this.getOnClickBlogCategoryHandler(uri)}>
-          {name}
-        </a>
-      </li>;
+      return (
+        <li key={`blog-category-${id}`} className={id}>
+          <a href={uri} onClick={this.getOnClickBlogCategoryHandler(uri)}>
+            {name}
+          </a>
+        </li>
+      );
     });
   },
+
   getOnClickBlogCategoryHandler(uri) {
     return (event) => {
       event.preventDefault();
@@ -38,16 +42,18 @@ const BlogCategories = React.createClass({
       Flux.navigate(uri, true);
     }
   },
+
   onClickClose() {
     Flux.closeModal();
   },
+  
   render() {
-    return <div className="blog-categories" onClick={this.onClickContent}>
-      <CloseButton onClose={this.onClickClose} autoAnim={500} />
-      <div className="scroll-wrapper">
+    return (
+      <div className="blog-categories" onClick={this.onClickContent}>
+        <CloseButton onClose={this.onClickClose} autoAnim={500} />
         <ul className="list">{this.renderBlogCategories()}</ul>
       </div>
-    </div>;
+    );
   }
 });
 

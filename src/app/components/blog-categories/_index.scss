@@ -9,21 +9,31 @@
  *  TODO: Bring variables in scope of component
  */
 
+.modal.modal-blog-categories {
+  z-index: 99999;
+
+  @media screen and (min-width: $bp-large) {
+    background-color: rgba(47,59,85,.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .blog-categories {
   height: 100%;
-  background: $offWhite;
+  background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
 
   .close-button {
     width: 100%;
     height: $dropdown-close-height;
     padding: 0;
     border: 0;
-    background: #fff;
 
     svg {
       width: 60px;
       height: 60px;
-      fill: $marshPassion;
+      fill: $offWhite;
     }
 
     &:focus {
@@ -32,42 +42,29 @@
     }
   }
 
-  .scroll-wrapper {
-    height: calc(100% - #{$dropdown-close-height});
-    overflow: scroll;
-  }
-
   .list {
     margin: 0;
-    padding: 30px 50px;
     clear: both;
     list-style-type: none;
 
     li {
       position: relative;
-      width: 200px;
       height: $blog-controls-line-height;
-      background-color: $offWhite;
       line-height: $blog-controls-line-height;
       color: $offWhite;
-      text-align: center;
-      margin: 0 auto 15px auto;
+      @extend .h5;
 
       &:hover {
-        background-color: $nonBlack;
+        background-color: $v-solid;
         color: #fff;
       }
 
       /* This spits out the blog category class and its paired colour from the
       $blog-categories object in variables.scss */
       @each $category, $colour in $blog-categories {
-        &.#{$category} {
+        &.#{$category} a:before {
           background-color: #{$colour};
         }
-      }
-
-      &.all {
-        background-color: $nonBlack;
       }
     }
 
@@ -76,35 +73,22 @@
       width: 100%;
       height: 100%;
       padding: 0 $blog-controls-horizontal-padding;
+
+      &:before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        margin-right: 10px;
+        background-color: #000;
+      }
     }
   }
 
   @media screen and (min-width: $bp-large) {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
     height: auto;
     box-shadow: 0 0 4px 2px rgba(0,0,0,.1);
     cursor: pointer;
-    width: 440px;
-
-    .scroll-wrapper {
-      height: auto;
-      overflow: auto;
-    }
-
-    .list li {
-      width: $blog-controls-item-width;
-    }
-  }
-}
-
-/* TODO: The modal wrapper. Move out of the component and into blog? */
-@media screen and (min-width: $bp-large) {
-  .modal-blog-categories {
-    position: absolute !important;
-    background: transparent !important;
-    // cursor: default !important;
+    width: 250px;
   }
 }
