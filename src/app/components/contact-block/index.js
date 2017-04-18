@@ -45,7 +45,7 @@ class ContactBlock extends Component {
     const backgroundStyles = {
       background: `linear-gradient(to bottom, #${topColour}, #${bottomColour})`
     }
-    
+
     const planeShape = (
       <svg viewBox="0 0 114 50">
         <g>
@@ -56,24 +56,25 @@ class ContactBlock extends Component {
     );
 
     const plane = (
-      <div className="plane">
-        <div className="right">
+      <div className="paper-plane">
+        <div className="right-wing">
           {planeShape}
         </div>
-        <div className="left">
+        <div className="left-wing">
           {planeShape}
         </div>
-        <div className="bottom1">
+        <div className="right-fuselage">
           {planeShape}
         </div>
-        <div className="bottom2">
+        <div className="left-fuselage">
           {planeShape}
         </div>
+        <div className="trail" />
       </div>
     );
 
     const interactiveStyles = {
-      transform: `rotateY(${(this.props.screenPosition.coordinateX * -10)}deg) rotateX(${10 + (this.props.screenPosition.coordinateY * -15)}deg)`
+      transform: `rotateY(${(this.props.screenPosition.coordinateX * -20)}deg) rotateX(${15 + (this.props.screenPosition.coordinateY * -15)}deg)`
     }
 
     return (
