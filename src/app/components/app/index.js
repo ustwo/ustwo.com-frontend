@@ -61,7 +61,6 @@ const App = React.createClass({
       show: false,
       viewportDimensions: {},
       isMobile: window.innerWidth < 600,
-      fixedHeight: window.innerHeight
     }, this.props.state);
   },
 
@@ -90,17 +89,12 @@ const App = React.createClass({
     });
   },
 
-  setFixedHeight() {
-    document.body.style.height = `${window.innerHeight}px`;
-    this.setState({ fixedHeight: window.innerHeight });
-  },
-
   componentWillMount() {
     this.getViewportDimensions();
   },
 
   componentDidMount() {
-    const { page, currentPage, post, caseStudy, isScrolling, fixedHeight, modal, popup, overflow } = this.state;
+    const { page, currentPage, post, caseStudy, isScrolling, modal, popup, overflow } = this.state;
 
     this.setState({ show: true });
     this.getViewportDimensions();
@@ -109,12 +103,6 @@ const App = React.createClass({
     window.addEventListener('scroll', this.getDocumentScrollPosition.bind(this), false);
     /* Get new dimensions when device orientationchange etc */
     window.addEventListener('resize', this.getViewportDimensions.bind(this), false);
-
-    window.addEventListener('orientationchange', this.setFixedHeight.bind(this), false);
-
-    if (env.Modernizr.touchevents) {
-      document.body.style.height = `${fixedHeight}px`;
-    }
 
     Store.on('change', this.onChangeStore);
 
@@ -137,10 +125,9 @@ const App = React.createClass({
       }
     }
 
-    if (prevState.currentPage != this.state.currentPage && env.Modernizr.touchevents) {
-      this.setState({ fixedHeight: `100vh` })
-      document.body.style.height = `100vh`;
-    }
+    // if (prevState.currentPage != this.state.currentPage && env.Modernizr.touchevents) {
+      // this.setFixedHeight.bind(this);
+    // }
   },
 
   // componentDidUpdate(prevProps, prevState) {
@@ -155,7 +142,6 @@ const App = React.createClass({
     Store.removeListener('change', this.onChangeStore);
     window.removeEventListener('scroll', this.getDocumentScrollPosition.bind(this), false);
     window.removeEventListener('resize', this.getViewportDimensions.bind(this), false);
-    window.removeEventListener('orientationchange', this.setFixedHeight.bind(this), false);
   },
 
   onChangeStore(state) {
@@ -243,7 +229,7 @@ const App = React.createClass({
     const state = this.state;
     const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions,
       homeIntroVideoViewed, homeLoaderShown, page, post, caseStudy, navMain,
-      documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow, isMobile, loaded } = this.state;
+      documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow, isMobile, loaded, setWindowHeight } = this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
       'show': show,
@@ -256,6 +242,10 @@ const App = React.createClass({
       'disabled': !!modal,
       'mobile-no-scroll': modal || this.showTakeover(),
     });
+
+    const styles = {
+      height: `${setWindowHeight}px`
+    }
 
     // else if (modal === null || popup === null || overflow === 'auto') {
     //   // document.body.style.overflow = "auto";
@@ -296,7 +286,7 @@ const App = React.createClass({
       );
     } else {
       content = (
-        <div className={appClasses}>
+        <div className={appClasses} style={styles}>
           <Meta
             title={get(state, 'page.seo.title') || get(state, 'post.seo.title') || ''}
             meta={[{

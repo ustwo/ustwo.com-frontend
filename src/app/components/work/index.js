@@ -39,12 +39,12 @@ class PageWork extends Component {
   }
 
   renderTestimonialCarousel() {
-    const { page } = this.props;
+    const { page, fixedHeight } = this.props;
     const testimonials = get(page, '_embedded.ustwo:testimonials', []);
 
     if(testimonials.length > 0) {
       return (
-        <TestimonialCarousel testimonials={testimonials}/>
+        <TestimonialCarousel testimonials={testimonials} fixedHeight={fixedHeight} />
       );
     }
   }

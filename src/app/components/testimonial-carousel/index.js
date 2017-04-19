@@ -43,8 +43,13 @@ class TestimonialCarousel extends Component {
   }
 
   render() {
+    let styles;
+    if (this.props.fixedHeight) {
+      styles = { height: this.props.fixedHeight }
+    }
+
     return (
-      <section className="testimonial-carousel">
+      <section className="testimonial-carousel" style={styles}>
         <div className="testimonial-content">
           {this.renderTestimonials()}
         </div>

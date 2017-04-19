@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import LoaderWrapper from 'app/components/loader-wrapper';
 import env from 'app/adaptors/server/env';
+import window from 'app/adaptors/server/window';
+import Flux from 'app/flux';
 
 const tickerTotalPage = 1500;
 const tickerTotalHome = 3500;
@@ -13,7 +15,8 @@ class PageContent extends Component {
 
     this.state = {
       showPage: true,
-      ticker: this.props.currentPage === 'home' && !this.props.homeLoaderShown ? tickerTotalHome : tickerTotalPage
+      ticker: this.props.currentPage === 'home' && !this.props.homeLoaderShown ? tickerTotalHome : tickerTotalPage,
+      fixedHeight: `${window.innerHeight}px`
     }
   }
 
@@ -44,8 +47,30 @@ class PageContent extends Component {
     }
   }
 
+  setFixedHeight() {
+    const windowHeight = window.innerHeight;
+    console.log(windowHeight);
+    this.setState({ fixedHeight: `${windowHeight}px` });
+    Flux.setWindowHeight(windowHeight);
+  }
+
   componentDidMount() {
     this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
+
+    if (env.Modernizr.touchevents) {
+      // this.setFixedHeight.bind(this);
+      const windowHeight = window.innerHeight;
+      console.log(windowHeight);
+      this.setState({ fixedHeight: `${windowHeight}px` });
+      Flux.setWindowHeight(windowHeight);
+      window.addEventListener('orientationchange', this.setFixedHeight.bind(this), false);
+    }
+  }
+
+  componentWillUnmount() {
+    if (env.Modernizr.touchevents) {
+      window.removeEventListener('orientationchange', this.setFixedHeight.bind(this), false);
+    }
   }
 
   render() {
@@ -54,6 +79,7 @@ class PageContent extends Component {
     const loaded = !dataLoading && this.state.ticker === 0 && heroReady;
     const props = pageState;
     props.loaded = loaded;
+    props.fixedHeight = this.state.fixedHeight;
 
     return (
       <div className="page-content">

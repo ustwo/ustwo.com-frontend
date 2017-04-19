@@ -78,6 +78,9 @@ const Actions = {
   },
   showVideoOverlay(src) {
     Store.showVideoOverlay(src);
+  },
+  setWindowHeight(number) {
+    Store.setWindowHeight(number);
   }
 };
 

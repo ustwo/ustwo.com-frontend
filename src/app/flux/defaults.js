@@ -12,5 +12,6 @@ export default {
 	heroVideoReady: false,
 	homeLoaderShown: false,
 	overflow: '',
-	videoOverlaySrc: ''
+	videoOverlaySrc: '',
+	setWindowHeight: 0
 };

@@ -37,6 +37,7 @@ const _state = Object.assign({
   homeLoaderShown: Defaults.homeLoaderShown,
   overflow: Defaults.overflow,
   videoOverlaySrc: Defaults.videoOverlaySrc,
+  setWindowHeight: Defaults.setWindowHeight,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -327,6 +328,10 @@ const Store = Object.assign(
     },
     overflowAuto() {
       _state.overflow = 'auto';
+      Store.emit('change', _state);
+    },
+    setWindowHeight(number) {
+      _state.setWindowHeight = number;
       Store.emit('change', _state);
     }
   }
