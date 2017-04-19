@@ -42,6 +42,7 @@ const NavigationOverlay = React.createClass({
         'eventCategory': 'nav',   // Required.
         'eventAction': 'click_nav_link',     // Required.
       });
+      window.scrollTop;
       Flux.navigate(url);
       Flux.closeModal();
     }

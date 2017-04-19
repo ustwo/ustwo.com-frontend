@@ -91,8 +91,8 @@ const App = React.createClass({
   },
 
   setFixedHeight() {
+    document.body.style.height = `${window.innerHeight}px`;
     this.setState({ fixedHeight: window.innerHeight });
-    console.log('change: ' + window.innerHeight);
   },
 
   componentWillMount() {
@@ -138,8 +138,8 @@ const App = React.createClass({
     }
 
     if (prevState.currentPage != this.state.currentPage && env.Modernizr.touchevents) {
-      this.setState({ fixedHeight: window.innerHeight })
-      document.body.style.height = `${window.innerHeight}px`;
+      this.setState({ fixedHeight: `100vh` })
+      document.body.style.height = `100vh`;
     }
   },
 
