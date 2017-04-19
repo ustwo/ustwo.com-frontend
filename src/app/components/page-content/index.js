@@ -8,6 +8,13 @@ import Flux from 'app/flux';
 const tickerTotalPage = 1500;
 const tickerTotalHome = 3500;
 const tickerFrequency = 500;
+const ultimateTimeout = 7000;
+
+function setFixedHeight(component) {
+  const windowHeight = window.innerHeight;
+  component.setState({ fixedHeight: `${windowHeight}px` });
+  Flux.setWindowHeight(windowHeight);
+}
 
 class PageContent extends Component {
   constructor(props) {
@@ -47,44 +54,40 @@ class PageContent extends Component {
     }
   }
 
-  setFixedHeight() {
-    const windowHeight = window.innerHeight;
-    console.log(windowHeight);
-    this.setState({ fixedHeight: `${windowHeight}px` });
-    Flux.setWindowHeight(windowHeight);
-  }
-
   componentDidMount() {
     this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
 
     if (env.Modernizr.touchevents) {
-      // this.setFixedHeight.bind(this);
       const windowHeight = window.innerHeight;
       console.log(windowHeight);
       this.setState({ fixedHeight: `${windowHeight}px` });
       Flux.setWindowHeight(windowHeight);
-      window.addEventListener('orientationchange', this.setFixedHeight.bind(this), false);
+      window.addEventListener('orientationchange', setFixedHeight(this), false);
     }
   }
 
   componentWillUnmount() {
     if (env.Modernizr.touchevents) {
-      window.removeEventListener('orientationchange', this.setFixedHeight.bind(this), false);
+      window.removeEventListener('orientationchange', setFixedHeight(this), false);
     }
   }
 
   render() {
-    const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady } = this.props;
+    const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady, visitedWorkCapabilities } = this.props;
+    const capability = ['work/discovery-strategy', 'work/design-build', 'work/launch-scale'];
     const heroReady = (currentPage === 'home' || currentPage === 'work') && !env.Modernizr.touchevents ? heroVideoReady : true;
     const loaded = !dataLoading && this.state.ticker === 0 && heroReady;
     const props = pageState;
-    props.loaded = loaded;
+    const disableLoaderForCapabilities = capability.includes(currentPage) && visitedWorkCapabilities;
+    props.loaded = disableLoaderForCapabilities ? true : loaded;
     props.fixedHeight = this.state.fixedHeight;
+
+    const loader = disableLoaderForCapabilities ? null : <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} />;
 
     return (
       <div className="page-content">
         {React.createElement(pageMap[currentPage], props)}
-        <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} />
+        {loader}
       </div>
     );
   }

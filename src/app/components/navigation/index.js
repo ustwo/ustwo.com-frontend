@@ -74,6 +74,7 @@ class Navigation extends Component {
       case 'discovery-strategy':
       case 'design-build':
       case 'launch-scale':
+        Flux.visitedWorkCapabilities(false);
         navigateTo = '/work';
         break;
       case 'event':

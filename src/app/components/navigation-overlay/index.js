@@ -44,6 +44,7 @@ const NavigationOverlay = React.createClass({
       });
       window.scrollTop;
       Flux.navigate(url);
+      Flux.visitedWorkCapabilities(false);
       Flux.closeModal();
     }
   },

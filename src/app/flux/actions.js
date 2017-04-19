@@ -81,6 +81,9 @@ const Actions = {
   },
   setWindowHeight(number) {
     Store.setWindowHeight(number);
+  },
+  visitedWorkCapabilities(bool) {
+    Store.visitedWorkCapabilities(bool);
   }
 };
 

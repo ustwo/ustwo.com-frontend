@@ -13,5 +13,6 @@ export default {
 	homeLoaderShown: false,
 	overflow: '',
 	videoOverlaySrc: '',
-	setWindowHeight: 0
+	setWindowHeight: 0,
+	visitedWorkCapabilities: false
 };

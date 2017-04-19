@@ -76,7 +76,8 @@ class ContactBlock extends Component {
     let interactiveStyles;
     if (this.props.screenPosition) {
       interactiveStyles = {
-        transform: `rotateY(${(this.props.screenPosition.coordinateX * -40)}deg) rotateX(${15 + (this.props.screenPosition.coordinateY * -15) - 10}deg)`
+        transform: `rotateY(${(this.props.screenPosition.coordinateX * -8)}deg) rotateX(${(this.props.screenPosition.coordinateY * -12) + 5}deg)`
+        // removed Y axis: rotateY(${(this.props.screenPosition.coordinateX * -40)}deg)
       }
     }
 
@@ -84,7 +85,7 @@ class ContactBlock extends Component {
       <div className="contact-block">
         <div className="home-text-block">
           <div className="section-title">Make something awesome</div>
-          <h2>Get in touch <br /><span className="contact-block-email"><GradientWords word="work@ustwo.com" color="hot" reverse={true} /></span></h2>
+          <h2>Get in touch <br /><span className="contact-block-email"><GradientWords word="hello@ustwo.com" color="hot" reverse={true} /></span></h2>
           <div className="contact-block-image">
             <div className="contact-block-image-background" style={backgroundStyles} />
             <div className="contact-block-image-sky" />

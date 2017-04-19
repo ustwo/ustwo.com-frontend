@@ -39,7 +39,7 @@ class Video extends Component {
       if (env.Modernizr.touchevents) {
         Flux.heroVideoReady(true);
       } else {
-        if (this.video.readyState != 4) {
+        if (this.video.readyState !== 4) {
           this.video.addEventListener('canplaythrough', () => Flux.heroVideoReady(true), false);
         } else {
           Flux.heroVideoReady(true);
@@ -49,7 +49,7 @@ class Video extends Component {
   }
 
   componentWillUnmount() {
-    if (this.video) {
+    if (this.props.heroVideo && this.video) {
       this.video.removeEventListener('canplaythrough', () => Flux.heroVideoReady(false), false);
     }
     Flux.heroVideoReady(false);

@@ -10,6 +10,7 @@ import find from 'lodash/collection/find';
 import includes from 'lodash/collection/includes';
 import Flux from 'app/flux';
 import disableScroll from 'app/lib/disable-scroll';
+import env from 'app/adaptors/server/env';
 
 // TODO: see if there's a better way to get fonts in
 import 'app/adaptors/server/localfont';
@@ -228,7 +229,7 @@ const App = React.createClass({
   render() {
     const state = this.state;
     const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions,
-      homeIntroVideoViewed, homeLoaderShown, page, post, caseStudy, navMain,
+      homeIntroVideoViewed, homeLoaderShown, page, post, caseStudy, navMain, visitedWorkCapabilities,
       documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow, isMobile, loaded, setWindowHeight } = this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
@@ -243,8 +244,11 @@ const App = React.createClass({
       'mobile-no-scroll': modal || this.showTakeover(),
     });
 
-    const styles = {
-      height: `${setWindowHeight}px`
+    let styles;
+    if (env.Modernizr.touchevents) {
+      styles = {
+        height: `${setWindowHeight}px`
+      }
     }
 
     // else if (modal === null || popup === null || overflow === 'auto') {
@@ -327,6 +331,7 @@ const App = React.createClass({
                 homeLoaderShown={homeLoaderShown}
                 heroVideoReady={heroVideoReady}
                 viewportDimensions={viewportDimensions}
+                visitedWorkCapabilities={visitedWorkCapabilities}
               />
             </PageContainer>
           </TransitionManager>

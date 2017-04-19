@@ -38,6 +38,7 @@ const _state = Object.assign({
   overflow: Defaults.overflow,
   videoOverlaySrc: Defaults.videoOverlaySrc,
   setWindowHeight: Defaults.setWindowHeight,
+  visitedWorkCapabilities: Defaults.visitedWorkCapabilities,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -332,6 +333,10 @@ const Store = Object.assign(
     },
     setWindowHeight(number) {
       _state.setWindowHeight = number;
+      Store.emit('change', _state);
+    },
+    visitedWorkCapabilities(bool) {
+      _state.visitedWorkCapabilities = bool;
       Store.emit('change', _state);
     }
   }

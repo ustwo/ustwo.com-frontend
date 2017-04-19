@@ -104,130 +104,139 @@
   }
 }
 
+// .contact-block-image {
+//   display: none;
+// }
+
+
 .contact-block-image {
-  display: none;
+  position: relative;
+  display: block;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #eaeaea;
+  margin: 30px auto 0 auto;
+}
+.contact-block-image-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 220px;
+  opacity: 0.5;
+}
+.contact-block-image-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 220px;
+  background: url('/images/sky.svg') repeat-x 440px 0;
+}
+.contact-block-image-buildings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 440px;
+  height: 220px;
+  background: url('/images/sky-background.png') repeat-x 0 0;
+  background-size: 220px 220px;
+  animation: buildingsMove 20s infinite;
+  animation-timing-function: linear;
+}
+.contact-block-image-plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 220px;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+
+  .paper-plane {
+    position: absolute;
+    top: 47%;
+    left: 27%;
+    width:100px;
+    height:100px;
+    transform-style: preserve-3d;
+    transform-origin: 50% top;
+    transform: rotateX(-30deg) rotateY(-14deg);
+    overflow: visible;
+    animation: planeSway 4s infinite;
+    animation-timing-function: linear;
+  }
+
+  .right-wing, .left-wing, .right-fuselage, .left-fuselage {
+    position: absolute;
+    left:0;
+    top:0;
+    overflow: visible;
+    width: 114px;
+    height: 50px;
+  }
+
+  div[class*='wing'] {
+    z-index: 2;
+    transform-origin: 50% 0;
+  }
+
+  div[class*='fuselage'] {
+    z-index: 1;
+    transform-origin: 50% 50%;
+  }
+
+  .right-wing {
+    transform: rotateX(80deg) translateY(3px) rotateZ(-4deg);
+  }
+
+  .left-wing {
+    transform: rotateX(-80deg) translateY(3px) rotateZ(-4deg);
+  }
+
+  .right-fuselage {
+    transform: rotateX(10deg) rotateY(-4deg) translateZ(1px);
+  }
+
+  .left-fuselage {
+    transform: rotateX(-10deg) rotateY(4deg) translateZ(-1px);
+  }
+
+  .trail {
+    position: absolute;
+    left: -104px;
+    top: 0;
+    z-index: 1;
+    width: 100px;
+    height: 6px;
+    transform: rotateX(90deg);
+    transform-origin: 50% 50%;
+    background-image: linear-gradient(to left, white 14px, transparent 6px);
+    background-repeat: repeat-x;
+    background-size: 20px 6px;
+    background-position: 0 0;
+    animation: vapourTrail .5s infinite;
+    animation-timing-function: linear;
+  }
+
+  .cls-2 {
+    fill: white;
+  }
 }
 
-@media screen and (min-width: $bp-large) {
+@media screen and (min-width: $bp-medium) {
   .contact-block-image {
+    margin: 0;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 100px;
-    display: block;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: #eaeaea;
-  }
-  .contact-block-image-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 220px;
-    opacity: 0.5;
-  }
-  .contact-block-image-sky {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 220px;
-    background: url('/images/sky.svg') repeat-x 440px 0;
-  }
-  .contact-block-image-buildings {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 440px;
-    height: 220px;
-    background: url('/images/sky-background.png') repeat-x 0 0;
-    background-size: 220px 220px;
-    animation: buildingsMove 20s infinite;
-    animation-timing-function: linear;
-  }
-  .contact-block-image-plane {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 220px;
-    height: 220px;
-    transform-style: preserve-3d;
-    perspective: 2000px;
-
-    .paper-plane {
-      position: absolute;
-      top: 47%;
-      left: 27%;
-      width:100px;
-      height:100px;
-      transform-style: preserve-3d;
-      transform-origin: 50% top;
-      transform: rotateX(-30deg) rotateY(-14deg);
-      overflow: visible;
-      animation: planeSway 4s infinite;
-      animation-timing-function: linear;
-    }
-
-    .right-wing, .left-wing, .right-fuselage, .left-fuselage {
-      position: absolute;
-      left:0;
-      top:0;
-      overflow: visible;
-      width: 114px;
-      height: 50px;
-    }
-
-    div[class*='wing'] {
-      z-index: 2;
-      transform-origin: 50% 0;
-    }
-
-    div[class*='fuselage'] {
-      z-index: 1;
-      transform-origin: 50% 50%;
-    }
-
-    .right-wing {
-      transform: rotateX(80deg) translateY(3px) rotateZ(-4deg);
-    }
-
-    .left-wing {
-      transform: rotateX(-80deg) translateY(3px) rotateZ(-4deg);
-    }
-
-    .right-fuselage {
-      transform: rotateX(10deg) rotateY(-4deg) translateZ(1px);
-    }
-
-    .left-fuselage {
-      transform: rotateX(-10deg) rotateY(4deg) translateZ(-1px);
-    }
-
-    .trail {
-      position: absolute;
-      left: -104px;
-      top: 0;
-      z-index: 1;
-      width: 100px;
-      height: 6px;
-      transform: rotateX(90deg);
-      transform-origin: 50% 50%;
-      background-image: linear-gradient(to left, white 14px, transparent 6px);
-      background-repeat: repeat-x;
-      background-size: 20px 6px;
-      background-position: 0 0;
-      animation: vapourTrail .5s infinite;
-      animation-timing-function: linear;
-    }
-
-    .cls-2 {
-      fill: white;
-    }
   }
 }
+
+
 
 @keyframes buildingsMove {
   from {

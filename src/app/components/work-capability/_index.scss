@@ -5,7 +5,7 @@
 
 .work-capability {
   color: $offWhite;
-	background-image: linear-gradient(319deg, $c-gradient1, $c-gradient2);
+	background-color: $c-solid;
   padding-top: 100px;
   @include core-layout();
 
@@ -93,7 +93,7 @@
 
   @media screen and (min-width: $bp-medium) {
     margin-bottom: 100px;
-    
+
     h2 {
       margin-bottom: 25px;
     }

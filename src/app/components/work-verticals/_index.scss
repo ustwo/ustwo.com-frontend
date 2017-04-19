@@ -26,6 +26,14 @@
 .work-verticals-item-inner {
   position: relative;
   padding: 100px 0;
+
+  @media screen and (min-width: $bp-medium) {
+    padding: 150px 0;
+  }
+
+  @media screen and (min-width: $bp-larger) {
+    padding: 200px 0;
+  }
 }
 
 .work-vertical-intro {
@@ -42,10 +50,6 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-
-    @media screen and (min-width: $bp-medium) {
-      padding: 100px 0;
-    }
   }
 }
 
