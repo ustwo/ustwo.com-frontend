@@ -182,8 +182,6 @@ const workData = {
     text: 'Stay relevant and respond to customer needs. Get your product out in the market - refine, grow and prove your return on investment.'
   }],
   verticals: {
-    title: 'Areas of Interest',
-    introText: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.',
     auto: {
       type: 'Expertise',
       title: 'Auto',
