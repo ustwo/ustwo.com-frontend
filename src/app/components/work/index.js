@@ -58,11 +58,31 @@ class PageWork extends Component {
     }
   }
 
+  renderFeaturedCaseStudy() {
+    const styles = {
+      backgroundImage: `linear-gradient(305deg, ${featuredCaseStudy.colours[0]}, ${featuredCaseStudy.colours[1]})`
+    }
+
+    return (
+      <div className="work-featured-case-study" style={styles}>
+        <div className="work-featured-case-study-inner">
+          <div className="work-featured-case-study-image">
+            <img src={featuredCaseStudy.image} alt={featuredCaseStudy.imageAlt} />
+          </div>
+          <div className="work-featured-case-study-content">
+            <div className="section-title">Latest Work</div>
+            <h2 className="title">{featuredCaseStudy.title}</h2>
+            <p>{featuredCaseStudy.excerpt}</p>
+            <button>View Case Study</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   renderCaseStudies(caseStudies) {
     const { page } = this.props;
     const { caseStudyFilter } = this.state;
-
-
 
     let filteredCaseStudies;
     if (caseStudyFilter === 'all') {
@@ -119,6 +139,8 @@ class PageWork extends Component {
           {this.renderWhatWeDo()}
 
           {this.renderTestimonialCarousel()}
+
+          {this.renderFeaturedCaseStudy()}
 
           <div className="page-work-controls">
             <div className="page-work-filter">
@@ -196,4 +218,12 @@ const workData = {
       text: 'ustwo collaborates with clients, healthcare professionals and academic experts to create lasting, meaningful digital health solutions.'
     }
   }
+}
+
+const featuredCaseStudy = {
+  title: 'Ford GoPark',
+  excerpt: 'An app and service that integrates vehicles and the city in new and meaningful ways.',
+  colours: ['#87e283', '#92e9b2'],
+  image: '/images/work/featured-gopark.png',
+  imageAlt: 'iPhone showing Ford GoPark App'
 }
