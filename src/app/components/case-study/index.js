@@ -11,6 +11,7 @@ const PageCaseStudy = React.createClass({
   mixins: [getScrollTrackerMixin('case-study')],
   render() {
     const { caseStudy } = this.props;
+    console.log(caseStudy)
     const classes = classnames('page-case-study', this.props.className);
     return (
       <article className={classes}>
@@ -44,7 +45,8 @@ const PageCaseStudy = React.createClass({
         {renderModules({
           modules: get(caseStudy, 'page_builder', []),
           colours: get(caseStudy, 'colors'),
-          zebra: true
+          zebra: true,
+          categories: get(caseStudy, 'categories')
         })}
         {this.renderRelatedContent()}
       </article>

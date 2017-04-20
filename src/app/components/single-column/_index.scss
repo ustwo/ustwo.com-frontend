@@ -19,6 +19,10 @@
     border-bottom-style: solid;
   }
 
+  .section-title {
+    text-align: center;
+  }
+
   .wrapper {
     max-width: 790px;
     margin: 0 auto;
@@ -27,7 +31,6 @@
   .title {
     max-width: 820px;
     text-align: center;
-    @extend .h3;
   }
 
   hr {
@@ -77,7 +80,7 @@
     padding-bottom: $vertical-spacing-large;
 
     &.intro {
-      padding: 168px 6.25% 100px;
+      padding: 120px 6.25% 100px;
     }
   }
 

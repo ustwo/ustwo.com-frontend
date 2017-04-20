@@ -20,7 +20,7 @@ function getBackgroundColour(options) {
 }
 
 function renderHeader(moduleData, index, options) {
-  const { colours, zebra } = options;
+  const { colours, zebra, categories } = options;
   const heading = get(moduleData, 'attr.heading.value');
   return <SingleColumn
     key={`module-header-${heading}-${index}`}
@@ -28,9 +28,10 @@ function renderHeader(moduleData, index, options) {
     title={heading}
     headingType='h1'
     headingColour={get(colours, 'primary')}
-    ruleColour={get(colours, 'secondary')}
+    ruleColour={get(colours, 'primary')}
     backgroundColour={getBackgroundColour(options)}
     isInZebraList={zebra}
+    category={categories[0].name}
   >
     {get(moduleData, 'attr.subheading.value')}
   </SingleColumn>;
@@ -43,7 +44,7 @@ function renderText(moduleData, index, options) {
     key={`module-text-${heading}-${index}`}
     title={heading}
     headingColour={get(colours, 'primary')}
-    ruleColour={get(colours, 'secondary')}
+    ruleColour={get(colours, 'primary')}
     backgroundColour={getBackgroundColour(options)}
     isInZebraList={zebra}
   >
