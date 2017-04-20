@@ -41,7 +41,4 @@ const workCapabilitiesData = [{
 }, {
   name: 'launch',
   title: 'Launch & Scale'
-}, {
-  name: 'working',
-  title: 'Ways of Working'
 }];
