@@ -3,6 +3,8 @@ import env from 'app/adaptors/server/env';
 
 import Hero from 'app/components/hero';
 import Video from 'app/components/video';
+// import { DefaultPlayer as Video } from 'react-html5video';
+
 import SVG from 'app/components/svg';
 import window from 'app/adaptors/server/window';
 
@@ -75,6 +77,19 @@ class WorkHero extends Component {
         hide={hide}
       />
     );
+    // const video = (
+    //   <Video autoPlay loop muted
+    //     play={this.state.playVideo}
+    //     controls={[]}
+    //     poster={fallbackImage}
+    //     onCanPlayThrough={() => {
+    //       console.log('playing');
+    //       Flux.heroVideoReady(true);
+    //     }}
+    //   >
+    //     <source src={src} type="video/webm" />
+    //   </Video>
+    // );
 
     return (
       <div className="work-hero">

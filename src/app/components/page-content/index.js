@@ -8,7 +8,7 @@ import Flux from 'app/flux';
 const tickerTotalPage = 1500;
 const tickerTotalHome = 3500;
 const tickerFrequency = 500;
-const ultimateTimeout = 7000;
+const ultimateTimeout = 5000;
 
 function setFixedHeight(component) {
   const windowHeight = window.innerHeight;
@@ -23,7 +23,8 @@ class PageContent extends Component {
     this.state = {
       showPage: true,
       ticker: this.props.currentPage === 'home' && !this.props.homeLoaderShown ? tickerTotalHome : tickerTotalPage,
-      fixedHeight: `${window.innerHeight}px`
+      fixedHeight: `${window.innerHeight}px`,
+      ultimateTicker: ultimateTimeout
     }
   }
 
@@ -54,8 +55,20 @@ class PageContent extends Component {
     }
   }
 
+  ultimateTicker() {
+    const { ultimateTicker } = this.state;
+    console.log('tick');
+
+    if (ultimateTicker > 0) {
+      this.setState({ ultimateTicker: ultimateTicker - tickerFrequency });
+    } else {
+      clearInterval(this.ultimateTimeout);
+    }
+  }
+
   componentDidMount() {
     this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
+    this.ultimateTimeout = setInterval(this.ultimateTicker.bind(this), tickerFrequency);
 
     if (env.Modernizr.touchevents) {
       const windowHeight = window.innerHeight;
@@ -76,7 +89,16 @@ class PageContent extends Component {
     const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady, visitedWorkCapabilities } = this.props;
     const capability = ['work/discovery-strategy', 'work/design-build', 'work/launch-scale'];
     const heroReady = (currentPage === 'home' || currentPage === 'work') && !env.Modernizr.touchevents ? heroVideoReady : true;
-    const loaded = !dataLoading && this.state.ticker === 0 && heroReady;
+    let loaded = !dataLoading && this.state.ticker === 0 && heroReady;
+
+    if (loaded) {
+      clearInterval(this.ultimateTimeout);
+    }
+
+    if (this.state.ultimateTicker === 0 && !loaded) {
+      loaded = true;
+    }
+
     const props = pageState;
     const disableLoaderForCapabilities = capability.includes(currentPage) && visitedWorkCapabilities;
     props.loaded = disableLoaderForCapabilities ? true : loaded;
