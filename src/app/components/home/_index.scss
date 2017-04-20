@@ -99,6 +99,16 @@
     }
   }
 
+  .scroll-wrapper-home-more-message,
+  .scroll-wrapper-home-smorgasbord-message {
+    opacity: 0;
+    transition: opacity .2s linear;
+  }
+
+  .scroll-wrapper-home-smorgasbord-message {
+    opacity: 1;
+  }
+
   .scroll-wrapper-home-carousel-products,
   .scroll-wrapper-home-carousel-ventures {
     transform: translate3d(0,0,0);
@@ -130,9 +140,11 @@
       visibility: visible;
       transition-delay: 0s, 0s;
     }
+    .scroll-wrapper-home-smorgasbord-message,
     .scroll-wrapper-home-carousel-products {
       opacity: 0;
     }
+    .scroll-wrapper-home-more-message,
     .scroll-wrapper-home-carousel-ventures {
       opacity: 1;
     }

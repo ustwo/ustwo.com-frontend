@@ -18,8 +18,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -2px 0 -2px -25%;
-    padding: 0px 0 4px 25%;
+    margin: -1px 0 -2px -25%;
+    padding: 0px 0 2px 25%;
     background: #fff;
     -webkit-transform-origin: 50% 100%;
     -ms-transform-origin: 50% 100%;
@@ -30,6 +30,11 @@
     -ms-transition: all 1.5s cubic-bezier(0.000, 0.700, 0.900, 1);
     z-index: 5;
     border-radius: 3px;
+
+    @media screen and (min-width: $bp-tablet) {
+      padding: 0px 0 4px 25%;
+      margin: -2px 0 -2px -25%;
+    }
   }
 
   .minute {

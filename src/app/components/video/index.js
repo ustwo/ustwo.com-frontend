@@ -15,9 +15,13 @@ class Video extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.video) {
       if (nextProps.play) {
-        this.video.play();
+        if (this.video.paused) {
+          this.video.play();
+        }
       } else {
-        this.video.pause();
+        if (!this.video.paused) {
+          this.video.pause();
+        }
       }
     }
   }

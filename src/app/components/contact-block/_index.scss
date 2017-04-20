@@ -116,8 +116,9 @@
   height: 220px;
   border-radius: 50%;
   overflow: hidden;
-  background-color: #eaeaea;
+  background-color: $veryDarkGrey;
   margin: 30px auto 0 auto;
+  transform:translate3d(0,0,0)
 }
 .contact-block-image-background {
   position: absolute;
@@ -181,11 +182,19 @@
   div[class*='wing'] {
     z-index: 2;
     transform-origin: 50% 0;
+
+    svg {
+      fill: white;
+    }
   }
 
   div[class*='fuselage'] {
     z-index: 1;
     transform-origin: 50% 50%;
+
+    svg {
+      fill: #cccccc;
+    }
   }
 
   .right-wing {

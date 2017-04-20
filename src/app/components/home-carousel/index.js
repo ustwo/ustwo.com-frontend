@@ -93,7 +93,7 @@ class HomeCarousel extends Component {
 
   render() {
     const { scrollProgress, carouselItems, className, isMobile, inView, loaded } = this.props;
-    const { currentStartItem, otherIsHovered, numberOfItemsInView, justBeenHovered } = this.state;
+    const { currentStartItem, otherIsHovered, numberOfItemsInView, justBeenHovered, paused } = this.state;
 
     const showItems = this.props.carouselItems.map((item, i) => {
 
@@ -204,7 +204,7 @@ class HomeCarousel extends Component {
           {showItems}
         </div>
         <button className="home-carousel-shuffle" onClick={() => goToNextItems(this)}>
-          <TimerUI timer={ticker} darkStyle={this.props.darkStyle} loaded={loaded} />
+          <TimerUI timer={ticker} darkStyle={this.props.darkStyle} loaded={loaded} paused={paused} />
         </button>
         <div className="view-carousel-related-page"><button>All {viewPage}</button></div>
       </div>

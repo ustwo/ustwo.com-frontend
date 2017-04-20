@@ -64,7 +64,11 @@
 
       .channel {
         display: inline-block;
-        margin: 0 10px;
+        margin: 0 6px;
+
+        @media screen and (min-width: $bp-small) {
+          margin: 0 10px;
+        }
 
         a {
           display: flex;

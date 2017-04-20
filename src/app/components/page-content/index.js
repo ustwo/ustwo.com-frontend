@@ -31,7 +31,6 @@ class PageContent extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentPage != this.props.currentPage) {
       setTimeout(() => {
-        console.log(nextProps.currentPage);
         this.setState({ showPage: false });
       }, 1000);
     }
@@ -57,7 +56,6 @@ class PageContent extends Component {
 
   ultimateTicker() {
     const { ultimateTicker } = this.state;
-    console.log('tick');
 
     if (ultimateTicker > 0) {
       this.setState({ ultimateTicker: ultimateTicker - tickerFrequency });
@@ -72,7 +70,6 @@ class PageContent extends Component {
 
     if (env.Modernizr.touchevents) {
       const windowHeight = window.innerHeight;
-      console.log(windowHeight);
       this.setState({ fixedHeight: `${windowHeight}px` });
       Flux.setWindowHeight(windowHeight);
       window.addEventListener('orientationchange', setFixedHeight(this), false);
