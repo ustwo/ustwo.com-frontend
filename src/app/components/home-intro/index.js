@@ -12,8 +12,10 @@ import DownIndicator from 'app/components/down-indicator';
 function renderLogoBackground(screenPosition) {
   const { coordinateX, coordinateY } = screenPosition;
   const modifier = env.Modernizr.touchevents ? 20 : 10;
-  const x = env.Modernizr.touchevents ? coordinateX : coordinateX * -1;
-  const y = env.Modernizr.touchevents ? coordinateY : coordinateY * -1;
+  let x = env.Modernizr.touchevents ? coordinateX : coordinateX * -1;
+  let y = env.Modernizr.touchevents ? coordinateY : coordinateY * -1;
+  x = x || 0;
+  y = y || 0;
   const value = 10 + Math.abs(coordinateX * 10);
   const transform = `translate3d(${x * modifier}px, ${y * modifier}px, 0)`;
   const styles = { transform, fill: '#000000' }

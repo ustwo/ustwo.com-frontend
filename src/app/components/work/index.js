@@ -18,6 +18,14 @@ import ContactButton from 'app/components/contact-button';
 
 class PageWork extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      caseStudyFilter: 'all'
+    }
+  }
+
   renderWhatWeDo() {
     const { isMobile } = this.props;
     const workIntroExtra = workData.intro.extra.map(item => <p className="work-intro-extra">{item}</p>);
@@ -51,11 +59,24 @@ class PageWork extends Component {
 
   renderCaseStudies(caseStudies) {
     const { page } = this.props;
+    const { caseStudyFilter } = this.state;
 
-    return caseStudies.map(caseStudy => {
+
+
+    let filteredCaseStudies;
+    if (caseStudyFilter === 'all') {
+      filteredCaseStudies = caseStudies;
+    } else {
+      filteredCaseStudies = caseStudies.filter(caseStudy => {
+        return caseStudy.categories[0].name === caseStudyFilter
+      });
+    }
+
+    return filteredCaseStudies.map(caseStudy => {
       const attachments = get(page, '_embedded.wp:attachment');
       const image = getFeaturedImage(caseStudy, attachments);
-      const featured = caseStudies.indexOf(caseStudy) === 0;
+      // const featured = caseStudies.indexOf(caseStudy) === 0;
+      let featured;
 
       return (
         <WorkItem
@@ -73,6 +94,9 @@ class PageWork extends Component {
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
+    const buttonClassAll = classnames({ selected: this.state.caseStudyFilter === 'all' });
+    const buttonClassClients = classnames({ selected: this.state.caseStudyFilter === 'Work' });
+    const buttonClassVentures = classnames({ selected: this.state.caseStudyFilter === 'Venture' });
 
     return (
       <article className={classes}>
@@ -94,6 +118,14 @@ class PageWork extends Component {
           {this.renderWhatWeDo()}
 
           {this.renderTestimonialCarousel()}
+
+          <div className="page-work-controls">
+            <div className="page-work-filter">
+              <button className={buttonClassAll} onClick={() => this.setState({ caseStudyFilter: 'all' })}>All</button>
+              <button className={buttonClassClients} onClick={() => this.setState({ caseStudyFilter: 'Work' })}>Clients</button>
+              <button className={buttonClassVentures} onClick={() => this.setState({ caseStudyFilter: 'Venture' })}>Ventures</button>
+            </div>
+          </div>
 
           <div className="card-list work-items-list">
             <div className="card-list-inner">

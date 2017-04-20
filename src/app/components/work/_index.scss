@@ -43,10 +43,22 @@
     text-align: left;
   }
 
+  .card-list {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
   @media screen and (min-width: $bp-medium) {
     .card-list {
-      margin-top: 0px;
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .card-list {
       padding-top: 100px;
+      padding-bottom: 85px;
     }
   }
 }
@@ -127,6 +139,31 @@
 
     p {
       font-size: 24px;
+    }
+  }
+}
+
+.page-work-controls {
+  padding: 24px 0;
+}
+
+.page-work-filter {
+  text-align: center;
+
+  button {
+    outline: 0;
+    @extend .h5;
+    padding: 0 15px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid transparent;
+
+    &.selected {
+      border-color: $nonBlack
+    }
+
+    @media screen and (min-width: $bp-large) {
+      font-size: 14px;
     }
   }
 }
