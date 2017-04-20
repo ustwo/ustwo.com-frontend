@@ -15,6 +15,7 @@ import WorkHero from 'app/components/work-hero';
 import ContactBlock from 'app/components/contact-block';
 import WorkVerticals from 'app/components/work-verticals';
 import ContactButton from 'app/components/contact-button';
+import WorkClientsBoard from 'app/components/work-clients-board';
 
 class PageWork extends Component {
 
@@ -134,6 +135,8 @@ class PageWork extends Component {
           </div>
 
           <WorkVerticals data={workData.verticals} />
+
+          <WorkClientsBoard />
 
           <ScrollWrapper
             component={<ContactBlock />}
