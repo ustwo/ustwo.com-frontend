@@ -54,6 +54,9 @@ $WorkCapabilitiesIconSizeLarge: 240px;
         background-position: 50%;
       }
     }
+    &.working {
+      background-image: url('/images/illustration-ways-of-working.svg');
+    }
 
     button {
       display: none;

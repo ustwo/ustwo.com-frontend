@@ -74,6 +74,7 @@ class Navigation extends Component {
       case 'discovery-strategy':
       case 'design-build':
       case 'launch-scale':
+      case 'ways-of-working':
         Flux.visitedWorkCapabilities(false);
         navigateTo = '/work';
         break;
@@ -98,7 +99,7 @@ class Navigation extends Component {
   render() {
     const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions } = this.props;
 
-    const capability = ['discovery-strategy', 'design-build', 'launch-scale'];
+    const capability = ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'];
     const venturesActive = venturesPosition && (documentScrollPosition - viewportDimensions.height > venturesPosition.from) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
     const homePage = section === 'home';
     const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog';

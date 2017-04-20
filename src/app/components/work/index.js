@@ -143,6 +143,11 @@ const workData = {
     title: 'Launch & Scale',
     image: '/images/illustration-launch-and-scale.svg',
     text: 'Stay relevant and respond to customer needs. Get your product out in the market - refine, grow and prove your return on investment.'
+  },{
+    name: 'working',
+    title: 'Ways of working',
+    image: '/images/illustration-ways-of-working.svg',
+    text: 'Stay relevant and respond to customer needs. Get your product out in the market - refine, grow and prove your return on investment.'
   }],
   verticals: {
     title: 'Areas of Interest',

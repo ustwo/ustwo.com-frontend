@@ -13,6 +13,9 @@ export default (name) => {
     case 'launch':
       navigateTo = '/work/launch-scale';
       break;
+    case 'working':
+      navigateTo = '/work/ways-of-working';
+      break;
     default:
       navigateTo = '/work';
   }

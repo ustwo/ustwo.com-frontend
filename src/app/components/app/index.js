@@ -41,6 +41,7 @@ const pageMap = {
   'work/discovery-strategy': require('app/components/work-discovery-strategy'),
   'work/design-build': require('app/components/work-design-build'),
   'work/launch-scale': require('app/components/work-launch-scale'),
+  'work/ways-of-working': require('app/components/work-ways-of-working'),
   'blog': require('app/components/blog'),
   'blog/post': require('app/components/post'),
   'blog/search-results': require('app/components/search-results'),

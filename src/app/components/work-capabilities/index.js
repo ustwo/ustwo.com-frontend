@@ -12,7 +12,7 @@ function WorkCapabilities({ selected }) {
       <li className={classes} key={`capability-${item.name}`}>
         <button onClick={() => goToCapability(item.name)}>
           <div className="work-capabilities-item-title">{item.title}</div>
-        </button>  
+        </button>
       </li>
     )
   });
@@ -41,4 +41,7 @@ const workCapabilitiesData = [{
 }, {
   name: 'launch',
   title: 'Launch & Scale'
+}, {
+  name: 'working',
+  title: 'Ways of Working'
 }];

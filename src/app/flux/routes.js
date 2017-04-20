@@ -45,6 +45,15 @@ const routes = {
       slug: 'launch-scale'
     }]
   },
+  waysOfWorking: {
+    id: 'work/ways-of-working',
+    patterns: ['/work/ways-of-working'],
+    data: () => [{
+      url: 'ustwo/v1/pages/work',
+      type: 'page',
+      slug: 'lways-of-working'
+    }]
+  },
   caseStudy: {
     id: 'work/case-study',
     patterns: ['/work/:cid'],
