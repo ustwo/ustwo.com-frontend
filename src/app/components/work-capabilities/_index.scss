@@ -10,12 +10,17 @@ $WorkCapabilitiesIconSizeLarge: 240px;
 .work-capabilities {
   position: relative;
   height: $WorkCapabilitiesIconSizeSmall;
-  margin: 30px 0 80px;
+  margin: 30px 0 50px;
 
-  ul {
+  @media screen and (min-width: $bp-tablet) {
+    margin: 50px 0 80px;
+  }
+  @media screen and (min-width: $bp-large) {
+    margin: 60px 0 100px;
   }
 
   li {
+    position: relative;
     list-style-type: none;
     width: $WorkCapabilitiesIconSizeSmall;
     height: $WorkCapabilitiesIconSizeSmall;
@@ -37,7 +42,17 @@ $WorkCapabilitiesIconSizeLarge: 240px;
       background-image: url('/images/illustration-design-and-build.svg');
     }
     &.launch {
-      background-image: url('/images/illustration-launch-and-scale.svg');
+      &:after {
+        position: absolute;
+        left: 23%;
+        top: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-image: url('/images/illustration-launch-and-scale.svg');
+        background-repeat: no-repeat;
+        background-position: 50%;
+      }
     }
 
     button {
@@ -64,15 +79,25 @@ $WorkCapabilitiesIconSizeLarge: 240px;
       &:not(.selected) {
         display: block;
         background: none;
+
+        &:after {
+          display: none;
+        }
       }
 
       button {
-        display: block;
-        position: absolute;
-        bottom: 22px;
-        left: 50%;
-        transform: translateX(-50%);
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+      }
+
+      .work-capabilities-item-title {
         line-height: 1.2;
+        margin-bottom: 22px;
+        width: 70%;
       }
     }
   }

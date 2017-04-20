@@ -206,7 +206,7 @@ class HomeCarousel extends Component {
         <button className="home-carousel-shuffle" onClick={() => goToNextItems(this)}>
           <TimerUI timer={ticker} darkStyle={this.props.darkStyle} loaded={loaded} paused={paused} />
         </button>
-        <div className="view-carousel-related-page"><button>All {viewPage}</button></div>
+        <div className="view-carousel-related-page"><button>See it all</button></div>
       </div>
     );
   }

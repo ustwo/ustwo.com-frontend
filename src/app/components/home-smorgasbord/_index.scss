@@ -22,6 +22,10 @@
   padding-top: 0;
   padding-bottom: 0;
 
+  .scroll-wrapper-inner {
+    max-width: 1000px;
+  }
+
   @media screen and (min-width: $bp-medium) {
     padding-top: 0;
     padding-bottom: 0;
@@ -34,7 +38,8 @@
   }
 }
 
-.smorgasbord-block {
+.smorgasbord-block,
+.smorgasbord-block-wrapper .subscription {
   margin-bottom: 20px;
   background-color: #eee;
   box-shadow: 0 0 20px rgba(0, 0, 0, .1);
@@ -49,6 +54,15 @@
   @media screen and (min-width: $bp-large) {
     height: 480px;
     font-size: 40px;
+  }
+}
+
+.smorgasbord-block-wrapper .subscription {
+  @media screen and (min-width: $bp-medium) {
+    height: 430px;
+  }
+  @media screen and (min-width: $bp-large) {
+    height: 480px;
   }
 }
 
@@ -110,16 +124,21 @@
 @media screen and (min-width: $bp-medium) {
   .smorgasbord-block-wrapper {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     flex-direction: row;
 
     .smorgasbord-block {
       flex: 1;
-      margin-right: 20px;
 
-      &:last-child {
-        margin-right: 0;
+      &:first-child {
+        margin-right: 20px;
       }
+    }
+
+    .subscription {
+      flex: 1;
+      min-width: 50%;
     }
   }
 }

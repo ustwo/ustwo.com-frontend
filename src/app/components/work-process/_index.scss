@@ -72,3 +72,14 @@
     }
   }
 }
+
+.work-process-item-button {
+  @include buttonStyle(true);
+  @include buttonColor();
+  border: none;
+  padding-left: 0;
+
+  &:hover {
+    box-shadow: none;
+  }
+}

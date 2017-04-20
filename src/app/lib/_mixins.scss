@@ -163,6 +163,22 @@
     background-repeat: no-repeat;
     background-position: calc(100% - 13px) 50%;
     background-size: 16px auto;
+
+    &:hover {
+      animation: buttonArrowHover .2s ease-in-out;
+    }
+  }
+}
+
+@keyframes buttonArrowHover {
+  0% {
+    background-position: calc(100% - 13px) 50%;
+  }
+  50% {
+    background-position: calc(100% - 8px) 50%;
+  }
+  100% {
+    background-position: calc(100% - 13px) 50%;
   }
 }
 

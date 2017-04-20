@@ -9,7 +9,11 @@ function WorkCapabilities({ selected }) {
     });
 
     return (
-      <li className={classes} key={`capability-${item.name}`}><button onClick={() => goToCapability(item.name)}>{item.title}</button></li>
+      <li className={classes} key={`capability-${item.name}`}>
+        <button onClick={() => goToCapability(item.name)}>
+          <div className="work-capabilities-item-title">{item.title}</div>
+        </button>  
+      </li>
     )
   });
 

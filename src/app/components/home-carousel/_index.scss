@@ -314,7 +314,7 @@ $home-carousel-small-screen-offset: 95px;
 
     .home-carousel-item-image:after {
       content: "";
-      width: 200px;
+      width: 250px;
       position: absolute;
       top: 0;
       right: 0;
@@ -333,7 +333,7 @@ $home-carousel-small-screen-offset: 95px;
 
     &:hover {
       .home-carousel-item-image:after {
-        opacity: .5;
+        opacity: .75;
         transition-duration: .32s;
       }
 

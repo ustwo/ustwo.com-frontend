@@ -8,6 +8,8 @@ import Subscription from 'app/components/subscription';
 function HomeSmorgasbord({ data, loaded }) {
   const { event, post } = data;
 
+  console.log(event);
+
   let src;
   if (window.innerWidth < 600) {
     src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=164';
@@ -15,7 +17,7 @@ function HomeSmorgasbord({ data, loaded }) {
     src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=165';
   }
 
-  let moreJuiceStyle, blogBlockStyle, eventBlockStyle, videoPoster;
+  let moreJuiceStyle, blogBlockStyle, eventBlockStyle, videoPoster, renderEvent;
   if (loaded) {
     moreJuiceStyle = {
       backgroundImage: `url('/images/juicy-icon-loop.gif')`
@@ -27,6 +29,21 @@ function HomeSmorgasbord({ data, loaded }) {
       backgroundImage: `url('/images/bg-pattern.png')`
     }
     videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
+  }
+
+  if (event.uri) {
+    renderEvent = (
+      <div className="smorgasbord-block smorgasbord-events" style={eventBlockStyle}>
+        <h4>ustwo Events</h4>
+        <div className="smorgasbord-post">
+          <div className="smorgasbord-subtitle">{event.studio.name}</div>
+          <h3 className="smorgasbord-title">
+            <a href={event.uri} onClick={Flux.override(event.uri)}>{event.name}</a>
+          </h3>
+        </div>
+        <button>More Events</button>
+      </div>
+    );
   }
 
   return (
@@ -43,30 +60,22 @@ function HomeSmorgasbord({ data, loaded }) {
       </div>
       <div className="smorgasbord-block-wrapper">
 
-        <div className="smorgasbord-block smorgasbord-events" style={eventBlockStyle}>
-          <h4>ustwo Events</h4>
-          <div className="smorgasbord-post">
-            <div className="smorgasbord-subtitle">{event.studio.name}</div>
-            <h3 className="smorgasbord-title">
-              <a href={event.uri} onClick={Flux.override(event.uri)}>{event.name}</a>
-            </h3>
-          </div>
-          <button>All Events</button>
-        </div>
+        {renderEvent}
 
         <div className="smorgasbord-block smorgasbord-blog" style={blogBlockStyle}>
           <h4>Blog</h4>
           <div className="smorgasbord-post">
-            <div className="smorgasbord-subtitle">&nbsp;</div>
+            <div className="smorgasbord-subtitle">{post.categories[0].name}</div>
             <h3 className="smorgasbord-title">
               <a href={post.uri} onClick={Flux.override(post.uri)}>{post.name}</a>
             </h3>
           </div>
-          <button>All Posts</button>
+          <button>More Blog</button>
         </div>
 
+        <Subscription loaded={loaded} />
+
       </div>
-      <Subscription loaded={loaded} />
 
       <div className="more-juice" style={moreJuiceStyle}></div>
     </div>
