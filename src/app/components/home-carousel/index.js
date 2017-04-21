@@ -21,6 +21,11 @@ function goToNextItems(component) {
   } else {
     component.setState({ currentStartItem: component.state.currentStartItem + component.state.numberOfItemsInView });
   }
+
+  component.setState({ shuffle: true });
+  setTimeout(() => {
+    component.setState({ shuffle: false });
+  }, 500);
 }
 
 class HomeCarousel extends Component {
@@ -35,7 +40,8 @@ class HomeCarousel extends Component {
       numberOfItemsInView: 2,
       justBeenHovered: false,
       paused: false,
-      videoToPlay: null
+      videoToPlay: null,
+      shuffle: false
     }
   }
 
@@ -92,8 +98,8 @@ class HomeCarousel extends Component {
   }
 
   render() {
-    const { scrollProgress, carouselItems, className, isMobile, inView, loaded } = this.props;
-    const { currentStartItem, otherIsHovered, numberOfItemsInView, justBeenHovered, paused } = this.state;
+    const { scrollProgress, carouselItems, className, isMobile, inView, loaded, darkStyle } = this.props;
+    const { currentStartItem, otherIsHovered, numberOfItemsInView, justBeenHovered, paused, shuffle } = this.state;
 
     const showItems = this.props.carouselItems.map((item, i) => {
 
@@ -204,7 +210,7 @@ class HomeCarousel extends Component {
           {showItems}
         </div>
         <button className="home-carousel-shuffle" onClick={() => goToNextItems(this)}>
-          <TimerUI timer={ticker} darkStyle={this.props.darkStyle} loaded={loaded} paused={paused} />
+          <TimerUI timer={ticker} darkStyle={darkStyle} loaded={loaded} paused={paused} shuffle={shuffle} />
         </button>
         <div className="view-carousel-related-page"><button>See it all</button></div>
       </div>

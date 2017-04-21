@@ -50,7 +50,6 @@ class ContactBlock extends Component {
       <svg viewBox="0 0 114 50">
         <g>
           <polygon className="cls-1" points="1.25 1.25 110.13 1.25 1.25 36.25 1.25 1.25" />
-          <path className="cls-2" d="M20,27H128.88l-0.33-2.46L33.26,55.17,19.67,59.54l1.58,1.21v-35a1.25,1.25,0,0,0-2.5,0v35A1.26,1.26,0,0,0,20.33,62l95.28-30.63L129.21,27a1.26,1.26,0,0,0-.33-2.46H20A1.25,1.25,0,0,0,20,27Z" transform="translate(-18.75 -24.5)"/>
         </g>
       </svg>
     );
@@ -90,7 +89,11 @@ class ContactBlock extends Component {
             <div className="contact-block-image-background" style={backgroundStyles} />
             <div className="contact-block-image-sky" />
             <div className="contact-block-image-buildings" />
-            <div className="contact-block-image-plane" style={interactiveStyles}>{plane}</div>
+            <div className="contact-block-image-plane-wrapper">
+              <div className="contact-block-image-plane" style={interactiveStyles}>
+                {plane}
+              </div>
+            </div>
           </div>
         </div>
       </div>

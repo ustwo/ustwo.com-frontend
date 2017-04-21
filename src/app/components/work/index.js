@@ -98,11 +98,16 @@ class PageWork extends Component {
     const buttonClassClients = classnames({ selected: this.state.caseStudyFilter === 'Work' });
     const buttonClassVentures = classnames({ selected: this.state.caseStudyFilter === 'Venture' });
 
+    let styles;
+    if (documentScrollPosition > window.innerHeight + 100) {
+      styles = { position: `relative` }
+    }
+
     return (
       <article className={classes}>
 
         <div className="home-pinned-header-wrapper">
-          <div className="home-pinned-header-inner">
+          <div className="home-pinned-header-inner" style={styles}>
             <ScrollWrapper
               component={<WorkHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} />}
               documentScrollPosition={documentScrollPosition}

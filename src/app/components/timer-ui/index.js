@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import SVG from 'app/components/svg';
 
-function TimerUI({ timer, darkStyle, loaded, paused }) {
+function TimerUI({ timer, darkStyle, loaded, paused, shuffle }) {
   let rotateRight = timer >= 180 ? 360 - timer : 180;
   let rotateLeft = timer <= 180 ? 180 - timer : 0;
 
@@ -14,7 +14,7 @@ function TimerUI({ timer, darkStyle, loaded, paused }) {
     transform: `rotate(${rotateLeft}deg)`
   };
 
-  let classes = classnames('timer-ui', { darkStyle, paused });
+  let classes = classnames('timer-ui', { darkStyle, paused, shuffle });
 
   return (
     <div className={classes}>

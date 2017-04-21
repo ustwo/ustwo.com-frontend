@@ -147,14 +147,23 @@
   animation: buildingsMove 20s infinite;
   animation-timing-function: linear;
 }
-.contact-block-image-plane {
+
+.contact-block-image-plane-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 220px;
   height: 220px;
   transform-style: preserve-3d;
+  transform: translateZ(100px);
+}
+
+.contact-block-image-plane {
+  width: 220px;
+  height: 220px;
+  transform-style: preserve-3d;
   perspective: 2000px;
+  // transform: translateZ(100px); Added to js where mouse position interacts with the plane
 
   .paper-plane {
     position: absolute;
@@ -198,19 +207,19 @@
   }
 
   .right-wing {
-    transform: rotateX(80deg) translateY(3px) rotateZ(-4deg);
+    transform: rotateX(80deg) translateY(3px) rotateZ(-4deg) translateZ(-1px);
   }
 
   .left-wing {
-    transform: rotateX(-80deg) translateY(3px) rotateZ(-4deg);
+    transform: rotateX(-80deg) translateY(3px) rotateZ(-4deg) translateZ(1px);
   }
 
   .right-fuselage {
-    transform: rotateX(10deg) rotateY(-4deg) translateZ(1px);
+    transform: rotateX(10deg) rotateY(-4deg) translateZ(0px);
   }
 
   .left-fuselage {
-    transform: rotateX(-10deg) rotateY(4deg) translateZ(-1px);
+    transform: rotateX(-10deg) rotateY(4deg) translateZ(0px);
   }
 
   .trail {

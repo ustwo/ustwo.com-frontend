@@ -49,6 +49,9 @@
     }
     .icon-paused {
       opacity: 1;
+      animation: pulse 1s infinite;
+      animation-timing-function: linear;
+      animation-delay: .2s;
       transition-delay: .2s;
     }
   }
@@ -56,8 +59,40 @@
   &:after {
     background: $offWhite; /* This needs to be the same colour as the background colour */
   }
+
+  &.shuffle {
+    svg {
+      animation: spin .32s 1;
+    }
+  }
 }
 
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
   /* Dark Style */
 
@@ -73,5 +108,8 @@
 
   svg {
     fill: $offWhite;
+  }
+  .icon-paused {
+    background: url('/images/icon-pause-light.svg') no-repeat 50% 50%;
   }
 }

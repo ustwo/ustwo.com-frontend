@@ -92,7 +92,7 @@ class Hero extends Component {
     let showHeroImage;
     if (heroImage) {
       showHeroImage = (
-        <div className="hero-image" />
+        <div className="hero-image" style={videoTransitionStyles} />
       );
     }
 

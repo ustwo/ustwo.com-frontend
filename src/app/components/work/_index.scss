@@ -23,7 +23,7 @@
   }
 
   .hero {
-    @include page-background-colour(work);
+    // @include page-background-colour(work);
 
     .rimage {
       max-width: 600px;
