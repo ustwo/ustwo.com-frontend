@@ -250,6 +250,12 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    right: 0;
+  }
+}
+
+@media screen and (min-width: $bp-large) {
+  .contact-block-image {
     right: 100px;
   }
 }

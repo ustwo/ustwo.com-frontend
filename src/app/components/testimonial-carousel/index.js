@@ -43,9 +43,11 @@ class TestimonialCarousel extends Component {
   }
 
   render() {
+    const { fixedHeight } = this.props;
+
     let styles;
-    if (this.props.fixedHeight) {
-      styles = { height: this.props.fixedHeight }
+    if (fixedHeight) {
+      styles = { height: `${fixedHeight}px` }
     }
 
     return (

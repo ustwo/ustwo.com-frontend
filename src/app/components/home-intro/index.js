@@ -68,7 +68,7 @@ class HomeIntro extends Component {
 
     let styles;
     if (env.Modernizr.touchevents) {
-      styles = { height: fixedHeight }
+      styles = { height: `${fixedHeight}px` }
     }
 
     return (

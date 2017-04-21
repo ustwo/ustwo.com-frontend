@@ -8,7 +8,7 @@ import Flux from 'app/flux';
 const tickerTotalPage = 1500;
 const tickerTotalHome = 3500;
 const tickerFrequency = 500;
-const ultimateTimeout = 5000;
+const ultimateTimeout = 3500;
 
 function setFixedHeight(component) {
   const windowHeight = window.innerHeight;
@@ -23,7 +23,7 @@ class PageContent extends Component {
     this.state = {
       showPage: true,
       ticker: this.props.currentPage === 'home' && !this.props.homeLoaderShown ? tickerTotalHome : tickerTotalPage,
-      fixedHeight: `${window.innerHeight}px`,
+      fixedHeight: window.innerHeight,
       ultimateTicker: ultimateTimeout
     }
   }
@@ -70,7 +70,7 @@ class PageContent extends Component {
 
     if (env.Modernizr.touchevents) {
       const windowHeight = window.innerHeight;
-      this.setState({ fixedHeight: `${windowHeight}px` });
+      this.setState({ fixedHeight: windowHeight });
       Flux.setWindowHeight(windowHeight);
       window.addEventListener('orientationchange', setFixedHeight(this), false);
     }

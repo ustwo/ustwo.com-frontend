@@ -96,7 +96,7 @@ class Video extends Component {
       styles['backgroundImage'] = `url(${imageCSS})`;
     }
     if (fixedHeight && env.Modernizr.touchevents) {
-      styles['height'] = fixedHeight;
+      styles['height'] = `${fixedHeight}px`;
     }
     if (hide) {
       styles['opacity'] = 0;

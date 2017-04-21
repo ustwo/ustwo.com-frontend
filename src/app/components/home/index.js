@@ -32,7 +32,16 @@ class PageHome extends Component {
     const { documentScrollPosition, viewportDimensions } = this.props;
 
     const venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
-    const venturesPositionFromTop = this.venturesWrapper.offsetTop - (this.props.viewportDimensions.height * 0.5);
+
+    // Has been some problems relying on the following value.
+    // So I've taken lead from the following to get a more robust solution:
+    // http://stackoverflow.com/questions/5598743/finding-elements-position-relative-to-the-document
+    const box = this.venturesWrapper.getBoundingClientRect();
+    const body = document.body;
+    const scrollTop = window.pageYOffset || body.scrollTop;
+    const clientTop = body.clientTop || 0;
+    const top  = box.top +  scrollTop - clientTop;
+    const venturesPositionFromTop = Math.round(top);
 
     const venturesPosition = {
       from: venturesPositionFromTop,
@@ -58,7 +67,9 @@ class PageHome extends Component {
     const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, footer, studios, currentPage, fixedHeight } = this.props;
     const { venturesPosition } = this.state;
 
-    const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to)
+    // const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to)
+
+    const venturesActive = documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
 
     const classes = classnames('page-home-content', this.props.className, { venturesActive, loaded });
 
@@ -100,6 +111,7 @@ class PageHome extends Component {
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               className="scroll-wrapper-home-welcome-message"
+              fixedHeight={fixedHeight}
             />
           </Element>
 
@@ -108,6 +120,7 @@ class PageHome extends Component {
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             className="scroll-wrapper-home-carousel-products"
+            fixedHeight={fixedHeight}
           />
 
           <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
@@ -119,6 +132,7 @@ class PageHome extends Component {
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               className="scroll-wrapper-home-more-message"
+              fixedHeight={fixedHeight}
             />
 
             <ScrollWrapper
@@ -126,6 +140,7 @@ class PageHome extends Component {
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               className="scroll-wrapper-home-carousel-ventures"
+              fixedHeight={fixedHeight}
             />
 
           </div>
@@ -135,6 +150,7 @@ class PageHome extends Component {
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             className="scroll-wrapper-home-smorgasbord-message"
+            fixedHeight={fixedHeight}
           />
 
           <ScrollWrapper

@@ -6,21 +6,8 @@
 
 .scroll-wrapper {
   position: relative;
-  // height: 100vh;
-  padding-top: 60%;
-  padding-bottom: 60%;
   z-index: 1;
   @include core-layout();
-
-  @media screen and (min-width: $bp-small) {
-    padding-top: 50%;
-    padding-bottom: 50%;
-  }
-
-  @media screen and (min-width: $bp-medium) {
-    padding-top: 35%;
-    padding-bottom: 35%;
-  }
 
   .scroll-wrapper-inner {
     display: flex;
@@ -28,14 +15,6 @@
 
     > *:first-child {
       width: 100vw;
-    }
-  }
-
-  &.scroll-wrapper-home-welcome-message {
-    padding-top: 28%;
-
-    @media screen and (min-width: $bp-medium) {
-      padding-top: 18%;
     }
   }
 }

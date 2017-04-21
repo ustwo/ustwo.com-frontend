@@ -100,7 +100,7 @@ class Navigation extends Component {
     const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions } = this.props;
 
     const capability = ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'];
-    const venturesActive = venturesPosition && (documentScrollPosition - viewportDimensions.height > venturesPosition.from) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to);
+    const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
     const homePage = section === 'home';
     const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog';
     const subPage = page === 'post' || page === 'case-study' || page === 'event' || capability.includes(page);

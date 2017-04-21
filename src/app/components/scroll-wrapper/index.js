@@ -104,7 +104,7 @@ class ScrollWrapper extends Component {
 
   render() {
     const { screenPosition, elementAttributes } = this.state;
-    const { component, className, documentScrollPosition } = this.props;
+    const { component, className, documentScrollPosition, fixedHeight } = this.props;
     const scrollProgress = getScrollProgress(elementAttributes.top, elementAttributes.height, documentScrollPosition);
 
     /* Pass down the above props to the child component */
@@ -112,8 +112,13 @@ class ScrollWrapper extends Component {
 
     const classes = classnames('scroll-wrapper', className);
 
+    let styles;
+    if (fixedHeight) {
+      styles = { height: `${fixedHeight * .9 }px`}
+    }
+
     return (
-      <div className={classes} ref={(ref) => this.scrollWrapper = ref}>
+      <div className={classes} ref={(ref) => this.scrollWrapper = ref} style={styles}>
         <div className="scroll-wrapper-inner">
           {renderComponent}
         </div>

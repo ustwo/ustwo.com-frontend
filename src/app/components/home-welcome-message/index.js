@@ -4,16 +4,16 @@ import GradientWords from '../gradient-words';
 function HomeWelcomeMessage({ showPopup }) {
   return (
     <h1>
-      <span>We help companies shape their </span><GradientWords
-        word="future"
+      <span>We team up with people like you to </span><GradientWords
+        word="make"
         color="cold"
-      /><span> by creating digital </span><GradientWords
-        word="products"
+      /><span> meaningful  </span><GradientWords
+        word="digital"
         color="lukewarm"
-      /><span> and </span><GradientWords
-        word="services"
+      /><span> </span><GradientWords
+        word="experiences"
         color="hot"
-      /> together
+      />
     </h1>
   );
 }

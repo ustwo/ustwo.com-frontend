@@ -19,14 +19,14 @@ $home-carousel-small-screen-offset: 95px;
 .scroll-wrapper-home-carousel-products,
 .scroll-wrapper-home-carousel-ventures {
   height: auto;
-  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .home-carousel {
   position: relative;
   flex: 1;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   transform: translateZ(0);
   max-width: 455px;

@@ -86,7 +86,7 @@ class Hero extends Component {
 
     let styles;
     if (fixedHeight && env.Modernizr.touchevents) {
-      styles = { height: fixedHeight }
+      styles = { height: `${fixedHeight}px` }
     }
 
     let showHeroImage;
