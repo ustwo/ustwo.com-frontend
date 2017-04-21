@@ -34,6 +34,9 @@
 
   .icon-paused {
     position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
     width: 32px;
     height: 32px;
     z-index: 1;
@@ -59,12 +62,6 @@
   &:after {
     background: $offWhite; /* This needs to be the same colour as the background colour */
   }
-
-  &.shuffle {
-    svg {
-      animation: spin .32s 1;
-    }
-  }
 }
 
 @keyframes pulse {
@@ -82,15 +79,6 @@
   }
   100% {
     opacity: 0;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }
 
