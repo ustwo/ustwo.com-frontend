@@ -84,14 +84,14 @@
 
 $menu-transition-bg-duration: .2s;
 $menu-transition-item-duration: .2s;
-$menu-transition-item-delay: .15s;
+$menu-transition-item-delay: .1s;
 
 .modal.menu {
   transition-duration: $menu-transition-bg-duration;
 
   .navigation-overlay-link {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
     transition: all $menu-transition-item-duration ease-out;
   }
 

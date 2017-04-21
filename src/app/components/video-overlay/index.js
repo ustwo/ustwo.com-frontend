@@ -14,7 +14,7 @@ class VideoOverlay extends Component {
       <div className="video-overlay">
         <Video
           autoPlay
-          controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+          controls={['Time', 'Seek', 'Volume', 'Fullscreen']}
           preload="metadata"
         >
           <source src={this.props.src} type="video/mp4" />

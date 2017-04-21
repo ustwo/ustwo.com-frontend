@@ -100,7 +100,16 @@
   }
 }
 
+// Pause icon when hovering but maybe too annoying
+// .rh5v-DefaultPlayer_component:hover {
+//   .rh5v-Overlay_component:empty {
+//     background: url('/images/icon-pause-large-dark.svg') no-repeat 50% 50%;
+//   }
+// }
+
 .rh5v-DefaultPlayer_controls {
+  background-color: transparent;
+
   svg {
     width: 100%;
     height: 100%;
@@ -108,12 +117,45 @@
 }
 
 .rh5v-Overlay_inner {
-  background-image: url('/images/icon-play-light.svg');
+  background-image: url('/images/icon-play-large-dark.svg');
   background-position: 50%;
   background-size: 90%;
   background-repeat: no-repeat;
+  background-color: transparent;
 
   svg {
     display: none;
   }
+}
+
+.rh5v-Time_component  {
+  font-size: 0;
+}
+
+.rh5v-Time_current {
+  font-size: 14px;
+  color: $offWhite;
+}
+
+.rh5v-Time_duration {
+  display: none;
+}
+
+.rh5v-Seek_track {
+  background-color: rgba(255,255,255,.2);
+  height: 2px;
+}
+
+.rh5v-Seek_buffer {
+  background-color: rgba(255,255,255,.4);
+}
+
+.rh5v-Seek_fill {
+  background: #fff;
+}
+
+.rh5v-Volume_component:hover,
+.rh5v-Volume_slider,
+.rh5v-Fullscreen_component:hover {
+  background: transparent;
 }

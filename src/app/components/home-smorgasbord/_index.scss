@@ -69,8 +69,33 @@
 .smorgasbord-video {
   position: relative;
 
+  h2 {
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 60%;
+    z-index: 99999;
+    text-align: center;
+    color: $offWhite;
+  }
+
   > div {
     line-height: 0;
+  }
+
+  .rh5v-DefaultPlayer_component:hover .rh5v-DefaultPlayer_controls {
+    opacity: 0;
+  }
+
+  &.playing {
+    h2 {
+      opacity: 0;
+    }
+
+    .rh5v-DefaultPlayer_component:hover .rh5v-DefaultPlayer_controls {
+      opacity: 1;
+    }
   }
 }
 
