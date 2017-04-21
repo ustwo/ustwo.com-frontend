@@ -13,6 +13,9 @@ const PageCaseStudy = React.createClass({
     const { caseStudy } = this.props;
     console.log(caseStudy)
     const classes = classnames('page-case-study', this.props.className);
+
+    console.log(get(caseStudy, 'categories'));
+    
     return (
       <article className={classes}>
         <Meta
