@@ -16,6 +16,7 @@ import ContactBlock from 'app/components/contact-block';
 import WorkVerticals from 'app/components/work-verticals';
 import ContactButton from 'app/components/contact-button';
 import WorkClientsBoard from 'app/components/work-clients-board';
+import LoadMoreButton from 'app/components/load-more-button';
 
 class PageWork extends Component {
 
@@ -23,7 +24,9 @@ class PageWork extends Component {
     super(props);
 
     this.state = {
-      caseStudyFilter: 'all'
+      caseStudyFilter: 'all',
+      numberOfCaseStudiesShowing: 12,
+      isLoadingMorePosts: false
     }
   }
 
@@ -80,9 +83,15 @@ class PageWork extends Component {
     )
   }
 
+  addMoreCaseStudies() {
+    this.setState({
+      numberOfCaseStudiesShowing: this.state.numberOfCaseStudiesShowing + 12
+    })
+  }
+
   renderCaseStudies(caseStudies) {
     const { page } = this.props;
-    const { caseStudyFilter } = this.state;
+    const { caseStudyFilter, numberOfCaseStudiesShowing } = this.state;
 
     let filteredCaseStudies;
     if (caseStudyFilter === 'all') {
@@ -93,25 +102,28 @@ class PageWork extends Component {
       });
     }
 
-    return filteredCaseStudies.map(caseStudy => {
-      const attachments = get(page, '_embedded.wp:attachment');
-      const image = getFeaturedImage(caseStudy, attachments);
-      // const featured = caseStudies.indexOf(caseStudy) === 0;
-      let featured;
+    return filteredCaseStudies.map((caseStudy, i) => {
+      if (i < numberOfCaseStudiesShowing) {
+        const attachments = get(page, '_embedded.wp:attachment');
+        const image = getFeaturedImage(caseStudy, attachments);
+        // const featured = caseStudies.indexOf(caseStudy) === 0;
+        let featured;
 
-      return (
-        <WorkItem
-          key={caseStudy.slug}
-          data={caseStudy}
-          image={image}
-          featured={featured}
-        />
-      );
+        return (
+          <WorkItem
+            key={caseStudy.slug}
+            data={caseStudy}
+            image={image}
+            featured={featured}
+          />
+        );
+      }
     });
   }
 
   render() {
     const { page, className, loaded, isMobile, footer, studios, currentPage, fixedHeight, documentScrollPosition, viewportDimensions, popup, modal } = this.props;
+    const { isLoadingMorePosts, numberOfCaseStudiesShowing } = this.state;
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
@@ -154,6 +166,10 @@ class PageWork extends Component {
             <div className="card-list-inner">
               {this.renderCaseStudies(caseStudies)}
             </div>
+            <LoadMoreButton
+              loading={isLoadingMorePosts}
+              onClick={this.addMoreCaseStudies.bind(this)}
+            />
           </div>
 
           <WorkVerticals data={workData.verticals} />
