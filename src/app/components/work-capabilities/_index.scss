@@ -19,6 +19,43 @@ $WorkCapabilitiesIconSizeLarge: 240px;
     margin: 60px 0 100px;
   }
 
+  ul.working {
+    &:after {
+      content: "";
+      display: block;
+      position: relative;
+      list-style-type: none;
+      width: $WorkCapabilitiesIconSizeSmall;
+      height: $WorkCapabilitiesIconSizeSmall;
+      border-radius: 50%;
+      margin: 0 auto;
+      background-color: #1a1b21;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: ($WorkCapabilitiesIconSizeSmall - 30px) ($WorkCapabilitiesIconSizeSmall - 30px);
+      background-image: url('/images/illustration-ways-of-working.svg');
+
+      @media screen and (min-width: $bp-medium) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: transparent;
+        width: 100%;
+        height: 100px;
+        background-image: url('/images/illustration-ways-of-working-large.svg');
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: 66% auto;
+        margin-top: -4px;
+      }
+
+      @media screen and (min-width: $bp-large) {
+        margin-top: -7px;
+      }
+    }
+  }
+
   li {
     position: relative;
     list-style-type: none;

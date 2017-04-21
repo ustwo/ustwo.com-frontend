@@ -17,13 +17,15 @@ function WorkCapabilities({ selected }) {
     )
   });
 
+  const classes = classnames({ working: selected === 'working' });
+
   return (
     <div className="work-capabilities">
       <div className="work-capabilities-bg">
         <div className="capabilities-dotted" />
         <div className="capabilities-dotted" />
       </div>
-      <ul>
+      <ul className={classes}>
         {items}
       </ul>
     </div>
