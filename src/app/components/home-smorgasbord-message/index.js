@@ -13,7 +13,7 @@ function HomeSmorgasbordMessage({ showPopup }) {
       /><span> </span><GradientWords
         word="people"
         color="hot"
-      /><span> get along best.</span>
+      /><span> get along best</span>
     </h1>
   );
 }

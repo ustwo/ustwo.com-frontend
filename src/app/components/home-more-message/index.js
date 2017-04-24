@@ -13,7 +13,7 @@ function HomeMoreMessage({ showPopup }) {
       /><span> ventures. </span><GradientWords
         word="Investing"
         color="hot"
-      /><span> in startups. We do more, to learn more.</span>
+      /><span> in startups. We do more, to learn more</span>
     </h1>
   );
 }

@@ -84,7 +84,7 @@ class PageWork extends Component {
             <img src={featuredCaseStudy.image} alt={featuredCaseStudy.imageAlt} />
           </div>
           <div className="work-featured-case-study-content">
-            <div className="section-title">Latest Work</div>
+            <div className="section-title">Featured Work</div>
             <h2 className="title">{featuredCaseStudy.title}</h2>
             <p>{featuredCaseStudy.excerpt}</p>
             <button onClick={Flux.override(featuredCaseStudy.linkURI)}>View Case Study</button>

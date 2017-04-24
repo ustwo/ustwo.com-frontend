@@ -114,7 +114,7 @@ class ScrollWrapper extends Component {
 
     let styles;
     if (fixedHeight) {
-      styles = { height: `${fixedHeight * .9 }px`}
+      styles = { height: `${fixedHeight * .9 }px` }
     }
 
     return (

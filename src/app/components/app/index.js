@@ -333,6 +333,7 @@ const App = React.createClass({
                 heroVideoReady={heroVideoReady}
                 viewportDimensions={viewportDimensions}
                 visitedWorkCapabilities={visitedWorkCapabilities}
+                documentScrollPosition={documentScrollPosition}
               />
             </PageContainer>
           </TransitionManager>

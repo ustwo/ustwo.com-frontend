@@ -11,9 +11,11 @@ const tickerFrequency = 500;
 const ultimateTimeout = 3500;
 
 function setFixedHeight(component) {
-  const windowHeight = window.innerHeight;
-  component.setState({ fixedHeight: `${windowHeight}px` });
-  Flux.setWindowHeight(windowHeight);
+  return () => {
+    const windowHeight = window.innerHeight;
+    component.setState({ fixedHeight: windowHeight });
+    Flux.setWindowHeight(windowHeight);
+  }
 }
 
 class PageContent extends Component {
@@ -68,17 +70,20 @@ class PageContent extends Component {
     this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
     this.ultimateTimeout = setInterval(this.ultimateTicker.bind(this), tickerFrequency);
 
-    if (env.Modernizr.touchevents) {
-      const windowHeight = window.innerHeight;
-      this.setState({ fixedHeight: windowHeight });
-      Flux.setWindowHeight(windowHeight);
-      window.addEventListener('orientationchange', setFixedHeight(this), false);
+    const windowHeight = window.innerHeight;
+    this.setState({ fixedHeight: windowHeight });
+    Flux.setWindowHeight(windowHeight);
+
+    window.addEventListener('orientationchange', setFixedHeight(this), false);
+    if (this.props.documentScrollPosition > window.innerHeight + 100) {
+      window.addEventListener('resize', setFixedHeight(this), false);
     }
   }
 
   componentWillUnmount() {
-    if (env.Modernizr.touchevents) {
-      window.removeEventListener('orientationchange', setFixedHeight(this), false);
+    window.removeEventListener('orientationchange', setFixedHeight(this), false);
+    if (this.props.documentScrollPosition > window.innerHeight + 100) {
+      window.removeEventListener('resize', setFixedHeight(this), false);
     }
   }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactSwipe from 'react-swipe';
+// import ReactSwipe from 'react-swipe';
 import classnames from 'classnames';
 import { kebabCase } from 'lodash';
 import env from 'app/adaptors/server/env';
@@ -16,22 +16,22 @@ class WorkProcess extends Component {
     }
   }
 
-  componentDidMount() {
-    if (env.Modernizr.touchevents) {
-      this.setState({
-        numberOfSlides: this.carousel.getNumSlides(),
-        currentSlide: this.carousel.getPos()
-      });
-    }
-  }
-
-  onSlide() {
-    return () => {
-      this.setState({
-        currentSlide: this.carousel.getPos()
-      });
-    }
-  }
+  // componentDidMount() {
+  //   if (env.Modernizr.touchevents) {
+  //     this.setState({
+  //       numberOfSlides: this.carousel.getNumSlides(),
+  //       currentSlide: this.carousel.getPos()
+  //     });
+  //   }
+  // }
+  //
+  // onSlide() {
+  //   return () => {
+  //     this.setState({
+  //       currentSlide: this.carousel.getPos()
+  //     });
+  //   }
+  // }
 
   render() {
     const { data, isMobile } = this.props;
@@ -47,59 +47,67 @@ class WorkProcess extends Component {
       );
     });
 
-    let renderContent;
-    if (env.Modernizr.touchevents) {
 
-      const swipeOptions = {
-        speed: 300,
-        disableScroll: true,
-        continuous: false,
-        callback: () => {
-          console.log('swipe')
-        },
-        transitionEnd: (i) => {
-          this.setState({ currentSlide: i })
-        }
-      };
+    // TURNED OFF REACT SWIPE ON MOBILE AS TOO MANY BUGS FOR NOW
+    // let renderContent;
+    // if (env.Modernizr.touchevents) {
+    //
+    //   const swipeOptions = {
+    //     speed: 300,
+    //     disableScroll: true,
+    //     continuous: false,
+    //     callback: () => {
+    //       console.log('swipe')
+    //     },
+    //     transitionEnd: (i) => {
+    //       this.setState({ currentSlide: i })
+    //     }
+    //   };
+    //
+    //   const carouselStyle = {
+    //     wrapper: { width: "100%" }
+    //   }
+    //
+    //   let paginationItems = [];
+    //   for (let i = 0; i < this.state.numberOfSlides; i++) {
+    //     const classes = i === this.state.currentSlide ? 'active' : null;
+    //
+    //     paginationItems.push(
+    //       <li className={classes} key={`slide-${i}`}></li>
+    //     );
+    //   }
+    //
+    //   const classes = classnames('work-process', {
+    //     touchDevice: env.Modernizr.touchevents
+    //   });
+    //
+    //   renderContent = (
+    //     <div className={classes}>
+    //       <ReactSwipe key={3} callback={this.onSlide} className="carousel" id='carouselId' ref={(ref) => this.carousel = ref} swipeOptions={swipeOptions}>
+    //         {workProcess}
+    //       </ReactSwipe>
+    //       <ul className="work-process-pagination">
+    //         {paginationItems}
+    //       </ul>
+    //     </div>
+    //   );
+    // } else {
+      // renderContent = (
+      //   <div className="work-process">
+      //     <div className="work-process-wrapper">
+      //       {workProcess}
+      //     </div>
+      //   </div>
+      // );
+    // }
 
-      const carouselStyle = {
-        wrapper: { width: "100%" }
-      }
-
-      let paginationItems = [];
-      for (let i = 0; i < this.state.numberOfSlides; i++) {
-        const classes = i === this.state.currentSlide ? 'active' : null;
-
-        paginationItems.push(
-          <li className={classes} key={`slide-${i}`}></li>
-        );
-      }
-
-      const classes = classnames('work-process', {
-        touchDevice: env.Modernizr.touchevents
-      });
-
-      renderContent = (
-        <div className={classes}>
-          <ReactSwipe key={3} callback={this.onSlide} className="carousel" id='carouselId' ref={(ref) => this.carousel = ref} swipeOptions={swipeOptions}>
-            {workProcess}
-          </ReactSwipe>
-          <ul className="work-process-pagination">
-            {paginationItems}
-          </ul>
+    return (
+      <div className="work-process">
+        <div className="work-process-wrapper">
+          {workProcess}
         </div>
-      );
-    } else {
-      renderContent = (
-        <div className="work-process">
-          <div className="work-process-wrapper">
-            {workProcess}
-          </div>
-        </div>
-      );
-    }
-
-    return renderContent;
+      </div>
+    );
   }
 }
 

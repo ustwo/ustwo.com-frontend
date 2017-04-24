@@ -183,9 +183,10 @@ $home-carousel-small-screen-offset: 95px;
     position: absolute;
     top: 60px;
     z-index: 1;
-    width: 45%;
+    width: 65%;
     visibility: hidden;
     transition: visibility $home-carousel-duration linear;
+    opacity: 1;
 
     h2 {
       overflow: visible;
@@ -435,6 +436,7 @@ $home-carousel-small-screen-offset: 95px;
 
   .home-carousel-item-text {
     top: 80px;
+    width: 45%;
   }
 
   .home-carousel-item-description {

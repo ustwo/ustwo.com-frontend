@@ -57,9 +57,20 @@
   }
 }
 
+.react-swipe-container {
+  .work-process-item {
+    @media screen and (min-width: $bp-medium) {
+      min-width: 0;
+    }
+    @media screen and (min-width: $bp-larger) {
+      min-width: 0;
+    }
+  }
+}
+
 .work-process.touchDevice {
   .work-process-item {
-    @include box-shadow();
+    box-shadow: 0 0 20px rgba(0,0,0,.3);
     background-color: $offWhite;
   }
 }

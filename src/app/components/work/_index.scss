@@ -16,6 +16,20 @@
  }
 
 .page-work {
+  @media screen and (min-width: $bp-large) {
+    h1 {
+      width: 75%;
+    }
+  }
+
+  @media screen and (min-width: $bp-larger) {
+    h1 {
+      width: 75%;
+    }
+  }
+}
+
+.page-work {
   height: 100%;
 
   h2 {

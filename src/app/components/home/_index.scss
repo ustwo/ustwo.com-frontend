@@ -107,6 +107,19 @@
 
   .scroll-wrapper-home-smorgasbord-message {
     opacity: 1;
+
+    // Major hack/fix here because the word Collaboration is too long on iphone 6 widths
+    // h1 {
+    //   @media screen and (min-width: $bp-smaller) {
+    //     font-size: 34px; // this has been reduced
+    //   }
+    //   @media screen and (min-width: $bp-medium) {
+    //     font-size: 60px; // this is here because CSS
+    //   }
+    //   @media screen and (min-width: $bp-larger) {
+    //     font-size: 70px; // this is here because CSS
+    //   }
+    // }
   }
 
   .scroll-wrapper-home-carousel-products,
