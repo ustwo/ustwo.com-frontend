@@ -4,14 +4,23 @@
  *
  */
 
-.category-tag {
-  display: inline-block;
-  height: $category-tag-height;
-  padding: 0 5px;
-  background: #aaa; /* Default, should be overridden with category specific colour, see in 'blog' component */
-  font-size: 12px;
-  line-height: $category-tag-height;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #fff;
+.blog-post-list-item,
+.blog-label-process {
+  .category-tag {
+    display: inline-block;
+    height: $category-tag-height;
+    padding: 0 5px;
+    background: #aaa; /* Default, should be overridden with category specific colour, see in 'blog' component */
+    font-size: 12px;
+    line-height: $category-tag-height;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    position: absolute;
+    top: -11px;
+  }
+}
+
+.work-item .category-tag {
+  @extend .section-title;
 }

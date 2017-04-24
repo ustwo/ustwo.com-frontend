@@ -4,10 +4,10 @@
  *
  */
 
-@each $category, $colour in $work-categories {
-  .work-label-#{$category} {
-    &.card-item {
-      @include card-item-category-colours($colour);
-    }
-  }
-}
+// @each $category, $colour in $work-categories {
+//   .work-label-#{$category} {
+//     &.card-item {
+//       @include card-item-category-colours($colour);
+//     }
+//   }
+// }
