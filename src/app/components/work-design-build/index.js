@@ -18,12 +18,12 @@ const workDesignBuildData = {
   name: 'design',
   title: 'Design & Build',
   blocks: [{
-    title: 'Innovation is problem-solving',
-    text: 'And to solve problems, you need to understand what they are. We apply systems thinking and service design to discover what will delight your users and get to the heart of your business goals.',
-    imageURL: '/images/work/capability-01.jpg'
+    title: 'Working to make new happen',
+    text: 'Making something original means pushing boundaries by bringing experts together who can work across disciplines as one team. That takes business, design, development and engineering. All working collectively with you.',
+    imageURL: '/images/work/capability-design-01.jpg'
   },{
-    title: 'Innovation is customer led',
-    text: 'Our process is human-centred. We help you discover what will deliver the greatest value to your customers through user testing and research. To help you meet the challenges of innovating in the digital world.',
-    imageURL: '/images/work/capability-02.jpg'
+    title: 'Building a platform for success',
+    text: 'The practices we apply in design and build are unique to ustwo. They’re rooted in human-centred thinking and exist to give every team the platform to work fast, respond the right way to insights and turn your shared vision into reality.',
+    imageURL: '/images/work/capability-design-02.jpg'
   }]
 }

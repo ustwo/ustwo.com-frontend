@@ -17,12 +17,12 @@ const workLaunchScaleData = {
   name: 'launch',
   title: 'Launch & Scale',
   blocks: [{
-    title: 'Innovation is problem-solving',
-    text: 'And to solve problems, you need to understand what they are. We apply systems thinking and service design to discover what will delight your users and get to the heart of your business goals.',
-    imageURL: '/images/work/capability-01.jpg'
+    title: 'Taking measurement deeper',
+    text: 'No matter what you make with us, the objective is always two-fold: tangible business value and meaningful impact. We’ll establish the right metrics for you to demonstrate both ROI and the difference you’re making to people’s lives.',
+    imageURL: '/images/work/capability-launch-01.jpg'
   },{
-    title: 'Innovation is customer led',
-    text: 'Our process is human-centred. We help you discover what will deliver the greatest value to your customers through user testing and research. To help you meet the challenges of innovating in the digital world.',
-    imageURL: '/images/work/capability-02.jpg'
+    title: 'Progress is always improving',
+    text: 'Tracking performance. Evaluating data to evolve products. Learning fast from the growth of ventures. We’re in the business of constant improvement and love using what we know to help build out your product and internal team.',
+    imageURL: '/images/work/capability-launch-02.jpg'
   }]
 }

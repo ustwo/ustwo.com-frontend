@@ -18,12 +18,12 @@ const workWaysOfWorkingData = {
   name: 'working',
   title: 'Ways of Working',
   blocks: [{
-    title: 'Innovation is problem-solving',
-    text: 'And to solve problems, you need to understand what they are. We apply systems thinking and service design to discover what will delight your users and get to the heart of your business goals.',
-    imageURL: '/images/work/capability-01.jpg'
+    title: 'From discovery to transformation',
+    text: 'We build teams with the perfect mix of business-value and empathic-design expertise. Our approach creates a great culture, upgrades the ways your business does digital and unites everyone to achieve lasting change.',
+    imageURL: '/images/work/capability-working-01.jpg'
   },{
-    title: 'Innovation is customer led',
-    text: 'Our process is human-centred. We help you discover what will deliver the greatest value to your customers through user testing and research. To help you meet the challenges of innovating in the digital world.',
-    imageURL: '/images/work/capability-02.jpg'
+    title: 'Tools for rewriting your future',
+    text: 'We put you in great shape to transform how your business works, long after ustwo leave. We refocus everyone around values and outcomes; and know how to change behaviours and mindsets. So you can evolve with confidence.',
+    imageURL: '/images/work/capability-working-02.jpg'
   }]
 }
