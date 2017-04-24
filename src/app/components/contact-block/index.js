@@ -85,8 +85,8 @@ class ContactBlock extends Component {
     return (
       <div className="contact-block">
         <div className="home-text-block">
-          <div className="section-title">Make something awesome</div>
-          <h2>Get in touch <br /><span className="contact-block-email"><GradientWords word="hello@ustwo.com" color="hot" reverse={true} /></span></h2>
+          <div className="section-title">Make change happen</div>
+          <h2>Talk to ustwo <br /><span className="contact-block-email"><GradientWords word="hello@ustwo.com" color="hot" reverse={true} /></span></h2>
           <div className="contact-block-image">
             <div className="contact-block-image-background" style={backgroundStyles} />
             <div className="contact-block-image-sky" />

@@ -4,8 +4,11 @@
  */
 
 .contact-button {
+  display: block;
   width: 285px;
   height: 60px;
+  line-height: 60px;
+  margin: 0 auto;
   background-image: linear-gradient(258deg, $softPassion, $rain);
   color: #fff;
   font-size: 16px;
@@ -16,6 +19,10 @@
     height: 50px;
     fill: #fff;
     transform: scale(0.7);
+  }
+
+  &:hover {
+    color: #fff;
   }
 }
 
