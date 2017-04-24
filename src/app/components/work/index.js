@@ -107,7 +107,7 @@ class PageWork extends Component {
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
     const buttonClassAll = classnames({ selected: this.state.caseStudyFilter === 'all' });
-    const buttonClassClients = classnames({ selected: this.state.caseStudyFilter === 'Work' });
+    const buttonClassClients = classnames({ selected: this.state.caseStudyFilter === 'Client Work' });
     const buttonClassVentures = classnames({ selected: this.state.caseStudyFilter === 'Venture' });
 
     let styles;
@@ -141,7 +141,7 @@ class PageWork extends Component {
           <div className="page-work-controls" ref={(ref) => this.workAnchor = ref}>
             <div className="page-work-filter">
               <button className={buttonClassAll} onClick={() => this.setState({ caseStudyFilter: 'all', numberOfCaseStudiesShowing: 12 })}>All</button>
-              <button className={buttonClassClients} onClick={() => this.setState({ caseStudyFilter: 'Work', numberOfCaseStudiesShowing: 12 })}>Clients</button>
+              <button className={buttonClassClients} onClick={() => this.setState({ caseStudyFilter: 'Client Work', numberOfCaseStudiesShowing: 12 })}>Client Work</button>
               <button className={buttonClassVentures} onClick={() => this.setState({ caseStudyFilter: 'Venture', numberOfCaseStudiesShowing: 12 })}>Ventures</button>
             </div>
           </div>
