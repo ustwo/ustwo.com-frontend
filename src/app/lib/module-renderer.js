@@ -1,5 +1,5 @@
 import React from 'react';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
 import SingleColumn from 'app/components/single-column';
 import QuoteBlock from 'app/components/quote-block';
@@ -20,17 +20,19 @@ function getBackgroundColour(options) {
 }
 
 function renderHeader(moduleData, index, options) {
-  const { colours, zebra } = options;
+  const { colours, zebra, categories } = options;
   const heading = get(moduleData, 'attr.heading.value');
+  const category = categories[0].name ? categories[0].name : null
   return <SingleColumn
     key={`module-header-${heading}-${index}`}
     className='intro'
     title={heading}
     headingType='h1'
     headingColour={get(colours, 'primary')}
-    ruleColour={get(colours, 'secondary')}
+    ruleColour={get(colours, 'primary')}
     backgroundColour={getBackgroundColour(options)}
     isInZebraList={zebra}
+    category={category}
   >
     {get(moduleData, 'attr.subheading.value')}
   </SingleColumn>;
@@ -43,7 +45,7 @@ function renderText(moduleData, index, options) {
     key={`module-text-${heading}-${index}`}
     title={heading}
     headingColour={get(colours, 'primary')}
-    ruleColour={get(colours, 'secondary')}
+    ruleColour={get(colours, 'primary')}
     backgroundColour={getBackgroundColour(options)}
     isInZebraList={zebra}
   >

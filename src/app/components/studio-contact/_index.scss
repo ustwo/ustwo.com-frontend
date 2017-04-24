@@ -6,9 +6,7 @@
 
 .studio {
   position: relative;
-  border-bottom: 1px solid $nonBlack;
   list-style: none;
-  transition: background-color 0.3s ease-in-out, border-bottom-color 0.3s ease-in-out;
 
   &.malmo {
     .postal-code {
@@ -18,12 +16,15 @@
   }
 
   .clock {
-    display: none;
+    position: absolute;
+    right: 20px;
+    top: 0;
   }
 
   .studio-title {
     margin: 0;
-    padding: 20px 6.25%;
+    margin-top: 20px;
+    padding: 20px 0;
     font-size: 24px;
     font-family: $PxGroteskRegular;
     text-transform: capitalize;
@@ -31,32 +32,38 @@
 
     &::after {
       content: '+';
-      position: absolute;
-      top: 6px;
-      right: 6.25%;
-      display: block;
-      font-size: 45px;
+      position: relative;
+      top: auto;
+      right: auto;
+      display: inline-block;
+      font-size: 25px;
       color: $offWhite;
+      margin-left: 10px;
     }
+  }
+
+  .contact-underline-style {
+    height: 2px;
+    width: 100%;
   }
 
   .studio-details {
     overflow: hidden;
     height: 0;
-    padding: 0 6.25%;
+    padding: 0;
     transition: height 0.3s ease-in-out;
+    @extend .small-body-copy;
+    line-height: 20px;
+
+    @media screen and (min-width: $bp-medium) {
+      line-height: 22px;
+    }
 
     .vcard {
       padding: 0;
 
-      p {
-        font-size: 14px;
-      }
-
       .adr {
-
         p {
-          font-size: 14px;
           margin: 0;
         }
         abbr {
@@ -67,8 +74,6 @@
       .map {
         display: inline-block;
         margin-top: 20px;
-        border-bottom: 2px solid $darkGrey;
-        font-size: 14px;
         transition: border-color $hover-duration-quick ease-in-out;
 
         &:hover {
@@ -83,30 +88,26 @@
     }
     .studio-details {
       height: 160px;
-
-      .map {
-        border-bottom-color: $offWhite;
-      }
     }
   }
 
   @media screen and (min-width: $bp-medium) {
     height: 230px;
-    border-bottom: none;
     vertical-align: top;
     transition-duration: 0s;
+    margin-bottom: 50px;
 
     &.open {
       background-color: transparent !important;
-      border-bottom-color: transparent !important;
-
-      .studio-details .map {
-        border-bottom-color: $darkGrey;
-      }
     }
     .studio-title {
       padding: 0 0 15px;
       cursor: auto;
+      font-family: $PxGroteskRegular;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 16px;
 
       &::after {
         display: none;
@@ -119,24 +120,17 @@
       .vcard {
         padding: 0;
       }
-
-      .map {
-        position: absolute;
-      }
     }
   }
 
   @media screen and (min-width: $bp-large) {
     height: auto;
+    margin-bottom: 9;
 
     .clock {
-      display: block;
-    }
-
-    .studio-details {
-      .map {
-        position: relative;
-      }
+      position: relative;
+      right: auto;
+      top: auto;
     }
   }
 

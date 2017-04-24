@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>39476D4A-C7DD-4824-A07C-0DEBCBE7F06C</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon-Board" transform="translate(-721.000000, -107.000000)"></g>
+        <g id="Icon-Menu-Close---Light" fill="#F8F8F8">
+            <path d="M16,31 C24.2746002,31 31,24.2946771 31,16 C31,7.70532286 24.2746002,1 16,1 C7.72539978,1 1,7.70532286 1,16 C1,24.2946771 7.72539978,31 16,31 Z M16,28.4801695 C9.05227944,28.4801695 3.43755003,22.8822014 3.43755003,16 C3.43755003,9.11779859 9.05227944,3.51983048 16,3.51983048 C22.9477206,3.51983048 28.56245,9.11779859 28.56245,16 C28.56245,22.8822014 22.9477206,28.4801695 16,28.4801695 Z" id="Oval"></path>
+            <g id="Group-2" transform="translate(9.000000, 9.000000)">
+                <path d="M8.76776695,7.25 L13.5407377,12.0229708 L11.7729708,13.7907377 L7,9.01776695 L2.22702923,13.7907377 L0.459262274,12.0229708 L5.23223305,7.25 L0.459262274,2.47702923 L2.22702923,0.709262274 L7,5.48223305 L11.7729708,0.709262274 L13.5407377,2.47702923 L8.76776695,7.25 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

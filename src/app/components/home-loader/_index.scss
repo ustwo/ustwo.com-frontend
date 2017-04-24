@@ -1,0 +1,84 @@
+/*
+ *  HOME LOADER
+ *  Loading the page
+ *
+ */
+//
+// html {
+//   .home-loader {
+//     display: none;
+//   }
+//   &.js .home-loader {
+//     display: flex;
+//   }
+// }
+
+.home-loader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(241deg, #000000, #0e0d10 29%, #322d37);
+  color: $offWhite;
+  z-index: 999;
+
+  .ustwo-logo-sequence {
+    position: relative;
+    top: 0;
+
+    svg {
+      position: relative;
+    }
+  }
+
+  .home-intro-logo {
+    position: relative;
+
+    .home-loader-sequence {
+      fill: $offWhite;
+    }
+    .home-loader-background {
+      fill: $offWhite;
+      opacity: 0.05;
+
+      g {
+        display: block !important;
+      }
+    }
+  }
+  .ustwo-logo-sequence g {
+    display: none;
+  }
+
+  h1 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: calc(50% + 35px);
+    font-family: "PxGrotesk-Regular", "Arial", sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,.5);
+    letter-spacing: 0.9px;
+	  text-align: center;
+    line-height: 1.3;
+
+    @media screen and (min-width: $bp-small) {
+      br {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      top: calc(50% + 45px);
+    }
+
+    @media screen and (min-width: $bp-large) {
+      top: calc(50% + 52px);
+    }
+
+    @media screen and (min-width: $bp-larger) {
+      top: calc(50% + 60px);
+    }
+  }
+}

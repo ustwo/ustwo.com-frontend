@@ -1,18 +1,64 @@
-import React from 'react';
-import MediaQuery from 'react-responsive';
-
+import React, { Component } from 'react';
+import classnames from 'classnames';
 import Rimage from 'app/components/rimage';
+import Flux from 'app/flux';
+import env from 'app/adaptors/server/env';
 
 const posterURL = "/images/transparent.png";
-const Video = React.createClass({
-  render() {
-    const { isVideoBackground } = this.props;
-    if(isVideoBackground) {
-      return this.renderVideoBackground();
-    } else {
-      return this.renderVideoEmbed();
+
+class Video extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.video) {
+      if (nextProps.play) {
+        if (this.video.paused) {
+          this.video.play();
+        }
+      } else {
+        if (!this.video.paused) {
+          this.video.pause();
+        }
+      }
     }
-  },
+  }
+
+  // componentWillMount() {
+  //   if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+  //     this.setState({
+  //       // See if playsInline attribute is valid (i.e. anything before iOS10)
+  //       // canPlayMobileVideo: 'playsInline' in document.createElement('video')
+  //       canPlayMobileVideo: false
+  //     });
+  //   }
+  // }
+
+  componentDidMount() {
+    const { heroVideo, isMobile } = this.props;
+
+    if (heroVideo && this.video) {
+      if (env.Modernizr.touchevents) {
+        Flux.heroVideoReady(true);
+      } else {
+        if (this.video.readyState !== 4) {
+          this.video.addEventListener('canplaythrough', () => Flux.heroVideoReady(true), false);
+        } else {
+          Flux.heroVideoReady(true);
+        }
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.heroVideo && this.video) {
+      this.video.removeEventListener('canplaythrough', () => Flux.heroVideoReady(false), false);
+    }
+    Flux.heroVideoReady(false);
+  }
+
   renderVideoEmbed() {
     const { videoId, videoFrom } = this.props;
     let src;
@@ -26,44 +72,89 @@ const Video = React.createClass({
       default:
         src = "https://player.vimeo.com/video/" + videoId;
     }
-    return <div className="video">
-      <iframe 
-        src={src}
-        width="1280" 
-        height="720"
-        frameborder="0" 
-        title="Monument Valley - Behind the Scenes" 
-        webkitallowfullscreen
-        mozallowfullscreen
-        allowfullscreen>
-      </iframe>
-    </div>
-  },
+    return (
+      <div className="video">
+        <iframe
+          src={src}
+          width="1280"
+          height="720"
+          frameborder="0"
+          title="Video"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen>
+        </iframe>
+      </div>
+    );
+  }
+
   renderVideoBackground() {
-    return <div className="videoBackground">
-      <MediaQuery maxWidth={768}>
-        {this.renderImage()}
-      </MediaQuery>
-      <MediaQuery minWidth={769}>
+    const { imageCSS, isMobile, fixedHeight, hide, loaded } = this.props;
+
+    let styles = {};
+    if (loaded && imageCSS) {
+      styles['backgroundImage'] = `url(${imageCSS})`;
+    }
+    if (fixedHeight && env.Modernizr.touchevents) {
+      styles['height'] = `${fixedHeight}px`;
+    }
+    if (hide) {
+      styles['opacity'] = 0;
+    }
+
+    const classes = classnames('videoBackground', { imageCSS });
+
+    /* This is before video plays - should show the first frame */
+    const fallback = isMobile ? <img className="video-mobile-fallback" src={imageCSS} /> : null;
+
+    return (
+      <div className={classes} style={styles}>
+        {fallback}
         {this.renderVideo()}
-      </MediaQuery>
-    </div>;
-  }, 
+      </div>
+    );
+  }
+
   renderImage() {
-    const { sizes } = this.props;
-    return <Rimage sizes={sizes} />;
-  },
+    if (!this.props.imageCSS) {
+      const { sizes } = this.props;
+      return (<Rimage sizes={sizes} />)
+    }
+  }
+
   renderVideo() {
-    const { src } = this.props;
+    const { src, play, preload } = this.props;
+    const preloadAttribute = preload ? preload : 'auto';
+
     let video;
     if(src && src.length) {
-      video = <video src={src} poster={posterURL} autoPlay loop muted />;
+      video = (
+        <video
+          ref={(ref) => this.video = ref}
+          src={src}
+          poster={posterURL}
+          onClick={(e) => e.preventDefault()}
+          preload={preloadAttribute}
+          playsInline loop muted
+        />
+      );
     } else {
       video = this.renderImage();
     }
+
     return video;
   }
 
-});
+  render() {
+    const { isVideoBackground } = this.props;
+
+    if(isVideoBackground) {
+      return this.renderVideoBackground();
+    } else {
+      return this.renderVideoEmbed();
+    }
+  }
+
+};
 
 export default Video;

@@ -2,7 +2,6 @@
  *  TYPOGRAPHY
  *  Global fonts & styles of text
  *
- *  Notes: Includes slightly different font sizes for post and case study pages
  */
 
 $PxGroteskLight: "PxGrotesk-Light", "Arial", sans-serif;
@@ -11,7 +10,7 @@ $PxGroteskRegular: "PxGrotesk-Regular", "Arial", sans-serif;
 $PxGroteskRegularItalic: "PxGrotesk-RegularItalic", "Arial", sans-serif;
 $PxGroteskBold: "PxGrotesk-Bold", "Arial", sans-serif;
 $PxGroteskBoldItalic: "PxGrotesk-BoldItalic", "Arial", sans-serif;
-$Futura: "futura-pt", Futura, Arial, sans-serif;
+$Futura: "futura-pt", "Arial Black", "Arial Bold", "Gadget", sans-serif;
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -20,7 +19,7 @@ html {
 
 body {
   font-family: $PxGroteskRegular;
-  color: #333;
+  color: $nonBlack;
 }
 
 a {
@@ -35,29 +34,16 @@ a {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  font-weight: normal;
-}
-
 h1, .h1,
 h2, .h2,
-h3, .h3 {
+h3, .h3,
+h4, .h4 {
   width: 100%;
+  margin: 0;
+  font-weight: normal;
   font-family: $Futura;
   text-transform: uppercase;
-  line-height: 1.1;
-}
-
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-  font-family: $PxGroteskRegular;
-}
-
-p, .p {
-  font-family: $PxGroteskRegular;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 p {
@@ -68,74 +54,131 @@ p + p {
   margin-top: 20px;
 }
 
-h1, .h1 {font-size: 36px;}
-h2, .h2 {font-size: 32px;}
-h3, .h3 {font-size: 30px;}
-h4, .h4 {font-size: 26px;}
-h5, .h5 {font-size: 20px;}
-h6, .h6 {font-size: 18px;}
-p, .p   {font-size: 16px;}
 
-.page-post,
-.page-event,
-.page-case-study {
-  h1, .h1 {font-size: 30px;}
-  h2, .h2 {font-size: 26px;}
-  h3, .h3 {font-size: 22px;}
-  h4, .h4 {font-size: 20px;}
-  h5, .h5 {font-size: 18px;}
-  h6, .h6 {font-size: 18px;}
-  p, .p,
-  ul, .ul,
-  ol, .ol {font-size: 18px;}
+
+
+
+
+h1, .h1 {
+  font-size: 30px;
+
+  @media screen and (min-width: $bp-smaller) {
+    font-size: 36px;
+  }
+  @media screen and (min-width: $bp-medium) {
+    font-size: 60px;
+  }
+  @media screen and (min-width: $bp-larger) {
+    font-size: 70px;
+  }
 }
+h2, .h2 {
+  font-size: 24px;
 
-@media screen and (min-width: $bp-small) {
-  h1, .h1 {font-size: 46px;}
-  h2, .h2 {font-size: 40px;}
-  h3, .h3 {font-size: 36px;}
-  h4, .h4 {font-size: 28px;}
-  h5, .h5 {font-size: 24px;}
-  h6, .h6 {font-size: 22px;}
-  p, .p   {font-size: 16px;}
+  @media screen and (min-width: $bp-smaller) {
+    font-size: 26px;
+  }
+  @media screen and (min-width: $bp-medium) {
+    font-size: 40px;
+  }
+  @media screen and (min-width: $bp-larger) {
+    font-size: 50px;
+  }
+}
+h3, .h3 {
+  font-size: 24px;
 
-  .page-post,
-  .page-event,
-  .page-case-study {
-    h1, .h1 {font-size: 40px;}
-    h2, .h2 {font-size: 30px;}
-    h3, .h3 {font-size: 26px;}
-    h4, .h4 {font-size: 22px;}
-    h5, .h5 {font-size: 20px;}
-    h6, .h6 {font-size: 18px;}
-    p, .p,
-    ul, .ul,
-    ol, .ol {font-size: 18px;}
+  @media screen and (min-width: $bp-smaller) {
+    font-size: 26px;
+  }
+  @media screen and (min-width: $bp-medium) {
+    font-size: 30px;
+  }
+  @media screen and (min-width: $bp-larger) {
+    font-size: 40px;
+  }
+}
+h4, .h4 {
+  font-size: 18px;
+
+  @media screen and (min-width: $bp-smaller) {
+    font-size: 20px;
+  }
+  @media screen and (min-width: $bp-medium) {
+    font-size: 24px;
+  }
+  @media screen and (min-width: $bp-larger) {
+    font-size: 26px;
   }
 }
 
-@media screen and (min-width: $bp-medium) {
-  h1, .h1 {font-size: 60px;}
+h5, .h5 {
+  font-family: $PxGroteskRegular;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 
-  .page-post,
-  .page-event,
-  .page-case-study {
-    h1, .h1 {font-size: 56px;}
+  @media screen and (min-width: $bp-smaller) {
+    font-size: 14px;
+  }
+  @media screen and (min-width: $bp-large) {
+    font-size: 16px;
   }
 }
 
-@media screen and (min-width: $bp-large) {
-  h1, .h1 {font-size: 80px;}
-  h2, .h2 {font-size: 50px;}
-  h3, .h3 {font-size: 40px;}
-  h4, .h4 {font-size: 30px;}
-  h5, .h5 {font-size: 26px;}
-  h6, .h6 {font-size: 24px;}
-  p, .p,
-  ul, .ul,
-  ol, .ol {font-size: 18px;}
+.h1-alt {
+  font-size: 30px;
+
+  @media screen and (min-width: $bp-smaller) {
+    font-size: 40px;
+  }
+  @media screen and (min-width: $bp-medium) {
+    font-size: 50px;
+  }
+  @media screen and (min-width: $bp-larger) {
+    font-size: 50px;
+  }
+}
+
+.h2-alt {
+  font-family: $PxGroteskRegular;
+  text-transform: none;
+	font-size: 24px;
+	line-height: 1.33;
+
+  @media screen and (min-width: $bp-medium) {
+    font-size: 30px;
+  }
+}
+
+body,
+p, .p,
+ul, .ul,
+ol, .ol   {
+  font-size: 16px;
+  line-height: 26px;
+
+  @media screen and (min-width: $bp-medium) {
+    font-size: 18px;
+    line-height: 28px;
+  }
 }
 
 .appleTitle {
   text-transform: lowercase !important;
+}
+
+.small-body-copy {
+  font-size: 14px;
+  line-height: 24px;
+
+  @media screen and (min-width: $bp-medium) {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+.small-print-copy {
+  font-size: 12px;
+  line-height: 1.5;
 }

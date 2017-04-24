@@ -5,17 +5,16 @@
  */
 
 .footer {
-  background: #252525;
-  font-family: PxGrotesk-Regular, Arial, sans-serif;
+  position: relative;
+  z-index: 10;
+  background-color: $nonBlack;
   color: $offWhite;
 
   .content {
     overflow: auto;
-    padding: 40px 0 0 0;
-
-    .general {
-      padding: 0 6.25%;
-    }
+    @include core-layout();
+    flex-direction: column;
+    padding: 40px 6% 0 6%;
 
     .contact-title {
       font-size: 24px;
@@ -62,20 +61,13 @@
     .social {
       list-style: none;
       padding: 0;
-      margin: 45px 0;
-      width: 150px;
 
       .channel {
         display: inline-block;
-        margin-right: 22px;
-        margin-bottom: 22px;
+        margin: 0 6px;
 
-        &:nth-child(3n+3) {
-          margin-right: 0;
-        }
-
-        &:nth-last-child(-n+2) {
-          margin-bottom: 0;
+        @media screen and (min-width: $bp-small) {
+          margin: 0 10px;
         }
 
         a {
@@ -84,8 +76,8 @@
           justify-content: center;
           height: 35px;
           width: 35px;
-          border: 1px solid #fff;
-          background-color: transparent;
+          border-radius: 50%;
+          background: rgba(255,255,255,.05);
           transition: all $hover-duration-quick ease-in-out;
         }
         .logo {
@@ -98,37 +90,37 @@
         }
 
         &.facebook {
-          a:hover {
+          a {
             background-color: #3A5998;
             border-color: #3A5998;
           }
         }
         &.twitter {
-          a:hover {
+          a {
             background-color: #32ABE2;
             border-color: #32ABE2;
           }
         }
         &.linkedin {
-          a:hover {
+          a {
             background-color: #069;
             border-color: #069;
           }
         }
         &.github {
-          a:hover {
+          a {
             background-color: #4183c4;
             border-color: #4183c4;
           }
         }
         &.instagram {
-          a:hover {
-            background-color: #4c68d7;
+          a {
+            background-image: linear-gradient(223deg, #5335d3, #ee5933 50%, #f8d168);
             border-color: #4c68d7;
           }
         }
         &.dribbble {
-          a:hover {
+          a {
             background-color: #ea4c89;
             border-color: #ea4c89;
           }
@@ -140,17 +132,35 @@
       border-top: 1px solid $nonBlack;
     }
 
-    .copyright {
+    .small-print {
+      @extend .small-print-copy;
       clear: both;
-      padding-top: 60px;
-      text-align: center;
-      font-size: 12px;
-      color: #999;
+      display: flex;
+      padding: 60px 0;
+      color: #666;
+      flex-direction: column;
+      position: relative;
+      z-index: 2;
 
-      ul {
-        padding: 30px 0;
-        border-top: 1px solid #333;
-        font-size: 12px;
+      a {
+        text-decoration: underline;
+      }
+
+      .copyright {
+        flex: 3;
+        order: 2;
+
+        span {
+          padding-right: 8px;
+        }
+      }
+
+      .social {
+        flex: 2;
+        display: flex;
+        margin-bottom: 15px;
+        justify-content: center;
+        order: 1;
       }
 
       li {
@@ -160,26 +170,33 @@
           text-decoration: underline;
         }
       }
+
+      @media screen and (min-width: $bp-medium) {
+        flex-direction: row;
+
+        .copyright {
+          padding: 0;
+          order: 1;
+        }
+
+        .social {
+          margin-bottom: 0;
+          order: 2;
+        }
+      }
     }
   }
 
 
   @media screen and (min-width: $bp-medium) {
-    
+
     .content,
     .subscription {
-      max-width: $max-app-width;
       margin: 0 auto;
     }
 
     .content {
       padding: 100px 6% 0 6%;
-
-      .general {
-        float: left;
-        width: 33%;
-        padding: 0;
-      }
 
       .contact-title {
         margin-bottom: 15px;
@@ -190,8 +207,6 @@
       }
 
       .studios {
-        float: left;
-        width: 67%;
         border-top: none;
 
         .studio {
@@ -206,28 +221,21 @@
     .content {
       padding: 0 6%;
 
-      .general {
-        width: 20%;
-        margin-top: 140px;
-      }
       .studios {
-        width: 80%;
+        display: flex;
+        justify-content: space-between;
 
         .studio {
-          width: 25%;
+          width: auto;
         }
       }
-    }
-  }
+      .small-print {
 
-  @media screen and (min-width: $bp-larger) {
-    .content {
+        .social {
+          margin-left: 80px;
 
-      .copyright {
-        ul {
           li {
             display: inline-block;
-            width: 33%;
           }
         }
       }

@@ -5,7 +5,7 @@ const Sandbox = React.createClass({
     return <div className="sandbox">
       <style>{`
         .test-class {
-          color: white;
+          color: #f8f8f8;
         }
       `}</style>
       <Modal

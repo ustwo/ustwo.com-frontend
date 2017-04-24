@@ -6,9 +6,13 @@ import Grid from 'app/components/grid';
 
 const colours = {
   bg: '#ffede1',
-  primary: '#ed0082',
+  primary: '#16d5d9',
   secondary: '#16d5d9'
 }
+
+const categories = [{
+  name: "Venture"
+}]
 
 describe('renderModules', () => {
   let moduleData;
@@ -18,7 +22,8 @@ describe('renderModules', () => {
     result = () => renderModules({
       modules: [moduleData],
       colours: colours,
-      zebra: false
+      zebra: false,
+      categories: categories
     })[0];
   });
 
@@ -58,7 +63,7 @@ describe('renderModules', () => {
     });
 
     it('has a rule colour', () => {
-      expect(result().props.ruleColour).to.equal(colours.secondary);
+      expect(result().props.ruleColour).to.equal(colours.primary);
     });
 
     it('has a background colour', () => {
@@ -271,7 +276,8 @@ describe('renderModules', () => {
       result = () => renderModules({
         modules: modules,
         colours: colours,
-        zebra: true
+        zebra: true,
+        categories: categories
       });
     });
 

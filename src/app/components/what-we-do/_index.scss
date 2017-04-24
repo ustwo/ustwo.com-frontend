@@ -8,20 +8,20 @@
   background-color: $lightGrey;
 
   .hero {
-    background-color: $pot;
+    @include page-background-colour(work);
 
     .rimage {
       max-width: 600px;
       opacity: .7;
     }
 
-    .down-chevron {
+    .down-indicator {
       z-index: 2;
     }
   }
 
   .hero + .single-column {
-    background: white;
+    background: $offWhite;
   }
 
   .single-column .content {

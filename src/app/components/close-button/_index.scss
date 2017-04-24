@@ -10,8 +10,13 @@
 
 .close-button {
   display: inline-block;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
+
+  @media screen and (min-width: $bp-medium) {
+    width: 50px;
+    height: 50px;
+  }
 
   .text {
     display: inline-block;

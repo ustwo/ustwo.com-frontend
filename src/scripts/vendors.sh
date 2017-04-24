@@ -16,14 +16,16 @@ fi
 
 persistify --require babelify/polyfill \
            --require react \
+           --require react-dom \
+           --require react-addons-test-utils \
            --require svg4everybody \
            --require classnames \
            --require ellipsize \
            --require es6-promise \
            --require moment \
-           --require react-transition-manager \
            --require scrollmagic \
            --require react-responsive \
+           --require react-swipe \
            --verbose \
            --cache-dir $base/public/.cache-vendors \
            --outfile $filename

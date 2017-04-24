@@ -1,0 +1,13 @@
+/*
+ *  DOWN INDICATOR
+ *  Directional Indicator
+ *
+ *  Notes: Currently used only for indicating 'down'
+ */
+
+.down-indicator-icon {
+  width: 25px;
+  height: 64px;
+  background: url('/images/icon-down-loop.gif') no-repeat 0 0;
+  background-size: 100% auto;
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="220px" height="220px" viewBox="0 0 220 220" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="110" cy="110" r="110"></circle>
+    </defs>
+    <g id="**Symbols**" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3">
+            <g id="Group-4" opacity="0.200000003" mask="url(#mask-2)" fill="#FFFFFF">
+                <g transform="translate(29.000000, 37.000000)" id="Oval-12">
+                    <circle cx="34" cy="4" r="2"></circle>
+                    <circle cx="75" cy="8" r="2"></circle>
+                    <circle cx="122" cy="24" r="2"></circle>
+                    <circle cx="146" cy="2" r="2"></circle>
+                    <circle cx="2" cy="56" r="2"></circle>
+                    <circle cx="62" cy="56" r="2"></circle>
+                    <circle cx="34" cy="37" r="2"></circle>
+                    <circle cx="144" cy="56" r="2"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

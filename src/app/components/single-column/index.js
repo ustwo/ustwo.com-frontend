@@ -10,7 +10,6 @@ const SingleColumn = React.createClass({
       if (headingType === 'h1') {
         output = <h1
           className="title"
-          style={{ color: headingColour }}
         >
           {getAppleTitles(title)}
         </h1>;
@@ -29,7 +28,7 @@ const SingleColumn = React.createClass({
     const { title, children, ruleColour } = this.props;
     let rule;
     if ((title && title.length) && (children && children.length)) {
-      rule = <hr style={{ borderColor: ruleColour }} />;
+      rule = <hr style={{ background: ruleColour }} />;
     }
     return rule;
   },
@@ -45,20 +44,20 @@ const SingleColumn = React.createClass({
     return content;
   },
   render() {
-    const { className, isInZebraList, backgroundColour } = this.props;
+    const { className, isInZebraList, backgroundColour, category } = this.props;
     const classes = classnames('single-column', className, {
       'in-zebra-list': isInZebraList
     });
-    return <section
-      className={classes}
-      style={{ backgroundColor: backgroundColour }}
-    >
-      <div className="wrapper">
-        {this.renderTitle()}
-        {this.renderRule()}
-        {this.renderContent()}
-      </div>
-    </section>;
+    return (
+      <section className={classes}>
+        <div className="wrapper">
+          <div className="section-title">{category}</div>
+          {this.renderTitle()}
+          {this.renderRule()}
+          {this.renderContent()}
+        </div>
+      </section>
+    );
   }
 });
 

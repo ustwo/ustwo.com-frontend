@@ -55,15 +55,21 @@
 .page-blog {
   background-color: $lightGrey;
 
+  .blog-post-list {
+    margin-top: -$hero-offsetSize-small;
+
+    @media screen and (min-width: $bp-tablet) {
+      margin-top: -$hero-offsetSize;
+    }
+  }
+
   .hero-transition-manager {
-    display: flex;
-    height: 100vh;
-    min-height: 100vh;
-    background: $blu;
 
     .hero {
+      @include page-background-colour(blog);
+
       .blog-controls {
-        transition: opacity .32s ease-in-out;
+        transition: opacity .2s linear;
       }
 
       &.add {
@@ -79,12 +85,18 @@
           opacity: 1;
           transition-duration: .5s;
           transition-delay: 2s;
+          position: absolute;
+          bottom: calc(#{$hero-offsetSize-small} + 60px);
+
+          @media screen and (min-width: $bp-tablet) {
+            bottom: calc(#{$hero-offsetSize} + 60px);
+          }
         }
       }
 
       &.hide {
         opacity: 0;
-        transition: opacity .32s ease-in-out;
+        transition: opacity .2s linear;
 
         .blog-controls {
           opacity: 0;
@@ -93,7 +105,7 @@
     }
 
     .search {
-      transition: opacity .32s ease-in-out;
+      transition: opacity .2s linear;
 
       &.add {
         opacity: 0;
@@ -109,7 +121,7 @@
 
         .search-form,
         .cancel-search {
-          transition: opacity .32s ease-in-out, transform 0s linear .5s;
+          transition: opacity .2s linear, transform 0s linear .5s;
         }
       }
 
@@ -127,7 +139,7 @@
 
         .search-form,
         .cancel-search {
-          transition: all .32s ease-in-out;
+          transition: all .2s linear;
           transition-delay: .5s;
         }
       }
@@ -146,10 +158,6 @@
   .hero {
     width: 100%;
 
-    .title {
-      margin-top: -12vh;
-    }
-
     .rimage {
       top: 42%;
       max-width: 450px;
@@ -160,7 +168,7 @@
   .blog-post-list {
     opacity: 1;
     transform: translateY(0px);
-    transition: opacity .2s ease-in-out, transform .32s ease-in-out;
+    transition: opacity .2s linear, transform .32s ease-in-out;
   }
 
   .message {
@@ -228,7 +236,7 @@
   @media screen and (min-width: $bp-medium) {
 
     &.categorised {
-      .down-chevron {
+      .down-indicator {
         display: none;
       }
       .blog-post-list {

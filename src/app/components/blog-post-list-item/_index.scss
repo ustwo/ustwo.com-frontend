@@ -6,6 +6,10 @@
 
 .blog-post-list-item {
 
+  h2 {
+    @extend .h4;
+  }
+
   .meta {
     margin-top: $card-padding-small * .75;
     margin-bottom: 0;
@@ -48,8 +52,8 @@
 
   .card-image {
     position: absolute;
-    right: $card-gutter-large * .5;
-    bottom: 30px;
+    right: 0;
+    bottom: 0;
     top: 0;
 
     .rimage,
@@ -74,10 +78,10 @@
   .card-list .card-item.featured {
     @include pinned-post();
     .card-image {
-      width: 50%;
+      width: 51%;
     }
     .card-details {
-      width: calc(50% - (#{$card-gutter-large} * .5));
+      width: 49%;
     }
   }
 }
@@ -87,10 +91,10 @@
   .card-list .card-item.featured {
     @include pinned-post();
     .card-image {
-      width: 66.666%;
+      width: 68%;
     }
     .card-details {
-      width: calc(33.333% - (#{$card-gutter-large} * .5));
+      width: 32%;
     }
   }
 }

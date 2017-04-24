@@ -1,25 +1,36 @@
 /*
  *  CARD LIST
- *  Grid of 'cards' such as for blog and what-we-do
+ *  Grid of 'cards' such as for blog and work pages
  *
  */
 
 /* Core Layout */
 .card-list {
-  max-width: 1380px;
-  margin: 0 auto;
+  @include core-layout();
+  display: block;
+  position: relative;
+  z-index: 10;
+
+  > * {
+    width: auto;
+    flex: auto;
+  }
+}
+
+.card-list-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .card-item {
   position: relative;
   display: flex; /* gives all items in a row the same height */
   flex-direction: column;
-  padding: 10px 10px 0 10px;
   vertical-align: top;
-
-  &:last-of-type {
-    padding-bottom: 10px;
-  }
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 /* Size of cards when INSIDE card-list */
@@ -27,14 +38,15 @@
   .card-list {
     display: flex; /* Basic row layout */
     flex-wrap: wrap;
-    padding: 0 ($card-gutter-large * .5);
+    // padding: 0 ($card-gutter-large * .5);
 
     .card-item {
-      width: 50%;
-      padding: 0 ($card-gutter-large * .5) 30px ($card-gutter-large * .5);
+      width: 48%;
+      // padding: 0 ($card-gutter-large * .5) 30px ($card-gutter-large * .5);
+      margin-bottom: 30px;
 
       &:last-of-type {
-        padding-bottom: $card-gutter-large;
+        margin-bottom: $card-gutter-large;
       }
     }
   }
@@ -43,21 +55,10 @@
 @media screen and (min-width: $bp-larger) {
   .card-list {
     .card-item {
-      width: 33.333%;
+      width: 32%;
     }
   }
 }
-
-
-
-
-
-@media screen and (min-width: $bp-medium) {
-  .card-list {
-    margin-top: $card-margin-offset; /* Pushes content up */
-  }
-}
-
 
 
 /* Card Image */
@@ -89,7 +90,7 @@
 .card-details {
   position: relative;
   padding: $card-padding-small;
-  background-color: $offWhite;
+  background-color: #fff;
 }
 
 @media screen and (min-width: $bp-medium) {
@@ -104,16 +105,6 @@
 @media screen and (min-width: $bp-large) {
   .card-details {
     padding: $card-padding-large;
-  }
-}
-
-
-
-/* Category tags */
-.card-item {
-  .category-tag {
-    position: absolute;
-    top: - $category-tag-height * .5;
   }
 }
 

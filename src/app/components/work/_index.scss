@@ -1,0 +1,251 @@
+/*
+ *  PAGE: WORK
+ *  Landing page to see ustwo proposition to potential clients and showcase past projects
+ *  and areas of interest/verticals
+ *
+ */
+
+ .scroll-wrapper-work-hero {
+   padding: 0;
+   background-color: $offWhite;
+   height: 100%;
+
+   .scroll-wrapper-inner {
+     height: 100%;
+   }
+ }
+
+.page-work {
+  @media screen and (min-width: $bp-large) {
+    h1 {
+      width: 75%;
+    }
+  }
+
+  @media screen and (min-width: $bp-larger) {
+    h1 {
+      width: 75%;
+    }
+  }
+}
+
+.page-work {
+  height: 100%;
+
+  h2 {
+    @extend .h3;
+  }
+
+  .hero {
+    // @include page-background-colour(work);
+
+    .rimage {
+      max-width: 600px;
+      opacity: .7;
+    }
+
+    .down-indicator {
+      z-index: 2;
+    }
+  }
+
+  .hero + .single-column {
+    background: $offWhite;
+  }
+
+  .single-column .content {
+    text-align: left;
+  }
+
+  .card-list {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .card-list {
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .card-list {
+      padding-top: 100px;
+      padding-bottom: 85px;
+    }
+  }
+
+  .work-case-studies {
+    flex-direction: column;
+    display: flex;
+  }
+}
+
+.work-video-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  position: relative;
+  z-index: 2;
+  margin-top: 15px;
+
+  .section-title {
+    line-height: 40px;
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+}
+
+.work-video-link-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid $offWhite;
+  border-radius: 50%;
+
+  svg {
+    fill: $offWhite;
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.work-whatwedo,
+.work-contact {
+  @include core-layout();
+  flex-direction: column;
+}
+
+.work-contact {
+  margin-bottom: 60px;
+
+  @media screen and (min-width: $bp-large) {
+    margin-bottom: 100px;
+  }
+}
+
+.work-intro {
+  padding-top: 40px;
+  padding-bottom: 20px;
+
+  p {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    padding-top: 90px;
+    padding-bottom: 50px;
+
+    p {
+      width: 80%;
+      font-size: 22px;
+    }
+  }
+  @media screen and (min-width: $bp-large) {
+    padding-top: 90px;
+
+    p {
+      width: 70%;
+    }
+  }
+  @media screen and (min-width: $bp-larger) {
+    padding-top: 120px;
+
+    p {
+      font-size: 24px;
+    }
+  }
+}
+
+.page-work-controls {
+  padding: 24px 0;
+}
+
+.page-work-filter {
+  text-align: center;
+
+  button {
+    outline: 0;
+    @extend .h5;
+    padding: 0 15px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid transparent;
+
+    &.selected {
+      border-color: $nonBlack
+    }
+
+    @media screen and (min-width: $bp-large) {
+      font-size: 14px;
+    }
+  }
+}
+
+.work-featured-case-study {
+  @include core-layout;
+  padding-top: 100px;
+  padding-bottom: 60px;
+
+  button {
+    @include buttonStyle(true);
+    @include buttonColor();
+  }
+
+  .title {
+    margin-bottom: 15px;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    padding-top: 100px;
+    padding-bottom: 150px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    padding-top: 170px;
+    padding-bottom: 170px;
+  }
+}
+
+@media screen and (min-width: $bp-large) {
+  .work-featured-case-study-inner {
+    display: flex;
+  }
+  .work-featured-case-study-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: 1;
+    width: 33%;
+
+    button {
+      width: 240px;
+    }
+  }
+  .work-featured-case-study-image {
+    flex: 1;
+    order: 2;
+  }
+}
+
+.work-featured-case-study-image {
+  text-align: center;
+  margin-bottom: 40px;
+
+  img {
+    width: 90%;
+    max-width: 435px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    img {
+      max-width: 590px;
+    }
+  }
+}

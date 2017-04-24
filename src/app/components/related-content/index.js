@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
 import WorkItem from 'app/components/work-item';
 import BlogPostListItem from 'app/components/blog-post-list-item';
@@ -12,7 +12,9 @@ export default class RelatedContent extends React.Component {
       <div className="related-content">
         <div className="wrapper">
           <h2 className="more-juice-title">More Juice</h2>
-          {this.props.content.map(this.renderItem)}
+          <div className="related-content-cards">
+            {this.props.content.map(this.renderItem)}
+          </div>
         </div>
       </div>
     );

@@ -10,11 +10,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 100%;
   text-align: center;
-  background-color: $notfound;
+  @include page-background-colour(notfound);
 
-  img {
-    width: 300px;
+  p {
+    color: $offWhite;
   }
+}
+
+.page-404-large-text {
+  font-family: $Futura;
+  opacity: 0.3;
+  font-size: 30rem;
+  font-weight: 900;
+  line-height: 1;
+  font-size: 40vw;
+  color: $offWhite;
 }

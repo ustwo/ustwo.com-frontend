@@ -1,4 +1,4 @@
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
 export default (post) => {
   let name;

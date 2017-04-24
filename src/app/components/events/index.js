@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import map from 'lodash/collection/map';
 import take from 'lodash/array/take';
 import classnames from 'classnames';
@@ -17,6 +17,9 @@ import ArchivedEventsListItem from 'app/components/events-archived-list-item';
 import LoadMoreButton from 'app/components/load-more-button';
 import LoadingIcon from 'app/components/loading-icon';
 import getFeaturedImage from 'app/lib/get-featured-image';
+import Footer from 'app/components/footer';
+import ContactBlock from 'app/components/contact-block';
+import ScrollWrapper from 'app/components/scroll-wrapper';
 
 const PageEvents = React.createClass({
   getInitialState() {
@@ -107,22 +110,26 @@ const PageEvents = React.createClass({
     if (events) {
       if (events.length) {
         output = events.map((eventData, index) => {
-          return <EventsListItem
-            className="events-list"
-            featured={index === 0}
-            data={eventData}
-          />;
+          return (
+            <EventsListItem
+              className="events-list"
+              featured={index === 0}
+              data={eventData}
+            />
+          );
         });
       } else {
-        output = <div className="no-events-found">
-          <h2>Soz, No Talky</h2>
-          <p>We don't have any events on the horizon right now. If you're interested in hosting an event, 
-          <br />or giving a talk - <a href="mailto:events@ustwo.com">let us know! </a></p>
-          <SVG
-            className="flying-cow"
-            spritemapID="flyingCow"
-          />
-        </div>;
+        output = (
+          <div className="no-events-found">
+            <h2>Soz, No Talky</h2>
+            <p>We don't have any events on the horizon right now. If you're interested in hosting an event,
+            <br />or giving a talk - <a href="mailto:events@ustwo.com">let us know! </a></p>
+            <SVG
+              className="flying-cow"
+              spritemapID="flyingCow"
+            />
+          </div>
+        );
       }
     }
     return output;
@@ -133,18 +140,24 @@ const PageEvents = React.createClass({
     if (archivedEvents) {
       if (archivedEvents.length) {
         events = archivedEvents.map((archivedEventData, index) => {
-          return <ArchivedEventsListItem
-            className='archived-events-list'
-            data={archivedEventData}
-          />;
+          return (
+            <ArchivedEventsListItem
+              className='archived-events-list'
+              data={archivedEventData}
+            />
+          );
         });
-        output = <div className='archived-events'>
-          <h2 className='sub-title'>Previous Talkies</h2>
-          <hr className='rule' />
-          <section className='card-list'>
-            {events}
-          </section>
-        </div>;
+        output = (
+          <div className='archived-events'>
+            <h2 className='sub-title'>Previous Talkies</h2>
+            <hr className='rule' />
+            <section className='card-list'>
+              <div className="card-list-inner">
+                {events}
+              </div>
+            </section>
+          </div>
+        );
       }
     }
     return output;
@@ -157,54 +170,61 @@ const PageEvents = React.createClass({
       isLoadingMoreArchivedEvents,
       isLoadingStudioEvents
     } = this.state;
-		const { 
-      page, 
-      currentParams, 
-      events, 
-      archivedEvents, 
-      studios, 
-      eventsPagination, 
+		const {
+      page,
+      currentParams,
+      events,
+      archivedEvents,
+      studios,
+      eventsPagination,
       eventsPaginationTotal,
       archivedEventsPagination,
-      archivedEventsPaginationTotal } = this.props;
+      archivedEventsPaginationTotal,
+      currentPage,
+      footer,
+      documentScrollPosition, 
+      viewportDimensions } = this.props;
     const classes = classnames('page-events', this.props.className, {
       loading: isLoadingInitialEvents || isLoadingStudioEvents
     });
     const image = getFeaturedImage(page);
 
-    return <article className={classes}>
-    	<Hero
-	      title={get(page, 'display_title')}
-        transitionImage={true}
-        eventLabel="events"
-        subheading={get(page, 'hero.attr.subheading.value')}
-        showDownChevron={true} 
-      >
-        <Video
-          src={get(page, 'featured_video')}
-          sizes={get(image, 'media_details.sizes')}
-          isVideoBackground={true}
-        />
-    	</Hero>
-      <EventsControls
-        studios={studios}
-        currentParams={currentParams}
-      /> 
-      <section className="events-list">
-			  {this.renderEvents()}
+    return (
+      <article className={classes}>
+      	<Hero
+  	      title={get(page, 'display_title')}
+          eventLabel="ustwo events"
+          subheading={get(page, 'hero.attr.subheading.value')}
+          notFullScreen={true}
+        ></Hero>
+        <section className="events-list">
+          <section className='card-list'>
+            <div className="card-list-inner">
+              {this.renderEvents()}
+            </div>
+          </section>
+          <LoadMoreButton
+            loading={isLoadingMoreEvents}
+            onClick={this.onClickLoadMoreEvents}
+            disabled={eventsPagination >= eventsPaginationTotal}
+          />
+  		  </section>
+        {this.renderArchivedEvents()}
         <LoadMoreButton
-          loading={isLoadingMoreEvents}
-          onClick={this.onClickLoadMoreEvents}
-          disabled={eventsPagination >= eventsPaginationTotal}
+          loading={isLoadingMoreArchivedEvents}
+          onClick={this.onClickLoadMoreArchivedEvents}
+          disabled={archivedEventsPagination >= archivedEventsPaginationTotal}
         />
-		  </section>  
-      {this.renderArchivedEvents()}
-      <LoadMoreButton
-        loading={isLoadingMoreArchivedEvents}
-        onClick={this.onClickLoadMoreArchivedEvents}
-        disabled={archivedEventsPagination >= archivedEventsPaginationTotal}
-      />
-    </article>;
+        <ScrollWrapper
+          component={<ContactBlock />}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+          requireScreenPosition={true}
+          className="scroll-wrapper-contact-block"
+        />
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
+      </article>
+    );
 	}
 });
 

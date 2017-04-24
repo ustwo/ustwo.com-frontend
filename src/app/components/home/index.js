@@ -1,209 +1,276 @@
-'use strict';
-
-import React from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
-import get from 'lodash/object/get';
-import MediaQuery from 'react-responsive';
-
-import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
-import getFeaturedImage from 'app/lib/get-featured-image';
-
-import ScrollMagic from 'app/adaptors/server/scroll-magic';
-import hexRgb from 'hex-rgb';
-import rgbHex from 'rgb-hex';
-import Tracking from 'app/adaptors/server/tracking';
+import Scroll, { Link, Element } from 'react-scroll'; // Animate and scroll to location in document
+import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
-import Track from 'app/adaptors/server/track';
-import env from 'app/adaptors/server/env';
+import { get } from 'lodash';
 
-import DownChevron from 'app/components/down-chevron';
-import SVG from 'app/components/svg';
-import WordAnimation from 'app/components/word-animation';
-import EntranceTransition from 'app/components/entrance-transition';
-import Rimage from 'app/components/rimage';
-
-import BoldHeader from 'app/components/bold-header';
+import ScrollWrapper from 'app/components/scroll-wrapper';
+import HomeIntro from 'app/components/home-intro';
 import HomeTextBlock from 'app/components/home-text-block';
-import ScreenBlock from 'app/components/screen-block';
-import RelatedContent from 'app/components/related-content';
+import HomeCarousel from 'app/components/home-carousel';
+import HomeWelcomeMessage from 'app/components/home-welcome-message';
+import HomeMoreMessage from 'app/components/home-more-message';
+import HomeSmorgasbordMessage from 'app/components/home-smorgasbord-message';
+import HomeSmorgasbord from 'app/components/home-smorgasbord';
+import ContactBlock from 'app/components/contact-block';
+import Footer from 'app/components/footer';
 
-const PageHome = React.createClass({
-  mixins: [getScrollTrackerMixin('home')],
-  getInitialState() {
-    return {
-      chevronLoaded: false
+class PageHome extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      venturesPosition: {},
     }
-  },
-  animateChevron(event) {
-    if(this.refs.downChevron) {
-      this.refs.downChevron.resetAnim();
-      this.refs.downChevron.anim();
+  }
+
+  // We need to find out viewportDimensions and if ventures is active (therefore know where it is)
+  // Update all of it if we resize
+  getVenturesPosition() {
+    const { documentScrollPosition, viewportDimensions } = this.props;
+
+    const venturesHeight = this.venturesWrapper.getBoundingClientRect().height;
+
+    // Has been some problems relying on the following value.
+    // So I've taken lead from the following to get a more robust solution:
+    // http://stackoverflow.com/questions/5598743/finding-elements-position-relative-to-the-document
+    const box = this.venturesWrapper.getBoundingClientRect();
+    const body = document.body;
+    const scrollTop = window.pageYOffset || body.scrollTop;
+    const clientTop = body.clientTop || 0;
+    const top  = box.top +  scrollTop - clientTop;
+    const venturesPositionFromTop = Math.round(top);
+
+    const venturesPosition = {
+      from: venturesPositionFromTop,
+      to: venturesPositionFromTop + venturesHeight
     }
-  },
-  setupScrollMagic() {
-    const { page } = this.props;
-    const blocks = get(page, 'page_builder', []);
-    let pageElement = React.findDOMNode(this);
-    this.Tracking.addPageScrollTracking('home', pageElement);
 
-    if (!env.Modernizr.touchevents && window.innerWidth > 480) {
-      let scrollController = this.Tracking.scrollController;
-      let blockWelcome = {
-        attr: {
-          background_colour: {
-            value: get(page, 'colors.bg')
-          }
-        }
-      };
-      let blockWelcomeDom = React.findDOMNode(this.refs.blockWelcome);
-      blockWelcomeDom.style.backgroundColor = 'transparent';
-      // set initial colour – we need to do this due to having an offset
-      pageElement.style.backgroundColor = get(page, 'colors.bg');
+    this.setState({ venturesPosition });
+    Flux.venturesPosition(venturesPosition);
+  }
 
-      this.scrollSceneChevron = new ScrollMagic.Scene({
-          triggerElement: blockWelcomeDom,
-          triggerHook: 'onLeave',
-          duration: () => {return blockWelcomeDom.clientHeight * 0.7}
-        })
-        .addTo(scrollController);
-
-      this.colourBlockScenes = [];
-      blocks.forEach((block, index) => {
-        const blockDom = React.findDOMNode(this.refs[`block${index}`]);
-        const previousBlock = blocks[index - 1] || blockWelcome;
-        blockDom.style.backgroundColor = 'transparent';
-        this.colourBlockScenes.push(this.createColourBlockScene(scrollController, pageElement, blockDom, get(previousBlock, 'attr.background_colour.value'), get(block, 'attr.background_colour.value')));
-      });
-    }
-  },
-  teardownScrollMagic() {
-    this.Tracking.removePageScrollTracking();
-
-    if (!env.Modernizr.touchevents && window.innerWidth > 480) {
-      this.scrollSceneChevron.remove();
-      this.colourBlockScenes.forEach((scene) => {
-        scene.remove();
-      });
-    }
-  },
-  createColourBlockScene(scrollController, pageElement, blockReference, hexColour1, hexColour2) {
-    return new ScrollMagic.Scene({
-        triggerElement: blockReference,
-        triggerHook: 'onEnter',
-        offset: blockReference.clientHeight * 0.25,
-        duration: () => {return blockReference.clientHeight * 0.5}
-      })
-      .addTo(scrollController)
-      // .addIndicators() // add indicators (requires plugin)
-      .on('progress', (e) => {
-        window.requestAnimationFrame(() => {
-          pageElement.style.backgroundColor = '#' + this.blendColours(hexColour1, hexColour2, e.progress);
-        });
-    });
-  },
-  blendColours(colour1, colour2, percentage) {
-    let rgbColour1 = hexRgb(colour1);
-    let rgbColour2 = hexRgb(colour2);
-
-    let rgbColour3 = [
-      (1 - percentage) * rgbColour1[0] + percentage * rgbColour2[0],
-      (1 - percentage) * rgbColour1[1] + percentage * rgbColour2[1],
-      (1 - percentage) * rgbColour1[2] + percentage * rgbColour2[2]
-    ];
-
-    return rgbHex(rgbColour3[0], rgbColour3[1], rgbColour3[2]);
-  },
-  componentWillMount() {
-    this.Tracking = new Tracking();
-  },
   componentDidMount() {
-    this.setupScrollMagic();
-    this.animTimeout = setTimeout(() => {
-      this.animateChevron();
-      this.setState({
-        chevronLoaded: true
-      })
-    }, 1500);
-  },
+    this.getVenturesPosition();
+
+    // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
+    window.addEventListener('resize', this.getVenturesPosition.bind(this), false);
+  }
+
   componentWillUnmount() {
-    this.teardownScrollMagic();
-    clearTimeout(this.animTimeout);
-  },
+    window.removeEventListener('resize', this.getVenturesPosition.bind(this), false);
+  }
+
   render() {
-    const { page } = this.props;
-    const classes = classnames('page-home', this.props.className);
-    const featuredImage = getFeaturedImage(page);
-    // Show only the final frame of the Chevron animation on mobile
-    let Chevron;
-    if (window.innerWidth <= 480) {
-      Chevron = (<div className="down-chevron">
-        <svg ref="animsvg" title="Down arrow" role="img" viewBox="0 0 400 200"><g>
-        <path d="M195.864 143.667c19.556-14.667 39.556-28.89 59.11-43.556 2.224 2.67 6.224 8 8.446 10.67-22.222 16.89-45.778 32.45-67.556 50.67-21.778-17.78-44.89-33.33-67.11-50.22 2.22-2.66 6.22-8 8-11.11 20 14.67 39.555 29.33 59.11 43.56z"/>
-      </g></svg></div>);
-    } else {
-      Chevron = <DownChevron ref="downChevron" onClick={this.onClickDownChevron} customClass={this.state.chevronLoaded ? 'loaded' : ''} />;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, footer, studios, currentPage, fixedHeight } = this.props;
+    const { venturesPosition } = this.state;
+
+    // const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to)
+
+    const venturesActive = documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
+
+    const classes = classnames('page-home-content', this.props.className, { venturesActive, loaded });
+
+    // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
+    const textBlockIntro = {
+      title: `Hi. We're ustwo`,
+      text: <HomeWelcomeMessage />
     }
-    // End Chevron
+    const textBlockMore = {
+      title: `More walk. Less talk`,
+      text: <HomeMoreMessage />
+    }
+    const textBlockSmorgasbord = {
+      title: `Go exploring together`,
+      text: <HomeSmorgasbordMessage />
+    }
+
+    const venturesBgStyles = {
+      height: `${fixedHeight + 100}px`
+    }
+
     return (
-      <article className={classes}>
-        <ScreenBlock ref="blockWelcome" customClass="welcome" textColour={get(page, 'colors.primary')} bgColour={get(page, 'colors.bg')}>
-          <EntranceTransition className="image-entrance">
-            <Rimage wrap="div" className="headline-image" sizes={get(featuredImage, 'media_details.sizes')} />
-          </EntranceTransition>
-          <EntranceTransition className="title-entrance">
-            <div className="headline-text title">
-              <BoldHeader colour="white">
-                <WordAnimation delay={1} duration={0.4}>
-                  {get(page, 'hero.attr.heading.value')}
-                </WordAnimation>
-              </BoldHeader>
-            </div>
-          </EntranceTransition>
-          {Chevron}
-        </ScreenBlock>
-        {this.renderFeatureBlocks()}
-        {this.renderRelatedContent()}
-      </article>
-    );
-  },
-  renderFeatureBlocks() {
-    const { page } = this.props;
-    return get(page, 'page_builder').map((block, index) => {
-      const blockAttrs = get(block, 'attr');
-      return <ScreenBlock key={`block${index}`} ref={`block${index}`} textColour={get(blockAttrs, 'text_colour.value')} bgColour={get(blockAttrs, 'background_colour.value')}>
-        <div className="block-parent">
-          <div className="block-child">
-            <MediaQuery maxWidth={480}>
-              <Rimage wrap="div" className="image-container" sizes={get(blockAttrs, 'image_jpg.value.0.sizes')} />
-            </MediaQuery>
-            <MediaQuery minWidth={481}>
-              <Rimage wrap="div" className="image-container" sizes={get(blockAttrs, 'image_png.value.0.sizes')} />
-            </MediaQuery>
+      <article className={classes} ref={(ref) => this.homeContent = ref}>
+
+        <div className="home-pinned-header-wrapper">
+          <div className="home-pinned-header-inner">
+            <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
+              <ScrollWrapper
+                component={<HomeIntro viewportDimensions={viewportDimensions} scrolling={scrolling} loaded={loaded} isMobile={isMobile} popup={popup} fixedHeight={fixedHeight} />}
+                documentScrollPosition={documentScrollPosition}
+                viewportDimensions={viewportDimensions}
+                requireScreenPosition={true}
+                className="scroll-wrapper-home-intro"
+              />
+            </Link>
           </div>
         </div>
-        <div className="text-block">
-          <HomeTextBlock title={get(blockAttrs, 'heading.value')} colour={get(blockAttrs, 'text_colour.value')}>
-            {get(block, 'attr.description.value')}
-          </HomeTextBlock>
+
+        <div className="home-main-content-wrapper">
+          <Element name="homeTextBlock" className="home-welcome-wrapper">
+            <ScrollWrapper
+              component={<HomeTextBlock content={textBlockIntro} />}
+              documentScrollPosition={documentScrollPosition}
+              viewportDimensions={viewportDimensions}
+              className="scroll-wrapper-home-welcome-message"
+              fixedHeight={fixedHeight}
+            />
+          </Element>
+
+          <ScrollWrapper
+            component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} loaded={loaded} />}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
+            className="scroll-wrapper-home-carousel-products"
+            fixedHeight={fixedHeight}
+          />
+
+          <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
+
+            <div className="home-ventures-wrapper-bg" style={venturesBgStyles}></div>
+
+            <ScrollWrapper
+              component={<HomeTextBlock content={textBlockMore} />}
+              documentScrollPosition={documentScrollPosition}
+              viewportDimensions={viewportDimensions}
+              className="scroll-wrapper-home-more-message"
+              fixedHeight={fixedHeight}
+            />
+
+            <ScrollWrapper
+              component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={venturesActive} loaded={loaded} />}
+              documentScrollPosition={documentScrollPosition}
+              viewportDimensions={viewportDimensions}
+              className="scroll-wrapper-home-carousel-ventures"
+              fixedHeight={fixedHeight}
+            />
+
+          </div>
+
+          <ScrollWrapper
+            component={<HomeTextBlock content={textBlockSmorgasbord} />}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
+            className="scroll-wrapper-home-smorgasbord-message"
+            fixedHeight={fixedHeight}
+          />
+
+          <ScrollWrapper
+            component={<HomeSmorgasbord data={get(page, 'featured_content')} loaded={loaded} />}
+            className="scroll-wrapper-home-smorgasbord"
+          />
         </div>
-      </ScreenBlock>;
-    });
-  },
-  renderRelatedContent() {
-    let relatedContent;
-    if(this.props.relatedContent.length) {
-      relatedContent = <RelatedContent content={this.props.relatedContent} />
-    }
-    return relatedContent;
-  },
-  onClickDownChevron() {
-    Track('send', {
-      'hitType': 'event',
-      'eventCategory': 'hub_page',
-      'eventAction': 'click_animated_chevron',
-      'eventLabel': 'home'
-    });
+
+        <ScrollWrapper
+          component={<ContactBlock />}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+          requireScreenPosition={true}
+          className="scroll-wrapper-contact-block"
+        />
+
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
+
+      </article>
+    );
   }
-});
+};
 
 export default PageHome;
+
+// Hard coded data, TODO: Integrate with CMS
+const dataProducts = [{
+  title: "Ford GoPark",
+  category: "Client Work",
+  imageURL: "/images/home/ford-gopark.jpg",
+  description: "A smart parking service tackling congestion in one of London’s busiest boroughs",
+  linkURI: "/work/ford-gopark"
+},{
+  title: "Android wear",
+  category: "Client Work",
+  imageURL: "/images/home/android-wear.jpg",
+  videoURL: "/images/home/android-wear.mp4",
+  description: "An evolving creative partnership setting the standard for watch face design",
+  linkURI: "/work/android-wear-digital-watch-faces"
+},{
+  title: "Foursquare",
+  category: "Client Work",
+  imageURL: "/images/home/foursquare.jpg",
+  videoURL: "/images/home/foursquare.mp4",
+  description: "A fresh business customer portal experience designed to showcase the enterprise offering",
+  linkURI: "/work/foursquare-enterprise"
+},{
+  title: "Adidas Go",
+  category: "Client Work",
+  imageURL: "/images/home/adidas-go.jpg",
+  description: "A music app designed to track, enhance and improve your running performance",
+  linkURI: "/work/adidas-go"
+},{
+  title: "Google Cardboard ",
+  category: "Client Work",
+  imageURL: "/images/home/google-cardboard.jpg",
+  description: "An accessible go-to how-to guide for VR design principles",
+  linkURI: "/work/google-cardboard"
+},{
+  title: "Harvey Nichols",
+  category: "Client Work",
+  imageURL: "/images/home/harvey-nichols.jpg",
+  videoURL: "/images/home/harvey-nichols.mp4",
+  description: "A unique consumer-centred loyalty experience built to engage and reward",
+  linkURI: "/work/harvey-nichols"
+},{
+  title: "Sky Kids",
+  category: "Client Work",
+  imageURL: "/images/home/sky-kids.jpg",
+  videoURL: "/images/home/sky-kids.mp4",
+  description: "Creating a new product, brand and audience - loved by kids and trusted by parents",
+  linkURI: "/work/sky-kids"
+},{
+  title: "NBC Sprout",
+  category: "Client Work",
+  imageURL: "/images/home/nbc-sprout.jpg",
+  description: "A fun, colourful and exploratory game for Terrific Trucks",
+  linkURI: "/work/nbc-sprout-playground-terrific-trucks"
+}];
+
+const dataVentures = [{
+  title: "ustwo Games",
+  category: "Business",
+  imageURL: "/images/home/ustwo-games.jpg",
+  videoURL: "/images/home/monument-valley.mp4",
+  description: "An award-winning mobile games studio making the most beautiful interactive entertainment",
+  linkURI: "/work/monument-valley"
+},{
+  title: "Dice",
+  category: "Business",
+  imageURL: "/images/home/dice.jpg",
+  description: "Search, browse and buy tickets with the fastest growing live music discovery app",
+  linkURI: "/work/dice"
+},{
+  title: "Moodnotes",
+  category: "Venture",
+  imageURL: "/images/home/moodnotes.jpg",
+  videoURL: "/images/home/moodnotes.mp4",
+  description: "Scientifically grounded in CBT making it simple to manage emotional wellbeing over time",
+  linkURI: "/work/moodnotes"
+},{
+  title: "Wayfindr",
+  category: "Venture",
+  imageURL: "/images/home/wayfindr.jpg",
+  description: "Empowering vision impaired people to navigate the world independently",
+  linkURI: "/work/wayfindr-2"
+},{
+  title: "Sway",
+  category: "Venture",
+  imageURL: "/images/home/sway.jpg",
+  description: "A scientifically validated interactive meditation app designed for mindfulness on the move",
+  linkURI: "/work/sway"
+},{
+  title: "Watch This",
+  category: "Own Product",
+  imageURL: "/images/home/watch-this.jpg",
+  description: "Easily share media-rich TV and movie recommendations without leaving iMessage",
+  linkURI: "/work/watch-this-for-imessage"
+}];

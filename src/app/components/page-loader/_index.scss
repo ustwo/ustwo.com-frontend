@@ -1,50 +1,368 @@
 /*
- *  LOADER
+ *  PAGE LOADER
  *  Interstitial page loading animation
  *
  */
 
-@mixin page-loader-spinner($fg, $bg) {
-  background-color: $bg;
+$page-loader-icon-transition-duration: 1.6s;
+$page-loader-icon-size: 58px;
+$page-loader-icon-border: 3px;
 
-  .loading-icon .half {
+.page-loader {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $offWhite;
+}
+
+.page-loader-icon-inner {
+  width: $page-loader-icon-size;
+  height: $page-loader-icon-size;
+  position: relative;
+  box-sizing: content-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  animation: cycle $page-loader-icon-transition-duration * 3 infinite;
+  animation-timing-function: linear;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: $page-loader-icon-border;
+    top: $page-loader-icon-border;
+    width: $page-loader-icon-size - (2 * $page-loader-icon-border);
+    height: $page-loader-icon-size - (2 * $page-loader-icon-border);
+    border-radius: $page-loader-icon-size - (2 * $page-loader-icon-border) * 0.5;
+    background: $offWhite;
+  }
+}
+
+.page-loader-icon {
+  position: relative;
+  width: $page-loader-icon-size;
+  height: $page-loader-icon-size;
+
+  .half {
+    overflow: hidden;
+    position: absolute;
+    top: -1px;
+
     .bg {
-      background-color: $fg;
+      position: absolute;
+      transform-origin: 50% 50%;
+      transform: rotate(0deg);
     }
-    &.left,
+
+    &.left {
+      left: -1px;
+      border-radius: 50% 0 0 50%;
+
+      .bg {
+        left: 0;
+      }
+    }
+
+    &.right {
+      right: -1px;
+      border-radius: 0 50% 50% 0;
+
+      .bg {
+        right: 0;
+      }
+    }
+  }
+
+  .half {
+    width: ($page-loader-icon-size * .5) + 1px;
+    height: $page-loader-icon-size + 2px;
+
+    .bg {
+      width: ($page-loader-icon-size * .5) + 1px;
+      height: $page-loader-icon-size + 2px;
+      border-radius: $page-loader-icon-size + 2px;
+    }
+
+    &.left {
+      .bg {
+        border-left: (($page-loader-icon-size * .5) + 1px) solid #e5e5e5;
+      }
+    }
+
     &.right {
       .bg {
-        border-color: $bg;
+        border-right: (($page-loader-icon-size * .5) + 1px) solid #e5e5e5;
       }
+    }
+  }
+
+  .half {
+    &.left .bg {
+      animation: spinLeft $page-loader-icon-transition-duration infinite;
+      animation-timing-function: linear;
+      border-color: $offWhite;
+    }
+    &.right .bg {
+      animation: spinRight $page-loader-icon-transition-duration infinite;
+      animation-timing-function: linear;
+      border-color: $offWhite;
     }
   }
 }
 
-.page-loader {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  z-index: 30;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 100%;
-  background-color: $offWhite;
+.page-loader-icon-images {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  animation: cycleImages $page-loader-icon-transition-duration * 3 infinite;
+  animation-timing-function: linear;
+}
 
-  &.loading-home {
-    @include page-loader-spinner(#fff, #6114CC);
+.page-loader.alt {
+  .page-loader-icon-inner {
+    animation: cycle2 $page-loader-icon-transition-duration * 3 infinite;
+    animation-timing-function: linear;
   }
-  &.loading-what-we-do {
-    @include page-loader-spinner(#fff, $pot);
+  .page-loader-icon-images {
+    animation: cycleImages2 $page-loader-icon-transition-duration * 3 infinite;
+    animation-timing-function: linear;
   }
-  &.loading-blog {
-    @include page-loader-spinner(#fff, $blu);
+}
+
+@keyframes spinLeft {
+  0% {
+    transform: rotate(0deg);
   }
-  &.loading-join-us {
-    @include page-loader-spinner(#fff, $honey);
+  25% {
+    transform: rotate(0deg);
   }
-  &.loading-events {
-    @include page-loader-spinner(#fff, $softPassion);
+  35% {
+    transform: rotate(150deg);
+  }
+  40% {
+    transform: rotate(170deg);
+  }
+  45% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(180deg);
+  }
+  85% {
+    transform: rotate(330deg);
+  }
+  90% {
+    transform: rotate(350deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinRight {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(10deg);
+  }
+  20% {
+    transform: rotate(30deg);
+  }
+  25% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  60% {
+    transform: rotate(190deg);
+  }
+  65% {
+    transform: rotate(210deg);
+  }
+  75% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cycle {
+  0% {
+    background-image: linear-gradient(to bottom, $softPiglet, $rain);
+    transform: rotate(0deg);
+  }
+  32% {
+    background-image: linear-gradient(to bottom, $softPiglet, $rain);
+  }
+  33% {
+    background-image: linear-gradient(to bottom, $jeezz, $mare);
+  }
+  65% {
+    background-image: linear-gradient(to bottom, $jeezz, $mare);
+  }
+  66% {
+    background-image: linear-gradient(to bottom, $piglet, $honey);
+  }
+  100% {
+    background-image: linear-gradient(to bottom, $piglet, $honey);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cycle2 {
+  0% {
+    background-image: linear-gradient(to bottom, $piglet, $honey);
+    transform: rotate(0deg);
+  }
+  32% {
+    background-image: linear-gradient(to bottom, $piglet, $honey);
+  }
+  33% {
+    background-image: linear-gradient(to bottom, $jeezz, $mare);
+  }
+  65% {
+    background-image: linear-gradient(to bottom, $jeezz, $mare);
+  }
+  66% {
+    background-image: linear-gradient(to bottom, $softPiglet, $rain);
+  }
+  100% {
+    background-image: linear-gradient(to bottom, $softPiglet, $rain);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cycleImages {
+  0% {
+    opacity: 0;
+    background-image: url('/images/icon-loading-1.svg');
+  }
+  5% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  32% {
+    background-image: url('/images/icon-loading-1.svg');
+  }
+  33% {
+    opacity: 0;
+    background-image: url('/images/icon-loading-2.svg');
+  }
+  38% {
+    opacity: 0;
+  }
+  43% {
+    opacity: 1;
+  }
+  53% {
+    opacity: 1;
+  }
+  58% {
+    opacity: 0;
+  }
+  65% {
+    background-image: url('/images/icon-loading-2.svg');
+  }
+  66% {
+    opacity: 0;
+    background-image: url('/images/icon-loading-3.svg');
+  }
+  71% {
+    opacity: 0;
+  }
+  76% {
+    opacity: 1;
+  }
+  86% {
+    opacity: 1;
+  }
+  91% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    background-image: url('/images/icon-loading-3.svg');
+  }
+}
+
+@keyframes cycleImages2 {
+  0% {
+    opacity: 0;
+    background-image: url('/images/icon-loading-3.svg');
+  }
+  5% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  32% {
+    background-image: url('/images/icon-loading-3.svg');
+  }
+  33% {
+    opacity: 0;
+    background-image: url('/images/icon-loading-2.svg');
+  }
+  38% {
+    opacity: 0;
+  }
+  43% {
+    opacity: 1;
+  }
+  53% {
+    opacity: 1;
+  }
+  58% {
+    opacity: 0;
+  }
+  65% {
+    background-image: url('/images/icon-loading-2.svg');
+  }
+  66% {
+    opacity: 0;
+    background-image: url('/images/icon-loading-1.svg');
+  }
+  71% {
+    opacity: 0;
+  }
+  76% {
+    opacity: 1;
+  }
+  86% {
+    opacity: 1;
+  }
+  91% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    background-image: url('/images/icon-loading-1.svg');
   }
 }

@@ -30,8 +30,9 @@
     <main id="stage"></main>
     <script type="text/javascript">
       var React = require('react');
+      var ReactDOM = require('react-dom');
       var Sandbox = React.createFactory(require('sandbox'));
-      window.view = React.render(Sandbox(), document.getElementById('stage'));
+      window.view = ReactDOM.render(Sandbox(), document.getElementById('stage'));
     </script>
   </body>
 </html>

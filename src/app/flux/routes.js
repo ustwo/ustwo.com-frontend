@@ -10,17 +10,53 @@ const routes = {
     }]
   },
   work: {
-    id: 'what-we-do',
-    patterns: ['/what-we-do'],
+    id: 'work',
+    patterns: ['/work'],
     data: () => [{
-      url: 'ustwo/v1/pages/what-we-do',
+      url: 'ustwo/v1/pages/work',
       type: 'page',
-      slug: 'what-we-do'
+      slug: 'work'
+    }]
+  },
+  discoveryStrategy: {
+    id: 'work/discovery-strategy',
+    patterns: ['/work/discovery-strategy'],
+    data: () => [{
+      url: 'ustwo/v1/pages/work',
+      type: 'page',
+      slug: 'discovery-strategy'
+    }]
+  },
+  designBuild: {
+    id: 'work/design-build',
+    patterns: ['/work/design-build'],
+    data: () => [{
+      url: 'ustwo/v1/pages/work',
+      type: 'page',
+      slug: 'design-build'
+    }]
+  },
+  launchScale: {
+    id: 'work/launch-scale',
+    patterns: ['/work/launch-scale'],
+    data: () => [{
+      url: 'ustwo/v1/pages/work',
+      type: 'page',
+      slug: 'launch-scale'
+    }]
+  },
+  waysOfWorking: {
+    id: 'work/ways-of-working',
+    patterns: ['/work/ways-of-working'],
+    data: () => [{
+      url: 'ustwo/v1/pages/work',
+      type: 'page',
+      slug: 'lways-of-working'
     }]
   },
   caseStudy: {
-    id: 'what-we-do/case-study',
-    patterns: ['/what-we-do/:cid'],
+    id: 'work/case-study',
+    patterns: ['/work/:cid'],
     data: slug => [{
       url: `ustwo/v1/case-studies/${slug}`,
       type: 'caseStudy',

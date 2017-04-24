@@ -2,10 +2,18 @@
 |* Breakpoints
 \* ------------------------------------------------------------ */
 
+/* Mobile */
+$bp-smaller: 375px;
 $bp-small: 480px;
+
+/* Tablet */
+$bp-tablet: 600px;
 $bp-medium: 768px;
+
+/* Desktop */
 $bp-large: 1024px;
-$bp-larger: 1240px;
+$bp-larger: 1281px;
+
 $bp-huge: 1440px;
 $bp-gargantuan: 1800px; /* This is becoming a joke! Find a better way to name breakpoints. */
 
@@ -14,26 +22,34 @@ $bp-gargantuan: 1800px; /* This is becoming a joke! Find a better way to name br
 \* ------------------------------------------------------------ */
 
 $max-app-width: 1400px;
-$nav-height: 68px;
+$nav-height-small: 60px;
+$nav-height-large: 80px;
 $dropdown-close-height: 60px;
 $loading-spinner-size: 28px;
 
 $card-padding-small: 20px;
-$card-padding-medium: 30px;
-$card-padding-large: 40px;
+$card-padding-medium: 20px;
+$card-padding-large: 25px;
 
 $card-image-height: 245px;
-$card-margin-offset: -14vh;
+$card-margin-offset: -40vh;
 $card-gutter-large: 30px;
 
-$vertical-spacing: 40px;
-$vertical-spacing-medium: 70px;
-$vertical-spacing-large: 100px;
+$vertical-spacing: 50px;
+$vertical-spacing-medium: 80px;
+$vertical-spacing-large: 120px;
+
+/* ------------------------------------------------------------ *\
+|* Global
+\* ------------------------------------------------------------ */
+
+$grid-max-width: 1200px;
+$grid-inner-padding: 120px;
+$core-padding: 6%;
 
 /* ------------------------------------------------------------ *\
 |* Blog
 \* ------------------------------------------------------------ */
-
 
 $category-tag-height: 22px;
 
@@ -51,6 +67,13 @@ $blog-controls-margin-bottom: 52px;
 
 $blog-search-results-page-offset: -130px;
 $blog-search-item-height-desktop: 140px;
+
+/* ------------------------------------------------------------ *\
+|* Blog & Events
+\* ------------------------------------------------------------ */
+
+$hero-offsetSize-small: 25vh;
+$hero-offsetSize: 40vh;
 
 /* ------------------------------------------------------------ *\
 |* Jobs

@@ -18,9 +18,15 @@
 }
 
 .app {
+  background-color: $offWhite;
+
+  &.overflow-hidden {
+    overflow: hidden;
+  }
 
   .app-content {
-    transition: filter .2s ease-in-out;
+    // opacity: 1;
+    // transition: opacity .2s linear .2s;
 
     /* Takeover bound by viewport size */
     &.takeover {
@@ -30,42 +36,14 @@
 
     /* When blog categories dropdown is open */
     &.disabled {
+      // opacity: 0;
+      // transition-delay: 0s;
       pointer-events: none;
-      filter: brightness(0.7);
     }
 
     /* For when mobile navigation-overlay is visible to prevent scrolling of the page underneath */
     &.mobile-no-scroll {
-      position: fixed;
-      overflow: hidden;
-      opacity: 0;
-    }
-
-    .page-loader-container {
-      .page-loader,
-      > article {
-        transition: opacity .3s ease-in-out;
-
-        &.add {
-          opacity: 0;
-        }
-        &.show {
-          opacity: 1;
-        }
-        &.hide {
-          opacity: 0;
-          transition: opacity .3s ease-in-out .3s;
-
-          .loading-icon {
-            animation: page-loader-exit .6s 1;
-          }
-        }
-      }
-      > article {
-        &.show {
-          // transition-duration: 0s;
-        }
-      }
+      // opacity: 0;
     }
   }
 
@@ -76,15 +54,22 @@
     right: 0;
     height: 100%;
   }
+}
 
-  @media screen and (min-width: $bp-large) {
-    .app-content {
-      /* Reset to normal behaviour for larger screens */
-      &.mobile-no-scroll {
-        position: relative;
-        overflow: auto;
-        opacity: 1;
-      }
-    }
+.section-title {
+  @extend .h5;
+  margin-bottom: 6px;
+
+  @media scree and (min-width: $bp-small) {
+    margin-bottom: 10px;
   }
+}
+
+
+.app-wrapper,
+.app,
+.app-content,
+.page-content,
+.page-home-content {
+  height: 100%;
 }

@@ -1,0 +1,85 @@
+/*
+ *  WORK CLIENTS BOARD
+ *  Landing page to see ustwo proposition to potential clients and showcase past projects
+ *
+ */
+
+.work-clients-board {
+  padding-top: 130px;
+  padding-bottom: 130px;
+  max-width: 690px;
+  margin: 0 auto;
+
+  .title {
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 70px;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  li {
+    list-style-type: none;
+    width: 33.33%;
+    text-align: center;
+    margin: 5px 0;
+
+    img {
+      width: 85px;
+      height: 85px;
+      opacity : .25;
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    padding-top: 150px;
+    padding-bottom: 150px;
+
+    .title {
+      margin-bottom: 110px;
+    }
+
+    li {
+      width: 25%;
+      margin: 17px 0;
+
+      img {
+        width: 110px;
+        height: 110px;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    padding-top: 170px;
+    padding-bottom: 170px;
+
+    .title {
+      margin-bottom: 50px;
+    }
+
+    li {
+      width: 25%;
+      margin: 17px 0;
+
+      img {
+        width: 110px;
+        height: 110px;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-larger) {
+    @include core-layout();
+    max-width: none;
+
+    li {
+      width: 15%;
+      margin: 31px 0;
+    }
+  }
+}

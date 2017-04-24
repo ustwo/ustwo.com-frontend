@@ -1,0 +1,37 @@
+/*
+ *  CONTACT BUTTON
+ *
+ */
+
+.contact-button {
+  display: block;
+  width: 285px;
+  height: 60px;
+  line-height: 60px;
+  margin: 0 auto;
+  background-image: linear-gradient(258deg, $softPassion, $rain);
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+
+  svg {
+    width: 40px;
+    height: 50px;
+    fill: #fff;
+    transform: scale(0.7);
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.contact-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-button-text {
+  margin-right: 5px;
+}

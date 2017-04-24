@@ -35,13 +35,25 @@ $offWhite    : #F8F8F8;
 $lightGrey   : #E8E8E8;
 $midGrey     : #BFBFBF;
 $darkGrey    : #646464;
-$nonBlack    : #333333;
+$veryDarkGrey: #333333;
+$nonBlack    : #111111;
+$offWhite-semiTransparent: rgba(248,248,248,.9); /* this is rgb value for $offWhite (#F8F8F8) */
 
 /* other */
 $twitter     : #32abe2;
 $facebook    : #3a5998;
 $linkedin    : #007bb5;
 $notfound    : #f7e370;
+
+/* Ventures */
+$v-gradient1 : #333333;
+$v-gradient2 : #304179;
+$v-solid     : #2f3b55;
+
+/* Capability/Work subpages */
+$c-gradient1 : #252e47;
+$c-gradient2 : #1a1a1a;
+$c-solid     : #1e212a;
 
 
 /* Palettes */
@@ -83,9 +95,10 @@ $blog-categories: (
 );
 
 $work-categories: (
-  work: $blu,
+  client-work: $blu,
   venture: $pot,
-  ustwo: $piglet
+  business: $piglet,
+  own-product: $honey
 );
 
 $feature-card-colours:  $navy $softNavy,

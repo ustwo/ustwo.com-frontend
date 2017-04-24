@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import spannify from 'app/lib/spannify';
 import animate from 'app/lib/animate';
@@ -12,28 +13,36 @@ const WordAnimation = React.createClass({
     }
   },
   componentWillMount() {
+    let baseStyle = { opacity: 0 }
     if (this.props.children) {
-      this.text = spannify(this.props.children, 'word');
+      this.text = spannify(this.props.children, 'word', baseStyle);
     }
   },
   componentWillReceiveProps(nextProps) {
+    let baseStyle = { opacity: 0 }
     if (!this.text && nextProps.children) {
-      this.text = spannify(nextProps.children, 'word');
+      this.text = spannify(nextProps.children, 'word', baseStyle);
     }
   },
   componentDidMount() {
-    if (this.text) {
+    if (this.text && this.props.trigger == undefined) {
+      this.startAnimation();
+    }
+    if (this.text && this.props.trigger) {
       this.startAnimation();
     }
   },
   componentDidUpdate() {
-    if (!this.state.animationShown && this.text) {
+    if (!this.state.animationShown && this.text && this.props.trigger == undefined) {
+      this.startAnimation();
+    }
+    if (!this.state.animationShown && this.text && this.props.trigger) {
       this.startAnimation();
     }
   },
   startAnimation() {
     const props = this.props;
-    const words = React.findDOMNode(this).children;
+    const words = ReactDOM.findDOMNode(this).children;
     if (!this.state.animationShown && words.length) {
       for(let i = 0; i < words.length; i++) {
         let word = words[i];

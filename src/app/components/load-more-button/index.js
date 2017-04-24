@@ -14,14 +14,18 @@ const LoadMoreButton = React.createClass({
     const topLevelClasses = classnames('load-more-button', { hidden: disabled });
     const buttonClasses = classnames({ loading: loading });
 
-    return <div className={topLevelClasses}>
-      <button
-        onClick={this.onClick}
-        className={buttonClasses}
-      >
-        Gimme more <div className="loader"></div>
-      </button>
-    </div>;
+    return (
+      <div className={topLevelClasses}>
+        <button
+          onClick={this.onClick}
+          className={buttonClasses}
+        >
+          <div className="load-more-button-wrapper">
+            Gimme more <div className="loader"></div>
+          </div>
+        </button>
+      </div>
+    );
   }
 });
 

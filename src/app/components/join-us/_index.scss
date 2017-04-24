@@ -4,17 +4,39 @@
  *
  */
 
+.scroll-wrapper-join-us-hero {
+  padding: 0;
+  height: 100%;
+
+  .scroll-wrapper-inner {
+    height: 100%;
+    max-width: none;
+  }
+}
+
+@keyframes underlineScale {
+  10% {
+    transform: scaleX(1);
+  }
+  40% {
+    transform: scaleX(0.5)
+  }
+  60% {
+    transform: scaleX(0.5);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 .page-join-us {
+  height: 100%;
 
-  .hero {
-    background-color: $honey;
+  .single-column {
+    background-color: #fff;
 
-    .rimage {
-      max-width: 800px;
-    }
-
-    .down-chevron {
-      z-index: 2;
+    hr {
+      @include page-background-colour(join);
     }
   }
 
@@ -42,50 +64,40 @@
     }
   }
 
-  .current-openings,
-  .benefits {
+  .current-openings {
     display: flex;
     align-items: center;
     text-align: center;
 
     h2 {
       padding: 0 20px;
-      color: #fff;
-      line-height: 1.2;
     }
   }
 
   .current-openings {
     padding-top: $vertical-spacing;
     padding-bottom: 10px;
-    background-color: $lightGrey;
 
     h2 {
-      color: $nonBlack;
-
-      @media screen and (min-width: $bp-large) {
-        font-size: 60px;
-      }
+      @extend .h3;
     }
   }
 
-  .benefits {
-    height: 156px;
-    background: $ohra;
+  .home-main-content-wrapper {
+    background-color: $offWhite;
   }
 
   .jobs {
     position: relative;
     padding: 10px 15px 40px 15px;
-    background-color: $lightGrey;
   }
 
   .jobs-studio-tabs {
     display: none;
-    margin: 0 0 30px 0;
+    margin-bottom: 30px;
     text-align: center;
 
-    > div {
+    .tab {
       display: inline-block;
       margin: 0 20px 10px 20px;
       cursor: pointer;
@@ -93,11 +105,7 @@
       font-size: 24px;
       text-transform: uppercase;
       color: $nonBlack;
-      transition: opacity $hover-duration-quick ease-in-out;
-
-      &[aria-selected="true"] {
-        border-bottom: 4px solid;
-      }
+      transition: opacity $hover-duration-quick ease-out, color .32s linear;
 
       &:hover:not([aria-selected="true"]) {
         opacity: $hover-fade-back;
@@ -129,7 +137,24 @@
     }
 
     .jobs-studio-tabs {
+      position: relative;
       display: block;
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+
+      .underline {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 4px;
+        width: 150px;
+        transition: all .3s ease-in-out;
+      }
+
+      &.animate .underline {
+        animation: underlineScale .5s 1;
+      }
     }
   }
 
@@ -139,7 +164,7 @@
     }
 
     .jobs-studio-tabs {
-      margin: 0 0 45px 0;
+      margin-bottom: 45px;
 
       li {
         font-size: 26px;

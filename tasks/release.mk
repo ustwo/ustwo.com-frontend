@@ -4,7 +4,8 @@
   release-tag-create \
   release-pull-snapshots \
   release-tag-snapshots \
-  release-tag-rm
+  release-tag-rm \
+	release-push-snapshot
 
 release-create: snapshot_sha1 = $(call git_sha1,$(VERSION))
 release-create: app_snapshot = $(call image_tag,$(app_id),$(snapshot_sha1))
@@ -34,3 +35,8 @@ endif
 
 release-tag-rm:
 	$(GIT) tag -d v$(VERSION)
+
+release-push-snapshot:
+	$(DOCKER) push $(app_image)
+	$(DOCKER) push $(assets_image)
+	$(DOCKER) push $(sandbox_image)

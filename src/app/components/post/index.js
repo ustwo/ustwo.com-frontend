@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import he from 'he';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import renderModules from 'app/lib/module-renderer';
 import getAuthor from 'app/lib/get-author';
 import getFeaturedImage from 'app/lib/get-featured-image';
@@ -14,48 +14,61 @@ import BlogPostMetaInformation from 'app/components/blog-post-meta-information';
 import CategoryTag from 'app/components/category-tag';
 import SocialMediaSharing from 'app/components/social-media-sharing';
 import RelatedContent from 'app/components/related-content';
+import Footer from 'app/components/footer';
+import ContactBlock from 'app/components/contact-block';
+import ScrollWrapper from 'app/components/scroll-wrapper';
 
 const PagePost = React.createClass({
   mixins: [getScrollTrackerMixin('post')],
   render() {
-    const {post} = this.props;
+    const { post, footer, studios, currentPage, documentScrollPosition, viewportDimensions } = this.props;
     const category = get(post, '_embedded.wp:term.0.0', []);
     const image = getFeaturedImage(post);
     const classes = classnames('page-post', this.props.className, `blog-label-${get(category, 'slug', 'uncategorised')}`);
-    return <article className={classes}>
-      <style>{`
-        .page-post .content-container a {
-          border-bottom-color: #14C04D;
-        }
-      `}</style>
-      <Rimage
-        wrap='div'
-        className='hero-image'
-        sizes={get(image, 'media_details.sizes')}
-        altText={get(image, 'alt_text')}
-      />
-      <div className='content-container'>
-        <CategoryTag
-          category={get(category, 'name', 'category')}
+    return (
+      <article className={classes}>
+        <style>{`
+          .page-post .content-container a {
+            border-bottom-color: #14C04D;
+          }
+        `}</style>
+        <Rimage
+          wrap='div'
+          className='hero-image'
+          sizes={get(image, 'media_details.sizes')}
+          altText={get(image, 'alt_text')}
         />
-        <h1 className='title'>{he.decode(get(post, 'title.rendered', ''))}</h1>
-        {this.renderSocialMediaSharing('side')}
-        <BlogPostMetaInformation
-          author={getAuthor(post)}
-          date={get(post, 'date')}
+        <div className='content-container'>
+          <CategoryTag
+            category={get(category, 'name', 'category')}
+          />
+          <h1 className='title'>{he.decode(get(post, 'title.rendered', ''))}</h1>
+          {this.renderSocialMediaSharing('side')}
+          <BlogPostMetaInformation
+            author={getAuthor(post)}
+            date={get(post, 'date')}
+          />
+          <hr className='rule' />
+          {renderModules({
+            modules: get(post, 'page_builder', []),
+            colours: get(post, 'colors'),
+            zebra: false
+          })}
+          <hr className='rule' />
+          {this.renderSocialMediaSharing('bottom')}
+          {this.renderAuthorInformation()}
+        </div>
+        {this.renderRelatedContent()}
+        <ScrollWrapper
+          component={<ContactBlock />}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+          requireScreenPosition={true}
+          className="scroll-wrapper-contact-block"
         />
-        <hr className='rule' />
-        {renderModules({
-          modules: get(post, 'page_builder', []),
-          colours: get(post, 'colors'),
-          zebra: false
-        })}
-        <hr className='rule' />
-        {this.renderSocialMediaSharing('bottom')}
-        {this.renderAuthorInformation()}
-      </div>
-      {this.renderRelatedContent()}
-    </article>
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
+      </article>
+    );
   },
   renderRelatedContent() {
     let relatedContent;

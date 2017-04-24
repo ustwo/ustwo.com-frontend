@@ -4,5 +4,15 @@ export default {
 	postsPagination: 1,
 	eventsStudio: 'all',
 	eventsPagination: 1,
-	archivedEventsPagination: 1
+	archivedEventsPagination: 1,
+	showPopup: '',
+	menuHover: '',
+	venturesPosition: {},
+	homeIntroVideoViewed: false,
+	heroVideoReady: false,
+	homeLoaderShown: false,
+	overflow: '',
+	videoOverlaySrc: '',
+	setWindowHeight: 0,
+	visitedWorkCapabilities: false
 };

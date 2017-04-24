@@ -4,7 +4,7 @@ import findIndex from 'lodash/array/findIndex';
 import find from 'lodash/collection/find';
 import some from 'lodash/collection/some';
 import capitalize from 'lodash/string/capitalize';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import camelCase from 'lodash/string/camelCase';
 
 import log from 'app/lib/log';
@@ -20,6 +20,8 @@ const _state = Object.assign({
   searchMode: Defaults.searchMode,
   searchQuery: Nulls.searchQuery,
   modal: Nulls.modal,
+  popup: Nulls.popup,
+  menuHover: Defaults.menuHover,
   colours: Nulls.colours,
   takeover: Nulls.takeover,
   postsPagination: Defaults.postsPagination,
@@ -29,6 +31,14 @@ const _state = Object.assign({
   eventsPaginationTotal: Nulls.eventsPaginationTotal,
   archivedEventsPagination: Defaults.archivedEventsPagination,
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
+  venturesPosition: Defaults.venturesPosition,
+  heroVideoReady: Defaults.heroVideoReady,
+  homeIntroVideoViewed: Defaults.homeIntroVideoViewed,
+  homeLoaderShown: Defaults.homeLoaderShown,
+  overflow: Defaults.overflow,
+  videoOverlaySrc: Defaults.videoOverlaySrc,
+  setWindowHeight: Defaults.setWindowHeight,
+  visitedWorkCapabilities: Defaults.visitedWorkCapabilities,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -132,6 +142,7 @@ const Store = Object.assign(
       _state.currentHash = newHash || Nulls.hash;
       _state.statusCode = newStatusCode;
       _state.modal = null;
+      _state.popup = null;
       _state.relatedContent = [];
       Store.emit('change', _state);
     },
@@ -142,9 +153,9 @@ const Store = Object.assign(
         // - it exists in the store with a different slug OR
         // - posts have a different blog category
         // - events have a different studio
-        return (!_state[item.type] 
-                || (item.slug && _state[item.type].slug && _state[item.type].slug !== item.slug) 
-                || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory) 
+        return (!_state[item.type]
+                || (item.slug && _state[item.type].slug && _state[item.type].slug !== item.slug)
+                || (item.slug && item.slug.match(/posts\/\w+/) && item.slug.split('/')[1] !== _state.blogCategory)
                 || (item.slug && item.slug !== _state.eventsStudio))
       });
 
@@ -179,12 +190,8 @@ const Store = Object.assign(
       _state.searchQuery = string;
       Store.emit('change', _state);
     },
-    showContacts() {
-      _state.modal = 'contacts';
-      Store.emit('change', _state);
-    },
     showNavOverlay() {
-      _state.modal = 'navigation';
+      _state.modal = 'menu';
       Store.emit('change', _state);
     },
     closeTakeover() {
@@ -223,6 +230,11 @@ const Store = Object.assign(
     },
     showBlogCategories() {
       _state.modal = 'blogCategories';
+      Store.emit('change', _state);
+    },
+    showVideoOverlay(src) {
+      _state.modal = 'videoOverlay';
+      _state.videoOverlaySrc = src;
       Store.emit('change', _state);
     },
     loadMorePosts() {
@@ -283,6 +295,50 @@ const Store = Object.assign(
       _state.eventsPagination = Defaults.eventsPagination;
       Store.emit('change', _state);
     },
+    venturesPosition(position) {
+      _state.venturesPosition = position;
+      Store.emit('change', _state);
+    },
+    showPopup(name) {
+      _state.popup = name;
+      Store.emit('change', _state);
+    },
+    closePopup() {
+      _state.popup = Nulls.popup;
+      Store.emit('change', _state);
+    },
+    menuHover(name) {
+      _state.menuHover = `menu-hover-${name}`;
+      Store.emit('change', _state);
+    },
+    heroVideoReady(bool) {
+      _state.heroVideoReady = bool;
+      Store.emit('change', _state);
+    },
+    homeIntroVideoViewed() {
+      _state.homeIntroVideoViewed = true;
+      Store.emit('change', _state);
+    },
+    homeLoaderShown() {
+      _state.homeLoaderShown = true;
+      Store.emit('change', _state);
+    },
+    overflowHidden() {
+      _state.overflow = 'hidden';
+      Store.emit('change', _state);
+    },
+    overflowAuto() {
+      _state.overflow = 'auto';
+      Store.emit('change', _state);
+    },
+    setWindowHeight(number) {
+      _state.setWindowHeight = number;
+      Store.emit('change', _state);
+    },
+    visitedWorkCapabilities(bool) {
+      _state.visitedWorkCapabilities = bool;
+      Store.emit('change', _state);
+    }
   }
 );
 

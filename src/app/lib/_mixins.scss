@@ -71,3 +71,203 @@
     }
   }
 }
+
+@mixin page-background-colour($page) {
+  @if $page == 'home' {
+    background-image: linear-gradient(30deg, $mare, $jeezz);
+  }
+  @if $page == 'work' {
+    background-image: linear-gradient(30deg, $rain, $softPassion);
+  }
+  @if $page == 'events' {
+    background-image: linear-gradient(30deg, $piglet, $softPassion);
+  }
+  @if $page == 'blog' {
+    background-image: linear-gradient(30deg, $blu, $mare);
+  }
+  @if $page == 'join' {
+    background-image: linear-gradient(30deg, $honey, $softPassion);
+  }
+  @if $page == 'notfound' {
+    background-image: linear-gradient(30deg, $rain, $softPassion);
+  }
+  @if $page == 'legal' {
+    background-image: linear-gradient(30deg, $rain, $softPassion);
+  }
+  @if $page == 'london' {
+    background-image: linear-gradient(30deg, $blu, $mare);
+  }
+  @if $page == 'malmo' {
+    background-image: linear-gradient(30deg, $honey, $softPassion);
+  }
+  @if $page == 'newyork' {
+    background-image: linear-gradient(30deg, $piglet, $softPassion);
+  }
+  @if $page == 'sydney' {
+    background-image: linear-gradient(30deg, $mare, $jeezz);
+  }
+}
+
+@mixin core-gutter($type: 'padding') {
+  @if $type == 'padding' {
+    padding-left: $core-padding;
+    padding-right: $core-padding;
+  } @else {
+    margin-left: $core-padding;
+    margin-right: $core-padding;
+  }
+}
+
+@mixin core-layout() {
+  display: flex;
+  justify-content: center;
+  @include core-gutter();
+
+  > * {
+    flex: 1;
+    width: 100%;
+    max-width: $grid-max-width;
+    margin: 0 auto;
+  }
+}
+
+@mixin box-shadow() {
+  box-shadow: 10px 10px 40px rgba(0,0,0,.3);
+}
+
+@mixin buttonColor($color: 'dark') {
+  border: 1px solid $nonBlack;
+  color: $nonBlack;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px $nonBlack;
+  }
+
+  @if $color == 'invert' {
+    border: 1px solid $offWhite;
+    color: $offWhite;
+
+    &:hover {
+      box-shadow: inset 0 0 0 1px $offWhite;
+    }
+  }
+}
+
+@mixin buttonStyle($arrow: false) {
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  @extend .h5;
+  padding: 0 15px;
+
+  @if $arrow == true {
+    padding: 0 40px 0 15px;
+    background-image: url('/images/icon-right-dark.svg');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 13px) 50%;
+    background-size: 16px auto;
+
+    &:hover {
+      animation: buttonArrowHover .2s ease-in-out;
+    }
+  }
+}
+
+@keyframes buttonArrowHover {
+  0% {
+    background-position: calc(100% - 13px) 50%;
+  }
+  50% {
+    background-position: calc(100% - 8px) 50%;
+  }
+  100% {
+    background-position: calc(100% - 13px) 50%;
+  }
+}
+
+@mixin spinner-core() {
+  position: relative;
+  box-sizing: content-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+  border-radius: 50%;
+
+  .half {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+
+    .bg {
+      position: absolute;
+      transform-origin: 50% 50%;
+      transform: rotate(0deg);
+    }
+
+    &.left {
+      left: 0;
+      border-radius: 50% 0 0 50%;
+
+      .bg {
+        left: 0;
+      }
+    }
+
+    &.right {
+      right: 0;
+      border-radius: 0 50% 50% 0;
+
+      .bg {
+        right: 0;
+      }
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+  }
+}
+
+@mixin spinner-size($size, $border) {
+  width: $size;
+  height: $size;
+
+  svg {
+    width: $size * 0.5;
+    height: $size * 0.5;
+  }
+
+  .half {
+    width: $size * .5;
+    height: $size;
+
+    .bg {
+      width: $size * .5;
+      height: $size;
+      border-radius: $size;
+    }
+
+    &.left {
+      .bg {
+        border-left: ($size * .5) solid #e5e5e5;
+      }
+    }
+
+    &.right {
+      .bg {
+        border-right: ($size * .5) solid #e5e5e5;
+      }
+    }
+  }
+
+  &:after {
+    left: $border;
+    top: $border;
+    width: $size - (2 * $border);
+    height: $size - (2 * $border);
+    border-radius: $size - (2 * $border) * 0.5;
+  }
+}

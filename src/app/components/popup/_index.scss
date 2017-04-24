@@ -1,0 +1,96 @@
+/*
+ *  Popup
+ *
+ */
+
+ .scroll-wrapper-popup {
+   position: absolute;
+   top:0;
+   left:0;
+   padding: 0;
+   display: block;
+   width: 100vw;
+
+   .scroll-wrapper-inner {
+     width: 100vw;
+     height: 100vh;
+
+     > div {
+       max-width: none;
+     }
+   }
+ }
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5000;
+  background: $offWhite-semiTransparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+
+  &.show {
+    opacity: 1;
+  }
+
+  &.hide {
+    opacity: 0;
+  }
+}
+
+.popup-content {
+  pointer-events: none;
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 490px;
+  text-align: center;
+  @include box-shadow();
+  padding: 25px;
+  background-color: $offWhite;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: auto;
+  }
+
+  @media screen and (min-width: $bp-smaller) {
+    padding: 30px;
+    width: 80%;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    max-width: 490px;
+    padding: 50px;
+  }
+}
+
+.popup {
+  &.startups,
+  &.ventures,
+  &.own-products {
+    background: rgba(50,58,86,0.9);
+    color: $offWhite;
+
+    .popup-content {
+      background-color: $v-solid;
+
+      .close-button {
+        fill: $nonBlack;
+      }
+    }
+  }
+}

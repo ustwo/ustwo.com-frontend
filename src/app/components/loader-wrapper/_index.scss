@@ -1,0 +1,29 @@
+/*
+ *  LOADER WRAPPER
+ *  Wrap the loaders
+ *
+ */
+
+
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5000;
+  height: 100%;
+  display: flex;
+  transition: opacity .5s linear;
+
+  .page-loader-icon {
+    transition: opacity .2s linear;
+  }
+
+  &.hide {
+    opacity: 0;
+
+    .page-loader-icon {
+      opacity: 0;
+    }
+  }
+}

@@ -13,9 +13,6 @@ const Actions = {
   setSearchQueryTo(string) {
     Store.setSearchQueryTo(string);
   },
-  showContacts() {
-    Store.showContacts();
-  },
   showNavOverlay() {
     Store.showNavOverlay();
   },
@@ -51,6 +48,42 @@ const Actions = {
   },
   setEventsStudioTo(id) {
     Store.setEventsStudioTo(id);
+  },
+  venturesPosition(position) {
+    Store.venturesPosition(position);
+  },
+  showPopup(name) {
+    Store.showPopup(name);
+  },
+  closePopup() {
+    Store.closePopup();
+  },
+  menuHover(name) {
+    Store.menuHover(name);
+  },
+  heroVideoReady(bool) {
+    Store.heroVideoReady(bool);
+  },
+  homeIntroVideoViewed() {
+    Store.homeIntroVideoViewed();
+  },
+  homeLoaderShown() {
+    Store.homeLoaderShown();
+  },
+  overflowHidden() {
+    Store.overflowHidden();
+  },
+  overflowAuto() {
+    Store.overflowAuto();
+  },
+  showVideoOverlay(src) {
+    Store.showVideoOverlay(src);
+  },
+  setWindowHeight(number) {
+    Store.setWindowHeight(number);
+  },
+  visitedWorkCapabilities(bool) {
+    Store.visitedWorkCapabilities(bool);
   }
 };
 

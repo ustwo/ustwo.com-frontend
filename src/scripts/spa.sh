@@ -26,14 +26,16 @@ persistify $input \
            --transform [aliasify --require $aliases] \
            --external babelify/polyfill \
            --external react \
+           --external react-dom \
+           --external react-addons-test-utils \
            --external svg4everybody \
            --external classnames \
            --external ellipsize \
            --external es6-promise \
            --external moment \
-           --external react-transition-manager \
            --external scrollmagic \
            --external react-responsive \
+           --external react-swipe \
            --verbose \
            --cache-dir $base/public/.cache-spa \
            --outfile $filename

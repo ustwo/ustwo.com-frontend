@@ -1,19 +1,51 @@
-'use strict';
-
-import React from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
+import Flux from 'app/flux';
 
-import PageLoadingIcon from 'app/components/page-loading-icon';
+class PageLoader extends Component {
 
-const PageLoader = React.createClass({
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      alt: false
+    }
+  }
+
+  componentDidMount() {
+    Flux.homeLoaderShown();
+    Flux.overflowHidden();
+
+    this.setState({
+      alt: Math.random() >= 0.5
+    })
+  }
+
+  componentWillUnmount() {
+    Flux.overflowAuto();
+  }
+
   render() {
-    const props = this.props;
+    const { pageId } = this.props;
+    const { alt } = this.state;
+    const classes = classnames('page-loader', `loading-${pageId}`, { alt });
+
     return (
-      <section className={classnames("page-loader", `loading-${this.props.pageId}`)}>
-        <PageLoadingIcon pageId={this.props.pageId} />
-      </section>
+      <div className={classes}>
+        <div className="page-loader-icon">
+          <div className="page-loader-icon-inner">
+            <div className="half left">
+              <div className="bg"></div>
+            </div>
+            <div className="half right">
+              <div className="bg"></div>
+            </div>
+          </div>
+          <div className="page-loader-icon-images" />
+        </div>
+      </div>
     );
   }
-});
+};
 
 export default PageLoader;

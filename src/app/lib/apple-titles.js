@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default (title) => {
-  if (title.toLowerCase().includes('imessage')) {
+  if (title && title.toLowerCase().includes('imessage')) {
     const index = title.search(/imessage/i);
 
     return (

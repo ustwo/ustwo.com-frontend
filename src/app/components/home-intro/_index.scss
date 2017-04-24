@@ -1,0 +1,137 @@
+/*
+ *  HOME INTRO
+ *  First screen/above the fold
+ *
+ */
+
+.scroll-wrapper-home-intro {
+  padding: 0;
+  height: 100%;
+
+  .scroll-wrapper-inner {
+    height: 100%;
+  }
+}
+
+.home-welcome-wrapper {
+  // margin-top: 100%;
+}
+
+.home-intro-link {
+  display: block;
+  height: 100%;
+}
+
+.home-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+  left: 0;
+
+  .down-indicator {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    left: calc(50% - 13px);
+  }
+}
+
+.home-intro-video {
+  flex: 1;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.home-intro-logo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+
+  /* THE FOLLOWING WIDTHS AND BREAKPOINTS ARE COPIED INTO APP.HTML */
+  .home-intro-logo-wrapper,
+  .ustwo-logo-sequence {
+    perspective: 200px;
+    width: 120px;
+
+    @media screen and (min-width: $bp-smaller) {
+      width: 140px;
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      width: 155px;
+    }
+
+    @media screen and (min-width: $bp-large) {
+      width: 190px;
+    }
+
+    @media screen and (min-width: $bp-larger) {
+      width: 225px;
+    }
+  }
+
+  svg {
+    position: relative;
+    z-index: 2;
+    top: auto;
+    left: 0;
+    fill: $offWhite;
+    width: 100%;
+
+    &.layer-background {
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .home-intro-logo-wrapper {
+    .layer-background {
+      filter: blur(3px);
+      opacity: 0.5;
+    }
+  }
+}
+
+
+/* NOTE: max-width */
+@media screen and (max-width: $bp-medium) {
+  .home-loader {
+    height: 100% !important;
+  }
+  .home-intro-link {
+    width: 100vw;
+    height: 100%;
+
+    .scroll-wrapper {
+      display: block;
+      height: 100%;
+    }
+    .scroll-wrapper-inner {
+      display: block;
+      height: 100%;
+    }
+    .home-intro {
+      position: absolute;
+      display: block;
+      height: 100%;
+    }
+    .home-intro-logo {
+      height: 100%;
+      display:flex;
+      align-items: center;
+      justify-content: center
+    }
+    .videoBackground {
+      height: 100%;
+    }
+  }
+}

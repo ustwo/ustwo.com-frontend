@@ -21,6 +21,9 @@
   left: 0;
   top: 0;
   z-index: 1;
+  overflow: hidden;
+  background-size: cover;
+  background-color: $nonBlack;
 
   video {
     position: absolute;
@@ -34,4 +37,125 @@
     z-index: -1000;
     overflow: hidden;
   }
+
+  &.imageCSS {
+    background-size: cover;
+    background-position: 50%;
+  }
+}
+
+.video-mobile-fallback {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  z-index: -1000;
+}
+
+.videoBackground-tint {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.1);
+}
+
+/* This used to work for parent element of button divs */
+
+/* But it is not enough now, below dont hide play button parent div */
+
+*::-webkit-media-controls-panel {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+/* Old shadow dom for play button */
+
+*::--webkit-media-controls-play-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+/* New shadow dom for play button */
+
+/* This one works */
+
+*::-webkit-media-controls-start-playback-button {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Pause icon when hovering but maybe too annoying
+// .rh5v-DefaultPlayer_component:hover {
+//   .rh5v-Overlay_component:empty {
+//     background: url('/images/icon-pause-large-dark.svg') no-repeat 50% 50%;
+//   }
+// }
+
+.rh5v-DefaultPlayer_controls {
+  background-color: transparent;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.rh5v-Overlay_inner {
+  background-image: url('/images/icon-play-large-dark.svg');
+  background-position: 50%;
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+
+  svg {
+    display: none;
+  }
+}
+
+.rh5v-Time_component  {
+  font-size: 0;
+}
+
+.rh5v-Time_current {
+  font-size: 14px;
+  color: $offWhite;
+}
+
+.rh5v-Time_duration {
+  display: none;
+}
+
+.rh5v-Seek_track {
+  background-color: rgba(255,255,255,.2);
+  height: 2px;
+}
+
+.rh5v-Seek_buffer {
+  background-color: rgba(255,255,255,.4);
+}
+
+.rh5v-Seek_fill {
+  background: #fff;
+}
+
+.rh5v-Volume_component:hover,
+.rh5v-Volume_slider,
+.rh5v-Fullscreen_component:hover {
+  background: transparent;
 }

@@ -1,0 +1,106 @@
+/*
+ *  WORK PROCESS
+ *
+ */
+
+
+.work-process {
+  justify-content: space-between;
+  overflow: hidden;
+  visibility: visible;
+  position: relative;
+  margin-bottom: 50px;
+
+  @media screen and (min-width: $bp-large) {
+    @include core-gutter();
+    margin-bottom: 100px;
+
+    .work-process-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      max-width: $grid-max-width;
+      margin: 0 auto;
+    }
+  }
+  @media screen and (min-width: $bp-larger) {
+    padding: 0;
+  }
+}
+
+.work-process-item {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  margin-left: 6vw; /* This is to replacement the core-gutter mixin (left/right percentage padding) */
+  margin-right: 6vw;
+  flex: 1;
+
+  @media screen and (min-width: $bp-medium) {
+    min-width: 50%;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @media screen and (min-width: $bp-larger) {
+    min-width: 0;
+  }
+
+  h2 {
+    @extend .h3;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+}
+
+.react-swipe-container {
+  .work-process-item {
+    @media screen and (min-width: $bp-medium) {
+      min-width: 0;
+    }
+    @media screen and (min-width: $bp-larger) {
+      min-width: 0;
+    }
+  }
+}
+
+.work-process.touchDevice {
+  .work-process-item {
+    box-shadow: 0 0 20px rgba(0,0,0,.3);
+    background-color: $offWhite;
+  }
+}
+
+.work-process-pagination {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+
+  > li {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    opacity: .2;
+    margin: 0 8px;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
+.work-process-item-button {
+  @include buttonStyle(true);
+  @include buttonColor();
+  border: none;
+  padding-left: 0;
+
+  &:hover {
+    box-shadow: none;
+  }
+}

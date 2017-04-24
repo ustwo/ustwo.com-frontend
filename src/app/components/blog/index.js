@@ -4,7 +4,7 @@ import React from 'react';
 import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
 import find from 'lodash/collection/find';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import take from 'lodash/array/take';
 import isEqual from 'lodash/lang/isEqual';
 
@@ -18,6 +18,9 @@ import Hero from 'app/components/hero';
 import BlogPostListItem from 'app/components/blog-post-list-item';
 import BlogControls from 'app/components/blog-controls';
 import LoadMoreButton from 'app/components/load-more-button';
+import Footer from 'app/components/footer';
+import ContactBlock from 'app/components/contact-block';
+import ScrollWrapper from 'app/components/scroll-wrapper';
 
 const PageBlog = React.createClass({
   mixins: [getScrollTrackerMixin('blog')],
@@ -96,22 +99,22 @@ const PageBlog = React.createClass({
     const image = getFeaturedImage(page);
     let output;
     if (searchMode) {
-      output = <Search key="search" searchQuery={searchQuery} />;
+      output = (<Search key="search" searchQuery={searchQuery} />);
     } else {
-      output = <Hero
-        key="hero"
-        title={get(page, 'display_title')}
-        transitionImage={true}
-        sizes={get(image, 'media_details.sizes')}
-        altText={get(image, 'alt_text')}
-        eventLabel="blog"
-        showDownChevron={false}
-      >
-        <BlogControls
-          className={classnames({ show: page })}
-          blogCategory={blogCategory}
-        />
-      </Hero>;
+      output = (
+        <Hero
+          key="hero"
+          title={get(page, 'display_title')}
+          eventLabel="ustwo blog"
+          showDownIndicator={false}
+          notFullScreen={true}
+        >
+          <BlogControls
+            className={classnames({ show: page })}
+            blogCategory={blogCategory}
+          />
+        </Hero>
+      );
     }
     return output;
   },
@@ -141,7 +144,7 @@ const PageBlog = React.createClass({
       isLoadingMorePosts,
       isLoadingCategoryPosts
     } = this.state;
-    const { postsPagination, postsPaginationTotal } = this.props;
+    const { postsPagination, postsPaginationTotal, footer, studios, currentPage, documentScrollPosition, viewportDimensions } = this.props;
     const { posts } = this.props;
     const classes = classnames('page-blog', this.props.className, {
       categorised: isCategorised,
@@ -149,23 +152,35 @@ const PageBlog = React.createClass({
       empty: posts && !posts.length
     });
 
-    return <article className={classes}>
-      <TransitionManager
-        component="div"
-        className="hero-transition-manager"
-        duration={1000}
-      >
-        {this.renderHero()}
-      </TransitionManager>
-      <section className="card-list blog-post-list">
-        {this.renderPosts()}
-        <LoadMoreButton
-          loading={isLoadingMorePosts}
-          onClick={this.onClickLoadMore}
-          disabled={postsPagination >= postsPaginationTotal}
+    return (
+      <article className={classes}>
+        <TransitionManager
+          component="div"
+          className="hero-transition-manager"
+          duration={1000}
+        >
+          {this.renderHero()}
+        </TransitionManager>
+        <section className="card-list blog-post-list">
+          <div className="card-list-inner">
+            {this.renderPosts()}
+            <LoadMoreButton
+              loading={isLoadingMorePosts}
+              onClick={this.onClickLoadMore}
+              disabled={postsPagination >= postsPaginationTotal}
+            />
+          </div>
+        </section>
+        <ScrollWrapper
+          component={<ContactBlock />}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+          requireScreenPosition={true}
+          className="scroll-wrapper-contact-block"
         />
-      </section>
-    </article>;
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
+      </article>
+    );
   },
 });
 

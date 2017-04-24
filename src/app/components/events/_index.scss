@@ -8,7 +8,7 @@
   background-color: #eaeaea;
 
   .hero {
-    background-color: $softPassion;
+    @include page-background-colour(events);
   }
 
   p.subheading {
@@ -17,13 +17,34 @@
   }
 
   .events-list {
-    max-width: 1380px;
-    margin: 0 auto;
     opacity: 1;
     transform: translateY(0px);
     transition: opacity .2s ease-in-out, transform .32s ease-in-out;
     position: relative;
     z-index: 2;
+    margin-top: -$hero-offsetSize-small;
+
+    @media screen and (min-width: $bp-tablet) {
+      margin-top: -$hero-offsetSize;
+    }
+  }
+
+  .hero-content {
+
+    @media screen and (min-width: $bp-large) {
+      background: url('/images/events/ustwo-talkies.svg') no-repeat right 20%;
+    }
+    @media screen and (min-width: $bp-larger) {
+      background-position: calc(100% - 200px) 20%;
+    }
+
+    .subheading {
+      max-width: 640px;
+    }
+  }
+
+  .card-list {
+    margin: 0 auto;
   }
 
   .no-events-found {
@@ -32,7 +53,7 @@
     background-color: $offWhite;
     padding: 40px;
     text-align: center;
-    
+
     h2 {
       margin-bottom: 20px;
     }
@@ -66,7 +87,7 @@
       border-bottom: 4px solid;
       border-top: none;
       border-left: none;
-      border-right: none;   
+      border-right: none;
       border-color: $softPassion;
       margin: 30px auto;
     }
@@ -75,7 +96,7 @@
       margin-top: 0;
     }
   }
-  
+
   &.loading {
 
     .events-list {
@@ -93,8 +114,7 @@
     .events-list {
       display: flex;
       flex-wrap: wrap;
-      padding: 0 $events-gutter-large $events-gutter-large $events-gutter-large;
-      margin-top: -14vh;
+      padding: 0 0 $events-gutter-large 0;
     }
 
     .archived-events-list {
@@ -103,9 +123,8 @@
       padding: $events-gutter-large;
     }
 
-    .down-chevron {
+    .down-indicator {
       display: none;
     }
   }
 }
-

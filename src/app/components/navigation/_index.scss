@@ -1,178 +1,445 @@
 /*
- *  NAVIGATION / HEADER
+ *  NAVIGATION
  *  Includes the site navigation and logo
  *
- *  Notes: Should this component be called header?
  */
 
-// .nav-wrapper {
-//   position: absolute;
-//   z-index: 9999;
-//   width: 100%;
-// }
+html {
+ .menu-no-js {
+   display: block;
 
-.header {
-  position: absolute;
-  z-index: 9999;
-  display: block;
-  width: 100%;
-  height: $nav-height;
+   li {
+     display: inline-block;
+     margin: 0 10px;
 
-  .navigation {
-    position: relative;
-    z-index: 2;
-    background: transparent;
-    color: white;
-    transition: color .2s ease-in-out, background-color .2s ease-in-out;
+     a {
+      display: block;
+     }
+   }
+ }
+ &.js .menu-no-js {
+   display: none;
+ }
+}
+
+$nav-height-small: 22px;
+$nav-height-medium: 24px;
+$nav-height-large: 30px;
+
+.navigation {
+  position: fixed;
+  pointer-events: auto;
+  opacity: 1;
+  top: 0;
+  padding: 20px 0;
+  right: 0;
+  left: 0;
+  z-index: 4000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .2s ease-in-out;
+
+  &.subPage {
+    // transition: none; /* to avoid seeing the switch back to left: auto when fading out */
   }
 
-  .logo {
-    overflow: hidden;
-    display: block;
-    width: 100px;
-    height: $nav-height;
-    margin-left: 20px;
-
-    svg {
-      width: 100px;
-      height: $nav-height;
-      fill: white;
-      transition: fill .2s ease-in-out;
-    }
-  }
-
-  .navigation-link {
-    display: block;
-    font-family: $PxGroteskRegular;
-    font-size: 16px;
-    line-height: 24px;
-
-    a {
-      padding-bottom: 3px;
-      transition: color .2s ease-in-out;
-    }
-
-    a:hover,
-    &.selected a {
-      border-bottom: 2px solid white;
-    }
-  }
-
-  .navigation-toggle {
+  &:before {
+    content: "";
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     bottom: 0;
-    z-index: 2;
-    transition: fill .2s ease-in-out;
-  }
-
-  .menu {
-    position: absolute;
     right: 0;
-    top: 0;
-
-    ul {
-      display: none;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .navigation-link:first-child {
-      display: none;
-    }
+    width: 100%;
+    background-color: $offWhite-semiTransparent;
+    transition: all .2s linear;
   }
 
-  &.takeover {
-
-    .navigation-toggle,
-    .menu {
-      display: none;
-    }
-  }
-
-  /* Header is not overlayed onto content for post and event pages */
-  &.post,
-  &.event {
+  .navigation-subpage-nav {
     position: relative;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
 
-    .navigation {
-      color: $nonBlack;
-      background-color: #fff;
-
-      .logo svg,
-      .navigation-toggle {
-        fill: $nonBlack;
-      }
+    button {
+      text-transform: uppercase;
+      margin-left: 20px;
+      padding-left: 30px;
+      background-image: url('/images/icon-left-dark.svg');
+      background-position: 0 50%;
+      background-repeat: no-repeat;
+      background-size: 20px auto;
+      cursor: pointer;
     }
-    .navigation-link {
-      &.selected a,
-      a:hover {
-        border-bottom: 2px solid $nonBlack;
-      }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    left: auto;
+    padding: 29px 0;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    padding: 27px 0;
+  }
+
+  &.notSticky {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.navigation-button {
+  display: flex;
+  z-index: 1;
+
+  > div {
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .svg-sequence {
+    pointer-events: none;
+  }
+}
+
+.navigation-logo {
+  overflow: hidden;
+  cursor: pointer;
+
+  svg {
+    pointer-events: none;
+    vertical-align: bottom;
+    fill: $nonBlack;
+    width: 100px;
+    transition: fill .2s linear;
+    height: $nav-height-small;
+
+    @media screen and (min-width: $bp-medium) {
+      height: $nav-height-medium;
+    }
+    @media screen and (min-width: $bp-large) {
+      height: $nav-height-large;
+    }
+  }
+}
+
+.navigation-toggle {
+  position: relative;
+  margin: 0 18px 0 12px;
+  cursor: pointer;
+
+  @media screen and (min-width: $bp-smaller) {
+    margin: 0 22px 0 14px;
+  }
+  @media screen and (min-width: $bp-medium) {
+    margin: 0 26px 0 16px;
+  }
+}
+
+.navigation-toggle-main {
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+  pointer-events: none; /* Fixes intermittent issue on touch devices? */
+  border-radius: 50%;
+  border: 2px solid $nonBlack;
+  width: $nav-height-small;
+  height: $nav-height-small;
+  box-sizing: content-box;
+  transition: all .2s linear;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 2px;
+    background-color: $nonBlack;
+    transition: all .2s linear;
+  }
+
+  &:before {
+    margin-top: -2px;
+  }
+  &:after {
+    margin-top: 2px;
+  }
+
+  @media screen and (min-width: $bp-smaller) {
+    width: $nav-height-medium;
+    height: $nav-height-medium;
+
+    &:before,
+    &:after {
+      width: 12px;
     }
   }
 
   @media screen and (min-width: $bp-large) {
-    .navigation-toggle {
-      display: none;
+    border: 3px solid $nonBlack;
+    width: $nav-height-large;
+    height: $nav-height-large;
+
+    &:before,
+    &:after {
+      height: 3px;
+      width: 14px;
     }
 
-    .logo {
-      margin-left: 30px;
+    &:before {
+      margin-top: -3px;
+    }
+    &:after {
+      margin-top: 3px;
+    }
+  }
+}
+
+.navigation-toggle-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  fill: $pot;
+  // transition: all .2s ease-in-out;
+  width: 40px;
+  height: 40px;
+  margin-left: -7px;
+  margin-top: -7px;
+
+  @media screen and (min-width: $bp-smaller) {
+    width: 42px;
+    height: 42px;
+    margin-left: -7px;
+    margin-top: -7px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    width: 54px;
+    height: 54px;
+    margin-left: -9px;
+    margin-top: -9px;
+  }
+}
+
+.navigation.home .navigation-toggle-ring {
+  fill: $jeezz;
+}
+
+.navigation.work .navigation-toggle-ring {
+  fill: $honey;
+}
+
+.navigation.events .navigation-toggle-ring {
+  fill: $piglet;
+}
+
+.navigation.blog .navigation-toggle-ring {
+  fill: $blu;
+}
+
+.navigation.join-us .navigation-toggle-ring {
+  fill: $rain;
+}
+
+.navigation {
+  &.invert,
+  &.menuOpen,
+  &.overHero:not(.home) {
+    .navigation-logo svg {
+      fill: $offWhite;
+    }
+    .navigation-toggle-main {
+      border-color: $offWhite;
+
+      &:before,
+      &:after {
+        background-color: $offWhite;
+      }
     }
 
-    .menu ul {
-      display: block;
-      position: static;
-      margin-right: 30px;
+    @media screen and (min-width: $bp-medium) {
+      &:before {
+        background-color: transparent;
+      }
     }
+  }
+  &.invert {
+    &:before {
+      background: linear-gradient(90deg, #333, #323952);
+      opacity: 0.95;
+    }
+  }
+  &.menuOpen,
+  &.overHero:not(.home) {
+    &:before {
+      background: transparent !important;
+    }
+  }
+}
 
-    .navigation-link {
-      display: inline-block;
-      line-height: $nav-height;
-      margin-left: 40px;
-
-      &:first-child {
-        margin-left: 0;
+@media screen and (min-width: $bp-medium) {
+  .navigation {
+    &,
+    &.invert,
+    &.overHero:not(.home) {
+      &:before {
+        background: none;
       }
     }
   }
 }
 
+.navigation {
+  &.menuOpen {
+    &:before {
+      background: none;
+    }
+
+    .navigation-toggle-main {
+      &:before,
+      &:after {
+        margin-top: 0;
+      }
+      &:before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      &:after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+    .navigation-toggle-ring {
+      opacity: 0;
+    }
+  }
+
+  &.subPage.pageControls:not(.menuOpen) {
+    left: 0;
+    transition: all .2s linear;
+
+    &.scrolled {
+      &:before {
+        background-color: $offWhite;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .navigation-subpage-nav {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .2s linear, visibility 0s linear;
+    }
+
+    &,
+    &.overHero {
+      .navigation-logo svg {
+        fill: $nonBlack;
+      }
+      .navigation-toggle-main {
+        border-color: $nonBlack;
+
+        &:before,
+        &:after {
+          background-color: $nonBlack;
+        }
+      }
+    }
+
+    &.invert {
+
+      &:before {
+        background: $c-solid;
+      }
+
+      &,
+      &.overHero {
+        .navigation-logo svg {
+          fill: $offWhite;
+        }
+        .navigation-toggle-main {
+          border-color: $offWhite;
+
+          &:before,
+          &:after {
+            background-color: $offWhite;
+          }
+        }
+        .navigation-subpage-nav button {
+          color: $offWhite;
+          background-image: url('/images/icon-left-light.svg');
+        }
+      }
+    }
+  }
+
+  &.notfound {
+    &:before {
+      display: none;
+    }
+
+    .navigation-logo svg {
+      fill: $offWhite;
+    }
+    .navigation-toggle-main {
+      border-color: $offWhite;
+
+      &:before,
+      &:after {
+        background-color: $offWhite;
+      }
+    }
+  }
+}
+
+
+
+
 /* TEMP */
 /* Invert colours on some pages that have lighter backgrounds */
-.header.takeover,
-.header.case-study,
-.header.search,
-.app-404 .header {
-  .navigation {
-    color: $nonBlack;
+// .navigation.takeover,
+// .navigation.case-study,
+// .navigation.search,
+// .app-404 .navigation {
+//   .navigation {
+//     color: $nonBlack;
+//
+//     .logo svg,
+//     .navigation-toggle {
+//       fill: $nonBlack;
+//     }
+//   }
+// }
+// .navigation {
+//
+//     &.post,
+//     &.event {
+//       position: relative;
+//       color: $nonBlack;
+//       background-color: #fff;
+//
+//       .logo svg,
+//       .navigation-toggle {
+//         fill: $nonBlack;
+//       }
+//     }
+// }
 
-    .logo svg,
-    .navigation-toggle {
-      fill: $nonBlack;
-    }
-  }
-  .navigation-link {
-    &.selected a,
-    a:hover {
-      border-bottom: 2px solid $nonBlack;
-    }
-  }
-}
-
-/* If js is supported, header animates in when class 'show' is added */
-.js .nav-wrapper {
-  .header {
-    transform: translateY(-68px);
-  }
-
-  &.show {
-    .header {
-      transition: transform 0.5s ease-out, background-color .2s ease-in-out;
-      transform: translateY(0px);
-    }
-  }
-}
+/* If js is supported, navigation animates in when class 'show' is added */
+// .js .nav-wrapper {
+//   .navigation {
+//     transform: translateY(-68px);
+//   }
+//
+//   &.show {
+//     .navigation {
+//       transition: transform 0.5s ease-out, background-color .2s ease-in-out;
+//       transform: translateY(0px);
+//     }
+//   }
+// }

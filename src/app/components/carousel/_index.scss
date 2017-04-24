@@ -1,0 +1,95 @@
+/*
+ *  CAROUSEL
+ *  Using React-swipe (swipe.js)
+ *
+ */
+
+.carousel-wrapper {
+  position: absolute;
+  height: 100vh;
+  color: $offWhite;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.carousel {
+  margin: 0 auto;
+
+  > div {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.carousel-item {
+  position: relative;
+  font-weight: bold;
+  color: $offWhite;
+  font-size: 30px;
+
+}
+
+.carousel-item-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  background-size: auto 65%;
+  background-position: 70% 50%;
+  background-repeat: no-repeat;
+}
+
+.carousel-content {
+  margin-left: 5vw;
+  width: 30vw;
+
+  > h2 {
+    margin-bottom: 20px;
+  }
+}
+
+.carousel-number {
+  width: 25vw;
+  border-bottom: 4px solid white;
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+.carousel-item.active {
+  z-index: 1;
+}
+
+.carousel-item.next,
+.carousel-item.prev {
+  z-index: 2;
+}
+
+.carousel-control {
+  width: 10%;
+  height: 100vh;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  z-index: 99;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-item-sky-kids {
+  .carousel-content {
+    margin-top: 90px;
+  }
+}

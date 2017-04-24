@@ -2,7 +2,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 import map from 'lodash/collection/map';
 import pluck from 'lodash/collection/pluck';
 import includes from 'lodash/collection/includes';

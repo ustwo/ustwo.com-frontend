@@ -2,26 +2,83 @@
  *  HERO
  *  The top showcase image with bold text on each page
  *
- *  TODO: when homepage is integrated and refactor, remove need for the .page-home (etc) class below
  */
 
-.hero,
-.page-home .screen-block.welcome .wrapper {
+.scroll-wrapper-work-hero {
+  .scroll-wrapper-inner {
+    max-width: none;
+  }
+}
+
+.hero {
   overflow: hidden;
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh; /* This is for IE as content doesn't center */
-  min-height: 100vh;
+  justify-content: center;
+  height: 100%;
+  transform: translateZ(0);
+
+  .hero-inner-wrapper {
+    @include core-layout();
+    width: 100vw;
+    height: 100%;
+    // max-width: $grid-max-width;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-video {
+    height: 100%;
+    width: 100vw;
+    max-width: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+
+  .section-title {
+    color: $offWhite;
+    position: relative;
+    z-index: 4;
+  }
 
   .title {
     position: relative;
     z-index: 2;
-    max-width: 550px;
-    padding: 0 20px;
-    text-align: center;
     color: $offWhite;
+  }
+
+  &.notFullScreen {
+    .hero-inner-wrapper {
+      position: relative;
+
+      .hero-content {
+        height: 100vh;
+        padding-bottom: $hero-offsetSize-small;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media screen and (min-width: $bp-tablet) {
+          padding-bottom: $hero-offsetSize;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+
+    .title {
+      max-width: 80%;
+    }
   }
 
   .rimage {
@@ -34,25 +91,10 @@
   }
 
   .subheading {
-    margin-top: 50px;
-    max-width: 700px;
-    text-align: center;
+    margin-top: 30px;
+    max-width: 80%;
+    text-align: left;
     color: $offWhite;
-    padding: 0 40px;
-  }
-
-  .down-chevron {
-    position: absolute;
-    top: 73%;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-
-    svg {
-      width: 100px;
-      height: 50px;
-    }
   }
 
   .video {
@@ -82,37 +124,62 @@
 
   @media screen and (min-width: 769px) {
     .video {
-      height: 100%;
+      height: 100vh;
       width: 100%;
       position: absolute;
       left: 0;
       top: 0;
     }
   }
+}
 
-  @media screen and (min-width: $bp-medium) {
-    .title {
-      max-width: 750px;
-      padding: 0 40px;
-    }
-    .down-chevron {
-      top: 76%;
-    }
-  }
-  @media screen and (min-width: $bp-large) {
-    .title {
-      max-width: 1080px;
-      padding: 0 80px;
-    }
-    .down-chevron {
-      top: 80%;
-    }
-  }
+.hero-content {
+  position: relative;
+  z-index: 10;
 }
 
 .js {
   .image-entrance {
     transition: opacity .8s ease-in-out;
     transition-delay: 1.3s;
+  }
+
+  // .shown .hero {
+  //   .down-indicator {
+  //     opacity: 1;
+  //     transition-delay: 3s;
+  //   }
+  // }
+}
+
+/* NOTE: max-width */
+// @media screen and (max-width: $bp-medium) {
+//   .hero {
+//     width: 100vw;
+//     z-index: 1;
+//   }
+//   .hero-inner-wrapper {
+//     position: absolute;
+//     height: 100%;
+//     display: block;
+//
+//     .hero-video {
+//       height: 100vh;
+//       width: 100%;
+//       position: absolute;
+//       left: 0;
+//       top: 0;
+//       z-index: 1;
+//     }
+//   }
+// }
+
+.hero-down-indicator {
+  position: absolute;
+  z-index: 2;
+  bottom: 20px;
+
+  @media screen and (min-width: $bp-medium) {
+    bottom: 40px;
   }
 }

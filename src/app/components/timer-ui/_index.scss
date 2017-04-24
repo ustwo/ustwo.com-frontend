@@ -1,0 +1,103 @@
+/*
+ *  Timer UI
+ *  Circular time indicator
+ *
+ */
+
+.timer-ui {
+  $size: 50px;
+  $border: 3px;
+  $size-large: 64px;
+  $border-large: 4px;
+
+  @include spinner-core();
+  @include spinner-size($size, $border);
+
+  @media screen and (min-width: $bp-medium) {
+    @include spinner-size($size-large, $border-large);
+  }
+
+  background: url('/images/timer-bg.png') no-repeat 50% 50%;
+  background-size: 100% auto;
+
+  svg {
+    position: relative;
+    z-index: 1;
+    fill: $nonBlack;
+    transition: all .2s ease-in-out;
+    transition-delay: .2s;
+  }
+
+  .icon {
+    display: flex;
+  }
+
+  .icon-paused {
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    z-index: 1;
+    opacity: 0;
+    background: url('/images/icon-pause-dark.svg') no-repeat 50% 50%;
+    transition: all .2s ease-in-out;
+  }
+
+  &.paused {
+    svg {
+      opacity: 0;
+      transition-delay: 0s;
+    }
+    .icon-paused {
+      opacity: 1;
+      animation: pulse 1s infinite;
+      animation-timing-function: linear;
+      animation-delay: .2s;
+      transition-delay: .2s;
+    }
+  }
+
+  &:after {
+    background: $offWhite; /* This needs to be the same colour as the background colour */
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+  /* Dark Style */
+
+.timer-ui.darkStyle {
+  &:after {
+    background: #313b5c; /* This appears on the gradient background declared above, so best guess colour! */
+  }
+
+  .half.left .bg,
+  .half.right .bg {
+    border-color: #666;
+  }
+
+  svg {
+    fill: $offWhite;
+  }
+  .icon-paused {
+    background: url('/images/icon-pause-light.svg') no-repeat 50% 50%;
+  }
+}

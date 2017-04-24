@@ -3,7 +3,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import find from 'lodash/collection/find';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
 import renderModules from 'app/lib/module-renderer';
 import getFeaturedImage from 'app/lib/get-featured-image';
@@ -27,7 +27,7 @@ const PageWhatWeDo = React.createClass({
         title={get(page, 'display_title')}
         transitionImage={true}
         eventLabel='what-we-do'
-        showDownChevron={true}
+        showDownIndicator={true}
       >
         <Video
           src={get(page, 'featured_video')}

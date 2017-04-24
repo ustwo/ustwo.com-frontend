@@ -1,17 +1,37 @@
 /*
  *  HOME TEXT BLOCK
- *  Textual content of each feature displayed on the homepage
+ *  Big blocks of text with a small title
  *
  */
 
 .home-text-block {
-  hr {
-    height: 6px;
-    margin-bottom: 12px;
-    border: none;
-  }
+  position: relative;
 
-  a {
-    border-bottom: solid 2px;
+  h1 span {
+    opacity: 1;
+    transition: opacity .2s ease-in-out;
+
+    &:not([class*="home-gradient-text"]) {
+      // pointer-events: none;
+    }
   }
+}
+
+.home-text-block-button {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+
+  .text-underline {
+    display: block;
+    position: absolute;
+    bottom: -3px;
+  }
+}
+
+
+.home-text-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

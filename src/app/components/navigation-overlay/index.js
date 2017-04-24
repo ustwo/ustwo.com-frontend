@@ -1,38 +1,104 @@
-'use strict';
-
 import React from 'react';
 import classnames from 'classnames';
-import get from 'lodash/object/get';
+import { get } from 'lodash';
 
+import Track from 'app/adaptors/server/track';
 import Flux from 'app/flux';
 
-import NavigationOverlayLink from 'app/components/navigation-overlay-link';
-import CloseButton from 'app/components/close-button';
 import ModalContentMixin from 'app/lib/modal-content-mixin';
 
+function tempChangeWorkName(slug) {
+  return slug === 'what-we-do' ? 'work' : slug
+}
+
 const NavigationOverlay = React.createClass({
+
   mixins: [ModalContentMixin],
-  onClickClose() {
-    Flux.closeModal();
+
+  getInitialState() {
+    return {
+      hoveredItem: ''
+    };
   },
-  renderNavigationOverlayLinks() {
-    return get(this.props, 'pages', []).map(link => {
-      return <NavigationOverlayLink
-        key={link.id}
-        url={link.slug === 'home' ? '/' : `/${link.slug}`}
-        selected={link.slug === this.props.section}
-      >
-        {link.title}
-      </NavigationOverlayLink>;
+
+  mouseEnter(name) {
+    this.setState({
+      hoveredItem: name
     });
   },
+
+  mouseLeave(currentPage) {
+    this.setState({
+      hoveredItem: currentPage
+    });
+  },
+
+  onClick(url) {
+    return (e) => {
+      e.preventDefault();
+      this.onClick && this.onClick();
+      Track('send', {
+        'hitType': 'event',          // Required.
+        'eventCategory': 'nav',   // Required.
+        'eventAction': 'click_nav_link',     // Required.
+      });
+      window.scrollTop;
+      Flux.navigate(url);
+      Flux.visitedWorkCapabilities(false);
+      Flux.closeModal();
+    }
+  },
+
+  renderNavigationOverlayLinks() {
+    return get(this.props, 'pages', []).map(link => {
+      const slug = tempChangeWorkName(link.slug);
+      const url = slug === 'home' ? '/' : `/${slug}`;
+      const mouseOver = url === '/' ? 'home' : url.slice(1);
+      const classes = classnames('navigation-overlay-link', {
+        selected: slug === this.props.section
+      });
+
+
+      return (
+        <li className={classes} key={link.id}>
+          <a
+            href={url}
+            onClick={this.onClick(url).bind(this)}
+            onMouseEnter={() => this.mouseEnter(mouseOver)}
+            onMouseLeave={() => this.mouseLeave(this.props.section)}
+          >
+            {link.title === 'What We Do' ? 'Work' : link.title}
+          </a>
+        </li>
+      );
+
+    });
+  },
+
+  renderBg() {
+    return get(this.props, 'pages', []).map(link => {
+      const slug = tempChangeWorkName(link.slug);
+
+      const classes = classnames('navigation-overlay-bg', `navigation-overlay-bg-${slug}`, {
+        hovered: slug === this.state.hoveredItem
+      })
+      return (
+        <div className={classes}></div>
+      );
+    });
+  },
+
   render() {
-    return <nav className="navigation-overlay" onClick={this.onClickContent}>
-      <CloseButton onClose={this.onClickClose} autoAnim={10} />
-      <ul className="menu">
-        {this.renderNavigationOverlayLinks()}
-      </ul>
-    </nav>;
+    const classes = classnames('navigation-overlay', this.props.section, `navigation-hover-${this.state.hoveredItem}`);
+
+    return (
+      <nav className={classes} onClick={this.onClickContent}>
+        <ul className="menu-items">
+          {this.renderNavigationOverlayLinks()}
+        </ul>
+        {this.renderBg()}
+      </nav>
+    );
   }
 });
 
