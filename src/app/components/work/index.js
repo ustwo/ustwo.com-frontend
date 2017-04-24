@@ -195,7 +195,7 @@ const workData = {
     text: "Ship your product and stay responsive to customers’ changing needs. Your product is out in the world: it's time to grow, evolve and deliver ROI."
   },{
     name: 'working',
-    title: 'Work this way',
+    title: 'Ways of Working',
     image: '/images/illustration-ways-of-working.svg',
     text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.'
   }],

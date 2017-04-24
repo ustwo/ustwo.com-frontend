@@ -61,6 +61,11 @@
       padding-bottom: 85px;
     }
   }
+
+  .work-case-studies {
+    flex-direction: column;
+    display: flex;
+  }
 }
 
 .work-video-link {

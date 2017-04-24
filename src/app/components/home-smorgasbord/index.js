@@ -59,7 +59,7 @@ class HomeSmorgasbord extends Component {
               <a href={eventUri} onClick={Flux.override(eventUri)}>{event.name}</a>
             </h3>
           </div>
-          <button>More Events</button>
+          <button onClick={Flux.override('/events')}>More Events</button>
         </div>
       );
     }
@@ -76,7 +76,7 @@ class HomeSmorgasbord extends Component {
               <a href={postUri} onClick={Flux.override(postUri)}>{post.name}</a>
             </h3>
           </div>
-          <button>More Blog</button>
+          <button onClick={Flux.override('/blog')}>More Blog</button>
         </div>
       );
     }

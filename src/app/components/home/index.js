@@ -219,7 +219,7 @@ const dataProducts = [{
   imageURL: "/images/home/harvey-nichols.jpg",
   videoURL: "/images/home/harvey-nichols.mp4",
   description: "A unique consumer-centred loyalty experience built to engage and reward",
-  linkURI: "/work/havey-nichols"
+  linkURI: "/work/harvey-nichols"
 },{
   title: "Sky Kids",
   category: "Client Work",

@@ -44,7 +44,7 @@ class WorkCapability extends Component {
           <WorkCapabilities selected={data.name} />
           {blocks}
           <div className="work-capability-contact">
-            <p>Have a project or an idea you'd like to collaborate with ustwo on? Interested in what ustwo can do for you?</p>
+            <p>Have a project or an idea you'd like to collaborate with ustwo on? Say hello@ustwo.com</p>
             <ContactButton />
           </div>
         </div>

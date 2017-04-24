@@ -141,7 +141,7 @@ class Navigation extends Component {
         break;
     }
 
-    const subPageText = capability.includes(page) ? 'Work' : 'Back';
+    const subPageText = capability.includes(page) || page === 'case-study' ? 'Work' : 'Back';
 
     return (
       <nav className={navClasses} ref={(ref) => this.navigation = ref}>
