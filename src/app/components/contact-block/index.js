@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GradientWords from '../gradient-words';
 import blendColours from 'app/lib/blend-colours';
 import goToNextIteration from 'app/lib/next-iteration';
+import env from 'app/adaptors/server/env';
 
 const tickerFrequency = 200;
 const timerTotal = 8000;
@@ -72,11 +73,12 @@ class ContactBlock extends Component {
       </div>
     );
 
+    const modifier = env.Modernizr.touchevents ? 5 : 1;
+
     let interactiveStyles;
     if (this.props.screenPosition) {
       interactiveStyles = {
-        transform: `rotateY(${(this.props.screenPosition.coordinateX * -8)}deg) rotateX(${(this.props.screenPosition.coordinateY * -12) + 5}deg)`
-        // removed Y axis: rotateY(${(this.props.screenPosition.coordinateX * -40)}deg)
+        transform: `rotateY(${(this.props.screenPosition.coordinateX * -8) * modifier}deg) rotateX(${((this.props.screenPosition.coordinateY * -12) + 5) * modifier}deg)`
       }
     }
 

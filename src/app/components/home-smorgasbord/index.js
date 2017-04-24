@@ -28,9 +28,9 @@ class HomeSmorgasbord extends Component {
 
     let src;
     if (window.innerWidth < 600) {
-      src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=164';
+      src= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=164';
     } else {
-      src= 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=165';
+      src= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=165';
     }
 
     let moreJuiceStyle, blogBlockStyle, eventBlockStyle, videoPoster, renderEvent, renderPost;
@@ -88,7 +88,7 @@ class HomeSmorgasbord extends Component {
     return (
       <div className="home-smorgasbord">
         <div className={classes}>
-          <h2>How we work</h2>
+          <h2>What we do</h2>
           <Video
             controls={['Time', 'Seek', 'Volume', 'Fullscreen']}
             preload="none"

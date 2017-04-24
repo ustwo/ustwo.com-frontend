@@ -69,6 +69,10 @@
 .smorgasbord-video {
   position: relative;
 
+  .rh5v-DefaultPlayer_component .rh5v-Overlay_component {
+    background-color: rgba(0,0,0,.1);
+  }
+
   h2 {
     pointer-events: none;
     position: absolute;
@@ -89,6 +93,10 @@
   }
 
   &.playing {
+    .rh5v-DefaultPlayer_component .rh5v-Overlay_component {
+      background-color: transparent;
+    }
+
     h2 {
       opacity: 0;
     }

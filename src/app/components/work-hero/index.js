@@ -44,9 +44,9 @@ class WorkHero extends Component {
   onClickVideo() {
     let src;
     if (window.innerWidth < 600) {
-      src = 'https://player.vimeo.com/external/209403984.sd.mp4?s=fa5d1e9fcb9e3f78d55423329a605fc7db82541f&profile_id=164';
+      src = 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=164';
     } else {
-      src = 'https://player.vimeo.com/external/209403984.hd.mp4?s=f3eb84f4b6d45960e28df740875cddd9605b8cf6&profile_id=174';
+      src = 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=165';
     }
     Flux.showVideoOverlay(src);
   }
@@ -83,7 +83,6 @@ class WorkHero extends Component {
     //     controls={[]}
     //     poster={fallbackImage}
     //     onCanPlayThrough={() => {
-    //       console.log('playing');
     //       Flux.heroVideoReady(true);
     //     }}
     //   >
@@ -94,10 +93,10 @@ class WorkHero extends Component {
     return (
       <div className="work-hero">
         <Hero
-          title="We build products and services that make a difference"
+          title="Make things to change things"
           transitionImage={true}
-          eventLabel='work'
           showDownIndicator={true}
+          eventLabel=' '
           video={video}
           fixedHeight={fixedHeight}
           isMobile={isMobile}

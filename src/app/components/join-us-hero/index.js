@@ -17,7 +17,7 @@ class JoinUsHero extends Component {
         <Hero
           title={title}
           transitionImage={true}
-          eventLabel='join-us'
+          eventLabel='join us'
           showDownIndicator={true}
           fixedHeight={fixedHeight}
           isMobile={isMobile}

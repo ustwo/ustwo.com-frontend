@@ -4,16 +4,16 @@ import GradientWords from '../gradient-words';
 function HomeMoreMessage({ showPopup }) {
   return (
     <h1>
-      <span>We invest in </span><GradientWords
-        word="startups"
+      <GradientWords
+        word="Shipping"
         color="cold"
-      /><span>, build our own </span><GradientWords
-        word="products"
+      /><span> ustwo products. </span><GradientWords
+        word="Launching"
         color="lukewarm"
-      /><span> and launch new </span><GradientWords
-        word="ventures"
+      /><span> ventures. </span><GradientWords
+        word="Investing"
         color="hot"
-      />
+      /><span> in startups. We do more, to learn more.</span>
     </h1>
   );
 }

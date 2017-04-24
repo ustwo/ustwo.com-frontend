@@ -4,16 +4,16 @@ import GradientWords from '../gradient-words';
 function HomeSmorgasbordMessage({ showPopup }) {
   return (
     <h1>
-      <GradientWords
-        word="together"
+      <span>We scale </span><GradientWords
+        word="collaboration"
         color="cold"
-      /><span> we work to unleash the </span><GradientWords
-        word="collective"
+      /><span>. Because genius lives where </span><GradientWords
+        word="amazing"
         color="lukewarm"
       /><span> </span><GradientWords
-        word="genius"
+        word="people"
         color="hot"
-      /><span>. No Big Deal.</span>
+      /><span> get along best.</span>
     </h1>
   );
 }

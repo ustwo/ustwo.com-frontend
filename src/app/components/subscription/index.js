@@ -43,7 +43,7 @@ class Subscription extends Component {
         <div className="subscription-wrapper">
           <div className={classes} ref={(ref) => this.icon = ref} style={iconStyle}></div>
           <h2>ustwo News</h2>
-          <p>Give us your email and we'll keep you in the loop with our latest projects and thoughts</p>
+          <p>Sign up to get fresh and regular(ish) ustwo thinking direct to your inbox</p>
           <form
             method="POST"
             action="//ustwo.us10.list-manage.com/subscribe/post?u=7f1269c0305abed7c91a24b97&amp;id=a4ba15109f"

@@ -4,6 +4,7 @@ import { get } from 'lodash';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import env from 'app/adaptors/server/env';
 import Flux from 'app/flux';
+import window from 'app/adaptors/server/window';
 
 import WorkItem from 'app/components/work-item';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
@@ -28,6 +29,17 @@ class PageWork extends Component {
       numberOfCaseStudiesShowing: 12
     }
   }
+
+  // componentDidMount() {
+  //   const box = this.workAnchor.getBoundingClientRect();
+  //   const body = document.body;
+  //   const scrollTop = window.pageYOffset || body.scrollTop;
+  //   const clientTop = body.clientTop || 0;
+  //   const top  = box.top +  scrollTop - clientTop;
+  //   const workAnchorPosition = Math.round(top);
+  //
+  //   this.setState({ workAnchorPosition });
+  // }
 
   renderWhatWeDo() {
     const { isMobile } = this.props;
@@ -75,7 +87,7 @@ class PageWork extends Component {
             <div className="section-title">Latest Work</div>
             <h2 className="title">{featuredCaseStudy.title}</h2>
             <p>{featuredCaseStudy.excerpt}</p>
-            <button>View Case Study</button>
+            <button onClick={Flux.override(featuredCaseStudy.linkURI)}>View Case Study</button>
           </div>
         </div>
       </div>
@@ -126,7 +138,7 @@ class PageWork extends Component {
 
           {this.renderFeaturedCaseStudy()}
 
-          <div className="page-work-controls">
+          <div className="page-work-controls" ref={(ref) => this.workAnchor = ref}>
             <div className="page-work-filter">
               <button className={buttonClassAll} onClick={() => this.setState({ caseStudyFilter: 'all', numberOfCaseStudiesShowing: 12 })}>All</button>
               <button className={buttonClassClients} onClick={() => this.setState({ caseStudyFilter: 'Work', numberOfCaseStudiesShowing: 12 })}>Clients</button>
@@ -160,50 +172,54 @@ export default PageWork;
 
 const workData = {
   intro: {
-    statement: 'From strategy through to launching products, getting ideas out into the world is what matters. We solve business challenges with digital products and services that are transformational and loved.',
+    statement: 'We learn through making. Then apply everything we know to create game-changing digital products and services for clients.',
     extra: [
-      'We join with you as one team to bring business strategy, product design, team coaching and world-class engineering to the full product lifecycle. True change doesn’t happen flying solo.'
+      'And we always do it collaboratively, through expertly coached teamwork. You and us, working together, discovering answers to the biggest questions your business faces. Then rapidly bringing them to life.',
+      'That’s the ustwo way.'
     ]
   },
   process: [{
     name: 'discovery',
     title: 'Discovery & Strategy',
     image: '/images/illustration-discovery.svg',
-    text: 'Innovate and stay ahead. Refine business goals and validate opportunities by understanding what your customers want most.'
+    text: 'Innovate and get ahead. Define your business goals and validate opportunities with fresh understanding of what your customers need most.'
   },{
     name: 'design',
     title: 'Design & Build',
     image: '/images/illustration-design-and-build.svg',
-    text: 'We design for the unknown and help organisations stand out from the competition. Truly agile software development, exceptional execution and world-class engineering.'
+    text: 'Turn your vision into reality. Exceptional software development, engineering and execution sets your company apart.'
   },{
     name: 'launch',
     title: 'Launch & Scale',
     image: '/images/illustration-launch-and-scale.svg',
-    text: 'Stay relevant and respond to customer needs. Get your product out in the market - refine, grow and prove your return on investment.'
+    text: "Ship your product and stay responsive to customers’ changing needs. Your product is out in the world: it's time to grow, evolve and deliver ROI."
   },{
     name: 'working',
-    title: 'Ways of working',
+    title: 'Work this way',
     image: '/images/illustration-ways-of-working.svg',
-    text: 'Stay relevant and respond to customer needs. Get your product out in the market - refine, grow and prove your return on investment.'
+    text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.'
   }],
   verticals: {
     auto: {
       type: 'Expertise',
       title: 'Auto',
-      text: 'The ustwo Auto team explore user experience in the automotive space with client engagements and our own research and experimental projects, building services and products around the connected car.'
+      text: 'The ustwo Auto team explore user experience in the automotive space with client engagements and our own research and experimental projects, building services and products around the connected car.',
+      linkURI: '/work/ustwoauto'
     },
     health: {
       type: 'Expertise',
       title: 'Health',
-      text: 'ustwo collaborates with clients, healthcare professionals and academic experts to create lasting, meaningful digital health solutions.'
+      text: 'ustwo collaborates with clients, healthcare professionals and academic experts to create lasting, meaningful digital health solutions.',
+      linkURI: '/work/ustwo-health'
     }
   }
 }
 
 const featuredCaseStudy = {
   title: 'Ford GoPark',
-  excerpt: 'An app and service that integrates vehicles and the city in new and meaningful ways.',
+  excerpt: 'A smart parking service tackling congestion in one of London’s busiest boroughs',
   colours: ['#87e283', '#92e9b2'],
   image: '/images/work/featured-gopark.png',
-  imageAlt: 'iPhone showing Ford GoPark App'
+  imageAlt: 'iPhone showing Ford GoPark App',
+  linkURI: '/work/ford-gopark'
 }

@@ -81,7 +81,12 @@ class Hero extends Component {
         transform: transform
       }
     }
-    const sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
+
+    let sectionTitle;
+    if (eventLabel) {
+      sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
+    }
+
     const classes = classnames('hero', className, { notFullScreen });
 
     let styles;

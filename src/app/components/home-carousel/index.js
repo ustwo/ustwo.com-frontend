@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
 import window from 'app/adaptors/server/window';
+import Flux from 'app/flux';
+import Scroll, { Link, Element } from 'react-scroll'; // Animate and scroll to location in document
 
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import TimerUI from 'app/components/timer-ui';
@@ -168,7 +170,8 @@ class HomeCarousel extends Component {
       }
 
       return (
-        <div
+        <a
+          href={item.linkURI} onClick={Flux.override(item.linkURI)}
           className={classes}
           key={`carousel-item-${i}`}
           onMouseOver={() => this.setState({ videoToPlay: i })}
@@ -185,7 +188,7 @@ class HomeCarousel extends Component {
             <h2>{item.title}</h2>
             <div className="home-carousel-item-description">{item.description}</div>
           </div>
-        </div>
+        </a>
       );
     });
 
@@ -212,7 +215,9 @@ class HomeCarousel extends Component {
         <button className="home-carousel-shuffle" onClick={() => goToNextItems(this)}>
           <TimerUI timer={ticker} darkStyle={darkStyle} loaded={loaded} paused={paused} shuffle={shuffle} />
         </button>
-        <div className="view-carousel-related-page"><button>See it all</button></div>
+        <div className="view-carousel-related-page">
+          <button onClick={Flux.override('/work')}>See it all</button>  
+        </div>
       </div>
     );
   }

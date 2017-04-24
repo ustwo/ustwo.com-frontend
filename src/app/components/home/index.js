@@ -75,15 +75,15 @@ class PageHome extends Component {
 
     // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
     const textBlockIntro = {
-      title: `Hi. We're ustwo.`,
+      title: `Hi. We're ustwo`,
       text: <HomeWelcomeMessage />
     }
     const textBlockMore = {
-      title: `We don't just talk. We do.`,
+      title: `More walk. Less talk`,
       text: <HomeMoreMessage />
     }
     const textBlockSmorgasbord = {
-      title: `More yes, more can, more wow`,
+      title: `Go exploring together`,
       text: <HomeSmorgasbordMessage />
     }
 
@@ -185,46 +185,54 @@ const dataProducts = [{
   title: "Ford GoPark",
   category: "Client Work",
   imageURL: "/images/home/ford-gopark.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "A smart parking service tackling congestion in one of London’s busiest boroughs",
+  linkURI: "/work/ford-gopark"
 },{
   title: "Android wear",
   category: "Client Work",
   imageURL: "/images/home/android-wear.jpg",
   videoURL: "/images/home/android-wear.mp4",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "An evolving creative partnership setting the standard for watch face design",
+  linkURI: "/work/android-wear-digital-watch-faces"
 },{
   title: "Foursquare",
   category: "Client Work",
   imageURL: "/images/home/foursquare.jpg",
   videoURL: "/images/home/foursquare.mp4",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "A fresh business customer portal experience designed to showcase the enterprise offering",
+  linkURI: "/work/foursquare-enterprise"
 },{
   title: "Adidas Go",
   category: "Client Work",
   imageURL: "/images/home/adidas-go.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "A music app designed to track, enhance and improve your running performance",
+  linkURI: "/work/adidas-go"
 },{
   title: "Google Cardboard ",
   category: "Client Work",
   imageURL: "/images/home/google-cardboard.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "An accessible go-to how-to guide for VR design principles",
+  linkURI: "/work/google-cardboard"
 },{
   title: "Harvey Nichols",
   category: "Client Work",
   imageURL: "/images/home/harvey-nichols.jpg",
   videoURL: "/images/home/harvey-nichols.mp4",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "A unique consumer-centred loyalty experience built to engage and reward",
+  linkURI: "/work/havey-nichols"
 },{
   title: "Sky Kids",
   category: "Client Work",
   imageURL: "/images/home/sky-kids.jpg",
   videoURL: "/images/home/sky-kids.mp4",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "Creating a new product, brand and audience - loved by kids and trusted by parents",
+  linkURI: "/work/sky-kids"
 },{
   title: "NBC Sprout",
   category: "Client Work",
   imageURL: "/images/home/nbc-sprout.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "A fun, colourful and exploratory game for Terrific Trucks",
+  linkURI: "/work/nbc-sprout-playground-terrific-trucks"
 }];
 
 const dataVentures = [{
@@ -232,32 +240,37 @@ const dataVentures = [{
   category: "Business",
   imageURL: "/images/home/ustwo-games.jpg",
   videoURL: "/images/home/monument-valley.mp4",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "An award-winning mobile games studio making the most beautiful interactive entertainment",
+  linkURI: "/work/monument-valley"
 },{
   title: "Dice",
   category: "Business",
   imageURL: "/images/home/dice.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "Search, browse and buy tickets with the fastest growing live music discovery app",
+  linkURI: "/work/dice"
 },{
   title: "Moodnotes",
   category: "Venture",
   imageURL: "/images/home/moodnotes.jpg",
   videoURL: "/images/home/moodnotes.mp4",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "Scientifically grounded in CBT making it simple to manage emotional wellbeing over time",
+  linkURI: "/work/moodnotes"
 },{
   title: "Wayfindr",
   category: "Venture",
   imageURL: "/images/home/wayfindr.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "Empowering vision impaired people to navigate the world independently",
+  linkURI: "/work/wayfindr-2"
 },{
-  title: "Pause",
+  title: "Sway",
   category: "Venture",
-  imageURL: "/images/home/pause.jpg",
-  videoURL: "/images/home/pause.mp4",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  imageURL: "/images/home/sway.jpg",
+  description: "A scientifically validated interactive meditation app designed for mindfulness on the move",
+  linkURI: "/work/sway"
 },{
   title: "Watch This",
   category: "Own Product",
   imageURL: "/images/home/watch-this.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  description: "Easily share media-rich TV and movie recommendations without leaving iMessage",
+  linkURI: "/work/watch-this-for-imessage"
 }];
