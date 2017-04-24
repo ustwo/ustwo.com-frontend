@@ -82,6 +82,11 @@
   @include page-background-colour(notfound);
 }
 
+.navigation-overlay.legal,
+.navigation-overlay-bg-legal {
+  @include page-background-colour(legal);
+}
+
 $menu-transition-bg-duration: .2s;
 $menu-transition-item-duration: .2s;
 $menu-transition-item-delay: .1s;

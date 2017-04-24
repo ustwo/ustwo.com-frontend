@@ -6,14 +6,19 @@
  */
 
 .page-legal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
   .hero-image {
     height: 320px;
+    @include page-background-colour(legal);
   }
 
   .content-container {
     position: relative;
     max-width: 1200px;
-    margin: $card-margin-offset auto 0;
     padding: 70px 50px;
     background: #fff;
 
