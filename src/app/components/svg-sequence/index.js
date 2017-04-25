@@ -92,7 +92,7 @@ class SVGSequence extends Component {
     if (color) {
       colours = color;
     } else {
-      colours = ['#000000', '#000000'];
+      colours = ['#6114CC', '#FA7D78'];
     }
 
     let frames;
