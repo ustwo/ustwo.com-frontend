@@ -113,19 +113,18 @@ $nav-height-large: 32px;
 
   svg {
     pointer-events: none;
-    // vertical-align: bottom;
     fill: $nonBlack;
     width: 112px;
-    // height: 32px;
-    // width: 100%;
-    // height: 100%;
     transition: fill .2s linear;
     height: $nav-height-small;
-    //
+    width: 85px;
+
     @media screen and (min-width: $bp-medium) {
       height: $nav-height-medium;
+      width: 92px;
     }
     @media screen and (min-width: $bp-large) {
+      width: 112px;
       height: $nav-height-large;
     }
   }
