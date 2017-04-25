@@ -269,7 +269,7 @@ const dataVentures = [{
   linkURI: "/work/sway"
 },{
   title: "Watch This",
-  category: "Own Product",
+  category: "ustwo Product",
   imageURL: "/images/home/watch-this.jpg",
   description: "Easily share media-rich TV and movie recommendations without leaving iMessage",
   linkURI: "/work/watch-this-for-imessage"
