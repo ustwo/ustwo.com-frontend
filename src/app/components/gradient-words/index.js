@@ -1,4 +1,5 @@
 import React from 'react';
+import env from 'app/adaptors/server/env';
 
 function GradientWords({ word, color, reverse }) {
 
@@ -16,8 +17,15 @@ function GradientWords({ word, color, reverse }) {
     color2 = "#ED0082";
   }
 
-  const style = {
-    backgroundImage: reverse ? `linear-gradient(to right, ${color2}, ${color1})` : `linear-gradient(to right, ${color1}, ${color2})`
+  let style;
+  if (env.Modernizr.backgroundcliptext) {
+    style = {
+      backgroundImage: reverse ? `linear-gradient(to right, ${color2}, ${color1})` : `linear-gradient(to right, ${color1}, ${color2})`
+    }
+  } else {
+    style = {
+      color: color2
+    }
   }
 
   return (
