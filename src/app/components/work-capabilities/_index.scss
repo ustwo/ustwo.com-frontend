@@ -81,7 +81,7 @@ $WorkCapabilitiesIconSizeLarge: 240px;
     &.launch {
       &:after {
         position: absolute;
-        left: 23%;
+        left: 28%;
         top: 0;
         content: "";
         width: 100%;
@@ -89,6 +89,7 @@ $WorkCapabilitiesIconSizeLarge: 240px;
         background-image: url('/images/illustration-launch-and-scale.svg');
         background-repeat: no-repeat;
         background-position: 50%;
+        background-size: 100% auto;
       }
     }
     &.working {

@@ -7,13 +7,13 @@ function HomeSmorgasbordMessage({ showPopup }) {
       <span>We scale </span><GradientWords
         word="collaboration"
         color="cold"
-      /><span>. Because genius lives where </span><GradientWords
-        word="amazing"
+      /><span>. When you </span><GradientWords
+        word="develop"
         color="lukewarm"
-      /><span> </span><GradientWords
-        word="people"
+      /><span> the right teams, </span><GradientWords
+        word="genius"
         color="hot"
-      /><span> get along best</span>
+      /><span> happens</span>
     </h1>
   );
 }

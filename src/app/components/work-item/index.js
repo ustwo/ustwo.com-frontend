@@ -11,6 +11,7 @@ import classnames from 'classnames';
 import getAppleTitles from 'app/lib/apple-titles';
 
 import kebabCase from 'lodash/string/kebabCase';
+import CategoryTag from 'app/components/category-tag';
 
 const WorkItem = React.createClass({
   getInitialState() {
@@ -36,9 +37,7 @@ const WorkItem = React.createClass({
         <ImageHover autoAnim={500} hover={this.state.hover} />
       </a>
       <div className="card-details">
-        <div className="category-tag">
-          {category}
-        </div>
+        <CategoryTag category={category} caseStudy={true} />
         <h3 className="title">
           <a
             href={link}

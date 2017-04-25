@@ -79,11 +79,11 @@ class PageHome extends Component {
       text: <HomeWelcomeMessage />
     }
     const textBlockMore = {
-      title: `More walk. Less talk`,
+      title: `Do more, to learn more`,
       text: <HomeMoreMessage />
     }
     const textBlockSmorgasbord = {
-      title: `Go exploring together`,
+      title: `Explore together`,
       text: <HomeSmorgasbordMessage />
     }
 
@@ -269,7 +269,7 @@ const dataVentures = [{
   linkURI: "/work/sway"
 },{
   title: "Watch This",
-  category: "Own Product",
+  category: "ustwo Product",
   imageURL: "/images/home/watch-this.jpg",
   description: "Easily share media-rich TV and movie recommendations without leaving iMessage",
   linkURI: "/work/watch-this-for-imessage"
