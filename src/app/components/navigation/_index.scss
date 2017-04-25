@@ -24,7 +24,7 @@ html {
 
 $nav-height-small: 22px;
 $nav-height-medium: 24px;
-$nav-height-large: 30px;
+$nav-height-large: 32px;
 
 .navigation {
   position: fixed;
@@ -98,6 +98,7 @@ $nav-height-large: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
+    float: left; // FIX FF?!
   }
 
   .svg-sequence {
@@ -106,17 +107,21 @@ $nav-height-large: 30px;
 }
 
 .navigation-logo {
-  overflow: hidden;
+  overflow: visible;
   cursor: pointer;
+  height: 40px;
 
   svg {
     pointer-events: none;
-    vertical-align: bottom;
+    // vertical-align: bottom;
     fill: $nonBlack;
-    width: 100px;
+    width: 112px;
+    // height: 32px;
+    // width: 100%;
+    // height: 100%;
     transition: fill .2s linear;
     height: $nav-height-small;
-
+    //
     @media screen and (min-width: $bp-medium) {
       height: $nav-height-medium;
     }
@@ -130,6 +135,7 @@ $nav-height-large: 30px;
   position: relative;
   margin: 0 18px 0 12px;
   cursor: pointer;
+  height: 40px;
 
   @media screen and (min-width: $bp-smaller) {
     margin: 0 22px 0 14px;
@@ -211,19 +217,19 @@ $nav-height-large: 30px;
   width: 40px;
   height: 40px;
   margin-left: -7px;
-  margin-top: -7px;
+  margin-top: 0;
 
   @media screen and (min-width: $bp-smaller) {
     width: 42px;
     height: 42px;
     margin-left: -7px;
-    margin-top: -7px;
+    margin-top: -1px;
   }
 
   @media screen and (min-width: $bp-large) {
-    width: 54px;
-    height: 54px;
-    margin-left: -9px;
+    width: 56px;
+    height: 56px;
+    margin-left: -10px;
     margin-top: -9px;
   }
 }
