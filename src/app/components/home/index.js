@@ -79,11 +79,11 @@ class PageHome extends Component {
       text: <HomeWelcomeMessage />
     }
     const textBlockMore = {
-      title: `More walk. Less talk`,
+      title: `Do more, to learn more`,
       text: <HomeMoreMessage />
     }
     const textBlockSmorgasbord = {
-      title: `Go exploring together`,
+      title: `Explore together`,
       text: <HomeSmorgasbordMessage />
     }
 
