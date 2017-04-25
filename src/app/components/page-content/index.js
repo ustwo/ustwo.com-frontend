@@ -5,7 +5,7 @@ import env from 'app/adaptors/server/env';
 import window from 'app/adaptors/server/window';
 import Flux from 'app/flux';
 
-const tickerTotalPage = 1500;
+const tickerTotalPage = 1000;
 const tickerTotalHome = 3500;
 const tickerFrequency = 500;
 const ultimateTimeout = 3500;
@@ -106,12 +106,12 @@ class PageContent extends Component {
     props.loaded = disableLoaderForCapabilities ? true : loaded;
     props.fixedHeight = this.state.fixedHeight;
 
-    const loader = disableLoaderForCapabilities ? null : <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} />;
+    // const loader = disableLoaderForCapabilities ? null : <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} />;
 
     return (
       <div className="page-content">
         {React.createElement(pageMap[currentPage], props)}
-        {loader}
+        <LoaderWrapper currentPage={currentPage} homeLoaderShown={homeLoaderShown} loaded={loaded} />
       </div>
     );
   }
