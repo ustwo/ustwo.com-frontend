@@ -37,12 +37,14 @@ class HomeIntro extends Component {
   render() {
     const { scrollProgress, screenPosition, loaded, isMobile, popup, viewportDimensions, currentPage, studios, footer, fixedHeight } = this.props;
 
+    const scrollProgressValue = scrollProgress ? scrollProgress : 0;
+
     let playVideo = loaded;
-    if (scrollProgress > 0.5 && env.Modernizr.touchevents || !!popup) {
+    if (scrollProgressValue > 0.5 && env.Modernizr.touchevents || !!popup) {
       playVideo = false;
     }
 
-    const hide = scrollProgress === 1;
+    const hide = scrollProgressValue === 1;
 
     let fallbackImage, src;
     if (window.innerWidth < 600) {
@@ -56,9 +58,9 @@ class HomeIntro extends Component {
       fallbackImage = '/images/home-header-fallback.jpg';
     }
 
-    const transform = `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`;
+    const transform = `translateY(${((0.5 - scrollProgressValue) * 4) * 30}px)`;
     const transitionStyles = {
-      opacity: (0.75 - scrollProgress) * 4,
+      opacity: (0.75 - scrollProgressValue) * 4,
       transform: transform
     };
 
