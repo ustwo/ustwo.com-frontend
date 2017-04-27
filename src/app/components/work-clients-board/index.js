@@ -4,7 +4,7 @@ function WorkClientsBoard() {
   return (
     <div className="work-clients-board">
       <div className="work-clients-board-inner">
-        <h5 className="title">Select Clients</h5>
+        <h5 className="title">We work with</h5>
         <ul>
           <li><img src="/images/work/logo-adidas.svg" alt="Logo of Adidas" /></li>
           <li><img src="/images/work/logo-android.svg" alt="Logo of Android" /></li>
