@@ -49,14 +49,19 @@
 
     li {
       position: relative;
-      height: $blog-controls-line-height;
-      line-height: $blog-controls-line-height;
+      height: $blog-controls-line-height-small;
+      line-height: $blog-controls-line-height-small;
       color: $offWhite;
       @extend .h5;
 
       &:hover {
         background-color: $v-solid;
         color: #fff;
+      }
+
+      @media screen and (min-width: $bp-small) {
+        height: $blog-controls-line-height;
+        line-height: $blog-controls-line-height;
       }
 
       /* This spits out the blog category class and its paired colour from the
