@@ -11,3 +11,56 @@
     text-align: center;
   }
 }
+
+
+
+
+// The following is a quick hack to make ustwo auto look nice before we move it
+// out of 'case studies' and into a new 'speciality' component
+
+.page-case-study {
+  &.ustwo-auto {
+    .single-column.intro {
+      position: relative;
+      height: 100vh;
+      background-color: #9a9c9b;
+      display: flex;
+      align-items: center;
+      background-image: url('/images/auto/ustwo-auto-hero.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 0;
+
+      .section-title {
+        display: none;
+      }
+
+      .wrapper {
+        position: relative;
+        z-index: 1;
+        color: $offWhite;
+
+        h1 {
+          display: flex;
+          flex-direction: column;
+          color: $honey;
+
+          &:before {
+            content: "auto"; // match width of the h1 auto title
+            max-width: 200px;
+            margin: 0 auto;
+            background: url(/images/logo-light.svg) no-repeat 0 0;
+            background-position: 50%;
+            background-size: 113% auto;
+            color: transparent;
+          }
+        }
+
+        hr,
+        .content {
+          display: none;
+        }
+      }
+    }
+  }
+}

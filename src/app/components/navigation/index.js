@@ -8,6 +8,7 @@ import SVG from 'app/components/svg';
 import FramesUstwoLogo from 'app/components/frames-ustwo-logo';
 import MenuIconRingSequence from 'app/components/menu-icon-ring-sequence';
 import SVGSequence from 'app/components/svg-sequence';
+import kebabCase from 'lodash/string/kebabCase';
 
 class Navigation extends Component {
 
@@ -97,18 +98,19 @@ class Navigation extends Component {
   }
 
   render() {
-    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions } = this.props;
+    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
 
     const capability = ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'];
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
     const homePage = section === 'home';
-    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog';
+    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy;
     const subPage = page === 'post' || page === 'case-study' || page === 'event' || capability.includes(page);
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
     const scrolledBefore100 = documentScrollPosition < viewportDimensions.height - (this.state.height * 0.5);
+    const caseStudyName = caseStudy ? kebabCase(caseStudy.name) : null
 
-    const navClasses = classnames('navigation', customClass, section, page, {
+    const navClasses = classnames('navigation', customClass, section, page, caseStudyName, {
       takeover: takeover,
       notSticky: modal === null && scrolledBefore100 && homePage,
       menuOpen: modal === 'menu',
@@ -139,6 +141,10 @@ class Navigation extends Component {
       case 'notfound':
         color = ['#6114CC', '#FA7D78'];
         break;
+    }
+
+    if (caseStudy && caseStudy.name === 'ustwo Auto') {
+      color = ['#f8e467', '#ffbf00'];
     }
 
     const subPageText = capability.includes(page) || page === 'case-study' ? 'Work' : 'Back';
