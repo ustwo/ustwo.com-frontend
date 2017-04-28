@@ -23,6 +23,7 @@ class PageHome extends Component {
 
     this.state = {
       venturesPosition: {},
+      fixedHeightVentures: 0
     }
   }
 
@@ -48,7 +49,9 @@ class PageHome extends Component {
       to: venturesPositionFromTop + venturesHeight
     }
 
-    this.setState({ venturesPosition });
+    const fixedHeightVentures = venturesHeight;
+
+    this.setState({ venturesPosition, fixedHeightVentures });
     Flux.venturesPosition(venturesPosition);
   }
 
@@ -65,7 +68,7 @@ class PageHome extends Component {
 
   render() {
     const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, footer, studios, currentPage, fixedHeight } = this.props;
-    const { venturesPosition } = this.state;
+    const { venturesPosition, fixedHeightVentures } = this.state;
 
     // const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to)
 
@@ -88,7 +91,7 @@ class PageHome extends Component {
     }
 
     const venturesBgStyles = {
-      height: `${fixedHeight + 100}px`
+      height: `${fixedHeightVentures + 100}px`
     }
 
     return (

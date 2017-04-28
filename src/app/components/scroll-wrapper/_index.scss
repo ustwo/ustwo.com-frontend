@@ -17,4 +17,13 @@
       width: 100vw;
     }
   }
+
+  // Fix for vertically narrow screens
+  // e.g. 1280 macbook with large application dock at the bottom of the screen
+  @media screen and (min-width: 1025px) {
+    &.scroll-wrapper-home-carousel-products,
+    &.scroll-wrapper-home-carousel-ventures {
+      min-height: 700px;
+    }
+  }
 }
