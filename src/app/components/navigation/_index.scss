@@ -341,6 +341,52 @@ $nav-height-large: 32px;
       transition: opacity .2s linear, visibility 0s linear;
     }
 
+    // Sure the following could be DRYier with the rest of the code
+    &.ustwo-auto {
+      .navigation-logo svg {
+        fill: $offWhite;
+      }
+      .navigation-toggle-main {
+        border-color: $offWhite;
+
+        &:before,
+        &:after {
+          background-color: $offWhite;
+        }
+      }
+      .navigation-subpage-nav button {
+        color: $offWhite;
+        background-image: url('/images/icon-left-light.svg');
+      }
+      &:before {
+        background-color: transparent;
+        box-shadow: none;
+      }
+
+      &.scrolled {
+        .navigation-logo svg {
+          fill: $nonBlack;
+        }
+        .navigation-toggle-main {
+          border-color: $nonBlack;
+
+          &:before,
+          &:after {
+            background-color: $nonBlack;
+          }
+        }
+        .navigation-subpage-nav button {
+          color: $nonBlack;
+          background-image: url('/images/icon-left-dark.svg');
+        }
+        &:before {
+          background-color: $offWhite;
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+    // END
+
     &,
     &.overHero {
       .navigation-logo svg {

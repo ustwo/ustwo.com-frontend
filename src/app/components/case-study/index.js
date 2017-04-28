@@ -11,8 +11,14 @@ const PageCaseStudy = React.createClass({
   mixins: [getScrollTrackerMixin('case-study')],
   render() {
     const { caseStudy } = this.props;
-    const classes = classnames('page-case-study', this.props.className);
-    
+
+    let caseStudyName;
+    if (caseStudy && caseStudy.name === 'ustwo Auto') {
+      caseStudyName = 'ustwo-auto';
+    }
+
+    const classes = classnames('page-case-study', this.props.className, caseStudyName);
+
     return (
       <article className={classes}>
         <Meta

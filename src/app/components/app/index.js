@@ -275,6 +275,7 @@ const App = React.createClass({
         modal={modal}
         viewportDimensions={viewportDimensions}
         loaded={loaded}
+        caseStudy={caseStudy}
       />
     );
 
