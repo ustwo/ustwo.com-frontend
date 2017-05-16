@@ -5,12 +5,14 @@ import Meta from 'react-helmet';
 
 import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 import renderModules from 'app/lib/module-renderer';
+import ScrollWrapper from 'app/components/scroll-wrapper';
 import RelatedContent from 'app/components/related-content';
+import ContactBlock from 'app/components/contact-block';
 
 const PageCaseStudy = React.createClass({
   mixins: [getScrollTrackerMixin('case-study')],
   render() {
-    const { caseStudy } = this.props;
+    const { caseStudy, documentScrollPosition, viewportDimensions } = this.props;
 
     let caseStudyName;
     if (caseStudy && caseStudy.name === 'ustwo Auto') {
@@ -54,6 +56,13 @@ const PageCaseStudy = React.createClass({
           zebra: true,
           categories: get(caseStudy, 'categories')
         })}
+        <ScrollWrapper
+          component={<ContactBlock />}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+          requireScreenPosition={true}
+          className="scroll-wrapper-contact-block"
+        />
         {this.renderRelatedContent()}
       </article>
     );
