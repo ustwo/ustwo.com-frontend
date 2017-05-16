@@ -13,7 +13,7 @@ class Video extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.video) {
+    if (this.video && !navigator.userAgent.match(/(Twitter)/i)) {
       if (nextProps.play) {
         if (this.video.paused) {
           this.video.play();
