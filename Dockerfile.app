@@ -1,6 +1,7 @@
 FROM node:6.9.1-slim
 MAINTAINER Arnau Siches <arnau@ustwo.com>
 
+ENV NODE_ENV production
 ENV NODE_PATH /home/ustwo/src
 
 WORKDIR /home/ustwo
