@@ -46,7 +46,6 @@ class Hero extends Component {
     if (this.props.showDownIndicator) {
       indicator = (
         <DownIndicator
-          ref="downIndicator"
           onClick={this.onClickDownIndicator}
         />
       );

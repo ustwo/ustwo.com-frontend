@@ -115,6 +115,7 @@ const PageEvents = React.createClass({
               className="events-list"
               featured={index === 0}
               data={eventData}
+              key={eventData.slug}
             />
           );
         });
@@ -139,11 +140,12 @@ const PageEvents = React.createClass({
     let output, events;
     if (archivedEvents) {
       if (archivedEvents.length) {
-        events = archivedEvents.map((archivedEventData, index) => {
+        events = archivedEvents.map(archivedEventData => {
           return (
             <ArchivedEventsListItem
               className='archived-events-list'
               data={archivedEventData}
+              key={archivedEventData.slug}
             />
           );
         });
@@ -182,7 +184,7 @@ const PageEvents = React.createClass({
       archivedEventsPaginationTotal,
       currentPage,
       footer,
-      documentScrollPosition, 
+      documentScrollPosition,
       viewportDimensions } = this.props;
     const classes = classnames('page-events', this.props.className, {
       loading: isLoadingInitialEvents || isLoadingStudioEvents

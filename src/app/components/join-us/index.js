@@ -138,7 +138,7 @@ const PageJoinUs = React.createClass({
           aria-selected={studioSlug === selectedStudioSlug}
           className={`tab ${studioSlug} ${studioSlug === selectedStudioSlug ? 'active' : ''}`}
           ref={(ref) => studioSlug === selectedStudioSlug ? this.activeTab = ref : ''}
-          onClick={this.handleClick.bind(this)}
+          onClick={this.handleClick}
           style={studioSelectedColor}>
           <a
             href={uri}
