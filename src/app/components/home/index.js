@@ -94,6 +94,8 @@ class PageHome extends Component {
       height: `${fixedHeightVentures + 100}px`
     }
 
+    const promotionURI = '/work/ford-gopark';
+
     return (
       <article className={classes} ref={(ref) => this.homeContent = ref}>
 
@@ -108,6 +110,9 @@ class PageHome extends Component {
                 className="scroll-wrapper-home-intro"
               />
             </Link>
+            <div className="home-hero-call-to-action-link">
+              <a href={promotionURI} onClick={Flux.override(promotionURI)}>See our featured case study</a>
+            </div>
           </div>
         </div>
 
