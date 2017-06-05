@@ -113,8 +113,6 @@
     @include buttonColor('invert');
     background-image: url('/images/icon-right-light.svg');
     display: inline-block;
-    // TODO: maybe `height` should just be removed from `buttonStyle` mixin?
-    height: auto;
   }
 }
 
