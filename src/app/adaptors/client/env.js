@@ -6,5 +6,5 @@ import 'browsernizr/test/css/backgroundcliptext';
 
 export default {
   Modernizr: require('browsernizr'),
-  verbose: true
+  verbose: process.env.NODE_ENV === 'development'
 };
