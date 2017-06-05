@@ -7,13 +7,6 @@ import kebabCase from 'lodash/string/kebabCase';
 
 import StudioClock from 'app/components/studio-clock';
 
-const phoneNumbers = {
-  'Sydney': '+61 2 8188 3900',
-  'London': '+44 (0)20 7613 0433',
-  'New York': '+1 212-518-4900',
-  'Malmö': '+46 (0)40-330480'
-};
-
 const StudioContact = React.createClass({
   getInitialState: function() {
     var date = moment();
@@ -22,11 +15,16 @@ const StudioContact = React.createClass({
   componentDidMount: function() {
     this.startClock();
   },
+  componentWillUnmount: function() {
+    this.stopClock();
+  },
   startClock: function() {
-    var self = this;
-    window.setInterval(function () {
-      self.setState({ date: moment() });
+    this.clockInterval = window.setInterval(function () {
+      this.setState({ date: moment() });
     }.bind(this), 60000);
+  },
+  stopClock() {
+    window.clearInterval(this.clockInterval);
   },
   onClick() {
     this.props.onClick && this.props.onClick();

@@ -22,10 +22,10 @@ export default class RelatedContent extends React.Component {
   renderItem(data) {
     let item;
     if(data.type === 'post') {
-      item = <div className="related-content-item"><BlogPostListItem data={data} /></div>;
+      item = <div className="related-content-item" key={data.id}><BlogPostListItem data={data} /></div>;
     } else {
       let image = get(data, '_embedded.wp:attachment.1');
-      item = <div className="related-content-item"><WorkItem data={data} image={image} /></div>;
+      item = <div className="related-content-item" key={data.id}><WorkItem data={data} image={image} /></div>;
     }
     return item;
   }

@@ -78,11 +78,9 @@ class Video extends Component {
           src={src}
           width="1280"
           height="720"
-          frameborder="0"
+          frameBorder="0"
           title="Video"
-          webkitallowfullscreen
-          mozallowfullscreen
-          allowfullscreen>
+          allowFullScreen>
         </iframe>
       </div>
     );

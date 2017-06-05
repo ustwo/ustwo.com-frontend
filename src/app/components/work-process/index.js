@@ -38,7 +38,7 @@ class WorkProcess extends Component {
 
     const workProcess = data.map(item => {
       return (
-        <div className={`work-process-item ${kebabCase(item.title)}`}>
+        <div className={`work-process-item ${kebabCase(item.title)}`} key={item.name}>
           <img src={item.image} alt={`${item.title} icon`} />
           <h2 onClick={() => goToCapability(item.name)}>{item.title}</h2>
           <p>{item.text}</p>

@@ -83,7 +83,7 @@ const NavigationOverlay = React.createClass({
         hovered: slug === this.state.hoveredItem
       })
       return (
-        <div className={classes}></div>
+        <div className={classes} key={link.id}></div>
       );
     });
   },

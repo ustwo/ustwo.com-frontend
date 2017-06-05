@@ -15,10 +15,14 @@ class LoaderWrapper extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.loaded) {
-      setTimeout(() => {
+      this.hideTimeout = window.setTimeout(() => {
         this.setState({ hide: true });
       }.bind(this), 500);
     }
+  }
+
+  componentWillUnmount() {
+    window.clearTimeout(this.hideTimeout);
   }
 
   render() {

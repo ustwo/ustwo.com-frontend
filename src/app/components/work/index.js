@@ -43,7 +43,8 @@ class PageWork extends Component {
 
   renderWhatWeDo() {
     const { isMobile } = this.props;
-    const workIntroExtra = workData.intro.extra.map(item => <p className="work-intro-extra">{item}</p>);
+
+    const workIntroExtra = workData.intro.extra.map(item => <p className="work-intro-extra" key={item}>{item}</p>);
 
     return (
       <div className="work-whatwedo-wrapper">
