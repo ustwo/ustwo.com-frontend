@@ -154,7 +154,6 @@
 }
 
 @mixin buttonStyle($arrow: false) {
-  height: 40px;
   line-height: 40px;
   outline: 0;
   @extend .h5;

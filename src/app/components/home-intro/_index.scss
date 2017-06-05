@@ -101,6 +101,20 @@
   }
 }
 
+.home-hero-call-to-action-link {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  z-index: 1;
+  transform: translateX(-50%);
+
+  a {
+    @include buttonStyle(true);
+    @include buttonColor('invert');
+    background-image: url('/images/icon-right-light.svg');
+    display: inline-block;
+  }
+}
 
 /* NOTE: max-width */
 @media screen and (max-width: $bp-medium) {
