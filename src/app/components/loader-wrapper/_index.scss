@@ -27,3 +27,13 @@
     }
   }
 }
+
+html {
+  .loader-wrapper {
+    display: none;
+  }
+
+  &.js {
+    display: flex;
+  }
+}
