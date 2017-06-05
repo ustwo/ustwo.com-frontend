@@ -94,7 +94,7 @@ class PageHome extends Component {
       height: `${fixedHeightVentures + 100}px`
     }
 
-    const promotionURI = '/work/ford-gopark';
+    const promotionURI = '/work/monument-valley-2';
 
     return (
       <article className={classes} ref={(ref) => this.homeContent = ref}>
@@ -111,7 +111,7 @@ class PageHome extends Component {
               />
             </Link>
             <div className="home-hero-call-to-action-link">
-              <a href={promotionURI} onClick={Flux.override(promotionURI)}>See our featured case study</a>
+              <a href={promotionURI} onClick={Flux.override(promotionURI)}>MONUMENT VALLEY 2 IS OUT NOW FOR iOS</a>
             </div>
           </div>
         </div>
@@ -246,10 +246,10 @@ const dataProducts = [{
 const dataVentures = [{
   title: "ustwo Games",
   category: "Business",
-  imageURL: "/images/home/ustwo-games.jpg",
-  videoURL: "/images/home/monument-valley.mp4",
+  imageURL: "/images/home/ustwo-games-2.jpg",
+  videoURL: "/images/home/ustwo-games.mp4",
   description: "An award-winning mobile games studio making the most beautiful interactive entertainment",
-  linkURI: "/work/monument-valley"
+  linkURI: "/work/monument-valley-2"
 },{
   title: "Dice",
   category: "Business",

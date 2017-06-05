@@ -107,12 +107,19 @@
   left: 50%;
   z-index: 1;
   transform: translateX(-50%);
+  max-width: 800px;
+  width: 80%;
+  text-align: center;
 
   a {
     @include buttonStyle(true);
     @include buttonColor('invert');
     background-image: url('/images/icon-right-light.svg');
     display: inline-block;
+    line-height: 1.5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: none;
   }
 }
 

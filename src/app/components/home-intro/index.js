@@ -42,9 +42,9 @@ class HomeIntro extends Component {
     const hide = scrollProgressValue === 1;
 
     let fallbackImage = '/images/home-header-fallback-mobile.jpg';
-    let src = 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=165';
+    let src = 'https://player.vimeo.com/external/220313743.sd.mp4?s=2c97e3a1adde9cd20562f473d9912d5eb66bac13&profile_id=165';
     if (window.innerWidth >= 600) {
-      src = 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
+      src = 'https://player.vimeo.com/external/220313743.hd.mp4?s=969573366eb4d7a272c14da63de269cc61451e24&profile_id=174';
       fallbackImage = '/images/home-header-fallback.jpg';
     }
 
