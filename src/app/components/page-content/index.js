@@ -91,7 +91,7 @@ class PageContent extends Component {
     const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, homeLoaderShown, heroVideoReady, visitedWorkCapabilities } = this.props;
     const capability = ['work/discovery-strategy', 'work/design-build', 'work/launch-scale', 'work/ways-of-working'];
     const heroReady = (currentPage === 'home' || currentPage === 'work') && !env.Modernizr.touchevents ? heroVideoReady : true;
-    let loaded = !dataLoading && this.state.ticker === 0 && heroReady;
+    let loaded = !dataLoading && this.state.ticker === 0;
 
     if (loaded) {
       clearInterval(this.ultimateTimeout);
