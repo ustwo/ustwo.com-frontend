@@ -42,9 +42,7 @@ class HomeIntro extends Component {
     const hide = scrollProgressValue === 1;
 
     let fallbackImage = '/images/home-header-fallback-mobile.jpg';
-    let src = 'https://player.vimeo.com/external/220313743.sd.mp4?s=2c97e3a1adde9cd20562f473d9912d5eb66bac13&profile_id=165';
     if (window.innerWidth >= 600) {
-      src = 'https://player.vimeo.com/external/220313743.hd.mp4?s=969573366eb4d7a272c14da63de269cc61451e24&profile_id=174';
       fallbackImage = '/images/home-header-fallback.jpg';
     }
 
@@ -67,7 +65,8 @@ class HomeIntro extends Component {
       <div className="home-intro" style={styles}>
         <div className="home-intro-video" style={videoTransitionStyles}>
           <Video
-            src={src}
+            src="https://player.vimeo.com/external/220313743.sd.mp4?s=2c97e3a1adde9cd20562f473d9912d5eb66bac13&profile_id=165"
+            srcHls="https://player.vimeo.com/external/220313743.m3u8?s=7d1bf5e408ecc13e5113b543c65165246561b232"
             isVideoBackground={true}
             play={playVideo}
             imageCSS={fallbackImage}

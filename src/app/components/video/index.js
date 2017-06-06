@@ -3,6 +3,8 @@ import classnames from 'classnames';
 import Rimage from 'app/components/rimage';
 import Flux from 'app/flux';
 import env from 'app/adaptors/server/env';
+import Hls from 'hls.js';
+import log from 'app/lib/log';
 
 const posterURL = "/images/transparent.png";
 
@@ -10,6 +12,8 @@ class Video extends Component {
 
   constructor(props) {
     super(props);
+
+    this.hlsInstance = null;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,18 +30,25 @@ class Video extends Component {
     }
   }
 
-  // componentWillMount() {
-  //   if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
-  //     this.setState({
-  //       // See if playsInline attribute is valid (i.e. anything before iOS10)
-  //       // canPlayMobileVideo: 'playsInline' in document.createElement('video')
-  //       canPlayMobileVideo: false
-  //     });
-  //   }
-  // }
-
   componentDidMount() {
-    const { heroVideo, isMobile } = this.props;
+    const { src, srcHls, heroVideo, isMobile } = this.props;
+
+    if (this.video) {
+      if (srcHls && srcHls.length && Hls.isSupported() && this.hlsInstance === null) {
+        this.hlsInstance = new Hls();
+        this.hlsInstance.attachMedia(this.video);
+        this.hlsInstance.on(Hls.Events.MEDIA_ATTACHED, () => {
+          log("video and hls.js are now bound together !");
+          this.hlsInstance.loadSource(srcHls);
+          this.hlsInstance.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+            log("manifest loaded, found " + data.levels.length + " quality level");
+          });
+        });
+      }
+      if (this.hlsInstance === null) {
+        this.video.setAttribute('src', src);
+      }
+    }
 
     if (heroVideo && this.video) {
       if (env.Modernizr.touchevents) {
@@ -87,7 +98,7 @@ class Video extends Component {
   }
 
   renderVideoBackground() {
-    const { imageCSS, isMobile, fixedHeight, hide, loaded } = this.props;
+    const { src, srcHls, imageCSS, isMobile, fixedHeight, hide, loaded } = this.props;
 
     let styles = {};
     if (loaded && imageCSS) {
@@ -108,7 +119,7 @@ class Video extends Component {
     return (
       <div className={classes} style={styles}>
         {fallback}
-        {this.renderVideo()}
+        {(src && src.length) || (srcHls && srcHls.length) ? this.renderVideo() : this.renderImage()}
       </div>
     );
   }
@@ -121,26 +132,17 @@ class Video extends Component {
   }
 
   renderVideo() {
-    const { src, play, preload } = this.props;
-    const preloadAttribute = preload ? preload : 'auto';
+    const { preload } = this.props;
 
-    let video;
-    if(src && src.length) {
-      video = (
-        <video
-          ref={(ref) => this.video = ref}
-          src={src}
-          poster={posterURL}
-          onClick={(e) => e.preventDefault()}
-          preload={preloadAttribute}
-          playsInline loop muted
-        />
-      );
-    } else {
-      video = this.renderImage();
-    }
-
-    return video;
+    return (
+      <video
+        ref={(ref) => this.video = ref}
+        poster={posterURL}
+        onClick={(e) => e.preventDefault()}
+        preload={preload ? preload : 'auto'}
+        playsInline loop muted
+      />
+    );
   }
 
   render() {
