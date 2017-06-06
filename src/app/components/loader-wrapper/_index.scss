@@ -34,6 +34,8 @@ html {
   }
 
   &.js {
-    display: flex;
+    .loader-wrapper {
+      display: flex;
+    }
   }
 }
