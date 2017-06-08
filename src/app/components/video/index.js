@@ -59,7 +59,7 @@ class Video extends Component {
       if (srcHls && srcHls.length && canPlayHlsNatively(this.video)) {
         this.video.setAttribute('src', srcHls);
       } else if (srcHls && srcHls.length && Hls.isSupported() && this.hlsInstance === null) {
-        this.hlsInstance = new Hls();
+        this.hlsInstance = new Hls({abrEwmaDefaultEstimate: 5000000, startLevel: 3});
         this.hlsInstance.attachMedia(this.video);
         this.hlsInstance.on(Hls.Events.MEDIA_ATTACHED, () => {
           const hlsFragments = [];
