@@ -8,6 +8,28 @@ import log from 'app/lib/log';
 
 const posterURL = "/images/transparent.png";
 
+// from https://github.com/iambumblehead/canplayhls
+const hlsMediaTypes = [
+  // Apple santioned
+  'application/vnd.apple.mpegurl',
+  // Apple sanctioned for backwards compatibility
+  'audio/mpegurl',
+  // Very common
+  'audio/x-mpegurl',
+  // Very common
+  'application/x-mpegurl',
+  // Included for completeness
+  'video/x-mpegurl',
+  'video/mpegurl',
+  'application/mpegurl'
+];
+
+function canPlayHlsNatively(videoElement) {
+  return videoElement && videoElement.canPlayType && hlsMediaTypes.some(function (mediaType) {
+    return /maybe|probably/i.test(videoElement.canPlayType(mediaType));
+  });
+}
+
 class Video extends Component {
 
   constructor(props) {
@@ -33,19 +55,30 @@ class Video extends Component {
   componentDidMount() {
     const { src, srcHls, heroVideo, isMobile } = this.props;
 
-    if (this.video) {
-      if (srcHls && srcHls.length && Hls.isSupported() && this.hlsInstance === null) {
+    if (this.video && !this.video.src) {
+      if (srcHls && srcHls.length && canPlayHlsNatively(this.video)) {
+        this.video.setAttribute('src', srcHls);
+      } else if (srcHls && srcHls.length && Hls.isSupported() && this.hlsInstance === null) {
         this.hlsInstance = new Hls();
         this.hlsInstance.attachMedia(this.video);
         this.hlsInstance.on(Hls.Events.MEDIA_ATTACHED, () => {
-          log("video and hls.js are now bound together !");
+          const hlsFragments = [];
           this.hlsInstance.loadSource(srcHls);
-          this.hlsInstance.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
-            log("manifest loaded, found " + data.levels.length + " quality level");
+          this.hlsInstance.on(Hls.Events.FRAG_LOADED, function (event, data) {
+            hlsFragments.push(data.frag);
+          });
+          this.hlsInstance.on(Hls.Events.LEVEL_SWITCHED, (event, data) => {
+            const fragmentLevels = hlsFragments.map(fragment => fragment.level);
+            const maxLevel = fragmentLevels.reduce((max, cur) => Math.max(max, cur), 0);
+            hlsFragments.map((fragment, index) => {
+              if (fragment.level < maxLevel) {
+                this.hlsInstance.trigger(Hls.Events.BUFFER_FLUSHING, {startOffset: fragment.startPTS, endOffset: fragment.endPTS});
+                hlsFragments.splice(index, 1);
+              }
+            });
           });
         });
-      }
-      if (this.hlsInstance === null) {
+      } else if (this.hlsInstance === null) {
         this.video.setAttribute('src', src);
       }
     }
