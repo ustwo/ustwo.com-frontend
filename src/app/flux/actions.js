@@ -61,15 +61,6 @@ const Actions = {
   menuHover(name) {
     Store.menuHover(name);
   },
-  heroVideoReady(bool) {
-    Store.heroVideoReady(bool);
-  },
-  homeIntroVideoViewed() {
-    Store.homeIntroVideoViewed();
-  },
-  homeLoaderShown() {
-    Store.homeLoaderShown();
-  },
   overflowHidden() {
     Store.overflowHidden();
   },

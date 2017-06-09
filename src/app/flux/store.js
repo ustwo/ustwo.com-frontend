@@ -32,9 +32,6 @@ const _state = Object.assign({
   archivedEventsPagination: Defaults.archivedEventsPagination,
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
   venturesPosition: Defaults.venturesPosition,
-  heroVideoReady: Defaults.heroVideoReady,
-  homeIntroVideoViewed: Defaults.homeIntroVideoViewed,
-  homeLoaderShown: Defaults.homeLoaderShown,
   overflow: Defaults.overflow,
   videoOverlaySrc: Defaults.videoOverlaySrc,
   setWindowHeight: Defaults.setWindowHeight,
@@ -309,18 +306,6 @@ const Store = Object.assign(
     },
     menuHover(name) {
       _state.menuHover = `menu-hover-${name}`;
-      Store.emit('change', _state);
-    },
-    heroVideoReady(bool) {
-      _state.heroVideoReady = bool;
-      Store.emit('change', _state);
-    },
-    homeIntroVideoViewed() {
-      _state.homeIntroVideoViewed = true;
-      Store.emit('change', _state);
-    },
-    homeLoaderShown() {
-      _state.homeLoaderShown = true;
       Store.emit('change', _state);
     },
     overflowHidden() {

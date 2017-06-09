@@ -68,7 +68,8 @@ class Hero extends Component {
 
   render() {
     const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions, fixedHeight, heroImage } = this.props;
-    const transform = `translateY(${((0.5 - scrollProgress) * 4) * 30}px)`;
+    const scrollProgressValue = scrollProgress ? scrollProgress : 0;
+    const transform = `translateY(${Math.min(((0.5 - scrollProgressValue) * 4) * 30, 0)}px)`;
 
     let transitionStyles, videoTransitionStyles;
     if (scrollProgress) {

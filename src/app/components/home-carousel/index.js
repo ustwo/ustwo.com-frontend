@@ -127,21 +127,6 @@ class HomeCarousel extends Component {
 
       const classes = classnames('home-carousel-item', extraClasses);
 
-
-      /* Move the images according to mouse position */
-      // const modifier = 3;
-      // let x, y;
-      // if (alignment === 'even') {
-      //   x = (mousePosition.coordinateX - 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
-      //   y = (mousePosition.coordinateY - 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
-      // } else {
-      //   x = (mousePosition.coordinateX + 0.5) * ((mousePosition.coordinateX * modifier) * (mousePosition.coordinateX * modifier));
-      //   y = (mousePosition.coordinateY + 0.5) * ((mousePosition.coordinateY * modifier) * (mousePosition.coordinateY * modifier));
-      // }
-      // const imageStyles = {
-      //   transform: `translate3d(${x}px,${y}px,0)`
-      // }
-
       /* Parallax */
       let textStyles = {};
       if (!isMobile) {
@@ -161,7 +146,7 @@ class HomeCarousel extends Component {
         }
       } else {
         if (item.videoURL) {
-          visualContent = <Video src={item.videoURL} isVideoBackground={true} imageCSS={item.imageURL} play={playVideo} preload="none" loaded={loaded} />
+          visualContent = <Video src={item.videoURL} imageCSS={item.imageURL} play={playVideo} preload="none" loaded={loaded} />
         } else {
           if (loaded) {
             visualContent = <img src={item.imageURL} className="home-carousel-visual-content-image" />
@@ -216,7 +201,7 @@ class HomeCarousel extends Component {
           <TimerUI timer={ticker} darkStyle={darkStyle} loaded={loaded} paused={paused} shuffle={shuffle} />
         </button>
         <div className="view-carousel-related-page">
-          <button onClick={Flux.override('/work')}>See it all</button>  
+          <button onClick={Flux.override('/work')}>See it all</button>
         </div>
       </div>
     );

@@ -13,10 +13,6 @@
   }
 }
 
-.home-welcome-wrapper {
-  // margin-top: 100%;
-}
-
 .home-intro-link {
   display: block;
   height: 100%;
@@ -125,9 +121,6 @@
 
 /* NOTE: max-width */
 @media screen and (max-width: $bp-medium) {
-  .home-loader {
-    height: 100% !important;
-  }
   .home-intro-link {
     width: 100vw;
     height: 100%;

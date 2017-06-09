@@ -107,13 +107,6 @@ const App = React.createClass({
     window.addEventListener('resize', this.getViewportDimensions, false);
 
     Store.on('change', this.onChangeStore);
-
-    /* TODO: What do we need this for?  */
-    // window.addEventListener("orientationchange", function() {
-    //   if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
-    //     document.documentElement.innerHTML = document.documentElement.innerHTML;
-    //   }
-    // }, false);
   },
 
   componentDidUpdate(prevProps, prevState) {
@@ -126,19 +119,7 @@ const App = React.createClass({
         disableScroll.off();
       }
     }
-
-    // if (prevState.currentPage != this.state.currentPage && env.Modernizr.touchevents) {
-      // this.setFixedHeight.bind(this);
-    // }
   },
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.isScrolling) {
-  //     setTimeout(() => {
-  //       this.setState({ isScrolling: false })
-  //     }, 50)
-  //   }
-  // },
 
   componentWillUnmount() {
     Store.removeListener('change', this.onChangeStore);
@@ -229,9 +210,10 @@ const App = React.createClass({
 
   render() {
     const state = this.state;
-    const { currentPage, show, popup, showPopup, showRollover, menuHover, modal, viewportDimensions,
-      homeIntroVideoViewed, homeLoaderShown, page, post, caseStudy, navMain, visitedWorkCapabilities,
-      documentScrollPosition, venturesPosition, footer, studios, heroVideoReady, overflow, isMobile, loaded, setWindowHeight } = this.state;
+    const { currentPage, show, popup, showPopup, showRollover, menuHover, modal,
+      viewportDimensions, page, post, caseStudy, navMain, visitedWorkCapabilities,
+      documentScrollPosition, venturesPosition, footer, studios, overflow, isMobile,
+      loaded, setWindowHeight } = this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
       'show': show,
@@ -251,18 +233,6 @@ const App = React.createClass({
         height: `${setWindowHeight}px`
       }
     }
-
-    // else if (modal === null || popup === null || overflow === 'auto') {
-    //   // document.body.style.overflow = "auto";
-    //   noScroll.off();
-    // }
-    // if (isMobile) {
-    //   if (overflow === 'hidden') {
-    //     document.body.style.position = "fixed";
-    //   } else if (overflow === 'auto') {
-    //     document.body.style.position = "initial";
-    //   }
-    // }
 
     const navigation = (
       <Navigation
@@ -329,9 +299,6 @@ const App = React.createClass({
                 pageState={this.state}
                 currentPage={currentPage}
                 dataLoading={dataLoading}
-                homeIntroVideoViewed={homeIntroVideoViewed}
-                homeLoaderShown={homeLoaderShown}
-                heroVideoReady={heroVideoReady}
                 viewportDimensions={viewportDimensions}
                 visitedWorkCapabilities={visitedWorkCapabilities}
                 documentScrollPosition={documentScrollPosition}

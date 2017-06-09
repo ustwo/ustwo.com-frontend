@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
-import { DefaultPlayer as Video } from 'react-html5video';
+import { DefaultPlayer as Html5Video } from 'react-html5video';
 
 import Subscription from 'app/components/subscription';
 
@@ -89,7 +89,7 @@ class HomeSmorgasbord extends Component {
       <div className="home-smorgasbord">
         <div className={classes}>
           <h2>What we do</h2>
-          <Video
+          <Html5Video
             controls={['Time', 'Seek', 'Volume', 'Fullscreen']}
             preload="none"
             poster={videoPoster}
@@ -105,7 +105,7 @@ class HomeSmorgasbord extends Component {
             }}
           >
             <source src={src} type="video/mp4" />
-          </Video>
+          </Html5Video>
         </div>
         <div className="smorgasbord-block-wrapper">
 

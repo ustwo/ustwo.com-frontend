@@ -13,7 +13,6 @@ class PageLoader extends Component {
   }
 
   componentDidMount() {
-    Flux.homeLoaderShown();
     Flux.overflowHidden();
 
     this.setState({

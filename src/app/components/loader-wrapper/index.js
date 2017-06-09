@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import PageLoader from 'app/components/page-loader';
-import HomeLoader from 'app/components/home-loader';
 
 class LoaderWrapper extends Component {
-
   constructor(props) {
     super(props);
 
@@ -26,17 +24,13 @@ class LoaderWrapper extends Component {
   }
 
   render() {
-    const { currentPage, homeLoaderShown, loaded, viewportDimensions } = this.props;
+    const { currentPage, loaded, viewportDimensions } = this.props;
 
     let renderLoader;
     if (this.state.hide) {
       renderLoader = (<div />);
     } else {
-      if (currentPage === 'home' && !homeLoaderShown) {
-        renderLoader = (<HomeLoader />);
-      } else {
-        renderLoader = (<PageLoader key="loader" pageId={currentPage} />);
-      }
+      renderLoader = (<PageLoader key="loader" pageId={currentPage} />);
     }
 
     const classes = classnames('loader-wrapper', `loader-wrapper-${currentPage}`, {

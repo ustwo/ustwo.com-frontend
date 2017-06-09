@@ -170,7 +170,7 @@ class Navigation extends Component {
           onMouseOut={this.mouseLeave.bind(this)}
         >
           <div className="navigation-logo">
-            <SVG title="ustwo logo" spritemapID="ustwologo" />
+            {/* <SVG title="ustwo logo" spritemapID="ustwologo" /> */}
           </div>
           <div className="navigation-toggle">
             <div className="navigation-toggle-main"></div>

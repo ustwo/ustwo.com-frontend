@@ -67,10 +67,8 @@ class PageHome extends Component {
   }
 
   render() {
-    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, footer, studios, currentPage, fixedHeight } = this.props;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, footer, studios, currentPage, fixedHeight } = this.props;
     const { venturesPosition, fixedHeightVentures } = this.state;
-
-    // const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to)
 
     const venturesActive = documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
 

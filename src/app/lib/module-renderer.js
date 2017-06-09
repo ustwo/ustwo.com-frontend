@@ -93,10 +93,22 @@ function renderPlaceholder(moduleData, index, options) {
 }
 
 function renderVideo(moduleData, index, options) {
-  return  <Video
-    videoId={get(moduleData, 'attr.video_id.value')}
-    videoFrom={get(moduleData, 'attr.video_from.value')}
-  />;
+  const videoId = get(moduleData, 'attr.video_id.value');
+  const videoFrom = get(moduleData, 'attr.video_from.value');
+  const baseURL = videoFrom === 'youtube' ? "https://www.youtube.com/embed/" : "https://player.vimeo.com/video/";
+
+  return (
+    <div className="video">
+      <iframe
+        src={baseURL + videoId}
+        width="1280"
+        height="720"
+        frameBorder="0"
+        title="Video"
+        allowFullScreen>
+      </iframe>
+    </div>
+  );
 }
 
 function renderCode(moduleData, index, options) {
