@@ -72,9 +72,8 @@ const App = React.createClass({
       documentScrollPosition: document.scrollingElement.scrollTop
     });
 
-    let timeout = null;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
       this.setState({ isScrolling: false });
     }, 1200);
   },
@@ -91,20 +90,16 @@ const App = React.createClass({
     });
   },
 
-  componentWillMount() {
-    this.getViewportDimensions();
-  },
-
   componentDidMount() {
     const { page, currentPage, post, caseStudy, isScrolling, modal, popup, overflow } = this.state;
 
     this.setState({ show: true });
     this.getViewportDimensions();
 
-    /* Get dimensions of viewport to calculte mousePosition and scrollPosition (for example) */
-    window.addEventListener('scroll', this.getDocumentScrollPosition, false);
+    /* Get dimensions of viewport to calculate mousePosition and scrollPosition (for example) */
+    window.addEventListener('scroll', this.getDocumentScrollPosition);
     /* Get new dimensions when device orientationchange etc */
-    window.addEventListener('resize', this.getViewportDimensions, false);
+    window.addEventListener('resize', this.getViewportDimensions);
 
     Store.on('change', this.onChangeStore);
   },
@@ -123,8 +118,8 @@ const App = React.createClass({
 
   componentWillUnmount() {
     Store.removeListener('change', this.onChangeStore);
-    window.removeEventListener('scroll', this.getDocumentScrollPosition.bind(this), false);
-    window.removeEventListener('resize', this.getViewportDimensions.bind(this), false);
+    window.removeEventListener('scroll', this.getDocumentScrollPosition);
+    window.removeEventListener('resize', this.getViewportDimensions);
   },
 
   onChangeStore(state) {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import LoaderWrapper from 'app/components/loader-wrapper';
 import env from 'app/adaptors/server/env';
 import window from 'app/adaptors/server/window';
 import Flux from 'app/flux';
@@ -13,20 +12,11 @@ class PageContent extends Component {
     super(props);
 
     this.state = {
-      showPage: true,
       ticker: tickerTotalPage,
       fixedHeight: window.innerHeight
     }
 
     this.setFixedHeightBound = this.setFixedHeight.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentPage != this.props.currentPage) {
-      setTimeout(() => {
-        this.setState({ showPage: false });
-      }, 1000);
-    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {

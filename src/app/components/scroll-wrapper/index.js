@@ -23,7 +23,6 @@ function getScrollProgress(top, height, scrollPosition) {
 }
 
 class ScrollWrapper extends Component {
-
   constructor(props) {
     super(props);
 
