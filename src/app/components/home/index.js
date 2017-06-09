@@ -25,6 +25,8 @@ class PageHome extends Component {
       venturesPosition: {},
       fixedHeightVentures: 0
     }
+
+    this.getVenturesPositionBound = this.getVenturesPosition.bind(this);
   }
 
   // We need to find out viewportDimensions and if ventures is active (therefore know where it is)
@@ -41,7 +43,7 @@ class PageHome extends Component {
     const body = document.body;
     const scrollTop = window.pageYOffset || body.scrollTop;
     const clientTop = body.clientTop || 0;
-    const top  = box.top +  scrollTop - clientTop;
+    const top = box.top +  scrollTop - clientTop;
     const venturesPositionFromTop = Math.round(top);
 
     const venturesPosition = {
@@ -59,11 +61,11 @@ class PageHome extends Component {
     this.getVenturesPosition();
 
     // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
-    window.addEventListener('resize', this.getVenturesPosition.bind(this), false);
+    window.addEventListener('resize', this.getVenturesPositionBound);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.getVenturesPosition.bind(this), false);
+    window.removeEventListener('resize', this.getVenturesPositionBound);
   }
 
   render() {

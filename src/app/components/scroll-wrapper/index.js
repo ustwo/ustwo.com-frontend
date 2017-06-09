@@ -22,51 +22,6 @@ function getScrollProgress(top, height, scrollPosition) {
   }
 }
 
-/*
-  Get Mouse Position:
-  Return coordinates of mouse position inside element: -1 to 1 on each axis,
-  e.g. top-left is [-1, -1]
-  TODO: Extend/Change component to cater for touch devices, i.e. use accelerometre
-*/
-function getMousePosition(component) {
-  return (e) => {
-    const screenPosition = {
-      coordinateX: Math.round((e.clientX / component.state.elementAttributes.width - 0.5) * 200) / 100,
-      coordinateY: Math.round((e.clientY / component.state.elementAttributes.height - 0.5) * 200) / 100
-    };
-
-    component.setState({ screenPosition });
-  }
-}
-
-function getGyroscopePosition(component) {
-  return (e) => {
-    const screenPosition = {
-      coordinateX: Math.round((e.gamma / 90) * 100) / 100,
-      coordinateY: Math.round((e.beta / 90) * 100) / 100
-    }
-
-    // console.log('X: ' + screenPosition.coordinateX);
-    // console.log('Y: ' + screenPosition.coordinateY);
-
-    component.setState({ screenPosition });
-  }
-}
-
-/*
-  Get Element Attributes:
-  Return element dimensions and offset from top
-*/
-function getElementAttributes(component) {
-  const rect = component.scrollWrapper.getBoundingClientRect();
-  const elementAttributes = {
-    width: rect.width,
-    height: rect.height,
-    top: component.scrollWrapper.offsetTop
-  };
-  component.setState({ elementAttributes });
-}
-
 class ScrollWrapper extends Component {
 
   constructor(props) {
@@ -76,30 +31,72 @@ class ScrollWrapper extends Component {
       elementAttributes: {},
       screenPosition: {}
     }
+
+    this.getMousePositionBound = this.getMousePosition.bind(this);
+    this.getGyroscopePositionBound = this.getGyroscopePosition.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props != nextProps) {
-      getElementAttributes(this);
+      this.getElementAttributes();
     }
   }
 
   componentDidMount() {
-    getElementAttributes(this);
+    this.getElementAttributes();
 
     if (this.props.requireScreenPosition) {
       if (env.Modernizr.touchevents) {
-        window.addEventListener('deviceorientation', getGyroscopePosition(this), true);
+        window.addEventListener('deviceorientation', this.getGyroscopePositionBound, true);
       } else {
-        this.scrollWrapper.addEventListener('mousemove', getMousePosition(this));
+        this.scrollWrapper.addEventListener('mousemove', this.getMousePositionBound);
       }
     }
   }
 
   componentWillUnmount() {
     if (this.props.requireScreenPosition) {
-      this.scrollWrapper.removeEventListener('mousemove', getMousePosition(this));
+      this.scrollWrapper.removeEventListener('mousemove', this.getMousePositionBound);
+      window.removeEventListener('deviceorientation', this.getGyroscopePositionBound, true);
     }
+  }
+
+  /*
+    Get Mouse Position:
+    Return coordinates of mouse position inside element: -1 to 1 on each axis,
+    e.g. top-left is [-1, -1]
+    TODO: Extend/Change component to cater for touch devices, i.e. use accelerometre
+  */
+  getMousePosition(e) {
+    const screenPosition = {
+      coordinateX: Math.round((e.clientX / this.state.elementAttributes.width - 0.5) * 200) / 100,
+      coordinateY: Math.round((e.clientY / this.state.elementAttributes.height - 0.5) * 200) / 100
+    };
+
+    this.setState({ screenPosition });
+  }
+
+  getGyroscopePosition(e) {
+    const screenPosition = {
+      coordinateX: Math.round((e.gamma / 90) * 100) / 100,
+      coordinateY: Math.round((e.beta / 90) * 100) / 100
+    }
+
+    this.setState({ screenPosition });
+  }
+
+  /*
+    Get Element Attributes:
+    Return element dimensions and offset from top
+  */
+  getElementAttributes() {
+    const rect = this.scrollWrapper.getBoundingClientRect();
+    const elementAttributes = {
+      width: rect.width,
+      height: rect.height,
+      top: this.scrollWrapper.offsetTop
+    };
+    this.setState({ elementAttributes });
   }
 
   render() {

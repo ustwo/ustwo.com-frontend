@@ -8,14 +8,6 @@ import Flux from 'app/flux';
 const tickerTotalPage = 1000;
 const tickerFrequency = 200;
 
-function setFixedHeight(component) {
-  return () => {
-    const windowHeight = window.innerHeight;
-    component.setState({ fixedHeight: windowHeight });
-    Flux.setWindowHeight(windowHeight);
-  }
-}
-
 class PageContent extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +17,8 @@ class PageContent extends Component {
       ticker: tickerTotalPage,
       fixedHeight: window.innerHeight
     }
+
+    this.setFixedHeightBound = this.setFixedHeight.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,21 +36,23 @@ class PageContent extends Component {
   componentDidMount() {
     this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
 
-    const windowHeight = window.innerHeight;
-    this.setState({ fixedHeight: windowHeight });
-    Flux.setWindowHeight(windowHeight);
+    this.setFixedHeight()
 
-    window.addEventListener('orientationchange', setFixedHeight(this), false);
+    window.addEventListener('orientationchange', this.setFixedHeightBound);
     if (this.props.documentScrollPosition > window.innerHeight + 100) {
-      window.addEventListener('resize', setFixedHeight(this), false);
+      window.addEventListener('resize', this.setFixedHeightBound);
     }
   }
 
   componentWillUnmount() {
-    window.removeEventListener('orientationchange', setFixedHeight(this), false);
-    if (this.props.documentScrollPosition > window.innerHeight + 100) {
-      window.removeEventListener('resize', setFixedHeight(this), false);
-    }
+    window.removeEventListener('orientationchange', this.setFixedHeightBound);
+    window.removeEventListener('resize', this.setFixedHeightBound);
+  }
+
+  setFixedHeight() {
+    const windowHeight = window.innerHeight;
+    this.setState({ fixedHeight: windowHeight });
+    Flux.setWindowHeight(windowHeight);
   }
 
   ticker() {
