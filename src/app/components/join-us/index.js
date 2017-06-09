@@ -2,6 +2,7 @@
 
 import React from 'react';
 import classnames from 'classnames';
+import Scroll, { Link, Element } from 'react-scroll'; // Animate and scroll to location in document
 import find from 'lodash/collection/find';
 import map from 'lodash/collection/map';
 import filter from 'lodash/collection/filter';
@@ -52,26 +53,29 @@ const PageJoinUs = React.createClass({
       <article className={classes}>
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
-            <ScrollWrapper
-              component={<JoinUsHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title={title} />}
-              documentScrollPosition={documentScrollPosition}
-              viewportDimensions={viewportDimensions}
-              requireScreenPosition={true}
-              className="scroll-wrapper-join-us-hero"
-            />
+            <Link to="joinMainBlock" smooth={true} duration={1000} className="home-intro-link">
+              <ScrollWrapper
+                component={<JoinUsHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title={title} />}
+                documentScrollPosition={documentScrollPosition}
+                viewportDimensions={viewportDimensions}
+                requireScreenPosition={true}
+                className="scroll-wrapper-join-us-hero"
+              />
+            </Link>
           </div>
         </div>
 
         <div className="home-main-content-wrapper">
-
-          {renderModules({
-            modules: get(page, 'page_builder', []),
-            colours: get(page, 'colors'),
-            zebra: false,
-            placeholderContents: {
-              WORKABLE_LIST: this.getJobSectionRenderer(this.state.selectedStudioSlug)
-            }
-          })}
+          <Element name="joinMainBlock">
+            {renderModules({
+              modules: get(page, 'page_builder', []),
+              colours: get(page, 'colors'),
+              zebra: false,
+              placeholderContents: {
+                WORKABLE_LIST: this.getJobSectionRenderer(this.state.selectedStudioSlug)
+              }
+            })}
+          </Element>
 
           <ScrollWrapper
             component={<ContactBlock />}

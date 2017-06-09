@@ -13,7 +13,8 @@ class WorkHero extends Component {
     super(props);
   }
 
-  openVideoOverlay() {
+  openVideoOverlay(e) {
+    e.stopPropagation();
     let src;
     if (window.innerWidth < 600) {
       src = 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=164';
@@ -42,7 +43,7 @@ class WorkHero extends Component {
           title="Make things to change things"
           transitionImage={true}
           showDownIndicator={true}
-          eventLabel=' '
+          eventLabel='work'
           video={video}
           fixedHeight={fixedHeight}
           isMobile={isMobile}

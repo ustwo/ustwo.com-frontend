@@ -17,7 +17,6 @@ import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
 
 class PageHome extends Component {
-
   constructor(props) {
     super(props);
 

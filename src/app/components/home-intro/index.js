@@ -66,7 +66,9 @@ class HomeIntro extends Component {
             />
           </div>
         </div>
-        <div className="hero-down-indicator" style={transitionStyles}><DownIndicator /></div>
+        <div className="hero-down-indicator" style={transitionStyles}>
+          <DownIndicator />
+        </div>
       </div>
     );
   }
