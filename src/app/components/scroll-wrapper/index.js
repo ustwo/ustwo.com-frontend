@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { debounce } from 'lodash';
 import classnames from 'classnames';
 import env from 'app/adaptors/server/env';
 
@@ -31,8 +32,14 @@ class ScrollWrapper extends Component {
       screenPosition: {}
     }
 
-    this.getMousePositionBound = this.getMousePosition.bind(this);
-    this.getGyroscopePositionBound = this.getGyroscopePosition.bind(this);
+    this.getMousePositionBound = debounce(this.getMousePosition.bind(this), 20, {
+      'leading': true,
+      'trailing': false
+    });
+    this.getGyroscopePositionBound = debounce(this.getGyroscopePosition.bind(this), 20, {
+      'leading': true,
+      'trailing': false
+    });
   }
 
   componentWillReceiveProps(nextProps) {

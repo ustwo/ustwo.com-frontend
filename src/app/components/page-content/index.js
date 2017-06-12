@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { debounce } from 'lodash';
 import classnames from 'classnames';
 import env from 'app/adaptors/server/env';
 import window from 'app/adaptors/server/window';
@@ -16,7 +17,7 @@ class PageContent extends Component {
       fixedHeight: window.innerHeight
     }
 
-    this.setFixedHeightBound = this.setFixedHeight.bind(this);
+    this.setFixedHeightBound = debounce(this.setFixedHeight.bind(this), 20);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
