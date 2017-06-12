@@ -1,8 +1,8 @@
 /*
  *  BLOG CONTROLS
- *  Blog search button and filter
+ *  Blog category filter
  *
- *  Notes: This is the containing component for search and the dropdown buttons.
+ *  Notes: This is the containing component the category dropdown button.
  *         The dropdown list itself is a modal called blog-categories.
  *  TODO: Bring variables in scope of component
  */
@@ -11,22 +11,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  .blog-search-button {
-    display: flex;
-    align-items: center;
-    height: $blog-controls-line-height;
-    width: $blog-controls-search-width;
-    background: transparent;
-    border: 0;
-    padding: 0;
-
-    .search-icon {
-      fill: #fff;
-      width: 30px;
-      height: 30px;
-    }
-  }
 
   .blog-filter {
     position: relative;

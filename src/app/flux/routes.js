@@ -90,15 +90,6 @@ const routes = {
       slug: 'posts/all'
     }]
   },
-  searchResults: {
-    id: 'blog/search-results',
-    patterns: ['/blog/search?q=:query'],
-    data: query => [{
-      url: `ustwo/v1/posts?search=${query}`,
-      type: 'posts',
-      slug: 'posts/search'
-    }]
-  },
   post: {
     id: 'blog/post',
     patterns: ['/blog/:pid'],

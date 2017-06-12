@@ -20,7 +20,6 @@ import 'app/lib/animate';
 
 import Store from 'app/flux/store';
 import Nulls from 'app/flux/nulls';
-import PageContainer from 'app/components/page-container';
 import Navigation from 'app/components/navigation';
 import Modal from 'app/components/modal';
 import EntranceTransition from 'app/components/entrance-transition';
@@ -44,15 +43,12 @@ const pageMap = {
   'work/ways-of-working': require('app/components/work-ways-of-working'),
   'blog': require('app/components/blog'),
   'blog/post': require('app/components/post'),
-  'blog/search-results': require('app/components/search-results'),
   'legal': require('app/components/legal'),
   'join-us': require('app/components/join-us'),
   'events': require('app/components/events'),
   'events/event': require('app/components/event'),
   'ev': require('app/components/page')
 };
-
-const spinnerBlacklist = ['legal', 'blog/search-results'];
 
 const App = React.createClass({
 
@@ -206,9 +202,9 @@ const App = React.createClass({
   render() {
     const state = this.state;
     const { currentPage, show, popup, showPopup, showRollover, menuHover, modal,
-      viewportDimensions, page, post, caseStudy, navMain, visitedWorkCapabilities,
-      documentScrollPosition, venturesPosition, footer, studios, overflow, isMobile,
-      loaded, setWindowHeight } = this.state;
+      viewportDimensions, page, post, caseStudy, navMain, documentScrollPosition,
+      venturesPosition, footer, studios, overflow, isMobile, loaded,
+      setWindowHeight } = this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
       'show': show,
@@ -243,8 +239,6 @@ const App = React.createClass({
         caseStudy={caseStudy}
       />
     );
-
-    const dataLoading = !includes(spinnerBlacklist, currentPage) && !page && !post && !caseStudy;
 
     let content;
     if (state.currentPage === 'notfound') {
@@ -288,17 +282,15 @@ const App = React.createClass({
             className="transition-page"
             duration={1000}
           >
-            <PageContainer key={currentPage} extraClasses={contentClasses}>
-              <PageContent
-                pageMap={pageMap}
-                pageState={this.state}
-                currentPage={currentPage}
-                dataLoading={dataLoading}
-                viewportDimensions={viewportDimensions}
-                visitedWorkCapabilities={visitedWorkCapabilities}
-                documentScrollPosition={documentScrollPosition}
-              />
-            </PageContainer>
+            <PageContent
+              key={currentPage}
+              extraClasses={contentClasses}
+              pageMap={pageMap}
+              pageState={this.state}
+              currentPage={currentPage}
+              viewportDimensions={viewportDimensions}
+              documentScrollPosition={documentScrollPosition}
+            />
           </TransitionManager>
           {this.renderModal()}
           {this.renderPopup()}

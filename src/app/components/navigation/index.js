@@ -11,7 +11,6 @@ import SVGSequence from 'app/components/svg-sequence';
 import kebabCase from 'lodash/string/kebabCase';
 
 class Navigation extends Component {
-
   constructor(props) {
     super(props);
 
@@ -58,11 +57,6 @@ class Navigation extends Component {
     }
   }
 
-  onClickLogo(event) {
-    event.preventDefault();
-    Flux.navigate('/');
-  }
-
   subPageBack(event) {
     event.preventDefault();
 
@@ -76,7 +70,6 @@ class Navigation extends Component {
       case 'design-build':
       case 'launch-scale':
       case 'ways-of-working':
-        Flux.visitedWorkCapabilities(false);
         navigateTo = '/work';
         break;
       case 'event':
@@ -170,7 +163,7 @@ class Navigation extends Component {
           onMouseOut={this.mouseLeave.bind(this)}
         >
           <div className="navigation-logo">
-            {/* <SVG title="ustwo logo" spritemapID="ustwologo" /> */}
+            <SVG title="ustwo logo" spritemapID="ustwologo" />
           </div>
           <div className="navigation-toggle">
             <div className="navigation-toggle-main"></div>

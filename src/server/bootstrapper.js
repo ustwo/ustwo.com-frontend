@@ -36,7 +36,7 @@ let _state;
 
 function navigate(urlString) {
   const vurl = virtualUrl(urlString);
-  const path = vurl.pathname + vurl.search;
+  const path = vurl.pathname;
   let route = find(Routes, route => {
     return some(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
   });
@@ -55,9 +55,6 @@ function navigate(urlString) {
     switch(route.id) {
       case 'blog':
         setBlogCategoryTo(params[0] || 'all');
-        break;
-      case 'blog/search-results':
-        setSearchQueryTo(params[0]);
         break;
       case 'events':
         setEventsStudioTo(params[0] || 'all');
@@ -102,10 +99,6 @@ function loadData(itemsToLoad) {
 function setBlogCategoryTo(id) {
   _state.blogCategory = id;
   _state.postsPagination = Defaults.postsPagination;
-  return Promise.resolve(_state);
-}
-function setSearchQueryTo(string) {
-  _state.searchQuery = string;
   return Promise.resolve(_state);
 }
 function setEventsStudioTo(id) {

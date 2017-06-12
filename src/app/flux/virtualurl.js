@@ -10,6 +10,5 @@ function getActualUrl(url) {
 export default function virtualUrl(url) {
   let vurl = urllite(getActualUrl(url));
   vurl.original = url;
-  vurl.searchObject = QS.parse(vurl.search);
   return vurl;
 }

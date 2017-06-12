@@ -5,23 +5,16 @@ import ContactButton from 'app/components/contact-button';
 import Flux from 'app/flux';
 
 class WorkCapability extends Component {
-
-  componentDidMount() {
-    setTimeout(() => {
-      Flux.visitedWorkCapabilities(true);
-    }, 2000);
-  }
-
   render() {
     const { data } = this.props;
+    const totalBlocks = data.blocks.length;
     const blocks = data.blocks.map((block, i) => {
-      const totalBlocks = data.blocks.length;
       const classes = classnames('work-capability-block', {
         last: i + 1 === totalBlocks
       });
 
       return (
-        <div className={classes}>
+        <div className={classes} key={`work-capability-${block.title}`}>
           <div className="work-capability-block-text">
             <h2>{block.title}</h2>
             <p>{block.text}</p>

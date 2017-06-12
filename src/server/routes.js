@@ -54,7 +54,6 @@ function renderApp(req, res) {
   }
 }
 
-router.post('/blog/search', renderApp);
 router.get('/*', renderApp);
 
 export default router;

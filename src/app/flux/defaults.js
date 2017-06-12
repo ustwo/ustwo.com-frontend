@@ -1,6 +1,5 @@
 export default {
 	blogCategory: 'all',
-	searchMode: false,
 	postsPagination: 1,
 	eventsStudio: 'all',
 	eventsPagination: 1,
@@ -10,6 +9,5 @@ export default {
 	venturesPosition: {},
 	overflow: '',
 	videoOverlaySrc: '',
-	setWindowHeight: 0,
-	visitedWorkCapabilities: false
+	setWindowHeight: 0
 };

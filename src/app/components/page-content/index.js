@@ -20,10 +20,6 @@ class PageContent extends Component {
     this.setFixedHeightBound = debounce(this.setFixedHeight.bind(this), 20);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.ticker === 0 || nextProps.dataLoading != this.props.dataLoading;
-  }
-
   componentDidMount() {
     this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
 
@@ -57,19 +53,15 @@ class PageContent extends Component {
   }
 
   render() {
-    const { viewportDimensions, currentPage, dataLoading, pageState, pageMap, visitedWorkCapabilities } = this.props;
-    const capability = ['work/discovery-strategy', 'work/design-build', 'work/launch-scale', 'work/ways-of-working'];
+    const { currentPage, pageState, pageMap, extraClasses } = this.props;
 
-    let loaded = !dataLoading && this.state.ticker <= 0;
-
-    const props = pageState;
-    const disableLoaderForCapabilities = capability.includes(currentPage) && visitedWorkCapabilities;
-    props.loaded = disableLoaderForCapabilities ? true : loaded;
-    props.fixedHeight = this.state.fixedHeight;
+    const propsToPass = pageState;
+    propsToPass.loaded = this.state.ticker <= 0;
+    propsToPass.fixedHeight = this.state.fixedHeight;
 
     return (
-      <div className="page-content">
-        {React.createElement(pageMap[currentPage], props)}
+      <div className={'page-content ' + extraClasses}>
+        {React.createElement(pageMap[currentPage], propsToPass)}
       </div>
     );
   }

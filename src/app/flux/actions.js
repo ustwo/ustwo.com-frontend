@@ -10,9 +10,6 @@ const Actions = {
   setBlogCategoryTo(id) {
     Store.setBlogCategoryTo(id);
   },
-  setSearchQueryTo(string) {
-    Store.setSearchQueryTo(string);
-  },
   showNavOverlay() {
     Store.showNavOverlay();
   },
@@ -24,12 +21,6 @@ const Actions = {
   },
   getJobDetails(jid) {
     Store.getJobDetails(jid);
-  },
-  showSearch() {
-    Store.showSearch();
-  },
-  hideSearch() {
-    Store.hideSearch();
   },
   showBlogCategories() {
     Store.showBlogCategories();
@@ -72,9 +63,6 @@ const Actions = {
   },
   setWindowHeight(number) {
     Store.setWindowHeight(number);
-  },
-  visitedWorkCapabilities(bool) {
-    Store.visitedWorkCapabilities(bool);
   }
 };
 

@@ -44,7 +44,7 @@ const PageJoinUs = React.createClass({
   },
 
   render() {
-    const { page, currentParams, studios, currentPage, footer, loaded, modal, isMobile, fixedHeight, documentScrollPosition, viewportDimensions } = this.props;
+    const { page, currentParams, studios, currentPage, footer, modal, isMobile, fixedHeight, documentScrollPosition, viewportDimensions } = this.props;
     const classes = classnames('page-join-us', this.props.className);
     const image = getFeaturedImage(page);
     const title = get(page, 'display_title');
@@ -55,7 +55,7 @@ const PageJoinUs = React.createClass({
           <div className="home-pinned-header-inner">
             <Link to="joinMainBlock" smooth={true} duration={1000} className="home-intro-link">
               <ScrollWrapper
-                component={<JoinUsHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title={title} />}
+                component={<JoinUsHero modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title={title} />}
                 documentScrollPosition={documentScrollPosition}
                 viewportDimensions={viewportDimensions}
                 requireScreenPosition={true}

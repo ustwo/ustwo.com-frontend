@@ -17,8 +17,6 @@ const _state = Object.assign({
   currentPage: Nulls.page,
   currentHash: Nulls.section,
   blogCategory: Defaults.blogCategory,
-  searchMode: Defaults.searchMode,
-  searchQuery: Nulls.searchQuery,
   modal: Nulls.modal,
   popup: Nulls.popup,
   menuHover: Defaults.menuHover,
@@ -35,7 +33,6 @@ const _state = Object.assign({
   overflow: Defaults.overflow,
   videoOverlaySrc: Defaults.videoOverlaySrc,
   setWindowHeight: Defaults.setWindowHeight,
-  visitedWorkCapabilities: Defaults.visitedWorkCapabilities,
   relatedContent: []
 }, window.state);
 if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
@@ -115,12 +112,8 @@ const Store = Object.assign(
       if(_state.caseStudy && _state.caseStudy.slug !== slug) {
         _state.caseStudy = null;
       }
-      if(newPage !== 'blog/search-results') {
-        _state.searchQuery = null;
-      }
       if(newPage !== 'blog') {
         _state.blogCategory = Defaults.blogCategory;
-        _state.searchMode = Defaults.searchMode;
         _state.posts = Nulls.posts;
         _state.postsPagination = Defaults.postsPagination;
         _state.postsPaginationTotal = Nulls.postsPaginationTotal;
@@ -183,10 +176,6 @@ const Store = Object.assign(
       _state.postsPagination = Defaults.postsPagination;
       Store.emit('change', _state);
     },
-    setSearchQueryTo(string) {
-      _state.searchQuery = string;
-      Store.emit('change', _state);
-    },
     showNavOverlay() {
       _state.modal = 'menu';
       Store.emit('change', _state);
@@ -216,14 +205,6 @@ const Store = Object.assign(
           type: 'job'
         }], applyJobDetailData).then(() => Store.emit('change', _state));
       }
-    },
-    showSearch() {
-      _state.searchMode = true;
-      Store.emit('change', _state);
-    },
-    hideSearch() {
-      _state.searchMode = false;
-      Store.emit('change', _state);
     },
     showBlogCategories() {
       _state.modal = 'blogCategories';
@@ -318,10 +299,6 @@ const Store = Object.assign(
     },
     setWindowHeight(number) {
       _state.setWindowHeight = number;
-      Store.emit('change', _state);
-    },
-    visitedWorkCapabilities(bool) {
-      _state.visitedWorkCapabilities = bool;
       Store.emit('change', _state);
     }
   }

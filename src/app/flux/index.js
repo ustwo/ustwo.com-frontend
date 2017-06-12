@@ -63,7 +63,7 @@ const Flux = Object.assign(
     },
     navigate(urlString, history, ignoreUrl, replaceState, force) {
       const vurl = virtualUrl(urlString);
-      const path = vurl.pathname + vurl.search;
+      const path = vurl.pathname;
       let route = find(Routes, route => {
         return some(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
       });
@@ -90,9 +90,6 @@ const Flux = Object.assign(
       switch(route.id) {
         case 'blog':
           Flux.setBlogCategoryTo(params[0] || 'all');
-          break;
-        case 'blog/search-results':
-          Flux.setSearchQueryTo(params[0]);
           break;
         case 'events':
           Flux.setEventsStudioTo(params[0] || 'all');
