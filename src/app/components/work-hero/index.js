@@ -31,7 +31,7 @@ class WorkHero extends Component {
       <Video
         src="https://player.vimeo.com/external/209403984.sd.mp4?s=fa5d1e9fcb9e3f78d55423329a605fc7db82541f&profile_id=165"
         srcHls="https://player.vimeo.com/external/209403984.m3u8?s=65a57e0454227df1838a1372f99bf7d761aad830"
-        imageCSS="https://i.vimeocdn.com/video/624938224.webp?mw=1280&mh=720"
+        imageCSS="https://i.vimeocdn.com/video/624938224.jpg?mw=1280&mh=720"
         preload="auto"
         fixedHeight={fixedHeight}
       />

@@ -21,7 +21,6 @@ const _state = Object.assign({
   popup: Nulls.popup,
   menuHover: Defaults.menuHover,
   colours: Nulls.colours,
-  takeover: Nulls.takeover,
   postsPagination: Defaults.postsPagination,
   postsPaginationTotal: Nulls.postsPaginationTotal,
   eventsStudio: Defaults.eventsStudio,
@@ -35,9 +34,6 @@ const _state = Object.assign({
   setWindowHeight: Defaults.setWindowHeight,
   relatedContent: []
 }, window.state);
-if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
-  _state.takeover.seen = true;
-}
 
 function applyData(response, type) {
   const changeSet = {};
@@ -178,17 +174,6 @@ const Store = Object.assign(
     },
     showNavOverlay() {
       _state.modal = 'menu';
-      Store.emit('change', _state);
-    },
-    closeTakeover() {
-      if(_state.takeover) {
-        try {
-          window.localStorage.setItem('takeover-'+_state.takeover.id, true);
-        } catch (e) {
-          console.warn('Silently ignoring localStorage error when browsing in Private Mode on iOS');
-        }
-        _state.takeover.seen = true;
-      }
       Store.emit('change', _state);
     },
     closeModal() {

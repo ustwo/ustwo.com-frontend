@@ -64,10 +64,6 @@ const navigationOverlay = '.navigation-overlay';
 const navigationDesktopMenu = navigation + ' .menu';
 const baseURL = 'http://' + proxyName;
 const homeTitle = 'ustwo | Digital product studio';
-const takeover = '.takeover';
-const takeoverClose = '.take-over .close-button';
-const modal = '.app__modal';
-const takeoverModal = '.take-over';
 const footer = '.footer';
 const studios = '.studios';
 const studio = 'London';
@@ -117,22 +113,6 @@ wd.addPromiseChainMethod('openPageByMenuLink', (linkText) => {
     });
 });
 
-wd.addPromiseChainMethod('closeTakeoverIfPresent', () => {
-  return browser
-    .elementByCss(takeover)
-    .then(() => {
-      console.log('We have a takeover so need to close it first...')
-      return browser
-        .waitForElementByCss(takeoverClose, 30000)
-        .click()
-        .elementByCss(modal)
-        .should.eventually.not.hasElementByCss(takeoverModal);
-    }, () => {
-      console.log('We don\'t have a takeover right now, carrying on!')
-      return browser;
-    });
-});
-
 describe('  mocha integration tests (' + desired.browserName + ')', function () {
   this.timeout(200000);
   let allPassed = true;
@@ -174,7 +154,6 @@ describe('  mocha integration tests (' + desired.browserName + ')', function () 
       .waitForElementByCss(navigation, 100000)
       .title()
       .should.become(homeTitle)
-      .closeTakeoverIfPresent()
       .waitForElementByCss(footer)
       .isDisplayed();
   });

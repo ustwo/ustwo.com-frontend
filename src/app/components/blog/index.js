@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import { get } from 'lodash';
@@ -130,24 +129,18 @@ const PageBlog = React.createClass({
 
     return (
       <article className={classes}>
-        <TransitionManager
-          component="div"
-          className="hero-transition-manager"
-          duration={1000}
+        <Hero
+          key="hero"
+          title={get(page, 'display_title')}
+          eventLabel="ustwo blog"
+          showDownIndicator={false}
+          notFullScreen={true}
         >
-          <Hero
-            key="hero"
-            title={get(page, 'display_title')}
-            eventLabel="ustwo blog"
-            showDownIndicator={false}
-            notFullScreen={true}
-          >
-            <BlogControls
-              className={classnames({ show: page })}
-              blogCategory={blogCategory}
-            />
-          </Hero>
-        </TransitionManager>
+          <BlogControls
+            className={classnames({ show: page })}
+            blogCategory={blogCategory}
+          />
+        </Hero>
         <section className="card-list blog-post-list">
           <div className="card-list-inner">
             {this.renderPosts()}

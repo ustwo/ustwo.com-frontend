@@ -91,7 +91,7 @@ class Navigation extends Component {
   }
 
   render() {
-    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
+    const { section, page, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
 
     const capability = ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'];
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
@@ -104,7 +104,6 @@ class Navigation extends Component {
     const caseStudyName = caseStudy ? kebabCase(caseStudy.name) : null
 
     const navClasses = classnames('navigation', customClass, section, page, caseStudyName, {
-      takeover: takeover,
       notSticky: modal === null && scrolledBefore100 && homePage,
       menuOpen: modal === 'menu',
       invert: venturesActive && homePage || capability.includes(page),

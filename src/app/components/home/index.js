@@ -42,7 +42,7 @@ class PageHome extends Component {
     const body = document.body;
     const scrollTop = window.pageYOffset || body.scrollTop;
     const clientTop = body.clientTop || 0;
-    const top = box.top +  scrollTop - clientTop;
+    const top = box.top + scrollTop - clientTop;
     const venturesPositionFromTop = Math.round(top);
 
     const venturesPosition = {

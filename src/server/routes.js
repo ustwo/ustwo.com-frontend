@@ -5,7 +5,6 @@ import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import Helmet from 'react-helmet';
-import omit from 'lodash/object/omit';
 
 import log from 'app/lib/log';
 import bootstrapper from 'server/bootstrapper';
@@ -22,7 +21,7 @@ function renderApp(req, res) {
           const App = React.createFactory(require('app/components/app'));
           console.log('Rendering HTML to string...');
           const AppString = ReactDOMServer.renderToString(App({
-            state: omit(state, 'takeover')
+            state: state
           }));
           console.log('...Done');
           const head = Helmet.rewind();

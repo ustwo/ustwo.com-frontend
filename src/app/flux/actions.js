@@ -13,9 +13,6 @@ const Actions = {
   showNavOverlay() {
     Store.showNavOverlay();
   },
-  closeTakeover() {
-    Store.closeTakeover();
-  },
   closeModal() {
     Store.closeModal();
   },

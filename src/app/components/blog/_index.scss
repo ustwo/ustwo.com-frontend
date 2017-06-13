@@ -55,44 +55,14 @@
     }
   }
 
-  .hero-transition-manager {
+  .hero {
+    @include page-background-colour(blog);
+    .blog-controls {
+      position: absolute;
+      bottom: calc(#{$hero-offsetSize-small} + 60px);
 
-    .hero {
-      @include page-background-colour(blog);
-
-      .blog-controls {
-        transition: opacity .2s linear;
-      }
-
-      &.add {
-        opacity: 1;
-
-        .blog-controls {
-          opacity: 0;
-        }
-      }
-
-      &.add.show {
-        .blog-controls {
-          opacity: 1;
-          transition-duration: .5s;
-          transition-delay: 2s;
-          position: absolute;
-          bottom: calc(#{$hero-offsetSize-small} + 60px);
-
-          @media screen and (min-width: $bp-tablet) {
-            bottom: calc(#{$hero-offsetSize} + 60px);
-          }
-        }
-      }
-
-      &.hide {
-        opacity: 0;
-        transition: opacity .2s linear;
-
-        .blog-controls {
-          opacity: 0;
-        }
+      @media screen and (min-width: $bp-tablet) {
+        bottom: calc(#{$hero-offsetSize} + 60px);
       }
     }
   }

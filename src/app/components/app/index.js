@@ -24,7 +24,6 @@ import Navigation from 'app/components/navigation';
 import Modal from 'app/components/modal';
 import EntranceTransition from 'app/components/entrance-transition';
 import ContactTray from 'app/components/contact-tray';
-import TakeOver from 'app/components/take-over';
 import FourOhFour from 'app/components/404';
 import BlogCategories from 'app/components/blog-categories';
 import NavigationOverlay from 'app/components/navigation-overlay';
@@ -122,17 +121,10 @@ const App = React.createClass({
     this.setState(state);
   },
 
-  showTakeover() {
-    const { currentPage, takeover } = this.state;
-    return currentPage === 'home' && takeover && !takeover.seen;
-  },
-
   renderModal() {
-    const { takeover, modal } = this.state;
     let modalContent, className, content;
-    if (this.showTakeover()) {
-      modalContent = <TakeOver key="takeover" takeover={takeover} />;
-    } else if (modal) {
+    const { modal } = this.state;
+    if (modal) {
       switch(modal) {
         case 'menu':
           className = 'menu';
@@ -213,9 +205,8 @@ const App = React.createClass({
     });
     const contentClasses = classnames('app-content', showPopup, showRollover, menuHover, {
       'show': state.show,
-      'takeover': this.showTakeover(),
       'disabled': !!modal,
-      'mobile-no-scroll': modal || this.showTakeover(),
+      'mobile-no-scroll': modal,
     });
 
     let styles;
@@ -230,7 +221,6 @@ const App = React.createClass({
         pages={navMain}
         section={currentPage.split('/')[0]}
         page={currentPage.split('/')[1]}
-        takeover={this.showTakeover()}
         documentScrollPosition={documentScrollPosition}
         venturesPosition={venturesPosition}
         modal={modal}
@@ -277,21 +267,15 @@ const App = React.createClass({
           <EntranceTransition className="nav-wrapper">
             {navigation}
           </EntranceTransition>
-          <TransitionManager
-            component="div"
-            className="transition-page"
-            duration={1000}
-          >
-            <PageContent
-              key={currentPage}
-              extraClasses={contentClasses}
-              pageMap={pageMap}
-              pageState={this.state}
-              currentPage={currentPage}
-              viewportDimensions={viewportDimensions}
-              documentScrollPosition={documentScrollPosition}
-            />
-          </TransitionManager>
+          <PageContent
+            key={currentPage}
+            extraClasses={contentClasses}
+            pageMap={pageMap}
+            pageState={this.state}
+            currentPage={currentPage}
+            viewportDimensions={viewportDimensions}
+            documentScrollPosition={documentScrollPosition}
+          />
           {this.renderModal()}
           {this.renderPopup()}
         </div>

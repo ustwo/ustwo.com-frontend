@@ -4,7 +4,6 @@ export default {
 	hash: null,
 	modal: null,
 	popup: null,
-	takeover: null,
 	postsPaginationTotal: null,
 	posts: null,
 	eventsPaginationTotal: null,

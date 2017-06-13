@@ -49,7 +49,7 @@ class HomeIntro extends Component {
           <Video
             src="https://player.vimeo.com/external/220313743.sd.mp4?s=2c97e3a1adde9cd20562f473d9912d5eb66bac13&profile_id=165"
             srcHls="https://player.vimeo.com/external/220313743.m3u8?s=7d1bf5e408ecc13e5113b543c65165246561b232"
-            imageCSS="https://i.vimeocdn.com/video/639084650.webp?mw=1280&mh=720"
+            imageCSS="https://i.vimeocdn.com/video/639084650.jpg?mw=1280&mh=720"
             heroVideo={true}
             isMobile={isMobile}
             preload="auto"
