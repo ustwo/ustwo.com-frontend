@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { debounce } from 'lodash';
 import classnames from 'classnames';
 import env from 'app/adaptors/server/env';
 
@@ -28,18 +27,25 @@ class ScrollWrapper extends Component {
     super(props);
 
     this.state = {
-      elementAttributes: {},
-      screenPosition: {}
+      elementAttributes: {
+        width: 0,
+        height: 0,
+        top: 0
+      },
+      screenPosition: {
+        coordinateX: 0,
+        coordinateY: 0
+      }
     }
 
-    this.getMousePositionBound = debounce(this.getMousePosition.bind(this), 20, {
-      'leading': true,
-      'trailing': false
-    });
-    this.getGyroscopePositionBound = debounce(this.getGyroscopePosition.bind(this), 20, {
-      'leading': true,
-      'trailing': false
-    });
+    this.rafTicking = false;
+    this.newScreenPosition = {
+      coordinateX: 0,
+      coordinateY: 0
+    };
+    this.getMousePositionBound = this.getMousePosition.bind(this);
+    this.getGyroscopePositionBound = this.getGyroscopePosition.bind(this);
+    this.updateScreenPositionBound = this.updateScreenPosition.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -67,28 +73,37 @@ class ScrollWrapper extends Component {
     }
   }
 
+  requestTick() {
+    if(!this.rafTicking) {
+      window.requestAnimationFrame(this.updateScreenPositionBound);
+    }
+    this.rafTicking = true;
+  }
+
+  updateScreenPosition() {
+    this.rafTicking = false;
+    this.setState({ screenPosition: this.newScreenPosition });
+  }
+
   /*
     Get Mouse Position:
     Return coordinates of mouse position inside element: -1 to 1 on each axis,
     e.g. top-left is [-1, -1]
-    TODO: Extend/Change component to cater for touch devices, i.e. use accelerometre
   */
   getMousePosition(e) {
-    const screenPosition = {
+    this.newScreenPosition = {
       coordinateX: Math.round((e.clientX / this.state.elementAttributes.width - 0.5) * 200) / 100,
       coordinateY: Math.round((e.clientY / this.state.elementAttributes.height - 0.5) * 200) / 100
     };
-
-    this.setState({ screenPosition });
+    this.requestTick();
   }
 
   getGyroscopePosition(e) {
-    const screenPosition = {
+    this.newScreenPosition = {
       coordinateX: Math.round((e.gamma / 90) * 100) / 100,
       coordinateY: Math.round((e.beta / 90) * 100) / 100
-    }
-
-    this.setState({ screenPosition });
+    };
+    this.requestTick();
   }
 
   /*

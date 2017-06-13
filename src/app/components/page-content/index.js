@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { debounce } from 'lodash';
 import classnames from 'classnames';
 import env from 'app/adaptors/server/env';
 import window from 'app/adaptors/server/window';
@@ -17,7 +16,10 @@ class PageContent extends Component {
       fixedHeight: window.innerHeight
     }
 
-    this.setFixedHeightBound = debounce(this.setFixedHeight.bind(this), 20);
+    this.rafTicking = false;
+    this.newFixedHeight = window.innerHeight;
+    this.setFixedHeightBound = this.setFixedHeight.bind(this);
+    this.updateFixedHeightBound = this.updateFixedHeight.bind(this);
   }
 
   componentDidMount() {
@@ -26,9 +28,7 @@ class PageContent extends Component {
     this.setFixedHeight()
 
     window.addEventListener('orientationchange', this.setFixedHeightBound);
-    if (this.props.documentScrollPosition > window.innerHeight + 100) {
-      window.addEventListener('resize', this.setFixedHeightBound);
-    }
+    window.addEventListener('resize', this.setFixedHeightBound);
   }
 
   componentWillUnmount() {
@@ -36,10 +36,22 @@ class PageContent extends Component {
     window.removeEventListener('resize', this.setFixedHeightBound);
   }
 
+  requestTick() {
+    if(!this.rafTicking) {
+      window.requestAnimationFrame(this.updateFixedHeightBound);
+    }
+    this.rafTicking = true;
+  }
+
+  updateFixedHeight() {
+    this.rafTicking = false;
+    this.setState({ fixedHeight: this.newFixedHeight });
+    Flux.setWindowHeight(this.newFixedHeight);
+  }
+
   setFixedHeight() {
-    const windowHeight = window.innerHeight;
-    this.setState({ fixedHeight: windowHeight });
-    Flux.setWindowHeight(windowHeight);
+    this.newFixedHeight = window.innerHeight;
+    this.requestTick();
   }
 
   ticker() {
