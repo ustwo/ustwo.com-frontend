@@ -8,11 +8,12 @@ import renderModules from 'app/lib/module-renderer';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import RelatedContent from 'app/components/related-content';
 import ContactBlock from 'app/components/contact-block';
+import Footer from 'app/components/footer';
 
 const PageCaseStudy = React.createClass({
   mixins: [getScrollTrackerMixin('case-study')],
   render() {
-    const { caseStudy, documentScrollPosition, viewportDimensions } = this.props;
+    const { caseStudy, documentScrollPosition, viewportDimensions, footer, studios, currentPage } = this.props;
 
     let caseStudyName;
     if (caseStudy && caseStudy.name === 'ustwo Auto') {
@@ -56,6 +57,7 @@ const PageCaseStudy = React.createClass({
           zebra: true,
           categories: get(caseStudy, 'categories')
         })}
+        {this.renderRelatedContent()}
         <ScrollWrapper
           component={<ContactBlock />}
           documentScrollPosition={documentScrollPosition}
@@ -63,7 +65,7 @@ const PageCaseStudy = React.createClass({
           requireScreenPosition={true}
           className="scroll-wrapper-contact-block"
         />
-        {this.renderRelatedContent()}
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
       </article>
     );
   },
