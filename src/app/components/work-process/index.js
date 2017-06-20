@@ -7,14 +7,14 @@ import goToCapability from 'app/lib/go-to-capability';
 
 class WorkProcess extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      numberOfSlides: 0,
-      currentSlide: 0
-    }
-  }
+  // constructor(props) {
+  //   super(props);
+  //
+  //   this.state = {
+  //     numberOfSlides: 0,
+  //     currentSlide: 0
+  //   }
+  // }
 
   // componentDidMount() {
   //   if (env.Modernizr.touchevents) {
@@ -37,12 +37,20 @@ class WorkProcess extends Component {
     const { data, isMobile } = this.props;
 
     const workProcess = data.map(item => {
+      let link, title;
+      if (item.name) {
+        title = (<h2 onClick={() => goToCapability(item.name)} className="work-process-link">{item.title}</h2>);
+        link = (<button onClick={() => goToCapability(item.name)} className="work-process-item-button">Read More</button>);
+      } else {
+        title = (<h2>{item.title}</h2>);
+      }
+
       return (
         <div className={`work-process-item ${kebabCase(item.title)}`} key={item.name}>
           <img src={item.image} alt={`${item.title} icon`} />
-          <h2 onClick={() => goToCapability(item.name)}>{item.title}</h2>
+          {title}
           <p>{item.text}</p>
-          <button onClick={() => goToCapability(item.name)} className="work-process-item-button">Read More</button>
+          {link}
         </div>
       );
     });

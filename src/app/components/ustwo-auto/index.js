@@ -4,7 +4,9 @@ import window from 'app/adaptors/server/window';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import Hero from 'app/components/hero';
 import ContactBlock from 'app/components/contact-block';
+import ContactButton from 'app/components/contact-button';
 import Footer from 'app/components/footer';
+import WorkProcess from 'app/components/work-process';
 
 function UstwoAuto({ documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
@@ -39,7 +41,21 @@ function UstwoAuto({ documentScrollPosition, viewportDimensions, footer, studios
 
       <div className="home-main-content-wrapper">
 
-        Text here
+        <div className="work-whatwedo-wrapper">
+          <div className="work-whatwedo">
+            <div className="work-intro">
+              <p className="work-intro-statement">
+                {ustwoAutoData.intro}
+              </p>
+            </div>
+          </div>
+
+          <WorkProcess data={ustwoAutoData.items} isMobile={isMobile}  />
+
+          <div className="work-contact">
+            <ContactButton />
+          </div>
+        </div>
 
         <ScrollWrapper
           component={<ContactBlock />}
@@ -57,3 +73,24 @@ function UstwoAuto({ documentScrollPosition, viewportDimensions, footer, studios
 }
 
 export default UstwoAuto;
+
+const ustwoAutoData = {
+  intro: 'ustwo Auto is dedicated to exploring user experience challenges and opportunities in the mobility space. We work with selected clients and conduct research and experiments, often in collaboration with academic partners around the world. Recent projects and experiments have focussed on these areas:',
+  items: [{
+    title: 'Smart Mobility',
+    image: '/images/auto/smart-mobility.svg',
+    text: "Creating new services to help people navigate the world more easily"
+  },{
+    title: 'Connected Car',
+    image: '/images/auto/connected-car.svg',
+    text: 'Enhancing the ownership experience by connecting the car to people’s lifestyles and expectations'
+  },{
+    title: 'Contextual HMI',
+    image: '/images/auto/contextual-hmi.svg',
+    text: 'Making the in-car experience more personal and situational'
+  },{
+    title: 'Humanising Autonomy',
+    image: '/images/auto/humanising-autonomy.svg',
+    text: 'Looking beyond the technology and focussing on new human behaviours and opportunities'
+  }]
+}

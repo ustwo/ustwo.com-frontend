@@ -53,8 +53,11 @@
   h2 {
     @extend .h3;
     margin-bottom: 15px;
-    cursor: pointer;
   }
+}
+
+.work-process-link {
+  cursor: pointer;
 }
 
 .react-swipe-container {
