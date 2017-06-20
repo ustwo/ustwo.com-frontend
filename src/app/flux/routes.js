@@ -54,6 +54,15 @@ const routes = {
       slug: 'lways-of-working'
     }]
   },
+  ustwoAuto: {
+    id: 'work/ustwo-auto',
+    patterns: ['/work/ustwo-auto'],
+    data: () => [{
+      url: 'ustwo/v1/pages/work',
+      type: 'page',
+      slug: 'ustwo-auto'
+    }]
+  },
   caseStudy: {
     id: 'work/case-study',
     patterns: ['/work/:cid'],
@@ -178,7 +187,16 @@ const routes = {
     pattern: '/404',
     statusCode: 404,
     data: () => []
-  }
+  },
+  tully: {
+    id: 'tully',
+    patterns: ['/tully'],
+    data: () => [{
+      url: 'ustwo/v1/pages/tully',
+      type: 'page',
+      slug: 'tully'
+    }]
+  },
 };
 
 export default routes;

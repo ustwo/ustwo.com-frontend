@@ -1,0 +1,58 @@
+.work-ustwo-auto {
+  height: 100%;
+
+  .scroll-wrapper {
+    height: 100%;
+    padding: 0;
+    background-color: $offWhite;
+
+    .scroll-wrapper-inner {
+      height: 100%;
+      max-width: none;
+    }
+  }
+
+  .hero-inner-wrapper {
+    height: 100%;
+    padding: 0;
+  }
+
+  .hero-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-image: url('/images/auto/ustwo-auto-hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: none;
+  }
+
+  .hero-content {
+    text-align: center;
+
+    h1 {
+      max-width: none;
+
+      .word-animator {
+        &:before {
+          content: "auto"; // match width of the h1 auto title
+          display: inline-block;
+          background: url(/images/logo-light.svg) no-repeat 0 0;
+          background-position: 50%;
+          background-size: 113% auto;
+          color: transparent;
+        }
+      }
+
+      .word {
+        display: block;
+        color: $honey;
+      }
+    }
+  }
+
+  .hero-down-indicator {
+    left: calc(50% - 12px);
+  }
+}
