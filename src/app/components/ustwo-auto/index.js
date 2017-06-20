@@ -7,6 +7,7 @@ import ContactBlock from 'app/components/contact-block';
 import ContactButton from 'app/components/contact-button';
 import Footer from 'app/components/footer';
 import WorkProcess from 'app/components/work-process';
+import FeaturedCaseStudy from 'app/components/featured-case-study';
 
 function UstwoAuto({ documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
@@ -52,10 +53,9 @@ function UstwoAuto({ documentScrollPosition, viewportDimensions, footer, studios
 
           <WorkProcess data={ustwoAutoData.items} isMobile={isMobile}  />
 
-          <div className="work-contact">
-            <ContactButton />
-          </div>
         </div>
+
+        <FeaturedCaseStudy content={ustwoAutoData.latestPromo} />
 
         <ScrollWrapper
           component={<ContactBlock />}
@@ -79,7 +79,7 @@ const ustwoAutoData = {
   items: [{
     title: 'Smart Mobility',
     image: '/images/auto/smart-mobility.svg',
-    text: "Creating new services to help people navigate the world more easily"
+    text: 'Creating new services to help people navigate the world more easily'
   },{
     title: 'Connected Car',
     image: '/images/auto/connected-car.svg',
@@ -92,5 +92,13 @@ const ustwoAutoData = {
     title: 'Humanising Autonomy',
     image: '/images/auto/humanising-autonomy.svg',
     text: 'Looking beyond the technology and focussing on new human behaviours and opportunities'
-  }]
+  }],
+  latestPromo: {
+    title: 'New Promo Title Here',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh',
+    colours: ['#FFBF02'],
+    link: '/',
+    linkText: 'Link text',
+    latest: true
+  }
 }
