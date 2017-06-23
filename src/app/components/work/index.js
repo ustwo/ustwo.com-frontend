@@ -80,9 +80,9 @@ class PageWork extends Component {
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
-    const buttonClassAll = classnames({ selected: this.state.caseStudyFilter === 'all' });
-    const buttonClassClients = classnames({ selected: this.state.caseStudyFilter === 'Client Work' });
-    const buttonClassVentures = classnames({ selected: this.state.caseStudyFilter === 'Venture' });
+    const buttonClassAll = classnames({ selected: caseStudyFilter === 'all' });
+    const buttonClassClients = classnames({ selected: caseStudyFilter === 'Client Work' });
+    const buttonClassVentures = classnames({ selected: caseStudyFilter === 'Venture' });
 
     return (
       <article className={classes}>
@@ -112,17 +112,39 @@ class PageWork extends Component {
 
           <div className="page-work-controls" ref={(ref) => this.workAnchor = ref}>
             <div className="page-work-filter">
-              <button className={buttonClassAll} onClick={() => this.setState({ caseStudyFilter: 'all', numberOfCaseStudiesShowing: 12 })}>All</button>
-              <button className={buttonClassClients} onClick={() => this.setState({ caseStudyFilter: 'Client Work', numberOfCaseStudiesShowing: 12 })}>Client Work</button>
-              <button className={buttonClassVentures} onClick={() => this.setState({ caseStudyFilter: 'Venture', numberOfCaseStudiesShowing: 12 })}>Ventures</button>
+              <button className={buttonClassAll}
+                onClick={() => this.setState({
+                  caseStudyFilter: 'all', numberOfCaseStudiesShowing: 12
+                })}>
+                All
+              </button>
+              <button className={buttonClassClients}
+                onClick={() => this.setState({
+                  caseStudyFilter: 'Client Work', numberOfCaseStudiesShowing: 12
+                })}>
+                Client Work
+              </button>
+              <button
+                className={buttonClassVentures}
+                onClick={() => this.setState({
+                  caseStudyFilter: 'Venture', numberOfCaseStudiesShowing: 12
+                })}>
+                Ventures
+              </button>
             </div>
           </div>
 
-          <WorkCaseStudies caseStudies={caseStudies} page={page} numberOfCaseStudiesShowing={numberOfCaseStudiesShowing} caseStudyFilter={caseStudyFilter} addMoreCaseStudies={this.addMoreCaseStudies.bind(this)} />
+          <WorkCaseStudies
+            caseStudies={caseStudies}
+            page={page}
+            numberOfCaseStudiesShowing={numberOfCaseStudiesShowing}
+            caseStudyFilter={caseStudyFilter}
+            addMoreCaseStudies={this.addMoreCaseStudies.bind(this)}
+          />
 
           <WorkVerticals data={workData.verticals} />
 
-          <WorkClientsBoard />
+          <WorkClientsBoard logos={workData.clients} title="ustwo work with" />
 
           <ScrollWrapper
             component={<ContactBlock />}
@@ -171,20 +193,20 @@ const workData = {
     image: '/images/illustration-ways-of-working.svg',
     text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.'
   }],
-  verticals: {
-    auto: {
-      type: 'Expertise',
-      title: 'Auto',
-      text: 'The ustwo Auto team explore user experience in the automotive space with client engagements and our own research and experimental projects, building services and products around the connected car.',
-      linkURI: '/work/ustwoauto'
-    },
-    health: {
-      type: 'Expertise',
-      title: 'Health',
-      text: 'ustwo collaborates with clients, healthcare professionals and academic experts to create lasting, meaningful digital health solutions.',
-      linkURI: '/work/ustwo-health'
-    }
-  }
+  verticals: [{
+    type: 'Expertise',
+    shortTitle: 'auto',
+    title: 'Auto',
+    text: 'The ustwo Auto team explore user experience in the automotive space with client engagements and our own research and experimental projects, building services and products around the connected car.',
+    linkURI: '/work/ustwoauto'
+  },{
+    type: 'Expertise',
+    shortTitle: 'health',
+    title: 'Health',
+    text: 'ustwo collaborates with clients, healthcare professionals and academic experts to create lasting, meaningful digital health solutions.',
+    linkURI: '/work/ustwo-health'
+  }],
+  clients: ['Adidas', 'Android', 'BMW Group', 'Co-op', 'Ford', 'Foursquare', 'Google', 'Ikea', 'NBC', 'Qantas', 'Sky', 'Sony']
 }
 
 const featuredCaseStudy = {

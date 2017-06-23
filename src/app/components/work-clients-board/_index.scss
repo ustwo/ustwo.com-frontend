@@ -7,8 +7,11 @@
 .work-clients-board {
   padding-top: 130px;
   padding-bottom: 130px;
-  max-width: 690px;
-  margin: 0 auto;
+
+  .work-clients-board-inner {
+    max-width: 690px;
+    margin: 0 auto;
+  }
 
   .title {
     text-align: center;

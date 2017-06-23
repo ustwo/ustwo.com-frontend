@@ -58,7 +58,7 @@ const routes = {
     id: 'work/ustwo-auto',
     patterns: ['/work/ustwo-auto'],
     data: () => [{
-      url: 'ustwo/v1/pages/work',
+      url: 'ustwo/v1/pages/ustwo-auto',
       type: 'page',
       slug: 'ustwo-auto'
     }]

@@ -55,4 +55,87 @@
   .hero-down-indicator {
     left: calc(50% - 12px);
   }
+
+  .testimonial-carousel {
+    p {
+      color: $honey;
+    }
+  }
+
+  .work-clients-board {
+    background-color: $honey;
+
+    li {
+      img {
+        opacity : .75;
+      }
+    }
+  }
+
+  .card-list {
+    padding: 100px 0;
+  }
+}
+
+.work-vertical-auto-hmi {
+  background-image: url('/images/work/expertise-image-mobility-small.jpg');
+
+  @media screen and (min-width: $bp-medium) {
+    background-image: url('/images/work/expertise-image-mobility.jpg');
+  }
+}
+
+.work-vertical-auto-mobility {
+  vertical-align: top;
+  background-image: url('/images/auto/ustwo-auto-mobility.png');
+}
+
+.work-vertical-auto-reimagine {
+  vertical-align: top;
+  background-image: url('/images/auto/ustwo-auto-reimagine.jpg');
+}
+
+.ustwo-auto-team {
+  @include core-layout;
+  padding: 100px 0;
+  text-align: center;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+.ustwo-auto-team-profiles {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 0;
+}
+
+// TODO: Make this a component
+
+.profile {
+  width: 184px;
+  text-align: center;
+}
+.profile-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  background-color: #ddd;
+  margin: 0 auto 10px auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.profile-name {
+  margin-bottom: 5px;
+  font-family: $PxGroteskBold;
+  text-transform: none;
+  font-size: 14px;
+}
+.profile-title {
+  list-style: none;
+  color: #ccc;
 }

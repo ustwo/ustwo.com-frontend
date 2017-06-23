@@ -1,5 +1,6 @@
 import React from 'react';
 import window from 'app/adaptors/server/window';
+import { get } from 'lodash';
 
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import Hero from 'app/components/hero';
@@ -8,13 +9,27 @@ import ContactButton from 'app/components/contact-button';
 import Footer from 'app/components/footer';
 import WorkProcess from 'app/components/work-process';
 import FeaturedCaseStudy from 'app/components/featured-case-study';
+import TestimonialCarousel from 'app/components/testimonial-carousel';
+import WorkCaseStudies from 'app/components/work-case-studies';
+import WorkClientsBoard from 'app/components/work-clients-board';
+import WorkVerticals from 'app/components/work-verticals';
 
-function UstwoAuto({ documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
+function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
   let styles;
   if (documentScrollPosition > window.innerHeight + 100) {
     styles = { position: `relative` }
   }
+
+  const renderTestimonials = ustwoAutoData.testimonials.length > 0
+    ? <TestimonialCarousel testimonials={ustwoAutoData.testimonials} fixedHeight={fixedHeight} />
+    : null;
+
+  const renderTwitter = ustwoAutoData.twitter.length > 0
+    ? <TestimonialCarousel testimonials={ustwoAutoData.twitter} fixedHeight={fixedHeight} />
+    : null;
+
+  const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
 
   return (
     <div className="work-ustwo-auto">
@@ -56,6 +71,64 @@ function UstwoAuto({ documentScrollPosition, viewportDimensions, footer, studios
         </div>
 
         <FeaturedCaseStudy content={ustwoAutoData.latestPromo} />
+
+        <div className="ustwo-auto-team">
+          <div className="ustwo-auto-team-inner">
+
+            <h4>Meet the Team</h4>
+
+            <ul className="ustwo-auto-team-profiles">
+              <li>
+                <section className="profile">
+                  <div className="profile-photo"><img src="/images/auto/tim-smith.png" /></div>
+                  <h3 className="profile-name">Tim Smith</h3>
+                  <p className="profile-title">Visual Design & UI</p>
+                  <p className="profile-contact">@mypoorbrain</p>
+                </section>
+              </li>
+              <li>
+                <section className="profile">
+                  <div className="profile-photo"><img src="/images/auto/tim-smith.png" /></div>
+                  <h3 className="profile-name">Tim Smith</h3>
+                  <p className="profile-title">Visual Design & UI</p>
+                  <p className="profile-contact">@mypoorbrain</p>
+                </section>
+              </li>
+              <li>
+                <section className="profile">
+                  <div className="profile-photo"><img src="/images/auto/tim-smith.png" /></div>
+                  <h3 className="profile-name">Tim Smith</h3>
+                  <p className="profile-title">Visual Design & UI</p>
+                  <p className="profile-contact">@mypoorbrain</p>
+                </section>
+              </li>
+              <li>
+                <section className="profile">
+                  <div className="profile-photo"><img src="/images/auto/tim-smith.png" /></div>
+                  <h3 className="profile-name">Tim Smith</h3>
+                  <p className="profile-title">Visual Design & UI</p>
+                  <p className="profile-contact">@mypoorbrain</p>
+                </section>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+
+        {renderTestimonials}
+
+        <WorkCaseStudies
+          caseStudies={caseStudies}
+          page={page}
+          numberOfCaseStudiesShowing="12"
+          caseStudyFilter="all"
+        />
+
+        <WorkClientsBoard logos={ustwoAutoData.partners} title="Our Partners" />
+
+        <WorkVerticals data={ustwoAutoData.projects} />
+
+        {renderTwitter}
 
         <ScrollWrapper
           component={<ContactBlock />}
@@ -100,5 +173,50 @@ const ustwoAutoData = {
     link: '/',
     linkText: 'Link text',
     latest: true
-  }
+  },
+  testimonials: [{
+      testimonial: "The automotive eBook is a rarity, it's wonderful.",
+      source: {
+        name: 'Apple Design Team',
+        title: 'San Francisco',
+        company: ''
+      }
+  },{
+      testimonial: "Dogs driving cars is an edge case",
+      source: {
+        name: 'Tim Smith',
+        title: 'ustwo',
+        company: ''
+      }
+  }],
+  twitter: [{
+      testimonial: "Electric vehicles are quiet and sneaky. For safety, NHTSA suggest all Ev's should make a sound. But what? We explore",
+      source: {
+        name: '@ustwoauto',
+        title: 'Apr 3 2017',
+        company: ''
+      }
+  }],
+  partners: ['BMW Group', 'Ford', 'Qantas'],
+  projects: [{
+    type: 'Research Project',
+    shortTitle: 'auto-hmi',
+    title: 'ARE WE THERE YET? THOUGHTS ON IN-CAR HMI',
+    text: 'In this five part blog series ustwo Auto look into this phenomenon of growing in-car HMI complexity.',
+    linkURI: '/work/ustwoauto'
+  },{
+    type: 'Research Project',
+    shortTitle: 'auto-mobility',
+    title: 'CITIES SHOW US THE WAY',
+    text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
+    linkURI: '/work/ustwoauto',
+    small: true
+  },{
+    type: 'Research Project',
+    shortTitle: 'auto-reimagine',
+    title: 'USTWO REIMAGINE THE IN-CAR CLUSTER',
+    text: 'Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.',
+    linkURI: '/work/ustwoauto',
+    small: true
+  }]
 }
