@@ -56,7 +56,7 @@ const Flux = Object.assign(
     },
     navigate(urlString, history, ignoreUrl, replaceState, force) {
       const vurl = virtualUrl(urlString);
-      const path = vurl.pathname;
+      const path = vurl.pathname + vurl.search;
       let route = find(Routes, route => {
         return some(route.patterns, pattern => RoutePattern.fromString(pattern).matches(path));
       });
