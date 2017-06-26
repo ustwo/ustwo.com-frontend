@@ -71,8 +71,10 @@ class PageContent extends Component {
     propsToPass.loaded = this.state.ticker <= 0;
     propsToPass.fixedHeight = this.state.fixedHeight;
 
+    const classes = classnames('page-content', extraClasses);
+
     return (
-      <div className={'page-content ' + extraClasses}>
+      <div className={classes}>
         {React.createElement(pageMap[currentPage], propsToPass)}
       </div>
     );

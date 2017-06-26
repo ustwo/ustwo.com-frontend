@@ -77,10 +77,10 @@ class Hero extends Component {
             <div className="hero-image" style={videoTransitionStyles} />
           }
           {this.props.logo && this.props.logo}
-          <EntranceTransition className="title-entrance">
+          <div className="title-entrance">
             <div className="hero-content" style={transitionStyles}>
               <div className="section-title">
-                <WordAnimation delay={0.32} duration={0.2}>{sectionTitle}</WordAnimation>
+                <WordAnimation delay={0.4} duration={0.2}>{sectionTitle}</WordAnimation>
               </div>
               <h1 className="title">
                 <WordAnimation delay={0.5} duration={0.32}>{title}</WordAnimation>
@@ -97,7 +97,7 @@ class Hero extends Component {
                 <DownIndicator onClick={this.onClickDownIndicator} />
               }
             </div>
-          </EntranceTransition>
+          </div>
           {
             this.props.video &&
             <div className="hero-video" style={videoTransitionStyles}>

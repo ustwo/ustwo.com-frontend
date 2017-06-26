@@ -98,12 +98,14 @@ const PageBlog = React.createClass({
     if (posts) {
       if (posts.length) {
         output = posts.map((postData, index) => {
-          return <BlogPostListItem
-            key={postData.slug}
-            className="blog-post-list-item"
-            featured={!this.state.isCategorised && index === 0}
-            data={postData}
-          />;
+          return (
+            <BlogPostListItem
+              key={postData.slug}
+              className="blog-post-list-item"
+              featured={!this.state.isCategorised && index === 0}
+              data={postData}
+            />
+          );
         });
       } else {
         output = <h3 className="message">No posts found</h3>;
@@ -142,7 +144,7 @@ const PageBlog = React.createClass({
           />
         </Hero>
         <section className="card-list blog-post-list">
-          <div className="card-list-inner">
+          <div className="card-list-inner page-content-wrapper">
             {this.renderPosts()}
             <LoadMoreButton
               loading={isLoadingMorePosts}
