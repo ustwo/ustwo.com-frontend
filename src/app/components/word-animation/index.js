@@ -1,29 +1,33 @@
-'use strict';
-
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import spannify from 'app/lib/spannify';
 import animate from 'app/lib/animate';
 
-const WordAnimation = React.createClass({
-  getInitialState() {
-    return {
+class WordAnimation extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       animationShown: false
     }
-  },
+  }
+
   componentWillMount() {
     let baseStyle = { opacity: 0 }
+
     if (this.props.children) {
       this.text = spannify(this.props.children, 'word', baseStyle);
     }
-  },
+  }
+
   componentWillReceiveProps(nextProps) {
     let baseStyle = { opacity: 0 }
     if (!this.text && nextProps.children) {
       this.text = spannify(nextProps.children, 'word', baseStyle);
     }
-  },
+  }
+
   componentDidMount() {
     if (this.text && this.props.trigger == undefined) {
       this.startAnimation();
@@ -31,7 +35,8 @@ const WordAnimation = React.createClass({
     if (this.text && this.props.trigger) {
       this.startAnimation();
     }
-  },
+  }
+
   componentDidUpdate() {
     if (!this.state.animationShown && this.text && this.props.trigger == undefined) {
       this.startAnimation();
@@ -39,7 +44,8 @@ const WordAnimation = React.createClass({
     if (!this.state.animationShown && this.text && this.props.trigger) {
       this.startAnimation();
     }
-  },
+  }
+
   startAnimation() {
     const props = this.props;
     const words = ReactDOM.findDOMNode(this).children;
@@ -62,10 +68,12 @@ const WordAnimation = React.createClass({
         animationShown: true
       });
     }
-  },
+  }
+
   render() {
     return <span className="word-animator">{this.text}</span>;
   }
-});
+
+};
 
 export default WordAnimation;

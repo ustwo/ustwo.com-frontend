@@ -133,7 +133,7 @@ const PageBlog = React.createClass({
       <article className={classes}>
         <Hero
           key="hero"
-          title={get(page, 'display_title')}
+          title="Think. Share. Learn."
           eventLabel="ustwo blog"
           showDownIndicator={false}
           notFullScreen={true}
