@@ -24,7 +24,6 @@ class HomeSmorgasbord extends Component {
 
   render() {
     const { data, loaded } = this.props;
-    const { event, post } = data;
 
     let src;
     if (window.innerWidth < 600) {
@@ -47,16 +46,16 @@ class HomeSmorgasbord extends Component {
       videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
     }
 
-    if (event.slug) {
-      const eventUri = `/events/${event.slug}`;
+    if (data && data.event.length > 0) {
+      const eventUri = `/events/${data.event.slug}`;
 
       renderEvent = (
         <div className="smorgasbord-block smorgasbord-events" style={eventBlockStyle}>
           <h4>ustwo Events</h4>
           <div className="smorgasbord-post">
-            <div className="smorgasbord-subtitle">{event.studio.name}</div>
+            <div className="smorgasbord-subtitle">{data.event.studio.name}</div>
             <h3 className="smorgasbord-title">
-              <a href={eventUri} onClick={Flux.override(eventUri)}>{event.name}</a>
+              <a href={eventUri} onClick={Flux.override(eventUri)}>{data.event.name}</a>
             </h3>
           </div>
           <button onClick={Flux.override('/events')}>More Events</button>
@@ -64,16 +63,16 @@ class HomeSmorgasbord extends Component {
       );
     }
 
-    if (post.slug) {
-      const postUri = `/blog/${post.slug}`;
+    if (data && data.post.length > 0) {
+      const postUri = `/blog/${data.post.slug}`;
 
       renderPost = (
         <div className="smorgasbord-block smorgasbord-blog" style={blogBlockStyle}>
           <h4>Blog</h4>
           <div className="smorgasbord-post">
-            <div className="smorgasbord-subtitle">{post.categories[0].name}</div>
+            <div className="smorgasbord-subtitle">{data.post.categories[0].name}</div>
             <h3 className="smorgasbord-title">
-              <a href={postUri} onClick={Flux.override(postUri)}>{post.name}</a>
+              <a href={postUri} onClick={Flux.override(postUri)}>{data.post.name}</a>
             </h3>
           </div>
           <button onClick={Flux.override('/blog')}>More Blog</button>
@@ -120,37 +119,5 @@ class HomeSmorgasbord extends Component {
     );
   }
 }
-
-HomeSmorgasbord.propTypes = {
-  data: PropTypes.shape({
-    event: {
-      name: PropTypes.string,
-      uri: PropTypes.string,
-      studio: {
-        name: PropTypes.string
-      }
-    },
-    post: {
-      name: PropTypes.string,
-      uri: PropTypes.string,
-    }
-  })
-};
-
-HomeSmorgasbord.defaultProps = {
-  data: {
-    event: {
-      name: '',
-      uri: '',
-      studio: {
-        name: ''
-      }
-    },
-    post: {
-      name: '',
-      uri: '',
-    }
-  }
-};
 
 export default HomeSmorgasbord;
