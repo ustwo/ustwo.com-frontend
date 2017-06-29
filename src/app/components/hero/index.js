@@ -80,7 +80,7 @@ class Hero extends Component {
           <div className="title-entrance">
             <div className="hero-content" style={transitionStyles}>
               <div className="section-title">
-                <WordAnimation delay={0.4} duration={0.2}>{sectionTitle}</WordAnimation>
+                <WordAnimation delay={0.3} duration={0.2}>{sectionTitle}</WordAnimation>
               </div>
               <h1 className="title">
                 <WordAnimation delay={0.5} duration={0.32}>{title}</WordAnimation>

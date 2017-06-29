@@ -27,7 +27,7 @@ class WorkCapability extends Component {
     });
 
     const title = data.title.split(" ").map(word => {
-      return (<span>{word} </span>);
+      return (<span key={`title-word-${word}`}>{word} </span>);
     });
 
     return (

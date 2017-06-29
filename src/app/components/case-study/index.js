@@ -23,7 +23,7 @@ const PageCaseStudy = React.createClass({
     const classes = classnames('page-case-study', this.props.className, caseStudyName);
 
     return (
-      <article className={classes}>
+      <article className={classes} key={`key-${caseStudyName}`}>
         <Meta
           title={get(caseStudy, 'seo.title') || ''}
           meta={[{

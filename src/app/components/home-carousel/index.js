@@ -45,6 +45,8 @@ class HomeCarousel extends Component {
       videoToPlay: null,
       shuffle: false
     }
+
+    this.ticker = this.ticker.bind(this);
   }
 
   ticker() {
@@ -92,7 +94,7 @@ class HomeCarousel extends Component {
   }
 
   componentDidMount() {
-    this.timer = setInterval(this.ticker.bind(this), tickerFrequency);
+    this.timer = setInterval(this.ticker, tickerFrequency);
   }
 
   componentWillUnmount() {

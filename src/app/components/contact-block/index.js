@@ -78,7 +78,7 @@ class ContactBlock extends Component {
     let interactiveStyles;
     if (this.props.screenPosition) {
       interactiveStyles = {
-        transform: `rotateY(${(this.props.screenPosition.coordinateX * -8) * modifier}deg) rotateX(${((this.props.screenPosition.coordinateY * -12) + 5) * modifier}deg)`
+        transform: `rotateY(${Math.round((this.props.screenPosition.coordinateX * -8) * modifier)}deg) rotateX(${Math.round(((this.props.screenPosition.coordinateY * -12) + 5) * modifier)}deg)`
       }
     }
 
