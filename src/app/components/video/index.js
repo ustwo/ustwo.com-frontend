@@ -35,6 +35,10 @@ class Video extends Component {
     super(props);
 
     this.hlsInstance = null;
+
+    this.state = {
+      noObjectFit: !env.Modernizr.objectfit
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -97,11 +101,13 @@ class Video extends Component {
 
   renderVideo() {
     const { preload } = this.props;
+    const { noObjectFit } = this.state;
 
     return (
       <video
         ref={(ref) => this.video = ref}
         poster={posterURL}
+        className={classnames({ noObjectFit })}
         onClick={(e) => e.preventDefault()}
         preload={preload ? preload : 'auto'}
         playsInline loop muted autoPlay
@@ -111,6 +117,9 @@ class Video extends Component {
 
   render() {
     const { src, srcHls, imageCSS, fixedHeight, loaded } = this.props;
+    const { noObjectFit } = this.state;
+
+    console.log(env.Modernizr);
 
     let styles = {};
     if (loaded && imageCSS) {
@@ -124,7 +133,7 @@ class Video extends Component {
 
     return (
       <div className={classes} style={styles}>
-        <img className="video-mobile-fallback" src={imageCSS} />
+        <img className={`video-mobile-fallback ${classnames({ noObjectFit })}`} src={imageCSS} />
         {(src && src.length) || (srcHls && srcHls.length) ? this.renderVideo() : this.renderImage()}
       </div>
     );
