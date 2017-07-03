@@ -43,12 +43,21 @@ class HomeIntro extends Component {
 
     const styles = env.Modernizr.touchevents ? { height: `${fixedHeight}px` } : null;
 
+    let src, srcHls;
+    if (window.innerWidth < 600) {
+      src = 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=164'
+      srcHls = 'https://player.vimeo.com/external/205373063.m3u8?s=0e6d93219da73e1718daf8837cc53ace9993f0dd'
+    } else {
+      src = 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165'
+      srcHls = 'https://player.vimeo.com/external/195475311.m3u8?s=9e47d80c47468a648848ede7ad04f873afd5a03e'
+    }
+
     return (
       <div className="home-intro" style={styles}>
         <div className="home-intro-video" style={videoTransitionStyles}>
           <Video
-            src="https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165"
-            srcHls="https://player.vimeo.com/external/195475311.m3u8?s=9e47d80c47468a648848ede7ad04f873afd5a03e"
+            src={src}
+            srcHls={srcHls}
             imageCSS="https://i.vimeocdn.com/video/639084650.jpg?mw=1280&mh=720"
             heroVideo={true}
             isMobile={isMobile}

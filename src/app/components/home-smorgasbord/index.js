@@ -46,7 +46,7 @@ class HomeSmorgasbord extends Component {
       videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
     }
 
-    if (data && data.event.length > 0) {
+    if (data.event.slug) {
       const eventUri = `/events/${data.event.slug}`;
 
       renderEvent = (
@@ -63,7 +63,7 @@ class HomeSmorgasbord extends Component {
       );
     }
 
-    if (data && data.post.length > 0) {
+    if (data.post.slug) {
       const postUri = `/blog/${data.post.slug}`;
 
       renderPost = (
