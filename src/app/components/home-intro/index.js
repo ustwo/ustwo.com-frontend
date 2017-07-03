@@ -43,13 +43,15 @@ class HomeIntro extends Component {
 
     const styles = env.Modernizr.touchevents ? { height: `${fixedHeight}px` } : null;
 
-    let src, srcHls;
+    let src, srcHls, imageCSS;
     if (window.innerWidth < 600) {
-      src = 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=164'
-      srcHls = 'https://player.vimeo.com/external/205373063.m3u8?s=0e6d93219da73e1718daf8837cc53ace9993f0dd'
+      src = 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=164';
+      srcHls = 'https://player.vimeo.com/external/205373063.m3u8?s=0e6d93219da73e1718daf8837cc53ace9993f0dd';
+      imageCSS = 'https://i.vimeocdn.com/video/626259622.webp?mw=700&mh=1239&q=70';
     } else {
-      src = 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165'
-      srcHls = 'https://player.vimeo.com/external/195475311.m3u8?s=9e47d80c47468a648848ede7ad04f873afd5a03e'
+      src = 'https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165';
+      srcHls = 'https://player.vimeo.com/external/195475311.m3u8?s=9e47d80c47468a648848ede7ad04f873afd5a03e';
+      imageCSS = 'https://i.vimeocdn.com/video/626251677.webp?mw=1280&mh=720&q=70';
     }
 
     return (
@@ -58,7 +60,7 @@ class HomeIntro extends Component {
           <Video
             src={src}
             srcHls={srcHls}
-            imageCSS="https://i.vimeocdn.com/video/639084650.jpg?mw=1280&mh=720"
+            imageCSS={imageCSS}
             heroVideo={true}
             isMobile={isMobile}
             preload="auto"
