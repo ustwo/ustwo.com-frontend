@@ -119,8 +119,6 @@ class Video extends Component {
     const { src, srcHls, imageCSS, fixedHeight, loaded } = this.props;
     const { noObjectFit } = this.state;
 
-    console.log(env.Modernizr);
-
     let styles = {};
     if (loaded && imageCSS) {
       styles['backgroundImage'] = `url(${imageCSS})`;
