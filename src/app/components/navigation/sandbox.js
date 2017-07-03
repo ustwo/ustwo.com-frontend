@@ -29,26 +29,14 @@ const Sandbox = React.createClass({
           background: #ccc;
         }
       `}</style>
-      {renderVariations({
-        'Default': <div style={{position: 'relative', height: 68}}>
-          <Navigation
-            section="what-we-do"
-            page="what-we-do"
-            pages={pages}
-            takeover={false}
-            customClass="test-class"
-          />
-        </div>,
-        'On takeover': <div style={{position: 'relative', height: 68}}>
-          <Navigation
-            section="what-we-do"
-            page="what-we-do"
-            pages={pages}
-            takeover={true}
-            customClass="test-class-takeover"
-          />
-        </div>
-      })}
+      <div style={{position: 'relative', height: 68}}>
+        <Navigation
+          section="what-we-do"
+          page="what-we-do"
+          pages={pages}
+          customClass="test-class"
+        />
+      </div>
     </div>;
   }
 });

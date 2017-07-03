@@ -19,13 +19,6 @@ const globalLoads = [{
   url: 'ustwo/v1/global/footer',
   type: 'footer'
 }, {
-  url: 'ustwo/v1/takeovers',
-  type: 'takeover',
-  get: response => {
-    response.data = response.data[0];
-    return response;
-  }
-}, {
   url: 'ustwo/v1/studios?_embed',
   type: 'studios'
 }];
@@ -90,9 +83,6 @@ const Flux = Object.assign(
       switch(route.id) {
         case 'blog':
           Flux.setBlogCategoryTo(params[0] || 'all');
-          break;
-        case 'blog/search-results':
-          Flux.setSearchQueryTo(params[0]);
           break;
         case 'events':
           Flux.setEventsStudioTo(params[0] || 'all');

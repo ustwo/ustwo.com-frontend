@@ -194,7 +194,7 @@ const PageEvents = React.createClass({
     return (
       <article className={classes}>
       	<Hero
-  	      title={get(page, 'display_title')}
+  	      title="Talky Time"
           eventLabel="ustwo events"
           subheading={get(page, 'hero.attr.subheading.value')}
           notFullScreen={true}

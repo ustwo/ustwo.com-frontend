@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import transitionOnScroll from 'app/lib/transition-on-scroll';
 import env from 'app/adaptors/server/env';
 import window from 'app/adaptors/server/window';
 
 import SVG from 'app/components/svg';
 import Video from 'app/components/video';
 import DownIndicator from 'app/components/down-indicator';
-
-// const rainbowColours = ['#ED0082', '#E60C29', '#FF5519', '#FFBF02', '#96CC29', '#14C04D', '#16D6D9', '#009CF3', '#143FCC', '#6114CC', '#111111'];
 
 function renderLogoBackground(screenPosition) {
   const { coordinateX, coordinateY } = screenPosition;
@@ -30,25 +27,11 @@ function renderLogoBackground(screenPosition) {
 
 class HomeIntro extends Component {
   render() {
-    const { scrollProgress, screenPosition, loaded, isMobile, popup, viewportDimensions, currentPage, studios, footer, fixedHeight } = this.props;
+    const { scrollProgress, screenPosition, isMobile, fixedHeight } = this.props;
 
     const scrollProgressValue = scrollProgress ? scrollProgress : 0;
 
-    let playVideo = loaded;
-    if (scrollProgressValue > 0.5 && env.Modernizr.touchevents || !!popup) {
-      playVideo = false;
-    }
-
-    const hide = scrollProgressValue === 1;
-
-    let fallbackImage = '/images/home-header-fallback-mobile.jpg';
-    let src = 'https://player.vimeo.com/external/220313743.sd.mp4?s=2c97e3a1adde9cd20562f473d9912d5eb66bac13&profile_id=165';
-    if (window.innerWidth >= 600) {
-      src = 'https://player.vimeo.com/external/220313743.hd.mp4?s=969573366eb4d7a272c14da63de269cc61451e24&profile_id=174';
-      fallbackImage = '/images/home-header-fallback.jpg';
-    }
-
-    const transform = `translateY(${((0.5 - scrollProgressValue) * 4) * 30}px)`;
+    const transform = `translateY(${Math.min(((0.5 - scrollProgressValue) * 4) * 30, 0)}px)`;
     const transitionStyles = {
       opacity: (0.75 - scrollProgressValue) * 4,
       transform: transform
@@ -58,24 +41,19 @@ class HomeIntro extends Component {
       transform: transform
     }
 
-    let styles;
-    if (env.Modernizr.touchevents) {
-      styles = { height: `${fixedHeight}px` }
-    }
+    const styles = env.Modernizr.touchevents ? { height: `${fixedHeight}px` } : null;
 
     return (
       <div className="home-intro" style={styles}>
         <div className="home-intro-video" style={videoTransitionStyles}>
           <Video
-            src={src}
-            isVideoBackground={true}
-            play={playVideo}
-            imageCSS={fallbackImage}
+            src="https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165"
+            srcHls="https://player.vimeo.com/external/195475311.m3u8?s=9e47d80c47468a648848ede7ad04f873afd5a03e"
+            imageCSS="https://i.vimeocdn.com/video/639084650.jpg?mw=1280&mh=720"
             heroVideo={true}
             isMobile={isMobile}
             preload="auto"
             fixedHeight={fixedHeight}
-            hide={hide}
           />
         </div>
         <div className="home-intro-logo" style={transitionStyles}>
@@ -88,7 +66,10 @@ class HomeIntro extends Component {
             />
           </div>
         </div>
-        <div className="hero-down-indicator" style={transitionStyles}><DownIndicator /></div>
+        <h1>Digital Products, <br />services &amp; businesses</h1>
+        <div className="hero-down-indicator" style={transitionStyles}>
+          <DownIndicator />
+        </div>
       </div>
     );
   }

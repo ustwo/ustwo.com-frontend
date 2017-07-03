@@ -10,26 +10,14 @@ const Actions = {
   setBlogCategoryTo(id) {
     Store.setBlogCategoryTo(id);
   },
-  setSearchQueryTo(string) {
-    Store.setSearchQueryTo(string);
-  },
   showNavOverlay() {
     Store.showNavOverlay();
-  },
-  closeTakeover() {
-    Store.closeTakeover();
   },
   closeModal() {
     Store.closeModal();
   },
   getJobDetails(jid) {
     Store.getJobDetails(jid);
-  },
-  showSearch() {
-    Store.showSearch();
-  },
-  hideSearch() {
-    Store.hideSearch();
   },
   showBlogCategories() {
     Store.showBlogCategories();
@@ -61,15 +49,6 @@ const Actions = {
   menuHover(name) {
     Store.menuHover(name);
   },
-  heroVideoReady(bool) {
-    Store.heroVideoReady(bool);
-  },
-  homeIntroVideoViewed() {
-    Store.homeIntroVideoViewed();
-  },
-  homeLoaderShown() {
-    Store.homeLoaderShown();
-  },
   overflowHidden() {
     Store.overflowHidden();
   },
@@ -81,9 +60,6 @@ const Actions = {
   },
   setWindowHeight(number) {
     Store.setWindowHeight(number);
-  },
-  visitedWorkCapabilities(bool) {
-    Store.visitedWorkCapabilities(bool);
   }
 };
 

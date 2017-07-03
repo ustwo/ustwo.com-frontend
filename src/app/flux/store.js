@@ -17,13 +17,10 @@ const _state = Object.assign({
   currentPage: Nulls.page,
   currentHash: Nulls.section,
   blogCategory: Defaults.blogCategory,
-  searchMode: Defaults.searchMode,
-  searchQuery: Nulls.searchQuery,
   modal: Nulls.modal,
   popup: Nulls.popup,
   menuHover: Defaults.menuHover,
   colours: Nulls.colours,
-  takeover: Nulls.takeover,
   postsPagination: Defaults.postsPagination,
   postsPaginationTotal: Nulls.postsPaginationTotal,
   eventsStudio: Defaults.eventsStudio,
@@ -32,18 +29,11 @@ const _state = Object.assign({
   archivedEventsPagination: Defaults.archivedEventsPagination,
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
   venturesPosition: Defaults.venturesPosition,
-  heroVideoReady: Defaults.heroVideoReady,
-  homeIntroVideoViewed: Defaults.homeIntroVideoViewed,
-  homeLoaderShown: Defaults.homeLoaderShown,
   overflow: Defaults.overflow,
   videoOverlaySrc: Defaults.videoOverlaySrc,
   setWindowHeight: Defaults.setWindowHeight,
-  visitedWorkCapabilities: Defaults.visitedWorkCapabilities,
   relatedContent: []
 }, window.state);
-if(_state.takeover && window.localStorage.getItem('takeover-'+_state.takeover.id)) {
-  _state.takeover.seen = true;
-}
 
 function applyData(response, type) {
   const changeSet = {};
@@ -118,12 +108,8 @@ const Store = Object.assign(
       if(_state.caseStudy && _state.caseStudy.slug !== slug) {
         _state.caseStudy = null;
       }
-      if(newPage !== 'blog/search-results') {
-        _state.searchQuery = null;
-      }
       if(newPage !== 'blog') {
         _state.blogCategory = Defaults.blogCategory;
-        _state.searchMode = Defaults.searchMode;
         _state.posts = Nulls.posts;
         _state.postsPagination = Defaults.postsPagination;
         _state.postsPaginationTotal = Nulls.postsPaginationTotal;
@@ -186,23 +172,8 @@ const Store = Object.assign(
       _state.postsPagination = Defaults.postsPagination;
       Store.emit('change', _state);
     },
-    setSearchQueryTo(string) {
-      _state.searchQuery = string;
-      Store.emit('change', _state);
-    },
     showNavOverlay() {
       _state.modal = 'menu';
-      Store.emit('change', _state);
-    },
-    closeTakeover() {
-      if(_state.takeover) {
-        try {
-          window.localStorage.setItem('takeover-'+_state.takeover.id, true);
-        } catch (e) {
-          console.warn('Silently ignoring localStorage error when browsing in Private Mode on iOS');
-        }
-        _state.takeover.seen = true;
-      }
       Store.emit('change', _state);
     },
     closeModal() {
@@ -219,14 +190,6 @@ const Store = Object.assign(
           type: 'job'
         }], applyJobDetailData).then(() => Store.emit('change', _state));
       }
-    },
-    showSearch() {
-      _state.searchMode = true;
-      Store.emit('change', _state);
-    },
-    hideSearch() {
-      _state.searchMode = false;
-      Store.emit('change', _state);
     },
     showBlogCategories() {
       _state.modal = 'blogCategories';
@@ -311,18 +274,6 @@ const Store = Object.assign(
       _state.menuHover = `menu-hover-${name}`;
       Store.emit('change', _state);
     },
-    heroVideoReady(bool) {
-      _state.heroVideoReady = bool;
-      Store.emit('change', _state);
-    },
-    homeIntroVideoViewed() {
-      _state.homeIntroVideoViewed = true;
-      Store.emit('change', _state);
-    },
-    homeLoaderShown() {
-      _state.homeLoaderShown = true;
-      Store.emit('change', _state);
-    },
     overflowHidden() {
       _state.overflow = 'hidden';
       Store.emit('change', _state);
@@ -333,10 +284,6 @@ const Store = Object.assign(
     },
     setWindowHeight(number) {
       _state.setWindowHeight = number;
-      Store.emit('change', _state);
-    },
-    visitedWorkCapabilities(bool) {
-      _state.visitedWorkCapabilities = bool;
       Store.emit('change', _state);
     }
   }

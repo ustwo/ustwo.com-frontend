@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import { get } from 'lodash';
@@ -13,7 +12,6 @@ import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 
 import Flux from 'app/flux';
 
-import Search from 'app/components/search';
 import Hero from 'app/components/hero';
 import BlogPostListItem from 'app/components/blog-post-list-item';
 import BlogControls from 'app/components/blog-controls';
@@ -94,42 +92,20 @@ const PageBlog = React.createClass({
       isLoadingMorePosts: true
     });
   },
-  renderHero() {
-    const { page, searchMode, searchQuery, blogCategory } = this.props;
-    const image = getFeaturedImage(page);
-    let output;
-    if (searchMode) {
-      output = (<Search key="search" searchQuery={searchQuery} />);
-    } else {
-      output = (
-        <Hero
-          key="hero"
-          title={get(page, 'display_title')}
-          eventLabel="ustwo blog"
-          showDownIndicator={false}
-          notFullScreen={true}
-        >
-          <BlogControls
-            className={classnames({ show: page })}
-            blogCategory={blogCategory}
-          />
-        </Hero>
-      );
-    }
-    return output;
-  },
   renderPosts() {
     const posts = this.getPosts();
     let output;
     if (posts) {
       if (posts.length) {
         output = posts.map((postData, index) => {
-          return <BlogPostListItem
-            key={postData.slug}
-            className="blog-post-list-item"
-            featured={!this.state.isCategorised && index === 0}
-            data={postData}
-          />;
+          return (
+            <BlogPostListItem
+              key={postData.slug}
+              className="blog-post-list-item"
+              featured={!this.state.isCategorised && index === 0}
+              data={postData}
+            />
+          );
         });
       } else {
         output = <h3 className="message">No posts found</h3>;
@@ -144,8 +120,9 @@ const PageBlog = React.createClass({
       isLoadingMorePosts,
       isLoadingCategoryPosts
     } = this.state;
-    const { postsPagination, postsPaginationTotal, footer, studios, currentPage, documentScrollPosition, viewportDimensions } = this.props;
-    const { posts } = this.props;
+    const { postsPagination, postsPaginationTotal, footer, studios, currentPage,
+            documentScrollPosition, viewportDimensions, blogCategory, page,
+            posts } = this.props;
     const classes = classnames('page-blog', this.props.className, {
       categorised: isCategorised,
       loading: isLoadingInitialPosts || isLoadingCategoryPosts,
@@ -154,15 +131,20 @@ const PageBlog = React.createClass({
 
     return (
       <article className={classes}>
-        <TransitionManager
-          component="div"
-          className="hero-transition-manager"
-          duration={1000}
+        <Hero
+          key="hero"
+          title="Think. Share. Learn."
+          eventLabel="ustwo blog"
+          showDownIndicator={false}
+          notFullScreen={true}
         >
-          {this.renderHero()}
-        </TransitionManager>
+          <BlogControls
+            className={classnames({ show: page })}
+            blogCategory={blogCategory}
+          />
+        </Hero>
         <section className="card-list blog-post-list">
-          <div className="card-list-inner">
+          <div className="card-list-inner page-content-wrapper">
             {this.renderPosts()}
             <LoadMoreButton
               loading={isLoadingMorePosts}

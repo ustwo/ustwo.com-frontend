@@ -34,8 +34,9 @@ const Sandbox = React.createClass({
         }
       `}</style>
       <Video
-        src="https://player.vimeo.com/external/143640008.sd.mp4?s=c2766105f03ee623f8b53fc274a33b563d30067d&profile_id=112"
+        src="https://player.vimeo.com/external/220313743.hd.mp4?s=969573366eb4d7a272c14da63de269cc61451e24&profile_id=174"
         sizes={sizes}
+        play
       />
     </div>;
   }

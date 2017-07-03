@@ -25,15 +25,6 @@
   }
 
   .app-content {
-    // opacity: 1;
-    // transition: opacity .2s linear .2s;
-
-    /* Takeover bound by viewport size */
-    &.takeover {
-      height: 100vh;
-      overflow: hidden;
-    }
-
     /* When blog categories dropdown is open */
     &.disabled {
       // opacity: 0;

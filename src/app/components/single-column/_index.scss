@@ -84,4 +84,10 @@
     }
   }
 
+  // Remove default link border when the link is an image
+  // This is added manually in WP
+  .image-link {
+    border: none;
+  }
+
 }

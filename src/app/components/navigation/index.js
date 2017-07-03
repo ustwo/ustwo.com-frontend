@@ -11,7 +11,6 @@ import SVGSequence from 'app/components/svg-sequence';
 import kebabCase from 'lodash/string/kebabCase';
 
 class Navigation extends Component {
-
   constructor(props) {
     super(props);
 
@@ -58,11 +57,6 @@ class Navigation extends Component {
     }
   }
 
-  onClickLogo(event) {
-    event.preventDefault();
-    Flux.navigate('/');
-  }
-
   subPageBack(event) {
     event.preventDefault();
 
@@ -76,7 +70,6 @@ class Navigation extends Component {
       case 'design-build':
       case 'launch-scale':
       case 'ways-of-working':
-        Flux.visitedWorkCapabilities(false);
         navigateTo = '/work';
         break;
       case 'event':
@@ -97,8 +90,13 @@ class Navigation extends Component {
     this.setState({ paused: true });
   }
 
+  onClickLogo(event) {
+    event.preventDefault();
+    Flux.navigate('/');
+  }
+
   render() {
-    const { section, page, takeover, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
+    const { section, page, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
 
     const capability = ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'];
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
@@ -111,7 +109,6 @@ class Navigation extends Component {
     const caseStudyName = caseStudy ? kebabCase(caseStudy.name) : null
 
     const navClasses = classnames('navigation', customClass, section, page, caseStudyName, {
-      takeover: takeover,
       notSticky: modal === null && scrolledBefore100 && homePage,
       menuOpen: modal === 'menu',
       invert: venturesActive && homePage || capability.includes(page),
@@ -163,20 +160,23 @@ class Navigation extends Component {
         <div className="navigation-subpage-nav">
           <button onClick={this.subPageBack.bind(this)}>{subPageText}</button>
         </div>
-        <button
-          className="navigation-button"
-          onClick={this.toggleMenu.bind(this)}
-          onMouseOver={this.mouseEnter.bind(this)}
-          onMouseOut={this.mouseLeave.bind(this)}
-        >
-          <div className="navigation-logo">
+        <div className="navigation-buttons">
+          <button
+            className="navigation-logo"
+            onClick={this.onClickLogo.bind(this)}
+          >
             <SVG title="ustwo logo" spritemapID="ustwologo" />
-          </div>
-          <div className="navigation-toggle">
+          </button>
+          <button
+            className="navigation-toggle"
+            onClick={this.toggleMenu.bind(this)}
+            onMouseOver={this.mouseEnter.bind(this)}
+            onMouseOut={this.mouseLeave.bind(this)}
+          >
             <div className="navigation-toggle-main"></div>
             <SVGSequence fps={25} paused={this.state.paused} name="icon-ring" color={color} />
-          </div>
-        </button>
+          </button>
+        </div>
       </nav>
     );
   }

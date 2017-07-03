@@ -82,12 +82,17 @@
       }
     }
   }
-  &.open {
-    .studio-title::after {
-      content: '\2013';
-    }
-    .studio-details {
-      height: 160px;
+
+  @media screen and (max-width: $bp-medium - 1px) {
+    &.open {
+      background-color: transparent !important;
+
+      .studio-title::after {
+        content: '\2013';
+      }
+      .studio-details {
+        height: 160px;
+      }
     }
   }
 
@@ -97,9 +102,6 @@
     transition-duration: 0s;
     margin-bottom: 50px;
 
-    &.open {
-      background-color: transparent !important;
-    }
     .studio-title {
       padding: 0 0 15px;
       cursor: auto;

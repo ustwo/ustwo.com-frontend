@@ -1,6 +1,6 @@
 /*
  *  PAGE: BLOG
- *  Latest posts and category and search functions
+ *  Latest posts and category functions
  *
  */
 
@@ -9,12 +9,10 @@
   .blog-label-#{$category} {
 
     /* Card items on /blog */
-    &.card-item,
-    &.search-result-list-item {
+    &.card-item {
       @include card-item-category-colours($colour);
     }
 
-    /* Styles on post pages and search results */
     &.page-post {
       .content-container {
         .rule,
@@ -27,12 +25,6 @@
         .category-tag {
           background-color: $colour;
         }
-      }
-    }
-
-    &.search-result-list-item {
-      .tail a {
-        border-color: $colour;
       }
     }
 
@@ -63,94 +55,14 @@
     }
   }
 
-  .hero-transition-manager {
+  .hero {
+    @include page-background-colour(blog);
+    .blog-controls {
+      position: absolute;
+      bottom: calc(#{$hero-offsetSize-small} + 60px);
 
-    .hero {
-      @include page-background-colour(blog);
-
-      .blog-controls {
-        transition: opacity .2s linear;
-      }
-
-      &.add {
-        opacity: 1;
-
-        .blog-controls {
-          opacity: 0;
-        }
-      }
-
-      &.add.show {
-        .blog-controls {
-          opacity: 1;
-          transition-duration: .5s;
-          transition-delay: 2s;
-          position: absolute;
-          bottom: calc(#{$hero-offsetSize-small} + 60px);
-
-          @media screen and (min-width: $bp-tablet) {
-            bottom: calc(#{$hero-offsetSize} + 60px);
-          }
-        }
-      }
-
-      &.hide {
-        opacity: 0;
-        transition: opacity .2s linear;
-
-        .blog-controls {
-          opacity: 0;
-        }
-      }
-    }
-
-    .search {
-      transition: opacity .2s linear;
-
-      &.add {
-        opacity: 0;
-
-        .search-form {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-
-        .cancel-search {
-          opacity: 0;
-        }
-
-        .search-form,
-        .cancel-search {
-          transition: opacity .2s linear, transform 0s linear .5s;
-        }
-      }
-
-      &.show {
-        opacity: 1;
-
-        .search-form {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .cancel-search {
-          opacity: 1;
-        }
-
-        .search-form,
-        .cancel-search {
-          transition: all .2s linear;
-          transition-delay: .5s;
-        }
-      }
-
-      &.hide {
-        opacity: 0;
-
-        .search-form,
-        .cancel-search {
-          transition: none;
-        }
+      @media screen and (min-width: $bp-tablet) {
+        bottom: calc(#{$hero-offsetSize} + 60px);
       }
     }
   }
