@@ -16,7 +16,18 @@
   @include page-background-colour(notfound);
 
   p {
+    position: relative;
+    z-index: 1;
     color: $offWhite;
+    padding: 0 7%;
+  }
+
+  button {
+    cursor: pointer;
+    display: inline-block;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    font-family: $PxGroteskBold;
   }
 }
 
@@ -28,4 +39,12 @@
   line-height: 1;
   font-size: 40vw;
   color: $offWhite;
+}
+
+@media screen and (max-width: $bp-small) {
+  .page-404 {
+    p br {
+      display: none;
+    }
+  }
 }
