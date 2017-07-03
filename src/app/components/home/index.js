@@ -93,8 +93,6 @@ class PageHome extends Component {
       height: `${fixedHeightVentures + 100}px`
     }
 
-    const promotionURI = '/work/monument-valley-2';
-
     return (
       <article className={classes} ref={(ref) => this.homeContent = ref}>
 
@@ -109,9 +107,6 @@ class PageHome extends Component {
                 className="scroll-wrapper-home-intro"
               />
             </Link>
-            <div className="home-hero-call-to-action-link">
-              <a href={promotionURI} onClick={Flux.override(promotionURI)}>MONUMENT VALLEY 2 IS OUT NOW FOR iOS</a>
-            </div>
           </div>
         </div>
 

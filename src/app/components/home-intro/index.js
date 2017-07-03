@@ -47,8 +47,8 @@ class HomeIntro extends Component {
       <div className="home-intro" style={styles}>
         <div className="home-intro-video" style={videoTransitionStyles}>
           <Video
-            src="https://player.vimeo.com/external/220313743.sd.mp4?s=2c97e3a1adde9cd20562f473d9912d5eb66bac13&profile_id=165"
-            srcHls="https://player.vimeo.com/external/220313743.m3u8?s=7d1bf5e408ecc13e5113b543c65165246561b232"
+            src="https://player.vimeo.com/external/195475311.sd.mp4?s=fea332405de6ad2bea1d9082ea6b98184269111e&profile_id=165"
+            srcHls="https://player.vimeo.com/external/195475311.m3u8?s=9e47d80c47468a648848ede7ad04f873afd5a03e"
             imageCSS="https://i.vimeocdn.com/video/639084650.jpg?mw=1280&mh=720"
             heroVideo={true}
             isMobile={isMobile}
@@ -66,6 +66,7 @@ class HomeIntro extends Component {
             />
           </div>
         </div>
+        <h1>Digital Products, <br />services &amp; businesses</h1>
         <div className="hero-down-indicator" style={transitionStyles}>
           <DownIndicator />
         </div>
