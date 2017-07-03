@@ -98,7 +98,7 @@ $nav-height-large: 32px;
   }
 }
 
-.navigation-button {
+.navigation-buttons {
   display: flex;
   z-index: 1;
 
@@ -116,6 +116,7 @@ $nav-height-large: 32px;
 }
 
 .navigation-logo {
+  display: flex;
   overflow: visible;
   cursor: pointer;
   height: 40px;
