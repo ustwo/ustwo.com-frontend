@@ -43,13 +43,13 @@ const StudioClock = React.createClass({
     var hour = ((date.hours() % 12) / 12) * 360 + 90 + minute / 12;
 
     let hourStyles = {
-      transform: `rotate(${hour}deg)`,
+      transform: `rotate(${Math.round(hour)}deg)`,
       backgroundImage: colour
     }
 
     return (
       <div className={this.state.clockInView ? "clock" : "clock set-to-twelve"}>
-        <div className="minute" style={{"transform": "rotate(" + minute + "deg)"}} />
+        <div className="minute" style={{"transform": "rotate(" + Math.round(minute) + "deg)"}} />
         <div className="hour" style={hourStyles} />
         {this.renderMoon(date)}
       </div>

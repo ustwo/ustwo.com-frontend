@@ -5,12 +5,15 @@ import Meta from 'react-helmet';
 
 import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
 import renderModules from 'app/lib/module-renderer';
+import ScrollWrapper from 'app/components/scroll-wrapper';
 import RelatedContent from 'app/components/related-content';
+import ContactBlock from 'app/components/contact-block';
+import Footer from 'app/components/footer';
 
 const PageCaseStudy = React.createClass({
   mixins: [getScrollTrackerMixin('case-study')],
   render() {
-    const { caseStudy } = this.props;
+    const { caseStudy, documentScrollPosition, viewportDimensions, footer, studios, currentPage } = this.props;
 
     let caseStudyName;
     if (caseStudy && caseStudy.name === 'ustwo Auto') {
@@ -20,7 +23,7 @@ const PageCaseStudy = React.createClass({
     const classes = classnames('page-case-study', this.props.className, caseStudyName);
 
     return (
-      <article className={classes}>
+      <article className={classes} key={`key-${caseStudyName}`}>
         <Meta
           title={get(caseStudy, 'seo.title') || ''}
           meta={[{
@@ -48,13 +51,23 @@ const PageCaseStudy = React.createClass({
             border-bottom-color: ${get(caseStudy, 'colors.secondary')};
           }
         `}</style>
-        {renderModules({
-          modules: get(caseStudy, 'page_builder', []),
-          colours: get(caseStudy, 'colors'),
-          zebra: true,
-          categories: get(caseStudy, 'categories')
-        })}
-        {this.renderRelatedContent()}
+        <div className="page-content-wrapper">
+          {renderModules({
+            modules: get(caseStudy, 'page_builder', []),
+            colours: get(caseStudy, 'colors'),
+            zebra: true,
+            categories: get(caseStudy, 'categories')
+          })}
+          {this.renderRelatedContent()}
+        </div>
+        <ScrollWrapper
+          component={<ContactBlock />}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+          requireScreenPosition={true}
+          className="scroll-wrapper-contact-block"
+        />
+        <Footer data={footer} studios={studios} currentPage={currentPage}/>
       </article>
     );
   },

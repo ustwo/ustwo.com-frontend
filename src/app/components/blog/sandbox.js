@@ -2227,8 +2227,6 @@ const Sandbox = React.createClass({
         posts={posts}
         postsPagination={1}
         postsPaginationTotal={10}
-        searchMode={false}
-        searchQuery=""
       />
     </div>;
   }

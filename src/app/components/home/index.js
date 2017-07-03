@@ -17,7 +17,6 @@ import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
 
 class PageHome extends Component {
-
   constructor(props) {
     super(props);
 
@@ -25,6 +24,8 @@ class PageHome extends Component {
       venturesPosition: {},
       fixedHeightVentures: 0
     }
+
+    this.getVenturesPositionBound = this.getVenturesPosition.bind(this);
   }
 
   // We need to find out viewportDimensions and if ventures is active (therefore know where it is)
@@ -41,7 +42,7 @@ class PageHome extends Component {
     const body = document.body;
     const scrollTop = window.pageYOffset || body.scrollTop;
     const clientTop = body.clientTop || 0;
-    const top  = box.top +  scrollTop - clientTop;
+    const top = box.top + scrollTop - clientTop;
     const venturesPositionFromTop = Math.round(top);
 
     const venturesPosition = {
@@ -59,18 +60,16 @@ class PageHome extends Component {
     this.getVenturesPosition();
 
     // Make sure that if the viewport is resized we update accordingly othewise scrolls/mousePositions will be out of sync
-    window.addEventListener('resize', this.getVenturesPosition.bind(this), false);
+    window.addEventListener('resize', this.getVenturesPositionBound);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.getVenturesPosition.bind(this), false);
+    window.removeEventListener('resize', this.getVenturesPositionBound);
   }
 
   render() {
-    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, homeIntroVideoViewed, footer, studios, currentPage, fixedHeight } = this.props;
+    const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, footer, studios, currentPage, fixedHeight } = this.props;
     const { venturesPosition, fixedHeightVentures } = this.state;
-
-    // const venturesActive = (documentScrollPosition - viewportDimensions.height > venturesPosition.from) && (documentScrollPosition - viewportDimensions.height < venturesPosition.to)
 
     const venturesActive = documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
 
@@ -94,8 +93,6 @@ class PageHome extends Component {
       height: `${fixedHeightVentures + 100}px`
     }
 
-    const promotionURI = '/work/monument-valley-2';
-
     return (
       <article className={classes} ref={(ref) => this.homeContent = ref}>
 
@@ -110,9 +107,6 @@ class PageHome extends Component {
                 className="scroll-wrapper-home-intro"
               />
             </Link>
-            <div className="home-hero-call-to-action-link">
-              <a href={promotionURI} onClick={Flux.override(promotionURI)}>MONUMENT VALLEY 2 IS OUT NOW FOR iOS</a>
-            </div>
           </div>
         </div>
 

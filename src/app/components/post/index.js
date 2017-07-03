@@ -32,33 +32,35 @@ const PagePost = React.createClass({
             border-bottom-color: #14C04D;
           }
         `}</style>
-        <Rimage
-          wrap='div'
-          className='hero-image'
-          sizes={get(image, 'media_details.sizes')}
-          altText={get(image, 'alt_text')}
-        />
-        <div className='content-container'>
-          <CategoryTag
-            category={get(category, 'name', 'category')}
+        <div className="page-content-wrapper">
+          <Rimage
+            wrap='div'
+            className='hero-image'
+            sizes={get(image, 'media_details.sizes')}
+            altText={get(image, 'alt_text')}
           />
-          <h1 className='title'>{he.decode(get(post, 'title.rendered', ''))}</h1>
-          {this.renderSocialMediaSharing('side')}
-          <BlogPostMetaInformation
-            author={getAuthor(post)}
-            date={get(post, 'date')}
-          />
-          <hr className='rule' />
-          {renderModules({
-            modules: get(post, 'page_builder', []),
-            colours: get(post, 'colors'),
-            zebra: false
-          })}
-          <hr className='rule' />
-          {this.renderSocialMediaSharing('bottom')}
-          {this.renderAuthorInformation()}
+          <div className='content-container'>
+            <CategoryTag
+              category={get(category, 'name', 'category')}
+            />
+            <h1 className='title'>{he.decode(get(post, 'title.rendered', ''))}</h1>
+            {this.renderSocialMediaSharing('side')}
+            <BlogPostMetaInformation
+              author={getAuthor(post)}
+              date={get(post, 'date')}
+            />
+            <hr className='rule' />
+            {renderModules({
+              modules: get(post, 'page_builder', []),
+              colours: get(post, 'colors'),
+              zebra: false
+            })}
+            <hr className='rule' />
+            {this.renderSocialMediaSharing('bottom')}
+            {this.renderAuthorInformation()}
+          </div>
+          {this.renderRelatedContent()}
         </div>
-        {this.renderRelatedContent()}
         <ScrollWrapper
           component={<ContactBlock />}
           documentScrollPosition={documentScrollPosition}

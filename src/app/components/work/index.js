@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import Scroll, { Link, Element } from 'react-scroll'; // Animate and scroll to location in document
 import { get } from 'lodash';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import env from 'app/adaptors/server/env';
@@ -20,7 +21,6 @@ import WorkClientsBoard from 'app/components/work-clients-board';
 import WorkCaseStudies from 'app/components/work-case-studies';
 
 class PageWork extends Component {
-
   constructor(props) {
     super(props);
 
@@ -29,17 +29,6 @@ class PageWork extends Component {
       numberOfCaseStudiesShowing: 12
     }
   }
-
-  // componentDidMount() {
-  //   const box = this.workAnchor.getBoundingClientRect();
-  //   const body = document.body;
-  //   const scrollTop = window.pageYOffset || body.scrollTop;
-  //   const clientTop = body.clientTop || 0;
-  //   const top  = box.top +  scrollTop - clientTop;
-  //   const workAnchorPosition = Math.round(top);
-  //
-  //   this.setState({ workAnchorPosition });
-  // }
 
   renderWhatWeDo() {
     const { isMobile } = this.props;
@@ -121,19 +110,22 @@ class PageWork extends Component {
 
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner" style={styles}>
-            <ScrollWrapper
-              component={<WorkHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} />}
-              documentScrollPosition={documentScrollPosition}
-              viewportDimensions={viewportDimensions}
-              requireScreenPosition={true}
-              className="scroll-wrapper-work-hero"
-            />
+            <Link to="workMainBlock" smooth={true} duration={1000} className="home-intro-link">
+              <ScrollWrapper
+                component={<WorkHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} />}
+                documentScrollPosition={documentScrollPosition}
+                viewportDimensions={viewportDimensions}
+                requireScreenPosition={true}
+                className="scroll-wrapper-work-hero"
+              />
+            </Link>
           </div>
         </div>
 
         <div className="home-main-content-wrapper">
-
-          {this.renderWhatWeDo()}
+          <Element name="workMainBlock">
+            {this.renderWhatWeDo()}
+          </Element>
 
           {this.renderTestimonialCarousel()}
 

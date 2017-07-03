@@ -22,9 +22,6 @@ const blogCategories = {
 }
 
 const BlogControls = React.createClass({
-  onClickSearch() {
-    Flux.showSearch();
-  },
   onClickSelectedCategory() {
     Flux.showBlogCategories();
   },
