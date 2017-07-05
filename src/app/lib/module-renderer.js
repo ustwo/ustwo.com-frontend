@@ -112,9 +112,10 @@ function renderVideo(moduleData, index, options) {
 }
 
 function renderCode(moduleData, index, options) {
-  return <CodeHighlighter
-    code={get(moduleData, 'attr.body.value')}
-  />;
+    var code = get(moduleData, 'attr.body.value').replace(/(?:\r\n|\r|\n)/g, '<br/>').replace(/ /g, '&nbsp;').replace('Button', ' Button ');
+    return (
+        <code className="hljs pf" dangerouslySetInnerHTML={{ __html: code }}></code>
+    );
 }
 
 function renderModules(options) {
