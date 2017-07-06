@@ -263,6 +263,10 @@ const App = React.createClass({
               property: "og:image",
               content: get(state, 'page.seo.image') || get(state, 'post.seo.image') || ''
             }]}
+            link={[{
+              rel: "canonical",
+                href: window.location.href
+            }]}
           />
           <EntranceTransition className="nav-wrapper">
             {navigation}
