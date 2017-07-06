@@ -77,7 +77,7 @@ class HomeIntro extends Component {
             />
           </div>
         </div>
-        <h1>Digital Products, <br />services &amp; businesses</h1>
+        <h1 style={transitionStyles}>Digital Products, <br />services &amp; businesses</h1>
         <div className="hero-down-indicator" style={transitionStyles}>
           <DownIndicator />
         </div>

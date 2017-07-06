@@ -6,6 +6,10 @@ import { DefaultPlayer as Html5Video } from 'react-html5video';
 
 import Subscription from 'app/components/subscription';
 
+function isThereAnyDataHere(data) {
+  return !Array.isArray(data); // If it's an array then it means it's empty!
+}
+
 class HomeSmorgasbord extends Component {
 
   constructor(props) {
@@ -46,7 +50,7 @@ class HomeSmorgasbord extends Component {
       videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
     }
 
-    if (data.event.slug) {
+    if (data && isThereAnyDataHere(data.event)) {
       const eventUri = `/events/${data.event.slug}`;
 
       renderEvent = (
@@ -63,7 +67,7 @@ class HomeSmorgasbord extends Component {
       );
     }
 
-    if (data.post.slug) {
+    if (data && isThereAnyDataHere(data.post)) {
       const postUri = `/blog/${data.post.slug}`;
 
       renderPost = (
