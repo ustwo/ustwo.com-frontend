@@ -112,7 +112,9 @@ function renderVideo(moduleData, index, options) {
 }
 
 function renderCode(moduleData, index, options) {
-    var code = get(moduleData, 'attr.body.value').replace(/(?:\r\n|\r|\n)/g, '<br/>').replace(/ /g, '&nbsp;').replace('Button', ' Button ');
+    var code = get(moduleData, 'attr.body.value').replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+        return '&#'+i.charCodeAt(0)+';';
+    }).replace(/(?:\r\n|\r|\n)/g, '<br/>').replace(/ /g, '&nbsp;');
     return (
         <code className="hljs pf" dangerouslySetInnerHTML={{ __html: code }}></code>
     );
