@@ -51,7 +51,7 @@ const routes = {
     data: () => [{
       url: 'ustwo/v1/pages/work',
       type: 'page',
-      slug: 'lways-of-working'
+      slug: 'ways-of-working'
     }]
   },
   ustwoAuto: {
