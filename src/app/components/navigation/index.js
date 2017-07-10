@@ -16,7 +16,9 @@ class Navigation extends Component {
 
     this.state = {
       height: 0,
-      paused: true
+      paused: true,
+      capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'],
+      workPages: ['case-study', 'ustwo-auto']
     }
   }
 
@@ -55,6 +57,22 @@ class Navigation extends Component {
         Flux.showNavOverlay();
       }
     }
+  }
+
+  renderBackButton() {
+    const { page } = this.props;
+    const { capabilityPages, workPages } = this.state;
+    const workSubPage = capabilityPages.includes(page) || workPages.includes(page);
+    const otherSubPage = page === 'post' || page === 'event';
+
+    if (workSubPage || otherSubPage) {
+      return (
+        <div className="navigation-subpage-nav">
+          <button onClick={this.subPageBack.bind(this)}>{workSubPage ? 'Work' : 'Back'}</button>
+        </div>
+      );
+    }
+    return;
   }
 
   subPageBack(event) {
@@ -99,12 +117,11 @@ class Navigation extends Component {
     const { section, page, customClass, documentScrollPosition, venturesPosition, testimonialsPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
     const { paused, height } = this.state;
 
-    const capability = ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'];
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
     const testimonialsActive = testimonialsPosition && documentScrollPosition > testimonialsPosition.from && documentScrollPosition < testimonialsPosition.to;
     const homePage = section === 'home';
     const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy;
-    const subPage = page === 'post' || page === 'case-study' || page === 'event' || capability.includes(page);
+    const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || workPages.includes(page);
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
     const scrolledAfter100 = documentScrollPosition > viewportDimensions.height - (height * 0.5);
@@ -147,8 +164,6 @@ class Navigation extends Component {
       color = ['#f8e467', '#ffbf00'];
     }
 
-    const subPageText = capability.includes(page) || page === 'case-study' ? 'Work' : 'Back';
-
     return (
       <nav className={navClasses} ref={(ref) => this.navigation = ref}>
         <div className="menu-no-js">
@@ -160,9 +175,7 @@ class Navigation extends Component {
             <li><a href="/join-us">Join us</a></li>
           </ul>
         </div>
-        <div className="navigation-subpage-nav">
-          <button onClick={this.subPageBack.bind(this)}>{subPageText}</button>
-        </div>
+        {this.renderBackButton()}
         <div className="navigation-buttons">
           <button
             className="navigation-logo"
