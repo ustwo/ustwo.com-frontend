@@ -4,7 +4,7 @@ import { get } from 'lodash';
 
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import Hero from 'app/components/hero';
-import ContactBlock from 'app/components/contact-block';
+import ContactBlockAuto from 'app/components/contact-block-auto';
 import ContactButton from 'app/components/contact-button';
 import Footer from 'app/components/footer';
 import WorkProcess from 'app/components/work-process';
@@ -131,7 +131,7 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
         {renderTwitter}
 
         <ScrollWrapper
-          component={<ContactBlock />}
+          component={<ContactBlockAuto />}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
           requireScreenPosition={true}

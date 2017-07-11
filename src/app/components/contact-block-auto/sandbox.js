@@ -1,10 +1,10 @@
-import ContactBlock from './';
+import ContactBlockAuto from './';
 
 const Sandbox = React.createClass({
   render() {
     return (
       <div className="sandbox full-width-component">
-        <ContactBlock />
+        <ContactBlockAuto />
       </div>
     );
   }
