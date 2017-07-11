@@ -56,14 +56,14 @@
     left: calc(50% - 12px);
   }
 
-  .testimonial-carousel {
+  .testimonial-carousel:not(.twitterAuto) {
     p {
       color: $honey;
     }
   }
 
   .work-clients-board {
-    background-color: $honey;
+    background-image: linear-gradient(212deg, $ustwoAuto, $honey);
 
     li {
       img {
@@ -74,6 +74,14 @@
 
   .card-list {
     padding: 100px 0;
+  }
+
+  .testimonial-smallprint {
+    color: $nonBlack;
+  }
+
+  .tesimonial-button-next svg {
+    fill: $nonBlack;
   }
 }
 

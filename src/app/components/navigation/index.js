@@ -161,7 +161,7 @@ class Navigation extends Component {
     }
 
     if (page === 'ustwo-auto') {
-      color = ['#f8e467', '#ffbf00'];
+      color = ['#F8E467', '#FFBF02']; //F8E467 being the auto yellow to compliment honey
     }
 
     return (

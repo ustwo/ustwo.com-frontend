@@ -7,7 +7,7 @@ function FeaturedCaseStudy({ content }) {
   let styles;
   if (colours.length > 1) {
     styles = {
-      backgroundImage: `linear-gradient(305deg, ${colours[0]}, ${colours[1]})`
+      backgroundImage: `linear-gradient(212deg, ${colours[0]}, ${colours[1]})`
     }
   } else {
     styles = {
