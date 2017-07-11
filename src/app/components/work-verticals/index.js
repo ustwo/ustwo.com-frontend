@@ -9,7 +9,10 @@ function WorkVerticals({ data }) {
     const size = item.small ? 'work-verticals-item-small' : null;
 
     return (
-      <div className={`work-verticals-item work-vertical-${kebabCase(item.shortTitle)} ${size}`}>
+      <div
+        className={`work-verticals-item work-vertical-${kebabCase(item.shortTitle)} ${size}`}
+        key={item.shortTitle}
+      >
         <div className="work-verticals-item-inner">
           <div className="work-verticals-content">
             <div className="section-title">Expertise</div>

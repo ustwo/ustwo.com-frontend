@@ -6,7 +6,7 @@ function WorkClientsBoard({ logos, title }) {
     const type = item === 'Qantas' ? 'jpg' : 'svg';
 
     return (
-      <li><img src={`/images/work/logo-${kebabCase(item)}.${type}`} alt={`Logo of ${item}`} /></li>
+      <li key={`client-logo-${kebabCase(item)}`}><img src={`/images/work/logo-${kebabCase(item)}.${type}`} alt={`Logo of ${item}`} /></li>
     );
   });
 

@@ -150,18 +150,22 @@ export default UstwoAuto;
 const ustwoAutoData = {
   intro: 'ustwo Auto is dedicated to exploring user experience challenges and opportunities in the mobility space. We work with selected clients and conduct research and experiments, often in collaboration with academic partners around the world. Recent projects and experiments have focussed on these areas:',
   items: [{
+    name: 'smart-mobility',
     title: 'Smart Mobility',
     image: '/images/auto/smart-mobility.svg',
     text: 'Creating new services to help people navigate the world more easily'
   },{
+    name: 'connected-car',
     title: 'Connected Car',
     image: '/images/auto/connected-car.svg',
     text: 'Enhancing the ownership experience by connecting the car to people’s lifestyles and expectations'
   },{
+    name: 'contextual-hmi',
     title: 'Contextual HMI',
     image: '/images/auto/contextual-hmi.svg',
     text: 'Making the in-car experience more personal and situational'
   },{
+    name: 'humanising-autonomy',
     title: 'Humanising Autonomy',
     image: '/images/auto/humanising-autonomy.svg',
     text: 'Looking beyond the technology and focussing on new human behaviours and opportunities'
