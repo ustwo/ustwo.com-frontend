@@ -120,8 +120,8 @@ class Navigation extends Component {
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
     const testimonialsActive = testimonialsPosition && documentScrollPosition > testimonialsPosition.from && documentScrollPosition < testimonialsPosition.to;
     const homePage = section === 'home';
-    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy;
-    const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || workPages.includes(page);
+    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy || page === 'ustwo-auto';
+    const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
     const scrolledAfter100 = documentScrollPosition > viewportDimensions.height - (height * 0.5);
