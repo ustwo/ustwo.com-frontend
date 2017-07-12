@@ -28,6 +28,12 @@
     max-width: none;
   }
 
+  .hero .subheading {
+    text-align: center;
+    text-transform: uppercase;
+    max-width: none;
+  }
+
   .hero-content {
     text-align: center;
 
@@ -56,6 +62,10 @@
     left: calc(50% - 12px);
   }
 
+  .work-intro-statement {
+    font-weight: bold;
+  }
+
   .testimonial-carousel:not(.twitterAuto) {
     p {
       color: $honey;
@@ -81,7 +91,7 @@
   }
 
   .tesimonial-button-next svg {
-    fill: $nonBlack;
+    fill: white;
   }
 }
 
@@ -107,6 +117,17 @@
   @include core-layout;
   padding: 100px 0;
   text-align: center;
+
+  h2 {
+    @extend .h5;
+    margin-bottom: 40px;
+  }
+
+  p {
+    max-width: 80%;
+    text-align: center;
+    margin: 0 auto;
+  }
 
   li {
     list-style-type: none;

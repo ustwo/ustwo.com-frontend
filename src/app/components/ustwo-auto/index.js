@@ -39,7 +39,8 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
           <ScrollWrapper
             component={
               <Hero
-                title="auto"
+                title={ustwoAutoData.title}
+                subheading={ustwoAutoData.subtitle}
                 transitionImage={true}
                 showDownIndicator={true}
                 eventLabel=''
@@ -63,6 +64,9 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
               <p className="work-intro-statement">
                 {ustwoAutoData.intro}
               </p>
+              <p className="work-intro-further">
+                {ustwoAutoData.introFurther}
+              </p>
             </div>
           </div>
 
@@ -75,7 +79,9 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
         <div className="ustwo-auto-team">
           <div className="ustwo-auto-team-inner">
 
-            <h4>Meet the Team</h4>
+            <h2>Meet the Team</h2>
+
+            <p>{ustwoAutoData.teamProfile}</p>
 
             <ul className="ustwo-auto-team-profiles">
               <li>
@@ -148,28 +154,31 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
 export default UstwoAuto;
 
 const ustwoAutoData = {
-  intro: 'ustwo Auto is dedicated to exploring user experience challenges and opportunities in the mobility space. We work with selected clients and conduct research and experiments, often in collaboration with academic partners around the world. Recent projects and experiments have focussed on these areas:',
+  title: 'auto',
+  subtitle: 'For the journey',
+  intro: 'What drives us? The world is full of broken journeys. We’re on a mission to create a more seamless and magically connected experience.',
+  introFurther: 'We research how people travel to create services that transform our everyday lives. To do this we collaborate with designers, anthropologists, scientists, engineers, mobility providers, manufacturers, policy makers, city operators and academic and research partners around the world.',
   items: [{
+    name: 'humanising-autonomy',
+    title: 'Humanising Autonomy',
+    image: '/images/auto/humanising-autonomy.svg',
+    text: 'Conducting experimental research to uncover needs and opportunities for the design of future mobility experiences.'
+  },{
     name: 'smart-mobility',
-    title: 'Smart Mobility',
+    title: 'Smarter Mobility',
     image: '/images/auto/smart-mobility.svg',
-    text: 'Creating new services to help people navigate the world more easily'
+    text: 'Creating new services that improve the way people travel.'
   },{
     name: 'connected-car',
-    title: 'Connected Car',
+    title: 'Connecting the Car',
     image: '/images/auto/connected-car.svg',
-    text: 'Enhancing the ownership experience by connecting the car to people’s lifestyles and expectations'
+    text: 'Harnessing the potential that a connected experience can bring to people’s life.'
   },{
     name: 'contextual-hmi',
     title: 'Contextual HMI',
     image: '/images/auto/contextual-hmi.svg',
-    text: 'Making the in-car experience more personal and situational'
-  },{
-    name: 'humanising-autonomy',
-    title: 'Humanising Autonomy',
-    image: '/images/auto/humanising-autonomy.svg',
-    text: 'Looking beyond the technology and focussing on new human behaviours and opportunities'
-  }],
+    text: 'Making interfaces within transport more personal and situational.'
+  },],
   latestPromo: {
     title: 'New Promo Title Here',
     excerpt: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh',
@@ -178,28 +187,57 @@ const ustwoAutoData = {
     linkText: 'Link text',
     latest: true
   },
+  teamProfile: 'In 2014 we wrote a book on some thoughts around opportunities and failings around designing within the car. Our community has grown from there with over 100 of our designers and engineers globally working on mobility projects and research since then.',
   testimonials: [{
-      testimonial: "The automotive eBook is a rarity, it's wonderful.",
-      source: {
-        name: 'Apple Design Team',
-        title: 'San Francisco',
-        company: ''
-      }
+    testimonial: "The automotive eBook is a rarity, it's wonderful.",
+    source: {
+      name: 'Apple Design Team',
+      title: 'San Francisco',
+      company: ''
+    }
   },{
-      testimonial: "Dogs driving cars is an edge case",
-      source: {
-        name: 'Tim Smith',
-        title: 'ustwo',
-        company: ''
-      }
+    testimonial: "There was a recognition that we were attempting to do something that had never been down before. There was no pre-existing capability so that prompted us to work with ustwo.",
+    source: {
+      name: 'Doug Nicolls',
+      title: 'Ford Smart Mobility, London',
+      company: ''
+    }
+  },{
+    testimonial: "BS shovelling art schools grads",
+    source: {
+      name: 'A Jalopnik reader',
+      title: '',
+      company: ''
+    }
+  },{
+    testimonial: "It speaks volumes that a lot of people got inspired and had new thoughts after your presentation",
+    source: {
+      name: 'Autonomy design lead, Germany',
+      title: '',
+      company: ''
+    }
+  },{
+    testimonial: "I know a lot of design agencies but they are the best. They have the best design skills; a great working style and the team are really smart",
+    source: {
+      name: 'Shusuke Miyazawa',
+      title: 'Nissan, Tokyo',
+      company: ''
+    }
   }],
   twitter: [{
-      testimonial: "Electric vehicles are quiet and sneaky. For safety, NHTSA suggest all Ev's should make a sound. But what? We explore",
-      source: {
-        name: '@ustwoauto',
-        title: 'Apr 3 2017',
-        company: ''
-      }
+    testimonial: "Electric vehicles are quiet and sneaky. For safety, NHTSA suggest all Ev's should make a sound. But what? We explore",
+    source: {
+      name: '@ustwoauto',
+      title: 'Apr 3 2017',
+      company: ''
+    }
+  },{
+    testimonial: "Another tweet goes here",
+    source: {
+      name: '@ustwoauto',
+      title: 'Feb 11 2017',
+      company: ''
+    }
   }],
   partners: ['BMW Group', 'Ford', 'Qantas'],
   projects: [{
