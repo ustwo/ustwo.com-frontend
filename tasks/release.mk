@@ -42,5 +42,8 @@ release-push-snapshot:
 	$(DOCKER) push $(assets_image)
 	$(DOCKER) push $(sandbox_image)
 
-## Build new images with a tag name, e.g. VERSION=auto, then push to docker hub
+## To deploy a branch to staging (to live review a new feature):
+## Push the branch to git and make sure it passes CI as usual. Then the following command
+## will build a set of new images with a chosen tag name and push it to docker hub.
+## e.g. make release-branch VERSION=auto
 release-branch: build release-push-snapshot

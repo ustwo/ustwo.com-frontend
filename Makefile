@@ -77,6 +77,7 @@ deploy-production:
 		PROXY_HTTP_PORT=80
 deploy-staging: deploy-production
 release: release-create
+diversity-deploy: diversity-rm diversity-create 
 
 seeds: build
 love: deploy
