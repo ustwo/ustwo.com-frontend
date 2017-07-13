@@ -9,7 +9,7 @@
   padding-bottom: 130px;
 
   .work-clients-board-inner {
-    max-width: 690px;
+    max-width: $grid-max-width;
     margin: 0 auto;
   }
 
@@ -29,7 +29,7 @@
     list-style-type: none;
     width: 33.33%;
     text-align: center;
-    margin: 5px 0;
+    margin: 7px 0;
 
     img {
       width: 85px;
@@ -48,7 +48,7 @@
 
     li {
       width: 25%;
-      margin: 17px 0;
+      margin: 22px 0;
 
       img {
         width: 110px;
@@ -67,7 +67,7 @@
 
     li {
       width: 25%;
-      margin: 17px 0;
+      margin: 22px 0;
 
       img {
         width: 110px;
@@ -82,7 +82,7 @@
 
     li {
       width: 15%;
-      margin: 31px 0;
+      margin: 39px 0;
     }
   }
 }

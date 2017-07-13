@@ -3,10 +3,8 @@ import kebabCase from 'lodash/string/kebabCase';
 
 function WorkClientsBoard({ logos, title }) {
   const items = logos.map(item => {
-    const type = item === 'Qantas' ? 'jpg' : 'svg';
-
     return (
-      <li key={`client-logo-${kebabCase(item)}`}><img src={`/images/work/logo-${kebabCase(item)}.${type}`} alt={`Logo of ${item}`} /></li>
+      <li key={`client-logo-${kebabCase(item)}`}><img src={`/images/work/logo-${kebabCase(item)}.svg`} alt={`Logo of ${item}`} /></li>
     );
   });
 

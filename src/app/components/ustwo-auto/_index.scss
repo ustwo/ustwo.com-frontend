@@ -72,16 +72,6 @@
     }
   }
 
-  .work-clients-board {
-    background-image: linear-gradient(212deg, $ustwoAuto, $honey);
-
-    li {
-      img {
-        opacity : .75;
-      }
-    }
-  }
-
   .card-list {
     padding: 100px 0;
   }
@@ -167,4 +157,25 @@
 .profile-title {
   list-style: none;
   color: #ccc;
+}
+
+.ustwo-auto-logos-wrapper {
+  @extend .work-clients-board;
+  flex-direction: column;
+  background-image: linear-gradient(212deg, $ustwoAuto, $honey);
+
+  .work-clients-board {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    li {
+      img {
+        opacity : .75;
+      }
+    }
+
+    &:last-child {
+      padding-top: 70px;
+    }
+  }
 }

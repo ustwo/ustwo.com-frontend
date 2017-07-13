@@ -130,7 +130,10 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
           caseStudyFilter="all"
         />
 
-        <WorkClientsBoard logos={ustwoAutoData.partners} title="Our Partners" />
+        <div className="ustwo-auto-logos-wrapper">
+          <WorkClientsBoard logos={ustwoAutoData.clients} title="Our Clients" />
+          <WorkClientsBoard logos={ustwoAutoData.partners} title="Our Partners" />
+        </div>
 
         <WorkVerticals data={ustwoAutoData.projects} />
 
@@ -239,7 +242,8 @@ const ustwoAutoData = {
       company: ''
     }
   }],
-  partners: ['BMW Group', 'Ford', 'Qantas'],
+  clients: ['UCL', 'university-washington', 'Wayfindr'],
+  partners: ['BMW Group', 'Ford', 'Qantas', 'Emirates', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan'],
   projects: [{
     type: 'Research Project',
     shortTitle: 'auto-hmi',
