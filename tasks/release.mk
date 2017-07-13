@@ -5,7 +5,8 @@
   release-pull-snapshots \
   release-tag-snapshots \
   release-tag-rm \
-	release-push-snapshot
+	release-push-snapshot \
+	release-branch
 
 release-create: snapshot_sha1 = $(call git_sha1,$(VERSION))
 release-create: app_snapshot = $(call image_tag,$(app_id),$(snapshot_sha1))
@@ -40,3 +41,6 @@ release-push-snapshot:
 	$(DOCKER) push $(app_image)
 	$(DOCKER) push $(assets_image)
 	$(DOCKER) push $(sandbox_image)
+
+## Build new images with a tag name, e.g. VERSION=auto, then push to docker hub
+release-branch: build release-push-snapshot
