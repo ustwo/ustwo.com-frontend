@@ -7,7 +7,7 @@ import Hero from 'app/components/hero';
 import ContactBlockAuto from 'app/components/contact-block-auto';
 import ContactButton from 'app/components/contact-button';
 import Footer from 'app/components/footer';
-import WorkProcess from 'app/components/work-process';
+import UstwoAutoWhatwedo from 'app/components/ustwo-auto-whatwedo';
 import FeaturedCaseStudy from 'app/components/featured-case-study';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import WorkCaseStudies from 'app/components/work-case-studies';
@@ -58,21 +58,13 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
 
       <div className="home-main-content-wrapper">
 
-        <div className="work-whatwedo-wrapper">
-          <div className="work-whatwedo">
-            <div className="work-intro">
-              <p className="work-intro-statement">
-                {ustwoAutoData.intro}
-              </p>
-              <p className="work-intro-further">
-                {ustwoAutoData.introFurther}
-              </p>
-            </div>
-          </div>
-
-          <WorkProcess data={ustwoAutoData.items} isMobile={isMobile}  />
-
-        </div>
+        <ScrollWrapper
+          component={
+            <UstwoAutoWhatwedo data={ustwoAutoData} isMobile={isMobile} />
+          }
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+        />
 
         <FeaturedCaseStudy content={ustwoAutoData.latestPromo} />
 
