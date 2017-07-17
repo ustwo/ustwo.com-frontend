@@ -7,7 +7,6 @@ import env from 'app/adaptors/server/env';
 import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
 
-import WorkItem from 'app/components/work-item';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import Video from 'app/components/video';
 import Footer from 'app/components/footer';
