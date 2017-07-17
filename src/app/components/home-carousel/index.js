@@ -158,7 +158,7 @@ class HomeCarousel extends Component {
 
       return (
         <a
-          href={item.linkURI} onClick={Flux.override(item.linkURI)}
+          href={item.slug} onClick={Flux.override(item.slug)}
           className={classes}
           key={`carousel-item-${i}`}
           onMouseOver={() => this.setState({ videoToPlay: i })}

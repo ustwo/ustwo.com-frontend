@@ -197,13 +197,13 @@ const workData = {
     shortTitle: 'auto',
     title: 'Auto',
     text: 'The ustwo Auto team explore user experience in the automotive space with client engagements and our own research and experimental projects, building services and products around the connected car.',
-    linkURI: '/work/ustwoauto'
+    slug: '/work/ustwoauto'
   },{
     type: 'Expertise',
     shortTitle: 'health',
     title: 'Health',
     text: 'ustwo collaborates with clients, healthcare professionals and academic experts to create lasting, meaningful digital health solutions.',
-    linkURI: '/work/ustwo-health'
+    slug: '/work/ustwo-health'
   }],
   clients: ['Adidas', 'Android', 'BMW Group', 'Co-op', 'Ford', 'Foursquare', 'Google', 'Ikea', 'NBC', 'Qantas', 'Sky', 'Sony']
 }
@@ -214,5 +214,5 @@ const featuredCaseStudy = {
   colours: ['#87e283', '#92e9b2'],
   image: '/images/work/featured-gopark.png',
   imageAlt: 'iPhone showing Ford GoPark App',
-  linkURI: '/work/ford-gopark'
+  slug: '/work/ford-gopark'
 }

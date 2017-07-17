@@ -19,15 +19,14 @@ class WorkItem extends Component {
   }
 
   render() {
-    const { data, className, page, featured } = this.props;
-    const id = data.id;
+    const { data, page } = this.props;
     const link = `/work/${get(data, 'slug')}`;
     const category = get(data, 'categories.0.name');
     const attachments = get(page, '_embedded.wp:attachment');
     const image = getFeaturedImage(data, attachments);
-    const classes = classnames('card-item', 'work-item', `work-item-${id}`, `work-label-${kebabCase(category)}`, {
+    const classes = classnames('card-item', 'work-item', `work-item-${data.id}`, `work-label-${kebabCase(category)}`, {
       featured: featured ? featured : null
-     });
+    });
 
     return (
       <div className={classes} key={data.slug}>

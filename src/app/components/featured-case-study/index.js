@@ -2,7 +2,7 @@ import React from 'react';
 import Flux from 'app/flux';
 
 function FeaturedCaseStudy({ content }) {
-  const { colours, image, imageAlt, title, excerpt, linkURI, linkText, latest } = content;
+  const { colours, image, imageAlt, title, excerpt, slug, linkText, latest } = content;
 
   let styles;
   if (colours.length > 1) {
@@ -25,7 +25,7 @@ function FeaturedCaseStudy({ content }) {
           <div className="section-title">{latest ? 'Latest' : 'Featured Work'}</div>
           <h2 className="title">{title}</h2>
           <p>{excerpt}</p>
-          <button onClick={Flux.override(linkURI)}>{linkText ? linkText : 'View Case Study'}</button>
+          <button onClick={Flux.override(slug)}>{linkText ? linkText : 'View Case Study'}</button>
         </div>
       </div>
     </div>

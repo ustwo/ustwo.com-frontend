@@ -241,20 +241,20 @@ const ustwoAutoData = {
     shortTitle: 'auto-hmi',
     title: 'ARE WE THERE YET? THOUGHTS ON IN-CAR HMI',
     text: 'In this five part blog series ustwo Auto look into this phenomenon of growing in-car HMI complexity.',
-    linkURI: '/work/ustwoauto'
+    slug: '/work/ustwoauto'
   },{
     type: 'Research Project',
     shortTitle: 'auto-mobility',
     title: 'CITIES SHOW US THE WAY',
     text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-    linkURI: '/work/ustwoauto',
+    slug: '/work/ustwoauto',
     small: true
   },{
     type: 'Research Project',
     shortTitle: 'auto-reimagine',
     title: 'USTWO REIMAGINE THE IN-CAR CLUSTER',
     text: 'Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.',
-    linkURI: '/work/ustwoauto',
+    slug: '/work/ustwoauto',
     small: true
   }]
 }

@@ -18,7 +18,7 @@ function WorkVerticals({ data }) {
             <div className="section-title">Expertise</div>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
-            <button className="work-verticals-button" onClick={Flux.override(item.linkURI)}>
+            <button className="work-verticals-button" onClick={Flux.override(item.slug)}>
               <div className="work-verticals-button-inner">
                 Read More
               </div>
