@@ -14,7 +14,7 @@ class Hero extends Component {
     super(props);
 
     this.state = {
-      active: false
+      visible: false
     }
 
     this.onClickDownIndicator = () => {
@@ -46,8 +46,7 @@ class Hero extends Component {
   }
 
   componentDidMount() {
-    const { active } = this.state;
-    this.setState({ active: true });
+    this.setState({ visible: true });
   }
 
   render() {
@@ -72,7 +71,10 @@ class Hero extends Component {
       sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
     }
 
-    const classes = classnames('hero', className, { notFullScreen, active });
+    const classes = classnames('hero', className, {
+      notFullScreen,
+      visible: this.state.visible
+    });
 
     let styles;
     if (fixedHeight && env.Modernizr.touchevents) {
@@ -95,18 +97,8 @@ class Hero extends Component {
               <h1 className="title">
                 <WordAnimation delay={0.45} duration={0.2}>{title}</WordAnimation>
               </h1>
-<<<<<<< HEAD
-              {
-                this.props.subheading &&
-                <p className="subheading">{this.props.subheading}</p>
-              }
-              <div className="hero-children">
-                {children}
-              </div>
-=======
               {this.props.subheading && <p className="subheading"><WordAnimation delay={0.5} duration={0.32}>{this.props.subheading}</WordAnimation></p>}
               {children}
->>>>>>> feat: Auto copy, tidy ups, meet team etc for staging deploy
             </div>
             <div className="hero-down-indicator" style={transitionStyles}>
               {

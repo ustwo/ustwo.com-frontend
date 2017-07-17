@@ -80,35 +80,29 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
                 <section className="profile">
                   <div className="profile-photo"><img src="/images/auto/tim-smith.png" /></div>
                   <h3 className="profile-name">Tim Smith</h3>
-                  <p className="profile-title">Visual Design & UI</p>
+                  <p className="profile-title">Design Principal</p>
                   <p className="profile-contact">@mypoorbrain</p>
                 </section>
               </li>
               <li>
                 <section className="profile">
-                  <div className="profile-photo"><img src="/images/auto/tim-smith.png" /></div>
-                  <h3 className="profile-name">Tim Smith</h3>
-                  <p className="profile-title">Visual Design & UI</p>
-                  <p className="profile-contact">@mypoorbrain</p>
+                  <div className="profile-photo"><img src="/images/auto/harsha-vardhan.png" /></div>
+                  <h3 className="profile-name">Harsha Vardhan</h3>
+                  <p className="profile-title">Interaction Lead</p>
+                  <p className="profile-contact">@harsha</p>
                 </section>
               </li>
               <li>
                 <section className="profile">
-                  <div className="profile-photo"><img src="/images/auto/tim-smith.png" /></div>
-                  <h3 className="profile-name">Tim Smith</h3>
-                  <p className="profile-title">Visual Design & UI</p>
-                  <p className="profile-contact">@mypoorbrain</p>
-                </section>
-              </li>
-              <li>
-                <section className="profile">
-                  <div className="profile-photo"><img src="/images/auto/tim-smith.png" /></div>
-                  <h3 className="profile-name">Tim Smith</h3>
-                  <p className="profile-title">Visual Design & UI</p>
-                  <p className="profile-contact">@mypoorbrain</p>
+                  <div className="profile-photo"><img src="/images/auto/lexi-cherniavsky.png" /></div>
+                  <h3 className="profile-name">Lexi Cherniavsky</h3>
+                  <p className="profile-title">Client Partner</p>
+                  <p className="profile-contact">@lexi</p>
                 </section>
               </li>
             </ul>
+
+            {ustwoAutoData.howWeDoIt.map(para => <p>{para}</p>)}
 
           </div>
         </div>
@@ -151,8 +145,8 @@ export default UstwoAuto;
 const ustwoAutoData = {
   title: 'auto',
   subtitle: 'For the journey',
-  intro: 'What drives us? The world is full of broken journeys. We’re on a mission to create a more seamless and magically connected experience.',
-  introFurther: 'We research how people travel to create services that transform our everyday lives. To do this we collaborate with designers, anthropologists, scientists, engineers, mobility providers, manufacturers, policy makers, city operators and academic and research partners around the world.',
+  intro: "Our mission is to make journeys more magically connected. We help brands innovate by combining insight into how people move with breakthrough technology. We create experiences that enhance people's lives from the dashboard to the city to the sky.",
+  introFurther: 'We do this with clients around the world and collaborate with research partners on our own experimental projects.',
   items: [{
     name: 'humanising-autonomy',
     title: 'Humanising Autonomy',
@@ -167,7 +161,7 @@ const ustwoAutoData = {
     name: 'connected-car',
     title: 'Connecting the Car',
     image: '/images/auto/connected-car.svg',
-    text: 'Harnessing the potential that a connected experience can bring to people’s life.'
+    text: "Harnessing the potential that a connected experience can bring to people's life."
   },{
     name: 'contextual-hmi',
     title: 'Contextual HMI',
@@ -182,7 +176,12 @@ const ustwoAutoData = {
     linkText: 'Link text',
     latest: true
   },
-  teamProfile: 'In 2014 we wrote a book on some thoughts around opportunities and failings around designing within the car. Our community has grown from there with over 100 of our designers and engineers globally working on mobility projects and research since then.',
+  howWeDoIt: [
+    "Our design methodology is inclusive and from the ground up because we know this creates a better experience for everyone.",
+    "We have a collaborative way of working and partnership mindset. This often involves bringing experts together across many disciplines to solve a common problem, whether designers, anthropologists, scientists, engineers, mobility providers, manufacturers, policy makers, city operators or academic and research partners.",
+    "Clients work with us to help them build new capabilities and sometimes change the status quo."
+  ],
+  teamProfile: "We’re a community of designers, inventors and engineers. We don’t make cars but we have a small collection. We conduct our own research experiments because we’re passionate about what we do and want to solve the problems we see around us. We’re embedded within ustwo with over 50 of us across our studios globally with specific sector expertise.",
   testimonials: [{
     testimonial: "The automotive eBook is a rarity, it's wonderful.",
     source: {
@@ -193,7 +192,7 @@ const ustwoAutoData = {
   },{
     testimonial: "There was a recognition that we were attempting to do something that had never been down before. There was no pre-existing capability so that prompted us to work with ustwo.",
     source: {
-      name: 'Doug Nicolls',
+      name: 'Doug Nicoll',
       title: 'Ford Smart Mobility, London',
       company: ''
     }

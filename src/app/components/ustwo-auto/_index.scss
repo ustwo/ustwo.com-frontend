@@ -48,6 +48,8 @@
           background-position: 50%;
           background-size: 113% auto;
           color: transparent;
+          opacity: 0;
+          transition: opacity .32s linear;
         }
       }
 
@@ -77,12 +79,16 @@
   }
 
   .testimonial-smallprint {
-    color: $nonBlack;
+    color: $offWhite;
   }
 
   .tesimonial-button-next svg {
     fill: white;
   }
+}
+
+.visible .hero-content h1 .word-animator:before {
+  opacity: 1;
 }
 
 .work-vertical-auto-hmi {
@@ -113,10 +119,11 @@
     margin-bottom: 40px;
   }
 
-  p {
-    max-width: 80%;
-    text-align: center;
+  .ustwo-auto-team-inner > p {
+    max-width: 70%;
+    text-align: left;
     margin: 0 auto;
+    padding-bottom: 20px;
   }
 
   li {
@@ -127,7 +134,7 @@
 .ustwo-auto-team-profiles {
   display: flex;
   justify-content: center;
-  margin: 50px 0 0;
+  margin: 50px 0 40px;
 }
 
 // TODO: Make this a component

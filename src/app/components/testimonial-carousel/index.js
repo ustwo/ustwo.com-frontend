@@ -64,7 +64,7 @@ class TestimonialCarousel extends Component {
       return (
         <div key={`testimonial-${i}`} className={classes}>
           {icon}
-          <p>{testimonial.testimonial}</p>
+          <p>&ldquo;{testimonial.testimonial}&rdquo;</p>
           <div className="testimonial-name">{testimonial.source.name}</div>
           <div className="testimonial-smallprint">
             <span className="testimonial-title">{testimonial.source.title}&nbsp;</span>
