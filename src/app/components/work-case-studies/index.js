@@ -1,6 +1,7 @@
 import React from 'react';
 import WorkItem from 'app/components/work-item';
 import LoadMoreButton from 'app/components/load-more-button';
+import kebabCase from 'lodash/string/kebabCase';
 
 function WorkCaseStudies({ page, caseStudies, caseStudyFilter, numberOfCaseStudiesShowing, addMoreCaseStudies }) {
 
@@ -18,7 +19,7 @@ function WorkCaseStudies({ page, caseStudies, caseStudyFilter, numberOfCaseStudi
   const renderCaseStudies = filteredCaseStudies.map((caseStudy, i) => {
     if (i < numberOfCaseStudiesShowing) {
       return (
-        <WorkItem data={caseStudy} page={page} />
+        <WorkItem data={caseStudy} page={page} key={`case-study-${kebabCase(caseStudy.name)}`} />
       );
     }
   });

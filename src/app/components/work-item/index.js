@@ -19,7 +19,7 @@ class WorkItem extends Component {
   }
 
   render() {
-    const { data, page } = this.props;
+    const { data, page, featured } = this.props;
     const link = `/work/${get(data, 'slug')}`;
     const category = get(data, 'categories.0.name');
     const attachments = get(page, '_embedded.wp:attachment');
@@ -67,11 +67,15 @@ class WorkItem extends Component {
   }
 
   onMouseEnter() {
-    this.setState({ hover: true });
+    return () => {
+      this.setState({ hover: true });
+    }
   }
 
   onMouseLeave() {
-    this.setState({ hover: false });
+    return () => {
+      this.setState({ hover: false });
+    }
   }
 };
 
