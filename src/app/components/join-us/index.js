@@ -195,7 +195,8 @@ const PageJoinUs = React.createClass({
     });
   },
   getJobsForStudio(studio) {
-    const allJobs = this.props.jobs || [];
+    const { jobs } = this.props;
+    const allJobs = jobs.filter(job => !job.code) || [];
     const { name } = studio;
     return filter(allJobs, job => {
       const studioMatchesCity = get(job, 'location.city', '') === name;
