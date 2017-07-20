@@ -13,6 +13,10 @@ class Hero extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      active: false
+    }
+
     this.onClickDownIndicator = () => {
       this.trackDownIndicatorClick(this.props.eventLabel);
     }
@@ -41,8 +45,14 @@ class Hero extends Component {
     });
   }
 
+  componentDidMount() {
+    const { active } = this.state;
+    this.setState({ active: true });
+  }
+
   render() {
     const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions, fixedHeight, heroImage } = this.props;
+    const { active } = this.state;
     const scrollProgressValue = scrollProgress ? scrollProgress : 0;
     const transform = `translateY(${Math.min(((0.5 - scrollProgressValue) * 4) * 30, 0)}px)`;
 
@@ -62,7 +72,7 @@ class Hero extends Component {
       sectionTitle = eventLabel === 'work' ? 'Our Work' : eventLabel.toUpperCase();
     }
 
-    const classes = classnames('hero', className, { notFullScreen });
+    const classes = classnames('hero', className, { notFullScreen, active });
 
     let styles;
     if (fixedHeight && env.Modernizr.touchevents) {
@@ -83,13 +93,15 @@ class Hero extends Component {
                 <WordAnimation delay={0.3} duration={0.2}>{sectionTitle}</WordAnimation>
               </div>
               <h1 className="title">
-                <WordAnimation delay={0.5} duration={0.32}>{title}</WordAnimation>
+                <WordAnimation delay={0.45} duration={0.2}>{title}</WordAnimation>
               </h1>
               {
                 this.props.subheading &&
                 <p className="subheading">{this.props.subheading}</p>
               }
-              {children}
+              <div className="hero-children">
+                {children}
+              </div>
             </div>
             <div className="hero-down-indicator" style={transitionStyles}>
               {
