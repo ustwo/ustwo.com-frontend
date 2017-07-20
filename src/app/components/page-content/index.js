@@ -28,12 +28,10 @@ class PageContent extends Component {
     this.setFixedHeight()
 
     window.addEventListener('orientationchange', this.setFixedHeightBound);
-    window.addEventListener('resize', this.setFixedHeightBound);
   }
 
   componentWillUnmount() {
     window.removeEventListener('orientationchange', this.setFixedHeightBound);
-    window.removeEventListener('resize', this.setFixedHeightBound);
   }
 
   requestTick() {

@@ -29,20 +29,6 @@ class HomeIntro extends Component {
   render() {
     const { scrollProgress, screenPosition, isMobile, fixedHeight } = this.props;
 
-    const scrollProgressValue = scrollProgress ? scrollProgress : 0;
-
-    const transform = `translateY(${Math.min(((0.5 - scrollProgressValue) * 4) * 30, 0)}px)`;
-    const transitionStyles = {
-      opacity: (0.75 - scrollProgressValue) * 4,
-      transform: transform
-    };
-
-    const videoTransitionStyles = {
-      transform: transform
-    }
-
-    const styles = env.Modernizr.touchevents ? { height: `${fixedHeight}px` } : null;
-
     let src, srcHls, imageCSS;
     if (window.innerWidth < 600) {
       src = 'https://player.vimeo.com/external/205373063.sd.mp4?s=eedf82905ed3ecba67b0f7ce3d2200309156ee36&profile_id=164';
@@ -54,8 +40,22 @@ class HomeIntro extends Component {
       imageCSS = 'https://i.vimeocdn.com/video/626251677.jpg?mw=1280&mh=720';
     }
 
+    let scrollProgressValue, transform, transitionStyles, videoTransitionStyles;
+    scrollProgressValue = scrollProgress ? scrollProgress : 0;
+    transform = `translateY(${Math.min(((0.5 - scrollProgressValue) * 4) * 30, 0)}px)`;
+    transitionStyles = {
+      opacity: (0.75 - scrollProgressValue) * 4,
+      transform: transform
+    };
+    
+    if (window.innerWidth > 1024) {
+      videoTransitionStyles = {
+        transform: transform
+      }
+    }
+
     return (
-      <div className="home-intro" style={styles}>
+      <div className="home-intro">
         <div className="home-intro-video" style={videoTransitionStyles}>
           <Video
             src={src}

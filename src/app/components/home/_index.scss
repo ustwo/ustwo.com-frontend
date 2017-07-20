@@ -64,7 +64,7 @@
   left: auto;
   bottom: auto;
   right: auto;
-  margin: 0px;
+  margin: 0;
   display: block;
   position: relative;
   box-sizing: content-box;
@@ -86,6 +86,12 @@
   box-sizing: border-box;
   height: 100%;
   width: 100%;
+
+  // Remove position fixed for everything 1024 and below to improve
+  // scroll performance on touch screen devices
+  @media screen and (max-width: $bp-large) {
+    position: absolute;
+  }
 }
 
 /* Transitions around venturesActive */
