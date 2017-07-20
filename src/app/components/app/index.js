@@ -23,7 +23,6 @@ import Nulls from 'app/flux/nulls';
 import Navigation from 'app/components/navigation';
 import Modal from 'app/components/modal';
 import EntranceTransition from 'app/components/entrance-transition';
-import ContactTray from 'app/components/contact-tray';
 import FourOhFour from 'app/components/404';
 import BlogCategories from 'app/components/blog-categories';
 import NavigationOverlay from 'app/components/navigation-overlay';
@@ -134,10 +133,6 @@ const App = React.createClass({
               section={currentPage.split('/')[0]}
             />
           );
-          break;
-        case 'contacts':
-          className = 'tray';
-          content = <ContactTray contacts={footer.contacts} />;
           break;
         case 'blogCategories':
           className = 'modal-blog-categories';
