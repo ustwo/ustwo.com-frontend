@@ -57,7 +57,7 @@ const App = React.createClass({
       isScrolling: false,
       show: false,
       viewportDimensions: {},
-      isMobile: window.innerWidth < 600,
+      isMobile: window.innerWidth < 600
     }, this.props.state);
   },
 
@@ -122,22 +122,22 @@ const App = React.createClass({
   },
 
   renderModal() {
+    const { modal, navMain, currentPage, footer, videoOverlaySrc } = this.state;
     let modalContent, className, content;
-    const { modal } = this.state;
     if (modal) {
       switch(modal) {
         case 'menu':
           className = 'menu';
           content = (
             <NavigationOverlay
-              pages={this.state.navMain}
-              section={this.state.currentPage.split('/')[0]}
+              pages={navMain}
+              section={currentPage.split('/')[0]}
             />
           );
           break;
         case 'contacts':
           className = 'tray';
-          content = <ContactTray contacts={state.footer.contacts} />;
+          content = <ContactTray contacts={footer.contacts} />;
           break;
         case 'blogCategories':
           className = 'modal-blog-categories';
@@ -147,7 +147,7 @@ const App = React.createClass({
           className = 'modal-video-overlay';
           content = (
             <VideoOverlay
-              src={this.state.videoOverlaySrc}
+              src={videoOverlaySrc}
             />
           );
           break;
@@ -195,7 +195,7 @@ const App = React.createClass({
     const state = this.state;
     const { currentPage, show, popup, showPopup, showRollover, menuHover, modal,
       viewportDimensions, page, post, caseStudy, navMain, documentScrollPosition,
-      venturesPosition, footer, studios, overflow, isMobile, loaded,
+      venturesPosition, footer, studios, overflow, isMobile,
       setWindowHeight } = this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
@@ -204,7 +204,7 @@ const App = React.createClass({
       'overflow-hidden': popup
     });
     const contentClasses = classnames('app-content', showPopup, showRollover, menuHover, {
-      'show': state.show,
+      'show': show,
       'disabled': !!modal,
       'mobile-no-scroll': modal,
     });
@@ -225,13 +225,13 @@ const App = React.createClass({
         venturesPosition={venturesPosition}
         modal={modal}
         viewportDimensions={viewportDimensions}
-        loaded={loaded}
+        loaded={show}
         caseStudy={caseStudy}
       />
     );
 
     let content;
-    if (state.currentPage === 'notfound') {
+    if (currentPage === 'notfound') {
       content = (
         <div className={appClasses}>
           {navigation}

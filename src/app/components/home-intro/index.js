@@ -41,14 +41,13 @@ class HomeIntro extends Component {
     }
 
     let scrollProgressValue, transform, transitionStyles, videoTransitionStyles;
-    scrollProgressValue = scrollProgress ? scrollProgress : 0;
-    transform = `translateY(${Math.min(((0.5 - scrollProgressValue) * 4) * 30, 0)}px)`;
-    transitionStyles = {
-      opacity: (0.75 - scrollProgressValue) * 4,
-      transform: transform
-    };
-    
     if (window.innerWidth > 1024) {
+      scrollProgressValue = scrollProgress ? scrollProgress : 0;
+      transform = `translateY(${Math.min(((0.5 - scrollProgressValue) * 4) * 30, 0)}px)`;
+      transitionStyles = {
+        opacity: (0.75 - scrollProgressValue) * 4,
+        transform: transform
+      };
       videoTransitionStyles = {
         transform: transform
       }
