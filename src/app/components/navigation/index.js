@@ -111,11 +111,12 @@ class Navigation extends Component {
     const navClasses = classnames('navigation', customClass, section, page, caseStudyName, {
       notSticky: modal === null && scrolledBefore100 && homePage,
       menuOpen: modal === 'menu',
-      invert: venturesActive && homePage || capability.includes(page),
+      invert: !venturesActive && homePage && !scrolledBefore100 || capability.includes(page),
       overHero: scrolledBefore100 && heroPage && !subPage,
       pageControls: subPage,
       scrolled: scrolled,
-      subPage: subPage
+      subPage: subPage,
+      notOverHero: !scrolledBefore100 && heroPage && !subPage
     });
 
     let color;

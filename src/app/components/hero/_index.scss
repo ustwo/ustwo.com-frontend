@@ -77,8 +77,7 @@
   .hero-children,
   .hero-down-indicator {
     opacity: 0;
-    // transform: translateY(30px);
-    transition: all .2s linear .7s; // This should transition after the WordAnimation components in the Hero js component
+    transition: opacity .2s linear .7s; // This should transition after the WordAnimation components in the Hero js component
   }
   .hero-down-indicator {
     transition-delay: .9s;
@@ -87,7 +86,6 @@
     .hero-children,
     .hero-down-indicator {
       opacity: 1;
-      // transform: translateY(0);
     }
   }
 

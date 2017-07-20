@@ -47,11 +47,6 @@ $nav-height-large: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all .2s ease-in-out;
-
-  &.subPage {
-    // transition: none; /* to avoid seeing the switch back to left: auto when fading out */
-  }
 
   &:before {
     content: "";
@@ -123,7 +118,7 @@ $nav-height-large: 32px;
 
   svg {
     pointer-events: none;
-    fill: $nonBlack;
+    fill: $offWhite;
     width: 112px;
     transition: fill .2s linear;
     height: $nav-height-small;
@@ -160,7 +155,7 @@ $nav-height-large: 32px;
   z-index: 1;
   pointer-events: none; /* Fixes intermittent issue on touch devices? */
   border-radius: 50%;
-  border: 2px solid $nonBlack;
+  border: 2px solid $offWhite;
   width: $nav-height-small;
   height: $nav-height-small;
   box-sizing: content-box;
@@ -175,7 +170,7 @@ $nav-height-large: 32px;
     transform: translate(-50%, -50%);
     width: 10px;
     height: 2px;
-    background-color: $nonBlack;
+    background-color: $offWhite;
     transition: all .2s linear;
   }
 
@@ -197,7 +192,7 @@ $nav-height-large: 32px;
   }
 
   @media screen and (min-width: $bp-large) {
-    border: 3px solid $nonBlack;
+    border: 3px solid $offWhite;
     width: $nav-height-large;
     height: $nav-height-large;
 
@@ -264,8 +259,6 @@ $nav-height-large: 32px;
 }
 
 .navigation {
-  &.invert,
-  &.menuOpen,
   &.overHero:not(.home) {
     .navigation-logo svg {
       fill: $offWhite;
@@ -276,6 +269,27 @@ $nav-height-large: 32px;
       &:before,
       &:after {
         background-color: $offWhite;
+      }
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      &:before {
+        background-color: transparent;
+      }
+    }
+  }
+  &.invert,
+  &.menuOpen,
+  &.notOverHero {
+    .navigation-logo svg {
+      fill: $nonBlack;
+    }
+    .navigation-toggle-main {
+      border-color: $nonBlack;
+
+      &:before,
+      &:after {
+        background-color: $nonBlack;
       }
     }
 
