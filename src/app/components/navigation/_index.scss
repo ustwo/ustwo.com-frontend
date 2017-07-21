@@ -259,25 +259,6 @@ $nav-height-large: 32px;
 }
 
 .navigation {
-  &.overHero:not(.home) {
-    .navigation-logo svg {
-      fill: $offWhite;
-    }
-    .navigation-toggle-main {
-      border-color: $offWhite;
-
-      &:before,
-      &:after {
-        background-color: $offWhite;
-      }
-    }
-
-    @media screen and (min-width: $bp-medium) {
-      &:before {
-        background-color: transparent;
-      }
-    }
-  }
   &.invert,
   &.menuOpen,
   &.notOverHero {
@@ -299,14 +280,34 @@ $nav-height-large: 32px;
       }
     }
   }
-  &.invert {
+
+  &.menuOpen {
+    .navigation-logo svg {
+      fill: $offWhite;
+    }
+    .navigation-toggle-main {
+      border-color: $offWhite;
+
+      &:before,
+      &:after {
+        background-color: $offWhite;
+      }
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      &:before {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.default {
     &:before {
       background: linear-gradient(90deg, #333, #323952);
       opacity: 0.95;
     }
   }
-  &.menuOpen,
-  &.overHero:not(.home) {
+  &.menuOpen {
     &:before {
       background: transparent !important;
     }
@@ -316,8 +317,7 @@ $nav-height-large: 32px;
 @media screen and (min-width: $bp-medium) {
   .navigation {
     &,
-    &.invert,
-    &.overHero:not(.home) {
+    &.default {
       &:before {
         background: none;
       }
@@ -411,44 +411,15 @@ $nav-height-large: 32px;
     }
     // END
 
-    &,
-    &.overHero {
-      .navigation-logo svg {
-        fill: $nonBlack;
-      }
-      .navigation-toggle-main {
-        border-color: $nonBlack;
-
-        &:before,
-        &:after {
-          background-color: $nonBlack;
-        }
-      }
-    }
-
-    &.invert {
+    &.default {
 
       &:before {
         background: $c-solid;
       }
 
-      &,
-      &.overHero {
-        .navigation-logo svg {
-          fill: $offWhite;
-        }
-        .navigation-toggle-main {
-          border-color: $offWhite;
-
-          &:before,
-          &:after {
-            background-color: $offWhite;
-          }
-        }
-        .navigation-subpage-nav button {
-          color: $offWhite;
-          background-image: url('/images/icon-left-light.svg');
-        }
+      .navigation-subpage-nav button {
+        color: $offWhite;
+        background-image: url('/images/icon-left-light.svg');
       }
     }
   }

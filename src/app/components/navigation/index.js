@@ -97,6 +97,7 @@ class Navigation extends Component {
 
   render() {
     const { section, page, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
+    const { paused, height } = this.state;
 
     const capability = ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'];
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
@@ -105,18 +106,18 @@ class Navigation extends Component {
     const subPage = page === 'post' || page === 'case-study' || page === 'event' || capability.includes(page);
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
-    const scrolledBefore100 = documentScrollPosition < viewportDimensions.height - (this.state.height * 0.5);
+    const scrolledAfter100 = documentScrollPosition > viewportDimensions.height - (height * 0.5);
     const caseStudyName = caseStudy ? kebabCase(caseStudy.name) : null
 
     const navClasses = classnames('navigation', customClass, section, page, caseStudyName, {
-      notSticky: modal === null && scrolledBefore100 && homePage,
-      menuOpen: modal === 'menu',
-      invert: !venturesActive && homePage && !scrolledBefore100 || capability.includes(page),
-      overHero: scrolledBefore100 && heroPage && !subPage,
+      notSticky: modal === null && !scrolledAfter100 && homePage,
       pageControls: subPage,
       scrolled: scrolled,
       subPage: subPage,
-      notOverHero: !scrolledBefore100 && heroPage && !subPage
+      notOverHero: scrolledAfter100 && heroPage && !subPage,
+      default: capability.includes(page),
+      invert: !venturesActive && homePage && scrolledAfter100 && !modal || section === 'legal',
+      menuOpen: modal
     });
 
     let color;
@@ -175,7 +176,7 @@ class Navigation extends Component {
             onMouseOut={this.mouseLeave.bind(this)}
           >
             <div className="navigation-toggle-main"></div>
-            <SVGSequence fps={25} paused={this.state.paused} name="icon-ring" color={color} />
+            <SVGSequence fps={25} paused={paused} name="icon-ring" color={color} />
           </button>
         </div>
       </nav>
