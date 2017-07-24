@@ -29,6 +29,7 @@ const _state = Object.assign({
   archivedEventsPagination: Defaults.archivedEventsPagination,
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
   venturesPosition: Defaults.venturesPosition,
+  testimonialsPosition: Defaults.testimonialsPosition,
   overflow: Defaults.overflow,
   videoOverlaySrc: Defaults.videoOverlaySrc,
   setWindowHeight: Defaults.setWindowHeight,
@@ -260,6 +261,10 @@ const Store = Object.assign(
     },
     venturesPosition(position) {
       _state.venturesPosition = position;
+      Store.emit('change', _state);
+    },
+    testimonialsPosition(position) {
+      _state.testimonialsPosition = position;
       Store.emit('change', _state);
     },
     showPopup(name) {

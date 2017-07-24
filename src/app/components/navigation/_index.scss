@@ -281,7 +281,8 @@ $nav-height-large: 32px;
     }
   }
 
-  &.menuOpen {
+  &.menuOpen,
+  &.default {
     .navigation-logo svg {
       fill: $offWhite;
     }

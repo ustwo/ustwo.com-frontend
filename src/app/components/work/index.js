@@ -52,12 +52,17 @@ class PageWork extends Component {
   }
 
   renderTestimonialCarousel() {
-    const { page, fixedHeight } = this.props;
+    const { page, fixedHeight, documentScrollPosition, viewportDimensions } = this.props;
     const testimonials = get(page, '_embedded.ustwo:testimonials', []);
 
     if(testimonials.length > 0) {
       return (
-        <TestimonialCarousel testimonials={testimonials} fixedHeight={fixedHeight} />
+        <TestimonialCarousel
+          testimonials={testimonials}
+          fixedHeight={fixedHeight}
+          documentScrollPosition={documentScrollPosition}
+          viewportDimensions={viewportDimensions}
+        />
       );
     }
   }

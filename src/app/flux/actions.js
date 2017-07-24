@@ -40,6 +40,9 @@ const Actions = {
   venturesPosition(position) {
     Store.venturesPosition(position);
   },
+  testimonialsPosition(position) {
+    Store.testimonialsPosition(position);
+  },
   showPopup(name) {
     Store.showPopup(name);
   },

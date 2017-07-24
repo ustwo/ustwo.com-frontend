@@ -96,11 +96,12 @@ class Navigation extends Component {
   }
 
   render() {
-    const { section, page, customClass, documentScrollPosition, venturesPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
+    const { section, page, customClass, documentScrollPosition, venturesPosition, testimonialsPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
     const { paused, height } = this.state;
 
     const capability = ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'];
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
+    const testimonialsActive = testimonialsPosition && documentScrollPosition > testimonialsPosition.from && documentScrollPosition < testimonialsPosition.to;
     const homePage = section === 'home';
     const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy;
     const subPage = page === 'post' || page === 'case-study' || page === 'event' || capability.includes(page);
@@ -115,7 +116,7 @@ class Navigation extends Component {
       scrolled: scrolled,
       subPage: subPage,
       notOverHero: scrolledAfter100 && heroPage && !subPage,
-      default: capability.includes(page),
+      default: capability.includes(page) || testimonialsActive,
       invert: !venturesActive && homePage && scrolledAfter100 && !modal || section === 'legal',
       menuOpen: modal
     });
