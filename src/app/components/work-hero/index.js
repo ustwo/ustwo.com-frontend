@@ -9,10 +9,6 @@ import window from 'app/adaptors/server/window';
 
 class WorkHero extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   openVideoOverlay(e) {
     e.stopPropagation();
     let src;

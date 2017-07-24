@@ -10,7 +10,6 @@
 $piglet      : #ED0082;
 $softPiglet  : #FFA5BE;
 $passion     : #E60C29;
-$marshPassion: #F9615B; /* TODO: is there a reason we are breaking from the ustwo palette and not using softPassion ? */
 $softPassion : #FA7D78;
 $ohra        : #FF5519;
 $softOhra    : #FFC39B;
@@ -62,7 +61,6 @@ $ustwo-palette: (
   piglet: $piglet,
   softPiglet: $softPiglet,
   passion: $passion,
-  marshPassion: $marshPassion,
   softPassion: $softPassion,
   ohra: $ohra,
   softOhra: $softOhra,

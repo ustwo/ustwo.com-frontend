@@ -47,11 +47,6 @@ $nav-height-large: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all .2s ease-in-out;
-
-  &.subPage {
-    // transition: none; /* to avoid seeing the switch back to left: auto when fading out */
-  }
 
   &:before {
     content: "";
@@ -123,7 +118,7 @@ $nav-height-large: 32px;
 
   svg {
     pointer-events: none;
-    fill: $nonBlack;
+    fill: $offWhite;
     width: 112px;
     transition: fill .2s linear;
     height: $nav-height-small;
@@ -160,7 +155,7 @@ $nav-height-large: 32px;
   z-index: 1;
   pointer-events: none; /* Fixes intermittent issue on touch devices? */
   border-radius: 50%;
-  border: 2px solid $nonBlack;
+  border: 2px solid $offWhite;
   width: $nav-height-small;
   height: $nav-height-small;
   box-sizing: content-box;
@@ -175,7 +170,7 @@ $nav-height-large: 32px;
     transform: translate(-50%, -50%);
     width: 10px;
     height: 2px;
-    background-color: $nonBlack;
+    background-color: $offWhite;
     transition: all .2s linear;
   }
 
@@ -197,7 +192,7 @@ $nav-height-large: 32px;
   }
 
   @media screen and (min-width: $bp-large) {
-    border: 3px solid $nonBlack;
+    border: 3px solid $offWhite;
     width: $nav-height-large;
     height: $nav-height-large;
 
@@ -266,7 +261,28 @@ $nav-height-large: 32px;
 .navigation {
   &.invert,
   &.menuOpen,
-  &.overHero:not(.home) {
+  &.notOverHero {
+    .navigation-logo svg {
+      fill: $nonBlack;
+    }
+    .navigation-toggle-main {
+      border-color: $nonBlack;
+
+      &:before,
+      &:after {
+        background-color: $nonBlack;
+      }
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      &:before {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.menuOpen,
+  &.default {
     .navigation-logo svg {
       fill: $offWhite;
     }
@@ -285,14 +301,14 @@ $nav-height-large: 32px;
       }
     }
   }
-  &.invert {
+
+  &.default {
     &:before {
       background: linear-gradient(90deg, #333, #323952);
       opacity: 0.95;
     }
   }
-  &.menuOpen,
-  &.overHero:not(.home) {
+  &.menuOpen {
     &:before {
       background: transparent !important;
     }
@@ -302,8 +318,7 @@ $nav-height-large: 32px;
 @media screen and (min-width: $bp-medium) {
   .navigation {
     &,
-    &.invert,
-    &.overHero:not(.home) {
+    &.default {
       &:before {
         background: none;
       }
@@ -397,44 +412,15 @@ $nav-height-large: 32px;
     }
     // END
 
-    &,
-    &.overHero {
-      .navigation-logo svg {
-        fill: $nonBlack;
-      }
-      .navigation-toggle-main {
-        border-color: $nonBlack;
-
-        &:before,
-        &:after {
-          background-color: $nonBlack;
-        }
-      }
-    }
-
-    &.invert {
+    &.default {
 
       &:before {
         background: $c-solid;
       }
 
-      &,
-      &.overHero {
-        .navigation-logo svg {
-          fill: $offWhite;
-        }
-        .navigation-toggle-main {
-          border-color: $offWhite;
-
-          &:before,
-          &:after {
-            background-color: $offWhite;
-          }
-        }
-        .navigation-subpage-nav button {
-          color: $offWhite;
-          background-image: url('/images/icon-left-light.svg');
-        }
+      .navigation-subpage-nav button {
+        color: $offWhite;
+        background-image: url('/images/icon-left-light.svg');
       }
     }
   }

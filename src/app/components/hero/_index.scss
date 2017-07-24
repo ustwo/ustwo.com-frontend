@@ -74,6 +74,21 @@
     }
   }
 
+  .hero-children,
+  .hero-down-indicator {
+    opacity: 0;
+    transition: opacity .2s linear .7s; // This should transition after the WordAnimation components in the Hero js component
+  }
+  .hero-down-indicator {
+    transition-delay: .9s;
+  }
+  &.active {
+    .hero-children,
+    .hero-down-indicator {
+      opacity: 1;
+    }
+  }
+
   @media screen and (min-width: $bp-medium) {
 
     .title {

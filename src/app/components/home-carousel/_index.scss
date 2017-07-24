@@ -72,7 +72,6 @@ $home-carousel-small-screen-offset: 95px;
   display: flex;
   width: 100%;
   height: auto;
-  background-color: $lightGrey; // Fallback for when assets are loading
 
   img,
   video {
@@ -209,7 +208,7 @@ $home-carousel-small-screen-offset: 95px;
     transition: all $home-carousel-duration linear;
   }
 
-  &.active {
+  .home-carousel-item.active {
     display: block;
 
     .home-carousel-item-text,

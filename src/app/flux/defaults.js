@@ -7,6 +7,7 @@ export default {
 	showPopup: '',
 	menuHover: '',
 	venturesPosition: {},
+	testimonialsPosition: {},
 	overflow: '',
 	videoOverlaySrc: '',
 	setWindowHeight: 0
