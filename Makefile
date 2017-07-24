@@ -62,7 +62,7 @@ install: network-create vault-create assets-create app-create sandbox-create pro
 build-all: compiler-build sandbox-build build
 vault: vault-save
 build: app-build assets-build sandbox-build
-test: assets-unit-test assets-integration-test
+test: assets-unit-test
 push: app-push assets-push sandbox-push
 pull: app-pull assets-pull sandbox-pull
 clean-no-confirm:
@@ -77,7 +77,7 @@ deploy-production:
 		PROXY_HTTP_PORT=80
 deploy-staging: deploy-production
 release: release-create
-diversity-deploy: diversity-rm diversity-create 
+diversity-deploy: diversity-rm diversity-create
 
 seeds: build
 love: deploy
