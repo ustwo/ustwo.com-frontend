@@ -16,7 +16,8 @@ class Navigation extends Component {
 
     this.state = {
       height: 0,
-      paused: true
+      paused: true,
+      capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working']
     }
   }
 
@@ -70,6 +71,7 @@ class Navigation extends Component {
       case 'design-build':
       case 'launch-scale':
       case 'ways-of-working':
+      case 'ustwo-auto':
         navigateTo = '/work';
         break;
       case 'event':
@@ -81,6 +83,24 @@ class Navigation extends Component {
 
     Flux.navigate(navigateTo);
   }
+
+  renderBackButton() {
+    const { page } = this.props;
+    const { capabilityPages, workPages } = this.state;
+    const workSubPage = capabilityPages.includes(page) || page === 'case-study' || page === 'ustwo-auto';
+    const otherSubPage = page === 'post' || page === 'event';
+    const subPageText = capabilityPages.includes(page) || page === 'case-study' ? 'Work' : 'Back';
+
+    if (workSubPage || otherSubPage) {
+      return (
+        <div className="navigation-subpage-nav">
+          <button onClick={this.subPageBack.bind(this)}>{workSubPage ? 'Work' : 'Back'}</button>
+        </div>
+      );
+    }
+    return;
+  }
+
 
   mouseEnter() {
     this.setState({ paused: false });
@@ -97,14 +117,13 @@ class Navigation extends Component {
 
   render() {
     const { section, page, customClass, documentScrollPosition, venturesPosition, testimonialsPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
-    const { paused, height } = this.state;
+    const { paused, height, capabilityPages } = this.state;
 
-    const capability = ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'];
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
     const testimonialsActive = testimonialsPosition && documentScrollPosition > testimonialsPosition.from && documentScrollPosition < testimonialsPosition.to;
     const homePage = section === 'home';
-    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy;
-    const subPage = page === 'post' || page === 'case-study' || page === 'event' || capability.includes(page);
+    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy || page === 'ustwo-auto';
+    const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'ustwo-auto';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
     const scrolledAfter100 = documentScrollPosition > viewportDimensions.height - (height * 0.5);
@@ -115,9 +134,9 @@ class Navigation extends Component {
       pageControls: subPage,
       scrolled: scrolled,
       subPage: subPage,
-      notOverHero: scrolledAfter100 && heroPage && !subPage,
-      default: capability.includes(page) || testimonialsActive,
-      invert: !venturesActive && homePage && scrolledAfter100 && !modal || section === 'legal',
+      notOverHero: scrolledAfter100 && heroPage && !subPage || scrolledAfter100 && heroPage && page === 'ustwo-auto',
+      default: capabilityPages.includes(page) || testimonialsActive,
+      invert: subPage || !venturesActive && homePage && scrolledAfter100 && !modal || section === 'legal',
       menuOpen: modal
     });
 
@@ -147,8 +166,6 @@ class Navigation extends Component {
       color = ['#f8e467', '#ffbf00'];
     }
 
-    const subPageText = capability.includes(page) || page === 'case-study' ? 'Work' : 'Back';
-
     return (
       <nav className={navClasses} ref={(ref) => this.navigation = ref}>
         <div className="menu-no-js">
@@ -160,9 +177,7 @@ class Navigation extends Component {
             <li><a href="/join-us">Join us</a></li>
           </ul>
         </div>
-        <div className="navigation-subpage-nav">
-          <button onClick={this.subPageBack.bind(this)}>{subPageText}</button>
-        </div>
+        {this.renderBackButton()}
         <div className="navigation-buttons">
           <button
             className="navigation-logo"

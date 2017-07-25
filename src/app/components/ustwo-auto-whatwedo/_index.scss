@@ -1,0 +1,38 @@
+.ustwo-auto-whatwedo {
+
+  .work-whatwedo,
+  .work-process-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all .32s ease-in-out;
+  }
+
+  &.showQuarter {
+    .work-whatwedo {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  &.showHalf {
+    .work-process-item {
+      opacity: 1;
+      transform: translateY(0);
+
+      &:nth-child(1) {
+        transition-delay: 0s
+      }
+      &:nth-child(2) {
+        transition-delay: .1s
+      }
+      &:nth-child(3) {
+        transition-delay: .2s
+      }
+      &:nth-child(4) {
+        transition-delay: .3s
+      }
+    }
+  }
+  &.showThreeQuarters {
+
+  }
+}

@@ -16,6 +16,10 @@ function GradientWords({ word, color, reverse }) {
     color1 = "#FFBF02";
     color2 = "#ED0082";
   }
+  if (color === 'auto') {
+    color1 = "#f8e467";
+    color2 = "#ffbf00";
+  }
 
   let style;
   if (env.Modernizr.backgroundcliptext) {

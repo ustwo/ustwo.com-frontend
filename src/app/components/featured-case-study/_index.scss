@@ -1,0 +1,67 @@
+/*
+ *  FEATURED CASE STUDY
+ *
+ */
+
+.featured-case-study {
+  @include core-layout;
+  padding-top: 100px;
+  padding-bottom: 60px;
+
+  button {
+    @include buttonStyle(true);
+    @include buttonColor();
+  }
+
+  .title {
+    margin-bottom: 15px;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    padding-top: 100px;
+    padding-bottom: 150px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    padding-top: 170px;
+    padding-bottom: 170px;
+  }
+}
+
+@media screen and (min-width: $bp-large) {
+  .featured-case-study-inner {
+    display: flex;
+  }
+  .featured-case-study-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: 1;
+    width: 33%;
+
+    button {
+      width: 240px;
+    }
+  }
+  .featured-case-study-image {
+    flex: 1;
+    order: 2;
+  }
+}
+
+.featured-case-study-image {
+  text-align: center;
+  margin-bottom: 40px;
+
+  img {
+    width: 90%;
+    max-width: 435px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    img {
+      max-width: 590px;
+    }
+  }
+}

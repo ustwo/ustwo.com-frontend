@@ -63,8 +63,7 @@ $nav-height-large: 32px;
   .navigation-subpage-nav {
     position: relative;
     z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
+    transition-delay: .32s;
 
     button {
       text-transform: uppercase;
@@ -75,6 +74,7 @@ $nav-height-large: 32px;
       background-repeat: no-repeat;
       background-size: 20px auto;
       cursor: pointer;
+      transition: all .2s linear;
     }
   }
 
@@ -347,6 +347,11 @@ $nav-height-large: 32px;
     .navigation-toggle-ring {
       opacity: 0;
     }
+    .navigation-subpage-nav {
+      opacity: 0;
+      transition: none;
+      pointer-events: none;
+    }
   }
 
   &.subPage.pageControls:not(.menuOpen) {
@@ -360,14 +365,8 @@ $nav-height-large: 32px;
       }
     }
 
-    .navigation-subpage-nav {
-      opacity: 1;
-      visibility: visible;
-      transition: opacity .2s linear, visibility 0s linear;
-    }
-
     // Sure the following could be DRYier with the rest of the code
-    &.ustwo-auto {
+    &.ustwo-auto.subPage:not(.notOverHero) {
       .navigation-logo svg {
         fill: $offWhite;
       }
@@ -386,28 +385,6 @@ $nav-height-large: 32px;
       &:before {
         background-color: transparent;
         box-shadow: none;
-      }
-
-      &.scrolled {
-        .navigation-logo svg {
-          fill: $nonBlack;
-        }
-        .navigation-toggle-main {
-          border-color: $nonBlack;
-
-          &:before,
-          &:after {
-            background-color: $nonBlack;
-          }
-        }
-        .navigation-subpage-nav button {
-          color: $nonBlack;
-          background-image: url('/images/icon-left-dark.svg');
-        }
-        &:before {
-          background-color: $offWhite;
-          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-        }
       }
     }
     // END

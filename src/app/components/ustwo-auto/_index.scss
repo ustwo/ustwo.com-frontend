@@ -1,0 +1,188 @@
+.work-ustwo-auto {
+  height: 100%;
+
+  .scroll-wrapper {
+    height: 100%;
+    padding: 0;
+    background-color: $offWhite;
+
+    .scroll-wrapper-inner {
+      height: 100%;
+      max-width: none;
+    }
+  }
+
+  .hero-inner-wrapper {
+    height: 100%;
+    padding: 0;
+  }
+
+  .hero-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-image: url('/images/auto/ustwo-auto-hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: none;
+  }
+
+  .hero .subheading {
+    text-align: center;
+    text-transform: uppercase;
+    max-width: none;
+  }
+
+  .hero-content {
+    text-align: center;
+
+    h1 {
+      max-width: none;
+
+      .word-animator {
+        &:before {
+          content: "auto"; // match width of the h1 auto title
+          display: inline-block;
+          background: url(/images/logo-light.svg) no-repeat 0 0;
+          background-position: 50%;
+          background-size: 113% auto;
+          color: transparent;
+          opacity: 0;
+          transition: opacity .32s linear;
+        }
+      }
+
+      .word {
+        display: block;
+        color: $honey;
+      }
+    }
+  }
+
+  .hero-down-indicator {
+    left: calc(50% - 12px);
+  }
+
+  .work-intro-statement {
+    font-weight: bold;
+  }
+
+  .testimonial-carousel:not(.twitterAuto) {
+    p {
+      color: $honey;
+    }
+  }
+
+  .card-list {
+    padding: 100px 0;
+  }
+
+  .testimonial-smallprint {
+    color: $offWhite;
+  }
+
+  .tesimonial-button-next svg {
+    fill: white;
+  }
+}
+
+.visible .hero-content h1 .word-animator:before {
+  opacity: 1;
+}
+
+.work-vertical-auto-hmi {
+  background-image: url('/images/work/expertise-image-mobility-small.jpg');
+
+  @media screen and (min-width: $bp-medium) {
+    background-image: url('/images/work/expertise-image-mobility.jpg');
+  }
+}
+
+.work-vertical-auto-mobility {
+  vertical-align: top;
+  background-image: url('/images/auto/ustwo-auto-mobility.png');
+}
+
+.work-vertical-auto-reimagine {
+  vertical-align: top;
+  background-image: url('/images/auto/ustwo-auto-reimagine.jpg');
+}
+
+.ustwo-auto-team {
+  @include core-layout;
+  padding: 100px 0;
+  text-align: center;
+
+  h2 {
+    @extend .h5;
+    margin-bottom: 40px;
+  }
+
+  .ustwo-auto-team-inner > p {
+    max-width: 70%;
+    text-align: left;
+    margin: 0 auto;
+    padding-bottom: 20px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+}
+
+.ustwo-auto-team-profiles {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 40px;
+}
+
+// TODO: Make this a component
+
+.profile {
+  width: 184px;
+  text-align: center;
+}
+.profile-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  background-color: #ddd;
+  margin: 0 auto 10px auto;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.profile-name {
+  margin-bottom: 5px;
+  font-family: $PxGroteskBold;
+  text-transform: none;
+  font-size: 18px;
+}
+.profile-title {
+  list-style: none;
+  color: $darkGrey;
+}
+
+.ustwo-auto-logos-wrapper {
+  @extend .work-clients-board;
+  flex-direction: column;
+  background-image: linear-gradient(212deg, $ustwoAuto, $honey);
+
+  .work-clients-board {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    li {
+      img {
+        opacity : .75;
+      }
+    }
+
+    &:last-child {
+      padding-top: 70px;
+    }
+  }
+}

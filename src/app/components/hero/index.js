@@ -46,7 +46,6 @@ class Hero extends Component {
   }
 
   componentDidMount() {
-    const { active } = this.state;
     this.setState({ active: true });
   }
 
@@ -95,10 +94,7 @@ class Hero extends Component {
               <h1 className="title">
                 <WordAnimation delay={0.45} duration={0.2}>{title}</WordAnimation>
               </h1>
-              {
-                this.props.subheading &&
-                <p className="subheading">{this.props.subheading}</p>
-              }
+              {this.props.subheading && <p className="subheading"><WordAnimation delay={0.5} duration={0.32}>{this.props.subheading}</WordAnimation></p>}
               <div className="hero-children">
                 {children}
               </div>
