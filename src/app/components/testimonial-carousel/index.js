@@ -56,6 +56,40 @@ class TestimonialCarousel extends Component {
 
   renderTestimonials() {
     const { style } = this.props;
+
+    return this.props.testimonials.map((testimonial, i) => {
+      const classes = classnames('testimonial-item', {
+        active: i === this.state.currentItem
+      });
+
+      let icon;
+      if (style === 'twitter-auto') {
+        icon = (
+          <div className="testimonial-icon">
+            <SVG
+              className="logo"
+              title="twitter logo"
+              spritemapID="twitter"
+            />
+          </div>
+        );
+      }
+
+      return (
+        <div key={`testimonial-${i}`} className={classes}>
+          {icon}
+          <p>&ldquo;{testimonial.testimonial}&rdquo;</p>
+          <div className="testimonial-name">{testimonial.source.name}</div>
+          <div className="testimonial-smallprint">
+            <span className="testimonial-title">{testimonial.source.title}&nbsp;</span>
+            <span className="testimonial-company">{testimonial.source.company}</span>
+          </div>
+        </div>
+      );
+    });
+  }
+
+  renderTestimonials() {
     return this.props.testimonials.map((testimonial, i) => {
       const classes = classnames('testimonial-item', {
         active: i === this.state.currentItem
@@ -63,7 +97,6 @@ class TestimonialCarousel extends Component {
 
       return (
         <div key={`testimonial-${i}`} className={classes}>
-          {icon}
           <p>&ldquo;{testimonial.testimonial}&rdquo;</p>
           <div className="testimonial-name">{testimonial.source.name}</div>
           <div className="testimonial-smallprint">
@@ -81,6 +114,7 @@ class TestimonialCarousel extends Component {
   }
 
   componentWillUnmount() {
+    Flux.testimonialsPosition({});
     window.removeEventListener('resize', this.getTestimonialsPositionBound);
   }
 

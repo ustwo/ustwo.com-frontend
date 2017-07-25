@@ -63,8 +63,7 @@ $nav-height-large: 32px;
   .navigation-subpage-nav {
     position: relative;
     z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
+    transition-delay: .32s;
 
     button {
       text-transform: uppercase;
@@ -348,6 +347,11 @@ $nav-height-large: 32px;
     .navigation-toggle-ring {
       opacity: 0;
     }
+    .navigation-subpage-nav {
+      opacity: 0;
+      transition: none;
+      pointer-events: none;
+    }
   }
 
   &.subPage.pageControls:not(.menuOpen) {
@@ -359,12 +363,6 @@ $nav-height-large: 32px;
         background-color: $offWhite;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
       }
-    }
-
-    .navigation-subpage-nav {
-      opacity: 1;
-      visibility: visible;
-      transition: opacity .2s linear, visibility 0s linear;
     }
 
     // Sure the following could be DRYier with the rest of the code

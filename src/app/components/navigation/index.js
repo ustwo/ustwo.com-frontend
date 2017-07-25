@@ -59,22 +59,6 @@ class Navigation extends Component {
     }
   }
 
-  renderBackButton() {
-    const { page } = this.props;
-    const { capabilityPages, workPages } = this.state;
-    const workSubPage = capabilityPages.includes(page) || workPages.includes(page);
-    const otherSubPage = page === 'post' || page === 'event';
-
-    if (workSubPage || otherSubPage) {
-      return (
-        <div className="navigation-subpage-nav">
-          <button onClick={this.subPageBack.bind(this)}>{workSubPage ? 'Work' : 'Back'}</button>
-        </div>
-      );
-    }
-    return;
-  }
-
   subPageBack(event) {
     event.preventDefault();
 
@@ -100,6 +84,24 @@ class Navigation extends Component {
     Flux.navigate(navigateTo);
   }
 
+  renderBackButton() {
+    const { page } = this.props;
+    const { capabilityPages, workPages } = this.state;
+    const workSubPage = capabilityPages.includes(page) || workPages.includes(page);
+    const otherSubPage = page === 'post' || page === 'event';
+    const subPageText = capabilityPages.includes(page) || page === 'case-study' ? 'Work' : 'Back';
+
+    if (workSubPage || otherSubPage) {
+      return (
+        <div className="navigation-subpage-nav">
+          <button onClick={this.subPageBack.bind(this)}>{workSubPage ? 'Work' : 'Back'}</button>
+        </div>
+      );
+    }
+    return;
+  }
+
+
   mouseEnter() {
     this.setState({ paused: false });
   }
@@ -115,7 +117,7 @@ class Navigation extends Component {
 
   render() {
     const { section, page, customClass, documentScrollPosition, venturesPosition, testimonialsPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
-    const { paused, height } = this.state;
+    const { paused, height, capabilityPages, workPages } = this.state;
 
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
     const testimonialsActive = testimonialsPosition && documentScrollPosition > testimonialsPosition.from && documentScrollPosition < testimonialsPosition.to;
@@ -133,8 +135,8 @@ class Navigation extends Component {
       scrolled: scrolled,
       subPage: subPage,
       notOverHero: scrolledAfter100 && heroPage && !subPage,
-      default: capability.includes(page) || testimonialsActive,
-      invert: !venturesActive && homePage && scrolledAfter100 && !modal || section === 'legal',
+      default: capabilityPages.includes(page) || testimonialsActive,
+      invert: subPage || !venturesActive && homePage && scrolledAfter100 && !modal || section === 'legal',
       menuOpen: modal
     });
 
@@ -160,8 +162,8 @@ class Navigation extends Component {
         break;
     }
 
-    if (page === 'ustwo-auto') {
-      color = ['#F8E467', '#FFBF02']; //F8E467 being the auto yellow to compliment honey
+    if (caseStudy && caseStudy.name === 'ustwo Auto') {
+      color = ['#f8e467', '#ffbf00'];
     }
 
     return (
