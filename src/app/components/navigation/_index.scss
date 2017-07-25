@@ -366,7 +366,7 @@ $nav-height-large: 32px;
     }
 
     // Sure the following could be DRYier with the rest of the code
-    &.ustwo-auto {
+    &.ustwo-auto.subPage:not(.notOverHero) {
       .navigation-logo svg {
         fill: $offWhite;
       }
@@ -385,28 +385,6 @@ $nav-height-large: 32px;
       &:before {
         background-color: transparent;
         box-shadow: none;
-      }
-
-      &.scrolled {
-        .navigation-logo svg {
-          fill: $nonBlack;
-        }
-        .navigation-toggle-main {
-          border-color: $nonBlack;
-
-          &:before,
-          &:after {
-            background-color: $nonBlack;
-          }
-        }
-        .navigation-subpage-nav button {
-          color: $nonBlack;
-          background-image: url('/images/icon-left-dark.svg');
-        }
-        &:before {
-          background-color: $offWhite;
-          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-        }
       }
     }
     // END
