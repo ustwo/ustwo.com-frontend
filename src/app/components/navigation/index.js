@@ -15,7 +15,8 @@ class Navigation extends Component {
     super(props);
 
     this.state = {
-      height: 0,
+      active: false,
+      navHeight: 0,
       paused: true,
       capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working']
     }
@@ -23,7 +24,8 @@ class Navigation extends Component {
 
   componentDidMount() {
     this.setState({
-      height: this.navigation.getBoundingClientRect().height
+      active: true,
+      navHeight: this.navigation.getBoundingClientRect().height
     });
   }
 
@@ -117,16 +119,16 @@ class Navigation extends Component {
 
   render() {
     const { section, page, customClass, documentScrollPosition, venturesPosition, testimonialsPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
-    const { paused, height, capabilityPages } = this.state;
+    const { active, paused, navHeight, capabilityPages } = this.state;
 
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
-    const testimonialsActive = testimonialsPosition && documentScrollPosition > testimonialsPosition.from && documentScrollPosition < testimonialsPosition.to;
+    const testimonialsActive = testimonialsPosition && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
     const homePage = section === 'home';
     const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy || page === 'ustwo-auto';
     const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'ustwo-auto';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
-    const scrolledAfter100 = documentScrollPosition > viewportDimensions.height - (height * 0.5);
+    const scrolledAfter100 = documentScrollPosition > viewportDimensions.height - (navHeight * 0.5);
     const caseStudyName = caseStudy ? kebabCase(caseStudy.name) : null
 
     const navClasses = classnames('navigation', customClass, section, page, caseStudyName, {
@@ -137,7 +139,8 @@ class Navigation extends Component {
       notOverHero: scrolledAfter100 && heroPage && !subPage || scrolledAfter100 && heroPage && page === 'ustwo-auto',
       default: capabilityPages.includes(page) || testimonialsActive,
       invert: subPage || !venturesActive && homePage && scrolledAfter100 && !modal || section === 'legal',
-      menuOpen: modal
+      menuOpen: modal,
+      active: active && section === 'home'
     });
 
     let color;

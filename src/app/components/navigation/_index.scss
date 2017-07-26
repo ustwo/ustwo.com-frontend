@@ -31,6 +31,16 @@ html {
   }
 }
 
+.page-home {
+  .navigation {
+    visibility: hidden;
+
+    &.active {
+      visibility: visible;
+    }
+  }
+}
+
 $nav-height-small: 22px;
 $nav-height-medium: 24px;
 $nav-height-large: 32px;
@@ -38,7 +48,6 @@ $nav-height-large: 32px;
 .navigation {
   position: fixed;
   pointer-events: auto;
-  opacity: 1;
   top: 0;
   padding: 20px 0;
   right: 0;
