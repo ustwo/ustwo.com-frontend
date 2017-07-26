@@ -10,6 +10,12 @@
  *  left/center;
  */
 
+.single-column .wrapper,
+.hljs { // This is the code block used inside posts
+  max-width: 790px;
+  margin: 0 auto;
+}
+
 .single-column {
   padding: $vertical-spacing 6.25%;
 
@@ -21,11 +27,6 @@
 
   .section-title {
     text-align: center;
-  }
-
-  .wrapper {
-    max-width: 790px;
-    margin: 0 auto;
   }
 
   .title {
