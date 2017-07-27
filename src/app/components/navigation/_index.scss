@@ -51,7 +51,7 @@ $nav-height-large: 32px;
   top: 0;
   padding: 20px 0;
   right: 0;
-  left: 0;
+  left: auto;
   z-index: 4000;
   display: flex;
   justify-content: space-between;
@@ -88,7 +88,6 @@ $nav-height-large: 32px;
   }
 
   @media screen and (min-width: $bp-medium) {
-    left: auto;
     padding: 29px 0;
   }
 
