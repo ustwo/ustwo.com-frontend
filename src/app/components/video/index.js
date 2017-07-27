@@ -37,7 +37,7 @@ class Video extends Component {
     this.hlsInstance = null;
 
     this.state = {
-      noObjectFit: !env.Modernizr.objectfit
+      noObjectFit: false
     }
   }
 
@@ -56,6 +56,9 @@ class Video extends Component {
   }
 
   componentDidMount() {
+    this.setState({
+      noObjectFit: !env.Modernizr.objectfit
+    });
     if (this.video && !this.video.src) {
       this.setVideoSource();
     }

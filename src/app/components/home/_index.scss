@@ -149,6 +149,7 @@
     .scroll-wrapper-home-smorgasbord-message,
     .scroll-wrapper-home-carousel-products {
       opacity: 0;
+      pointer-events: none;
     }
     .scroll-wrapper-home-more-message,
     .scroll-wrapper-home-carousel-ventures {
