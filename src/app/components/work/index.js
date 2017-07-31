@@ -6,6 +6,7 @@ import getFeaturedImage from 'app/lib/get-featured-image';
 import env from 'app/adaptors/server/env';
 import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
+import kebabCase from 'lodash/string/kebabCase';
 
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import Video from 'app/components/video';
@@ -73,15 +74,34 @@ class PageWork extends Component {
     })
   }
 
+  renderWorkItemFilter() {
+    const { caseStudyFilter } = this.state;
+    const filterItems = ['All', 'Client Work', 'Venture'];
+
+    const renderFilterItems = filterItems.map(item => {
+      const classes = classnames({ selected: caseStudyFilter === kebabCase(item) });
+      return (
+        <button
+          className={classes}
+          onClick={() => this.setState({ caseStudyFilter: kebabCase(item), numberOfCaseStudiesShowing: 12 })}>
+          {item}
+        </button>
+      );
+    });
+
+    return (
+      <div className="work-item-filter">
+        {renderFilterItems}
+      </div>
+    );
+  }
+
   render() {
     const { page, className, loaded, isMobile, footer, studios, currentPage, fixedHeight, documentScrollPosition, viewportDimensions, popup, modal } = this.props;
     const { isLoadingMorePosts, numberOfCaseStudiesShowing, caseStudyFilter } = this.state;
     const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
     const image = getFeaturedImage(page);
     const classes = classnames('page-work', className);
-    const buttonClassAll = classnames({ selected: caseStudyFilter === 'all' });
-    const buttonClassClients = classnames({ selected: caseStudyFilter === 'Client Work' });
-    const buttonClassVentures = classnames({ selected: caseStudyFilter === 'Venture' });
 
     return (
       <article className={classes}>
@@ -110,27 +130,7 @@ class PageWork extends Component {
           <FeaturedCaseStudy content={featuredCaseStudy} />
 
           <div className="page-work-controls" ref={(ref) => this.workAnchor = ref}>
-            <div className="page-work-filter">
-              <button className={buttonClassAll}
-                onClick={() => this.setState({
-                  caseStudyFilter: 'all', numberOfCaseStudiesShowing: 12
-                })}>
-                All
-              </button>
-              <button className={buttonClassClients}
-                onClick={() => this.setState({
-                  caseStudyFilter: 'Client Work', numberOfCaseStudiesShowing: 12
-                })}>
-                Client Work
-              </button>
-              <button
-                className={buttonClassVentures}
-                onClick={() => this.setState({
-                  caseStudyFilter: 'Venture', numberOfCaseStudiesShowing: 12
-                })}>
-                Ventures
-              </button>
-            </div>
+            {this.renderWorkItemFilter()}
           </div>
 
           <WorkCaseStudies
