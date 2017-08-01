@@ -20,6 +20,9 @@ import ScrollWrapper from 'app/components/scroll-wrapper';
 
 const PagePost = React.createClass({
   mixins: [getScrollTrackerMixin('post')],
+  shouldComponentUpdate(nextProps, nextState) {
+    return !this.props.loaded;
+  },
   render() {
     const { post, footer, studios, currentPage, documentScrollPosition, viewportDimensions } = this.props;
     const category = get(post, '_embedded.wp:term.0.0', []);
