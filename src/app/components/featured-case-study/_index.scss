@@ -21,14 +21,25 @@
     padding-top: 100px;
     padding-bottom: 150px;
   }
+}
 
-  @media screen and (min-width: $bp-large) {
-    padding-top: 170px;
-    padding-bottom: 170px;
+.featured-case-study-image {
+  text-align: center;
+  margin-bottom: 40px;
+
+  img {
+    width: 90%;
+    max-width: 435px;
+    margin: 0 auto;
   }
 }
 
 @media screen and (min-width: $bp-large) {
+  .featured-case-study {
+    height: $section-height;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
   .featured-case-study-inner {
     display: flex;
   }
@@ -47,21 +58,15 @@
     flex: 1;
     order: 2;
   }
-}
+  .featured-case-study-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
 
-.featured-case-study-image {
-  text-align: center;
-  margin-bottom: 40px;
-
-  img {
-    width: 90%;
-    max-width: 435px;
-    margin: 0 auto;
-  }
-
-  @media screen and (min-width: $bp-large) {
     img {
-      max-width: 590px;
+      height: 90%;
+      max-width: 500px;
     }
   }
 }

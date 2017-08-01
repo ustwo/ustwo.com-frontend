@@ -5,6 +5,8 @@
 
 
 .work-verticals {
+  display: flex;
+  flex-wrap: wrap;
 
   .section-title {
     margin-bottom: 5px;
@@ -16,6 +18,9 @@
   background-color: $lightGrey;
   background-repeat: no-repeat;
   background-size: cover;
+  height: $section-height;
+  align-items: center;
+  width: 100%;
 
   h3 {
     margin-bottom: 15px;
@@ -24,21 +29,11 @@
 }
 
 .work-verticals-item-small {
-  display: inline-block;
   width: 50%;
 }
 
 .work-verticals-item-inner {
   position: relative;
-  padding: 100px 0;
-
-  @media screen and (min-width: $bp-medium) {
-    padding: 150px 0;
-  }
-
-  @media screen and (min-width: $bp-larger) {
-    padding: 200px 0;
-  }
 }
 
 .work-vertical-intro {

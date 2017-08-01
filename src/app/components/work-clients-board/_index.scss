@@ -5,8 +5,8 @@
  */
 
 .work-clients-board {
-  padding-top: 130px;
-  padding-bottom: 130px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 
   .work-clients-board-inner {
     max-width: $grid-max-width;
@@ -39,8 +39,8 @@
   }
 
   @media screen and (min-width: $bp-medium) {
-    padding-top: 150px;
-    padding-bottom: 150px;
+    padding-top: 100px;
+    padding-bottom: 100px;
 
     .title {
       margin-bottom: 110px;
@@ -58,8 +58,6 @@
   }
 
   @media screen and (min-width: $bp-large) {
-    padding-top: 170px;
-    padding-bottom: 170px;
 
     .title {
       margin-bottom: 50px;

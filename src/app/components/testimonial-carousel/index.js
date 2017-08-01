@@ -126,7 +126,7 @@ class TestimonialCarousel extends Component {
 
     let styles;
     if (fixedHeight) {
-      styles = { height: `${fixedHeight}px` }
+      styles = { height: `${fixedHeight * .9}px` }
     }
 
     return (
