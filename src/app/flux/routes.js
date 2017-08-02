@@ -54,6 +54,15 @@ const routes = {
       slug: 'ways-of-working'
     }]
   },
+  ustwoAuto: {
+    id: 'work/ustwo-auto',
+    patterns: ['/work/ustwo-auto'],
+    data: () => [{
+      url: 'ustwo/v1/pages/ustwo-auto',
+      type: 'page',
+      slug: 'ustwo-auto'
+    }]
+  },
   caseStudy: {
     id: 'work/case-study',
     patterns: ['/work/:cid'],

@@ -1,0 +1,11 @@
+@media screen and (min-width: $bp-larger) {
+  .work-case-studies {
+    .card-list-inner.lessThanThree {
+      justify-content: flex-start;
+
+      .card-item {
+        margin-right: 30px;
+      }
+    }
+  }
+}

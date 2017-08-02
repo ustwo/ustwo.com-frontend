@@ -2,15 +2,20 @@ import React from 'react';
 import WorkItem from 'app/components/work-item';
 import LoadMoreButton from 'app/components/load-more-button';
 import kebabCase from 'lodash/string/kebabCase';
+import classnames from 'classnames';
 
 function WorkCaseStudies({ page, caseStudies, caseStudyFilter, numberOfCaseStudiesShowing, addMoreCaseStudies }) {
+
+  if (caseStudyFilter === 'venture') {
+    caseStudyFilter = 'ustwo-venture';
+  }
 
   let filteredCaseStudies;
   if (caseStudyFilter === 'all') {
     filteredCaseStudies = caseStudies;
   } else {
     filteredCaseStudies = caseStudies.filter(caseStudy => {
-      return caseStudy.categories[0].name === caseStudyFilter
+      return caseStudy.categories[0].slug === caseStudyFilter
     });
   }
 
@@ -24,9 +29,13 @@ function WorkCaseStudies({ page, caseStudies, caseStudyFilter, numberOfCaseStudi
     }
   });
 
+  const classes = classnames('card-list-inner', {
+    lessThanThree: filteredCaseStudies.length < 3
+  });
+
   return (
     <div className="card-list work-items-list work-case-studies">
-      <div className="card-list-inner">
+      <div className={classes}>
         {renderCaseStudies}
       </div>
       <LoadMoreButton

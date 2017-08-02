@@ -26,7 +26,7 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
     : null;
 
   const renderTwitter = ustwoAutoData.twitter.length > 0
-    ? <TestimonialCarousel testimonials={ustwoAutoData.twitter} fixedHeight={fixedHeight} style="twitter-auto" />
+    ? <TestimonialCarousel testimonials={ustwoAutoData.twitter} fixedHeight={fixedHeight} type="twitter-auto" />
     : null;
 
   const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
