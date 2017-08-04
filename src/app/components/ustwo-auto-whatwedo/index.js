@@ -5,9 +5,8 @@ import WorkProcess from 'app/components/work-process';
 export default ({ data, isMobile, scrollProgress }) => {
   const progress = Math.round(((scrollProgress - 0.5) * 2) * 100) / 100;
   const classes = classnames('ustwo-auto-whatwedo', 'work-whatwedo-wrapper', {
-    showQuarter: progress > 0.25,
-    showHalf: progress > 0.5,
-    showThreeQuarters: progress > 0.75
+    showQuarter: progress > 0.33,
+    showHalf: progress > 0.66
   });
 
   return (
