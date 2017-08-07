@@ -76,7 +76,7 @@ class PageWork extends Component {
 
   renderWorkItemFilter() {
     const { caseStudyFilter } = this.state;
-    const filterItems = ['All', 'Client Work', 'Venture'];
+    const filterItems = ['All', 'Client Work', 'Venture', 'Business', 'Own Product'];
 
     const renderFilterItems = filterItems.map(item => {
       const classes = classnames({ selected: caseStudyFilter === kebabCase(item) });
