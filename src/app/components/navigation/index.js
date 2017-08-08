@@ -18,7 +18,8 @@ class Navigation extends Component {
       active: false,
       navHeight: 0,
       paused: true,
-      capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working']
+      capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'],
+      heroPages: ['home', 'work', 'blog', 'events', 'join-us', 'ustwo-auto']
     }
   }
 
@@ -119,12 +120,12 @@ class Navigation extends Component {
 
   render() {
     const { section, page, customClass, documentScrollPosition, venturesPosition, testimonialsPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
-    const { active, paused, navHeight, capabilityPages } = this.state;
+    const { active, paused, navHeight, capabilityPages, heroPages } = this.state;
 
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
     const testimonialsActive = testimonialsPosition && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
     const homePage = section === 'home';
-    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy || page === 'ustwo-auto';
+    const heroPage = heroPages.includes(section) || caseStudy;
     const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'ustwo-auto';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
@@ -137,8 +138,9 @@ class Navigation extends Component {
       scrolled: scrolled,
       subPage: subPage,
       notOverHero: scrolledAfter100 && heroPage && !subPage || scrolledAfter100 && heroPage && page === 'ustwo-auto',
-      default: capabilityPages.includes(page) || testimonialsActive,
-      invert: subPage || !venturesActive && homePage && scrolledAfter100 && !modal || section === 'legal',
+      default: capabilityPages.includes(page) || venturesActive && homePage && scrolledAfter100 && !modal,
+      testimonialsActive: testimonialsActive,
+      invert: subPage || section === 'legal',
       menuOpen: modal,
       active: active && section === 'home'
     });
