@@ -69,6 +69,7 @@ $nav-height-large: 32px;
     width: 100%;
     opacity: 0;
     background-color: $offWhite-semiTransparent;
+    transition: background-color .2s linear;
   }
 
   .navigation-subpage-nav {
@@ -330,7 +331,8 @@ $nav-height-large: 32px;
 
   &.default {
     &:before {
-      background: linear-gradient(90deg, #333, #323952);
+      // background: linear-gradient(90deg, #333, #323952);
+      background-color: #333437;
       opacity: 0.95;
     }
   }
