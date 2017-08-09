@@ -22,21 +22,12 @@ html {
     display: none;
   }
 
-  &.js .menu-no-js {
-    display: none;
-
+  &.js {
+    .menu-no-js {
+      display: none;
+    }
     .navigation:before {
       display: block;
-    }
-  }
-}
-
-.page-home {
-  .navigation {
-    visibility: hidden;
-
-    &.active {
-      visibility: visible;
     }
   }
 }
@@ -47,15 +38,16 @@ $nav-height-large: 32px;
 
 .navigation {
   position: fixed;
-  pointer-events: auto;
   top: 0;
-  padding: 20px 0;
   right: 0;
   left: auto;
   z-index: 4000;
+  pointer-events: auto;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  padding: 20px 0;
 
   &:before {
     content: "";
@@ -65,13 +57,15 @@ $nav-height-large: 32px;
     bottom: 0;
     right: 0;
     width: 100%;
-    background-color: $offWhite-semiTransparent;
-    transition: all .2s linear;
+    background-color: transparent;
+    transition: background-color .2s linear;
   }
 
   .navigation-subpage-nav {
     position: relative;
     z-index: 9999;
+    left: 0;
+    position: absolute;
     transition-delay: .32s;
 
     button {
@@ -89,6 +83,10 @@ $nav-height-large: 32px;
 
   @media screen and (min-width: $bp-medium) {
     padding: 29px 0;
+
+    &:before {
+      content: none;
+    }
   }
 
   @media screen and (min-width: $bp-large) {
@@ -126,7 +124,6 @@ $nav-height-large: 32px;
 
   svg {
     pointer-events: none;
-    fill: $offWhite;
     width: 112px;
     transition: fill .2s linear;
     height: $nav-height-small;
@@ -163,7 +160,7 @@ $nav-height-large: 32px;
   z-index: 1;
   pointer-events: none; /* Fixes intermittent issue on touch devices? */
   border-radius: 50%;
-  border: 2px solid $offWhite;
+  border: 2px solid;
   width: $nav-height-small;
   height: $nav-height-small;
   box-sizing: content-box;
@@ -178,7 +175,6 @@ $nav-height-large: 32px;
     transform: translate(-50%, -50%);
     width: 10px;
     height: 2px;
-    background-color: $offWhite;
     transition: all .2s linear;
   }
 
@@ -267,8 +263,15 @@ $nav-height-large: 32px;
 }
 
 .navigation {
+
+  @media screen and (max-width: $bp-medium) {
+    &.notOverHero:before,
+    &.invert:before {
+      background-color: $offWhite-semiTransparent;
+    }
+  }
+
   &.invert,
-  &.menuOpen,
   &.notOverHero {
     .navigation-logo svg {
       fill: $nonBlack;
@@ -281,14 +284,9 @@ $nav-height-large: 32px;
         background-color: $nonBlack;
       }
     }
-
-    @media screen and (min-width: $bp-medium) {
-      &:before {
-        background-color: transparent;
-      }
-    }
   }
 
+  &,
   &.menuOpen,
   &.default {
     .navigation-logo svg {
@@ -302,23 +300,43 @@ $nav-height-large: 32px;
         background-color: $offWhite;
       }
     }
+  }
 
-    @media screen and (min-width: $bp-medium) {
-      &:before {
-        background-color: transparent;
+  @media screen and (min-width: $bp-medium) {
+    &.testimonialsActive {
+      .navigation-logo svg {
+        fill: $offWhite;
+      }
+      .navigation-toggle-main {
+        border-color: $offWhite;
+
+        &:before,
+        &:after {
+          background-color: $offWhite;
+        }
       }
     }
   }
 
   &.default {
     &:before {
-      background: linear-gradient(90deg, #333, #323952);
-      opacity: 0.95;
+      // background: linear-gradient(90deg, #333, #323952);
+      background-color: #333437;
+      opacity: .95;
     }
   }
   &.menuOpen {
     &:before {
       background: transparent !important;
+    }
+  }
+  &.discovery-strategy,
+  &.design-build,
+  &.launch-scale,
+  &.ways-of-wroking {
+    &:before {
+      background-color: $c-solid;
+      opacity: .95;
     }
   }
 }
@@ -368,8 +386,8 @@ $nav-height-large: 32px;
 
     &.scrolled {
       &:before {
-        background-color: $offWhite;
-        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        background-color: $offWhite-semiTransparent;
+        // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
       }
     }
 
@@ -400,7 +418,7 @@ $nav-height-large: 32px;
     &.default {
 
       &:before {
-        background: $c-solid;
+        background-color: $c-solid;
       }
 
       .navigation-subpage-nav button {
