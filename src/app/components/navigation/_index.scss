@@ -32,16 +32,6 @@ html {
   }
 }
 
-.page-home {
-  .navigation {
-    visibility: hidden;
-
-    &.active {
-      visibility: visible;
-    }
-  }
-}
-
 $nav-height-small: 22px;
 $nav-height-medium: 24px;
 $nav-height-large: 32px;
@@ -67,8 +57,7 @@ $nav-height-large: 32px;
     bottom: 0;
     right: 0;
     width: 100%;
-    opacity: 0;
-    background-color: $offWhite-semiTransparent;
+    background-color: transparent;
     transition: background-color .2s linear;
   }
 
@@ -278,7 +267,7 @@ $nav-height-large: 32px;
   @media screen and (max-width: $bp-medium) {
     &.notOverHero:before,
     &.invert:before {
-      opacity: 1;
+      background-color: $offWhite-semiTransparent;
     }
   }
 
@@ -333,12 +322,21 @@ $nav-height-large: 32px;
     &:before {
       // background: linear-gradient(90deg, #333, #323952);
       background-color: #333437;
-      opacity: 0.95;
+      opacity: .95;
     }
   }
   &.menuOpen {
     &:before {
       background: transparent !important;
+    }
+  }
+  &.discovery-strategy,
+  &.design-build,
+  &.launch-scale,
+  &.ways-of-wroking {
+    &:before {
+      background-color: $c-solid;
+      opacity: .95;
     }
   }
 }
