@@ -5,7 +5,7 @@ import React from 'react';
 import Meta from "react-helmet";
 import TransitionManager from 'react-transition-manager';
 import classnames from 'classnames';
-import { get, throttle } from 'lodash';
+import { get } from 'lodash';
 import find from 'lodash/collection/find';
 import includes from 'lodash/collection/includes';
 import Flux from 'app/flux';
@@ -91,7 +91,9 @@ const App = React.createClass({
     this.getViewportDimensions();
 
     /* Get dimensions of viewport to calculate mousePosition and scrollPosition (for example) */
-    window.addEventListener('scroll', throttle(() => this.getDocumentScrollPosition(), 240));
+    if (!post || !caseStudy) {
+      window.addEventListener('scroll', this.getDocumentScrollPosition);
+    }
     /* Get new dimensions when device orientationchange etc */
     window.addEventListener('resize', this.getViewportDimensions);
 
