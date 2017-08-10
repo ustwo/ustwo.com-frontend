@@ -91,7 +91,9 @@ const App = React.createClass({
     this.getViewportDimensions();
 
     /* Get dimensions of viewport to calculate mousePosition and scrollPosition (for example) */
-    window.addEventListener('scroll', this.getDocumentScrollPosition);
+    if (!post || !caseStudy) {
+      window.addEventListener('scroll', this.getDocumentScrollPosition);
+    }
     /* Get new dimensions when device orientationchange etc */
     window.addEventListener('resize', this.getViewportDimensions);
 

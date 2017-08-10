@@ -112,10 +112,7 @@ function renderVideo(moduleData, index, options) {
 }
 
 function renderCode(moduleData, index, options) {
-    var code = get(moduleData, 'attr.body.value').replace(/(?:\r\n|\r|\n)/g, '<br/>').replace(/ /g, '&nbsp;').replace('Button', ' Button ');
-    return (
-        <code className="hljs pf" dangerouslySetInnerHTML={{ __html: code }}></code>
-    );
+    return <CodeHighlighter code={get(moduleData, 'attr.body.value')} key={`logitem-${index}-${Date.now()}`} />
 }
 
 function renderModules(options) {
