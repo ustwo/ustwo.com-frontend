@@ -68,24 +68,21 @@
     left: calc(50% - 12px);
   }
 
-  .work-intro-statement {
-    font-weight: bold;
-  }
-
   .work-process {
     background-color: white;
     margin-bottom: 0;
   }
 
   .testimonial-carousel:not(.twitterAuto) {
+    background-image: linear-gradient(212deg, #304178, #313132);
+
     p {
       color: $honey;
     }
   }
 
   .card-list {
-    padding-top: 100px;
-    padding-bottom: 100px;
+    @include core-vertical-padding;
   }
 
   .testimonial-smallprint {
@@ -119,22 +116,28 @@
   background-image: url('/images/auto/ustwo-auto-reimagine.jpg');
 }
 
+.ustwo-auto-how {
+  @include core-layout;
+  background: white;
+}
+
+.ustwo-auto-how-inner {
+  @include core-vertical-padding;
+  @include thinner-content;
+}
+
 .ustwo-auto-team {
   @include core-layout;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  background-image: linear-gradient(212deg, $ustwoAuto, $honey);
   text-align: center;
 
   h2 {
-    @extend .h5;
-    margin-bottom: 40px;
+    @extend .h3;
   }
 
   .ustwo-auto-team-inner > p {
-    max-width: 70%;
+    @include thinner-content;
     text-align: left;
-    margin: 0 auto;
-    padding-bottom: 20px;
   }
 
   li {
@@ -142,10 +145,14 @@
   }
 }
 
+.ustwo-auto-team-inner {
+  @include core-vertical-padding;
+}
+
 .ustwo-auto-team-profiles {
   display: flex;
   justify-content: center;
-  margin: 50px 0 40px;
+  @include core-vertical-padding;
 }
 
 // TODO: Make this a component

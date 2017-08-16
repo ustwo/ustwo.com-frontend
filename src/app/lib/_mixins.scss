@@ -131,6 +131,31 @@
   }
 }
 
+@mixin core-vertical-padding() {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: $bp-medium) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}
+
+@mixin thinner-content() {
+  @media screen and (min-width: $bp-medium) {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: $bp-large) {
+    max-width: 70%;
+  }
+}
+
 @mixin box-shadow() {
   box-shadow: 10px 10px 40px rgba(0,0,0,.3);
 }

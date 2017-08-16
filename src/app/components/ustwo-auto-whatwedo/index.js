@@ -6,7 +6,7 @@ export default ({ data, isMobile, scrollProgress }) => {
   const progress = Math.round(((scrollProgress - 0.5) * 2) * 100) / 100;
   const classes = classnames('ustwo-auto-whatwedo', 'work-whatwedo-wrapper', {
     showQuarter: progress > 0.28,
-    showHalf: progress > 0.6
+    showHalf: progress > 0.7
   });
 
   return (

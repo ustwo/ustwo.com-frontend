@@ -18,7 +18,9 @@ export default ({ data, isMobile }) => {
 
     return (
       <div className={`work-process-item ${kebabCase(item.title)}`} key={`key-${item.name}`}>
-        <img src={item.image} alt={`${item.title} icon`} />
+        <div className="work-process-item-image">
+          <img src={item.image} alt={`${item.title} icon`} />
+        </div>
         {title}
         <p>{item.text}</p>
         {link}

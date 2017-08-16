@@ -15,6 +15,7 @@
     margin-bottom: 100px;
 
     .work-process-wrapper {
+      @include core-vertical-padding;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -29,9 +30,7 @@
 }
 
 .work-process-item {
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  padding: 0 20px;
   margin-left: 6vw; /* This is to replacement the core-gutter mixin (left/right percentage padding) */
   margin-right: 6vw;
   flex: 1;
@@ -54,6 +53,13 @@
     font-size: 32px;
     margin-bottom: 15px;
   }
+}
+
+.work-process-item-image {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  margin-bottom: 20px;
 }
 
 .work-process-link {

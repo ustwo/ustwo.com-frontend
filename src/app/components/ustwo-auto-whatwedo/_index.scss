@@ -8,12 +8,6 @@
   }
 
   &.showQuarter {
-    .work-whatwedo {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  &.showHalf {
     .work-process-item {
       opacity: 1;
       transform: translateY(0);
@@ -30,6 +24,13 @@
       &:nth-child(4) {
         transition-delay: .3s
       }
+    }
+  }
+  
+  &.showHalf {
+    .work-whatwedo {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }

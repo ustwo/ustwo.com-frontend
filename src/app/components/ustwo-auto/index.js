@@ -68,12 +68,17 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
 
         <FeaturedCaseStudy content={ustwoAutoData.latestPromo} />
 
+        <div className="ustwo-auto-how">
+          <div className="ustwo-auto-how-inner">
+            <div>Video</div>
+            {ustwoAutoData.howWeDoIt.map(para => <p>{para}</p>)}
+          </div>
+        </div>
+
         <div className="ustwo-auto-team">
           <div className="ustwo-auto-team-inner">
 
             <h2>Meet the Team</h2>
-
-            <p>{ustwoAutoData.teamProfile}</p>
 
             <ul className="ustwo-auto-team-profiles">
               <li>
@@ -89,7 +94,7 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
                   <div className="profile-photo"><img src="/images/auto/harsha-vardhan.png" /></div>
                   <h3 className="profile-name">Harsha Vardhan</h3>
                   <p className="profile-title">Interaction Lead</p>
-                  <p className="profile-contact">@harsha</p>
+                  <p className="profile-contact">@wabisabifiction</p>
                 </section>
               </li>
               <li>
@@ -102,12 +107,14 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
               </li>
             </ul>
 
-            {ustwoAutoData.howWeDoIt.map(para => <p>{para}</p>)}
+            <p>{ustwoAutoData.teamProfile}</p>
 
           </div>
         </div>
 
         {renderTestimonials}
+
+        <FeaturedCaseStudy content={featuredCaseStudy} />
 
         <WorkCaseStudies
           caseStudies={caseStudies}
@@ -121,7 +128,9 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
           <WorkClientsBoard logos={ustwoAutoData.partners} title="Our Partners" />
         </div>
 
-        <WorkVerticals data={ustwoAutoData.projects} />
+        <div className="ustwo-auto-news">
+          NEWS
+        </div>
 
         {renderTwitter}
 
@@ -169,12 +178,13 @@ const ustwoAutoData = {
     text: 'Making interfaces within transport more personal and situational.'
   },],
   latestPromo: {
-    title: 'New Promo Title Here',
+    title: 'Download our new Book',
     excerpt: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh',
-    colours: ['#F8E467', '#FFBF02'],
     link: '/',
     linkText: 'Link text',
-    latest: true
+    latest: true,
+    image: '/images/work/expertise-image-mobility.jpg',
+    imageBackground: true
   },
   howWeDoIt: [
     "Our design methodology is inclusive and from the ground up because we know this creates a better experience for everyone.",
@@ -256,4 +266,13 @@ const ustwoAutoData = {
     slug: '/work/ustwoauto',
     small: true
   }]
+}
+
+const featuredCaseStudy = {
+  title: 'Ford GoPark',
+  excerpt: 'A smart parking service tackling congestion in one of London’s busiest boroughs',
+  colours: ['#87e283', '#92e9b2'],
+  image: '/images/work/featured-gopark.png',
+  imageAlt: 'iPhone showing Ford GoPark App',
+  slug: '/work/ford-gopark'
 }
