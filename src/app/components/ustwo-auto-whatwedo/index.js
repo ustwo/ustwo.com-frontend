@@ -5,12 +5,13 @@ import WorkProcess from 'app/components/work-process';
 export default ({ data, isMobile, scrollProgress }) => {
   const progress = Math.round(((scrollProgress - 0.5) * 2) * 100) / 100;
   const classes = classnames('ustwo-auto-whatwedo', 'work-whatwedo-wrapper', {
-    showQuarter: progress > 0.33,
-    showHalf: progress > 0.66
+    showQuarter: progress > 0.28,
+    showHalf: progress > 0.6
   });
 
   return (
     <div className={classes}>
+      <WorkProcess data={data.items} isMobile={isMobile}  />
       <div className="work-whatwedo">
         <div className="work-intro">
           <p className="work-intro-statement">
@@ -21,7 +22,6 @@ export default ({ data, isMobile, scrollProgress }) => {
           </p>
         </div>
       </div>
-      <WorkProcess data={data.items} isMobile={isMobile}  />
     </div>
   );
 }

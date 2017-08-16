@@ -32,6 +32,9 @@
     text-align: center;
     text-transform: uppercase;
     max-width: none;
+    letter-spacing: 10px;
+    font-weight: bold;
+    font-size: 20px;
   }
 
   .hero-content {
@@ -39,6 +42,7 @@
 
     h1 {
       max-width: none;
+      line-height: 0.9;
 
       .word-animator {
         &:before {
@@ -66,6 +70,11 @@
 
   .work-intro-statement {
     font-weight: bold;
+  }
+
+  .work-process {
+    background-color: white;
+    margin-bottom: 0;
   }
 
   .testimonial-carousel:not(.twitterAuto) {

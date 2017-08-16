@@ -175,22 +175,26 @@ const workData = {
     name: 'discovery',
     title: 'Discovery & Strategy',
     image: '/images/illustration-discovery.svg',
-    text: 'Innovate and get ahead. Define your business goals and validate opportunities with fresh understanding of what your customers need most.'
+    text: 'Innovate and get ahead. Define your business goals and validate opportunities with fresh understanding of what your customers need most.',
+    url: '/work/discovery-strategy'
   },{
     name: 'design',
     title: 'Design & Build',
     image: '/images/illustration-design-and-build.svg',
-    text: 'Turn your vision into reality. Exceptional software development, engineering and execution sets your company apart.'
+    text: 'Turn your vision into reality. Exceptional software development, engineering and execution sets your company apart.',
+    url: '/work/design-build'
   },{
     name: 'launch',
     title: 'Launch & Scale',
     image: '/images/illustration-launch-and-scale.svg',
-    text: "Ship your product and stay responsive to customers’ changing needs. Your product is out in the world: it's time to grow, evolve and deliver ROI."
+    text: "Ship your product and stay responsive to customers’ changing needs. Your product is out in the world: it's time to grow, evolve and deliver ROI.",
+    url: '/work/launch-scale'
   },{
     name: 'working',
     title: 'Ways of Working',
     image: '/images/illustration-ways-of-working.svg',
-    text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.'
+    text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.',
+    url: '/work/ways-of-working'
   }],
   verticals: [{
     type: 'Expertise',
