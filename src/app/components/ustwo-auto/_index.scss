@@ -195,12 +195,16 @@
 
     li {
       img {
-        opacity : .75;
+
       }
     }
 
     &:last-child {
       padding-top: 70px;
+
+      h5 {
+        color: white;
+      }
     }
   }
 }

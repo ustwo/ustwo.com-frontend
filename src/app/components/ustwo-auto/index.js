@@ -243,8 +243,8 @@ const ustwoAutoData = {
       company: ''
     }
   }],
-  clients: ['UCL', 'university-washington', 'Wayfindr'],
-  partners: ['BMW Group', 'Ford', 'Qantas', 'Emirates', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan'],
+  clients: ['BMW Group', 'Ford', 'Qantas', 'Emirates', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan'],
+  partners: ['UCL', 'university-washington', 'Wayfindr'],
   projects: [{
     type: 'Research Project',
     shortTitle: 'auto-hmi',
