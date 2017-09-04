@@ -193,9 +193,19 @@
     padding-top: 0;
     padding-bottom: 0;
 
-    li {
-      img {
+    ul {
+      justify-content: flex-start;
 
+      li {
+        img {
+          opacity: 1;
+        }
+      }
+
+      @media screen and (min-width: $bp-larger) {
+        li {
+          width: 20%;
+        }
       }
     }
 
