@@ -92,6 +92,21 @@
   .tesimonial-button-next svg {
     fill: white;
   }
+
+  .video-block {
+    margin-bottom: 70px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      bottom: -80px;
+      left: -80px;
+      background: url('/images/icon-diagonal-arrow.svg') no-repeat top right;
+      background-size: 100% auto;
+    }
+  }
 }
 
 .active .hero-content h1 .word-animator:before {
@@ -118,7 +133,8 @@
 
 .ustwo-auto-how {
   @include core-layout;
-  background: white;
+  background: white url(/images/pattern-donut.svg) no-repeat top right;
+  background-size: 200px auto;
 }
 
 .ustwo-auto-how-inner {
@@ -142,6 +158,10 @@
 
   li {
     list-style-type: none;
+
+    @media screen and (min-width: $bp-large) {
+      margin: 0 20px;
+    }
   }
 }
 
@@ -181,7 +201,11 @@
 }
 .profile-title {
   list-style: none;
-  color: $darkGrey;
+  text-transform: uppercase;
+  color: $veryDarkGrey;
+}
+.profile-contact {
+  margin-top: 10px;
 }
 
 .ustwo-auto-logos-wrapper {

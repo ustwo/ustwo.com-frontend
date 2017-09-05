@@ -13,6 +13,7 @@ import TestimonialCarousel from 'app/components/testimonial-carousel';
 import WorkCaseStudies from 'app/components/work-case-studies';
 import WorkClientsBoard from 'app/components/work-clients-board';
 import WorkVerticals from 'app/components/work-verticals';
+import VideoBlock from 'app/components/video-block';
 
 function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
@@ -30,6 +31,14 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
     : null;
 
   const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
+
+  let src;
+  if (window.innerWidth < 600) {
+    src= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=164';
+  } else {
+    src= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=165';
+  }
+  const videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
 
   return (
     <div className="work-ustwo-auto">
@@ -70,7 +79,7 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
 
         <div className="ustwo-auto-how">
           <div className="ustwo-auto-how-inner">
-            <div>Video</div>
+            <VideoBlock title="How we do it" videoPoster={videoPoster} src={src} />
             {ustwoAutoData.howWeDoIt.map(para => <p>{para}</p>)}
           </div>
         </div>

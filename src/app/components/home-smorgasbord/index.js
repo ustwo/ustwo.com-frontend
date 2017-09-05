@@ -2,30 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
-import { DefaultPlayer as Html5Video } from 'react-html5video';
 
 import Subscription from 'app/components/subscription';
+import VideoBlock from 'app/components/video-block';
 
 function isThereAnyDataHere(data) {
   return !Array.isArray(data); // If it's an array then it means it's empty!
 }
 
 class HomeSmorgasbord extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      videoPlaying: false
-    }
-  }
-
-  clickVideo() {
-    this.setState({
-      videoPlaying: this.state.videoPlaying ? false : true
-    });
-  }
-
   render() {
     const { data, loaded } = this.props;
 
@@ -84,38 +69,15 @@ class HomeSmorgasbord extends Component {
       );
     }
 
-    const classes = classnames('smorgasbord-block', 'smorgasbord-video', {
-      playing: this.state.videoPlaying
-    });
-
     return (
       <div className="home-smorgasbord">
-        <div className={classes}>
-          <h2>What we do</h2>
-          <Html5Video
-            controls={['Time', 'Seek', 'Volume', 'Fullscreen']}
-            preload="none"
-            poster={videoPoster}
-            onPlay={() => {
-              this.setState({
-                videoPlaying: true
-              });
-            }}
-            onPause={() => {
-              this.setState({
-                videoPlaying: false
-              });
-            }}
-          >
-            <source src={src} type="video/mp4" />
-          </Html5Video>
-        </div>
-        <div className="smorgasbord-block-wrapper">
 
+        <VideoBlock title="What we do" videoPoster={videoPoster} src={src} />
+
+        <div className="smorgasbord-block-wrapper">
           {renderEvent}
           {renderPost}
           <Subscription loaded={loaded} />
-
         </div>
 
         <div className="more-juice" style={moreJuiceStyle}></div>

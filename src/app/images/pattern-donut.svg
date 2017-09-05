@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="411px" height="411px" viewBox="0 0 411 411" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="410.197 410.1965 410.197 0 0 0 0 410.1965"></polygon>
+    </defs>
+    <g id="02c-Expertise-Page-Template" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Community-Page-Template-v1" transform="translate(-1029.000000, -2420.000000)">
+            <g id="Page-1" transform="translate(1234.500000, 2625.500000) rotate(90.000000) translate(-1234.500000, -2625.500000) translate(1029.000000, 2420.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-2"></g>
+                <path d="M205.0986,-0.0005 C205.0986,113.2725 113.2726,205.0985 -0.0004,205.0985 L-0.0004,410.1965 C226.5456,410.1965 410.1976,226.5455 410.1976,-0.0005 L205.0986,-0.0005 Z" id="Fill-1" fill="#7647EA" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -38,6 +38,7 @@
   }
 }
 
+.home-smorgasbord .video-block,
 .smorgasbord-block,
 .smorgasbord-block-wrapper .subscription {
   margin-bottom: 20px;
@@ -63,47 +64,6 @@
   }
   @media screen and (min-width: $bp-large) {
     height: 480px;
-  }
-}
-
-.smorgasbord-video {
-  position: relative;
-
-  .rh5v-DefaultPlayer_component .rh5v-Overlay_component {
-    background-color: rgba(0,0,0,.1);
-  }
-
-  h2 {
-    pointer-events: none;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 60%;
-    z-index: 99999;
-    text-align: center;
-    color: $offWhite;
-  }
-
-  > div {
-    line-height: 0;
-  }
-
-  .rh5v-DefaultPlayer_component:hover .rh5v-DefaultPlayer_controls {
-    opacity: 0;
-  }
-
-  &.playing {
-    .rh5v-DefaultPlayer_component .rh5v-Overlay_component {
-      background-color: transparent;
-    }
-
-    h2 {
-      opacity: 0;
-    }
-
-    .rh5v-DefaultPlayer_component:hover .rh5v-DefaultPlayer_controls {
-      opacity: 1;
-    }
   }
 }
 
