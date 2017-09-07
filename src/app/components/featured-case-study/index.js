@@ -18,7 +18,8 @@ function FeaturedCaseStudy({ content }) {
   }
   if (imageBackground) {
     styles = {
-      background: `url(${image}) no-repeat 50% 50%`
+      background: `url(${image}) no-repeat left 50%`,
+      backgroundSize: `cover`
     }
   } else {
     inlineImage = (<img src={image} alt={imageAlt} />);

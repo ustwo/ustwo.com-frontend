@@ -62,6 +62,15 @@
         color: $honey;
       }
     }
+
+    .subheading {
+      .word-animator {
+        .word {
+          white-space: normal;
+          margin: 0 8px;
+        }
+      }
+    }
   }
 
   .hero-down-indicator {
@@ -94,17 +103,28 @@
   }
 
   .video-block {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 
     &:after {
       content: "";
       position: absolute;
-      width: 70px;
-      height: 70px;
-      bottom: -80px;
-      left: -80px;
+      width: 30px;
+      height: 30px;
+      bottom: -35px;
+      left: -30px;
       background: url('/images/icon-diagonal-arrow.svg') no-repeat top right;
       background-size: 100% auto;
+    }
+
+    @media screen and (min-width: $bp-large) {
+      margin-bottom: 70px;
+
+      &:after {
+        width: 70px;
+        height: 70px;
+        bottom: -80px;
+        left: -80px;
+      }
     }
   }
 }
@@ -134,7 +154,11 @@
 .ustwo-auto-how {
   @include core-layout;
   background: white url(/images/pattern-donut.svg) no-repeat top right;
-  background-size: 200px auto;
+  background-size: 100px auto;
+
+  @media screen and (min-width: $bp-large) {
+    background-size: 200px auto;
+  }
 }
 
 .ustwo-auto-how-inner {
@@ -170,23 +194,33 @@
 }
 
 .ustwo-auto-team-profiles {
-  display: flex;
-  justify-content: center;
   @include core-vertical-padding;
+  display: flex;
+  flex-direction: column;
+
+  li {
+    clear: left;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 // TODO: Make this a component
 
 .profile {
-  width: 184px;
-  text-align: center;
+  text-align: left;
 }
 .profile-photo {
   width: 90px;
   height: 90px;
   border-radius: 45px;
   background-color: #ddd;
-  margin: 0 auto 10px auto;
+  float: left;
+  margin-right: 20px;
 
   img {
     width: 100%;
@@ -206,6 +240,20 @@
 }
 .profile-contact {
   margin-top: 10px;
+}
+
+@media screen and (min-width: $bp-medium) {
+  .profile {
+    width: 184px;
+    text-align: center;
+  }
+  .profile-photo {
+    margin: 0 auto 10px auto;
+    float: none;
+  }
+  .profile-contact {
+    margin-top: 20px;
+  }
 }
 
 .ustwo-auto-logos-wrapper {
