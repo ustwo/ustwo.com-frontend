@@ -96,9 +96,7 @@ class Navigation extends Component {
 
     if (workSubPage || otherSubPage) {
       return (
-        <div className="navigation-subpage-nav">
-          <button onClick={this.subPageBack.bind(this)}>{workSubPage ? 'Work' : 'Back'}</button>
-        </div>
+        <button onClick={this.subPageBack.bind(this)}>{workSubPage ? 'Work' : 'Back'}</button>
       );
     }
     return;
@@ -133,14 +131,13 @@ class Navigation extends Component {
     const caseStudyName = caseStudy ? kebabCase(caseStudy.name) : null
 
     const navClasses = classnames('navigation', customClass, section, page, caseStudyName, {
-      notSticky: modal === null && !scrolledAfter100 && homePage,
+      sticky: modal === null && scrolledAfter100 && homePage,
       pageControls: subPage,
       scrolled: scrolled,
       subPage: subPage,
-      notOverHero: scrolledAfter100 && heroPage && !subPage || scrolledAfter100 && heroPage && page === 'ustwo-auto',
-      default: capabilityPages.includes(page) || venturesActive && homePage && scrolledAfter100 && !modal,
-      testimonialsActive: testimonialsActive,
-      invert: subPage || section === 'legal',
+      overHero: !scrolledAfter100 && heroPage && !subPage || !scrolledAfter100 && heroPage && page === 'ustwo-auto',
+      default: capabilityPages.includes(page),
+      invert: venturesActive && homePage && scrolledAfter100 && !modal || testimonialsActive,
       menuOpen: modal,
       active: active && section === 'home'
     });
@@ -182,7 +179,9 @@ class Navigation extends Component {
             <li><a href="/join-us">Join us</a></li>
           </ul>
         </div>
-        {this.renderBackButton()}
+        <div className="navigation-subpage-nav">
+          {this.renderBackButton()}
+        </div>
         <div className="navigation-buttons">
           <button
             className="navigation-logo"

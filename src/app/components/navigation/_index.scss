@@ -18,16 +18,24 @@ html {
     }
   }
 
-  .navigation:before {
+  &.js .menu-no-js {
     display: none;
   }
+}
 
-  &.js {
-    .menu-no-js {
-      display: none;
-    }
-    .navigation:before {
-      display: block;
+.page-home {
+  .navigation {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: visibility 0s linear .2s, opacity .2s linear;
+
+    &.menuOpen,
+    &.sticky {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s, 0s;
+      pointer-events: auto;
     }
   }
 }
@@ -40,7 +48,7 @@ $nav-height-large: 32px;
   position: fixed;
   top: 0;
   right: 0;
-  left: auto;
+  left: 0;
   z-index: 4000;
   pointer-events: auto;
   width: 100%;
@@ -49,16 +57,12 @@ $nav-height-large: 32px;
   align-items: center;
   padding: 20px 0;
 
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    background-color: transparent;
-    transition: background-color .2s linear;
+  @media screen and (min-width: $bp-medium) {
+    left: auto;
+
+    &.subPage {
+      left: 0;
+    }
   }
 
   .navigation-subpage-nav {
@@ -92,11 +96,6 @@ $nav-height-large: 32px;
   @media screen and (min-width: $bp-large) {
     padding: 27px 0;
   }
-
-  &.notSticky {
-    opacity: 0;
-    pointer-events: none;
-  }
 }
 
 .navigation-buttons {
@@ -113,30 +112,6 @@ $nav-height-large: 32px;
 
   .svg-sequence {
     pointer-events: none;
-  }
-}
-
-.navigation-logo {
-  display: flex;
-  overflow: visible;
-  cursor: pointer;
-  height: 40px;
-
-  svg {
-    pointer-events: none;
-    width: 112px;
-    transition: fill .2s linear;
-    height: $nav-height-small;
-    width: 85px;
-
-    @media screen and (min-width: $bp-medium) {
-      height: $nav-height-medium;
-      width: 92px;
-    }
-    @media screen and (min-width: $bp-large) {
-      width: 112px;
-      height: $nav-height-large;
-    }
   }
 }
 
@@ -160,7 +135,7 @@ $nav-height-large: 32px;
   z-index: 1;
   pointer-events: none; /* Fixes intermittent issue on touch devices? */
   border-radius: 50%;
-  border: 2px solid;
+  border: 2px solid $nonBlack;
   width: $nav-height-small;
   height: $nav-height-small;
   box-sizing: content-box;
@@ -175,6 +150,7 @@ $nav-height-large: 32px;
     transform: translate(-50%, -50%);
     width: 10px;
     height: 2px;
+    background-color: $nonBlack;
     transition: all .2s linear;
   }
 
@@ -196,7 +172,7 @@ $nav-height-large: 32px;
   }
 
   @media screen and (min-width: $bp-large) {
-    border: 3px solid $offWhite;
+    border-width: 3px;
     width: $nav-height-large;
     height: $nav-height-large;
 
@@ -262,70 +238,97 @@ $nav-height-large: 32px;
   fill: $rain;
 }
 
-.navigation {
 
-  @media screen and (max-width: $bp-medium) {
-    &.notOverHero:before,
-    &.invert:before {
-      background-color: $offWhite-semiTransparent;
+// Background
+.navigation {
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background: white;
+    transition: all .2s linear;
+  }
+  .navigation-logo {
+    display: flex;
+    overflow: visible;
+    cursor: pointer;
+    height: 40px;
+
+    svg {
+      pointer-events: none;
+      fill: $nonBlack;
+      width: 112px;
+      transition: fill .2s linear;
+      height: $nav-height-small;
+      width: 85px;
+
+      @media screen and (min-width: $bp-medium) {
+        height: $nav-height-medium;
+        width: 92px;
+      }
+      @media screen and (min-width: $bp-large) {
+        width: 112px;
+        height: $nav-height-large;
+      }
     }
   }
 
   &.invert,
-  &.notOverHero {
+  &.discovery-strategy,
+  &.design-build,
+  &.launch-scale,
+  &.ways-of-working {
+    &:before {
+      background-color: $c-solid;
+    }
     .navigation-logo svg {
-      fill: $nonBlack;
+      fill: white;
     }
     .navigation-toggle-main {
-      border-color: $nonBlack;
+      border-color: white;
 
       &:before,
       &:after {
-        background-color: $nonBlack;
+        background-color: white;
       }
+    }
+    .navigation-subpage-nav button {
+      color: white;
+      background-image: url('/images/icon-left-light.svg');
+    }
+  }
+
+  &.invert {
+    &:before {
+      background-color: $v-solid;
     }
   }
 
   &,
   &.menuOpen,
-  &.default {
+  &.notfound,
+  &.overHero {
+    &:before {
+      background: transparent !important;
+    }
     .navigation-logo svg {
-      fill: $offWhite;
+      fill: white;
     }
     .navigation-toggle-main {
-      border-color: $offWhite;
+      border-color: white;
 
       &:before,
       &:after {
-        background-color: $offWhite;
+        background-color: white;
       }
     }
   }
 
   @media screen and (min-width: $bp-medium) {
-    &.testimonialsActive {
-      .navigation-logo svg {
-        fill: $offWhite;
-      }
-      .navigation-toggle-main {
-        border-color: $offWhite;
-
-        &:before,
-        &:after {
-          background-color: $offWhite;
-        }
-      }
-    }
-  }
-
-  &.default {
-    &:before {
-      // background: linear-gradient(90deg, #333, #323952);
-      background-color: #333437;
-      opacity: .95;
-    }
-  }
-  &.menuOpen {
     &:before {
       background: transparent !important;
     }
@@ -341,108 +344,99 @@ $nav-height-large: 32px;
   }
 }
 
-@media screen and (min-width: $bp-medium) {
-  .navigation {
-    &,
-    &.default {
-      &:before {
-        background: none;
-      }
-    }
-  }
-}
+
+// .navigation {
+
+
+  // &.default {
+  //   &:before {
+  //     background: linear-gradient(90deg, #333, #323952);
+  //     opacity: 0.95;
+  //   }
+  // }
+// }
+
+// @media screen and (min-width: $bp-medium) {
+//   .navigation {
+//     &,
+//     &.default {
+//       &:before {
+//         background: none !important;
+//       }
+//     }
+//   }
+// }
 
 .navigation {
   &.menuOpen {
-    &:before {
-      background: none;
-    }
-
-    .navigation-toggle-main {
-      &:before,
-      &:after {
-        margin-top: 0;
-      }
-      &:before {
-        transform: translate(-50%, -50%) rotate(45deg);
-      }
-      &:after {
-        transform: translate(-50%, -50%) rotate(-45deg);
-      }
-    }
-    .navigation-toggle-ring {
-      opacity: 0;
-    }
+  //   .navigation-toggle-main {
+  //     &:before,
+  //     &:after {
+  //       margin-top: 0;
+  //     }
+  //     &:before {
+  //       transform: translate(-50%, -50%) rotate(45deg);
+  //     }
+  //     &:after {
+  //       transform: translate(-50%, -50%) rotate(-45deg);
+  //     }
+  //   }
+  //   .navigation-toggle-ring {
+  //     opacity: 0;
+  //   }
     .navigation-subpage-nav {
       opacity: 0;
       transition: none;
       pointer-events: none;
     }
   }
+}
 
-  &.subPage.pageControls:not(.menuOpen) {
-    left: 0;
-    transition: all .2s linear;
+  // &.subPage.pageControls:not(.menuOpen) {
+    // left: 0;
+    // transition: all .2s linear;
 
-    &.scrolled {
-      &:before {
-        background-color: $offWhite-semiTransparent;
-        // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-      }
-    }
+    // &.scrolled {
+    //   &:before {
+    //     background-color: $offWhite;
+    //     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    //   }
+    // }
 
     // Sure the following could be DRYier with the rest of the code
-    &.ustwo-auto.subPage:not(.notOverHero) {
-      .navigation-logo svg {
-        fill: $offWhite;
-      }
-      .navigation-toggle-main {
-        border-color: $offWhite;
-
-        &:before,
-        &:after {
-          background-color: $offWhite;
-        }
-      }
-      .navigation-subpage-nav button {
-        color: $offWhite;
-        background-image: url('/images/icon-left-light.svg');
-      }
-      &:before {
-        background-color: transparent;
-        box-shadow: none;
-      }
-    }
+    // &.ustwo-auto.subPage {
+    //   .navigation-logo svg {
+    //     fill: $offWhite;
+    //   }
+    //   .navigation-toggle-main {
+    //     border-color: $offWhite;
+    //
+    //     &:before,
+    //     &:after {
+    //       background-color: $offWhite;
+    //     }
+    //   }
+    //   .navigation-subpage-nav button {
+    //     color: $offWhite;
+    //     background-image: url('/images/icon-left-light.svg');
+    //   }
+    //   &:before {
+    //     background-color: transparent;
+    //     box-shadow: none;
+    //   }
+    // }
     // END
 
-    &.default {
-
-      &:before {
-        background-color: $c-solid;
-      }
-
-      .navigation-subpage-nav button {
-        color: $offWhite;
-        background-image: url('/images/icon-left-light.svg');
-      }
-    }
-  }
-
-  &.notfound {
-    &:before {
-      display: none;
-    }
-
-    .navigation-logo svg {
-      fill: $offWhite;
-    }
-    .navigation-toggle-main {
-      border-color: $offWhite;
-
-      &:before,
-      &:after {
-        background-color: $offWhite;
-      }
-    }
-  }
-}
+    // &.default {
+    //
+    //   &:before {
+    //     background: $c-solid;
+    //   }
+    //
+    //   .navigation-subpage-nav button {
+    //     color: $offWhite;
+    //     background-image: url('/images/icon-left-light.svg');
+    //   }
+    // }
+//   }
+// }
