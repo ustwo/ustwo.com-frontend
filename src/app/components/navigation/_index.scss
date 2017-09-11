@@ -239,7 +239,7 @@ $nav-height-large: 32px;
 }
 
 
-// Background
+// NAVIGATION BACKGROUND, VARIATIONS ETC
 .navigation {
   &:before {
     content: "";
@@ -348,46 +348,8 @@ $nav-height-large: 32px;
   }
 }
 
-
-// .navigation {
-
-
-  // &.default {
-  //   &:before {
-  //     background: linear-gradient(90deg, #333, #323952);
-  //     opacity: 0.95;
-  //   }
-  // }
-// }
-
-// @media screen and (min-width: $bp-medium) {
-//   .navigation {
-//     &,
-//     &.default {
-//       &:before {
-//         background: none !important;
-//       }
-//     }
-//   }
-// }
-
 .navigation {
   &.menuOpen {
-  //   .navigation-toggle-main {
-  //     &:before,
-  //     &:after {
-  //       margin-top: 0;
-  //     }
-  //     &:before {
-  //       transform: translate(-50%, -50%) rotate(45deg);
-  //     }
-  //     &:after {
-  //       transform: translate(-50%, -50%) rotate(-45deg);
-  //     }
-  //   }
-  //   .navigation-toggle-ring {
-  //     opacity: 0;
-  //   }
     .navigation-subpage-nav {
       opacity: 0;
       transition: none;
@@ -395,52 +357,3 @@ $nav-height-large: 32px;
     }
   }
 }
-
-  // &.subPage.pageControls:not(.menuOpen) {
-    // left: 0;
-    // transition: all .2s linear;
-
-    // &.scrolled {
-    //   &:before {
-    //     background-color: $offWhite;
-    //     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-    //   }
-    // }
-
-    // Sure the following could be DRYier with the rest of the code
-    // &.ustwo-auto.subPage {
-    //   .navigation-logo svg {
-    //     fill: $offWhite;
-    //   }
-    //   .navigation-toggle-main {
-    //     border-color: $offWhite;
-    //
-    //     &:before,
-    //     &:after {
-    //       background-color: $offWhite;
-    //     }
-    //   }
-    //   .navigation-subpage-nav button {
-    //     color: $offWhite;
-    //     background-image: url('/images/icon-left-light.svg');
-    //   }
-    //   &:before {
-    //     background-color: transparent;
-    //     box-shadow: none;
-    //   }
-    // }
-    // END
-
-    // &.default {
-    //
-    //   &:before {
-    //     background: $c-solid;
-    //   }
-    //
-    //   .navigation-subpage-nav button {
-    //     color: $offWhite;
-    //     background-image: url('/images/icon-left-light.svg');
-    //   }
-    // }
-//   }
-// }
