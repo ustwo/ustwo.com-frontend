@@ -277,6 +277,7 @@ $nav-height-large: 32px;
     }
   }
 
+  &.overHero,
   &.invert,
   &.discovery-strategy,
   &.design-build,
@@ -302,13 +303,6 @@ $nav-height-large: 32px;
     }
   }
 
-  &.invert {
-    &:before {
-      background-color: $v-solid;
-    }
-  }
-
-  &,
   &.menuOpen,
   &.notfound,
   &.overHero {
@@ -340,6 +334,16 @@ $nav-height-large: 32px;
     &:before {
       background-color: $c-solid;
       opacity: .95;
+    }
+  }
+}
+
+.page-home {
+  .navigation {
+    &.invert {
+      &:before {
+        background-color: $v-solid;
+      }
     }
   }
 }
