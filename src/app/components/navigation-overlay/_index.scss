@@ -88,6 +88,10 @@
   @include page-background-colour(legal);
 }
 
+.navigation-overlay.navigation-overlay-ustwo-auto {
+  @include page-background-colour(ustwoAuto);
+}
+
 $menu-transition-bg-duration: .2s;
 $menu-transition-item-duration: .2s;
 $menu-transition-item-delay: .1s;

@@ -91,6 +91,9 @@
   @if $page == 'notfound' {
     background-image: linear-gradient(30deg, $rain, $softPassion);
   }
+  @if $page == 'ustwoAuto' {
+    background-image: linear-gradient(30deg, $honey, $ustwoAuto);
+  }
   @if $page == 'legal' {
     background-image: linear-gradient(30deg, $rain, $softPassion);
   }

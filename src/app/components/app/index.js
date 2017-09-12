@@ -132,6 +132,7 @@ const App = React.createClass({
             <NavigationOverlay
               pages={navMain}
               section={currentPage.split('/')[0]}
+              page={currentPage.split('/')[1]}
             />
           );
           break;

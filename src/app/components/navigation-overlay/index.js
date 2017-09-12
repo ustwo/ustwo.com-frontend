@@ -86,7 +86,12 @@ const NavigationOverlay = React.createClass({
   },
 
   render() {
-    const classes = classnames('navigation-overlay', this.props.section, `navigation-hover-${this.state.hoveredItem}`);
+    const classes = classnames(
+      'navigation-overlay',
+      this.props.section,
+      `navigation-overlay-${this.props.page}`,
+      `navigation-hover-${this.state.hoveredItem}`
+    );
 
     return (
       <nav className={classes} onClick={this.onClickContent}>
