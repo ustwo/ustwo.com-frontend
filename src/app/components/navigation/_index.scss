@@ -40,9 +40,8 @@ html {
   }
 }
 
-$nav-height-small: 22px;
-$nav-height-medium: 24px;
-$nav-height-large: 32px;
+$nav-height-small: 23px;
+$nav-height-large: 31px;
 
 .navigation {
   position: fixed;
@@ -145,9 +144,6 @@ $nav-height-large: 32px;
   &:after {
     content: "";
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     width: 10px;
     height: 2px;
     background-color: $nonBlack;
@@ -155,20 +151,12 @@ $nav-height-large: 32px;
   }
 
   &:before {
-    margin-top: -2px;
+    left: calc(50% - 5px);
+    top: calc(50% - 1px - 2px);
   }
   &:after {
-    margin-top: 2px;
-  }
-
-  @media screen and (min-width: $bp-smaller) {
-    width: $nav-height-medium;
-    height: $nav-height-medium;
-
-    &:before,
-    &:after {
-      width: 12px;
-    }
+    left: calc(50% - 5px);
+    top: calc(50% - 1px + 2px);
   }
 
   @media screen and (min-width: $bp-large) {
@@ -179,14 +167,16 @@ $nav-height-large: 32px;
     &:before,
     &:after {
       height: 3px;
-      width: 14px;
+      width: 15px;
     }
 
     &:before {
-      margin-top: -3px;
+      left: calc(50% - 8px);
+      top: calc(50% - 1px - 3px);
     }
     &:after {
-      margin-top: 3px;
+      left: calc(50% - 8px);
+      top: calc(50% - 1px + 3px);
     }
   }
 }
@@ -266,10 +256,6 @@ $nav-height-large: 32px;
       height: $nav-height-small;
       width: 85px;
 
-      @media screen and (min-width: $bp-medium) {
-        height: $nav-height-medium;
-        width: 92px;
-      }
       @media screen and (min-width: $bp-large) {
         width: 112px;
         height: $nav-height-large;
@@ -354,6 +340,23 @@ $nav-height-large: 32px;
       opacity: 0;
       transition: none;
       pointer-events: none;
+    }
+
+    .navigation-toggle-main {
+      &:before {
+        transform: rotate(45deg) translate(2px,2px);
+      }
+      &:after {
+        transform: rotate(-45deg) translate(1px,-1px);
+      }
+      @media screen and (min-width: $bp-large) {
+        &:before {
+          transform: rotate(45deg) translate(2px,2px);
+        }
+        &:after {
+          transform: rotate(-45deg) translate(2px,-2px);
+        }
+      }
     }
   }
 }

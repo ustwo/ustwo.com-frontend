@@ -111,7 +111,6 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
                   <div className="profile-photo"><img src="/images/auto/lexi-cherniavsky.png" /></div>
                   <h3 className="profile-name">Lexi Cherniavsky</h3>
                   <p className="profile-title">Client Partner</p>
-                  <p className="profile-contact">@lexi</p>
                 </section>
               </li>
             </ul>
@@ -163,7 +162,7 @@ export default UstwoAuto;
 const ustwoAutoData = {
   title: 'auto',
   subtitle: 'For the journey',
-  intro: "Our mission is to make journeys more magically connected. We help brands innovate by combining insight into how people move with breakthrough technology. We create experiences that enhance people's lives from the dashboard to the city to the sky.",
+  intro: "Our mission is to make journeys more magically connected. We help brands drive change by combining insight and creativity with breakthrough technology. We create experiences that enhance people's lives from the dashboard to the city to the sky.",
   introFurther: 'We do this with clients around the world and collaborate with research partners on our own experimental projects.',
   items: [{
     name: 'humanising-autonomy',
@@ -174,17 +173,17 @@ const ustwoAutoData = {
     name: 'smart-mobility',
     title: 'Smarter Mobility',
     image: '/images/auto/smart-mobility.svg',
-    text: 'Creating new services that improve the way people travel.'
+    text: 'Creating new services that improve the way people and things get around.'
   },{
     name: 'connected-car',
     title: 'Connecting the Car',
     image: '/images/auto/connected-car.svg',
-    text: "Harnessing the potential that a connected experience can bring to people's life."
+    text: "Harnessing the potential that a connected experience can bring to people’s life."
   },{
     name: 'contextual-hmi',
     title: 'Contextual HMI',
     image: '/images/auto/contextual-hmi.svg',
-    text: 'Making interfaces within transport more personal and situational.'
+    text: 'Making interfaces within transport more user friendly, personal and situational.'
   },],
   latestPromo: {
     title: 'Download our new Book',
@@ -200,7 +199,7 @@ const ustwoAutoData = {
     "We have a collaborative way of working and partnership mindset. This often involves bringing experts together across many disciplines to solve a common problem, whether designers, anthropologists, scientists, engineers, mobility providers, manufacturers, policy makers, city operators or academic and research partners.",
     "Clients work with us to help them build new capabilities and sometimes change the status quo."
   ],
-  teamProfile: "We’re a community of designers, inventors and engineers. We don’t make cars but we have a small collection. We conduct our own research experiments because we’re passionate about what we do and want to solve the problems we see around us. We’re embedded within ustwo with over 50 of us across our studios globally with specific sector expertise.",
+  teamProfile: "We're a community of designers, inventors and engineers. We don't make cars but we have a small collection. We conduct our own research experiments because we’re passionate about what we do and want to solve the problems we see around us. We’re embedded within ustwo with over 50 of us across our studios globally with specific sector expertise.",
   testimonials: [{
     testimonial: "The automotive eBook is a rarity, it's wonderful.",
     source: {
@@ -234,6 +233,20 @@ const ustwoAutoData = {
     source: {
       name: 'Shusuke Miyazawa',
       title: 'Nissan, Tokyo',
+      company: ''
+    }
+  },{
+    testimonial: "Brilliant car UI from Monument Valley geniuses",
+    source: {
+      name: 'Wired',
+      title: '',
+      company: ''
+    }
+  },{
+    testimonial: "Ustwo has a new idea to reinvent the instrument cluster in cars, one that creates a beautiful and more immediately readable presentation",
+    source: {
+      name: 'John Wenz',
+      title: 'Popular Mechanics',
       company: ''
     }
   }],

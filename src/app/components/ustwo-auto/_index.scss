@@ -77,6 +77,15 @@
     left: calc(50% - 12px);
   }
 
+  .work-process-item-image {
+    @media screen and (min-width: $bp-medium) {
+      height: 130px;
+    }
+    @media screen and (min-width: $bp-larger) {
+      height: 130px;
+    }
+  }
+
   .work-process {
     background-color: white;
     margin-bottom: 0;
