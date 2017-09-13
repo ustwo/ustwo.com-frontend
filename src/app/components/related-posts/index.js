@@ -4,24 +4,21 @@ import WorkItem from 'app/components/work-item';
 import BlogPostListItem from 'app/components/blog-post-list-item';
 
 function RelatedPosts({ posts }) {
-  
+
   const renderItems = posts.map(data => {
     let item;
     if (data.type === 'post') {
-      item = <div className="related-content-item" key={data.id}><BlogPostListItem data={data}/></div>;
+      item = <BlogPostListItem data={data}/>;
     } else {
-      item = <div className="related-content-item" key={data.id}><WorkItem data={data}/></div>;
+      item = <WorkItem data={data}/>;
     }
     return item;
   });
 
   return (
-    <div className="related-content">
-      <div className="wrapper">
-        <h2 className="more-juice-title">Related Posts</h2>
-        <div className="related-content-cards">
-          {renderItems}
-        </div>
+    <div className="card-list related-posts">
+      <div className="card-list-inner">
+        {renderItems}
       </div>
     </div>
   )

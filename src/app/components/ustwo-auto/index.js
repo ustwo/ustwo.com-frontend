@@ -14,6 +14,7 @@ import WorkCaseStudies from 'app/components/work-case-studies';
 import WorkClientsBoard from 'app/components/work-clients-board';
 import WorkVerticals from 'app/components/work-verticals';
 import VideoBlock from 'app/components/video-block';
+import RelatedPosts from 'app/components/related-posts';
 
 function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
@@ -30,7 +31,7 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
     ? <TestimonialCarousel testimonials={ustwoAutoData.twitter} fixedHeight={fixedHeight} type="twitter-auto" />
     : null;
 
-  const caseStudies = get(page, '_embedded.ustwo:case_studies', []);
+  const relatedPosts = get(page, '_embedded.ustwo:related_post', []);
 
   let src;
   if (window.innerWidth < 600) {
@@ -124,12 +125,7 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
 
         <FeaturedCaseStudy content={featuredCaseStudy} />
 
-        <WorkCaseStudies
-          caseStudies={caseStudies}
-          page={page}
-          numberOfCaseStudiesShowing="12"
-          caseStudyFilter="all"
-        />
+        <RelatedPosts posts={relatedPosts} />
 
         <div className="ustwo-auto-logos-wrapper">
           <WorkClientsBoard logos={ustwoAutoData.clients} title="Our Clients" />
