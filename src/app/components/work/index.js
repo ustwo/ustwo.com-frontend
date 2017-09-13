@@ -201,7 +201,7 @@ const workData = {
     shortTitle: 'auto',
     title: 'Auto',
     text: 'The ustwo Auto team explore user experience in the automotive space with client engagements and our own research and experimental projects, building services and products around the connected car.',
-    slug: '/work/ustwoauto'
+    slug: '/auto'
   },{
     type: 'Expertise',
     shortTitle: 'health',
@@ -218,5 +218,6 @@ const featuredCaseStudy = {
   colours: ['#87e283', '#92e9b2'],
   image: '/images/work/featured-gopark.png',
   imageAlt: 'iPhone showing Ford GoPark App',
-  slug: '/work/ford-gopark'
+  slug: '/work/ford-gopark',
+  linkText: 'View Case Study'
 }

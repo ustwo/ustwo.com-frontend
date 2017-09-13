@@ -54,13 +54,13 @@ const routes = {
       slug: 'ways-of-working'
     }]
   },
-  ustwoAuto: {
-    id: 'work/ustwo-auto',
-    patterns: ['/work/ustwo-auto'],
+  auto: {
+    id: 'auto',
+    patterns: ['/auto'],
     data: () => [{
-      url: 'ustwo/v1/pages/ustwo-auto',
+      url: 'ustwo/v1/pages/auto',
       type: 'page',
-      slug: 'ustwo-auto'
+      slug: 'auto'
     }]
   },
   caseStudy: {

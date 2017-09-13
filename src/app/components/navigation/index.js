@@ -74,7 +74,7 @@ class Navigation extends Component {
       case 'design-build':
       case 'launch-scale':
       case 'ways-of-working':
-      case 'ustwo-auto':
+      case 'auto':
         navigateTo = '/work';
         break;
       case 'event':
@@ -90,7 +90,7 @@ class Navigation extends Component {
   renderBackButton() {
     const { page } = this.props;
     const { capabilityPages, workPages } = this.state;
-    const workSubPage = capabilityPages.includes(page) || page === 'case-study' || page === 'ustwo-auto';
+    const workSubPage = capabilityPages.includes(page) || page === 'case-study';
     const otherSubPage = page === 'post' || page === 'event';
     const subPageText = capabilityPages.includes(page) || page === 'case-study' ? 'Work' : 'Back';
 
@@ -124,8 +124,8 @@ class Navigation extends Component {
     const testimonialsActive = testimonialsPosition && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
     const footerActive = documentScrollPosition > 4000 - (693 + 414);
     const homePage = section === 'home';
-    const heroPage = heroPages.includes(section) || caseStudy;
-    const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'ustwo-auto';
+    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy || section === 'auto';
+    const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'auto';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
     const scrolledAfter100 = documentScrollPosition > viewportDimensions.height - (navHeight * 0.5);
@@ -136,9 +136,9 @@ class Navigation extends Component {
       pageControls: subPage,
       scrolled: scrolled,
       subPage: subPage,
-      overHero: !scrolledAfter100 && heroPage && !subPage || !scrolledAfter100 && heroPage && page === 'ustwo-auto',
+      overHero: !scrolledAfter100 && heroPage && !subPage || !scrolledAfter100 && heroPage,
       default: capabilityPages.includes(page),
-      invert: venturesActive && homePage && scrolledAfter100 && !modal || testimonialsActive || footerActive,
+      invert: venturesActive && homePage && scrolledAfter100 && !modal || testimonialsActive,
       menuOpen: modal,
       active: active && section === 'home'
     });
@@ -165,7 +165,7 @@ class Navigation extends Component {
         break;
     }
 
-    if (caseStudy && caseStudy.name === 'ustwo Auto' || page === 'ustwo-auto') {
+    if (caseStudy && caseStudy.name === 'ustwo Auto' || section === 'auto') {
       color = ['#f8e467', '#ffbf00'];
     }
 

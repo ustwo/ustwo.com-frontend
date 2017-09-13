@@ -32,7 +32,7 @@ class TestimonialCarousel extends Component {
   getTestimonialsPosition() {
     const { documentScrollPosition, viewportDimensions, type } = this.props;
 
-    // Here type denotes the ustwo-auto colour on the twitter block, meaning it is
+    // Here type denotes the auto colour on the twitter block, meaning it is
     // a lighter colour and therefore we don't want the navigation to know about it
     // as we don't want the nav colour to change when over it - getit?
     if (!type) {

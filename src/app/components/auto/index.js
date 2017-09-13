@@ -7,7 +7,7 @@ import Hero from 'app/components/hero';
 import ContactBlockAuto from 'app/components/contact-block-auto';
 import ContactButton from 'app/components/contact-button';
 import Footer from 'app/components/footer';
-import UstwoAutoWhatwedo from 'app/components/ustwo-auto-whatwedo';
+import AutoWhatwedo from 'app/components/auto-whatwedo';
 import FeaturedCaseStudy from 'app/components/featured-case-study';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import WorkCaseStudies from 'app/components/work-case-studies';
@@ -16,19 +16,19 @@ import WorkVerticals from 'app/components/work-verticals';
 import VideoBlock from 'app/components/video-block';
 import RelatedPosts from 'app/components/related-posts';
 
-function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
+function Auto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
   let styles;
   if (documentScrollPosition > window.innerHeight + 100) {
     styles = { position: `relative` }
   }
 
-  const renderTestimonials = ustwoAutoData.testimonials.length > 0
-    ? <TestimonialCarousel testimonials={ustwoAutoData.testimonials} fixedHeight={fixedHeight} />
+  const renderTestimonials = autoData.testimonials.length > 0
+    ? <TestimonialCarousel testimonials={autoData.testimonials} fixedHeight={fixedHeight} />
     : null;
 
-  const renderTwitter = ustwoAutoData.twitter.length > 0
-    ? <TestimonialCarousel testimonials={ustwoAutoData.twitter} fixedHeight={fixedHeight} type="twitter-auto" />
+  const renderTwitter = autoData.twitter.length > 0
+    ? <TestimonialCarousel testimonials={autoData.twitter} fixedHeight={fixedHeight} type="twitter-auto" />
     : null;
 
   const relatedPosts = get(page, '_embedded.ustwo:related_post', []);
@@ -42,15 +42,15 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
   const videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
 
   return (
-    <div className="work-ustwo-auto">
+    <div className="work-auto">
 
       <div className="home-pinned-header-wrapper">
         <div className="home-pinned-header-inner" style={styles}>
           <ScrollWrapper
             component={
               <Hero
-                title={ustwoAutoData.title}
-                subheading={ustwoAutoData.subtitle}
+                title={autoData.title}
+                subheading={autoData.subtitle}
                 transitionImage={true}
                 showDownIndicator={true}
                 eventLabel=''
@@ -70,27 +70,27 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
 
         <ScrollWrapper
           component={
-            <UstwoAutoWhatwedo data={ustwoAutoData} isMobile={isMobile} />
+            <AutoWhatwedo data={autoData} isMobile={isMobile} />
           }
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
         />
 
-        <FeaturedCaseStudy content={ustwoAutoData.latestPromo} />
+      <FeaturedCaseStudy content={autoData.latestPromo} />
 
-        <div className="ustwo-auto-how">
-          <div className="ustwo-auto-how-inner">
+        <div className="auto-how">
+          <div className="auto-how-inner">
             <VideoBlock title="How we do it" videoPoster={videoPoster} src={src} />
-            {ustwoAutoData.howWeDoIt.map(para => <p>{para}</p>)}
+            {autoData.howWeDoIt.map(para => <p>{para}</p>)}
           </div>
         </div>
 
-        <div className="ustwo-auto-team">
-          <div className="ustwo-auto-team-inner">
+        <div className="auto-team">
+          <div className="auto-team-inner">
 
             <h2>Meet the Team</h2>
 
-            <ul className="ustwo-auto-team-profiles">
+            <ul className="auto-team-profiles">
               <li>
                 <section className="profile">
                   <div className="profile-photo"><img src="/images/auto/tim-smith.png" /></div>
@@ -116,7 +116,7 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
               </li>
             </ul>
 
-            <p>{ustwoAutoData.teamProfile}</p>
+            <p>{autoData.teamProfile}</p>
 
           </div>
         </div>
@@ -127,16 +127,10 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
 
         <RelatedPosts posts={relatedPosts} />
 
-        <div className="ustwo-auto-logos-wrapper">
-          <WorkClientsBoard logos={ustwoAutoData.clients} title="Our Clients" />
-          <WorkClientsBoard logos={ustwoAutoData.partners} title="Our Partners" />
+        <div className="auto-logos-wrapper">
+          <WorkClientsBoard logos={autoData.clients} title="Our Clients" />
+          <WorkClientsBoard logos={autoData.partners} title="Our Partners" />
         </div>
-
-        <div className="ustwo-auto-news">
-          NEWS
-        </div>
-
-        {renderTwitter}
 
         <ScrollWrapper
           component={<ContactBlockAuto />}
@@ -153,9 +147,9 @@ function UstwoAuto({ page, documentScrollPosition, viewportDimensions, footer, s
   );
 }
 
-export default UstwoAuto;
+export default Auto;
 
-const ustwoAutoData = {
+const autoData = {
   title: 'auto',
   subtitle: 'For the journey',
   intro: "Our mission is to make journeys more magically connected. We help brands drive change by combining insight and creativity with breakthrough technology. We create experiences that enhance people's lives from the dashboard to the city to the sky.",
@@ -183,7 +177,7 @@ const ustwoAutoData = {
   },],
   latestPromo: {
     title: 'Download our new Book',
-    excerpt: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh',
+    excerpt: 'Coming Soon!',
     link: '/',
     linkText: 'Link text',
     latest: true,
@@ -268,20 +262,20 @@ const ustwoAutoData = {
     shortTitle: 'auto-hmi',
     title: 'ARE WE THERE YET? THOUGHTS ON IN-CAR HMI',
     text: 'In this five part blog series ustwo Auto look into this phenomenon of growing in-car HMI complexity.',
-    slug: '/work/ustwoauto'
+    slug: '/auto'
   },{
     type: 'Research Project',
     shortTitle: 'auto-mobility',
     title: 'CITIES SHOW US THE WAY',
     text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-    slug: '/work/ustwoauto',
+    slug: '/auto',
     small: true
   },{
     type: 'Research Project',
     shortTitle: 'auto-reimagine',
     title: 'USTWO REIMAGINE THE IN-CAR CLUSTER',
     text: 'Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.',
-    slug: '/work/ustwoauto',
+    slug: '/auto',
     small: true
   }]
 }
@@ -292,5 +286,6 @@ const featuredCaseStudy = {
   colours: ['#87e283', '#92e9b2'],
   image: '/images/work/featured-gopark.png',
   imageAlt: 'iPhone showing Ford GoPark App',
-  slug: '/work/ford-gopark'
+  slug: '/work/ford-gopark',
+  linkText: 'View Case Study'
 }
