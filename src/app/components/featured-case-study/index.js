@@ -25,6 +25,11 @@ function FeaturedCaseStudy({ content }) {
     inlineImage = (<img src={image} alt={imageAlt} />);
   }
 
+  let renderLink;
+  if (linkText && slug) {
+    renderLink = <button onClick={Flux.override(slug)}>{linkText}</button>;
+  }
+
   return (
     <div className="featured-case-study" style={styles}>
       <div className="featured-case-study-inner">
@@ -35,7 +40,7 @@ function FeaturedCaseStudy({ content }) {
           <div className="section-title">{latest ? 'Latest' : 'Featured Work'}</div>
           <h2 className="title">{title}</h2>
           <p>{excerpt}</p>
-          <button onClick={Flux.override(slug)}>{linkText ? linkText : 'View Case Study'}</button>
+          {renderLink}
         </div>
       </div>
     </div>
