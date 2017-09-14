@@ -53,7 +53,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
   );
 
   return (
-    <div className="work-auto">
+    <div className="page-auto">
 
       <div className="home-pinned-header-wrapper">
         <div className="home-pinned-header-inner" style={styles}>

@@ -1,0 +1,15 @@
+.related-posts {
+  .blog-post-list-item {
+
+    .category-tag,
+    .meta {
+      display: none;
+    }
+
+    .title:before {
+      content: "Research";
+      display: block;
+      @extend .section-title;
+    }
+  }
+}

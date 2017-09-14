@@ -27,7 +27,6 @@
 }
 
 .work-process-item {
-  margin-bottom: 20px;
 
   @media screen and (min-width: $bp-medium) {
     width: 48%;
@@ -69,6 +68,7 @@
 
 .react-swipe-container {
   .work-process-item {
+
     @media screen and (min-width: $bp-medium) {
       min-width: 0;
     }

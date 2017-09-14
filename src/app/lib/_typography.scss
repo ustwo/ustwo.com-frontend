@@ -154,7 +154,8 @@ h5, .h5 {
 body,
 p, .p,
 ul, .ul,
-ol, .ol   {
+ol, .ol,
+.related-posts .blog-post-list-item .title:before { // Special case for related-posts component, need the line height
   font-size: 16px;
   line-height: 26px;
 
