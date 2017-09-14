@@ -63,6 +63,15 @@ const routes = {
       slug: 'auto'
     }]
   },
+  autoBook: {
+    id: 'auto/book',
+    patterns: ['/auto/book'],
+    data: () => [{
+      url: 'ustwo/v1/pages/book',
+      type: 'page',
+      slug: 'book'
+    }]
+  },
   caseStudy: {
     id: 'work/case-study',
     patterns: ['/work/:cid'],

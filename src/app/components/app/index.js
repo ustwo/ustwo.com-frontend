@@ -40,6 +40,7 @@ const pageMap = {
   'work/launch-scale': require('app/components/work-launch-scale'),
   'work/ways-of-working': require('app/components/work-ways-of-working'),
   'auto': require('app/components/auto'),
+  'auto/book': require('app/components/auto-book'),
   'blog': require('app/components/blog'),
   'blog/post': require('app/components/post'),
   'legal': require('app/components/legal'),
