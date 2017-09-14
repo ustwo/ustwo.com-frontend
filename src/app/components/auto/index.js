@@ -15,6 +15,7 @@ import WorkClientsBoard from 'app/components/work-clients-board';
 import WorkVerticals from 'app/components/work-verticals';
 import VideoBlock from 'app/components/video-block';
 import RelatedPosts from 'app/components/related-posts';
+import Video from 'app/components/video';
 
 function Auto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
@@ -35,11 +36,21 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
   let src;
   if (window.innerWidth < 600) {
-    src= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=164';
+    src= 'https://player.vimeo.com/external/233813909.sd.mp4?s=618cf0486ee0a0f5b972f352421f7f36a27beca8&profile_id=164';
   } else {
-    src= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=165';
+    src= 'https://player.vimeo.com/external/233813909.sd.mp4?s=618cf0486ee0a0f5b972f352421f7f36a27beca8&profile_id=165';
   }
   const videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
+
+  const video = (
+    <Video
+      src="https://player.vimeo.com/external/233813909.sd.mp4?s=618cf0486ee0a0f5b972f352421f7f36a27beca8&profile_id=165"
+      srcHls="https://player.vimeo.com/external/233813909.m3u8?s=499e857388b87b02fdce6b73c17b30218eb1f17b"
+      imageCSS="https://i.vimeocdn.com/video/655241259.jpg?mw=1280&mh=720"
+      preload="auto"
+      fixedHeight={fixedHeight}
+    />
+  );
 
   return (
     <div className="work-auto">
@@ -58,6 +69,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
                 isMobile={isMobile}
                 scrollProgress={scrollProgress}
                 heroImage={true}
+                video={video}
               />
             }
             documentScrollPosition={documentScrollPosition}

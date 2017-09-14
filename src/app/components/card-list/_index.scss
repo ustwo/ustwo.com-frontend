@@ -40,8 +40,16 @@
     flex-wrap: wrap;
     // padding: 0 ($card-gutter-large * .5);
 
+    .card-list-inner:after {
+      content: "";
+    }
+
+    .card-list-inner:after,
     .card-item {
       width: 48%;
+    }
+
+    .card-item {
       // padding: 0 ($card-gutter-large * .5) 30px ($card-gutter-large * .5);
       margin-bottom: 30px;
 
@@ -54,6 +62,7 @@
 
 @media screen and (min-width: $bp-larger) {
   .card-list {
+    .card-list-inner:after,
     .card-item {
       width: 32%;
     }

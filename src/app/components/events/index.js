@@ -204,12 +204,12 @@ const PageEvents = React.createClass({
             <div className="card-list-inner">
               {this.renderEvents()}
             </div>
+            <LoadMoreButton
+              loading={isLoadingMoreEvents}
+              onClick={this.onClickLoadMoreEvents}
+              disabled={eventsPagination >= eventsPaginationTotal}
+            />
           </section>
-          <LoadMoreButton
-            loading={isLoadingMoreEvents}
-            onClick={this.onClickLoadMoreEvents}
-            disabled={eventsPagination >= eventsPaginationTotal}
-          />
   		  </section>
         {this.renderArchivedEvents()}
         <LoadMoreButton
