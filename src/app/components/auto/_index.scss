@@ -110,32 +110,6 @@
   .tesimonial-button-next svg {
     fill: white;
   }
-
-  .video-block {
-    margin-bottom: 30px;
-
-    &:after {
-      content: "";
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      bottom: -35px;
-      left: -30px;
-      background: url('/images/icon-diagonal-arrow.svg') no-repeat top right;
-      background-size: 100% auto;
-    }
-
-    @media screen and (min-width: $bp-large) {
-      margin-bottom: 70px;
-
-      &:after {
-        width: 70px;
-        height: 70px;
-        bottom: -80px;
-        left: -80px;
-      }
-    }
-  }
 }
 
 .active .hero-content h1 .word-animator:before {
@@ -158,16 +132,6 @@
 .work-vertical-auto-reimagine {
   vertical-align: top;
   background-image: url('/images/auto/auto-reimagine.jpg');
-}
-
-.auto-how {
-  @include core-layout;
-  background: white url(/images/pattern-donut.svg) no-repeat top right;
-  background-size: 100px auto;
-
-  @media screen and (min-width: $bp-large) {
-    background-size: 200px auto;
-  }
 }
 
 .auto-how-inner {

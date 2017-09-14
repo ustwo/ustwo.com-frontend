@@ -34,14 +34,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
   const relatedPosts = get(page, '_embedded.ustwo:related_post', []);
 
-  let src;
-  if (window.innerWidth < 600) {
-    src= 'https://player.vimeo.com/external/233813909.sd.mp4?s=618cf0486ee0a0f5b972f352421f7f36a27beca8&profile_id=164';
-  } else {
-    src= 'https://player.vimeo.com/external/233813909.sd.mp4?s=618cf0486ee0a0f5b972f352421f7f36a27beca8&profile_id=165';
-  }
-  const videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
-
   const video = (
     <Video
       src="https://player.vimeo.com/external/233813909.sd.mp4?s=618cf0486ee0a0f5b972f352421f7f36a27beca8&profile_id=165"
@@ -92,7 +84,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
         <div className="auto-how">
           <div className="auto-how-inner">
-            <VideoBlock title="How we do it" videoPoster={videoPoster} src={src} />
             {autoData.howWeDoIt.map(para => <p>{para}</p>)}
           </div>
         </div>
