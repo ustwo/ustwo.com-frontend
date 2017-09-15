@@ -16,8 +16,10 @@ import WorkVerticals from 'app/components/work-verticals';
 import VideoBlock from 'app/components/video-block';
 import RelatedPosts from 'app/components/related-posts';
 import Video from 'app/components/video';
+import EventsListItem from 'app/components/events-list-item';
+import ArchivedEventsListItem from 'app/components/events-archived-list-item';
 
-function Auto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
+function Auto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress, events, archivedEvents }) {
 
   let styles;
   if (documentScrollPosition > window.innerHeight + 100) {
@@ -43,6 +45,20 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
       fixedHeight={fixedHeight}
     />
   );
+
+  let renderEvents;
+  if (events.length) {
+    renderEvents = events.map((eventData, index) => {
+      return (
+        <EventsListItem
+          className="events-list"
+          featured={index === 0}
+          data={eventData}
+          key={eventData.slug}
+        />
+      );
+    });
+  }
 
   return (
     <div className="page-auto">
@@ -91,7 +107,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
         <div className="auto-team">
           <div className="auto-team-inner">
 
-            <h2>Meet the Team</h2>
+            <h2 className="header">Meet the Team</h2>
 
             <ul className="auto-team-profiles">
               <li>
@@ -134,6 +150,15 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
           <WorkClientsBoard logos={autoData.clients} title="Our Clients" />
           <WorkClientsBoard logos={autoData.partners} title="Our Partners" />
         </div>
+
+        <section className="card-list events-list">
+          <div className="card-list-inner">
+            <h2 className="header">Upcoming Events</h2>
+            {renderEvents}
+          </div>
+        </section>
+
+        {renderTwitter}
 
         <ScrollWrapper
           component={<ContactBlockAuto />}

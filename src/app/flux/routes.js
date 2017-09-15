@@ -61,6 +61,13 @@ const routes = {
       url: 'ustwo/v1/pages/auto',
       type: 'page',
       slug: 'auto'
+    }, {
+      url: 'ustwo/v1/events?per_page=5',
+      type: 'events',
+      slug: 'events'
+    }, {
+      url: 'ustwo/v1/events?per_page=3&archived=true',
+      type: 'archivedEvents'
     }]
   },
   autoBook: {

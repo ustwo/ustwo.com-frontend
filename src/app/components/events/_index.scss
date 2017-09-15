@@ -16,6 +16,16 @@
     z-index: 2;
   }
 
+  .hero-content {
+    .subheading {
+      max-width: 640px;
+    }
+  }
+
+  .card-list {
+    margin: 0 auto;
+  }
+
   .events-list {
     opacity: 1;
     transform: translateY(0px);
@@ -27,20 +37,6 @@
     @media screen and (min-width: $bp-tablet) {
       margin-top: -$hero-offsetSize;
     }
-
-    .card-list .card-item {
-      width: 100%;
-    }
-  }
-
-  .hero-content {
-    .subheading {
-      max-width: 640px;
-    }
-  }
-
-  .card-list {
-    margin: 0 auto;
   }
 
   .no-events-found {
@@ -122,5 +118,11 @@
     .down-indicator {
       display: none;
     }
+  }
+}
+
+.events-list {
+  .card-item {
+    width: 100%;
   }
 }
