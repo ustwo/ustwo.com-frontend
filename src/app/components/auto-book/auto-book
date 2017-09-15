@@ -1,0 +1,5 @@
+.page-auto-book {
+  .hero-image {
+    background-image: url('/images/auto/auto-hero.jpg');
+  }
+}
