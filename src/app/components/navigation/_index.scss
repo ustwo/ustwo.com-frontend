@@ -360,3 +360,19 @@ $nav-height-large: 31px;
     }
   }
 }
+
+.navigation {
+  &.auto {
+    navigation-logo {
+      opacity: 1;
+      transition: opacity .2s linear;
+    }
+
+    &.overHero {
+      .navigation-logo {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+}
