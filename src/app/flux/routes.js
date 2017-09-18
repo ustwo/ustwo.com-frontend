@@ -70,13 +70,13 @@ const routes = {
       type: 'archivedEvents'
     }]
   },
-  autoBook: {
-    id: 'auto/book',
-    patterns: ['/auto/book'],
+  humanisingAutonomy: {
+    id: 'auto/humanising-autonomy',
+    patterns: ['/auto/humanising-autonomy'],
     data: () => [{
-      url: 'ustwo/v1/pages/book',
+      url: 'ustwo/v1/pages/humanising-autonomy',
       type: 'page',
-      slug: 'book'
+      slug: 'humanising-autonomy'
     }]
   },
   caseStudy: {

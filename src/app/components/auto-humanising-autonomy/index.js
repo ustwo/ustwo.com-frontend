@@ -57,7 +57,7 @@ const config = {
 
 firebase.initializeApp(config);
 
-class AutoBook extends Component {
+class HumanisingAutonomy extends Component {
 
   constructor(props) {
     super(props);
@@ -94,14 +94,14 @@ class AutoBook extends Component {
     }
 
     return (
-      <div className="page-auto page-auto-book">
+      <div className="page-auto page-auto-humanising-autonomy">
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner" style={styles}>
             <ScrollWrapper
               component={
                 <Hero
-                  title={autoBookData.title}
-                  subheading={autoBookData.subtitle}
+                  title={autoHumanisingAutonomyData.title}
+                  subheading={autoHumanisingAutonomyData.subtitle}
                   transitionImage={true}
                   showDownIndicator={true}
                   eventLabel=''
@@ -135,11 +135,11 @@ class AutoBook extends Component {
   }
 }
 
-reactMixin(AutoBook.prototype, ReactFire);
+reactMixin(HumanisingAutonomy.prototype, ReactFire);
 
-export default AutoBook;
+export default HumanisingAutonomy;
 
-const autoBookData = {
+const autoHumanisingAutonomyData = {
   title: 'Auto Book',
   subtitle: 'Humanising Autonomy'
 }

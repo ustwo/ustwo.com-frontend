@@ -206,7 +206,7 @@ const autoData = {
   latestPromo: {
     title: 'Download our new Book',
     excerpt: 'Coming Soon!',
-    slug: '/auto/book',
+    slug: '/auto/humanising-autonomy',
     linkText: 'To the book!',
     latest: true,
     image: '/images/work/expertise-image-mobility.jpg',
