@@ -6,6 +6,8 @@ import window from 'app/adaptors/server/window';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import Hero from 'app/components/hero';
 import Signup from 'app/components/signup';
+import ContactBlockAuto from 'app/components/contact-block-auto';
+import Footer from 'app/components/footer';
 
 function validateEmail(email) {
   const re = /\S+@\S+\.\S+/;
@@ -119,15 +121,30 @@ class HumanisingAutonomy extends Component {
 
         <div className="home-main-content-wrapper">
 
-          BOOK CONTENT
+          <div className="auto-book-content">
+            <div className="auto-book-content-inner">
 
-          <Signup
-            onEmailInput={handleInputChange(this)}
-            onSubmit={handleClick(this)}
-            email={email}
-            status={status}
-            errorMessage={errorMessage}
+              BOOK CONTENT
+
+              <Signup
+                onEmailInput={handleInputChange(this)}
+                onSubmit={handleClick(this)}
+                email={email}
+                status={status}
+                errorMessage={errorMessage}
+              />
+
+            </div>
+          </div>
+
+          <ScrollWrapper
+            component={<ContactBlockAuto />}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
+            requireScreenPosition={true}
+            className="scroll-wrapper-contact-block"
           />
+          <Footer data={footer} studios={studios} currentPage={currentPage}/>
 
         </div>
       </div>
@@ -140,6 +157,6 @@ reactMixin(HumanisingAutonomy.prototype, ReactFire);
 export default HumanisingAutonomy;
 
 const autoHumanisingAutonomyData = {
-  title: 'Auto Book',
+  title: 'Auto',
   subtitle: 'Humanising Autonomy'
 }

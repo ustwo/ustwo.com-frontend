@@ -2,4 +2,9 @@
   .hero-image {
     background-image: url('/images/auto/auto-hero.jpg');
   }
+
+  .auto-book-content {
+    @include core-layout;
+    @include core-vertical-padding;
+  }
 }

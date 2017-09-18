@@ -47,17 +47,19 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
   );
 
   let renderEvents;
-  if (events.length) {
-    renderEvents = events.map((eventData, index) => {
-      return (
-        <EventsListItem
-          className="events-list"
-          featured={index === 0}
-          data={eventData}
-          key={eventData.slug}
-        />
-      );
-    });
+  if (events) {
+    if (events.length) {
+      renderEvents = events.map((eventData, index) => {
+        return (
+          <EventsListItem
+            className="events-list"
+            featured={index === 0}
+            data={eventData}
+            key={eventData.slug}
+          />
+        );
+      });
+    }
   }
 
   return (
@@ -96,11 +98,11 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
           viewportDimensions={viewportDimensions}
         />
 
-      <FeaturedCaseStudy content={autoData.latestPromo} />
+        <FeaturedCaseStudy content={autoData.latestPromo} />
 
         <div className="auto-how">
           <div className="auto-how-inner">
-            {autoData.howWeDoIt.map(para => <p>{para}</p>)}
+            {autoData.howWeDoIt.map((para, i) => <p key={`para-${i}`}>{para}</p>)}
           </div>
         </div>
 

@@ -1,6 +1,4 @@
-'use strict';
-
-import React from 'react';
+import React, { Component } from 'react';
 import { get } from 'lodash';
 import he from 'he';
 import classnames from 'classnames';
@@ -12,12 +10,15 @@ import SVG from 'app/components/svg';
 import Rimage from 'app/components/rimage';
 import ImageHover from 'app/components/image-hover';
 
-const EventListItem = React.createClass({
-  getInitialState() {
-    return {
+class EventListItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       hover: false
-    };
-  },
+    }
+  }
+
   render() {
     const {data: event, featured} = this.props;
     const start_time = get(event, 'start_time');
@@ -69,17 +70,19 @@ const EventListItem = React.createClass({
         </div>
       </div>
     );
-  },
+  }
+
   onMouseEnter() {
     this.setState({
       hover: true
     });
-  },
+  }
+
   onMouseLeave() {
     this.setState({
       hover: false
     });
   }
-});
+};
 
 export default EventListItem;

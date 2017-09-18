@@ -5,12 +5,12 @@ import BlogPostListItem from 'app/components/blog-post-list-item';
 
 function RelatedPosts({ posts }) {
 
-  const renderItems = posts.map(data => {
+  const renderItems = posts.map((data, i) => {
     let item;
     if (data.type === 'post') {
-      item = <BlogPostListItem data={data}/>;
+      item = <BlogPostListItem data={data} key={`related-post-${i}`} />;
     } else {
-      item = <WorkItem data={data}/>;
+      item = <WorkItem data={data} key={`related-post-${i}`} />;
     }
     return item;
   });
