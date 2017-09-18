@@ -8,7 +8,6 @@ import getFeaturedImage from 'app/lib/get-featured-image';
 import Flux from 'app/flux';
 import SVG from 'app/components/svg';
 import Rimage from 'app/components/rimage';
-import ImageHover from 'app/components/image-hover';
 
 class EventListItem extends Component {
   constructor(props) {
@@ -65,7 +64,6 @@ class EventListItem extends Component {
               sizes={get(image, 'media_details.sizes')}
               altText={get(image, 'alt_text')}
             />
-            <ImageHover autoAnim={500} hover={this.state.hover} />
           </a>
         </div>
       </div>
