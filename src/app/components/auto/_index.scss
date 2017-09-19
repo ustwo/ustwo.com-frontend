@@ -207,6 +207,7 @@
   background-color: #ddd;
   float: left;
   margin-right: 20px;
+  overflow: hidden;
 
   @media screen and (min-width: $bp-medium) {
     margin: 0 auto;
@@ -246,10 +247,9 @@
   }
 }
 
-.auto-logos-wrapper {
+div[class*="auto-logos-wrapper"] {
   @extend .work-clients-board;
   flex-direction: column;
-  background-image: linear-gradient(212deg, $auto, $honey);
 
   .work-clients-board {
     padding-top: 0;
@@ -270,13 +270,21 @@
         }
       }
     }
+  }
+}
 
-    &:last-child {
-      padding-top: 70px;
+.auto-logos-wrapper-clients {
+  background-image: linear-gradient(212deg, $auto, $honey);
 
-      h5 {
-        color: white;
-      }
-    }
+  .work-clients-board h5 {
+    color: black;
+  }
+}
+
+.auto-logos-wrapper-partners {
+  background-image: linear-gradient(212deg, #304178, #313132);
+
+  .work-clients-board h5 {
+    color: white;
   }
 }
