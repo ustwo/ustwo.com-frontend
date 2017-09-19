@@ -149,6 +149,21 @@
   }
 }
 
+@mixin core-vertical-padding-large() {
+  padding-top: 70px;
+  padding-bottom: 70px;
+
+  @media screen and (min-width: $bp-medium) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    padding-top: 150px;
+    padding-bottom: 150px;
+  }
+}
+
 @mixin thinner-content() {
   @media screen and (min-width: $bp-medium) {
     max-width: 85%;

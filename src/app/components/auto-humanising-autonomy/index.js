@@ -14,9 +14,11 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-function handleInputChange(component) {
+function handleInputChange(component, input) {
   return (event) => {
-    component.setState({ email: event.target.value });
+    const payload = Object.assign({}, component.state.payload);
+    payload[input] = event.target.value;
+    component.setState({ payload });
   };
 }
 
@@ -26,25 +28,23 @@ function handleClick(component) {
 
     component.setState({ status: 'sending' });
 
-    setTimeout(() => {
-      if (validateEmail(component.state.email)) {
-        component.firebaseRefs.signup.push(component.state.email, (error) => {
-          if (error) {
-            component.setState({
-              status: 'error',
-              errorMessage: error,
-            });
-            return;
-          }
-          component.setState({ status: 'success' });
-        });
-      } else {
-        component.setState({
-          status: 'error',
-          errorMessage: 'Invalid email address',
-        });
-      }
-    }, 750); /* Just add a bit of time to satiate my appetite for spinners! */
+    if (validateEmail(component.state.payload.email)) {
+      component.firebaseRefs.signup.push(component.state.payload, (error) => {
+        if (error) {
+          component.setState({
+            status: 'error',
+            errorMessage: error,
+          });
+          return;
+        }
+        component.setState({ status: 'success' });
+      });
+    } else {
+      component.setState({
+        status: 'error',
+        errorMessage: 'Invalid email address',
+      });
+    }
   };
 }
 
@@ -65,7 +65,11 @@ class HumanisingAutonomy extends Component {
     super(props);
 
     this.state = {
-      email: '',
+      payload: {
+        email: '',
+        name: '',
+        company: '',
+      },
       status: 'ready',
       errorMessage: '',
     };
@@ -88,7 +92,7 @@ class HumanisingAutonomy extends Component {
 
   render() {
     const { page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress } = this.props;
-    const { email, status, errorMessage } = this.state;
+    const { payload, status, errorMessage } = this.state;
 
     let styles;
     if (documentScrollPosition > window.innerHeight + 100) {
@@ -121,18 +125,30 @@ class HumanisingAutonomy extends Component {
 
         <div className="home-main-content-wrapper">
 
-          <div className="auto-book-content">
+          <div className="auto-book-intro">
             <div className="auto-book-content-inner">
 
-              BOOK CONTENT
+              <h1>Lorem ipsum dolor sit amet consecteuteur lorem ipsum dolor sit amet</h1>
 
-              <Signup
-                onEmailInput={handleInputChange(this)}
-                onSubmit={handleClick(this)}
-                email={email}
-                status={status}
-                errorMessage={errorMessage}
-              />
+            </div>
+          </div>
+
+          <div className="auto-book-form">
+            <div className="auto-book-content-inner">
+
+              <div className="auto-book-form-wrapper">
+                <p>Get the book here! Read all about it and all the sumptious reasons to get it. And all that. etc.</p>
+
+                <Signup
+                  onNameInput={handleInputChange(this, 'name')}
+                  onCompanyInput={handleInputChange(this, 'company')}
+                  onEmailInput={handleInputChange(this, 'email')}
+                  onSubmit={handleClick(this)}
+                  payload={payload}
+                  status={status}
+                  errorMessage={errorMessage}
+                />
+              </div>
 
             </div>
           </div>

@@ -207,7 +207,7 @@ const autoData = {
   },],
   latestPromo: {
     title: 'Download our new Book',
-    excerpt: 'Coming Soon!',
+    excerpt: 'Lorem ipsum dolor sit amet',
     slug: '/auto/humanising-autonomy',
     linkText: 'To the book!',
     latest: true,

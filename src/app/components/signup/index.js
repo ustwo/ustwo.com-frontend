@@ -3,41 +3,68 @@ import Spinner from 'app/components/loading-icon';
 
 function buttonContent(status) {
   if (status === 'sending') {
-    return <Spinner />;
-  } else if (status === 'success') {
-    return 'You\'re in :)';
+    return 'Sending...';
   }
-  return 'Sign me up for beta!';
+  return 'Submit';
 }
 
-function Signup({ email, onEmailInput, onSubmit, status, errorMessage }) {
-  const classes = `signup signup--status-${status}`;
+function Signup({ payload, onNameInput, onCompanyInput, onEmailInput, onSubmit, status, errorMessage }) {
+  const classes = `signup signup-status-${status}`;
+
+  let renderButton;
+  if (status === 'success') {
+    renderButton = (
+      <div>Download the PDF</div>
+    );
+  } else {
+    renderButton = (
+      <button
+        onClick={onSubmit}
+        type="submit"
+        className="signup-button"
+      >
+        {buttonContent(status)}
+      </button>
+    );
+  }
 
   return (
     <div className={classes}>
 
-      <div className="signup__error-message">
+      <div className="signup-error-message">
         { status === 'error' ? `Oops! ${errorMessage}` : '' }
       </div>
 
-      <form className="signup__form">
+      <form className="signup-form">
 
         <input
-          value={email}
-          onChange={onEmailInput}
+          value={payload.name}
+          onChange={onNameInput}
           type="text"
-          id="input"
-          placeholder="you@email.com"
-          className="signup__email-input"
+          id="inputName"
+          placeholder="Name"
+          className="signup-input"
         />
 
-        <button
-          onClick={onSubmit}
-          type="submit"
-          className="signup__submit-button"
-        >
-          {buttonContent(status)}
-        </button>
+        <input
+          value={payload.company}
+          onChange={onCompanyInput}
+          type="text"
+          id="inputCompany"
+          placeholder="Company"
+          className="signup-input"
+        />
+
+        <input
+          value={payload.email}
+          onChange={onEmailInput}
+          type="text"
+          id="inputEmail"
+          placeholder="you@email.com"
+          className="signup-input"
+        />
+
+        {renderButton}
 
       </form>
 

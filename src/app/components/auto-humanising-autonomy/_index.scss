@@ -1,10 +1,36 @@
 .page-auto-humanising-autonomy {
   .hero-image {
-    background-image: url('/images/auto/auto-hero.jpg');
+    background-image: url('/images/work/expertise-image-mobility.jpg');
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #1A66FF;
+      opacity: 0.8;
+    }
   }
 
-  .auto-book-content {
-    @include core-layout;
-    @include core-vertical-padding;
+}
+
+.auto-book-intro {
+  @include core-layout;
+  @include core-vertical-padding-large;
+}
+
+.auto-book-form {
+  @include core-layout;
+  @include core-vertical-padding;
+
+  .signup {
+    margin-top: 30px;
   }
+}
+
+.auto-book-form-wrapper {
+  max-width: 500px;
+  margin: 0 0 0 auto;
 }
