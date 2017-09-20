@@ -115,4 +115,5 @@
 .work-verticals-button {
   @include buttonStyle(true);
   @include buttonColor();
+  margin-top: 15px;
 }
