@@ -28,6 +28,10 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
     ? <TestimonialCarousel testimonials={autoData.testimonials} fixedHeight={fixedHeight} />
     : null;
 
+  const renderTwitter = autoData.twitter.length > 0
+    ? <TestimonialCarousel testimonials={autoData.twitter} fixedHeight={fixedHeight} type="twitter-auto" />
+    : null;
+
   const relatedPosts = get(page, '_embedded.ustwo:related_post', []);
 
   const video = (
@@ -111,7 +115,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
                   <div className="profile-photo"><img src="/images/auto/lexi-cherniavsky.jpg" /></div>
                   <h3 className="profile-name">Lexi Cherniavsky</h3>
                   <p className="profile-title">Client Partner</p>
-                  <p classNAme="profile-contact"><a href="https://www.linkedin.com/in/lexi-cherniavsky-2765a525/">linkedin</a></p>
+                  <p className="profile-contact"><a href="https://www.linkedin.com/in/lexi-cherniavsky-2765a525/">linkedin</a></p>
                 </section>
               </li>
             </ul>
@@ -133,6 +137,8 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
         <div className="auto-logos-wrapper-partners">
           <WorkClientsBoard logos={autoData.partners} title="Our Partners" />
         </div>
+
+        {renderTwitter}
 
         <ScrollWrapper
           component={<ContactBlockAuto />}
