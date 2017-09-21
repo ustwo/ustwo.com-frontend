@@ -81,14 +81,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
           viewportDimensions={viewportDimensions}
         />
 
-        <FeaturedCaseStudy content={autoData.latestPromo} />
-
-        <div className="auto-how">
-          <div className="auto-how-inner">
-            {autoData.howWeDoIt.map((para, i) => <p key={`para-${i}`}>{para}</p>)}
-          </div>
-        </div>
-
         <div className="auto-team">
           <div className="auto-team-inner">
 
@@ -126,6 +118,12 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
           </div>
         </div>
 
+        <div className="auto-how">
+          <div className="auto-how-inner">
+            {autoData.howWeDoIt.map((para, i) => <p key={`para-${i}`}>{para}</p>)}
+          </div>
+        </div>
+
         {renderTestimonials}
 
         <FeaturedCaseStudy content={featuredCaseStudy} />
@@ -138,8 +136,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
         <div className="auto-logos-wrapper-partners">
           <WorkClientsBoard logos={autoData.partners} title="Our Partners" />
         </div>
-
-        {renderTwitter}
 
         <ScrollWrapper
           component={<ContactBlockAuto />}
