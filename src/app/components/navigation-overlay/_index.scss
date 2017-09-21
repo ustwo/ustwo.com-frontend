@@ -88,6 +88,10 @@
   @include page-background-colour(legal);
 }
 
+.navigation-overlay.navigation-overlay-auto {
+  @include page-background-colour(auto);
+}
+
 $menu-transition-bg-duration: .2s;
 $menu-transition-item-duration: .2s;
 $menu-transition-item-delay: .1s;

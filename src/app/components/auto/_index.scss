@@ -1,0 +1,290 @@
+.page-auto {
+  height: 100%;
+
+  .scroll-wrapper {
+    height: 100%;
+    padding: 0;
+    background-color: $offWhite;
+
+    .scroll-wrapper-inner {
+      height: 100%;
+      max-width: none;
+    }
+  }
+
+  .hero-inner-wrapper {
+    height: 100%;
+    padding: 0;
+  }
+
+  .hero-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-image: url('/images/auto/auto-hero.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: none;
+  }
+
+  .hero .subheading {
+    text-align: center;
+    text-transform: uppercase;
+    max-width: none;
+    letter-spacing: 10px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .hero-content {
+    text-align: center;
+
+    h1 {
+      max-width: none;
+      line-height: 0.9;
+
+      .word-animator {
+        &:before {
+          content: "auto"; // match width of the h1 auto title
+          display: inline-block;
+          background: url(/images/logo-light.svg) no-repeat 0 0;
+          background-position: 50%;
+          background-size: 113% auto;
+          color: transparent;
+          opacity: 0;
+          transition: opacity .32s linear;
+        }
+      }
+
+      .word {
+        display: block;
+        color: $honey;
+      }
+    }
+
+    .subheading {
+      .word-animator {
+        .word {
+          white-space: normal;
+          margin: 0 8px;
+        }
+      }
+    }
+  }
+
+  .hero-down-indicator {
+    left: calc(50% - 12px);
+  }
+
+  .work-process-item-image {
+    @media screen and (min-width: $bp-medium) {
+      height: 130px;
+    }
+    @media screen and (min-width: $bp-larger) {
+      height: 130px;
+    }
+  }
+
+  .work-process {
+    background-color: white;
+    margin-bottom: 0;
+  }
+
+  .testimonial-carousel:not(.twitterAuto) {
+    background-image: linear-gradient(212deg, #304178, #313132);
+
+    p {
+      color: $honey;
+    }
+  }
+
+  .card-list {
+    @include core-vertical-padding;
+  }
+
+  .testimonial-smallprint {
+    color: $offWhite;
+  }
+
+  .tesimonial-button-next svg {
+    fill: white;
+  }
+}
+
+.active .hero-content h1 .word-animator:before {
+  opacity: 1;
+}
+
+.work-vertical-auto-hmi {
+  background-image: url('/images/work/expertise-image-mobility-small.jpg');
+
+  @media screen and (min-width: $bp-medium) {
+    background-image: url('/images/work/expertise-image-mobility.jpg');
+  }
+}
+
+.work-vertical-auto-mobility {
+  vertical-align: top;
+  background-image: url('/images/auto/auto-mobility.png');
+}
+
+.work-vertical-auto-reimagine {
+  vertical-align: top;
+  background-image: url('/images/auto/auto-reimagine.jpg');
+}
+
+.auto-how-inner {
+  @include core-vertical-padding;
+  @include thinner-content;
+}
+
+.page-auto .events-list,
+.auto-team {
+  .header {
+    @extend .h3;
+  }
+}
+
+.page-auto .events-list {
+  .header {
+    margin-bottom: 60px;
+    text-align: center;
+  }
+}
+
+.auto-team {
+  @include core-layout;
+  background-image: linear-gradient(212deg, $auto, $honey);
+  text-align: center;
+
+  .auto-team-inner > p {
+    @include thinner-content;
+    text-align: left;
+  }
+
+  li {
+    list-style-type: none;
+
+    @media screen and (min-width: $bp-large) {
+      margin: 0 20px;
+    }
+  }
+}
+
+.auto-team-inner {
+  @include core-vertical-padding;
+}
+
+.auto-team-profiles {
+  @include core-vertical-padding;
+  display: flex;
+  flex-direction: column;
+
+  li {
+    clear: left;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    @include thinner-content;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+}
+
+// TODO: Make this a component
+
+.profile {
+  text-align: left;
+}
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  background-color: #ddd;
+  float: left;
+  margin-right: 20px;
+  overflow: hidden;
+
+  @media screen and (min-width: $bp-medium) {
+    margin: 0 auto;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.profile-name {
+  margin-bottom: 5px;
+  font-family: $PxGroteskBold;
+  text-transform: none;
+  font-size: 18px;
+}
+.profile-title {
+  list-style: none;
+  text-transform: uppercase;
+  color: $veryDarkGrey;
+}
+.profile-contact {
+  margin-top: 10px;
+}
+
+@media screen and (min-width: $bp-medium) {
+  .profile {
+    width: 184px;
+    text-align: center;
+  }
+  .profile-photo {
+    margin: 0 auto 20px auto;
+    float: none;
+  }
+  .profile-contact {
+    margin-top: 20px;
+  }
+}
+
+div[class*="auto-logos-wrapper"] {
+  @extend .work-clients-board;
+  flex-direction: column;
+
+  .work-clients-board {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    ul {
+      justify-content: flex-start;
+
+      li {
+        img {
+          opacity: 1;
+        }
+      }
+
+      @media screen and (min-width: $bp-larger) {
+        li {
+          width: 20%;
+        }
+      }
+    }
+  }
+}
+
+.auto-logos-wrapper-clients {
+  background-image: linear-gradient(212deg, $auto, $honey);
+
+  .work-clients-board h5 {
+    color: black;
+  }
+}
+
+.auto-logos-wrapper-partners {
+  background-image: linear-gradient(212deg, #304178, #313132);
+
+  .work-clients-board h5 {
+    color: white;
+  }
+}

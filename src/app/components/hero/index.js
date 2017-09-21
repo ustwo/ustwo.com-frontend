@@ -83,7 +83,7 @@ class Hero extends Component {
         <div className="hero-inner-wrapper">
           {
             heroImage &&
-            <div className="hero-image" style={videoTransitionStyles} />
+            <div className="hero-image" style={window.innerWidth >= 600 ? videoTransitionStyles : null} />
           }
           {this.props.logo && this.props.logo}
           <div className="title-entrance">

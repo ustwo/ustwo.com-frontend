@@ -1,0 +1,96 @@
+.signup {
+  position: relative;
+}
+
+.signup-input,
+.signup-button {
+  display: block;
+  position: relative;
+  z-index: 2;
+  font-size: 18px;
+  width: 100%;
+  height: 44px;
+  box-sizing: border-box;
+
+  @media screen and (min-width: $bp-medium) {
+    height: 50px;
+  }
+}
+
+.signup-input {
+  border-bottom: 2px solid $nonBlack;
+  transition: opacity .2s ease-in-out;
+  appearance: none;
+  text-align: left;
+  font-size: 16px;
+  color: $nonBlack;
+  transition: border-color .2s ease-in-out;
+  margin-bottom: 30px;
+  background: none;
+
+  &::placeholder {
+    font-size: 16px;
+    color: $nonBlack;
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
+  }
+}
+
+.signup-button {
+  background-color: $honey;
+  margin-top: 10px;
+  border: 1px transparent;
+  color: white;
+  padding: 0 16px;
+  font-size: 15px;
+  text-align: center;
+  transition: background-color .4s ease-in-out;
+
+  .spinner {
+    margin: 0 auto;
+  }
+}
+
+.signup-error-message {
+  position: absolute;
+  top: -25px;
+  font-size: 14px;
+  font-weight: bold;
+  color: $passion;
+  height: 20px;
+  text-align: left;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+/* Status */
+
+.signup-status-error {
+  .signup-error-message {
+    opacity: 1;
+  }
+  .signup__email-input,
+  .signup__email-input:focus {
+    border-color: $passion;
+  }
+}
+
+.signup--status-success {
+  .signup__email-input,
+  .signup__email-input:focus {
+    color: rgba(0,0,0,.2);
+    background-color: $offWhite;
+    pointer-events: none;
+  }
+  .signup__submit-button {
+    background-color: $pot;
+    pointer-events: none;
+  }
+}
+
+.signup__email-input:focus,
+.signup--status-sending .signup__email-input {
+  border-color: $honey;
+}

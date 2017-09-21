@@ -11,6 +11,7 @@
   button {
     @include buttonStyle(true);
     @include buttonColor();
+    margin-top: 20px;
   }
 
   .title {
@@ -28,7 +29,7 @@
   margin-bottom: 40px;
 
   img {
-    width: 90%;
+    max-height: 70vh;
     max-width: 435px;
     margin: 0 auto;
   }
@@ -63,10 +64,5 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 0;
-
-    img {
-      height: 90%;
-      max-width: 500px;
-    }
   }
 }

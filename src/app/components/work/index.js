@@ -34,7 +34,7 @@ class PageWork extends Component {
   renderWhatWeDo() {
     const { isMobile } = this.props;
 
-    const workIntroExtra = workData.intro.extra.map(item => <p className="work-intro-extra" key={item}>{item}</p>);
+    const workIntroExtra = workData.intro.extra.map((item, i) => <p className="work-intro-extra" key={`work-para-${i}`}>{item}</p>);
 
     return (
       <div className="work-whatwedo-wrapper">
@@ -78,12 +78,14 @@ class PageWork extends Component {
     const { caseStudyFilter } = this.state;
     const filterItems = ['All', 'Client Work', 'Venture', 'Business', 'Own Product'];
 
-    const renderFilterItems = filterItems.map(item => {
+    const renderFilterItems = filterItems.map((item, i) => {
       const classes = classnames({ selected: caseStudyFilter === kebabCase(item) });
       return (
         <button
           className={classes}
-          onClick={() => this.setState({ caseStudyFilter: kebabCase(item), numberOfCaseStudiesShowing: 12 })}>
+          onClick={() => this.setState({ caseStudyFilter: kebabCase(item), numberOfCaseStudiesShowing: 12 })}
+          key={`filter-item-${i}`}
+        >
           {item}
         </button>
       );
@@ -175,29 +177,33 @@ const workData = {
     name: 'discovery',
     title: 'Discovery & Strategy',
     image: '/images/illustration-discovery.svg',
-    text: 'Innovate and get ahead. Define your business goals and validate opportunities with fresh understanding of what your customers need most.'
+    text: 'Innovate and get ahead. Define your business goals and validate opportunities with fresh understanding of what your customers need most.',
+    url: '/work/discovery-strategy'
   },{
     name: 'design',
     title: 'Design & Build',
     image: '/images/illustration-design-and-build.svg',
-    text: 'Turn your vision into reality. Exceptional software development, engineering and execution sets your company apart.'
+    text: 'Turn your vision into reality. Exceptional software development, engineering and execution sets your company apart.',
+    url: '/work/design-build'
   },{
     name: 'launch',
     title: 'Launch & Scale',
     image: '/images/illustration-launch-and-scale.svg',
-    text: "Ship your product and stay responsive to customers’ changing needs. Your product is out in the world: it's time to grow, evolve and deliver ROI."
+    text: "Ship your product and stay responsive to customers’ changing needs. Your product is out in the world: it's time to grow, evolve and deliver ROI.",
+    url: '/work/launch-scale'
   },{
     name: 'working',
     title: 'Ways of Working',
     image: '/images/illustration-ways-of-working.svg',
-    text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.'
+    text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.',
+    url: '/work/ways-of-working'
   }],
   verticals: [{
     type: 'Expertise',
     shortTitle: 'auto',
     title: 'Auto',
     text: 'The ustwo Auto team explore user experience in the automotive space with client engagements and our own research and experimental projects, building services and products around the connected car.',
-    slug: '/work/ustwoauto'
+    slug: '/auto'
   },{
     type: 'Expertise',
     shortTitle: 'health',
@@ -214,5 +220,6 @@ const featuredCaseStudy = {
   colours: ['#87e283', '#92e9b2'],
   image: '/images/work/featured-gopark.png',
   imageAlt: 'iPhone showing Ford GoPark App',
-  slug: '/work/ford-gopark'
+  slug: '/work/ford-gopark',
+  linkText: 'View Case Study'
 }

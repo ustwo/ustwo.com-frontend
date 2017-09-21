@@ -129,8 +129,7 @@
 }
 
 .work-intro {
-  padding-top: 40px;
-  padding-bottom: 20px;
+  @include core-vertical-padding;
 
   p {
     font-size: 18px;
@@ -138,24 +137,17 @@
   }
 
   @media screen and (min-width: $bp-medium) {
-    padding-top: 90px;
-    padding-bottom: 50px;
-
     p {
       width: 80%;
       font-size: 22px;
     }
   }
   @media screen and (min-width: $bp-large) {
-    padding-top: 90px;
-
     p {
       width: 70%;
     }
   }
   @media screen and (min-width: $bp-larger) {
-    padding-top: 120px;
-
     p {
       font-size: 24px;
     }

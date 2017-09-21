@@ -39,6 +39,8 @@ const pageMap = {
   'work/design-build': require('app/components/work-design-build'),
   'work/launch-scale': require('app/components/work-launch-scale'),
   'work/ways-of-working': require('app/components/work-ways-of-working'),
+  'auto': require('app/components/auto'),
+  'auto/humanising-autonomy': require('app/components/auto-humanising-autonomy'),
   'blog': require('app/components/blog'),
   'blog/post': require('app/components/post'),
   'legal': require('app/components/legal'),
@@ -131,6 +133,7 @@ const App = React.createClass({
             <NavigationOverlay
               pages={navMain}
               section={currentPage.split('/')[0]}
+              page={currentPage.split('/')[1]}
             />
           );
           break;

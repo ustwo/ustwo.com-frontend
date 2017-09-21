@@ -12,3 +12,14 @@
 .page-content-wrapper {
   min-height: 1000px;
 }
+
+.page-content {
+  .page-post,
+  .page-event {
+    margin-top: 80px;
+
+    @media screen and (min-width: $bp-medium) {
+      margin-top: 0;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import goToCapability from 'app/lib/go-to-capability';
+import Flux from 'app/flux';
 
 function WorkCapabilities({ selected }) {
   const items = workCapabilitiesData.map(item => {
@@ -10,7 +10,7 @@ function WorkCapabilities({ selected }) {
 
     return (
       <li className={classes} key={`capability-${item.name}`}>
-        <button onClick={() => goToCapability(item.name)}>
+        <button onClick={() => Flux.navigate(item.url)}>
           <div className="work-capabilities-item-title">{item.title}</div>
         </button>
       </li>
@@ -36,11 +36,14 @@ export default WorkCapabilities;
 
 const workCapabilitiesData = [{
   name: 'discovery',
-  title: 'Discovery & Strategy'
+  title: 'Discovery & Strategy',
+  url: '/work/discovery-strategy'
 }, {
   name: 'design',
-  title: 'Design & Build'
+  title: 'Design & Build',
+  url: '/work/design-build'
 }, {
   name: 'launch',
-  title: 'Launch & Scale'
+  title: 'Launch & Scale',
+  url: '/work/launch-scale'
 }];

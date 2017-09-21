@@ -146,12 +146,12 @@ const PageBlog = React.createClass({
         <section className="card-list blog-post-list">
           <div className="card-list-inner page-content-wrapper">
             {this.renderPosts()}
-            <LoadMoreButton
-              loading={isLoadingMorePosts}
-              onClick={this.onClickLoadMore}
-              disabled={postsPagination >= postsPaginationTotal}
-            />
           </div>
+          <LoadMoreButton
+            loading={isLoadingMorePosts}
+            onClick={this.onClickLoadMore}
+            disabled={postsPagination >= postsPaginationTotal}
+          />
         </section>
         <ScrollWrapper
           component={<ContactBlock />}

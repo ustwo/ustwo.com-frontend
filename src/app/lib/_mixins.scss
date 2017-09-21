@@ -91,6 +91,9 @@
   @if $page == 'notfound' {
     background-image: linear-gradient(30deg, $rain, $softPassion);
   }
+  @if $page == 'auto' {
+    background-image: linear-gradient(30deg, $honey, $auto);
+  }
   @if $page == 'legal' {
     background-image: linear-gradient(30deg, $rain, $softPassion);
   }
@@ -128,6 +131,46 @@
     width: 100%;
     max-width: $grid-max-width;
     margin: 0 auto;
+  }
+}
+
+@mixin core-vertical-padding() {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: $bp-medium) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}
+
+@mixin core-vertical-padding-large() {
+  padding-top: 70px;
+  padding-bottom: 70px;
+
+  @media screen and (min-width: $bp-medium) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    padding-top: 150px;
+    padding-bottom: 150px;
+  }
+}
+
+@mixin thinner-content() {
+  @media screen and (min-width: $bp-medium) {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: $bp-large) {
+    max-width: 70%;
   }
 }
 

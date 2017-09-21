@@ -54,6 +54,24 @@ const routes = {
       slug: 'ways-of-working'
     }]
   },
+  auto: {
+    id: 'auto',
+    patterns: ['/auto'],
+    data: () => [{
+      url: 'ustwo/v1/pages/auto',
+      type: 'page',
+      slug: 'auto'
+    }]
+  },
+  humanisingAutonomy: {
+    id: 'auto/humanising-autonomy',
+    patterns: ['/auto/humanising-autonomy'],
+    data: () => [{
+      url: 'ustwo/v1/pages/humanising-autonomy',
+      type: 'page',
+      slug: 'humanising-autonomy'
+    }]
+  },
   caseStudy: {
     id: 'work/case-study',
     patterns: ['/work/:cid'],

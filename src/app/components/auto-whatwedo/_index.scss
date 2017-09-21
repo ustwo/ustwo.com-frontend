@@ -1,6 +1,5 @@
-.ustwo-auto-whatwedo {
+.auto-whatwedo {
 
-  .work-whatwedo,
   .work-process-item {
     opacity: 0;
     transform: translateY(40px);
@@ -8,12 +7,6 @@
   }
 
   &.showQuarter {
-    .work-whatwedo {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  &.showHalf {
     .work-process-item {
       opacity: 1;
       transform: translateY(0);
@@ -31,8 +24,5 @@
         transition-delay: .3s
       }
     }
-  }
-  &.showThreeQuarters {
-
   }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="135px" height="38px" viewBox="0 0 135 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="41 37.9999825 41 0 1.73728813e-05 0 1.73728814e-05 37.9999825 41 37.9999825"></polygon>
+    </defs>
+    <g id="02c-Expertise-Page-Template" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Community-Page-Template-v1" transform="translate(-933.000000, -8730.000000)">
+            <g id="Page-1" transform="translate(933.000000, 8730.000000)">
+                <path d="M0,19 C0,29.4934286 8.49856064,38 18.9821074,38 L44,38 L44,0 L18.9821074,0 C8.49856064,0 0,8.50657143 0,19" id="Fill-1" fill="#FFFFFF"></path>
+                <path d="M72.0178926,0 L47,0 L47,38 L72.0178926,38 C82.5014394,38 91,29.4934286 91,19 C91,8.50657143 82.5014394,0 72.0178926,0" id="Fill-3" fill="#FFFFFF"></path>
+                <g id="Group-7" transform="translate(94.000000, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-6"></g>
+                    <path d="M29.1134919,21.9082083 C35.1047038,21.8954249 39.9576445,16.9962267 39.9576445,10.9543143 C39.9576445,4.9044341 35.0920216,-1.75115207e-05 29.0900386,-1.75115207e-05 L14.7669665,-1.75115207e-05 L1.73728814e-05,-1.75115207e-05 L1.73728814e-05,37.9999825 L41.0000174,37.9999825 L29.1134919,21.9082083 Z" id="Fill-5" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

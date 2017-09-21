@@ -2,30 +2,45 @@ import React from 'react';
 import Flux from 'app/flux';
 
 function FeaturedCaseStudy({ content }) {
-  const { colours, image, imageAlt, title, excerpt, slug, linkText, latest } = content;
+  const { colours, image, imageAlt, title, excerpt, slug, linkText, latest, imageBackground } = content;
 
-  let styles;
-  if (colours.length > 1) {
+  let styles, inlineImage;
+  if (colours) {
+    if (colours.length > 1) {
+      styles = {
+        backgroundImage: `linear-gradient(212deg, ${colours[0]}, ${colours[1]})`
+      }
+    } else {
+      styles = {
+        backgroundColor: colours
+      }
+    }
+  }
+  if (imageBackground) {
     styles = {
-      backgroundImage: `linear-gradient(212deg, ${colours[0]}, ${colours[1]})`
+      background: `url(${image}) no-repeat left 50%`,
+      backgroundSize: `cover`
     }
   } else {
-    styles = {
-      backgroundColor: colours[0]
-    }
+    inlineImage = (<img src={image} alt={imageAlt} />);
+  }
+
+  let renderLink;
+  if (linkText && slug) {
+    renderLink = <button onClick={Flux.override(slug)}>{linkText}</button>;
   }
 
   return (
     <div className="featured-case-study" style={styles}>
       <div className="featured-case-study-inner">
         <div className="featured-case-study-image">
-          <img src={image} alt={imageAlt} />
+          {inlineImage}
         </div>
         <div className="featured-case-study-content">
           <div className="section-title">{latest ? 'Latest' : 'Featured Work'}</div>
           <h2 className="title">{title}</h2>
           <p>{excerpt}</p>
-          <button onClick={Flux.override(slug)}>{linkText ? linkText : 'View Case Study'}</button>
+          {renderLink}
         </div>
       </div>
     </div>
