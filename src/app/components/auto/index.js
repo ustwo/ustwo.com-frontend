@@ -32,6 +32,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
     ? <TestimonialCarousel testimonials={autoData.twitter} fixedHeight={fixedHeight} type="twitter-auto" />
     : null;
 
+
   const relatedPosts = get(page, '_embedded.ustwo:related_post', []);
 
   const video = (
@@ -129,7 +130,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
         <FeaturedCaseStudy content={featuredCaseStudy} />
 
-        <RelatedPosts posts={relatedPosts} />
+        <RelatedPosts page={page} posts={relatedPosts} />
 
         <div className="auto-logos-wrapper-clients">
           <WorkClientsBoard logos={autoData.clients} title="Our Clients" />
