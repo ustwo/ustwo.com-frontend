@@ -45,16 +45,15 @@ $nav-height-large: 31px;
 
 .navigation {
   position: fixed;
+  pointer-events: auto;
   top: 0;
+  padding: 20px 0;
   right: 0;
   left: 0;
   z-index: 4000;
-  pointer-events: auto;
-  width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
 
   @media screen and (min-width: $bp-medium) {
     left: auto;
@@ -67,8 +66,6 @@ $nav-height-large: 31px;
   .navigation-subpage-nav {
     position: relative;
     z-index: 9999;
-    left: 0;
-    position: absolute;
     transition-delay: .32s;
 
     button {
@@ -86,10 +83,6 @@ $nav-height-large: 31px;
 
   @media screen and (min-width: $bp-medium) {
     padding: 29px 0;
-
-    &:before {
-      content: none;
-    }
   }
 
   @media screen and (min-width: $bp-large) {
@@ -263,7 +256,6 @@ $nav-height-large: 31px;
     }
   }
 
-  &.overHero,
   &.invert,
   &.discovery-strategy,
   &.design-build,
@@ -291,7 +283,7 @@ $nav-height-large: 31px;
 
   &.menuOpen,
   &.notfound,
-  &.overHero {
+  &.overHero:not(.post, .case-study, .event) {
     &:before {
       background: transparent !important;
     }
@@ -306,20 +298,15 @@ $nav-height-large: 31px;
         background-color: white;
       }
     }
+    .navigation-subpage-nav button {
+      color: white;
+      background-image: url('/images/icon-left-light.svg');
+    }
   }
 
   @media screen and (min-width: $bp-medium) {
     &:before {
       background: transparent !important;
-    }
-  }
-  &.discovery-strategy,
-  &.design-build,
-  &.launch-scale,
-  &.ways-of-wroking {
-    &:before {
-      background-color: $c-solid;
-      opacity: .95;
     }
   }
 }

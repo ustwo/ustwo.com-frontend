@@ -34,7 +34,7 @@ class PageWork extends Component {
   renderWhatWeDo() {
     const { isMobile } = this.props;
 
-    const workIntroExtra = workData.intro.extra.map(item => <p className="work-intro-extra" key={item}>{item}</p>);
+    const workIntroExtra = workData.intro.extra.map((item, i) => <p className="work-intro-extra" key={`work-para-${i}`}>{item}</p>);
 
     return (
       <div className="work-whatwedo-wrapper">
@@ -78,12 +78,14 @@ class PageWork extends Component {
     const { caseStudyFilter } = this.state;
     const filterItems = ['All', 'Client Work', 'Venture', 'Business', 'Own Product'];
 
-    const renderFilterItems = filterItems.map(item => {
+    const renderFilterItems = filterItems.map((item, i) => {
       const classes = classnames({ selected: caseStudyFilter === kebabCase(item) });
       return (
         <button
           className={classes}
-          onClick={() => this.setState({ caseStudyFilter: kebabCase(item), numberOfCaseStudiesShowing: 12 })}>
+          onClick={() => this.setState({ caseStudyFilter: kebabCase(item), numberOfCaseStudiesShowing: 12 })}
+          key={`filter-item-${i}`}
+        >
           {item}
         </button>
       );

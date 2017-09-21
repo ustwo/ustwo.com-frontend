@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { isEmpty } from 'lodash';
 import classnames from 'classnames';
 import Scroll from 'react-scroll';
 import Flux from 'app/flux';
@@ -18,8 +19,7 @@ class Navigation extends Component {
       active: false,
       navHeight: 0,
       paused: true,
-      capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working'],
-      heroPages: ['home', 'work', 'blog', 'events', 'join-us', 'ustwo-auto']
+      capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working']
     }
   }
 
@@ -130,13 +130,13 @@ class Navigation extends Component {
 
   render() {
     const { section, page, customClass, documentScrollPosition, venturesPosition, testimonialsPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
-    const { active, paused, navHeight, capabilityPages, heroPages } = this.state;
+    const { active, paused, navHeight, capabilityPages } = this.state;
 
     const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
-    const testimonialsActive = testimonialsPosition && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
+    const testimonialsActive = !isEmpty(testimonialsPosition) && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
     const footerActive = documentScrollPosition > 4000 - (693 + 414);
     const homePage = section === 'home';
-    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || caseStudy || section === 'auto';
+    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto';
     const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'auto' || page === 'humanising-autonomy';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
