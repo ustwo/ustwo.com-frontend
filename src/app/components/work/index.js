@@ -203,7 +203,7 @@ const workData = {
     shortTitle: 'auto',
     title: 'Auto',
     text: 'The ustwo Auto team explore user experience in the automotive space with client engagements and our own research and experimental projects, building services and products around the connected car.',
-    slug: '/auto'
+    slug: '/work/ustwoauto'
   },{
     type: 'Expertise',
     shortTitle: 'health',
