@@ -27,12 +27,16 @@
 .featured-case-study-image {
   text-align: center;
   margin-bottom: 40px;
+  overflow: hidden;
 
   img {
-    width: 100%;
-    max-height: 70vh;
     max-width: 435px;
+    max-height: 320px;
     margin: 0 auto;
+
+    @media screen and (min-width: $bp-medium) {
+      max-height: 65vh;
+    }
   }
 }
 
