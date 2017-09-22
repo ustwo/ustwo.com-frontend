@@ -17,7 +17,7 @@
 }
 
 .work-process-wrapper {
-  @include core-vertical-padding;
+  @include core-vertical-padding($withChildren: true);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
