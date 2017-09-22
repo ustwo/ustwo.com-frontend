@@ -90,25 +90,31 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
               <li>
                 <section className="profile">
                   <div className="profile-photo"><img src="/images/auto/tim-smith.jpg" /></div>
-                  <h3 className="profile-name">Tim Smith</h3>
-                  <p className="profile-title">Design Principal</p>
-                  <p className="profile-contact"><a href="https://twitter.com/mypoorbrain">@mypoorbrain</a></p>
+                  <div className="profile-details">
+                    <h3 className="profile-name">Tim Smith</h3>
+                    <p className="profile-title">Design Principal</p>
+                    <p className="profile-contact"><a href="https://twitter.com/mypoorbrain">@mypoorbrain</a></p>
+                  </div>
                 </section>
               </li>
               <li>
                 <section className="profile">
                   <div className="profile-photo"><img src="/images/auto/harsha-vardhan.jpg" /></div>
-                  <h3 className="profile-name">Harsha Vardhan</h3>
-                  <p className="profile-title">Interaction Lead</p>
-                  <p className="profile-contact"><a href="https://twitter.com/wabisabifiction">@wabisabifiction</a></p>
+                  <div className="profile-details">
+                    <h3 className="profile-name">Harsha Vardhan</h3>
+                    <p className="profile-title">Interaction Lead</p>
+                    <p className="profile-contact"><a href="https://twitter.com/wabisabifiction">@wabisabifiction</a></p>
+                  </div>
                 </section>
               </li>
               <li>
                 <section className="profile">
                   <div className="profile-photo"><img src="/images/auto/lexi-cherniavsky.jpg" /></div>
-                  <h3 className="profile-name">Lexi Cherniavsky</h3>
-                  <p className="profile-title">Client Partner</p>
-                  <p className="profile-contact"><a href="https://www.linkedin.com/in/lexi-cherniavsky-2765a525/">linkedin</a></p>
+                  <div className="profile-details">
+                    <h3 className="profile-name">Lexi Cherniavsky</h3>
+                    <p className="profile-title">Client Partner</p>
+                    <p className="profile-contact"><a href="https://www.linkedin.com/in/lexi-cherniavsky-2765a525/">linkedin</a></p>
+                  </div>
                 </section>
               </li>
             </ul>
@@ -196,7 +202,7 @@ const autoData = {
   ],
   teamProfile: "We're a community of designers, inventors and engineers. We don't make cars but we have a small collection. We conduct our own research experiments because we’re passionate about what we do and want to solve the problems we see around us. We’re embedded within ustwo with over 50 of us across our studios globally with specific sector expertise.",
   testimonials: [{
-    testimonial: "There was a recognition that we were attempting to do something that had never been down before. There was no pre-existing capability so that prompted us to work with ustwo.",
+    testimonial: "There was a recognition that we were attempting to do something that had never been done before. There was no pre-existing capability so that prompted us to work with ustwo.",
     source: {
       name: 'Doug Nicoll',
       title: 'Ford Smart Mobility, London',
@@ -261,7 +267,7 @@ const autoData = {
     }
   }],
   clients: ['Ford', 'Qantas', 'Emirates', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan', 'Toyota', 'Alphabet'],
-  partners: ['UCL', 'University of Washington', 'Wayfindr', 'Car Design Research', 'Stanford University', 'London School of Economics', 'Royal Society for Blind Children'],
+  partners: ['UCL', 'University of Washington', 'Wayfindr', 'Car Design Research', 'Stanford University', 'Royal Society for Blind Children'],
   projects: [{
     type: 'Research Project',
     shortTitle: 'auto-hmi',
