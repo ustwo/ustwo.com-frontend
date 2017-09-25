@@ -171,7 +171,8 @@
         padding-bottom: 40px;
       }
 
-      @media screen and (min-width: $bp-large) {
+      @media screen and (min-width: $bp-larger) {
+        width: 23%;
         padding-bottom: 50px;
       }
     }

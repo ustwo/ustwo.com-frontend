@@ -79,6 +79,7 @@
 
   .blog-post-list {
     opacity: 1;
+    flex-direction: column;
     transform: translateY(0px);
     transition: opacity .2s linear, transform .32s ease-in-out;
   }

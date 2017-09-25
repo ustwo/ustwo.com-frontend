@@ -15,6 +15,7 @@
   .hero-inner-wrapper {
     height: 100%;
     padding: 0;
+    background: white;
   }
 
   .hero-image {
@@ -81,10 +82,10 @@
 
   .work-process-item-image {
     @media screen and (min-width: $bp-medium) {
-      height: 130px;
+      height: 85px;
     }
     @media screen and (min-width: $bp-larger) {
-      height: 130px;
+      height: 85px;
     }
   }
 
