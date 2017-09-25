@@ -15,6 +15,7 @@
   },
   "aliasify": "./src/app/aliases.json",
   "dependencies": {
+    "axios": "0.16.2",
     "aliasify": "1.7.2",
     "autoprefixer": "6.0.3",
     "babel": "5.8.21",
