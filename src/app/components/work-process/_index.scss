@@ -28,14 +28,6 @@
 
 .work-process-item {
 
-  @media screen and (min-width: $bp-medium) {
-    width: 48%;
-  }
-
-  @media screen and (min-width: $bp-larger) {
-    width: 23%;
-  }
-
   h2 {
     @extend .h3;
     font-size: 32px;
