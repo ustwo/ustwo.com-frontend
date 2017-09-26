@@ -30,10 +30,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
     ? <TestimonialCarousel testimonials={autoData.testimonials} fixedHeight={fixedHeight} />
     : null;
 
-  const renderTwitter = autoData.twitter.length > 0
-    ? <TwitterCarousel testimonials={autoData.twitter} fixedHeight={fixedHeight} type="twitter-auto" />
-    : null;
-
+  const renderTwitter = <TwitterCarousel fixedHeight={fixedHeight} type="twitter-auto" />
 
   const relatedPosts = get(page, '_embedded.ustwo:related_post', []);
 

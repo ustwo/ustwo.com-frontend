@@ -65,7 +65,7 @@ class TwitterCarousel extends Component {
         const {type} = this.props;
 
         function ustwoauto_tweets_add_links(text) {
-            var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+            var urlRegex = /(\b(https):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
             return text.replace(urlRegex, function (url) {
                 return '<a href="' + url + '" target="_blank">' + url + '</a>';
             });
