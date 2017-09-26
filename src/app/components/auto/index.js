@@ -1,4 +1,5 @@
 import React from 'react';
+import Meta from "react-helmet";
 import window from 'app/adaptors/server/window';
 import { get } from 'lodash';
 
@@ -47,6 +48,13 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
   return (
     <div className="page-auto">
+
+      <Meta
+        meta={[{
+          name: 'robots',
+          content: 'noindex'
+        }]}
+      />
 
       <div className="home-pinned-header-wrapper">
         <div className="home-pinned-header-inner" style={styles}>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Meta from "react-helmet";
 import firebase from 'firebase';
 import ReactFire from 'reactfire';
 import reactMixin from 'react-mixin';
@@ -101,6 +102,14 @@ class HumanisingAutonomy extends Component {
 
     return (
       <div className="page-auto page-auto-humanising-autonomy">
+
+        <Meta
+          meta={[{
+            name: 'robots',
+            content: 'noindex'
+          }]}
+        />
+
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner" style={styles}>
             <ScrollWrapper
