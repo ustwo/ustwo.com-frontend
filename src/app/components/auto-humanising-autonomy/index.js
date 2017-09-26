@@ -9,6 +9,7 @@ import Hero from 'app/components/hero';
 import Signup from 'app/components/signup';
 import ContactBlockAuto from 'app/components/contact-block-auto';
 import Footer from 'app/components/footer';
+import AutoWhatwedo from 'app/components/auto-whatwedo';
 
 function validateEmail(email) {
   const re = /\S+@\S+\.\S+/;
@@ -116,7 +117,6 @@ class HumanisingAutonomy extends Component {
               component={
                 <Hero
                   title={autoHumanisingAutonomyData.title}
-                  subheading={autoHumanisingAutonomyData.subtitle}
                   transitionImage={true}
                   showDownIndicator={true}
                   eventLabel=''
@@ -134,10 +134,12 @@ class HumanisingAutonomy extends Component {
 
         <div className="home-main-content-wrapper">
 
-          <div className="auto-book-intro">
-            <div className="auto-book-content-inner">
+          <div className="work-whatwedo-wrapper">
+            <div className="work-whatwedo">
 
-              <h2>The auto industry’s approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved. In our latest book, we explore creating a human approach to autonomy that actually works.</h2>
+              <div className="work-intro">
+                <p>{autoHumanisingAutonomyData.intro}</p>
+              </div>
 
             </div>
           </div>
@@ -146,8 +148,7 @@ class HumanisingAutonomy extends Component {
             <div className="auto-book-content-inner">
 
               <div className="auto-book-form-wrapper">
-                <p>Get the book here! Read all about it and all the sumptious reasons to get it. And all that. etc.</p>
-
+                <p>Humanising Autonomy: Where Are We Going? is out now – get your free copy now:</p>
                 <Signup
                   onNameInput={handleInputChange(this, 'name')}
                   onCompanyInput={handleInputChange(this, 'company')}
@@ -159,6 +160,20 @@ class HumanisingAutonomy extends Component {
                 />
               </div>
 
+            </div>
+          </div>
+
+          <div className="work-whatwedo-wrapper">
+            <div className="work-whatwedo">
+
+              <div className="work-intro">
+
+                <p>With AVs, there’s a tantalising opportunity to start-a-new. We can finally scrap legacy inefficiencies, skeuomorphic over-dependencies and redundant features.</p>
+
+                <p>Looking beyond these opportunities to optimize, ustwo’s AV concept is the built on the foundational idea that there’s more to people’s mobility needs than simply the vehicle and its technology. We hope this illustration serves as a provocation, that contributes constructive conversation about the future.</p>
+
+              </div>
+              
             </div>
           </div>
 
@@ -183,5 +198,6 @@ export default HumanisingAutonomy;
 
 const autoHumanisingAutonomyData = {
   title: 'Auto',
-  subtitle: 'Humanising Autonomy'
+  subtitle: 'Humanising Autonomy',
+  intro: "The auto industry's approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved. In our latest book, we explore creating a human approach to autonomy that actually works."
 }

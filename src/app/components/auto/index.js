@@ -83,7 +83,12 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
         <ScrollWrapper
           component={
-            <AutoWhatwedo data={autoData} isMobile={isMobile} />
+            <AutoWhatwedo
+              intro={autoData.intro}
+              introFurther={autoData.introFurther}
+              workProcess={autoData.workProcess}
+              isMobile={isMobile}
+            />
           }
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
@@ -173,7 +178,7 @@ const autoData = {
   subtitle: 'For the journey',
   intro: "Our mission is to make journeys more magically connected. We help brands drive change by combining insight and creativity with breakthrough technology. We create experiences that enhance people's lives from the dashboard to the city to the sky.",
   introFurther: 'We do this with clients around the world and collaborate with research partners on our own experimental projects.',
-  items: [{
+  workProcess: [{
     name: 'humanising-autonomy',
     title: 'Humanising Autonomy',
     image: '/images/auto/humanising-autonomy.svg',
