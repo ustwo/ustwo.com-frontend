@@ -34,6 +34,15 @@
 
   .single-column {
     background-color: #fff;
+    padding-bottom: $vertical-spacing;
+
+    @media screen and (min-width: $bp-medium) {
+      padding-bottom: $vertical-spacing-medium;
+    }
+
+    @media screen and (min-width: $bp-large) {
+      padding-bottom: $vertical-spacing-large;
+    }
 
     hr {
       @include page-background-colour(join);
