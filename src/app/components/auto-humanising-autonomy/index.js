@@ -137,7 +137,7 @@ class HumanisingAutonomy extends Component {
           <div className="auto-book-intro">
             <div className="auto-book-content-inner">
 
-              <h1>Lorem ipsum dolor sit amet consecteuteur lorem ipsum dolor sit amet</h1>
+              <h2>The auto industry’s approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved. In our latest book, we explore creating a human approach to autonomy that actually works.</h2>
 
             </div>
           </div>
