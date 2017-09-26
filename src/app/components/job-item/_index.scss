@@ -29,17 +29,26 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    height: $height-small;
-    padding: 0 15px;
-    line-height: $height-small;
+    padding: 10px 15px;
     font-size: 16px;
     color: $nonBlack;
     cursor: pointer;
+
+    @media screen and (min-width: $bp-small) {
+      height: $height-small;
+      padding: 0 15px;
+      line-height: $height-small;
+    }
   }
 
   .title-text {
     flex-basis: auto;
     flex: 5;
+    margin-right: 15px;
+
+    @media screen and (min-width: $bp-small) {
+      margin-right: 0;
+    }
   }
 
   .location {
@@ -101,6 +110,8 @@
   .link {
     border-bottom: 2px solid #777;
     color: $nonBlack;
+    display: inline-block;
+    font-size: 16px;
     transition: color $hover-duration-quick ease-in-out;
 
     &:hover {
