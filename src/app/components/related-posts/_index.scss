@@ -11,5 +11,9 @@
       display: block;
       @extend .section-title;
     }
+
+    .tail {
+      margin-top: 15px;
+    }
   }
 }
