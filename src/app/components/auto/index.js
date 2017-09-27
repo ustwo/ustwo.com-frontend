@@ -147,14 +147,14 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
         <RelatedPosts page={page} posts={relatedPosts} />
 
-        {renderTwitter}
-
         <div className="auto-logos-wrapper-clients">
           <WorkClientsBoard logos={autoData.clients} title="Our Clients" />
         </div>
         <div className="auto-logos-wrapper-partners">
           <WorkClientsBoard logos={autoData.partners} title="Our Partners" />
         </div>
+
+        {renderTwitter}
 
         <ScrollWrapper
           component={<ContactBlockAuto />}
