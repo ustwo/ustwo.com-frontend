@@ -11,6 +11,7 @@ import Footer from 'app/components/footer';
 import AutoWhatwedo from 'app/components/auto-whatwedo';
 import FeaturedCaseStudy from 'app/components/featured-case-study';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
+import TwitterCarousel from 'app/components/twitter-carousel';
 import WorkCaseStudies from 'app/components/work-case-studies';
 import WorkClientsBoard from 'app/components/work-clients-board';
 import WorkVerticals from 'app/components/work-verticals';
@@ -29,10 +30,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
     ? <TestimonialCarousel testimonials={autoData.testimonials} fixedHeight={fixedHeight} />
     : null;
 
-  const renderTwitter = autoData.twitter.length > 0
-    ? <TestimonialCarousel testimonials={autoData.twitter} fixedHeight={fixedHeight} type="twitter-auto" />
-    : null;
-
+  const renderTwitter = <TwitterCarousel fixedHeight={fixedHeight} type="twitter-auto" />
 
   const relatedPosts = get(page, '_embedded.ustwo:related_post', []);
 
@@ -155,6 +153,8 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
         <div className="auto-logos-wrapper-partners">
           <WorkClientsBoard logos={autoData.partners} title="Our Partners" />
         </div>
+
+        {renderTwitter}
 
         <ScrollWrapper
           component={<ContactBlockAuto />}

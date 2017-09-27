@@ -44,7 +44,8 @@
   width: 90%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: opacity .2s linear;
+  visibility: hidden;
+  transition: visibility 0s linear .2s, opacity .2s linear;
 
   p {
     font-size: 20px;
@@ -53,7 +54,8 @@
 
   &.active {
     opacity: 1;
-    transition-delay: .2s;
+    visibility: visible;
+    transition-delay: 0s, .2s;
   }
 }
 
