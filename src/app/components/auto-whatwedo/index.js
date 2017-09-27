@@ -8,7 +8,7 @@ export default ({ intro, introFurther, isMobile, scrollProgress, workProcess }) 
 
   return (
     <div className={classes}>
-      {workProcess ? <WorkProcess data={wordProcess} isMobile={isMobile}  /> : null}
+      {workProcess ? <WorkProcess data={workProcess} isMobile={isMobile}  /> : null}
       <div className="work-whatwedo">
         <div className="work-intro">
           {intro ? (
