@@ -110,7 +110,7 @@ class TwitterCarousel extends Component {
 
     componentDidMount() {
 
-        axios.get(`https://wp-staging.ustwo.com/wordpress/wp-admin/admin-ajax.php?action=ustwo_auto_tweets`, {crossdomain: true})
+        axios.get(`https://wp.ustwo.com/wordpress/wp-admin/admin-ajax.php?action=ustwo_auto_tweets`, {crossdomain: true})
             .then(res => {
                 const tweets = res.data.map(obj => obj);
                 this.setState({tweets});
