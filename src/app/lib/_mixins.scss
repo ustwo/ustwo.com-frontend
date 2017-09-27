@@ -197,7 +197,8 @@
 @mixin thinner-content() {
   @media screen and (min-width: $bp-medium) {
     max-width: 85%;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
   @media screen and (min-width: $bp-large) {
     max-width: 70%;

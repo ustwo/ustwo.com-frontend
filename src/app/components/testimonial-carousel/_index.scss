@@ -30,6 +30,12 @@
     .testimonial-smallprint {
       color: $nonBlack;
     }
+
+    .testimonial-company {
+      background-image: none;
+      color: black;
+      background-clip: initial;
+    }
   }
 }
 

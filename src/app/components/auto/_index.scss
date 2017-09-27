@@ -138,12 +138,20 @@
 }
 
 .auto-how {
-  @include core-layout();
-  // @include thinner-content;
-}
+  @include core-layout;
 
-.auto-how-inner {
-  @include core-vertical-padding;
+  .auto-how-inner {
+    @include core-vertical-padding;
+
+    > p {
+      @include thinner-content;
+      margin-bottom: 20px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
 .page-auto .events-list,
@@ -165,22 +173,22 @@
   background-image: linear-gradient(212deg, $auto, $honey);
   text-align: center;
 
-  .auto-team-inner > p {
-    @include thinner-content;
-    text-align: left;
-  }
+  .auto-team-inner {
+    @include core-vertical-padding;
 
-  li {
-    list-style-type: none;
+    > p {
+      @include thinner-content;
+      text-align: left;
+    }
 
-    @media screen and (min-width: $bp-large) {
-      margin: 0 20px;
+    li {
+      list-style-type: none;
+
+      @media screen and (min-width: $bp-large) {
+        margin: 0 20px;
+      }
     }
   }
-}
-
-.auto-team-inner {
-  @include core-vertical-padding;
 }
 
 .auto-team-profiles {
