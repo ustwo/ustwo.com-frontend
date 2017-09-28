@@ -102,7 +102,7 @@ class HumanisingAutonomy extends Component {
     }
 
     return (
-      <div className="page-auto page-auto-humanising-autonomy">
+      <div className="page-auto page-auto-humanising-autonomy page-case-study">
 
         <Meta
           meta={[{
@@ -111,38 +111,15 @@ class HumanisingAutonomy extends Component {
           }]}
         />
 
-        <div className="home-pinned-header-wrapper">
-          <div className="home-pinned-header-inner" style={styles}>
-            <ScrollWrapper
-              component={
-                <Hero
-                  title={autoHumanisingAutonomyData.title}
-                  transitionImage={true}
-                  showDownIndicator={true}
-                  eventLabel=''
-                  fixedHeight={fixedHeight}
-                  isMobile={isMobile}
-                  scrollProgress={scrollProgress}
-                  heroImage={true}
-                />
-              }
-              documentScrollPosition={documentScrollPosition}
-              viewportDimensions={viewportDimensions}
-            />
-          </div>
-        </div>
+        <div className="page-content-wrapper">
 
-        <div className="home-main-content-wrapper">
-
-          <div className="work-whatwedo-wrapper">
-            <div className="work-whatwedo">
-
-              <div className="work-intro">
-                <p>{autoHumanisingAutonomyData.intro}</p>
-              </div>
-
+          <section class="single-column intro in-zebra-list">
+            <div class="wrapper">
+              <div class="section-title">Client Work</div>
+              <h1 class="title">Sky Kids</h1><hr />
+              <div class="content">Creating a new product, brand and audience – loved by kids and trusted by parents</div>
             </div>
-          </div>
+          </section>
 
           <div className="auto-book-form">
             <div className="auto-book-content-inner">
@@ -163,19 +140,7 @@ class HumanisingAutonomy extends Component {
             </div>
           </div>
 
-          <div className="work-whatwedo-wrapper">
-            <div className="work-whatwedo">
 
-              <div className="work-intro">
-
-                <p>With AVs, there’s a tantalising opportunity to start-a-new. We can finally scrap legacy inefficiencies, skeuomorphic over-dependencies and redundant features.</p>
-
-                <p>Looking beyond these opportunities to optimize, ustwo’s AV concept is the built on the foundational idea that there’s more to people’s mobility needs than simply the vehicle and its technology. We hope this illustration serves as a provocation, that contributes constructive conversation about the future.</p>
-
-              </div>
-              
-            </div>
-          </div>
 
           <ScrollWrapper
             component={<ContactBlockAuto />}
