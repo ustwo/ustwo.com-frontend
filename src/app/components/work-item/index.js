@@ -18,6 +18,18 @@ class WorkItem extends Component {
     };
   }
 
+  onMouseEnter() {
+    this.setState({
+      hover: true
+    });
+  }
+
+  onMouseLeave() {
+    this.setState({
+      hover: false
+    });
+  }
+
   render() {
     const { data, page, featured } = this.props;
     const link = `/work/${get(data, 'slug')}`;
@@ -43,8 +55,8 @@ class WorkItem extends Component {
           <h3 className="title">
             <a
               href={link}
-              onMouseEnter={this.onMouseEnter}
-              onMouseLeave={this.onMouseLeave}
+              onMouseEnter={this.onMouseEnter()}
+              onMouseLeave={this.onMouseLeave()}
               onClick={Flux.override(link)}
             >{getAppleTitles(get(data, 'name'))}</a>
           </h3>
@@ -56,8 +68,8 @@ class WorkItem extends Component {
             <a
               className="link"
               href={link}
-              onMouseEnter={this.onMouseEnter}
-              onMouseLeave={this.onMouseLeave}
+              onMouseEnter={this.onMouseEnter()}
+              onMouseLeave={this.onMouseLeave()}
               onClick={Flux.override(link)}
             >Read more</a>
           </div>

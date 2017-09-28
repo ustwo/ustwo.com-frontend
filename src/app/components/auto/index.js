@@ -124,7 +124,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
                   <div className="profile-details">
                     <h3 className="profile-name">Lexi Cherniavsky</h3>
                     <p className="profile-title">Client Partner</p>
-                    <p className="profile-contact"><a href="https://www.linkedin.com/in/lexi-cherniavsky-2765a525/">linkedin</a></p>
+                    <p className="profile-contact"><a href="https://www.linkedin.com/in/lexi-cherniavsky-2765a525/">Find me on linkedin</a></p>
                   </div>
                 </section>
               </li>

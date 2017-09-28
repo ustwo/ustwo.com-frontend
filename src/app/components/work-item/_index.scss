@@ -11,3 +11,7 @@
 //     }
 //   }
 // }
+
+.work-item.card-item {
+  @include card-item-category-colours($mare);
+}
