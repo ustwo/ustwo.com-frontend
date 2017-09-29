@@ -1,7 +1,7 @@
 ## Vault tasks ################################################################
 
 # vault version matches the SSL cert year of creation.
-vault_version := 2015
+vault_version := 2017
 vault_image := ustwo/vault:$(vault_version)
 vault_name = $(project_name)_vault
 
