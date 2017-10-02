@@ -10,6 +10,7 @@ import Signup from 'app/components/signup';
 import ContactBlockAuto from 'app/components/contact-block-auto';
 import Footer from 'app/components/footer';
 import AutoWhatwedo from 'app/components/auto-whatwedo';
+import VideoBlock from 'app/components/video-block';
 
 function validateEmail(email) {
   const re = /\S+@\S+\.\S+/;
@@ -101,6 +102,20 @@ class HumanisingAutonomy extends Component {
       styles = { position: `relative` }
     }
 
+    const showcaseVideo = (
+      <video>
+        <source src="https://player.vimeo.com/external/233813909.sd.mp4?s=618cf0486ee0a0f5b972f352421f7f36a27beca8&profile_id=165" type="video/mp4" data-reactid="116" />
+      </video>
+    );
+
+    let src;
+    if (window.innerWidth < 600) {
+      src= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=164';
+    } else {
+      src= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=165';
+    }
+    const videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
+
     return (
       <div className="page-auto page-auto-humanising-autonomy page-case-study">
 
@@ -113,34 +128,46 @@ class HumanisingAutonomy extends Component {
 
         <div className="page-content-wrapper">
 
-          <section class="single-column intro in-zebra-list">
-            <div class="wrapper">
-              <div class="section-title">Client Work</div>
-              <h1 class="title">Sky Kids</h1><hr />
-              <div class="content">Creating a new product, brand and audience – loved by kids and trusted by parents</div>
+          <section className="single-column intro">
+            <div className="wrapper">
+              <div className="section-title">Research Project</div>
+              <h1 className="title">
+                Humanising Autonomy:
+                <div className="subtitle">Where are we going?</div>
+              </h1>
+              <div className="content">In our latest book, we explore creating a human approach to autonomy that actually works.</div>
             </div>
           </section>
 
-          <div className="auto-book-form">
-            <div className="auto-book-content-inner">
+          <img src="/images/auto/humanising-autonomy-book-cover.jpg" className="rimage" />
 
-              <div className="auto-book-form-wrapper">
-                <p>Humanising Autonomy: Where Are We Going? is out now – get your free copy now:</p>
-                <Signup
-                  onNameInput={handleInputChange(this, 'name')}
-                  onCompanyInput={handleInputChange(this, 'company')}
-                  onEmailInput={handleInputChange(this, 'email')}
-                  onSubmit={handleClick(this)}
-                  payload={payload}
-                  status={status}
-                  errorMessage={errorMessage}
-                />
-              </div>
-
+          <section className="single-column humanising-autonomy-form">
+            <div className="wrapper">
+              <h4>Humanising Autonomy is out now – get your free copy</h4>
+              <p>The auto industry’s approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved.</p>
+              <Signup
+                onNameInput={handleInputChange(this, 'name')}
+                onCompanyInput={handleInputChange(this, 'company')}
+                onEmailInput={handleInputChange(this, 'email')}
+                onSubmit={handleClick(this)}
+                payload={payload}
+                status={status}
+                errorMessage={errorMessage}
+              />
             </div>
+          </section>
+
+          <div className="video">
+            {showcaseVideo}
           </div>
 
-
+          <section className="single-column">
+            <div className="wrapper">
+              <h2>Articles</h2>
+              <VideoBlock title="What we do" videoPoster={videoPoster} src={src} />
+              <h2>Another Article</h2>
+            </div>
+          </section>
 
           <ScrollWrapper
             component={<ContactBlockAuto />}
