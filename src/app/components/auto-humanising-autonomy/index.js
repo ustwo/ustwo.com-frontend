@@ -45,7 +45,7 @@ function handleClick(component) {
     } else {
       component.setState({
         status: 'error',
-        errorMessage: 'Invalid email address',
+        errorMessage: 'You must enter a valid email address',
       });
     }
   };
@@ -102,19 +102,21 @@ class HumanisingAutonomy extends Component {
       styles = { position: `relative` }
     }
 
-    const showcaseVideo = (
-      <video>
-        <source src="https://player.vimeo.com/external/233813909.sd.mp4?s=618cf0486ee0a0f5b972f352421f7f36a27beca8&profile_id=165" type="video/mp4" data-reactid="116" />
-      </video>
-    );
-
-    let src;
+    let showcaseVideoSrc;
     if (window.innerWidth < 600) {
-      src= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=164';
+      showcaseVideoSrc = 'https://player.vimeo.com/external/235923198.sd.mp4?s=810f877f1133af83ddcd75dfe46c5702f15b4c14&profile_id=164';
     } else {
-      src= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=165';
+      showcaseVideoSrc = 'https://player.vimeo.com/external/235923198.sd.mp4?s=810f877f1133af83ddcd75dfe46c5702f15b4c14&profile_id=165';
     }
-    const videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
+    const showcaseVideoPoster = 'https://i.vimeocdn.com/video/657875722.jpg?mw=960&mh=540';
+
+    let additionalVideoSrc;
+    if (window.innerWidth < 600) {
+      additionalVideoSrc = 'https://player.vimeo.com/external/230365343.sd.mp4?s=dd1580c0465d3ad4b8361916a217276b255a921c&profile_id=164';
+    } else {
+      additionalVideoSrc = 'https://player.vimeo.com/external/230365343.sd.mp4?s=dd1580c0465d3ad4b8361916a217276b255a921c&profile_id=165';
+    }
+    const additionalVideoPoster = 'https://i.vimeocdn.com/video/652407905.jpg?mw=960&mh=540';
 
     return (
       <div className="page-auto page-auto-humanising-autonomy page-case-study">
@@ -139,12 +141,13 @@ class HumanisingAutonomy extends Component {
             </div>
           </section>
 
-          <img src="/images/auto/humanising-autonomy-book-cover.jpg" className="rimage" />
+          <img src="/images/auto/humanising-autonomy-book-cover.jpg" className="rimage showcase-image" />
 
           <section className="single-column humanising-autonomy-form">
             <div className="wrapper">
-              <h4>Humanising Autonomy is out now – get your free copy</h4>
               <p>The auto industry’s approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved.</p>
+
+              <h4>Humanising Autonomy is out now – get your free copy</h4>
               <Signup
                 onNameInput={handleInputChange(this, 'name')}
                 onCompanyInput={handleInputChange(this, 'company')}
@@ -157,14 +160,21 @@ class HumanisingAutonomy extends Component {
             </div>
           </section>
 
-          <div className="video">
-            {showcaseVideo}
+          <div className="showcase-video video">
+            <VideoBlock
+              videoPoster={showcaseVideoPoster}
+              src={showcaseVideoSrc}
+            />
           </div>
 
           <section className="single-column">
             <div className="wrapper">
               <h2>Articles</h2>
-              <VideoBlock title="What we do" videoPoster={videoPoster} src={src} />
+              <VideoBlock
+                title="What we do"
+                videoPoster={additionalVideoPoster}
+                src={additionalVideoSrc}
+              />
               <h2>Another Article</h2>
             </div>
           </section>

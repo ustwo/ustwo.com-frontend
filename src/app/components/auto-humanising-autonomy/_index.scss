@@ -20,16 +20,23 @@
       @extend .h2;
 
       .subtitle {
-        @extend .h4;
+        @extend .h3;
+        font-family: 'Edo-SZ';
         margin-bottom: 30px;
       }
     }
   }
 
   .humanising-autonomy-form {
-    
-  }
+    .wrapper {
+      max-width: 580px;
+    }
 
+    h4,
+    p {
+      margin-bottom: 20px;
+    }
+  }
 }
 
 .auto-book-intro {

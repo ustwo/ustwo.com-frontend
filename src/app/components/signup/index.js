@@ -14,14 +14,14 @@ function Signup({ payload, onNameInput, onCompanyInput, onEmailInput, onSubmit, 
   let renderButton;
   if (status === 'success') {
     renderButton = (
-      <div>Download the PDF</div>
+      <a href="/" className="signup-download-button">Download the PDF</a>
     );
   } else {
     renderButton = (
       <button
         onClick={onSubmit}
         type="submit"
-        className="signup-button"
+        className="signup-submit-button"
       >
         {buttonContent(status)}
       </button>
@@ -64,7 +64,9 @@ function Signup({ payload, onNameInput, onCompanyInput, onEmailInput, onSubmit, 
           className="signup-input"
         />
 
-        {renderButton}
+        <div className="signup-buttons">
+          {renderButton}
+        </div>
 
       </form>
 

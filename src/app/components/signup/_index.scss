@@ -2,8 +2,7 @@
   position: relative;
 }
 
-.signup-input,
-.signup-button {
+.signup-input {
   display: block;
   position: relative;
   z-index: 2;
@@ -38,18 +37,29 @@
   }
 }
 
-.signup-button {
-  background-color: $honey;
+.signup-buttons {
+  border: 1px solid black;
+  display: inline-block;
+  width: auto;
   margin-top: 10px;
-  border: 1px transparent;
-  color: white;
-  padding: 0 16px;
+  height: 50px;
   font-size: 15px;
-  text-align: center;
-  transition: background-color .4s ease-in-out;
+  padding: 0 15px;
 
-  .spinner {
-    margin: 0 auto;
+  .signup-submit-button {
+    height: 50px;
+    width: 20px;
+    text-indent: -9999px;
+    background: url('/images/icon-right-dark.svg') no-repeat 50% 50%;
+    background-size: 20px auto;
+  }
+
+  .signup-download-button {
+    height: 50px;
+    font-size: 14px;
+    display: block;
+    line-height: 50px;
+    border: none;
   }
 }
 

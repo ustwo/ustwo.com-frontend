@@ -12,14 +12,14 @@ class VideoBlock extends Component {
   }
 
   render() {
-    const { title, videoPoster, src } = this.props;
+    const { title, videoPoster, src, description } = this.props;
     const classes = classnames('video-block', {
       playing: this.state.videoPlaying
     });
 
     return (
       <div className={classes}>
-        <h2>{title}</h2>
+        {title ? <h2>{title}</h2> : null}
         <Html5Video
           controls={['Time', 'Seek', 'Volume', 'Fullscreen']}
           preload="none"
@@ -37,6 +37,7 @@ class VideoBlock extends Component {
         >
           <source src={src} type="video/mp4" />
         </Html5Video>
+        {description ? <p>{description}</p> : null}
       </div>
     );
   }

@@ -12,6 +12,16 @@ $PxGroteskBold: "PxGrotesk-Bold", "Arial", sans-serif;
 $PxGroteskBoldItalic: "PxGrotesk-BoldItalic", "Arial", sans-serif;
 $Futura: "futura-pt", "Arial Black", "Arial Bold", "Gadget", sans-serif;
 
+@font-face {
+  font-family: 'Edo-SZ';
+  src:url('/images/Edo-SZ.ttf.woff') format('woff'),
+    url('/images/Edo-SZ.ttf.svg#Edo-SZ') format('svg'),
+    url('/images/Edo-SZ.ttf.eot'),
+    url('/images/Edo-SZ.ttf.eot?#iefix') format('embedded-opentype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
