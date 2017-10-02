@@ -38,7 +38,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
     <Video
       src="https://player.vimeo.com/external/233813909.sd.mp4?s=618cf0486ee0a0f5b972f352421f7f36a27beca8&profile_id=165"
       srcHls="https://player.vimeo.com/external/233813909.m3u8?s=499e857388b87b02fdce6b73c17b30218eb1f17b"
-      imageCSS="https://i.vimeocdn.com/video/655241259.jpg?mw=1280&mh=720"
+      imageCSS="https://i.vimeocdn.com/video/658495896.jpg?mw=1280&mh=720"
       preload="auto"
       fixedHeight={fixedHeight}
     />
