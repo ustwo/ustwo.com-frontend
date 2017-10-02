@@ -46,24 +46,6 @@
     h1 {
       max-width: none;
       line-height: 0.9;
-
-      .word-animator {
-        &:before {
-          content: "auto"; // match width of the h1 auto title
-          display: inline-block;
-          background: url(/images/logo-light.svg) no-repeat 0 0;
-          background-position: 50%;
-          background-size: 113% auto;
-          color: transparent;
-          opacity: 0;
-          transition: opacity .32s linear;
-        }
-      }
-
-      .word {
-        display: block;
-        color: $honey;
-      }
     }
 
     .subheading {

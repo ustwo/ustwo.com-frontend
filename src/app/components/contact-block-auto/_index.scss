@@ -13,23 +13,9 @@
     width: 160px;
     height: 160px;
 
-    .contact-block-auto-logo {
-      @extend .h3;
-      color: $honey;
-      text-align: center;
-
-      &:before {
-        content: "auto"; // match width of word auto title
-        display: inline-block;
-        background: url(/images/logo-light.svg) no-repeat 0 0;
-        background-position: 50%;
-        background-size: 113% auto;
-        color: transparent;
-      }
-
-      span {
-        display: block;
-      }
+    img {
+      width: 65%;
+      height: auto;
     }
   }
 }

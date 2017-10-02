@@ -8,7 +8,7 @@ function ContactBlockAuto() {
         <div className="section-title">Make something awesome</div>
         <h2>Get in touch <br /><span className="contact-block-email"><GradientWords word="mobility@ustwo.com" color="auto" reverse={true} /></span></h2>
         <div className="contact-block-image">
-          <div className="contact-block-auto-logo"><span>auto</span></div>
+          <img src="/images/logo-ustwoauto.svg" alt="ustwo Auto" />
         </div>
       </div>
     </div>

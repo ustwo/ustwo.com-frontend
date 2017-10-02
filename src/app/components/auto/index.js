@@ -61,6 +61,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
               <Hero
                 title={autoData.title}
                 subheading={autoData.subtitle}
+                pageLogo={<img src="/images/logo-ustwoauto.svg" alt="ustwo Auto" />}
                 transitionImage={true}
                 showDownIndicator={true}
                 eventLabel=''
@@ -280,7 +281,7 @@ const autoData = {
     }
   }],
   clients: ['Ford', 'Qantas', 'Emirates', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan', 'Toyota', 'Alphabet'],
-  partners: ['UCL', 'University of Washington', 'Wayfindr', 'Car Design Research', 'Stanford University', 'Royal Society for Blind Children'],
+  partners: ['UCL', 'University of Washington', 'Wayfindr', 'Car Design Research', 'Royal Society for Blind Children'],
   projects: [{
     type: 'Research Project',
     shortTitle: 'auto-hmi',
