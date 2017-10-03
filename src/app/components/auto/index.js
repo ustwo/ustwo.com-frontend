@@ -107,7 +107,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
                   <div className="profile-details">
                     <h3 className="profile-name">Tim Smith</h3>
                     <p className="profile-title">Design Principal</p>
-                    <p className="profile-contact"><a href="https://twitter.com/mypoorbrain">@mypoorbrain</a></p>
                   </div>
                 </section>
               </li>
@@ -117,7 +116,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
                   <div className="profile-details">
                     <h3 className="profile-name">Harsha Vardhan</h3>
                     <p className="profile-title">Interaction Lead</p>
-                    <p className="profile-contact"><a href="https://twitter.com/wabisabifiction">@wabisabifiction</a></p>
                   </div>
                 </section>
               </li>
@@ -127,7 +125,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
                   <div className="profile-details">
                     <h3 className="profile-name">Lexi Cherniavsky</h3>
                     <p className="profile-title">Client Partner</p>
-                    <p className="profile-contact"><a href="https://www.linkedin.com/in/lexi-cherniavsky-2765a525/">Find me on linkedin</a></p>
                   </div>
                 </section>
               </li>
@@ -217,56 +214,6 @@ const autoData = {
     "Clients work with us to help them build new capabilities and sometimes change the status quo."
   ],
   teamProfile: "We're a community of designers, inventors and engineers. We don't make cars but we have a small collection. We conduct our own research experiments because we’re passionate about what we do and want to solve the problems we see around us. We’re embedded within ustwo with over 50 of us across our studios globally with specific sector expertise.",
-  testimonials: [{
-    testimonial: "There was a recognition that we were attempting to do something that had never been done before. There was no pre-existing capability so that prompted us to work with ustwo.",
-    source: {
-      name: 'Doug Nicoll',
-      title: 'Ford Smart Mobility, London',
-      company: ''
-    }
-  },{
-    testimonial: "The automotive eBook is a rarity, it's wonderful.",
-    source: {
-      name: 'Apple Design Team',
-      title: 'San Francisco',
-      company: ''
-    }
-  },{
-    testimonial: "BS shovelling art schools grads",
-    source: {
-      name: 'A Jalopnik reader',
-      title: '',
-      company: ''
-    }
-  },{
-    testimonial: "It speaks volumes that a lot of people got inspired and had new thoughts after your presentation",
-    source: {
-      name: 'Autonomy design lead, Germany',
-      title: '',
-      company: ''
-    }
-  },{
-    testimonial: "I know a lot of design agencies but they are the best. They have the best design skills; a great working style and the team are really smart",
-    source: {
-      name: 'Shusuke Miyazawa',
-      title: 'Nissan, Tokyo',
-      company: ''
-    }
-  },{
-    testimonial: "Brilliant car UI from Monument Valley geniuses",
-    source: {
-      name: 'Wired',
-      title: '',
-      company: ''
-    }
-  },{
-    testimonial: "Ustwo has a new idea to reinvent the instrument cluster in cars, one that creates a beautiful and more immediately readable presentation",
-    source: {
-      name: 'John Wenz',
-      title: 'Popular Mechanics',
-      company: ''
-    }
-  }],
   twitter: [{
     testimonial: "Electric vehicles are quiet and sneaky. For safety, NHTSA suggest all Ev's should make a sound. But what? We explore",
     source: {

@@ -7,7 +7,6 @@
   }
 
   .section-title {
-    margin-left: 30px;
     text-align: left;
     display: flex;
     align-items: center;
@@ -17,7 +16,7 @@
       display: inline-block;
       height: 2px;
       width: 30px;
-      background: $blu;
+      background: $pot;
       margin-right: 10px;
     }
   }
@@ -82,4 +81,5 @@
 .article-preview-button {
   @include button-border;
   display: inline-block;
+  margin-top: 15px;
 }

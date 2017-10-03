@@ -166,8 +166,8 @@ class HumanisingAutonomy extends Component {
           <section className="single-column humanising-autonomy-form">
             <div className="wrapper">
 
-              <h4>Humanising Autonomy is out now</h4>
-              <p>Fill in this form to get your free copy - don't worry your details are safe with us:</p>
+              <h4>The Book is out now</h4>
+              <p>Fill in this form to download your free copy:</p>
 
               <Signup
                 onNameInput={handleInputChange(this, 'name')}
@@ -215,21 +215,46 @@ class HumanisingAutonomy extends Component {
             </div>
           </section>
 
-          <section className="humanising-autonomy-contributors">
-            <div className="wrapper">
-              <div className="ha-contributors-authors">
-                <div className="section-title">Authors</div>
-                <ul>
-                  {this.renderAuthors(autoHumanisingAutonomyData.authors)}
-                </ul>
-              </div>
-              <div className="ha-contributors-acknowlegments">
-                <div className="section-title">Acknowlegments</div>
-                <p>{autoHumanisingAutonomyData.acknowlegments.intro}</p>
-                <p>{autoHumanisingAutonomyData.acknowlegments.main}</p>
-              </div>
+          <div className="auto-team">
+            <div className="auto-team-inner">
+
+              <h2 className="header">Speak to the people behind the book</h2>
+
+              <ul className="auto-team-profiles">
+                <li>
+                  <section className="profile">
+                    <div className="profile-photo"><img src="/images/auto/tim-smith.jpg" /></div>
+                    <div className="profile-details">
+                      <h3 className="profile-name">Tim Smith</h3>
+                      <p className="profile-title">Design Principal</p>
+                      <p className="profile-contact"><a href="https://www.linkedin.com/in/mypoorbrain/">Find Tim on linkedin</a></p>
+                    </div>
+                  </section>
+                </li>
+                <li>
+                  <section className="profile">
+                    <div className="profile-photo"><img src="/images/auto/harsha-vardhan.jpg" /></div>
+                    <div className="profile-details">
+                      <h3 className="profile-name">Harsha Vardhan</h3>
+                      <p className="profile-title">Interaction Lead</p>
+                      <p className="profile-contact"><a href="https://www.linkedin.com/in/harsha-vardhan-r-b7737810/">Find Harsha on linkedin</a></p>
+                    </div>
+                  </section>
+                </li>
+                <li>
+                  <section className="profile">
+                    <div className="profile-photo"><img src="/images/auto/lexi-cherniavsky.jpg" /></div>
+                    <div className="profile-details">
+                      <h3 className="profile-name">Lexi Cherniavsky</h3>
+                      <p className="profile-title">Client Partner</p>
+                      <p className="profile-contact"><a href="https://www.linkedin.com/in/lexi-cherniavsky-2765a525/">Find Lexi on linkedin</a></p>
+                    </div>
+                  </section>
+                </li>
+              </ul>
+
             </div>
-          </section>
+          </div>
 
           <ScrollWrapper
             component={<ContactBlockAuto />}
@@ -274,50 +299,5 @@ const autoHumanisingAutonomyData = {
     excerpt: 'Autonomous Vehicles promise to make a meaningful difference to the world, enabling a new level of mobility, independence and safety for all. Yet discussions continue to focus on topics such as technological feasibility and its impact to our roads, rather than the needs of the user.',
     uri: '/',
     image: '/images/auto/article-humanising-autonomy.jpg'
-  },
-  authors: [{
-    name: 'Tim Smith',
-    occupation: 'Design Principal',
-    imageUri: '/images/auto/tim-smith.jpg'
-  },{
-    name: 'Harsha Vardhan',
-    occupation: 'Interaction Lead',
-    imageUri: '/images/auto/harsha-vardhan.jpg'
-  },{
-    name: 'Dem Gerolemou',
-    occupation: 'Visual Designer',
-    imageUri: '/images/auto/harsha-vardhan.jpg'
-  },{
-    name: 'Cesar',
-    occupation: 'Interaction Lead',
-    imageUri: '/images/auto/harsha-vardhan.jpg'
-  },{
-    name: 'Harper',
-    occupation: 'Interaction Lead',
-    imageUri: '/images/auto/harsha-vardhan.jpg'
-  },{
-    name: 'Kota Kobayashi',
-    occupation: 'Interaction Lead',
-    imageUri: '/images/auto/harsha-vardhan.jpg'
-  },{
-    name: 'Lars Rosengren',
-    occupation: 'Interaction Lead',
-    imageUri: '/images/auto/harsha-vardhan.jpg'
-  },{
-    name: 'Michelle Constante',
-    occupation: 'Interaction Lead',
-    imageUri: '/images/auto/harsha-vardhan.jpg'
-  },{
-    name: 'Rob Penny',
-    occupation: 'Product Designer',
-    imageUri: '/images/auto/harsha-vardhan.jpg'
-  },{
-    name: 'Tom Harle',
-    occupation: 'Strategy Principle',
-    imageUri: '/images/auto/harsha-vardhan.jpg'
-  }],
-  acknowlegments: {
-    intro: 'Lorem ipsum blah blah blah etc whatever',
-    main: 'Consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.'
   }
 }
