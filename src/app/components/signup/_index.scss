@@ -39,10 +39,13 @@
 
 .signup-buttons {
   .signup-submit-button {
+    @include buttonStyle(true);
+    @include buttonColor();
+    padding: 0;
     @include button-border(true);
     text-indent: -9999px;
-    background: url('/images/icon-right-dark.svg') no-repeat 50% 50%;
-    background-size: 16px auto;
+    // background: url('/images/icon-right-dark.svg') no-repeat 50% 50%;
+    // background-size: 16px auto;
   }
 
   .signup-download-button {

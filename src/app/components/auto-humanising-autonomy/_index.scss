@@ -20,7 +20,7 @@
       @extend .h2;
 
       .subtitle {
-        @extend .h3;
+        @extend .h2;
         font-family: 'Edo-SZ';
         margin-bottom: 30px;
       }
@@ -35,6 +35,26 @@
     h4,
     p {
       margin-bottom: 20px;
+    }
+  }
+
+  .auto-team {
+    background: $offWhite;
+  }
+
+  .auto-team-profiles {
+    padding-bottom: 0 !important;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .video {
+      padding-bottom: 48%; // Reduce this because we reduced the width below
+
+      .video-block {
+        max-width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
 }

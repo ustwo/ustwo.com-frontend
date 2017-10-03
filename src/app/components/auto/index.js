@@ -44,6 +44,15 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
     />
   );
 
+  let additionalVideoSrc;
+  if (window.innerWidth < 600) {
+    additionalVideoSrc = 'https://player.vimeo.com/external/230365343.sd.mp4?s=dd1580c0465d3ad4b8361916a217276b255a921c&profile_id=164';
+  } else {
+    additionalVideoSrc = 'https://player.vimeo.com/external/230365343.sd.mp4?s=dd1580c0465d3ad4b8361916a217276b255a921c&profile_id=165';
+  }
+  const additionalVideoPoster = 'https://i.vimeocdn.com/video/652407905.jpg?mw=960&mh=540';
+
+
   return (
     <div className="page-auto">
 
@@ -137,6 +146,10 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
         <div className="auto-how">
           <div className="auto-how-inner">
+            <VideoBlock
+              videoPoster={additionalVideoPoster}
+              src={additionalVideoSrc}
+            />
             {autoData.howWeDoIt.map((para, i) => <p key={`para-${i}`}>{para}</p>)}
           </div>
         </div>
@@ -214,6 +227,49 @@ const autoData = {
     "Clients work with us to help them build new capabilities and sometimes change the status quo."
   ],
   teamProfile: "We're a community of designers, inventors and engineers. We don't make cars but we have a small collection. We conduct our own research experiments because we’re passionate about what we do and want to solve the problems we see around us. We’re embedded within ustwo with over 50 of us across our studios globally with specific sector expertise.",
+  testimonials: [{
+    testimonial: "There was a recognition that we were attempting to do something that had never been done before. There was no pre-existing capability so that prompted us to work with ustwo.",
+    source: {
+      name: 'Doug Nicoll',
+      title: 'Ford Smart Mobility, London',
+      company: ''
+    }
+  },{
+    testimonial: "The automotive eBook is a rarity, it's wonderful.",
+    source: {
+      name: 'Apple Design Team',
+      title: 'San Francisco',
+      company: ''
+    }
+  },{
+    testimonial: "It speaks volumes that a lot of people got inspired and had new thoughts after your presentation",
+    source: {
+      name: 'Autonomy design lead, Germany',
+      title: '',
+      company: ''
+    }
+  },{
+    testimonial: "I know a lot of design agencies but they are the best. They have the best design skills; a great working style and the team are really smart",
+    source: {
+      name: 'Shusuke Miyazawa',
+      title: 'Nissan, Tokyo',
+      company: ''
+    }
+  },{
+    testimonial: "Brilliant car UI from Monument Valley geniuses",
+    source: {
+      name: 'Wired',
+      title: '',
+      company: ''
+    }
+  },{
+    testimonial: "Ustwo has a new idea to reinvent the instrument cluster in cars, one that creates a beautiful and more immediately readable presentation",
+    source: {
+      name: 'John Wenz',
+      title: 'Popular Mechanics',
+      company: ''
+    }
+  }],
   twitter: [{
     testimonial: "Electric vehicles are quiet and sneaky. For safety, NHTSA suggest all Ev's should make a sound. But what? We explore",
     source: {

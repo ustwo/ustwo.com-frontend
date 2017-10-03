@@ -97,6 +97,44 @@
   .tesimonial-button-next svg {
     fill: white;
   }
+
+  @media screen and (min-width: $bp-large) {
+    .auto-how {
+      // padding-bottom: 48%; // Reduce this because we reduced the width below
+
+      .video-block {
+        max-width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  .video-block {
+    margin-bottom: 30px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      bottom: -35px;
+      left: -30px;
+      background: url('/images/icon-diagonal-arrow.svg') no-repeat top right;
+      background-size: 100% auto;
+    }
+
+    @media screen and (min-width: $bp-large) {
+      margin-bottom: 70px;
+
+      &:after {
+        width: 70px;
+        height: 70px;
+        bottom: -80px;
+        left: -80px;
+      }
+    }
+  }
 }
 
 .active .hero-content h1 .word-animator:before {
@@ -123,6 +161,12 @@
 
 .auto-how {
   @include core-layout;
+  background: white url(/images/pattern-donut.svg) no-repeat top right;
+  background-size: 100px auto;
+
+  @media screen and (min-width: $bp-large) {
+    background-size: 200px auto;
+  }
 
   .auto-how-inner {
     @include core-vertical-padding;
@@ -240,6 +284,7 @@
 }
 .profile-contact {
   margin-top: 10px;
+  font-size: 16px;
 }
 
 @media screen and (min-width: $bp-medium) {

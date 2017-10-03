@@ -10,6 +10,7 @@
     text-align: left;
     display: flex;
     align-items: center;
+    margin-top: 10px;
 
     &:before {
       content: "";
@@ -46,6 +47,23 @@
         text-align: right;
         margin: 50px 50px 0 0;
       }
+      .section-title {
+        justify-content: flex-end;
+        text-align: right;
+
+        &:before {
+          display: none;
+        }
+
+        &:after {
+          content: "";
+          display: inline-block;
+          height: 2px;
+          width: 30px;
+          background: $pot;
+          margin-left: 10px;
+        }
+      }
     }
   }
 }
@@ -60,7 +78,7 @@
   img {
     width: 100%;
     height: auto;
-    box-shadow: 5px 5px 20px rgba(0,0,0,.2);
+    @include box-shadow();
   }
 
   @media screen and (min-width: $bp-medium) {
@@ -79,7 +97,8 @@
 }
 
 .article-preview-button {
-  @include button-border;
+  @include buttonStyle(true);
+  @include buttonColor();
   display: inline-block;
   margin-top: 15px;
 }

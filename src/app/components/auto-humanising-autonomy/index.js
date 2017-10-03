@@ -128,14 +128,6 @@ class HumanisingAutonomy extends Component {
     }
     const showcaseVideoPoster = 'https://i.vimeocdn.com/video/657875722.jpg?mw=960&mh=540';
 
-    let additionalVideoSrc;
-    if (window.innerWidth < 600) {
-      additionalVideoSrc = 'https://player.vimeo.com/external/230365343.sd.mp4?s=dd1580c0465d3ad4b8361916a217276b255a921c&profile_id=164';
-    } else {
-      additionalVideoSrc = 'https://player.vimeo.com/external/230365343.sd.mp4?s=dd1580c0465d3ad4b8361916a217276b255a921c&profile_id=165';
-    }
-    const additionalVideoPoster = 'https://i.vimeocdn.com/video/652407905.jpg?mw=960&mh=540';
-
     return (
       <div className="page-auto page-auto-humanising-autonomy page-case-study">
 
@@ -194,15 +186,6 @@ class HumanisingAutonomy extends Component {
             </div>
           </section>
 
-          <section className="humanising-autonomy-article humanising-autonomy-extra-video">
-            <div className="wrapper">
-              <VideoBlock
-                videoPoster={additionalVideoPoster}
-                src={additionalVideoSrc}
-              />
-            </div>
-          </section>
-
           <section className="humanising-autonomy-article">
             <div className="wrapper">
               <ArticlePreview data={autoHumanisingAutonomyData.article2} alignright />
@@ -218,7 +201,7 @@ class HumanisingAutonomy extends Component {
           <div className="auto-team">
             <div className="auto-team-inner">
 
-              <h2 className="header">Speak to the people behind the book</h2>
+              <div className="section-title">Speak to the people behind the book</div>
 
               <ul className="auto-team-profiles">
                 <li>
@@ -281,13 +264,14 @@ const autoHumanisingAutonomyData = {
   intro: "The auto industry's approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved. In our latest book, we explore creating a human approach to autonomy that actually works.",
   article1: {
     title: 'Introducting the ustwo Roo',
-    author: 'Fast Co',
+    author: 'As featured in Fast Co',
     excerpt: 'Looking beyond opportunities to optimize, ustwo’s AV concept is the built on the foundational idea that there’s more to people’s mobility needs than simply the vehicle and its technology.',
     uri: '/',
     image: '/images/auto/auto-roo.jpg'
   },
   article2: {
     title: 'People and Driverless Vehicles',
+    author: 'Chapter 5',
     subtitle: 'What Does Autonomy Mean to You?',
     excerpt: 'In order to overcome the barriers to AV adoption, they need to be truly accessible to everyone. The way to do this? Observe what people’s mobility wants and needs are. This is the key to creating a human approach to autonomy that actually works.',
     uri: '/',
@@ -295,6 +279,7 @@ const autoHumanisingAutonomyData = {
   },
   article3: {
     title: 'Humanising Autonomy',
+    author: 'Excerpt from Chapter 3',
     subtitle: 'Where Are We Going?',
     excerpt: 'Autonomous Vehicles promise to make a meaningful difference to the world, enabling a new level of mobility, independence and safety for all. Yet discussions continue to focus on topics such as technological feasibility and its impact to our roads, rather than the needs of the user.',
     uri: '/',
