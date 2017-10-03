@@ -53,13 +53,74 @@
   }
 }
 
-.humanising-autonomy-contributors,
 .humanising-autonomy-article {
+  @include core-layout;
+  background-color: white;
+
+  .wrapper {
+    @include core-vertical-padding;
+    max-width: 1000px;
+  }
+}
+
+.humanising-autonomy-contributors {
   @include core-layout;
   background-color: $offWhite;
 
   .wrapper {
     @include core-vertical-padding;
-    max-width: 1000px;
+    max-width: 790px;
+    margin: 0 auto;
+
+    @media screen and (min-width: $bp-large) {
+      display: flex;
+      flex-direction: row;
+
+      > div {
+        flex: 1;
+      }
+    }
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+}
+
+.ha-contributors-authors {
+  margin-bottom: 60px;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin-bottom: 20px;
+
+    h5 {
+      margin: 0;
+    }
+
+    .author-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .author-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 15px;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    margin-bottom: 0;
   }
 }

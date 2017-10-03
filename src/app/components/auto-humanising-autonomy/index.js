@@ -12,6 +12,7 @@ import Footer from 'app/components/footer';
 import AutoWhatwedo from 'app/components/auto-whatwedo';
 import VideoBlock from 'app/components/video-block';
 import ArticlePreview from 'app/components/article-preview';
+import kebabCase from 'lodash/string/kebabCase';
 
 function validateEmail(email) {
   const re = /\S+@\S+\.\S+/;
@@ -92,6 +93,22 @@ class HumanisingAutonomy extends Component {
 
   componentWillUnmount() {
     this.firebaseRef.off();
+  }
+
+  renderAuthors(authors) {
+    return authors.map(author => {
+      return (
+        <li key={kebabCase(author.name)}>
+          <div className="author-image">
+            <img src={author.imageUri} alt={`Photo of ${author.name}`} />
+          </div>
+          <div className="author-details">
+            <h5>{author.name}</h5>
+            <p>{author.occupation}</p>
+          </div>
+        </li>
+      )
+    });
   }
 
   render() {
@@ -198,7 +215,17 @@ class HumanisingAutonomy extends Component {
 
           <section className="humanising-autonomy-contributors">
             <div className="wrapper">
-              Contributors...
+              <div className="ha-contributors-authors">
+                <div className="section-title">Authors</div>
+                <ul>
+                  {this.renderAuthors(autoHumanisingAutonomyData.authors)}
+                </ul>
+              </div>
+              <div className="ha-contributors-acknowlegments">
+                <div className="section-title">Acknowlegments</div>
+                <p>{autoHumanisingAutonomyData.acknowlegments.intro}</p>
+                <p>{autoHumanisingAutonomyData.acknowlegments.main}</p>
+              </div>
             </div>
           </section>
 
@@ -245,5 +272,22 @@ const autoHumanisingAutonomyData = {
     excerpt: 'Autonomous Vehicles promise to make a meaningful difference to the world, enabling a new level of mobility, independence and safety for all. Yet discussions continue to focus on topics such as technological feasibility and its impact to our roads, rather than the needs of the user.',
     uri: '/',
     image: '/images/auto/article-humanising-autonomy.jpg'
+  },
+  authors: [{
+    name: 'Tim Smith',
+    occupation: 'Design Principal',
+    imageUri: '/images/auto/tim-smith.jpg'
+  },{
+    name: 'Lexi Cherniavsky',
+    occupation: 'Client Partner',
+    imageUri: '/images/auto/lexi-cherniavsky.jpg'
+  },{
+    name: 'Harsha Vardhan',
+    occupation: 'Interaction Lead',
+    imageUri: '/images/auto/harsha-vardhan.jpg'
+  }],
+  acknowlegments: {
+    intro: 'Lorem ipsum blah blah blah etc whatever',
+    main: 'Consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et neque nulla. Vestibulum ac euismod quam, vel egestas sapien.'
   }
 }
