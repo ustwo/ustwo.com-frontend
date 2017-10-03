@@ -52,3 +52,14 @@
     margin-top: 30px;
   }
 }
+
+.humanising-autonomy-contributors,
+.humanising-autonomy-article {
+  @include core-layout;
+  background-color: $offWhite;
+
+  .wrapper {
+    @include core-vertical-padding;
+    max-width: 1000px;
+  }
+}

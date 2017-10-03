@@ -11,6 +11,7 @@ import ContactBlockAuto from 'app/components/contact-block-auto';
 import Footer from 'app/components/footer';
 import AutoWhatwedo from 'app/components/auto-whatwedo';
 import VideoBlock from 'app/components/video-block';
+import ArticlePreview from 'app/components/article-preview';
 
 function validateEmail(email) {
   const re = /\S+@\S+\.\S+/;
@@ -167,15 +168,37 @@ class HumanisingAutonomy extends Component {
             />
           </div>
 
+          <section className="humanising-autonomy-article">
+            <div className="wrapper">
+              <ArticlePreview data={autoHumanisingAutonomyData.article1} />
+            </div>
+          </section>
+
           <section className="single-column">
             <div className="wrapper">
-              <h2>Articles</h2>
               <VideoBlock
                 title="What we do"
                 videoPoster={additionalVideoPoster}
                 src={additionalVideoSrc}
               />
-              <h2>Another Article</h2>
+            </div>
+          </section>
+
+          <section className="humanising-autonomy-article">
+            <div className="wrapper">
+              <ArticlePreview data={autoHumanisingAutonomyData.article2} alignright />
+            </div>
+          </section>
+
+          <section className="humanising-autonomy-article">
+            <div className="wrapper">
+              <ArticlePreview data={autoHumanisingAutonomyData.article3} />
+            </div>
+          </section>
+
+          <section className="humanising-autonomy-contributors">
+            <div className="wrapper">
+              Contributors...
             </div>
           </section>
 
@@ -201,5 +224,26 @@ export default HumanisingAutonomy;
 const autoHumanisingAutonomyData = {
   title: 'Auto',
   subtitle: 'Humanising Autonomy',
-  intro: "The auto industry's approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved. In our latest book, we explore creating a human approach to autonomy that actually works."
+  intro: "The auto industry's approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved. In our latest book, we explore creating a human approach to autonomy that actually works.",
+  article1: {
+    title: 'AV Concept Article',
+    author: 'Author Name',
+    excerpt: 'Looking beyond opportunities to optimize, ustwo’s AV concept is the built on the foundational idea that there’s more to people’s mobility needs than simply the vehicle and its technology.',
+    uri: '/',
+    image: '/images/auto/auto-reimagine.jpg'
+  },
+  article2: {
+    title: 'People and Driverless Vehicles:',
+    subtitle: 'What Does Autonomy Mean to You?',
+    excerpt: 'In order to overcome the barriers to AV adoption, they need to be truly accessible to everyone. The way to do this? Observe what people’s mobility wants and needs are. This is the key to creating a human approach to autonomy that actually works.',
+    uri: '/',
+    image: '/images/auto/article-driverless-vehicles.jpg'
+  },
+  article3: {
+    title: 'Humanising Autonomy:',
+    subtitle: 'Where Are We Going?',
+    excerpt: 'Autonomous Vehicles promise to make a meaningful difference to the world, enabling a new level of mobility, independence and safety for all. Yet discussions continue to focus on topics such as technological feasibility and its impact to our roads, rather than the needs of the user.',
+    uri: '/',
+    image: '/images/auto/article-humanising-autonomy.jpg'
+  }
 }
