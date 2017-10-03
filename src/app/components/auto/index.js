@@ -93,6 +93,8 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
           viewportDimensions={viewportDimensions}
         />
 
+        <FeaturedCaseStudy content={autoData.latestPromo} />
+
         <div className="auto-team">
           <div className="auto-team-inner">
 
@@ -202,11 +204,11 @@ const autoData = {
   },],
   latestPromo: {
     title: 'Download our new Book',
-    excerpt: 'Lorem ipsum dolor sit amet',
+    excerpt: 'In our latest book, we explore creating a human approach to autonomy that actually works.',
     slug: '/auto/humanisingautonomy',
-    linkText: 'To the book!',
+    linkText: 'Find out more',
     latest: true,
-    image: '/images/work/expertise-image-mobility.jpg',
+    image: '/images/auto/humanising-autonomy-book-cover.jpg',
     imageBackground: true
   },
   howWeDoIt: [

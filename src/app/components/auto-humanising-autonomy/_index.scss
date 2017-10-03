@@ -63,13 +63,19 @@
   }
 }
 
+.humanising-autonomy-extra-video {
+  .wrapper {
+    max-width: $thin-content-width;
+  }
+}
+
 .humanising-autonomy-contributors {
   @include core-layout;
   background-color: $offWhite;
 
   .wrapper {
     @include core-vertical-padding;
-    max-width: 790px;
+    max-width: $thin-content-width;
     margin: 0 auto;
 
     @media screen and (min-width: $bp-large) {

@@ -58,20 +58,7 @@
   margin-bottom: 30px;
   max-width: 300px;
 
-  &:before {
-    content: "";
-    background: $blu;
-    width: 200px;
-    height: 200px;
-    position: absolute;
-    left: -7px;
-    top: -7px;
-    z-index: 1;
-  }
-
   img {
-    position: relative;
-    z-index: 2;
     width: 100%;
     height: auto;
     box-shadow: 5px 5px 20px rgba(0,0,0,.2);
