@@ -203,7 +203,7 @@ const autoData = {
   latestPromo: {
     title: 'Download our new Book',
     excerpt: 'Lorem ipsum dolor sit amet',
-    slug: '/auto/humanising-autonomy',
+    slug: '/auto/humanisingautonomy',
     linkText: 'To the book!',
     latest: true,
     image: '/images/work/expertise-image-mobility.jpg',

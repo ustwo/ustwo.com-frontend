@@ -278,9 +278,29 @@ const autoHumanisingAutonomyData = {
     occupation: 'Design Principal',
     imageUri: '/images/auto/tim-smith.jpg'
   },{
-    name: 'Lexi Cherniavsky',
-    occupation: 'Client Partner',
-    imageUri: '/images/auto/lexi-cherniavsky.jpg'
+    name: 'Harsha Vardhan',
+    occupation: 'Interaction Lead',
+    imageUri: '/images/auto/harsha-vardhan.jpg'
+  },{
+    name: 'Harsha Vardhan',
+    occupation: 'Interaction Lead',
+    imageUri: '/images/auto/harsha-vardhan.jpg'
+  },{
+    name: 'Harsha Vardhan',
+    occupation: 'Interaction Lead',
+    imageUri: '/images/auto/harsha-vardhan.jpg'
+  },{
+    name: 'Harsha Vardhan',
+    occupation: 'Interaction Lead',
+    imageUri: '/images/auto/harsha-vardhan.jpg'
+  },{
+    name: 'Harsha Vardhan',
+    occupation: 'Interaction Lead',
+    imageUri: '/images/auto/harsha-vardhan.jpg'
+  },{
+    name: 'Harsha Vardhan',
+    occupation: 'Interaction Lead',
+    imageUri: '/images/auto/harsha-vardhan.jpg'
   },{
     name: 'Harsha Vardhan',
     occupation: 'Interaction Lead',

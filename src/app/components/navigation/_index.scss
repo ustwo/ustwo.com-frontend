@@ -284,7 +284,7 @@ $nav-height-large: 31px;
 
   &.menuOpen,
   &.notfound,
-  &.overHero:not(.post, .case-study, .event, .humanising-autonomy) {
+  &.overHero:not(.post, .case-study, .event, .humanisingautonomy) {
     &:before {
       background: transparent !important;
     }
@@ -356,7 +356,7 @@ $nav-height-large: 31px;
       transition: opacity .2s linear;
     }
 
-    &.overHero:not(.humanising-autonomy) {
+    &.overHero:not(.humanisingautonomy) {
       .navigation-logo {
         opacity: 0;
         pointer-events: none;

@@ -64,12 +64,12 @@ const routes = {
     }]
   },
   humanisingAutonomy: {
-    id: 'auto/humanising-autonomy',
-    patterns: ['/auto/humanising-autonomy'],
+    id: 'auto/humanisingautonomy',
+    patterns: ['/auto/humanisingautonomy'],
     data: () => [{
-      url: 'ustwo/v1/pages/humanising-autonomy',
+      url: 'ustwo/v1/pages/humanisingautonomy',
       type: 'page',
-      slug: 'humanising-autonomy'
+      slug: 'humanisingautonomy'
     }]
   },
   caseStudy: {
