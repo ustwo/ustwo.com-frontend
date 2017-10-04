@@ -33,9 +33,10 @@
     max-width: none;
     letter-spacing: 5px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
 
     @media screen and (min-width: $bp-medium) {
+      font-size: 20px;
       letter-spacing: 10px;
     }
   }
@@ -47,6 +48,12 @@
       max-width: none;
       line-height: 0.9;
       color: $honey;
+
+      .word {
+        &:last-of-type {
+          display: block;
+        }
+      }
     }
 
     .subheading {
@@ -65,6 +72,7 @@
 
   .auto-whatwedo {
     @include core-layout;
+    background: white;
 
     .wrapper {
       @include core-vertical-padding-large;

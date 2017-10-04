@@ -151,8 +151,7 @@ class HumanisingAutonomy extends Component {
             <div className="wrapper">
 
               <h4>The Book is out now</h4>
-              <p>We're giving away this book to encourage open conversation and debate – it's intended to be a conversation starter, not the final word. Fill in this form to download your free copy:</p>
-
+          
               <Signup
                 onNameInput={handleInputChange(this, 'name')}
                 onCompanyInput={handleInputChange(this, 'company')}

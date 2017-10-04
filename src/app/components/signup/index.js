@@ -15,16 +15,26 @@ function Signup({ payload, onNameInput, onCompanyInput, onEmailInput, onSubmit, 
   if (status === 'success') {
     renderContact = (
       <div className="signup-form-wrapper">
-        <a href="/" className="signup-download-button">Download the PDF</a>
+
+        <div className="signup-form-wrapper-text">
+          <p>Now it's all yours – download a PDF copy below. </p>
+          <p>And remember, we’d love to hear any feedback you have, contact us here: mobility@ustwo.com.</p>
+        </div>
+        
+        <a href="/" className="signup-download-button">
+          <div className="signup-download-button-text">Download</div>
+          <div className="signup-download-button-additional">25Mb</div>
+        </a>
+
+        <img src="/images/thankyou.png" alt="Thank you" />
+
       </div>
     );
   } else {
     renderContact = (
       <div className="signup-form-wrapper">
 
-        <div className="signup-error-message">
-          { status === 'error' ? `Oops! ${errorMessage}` : '' }
-        </div>
+        <p>We're giving away this book to encourage open conversation and debate – it's intended to be a conversation starter, not the final word. Fill in this form to download your free copy:</p>
 
         <form className="signup-form">
 
@@ -63,6 +73,9 @@ function Signup({ payload, onNameInput, onCompanyInput, onEmailInput, onSubmit, 
             >
               {buttonContent(status)}
             </button>
+            <div className="signup-error-message">
+              { status === 'error' ? `Oops! ${errorMessage}` : '' }
+            </div>
           </div>
 
         </form>
