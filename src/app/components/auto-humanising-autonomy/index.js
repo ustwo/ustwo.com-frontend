@@ -151,7 +151,7 @@ class HumanisingAutonomy extends Component {
             <div className="wrapper">
 
               <h4>The Book is out now</h4>
-          
+
               <Signup
                 onNameInput={handleInputChange(this, 'name')}
                 onCompanyInput={handleInputChange(this, 'company')}
@@ -256,7 +256,7 @@ const autoHumanisingAutonomyData = {
   article1: {
     title: 'Introducting the ustwo Roo',
     subtitle: 'Our autonomous car concept',
-    excerpt: 'Looking beyond opportunities to optimize, ustwo’s AV concept is the built on the foundational idea that there’s more to people’s mobility needs than simply the vehicle and its technology.',
+    excerpt: 'Looking beyond opportunities to optimise, ustwo’s AV concept is built on the foundational idea that there’s more to people’s mobility needs than simply the vehicle and its technology.',
     uri: '/blog/introducing-ustwo-av-concept',
     image: '/images/auto/auto-roo.jpg'
   },

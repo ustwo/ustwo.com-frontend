@@ -20,10 +20,10 @@ function Signup({ payload, onNameInput, onCompanyInput, onEmailInput, onSubmit, 
           <p>Now it's all yours – download a PDF copy below. </p>
           <p>And remember, we’d love to hear any feedback you have, contact us here: mobility@ustwo.com.</p>
         </div>
-        
+
         <a href="/" className="signup-download-button">
           <div className="signup-download-button-text">Download</div>
-          <div className="signup-download-button-additional">25Mb</div>
+          <div className="signup-download-button-additional">19.3Mb</div>
         </a>
 
         <img src="/images/thankyou.png" alt="Thank you" />
