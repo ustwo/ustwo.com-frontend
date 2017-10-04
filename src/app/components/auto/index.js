@@ -110,16 +110,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
           <WorkClientsBoard logos={autoData.clients} title="Our Clients" />
         </div>
 
-        <div className="auto-how">
-          <div className="auto-how-inner">
-            <VideoBlock
-              videoPoster={additionalVideoPoster}
-              src={additionalVideoSrc}
-            />
-            {autoData.howWeDoIt.map((para, i) => <p key={`para-${i}`}>{para}</p>)}
-          </div>
-        </div>
-
         <FeaturedCaseStudy content={featuredCaseStudy} />
 
         {renderTestimonials}
