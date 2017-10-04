@@ -349,18 +349,19 @@ $nav-height-large: 31px;
   }
 }
 
-.navigation {
-  &.auto {
-    navigation-logo {
-      opacity: 1;
-      transition: opacity .2s linear;
-    }
-
-    &.overHero:not(.humanisingautonomy) {
-      .navigation-logo {
-        opacity: 0;
-        pointer-events: none;
-      }
-    }
-  }
-}
+// Hide ustwo logo over hero
+// .navigation {
+//   &.auto {
+//     navigation-logo {
+//       opacity: 1;
+//       transition: opacity .2s linear;
+//     }
+//
+//     &.overHero:not(.humanisingautonomy) {
+//       .navigation-logo {
+//         opacity: 0;
+//         pointer-events: none;
+//       }
+//     }
+//   }
+// }

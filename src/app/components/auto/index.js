@@ -2,13 +2,11 @@ import React from 'react';
 import Meta from "react-helmet";
 import window from 'app/adaptors/server/window';
 import { get } from 'lodash';
-
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import Hero from 'app/components/hero';
 import ContactBlockAuto from 'app/components/contact-block-auto';
 import ContactButton from 'app/components/contact-button';
 import Footer from 'app/components/footer';
-import AutoWhatwedo from 'app/components/auto-whatwedo';
 import FeaturedCaseStudy from 'app/components/featured-case-study';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import TwitterCarousel from 'app/components/twitter-carousel';
@@ -18,6 +16,7 @@ import WorkVerticals from 'app/components/work-verticals';
 import VideoBlock from 'app/components/video-block';
 import RelatedPosts from 'app/components/related-posts';
 import Video from 'app/components/video';
+import WorkProcess from 'app/components/work-process';
 
 function Auto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
@@ -70,7 +69,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
               <Hero
                 title={autoData.title}
                 subheading={autoData.subtitle}
-                pageLogo={<img src="/images/logo-ustwoauto.svg" alt="ustwo Auto" />}
                 transitionImage={true}
                 showDownIndicator={true}
                 eventLabel=''
@@ -89,59 +87,20 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
       <div className="home-main-content-wrapper">
 
-        <ScrollWrapper
-          component={
-            <AutoWhatwedo
-              intro={autoData.intro}
-              introFurther={autoData.introFurther}
-              workProcess={autoData.workProcess}
-              isMobile={isMobile}
-            />
-          }
-          documentScrollPosition={documentScrollPosition}
-          viewportDimensions={viewportDimensions}
-        />
+        <div className="auto-whatwedo work-whatwedo-wrapper">
+          <div className="work-whatwedo">
+            <div className="work-intro">
+              <p className="work-intro-statement">
+                {autoData.intro}
+              </p>
+            </div>
+          </div>
+        </div>
 
         <FeaturedCaseStudy content={autoData.latestPromo} />
 
-        <div className="auto-team">
-          <div className="auto-team-inner">
-
-            <h2 className="header">Meet the Team</h2>
-
-            <ul className="auto-team-profiles">
-              <li>
-                <section className="profile">
-                  <div className="profile-photo"><img src="/images/auto/tim-smith.jpg" /></div>
-                  <div className="profile-details">
-                    <h3 className="profile-name">Tim Smith</h3>
-                    <p className="profile-title">Design Principal</p>
-                  </div>
-                </section>
-              </li>
-              <li>
-                <section className="profile">
-                  <div className="profile-photo"><img src="/images/auto/harsha-vardhan.jpg" /></div>
-                  <div className="profile-details">
-                    <h3 className="profile-name">Harsha Vardhan</h3>
-                    <p className="profile-title">Interaction Lead</p>
-                  </div>
-                </section>
-              </li>
-              <li>
-                <section className="profile">
-                  <div className="profile-photo"><img src="/images/auto/lexi-cherniavsky.jpg" /></div>
-                  <div className="profile-details">
-                    <h3 className="profile-name">Lexi Cherniavsky</h3>
-                    <p className="profile-title">Client Partner</p>
-                  </div>
-                </section>
-              </li>
-            </ul>
-
-            <p>{autoData.teamProfile}</p>
-
-          </div>
+        <div className="auto-logos-wrapper-clients">
+          <WorkClientsBoard logos={autoData.clients} title="Our Clients" />
         </div>
 
         <div className="auto-how">
@@ -154,15 +113,16 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
           </div>
         </div>
 
+        <FeaturedCaseStudy content={featuredCaseStudy} />
+
         {renderTestimonials}
 
-        <FeaturedCaseStudy content={featuredCaseStudy} />
+        <div className="auto-whatwedo work-whatwedo-wrapper">
+          {autoData.workProcess ? <WorkProcess data={autoData.workProcess} isMobile={isMobile}  /> : null}
+        </div>
 
         <RelatedPosts page={page} posts={relatedPosts} />
 
-        <div className="auto-logos-wrapper-clients">
-          <WorkClientsBoard logos={autoData.clients} title="Our Clients" />
-        </div>
         <div className="auto-logos-wrapper-partners">
           <WorkClientsBoard logos={autoData.partners} title="Our Partners" />
         </div>
@@ -187,10 +147,9 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 export default Auto;
 
 const autoData = {
-  title: 'auto',
+  title: 'Mobility',
   subtitle: 'For the journey',
-  intro: "Our mission is to make journeys more magically connected. We help brands drive change by combining insight and creativity with breakthrough technology. We create experiences that enhance people's lives from the dashboard to the city to the sky.",
-  introFurther: 'We do this with clients around the world and collaborate with research partners on our own experimental projects.',
+  intro: "From the dashboard, through the city, to the sky, we make a positive impact on the way businesses, people, and cities move.",
   workProcess: [{
     name: 'humanising-autonomy',
     title: 'Humanising Autonomy',
@@ -218,7 +177,7 @@ const autoData = {
     slug: '/auto/humanisingautonomy',
     linkText: 'Find out more',
     latest: true,
-    image: '/images/auto/humanising-autonomy-book-cover.jpg',
+    image: '/images/auto/humanising-autonomy-showcase.jpg',
     imageBackground: true
   },
   howWeDoIt: [
@@ -228,6 +187,13 @@ const autoData = {
   ],
   teamProfile: "We're a community of designers, inventors and engineers. We don't make cars but we have a small collection. We conduct our own research experiments because we’re passionate about what we do and want to solve the problems we see around us. We’re embedded within ustwo with over 50 of us across our studios globally with specific sector expertise.",
   testimonials: [{
+    testimonial: "I know a lot of design agencies but they are the best. They have the best design skills; a great working style and the team are really smart",
+    source: {
+      name: 'Shusuke Miyazawa',
+      title: 'Nissan, Tokyo',
+      company: ''
+    }
+  },{
     testimonial: "There was a recognition that we were attempting to do something that had never been done before. There was no pre-existing capability so that prompted us to work with ustwo.",
     source: {
       name: 'Doug Nicoll',
@@ -249,14 +215,7 @@ const autoData = {
       company: ''
     }
   },{
-    testimonial: "I know a lot of design agencies but they are the best. They have the best design skills; a great working style and the team are really smart",
-    source: {
-      name: 'Shusuke Miyazawa',
-      title: 'Nissan, Tokyo',
-      company: ''
-    }
-  },{
-    testimonial: "Brilliant car UI from Monument Valley geniuses",
+    testimonial: "Brilliant car UI from [the ustwo] geniuses",
     source: {
       name: 'Wired',
       title: '',
@@ -285,7 +244,7 @@ const autoData = {
       company: ''
     }
   }],
-  clients: ['Ford', 'Qantas', 'Emirates', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan', 'Toyota', 'Alphabet'],
+  clients: ['Ford', 'Qantas', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan', 'Toyota', 'Alphabet'],
   partners: ['UCL', 'University of Washington', 'Wayfindr', 'Car Design Research', 'Royal Society for Blind Children'],
   projects: [{
     type: 'Research Project',
