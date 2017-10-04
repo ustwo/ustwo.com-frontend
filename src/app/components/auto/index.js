@@ -136,7 +136,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 export default Auto;
 
 const autoData = {
-  title: 'Mobility',
+  title: 'Auto & Mobility',
   subtitle: 'For the journey',
   intro: "From the dashboard, through the city, to the sky, we make a positive impact on the way businesses, people, and cities move.",
   workProcess: [{
@@ -163,7 +163,7 @@ const autoData = {
   latestPromo: {
     title: 'Download our new Book',
     excerpt: 'In our latest book, we explore creating a human approach to autonomy that actually works.',
-    slug: '/mobility/humanisingautonomy',
+    slug: '/auto/humanisingautonomy',
     linkText: 'Find out more',
     latest: true,
     image: '/images/auto/humanising-autonomy-showcase.jpg',

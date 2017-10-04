@@ -200,10 +200,10 @@ const workData = {
   }],
   verticals: [{
     type: 'Expertise',
-    shortTitle: 'mobility',
-    title: 'Mobility',
+    shortTitle: 'auto',
+    title: 'Auto & Mobility',
     text: 'On the road, in the city, and up in the sky, we work with clients and partners to imagine and create the products and services for the future of transportation.',
-    slug: '/mobility'
+    slug: '/auto'
   },{
     type: 'Expertise',
     shortTitle: 'health',

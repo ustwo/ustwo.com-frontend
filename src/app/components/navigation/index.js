@@ -74,14 +74,14 @@ class Navigation extends Component {
       case 'design-build':
       case 'launch-scale':
       case 'ways-of-working':
-      case 'mobility':
+      case 'auto':
         navigateTo = '/work';
         break;
       case 'event':
         navigateTo = '/events';
         break;
       case 'humanisingautonomy':
-        navigateTo = '/mobility';
+        navigateTo = '/auto';
         break;
       default:
         navigateTo = '/';
@@ -101,7 +101,7 @@ class Navigation extends Component {
     if (workSubPage) {
       linkText = 'Work';
     } else if (page === 'humanisingautonomy') {
-      linkText = 'Mobility Home';
+      linkText = 'Auto & Mobility';
     } else {
       linkText = 'Back';
     }
@@ -136,8 +136,8 @@ class Navigation extends Component {
     const testimonialsActive = !isEmpty(testimonialsPosition) && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
     const footerActive = documentScrollPosition > 4000 - (693 + 414);
     const homePage = section === 'home';
-    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'mobility';
-    const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'mobility' || page === 'humanisingautonomy';
+    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto';
+    const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'auto' || page === 'humanisingautonomy';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
     const scrolledAfter100 = documentScrollPosition > viewportDimensions.height - (navHeight * 0.5);
@@ -177,7 +177,7 @@ class Navigation extends Component {
         break;
     }
 
-    if (caseStudy && caseStudy.name === 'ustwo Auto' || section === 'mobility') {
+    if (caseStudy && caseStudy.name === 'ustwo Auto' || section === 'auto') {
       color = ['#f8e467', '#ffbf00'];
     }
 

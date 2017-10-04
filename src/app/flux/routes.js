@@ -54,18 +54,18 @@ const routes = {
       slug: 'ways-of-working'
     }]
   },
-  mobility: {
-    id: 'mobility',
-    patterns: ['/mobility'],
+  auto: {
+    id: 'auto',
+    patterns: ['/auto'],
     data: () => [{
-      url: 'ustwo/v1/pages/mobility',
+      url: 'ustwo/v1/pages/auto',
       type: 'page',
-      slug: 'mobility'
+      slug: 'auto'
     }]
   },
   humanisingAutonomy: {
-    id: 'mobility/humanisingautonomy',
-    patterns: ['/mobility/humanisingautonomy'],
+    id: 'auto/humanisingautonomy',
+    patterns: ['/auto/humanisingautonomy'],
     data: () => [{
       url: 'ustwo/v1/pages/humanisingautonomy',
       type: 'page',
