@@ -8,6 +8,9 @@ const tickerFrequency = 200;
 const timerTotal = 8000;
 const topColours = ['#6114CC', '#009CF3', '#FA7D78', '#6114CC'];
 const bottomColours = ['#FA7D78', '#A5FAAF', '#FFBF02', '#FA7D78'];
+
+const autoTopColours = ['#f8e467', '#f8e467'];
+const autoBottomColours = ['#ffbf00', '#ffbf00'];
 // const coloursLighter = ['#ccb1cf', '#b5deda', '#f3cba1', '#ccb1cf'];
 
 class ContactBlock extends Component {
@@ -40,9 +43,20 @@ class ContactBlock extends Component {
   }
 
   render() {
+    const { auto } = this.props;
     const progress = Math.round(((timerTotal - this.state.tick) / timerTotal) * 100) / 100;
-    const topColour = blendColours(topColours[this.state.iterate], topColours[this.state.iterate + 1], progress);
-    const bottomColour = blendColours(bottomColours[this.state.iterate], bottomColours[this.state.iterate + 1], progress);
+
+    let topColour, bottomColour;
+    if (auto) {
+      topColour = blendColours(autoTopColours[this.state.iterate], autoTopColours[this.state.iterate + 1], progress);
+      bottomColour = blendColours(autoBottomColours[this.state.iterate], autoBottomColours[this.state.iterate + 1],
+      progress);
+    } else {
+      topColour = blendColours(topColours[this.state.iterate], topColours[this.state.iterate + 1], progress);
+      bottomColour = blendColours(bottomColours[this.state.iterate], bottomColours[this.state.iterate + 1],
+      progress);
+    }
+
     const backgroundStyles = {
       background: `linear-gradient(to bottom, #${topColour}, #${bottomColour})`
     }
@@ -82,11 +96,28 @@ class ContactBlock extends Component {
       }
     }
 
+    let data;
+    if (auto) {
+      data = {
+        sectionTitle: 'Make something awesome',
+        title: 'Get in touch ',
+        email: 'mobility@ustwo.com',
+        color: 'auto'
+      }
+    } else {
+      data = {
+        sectionTitle: 'Make change happen',
+        title: 'Talk to ustwo ',
+        email: 'hello@ustwo.com',
+        color: 'hot'
+      }
+    }
+
     return (
       <div className="contact-block">
         <div className="home-text-block">
-          <div className="section-title">Make change happen</div>
-          <h2>Talk to ustwo <br /><span className="contact-block-email"><GradientWords word="hello@ustwo.com" color="hot" reverse={true} /></span></h2>
+          <div className="section-title">{data.sectionTitle}</div>
+          <h2>{data.title}<br /><span className="contact-block-email"><GradientWords word={data.email} color={data.color} reverse={true} /></span></h2>
           <div className="contact-block-image">
             <div className="contact-block-image-background" style={backgroundStyles} />
             <div className="contact-block-image-sky" />

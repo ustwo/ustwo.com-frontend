@@ -7,7 +7,7 @@ import window from 'app/adaptors/server/window';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import Hero from 'app/components/hero';
 import Signup from 'app/components/signup';
-import ContactBlockAuto from 'app/components/contact-block-auto';
+import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
 import AutoWhatwedo from 'app/components/auto-whatwedo';
 import VideoBlock from 'app/components/video-block';
@@ -159,7 +159,7 @@ class HumanisingAutonomy extends Component {
             <div className="wrapper">
 
               <h4>The Book is out now</h4>
-              <p>Fill in this form to download your free copy:</p>
+              <p>We're giving away this book to encourage open conversation and debate - it's intended to be a conversation starter, not the final word. Fill in this form to download your free copy:</p>
 
               <Signup
                 onNameInput={handleInputChange(this, 'name')}
@@ -240,7 +240,7 @@ class HumanisingAutonomy extends Component {
           </div>
 
           <ScrollWrapper
-            component={<ContactBlockAuto />}
+            component={<ContactBlock auto />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}
@@ -264,25 +264,25 @@ const autoHumanisingAutonomyData = {
   intro: "The auto industry's approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved. In our latest book, we explore creating a human approach to autonomy that actually works.",
   article1: {
     title: 'Introducting the ustwo Roo',
-    author: 'As featured in Fast Co',
+    subtitle: 'Our autonomous car concept',
     excerpt: 'Looking beyond opportunities to optimize, ustwo’s AV concept is the built on the foundational idea that there’s more to people’s mobility needs than simply the vehicle and its technology.',
-    uri: '/',
+    uri: '/blog/introducing-ustwo-av-concept',
     image: '/images/auto/auto-roo.jpg'
   },
   article2: {
+    title: 'Introduction',
+    subtitle: 'HUMANISING AUTONOMY',
+    author: 'Book Chapter 1',
+    excerpt: 'Autonomous Vehicles (AVs) promise to make a meaningful difference to the world, enabling a new level of mobility, independence and safety for all. Yet discussions continue to focus on topics such as technological feasibility and its impact to our roads, rather than the needs of the user.',
+    uri: '/',
+    image: '/images/auto/article-humanising-autonomy.jpg'
+  },
+  article3: {
     title: 'People and Driverless Vehicles',
-    author: 'Chapter 5',
     subtitle: 'What Does Autonomy Mean to You?',
+    author: 'Book Chapter 2',
     excerpt: 'In order to overcome the barriers to AV adoption, they need to be truly accessible to everyone. The way to do this? Observe what people’s mobility wants and needs are. This is the key to creating a human approach to autonomy that actually works.',
     uri: '/',
     image: '/images/auto/article-driverless-vehicles.jpg'
-  },
-  article3: {
-    title: 'Humanising Autonomy',
-    author: 'Excerpt from Chapter 3',
-    subtitle: 'Where Are We Going?',
-    excerpt: 'Autonomous Vehicles promise to make a meaningful difference to the world, enabling a new level of mobility, independence and safety for all. Yet discussions continue to focus on topics such as technological feasibility and its impact to our roads, rather than the needs of the user.',
-    uri: '/',
-    image: '/images/auto/article-humanising-autonomy.jpg'
   }
 }

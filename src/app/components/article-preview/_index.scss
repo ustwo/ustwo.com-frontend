@@ -23,11 +23,11 @@
   }
 
   h2 {
-    @extend .h3;
+    @extend .h3-alt;
   }
 
   h3 {
-    @extend .h4;
+    @extend .h3-alt;
     font-family: 'Edo-SZ';
   }
 

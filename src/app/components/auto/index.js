@@ -4,7 +4,7 @@ import window from 'app/adaptors/server/window';
 import { get } from 'lodash';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import Hero from 'app/components/hero';
-import ContactBlockAuto from 'app/components/contact-block-auto';
+import ContactBlock from 'app/components/contact-block';
 import ContactButton from 'app/components/contact-button';
 import Footer from 'app/components/footer';
 import FeaturedCaseStudy from 'app/components/featured-case-study';
@@ -17,6 +17,7 @@ import VideoBlock from 'app/components/video-block';
 import RelatedPosts from 'app/components/related-posts';
 import Video from 'app/components/video';
 import WorkProcess from 'app/components/work-process';
+import GradientWords from 'app/components/gradient-words';
 
 function Auto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
@@ -50,7 +51,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
     additionalVideoSrc = 'https://player.vimeo.com/external/230365343.sd.mp4?s=dd1580c0465d3ad4b8361916a217276b255a921c&profile_id=165';
   }
   const additionalVideoPoster = 'https://i.vimeocdn.com/video/652407905.jpg?mw=960&mh=540';
-
 
   return (
     <div className="page-auto">
@@ -87,13 +87,20 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
       <div className="home-main-content-wrapper">
 
-        <div className="auto-whatwedo work-whatwedo-wrapper">
-          <div className="work-whatwedo">
-            <div className="work-intro">
-              <p className="work-intro-statement">
-                {autoData.intro}
-              </p>
-            </div>
+        <div className="auto-whatwedo">
+          <div className="wrapper">
+            <h1>
+              <span>We make a </span><GradientWords
+                word="positive"
+                color="auto2"
+              /><span>&nbsp;</span><GradientWords
+                word="impact"
+                color="auto2"
+              /><span> on the way businesses, people and cities </span><GradientWords
+                word="move"
+                color="auto2"
+              />
+          </h1>
           </div>
         </div>
 
@@ -130,7 +137,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
         {renderTwitter}
 
         <ScrollWrapper
-          component={<ContactBlockAuto />}
+          component={<ContactBlock auto />}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
           requireScreenPosition={true}
@@ -174,7 +181,7 @@ const autoData = {
   latestPromo: {
     title: 'Download our new Book',
     excerpt: 'In our latest book, we explore creating a human approach to autonomy that actually works.',
-    slug: '/auto/humanisingautonomy',
+    slug: '/mobility/humanisingautonomy',
     linkText: 'Find out more',
     latest: true,
     image: '/images/auto/humanising-autonomy-showcase.jpg',
@@ -244,29 +251,8 @@ const autoData = {
       company: ''
     }
   }],
-  clients: ['Ford', 'Qantas', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan', 'Toyota', 'Alphabet'],
-  partners: ['UCL', 'University of Washington', 'Wayfindr', 'Car Design Research', 'Royal Society for Blind Children'],
-  projects: [{
-    type: 'Research Project',
-    shortTitle: 'auto-hmi',
-    title: 'ARE WE THERE YET? THOUGHTS ON IN-CAR HMI',
-    text: 'In this five part blog series ustwo Auto look into this phenomenon of growing in-car HMI complexity.',
-    slug: '/auto'
-  },{
-    type: 'Research Project',
-    shortTitle: 'auto-mobility',
-    title: 'CITIES SHOW US THE WAY',
-    text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-    slug: '/auto',
-    small: true
-  },{
-    type: 'Research Project',
-    shortTitle: 'auto-reimagine',
-    title: 'USTWO REIMAGINE THE IN-CAR CLUSTER',
-    text: 'Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.',
-    slug: '/auto',
-    small: true
-  }]
+  clients: ['Ford', 'Qantas', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan', 'Toyota', 'Alphabet', 'BMW Group'],
+  partners: ['UCL', 'University of Washington', 'Wayfindr', 'Car Design Research', 'Royal Society for Blind Children']
 }
 
 const featuredCaseStudy = {

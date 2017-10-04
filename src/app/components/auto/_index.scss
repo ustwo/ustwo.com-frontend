@@ -63,6 +63,14 @@
     left: calc(50% - 12px);
   }
 
+  .auto-whatwedo {
+    @include core-layout;
+
+    .wrapper {
+      @include core-vertical-padding-large;
+    }
+  }
+
   .work-process-item-image {
     height: 75px;
 
