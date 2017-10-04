@@ -166,8 +166,10 @@ const autoData = {
     slug: '/auto/humanisingautonomy',
     linkText: 'Find out more',
     latest: true,
-    image: '/images/auto/humanising-autonomy-showcase.jpg',
-    imageBackground: true
+    image: '/images/auto/humanising-autonomy-bg.jpg',
+    imageBackground: true,
+    additionalImage: '/images/auto/humanising-autonomy-book.png',
+    className: 'feature-humanising-autonomy'
   },
   howWeDoIt: [
     "Our design methodology is inclusive and from the ground up because we know this creates a better experience for everyone.",

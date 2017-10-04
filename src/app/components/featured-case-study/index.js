@@ -2,7 +2,7 @@ import React from 'react';
 import Flux from 'app/flux';
 
 function FeaturedCaseStudy({ content }) {
-  const { colours, image, imageAlt, title, excerpt, slug, linkText, latest, imageBackground } = content;
+  const { colours, image, imageAlt, title, excerpt, slug, linkText, latest, imageBackground, additionalImage, className } = content;
 
   let styles, inlineImage;
   if (colours) {
@@ -24,6 +24,9 @@ function FeaturedCaseStudy({ content }) {
   } else {
     inlineImage = (<img src={image} alt={imageAlt} />);
   }
+  if (additionalImage) {
+    inlineImage = (<img src={additionalImage} alt={imageAlt} />);
+  }
 
   let renderLink;
   if (linkText && slug) {
@@ -31,7 +34,7 @@ function FeaturedCaseStudy({ content }) {
   }
 
   return (
-    <div className="featured-case-study" style={styles}>
+    <div className={`featured-case-study ${className}`} style={styles}>
       <div className="featured-case-study-inner">
         <div className="featured-case-study-image">
           {inlineImage}

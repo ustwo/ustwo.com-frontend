@@ -70,6 +70,12 @@
     left: calc(50% - 12px);
   }
 
+  .feature-humanising-autonomy .featured-case-study-image img {
+    max-width: 700px;
+    max-height: none;
+    width: 100%;
+  }
+
   .auto-whatwedo {
     @include core-layout;
     background: white;
