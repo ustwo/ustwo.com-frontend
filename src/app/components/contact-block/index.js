@@ -45,17 +45,17 @@ class ContactBlock extends Component {
   render() {
     const { auto } = this.props;
     const progress = Math.round(((timerTotal - this.state.tick) / timerTotal) * 100) / 100;
-
-    let topColour, bottomColour;
-    if (auto) {
-      topColour = blendColours(autoTopColours[this.state.iterate], autoTopColours[this.state.iterate + 1], progress);
-      bottomColour = blendColours(autoBottomColours[this.state.iterate], autoBottomColours[this.state.iterate + 1],
+    //
+    // let topColour, bottomColour;
+    // if (auto) {
+    //   topColour = blendColours(autoTopColours[this.state.iterate], autoTopColours[this.state.iterate + 1], progress);
+    //   bottomColour = blendColours(autoBottomColours[this.state.iterate], autoBottomColours[this.state.iterate + 1],
+    //   progress);
+    // } else {
+      const topColour = blendColours(topColours[this.state.iterate], topColours[this.state.iterate + 1], progress);
+      const bottomColour = blendColours(bottomColours[this.state.iterate], bottomColours[this.state.iterate + 1],
       progress);
-    } else {
-      topColour = blendColours(topColours[this.state.iterate], topColours[this.state.iterate + 1], progress);
-      bottomColour = blendColours(bottomColours[this.state.iterate], bottomColours[this.state.iterate + 1],
-      progress);
-    }
+    // }
 
     const backgroundStyles = {
       background: `linear-gradient(to bottom, #${topColour}, #${bottomColour})`
@@ -117,7 +117,7 @@ class ContactBlock extends Component {
       <div className="contact-block">
         <div className="home-text-block">
           <div className="section-title">{data.sectionTitle}</div>
-          <h2>{data.title}<br /><span className="contact-block-email"><GradientWords word={data.email} color={data.color} reverse={true} /></span></h2>
+          <h2>{data.title}<br /><span className="contact-block-email"><GradientWords word={data.email} color={data.color} /></span></h2>
           <div className="contact-block-image">
             <div className="contact-block-image-background" style={backgroundStyles} />
             <div className="contact-block-image-sky" />

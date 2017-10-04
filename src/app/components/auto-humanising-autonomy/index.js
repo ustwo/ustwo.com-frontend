@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Meta from "react-helmet";
 import firebase from 'firebase';
 import ReactFire from 'reactfire';
 import reactMixin from 'react-mixin';
@@ -131,13 +130,6 @@ class HumanisingAutonomy extends Component {
     return (
       <div className="page-auto page-auto-humanising-autonomy page-case-study">
 
-        <Meta
-          meta={[{
-            name: 'robots',
-            content: 'noindex'
-          }]}
-        />
-
         <div className="page-content-wrapper">
 
           <section className="single-column intro">
@@ -159,7 +151,7 @@ class HumanisingAutonomy extends Component {
             <div className="wrapper">
 
               <h4>The Book is out now</h4>
-              <p>We're giving away this book to encourage open conversation and debate - it's intended to be a conversation starter, not the final word. Fill in this form to download your free copy:</p>
+              <p>We're giving away this book to encourage open conversation and debate – it's intended to be a conversation starter, not the final word. Fill in this form to download your free copy:</p>
 
               <Signup
                 onNameInput={handleInputChange(this, 'name')}

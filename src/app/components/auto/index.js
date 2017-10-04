@@ -1,5 +1,4 @@
 import React from 'react';
-import Meta from "react-helmet";
 import window from 'app/adaptors/server/window';
 import { get } from 'lodash';
 import ScrollWrapper from 'app/components/scroll-wrapper';
@@ -54,13 +53,6 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
   return (
     <div className="page-auto">
-
-      <Meta
-        meta={[{
-          name: 'robots',
-          content: 'noindex'
-        }]}
-      />
 
       <div className="home-pinned-header-wrapper">
         <div className="home-pinned-header-inner" style={styles}>
@@ -184,17 +176,17 @@ const autoData = {
   ],
   teamProfile: "We're a community of designers, inventors and engineers. We don't make cars but we have a small collection. We conduct our own research experiments because we’re passionate about what we do and want to solve the problems we see around us. We’re embedded within ustwo with over 50 of us across our studios globally with specific sector expertise.",
   testimonials: [{
-    testimonial: "I know a lot of design agencies but they are the best. They have the best design skills; a great working style and the team are really smart",
-    source: {
-      name: 'Shusuke Miyazawa',
-      title: 'Nissan, Tokyo',
-      company: ''
-    }
-  },{
     testimonial: "There was a recognition that we were attempting to do something that had never been done before. There was no pre-existing capability so that prompted us to work with ustwo.",
     source: {
       name: 'Doug Nicoll',
       title: 'Ford Smart Mobility, London',
+      company: ''
+    }
+  },{
+    testimonial: "I know a lot of design agencies but they are the best. They have the best design skills; a great working style and the team are really smart",
+    source: {
+      name: 'Shusuke Miyazawa',
+      title: 'Nissan, Tokyo',
       company: ''
     }
   },{
