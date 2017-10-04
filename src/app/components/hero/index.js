@@ -50,7 +50,7 @@ class Hero extends Component {
   }
 
   render() {
-    const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions, fixedHeight, heroImage } = this.props;
+    const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions, fixedHeight, heroImage, pageLogo } = this.props;
     const { active } = this.state;
     const scrollProgressValue = scrollProgress ? scrollProgress : 0;
     const transform = `translateY(${Math.min(((0.5 - scrollProgressValue) * 4) * 30, 0)}px)`;
@@ -78,6 +78,13 @@ class Hero extends Component {
       styles = { height: `${fixedHeight}px` }
     }
 
+    let renderTitle;
+    if (pageLogo) {
+      renderTitle = pageLogo;
+    } else {
+      renderTitle = <WordAnimation delay={0.45} duration={0.2}>{title}</WordAnimation>;
+    }
+
     return (
       <section className={classes} style={styles}>
         <div className="hero-inner-wrapper">
@@ -92,7 +99,7 @@ class Hero extends Component {
                 <WordAnimation delay={0.3} duration={0.2}>{sectionTitle}</WordAnimation>
               </div>
               <h1 className="title">
-                <WordAnimation delay={0.45} duration={0.2}>{title}</WordAnimation>
+                {renderTitle}
               </h1>
               {this.props.subheading && <p className="subheading"><WordAnimation delay={0.5} duration={0.32}>{this.props.subheading}</WordAnimation></p>}
               <div className="hero-children">

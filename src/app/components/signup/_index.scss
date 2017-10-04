@@ -2,8 +2,14 @@
   position: relative;
 }
 
-.signup-input,
-.signup-button {
+.signup-form-wrapper {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.signup-input {
   display: block;
   position: relative;
   z-index: 2;
@@ -38,30 +44,66 @@
   }
 }
 
-.signup-button {
-  background-color: $honey;
-  margin-top: 10px;
-  border: 1px transparent;
-  color: white;
-  padding: 0 16px;
-  font-size: 15px;
-  text-align: center;
-  transition: background-color .4s ease-in-out;
+.signup-buttons {
+  display: flex;
+  align-items: center;
 
-  .spinner {
-    margin: 0 auto;
+}
+
+.signup-submit-button {
+  @include buttonStyle(true);
+  @include buttonColor();
+  padding: 0;
+  @include button-border(true);
+  text-indent: -9999px;
+  // background: url('/images/icon-right-dark.svg') no-repeat 50% 50%;
+  // background-size: 16px auto;
+  margin-top: 0;
+  background-position: 50% !important;
+}
+
+.signup-download-button {
+  align-self: flex-start;
+  @include button-border;
+  display: block;
+  padding: 25px;
+  border: 6px solid black !important;
+  height: auto !important;
+
+  & + img {
+    width: 200px;
+    margin-top: 40px;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    border: 8px solid black !important;
+    padding: 30px;
   }
 }
 
+.signup-download-button-text {
+  @extend .h4;
+  height: auto;
+  line-height: 1;
+  padding-left: 40px;
+  background: url(/images/icon-diagonal-arrow-down.svg) no-repeat 0 bottom;
+  background-size: 20px auto;
+}
+
+.signup-download-button-additional {
+  font-size: 14px;
+  height: auto;
+  line-height: 1;
+  padding-left: 40px;
+}
+
 .signup-error-message {
-  position: absolute;
-  top: -25px;
   font-size: 14px;
   font-weight: bold;
   color: $passion;
-  height: 20px;
   text-align: left;
   opacity: 0;
+  margin-left: 20px;
   transition: opacity .2s ease-in-out;
 }
 
@@ -71,26 +113,19 @@
   .signup-error-message {
     opacity: 1;
   }
-  .signup__email-input,
-  .signup__email-input:focus {
+  .signup-email-input,
+  .signup-email-input:focus {
     border-color: $passion;
   }
 }
 
-.signup--status-success {
-  .signup__email-input,
-  .signup__email-input:focus {
-    color: rgba(0,0,0,.2);
-    background-color: $offWhite;
-    pointer-events: none;
-  }
-  .signup__submit-button {
-    background-color: $pot;
-    pointer-events: none;
+.signup-status-success {
+  .signup-form-wrapper {
+    padding-bottom: 60px;
   }
 }
 
-.signup__email-input:focus,
-.signup--status-sending .signup__email-input {
+.signup-email-input:focus,
+.signup-status-sending .signup-email-input {
   border-color: $honey;
 }

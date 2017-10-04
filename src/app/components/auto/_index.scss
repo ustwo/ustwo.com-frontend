@@ -33,9 +33,10 @@
     max-width: none;
     letter-spacing: 5px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
 
     @media screen and (min-width: $bp-medium) {
+      font-size: 20px;
       letter-spacing: 10px;
     }
   }
@@ -46,23 +47,12 @@
     h1 {
       max-width: none;
       line-height: 0.9;
-
-      .word-animator {
-        &:before {
-          content: "auto"; // match width of the h1 auto title
-          display: inline-block;
-          background: url(/images/logo-light.svg) no-repeat 0 0;
-          background-position: 50%;
-          background-size: 113% auto;
-          color: transparent;
-          opacity: 0;
-          transition: opacity .32s linear;
-        }
-      }
+      color: $honey;
 
       .word {
-        display: block;
-        color: $honey;
+        &:last-of-type {
+          display: block;
+        }
       }
     }
 
@@ -78,6 +68,21 @@
 
   .hero-down-indicator {
     left: calc(50% - 12px);
+  }
+
+  .feature-humanising-autonomy .featured-case-study-image img {
+    max-width: 700px;
+    max-height: none;
+    width: 100%;
+  }
+
+  .auto-whatwedo {
+    @include core-layout;
+    background: white;
+
+    .wrapper {
+      @include core-vertical-padding-large;
+    }
   }
 
   .work-process-item-image {
@@ -115,6 +120,44 @@
   .tesimonial-button-next svg {
     fill: white;
   }
+
+  @media screen and (min-width: $bp-large) {
+    .auto-how {
+      // padding-bottom: 48%; // Reduce this because we reduced the width below
+
+      .video-block {
+        max-width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  .video-block {
+    margin-bottom: 30px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      bottom: -35px;
+      left: -30px;
+      background: url('/images/icon-diagonal-arrow.svg') no-repeat top right;
+      background-size: 100% auto;
+    }
+
+    @media screen and (min-width: $bp-large) {
+      margin-bottom: 70px;
+
+      &:after {
+        width: 70px;
+        height: 70px;
+        bottom: -80px;
+        left: -80px;
+      }
+    }
+  }
 }
 
 .active .hero-content h1 .word-animator:before {
@@ -141,6 +184,12 @@
 
 .auto-how {
   @include core-layout;
+  background: white url(/images/pattern-donut.svg) no-repeat top right;
+  background-size: 100px auto;
+
+  @media screen and (min-width: $bp-large) {
+    background-size: 200px auto;
+  }
 
   .auto-how-inner {
     @include core-vertical-padding;
@@ -258,6 +307,7 @@
 }
 .profile-contact {
   margin-top: 10px;
+  font-size: 16px;
 }
 
 @media screen and (min-width: $bp-medium) {

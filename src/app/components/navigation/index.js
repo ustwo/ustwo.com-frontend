@@ -80,7 +80,7 @@ class Navigation extends Component {
       case 'event':
         navigateTo = '/events';
         break;
-      case 'humanising-autonomy':
+      case 'humanisingautonomy':
         navigateTo = '/auto';
         break;
       default:
@@ -94,14 +94,14 @@ class Navigation extends Component {
     const { page } = this.props;
     const { capabilityPages, workPages } = this.state;
     const workSubPage = capabilityPages.includes(page) || page === 'case-study';
-    const otherSubPage = page === 'post' || page === 'event' || page === 'humanising-autonomy';
+    const otherSubPage = page === 'post' || page === 'event' || page === 'humanisingautonomy';
     const subPageText = capabilityPages.includes(page) || page === 'case-study' ? 'Work' : 'Back';
 
     let linkText;
     if (workSubPage) {
       linkText = 'Work';
-    } else if (page === 'humanising-autonomy') {
-      linkText = 'Auto Home';
+    } else if (page === 'humanisingautonomy') {
+      linkText = 'Auto & Mobility';
     } else {
       linkText = 'Back';
     }
@@ -137,7 +137,7 @@ class Navigation extends Component {
     const footerActive = documentScrollPosition > 4000 - (693 + 414);
     const homePage = section === 'home';
     const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto';
-    const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'auto' || page === 'humanising-autonomy';
+    const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'auto' || page === 'humanisingautonomy';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
     const scrolledAfter100 = documentScrollPosition > viewportDimensions.height - (navHeight * 0.5);

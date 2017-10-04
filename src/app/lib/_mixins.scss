@@ -344,3 +344,32 @@
     border-radius: $size - (2 * $border) * 0.5;
   }
 }
+
+@mixin button-border($square: false) {
+  border: 1px solid $nonBlack;
+  margin-top: 10px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 15px;
+  padding: 0 15px;
+
+  @media screen and (min-width: $bp-medium) {
+    height: 36px;
+    line-height: 36px;
+  }
+  @media screen and (min-width: $bp-large) {
+    height: 42px;
+    line-height: 42px;
+  }
+
+  @if $square == true {
+    width: 32px;
+
+    @media screen and (min-width: $bp-medium) {
+      width: 36px;
+    }
+    @media screen and (min-width: $bp-large) {
+      width: 42px;
+    }
+  }
+}

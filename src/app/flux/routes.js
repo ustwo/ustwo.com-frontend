@@ -63,6 +63,15 @@ const routes = {
       slug: 'auto'
     }]
   },
+  humanisingAutonomy: {
+    id: 'auto/humanisingautonomy',
+    patterns: ['/auto/humanisingautonomy'],
+    data: () => [{
+      url: 'ustwo/v1/pages/humanisingautonomy',
+      type: 'page',
+      slug: 'humanisingautonomy'
+    }]
+  },
   caseStudy: {
     id: 'work/case-study',
     patterns: ['/work/:cid'],

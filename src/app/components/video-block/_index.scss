@@ -5,15 +5,28 @@
     background-color: rgba(0,0,0,.1);
   }
 
-  h2 {
+  h2,
+  p {
     pointer-events: none;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 60%;
     z-index: 99999;
     text-align: center;
     color: $offWhite;
+  }
+
+  h2 {
+    top: 60%;
+  }
+
+  p {
+    top: 72%;
+    display: none;
+
+    @media screen and (min-width: $bp-medium) {
+      display: block;
+    }
   }
 
   > div {
@@ -29,7 +42,8 @@
       background-color: transparent;
     }
 
-    h2 {
+    h2,
+    p {
       opacity: 0;
     }
 

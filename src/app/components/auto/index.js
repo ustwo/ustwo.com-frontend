@@ -1,14 +1,11 @@
 import React from 'react';
-import Meta from "react-helmet";
 import window from 'app/adaptors/server/window';
 import { get } from 'lodash';
-
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import Hero from 'app/components/hero';
-import ContactBlockAuto from 'app/components/contact-block-auto';
+import ContactBlock from 'app/components/contact-block';
 import ContactButton from 'app/components/contact-button';
 import Footer from 'app/components/footer';
-import AutoWhatwedo from 'app/components/auto-whatwedo';
 import FeaturedCaseStudy from 'app/components/featured-case-study';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import TwitterCarousel from 'app/components/twitter-carousel';
@@ -18,6 +15,8 @@ import WorkVerticals from 'app/components/work-verticals';
 import VideoBlock from 'app/components/video-block';
 import RelatedPosts from 'app/components/related-posts';
 import Video from 'app/components/video';
+import WorkProcess from 'app/components/work-process';
+import GradientWords from 'app/components/gradient-words';
 
 function Auto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
@@ -38,21 +37,22 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
     <Video
       src="https://player.vimeo.com/external/233813909.sd.mp4?s=618cf0486ee0a0f5b972f352421f7f36a27beca8&profile_id=165"
       srcHls="https://player.vimeo.com/external/233813909.m3u8?s=499e857388b87b02fdce6b73c17b30218eb1f17b"
-      imageCSS="https://i.vimeocdn.com/video/655241259.jpg?mw=1280&mh=720"
+      imageCSS="https://i.vimeocdn.com/video/658495896.jpg?mw=1280&mh=720"
       preload="auto"
       fixedHeight={fixedHeight}
     />
   );
 
+  let additionalVideoSrc;
+  if (window.innerWidth < 600) {
+    additionalVideoSrc = 'https://player.vimeo.com/external/230365343.sd.mp4?s=dd1580c0465d3ad4b8361916a217276b255a921c&profile_id=164';
+  } else {
+    additionalVideoSrc = 'https://player.vimeo.com/external/230365343.sd.mp4?s=dd1580c0465d3ad4b8361916a217276b255a921c&profile_id=165';
+  }
+  const additionalVideoPoster = 'https://i.vimeocdn.com/video/652407905.jpg?mw=960&mh=540';
+
   return (
     <div className="page-auto">
-
-      <Meta
-        meta={[{
-          name: 'robots',
-          content: 'noindex'
-        }]}
-      />
 
       <div className="home-pinned-header-wrapper">
         <div className="home-pinned-header-inner" style={styles}>
@@ -79,77 +79,39 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 
       <div className="home-main-content-wrapper">
 
-        <ScrollWrapper
-          component={
-            <AutoWhatwedo
-              intro={autoData.intro}
-              introFurther={autoData.introFurther}
-              workProcess={autoData.workProcess}
-              isMobile={isMobile}
-            />
-          }
-          documentScrollPosition={documentScrollPosition}
-          viewportDimensions={viewportDimensions}
-        />
-
-        <div className="auto-team">
-          <div className="auto-team-inner">
-
-            <h2 className="header">Meet the Team</h2>
-
-            <ul className="auto-team-profiles">
-              <li>
-                <section className="profile">
-                  <div className="profile-photo"><img src="/images/auto/tim-smith.jpg" /></div>
-                  <div className="profile-details">
-                    <h3 className="profile-name">Tim Smith</h3>
-                    <p className="profile-title">Design Principal</p>
-                    <p className="profile-contact"><a href="https://twitter.com/mypoorbrain">@mypoorbrain</a></p>
-                  </div>
-                </section>
-              </li>
-              <li>
-                <section className="profile">
-                  <div className="profile-photo"><img src="/images/auto/harsha-vardhan.jpg" /></div>
-                  <div className="profile-details">
-                    <h3 className="profile-name">Harsha Vardhan</h3>
-                    <p className="profile-title">Interaction Lead</p>
-                    <p className="profile-contact"><a href="https://twitter.com/wabisabifiction">@wabisabifiction</a></p>
-                  </div>
-                </section>
-              </li>
-              <li>
-                <section className="profile">
-                  <div className="profile-photo"><img src="/images/auto/lexi-cherniavsky.jpg" /></div>
-                  <div className="profile-details">
-                    <h3 className="profile-name">Lexi Cherniavsky</h3>
-                    <p className="profile-title">Client Partner</p>
-                    <p className="profile-contact"><a href="https://www.linkedin.com/in/lexi-cherniavsky-2765a525/">Find me on linkedin</a></p>
-                  </div>
-                </section>
-              </li>
-            </ul>
-
-            <p>{autoData.teamProfile}</p>
-
+        <div className="auto-whatwedo">
+          <div className="wrapper">
+            <h1>
+              <span>We make a </span><GradientWords
+                word="positive"
+                color="auto2"
+              /><span>&nbsp;</span><GradientWords
+                word="impact"
+                color="auto2"
+              /><span> on the way businesses, people and cities </span><GradientWords
+                word="move"
+                color="auto2"
+              />
+          </h1>
           </div>
         </div>
 
-        <div className="auto-how">
-          <div className="auto-how-inner">
-            {autoData.howWeDoIt.map((para, i) => <p key={`para-${i}`}>{para}</p>)}
-          </div>
-        </div>
-
-        {renderTestimonials}
-
-        <FeaturedCaseStudy content={featuredCaseStudy} />
-
-        <RelatedPosts page={page} posts={relatedPosts} />
+        <FeaturedCaseStudy content={autoData.latestPromo} />
 
         <div className="auto-logos-wrapper-clients">
           <WorkClientsBoard logos={autoData.clients} title="Our Clients" />
         </div>
+
+        <FeaturedCaseStudy content={featuredCaseStudy} />
+
+        {renderTestimonials}
+
+        <div className="auto-whatwedo work-whatwedo-wrapper">
+          {autoData.workProcess ? <WorkProcess data={autoData.workProcess} isMobile={isMobile}  /> : null}
+        </div>
+
+        <RelatedPosts page={page} posts={relatedPosts} />
+
         <div className="auto-logos-wrapper-partners">
           <WorkClientsBoard logos={autoData.partners} title="Our Partners" />
         </div>
@@ -157,7 +119,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
         {renderTwitter}
 
         <ScrollWrapper
-          component={<ContactBlockAuto />}
+          component={<ContactBlock auto />}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
           requireScreenPosition={true}
@@ -174,10 +136,9 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
 export default Auto;
 
 const autoData = {
-  title: 'auto',
+  title: 'Auto & Mobility',
   subtitle: 'For the journey',
-  intro: "Our mission is to make journeys more magically connected. We help brands drive change by combining insight and creativity with breakthrough technology. We create experiences that enhance people's lives from the dashboard to the city to the sky.",
-  introFurther: 'We do this with clients around the world and collaborate with research partners on our own experimental projects.',
+  intro: "From the dashboard, through the city, to the sky, we make a positive impact on the way businesses, people, and cities move.",
   workProcess: [{
     name: 'humanising-autonomy',
     title: 'Humanising Autonomy',
@@ -201,12 +162,14 @@ const autoData = {
   },],
   latestPromo: {
     title: 'Download our new Book',
-    excerpt: 'Lorem ipsum dolor sit amet',
-    slug: '/auto/humanising-autonomy',
-    linkText: 'To the book!',
+    excerpt: 'In our latest book, we explore creating a human approach to autonomy that actually works.',
+    slug: '/auto/humanisingautonomy',
+    linkText: 'Find out more',
     latest: true,
-    image: '/images/work/expertise-image-mobility.jpg',
-    imageBackground: true
+    image: '/images/auto/humanising-autonomy-bg.jpg',
+    imageBackground: true,
+    additionalImage: '/images/auto/humanising-autonomy-book.png',
+    className: 'feature-humanising-autonomy'
   },
   howWeDoIt: [
     "Our design methodology is inclusive and from the ground up because we know this creates a better experience for everyone.",
@@ -222,17 +185,17 @@ const autoData = {
       company: ''
     }
   },{
+    testimonial: "I know a lot of design agencies but they are the best. They have the best design skills; a great working style and the team are really smart",
+    source: {
+      name: 'Shusuke Miyazawa',
+      title: 'Nissan, Tokyo',
+      company: ''
+    }
+  },{
     testimonial: "The automotive eBook is a rarity, it's wonderful.",
     source: {
       name: 'Apple Design Team',
       title: 'San Francisco',
-      company: ''
-    }
-  },{
-    testimonial: "BS shovelling art schools grads",
-    source: {
-      name: 'A Jalopnik reader',
-      title: '',
       company: ''
     }
   },{
@@ -243,14 +206,7 @@ const autoData = {
       company: ''
     }
   },{
-    testimonial: "I know a lot of design agencies but they are the best. They have the best design skills; a great working style and the team are really smart",
-    source: {
-      name: 'Shusuke Miyazawa',
-      title: 'Nissan, Tokyo',
-      company: ''
-    }
-  },{
-    testimonial: "Brilliant car UI from Monument Valley geniuses",
+    testimonial: "Brilliant car UI from [the ustwo] geniuses",
     source: {
       name: 'Wired',
       title: '',
@@ -279,29 +235,8 @@ const autoData = {
       company: ''
     }
   }],
-  clients: ['Ford', 'Qantas', 'Emirates', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan', 'Toyota', 'Alphabet'],
-  partners: ['UCL', 'University of Washington', 'Wayfindr', 'Car Design Research', 'Stanford University', 'Royal Society for Blind Children'],
-  projects: [{
-    type: 'Research Project',
-    shortTitle: 'auto-hmi',
-    title: 'ARE WE THERE YET? THOUGHTS ON IN-CAR HMI',
-    text: 'In this five part blog series ustwo Auto look into this phenomenon of growing in-car HMI complexity.',
-    slug: '/auto'
-  },{
-    type: 'Research Project',
-    shortTitle: 'auto-mobility',
-    title: 'CITIES SHOW US THE WAY',
-    text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-    slug: '/auto',
-    small: true
-  },{
-    type: 'Research Project',
-    shortTitle: 'auto-reimagine',
-    title: 'USTWO REIMAGINE THE IN-CAR CLUSTER',
-    text: 'Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.',
-    slug: '/auto',
-    small: true
-  }]
+  clients: ['Ford', 'Qantas', 'TFL', 'Skanetrafiken', 'JLR', 'Nissan', 'Toyota', 'Alphabet', 'BMW Group'],
+  partners: ['UCL', 'University of Washington', 'Wayfindr', 'Car Design Research', 'Royal Society for Blind Children']
 }
 
 const featuredCaseStudy = {

@@ -62,7 +62,7 @@ install: network-create vault-create assets-create app-create sandbox-create div
 build-all: compiler-build sandbox-build build
 vault: vault-save
 build: app-build assets-build sandbox-build
-test: assets-unit-test assets-integration-test
+test: assets-unit-test
 push: app-push assets-push sandbox-push
 pull: app-pull assets-pull sandbox-pull diversity-pull
 clean-no-confirm:

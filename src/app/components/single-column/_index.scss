@@ -12,7 +12,7 @@
 
 .single-column .wrapper,
 .hljs { // This is the code block used inside posts
-  max-width: 790px;
+  max-width: $thin-content-width;
   margin: 0 auto;
 }
 

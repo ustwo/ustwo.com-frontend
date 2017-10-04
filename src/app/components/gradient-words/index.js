@@ -17,7 +17,11 @@ function GradientWords({ word, color, reverse }) {
     color2 = "#ED0082";
   }
   if (color === 'auto') {
-    color1 = "#f8e467";
+    color1 = "#ffbf00";
+    color2 = "#f8e467";
+  }
+  if (color === 'auto2') {
+    color1 = "#ffbf00";
     color2 = "#ffbf00";
   }
 

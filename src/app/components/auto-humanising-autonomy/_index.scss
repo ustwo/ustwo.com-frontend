@@ -15,6 +15,48 @@
     }
   }
 
+  .intro {
+    .title {
+      @extend .h2;
+
+      .subtitle {
+        @extend .h2;
+        font-family: 'Edo-SZ';
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .humanising-autonomy-form {
+    .wrapper {
+      max-width: 580px;
+    }
+
+    h4,
+    p {
+      margin-bottom: 20px;
+    }
+  }
+
+  .auto-team {
+    background: $offWhite;
+  }
+
+  .auto-team-profiles {
+    padding-bottom: 0 !important;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .video {
+      padding-bottom: 48%; // Reduce this because we reduced the width below
+
+      .video-block {
+        max-width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
 }
 
 .auto-book-intro {
@@ -31,7 +73,80 @@
   }
 }
 
-.auto-book-form-wrapper {
-  max-width: 500px;
-  margin: 0 0 0 auto;
+.humanising-autonomy-article {
+  @include core-layout;
+  background-color: white;
+
+  .wrapper {
+    @include core-vertical-padding;
+    max-width: 1000px;
+  }
+}
+
+.humanising-autonomy-extra-video {
+  .wrapper {
+    max-width: $thin-content-width;
+  }
+}
+
+.humanising-autonomy-contributors {
+  @include core-layout;
+  background-color: $offWhite;
+
+  .wrapper {
+    @include core-vertical-padding;
+    max-width: $thin-content-width;
+    margin: 0 auto;
+
+    @media screen and (min-width: $bp-large) {
+      display: flex;
+      flex-direction: row;
+
+      > div {
+        flex: 1;
+      }
+    }
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+}
+
+.ha-contributors-authors {
+  margin-bottom: 60px;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin-bottom: 20px;
+
+    h5 {
+      margin: 0;
+    }
+
+    .author-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .author-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 15px;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    margin-bottom: 0;
+  }
 }
