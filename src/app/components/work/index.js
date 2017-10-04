@@ -200,10 +200,10 @@ const workData = {
   }],
   verticals: [{
     type: 'Expertise',
-    shortTitle: 'auto',
-    title: 'Auto',
-    text: 'The ustwo Auto team explore user experience in the automotive space with client engagements and our own research and experimental projects, building services and products around the connected car.',
-    slug: '/work/ustwoauto'
+    shortTitle: 'mobility',
+    title: 'Mobility',
+    text: 'On the road, in the city, and up in the sky, we work with clients and partners to imagine and create the products and services for the future of transportation.',
+    slug: '/mobility'
   },{
     type: 'Expertise',
     shortTitle: 'health',
