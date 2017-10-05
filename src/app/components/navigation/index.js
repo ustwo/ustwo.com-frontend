@@ -200,7 +200,7 @@ class Navigation extends Component {
             className="navigation-logo"
             onClick={this.onClickLogo.bind(this)}
           >
-            <SVG title="ustwo logo" spritemapID="ustwologo" />
+            <SVG title="ustwo" spritemapID="ustwologo" />
           </button>
           <button
             className="navigation-toggle"
