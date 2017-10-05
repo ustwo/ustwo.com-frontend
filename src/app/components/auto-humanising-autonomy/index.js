@@ -254,7 +254,7 @@ const autoHumanisingAutonomyData = {
   subtitle: 'Humanising Autonomy',
   intro: "The auto industry's approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved. In our latest book, we explore creating a human approach to autonomy that actually works.",
   article1: {
-    title: 'Introducting the ustwo Roo',
+    title: 'Introducing the ustwo Roo',
     subtitle: 'Our autonomous car concept',
     excerpt: 'Looking beyond opportunities to optimise, ustwo’s AV concept is built on the foundational idea that there’s more to people’s mobility needs than simply the vehicle and its technology.',
     uri: '/blog/introducing-ustwo-av-concept',
