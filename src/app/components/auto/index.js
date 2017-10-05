@@ -16,6 +16,7 @@ import RelatedPosts from 'app/components/related-posts';
 import Video from 'app/components/video';
 import WorkProcess from 'app/components/work-process';
 import GradientWords from 'app/components/gradient-words';
+import TwitterCarousel from 'app/components/twitter-carousel';
 
 function Auto({ page, documentScrollPosition, viewportDimensions, footer, studios, currentPage, isMobile, fixedHeight, scrollProgress }) {
 
@@ -47,6 +48,8 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
     additionalVideoSrc = 'https://player.vimeo.com/external/230365343.sd.mp4?s=dd1580c0465d3ad4b8361916a217276b255a921c&profile_id=165';
   }
   const additionalVideoPoster = 'https://i.vimeocdn.com/video/652407905.jpg?mw=960&mh=540';
+
+  const renderTwitter = <TwitterCarousel fixedHeight={fixedHeight} type="twitter-auto" />
 
   return (
     <div className="page-auto">
@@ -112,6 +115,8 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
         <div className="auto-logos-wrapper-partners">
           <WorkClientsBoard logos={autoData.partners} title="Our Partners" />
         </div>
+
+        {renderTwitter}
 
         <ScrollWrapper
           component={<ContactBlock auto />}
