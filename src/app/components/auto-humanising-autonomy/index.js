@@ -140,7 +140,7 @@ class HumanisingAutonomy extends Component {
                 <div className="subtitle">Where are we going?</div>
               </h1>
               <div className="content">
-                <p>In our latest book we argue the auto industry's approach to autonomy is imbalanced – we need to focus on the human factors involved rather than the technical challenges alone.</p>
+                <p>In our latest book, we argue the auto industry's approach to autonomy is imbalanced – we need to focus on the human factors involved rather than the technical challenges alone.</p>
               </div>
             </div>
           </section>
