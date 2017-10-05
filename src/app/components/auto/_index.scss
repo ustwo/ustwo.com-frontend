@@ -270,6 +270,10 @@
   @media screen and (min-width: $bp-medium) {
     display: block;
   }
+
+  a {
+    text-decoration: underline;
+  }
 }
 .profile-photo {
   width: 120px;

@@ -140,7 +140,7 @@ class HumanisingAutonomy extends Component {
                 <div className="subtitle">Where are we going?</div>
               </h1>
               <div className="content">
-                <p>In our latest book, we explore creating a human approach to autonomy that actually works.<br />The auto industry's approach to autonomy is imbalanced – we need to focus on the human factors involved rather than solely on technical challenges.</p>
+                <p>In our latest book we argue the auto industry's approach to autonomy is imbalanced – we need to focus on the human factors involved rather than the technical challenges alone.</p>
               </div>
             </div>
           </section>
@@ -150,7 +150,7 @@ class HumanisingAutonomy extends Component {
           <section className="single-column humanising-autonomy-form">
             <div className="wrapper">
 
-              <h4>The Book is out now</h4>
+              <h4>The Book is out now!</h4>
 
               <Signup
                 onNameInput={handleInputChange(this, 'name')}
@@ -264,16 +264,16 @@ const autoHumanisingAutonomyData = {
     title: 'Introduction',
     subtitle: 'HUMANISING AUTONOMY',
     author: 'Book Chapter 1',
-    excerpt: 'Autonomous Vehicles (AVs) promise to make a meaningful difference to the world, enabling a new level of mobility, independence and safety for all. Yet discussions continue to focus on topics such as technological feasibility and its impact to our roads, rather than the needs of the user.',
-    uri: '/',
+    excerpt: 'Autonomous vehicles promise to make a meaningful difference to the world, enabling a new level of mobility, independence and safety for all. Yet discussions continue to focus on topics such as technological feasibility and its impact to our roads, rather than the needs of the user.',
+    uri: 'https://ustwo.com/blog/ustwo-auto-humanising-autonomy',
     image: '/images/auto/article-humanising-autonomy.jpg'
   },
   article3: {
     title: 'People and Driverless Vehicles',
     subtitle: 'What Does Autonomy Mean to You?',
     author: 'Book Chapter 2',
-    excerpt: 'In order to overcome the barriers to AV adoption, they need to be truly accessible to everyone. The way to do this? Observe what people’s mobility wants and needs are. This is the key to creating a human approach to autonomy that actually works.',
-    uri: '/',
+    excerpt: 'In order to overcome the barriers to autonomous vehicle adoption, they need to be truly accessible to everyone. The way to do this? Observe what people’s mobility wants and needs are. This is the key to creating a human approach to autonomy that actually works.',
+    uri: 'https://ustwo.com/blog/people-and-driverless-vehicles-what-does-autonomy-mean-to-you',
     image: '/images/auto/article-driverless-vehicles.jpg'
   }
 }
