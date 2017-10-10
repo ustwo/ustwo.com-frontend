@@ -238,6 +238,12 @@ const dataProducts = [{
 }];
 
 const dataVentures = [{
+  title: "Humanising Autonomy",
+  category: "Book Launch",
+  imageURL: "/images/home/humanising-autonomy.jpg",
+  description: "In our latest book, we explore creating a human approach to autonomy that actually works.",
+  slug: "/auto/humanisingautonomy"
+},{
   title: "ustwo Games",
   category: "Business",
   imageURL: "/images/home/ustwo-games-2.jpg",
@@ -269,10 +275,4 @@ const dataVentures = [{
   imageURL: "/images/home/sway.jpg",
   description: "A scientifically validated interactive meditation app designed for mindfulness on the move",
   slug: "/work/sway"
-},{
-  title: "Watch This",
-  category: "ustwo Product",
-  imageURL: "/images/home/watch-this.jpg",
-  description: "Easily share media-rich TV and movie recommendations without leaving iMessage",
-  slug: "/work/watch-this-for-imessage"
 }];
