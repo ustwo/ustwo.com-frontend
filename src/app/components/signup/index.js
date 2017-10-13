@@ -21,7 +21,7 @@ function Signup({ payload, onNameInput, onCompanyInput, onEmailInput, onSubmit, 
           <p>And remember, we’d love to hear any feedback you have, contact us here: mobility@ustwo.com.</p>
         </div>
 
-        <a href="https://usweb-cdn.ustwo.com/ustwo-production/uploads/2017/10/Humanising-Autonomy-Where-Are-We-Going-ustwo-Auto-v1.0.pdf" target="_blank" className="signup-download-button">
+        <a href="https://usweb-cdn.ustwo.com/ustwo-production/uploads/2017/10/Humanising-Autonomy-Where-Are-We-Going-ustwo-Auto-v1.1.pdf" target="_blank" className="signup-download-button">
           <div className="signup-download-button-text">Download</div>
           <div className="signup-download-button-additional">19.3Mb</div>
         </a>
