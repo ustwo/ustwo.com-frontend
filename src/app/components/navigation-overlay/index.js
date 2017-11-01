@@ -47,7 +47,10 @@ const NavigationOverlay = React.createClass({
   },
 
   renderNavigationOverlayLinks() {
-    return get(this.props, 'pages', []).map(link => {
+    // Remove reference to Events in least destructive way
+    const menuItems = get(this.props, 'pages', []).filter(item => item.slug != "events");
+
+    return menuItems.map(link => {
       const slug = tempChangeWorkName(link.slug);
       const url = slug === 'home' ? '/' : `/${slug}`;
       const mouseOver = url === '/' ? 'home' : url.slice(1);
