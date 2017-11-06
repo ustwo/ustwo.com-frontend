@@ -23,23 +23,6 @@ html {
   }
 }
 
-.page-home {
-  .navigation {
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: visibility 0s linear .2s, opacity .2s linear;
-
-    &.menuOpen,
-    &.sticky {
-      opacity: 1;
-      visibility: visible;
-      transition-delay: 0s, 0s;
-      pointer-events: auto;
-    }
-  }
-}
-
 $nav-height-small: 23px;
 $nav-height-large: 31px;
 
@@ -351,18 +334,18 @@ $nav-height-large: 31px;
 }
 
 // Hide ustwo logo over hero
-// .navigation {
-//   &.auto {
-//     navigation-logo {
-//       opacity: 1;
-//       transition: opacity .2s linear;
-//     }
-//
-//     &.overHero:not(.humanisingautonomy) {
-//       .navigation-logo {
-//         opacity: 0;
-//         pointer-events: none;
-//       }
-//     }
-//   }
-// }
+.page-home .navigation {
+  & {
+    navigation-logo {
+      opacity: 1;
+      transition: opacity .2s linear;
+    }
+
+    &.overHero {
+      .navigation-logo {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+}
