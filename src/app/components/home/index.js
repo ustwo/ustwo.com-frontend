@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Scroll, { Link, Element } from 'react-scroll'; // Animate and scroll to location in document
 import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
 import { get } from 'lodash';
@@ -98,28 +97,24 @@ class PageHome extends Component {
 
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
-            <Link to="homeTextBlock" smooth={true} duration={1000} className="home-intro-link">
-              <ScrollWrapper
-                component={<HomeIntro viewportDimensions={viewportDimensions} scrolling={scrolling} loaded={loaded} isMobile={isMobile} popup={popup} fixedHeight={fixedHeight} />}
-                documentScrollPosition={documentScrollPosition}
-                viewportDimensions={viewportDimensions}
-                requireScreenPosition={true}
-                className="scroll-wrapper-home-intro"
-              />
-            </Link>
+            <ScrollWrapper
+              component={<HomeIntro viewportDimensions={viewportDimensions} scrolling={scrolling} loaded={loaded} isMobile={isMobile} popup={popup} fixedHeight={fixedHeight} />}
+              documentScrollPosition={documentScrollPosition}
+              viewportDimensions={viewportDimensions}
+              requireScreenPosition={true}
+              className="scroll-wrapper-home-intro"
+            />
           </div>
         </div>
 
         <div className="home-main-content-wrapper">
-          <Element name="homeTextBlock" className="home-welcome-wrapper">
-            <ScrollWrapper
-              component={<HomeTextBlock content={textBlockIntro} />}
-              documentScrollPosition={documentScrollPosition}
-              viewportDimensions={viewportDimensions}
-              className="scroll-wrapper-home-welcome-message"
-              fixedHeight={fixedHeight}
-            />
-          </Element>
+          <ScrollWrapper
+            component={<HomeTextBlock content={textBlockIntro} />}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
+            className="scroll-wrapper-home-welcome-message"
+            fixedHeight={fixedHeight}
+          />
 
           <ScrollWrapper
             component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} loaded={loaded} />}
