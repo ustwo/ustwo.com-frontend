@@ -10,12 +10,12 @@ const routes = {
     }]
   },
   aboutUs: {
-    id: 'about-us',
-    patterns: ['/about-us'],
+    id: 'about',
+    patterns: ['/about'],
     data: () => [{
-      url: 'ustwo/v1/pages/about-us',
+      url: 'ustwo/v1/pages/about',
       type: 'page',
-      slug: 'about-us'
+      slug: 'about'
     }]
   },
   work: {

@@ -79,7 +79,7 @@
   @if $page == 'work' {
     background-image: linear-gradient(30deg, $rain, $softPassion);
   }
-  @if $page == 'events' {
+  @if $page == 'about' {
     background-image: linear-gradient(30deg, $piglet, $softPassion);
   }
   @if $page == 'blog' {

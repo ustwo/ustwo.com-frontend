@@ -155,7 +155,7 @@ class Navigation extends Component {
       case 'blog':
         color = ['#009CF3', '#16D6D9'];
         break;
-      case 'events':
+      case 'about':
         color = ['#ED0082', '#FA7D78'];
         break;
       case 'join-us':

@@ -33,7 +33,7 @@ import VideoOverlay from 'app/components/video-overlay';
 
 const pageMap = {
   'home': require('app/components/home'),
-  'about-us': require('app/components/about-us'),
+  'about': require('app/components/about'),
   'work': require('app/components/work'),
   'work/case-study': require('app/components/case-study'),
   'work/discovery-strategy': require('app/components/work-discovery-strategy'),

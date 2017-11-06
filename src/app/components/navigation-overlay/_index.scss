@@ -63,9 +63,9 @@
   @include page-background-colour(work);
 }
 
-.navigation-overlay.events,
-.navigation-overlay-bg-events {
-  @include page-background-colour(events);
+.navigation-overlay.about,
+.navigation-overlay-bg-about {
+  @include page-background-colour(about);
 }
 
 .navigation-overlay.blog,
