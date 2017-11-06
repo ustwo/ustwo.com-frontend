@@ -9,6 +9,15 @@ const routes = {
       async: ['related_content']
     }]
   },
+  aboutUs: {
+    id: 'about-us',
+    patterns: ['/about-us'],
+    data: () => [{
+      url: 'ustwo/v1/pages/about-us',
+      type: 'page',
+      slug: 'about-us'
+    }]
+  },
   work: {
     id: 'work',
     patterns: ['/work'],
