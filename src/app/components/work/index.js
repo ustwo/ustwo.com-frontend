@@ -129,7 +129,7 @@ class PageWork extends Component {
 
           {this.renderTestimonialCarousel()}
 
-          <FeaturedCaseStudy content={featuredCaseStudy} />
+          <WorkClientsBoard logos={workData.clients} title="ustwo work with" />
 
           <div className="page-work-controls" ref={(ref) => this.workAnchor = ref}>
             {this.renderWorkItemFilter()}
@@ -144,8 +144,6 @@ class PageWork extends Component {
           />
 
           <WorkVerticals data={workData.verticals} />
-
-          <WorkClientsBoard logos={workData.clients} title="ustwo work with" />
 
           <ScrollWrapper
             component={<ContactBlock />}
