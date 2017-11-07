@@ -52,7 +52,7 @@ const PageJoinUs = React.createClass({
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
             <ScrollWrapper
-              component={<HeroNoVideo page={page} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Do the best work of your life" />}
+              component={<HeroNoVideo pageName="join-us" modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Do the best work of your life" />}
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               requireScreenPosition={true}

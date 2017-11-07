@@ -1,9 +1,7 @@
 import React from 'react';
 import Hero from 'app/components/hero';
 
-function HeroNoVideo({ page, fixedHeight, isMobile, scrollProgress, title }) {
-  const pageName = page.slug;
-
+function HeroNoVideo({ pageName, fixedHeight, isMobile, scrollProgress, title }) {
   return (
     <div className={`hero-no-video ${pageName}-hero`}>
       <Hero

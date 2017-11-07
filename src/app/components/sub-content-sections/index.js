@@ -7,18 +7,18 @@ export default ({ data, isMobile }) => {
     let link, title;
     if (item.name) {
       if (item.url) {
-        title = (<h2 onClick={() => Flux.navigate(item.url)} className="work-process-link">{item.title}</h2>);
+        title = (<h2 onClick={() => Flux.navigate(item.url)} className="sub-content-sections-link">{item.title}</h2>);
       } else {
         title = (<h2>{item.title}</h2>);
       }
     }
     if (item.url) {
-      link = (<button onClick={() => Flux.navigate(item.url)} className="work-process-item-button">Read More</button>);
+      link = (<button onClick={() => Flux.navigate(item.url)} className="sub-content-sections-item-button">Read More</button>);
     }
 
     return (
-      <div className={`work-process-item ${kebabCase(item.title)}`} key={`key-${item.name}`}>
-        <div className="work-process-item-image">
+      <div className={`sub-content-sections-item ${kebabCase(item.title)}`} key={`key-${item.name}`}>
+        <div className="sub-content-sections-item-image">
           <img src={item.image} alt={`${item.title} icon`} />
         </div>
         {title}
@@ -29,8 +29,8 @@ export default ({ data, isMobile }) => {
   });
 
   return (
-    <div className="work-process">
-      <div className="work-process-wrapper">
+    <div className="sub-content-sections">
+      <div className="sub-content-sections-wrapper">
         {workProcess}
       </div>
     </div>

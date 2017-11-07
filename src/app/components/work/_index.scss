@@ -30,7 +30,7 @@
 }
 
 .page-work {
-  height: 100%;
+  height: 100%; // For hero scroll under content
 
   h2 {
     @extend .h3;
@@ -80,6 +80,10 @@
     flex-direction: column;
     display: flex;
   }
+}
+
+.work-whatwedo {
+  background: white;
 }
 
 .work-whatwedo,
@@ -204,9 +208,10 @@
     .hero-image {
       background-image: url('/images/join-us/hero-main.png');
       width: 500px;
-      right: 50px;
+      right: auto;
+      left: 60%;
       max-width: none;
-      background-position: 50% 70%;
+      background-position: 0 70%;
 
       &:before {
         content: "";

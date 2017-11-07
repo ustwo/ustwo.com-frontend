@@ -3,7 +3,7 @@
  *
  */
 
-.work-process {
+.sub-content-sections {
   justify-content: space-between;
   overflow: hidden;
   visibility: visible;
@@ -16,7 +16,7 @@
   }
 }
 
-.work-process-wrapper {
+.sub-content-sections-wrapper {
   @include core-vertical-padding($withChildren: true);
   display: flex;
   flex-wrap: wrap;
@@ -26,7 +26,7 @@
   margin: 0 auto;
 }
 
-.work-process-item {
+.sub-content-sections-item {
 
   h2 {
     @extend .h3;
@@ -35,7 +35,7 @@
   }
 }
 
-.work-process-item-image {
+.sub-content-sections-item-image {
   display: flex;
   align-items: center;
   height: 100px;
@@ -54,12 +54,12 @@
   }
 }
 
-.work-process-link {
+.sub-content-sections-link {
   cursor: pointer;
 }
 
 .react-swipe-container {
-  .work-process-item {
+  .sub-content-sections-item {
 
     @media screen and (min-width: $bp-medium) {
       min-width: 0;
@@ -70,14 +70,14 @@
   }
 }
 
-.work-process.touchDevice {
-  .work-process-item {
+.sub-content-sections.touchDevice {
+  .sub-content-sections-item {
     box-shadow: 0 0 20px rgba(0,0,0,.3);
     background-color: $offWhite;
   }
 }
 
-.work-process-pagination {
+.sub-content-sections-pagination {
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -96,7 +96,7 @@
   }
 }
 
-.work-process-item-button {
+.sub-content-sections-item-button {
   @include buttonStyle(true);
   @include buttonColor();
   border: none;

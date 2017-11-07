@@ -10,7 +10,6 @@ import kebabCase from 'lodash/string/kebabCase';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import Video from 'app/components/video';
 import Footer from 'app/components/footer';
-import WorkProcess from 'app/components/work-process';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import HeroNoVideo from 'app/components/hero-no-video';
 import ContactBlock from 'app/components/contact-block';
@@ -28,27 +27,6 @@ class PageWork extends Component {
       caseStudyFilter: 'all',
       numberOfCaseStudiesShowing: 12
     }
-  }
-
-  renderWhatWeDo() {
-    const { isMobile } = this.props;
-
-    const workIntroExtra = workData.intro.extra.map((item, i) => <p className="work-intro-extra" key={`work-para-${i}`}>{item}</p>);
-
-    return (
-      <div className="work-whatwedo-wrapper">
-        <div className="work-whatwedo">
-          <div className="work-intro">
-            <p className="work-intro-statement">{workData.intro.statement}</p>
-            {workIntroExtra}
-          </div>
-        </div>
-        <WorkProcess data={workData.process} isMobile={isMobile} />
-        <div className="work-contact">
-          <ContactButton />
-        </div>
-      </div>
-    );
   }
 
   renderTestimonialCarousel() {
@@ -110,7 +88,7 @@ class PageWork extends Component {
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
             <ScrollWrapper
-              component={<HeroNoVideo page={page} loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Make things to change things" />}
+              component={<HeroNoVideo pageName="work" loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Make things to change things" />}
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               requireScreenPosition={true}
@@ -120,11 +98,10 @@ class PageWork extends Component {
         </div>
 
         <div className="home-main-content-wrapper">
-          {this.renderWhatWeDo()}
+
+          <WorkClientsBoard logos={workContent.clients} title="ustwo work with" />
 
           {this.renderTestimonialCarousel()}
-
-          <WorkClientsBoard logos={workData.clients} title="ustwo work with" />
 
           <div className="page-work-controls" ref={(ref) => this.workAnchor = ref}>
             {this.renderWorkItemFilter()}
@@ -138,7 +115,7 @@ class PageWork extends Component {
             addMoreCaseStudies={this.addMoreCaseStudies.bind(this)}
           />
 
-          <WorkVerticals data={workData.verticals} />
+          <WorkVerticals data={workContent.verticals} />
 
           <ScrollWrapper
             component={<ContactBlock />}
@@ -158,39 +135,10 @@ class PageWork extends Component {
 
 export default PageWork;
 
-const workData = {
+const workContent = {
   intro: {
     statement: 'We learn through making. Then apply everything we know to create game-changing digital products and services for clients.',
-    extra: [
-      'And we always do it collaboratively, through expertly coached teamwork. You and us, working together, discovering answers to the biggest questions your business faces. Then rapidly bringing them to life.',
-      'That’s the ustwo way.'
-    ]
   },
-  process: [{
-    name: 'discovery',
-    title: 'Discovery & Strategy',
-    image: '/images/illustration-discovery.svg',
-    text: 'Innovate and get ahead. Define your business goals and validate opportunities with fresh understanding of what your customers need most.',
-    url: '/work/discovery-strategy'
-  },{
-    name: 'design',
-    title: 'Design & Build',
-    image: '/images/illustration-design-and-build.svg',
-    text: 'Turn your vision into reality. Exceptional software development, engineering and execution sets your company apart.',
-    url: '/work/design-build'
-  },{
-    name: 'launch',
-    title: 'Launch & Scale',
-    image: '/images/illustration-launch-and-scale.svg',
-    text: "Ship your product and stay responsive to customers’ changing needs. Your product is out in the world: it's time to grow, evolve and deliver ROI.",
-    url: '/work/launch-scale'
-  },{
-    name: 'working',
-    title: 'Ways of Working',
-    image: '/images/illustration-ways-of-working.svg',
-    text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.',
-    url: '/work/ways-of-working'
-  }],
   verticals: [{
     type: 'Expertise',
     shortTitle: 'auto',

@@ -14,7 +14,7 @@ import WorkVerticals from 'app/components/work-verticals';
 import VideoBlock from 'app/components/video-block';
 import RelatedPosts from 'app/components/related-posts';
 import Video from 'app/components/video';
-import WorkProcess from 'app/components/work-process';
+import SubContentSections from 'app/components/sub-content-sections';
 import GradientWords from 'app/components/gradient-words';
 import TwitterCarousel from 'app/components/twitter-carousel';
 
@@ -107,7 +107,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
         {renderTestimonials}
 
         <div className="auto-whatwedo work-whatwedo-wrapper">
-          {autoData.workProcess ? <WorkProcess data={autoData.workProcess} isMobile={isMobile}  /> : null}
+          {autoData.workProcess ? <SubContentSections data={autoData.workProcess} isMobile={isMobile}  /> : null}
         </div>
 
         <RelatedPosts page={page} posts={relatedPosts} />
