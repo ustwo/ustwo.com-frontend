@@ -125,7 +125,7 @@ class Navigation extends Component {
     const testimonialsActive = !isEmpty(testimonialsPosition) && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
     const footerActive = documentScrollPosition > 4000 - (693 + 414);
     const homePage = section === 'home';
-    const heroPage = section === 'home' || section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto';
+    const heroPage = section === 'home' || section === 'about' || section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto';
     const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'auto' || page === 'humanisingautonomy';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;

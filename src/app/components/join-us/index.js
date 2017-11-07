@@ -19,7 +19,7 @@ import StudioJobs from 'app/components/studio-jobs';
 import Rimage from 'app/components/rimage';
 import Flux from 'app/flux';
 import Footer from 'app/components/footer';
-import JoinUsHero from 'app/components/join-us-hero';
+import HeroNoVideo from 'app/components/hero-no-video';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import ContactBlock from 'app/components/contact-block';
 
@@ -52,7 +52,7 @@ const PageJoinUs = React.createClass({
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
             <ScrollWrapper
-              component={<JoinUsHero modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Do the best work of your life" />}
+              component={<HeroNoVideo page={page} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Do the best work of your life" />}
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               requireScreenPosition={true}

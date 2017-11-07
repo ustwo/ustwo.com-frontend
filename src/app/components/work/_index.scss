@@ -82,38 +82,6 @@
   }
 }
 
-.work-video-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  position: relative;
-  z-index: 2;
-  margin-top: 15px;
-
-  .section-title {
-    line-height: 40px;
-    margin-bottom: 0;
-    margin-right: 10px;
-  }
-}
-
-.work-video-link-play {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 2px solid $offWhite;
-  border-radius: 50%;
-
-  svg {
-    fill: $offWhite;
-    height: 32px;
-    width: 32px;
-  }
-}
-
 .work-whatwedo,
 .work-contact {
   @include core-layout();
@@ -176,6 +144,85 @@
 
     @media screen and (min-width: $bp-large) {
       font-size: 14px;
+    }
+  }
+}
+
+.work-hero {
+  .hero {
+    @include page-background-colour(work);
+
+    .rimage {
+      max-width: 800px;
+    }
+
+    .down-indicator {
+      z-index: 2;
+    }
+
+    h1 {
+      width: 67%;
+    }
+  }
+
+  .hero-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-image: url('/images/join-us/hero-mobile.png');
+    background-repeat: no-repeat;
+    background-position: 50% bottom;
+    background-size: 100% auto;
+    width: 48%;
+    max-width: 300px;
+  }
+
+  @media screen and (min-width: $bp-tablet) {
+    .hero-image {
+      &:after {
+        width: 65px;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .hero-image {
+      &:after {
+        bottom: 8%;
+        transform: translateX(-110px);
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .hero {
+      h1 {
+        width: 60%;
+      }
+    }
+    .hero-image {
+      background-image: url('/images/join-us/hero-main.png');
+      width: 500px;
+      right: 50px;
+      max-width: none;
+      background-position: 50% 70%;
+
+      &:before {
+        content: "";
+        position: absolute;
+        background-image: url('/images/join-us/hero-phone-inner.jpg'); // 508 x 902
+        background-size: 100% auto;
+        right: 48px;
+        top: calc(70% - 328px);
+        width: 224px;
+        height: 397px;
+      }
+
+      &:after {
+        bottom: 10%;
+        transform: translateX(-60px);
+      }
     }
   }
 }

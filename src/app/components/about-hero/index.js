@@ -7,7 +7,7 @@ import Video from 'app/components/video';
 import SVG from 'app/components/svg';
 import window from 'app/adaptors/server/window';
 
-class WorkHero extends Component {
+class AboutHero extends Component {
 
   openVideoOverlay(e) {
     e.stopPropagation();
@@ -34,20 +34,20 @@ class WorkHero extends Component {
     );
 
     return (
-      <div className="work-hero">
+      <div className="about-hero">
         <Hero
           title="Make things to change things"
           transitionImage={true}
           showDownIndicator={true}
-          eventLabel='work'
+          eventLabel='About'
           video={video}
           fixedHeight={fixedHeight}
           isMobile={isMobile}
           scrollProgress={scrollProgress}
         >
-          <button onClick={this.openVideoOverlay} className="work-video-link">
+          <button onClick={this.openVideoOverlay} className="about-video-link">
             <div className="section-title">How we work</div>
-            <div className="work-video-link-play"><SVG spritemapID="iconPlay" /></div>
+            <div className="about-video-link-play"><SVG spritemapID="iconPlay" /></div>
           </button>
         </Hero>
       </div>
@@ -55,4 +55,4 @@ class WorkHero extends Component {
   }
 }
 
-export default WorkHero;
+export default AboutHero;

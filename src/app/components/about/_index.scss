@@ -1,0 +1,35 @@
+.page-about {
+
+}
+
+.about-video-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  position: relative;
+  z-index: 2;
+  margin-top: 15px;
+
+  .section-title {
+    line-height: 40px;
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+}
+
+.about-video-link-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid $offWhite;
+  border-radius: 50%;
+
+  svg {
+    fill: $offWhite;
+    height: 32px;
+    width: 32px;
+  }
+}

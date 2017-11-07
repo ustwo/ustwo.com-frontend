@@ -12,7 +12,7 @@ import Video from 'app/components/video';
 import Footer from 'app/components/footer';
 import WorkProcess from 'app/components/work-process';
 import ScrollWrapper from 'app/components/scroll-wrapper';
-import WorkHero from 'app/components/work-hero';
+import HeroNoVideo from 'app/components/hero-no-video';
 import ContactBlock from 'app/components/contact-block';
 import WorkVerticals from 'app/components/work-verticals';
 import ContactButton from 'app/components/contact-button';
@@ -110,7 +110,7 @@ class PageWork extends Component {
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
             <ScrollWrapper
-              component={<WorkHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} />}
+              component={<HeroNoVideo page={page} loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Make things to change things" />}
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               requireScreenPosition={true}
