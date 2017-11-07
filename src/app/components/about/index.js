@@ -51,6 +51,8 @@ class About extends Component {
 
           {this.renderWhatWeDo()}
 
+          <SubContentSections data={aboutContent.studios} isMobile={isMobile} />
+
           <ScrollWrapper
             component={<ContactBlock />}
             documentScrollPosition={documentScrollPosition}
@@ -101,5 +103,26 @@ const aboutContent = {
     image: '/images/illustration-ways-of-working.svg',
     text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.',
     url: '/work/ways-of-working'
+  }],
+  studios: [{
+    name: 'london',
+    title: 'London',
+    image: '/images/illustration-discovery.svg',
+    text: 'Innovate and get ahead. Define your business goals and validate opportunities with fresh understanding of what your customers need most.'
+  },{
+    name: 'malmo',
+    title: 'Malmo',
+    image: '/images/illustration-design-and-build.svg',
+    text: 'Turn your vision into reality. Exceptional software development, engineering and execution sets your company apart.'
+  },{
+    name: 'new-york',
+    title: 'New York',
+    image: '/images/illustration-launch-and-scale.svg',
+    text: "Ship your product and stay responsive to customers’ changing needs. Your product is out in the world: it's time to grow, evolve and deliver ROI."
+  },{
+    name: 'sydney',
+    title: 'Sydney',
+    image: '/images/illustration-ways-of-working.svg',
+    text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.'
   }]
 }
