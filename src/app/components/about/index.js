@@ -6,6 +6,7 @@ import ContactButton from 'app/components/contact-button';
 import SubContentSections from 'app/components/sub-content-sections';
 import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
+import HomeCarousel from 'app/components/home-carousel';
 
 class About extends Component {
   renderWhatWeDo() {
@@ -52,6 +53,14 @@ class About extends Component {
           {this.renderWhatWeDo()}
 
           <SubContentSections data={aboutContent.studios} isMobile={isMobile} />
+
+          <ScrollWrapper
+            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={false} inView={true} loaded={loaded} />}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
+            className="scroll-wrapper-home-carousel-ventures"
+            fixedHeight={fixedHeight}
+          />
 
           <ScrollWrapper
             component={<ContactBlock />}
@@ -126,3 +135,43 @@ const aboutContent = {
     text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.'
   }]
 }
+
+const dataVentures = [{
+  title: "Humanising Autonomy",
+  category: "Book Launch",
+  imageURL: "/images/home/humanising-autonomy.jpg",
+  description: "In our latest book, we explore creating a human approach to autonomy that actually works.",
+  slug: "/auto/humanisingautonomy"
+},{
+  title: "ustwo Games",
+  category: "Business",
+  imageURL: "/images/home/ustwo-games-2.jpg",
+  videoURL: "/images/home/ustwo-games.mp4",
+  description: "An award-winning mobile games studio making the most beautiful interactive entertainment",
+  slug: "/work/monument-valley-2"
+},{
+  title: "Dice",
+  category: "Business",
+  imageURL: "/images/home/dice.jpg",
+  description: "Search, browse and buy tickets with the fastest growing live music discovery app",
+  slug: "/work/dice"
+},{
+  title: "Moodnotes",
+  category: "Venture",
+  imageURL: "/images/home/moodnotes.jpg",
+  videoURL: "/images/home/moodnotes.mp4",
+  description: "Scientifically grounded in CBT making it simple to manage emotional wellbeing over time",
+  slug: "/work/moodnotes"
+},{
+  title: "Wayfindr",
+  category: "Venture",
+  imageURL: "/images/home/wayfindr.jpg",
+  description: "Empowering vision impaired people to navigate the world independently",
+  slug: "/work/wayfindr-2"
+},{
+  title: "Sway",
+  category: "Venture",
+  imageURL: "/images/home/sway.jpg",
+  description: "A scientifically validated interactive meditation app designed for mindfulness on the move",
+  slug: "/work/sway"
+}];
