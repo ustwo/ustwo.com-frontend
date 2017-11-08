@@ -194,7 +194,7 @@ const App = React.createClass({
     const state = this.state;
     const { currentPage, show, popup, showPopup, showRollover, menuHover, modal,
       viewportDimensions, page, post, caseStudy, navMain, documentScrollPosition,
-      venturesPosition, footer, studios, overflow, isMobile,
+      footer, studios, overflow, isMobile,
       setWindowHeight, testimonialsPosition } = this.state;
 
     const appClasses = classnames('app', `page-${currentPage}`, {
@@ -221,7 +221,6 @@ const App = React.createClass({
         section={currentPage.split('/')[0]}
         page={currentPage.split('/')[1]}
         documentScrollPosition={documentScrollPosition}
-        venturesPosition={venturesPosition}
         testimonialsPosition={testimonialsPosition}
         modal={modal}
         viewportDimensions={viewportDimensions}

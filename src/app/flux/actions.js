@@ -37,9 +37,6 @@ const Actions = {
   setEventsStudioTo(id) {
     Store.setEventsStudioTo(id);
   },
-  venturesPosition(position) {
-    Store.venturesPosition(position);
-  },
   testimonialsPosition(position) {
     Store.testimonialsPosition(position);
   },

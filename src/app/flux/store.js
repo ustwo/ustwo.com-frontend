@@ -28,7 +28,6 @@ const _state = Object.assign({
   eventsPaginationTotal: Nulls.eventsPaginationTotal,
   archivedEventsPagination: Defaults.archivedEventsPagination,
   archivedEventsPaginationTotal: Nulls.archivedEventsPaginationTotal,
-  venturesPosition: Defaults.venturesPosition,
   testimonialsPosition: Defaults.testimonialsPosition,
   overflow: Defaults.overflow,
   videoOverlaySrc: Defaults.videoOverlaySrc,
@@ -257,10 +256,6 @@ const Store = Object.assign(
     setEventsStudioTo(id) {
       _state.eventsStudio = id;
       _state.eventsPagination = Defaults.eventsPagination;
-      Store.emit('change', _state);
-    },
-    venturesPosition(position) {
-      _state.venturesPosition = position;
       Store.emit('change', _state);
     },
     testimonialsPosition(position) {
