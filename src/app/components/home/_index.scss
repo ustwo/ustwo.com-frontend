@@ -19,42 +19,18 @@
   }
 }
 
-/* Inverted styles on ventures background */
-.home-ventures-wrapper {
-
-  h1,
-  .home-carousel-item-text h2,
-  .home-carousel-item-description {
-    color: $offWhite;
-  }
-
-  .section-title {
-    color: $offWhite;
-  }
-
-  .view-carousel-related-page button {
-    @include buttonStyle(true);
-    @include buttonColor('invert');
-    background-image: url('/images/icon-right-light.svg');
-  }
-
-  @media screen and (min-width: $bp-tablet) {
-    .home-carousel-item {
-      .home-carousel-item-image:after {
-        background: linear-gradient(-90deg, $v-solid, transparent);
-      }
-
-      &.even .home-carousel-item-image:after {
-        background: linear-gradient(-90deg, transparent, $v-solid);
-      }
-    }
-  }
-}
-
 .home-main-content-wrapper {
   position: relative;
   z-index: 1;
   background-color: $offWhite;
+}
+
+.home-main-content-wrapper-section {
+  @include core-layout();
+
+}
+.home-main-content-wrapper-section-inner {
+  @include core-vertical-padding();
 }
 
 .home-pinned-header-wrapper {

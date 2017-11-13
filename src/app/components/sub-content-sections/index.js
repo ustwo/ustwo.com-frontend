@@ -2,7 +2,7 @@ import React from 'react';
 import { kebabCase } from 'lodash';
 import Flux from 'app/flux';
 
-export default ({ data, isMobile }) => {
+export default ({ data, isMobile, className }) => {
   const workProcess = data.map(item => {
     let link, title;
     if (item.name) {
@@ -29,7 +29,7 @@ export default ({ data, isMobile }) => {
   });
 
   return (
-    <div className="sub-content-sections">
+    <div className={`sub-content-sections ${className}`}>
       <div className="sub-content-sections-wrapper">
         {workProcess}
       </div>

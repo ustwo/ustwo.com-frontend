@@ -33,3 +33,42 @@
     width: 32px;
   }
 }
+
+.sub-content-sections.subContentStudios {
+  .sub-content-sections-item-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.about-section-ventures {
+  background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
+
+  h1,
+  .home-carousel-item-text h2,
+  .home-carousel-item-description {
+    color: $offWhite;
+  }
+
+  .section-title {
+    color: $offWhite;
+  }
+
+  .view-carousel-related-page button {
+    @include buttonStyle(true);
+    @include buttonColor('invert');
+    background-image: url('/images/icon-right-light.svg');
+  }
+
+  @media screen and (min-width: $bp-tablet) {
+    .home-carousel-item {
+      .home-carousel-item-image:after {
+        background: linear-gradient(-90deg, $v-solid, transparent);
+      }
+
+      &.even .home-carousel-item-image:after {
+        background: linear-gradient(-90deg, transparent, $v-solid);
+      }
+    }
+  }
+}

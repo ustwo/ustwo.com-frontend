@@ -52,15 +52,28 @@ class About extends Component {
 
           {this.renderWhatWeDo()}
 
-          <SubContentSections data={aboutContent.studios} isMobile={isMobile} />
+          <SubContentSections data={aboutContent.studios} isMobile={isMobile} className="subContentStudios" />
 
-          <ScrollWrapper
-            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={false} inView={true} loaded={loaded} />}
-            documentScrollPosition={documentScrollPosition}
-            viewportDimensions={viewportDimensions}
-            className="scroll-wrapper-home-carousel-ventures"
-            fixedHeight={fixedHeight}
-          />
+          <div className="home-main-content-wrapper-section">
+            <div className="home-main-content-wrapper-section-inner">
+              <h3>Manifesto</h3>
+              <p>We believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds.
+              If you want to know more, check out our Manifesto here and some of the roles we’re hiring for across the globe down below. Welcome to the Fampany.</p>
+            </div>
+          </div>
+          <div className="home-main-content-wrapper-section about-section-ventures">
+            <div className="home-main-content-wrapper-section-inner">
+              <h2>Ventures etc</h2>
+              <ScrollWrapper
+              component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={true} loaded={loaded} />}
+              documentScrollPosition={documentScrollPosition}
+              viewportDimensions={viewportDimensions}
+              className="scroll-wrapper-home-carousel-ventures"
+              fixedHeight={fixedHeight}
+              />
+            </div>
+          </div>
+
 
           <ScrollWrapper
             component={<ContactBlock />}
@@ -116,22 +129,22 @@ const aboutContent = {
   studios: [{
     name: 'london',
     title: 'London',
-    image: '/images/illustration-discovery.svg',
+    image: 'https://usweb-cdn.ustwo.com/ustwo-production/uploads/2015/07/Ustwo-website-HQ-36-640x427.jpg',
     text: 'Innovate and get ahead. Define your business goals and validate opportunities with fresh understanding of what your customers need most.'
   },{
     name: 'malmo',
     title: 'Malmo',
-    image: '/images/illustration-design-and-build.svg',
+    image: 'https://usweb-cdn.ustwo.com/ustwo-production/uploads/2015/08/05_flexible_bonuses-640x356.jpg',
     text: 'Turn your vision into reality. Exceptional software development, engineering and execution sets your company apart.'
   },{
     name: 'new-york',
     title: 'New York',
-    image: '/images/illustration-launch-and-scale.svg',
+    image: 'https://usweb-cdn.ustwo.com/ustwo-production/uploads/2015/07/event-space-mural-640x480.jpg',
     text: "Ship your product and stay responsive to customers’ changing needs. Your product is out in the world: it's time to grow, evolve and deliver ROI."
   },{
     name: 'sydney',
     title: 'Sydney',
-    image: '/images/illustration-ways-of-working.svg',
+    image: 'https://usweb-cdn.ustwo.com/ustwo-production/uploads/2015/07/superheroes1-640x427.jpg',
     text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.'
   }]
 }
