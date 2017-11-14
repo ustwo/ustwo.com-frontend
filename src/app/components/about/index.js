@@ -55,12 +55,12 @@ class About extends Component {
 
           <SubContentSections data={aboutContent.studios} isMobile={isMobile} className="subContentStudios" />
 
-          <ContentWrapper>
-            <h3>Manifesto</h3>
+          <ContentWrapper className="manifesto-content-wrapper">
+            <h2>Manifesto</h2>
             <p>We believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds.
             If you want to know more, check out our Manifesto here and some of the roles we’re hiring for across the globe down below. Welcome to the Fampany.</p>
           </ContentWrapper>
-          
+
           <ContentWrapper className="about-content-wrapper">
             <h2>Ventures etc</h2>
             <ScrollWrapper
