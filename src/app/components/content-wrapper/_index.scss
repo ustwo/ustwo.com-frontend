@@ -1,0 +1,7 @@
+.content-wrapper {
+  @include core-layout();
+}
+
+.content-wrapper-inner {
+  @include core-vertical-padding();
+}

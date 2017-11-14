@@ -25,14 +25,6 @@
   background-color: $offWhite;
 }
 
-.home-main-content-wrapper-section {
-  @include core-layout();
-
-}
-.home-main-content-wrapper-section-inner {
-  @include core-vertical-padding();
-}
-
 .home-pinned-header-wrapper {
   height: 100%;
 	// width: 100%;

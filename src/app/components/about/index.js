@@ -7,6 +7,7 @@ import SubContentSections from 'app/components/sub-content-sections';
 import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
 import HomeCarousel from 'app/components/home-carousel';
+import ContentWrapper from 'app/components/content-wrapper';
 
 class About extends Component {
   renderWhatWeDo() {
@@ -54,26 +55,22 @@ class About extends Component {
 
           <SubContentSections data={aboutContent.studios} isMobile={isMobile} className="subContentStudios" />
 
-          <div className="home-main-content-wrapper-section">
-            <div className="home-main-content-wrapper-section-inner">
-              <h3>Manifesto</h3>
-              <p>We believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds.
-              If you want to know more, check out our Manifesto here and some of the roles we’re hiring for across the globe down below. Welcome to the Fampany.</p>
-            </div>
-          </div>
-          <div className="home-main-content-wrapper-section about-section-ventures">
-            <div className="home-main-content-wrapper-section-inner">
-              <h2>Ventures etc</h2>
-              <ScrollWrapper
-              component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={true} loaded={loaded} />}
-              documentScrollPosition={documentScrollPosition}
-              viewportDimensions={viewportDimensions}
-              className="scroll-wrapper-home-carousel-ventures"
-              fixedHeight={fixedHeight}
-              />
-            </div>
-          </div>
-
+          <ContentWrapper>
+            <h3>Manifesto</h3>
+            <p>We believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds.
+            If you want to know more, check out our Manifesto here and some of the roles we’re hiring for across the globe down below. Welcome to the Fampany.</p>
+          </ContentWrapper>
+          
+          <ContentWrapper className="about-content-wrapper">
+            <h2>Ventures etc</h2>
+            <ScrollWrapper
+            component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={true} loaded={loaded} />}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
+            className="scroll-wrapper-home-carousel-ventures"
+            fixedHeight={fixedHeight}
+            />
+          </ContentWrapper>
 
           <ScrollWrapper
             component={<ContactBlock />}

@@ -41,10 +41,21 @@
   }
 }
 
-.about-section-ventures {
+.subContentStudios {
+  background-color: white;
+  margin-bottom: 0;
+}
+
+.manifesto-content-wrapper {
+
+}
+
+.about-content-wrapper {
   background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
 
   h1,
+  h2,
+  p,
   .home-carousel-item-text h2,
   .home-carousel-item-description {
     color: $offWhite;
