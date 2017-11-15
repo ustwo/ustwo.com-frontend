@@ -41,23 +41,12 @@ class Navigation extends Component {
   }
 
   toggleMenu() {
-    const { viewportDimensions, documentScrollPosition, section, modal } = this.props;
+    const { modal } = this.props;
 
-    if (documentScrollPosition < viewportDimensions.height && section === 'home') {
-      Scroll.animateScroll.scrollTo(viewportDimensions.height);
-      Scroll.Events.scrollEvent.register('end', () => {
-        if (modal === 'menu') {
-          Flux.closeModal();
-        } else {
-          Flux.showNavOverlay();
-        }
-      });
+    if (modal === 'menu') {
+      Flux.closeModal();
     } else {
-      if (modal === 'menu') {
-        Flux.closeModal();
-      } else {
-        Flux.showNavOverlay();
-      }
+      Flux.showNavOverlay();
     }
   }
 
@@ -136,7 +125,7 @@ class Navigation extends Component {
     const testimonialsActive = !isEmpty(testimonialsPosition) && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
     const footerActive = documentScrollPosition > 4000 - (693 + 414);
     const homePage = section === 'home';
-    const heroPage = section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto';
+    const heroPage = section === 'home' || section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto';
     const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'auto' || page === 'humanisingautonomy';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;

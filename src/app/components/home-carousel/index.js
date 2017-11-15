@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import transitionOnScroll from 'app/lib/transition-on-scroll';
 import window from 'app/adaptors/server/window';
 import Flux from 'app/flux';
-import Scroll, { Link, Element } from 'react-scroll'; // Animate and scroll to location in document
 
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import TimerUI from 'app/components/timer-ui';

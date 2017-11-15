@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import Scroll, { Link, Element } from 'react-scroll'; // Animate and scroll to location in document
 import { get } from 'lodash';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import env from 'app/adaptors/server/env';
@@ -110,26 +109,22 @@ class PageWork extends Component {
 
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
-            <Link to="workMainBlock" smooth={true} duration={1000} className="home-intro-link">
-              <ScrollWrapper
-                component={<WorkHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} />}
-                documentScrollPosition={documentScrollPosition}
-                viewportDimensions={viewportDimensions}
-                requireScreenPosition={true}
-                className="scroll-wrapper-work-hero"
-              />
-            </Link>
+            <ScrollWrapper
+              component={<WorkHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} />}
+              documentScrollPosition={documentScrollPosition}
+              viewportDimensions={viewportDimensions}
+              requireScreenPosition={true}
+              className="scroll-wrapper-work-hero"
+            />
           </div>
         </div>
 
         <div className="home-main-content-wrapper">
-          <Element name="workMainBlock">
-            {this.renderWhatWeDo()}
-          </Element>
+          {this.renderWhatWeDo()}
 
           {this.renderTestimonialCarousel()}
 
-          <FeaturedCaseStudy content={featuredCaseStudy} />
+          <WorkClientsBoard logos={workData.clients} title="ustwo work with" />
 
           <div className="page-work-controls" ref={(ref) => this.workAnchor = ref}>
             {this.renderWorkItemFilter()}
@@ -144,8 +139,6 @@ class PageWork extends Component {
           />
 
           <WorkVerticals data={workData.verticals} />
-
-          <WorkClientsBoard logos={workData.clients} title="ustwo work with" />
 
           <ScrollWrapper
             component={<ContactBlock />}

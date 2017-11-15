@@ -40,11 +40,12 @@
     width: 100%;
     top: calc(50% + 35px);
     font-family: "PxGrotesk-Regular", "Arial", sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     color: rgba(255,255,255,.8);
     letter-spacing: 0.9px;
     text-align: center;
     line-height: 1.3;
+    text-shadow: 1px 1px 5px rgba(0,0,0,.3);
 
     @media screen and (min-width: $bp-small) {
       br {
@@ -54,6 +55,7 @@
 
     @media screen and (min-width: $bp-medium) {
       top: calc(50% + 45px);
+      font-size: 18px;
     }
 
     @media screen and (min-width: $bp-large) {
