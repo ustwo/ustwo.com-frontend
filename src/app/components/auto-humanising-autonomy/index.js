@@ -127,6 +127,23 @@ class HumanisingAutonomy extends Component {
     }
     const showcaseVideoPoster = 'https://i.vimeocdn.com/video/657875722.jpg?mw=960&mh=540';
 
+    const renderArticles = autoHumanisingAutonomyContent.articles.map((article, i) => {
+      let content;
+      if (i % 2 == 0) {
+        content = <ArticlePreview data={article} alignright />;
+      } else {
+        content = <ArticlePreview data={article} />
+      }
+
+      return (
+        <section className="humanising-autonomy-article">
+          <div className="wrapper">
+            {content}
+          </div>
+        </section>
+      );
+    });
+
     return (
       <div className="page-auto page-auto-humanising-autonomy page-case-study">
 
@@ -171,23 +188,7 @@ class HumanisingAutonomy extends Component {
             />
           </div>
 
-          <section className="humanising-autonomy-article">
-            <div className="wrapper">
-              <ArticlePreview data={autoHumanisingAutonomyData.article1} />
-            </div>
-          </section>
-
-          <section className="humanising-autonomy-article">
-            <div className="wrapper">
-              <ArticlePreview data={autoHumanisingAutonomyData.article2} alignright />
-            </div>
-          </section>
-
-          <section className="humanising-autonomy-article">
-            <div className="wrapper">
-              <ArticlePreview data={autoHumanisingAutonomyData.article3} />
-            </div>
-          </section>
+          {renderArticles}
 
           <div className="auto-team">
             <div className="auto-team-inner">
@@ -249,31 +250,51 @@ reactMixin(HumanisingAutonomy.prototype, ReactFire);
 
 export default HumanisingAutonomy;
 
-const autoHumanisingAutonomyData = {
+const autoHumanisingAutonomyContent = {
   title: 'Auto',
   subtitle: 'Humanising Autonomy',
   intro: "The auto industry's approach to autonomy is imbalanced – there is too much focus on discrete technologies, with little regard for the powerful human factors involved. In our latest book, we explore creating a human approach to autonomy that actually works.",
-  article1: {
-    title: 'Introducing the ustwo Roo',
-    subtitle: 'Our autonomous car concept',
-    excerpt: 'Looking beyond opportunities to optimise, ustwo’s AV concept is built on the foundational idea that there’s more to people’s mobility needs than simply the vehicle and its technology.',
-    uri: '/blog/introducing-ustwo-av-concept',
-    image: '/images/auto/auto-roo.jpg'
-  },
-  article2: {
+  articles: [{
     title: 'Introduction',
-    subtitle: 'HUMANISING AUTONOMY',
+    subtitle: 'Humanising Autonomy',
     author: 'Book Chapter 1',
     excerpt: 'Autonomous vehicles promise to make a meaningful difference to the world, enabling a new level of mobility, independence and safety for all. Yet discussions continue to focus on topics such as technological feasibility and its impact to our roads, rather than the needs of the user.',
     uri: '/blog/ustwo-auto-humanising-autonomy',
     image: '/images/auto/article-humanising-autonomy.jpg'
-  },
-  article3: {
+  },{
     title: 'People and Driverless Vehicles',
     subtitle: 'What Does Autonomy Mean to You?',
     author: 'Book Chapter 2',
     excerpt: 'In order to overcome the barriers to autonomous vehicle adoption, they need to be truly accessible to everyone. The way to do this? Observe what people’s mobility wants and needs are. This is the key to creating a human approach to autonomy that actually works.',
     uri: '/blog/people-and-driverless-vehicles-what-does-autonomy-mean-to-you',
     image: '/images/auto/article-driverless-vehicles.jpg'
-  }
+  },{
+    title: 'Hailing a Driverless Taxi',
+    subtitle: 'What roles will we miss when there is no longer a driver?',
+    author: 'Book Chapter 15a',
+    excerpt: 'In a driverless future, how will we hail a taxi? We argue that you need to look beyond app-based solutions to make these interactions as inclusive as possible.',
+    uri: '/blog/hailing-a-driverless-taxi',
+    image: '/images/auto/article-driverless-taxis.jpg'
+  },{
+    title: 'A glance at the future of external vehicular sound',
+    subtitle: 'Increasing pedestrian safety through smart tones.',
+    author: 'Book Chaper 15b',
+    excerpt: "We explore different auditory concepts to communicate risk to pedestrians, with the goal of creating a safer relationship between them and Electronic Vehicles.",
+    uri: '/blog/a-glance-at-the-future-of-external-vehicular-sound',
+    image: '/images/auto/article-ev-sound.jpg'
+  },{
+    title: 'Introducing the ustwo Roo',
+    subtitle: 'Our autonomous car concept',
+    author: 'Book Chapter 15c',
+    excerpt: 'Looking beyond opportunities to optimise, ustwo’s AV concept is built on the foundational idea that there’s more to people’s mobility needs than simply the vehicle and its technology.',
+    uri: '/blog/introducing-ustwo-av-concept',
+    image: '/images/auto/auto-roo.jpg'
+  },{
+    title: '9 things we learned at web summit',
+    subtitle: 'ustwo Auto talk user-centred design for driverless cars.',
+    author: '',
+    excerpt: "Didn't make it to Web Summit 2017? Here's what ustwo got up to on stage – and what we learned off it.",
+    uri: '/blog/9-things-we-learned-web-summit',
+    image: '/images/auto/article-web-summit.jpg'
+  }]
 }
