@@ -6,6 +6,7 @@ export default {
 	archivedEventsPagination: 1,
 	showPopup: '',
 	menuHover: '',
+	venturesPosition: {},
 	testimonialsPosition: {},
 	overflow: '',
 	videoOverlaySrc: '',
