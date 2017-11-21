@@ -14,6 +14,8 @@ import HomeSmorgasbordMessage from 'app/components/home-smorgasbord-message';
 import HomeSmorgasbord from 'app/components/home-smorgasbord';
 import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
+import ContactFloating from 'app/components/contact-floating';
+import RelatedContent from 'app/components/related-content';
 
 class PageHome extends Component {
   constructor(props) {
@@ -66,6 +68,16 @@ class PageHome extends Component {
     window.removeEventListener('resize', this.getVenturesPositionBound);
   }
 
+  latestPosts() {
+    const relatedPosts = get(this.props.page, '_embedded.ustwo:related_post', []);
+
+    let latestPosts;
+    if (relatedPosts.length) {
+      latestPosts = <RelatedContent content={relatedPosts}/>
+    }
+    return latestPosts;
+  }
+
   render() {
     const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, footer, studios, currentPage, fixedHeight } = this.props;
     const { venturesPosition, fixedHeightVentures } = this.state;
@@ -116,6 +128,8 @@ class PageHome extends Component {
             fixedHeight={fixedHeight}
           />
 
+          <ContactFloating title="Contact" type="Hello" />
+
           <ScrollWrapper
             component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} loaded={loaded} />}
             documentScrollPosition={documentScrollPosition}
@@ -136,6 +150,8 @@ class PageHome extends Component {
               fixedHeight={fixedHeight}
             />
 
+            <ContactFloating title="Contact" type="Hello" />
+
             <ScrollWrapper
               component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={venturesActive} loaded={loaded} />}
               documentScrollPosition={documentScrollPosition}
@@ -146,18 +162,8 @@ class PageHome extends Component {
 
           </div>
 
-          <ScrollWrapper
-            component={<HomeTextBlock content={textBlockSmorgasbord} />}
-            documentScrollPosition={documentScrollPosition}
-            viewportDimensions={viewportDimensions}
-            className="scroll-wrapper-home-smorgasbord-message"
-            fixedHeight={fixedHeight}
-          />
+          {this.latestPosts()}
 
-          <ScrollWrapper
-            component={<HomeSmorgasbord data={get(page, 'featured_content')} loaded={loaded} />}
-            className="scroll-wrapper-home-smorgasbord"
-          />
         </div>
 
         <ScrollWrapper
