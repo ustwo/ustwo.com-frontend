@@ -88,6 +88,11 @@
   @include page-background-colour(legal);
 }
 
+.navigation-overlay.contact,
+.navigation-overlay-bg-contact {
+  @include page-background-colour(contact);
+}
+
 .navigation-overlay.navigation-overlay-auto {
   @include page-background-colour(auto);
 }

@@ -147,25 +147,25 @@ class Navigation extends Component {
     let color;
     switch(section) {
       case 'home':
-        color = ['#16D6D9', '#96CC29'];
+        color = ['#16D6D9', '#96CC29']; // $mare, $jeezz
         break;
       case 'work':
-        color = ['#6114CC', '#FA7D78'];
+        color = ['#6114CC', '#FA7D78']; // $rain, $softPassion
         break;
       case 'blog':
-        color = ['#009CF3', '#16D6D9'];
+        color = ['#009CF3', '#16D6D9']; // $blu, $mare
         break;
       case 'about':
-        color = ['#ED0082', '#FA7D78'];
+        color = ['#ED0082', '#FA7D78']; // $piglet, $softPassion
         break;
       case 'join-us':
-        color = ['#FFBF02', '#FA7D78'];
+        color = ['#FFBF02', '#FA7D78']; // $honey, $softPassion
         break;
       case 'contact':
-        color = ['', ''];
+        color = ['#14C04D', '#F5E664']; // $pot, $softHoney
         break;
       case 'notfound':
-        color = ['#6114CC', '#FA7D78'];
+        color = ['#6114CC', '#FA7D78']; // $rain, $softPassion
         break;
     }
 
@@ -180,7 +180,6 @@ class Navigation extends Component {
             <li><a href="/">Home</a></li>
             <li><a href="/work">Work</a></li>
             <li><a href="/blog">Blog</a></li>
-            <li><a href="/events">Events</a></li>
             <li><a href="/join-us">Join us</a></li>
           </ul>
         </div>

@@ -48,7 +48,8 @@ const pageMap = {
   'join-us': require('app/components/join-us'),
   'events': require('app/components/events'),
   'events/event': require('app/components/event'),
-  'ev': require('app/components/page')
+  'ev': require('app/components/page'),
+  'contact': require('app/components/contact')
 };
 
 const App = React.createClass({

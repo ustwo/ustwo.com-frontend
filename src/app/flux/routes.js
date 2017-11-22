@@ -206,13 +206,13 @@ const routes = {
     statusCode: 404,
     data: () => []
   },
-  tully: {
-    id: 'tully',
-    patterns: ['/tully'],
+  contact: {
+    id: 'contact',
+    patterns: ['/contact'],
     data: () => [{
-      url: 'ustwo/v1/pages/tully',
+      url: 'ustwo/v1/pages/contact',
       type: 'page',
-      slug: 'tully'
+      slug: 'contact'
     }]
   },
 };
