@@ -1,4 +1,19 @@
 .contact-floating {
-  @include core-layout(); 
-  background: #ccc;
+  @include core-layout();
+  @include core-vertical-padding();
+  background: rgba(0,0,0,.035);
+
+  .contact-floating-inner {
+    p {
+      max-width: 500px;
+      text-align: center;
+      margin: 0 auto 30px auto;
+    }
+  }
+
+  &.darkStyle {
+    .contact-floating-inner {
+      color: $lightGrey;
+    }
+  }
 }

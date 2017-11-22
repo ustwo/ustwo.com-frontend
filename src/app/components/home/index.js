@@ -124,7 +124,7 @@ class PageHome extends Component {
             fixedHeight={fixedHeight}
           />
 
-          <ContactFloating title="Contact" type="Hello" />
+          <ContactFloating title="Contact" type="Hello" buttonFlavour="join" />
 
           <ScrollWrapper
             component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} loaded={loaded} />}
@@ -144,7 +144,7 @@ class PageHome extends Component {
               fixedHeight={fixedHeight}
             />
 
-            <ContactFloating title="Contact" type="Hello" />
+            <ContactFloating title="Contact" type="Hello" buttonFlavour="home" darkStyle />
 
             <ScrollWrapper
               component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={venturesActive} loaded={loaded} />}

@@ -161,6 +161,9 @@ class Navigation extends Component {
       case 'join-us':
         color = ['#FFBF02', '#FA7D78'];
         break;
+      case 'contact':
+        color = ['', ''];
+        break;
       case 'notfound':
         color = ['#6114CC', '#FA7D78'];
         break;
