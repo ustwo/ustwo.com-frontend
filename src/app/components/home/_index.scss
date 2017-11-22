@@ -62,72 +62,9 @@
   }
 }
 
-/* Transitions around venturesActive */
-.page-home-content {
-  backface-visibility: hidden;
-
-  .scrollmagic-pin-spacer {
-    &,
-    > div {
-      height: 100%;
-    }
-  }
-
-  .scroll-wrapper-home-more-message,
-  .scroll-wrapper-home-smorgasbord-message {
-    opacity: 0;
-    transition: opacity .2s linear;
-  }
-
-  .scroll-wrapper-home-smorgasbord-message {
-    opacity: 1;
-  }
-
-  .scroll-wrapper-home-carousel-products,
-  .scroll-wrapper-home-carousel-ventures {
-    transform: translate3d(0,0,0);
-    transition: opacity .2s linear;
-  }
-  .home-ventures-wrapper-bg {
-    position: fixed;
-    z-index: 0;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .2s linear 0s, visibility 0s linear .2s;
-    transform: translateZ(0);
-    background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
-  }
-  .scroll-wrapper-home-carousel-products {
-    opacity: 1;
-  }
-  .scroll-wrapper-home-carousel-ventures {
-    opacity: 0;
-  }
-
-  &.venturesActive {
-    .home-ventures-wrapper-bg {
-      opacity: 1;
-      visibility: visible;
-      transition-delay: 0s, 0s;
-    }
-    .scroll-wrapper-home-smorgasbord-message,
-    .scroll-wrapper-home-carousel-products {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .scroll-wrapper-home-more-message,
-    .scroll-wrapper-home-carousel-ventures {
-      opacity: 1;
-    }
-  }
-}
-
 /* Inverted styles on ventures background */
 .home-ventures-wrapper {
+  background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
 
   h1,
   .home-carousel-item-text h2,

@@ -100,10 +100,6 @@ class PageHome extends Component {
       text: <HomeSmorgasbordMessage />
     }
 
-    const venturesBgStyles = {
-      height: `${fixedHeightVentures + 100}px`
-    }
-
     return (
       <article className={classes} ref={(ref) => this.homeContent = ref}>
 
@@ -139,8 +135,6 @@ class PageHome extends Component {
           />
 
           <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
-
-            <div className="home-ventures-wrapper-bg" style={venturesBgStyles}></div>
 
             <ScrollWrapper
               component={<HomeTextBlock content={textBlockMore} />}

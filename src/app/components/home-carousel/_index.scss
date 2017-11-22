@@ -21,6 +21,8 @@ $home-carousel-small-screen-offset: 95px;
   height: auto;
   padding-left: 0;
   padding-right: 0;
+  box-sizing: content-box;
+  @include core-vertical-padding();
 }
 
 .home-carousel {
