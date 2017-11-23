@@ -25,9 +25,9 @@ class AboutHero extends Component {
 
     const video = (
       <Video
-        src="https://player.vimeo.com/external/209403984.sd.mp4?s=fa5d1e9fcb9e3f78d55423329a605fc7db82541f&profile_id=165"
-        srcHls="https://player.vimeo.com/external/209403984.m3u8?s=65a57e0454227df1838a1372f99bf7d761aad830"
-        imageCSS="https://i.vimeocdn.com/video/624938224.jpg?mw=1280&mh=720"
+        src="https://player.vimeo.com/external/244195245.sd.mp4?s=60fb55490a9662039ae0b807dba6ba034aa5b691&profile_id=165"
+        srcHls="https://player.vimeo.com/external/244195245.m3u8?s=19424df3fdf41b97c874d9aa330445261a9667a0"
+        imageCSS="https://i.vimeocdn.com/video/668530209.jpg?mw=1280&mh=720"
         preload="auto"
         fixedHeight={fixedHeight}
       />
