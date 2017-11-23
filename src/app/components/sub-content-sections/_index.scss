@@ -29,8 +29,8 @@
 .sub-content-sections-item {
 
   h2 {
-    @extend .h3;
-    font-size: 32px;
+    @extend .h4;
+    // font-size: 32px;
     margin-bottom: 15px;
   }
 }

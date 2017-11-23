@@ -7,16 +7,14 @@ export default ({ intro, introFurther, isMobile, scrollProgress, workProcess }) 
   const classes = classnames('auto-whatwedo', 'work-whatwedo-wrapper');
 
   return (
-    <div className="auto-whatwedo work-whatwedo-wrapper">
+    <div className="auto-whatwedo statement-wrapper">
       {workProcess ? <SubContentSections data={workProcess} isMobile={isMobile}  /> : null}
-      <div className="work-whatwedo">
-        <div className="work-intro">
-          {intro ? (
-            <p className="work-intro-statement">
-              {intro}
-            </p>
-          ) : null}
-        </div>
+      <div className="statement-inner">
+        {intro ? (
+          <p>
+            {intro}
+          </p>
+        ) : null}
       </div>
     </div>
   );
