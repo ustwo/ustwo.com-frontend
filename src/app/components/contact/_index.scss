@@ -1,0 +1,19 @@
+.scroll-wrapper-contact-hero {
+  padding: 0;
+  height: 100%;
+
+  .scroll-wrapper-inner {
+    height: 100%;
+    max-width: none;
+  }
+}
+
+.page-contact {
+  height: 100%;
+}
+
+.contact-hero {
+  .hero {
+    @include page-background-colour(contact);
+  }
+}

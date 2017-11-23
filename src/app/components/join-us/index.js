@@ -45,7 +45,6 @@ const PageJoinUs = React.createClass({
   render() {
     const { page, currentParams, studios, currentPage, footer, modal, isMobile, fixedHeight, documentScrollPosition, viewportDimensions } = this.props;
     const classes = classnames('page-join-us', this.props.className);
-    const image = getFeaturedImage(page);
 
     return (
       <article className={classes}>
