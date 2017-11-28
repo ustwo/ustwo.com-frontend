@@ -58,11 +58,13 @@ class Navigation extends Component {
       case 'post':
         navigateTo = '/blog';
         break;
-      case 'case-study':
       case 'discovery-strategy':
       case 'design-build':
       case 'launch-scale':
       case 'ways-of-working':
+        navigateTo = '/about';
+        break;
+      case 'case-study':
       case 'auto':
         navigateTo = '/work';
         break;

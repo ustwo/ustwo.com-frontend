@@ -1,0 +1,17 @@
+/*
+ *  ABOUT HERO
+ *
+ */
+
+.about-hero {
+  display: flex;
+  height: 100%;
+
+  .hero {
+    height: 100%;
+  }
+
+  .hero-inner-wrapper {
+    position: relative;
+  }
+}

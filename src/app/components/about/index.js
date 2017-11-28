@@ -7,9 +7,29 @@ import SubContentSections from 'app/components/sub-content-sections';
 import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
 import ContentWrapper from 'app/components/content-wrapper';
+import VideoBlock from 'app/components/video-block';
+import window from 'app/adaptors/server/window';
+import StudioBlock from 'app/components/studio-block';
+
+function renderStudioBlocks(studios) {
+  return studios.map((studio, i) => {
+    const alignment = i % 2 ? 'left' : 'right';
+
+    return (
+      <StudioBlock studio={studio} align={alignment} />
+    );
+  });
+}
 
 function pageAbout({ page, className, loaded, isMobile, footer, studios, currentPage, fixedHeight, documentScrollPosition, viewportDimensions, popup, modal }) {
   const classes = classnames('page-about', className);
+  const videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
+  let videoSrc;
+  if (window.innerWidth < 600) {
+    videoSrc= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=164';
+  } else {
+    videoSrc= 'https://player.vimeo.com/external/212009946.sd.mp4?s=f537d6446bb57ac154c6dd9fae12a281c1671686&profile_id=165';
+  }
 
   return (
     <article className={classes}>
@@ -28,25 +48,31 @@ function pageAbout({ page, className, loaded, isMobile, footer, studios, current
 
       <div className="home-main-content-wrapper">
 
-        <div className="statement-wrapper">
-          <div className="statement-inner">
+        <ContentWrapper>
+          <div className="statement-wrapper">
             <h2>What we do</h2>
             {aboutContent.what.map((item, i) => <p key={`work-para-${i}`}>{item}</p>)}
           </div>
-        </div>
+        </ContentWrapper>
+
+        <ContentWrapper className="content-wrapper-what-video">
+          <VideoBlock videoPoster={videoPoster} src={videoSrc} />
+        </ContentWrapper>
 
         <SubContentSections data={aboutContent.process} isMobile={isMobile} />
 
         <ContactFloating />
 
-        <div className="statement-wrapper">
-          <div className="statement-inner">
+        <ContentWrapper className="content-wrapper-who">
+          <div className="statement-wrapper">
             <h2>Who we are</h2>
             {aboutContent.who.map((item, i) => <p key={`work-para-${i}`}>{item}</p>)}
           </div>
-        </div>
+        </ContentWrapper>
 
-        <SubContentSections data={aboutContent.studios} isMobile={isMobile} className="subContentStudios" />
+        <ContentWrapper className="content-wrapper-studios">
+          {renderStudioBlocks(studios)}
+        </ContentWrapper>
 
         <ContentWrapper className="manifesto-content-wrapper">
           <h2>Manifesto</h2>
@@ -105,26 +131,5 @@ const aboutContent = {
     image: '/images/illustration-ways-of-working.svg',
     text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.',
     url: '/work/ways-of-working'
-  }],
-  studios: [{
-    name: 'london',
-    title: 'London',
-    image: 'https://usweb-cdn.ustwo.com/ustwo-production/uploads/2015/07/Ustwo-website-HQ-36-640x427.jpg',
-    text: "Occupying three floors of The Tea Building in Shoreditch, our UK studio has over 100 talented and driven people. We're dedicated to delivering stand-out work for clients including Barclays, Ford, DeepMind, Harvey Nichols, Co-op and Sky. We also develop our own products and businesses, including mental health app Moodnotes, audio-wayfinding service Wayfindr and ticketing app DICE."
-  },{
-    name: 'malmo',
-    title: 'Malmo',
-    image: 'https://usweb-cdn.ustwo.com/ustwo-production/uploads/2015/08/05_flexible_bonuses-640x356.jpg',
-    text: "With bright and shiny spaces on ‘Love Street’ in the heart of Malmö, our Nordic studio is a warren of creativity and strategic thinking. We’re proud to count major brands among those who rely on our skills and services. ustwo Nordics is also the birthplace of a couple of our many successful inventions like Rando and PAUSE."
-  },{
-    name: 'new-york',
-    title: 'New York',
-    image: 'https://usweb-cdn.ustwo.com/ustwo-production/uploads/2015/07/event-space-mural-640x480.jpg',
-    text: "Light-filled with sweeping panoramic views, our New York studio sits sixteen stories high in the historic Standard Oil building nestled in the center of Manhattan's bustling Financial District. Here our designers, strategists, and developers from around the world collaborate closely with each other and with our clients, who range from America's best-known brands to young, scrappy startups. We're also proud founding partners of Pledge Parental Leave."
-  },{
-    name: 'sydney',
-    title: 'Sydney',
-    image: 'https://usweb-cdn.ustwo.com/ustwo-production/uploads/2015/07/superheroes1-640x427.jpg',
-    text: "Leading the charge for ustwo's southern-most chapter, our newest studio is located in the heart of Surry Hills, Sydney. Bringing together a team from across the world, spearheaded by local knowledge, we opened the 'austwo' doors for business in January 2015."
   }]
 }

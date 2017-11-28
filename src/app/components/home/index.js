@@ -68,12 +68,12 @@ class PageHome extends Component {
     window.removeEventListener('resize', this.getVenturesPositionBound);
   }
 
-  latestPosts() {
+  latestPosts(loaded) {
     const relatedPosts = get(this.props.page, '_embedded.ustwo:related_post', []);
 
     let latestPosts;
     if (relatedPosts.length) {
-      latestPosts = <RelatedContent content={relatedPosts}/>
+      latestPosts = <RelatedContent content={relatedPosts} title="From the blog" loaded={loaded} newsletter />
     }
     return latestPosts;
   }
@@ -156,7 +156,7 @@ class PageHome extends Component {
 
           </div>
 
-          {this.latestPosts()}
+          {this.latestPosts(loaded)}
 
         </div>
 

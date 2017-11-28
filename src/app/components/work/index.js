@@ -11,7 +11,7 @@ import TestimonialCarousel from 'app/components/testimonial-carousel';
 import Video from 'app/components/video';
 import Footer from 'app/components/footer';
 import ScrollWrapper from 'app/components/scroll-wrapper';
-import HeroNoVideo from 'app/components/hero-no-video';
+import WorkHero from 'app/components/work-hero';
 import ContactBlock from 'app/components/contact-block';
 import WorkVerticals from 'app/components/work-verticals';
 import ContactButton from 'app/components/contact-button';
@@ -88,7 +88,7 @@ class PageWork extends Component {
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
             <ScrollWrapper
-              component={<HeroNoVideo pageName="work" loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Make things to change things" />}
+              component={<WorkHero loaded={loaded} modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} />}
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               requireScreenPosition={true}

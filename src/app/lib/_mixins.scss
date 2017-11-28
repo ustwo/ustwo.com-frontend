@@ -112,6 +112,21 @@
   @if $page == 'sydney' {
     background-image: linear-gradient(30deg, $mare, $jeezz);
   }
+  @if $page == 'hot' {
+    background-image: linear-gradient(30deg, $honey, $piglet);
+  }
+  @if $page == 'cold' {
+    background-image: linear-gradient(30deg, $blu, $mare);
+  }
+  @if $page == 'lukewarm' {
+    background-image: linear-gradient(30deg, $mare, $jeezz);
+  }
+  @if $page == 'auto' {
+    background-image: linear-gradient(30deg, #ffbf00, $auto);
+  }
+  @if $page == 'auto2' {
+    background-image: linear-gradient(30deg, #ffbf00, #ffbf00);
+  }
 }
 
 @mixin core-gutter($type: 'padding') {
