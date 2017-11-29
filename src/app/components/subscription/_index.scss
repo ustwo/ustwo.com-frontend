@@ -29,12 +29,12 @@
   justify-content: center;
   width: 100%;
   height: auto;
-  border-bottom: 1px solid $nonBlack;
   font-size: 18px;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-image: linear-gradient(to right, $navy, $piglet);
   color: $offWhite;
+  @include box-shadow();
 
   .icon {
     width: 77px;

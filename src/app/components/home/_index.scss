@@ -64,7 +64,7 @@
 
 /* Inverted styles on ventures background */
 .home-ventures-wrapper {
-  background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
+  @include darkBackground;
 
   h1,
   .home-carousel-item-text h2,

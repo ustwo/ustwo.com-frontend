@@ -10,8 +10,6 @@ import HomeTextBlock from 'app/components/home-text-block';
 import HomeCarousel from 'app/components/home-carousel';
 import HomeWelcomeMessage from 'app/components/home-welcome-message';
 import HomeMoreMessage from 'app/components/home-more-message';
-import HomeSmorgasbordMessage from 'app/components/home-smorgasbord-message';
-import HomeSmorgasbord from 'app/components/home-smorgasbord';
 import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
 import ContactFloating from 'app/components/contact-floating';
@@ -94,10 +92,6 @@ class PageHome extends Component {
     const textBlockMore = {
       title: `Do more, to learn more`,
       text: <HomeMoreMessage />
-    }
-    const textBlockSmorgasbord = {
-      title: `Explore together`,
-      text: <HomeSmorgasbordMessage />
     }
 
     return (

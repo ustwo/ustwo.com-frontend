@@ -48,24 +48,26 @@ function pageAbout({ page, className, loaded, isMobile, footer, studios, current
 
       <div className="home-main-content-wrapper">
 
-        <ContentWrapper>
-          <div className="statement-wrapper">
+        <ContentWrapper className="content-wrapper-about-intro">
+          <div className="content-wrapper-statement">
             <h2>What we do</h2>
+            <hr className="hr hr-about" />
             {aboutContent.what.map((item, i) => <p key={`work-para-${i}`}>{item}</p>)}
           </div>
         </ContentWrapper>
 
-        <ContentWrapper className="content-wrapper-what-video">
+        <ContentWrapper className="content-wrapper-about-video">
           <VideoBlock videoPoster={videoPoster} src={videoSrc} />
         </ContentWrapper>
 
-        <SubContentSections data={aboutContent.process} isMobile={isMobile} />
+        <SubContentSections data={aboutContent.process} isMobile={isMobile} className="content-wrapper-about-sections" />
 
         <ContactFloating />
 
         <ContentWrapper className="content-wrapper-who">
-          <div className="statement-wrapper">
+          <div className="content-wrapper-statement">
             <h2>Who we are</h2>
+            <hr className="hr hr-about" />
             {aboutContent.who.map((item, i) => <p key={`work-para-${i}`}>{item}</p>)}
           </div>
         </ContentWrapper>
@@ -74,10 +76,13 @@ function pageAbout({ page, className, loaded, isMobile, footer, studios, current
           {renderStudioBlocks(studios)}
         </ContentWrapper>
 
-        <ContentWrapper className="manifesto-content-wrapper">
-          <h2>Manifesto</h2>
-          <p>We believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds.
-          If you want to know more, check out our Manifesto here and some of the roles we’re hiring for across the globe down below. Welcome to the Fampany.</p>
+        <ContentWrapper className="content-wrapper-manifesto">
+          <div className="content-wrapper-statement">
+            <h2>Manifesto</h2>
+            <hr className="hr hr-about" />
+            <p>We believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds.
+            If you want to know more, check out our Manifesto here and some of the roles we’re hiring for across the globe down below. Welcome to the Fampany.</p>
+          </div>
         </ContentWrapper>
 
         <ScrollWrapper

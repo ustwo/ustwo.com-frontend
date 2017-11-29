@@ -42,6 +42,10 @@
     }
   }
 
+  h2 {
+    @extend .h3;
+  }
+
   .content-container {
     position: relative;
     margin: 0 auto;
@@ -87,7 +91,7 @@
     }
 
     .title {
-      margin-bottom: 0;
+      margin-bottom: $title-border-bottom;
       padding: 0 15px;
     }
     .excerpt {

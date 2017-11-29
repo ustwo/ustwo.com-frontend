@@ -1,6 +1,9 @@
 .studio-block {
-  background: $offWhite;
+  background: #fff;
+  @include box-shadow();
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 
   &:last-of-type {
     margin-bottom: 0;
@@ -16,6 +19,11 @@
   }
 }
 
+.studio-block-info {
+  padding: 20px;
+  order: 2;
+}
+
 .studio-block-blurb {
   a {
     border-bottom-width: 2px;
@@ -28,9 +36,9 @@
 
 @media screen and (min-width: $bp-medium) {
   .studio-block {
-    display: flex;
     margin-bottom: 40px;
     min-height: 320px;
+    flex-direction: row;
 
     &:last-of-type {
       margin-bottom: 0;
@@ -43,6 +51,7 @@
 
   .studio-block-info {
     padding: 40px;
+    order: initial;
   }
 
   .studio-block-blurb {

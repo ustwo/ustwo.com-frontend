@@ -46,85 +46,26 @@
   margin-bottom: 0;
 }
 
-.manifesto-content-wrapper {
+.content-wrapper-manifesto {
+  @include darkBackground;
+
   h2 {
     margin-bottom: 30px;
-  }
-}
 
-.about-content-wrapper {
-  background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
-
-  h1,
-  h2,
-  p,
-  .home-carousel-item-text h2,
-  .home-carousel-item-description {
-    color: $offWhite;
-  }
-
-  .section-title {
-    color: $offWhite;
-  }
-
-  .view-carousel-related-page button {
-    @include buttonStyle(true);
-    @include buttonColor('invert');
-    background-image: url('/images/icon-right-light.svg');
-  }
-
-  @media screen and (min-width: $bp-tablet) {
-    .home-carousel-item {
-      .home-carousel-item-image:after {
-        background: linear-gradient(-90deg, $v-solid, transparent);
-      }
-
-      &.even .home-carousel-item-image:after {
-        background: linear-gradient(-90deg, transparent, $v-solid);
-      }
+    @media screen and (min-width: $bp-large) {
+      min-height: 50px;
     }
   }
 }
 
-
-
-.statement-wrapper {
-  h2 {
-    @extend .h3;
-    margin-bottom: 30px;
-  }
-
-  p {
-    font-size: 18px;
-    line-height: 1.4;
-  }
-
-  @media screen and (min-width: $bp-medium) {
-    p {
-      width: 80%;
-      font-size: 22px;
-    }
-  }
-  @media screen and (min-width: $bp-large) {
-    p {
-      width: 70%;
-    }
-  }
-  @media screen and (min-width: $bp-larger) {
-    p {
-      font-size: 24px;
-    }
-  }
-}
-
-.content-wrapper-what-video .content-wrapper-inner {
+.content-wrapper-about-video .content-wrapper-inner {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
 
 .content-wrapper-who,
 .content-wrapper-studios {
-  background: #fff;
+  background: $offWhite;
 }
 
 .content-wrapper-studios .content-wrapper-inner {

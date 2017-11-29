@@ -45,7 +45,7 @@
     letter-spacing: 0.9px;
     text-align: center;
     line-height: 1.3;
-    text-shadow: 1px 1px 5px rgba(0,0,0,.3);
+    text-shadow: 1px 1px 5px rgba(0,0,0,.2);
 
     @media screen and (min-width: $bp-small) {
       br {
@@ -126,8 +126,8 @@
 
   .home-intro-logo-wrapper {
     .layer-background {
-      filter: blur(3px);
-      opacity: 0.5;
+      filter: blur(4px);
+      opacity: 0.3;
     }
   }
 }

@@ -129,6 +129,14 @@
   }
 }
 
+@mixin darkBackground() {
+  background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
+
+  h1, h2, h3, h4, p {
+    color: $offWhite;
+  }
+}
+
 @mixin core-gutter($type: 'padding') {
   @if $type == 'padding' {
     padding-left: $core-padding;
@@ -158,25 +166,25 @@
     padding-bottom: 40px;
 
     @media screen and (min-width: $bp-medium) {
-      padding-top: 70px;
-      padding-bottom: 70px;
+      padding-top: 90px;
+      padding-bottom: 90px;
     }
 
     @media screen and (min-width: $bp-large) {
-      padding-top: 90px;
-      padding-bottom: 90px;
+      padding-top: 120px;
+      padding-bottom: 120px;
     }
   } @else {
     padding-top: 40px;
     padding-bottom: 20px;
 
     @media screen and (min-width: $bp-medium) {
-      padding-top: 70px;
+      padding-top: 90px;
       padding-bottom: 30px;
     }
 
     @media screen and (min-width: $bp-large) {
-      padding-top: 90px;
+      padding-top: 120px;
       padding-bottom: 40px;
     }
 
@@ -224,7 +232,11 @@
 }
 
 @mixin box-shadow() {
-  box-shadow: 10px 10px 40px rgba(0,0,0,.3);
+  box-shadow: 5px 5px 15px rgba(0,0,0,.2);
+}
+
+@mixin text-shadow() {
+  text-shadow: 5px 5px 15px rgba(0,0,0,.2);
 }
 
 @mixin buttonColor($color: 'dark') {

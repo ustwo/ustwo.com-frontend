@@ -75,7 +75,7 @@
 
 .work-verticals-content {
   background: $offWhite;
-  box-shadow: 10px 10px 40px 0 rgba(0, 0, 0, 0.1);
+  @include box-shadow();
   padding: 40px 20px 20px 20px;
 
   @media screen and (min-width: $bp-medium) {

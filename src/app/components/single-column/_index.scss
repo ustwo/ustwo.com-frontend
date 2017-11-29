@@ -51,9 +51,10 @@
 
   hr {
     width: 120px;
-    margin: 30px auto;
+    margin: 0 auto $title-border-bottom auto;
     height: 3px;
     border: none;
+    background: $lightGrey;
   }
 
   .content {

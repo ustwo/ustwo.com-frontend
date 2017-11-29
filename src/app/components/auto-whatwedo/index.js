@@ -10,7 +10,7 @@ export default ({ intro, introFurther, isMobile, scrollProgress, workProcess }) 
   return (
     <ContentWrapper>
       {workProcess ? <SubContentSections data={workProcess} isMobile={isMobile}  /> : null}
-      <div className="statement-wrapper">
+      <div className="content-wrapper-statement">
         {intro ? (
           <p>
             {intro}

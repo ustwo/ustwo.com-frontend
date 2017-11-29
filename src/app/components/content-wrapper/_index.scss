@@ -5,3 +5,57 @@
 .content-wrapper-inner {
   @include core-vertical-padding();
 }
+
+.content-wrapper-statement {
+  text-align: center;
+
+  h2 {
+    @extend .h3;
+    margin-bottom: $title-border-bottom;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.4;
+    max-width: $thin-content-width;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    p {
+      font-size: 22px;
+    }
+  }
+  @media screen and (min-width: $bp-larger) {
+    p {
+      font-size: 24px;
+    }
+  }
+}
+
+.content-wrapper-single-column {
+  max-width: $thin-content-width;
+  margin: 0 auto;
+}
+
+.hr {
+  width: 120px;
+  margin: 0 auto $title-border-bottom auto;
+  height: 3px;
+  border: none;
+
+  &.hr-home {
+    @include page-background-colour(home);
+  }
+  &.hr-about {
+    @include page-background-colour(about);
+  }
+  &.hr-work {
+    @include page-background-colour(work);
+  }
+  &.hr-join-us {
+    @include page-background-colour(join);
+  }
+}

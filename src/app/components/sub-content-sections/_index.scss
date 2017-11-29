@@ -8,7 +8,6 @@
   overflow: hidden;
   visibility: visible;
   position: relative;
-  margin-bottom: 50px;
   @include core-gutter();
 
   @media screen and (min-width: $bp-larger) {
@@ -72,7 +71,7 @@
 
 .sub-content-sections.touchDevice {
   .sub-content-sections-item {
-    box-shadow: 0 0 20px rgba(0,0,0,.3);
+    @include box-shadow();
     background-color: $offWhite;
   }
 }

@@ -113,6 +113,7 @@
     display: inline-block;
     font-size: 16px;
     transition: color $hover-duration-quick ease-in-out;
+    margin-top: 20px;
 
     &:hover {
       color: inherit;
@@ -201,7 +202,7 @@
 
   @media screen and (min-width: $bp-large) {
     .job-description {
-      width: 50%;
+      width: 60%;
     }
   }
 }

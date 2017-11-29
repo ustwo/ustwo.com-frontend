@@ -37,6 +37,7 @@
     padding: 0;
     padding-bottom: $vertical-spacing;
     @include core-layout();
+    display: none !important;
 
     .wrapper {
       @include core-vertical-padding;
@@ -80,21 +81,12 @@
   }
 
   .current-openings {
-    display: flex;
-    align-items: center;
     text-align: center;
 
     h2 {
-      padding: 0 20px;
-    }
-  }
-
-  .current-openings {
-    padding-top: $vertical-spacing;
-    padding-bottom: 10px;
-
-    h2 {
       @extend .h3;
+      padding: 0 20px;
+      margin-bottom: $title-border-bottom;
     }
   }
 
@@ -136,11 +128,6 @@
   @media screen and (min-width: $bp-medium) {
     .grid {
       padding-top: 0;
-    }
-
-    .current-openings {
-      padding-top: $vertical-spacing-medium;
-      padding-bottom: 40px;
     }
 
     .benefits {
@@ -185,12 +172,18 @@
         font-size: 26px;
       }
     }
-
-    .current-openings {
-      padding-top: $vertical-spacing-large;
-      padding-bottom: 60px;
-    }
   }
+}
+
+.content-wrapper-join-video .content-wrapper-inner {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.content-wrapper-join-intro,
+.content-wrapper-join-video,
+.content-wrapper-join-extra {
+  background: white;
 }
 
 .join-us-hero {

@@ -120,6 +120,12 @@
 //   }
 // }
 
+.rh5v-DefaultPlayer_component {
+  width:100%;
+  height:100%;
+  background: #000;
+}
+
 .rh5v-DefaultPlayer_controls {
   background-color: transparent;
 
@@ -167,8 +173,15 @@
   background: #fff;
 }
 
+.rh5v-PlayPause_component:hover,
 .rh5v-Volume_component:hover,
-.rh5v-Volume_slider,
+.rh5v-Volume_slider:hover,
 .rh5v-Fullscreen_component:hover {
-  background: transparent;
+  background: rgba(0,0,0,0.5);
+}
+
+.rh5v-Volume_slider {
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
 }

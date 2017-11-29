@@ -123,7 +123,7 @@ class Navigation extends Component {
     const { section, page, customClass, documentScrollPosition, venturesPosition, testimonialsPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
     const { active, paused, navHeight, capabilityPages } = this.state;
 
-    const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
+    const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (navHeight * .5) && documentScrollPosition < venturesPosition.to - (navHeight * .5);
     const testimonialsActive = !isEmpty(testimonialsPosition) && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
     const footerActive = documentScrollPosition > 4000 - (693 + 414);
     const homePage = section === 'home';
