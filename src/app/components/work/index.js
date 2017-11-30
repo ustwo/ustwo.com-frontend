@@ -204,7 +204,7 @@ const workData = {
     text: 'ustwo collaborates with clients, healthcare professionals and academic experts to create lasting, meaningful digital health solutions.',
     slug: '/work/ustwo-health'
   }],
-  clients: ['Adidas', 'Android', 'BMW Group', 'Co-op', 'Ford', 'Foursquare', 'Google', 'NBC', 'Qantas', 'Sky', 'Sony']
+  clients: ['Adidas', 'Android', 'BMW Group', 'Co-op', 'Ford', 'Foursquare', 'Google', 'NBC', 'Nike', 'Qantas', 'Samsung', 'Sky', 'Sony', 'Zara']
 }
 
 const featuredCaseStudy = {
