@@ -62,7 +62,7 @@ function pageAbout({ page, className, loaded, isMobile, footer, studios, current
 
         <SubContentSections data={aboutContent.process} isMobile={isMobile} className="content-wrapper-about-sections" />
 
-        <ContactFloating />
+        <ContactFloating buttonFlavour="about" />
 
         <ContentWrapper className="content-wrapper-who">
           <div className="content-wrapper-statement">

@@ -4,6 +4,10 @@
 
 .content-wrapper-inner {
   @include core-vertical-padding();
+
+  a {
+    @include underlineLink;
+  }
 }
 
 .content-wrapper-statement {
@@ -57,5 +61,8 @@
   }
   &.hr-join-us {
     @include page-background-colour(join);
+  }
+  &.hr-contact {
+    @include page-background-colour(contact);
   }
 }

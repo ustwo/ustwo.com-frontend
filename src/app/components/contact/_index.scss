@@ -17,3 +17,55 @@
     @include page-background-colour(contact);
   }
 }
+
+.content-wrapper-contact-new-business .content-wrapper-inner {
+  padding-top: 0 !important;
+}
+
+.content-wrapper-contact-more {
+  background: white;
+
+  h4 {
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-bottom: $title-border-bottom;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.contact-new-business-contacts {
+  @include core-vertical-padding($withChildren: true);
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: $grid-max-width;
+  margin: 0 auto;
+  padding-top: 0 !important;
+
+  li {
+    padding-bottom: 0 !important;
+  }
+}
+
+.contact-new-business-studio {
+  margin-bottom: 10px;
+}
+
+.contact-new-business-name {
+  margin: 0
+}
+
+.contact-new-business-title {
+  font-style: italic;
+}
+
+.contact-new-business-email {
+  margin-top: 0;
+}

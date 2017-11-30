@@ -6,7 +6,7 @@ import env from 'app/adaptors/server/env';
 import Flux from 'app/flux';
 import window from 'app/adaptors/server/window';
 import kebabCase from 'lodash/string/kebabCase';
-
+import ContactFloating from 'app/components/contact-floating';
 import TestimonialCarousel from 'app/components/testimonial-carousel';
 import Video from 'app/components/video';
 import Footer from 'app/components/footer';
@@ -103,6 +103,8 @@ class PageWork extends Component {
 
           {this.renderTestimonialCarousel()}
 
+          <ContactFloating buttonFlavour="work" />
+
           <div className="page-work-controls" ref={(ref) => this.workAnchor = ref}>
             {this.renderWorkItemFilter()}
           </div>
@@ -114,6 +116,8 @@ class PageWork extends Component {
             caseStudyFilter={caseStudyFilter}
             addMoreCaseStudies={this.addMoreCaseStudies.bind(this)}
           />
+
+          <ContactFloating buttonFlavour="work" />
 
           <WorkVerticals data={workContent.verticals} />
 

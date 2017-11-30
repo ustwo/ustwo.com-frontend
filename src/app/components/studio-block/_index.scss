@@ -26,8 +26,7 @@
 
 .studio-block-blurb {
   a {
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
+    @include underlineLink;
   }
 }
 .studio-block-photo {

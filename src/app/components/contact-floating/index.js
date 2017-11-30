@@ -1,7 +1,7 @@
 import React from 'react';
 import ContactButton from 'app/components/contact-button';
 
-function ContactFloating({ title, type, darkStyle, buttonFlavour }) {
+function ContactFloating({ buttonFlavour, darkStyle }) {
   const classes = `contact-floating ${darkStyle ? 'darkStyle' : null}`;
 
   return (
