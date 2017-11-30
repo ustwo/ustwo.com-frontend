@@ -5,7 +5,7 @@ import Flux from 'app/flux';
 function onClickContactButton() {
   return (e) => {
     e.preventDefault();
-    Flux.navigate('/contact');
+    Flux.navigate('/contact-us');
   }
 }
 

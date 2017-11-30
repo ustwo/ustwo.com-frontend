@@ -21,8 +21,8 @@ function renderStudioBlocks(studios) {
   });
 }
 
-function pageAbout({ page, className, loaded, isMobile, footer, studios, currentPage, fixedHeight, documentScrollPosition, viewportDimensions, popup, modal }) {
-  const classes = classnames('page-about', className);
+function pageAboutUs({ page, className, loaded, isMobile, footer, studios, currentPage, fixedHeight, documentScrollPosition, viewportDimensions, popup, modal }) {
+  const classes = classnames('page-about-us', className);
   const videoPoster = '/images/ustwo-roadshow-first-frame.jpg';
   let videoSrc;
   if (window.innerWidth < 600) {
@@ -101,7 +101,7 @@ function pageAbout({ page, className, loaded, isMobile, footer, studios, current
   );
 }
 
-export default pageAbout;
+export default pageAboutUs;
 
 const aboutContent = {
   what: [

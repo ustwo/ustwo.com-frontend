@@ -19,7 +19,7 @@ function AboutHero({ isMobile, fixedHeight, scrollProgress }) {
         title="Make things to change things"
         transitionImage={true}
         showDownIndicator={true}
-        eventLabel='About'
+        eventLabel='About Us'
         video={video}
         fixedHeight={fixedHeight}
         isMobile={isMobile}

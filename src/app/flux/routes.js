@@ -10,12 +10,12 @@ const routes = {
     }]
   },
   aboutUs: {
-    id: 'about',
-    patterns: ['/about'],
+    id: 'about-us',
+    patterns: ['/about-us'],
     data: () => [{
-      url: 'ustwo/v1/pages/about',
+      url: 'ustwo/v1/pages/about-us',
       type: 'page',
-      slug: 'about'
+      slug: 'about-us'
     }]
   },
   work: {
@@ -206,13 +206,13 @@ const routes = {
     statusCode: 404,
     data: () => []
   },
-  contact: {
-    id: 'contact',
-    patterns: ['/contact'],
+  contactUs: {
+    id: 'contact-us',
+    patterns: ['/contact-us'],
     data: () => [{
-      url: 'ustwo/v1/pages/contact',
+      url: 'ustwo/v1/pages/contact-us',
       type: 'page',
-      slug: 'contact'
+      slug: 'contact-us'
     }]
   },
 };

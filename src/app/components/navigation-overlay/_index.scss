@@ -63,8 +63,8 @@
   @include page-background-colour(work);
 }
 
-.navigation-overlay.about,
-.navigation-overlay-bg-about {
+.navigation-overlay.about-us,
+.navigation-overlay-bg-about-us {
   @include page-background-colour(about);
 }
 
@@ -88,8 +88,8 @@
   @include page-background-colour(legal);
 }
 
-.navigation-overlay.contact,
-.navigation-overlay-bg-contact {
+.navigation-overlay.contact-us,
+.navigation-overlay-bg-contact-us {
   @include page-background-colour(contact);
 }
 

@@ -36,13 +36,13 @@ function contactGoToJoin() {
   }
 }
 
-function pageContact({ page, currentParams, studios, currentPage, footer, modal, isMobile, fixedHeight, documentScrollPosition, viewportDimensions }) {
+function pageContactUs({ page, currentParams, studios, currentPage, footer, modal, isMobile, fixedHeight, documentScrollPosition, viewportDimensions }) {
   return (
-    <article className="page-contact">
+    <article className="page-contact-us">
       <div className="home-pinned-header-wrapper">
         <div className="home-pinned-header-inner">
           <ScrollWrapper
-            component={<HeroNoVideo pageName="contact" modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Say Hello" />}
+            component={<HeroNoVideo pageName="contact-us" modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Say Hello" />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}
@@ -98,7 +98,7 @@ function pageContact({ page, currentParams, studios, currentPage, footer, modal,
   )
 }
 
-export default pageContact;
+export default pageContactUs;
 
 const contactContent = {
   newBusiness: [{

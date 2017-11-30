@@ -127,7 +127,7 @@ class Navigation extends Component {
     const testimonialsActive = !isEmpty(testimonialsPosition) && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
     const footerActive = documentScrollPosition > 4000 - (693 + 414);
     const homePage = section === 'home';
-    const heroPage = section === 'home' || section === 'about' || section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto';
+    const heroPage = section === 'home' || section === 'about-us' || section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto' || section === 'contact-us';
     const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'auto' || page === 'humanisingautonomy';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
@@ -157,13 +157,13 @@ class Navigation extends Component {
       case 'blog':
         color = ['#009CF3', '#16D6D9']; // $blu, $mare
         break;
-      case 'about':
+      case 'about-us':
         color = ['#ED0082', '#FA7D78']; // $piglet, $softPassion
         break;
       case 'join-us':
         color = ['#FFBF02', '#FA7D78']; // $honey, $softPassion
         break;
-      case 'contact':
+      case 'contact-us':
         color = ['#14C04D', '#F5E664']; // $pot, $softHoney
         break;
       case 'notfound':
