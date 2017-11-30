@@ -82,6 +82,7 @@ function pageAbout({ page, className, loaded, isMobile, footer, studios, current
             <hr className="hr hr-about" />
             <p>We believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds.
             If you want to know more, check out our Manifesto here and some of the roles we’re hiring for across the globe down below. Welcome to the Fampany.</p>
+            <a href="http://us2.co/ManifestoV2">Read our Manifesto</a>
           </div>
         </ContentWrapper>
 

@@ -6,6 +6,7 @@ import ContactBlock from 'app/components/contact-block';
 import ContentWrapper from 'app/components/content-wrapper';
 import GradientWords from 'app/components/gradient-words';
 import kebabCase from 'lodash/string/kebabCase';
+import Flux from 'app/flux';
 
 function renderNewBusinessContacts() {
   const items = contactContent.newBusiness.map(item => {
@@ -26,6 +27,13 @@ function renderNewBusinessContacts() {
       {items}
     </ul>
   )
+}
+
+function contactGoToJoin() {
+  return (e) => {
+    e.preventDefault();
+    Flux.navigate('/join-us');
+  }
 }
 
 function pageContact({ page, currentParams, studios, currentPage, footer, modal, isMobile, fixedHeight, documentScrollPosition, viewportDimensions }) {
@@ -59,13 +67,21 @@ function pageContact({ page, currentParams, studios, currentPage, footer, modal,
         </ContentWrapper>
 
         <ContentWrapper className="content-wrapper-contact-more">
-          <div className="content-wrapper-single-column">
-            <h4>Media Enquiries</h4>
-            <p>We're eager to add to conversations around design, development and business. Please reach out to press@ustwo.com for media requests, interviews or speaking opportunities.</p>
-            <h4>Jobs</h4>
-            <p>You can find our latest job openings from across our studios on our join us page. </p>
-            <h4>General Enquiries</h4>
+          <div className="content-wrapper-statement">
+            <h2>Other Contacts</h2>
+            <hr className="hr hr-contact" />
+            <h5>Media Enquiries</h5>
+            <p>We're eager to add to conversations around design, development and business. Please reach out to <a href="mailto:press@ustwo.com">press@ustwo.com</a> for media requests, interviews or speaking opportunities.</p>
+            <h5>General Enquiries</h5>
             <p>Feel free to get in touch at <a href="mailto:hello@ustwo.com">hello@ustwo.com</a> with other opportunities, questions or feedback. We're a curious lot and would love to hear from you.</p>
+          </div>
+        </ContentWrapper>
+
+        <ContentWrapper className="content-wrapper-contact-jobs">
+          <div className="content-wrapper-statement">
+            <h2>Looking for a job?</h2>
+            <hr className="hr hr-contact" />
+            <p>You can find our latest job openings from across our studios on our <a href="/join-us" onClick={contactGoToJoin()}>join us</a> page. </p>
           </div>
         </ContentWrapper>
 
@@ -89,21 +105,21 @@ const contactContent = {
     studio: 'London',
     name: 'Cameron Day',
     title: 'New Business Partner',
-    email: 'cameron@ustwo.com',
+    email: 'londonbd@ustwo.com',
   },{
     studio: 'Malmo',
     name: 'Anders Rörgren',
     title: 'Business Development Lead',
-    email: 'gottfrid@ustwo.com',
+    email: 'malmobd@ustwo.com',
   },{
     studio: 'New York',
     name: 'Justin Pike',
     title: 'Business Development Lead',
-    email: 'justin@ustwo.com',
+    email: 'newyorkbd@ustwo.com',
   },{
     studio: 'Sydney',
-    name: 'Luke',
+    name: 'Luke Hankinson',
     title: 'Business Development Lead',
-    email: 'luke@ustwo.com',
+    email: 'sydneybd@ustwo.com',
   }]
 }

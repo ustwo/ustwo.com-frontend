@@ -13,8 +13,7 @@ function WorkClientsBoard({ logos, title }) {
   return (
     <div className="work-clients-board">
       <div className="work-clients-board-inner">
-        <h2 className="title">{title}</h2>
-        <hr className="hr hr-work" />
+        <h5 className="title">{title}</h5>
         <ul>
           {items}
         </ul>

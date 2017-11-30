@@ -69,3 +69,7 @@
 .contact-new-business-email {
   margin-top: 0;
 }
+
+.content-wrapper-contact-jobs {
+  @include darkBackground;
+}

@@ -4,10 +4,6 @@
 
 .content-wrapper-inner {
   @include core-vertical-padding();
-
-  a {
-    @include underlineLink;
-  }
 }
 
 .content-wrapper-statement {
@@ -36,6 +32,13 @@
     p {
       font-size: 24px;
     }
+  }
+}
+
+.content-wrapper-statement,
+.content-wrapper-single-column {
+  a {
+    @include underlineLink;
   }
 }
 
