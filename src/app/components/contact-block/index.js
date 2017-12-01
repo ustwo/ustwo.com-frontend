@@ -43,7 +43,7 @@ class ContactBlock extends Component {
   }
 
   render() {
-    const { auto } = this.props;
+    const { page } = this.props;
     const progress = Math.round(((timerTotal - this.state.tick) / timerTotal) * 100) / 100;
     //
     // let topColour, bottomColour;
@@ -96,28 +96,38 @@ class ContactBlock extends Component {
       }
     }
 
-    let data;
-    if (auto) {
-      data = {
+    let content;
+    if (page === 'auto') {
+      content = {
         sectionTitle: 'Make something awesome',
         title: 'Get in touch ',
-        email: 'mobility@ustwo.com',
-        color: 'auto'
+        email: 'mobility@ustwo.com'
       }
-    } else {
-      data = {
+    } else if (page === 'join-us') {
+      content = {
         sectionTitle: 'Make change happen',
         title: 'Talk to ustwo ',
-        email: 'hello@ustwo.com',
-        color: 'hot'
+        email: 'careers@ustwo.com'
+      }
+    } else if (page === 'work') {
+      content = {
+        sectionTitle: 'Make change happen',
+        title: 'Talk to ustwo ',
+        email: 'work@ustwo.com'
+      }
+    } else {
+      content = {
+        sectionTitle: 'Make change happen',
+        title: 'Talk to ustwo ',
+        email: 'hello@ustwo.com'
       }
     }
 
     return (
       <div className="contact-block">
         <div className="home-text-block">
-          <div className="section-title">{data.sectionTitle}</div>
-          <h2>{data.title}<br /><span className="contact-block-email"><GradientWords word={data.email} color={data.color} /></span></h2>
+          <div className="section-title">{content.sectionTitle}</div>
+          <h2>{content.title}<br /><span className="contact-block-email"><GradientWords word={content.email} color={page} /></span></h2>
           <div className="contact-block-image">
             <div className="contact-block-image-background" style={backgroundStyles} />
             <div className="contact-block-image-sky" />

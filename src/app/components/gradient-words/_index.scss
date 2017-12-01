@@ -37,4 +37,22 @@
   &.gradient-words-sydney {
     @include page-background-colour(sydney);
   }
+  &.gradient-words-home {
+    @include page-background-colour(home);
+  }
+  &.gradient-words-about-us {
+    @include page-background-colour(about);
+  }
+  &.gradient-words-work {
+    @include page-background-colour(work);
+  }
+  &.gradient-words-blog {
+    @include page-background-colour(blog);
+  }
+  &.gradient-words-join-us {
+    @include page-background-colour(join);
+  }
+  &.gradient-words-contact-us {
+    @include page-background-colour(contact);
+  }
 }

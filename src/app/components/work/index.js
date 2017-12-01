@@ -122,7 +122,7 @@ class PageWork extends Component {
           <WorkVerticals data={workContent.verticals} />
 
           <ScrollWrapper
-            component={<ContactBlock />}
+            component={<ContactBlock page={page.slug} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}

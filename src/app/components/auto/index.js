@@ -119,7 +119,7 @@ function Auto({ page, documentScrollPosition, viewportDimensions, footer, studio
         {renderTwitter}
 
         <ScrollWrapper
-          component={<ContactBlock auto />}
+          component={<ContactBlock page={page.slug} />}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
           requireScreenPosition={true}

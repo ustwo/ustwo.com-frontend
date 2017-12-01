@@ -155,7 +155,7 @@ class PageHome extends Component {
         </div>
 
         <ScrollWrapper
-          component={<ContactBlock />}
+          component={<ContactBlock page={page.slug} />}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
           requireScreenPosition={true}

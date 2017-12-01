@@ -1,7 +1,7 @@
 .contact-floating {
   @include core-layout();
   @include core-vertical-padding();
-  background: rgba(0,0,0,.035);
+  background: rgba(0,0,0,.04);
 
   .contact-floating-inner {
     p {
@@ -13,6 +13,8 @@
   }
 
   &.darkStyle {
+    background: rgba(0,0,0,.1);
+
     .contact-floating-inner {
       color: $lightGrey;
     }
