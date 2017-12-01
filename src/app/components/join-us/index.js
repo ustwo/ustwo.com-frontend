@@ -24,6 +24,7 @@ import ScrollWrapper from 'app/components/scroll-wrapper';
 import ContactBlock from 'app/components/contact-block';
 import VideoBlock from 'app/components/video-block';
 import window from 'app/adaptors/server/window';
+import GradientWords from 'app/components/gradient-words';
 
 function getSelectedStudio(studioSlugFromUrl, studioSlugs) {
   let selected = 'london';
@@ -149,7 +150,9 @@ const PageJoinUs = React.createClass({
     }, 0);
   },
   renderStudioTabs(selectedStudioSlug) {
-    let studioSelectedBackgroundColor;
+    let underlineSize;
+    let underlineStudio;
+
     const tabs = map(this.props.studios, studio => {
       let studioSelectedColor;
       const studioSlug = kebabCase(studio.name);
@@ -157,11 +160,11 @@ const PageJoinUs = React.createClass({
       const uri = `/join-us/${studioSlug}`;
       if (studioSlug === selectedStudioSlug) {
         studioSelectedColor = { color: studio.color }
-        studioSelectedBackgroundColor = {
-          backgroundColor: studio.color,
+        underlineSize = {
           width: this.state.underlineWidth,
           left: this.state.underlineLeft
         }
+        underlineStudio = studioSlug;
       }
 
       return (
@@ -174,15 +177,17 @@ const PageJoinUs = React.createClass({
           style={studioSelectedColor}>
           <a
             href={uri}
-            onClick={Flux.overrideNoScroll(uri)}>{studioName}</a>
+            onClick={Flux.overrideNoScroll(uri)}><GradientWords word={studioSlug} color={studioSlug} /></a>
         </div>
       );
     });
 
+    const underlineClasses = `underline underline-${underlineStudio}`;
+
     return (
       <nav className="jobs-studio-tabs" ref={(ref) => this.studioTabs = ref}>
         {tabs}
-        <div className="underline" style={studioSelectedBackgroundColor} ref={(ref) => this.underline = ref}></div>
+        <div className={underlineClasses} style={underlineSize} ref={(ref) => this.underline = ref}></div>
       </nav>
     );
   },

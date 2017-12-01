@@ -152,6 +152,19 @@
         height: 4px;
         width: 150px;
         transition: all .3s ease-in-out;
+
+        &.underline-london {
+          @include page-background-colour(london);
+        }
+        &.underline-malmo {
+          @include page-background-colour(malmo);
+        }
+        &.underline-new-york {
+          @include page-background-colour(newyork);
+        }
+        &.underline-sydney {
+          @include page-background-colour(sydney);
+        }
       }
 
       &.animate .underline {

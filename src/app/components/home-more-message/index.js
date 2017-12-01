@@ -10,7 +10,7 @@ function HomeMoreMessage({ showPopup }) {
       /><span> products, </span><GradientWords
         word="launch"
         color="lukewarm"
-      /><span> ventures, and </span><GradientWords
+      /><span> ventures and </span><GradientWords
         word="invest"
         color="hot"
       /><span> in startups</span>

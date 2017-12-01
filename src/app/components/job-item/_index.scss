@@ -25,6 +25,10 @@
   list-style: none;
   transition: height .5s ease-in-out;
 
+  &:first-of-type {
+    margin-top: 0;
+  }
+
   .title {
     position: relative;
     display: flex;

@@ -86,11 +86,11 @@ class PageHome extends Component {
 
     // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
     const textBlockIntro = {
-      title: `Hi. We're ustwo`,
+      title: `Hi. We're ustwo.`,
       text: <HomeWelcomeMessage />
     }
     const textBlockMore = {
-      title: `Do more, to learn more`,
+      title: `Do more to learn more.`,
       text: <HomeMoreMessage />
     }
 
@@ -216,7 +216,7 @@ const dataProducts = [{
   category: "Client Work",
   imageURL: "/images/home/sky-kids.jpg",
   videoURL: "/images/home/sky-kids.mp4",
-  description: "Creating a new product, brand and audience - loved by kids and trusted by parents",
+  description: "Creating a new product, brand and audience loved by kids and trusted by parents",
   slug: "/work/sky-kids"
 },{
   title: "NBC Sprout",
