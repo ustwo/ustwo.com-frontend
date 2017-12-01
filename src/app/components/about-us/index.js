@@ -87,7 +87,7 @@ function pageAboutUs({ page, className, loaded, isMobile, footer, studios, curre
         </ContentWrapper>
 
         <ScrollWrapper
-          component={<ContactBlock page={page.slug} />}
+          component={<ContactBlock page={page ? page.slug : 'home'} />}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
           requireScreenPosition={true}

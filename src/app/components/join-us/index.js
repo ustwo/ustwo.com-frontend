@@ -107,7 +107,7 @@ const PageJoinUs = React.createClass({
           </ContentWrapper>
 
           <ScrollWrapper
-            component={<ContactBlock page={page.slug} />}
+            component={<ContactBlock page={page ? page.slug : 'home'} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}
@@ -177,7 +177,7 @@ const PageJoinUs = React.createClass({
           style={studioSelectedColor}>
           <a
             href={uri}
-            onClick={Flux.overrideNoScroll(uri)}><GradientWords word={studioSlug} color={studioSlug} /></a>
+            onClick={Flux.overrideNoScroll(uri)}><GradientWords word={studio.name} color={studioSlug} /></a>
         </div>
       );
     });
