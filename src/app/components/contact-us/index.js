@@ -8,22 +8,22 @@ import GradientWords from 'app/components/gradient-words';
 import kebabCase from 'lodash/string/kebabCase';
 import Flux from 'app/flux';
 
-function renderNewBusinessContacts() {
-  const items = contactContent.newBusiness.map(item => {
+function renderContacts(contacts) {
+  const items = contacts.map(item => {
     const { studio, name, title, email } = item;
 
     return (
       <li>
-        <h4 className="contact-new-business-studio"><GradientWords word={studio} color={kebabCase(studio)} /></h4>
-        <h5 className="contact-new-business-name">{name}</h5>
-        <p className="contact-new-business-title">{title}</p>
-        <p className="contact-new-business-email"><a href={`mailto:${email}`}>{email}</a></p>
+        <h4 className="contact-contacts-studio"><GradientWords word={studio} color={kebabCase(studio)} /></h4>
+        <h5 className="contact-contacts-name">{name}</h5>
+        <p className="contact-contacts-title">{title}</p>
+        <p className="contact-contacts-email"><a href={`mailto:${email}`}>{email}</a></p>
       </li>
     );
   });
 
   return (
-    <ul className="contact-new-business-contacts">
+    <ul className="contact-contacts">
       {items}
     </ul>
   )
@@ -63,7 +63,11 @@ function pageContactUs({ page, currentParams, studios, currentPage, footer, moda
         </ContentWrapper>
 
         <ContentWrapper className="content-wrapper-contact-new-business">
-          {renderNewBusinessContacts()}
+          {renderContacts(contactContent.newBusiness)}
+          <div className="content-wrapper-statement content-wrapper-presence">
+            <p>We also have a presence in:</p>
+          </div>
+          {renderContacts(contactContent.morePresence)}
         </ContentWrapper>
 
         <ContentWrapper className="content-wrapper-contact-more">
@@ -121,5 +125,16 @@ const contactContent = {
     name: 'Luke Hankinson',
     title: 'Business Development Lead',
     email: 'sydneybd@ustwo.com',
+  }],
+  morePresence: [{
+    studio: 'Los Angeles',
+    name: 'Lee Simpson',
+    title: 'BD, TV & Entertainment',
+    email: 'email@ustwo.com',
+  },{
+    studio: 'Tokyo',
+    name: 'Mayu Nakamura',
+    title: 'Senior Interaction Designer',
+    email: 'email@ustwo.com',
   }]
 }

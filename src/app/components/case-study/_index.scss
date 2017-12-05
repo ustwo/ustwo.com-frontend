@@ -10,6 +10,12 @@
   .single-column.intro .content{
     text-align: center;
   }
+
+  .single-column.intro {
+    hr {
+      background: transparent !important;
+    }
+  }
 }
 
 

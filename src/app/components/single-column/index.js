@@ -8,16 +8,11 @@ const SingleColumn = React.createClass({
     let output;
     if (title && title.length) {
       if (headingType === 'h1') {
-        output = <h1
-          className="title"
-        >
+        output = <h1 className="title">
           {getAppleTitles(title)}
         </h1>;
       } else {
-        output = <h2
-          className="title"
-          style={{ color: headingColour }}
-        >
+        output = <h2 className="title">
           {getAppleTitles(title)}
         </h2>;
       }

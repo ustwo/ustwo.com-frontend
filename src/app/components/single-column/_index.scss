@@ -40,6 +40,10 @@
     border-bottom-style: solid;
   }
 
+  h2 {
+    @extend .h3;
+  }
+
   .section-title {
     text-align: center;
   }
@@ -51,10 +55,9 @@
 
   hr {
     width: 120px;
-    margin: 0 auto $title-border-bottom auto;
+    margin: $title-border-bottom auto;
     height: 3px;
     border: none;
-    background: $lightGrey;
   }
 
   .content {

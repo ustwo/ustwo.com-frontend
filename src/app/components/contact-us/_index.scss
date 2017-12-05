@@ -38,35 +38,43 @@
   }
 }
 
-.contact-new-business-contacts {
+.content-wrapper-presence {
+  margin: 0 0 50px 0;
+}
+
+.contact-contacts {
   @include core-vertical-padding($withChildren: true);
   list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   width: 100%;
-  max-width: $grid-max-width;
+  max-width: $thin-content-width;
   margin: 0 auto;
   padding-top: 0 !important;
 
   li {
+    display: inline-block;
+    width: 100%;
     padding-bottom: 0 !important;
+    margin-bottom: 30px;
+
+    @media screen and (min-width: $bp-medium) {
+      width: 50%;
+    }
   }
 }
 
-.contact-new-business-studio {
+.contact-contacts-studio {
   margin-bottom: 10px;
 }
 
-.contact-new-business-name {
+.contact-contacts-name {
   margin: 0
 }
 
-.contact-new-business-title {
+.contact-contacts-title {
   font-style: italic;
 }
 
-.contact-new-business-email {
+.contact-contacts-email {
   margin-top: 0;
 }
 

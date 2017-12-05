@@ -112,6 +112,12 @@
   @if $page == 'sydney' {
     background-image: linear-gradient(30deg, $mare, $jeezz);
   }
+  @if $page == 'losangeles' {
+    background-image: linear-gradient(30deg, $honey, $passion);
+  }
+  @if $page == 'tokyo' {
+    background-image: linear-gradient(30deg, $passion, $softPiglet);
+  }
   @if $page == 'hot' {
     background-image: linear-gradient(30deg, $honey, $piglet);
   }

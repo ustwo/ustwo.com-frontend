@@ -37,6 +37,12 @@
   &.gradient-words-sydney {
     @include page-background-colour(sydney);
   }
+  &.gradient-words-los-angeles {
+    @include page-background-colour(losangeles);
+  }
+  &.gradient-words-tokyo {
+    @include page-background-colour(tokyo);
+  }
   &.gradient-words-home {
     @include page-background-colour(home);
   }
