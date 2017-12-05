@@ -25,7 +25,7 @@ function HomeTextBlock({ children, scrollProgress, content }) {
 
   return (
     <div className="home-text-block" style={styles}>
-      <div className="section-title">{content.title}</div>
+      <h1 className="section-title">{content.title}</h1>
       {textComponent}
     </div>
   );

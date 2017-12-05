@@ -86,7 +86,7 @@ class PageHome extends Component {
 
     // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
     const textBlockIntro = {
-      title: `Hi. We're ustwo.`,
+      title: `ustwo is a digital product and service studio`,
       text: <HomeWelcomeMessage />
     }
     const textBlockMore = {

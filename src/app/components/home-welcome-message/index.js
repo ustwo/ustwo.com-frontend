@@ -3,18 +3,18 @@ import GradientWords from '../gradient-words';
 
 function HomeWelcomeMessage({ showPopup }) {
   return (
-    <h1>
-      <span>We </span><GradientWords
-        word="team up"
-        color="cold"
-      /><span> with companies to </span><GradientWords
-        word="make"
-        color="lukewarm"
-      /><span> meaningful digital </span><GradientWords
-        word="experiences"
+    <div className="home-message-text">
+      <span>We help drive positive change for </span><GradientWords
+        word="people"
         color="hot"
+      /><span>, </span><GradientWords
+        word="businesses"
+        color="cold"
+      /><span> and </span><GradientWords
+        word="organisations"
+        color="lukewarm"
       />
-    </h1>
+    </div>
   );
 }
 
