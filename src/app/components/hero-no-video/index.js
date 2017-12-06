@@ -2,7 +2,7 @@ import React from 'react';
 import Hero from 'app/components/hero';
 import PaperPlane from 'app/components/paper-plane';
 
-function HeroNoVideo({ pageName, fixedHeight, isMobile, scrollProgress, title, screenPosition }) {
+function HeroNoVideo({ pageName, fixedHeight, isMobile, scrollProgress, title, screenPosition, gradientSequence }) {
   const scrollProgressValue = scrollProgress ? scrollProgress : 0;
   const normaliseScrollProgress = ((scrollProgressValue - 0.5) * 2);
   // const scrollUpPlaneUp = `translateY(${(scrollProgressValue * -1200) + 600}px)`;
@@ -35,6 +35,7 @@ function HeroNoVideo({ pageName, fixedHeight, isMobile, scrollProgress, title, s
         isMobile={isMobile}
         scrollProgress={scrollProgress}
         heroImage={true}
+        gradientSequence={gradientSequence}
       />
       {contactUsHeroPlane}
     </div>

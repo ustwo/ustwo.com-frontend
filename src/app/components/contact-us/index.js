@@ -38,12 +38,19 @@ function contactGoToJoin() {
 }
 
 function pageContactUs({ page, currentParams, studios, currentPage, footer, modal, isMobile, fixedHeight, documentScrollPosition, viewportDimensions }) {
+  const gradientSequence = {
+    tickerFrequency: 200,
+    timerTotal: 8000,
+    topColours: ['#14C04D', '#009CF3', '#14C04D'],
+    bottomColours: ['#F5E664', '#A5FAAF', '#F5E664']
+  }
+
   return (
     <article className="page-contact-us">
       <div className="home-pinned-header-wrapper">
         <div className="home-pinned-header-inner">
           <ScrollWrapper
-            component={<HeroNoVideo pageName="contact-us" modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Say Hello" />}
+            component={<HeroNoVideo pageName="contact-us" modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Say Hello" gradientSequence={gradientSequence} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}

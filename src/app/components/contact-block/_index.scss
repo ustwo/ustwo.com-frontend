@@ -104,11 +104,6 @@
   }
 }
 
-// .contact-block-image {
-//   display: none;
-// }
-
-
 .contact-block-image {
   position: relative;
   display: block;
@@ -118,15 +113,16 @@
   overflow: hidden;
   background-color: $veryDarkGrey;
   margin: 30px auto 0 auto;
-  transform:translate3d(0,0,0)
-}
-.contact-block-image-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 220px;
-  height: 220px;
-  opacity: 0.5;
+  transform:translate3d(0,0,0);
+
+  .gradient-background-sequence {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 220px;
+    opacity: 0.5;
+  }
 }
 .contact-block-image-sky {
   position: absolute;
