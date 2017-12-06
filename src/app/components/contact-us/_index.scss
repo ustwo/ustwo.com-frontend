@@ -18,8 +18,15 @@
   }
 }
 
-.content-wrapper-contact-new-business .content-wrapper-inner {
-  padding-top: 0 !important;
+.content-wrapper-contact-new-business {
+  .content-wrapper-inner {
+    padding-top: 0 !important;
+  }
+
+  .also-presence {
+    margin-bottom: 50px;
+    text-align: center;
+  }
 }
 
 .content-wrapper-contact-more {
@@ -38,26 +45,26 @@
   }
 }
 
-.content-wrapper-presence {
-  margin: 0 0 50px 0;
-}
-
 .contact-contacts {
   @include core-vertical-padding($withChildren: true);
   list-style-type: none;
   width: 100%;
-  max-width: $thin-content-width;
   margin: 0 auto;
   padding-top: 0 !important;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 
   li {
-    display: inline-block;
-    width: 100%;
     padding-bottom: 0 !important;
     margin-bottom: 30px;
+    width: 100%;
 
-    @media screen and (min-width: $bp-medium) {
+    @media screen and (min-width: $bp-small) {
       width: 50%;
+    }
+    @media screen and (min-width: $bp-large) {
+      width: 25%;
     }
   }
 }
@@ -80,6 +87,16 @@
 
 .content-wrapper-contact-jobs {
   @include darkBackground;
+
+  svg {
+    width: 109px;
+  }
+
+  .contact-jobs-button {
+    @include buttonSolid;
+    @include page-background-colour(join);
+    margin-top: 30px;
+  }
 }
 
 .contact-us-hero {
@@ -88,12 +105,8 @@
   .paper-plane {
     position: absolute;
     top: 50%;
-    left: 60%;
+    left: 66%;
     transform: translateZ(100px) translateY(-50%) translateX(-50%);
     transform-origin: 50% 50%;
   }
-
-  // .paper-plane-interactive-layer {
-  //   transform: scale(3.5);
-  // }
 }

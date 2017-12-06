@@ -7,6 +7,7 @@ import ContentWrapper from 'app/components/content-wrapper';
 import GradientWords from 'app/components/gradient-words';
 import kebabCase from 'lodash/string/kebabCase';
 import Flux from 'app/flux';
+import SVG from 'app/components/svg';
 
 function renderContacts(contacts) {
   const items = contacts.map(item => {
@@ -64,28 +65,29 @@ function pageContactUs({ page, currentParams, studios, currentPage, footer, moda
 
         <ContentWrapper className="content-wrapper-contact-new-business">
           {renderContacts(contactContent.newBusiness)}
-          <div className="content-wrapper-statement content-wrapper-presence">
-            <p>We also have a presence in:</p>
-          </div>
+          <hr className="hr hr-contact" />
+          <h5 className="also-presence">We also have a presence in:</h5>
           {renderContacts(contactContent.morePresence)}
         </ContentWrapper>
 
         <ContentWrapper className="content-wrapper-contact-more">
-          <div className="content-wrapper-statement">
-            <h2>Other Contacts</h2>
-            <hr className="hr hr-contact" />
-            <h5>Media Enquiries</h5>
-            <p>We're eager to add to conversations around design, development and business. Please reach out to <a href="mailto:press@ustwo.com">press@ustwo.com</a> for media requests, interviews or speaking opportunities.</p>
-            <h5>General Enquiries</h5>
-            <p>Feel free to get in touch at <a href="mailto:hello@ustwo.com">hello@ustwo.com</a> with other opportunities, questions or feedback. We're a curious lot and would love to hear from you.</p>
+          <div className="content-dual-columns">
+            <div className="content-dual-column">
+              <h5>Media Enquiries</h5>
+              <p>We're eager to add to conversations around design, development and business. Please reach out to <a href="mailto:press@ustwo.com">press@ustwo.com</a> for media requests, interviews or speaking opportunities.</p>
+            </div>
+            <div className="content-dual-column">
+              <h5>General Enquiries</h5>
+              <p>Feel free to get in touch at <a href="mailto:hello@ustwo.com">hello@ustwo.com</a> with other opportunities, questions or feedback. We're a curious lot and would love to hear from you.</p>
+            </div>
           </div>
         </ContentWrapper>
 
         <ContentWrapper className="content-wrapper-contact-jobs">
           <div className="content-wrapper-statement">
+            <SVG spritemapID="iconGenius" />
             <h2>Looking for a job?</h2>
-            <hr className="hr hr-contact" />
-            <p>You can find our latest job openings from across our studios on our <a href="/join-us" onClick={contactGoToJoin()}>join us</a> page. </p>
+            <a href="/join-us" onClick={contactGoToJoin()} className="contact-jobs-button">join us</a>
           </div>
         </ContentWrapper>
 

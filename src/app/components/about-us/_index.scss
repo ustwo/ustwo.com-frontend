@@ -58,17 +58,8 @@
   }
 
   a {
-    display: block;
-    width: 100%;
-    max-width: 250px;
-    height: 60px;
-    line-height: 60px;
-    margin: 0 auto;
-    color: #fff;
-    font-size: 16px;
-    text-transform: uppercase;
+    @include buttonSolid;
     @include page-background-colour(about);
-    border: none !important;
     margin-top: 30px;
   }
 }

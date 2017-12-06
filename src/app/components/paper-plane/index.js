@@ -3,7 +3,7 @@ import env from 'app/adaptors/server/env';
 import classnames from 'classnames';
 
 function PaperPlane({ screenPosition, contactUsPlane }) {
-  const scaleModifier = contactUsPlane ? 4 : 1;
+  const scaleModifier = contactUsPlane ? 3 : 1;
   const fuselageLength = 108 * scaleModifier;
   const fuselageHeight = 35 * scaleModifier;
 

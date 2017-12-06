@@ -68,3 +68,29 @@
     @include page-background-colour(contact);
   }
 }
+
+.content-dual-columns {
+  a {
+    @include underlineLink;
+  }
+  
+  @media screen and (min-width: $bp-large) {
+    display: flex;
+    flex-direction: row;
+
+    .content-dual-column {
+      flex: 1;
+
+      &:first-of-type {
+        padding-right: 10%;
+      }
+      &:last-of-type {
+        padding-left: 10%;
+      }
+
+      h5 {
+        margin-top: 0;
+      }
+    }
+  }
+}
