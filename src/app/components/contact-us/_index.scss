@@ -81,3 +81,19 @@
 .content-wrapper-contact-jobs {
   @include darkBackground;
 }
+
+.contact-us-hero {
+  position: relative;
+
+  .paper-plane {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translateZ(100px) translateY(-50%) translateX(-50%);
+    transform-origin: 50% 50%;
+  }
+
+  // .paper-plane-interactive-layer {
+  //   transform: scale(3.5);
+  // }
+}

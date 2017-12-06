@@ -148,102 +148,6 @@
   animation-timing-function: linear;
 }
 
-.contact-block-image-plane-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 220px;
-  height: 220px;
-  transform-style: preserve-3d;
-  transform: translateZ(100px);
-}
-
-.contact-block-image-plane {
-  width: 220px;
-  height: 220px;
-  transform-style: preserve-3d;
-  perspective: 2000px;
-  // transform: translateZ(100px); Added to js where mouse position interacts with the plane
-
-  .paper-plane {
-    position: absolute;
-    top: 47%;
-    left: 27%;
-    width:100px;
-    height:100px;
-    transform-style: preserve-3d;
-    transform-origin: 50% top;
-    transform: rotateX(-30deg) rotateY(-14deg);
-    overflow: visible;
-    animation: planeSway 4s infinite;
-    animation-timing-function: linear;
-  }
-
-  .right-wing, .left-wing, .right-fuselage, .left-fuselage {
-    position: absolute;
-    left:0;
-    top:0;
-    overflow: visible;
-    width: 114px;
-    height: 50px;
-  }
-
-  div[class*='wing'] {
-    z-index: 2;
-    transform-origin: 50% 0;
-
-    svg {
-      fill: white;
-    }
-  }
-
-  div[class*='fuselage'] {
-    z-index: 1;
-    transform-origin: 50% 50%;
-
-    svg {
-      fill: #cccccc;
-    }
-  }
-
-  .right-wing {
-    transform: rotateX(80deg) translateY(3px) rotateZ(-4deg) translateZ(-1px);
-  }
-
-  .left-wing {
-    transform: rotateX(-80deg) translateY(3px) rotateZ(-4deg) translateZ(1px);
-  }
-
-  .right-fuselage {
-    transform: rotateX(10deg) rotateY(-4deg) translateZ(0px);
-  }
-
-  .left-fuselage {
-    transform: rotateX(-10deg) rotateY(4deg) translateZ(0px);
-  }
-
-  .trail {
-    position: absolute;
-    left: -104px;
-    top: 0;
-    z-index: 1;
-    width: 100px;
-    height: 6px;
-    transform: rotateX(90deg);
-    transform-origin: 50% 50%;
-    background-image: linear-gradient(to left, white 14px, transparent 6px);
-    background-repeat: repeat-x;
-    background-size: 20px 6px;
-    background-position: 0 0;
-    animation: vapourTrail .5s infinite;
-    animation-timing-function: linear;
-  }
-
-  .cls-2 {
-    fill: white;
-  }
-}
-
 @media screen and (min-width: $bp-medium) {
   .contact-block-image {
     margin: 0;
@@ -260,40 +164,11 @@
   }
 }
 
-
-
 @keyframes buildingsMove {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(-220px);
-  }
-}
-
-@keyframes planeSway {
-  0% {
-    transform: rotateX(-20deg) rotateY(-14deg);
-  }
-  25% {
-    transform: rotateX(-14deg) rotateY(-14deg);
-  }
-  50% {
-    transform: rotateX(-20deg) rotateY(-14deg);
-  }
-  75% {
-    transform: rotateX(-26deg) rotateY(-14deg);
-  }
-  100% {
-    transform: rotateX(-20deg) rotateY(-14deg);
-  }
-}
-
-@keyframes vapourTrail {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -20px 0;
   }
 }

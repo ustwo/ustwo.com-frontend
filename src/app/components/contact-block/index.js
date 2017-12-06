@@ -3,6 +3,7 @@ import GradientWords from '../gradient-words';
 import blendColours from 'app/lib/blend-colours';
 import goToNextIteration from 'app/lib/next-iteration';
 import env from 'app/adaptors/server/env';
+import PaperPlane from 'app/components/paper-plane';
 
 const tickerFrequency = 200;
 const timerTotal = 8000;
@@ -43,7 +44,7 @@ class ContactBlock extends Component {
   }
 
   render() {
-    const { page } = this.props;
+    const { page, screenPosition } = this.props;
     const progress = Math.round(((timerTotal - this.state.tick) / timerTotal) * 100) / 100;
     //
     // let topColour, bottomColour;
@@ -59,41 +60,6 @@ class ContactBlock extends Component {
 
     const backgroundStyles = {
       background: `linear-gradient(to bottom, #${topColour}, #${bottomColour})`
-    }
-
-    const planeShape = (
-      <svg viewBox="0 0 114 50">
-        <g>
-          <polygon className="cls-1" points="1.25 1.25 110.13 1.25 1.25 36.25 1.25 1.25" />
-        </g>
-      </svg>
-    );
-
-    const plane = (
-      <div className="paper-plane">
-        <div className="right-wing">
-          {planeShape}
-        </div>
-        <div className="left-wing">
-          {planeShape}
-        </div>
-        <div className="right-fuselage">
-          {planeShape}
-        </div>
-        <div className="left-fuselage">
-          {planeShape}
-        </div>
-        <div className="trail" />
-      </div>
-    );
-
-    const modifier = env.Modernizr.touchevents ? 5 : 1;
-
-    let interactiveStyles;
-    if (this.props.screenPosition) {
-      interactiveStyles = {
-        transform: `rotateY(${Math.round((this.props.screenPosition.coordinateX * -8) * modifier)}deg) rotateX(${Math.round(((this.props.screenPosition.coordinateY * -12) + 5) * modifier)}deg)`
-      }
     }
 
     let content;
@@ -132,11 +98,7 @@ class ContactBlock extends Component {
             <div className="contact-block-image-background" style={backgroundStyles} />
             <div className="contact-block-image-sky" />
             <div className="contact-block-image-buildings" />
-            <div className="contact-block-image-plane-wrapper">
-              <div className="contact-block-image-plane" style={interactiveStyles}>
-                {plane}
-              </div>
-            </div>
+            <PaperPlane screenPosition={screenPosition} />
           </div>
         </div>
       </div>
