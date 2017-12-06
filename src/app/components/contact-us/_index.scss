@@ -102,11 +102,40 @@
 .contact-us-hero {
   position: relative;
 
-  .paper-plane {
+  .contact-us-paper-plane {
     position: absolute;
-    top: 50%;
-    left: 66%;
-    transform: translateZ(100px) translateY(-50%) translateX(-50%);
-    transform-origin: 50% 50%;
+    top: 65%;
+    left: 50%;
+
+    @media screen and (min-width: $bp-small) {
+      top: 50%;
+      left: 66%;
+    }
+
+    .paper-plane {
+      transform: translateZ(100px) translateY(-50%) translateX(-50%);
+      transform-origin: 50% 50%;
+    }
+  }
+
+  .paper-plane-body {
+    .right-wing {
+      position: relative;
+
+      svg[title="ustwo"] {
+        display: none;
+        position: absolute;
+        bottom: 15px;
+        left: 10px;
+        fill: #000;
+        width: 50px;
+        height: 30px;
+        transform: rotate(-17deg);
+
+        @media screen and (min-width: $bp-small) {
+          display: block;
+        }
+      }
+    }
   }
 }

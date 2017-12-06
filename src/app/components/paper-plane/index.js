@@ -1,9 +1,23 @@
 import React from 'react';
 import env from 'app/adaptors/server/env';
 import classnames from 'classnames';
+import SVG from 'app/components/svg';
+import window from 'app/adaptors/server/window';
 
 function PaperPlane({ screenPosition, contactUsPlane }) {
-  const scaleModifier = contactUsPlane ? 3 : 1;
+  let scaleModifier;
+  if (contactUsPlane) {
+    if (window.innerWidth <= 480) {
+      scaleModifier = 1;
+    } else if (window.innerWidth > 480 && window.innerWidth < 1200) {
+      scaleModifier = 2;
+    } else {
+      scaleModifier = 3;
+    }
+  } else {
+    scaleModifier = 1;
+  }
+
   const fuselageLength = 108 * scaleModifier;
   const fuselageHeight = 35 * scaleModifier;
 
@@ -25,6 +39,7 @@ function PaperPlane({ screenPosition, contactUsPlane }) {
   const plane = (
     <div className="paper-plane-body">
       <div className="right-wing" style={fuselageDimensions}>
+        {contactUsPlane ? <SVG title="ustwo" spritemapID="ustwologo" /> : null}
         {planeShape}
       </div>
       <div className="left-wing" style={fuselageDimensions}>
@@ -36,6 +51,7 @@ function PaperPlane({ screenPosition, contactUsPlane }) {
       <div className="left-fuselage" style={fuselageDimensions}>
         {planeShape}
       </div>
+      <div className={trailClasses} />
       <div className={trailClasses} />
     </div>
   );

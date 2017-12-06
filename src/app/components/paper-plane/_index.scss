@@ -86,7 +86,7 @@
 
   .trail {
     position: absolute;
-    left: -104px;
+    left: -100px;
     top: 0;
     z-index: 1;
     width: 100px;
@@ -99,23 +99,21 @@
     background-position: 0 0;
     animation: vapourTrail .5s infinite;
     animation-timing-function: linear;
+    opacity: 0.7;
   }
 
   .trail.trailContact {
-    position: absolute;
-    left: -410px;
-    top: 0;
-    z-index: 1;
-    width: 400px;
-    height: 24px;
-    transform: rotateX(90deg);
-    transform-origin: 50% 50%;
-    background-image: linear-gradient(to left, white 56px, transparent 24px);
-    background-repeat: repeat-x;
-    background-size: 80px 24px;
-    background-position: 0 0;
-    animation: vapourTrailContact .5s infinite;
+    left: -2600px;
+    width: 2600px;
+    height: 18px;
+    background-image: linear-gradient(to left, white 42px, transparent 18px);
+    background-size: 60px 18px;
+    animation: vapourTrailContact .15s infinite;
     animation-timing-function: linear;
+    filter: blur(20px);
+  }
+  .trail.trailContact + .trail.trailContact {
+    transform: rotateX(0deg);
   }
 }
 
@@ -151,6 +149,6 @@
     background-position: 0 0;
   }
   to {
-    background-position: -80px 0;
+    background-position: -60px 0;
   }
 }
