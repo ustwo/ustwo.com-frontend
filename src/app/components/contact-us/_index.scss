@@ -113,11 +113,21 @@
   .contact-us-paper-plane {
     position: absolute;
     top: 65%;
-    left: 50%;
+    left: 70%;
+
+    .trail-wave {
+      stroke-width: 10;
+    }
 
     @media screen and (min-width: $bp-small) {
       top: 50%;
       left: 66%;
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      .trail-wave {
+        stroke-width: 18;
+      }
     }
 
     .paper-plane {
@@ -140,7 +150,7 @@
         height: 30px;
         transform: rotate(-17deg);
 
-        @media screen and (min-width: $bp-small) {
+        @media screen and (min-width: $bp-medium) {
           display: block;
         }
       }

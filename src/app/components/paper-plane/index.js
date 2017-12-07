@@ -7,9 +7,9 @@ import window from 'app/adaptors/server/window';
 function PaperPlane({ screenPosition, contactUsPlane }) {
   let scaleModifier;
   if (contactUsPlane) {
-    if (window.innerWidth <= 480) {
+    if (window.innerWidth <= 600) {
       scaleModifier = 1;
-    } else if (window.innerWidth > 480 && window.innerWidth < 1200) {
+    } else if (window.innerWidth > 600 && window.innerWidth < 1200) {
       scaleModifier = 2;
     } else {
       scaleModifier = 3;
@@ -51,8 +51,7 @@ function PaperPlane({ screenPosition, contactUsPlane }) {
       <div className="left-fuselage" style={fuselageDimensions}>
         {planeShape}
       </div>
-      <div className={trailClasses} />
-      <div className={trailClasses} />
+      {contactUsPlane ? <SVG spritemapID="wave" className="trail-wave" /> : <div className={trailClasses} />}
     </div>
   );
 
@@ -62,11 +61,11 @@ function PaperPlane({ screenPosition, contactUsPlane }) {
   if (screenPosition) {
     if (contactUsPlane) {
       interactiveStyles = {
-        transform: `rotateY(${Math.round((screenPosition.coordinateX * -34) * modifier)}deg) rotateX(${Math.round((screenPosition.coordinateY * -14) * modifier)}deg)`
+        transform: `rotateY(${Math.round((screenPosition.coordinateX * -50) * modifier)}deg) rotateX(${Math.round((screenPosition.coordinateY * -50) * modifier)}deg)`
       }
     } else {
       interactiveStyles = {
-        transform: `rotateY(${Math.round((screenPosition.coordinateX * -28) * modifier)}deg) rotateX(${Math.round(((screenPosition.coordinateY * -12) + 15) * modifier)}deg)`
+        transform: `rotateY(${Math.round((screenPosition.coordinateX * -35) * modifier)}deg) rotateX(${Math.round((screenPosition.coordinateY * -25) * modifier)}deg)`
       }
     }
   }

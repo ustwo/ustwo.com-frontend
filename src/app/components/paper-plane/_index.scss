@@ -65,7 +65,7 @@
   }
 
   .left-wing {
-    transform: rotateX(-80deg) translateY(0) rotateZ(-4deg) translateZ(0);
+    transform: rotateX(-80deg) translateY(-1px) rotateZ(-4deg) translateZ(0);
   }
 
   .right-fuselage {
@@ -101,20 +101,6 @@
     animation-timing-function: linear;
     opacity: 0.7;
   }
-
-  .trail.trailContact {
-    left: -2600px;
-    width: 2600px;
-    height: 18px;
-    background-image: linear-gradient(to left, white 42px, transparent 18px);
-    background-size: 60px 18px;
-    animation: vapourTrailContact .15s infinite;
-    animation-timing-function: linear;
-    filter: blur(20px);
-  }
-  .trail.trailContact + .trail.trailContact {
-    transform: rotateX(0deg);
-  }
 }
 
 @keyframes planeSway {
@@ -144,11 +130,36 @@
   }
 }
 
-@keyframes vapourTrailContact {
-  from {
-    background-position: 0 0;
+.trail-wave {
+  position: absolute;
+  left: -2000px;
+  top: -38px;
+  z-index: 1;
+  fill: none;
+  opacity: .7;
+  width: 2000px;
+  height: 100px;
+  stroke: #FFF;
+  stroke-width: 18;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 0%;
+  transform: rotateX(90deg) translate(-10px,10px);
+  animation: trailWave 10s infinite;
+  animation-timing-function: linear;
+  -webkit-mask-image: -webkit-gradient(linear, left top, right bottom,
+            color-stop(0.00,  rgba(0,0,0,0)),
+            color-stop(1.00,  rgba(0,0,0,1)));
+  mask-image: gradient(linear, left top, right bottom,
+            color-stop(0.00,  rgba(0,0,0,0)),
+            color-stop(1.00,  rgba(0,0,0,1)));
+}
+
+@keyframes trailWave {
+  0% {
+    stroke-dashoffset: 0%;
   }
-  to {
-    background-position: -60px 0;
+  100% {
+    stroke-dashoffset: 100%;
   }
 }
