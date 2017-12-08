@@ -55,17 +55,21 @@ function PaperPlane({ screenPosition, contactUsPlane }) {
     </div>
   );
 
-  const modifier = env.Modernizr.touchevents ? 5 : 1;
-
   let interactiveStyles;
   if (screenPosition) {
-    if (contactUsPlane) {
+    if (env.Modernizr.touchevents) {
       interactiveStyles = {
-        transform: `rotateY(${Math.round((screenPosition.coordinateX * -50) * modifier)}deg) rotateX(${Math.round((screenPosition.coordinateY * -50) * modifier)}deg)`
+        transform: `rotateY(${Math.round((screenPosition.coordinateX * -20) * 5) - 10}deg) rotateX(${Math.round((screenPosition.coordinateY * -20) * 5) + 30}deg)`
       }
     } else {
-      interactiveStyles = {
-        transform: `rotateY(${Math.round((screenPosition.coordinateX * -35) * modifier)}deg) rotateX(${Math.round((screenPosition.coordinateY * -25) * modifier)}deg)`
+      if (contactUsPlane) {
+        interactiveStyles = {
+          transform: `rotateY(${Math.round(screenPosition.coordinateX * -50)}deg) rotateX(${Math.round(screenPosition.coordinateY * -50)}deg)`
+        }
+      } else {
+        interactiveStyles = {
+          transform: `rotateY(${Math.round(screenPosition.coordinateX * -35)}deg) rotateX(${Math.round(screenPosition.coordinateY * -25)}deg)`
+        }
       }
     }
   }
