@@ -4,8 +4,6 @@ import HeroNoVideo from 'app/components/hero-no-video';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import ContactBlock from 'app/components/contact-block';
 import ContentWrapper from 'app/components/content-wrapper';
-import GradientWords from 'app/components/gradient-words';
-import kebabCase from 'lodash/string/kebabCase';
 import Flux from 'app/flux';
 import SVG from 'app/components/svg';
 
@@ -15,7 +13,6 @@ function renderContacts(contacts) {
 
     return (
       <li>
-        <h4 className="contact-contacts-studio"><GradientWords word={studio} color={kebabCase(studio)} /></h4>
         <h5 className="contact-contacts-name">{name}</h5>
         <p className="contact-contacts-title">{title}</p>
         <p className="contact-contacts-email"><a href={`mailto:${email}`}>{email}</a></p>
@@ -28,6 +25,15 @@ function renderContacts(contacts) {
       {items}
     </ul>
   )
+}
+
+function renderRegion(region) {
+  return (
+    <div className="content-triple-column">
+      <h4>{region.title}</h4>
+      {renderContacts(region.contacts)}
+    </div>
+  );
 }
 
 function contactGoToJoin() {
@@ -71,21 +77,26 @@ function pageContactUs({ page, currentParams, studios, currentPage, footer, moda
         </ContentWrapper>
 
         <ContentWrapper className="content-wrapper-contact-new-business">
-          {renderContacts(contactContent.newBusiness)}
-          <hr className="hr hr-contact" />
-          <h5 className="also-presence">We also have a presence in:</h5>
-          {renderContacts(contactContent.morePresence)}
+          <div className="content-triple-columns">
+            {renderRegion(contactContent.ukEurope)}
+            {renderRegion(contactContent.americas)}
+            {renderRegion(contactContent.asia)}
+          </div>
         </ContentWrapper>
 
         <ContentWrapper className="content-wrapper-contact-more">
-          <div className="content-dual-columns">
-            <div className="content-dual-column">
+          <div className="content-triple-columns">
+            <div className="content-triple-column">
+              <h5>General Enquiries</h5>
+              <p>Feel free to get in touch at <a href="mailto:hello@ustwo.com">hello@ustwo.com</a> with other opportunities, questions or feedback. We're a curious lot and would love to hear from you.</p>
+            </div>
+            <div className="content-triple-column">
               <h5>Media Enquiries</h5>
               <p>We're eager to add to conversations around design, development and business. Please reach out to <a href="mailto:press@ustwo.com">press@ustwo.com</a> for media requests, interviews or speaking opportunities.</p>
             </div>
-            <div className="content-dual-column">
-              <h5>General Enquiries</h5>
-              <p>Feel free to get in touch at <a href="mailto:hello@ustwo.com">hello@ustwo.com</a> with other opportunities, questions or feedback. We're a curious lot and would love to hear from you.</p>
+            <div className="content-triple-column">
+              <h5>Games Enquiries</h5>
+              <p>INSERT COPY</p>
             </div>
           </div>
         </ContentWrapper>
@@ -98,13 +109,10 @@ function pageContactUs({ page, currentParams, studios, currentPage, footer, moda
           </div>
         </ContentWrapper>
 
-        <ScrollWrapper
-          component={<ContactBlock page={page ? page.slug : 'home'} />}
-          documentScrollPosition={documentScrollPosition}
-          viewportDimensions={viewportDimensions}
-          requireScreenPosition={true}
-          className="scroll-wrapper-contact-block"
-        />
+        <ContentWrapper className="content-wrapper-contact-find">
+          <h2>Find our Studios:</h2>
+        </ContentWrapper>
+
         <Footer data={footer} studios={studios} currentPage={currentPage}/>
       </div>
     </article>
@@ -114,36 +122,46 @@ function pageContactUs({ page, currentParams, studios, currentPage, footer, moda
 export default pageContactUs;
 
 const contactContent = {
-  newBusiness: [{
-    studio: 'London',
-    name: 'Cameron Day',
-    title: 'New Business Partner',
-    email: 'londonbd@ustwo.com',
-  },{
-    studio: 'Malmo',
-    name: 'Anders Rörgren',
-    title: 'Business Development Lead',
-    email: 'malmobd@ustwo.com',
-  },{
-    studio: 'New York',
-    name: 'Justin Pike',
-    title: 'Business Development Lead',
-    email: 'newyorkbd@ustwo.com',
-  },{
-    studio: 'Sydney',
-    name: 'Luke Hankinson',
-    title: 'Business Development Lead',
-    email: 'sydneybd@ustwo.com',
-  }],
-  morePresence: [{
-    studio: 'Los Angeles',
-    name: 'Lee Simpson',
-    title: 'BD, TV & Entertainment',
-    email: 'email@ustwo.com',
-  },{
-    studio: 'Tokyo',
-    name: 'Mayu Nakamura',
-    title: 'Senior Interaction Designer',
-    email: 'email@ustwo.com',
-  }]
+  ukEurope: {
+    title: 'UK & Europe',
+    contacts: [{
+      studio: 'London',
+      name: 'Cameron Day',
+      title: 'New Business Partner',
+      email: 'londonbd@ustwo.com',
+    },{
+      studio: 'Malmo',
+      name: 'Anders Rörgren',
+      title: 'Business Development Lead',
+      email: 'malmobd@ustwo.com',
+    }]
+  },
+  americas: {
+    title: 'The Americas',
+    contacts: [{
+      studio: 'New York',
+      name: 'Justin Pike',
+      title: 'Business Development Lead',
+      email: 'newyorkbd@ustwo.com',
+    },{
+      studio: 'Los Angeles',
+      name: 'Lee Simpson',
+      title: 'BD, TV & Entertainment',
+      email: 'email@ustwo.com',
+    }]
+  },
+  asia: {
+    title: 'Asia/Pacific',
+    contacts: [{
+      studio: 'Sydney',
+      name: 'Luke Hankinson',
+      title: 'Business Development Lead',
+      email: 'sydneybd@ustwo.com',
+    },{
+      studio: 'Tokyo',
+      name: 'Mayu Nakamura',
+      title: 'Senior Interaction Designer',
+      email: 'email@ustwo.com',
+    }]
+  }
 }

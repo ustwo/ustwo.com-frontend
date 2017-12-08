@@ -73,7 +73,7 @@
   a {
     @include underlineLink;
   }
-  
+
   @media screen and (min-width: $bp-large) {
     display: flex;
     flex-direction: row;
@@ -90,6 +90,53 @@
 
       h5 {
         margin-top: 0;
+      }
+    }
+  }
+}
+
+.content-triple-columns {
+  a {
+    @include underlineLink;
+  }
+
+  .content-triple-column {
+    margin-bottom: 50px;
+  }
+
+  h4 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+
+  @media screen and (min-width: $bp-small) {
+    .contact-contacts li {
+      width: 50%;
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0;
+
+    .content-triple-column {
+      flex: 1;
+      padding: 0 5%;
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+      &:last-of-type {
+        padding-right: 0;
+      }
+
+      h5 {
+        margin-top: 0;
+      }
+
+      .contact-contacts li {
+        width: 100%;
       }
     }
   }
