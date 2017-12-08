@@ -84,20 +84,22 @@ class Navigation extends Component {
   renderBackButton() {
     const { page } = this.props;
     const { capabilityPages, workPages } = this.state;
-    const workSubPage = capabilityPages.includes(page) || page === 'case-study';
-    const otherSubPage = page === 'post' || page === 'event' || page === 'humanisingautonomy';
-    const subPageText = capabilityPages.includes(page) || page === 'case-study' ? 'Work' : 'Back';
+    const subPage = page === 'case-study' || page === 'post' || page === 'humanisingautonomy' || capabilityPages.includes(page);
 
     let linkText;
-    if (workSubPage) {
+    if (page === 'case-study') {
       linkText = 'Work';
+    } else if (capabilityPages.includes(page)) {
+      linkText = 'About Us'
     } else if (page === 'humanisingautonomy') {
       linkText = 'Auto & Mobility';
+    } else if (page === 'post') {
+      linkText = 'Blog';
     } else {
       linkText = 'Back';
     }
 
-    if (workSubPage || otherSubPage) {
+    if (subPage) {
       return (
         <button onClick={this.subPageBack.bind(this)}>{linkText}</button>
       );
