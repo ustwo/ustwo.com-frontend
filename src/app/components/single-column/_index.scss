@@ -21,7 +21,6 @@
   padding-right: 6.25%;
   padding-top: $vertical-spacing;
 
-  & + .video,
   & + .related-content {
     margin-top: $vertical-spacing;
   }
@@ -95,7 +94,6 @@
       padding-top: 0;
     }
 
-    & + .video,
     & + .related-content {
       margin-top: $vertical-spacing-medium;
     }
@@ -114,7 +112,6 @@
       padding-top: 0;
     }
 
-    & + .video,
     & + .related-content {
       margin-top: $vertical-spacing-large;
     }
