@@ -62,7 +62,7 @@ const PageCaseStudy = React.createClass({
                     {this.renderRelatedContent()}
                 </div>
                 <ScrollWrapper
-                    component={<ContactBlock />}
+                    component={<ContactBlock page="work" />}
                     documentScrollPosition={documentScrollPosition}
                     viewportDimensions={viewportDimensions}
                     requireScreenPosition={true}

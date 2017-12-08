@@ -2,11 +2,13 @@ import React from 'react';
 import WorkCapability from 'app/components/work-capability';
 import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
+import ContactFloating from 'app/components/contact-floating';
 
 function PageWorkWaysOfWorking({ footer, studios, currentPage }) {
   return (
     <div className="work-ways-of-working">
       <WorkCapability data={workWaysOfWorkingData} />
+      <ContactFloating buttonFlavour="work" darkStyle />
       <Footer data={footer} studios={studios} currentPage={currentPage}/>
     </div>
   );

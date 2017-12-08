@@ -62,7 +62,7 @@ const PagePost = React.createClass({
           {this.renderRelatedContent()}
         </div>
         <ScrollWrapper
-          component={<ContactBlock />}
+          component={<ContactBlock page="blog" />}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
           requireScreenPosition={true}

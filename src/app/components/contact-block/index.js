@@ -36,7 +36,12 @@ function ContactBlock({ page, screenPosition }) {
     <div className="contact-block">
       <div className="home-text-block">
         <div className="section-title">{content.sectionTitle}</div>
-        <h2>{content.title}<br /><span className="contact-block-email"><GradientWords word={content.email} color={page} /></span></h2>
+        <h2>
+          {content.title}<br />
+          <span className="contact-block-email">
+            <GradientWords word={content.email} color={page} />
+          </span>
+        </h2>
         <div className="contact-block-image">
           <GradientBackgroundSequence
             tickerFrequency={200}

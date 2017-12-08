@@ -62,7 +62,7 @@ class Navigation extends Component {
       case 'design-build':
       case 'launch-scale':
       case 'ways-of-working':
-        navigateTo = '/about';
+        navigateTo = '/about-us';
         break;
       case 'case-study':
       case 'auto':

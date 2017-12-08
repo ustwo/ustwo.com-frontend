@@ -216,7 +216,7 @@ const PageEvents = React.createClass({
           disabled={archivedEventsPagination >= archivedEventsPaginationTotal}
         />
         <ScrollWrapper
-          component={<ContactBlock />}
+          component={<ContactBlock page="events" />}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
           requireScreenPosition={true}

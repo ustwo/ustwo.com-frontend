@@ -1,11 +1,13 @@
 import React from 'react';
 import WorkCapability from 'app/components/work-capability';
 import Footer from 'app/components/footer';
+import ContactFloating from 'app/components/contact-floating';
 
 function PageWorkLaunchScale({ footer, studios, currentPage }) {
   return (
     <div className="work-launch-scale">
       <WorkCapability data={workLaunchScaleData} />
+      <ContactFloating buttonFlavour="work" darkStyle />
       <Footer data={footer} studios={studios} currentPage={currentPage}/>
     </div>
   );

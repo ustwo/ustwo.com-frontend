@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import WorkCapabilities from 'app/components/work-capabilities';
-import ContactButton from 'app/components/contact-button';
 import Flux from 'app/flux';
 
 class WorkCapability extends Component {
@@ -36,10 +35,6 @@ class WorkCapability extends Component {
           <h1>{title}</h1>
           <WorkCapabilities selected={data.name} />
           {blocks}
-          <div className="work-capability-contact">
-            <p>Have a project or an idea you'd like to collaborate with ustwo on? Say hello@ustwo.com</p>
-            <ContactButton />
-          </div>
         </div>
       </div>
     );
