@@ -1,9 +1,17 @@
 import React from 'react';
 import GradientWords from '../gradient-words';
+import Flux from 'app/flux';
+
+function homeMoreMessageButton() {
+  return (e) => {
+    e.preventDefault();
+    Flux.navigate('/blog');
+  }
+}
 
 function HomeMoreMessage({ showPopup }) {
   return (
-    <h1>
+    <div className="home-message-text" onClick={homeMoreMessageButton()}>
       <span>We </span><GradientWords
         word="disrupt"
         color="cold"
@@ -14,7 +22,7 @@ function HomeMoreMessage({ showPopup }) {
         word="deliver"
         color="hot"
       /><span> tangible results</span>
-    </h1>
+    </div>
   );
 }
 

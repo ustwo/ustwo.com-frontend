@@ -1,9 +1,17 @@
 import React from 'react';
 import GradientWords from '../gradient-words';
+import Flux from 'app/flux';
+
+function homeVentureMessageButton() {
+  return (e) => {
+    e.preventDefault();
+    Flux.navigate('/about-us');
+  }
+}
 
 function HomeVentureMessage({ showPopup }) {
   return (
-    <h1>
+    <div className="home-message-text" onClick={homeVentureMessageButton()}>
       <span>We </span><GradientWords
         word="ship"
         color="cold"
@@ -14,7 +22,7 @@ function HomeVentureMessage({ showPopup }) {
         word="invest"
         color="hot"
       /><span> in startups</span>
-    </h1>
+    </div>
   );
 }
 

@@ -32,32 +32,26 @@
 
   @media screen and (min-width: $bp-smaller) {
     h2 {
-      font-size: 30px;
+      font-size: 28px;
     }
   }
 
   /* redefine the following font sizes so we can have the above */
   @media screen and (min-width: $bp-medium) {
     h2 {
-      font-size: 40px;
+      font-size: 36px;
     }
   }
 
   @media screen and (min-width: $bp-larger) {
     h2 {
-      font-size: 50px;
+      font-size: 44px;
     }
   }
 
   @media screen and (min-width: $bp-small) {
     .home-text-block {
       padding: 80px 0;
-    }
-  }
-
-  @media screen and (min-width: $bp-medium) {
-    .home-text-block {
-      padding: 150px 0;
     }
   }
 
@@ -179,18 +173,12 @@
   animation-timing-function: linear;
 }
 
-@media screen and (min-width: $bp-medium) {
+@media screen and (min-width: $bp-large) {
   .contact-block-image {
     margin: 0;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 0;
-  }
-}
-
-@media screen and (min-width: $bp-large) {
-  .contact-block-image {
     right: 100px;
   }
 }
