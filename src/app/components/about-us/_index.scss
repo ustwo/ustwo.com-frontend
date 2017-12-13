@@ -1,0 +1,108 @@
+.page-about-us {
+  height: 100%;
+}
+
+.about-video-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  position: relative;
+  z-index: 2;
+  margin-top: 15px;
+
+  .section-title {
+    line-height: 40px;
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+}
+
+.about-video-link-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid $offWhite;
+  border-radius: 50%;
+
+  svg {
+    fill: $offWhite;
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.sub-content-sections.subContentStudios {
+  .sub-content-sections-item-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.subContentStudios {
+  background-color: white;
+  margin-bottom: 0;
+}
+
+.content-wrapper-manifesto {
+  @include darkBackground;
+
+  h2 {
+    margin-bottom: $title-border-bottom;
+
+    @media screen and (min-width: $bp-large) {
+      min-height: 50px;
+    }
+  }
+
+  a {
+    @include buttonSolid;
+    @include page-background-colour(about);
+    margin-top: 30px;
+  }
+}
+
+.content-wrapper-about-video .content-wrapper-inner {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.content-wrapper-who,
+.content-wrapper-studios {
+  background: $offWhite;
+}
+
+.content-wrapper-studios .content-wrapper-inner {
+  padding-top: 0 !important;
+}
+
+
+/* Dual Columns */
+.dual-columns {
+  @include core-layout();
+}
+
+.dual-columns-inner {
+  @include core-vertical-padding;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media screen and (min-width: $bp-large) {
+    flex-direction: row;
+  }
+}
+
+.dual-columns-inner-section {
+
+  h2 {
+    @extend .h4;
+    margin-bottom: 15px;
+  }
+
+  @media screen and (min-width: $bp-large) {
+    width: 45%;
+  }
+}

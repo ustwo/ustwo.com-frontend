@@ -21,7 +21,7 @@ class VideoBlock extends Component {
       <div className={classes}>
         {title ? <h2>{title}</h2> : null}
         <Html5Video
-          controls={['Time', 'Seek', 'Volume', 'Fullscreen']}
+          controls={['PlayPause', 'Time', 'Seek', 'Volume', 'Fullscreen']}
           preload="none"
           poster={videoPoster}
           onPlay={() => {

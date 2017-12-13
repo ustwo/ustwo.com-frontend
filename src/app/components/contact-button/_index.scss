@@ -6,14 +6,14 @@
 .contact-button {
   display: block;
   width: 100%;
-  max-width: 285px;
+  max-width: 250px;
   height: 60px;
   line-height: 60px;
   margin: 0 auto;
-  background-image: linear-gradient(258deg, $softPassion, $rain);
   color: #fff;
   font-size: 16px;
   text-transform: uppercase;
+  @include page-background-colour('home');
 
   svg {
     width: 40px;
@@ -24,6 +24,22 @@
 
   &:hover {
     color: #fff;
+  }
+
+  &.flavour-home {
+    @include page-background-colour('home');
+  }
+  &.flavour-about {
+    @include page-background-colour('about');
+  }
+  &.flavour-work {
+    @include page-background-colour('work');
+  }
+  &.flavour-blog {
+    @include page-background-colour('blog');
+  }
+  &.flavour-join {
+    @include page-background-colour('join');
   }
 }
 

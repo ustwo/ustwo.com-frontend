@@ -33,12 +33,13 @@ import VideoOverlay from 'app/components/video-overlay';
 
 const pageMap = {
   'home': require('app/components/home'),
+  'about-us': require('app/components/about-us'),
   'work': require('app/components/work'),
   'work/case-study': require('app/components/case-study'),
   'work/discovery-strategy': require('app/components/work-discovery-strategy'),
   'work/design-build': require('app/components/work-design-build'),
   'work/launch-scale': require('app/components/work-launch-scale'),
-  'work/ways-of-working': require('app/components/work-ways-of-working'),
+  'work/change-transform': require('app/components/work-change-transform'),
   'auto': require('app/components/auto'),
   'auto/humanisingautonomy': require('app/components/auto-humanising-autonomy'),
   'blog': require('app/components/blog'),
@@ -47,7 +48,8 @@ const pageMap = {
   'join-us': require('app/components/join-us'),
   'events': require('app/components/events'),
   'events/event': require('app/components/event'),
-  'ev': require('app/components/page')
+  'ev': require('app/components/page'),
+  'contact-us': require('app/components/contact-us')
 };
 
 const App = React.createClass({

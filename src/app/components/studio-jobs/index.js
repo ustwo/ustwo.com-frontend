@@ -1,12 +1,8 @@
-'use strict';
-
 import React from 'react';
 import classnames from 'classnames';
-import { get } from 'lodash';
 import find from 'lodash/collection/find';
 import kebabCase from 'lodash/string/kebabCase';
-import getFeaturedImage from 'app/lib/get-featured-image';
-
+import StudioBlock from 'app/components/studio-block';
 import Flux from 'app/flux';
 import JobItem from 'app/components/job-item';
 import Rimage from 'app/components/rimage';
@@ -74,26 +70,14 @@ const StudioJobs = React.createClass({
   render() {
     const { studio, selected } = this.props;
     const id = kebabCase(studio.name);
-    const studioRecruitmentDescription = get(studio, 'recruitment-desc');
     const classes = classnames('studio-jobs', `${id}-jobs`, {
       selected: selected
     });
-    const image = getFeaturedImage(studio);
+
     return (
       <div className={classes}>
         <div className="tab-content" id={`tab-content-${id}`}>
-          <div className="studio-info">
-            <div className="info">
-              <p className="excerpt">{get(studio, 'recruitment-title')}</p>
-              <p className="studio-blurb" dangerouslySetInnerHTML={{__html: studioRecruitmentDescription}}></p>
-            </div>
-            <Rimage
-              className="photo"
-              wrap="div"
-              sizes={get(image, 'media_details.sizes')}
-              altText={get(image, 'alt_text')}
-            />
-          </div>
+          <StudioBlock studio={studio} />
           {this.renderJobsList()}
         </div>
       </div>

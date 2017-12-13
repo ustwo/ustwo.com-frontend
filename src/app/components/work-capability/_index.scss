@@ -7,6 +7,7 @@
   color: $offWhite;
 	background-color: $c-solid;
   padding-top: 100px;
+  padding-bottom: 50px;
   @include core-layout();
 
   > * {
@@ -28,6 +29,7 @@
 
   @media screen and (min-width: $bp-tablet) {
     padding-top: 140px;
+    padding--bottom: 120px;
   }
 }
 

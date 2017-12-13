@@ -2,42 +2,34 @@ import React from 'react';
 import env from 'app/adaptors/server/env';
 
 function GradientWords({ word, color, reverse }) {
+  const classes = `gradient-words gradient-words-${color} ${reverse ? 'gradient-words-reverse' : null}`;
 
-  let color1, color2;
+  let replacementColor;
   if (color === 'cold') {
-    color1 = "#009CF3";
-    color2 = "#16D6D9";
+    replacementColor = "#16D6D9";
   }
   if (color === 'lukewarm') {
-    color1 = "#16D6D9";
-    color2 = "#96CC29";
+    replacementColor = "#96CC29";
   }
   if (color === 'hot') {
-    color1 = "#FFBF02";
-    color2 = "#ED0082";
+    replacementColor = "#ED0082";
   }
   if (color === 'auto') {
-    color1 = "#ffbf00";
-    color2 = "#f8e467";
+    replacementColor = "#f8e467";
   }
   if (color === 'auto2') {
-    color1 = "#ffbf00";
-    color2 = "#ffbf00";
+    replacementColor = "#ffbf00";
   }
 
   let style;
-  if (env.Modernizr.backgroundcliptext) {
+  if (!env.Modernizr.backgroundcliptext) {
     style = {
-      backgroundImage: reverse ? `linear-gradient(to right, ${color2}, ${color1})` : `linear-gradient(to right, ${color1}, ${color2})`
-    }
-  } else {
-    style = {
-      color: color2
+      color: replacementColor
     }
   }
 
   return (
-    <span className="gradient-words" style={style}>{word}</span>
+    <span className={classes} style={style}>{word}</span>
   );
 }
 

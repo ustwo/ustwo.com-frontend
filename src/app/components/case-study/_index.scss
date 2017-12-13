@@ -10,6 +10,23 @@
   .single-column.intro .content{
     text-align: center;
   }
+
+  .single-column.intro {
+    hr {
+      background: transparent !important;
+    }
+  }
+
+  .single-column + .video {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-content-wrapper {
+    @include core-vertical-padding;
+    padding-top: 0 !important;
+  }
 }
 
 

@@ -10,10 +10,11 @@ import HomeTextBlock from 'app/components/home-text-block';
 import HomeCarousel from 'app/components/home-carousel';
 import HomeWelcomeMessage from 'app/components/home-welcome-message';
 import HomeMoreMessage from 'app/components/home-more-message';
-import HomeSmorgasbordMessage from 'app/components/home-smorgasbord-message';
-import HomeSmorgasbord from 'app/components/home-smorgasbord';
+import HomeVentureMessage from 'app/components/home-venture-message';
 import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
+import ContactFloating from 'app/components/contact-floating';
+import RelatedContent from 'app/components/related-content';
 
 class PageHome extends Component {
   constructor(props) {
@@ -66,6 +67,16 @@ class PageHome extends Component {
     window.removeEventListener('resize', this.getVenturesPositionBound);
   }
 
+  latestPosts(loaded) {
+    const relatedPosts = get(this.props.page, '_embedded.ustwo:related_post', []);
+
+    let latestPosts;
+    if (relatedPosts.length) {
+      latestPosts = <RelatedContent content={relatedPosts} title="From the blog" loaded={loaded} newsletter />
+    }
+    return latestPosts;
+  }
+
   render() {
     const { page, documentScrollPosition, viewportDimensions, scrolling, popup, isMobile, loaded, footer, studios, currentPage, fixedHeight } = this.props;
     const { venturesPosition, fixedHeightVentures } = this.state;
@@ -74,22 +85,17 @@ class PageHome extends Component {
 
     const classes = classnames('page-home-content', this.props.className, { venturesActive, loaded });
 
-    // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
     const textBlockIntro = {
-      title: `Hi. We're ustwo`,
+      title: `ustwo is a digital product and service studio`,
       text: <HomeWelcomeMessage />
     }
+    const textBlockVentures = {
+      title: `Do more to learn more`,
+      text: <HomeVentureMessage />
+    }
     const textBlockMore = {
-      title: `Do more, to learn more`,
+      title: `Together in Partnership`,
       text: <HomeMoreMessage />
-    }
-    const textBlockSmorgasbord = {
-      title: `Explore together`,
-      text: <HomeSmorgasbordMessage />
-    }
-
-    const venturesBgStyles = {
-      height: `${fixedHeightVentures + 100}px`
     }
 
     return (
@@ -126,10 +132,8 @@ class PageHome extends Component {
 
           <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
 
-            <div className="home-ventures-wrapper-bg" style={venturesBgStyles}></div>
-
             <ScrollWrapper
-              component={<HomeTextBlock content={textBlockMore} />}
+              component={<HomeTextBlock content={textBlockVentures} />}
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               className="scroll-wrapper-home-more-message"
@@ -147,21 +151,19 @@ class PageHome extends Component {
           </div>
 
           <ScrollWrapper
-            component={<HomeTextBlock content={textBlockSmorgasbord} />}
+            component={<HomeTextBlock content={textBlockMore} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
-            className="scroll-wrapper-home-smorgasbord-message"
+            className="scroll-wrapper-home-welcome-message"
             fixedHeight={fixedHeight}
           />
 
-          <ScrollWrapper
-            component={<HomeSmorgasbord data={get(page, 'featured_content')} loaded={loaded} />}
-            className="scroll-wrapper-home-smorgasbord"
-          />
+          {this.latestPosts(loaded)}
+
         </div>
 
         <ScrollWrapper
-          component={<ContactBlock />}
+          component={<ContactBlock page={page ? page.slug : 'home'} />}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
           requireScreenPosition={true}
@@ -222,7 +224,7 @@ const dataProducts = [{
   category: "Client Work",
   imageURL: "/images/home/sky-kids.jpg",
   videoURL: "/images/home/sky-kids.mp4",
-  description: "Creating a new product, brand and audience - loved by kids and trusted by parents",
+  description: "Creating a new product, brand and audience loved by kids and trusted by parents",
   slug: "/work/sky-kids"
 },{
   title: "NBC Sprout",

@@ -63,9 +63,9 @@
   @include page-background-colour(work);
 }
 
-.navigation-overlay.events,
-.navigation-overlay-bg-events {
-  @include page-background-colour(events);
+.navigation-overlay.about-us,
+.navigation-overlay-bg-about-us {
+  @include page-background-colour(about);
 }
 
 .navigation-overlay.blog,
@@ -86,6 +86,11 @@
 .navigation-overlay.legal,
 .navigation-overlay-bg-legal {
   @include page-background-colour(legal);
+}
+
+.navigation-overlay.contact-us,
+.navigation-overlay-bg-contact-us {
+  @include page-background-colour(contact);
 }
 
 .navigation-overlay.navigation-overlay-auto {

@@ -1,0 +1,34 @@
+/*
+ *  WORK HERO
+ *
+ */
+
+.hero-no-video {
+  display: flex;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  .hero {
+    height: 100%;
+
+    h1 {
+      width: 65%;
+    }
+  }
+
+  .hero-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+  }
+
+  .hero-inner-wrapper {
+    position: relative;
+  }
+
+  .down-indicator {
+    z-index: 2;
+  }
+}

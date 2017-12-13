@@ -1,0 +1,81 @@
+.studio-block {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.studio-block-info {
+  padding: 20px;
+  order: 2;
+  color: white;
+}
+
+.studio-block-blurb {
+  a {
+    @include underlineLink;
+  }
+}
+.studio-block-photo {
+  height: 200px;
+}
+
+@media screen and (min-width: $bp-medium) {
+  .studio-block {
+    min-height: 320px;
+    flex-direction: row;
+
+    > div {
+      width: 50%;
+    }
+  }
+
+  .studio-block-info {
+    padding: 40px;
+    order: initial;
+  }
+
+  .studio-block-blurb {
+    position: relative;
+    display: block;
+    margin-top: 40px;
+    font-size: 16px;
+  }
+
+  .studio-block-photo {
+    height: auto;
+  }
+
+  &.studio-block-left {
+    .studio-block-info {
+      order: 2;
+    }
+    .studio-block-photo {
+      order: 1;
+    }
+  }
+}
+
+.studio-block {
+  &.studio-london {
+    @include page-background-colour(london);
+  }
+  &.studio-malmo {
+    @include page-background-colour(malmo);
+  }
+  &.studio-new-york {
+    @include page-background-colour(newyork);
+  }
+  &.studio-sydney {
+    @include page-background-colour(sydney);
+  }
+}

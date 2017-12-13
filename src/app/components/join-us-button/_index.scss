@@ -1,0 +1,56 @@
+/*
+ *  JOIN US BUTTON
+ *
+ *  TODO: Consolidate with Contact Button
+ *
+ */
+
+.join-us-button {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: 60px;
+  line-height: 60px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  @include page-background-colour('home');
+
+  svg {
+    width: 40px;
+    height: 50px;
+    fill: #fff;
+    transform: scale(0.7);
+  }
+
+  &:hover {
+    color: #fff;
+  }
+
+  &.flavour-home {
+    @include page-background-colour('home');
+  }
+  &.flavour-about {
+    @include page-background-colour('about');
+  }
+  &.flavour-work {
+    @include page-background-colour('work');
+  }
+  &.flavour-blog {
+    @include page-background-colour('blog');
+  }
+  &.flavour-join {
+    @include page-background-colour('join');
+  }
+}
+
+.join-us-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.join-us-button-text {
+  margin-right: 5px;
+}

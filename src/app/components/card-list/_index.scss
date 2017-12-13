@@ -28,7 +28,7 @@
   display: flex; /* gives all items in a row the same height */
   flex-direction: column;
   vertical-align: top;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  @include box-shadow();
   margin-bottom: 20px;
   width: 100%;
 }

@@ -232,7 +232,7 @@ class HumanisingAutonomy extends Component {
           </div>
 
           <ScrollWrapper
-            component={<ContactBlock auto />}
+            component={<ContactBlock page={page.slug} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}

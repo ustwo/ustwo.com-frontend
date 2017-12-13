@@ -33,7 +33,7 @@ $WorkCapabilitiesIconSizeLarge: 240px;
       background-repeat: no-repeat;
       background-position: 50%;
       background-size: ($WorkCapabilitiesIconSizeSmall - 30px) ($WorkCapabilitiesIconSizeSmall - 30px);
-      background-image: url('/images/illustration-ways-of-working.svg');
+      background-image: url('/images/illustration-change-and-transform.svg');
 
       @media screen and (min-width: $bp-medium) {
         position: absolute;
@@ -43,7 +43,7 @@ $WorkCapabilitiesIconSizeLarge: 240px;
         background-color: transparent;
         width: 100%;
         height: 100px;
-        background-image: url('/images/illustration-ways-of-working-large.svg');
+        background-image: url('/images/illustration-change-and-transform-large.svg');
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: 66% auto;
@@ -93,7 +93,7 @@ $WorkCapabilitiesIconSizeLarge: 240px;
       }
     }
     &.working {
-      background-image: url('/images/illustration-ways-of-working.svg');
+      background-image: url('/images/illustration-change-and-transform.svg');
     }
 
     button {
@@ -217,4 +217,11 @@ $WorkCapabilitiesIconSizeLarge: 240px;
       }
     }
   }
+}
+
+.work-discovery-strategy,
+.work-design-build,
+.work-launch-scale,
+.work-change-and-transform {
+  background-color: $c-solid;
 }

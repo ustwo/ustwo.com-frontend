@@ -79,7 +79,7 @@
   @if $page == 'work' {
     background-image: linear-gradient(30deg, $rain, $softPassion);
   }
-  @if $page == 'events' {
+  @if $page == 'about' {
     background-image: linear-gradient(30deg, $piglet, $softPassion);
   }
   @if $page == 'blog' {
@@ -87,6 +87,9 @@
   }
   @if $page == 'join' {
     background-image: linear-gradient(30deg, $honey, $softPassion);
+  }
+  @if $page == 'contact' {
+    background-image: linear-gradient(30deg, $pot, $softHoney);
   }
   @if $page == 'notfound' {
     background-image: linear-gradient(30deg, $rain, $softPassion);
@@ -108,6 +111,35 @@
   }
   @if $page == 'sydney' {
     background-image: linear-gradient(30deg, $mare, $jeezz);
+  }
+  @if $page == 'losangeles' {
+    background-image: linear-gradient(30deg, $passion, $softOhra);
+  }
+  @if $page == 'tokyo' {
+    background-image: linear-gradient(30deg, $rain, $softRain);
+  }
+  @if $page == 'hot' {
+    background-image: linear-gradient(30deg, $honey, $piglet);
+  }
+  @if $page == 'cold' {
+    background-image: linear-gradient(30deg, $blu, $mare);
+  }
+  @if $page == 'lukewarm' {
+    background-image: linear-gradient(30deg, $mare, $jeezz);
+  }
+  @if $page == 'auto' {
+    background-image: linear-gradient(30deg, #ffbf00, $auto);
+  }
+  @if $page == 'auto2' {
+    background-image: linear-gradient(30deg, #ffbf00, #ffbf00);
+  }
+}
+
+@mixin darkBackground() {
+  background: linear-gradient(135deg, $v-gradient1, $v-gradient2);
+
+  h1, h2, h3, h4, p {
+    color: $offWhite;
   }
 }
 
@@ -140,25 +172,25 @@
     padding-bottom: 40px;
 
     @media screen and (min-width: $bp-medium) {
-      padding-top: 70px;
-      padding-bottom: 70px;
+      padding-top: 90px;
+      padding-bottom: 90px;
     }
 
     @media screen and (min-width: $bp-large) {
-      padding-top: 90px;
-      padding-bottom: 90px;
+      padding-top: 120px;
+      padding-bottom: 120px;
     }
   } @else {
     padding-top: 40px;
     padding-bottom: 20px;
 
     @media screen and (min-width: $bp-medium) {
-      padding-top: 70px;
+      padding-top: 90px;
       padding-bottom: 30px;
     }
 
     @media screen and (min-width: $bp-large) {
-      padding-top: 90px;
+      padding-top: 120px;
       padding-bottom: 40px;
     }
 
@@ -206,7 +238,11 @@
 }
 
 @mixin box-shadow() {
-  box-shadow: 10px 10px 40px rgba(0,0,0,.3);
+  box-shadow: 5px 5px 15px rgba(0,0,0,.2);
+}
+
+@mixin text-shadow() {
+  text-shadow: 5px 5px 15px rgba(0,0,0,.2);
 }
 
 @mixin buttonColor($color: 'dark') {
@@ -256,6 +292,19 @@
   100% {
     background-position: calc(100% - 13px) 50%;
   }
+}
+
+@mixin buttonSolid {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: 60px;
+  line-height: 60px;
+  margin: 0 auto;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none !important;
 }
 
 @mixin spinner-core() {
@@ -372,4 +421,9 @@
       width: 42px;
     }
   }
+}
+
+@mixin underlineLink() {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
 }

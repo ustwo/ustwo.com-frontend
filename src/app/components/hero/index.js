@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import window from 'app/adaptors/server/window';
 import env from 'app/adaptors/server/env';
-
+import GradientBackgroundSequence from 'app/components/gradient-background-sequence';
 import EntranceTransition from 'app/components/entrance-transition';
 import WordAnimation from 'app/components/word-animation';
 import DownIndicator from 'app/components/down-indicator';
@@ -50,7 +50,7 @@ class Hero extends Component {
   }
 
   render() {
-    const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions, fixedHeight, heroImage, pageLogo } = this.props;
+    const { className, title, children, scrollProgress, eventLabel, notFullScreen, viewportDimensions, fixedHeight, heroImage, pageLogo, logo, gradientSequence, video, subheading, showDownIndicator } = this.props;
     const { active } = this.state;
     const scrollProgressValue = scrollProgress ? scrollProgress : 0;
     const transform = `translateY(${Math.min(((0.5 - scrollProgressValue) * 4) * 30, 0)}px)`;
@@ -92,7 +92,7 @@ class Hero extends Component {
             heroImage &&
             <div className="hero-image" style={window.innerWidth >= 600 ? videoTransitionStyles : null} />
           }
-          {this.props.logo && this.props.logo}
+          {logo && logo}
           <div className="title-entrance">
             <div className="hero-content" style={transitionStyles}>
               <div className="section-title">
@@ -101,26 +101,35 @@ class Hero extends Component {
               <h1 className="title">
                 {renderTitle}
               </h1>
-              {this.props.subheading && <p className="subheading"><WordAnimation delay={0.5} duration={0.32}>{this.props.subheading}</WordAnimation></p>}
+              {subheading && <p className="subheading"><WordAnimation delay={0.5} duration={0.32}>{subheading}</WordAnimation></p>}
               <div className="hero-children">
                 {children}
               </div>
             </div>
             <div className="hero-down-indicator" style={transitionStyles}>
               {
-                this.props.showDownIndicator &&
+                showDownIndicator &&
                 <DownIndicator onClick={this.onClickDownIndicator} />
               }
             </div>
           </div>
           {
-            this.props.video &&
+            video &&
             <div className="hero-video" style={videoTransitionStyles}>
-              {this.props.video}
+              {video}
             </div>
           }
         </div>
         {this.renderImage()}
+        {
+          gradientSequence &&
+          <GradientBackgroundSequence
+            tickerFrequency={gradientSequence.tickerFrequency}
+            timerTotal={gradientSequence.timerTotal}
+            topColours={gradientSequence.topColours}
+            bottomColours={gradientSequence.bottomColours}
+          />
+        }
       </section>
     );
   }

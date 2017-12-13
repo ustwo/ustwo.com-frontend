@@ -53,7 +53,6 @@
 
   .jobs-none {
     position: relative;
-    margin-top: 5px;
     padding: 20px;
     background: #fff;
 
@@ -157,29 +156,6 @@
         top: 50%;
         margin-top: -20px;
       }
-    }
-  }
-}
-
-.studio-jobs {
-  &.london-jobs {
-    .studio-info {
-      @include page-background-colour(london);
-    }
-  }
-  &.malmo-jobs {
-    .studio-info {
-      @include page-background-colour(malmo);
-    }
-  }
-  &.new-york-jobs {
-    .studio-info {
-      @include page-background-colour(newyork);
-    }
-  }
-  &.sydney-jobs {
-    .studio-info {
-      @include page-background-colour(sydney);
     }
   }
 }

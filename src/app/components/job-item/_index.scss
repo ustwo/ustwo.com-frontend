@@ -25,6 +25,10 @@
   list-style: none;
   transition: height .5s ease-in-out;
 
+  &:first-of-type {
+    margin-top: 0;
+  }
+
   .title {
     position: relative;
     display: flex;
@@ -113,6 +117,7 @@
     display: inline-block;
     font-size: 16px;
     transition: color $hover-duration-quick ease-in-out;
+    margin-top: 20px;
 
     &:hover {
       color: inherit;
@@ -201,7 +206,7 @@
 
   @media screen and (min-width: $bp-large) {
     .job-description {
-      width: 50%;
+      width: 60%;
     }
   }
 }

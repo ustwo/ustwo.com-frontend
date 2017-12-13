@@ -19,7 +19,7 @@ class Navigation extends Component {
       active: false,
       navHeight: 0,
       paused: true,
-      capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working']
+      capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'change-and-transform']
     }
   }
 
@@ -58,11 +58,13 @@ class Navigation extends Component {
       case 'post':
         navigateTo = '/blog';
         break;
-      case 'case-study':
       case 'discovery-strategy':
       case 'design-build':
       case 'launch-scale':
-      case 'ways-of-working':
+      case 'change-and-transform':
+        navigateTo = '/about-us';
+        break;
+      case 'case-study':
       case 'auto':
         navigateTo = '/work';
         break;
@@ -82,20 +84,22 @@ class Navigation extends Component {
   renderBackButton() {
     const { page } = this.props;
     const { capabilityPages, workPages } = this.state;
-    const workSubPage = capabilityPages.includes(page) || page === 'case-study';
-    const otherSubPage = page === 'post' || page === 'event' || page === 'humanisingautonomy';
-    const subPageText = capabilityPages.includes(page) || page === 'case-study' ? 'Work' : 'Back';
+    const subPage = page === 'case-study' || page === 'post' || page === 'humanisingautonomy' || capabilityPages.includes(page);
 
     let linkText;
-    if (workSubPage) {
+    if (page === 'case-study') {
       linkText = 'Work';
+    } else if (capabilityPages.includes(page)) {
+      linkText = 'About Us'
     } else if (page === 'humanisingautonomy') {
       linkText = 'Auto & Mobility';
+    } else if (page === 'post') {
+      linkText = 'Blog';
     } else {
       linkText = 'Back';
     }
 
-    if (workSubPage || otherSubPage) {
+    if (subPage) {
       return (
         <button onClick={this.subPageBack.bind(this)}>{linkText}</button>
       );
@@ -121,11 +125,11 @@ class Navigation extends Component {
     const { section, page, customClass, documentScrollPosition, venturesPosition, testimonialsPosition, popup, modal, viewportDimensions, caseStudy } = this.props;
     const { active, paused, navHeight, capabilityPages } = this.state;
 
-    const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (viewportDimensions.height * .5) && documentScrollPosition < venturesPosition.to - (viewportDimensions.height * .5);
+    const venturesActive = venturesPosition && documentScrollPosition > venturesPosition.from - (navHeight * .5) && documentScrollPosition < venturesPosition.to - (navHeight * .5);
     const testimonialsActive = !isEmpty(testimonialsPosition) && documentScrollPosition > testimonialsPosition.from - (navHeight * 0.5) && documentScrollPosition < testimonialsPosition.to - (navHeight * 0.5);
     const footerActive = documentScrollPosition > 4000 - (693 + 414);
     const homePage = section === 'home';
-    const heroPage = section === 'home' || section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto';
+    const heroPage = section === 'home' || section === 'about-us' || section === 'work' || section === 'join-us' || section === 'events' || section === 'blog' || section === 'auto' || section === 'contact-us';
     const subPage = page === 'post' || page === 'event' || capabilityPages.includes(page) || page === 'case-study' || page === 'auto' || page === 'humanisingautonomy';
     const blogEvent = (section === 'blog' || section === 'events') && !subPage;
     const scrolled = documentScrollPosition > 0;
@@ -147,22 +151,25 @@ class Navigation extends Component {
     let color;
     switch(section) {
       case 'home':
-        color = ['#16D6D9', '#96CC29'];
+        color = ['#16D6D9', '#96CC29']; // $mare, $jeezz
         break;
       case 'work':
-        color = ['#6114CC', '#FA7D78'];
+        color = ['#6114CC', '#FA7D78']; // $rain, $softPassion
         break;
       case 'blog':
-        color = ['#009CF3', '#16D6D9'];
+        color = ['#009CF3', '#16D6D9']; // $blu, $mare
         break;
-      case 'events':
-        color = ['#ED0082', '#FA7D78'];
+      case 'about-us':
+        color = ['#ED0082', '#FA7D78']; // $piglet, $softPassion
         break;
       case 'join-us':
-        color = ['#FFBF02', '#FA7D78'];
+        color = ['#FFBF02', '#FA7D78']; // $honey, $softPassion
+        break;
+      case 'contact-us':
+        color = ['#14C04D', '#F5E664']; // $pot, $softHoney
         break;
       case 'notfound':
-        color = ['#6114CC', '#FA7D78'];
+        color = ['#6114CC', '#FA7D78']; // $rain, $softPassion
         break;
     }
 
@@ -177,7 +184,6 @@ class Navigation extends Component {
             <li><a href="/">Home</a></li>
             <li><a href="/work">Work</a></li>
             <li><a href="/blog">Blog</a></li>
-            <li><a href="/events">Events</a></li>
             <li><a href="/join-us">Join us</a></li>
           </ul>
         </div>

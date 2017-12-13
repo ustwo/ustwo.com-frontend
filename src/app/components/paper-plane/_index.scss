@@ -1,0 +1,165 @@
+/*
+ *  PAPER PLANE
+ *  Includes interactive layer wrapper
+ *
+ */
+
+.paper-plane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 220px;
+  transform-style: preserve-3d;
+  transform: translateZ(100px);
+}
+
+.paper-plane-interactive-layer {
+  width: 220px;
+  height: 220px;
+  transform-style: preserve-3d;
+  perspective: 2000px;
+}
+
+.paper-plane-body {
+  position: absolute;
+  top: 47%;
+  left: 27%;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transform-origin: 50% top;
+  transform: rotateX(-30deg) rotateY(-14deg);
+  overflow: visible;
+  animation: planeSway 4s infinite;
+  animation-timing-function: linear;
+}
+
+.paper-plane-body {
+  .right-wing,
+  .left-wing,
+  .right-fuselage,
+  .left-fuselage {
+    position: absolute;
+    left:0;
+    top:0;
+    overflow: visible;
+    transform-origin: 100% 0;
+    // Dimensions are in the JS
+  }
+
+  div[class*='wing'] {
+    z-index: 2;
+
+    svg {
+      fill: white;
+    }
+  }
+
+  div[class*='fuselage'] {
+    z-index: 1;
+  }
+
+  .right-wing {
+    transform: rotateX(80deg) translateY(0) rotateZ(-4deg) translateZ(0);
+  }
+
+  .left-wing {
+    transform: rotateX(-80deg) translateY(-1px) rotateZ(-4deg) translateZ(0);
+  }
+
+  .right-fuselage {
+    transform: rotateX(12deg) rotateY(-4deg) translateZ(0px);
+
+    svg {
+      fill: #ddd;
+    }
+  }
+
+  .left-fuselage {
+    transform: rotateX(-12deg) rotateY(4deg) translateZ(0px);
+
+    svg {
+      fill: #aaa;
+    }
+  }
+
+  .trail {
+    position: absolute;
+    left: -100px;
+    top: 0;
+    z-index: 1;
+    width: 100px;
+    height: 6px;
+    transform: rotateX(90deg);
+    transform-origin: 50% 50%;
+    background-image: linear-gradient(to left, white 14px, transparent 6px);
+    background-repeat: repeat-x;
+    background-size: 20px 6px;
+    background-position: 0 0;
+    animation: vapourTrail .5s infinite;
+    animation-timing-function: linear;
+    opacity: 0.7;
+  }
+}
+
+@keyframes planeSway {
+  0% {
+    transform: rotateX(-20deg) rotateY(-14deg);
+  }
+  25% {
+    transform: rotateX(-14deg) rotateY(-14deg);
+  }
+  50% {
+    transform: rotateX(-20deg) rotateY(-14deg);
+  }
+  75% {
+    transform: rotateX(-26deg) rotateY(-14deg);
+  }
+  100% {
+    transform: rotateX(-20deg) rotateY(-14deg);
+  }
+}
+
+@keyframes vapourTrail {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -20px 0;
+  }
+}
+
+.trail-wave {
+  position: absolute;
+  left: -2000px;
+  top: -38px;
+  z-index: 1;
+  fill: none;
+  opacity: .7;
+  width: 2000px;
+  height: 100px;
+  stroke: #FFF;
+  stroke-width: 18;
+  stroke-miterlimit: 10;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 0%;
+  transform: rotateX(90deg) translate(-10px,10px);
+  animation: trailWave 10s infinite;
+  animation-timing-function: linear;
+  -webkit-mask-image: -webkit-gradient(linear, left top, right bottom,
+            color-stop(0.00,  rgba(0,0,0,0)),
+            color-stop(1.00,  rgba(0,0,0,1)));
+  mask-image: gradient(linear, left top, right bottom,
+            color-stop(0.00,  rgba(0,0,0,0)),
+            color-stop(1.00,  rgba(0,0,0,1)));
+}
+
+@keyframes trailWave {
+  0% {
+    stroke-dashoffset: 0%;
+  }
+  100% {
+    stroke-dashoffset: 100%;
+  }
+}

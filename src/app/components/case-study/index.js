@@ -59,10 +59,10 @@ const PageCaseStudy = React.createClass({
                         zebra: true,
                         categories: get(caseStudy, 'categories')
                     })}
-                    {this.renderRelatedContent()}
                 </div>
+                {this.renderRelatedContent()}
                 <ScrollWrapper
-                    component={<ContactBlock />}
+                    component={<ContactBlock page="work" />}
                     documentScrollPosition={documentScrollPosition}
                     viewportDimensions={viewportDimensions}
                     requireScreenPosition={true}

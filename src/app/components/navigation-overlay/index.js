@@ -58,7 +58,6 @@ const NavigationOverlay = React.createClass({
         selected: slug === this.props.section
       });
 
-
       return (
         <li className={classes} key={link.id}>
           <a

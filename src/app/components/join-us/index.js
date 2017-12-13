@@ -13,15 +13,18 @@ import spannify from 'app/lib/spannify';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import renderModules from 'app/lib/module-renderer';
 import getScrollTrackerMixin from 'app/lib/get-scroll-tracker-mixin';
-
+import ContentWrapper from 'app/components/content-wrapper';
 import SVG from 'app/components/svg';
 import StudioJobs from 'app/components/studio-jobs';
 import Rimage from 'app/components/rimage';
 import Flux from 'app/flux';
 import Footer from 'app/components/footer';
-import JoinUsHero from 'app/components/join-us-hero';
+import HeroNoVideo from 'app/components/hero-no-video';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import ContactBlock from 'app/components/contact-block';
+import VideoBlock from 'app/components/video-block';
+import window from 'app/adaptors/server/window';
+import GradientWords from 'app/components/gradient-words';
 
 function getSelectedStudio(studioSlugFromUrl, studioSlugs) {
   let selected = 'london';
@@ -45,14 +48,20 @@ const PageJoinUs = React.createClass({
   render() {
     const { page, currentParams, studios, currentPage, footer, modal, isMobile, fixedHeight, documentScrollPosition, viewportDimensions } = this.props;
     const classes = classnames('page-join-us', this.props.className);
-    const image = getFeaturedImage(page);
+    let showcaseVideoSrc;
+    if (window.innerWidth < 600) {
+      showcaseVideoSrc = 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=164';
+    } else {
+      showcaseVideoSrc = 'https://player.vimeo.com/external/189642924.sd.mp4?s=2dafa1fb7c8ef594412e9fa7fd4be182163d7f71&profile_id=165';
+    }
+    const showcaseVideoPoster = 'https://i.vimeocdn.com/video/669368070.webp?mw=1920&mh=1080&q=70';
 
     return (
       <article className={classes}>
         <div className="home-pinned-header-wrapper">
           <div className="home-pinned-header-inner">
             <ScrollWrapper
-              component={<JoinUsHero modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Do the best work of your life" />}
+              component={<HeroNoVideo pageName="join-us" modal={modal} isMobile={isMobile} fixedHeight={fixedHeight} title="Do the best work of your life" />}
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               requireScreenPosition={true}
@@ -62,17 +71,51 @@ const PageJoinUs = React.createClass({
         </div>
 
         <div className="home-main-content-wrapper">
-          {renderModules({
-            modules: get(page, 'page_builder', []),
-            colours: get(page, 'colors'),
-            zebra: false,
-            placeholderContents: {
-              WORKABLE_LIST: this.getJobSectionRenderer(this.state.selectedStudioSlug)
-            }
-          })}
+
+          <ContentWrapper className="content-wrapper-join-intro">
+            <div className="content-wrapper-statement">
+              <h2>Get to know ustwo</h2>
+              <hr className="hr hr-join-us" />
+              <p>From day one, culture has been our bedrock, and crucial to our success. We've always invested in our people and studios, and it's important to us that a workplace should feel like home. There are 250 of us, from over 30 countries – collectively we stand for something different.</p>
+              <p>Joining ustwo, we offer you a creative work environment, with a positive and collaborative atmosphere and competitive employee benefits in all our studios around the world.</p>
+            </div>
+          </ContentWrapper>
+
+          <ContentWrapper className="content-wrapper-join-video">
+            <VideoBlock
+              videoPoster={showcaseVideoPoster}
+              src={showcaseVideoSrc}
+            />
+          </ContentWrapper>
+
+          <ContentWrapper className="content-wrapper-join-extra">
+            <div className="content-wrapper-single-column">
+              <p>We strongly believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds. We listen, we’re open to all and we believe in what we do. And the most exciting thing? We're just getting started. If you want to know more, read our <a href="https://usweb-cdn.ustwo.com/ustwo-production/uploads/2017/12/ustwo_cultural_manifesto_dec17.pdf">Manifesto (47Mb)</a>.</p>
+            </div>
+          </ContentWrapper>
+
+          <ContentWrapper>
+            {renderModules({
+              modules: get(page, 'page_builder', []),
+              colours: get(page, 'colors'),
+              zebra: false,
+              placeholderContents: {
+                WORKABLE_LIST: this.getJobSectionRenderer(this.state.selectedStudioSlug)
+              }
+            })}
+          </ContentWrapper>
+
+          <ContentWrapper className="content-wrapper-contact-jobs">
+            <div className="content-wrapper-statement">
+              <h2>LOOKING TO JOIN USTWO GAMES?</h2>
+              <hr className="hr hr-join-us" />
+              <p>ustwo Games is an independent mobile games studio that makes interactive entertainment which challenges the medium, including their BAFTA award-winning hit Monument Valley, to innovative virtual reality experience Land’s End.</p>
+              <p>You can find out more about them and their open positions at <a href="https://ustwogames.co.uk/">ustwogames.co.uk</a></p>
+            </div>
+          </ContentWrapper>
 
           <ScrollWrapper
-            component={<ContactBlock />}
+            component={<ContactBlock page={page ? page.slug : 'home'} />}
             documentScrollPosition={documentScrollPosition}
             viewportDimensions={viewportDimensions}
             requireScreenPosition={true}
@@ -115,7 +158,9 @@ const PageJoinUs = React.createClass({
     }, 0);
   },
   renderStudioTabs(selectedStudioSlug) {
-    let studioSelectedBackgroundColor;
+    let underlineSize;
+    let underlineStudio;
+
     const tabs = map(this.props.studios, studio => {
       let studioSelectedColor;
       const studioSlug = kebabCase(studio.name);
@@ -123,11 +168,11 @@ const PageJoinUs = React.createClass({
       const uri = `/join-us/${studioSlug}`;
       if (studioSlug === selectedStudioSlug) {
         studioSelectedColor = { color: studio.color }
-        studioSelectedBackgroundColor = {
-          backgroundColor: studio.color,
+        underlineSize = {
           width: this.state.underlineWidth,
           left: this.state.underlineLeft
         }
+        underlineStudio = studioSlug;
       }
 
       return (
@@ -140,15 +185,17 @@ const PageJoinUs = React.createClass({
           style={studioSelectedColor}>
           <a
             href={uri}
-            onClick={Flux.overrideNoScroll(uri)}>{studioName}</a>
+            onClick={Flux.overrideNoScroll(uri)}><GradientWords word={studio.name} color={studioSlug} /></a>
         </div>
       );
     });
 
+    const underlineClasses = `underline underline-${underlineStudio}`;
+
     return (
       <nav className="jobs-studio-tabs" ref={(ref) => this.studioTabs = ref}>
         {tabs}
-        <div className="underline" style={studioSelectedBackgroundColor} ref={(ref) => this.underline = ref}></div>
+        <div className={underlineClasses} style={underlineSize} ref={(ref) => this.underline = ref}></div>
       </nav>
     );
   },
@@ -161,6 +208,7 @@ const PageJoinUs = React.createClass({
         <div key="job-section">
           <div className="current-openings">
             <h2>We're Hiring</h2>
+            <hr className="hr hr-join-us" />
           </div>
           <section className="jobs">
             <nav className="jobs-studio-tabs">

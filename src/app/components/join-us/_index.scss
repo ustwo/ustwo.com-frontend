@@ -34,7 +34,14 @@
 
   .single-column {
     background-color: #fff;
+    padding: 0;
     padding-bottom: $vertical-spacing;
+    @include core-layout();
+    display: none !important;
+
+    .wrapper {
+      @include core-vertical-padding;
+    }
 
     @media screen and (min-width: $bp-medium) {
       padding-bottom: $vertical-spacing-medium;
@@ -74,21 +81,12 @@
   }
 
   .current-openings {
-    display: flex;
-    align-items: center;
     text-align: center;
 
     h2 {
-      padding: 0 20px;
-    }
-  }
-
-  .current-openings {
-    padding-top: $vertical-spacing;
-    padding-bottom: 10px;
-
-    h2 {
       @extend .h3;
+      padding: 0 20px;
+      margin-bottom: $title-border-bottom;
     }
   }
 
@@ -98,7 +96,7 @@
 
   .jobs {
     position: relative;
-    padding: 10px 15px 40px 15px;
+    padding: 10px 15px 0 15px;
   }
 
   .jobs-studio-tabs {
@@ -132,17 +130,8 @@
       padding-top: 0;
     }
 
-    .current-openings {
-      padding-top: $vertical-spacing-medium;
-      padding-bottom: 40px;
-    }
-
     .benefits {
       height: 312px;
-    }
-
-    .jobs {
-      padding-bottom: 60px;
     }
 
     .jobs-studio-tabs {
@@ -159,6 +148,19 @@
         height: 4px;
         width: 150px;
         transition: all .3s ease-in-out;
+
+        &.underline-london {
+          @include page-background-colour(london);
+        }
+        &.underline-malmo {
+          @include page-background-colour(malmo);
+        }
+        &.underline-new-york {
+          @include page-background-colour(newyork);
+        }
+        &.underline-sydney {
+          @include page-background-colour(sydney);
+        }
       }
 
       &.animate .underline {
@@ -168,10 +170,6 @@
   }
 
   @media screen and (min-width: $bp-large) {
-    .jobs {
-      padding-bottom: 80px;
-    }
-
     .jobs-studio-tabs {
       margin-bottom: 45px;
 
@@ -179,11 +177,96 @@
         font-size: 26px;
       }
     }
+  }
+}
 
-    .current-openings {
-      padding-top: $vertical-spacing-large;
-      padding-bottom: 60px;
+.content-wrapper-join-video .content-wrapper-inner {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.content-wrapper-join-intro,
+.content-wrapper-join-video,
+.content-wrapper-join-extra {
+  background: white;
+}
+
+.join-us-hero {
+  .hero {
+    @include page-background-colour(join);
+
+    .rimage {
+      max-width: 800px;
     }
   }
 
+  .hero-image {
+    background-image: url('/images/join-us/hero-mobile.png');
+    background-repeat: no-repeat;
+    background-position: 50% bottom;
+    background-size: 100% auto;
+    width: 48%;
+    max-width: 300px;
+
+    &:after {
+      content: "";
+      position: absolute; // 142 x 255
+      background: url('/images/join-us/hero-crow.png') no-repeat 50% 50%;
+      width: 50px;
+      height: 100px;
+      left: 0;
+      bottom: 4%;
+      transform: translateX(-70px);
+      background-size: 100% auto;
+    }
+  }
+
+  @media screen and (min-width: $bp-tablet) {
+    .hero-image {
+      &:after {
+        width: 65px;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    .hero-image {
+      &:after {
+        bottom: 8%;
+        transform: translateX(-110px);
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-large) {
+    .hero {
+      h1 {
+        width: 60%;
+      }
+    }
+    .hero-image {
+      background-image: url('/images/join-us/hero-main.png');
+      width: 500px;
+      right: auto;
+      left: 60%;
+      max-width: none;
+      background-position: 0 70%;
+
+      &:before {
+        content: "";
+        position: absolute;
+        background-image: url('/images/join-us/hero-phone-inner.jpg'); // 508 x 902
+        background-size: 100% auto;
+        right: 48px;
+        top: calc(70% - 328px);
+        width: 224px;
+        height: 397px;
+      }
+
+      &:after {
+        bottom: 10%;
+        transform: translateX(-60px);
+      }
+    }
+  }
 }

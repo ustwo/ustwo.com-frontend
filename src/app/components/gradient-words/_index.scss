@@ -9,4 +9,56 @@
   -webkit-background-clip: text; /* Seems we can't rely on autoprefixer for this */
   background-clip: text;
   position: relative;
+
+  &.gradient-words-hot {
+    @include page-background-colour(hot);
+  }
+  &.gradient-words-cold {
+    @include page-background-colour(cold);
+  }
+  &.gradient-words-lukewarm {
+    @include page-background-colour(lukewarm);
+  }
+  &.gradient-words-auto {
+    @include page-background-colour(auto);
+  }
+  &.gradient-words-auto2 {
+    @include page-background-colour(auto2);
+  }
+  &.gradient-words-london {
+    @include page-background-colour(london);
+  }
+  &.gradient-words-malmo {
+    @include page-background-colour(malmo);
+  }
+  &.gradient-words-new-york {
+    @include page-background-colour(newyork);
+  }
+  &.gradient-words-sydney {
+    @include page-background-colour(sydney);
+  }
+  &.gradient-words-los-angeles {
+    @include page-background-colour(losangeles);
+  }
+  &.gradient-words-tokyo {
+    @include page-background-colour(tokyo);
+  }
+  &.gradient-words-home {
+    @include page-background-colour(home);
+  }
+  &.gradient-words-about-us {
+    @include page-background-colour(about);
+  }
+  &.gradient-words-work {
+    @include page-background-colour(work);
+  }
+  &.gradient-words-blog {
+    @include page-background-colour(blog);
+  }
+  &.gradient-words-join-us {
+    @include page-background-colour(join);
+  }
+  &.gradient-words-contact-us {
+    @include page-background-colour(contact);
+  }
 }

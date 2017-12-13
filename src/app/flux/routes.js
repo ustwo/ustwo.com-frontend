@@ -9,6 +9,15 @@ const routes = {
       async: ['related_content']
     }]
   },
+  aboutUs: {
+    id: 'about-us',
+    patterns: ['/about-us'],
+    data: () => [{
+      url: 'ustwo/v1/pages/about-us',
+      type: 'page',
+      slug: 'about-us'
+    }]
+  },
   work: {
     id: 'work',
     patterns: ['/work'],
@@ -45,13 +54,13 @@ const routes = {
       slug: 'launch-scale'
     }]
   },
-  waysOfWorking: {
-    id: 'work/ways-of-working',
-    patterns: ['/work/ways-of-working'],
+  changeTransform: {
+    id: 'work/change-transform',
+    patterns: ['/work/change-transform'],
     data: () => [{
       url: 'ustwo/v1/pages/work',
       type: 'page',
-      slug: 'ways-of-working'
+      slug: 'change-transform'
     }]
   },
   auto: {
@@ -197,13 +206,13 @@ const routes = {
     statusCode: 404,
     data: () => []
   },
-  tully: {
-    id: 'tully',
-    patterns: ['/tully'],
+  contactUs: {
+    id: 'contact-us',
+    patterns: ['/contact-us'],
     data: () => [{
-      url: 'ustwo/v1/pages/tully',
+      url: 'ustwo/v1/pages/contact-us',
       type: 'page',
-      slug: 'tully'
+      slug: 'contact-us'
     }]
   },
 };

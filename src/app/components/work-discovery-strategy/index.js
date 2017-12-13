@@ -1,11 +1,13 @@
 import React from 'react';
 import WorkCapability from 'app/components/work-capability';
 import Footer from 'app/components/footer';
+import ContactFloating from 'app/components/contact-floating';
 
 function PageWorkDiscoveryStrategy({ footer, studios, currentPage }) {
   return (
     <div className="work-discovery-strategy">
       <WorkCapability data={workDiscoverStrategyData} />
+      <ContactFloating buttonFlavour="work" darkStyle />
       <Footer data={footer} studios={studios} currentPage={currentPage}/>
     </div>
   );

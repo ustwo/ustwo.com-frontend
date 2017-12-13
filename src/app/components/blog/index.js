@@ -154,7 +154,7 @@ const PageBlog = React.createClass({
           />
         </section>
         <ScrollWrapper
-          component={<ContactBlock />}
+          component={<ContactBlock page={page ? page.slug : 'home'} />}
           documentScrollPosition={documentScrollPosition}
           viewportDimensions={viewportDimensions}
           requireScreenPosition={true}

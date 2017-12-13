@@ -54,6 +54,7 @@
     position: relative;
     z-index: 2;
     color: $offWhite;
+    @include text-shadow;
   }
 
   &.notFullScreen {

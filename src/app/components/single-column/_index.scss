@@ -19,18 +19,13 @@
 .single-column {
   padding-left: 6.25%;
   padding-right: 6.25%;
+  padding-top: $vertical-spacing;
 
-  &,
-  & + img {
-    padding-top: $vertical-spacing;
-  }
-
-  & + .video,
   & + .related-content {
     margin-top: $vertical-spacing;
   }
 
-  &:first-of-type + img {
+  & + img {
     padding-top: 0;
   }
 
@@ -38,6 +33,10 @@
     font-family: $PxGroteskBold;
     border-bottom-width: 2px;
     border-bottom-style: solid;
+  }
+
+  h2 {
+    @extend .h3;
   }
 
   .section-title {
@@ -51,7 +50,7 @@
 
   hr {
     width: 120px;
-    margin: 30px auto;
+    margin: $title-border-bottom auto;
     height: 3px;
     border: none;
   }
@@ -83,8 +82,7 @@
   }
 
   @media screen and (min-width: $bp-medium) {
-    &,
-    & + img {
+    & {
       padding-top: $vertical-spacing-medium;
 
       &.intro {
@@ -96,15 +94,13 @@
       padding-top: 0;
     }
 
-    & + .video,
     & + .related-content {
       margin-top: $vertical-spacing-medium;
     }
   }
 
   @media screen and (min-width: $bp-large) {
-    &,
-    & + img {
+    & {
       padding-top: $vertical-spacing-large;
 
       &.intro {
@@ -116,7 +112,6 @@
       padding-top: 0;
     }
 
-    & + .video,
     & + .related-content {
       margin-top: $vertical-spacing-large;
     }
