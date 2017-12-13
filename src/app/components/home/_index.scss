@@ -66,7 +66,7 @@
 .home-ventures-wrapper {
   @include darkBackground;
 
-  h1,
+  .home-message-text,
   .home-carousel-item-text h2,
   .home-carousel-item-description {
     color: $offWhite;
@@ -93,4 +93,8 @@
       }
     }
   }
+}
+
+.home-message-text {
+  cursor: pointer;
 }

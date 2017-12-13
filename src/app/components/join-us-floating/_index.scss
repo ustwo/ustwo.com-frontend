@@ -1,7 +1,8 @@
 .join-us-floating {
   @include core-layout();
   @include core-vertical-padding();
-  background: rgba(0,0,0,.04);
+  // background: rgba(0,0,0,.04);
+  @include darkBackground;
 
   .join-us-floating-inner {
     p {

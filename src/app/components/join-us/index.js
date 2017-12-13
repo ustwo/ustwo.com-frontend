@@ -89,7 +89,7 @@ const PageJoinUs = React.createClass({
           </ContentWrapper>
 
           <ContentWrapper className="content-wrapper-join-extra">
-            <div className="content-wrapper-single-column">
+            <div className="content-wrapper-statement">
               <p>We strongly believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds. We listen, we’re open to all and we believe in what we do. And the most exciting thing? We're just getting started. If you want to know more, read our <a href="https://usweb-cdn.ustwo.com/ustwo-production/uploads/2017/12/ustwo_cultural_manifesto_dec17.pdf">Manifesto (47Mb)</a>.</p>
             </div>
           </ContentWrapper>

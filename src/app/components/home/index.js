@@ -94,7 +94,7 @@ class PageHome extends Component {
       text: <HomeVentureMessage />
     }
     const textBlockMore = {
-      title: `Together in Partnership`,
+      title: `CREATE MEANINGFUL IMPACT`,
       text: <HomeMoreMessage />
     }
 

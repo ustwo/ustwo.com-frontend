@@ -16,10 +16,10 @@ function AboutHero({ isMobile, fixedHeight, scrollProgress }) {
   return (
     <div className="about-hero">
       <Hero
-        title="We disrupt industries, define new frontiers and deliver tangible results"
+        title="WE LAUNCH PRODUCTS, SERVICES AND COMPANIES THAT HAVE A MEANINGFUL IMPACT ON THE WORLD"
         transitionImage={true}
         showDownIndicator={true}
-        eventLabel='Change through making'
+        eventLabel='OUR MISSION'
         video={video}
         fixedHeight={fixedHeight}
         isMobile={isMobile}

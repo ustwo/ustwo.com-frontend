@@ -29,22 +29,33 @@ function ContactBlock({ page, screenPosition }) {
     }
   } else if (page === 'work') {
     content = {
-      sectionTitle: 'GOT SOMETHING IN MIND?',
-      title: 'Talk to ustwo ',
-      email: "We'd love to hear from you",
+      sectionTitle: 'WANT TO LEARN MORE?',
+      title: 'WE’D LOVE TO HEAR FROM YOU',
       link: true
     }
   } else if (page === 'home') {
     content = {
-      sectionTitle: 'Make change happen',
-      title: 'Talk to ustwo ',
-      email: "We'd love to hear from you",
+      sectionTitle: 'Get in touch',
+      title: 'WE’D LOVE TO HEAR FROM YOU',
+      email: "hello@ustwo.com",
+      link: true
+    }
+  } else if (page === 'blog') {
+    content = {
+      sectionTitle: 'Got something in mind?',
+      title: 'WE’D LOVE TO HEAR FROM YOU',
+      link: true
+    }
+  } else if (page === 'about-us') {
+    content = {
+      sectionTitle: 'KEEN TO JUMP IN?',
+      title: 'WE’D LOVE TO HEAR FROM YOU',
       link: true
     }
   } else {
     content = {
       sectionTitle: 'Make change happen',
-      title: 'Talk to ustwo ',
+      title: 'WE’D LOVE TO HEAR FROM YOU',
       email: 'hello@ustwo.com'
     }
   }

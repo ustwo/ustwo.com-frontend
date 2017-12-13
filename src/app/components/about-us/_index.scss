@@ -47,7 +47,7 @@
 }
 
 .content-wrapper-manifesto {
-  @include darkBackground;
+  background: rgba(0,0,0,.04);
 
   h2 {
     margin-bottom: $title-border-bottom;

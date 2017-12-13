@@ -70,10 +70,11 @@ function pageAboutUs({ page, className, loaded, isMobile, footer, studios, curre
             <h2>Who we are</h2>
             <hr className="hr hr-about" />
             {aboutContent.who.map((item, i) => <p key={`work-para-${i}`}>{item}</p>)}
+            <p>Founded by Mills and Sinx back in 2004, our mission is to build a studio where like-minded, passionate people can work under one roof, share unique ideas and bring them to life.</p>
+            <p>Over the last 13 years we’ve grown, and there are now four unique ustwo studios around the world across London, New York, Malmö and Sydney, in addition to <a href="https://ustwogames.co.uk">ustwo Games</a>, and <a href="http://https://adventure.ustwo.com/">ustwo Adventures</a>, our startup fund/incubator.</p>
+            <p>Whether we’re doing innovative work for clients, bringing our own ideas to award-winning life, or launching disruptive new businesses, ustwo has never done normal.</p>
           </div>
         </ContentWrapper>
-
-        <JoinUsFloating buttonFlavour="join" />
 
         <ContentWrapper className="content-wrapper-manifesto">
           <div className="content-wrapper-statement">
@@ -84,6 +85,8 @@ function pageAboutUs({ page, className, loaded, isMobile, footer, studios, curre
             <a href="https://usweb-cdn.ustwo.com/ustwo-production/uploads/2017/12/ustwo_cultural_manifesto_dec17.pdf">Read our Manifesto (47Mb)</a>
           </div>
         </ContentWrapper>
+
+        <JoinUsFloating buttonFlavour="join" />
 
         <ScrollWrapper
           component={<ContactBlock page={page ? page.slug : 'home'} />}
@@ -104,7 +107,7 @@ export default pageAboutUs;
 
 const aboutContent = {
   what: [
-    "We work with businesses and organisations of all shapes and sizes, from early-stage startups to the world’s leading brands, to create digital products and services and solve the most pressing challenges they face today and in the future. ",
+    "We work with businesses and organisations of all shapes and sizes, from early-stage startups to the world’s leading brands, to create digital products and services that solve the problems of today as well as define the opportunities of the future.",
     "Through our company builder and accelerator arm, we also develop our own products and invest in ventures – all with the same goal of creating meaningful impact on the world.",
     "Whether it's innovative experiences for clients or launching businesses that redefine and push the boundaries of conventional industries, ustwo is constantly challenging the definition of what it means to be a digital product studio."
   ],

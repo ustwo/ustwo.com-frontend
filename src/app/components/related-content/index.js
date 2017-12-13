@@ -3,6 +3,14 @@ import { get } from 'lodash';
 import WorkItem from 'app/components/work-item';
 import BlogPostListItem from 'app/components/blog-post-list-item';
 import Subscription from 'app/components/subscription';
+import Flux from 'app/flux';
+
+function relatedContentBlogButton() {
+  return (e) => {
+    e.preventDefault();
+    Flux.navigate('/blog');
+  }
+}
 
 export default ({ content, title, newsletter, loaded }) => {
   const renderItems = content.map(data => {
@@ -25,7 +33,7 @@ export default ({ content, title, newsletter, loaded }) => {
   return (
     <div className="related-content">
       <div className="wrapper">
-        <h2 className="more-juice-title">{title ? title : 'More Juice'}</h2>
+        <h2 className="more-juice-title"><a href="/blog" onClick={relatedContentBlogButton()}>{title ? title : 'More Juice'}</a></h2>
         <div className="related-content-cards">
           {renderItems}
         </div>

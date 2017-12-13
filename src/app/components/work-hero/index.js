@@ -19,7 +19,7 @@ function WorkHero({ isMobile, fixedHeight, scrollProgress }) {
         title="WE DESIGN AND DELIVER DIGITAL PRODUCTS AND SERVICES THAT CREATE MEANINGFUL IMPACT"
         transitionImage={true}
         showDownIndicator={true}
-        eventLabel='TOGETHER IN PARTNERSHIP'
+        eventLabel='CHANGE THROUGH MAKING'
         video={video}
         fixedHeight={fixedHeight}
         isMobile={isMobile}
