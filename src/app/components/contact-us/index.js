@@ -14,7 +14,6 @@ function renderContacts(contacts) {
     return (
       <li>
         <h5 className="contact-contacts-name">{name}</h5>
-        <p className="contact-contacts-title">{title}</p>
         <p className="contact-contacts-email"><a href={`mailto:${email}`}>{email}</a></p>
       </li>
     );
@@ -71,8 +70,8 @@ function pageContactUs({ page, currentParams, studios, currentPage, footer, moda
           <div className="content-wrapper-statement">
             <h2>New Business</h2>
             <hr className="hr hr-contact" />
-            <p>Is there a business problem you are looking to solve? Contact us to find out how we can help <a href="mailto:work@ustwo.com">work@ustwo.com</a> </p>
-            <p>You can also contact the new business team from each of our studios directly. Find a rep from the studio near you below and say hi: </p>
+            <p>Have a project or an idea you'd like to collaborate with ustwo on? Interested in what ustwo can do for you?</p>
+            <p>Speak to one of our client business team from the region or studio nearest to you:</p>
           </div>
         </ContentWrapper>
 
@@ -88,15 +87,15 @@ function pageContactUs({ page, currentParams, studios, currentPage, footer, moda
           <div className="content-triple-columns">
             <div className="content-triple-column">
               <h5>General Enquiries</h5>
-              <p>Feel free to get in touch at <a href="mailto:hello@ustwo.com">hello@ustwo.com</a> with other opportunities, questions or feedback. We're a curious lot and would love to hear from you.</p>
+              <p>Feel free to get in touch at <a href="mailto:hello@ustwo.com">hello@ustwo.com</a> with other opportunities, questions or feedback. We're a friendly lot and would love to hear from you.</p>
             </div>
             <div className="content-triple-column">
               <h5>Media Enquiries</h5>
               <p>We're eager to add to conversations around design, development and business. Please reach out to <a href="mailto:press@ustwo.com">press@ustwo.com</a> for media requests, interviews or speaking opportunities.</p>
             </div>
             <div className="content-triple-column">
-              <h5>Games Enquiries</h5>
-              <p>INSERT COPY</p>
+              <h5>GAMES AND MONUMENT VALLEY ENQUIRIES</h5>
+              <p>The ustwo Games studio has their very own website <a href="https://ustwogames.co.uk/">ustwogames.co.uk</a> or you can get in touch with them directly at <a href="mailto:hello@ustwogames.co.uk">hello@ustwogames.co.uk</a></p>
             </div>
           </div>
         </ContentWrapper>
@@ -110,7 +109,7 @@ function pageContactUs({ page, currentParams, studios, currentPage, footer, moda
         </ContentWrapper>
 
         <ContentWrapper className="content-wrapper-contact-find">
-          <h2>Find our Studios:</h2>
+          <h2>Find our Studios</h2>
         </ContentWrapper>
 
         <Footer data={footer} studios={studios} currentPage={currentPage}/>
@@ -128,26 +127,26 @@ const contactContent = {
       studio: 'London',
       name: 'Cameron Day',
       title: 'New Business Partner',
-      email: 'londonbd@ustwo.com',
+      email: 'hello.london@ustwo.com',
     },{
       studio: 'Malmo',
       name: 'Anders Rörgren',
       title: 'Business Development Lead',
-      email: 'malmobd@ustwo.com',
+      email: 'hello.europe@ustwo.com',
     }]
   },
   americas: {
-    title: 'The Americas',
+    title: 'North America',
     contacts: [{
       studio: 'New York',
       name: 'Justin Pike',
       title: 'Business Development Lead',
-      email: 'newyorkbd@ustwo.com',
+      email: 'hello.newyork@ustwo.com',
     },{
       studio: 'Los Angeles',
       name: 'Lee Simpson',
       title: 'BD, TV & Entertainment',
-      email: 'email@ustwo.com',
+      email: 'hello.losangeles@ustwo.com',
     }]
   },
   asia: {
@@ -156,12 +155,12 @@ const contactContent = {
       studio: 'Sydney',
       name: 'Luke Hankinson',
       title: 'Business Development Lead',
-      email: 'sydneybd@ustwo.com',
+      email: 'hello.sydney@ustwo.com',
     },{
       studio: 'Tokyo',
       name: 'Mayu Nakamura',
       title: 'Senior Interaction Designer',
-      email: 'email@ustwo.com',
+      email: 'hello.tokyo@ustwo.com',
     }]
   }
 }

@@ -23,7 +23,7 @@ function ContactBlock({ page, screenPosition }) {
     }
   } else if (page === 'join-us') {
     content = {
-      sectionTitle: 'Make change happen',
+      sectionTitle: 'GOT A GENERAL JOB-RELATED QUESTION?',
       title: 'Talk to ustwo ',
       email: 'careers@ustwo.com'
     }

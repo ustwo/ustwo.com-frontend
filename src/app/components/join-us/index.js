@@ -106,6 +106,15 @@ const PageJoinUs = React.createClass({
             })}
           </ContentWrapper>
 
+          <ContentWrapper className="content-wrapper-contact-jobs">
+            <div className="content-wrapper-statement">
+              <h2>LOOKING TO JOIN USTWO GAMES?</h2>
+              <hr className="hr hr-join-us" />
+              <p>ustwo Games is an independent mobile games studio that makes interactive entertainment which challenges the medium, including their BAFTA award-winning hit Monument Valley, to innovative virtual reality experience Land’s End.</p>
+              <p>You can find out more about them and their open positions at <a href="https://ustwogames.co.uk/">ustwogames.co.uk</a></p>
+            </div>
+          </ContentWrapper>
+
           <ScrollWrapper
             component={<ContactBlock page={page ? page.slug : 'home'} />}
             documentScrollPosition={documentScrollPosition}
