@@ -76,8 +76,8 @@ const PageJoinUs = React.createClass({
             <div className="content-wrapper-statement">
               <h2>Get to know ustwo</h2>
               <hr className="hr hr-join-us" />
-              <p>From day one, culture has been our bedrock, and crucial to our success. We've always invested in our people and studios, and it's important to us that a workplace should feel like home. </p>
-              <p>There are 250 of us, from over 30 countries – collectively we stand for something different.</p>
+              <p>From day one, culture has been our bedrock, and crucial to our success. We've always invested in our people and studios, and it's important to us that a workplace should feel like home. There are 250 of us, from over 30 countries – collectively we stand for something different.</p>
+              <p>Joining ustwo, we offer you a creative work environment, with a positive and collaborative atmosphere and competitive employee benefits in all our studios around the world.</p>
             </div>
           </ContentWrapper>
 
@@ -90,8 +90,7 @@ const PageJoinUs = React.createClass({
 
           <ContentWrapper className="content-wrapper-join-extra">
             <div className="content-wrapper-single-column">
-              <p>Joining ustwo, we offer you a creative work environment, with a positive and collaborative atmosphere and competitive employee benefits in all our studios around the world. You'll be growing your competence and working with the biggest brands in the world, and all we ask is you do the best work of your life. Deal?</p>
-              <p>We strongly believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds. We listen, we’re open to all and we believe in what we do. And the most exciting thing? We're just getting started. If you want to know more, read our Manifesto.</p>
+              <p>We strongly believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds. We listen, we’re open to all and we believe in what we do. And the most exciting thing? We're just getting started. If you want to know more, read our <a href="https://usweb-cdn.ustwo.com/ustwo-production/uploads/2017/12/ustwo_cultural_manifesto_dec17.pdf">Manifesto (47Mb)</a>.</p>
             </div>
           </ContentWrapper>
 

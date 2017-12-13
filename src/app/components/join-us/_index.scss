@@ -96,7 +96,7 @@
 
   .jobs {
     position: relative;
-    padding: 10px 15px 40px 15px;
+    padding: 10px 15px 0 15px;
   }
 
   .jobs-studio-tabs {
@@ -132,10 +132,6 @@
 
     .benefits {
       height: 312px;
-    }
-
-    .jobs {
-      padding-bottom: 60px;
     }
 
     .jobs-studio-tabs {
@@ -174,10 +170,6 @@
   }
 
   @media screen and (min-width: $bp-large) {
-    .jobs {
-      padding-bottom: 80px;
-    }
-
     .jobs-studio-tabs {
       margin-bottom: 45px;
 

@@ -13,7 +13,7 @@
     height: 100%;
 
     h1 {
-      width: 67%;
+      width: 65%;
     }
   }
 
@@ -30,13 +30,5 @@
 
   .down-indicator {
     z-index: 2;
-  }
-
-  @media screen and (min-width: $bp-smaller) {
-    .hero {
-      h1 {
-        width: 75%;
-      }
-    }
   }
 }
