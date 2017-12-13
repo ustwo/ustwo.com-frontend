@@ -118,24 +118,24 @@ const aboutContent = {
     title: 'Discovery & Strategy',
     image: '/images/illustration-discovery.svg',
     text: 'Innovate and get ahead. Define new propositions and validate opportunities with a fresh understanding of what your customers need most.',
-    url: '/work/discovery-strategy'
+    url: '/about-us/discovery-strategy'
   },{
     name: 'design',
     title: 'Design & Delivery',
     image: '/images/illustration-design-and-build.svg',
     text: 'Turn your vision into reality. World-class design is matched with exceptional software development and execution to set your company apart.',
-    url: '/work/design-build'
+    url: '/about-us/design-build'
   },{
     name: 'launch',
     title: 'Launch & Scale',
     image: '/images/illustration-launch-and-scale.svg',
     text: "Ship your product and stay responsive. Your product is out in the world: it's time to grow, evolve, and adapt to customers’ changing needs.",
-    url: '/work/launch-scale'
+    url: '/about-us/launch-scale'
   },{
     name: 'working',
     title: 'Change & Transform',
     image: '/images/illustration-change-and-transform.svg',
     text: 'Build capability through doing. Our teams bake transformative ways of working into your business and teams every step of the way so you can sustain the impact you make.',
-    url: '/work/change-and-transform'
+    url: '/about-us/change-transform'
   }]
 }

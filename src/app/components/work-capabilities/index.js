@@ -37,13 +37,13 @@ export default WorkCapabilities;
 const workCapabilitiesData = [{
   name: 'discovery',
   title: 'Discovery & Strategy',
-  url: '/work/discovery-strategy'
+  url: '/about-us/discovery-strategy'
 }, {
   name: 'design',
   title: 'Design & Build',
-  url: '/work/design-build'
+  url: '/about-us/design-build'
 }, {
   name: 'launch',
   title: 'Launch & Scale',
-  url: '/work/launch-scale'
+  url: '/about-us/launch-scale'
 }];

@@ -28,37 +28,37 @@ const routes = {
     }]
   },
   discoveryStrategy: {
-    id: 'work/discovery-strategy',
-    patterns: ['/work/discovery-strategy'],
+    id: 'about-us/discovery-strategy',
+    patterns: ['/about-us/discovery-strategy'],
     data: () => [{
-      url: 'ustwo/v1/pages/work',
+      url: 'ustwo/v1/pages/about-us',
       type: 'page',
       slug: 'discovery-strategy'
     }]
   },
   designBuild: {
-    id: 'work/design-build',
-    patterns: ['/work/design-build'],
+    id: 'about-us/design-build',
+    patterns: ['/about-us/design-build'],
     data: () => [{
-      url: 'ustwo/v1/pages/work',
+      url: 'ustwo/v1/pages/about-us',
       type: 'page',
       slug: 'design-build'
     }]
   },
   launchScale: {
-    id: 'work/launch-scale',
-    patterns: ['/work/launch-scale'],
+    id: 'about-us/launch-scale',
+    patterns: ['/about-us/launch-scale'],
     data: () => [{
-      url: 'ustwo/v1/pages/work',
+      url: 'ustwo/v1/pages/about-us',
       type: 'page',
       slug: 'launch-scale'
     }]
   },
   changeTransform: {
-    id: 'work/change-transform',
-    patterns: ['/work/change-transform'],
+    id: 'about-us/change-transform',
+    patterns: ['/about-us/change-transform'],
     data: () => [{
-      url: 'ustwo/v1/pages/work',
+      url: 'ustwo/v1/pages/about-us',
       type: 'page',
       slug: 'change-transform'
     }]

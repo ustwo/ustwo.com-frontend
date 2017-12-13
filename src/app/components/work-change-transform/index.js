@@ -6,8 +6,8 @@ import ContactFloating from 'app/components/contact-floating';
 
 function PageChangeTransform({ footer, studios, currentPage }) {
   return (
-    <div className="work-change-and-transform">
-      <WorkCapability data={woekChangeTransform} />
+    <div className="work-change-transform">
+      <WorkCapability data={workChangeTransform} />
       <ContactFloating buttonFlavour="work" darkStyle />
       <Footer data={footer} studios={studios} currentPage={currentPage}/>
     </div>
@@ -16,7 +16,7 @@ function PageChangeTransform({ footer, studios, currentPage }) {
 
 export default PageChangeTransform;
 
-const woekChangeTransform = {
+const workChangeTransform = {
   name: 'working',
   title: 'Change & Transform',
   blocks: [{
