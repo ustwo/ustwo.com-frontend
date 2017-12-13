@@ -95,7 +95,7 @@ function pageContactUs({ page, currentParams, studios, currentPage, footer, moda
             </div>
             <div className="content-triple-column">
               <h5>GAMES AND MONUMENT VALLEY ENQUIRIES</h5>
-              <p>The ustwo Games studio has their very own website <a href="https://ustwogames.co.uk/">ustwogames.co.uk</a> or you can get in touch with them directly at <a href="mailto:hello@ustwogames.co.uk">hello@ustwogames.co.uk</a></p>
+              <p>The ustwo Games studio has their very own website <a href="https://ustwogames.co.uk/">ustwogames.co.uk</a> or you can get in touch with them directly at <a href="mailto:hello@ustwogames.co.uk">hello@ustwogames.co.uk</a>.</p>
             </div>
           </div>
         </ContentWrapper>
