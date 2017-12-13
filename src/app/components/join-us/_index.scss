@@ -96,7 +96,7 @@
 
   .jobs {
     position: relative;
-    padding: 10px 15px 0 15px;
+    padding-top: 10px;
   }
 
   .jobs-studio-tabs {
@@ -118,11 +118,6 @@
         opacity: $hover-fade-back;
       }
     }
-  }
-
-  .jobs-container {
-    max-width: 1120px;
-    margin: 0 auto;
   }
 
   @media screen and (min-width: $bp-medium) {

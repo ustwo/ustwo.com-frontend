@@ -1,7 +1,6 @@
 import React from 'react';
 import { get } from 'lodash';
 import Rimage from 'app/components/rimage';
-import GradientWords from 'app/components/gradient-words';
 import getFeaturedImage from 'app/lib/get-featured-image';
 import kebabCase from 'lodash/string/kebabCase';
 
@@ -14,7 +13,7 @@ function StudioBlock({ studio, align }) {
   return (
     <div className={classes}>
       <div className="studio-block-info">
-        <h3><GradientWords word={get(studio, 'recruitment-title')} color={name} /></h3>
+        <h3>{get(studio, 'recruitment-title')}</h3>
         <p className="studio-block-blurb" dangerouslySetInnerHTML={{__html: studioRecruitmentDescription}}></p>
       </div>
       <Rimage
