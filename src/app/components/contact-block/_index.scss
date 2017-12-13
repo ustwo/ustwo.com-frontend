@@ -82,6 +82,41 @@
   }
 }
 
+.contact-block-link {
+  cursor: pointer;
+
+  h2 {
+    .contact-block-email {
+      font-size: 17px;
+    }
+  }
+
+  @media screen and (min-width: $bp-smaller) {
+    h2 {
+      .contact-block-email {
+        font-size: 20px;
+      }
+    }
+  }
+
+  /* redefine the following font sizes so we can have the above */
+  @media screen and (min-width: $bp-medium) {
+    h2 {
+      .contact-block-email {
+        font-size: 30px;
+      }
+    }
+  }
+
+  @media screen and (min-width: $bp-larger) {
+    h2 {
+      .contact-block-email {
+        font-size: 40px;
+      }
+    }
+  }
+}
+
 .contact-block-email {
   position: relative;
   display: inline-block;

@@ -5,15 +5,15 @@ function HomeMoreMessage({ showPopup }) {
   return (
     <h1>
       <span>We </span><GradientWords
-        word="ship"
+        word="disrupt"
         color="cold"
-      /><span> products, </span><GradientWords
-        word="launch"
+      /><span> industries, </span><GradientWords
+        word="define"
         color="lukewarm"
-      /><span> ventures and </span><GradientWords
-        word="invest"
+      /><span> new frontiers, and </span><GradientWords
+        word="deliver"
         color="hot"
-      /><span> in startups</span>
+      /><span> tangible results</span>
     </h1>
   );
 }

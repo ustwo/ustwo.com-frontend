@@ -2,6 +2,15 @@ import React from 'react';
 import GradientWords from '../gradient-words';
 import PaperPlane from 'app/components/paper-plane';
 import GradientBackgroundSequence from 'app/components/gradient-background-sequence';
+import Flux from 'app/flux';
+import classnames from 'classnames';
+
+function contactBlockOnClick() {
+  return (e) => {
+    e.preventDefault();
+    Flux.navigate('/contact-us');
+  }
+}
 
 function ContactBlock({ page, screenPosition }) {
 
@@ -24,6 +33,13 @@ function ContactBlock({ page, screenPosition }) {
       title: 'Talk to ustwo ',
       email: 'work@ustwo.com'
     }
+  } else if (page === 'home') {
+    content = {
+      sectionTitle: 'Make change happen',
+      title: 'Talk to ustwo ',
+      email: "We'd love to hear from you",
+      link: true
+    }
   } else {
     content = {
       sectionTitle: 'Make change happen',
@@ -32,8 +48,12 @@ function ContactBlock({ page, screenPosition }) {
     }
   }
 
+  const classes = classnames('contact-block', {
+    'contact-block-link': content.link
+  })
+
   return (
-    <div className="contact-block">
+    <div className={classes} onClick={content.link ? contactBlockOnClick() : null}>
       <div className="home-text-block">
         <div className="section-title">{content.sectionTitle}</div>
         <h2>

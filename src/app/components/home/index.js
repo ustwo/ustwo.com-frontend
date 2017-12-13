@@ -10,6 +10,7 @@ import HomeTextBlock from 'app/components/home-text-block';
 import HomeCarousel from 'app/components/home-carousel';
 import HomeWelcomeMessage from 'app/components/home-welcome-message';
 import HomeMoreMessage from 'app/components/home-more-message';
+import HomeVentureMessage from 'app/components/home-venture-message';
 import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
 import ContactFloating from 'app/components/contact-floating';
@@ -84,13 +85,16 @@ class PageHome extends Component {
 
     const classes = classnames('page-home-content', this.props.className, { venturesActive, loaded });
 
-    // TODO: Do this nicer! Extract content. Perhaps when/if we integrate with CMS
     const textBlockIntro = {
       title: `ustwo is a digital product and service studio`,
       text: <HomeWelcomeMessage />
     }
+    const textBlockVentures = {
+      title: `Do more to learn more`,
+      text: <HomeVentureMessage />
+    }
     const textBlockMore = {
-      title: `Do more to learn more.`,
+      title: `Together in Partnership`,
       text: <HomeMoreMessage />
     }
 
@@ -118,8 +122,6 @@ class PageHome extends Component {
             fixedHeight={fixedHeight}
           />
 
-          <ContactFloating buttonFlavour="home" />
-
           <ScrollWrapper
             component={<HomeCarousel carouselItems={dataProducts} isMobile={isMobile} inView={!venturesActive} loaded={loaded} />}
             documentScrollPosition={documentScrollPosition}
@@ -131,14 +133,12 @@ class PageHome extends Component {
           <div className="home-ventures-wrapper" ref={(ref) => this.venturesWrapper = ref }>
 
             <ScrollWrapper
-              component={<HomeTextBlock content={textBlockMore} />}
+              component={<HomeTextBlock content={textBlockVentures} />}
               documentScrollPosition={documentScrollPosition}
               viewportDimensions={viewportDimensions}
               className="scroll-wrapper-home-more-message"
               fixedHeight={fixedHeight}
             />
-
-            <ContactFloating buttonFlavour="home" darkStyle />
 
             <ScrollWrapper
               component={<HomeCarousel carouselItems={dataVentures} isMobile={isMobile} darkStyle={true} inView={venturesActive} loaded={loaded} />}
@@ -149,6 +149,14 @@ class PageHome extends Component {
             />
 
           </div>
+
+          <ScrollWrapper
+            component={<HomeTextBlock content={textBlockMore} />}
+            documentScrollPosition={documentScrollPosition}
+            viewportDimensions={viewportDimensions}
+            className="scroll-wrapper-home-welcome-message"
+            fixedHeight={fixedHeight}
+          />
 
           {this.latestPosts(loaded)}
 

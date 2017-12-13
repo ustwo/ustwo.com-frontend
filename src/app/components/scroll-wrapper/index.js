@@ -129,7 +129,7 @@ class ScrollWrapper extends Component {
     const renderComponent = React.cloneElement(component, { scrollProgress, screenPosition, className });
 
     const classes = classnames('scroll-wrapper', className);
-    const styles = fixedHeight ? { height: `${fixedHeight * .9 }px` } : null;
+    const styles = fixedHeight ? { height: `${fixedHeight * .8 }px` } : null;
 
     return (
       <div className={classes} ref={(ref) => this.scrollWrapper = ref} style={styles}>

@@ -4,7 +4,7 @@ import GradientWords from '../gradient-words';
 function HomeWelcomeMessage({ showPopup }) {
   return (
     <div className="home-message-text">
-      <span>We help drive positive change for </span><GradientWords
+      <span>We drive positive change for </span><GradientWords
         word="people"
         color="hot"
       /><span>, </span><GradientWords
