@@ -16,10 +16,10 @@ function WorkHero({ isMobile, fixedHeight, scrollProgress }) {
   return (
     <div className="about-hero">
       <Hero
-        title="Make things to change things"
+        title="WE DESIGN AND DELIVER DIGITAL PRODUCTS AND SERVICES THAT CREATE MEANINGFUL IMPACT"
         transitionImage={true}
         showDownIndicator={true}
-        eventLabel='Work'
+        eventLabel='TOGETHER IN PARTNERSHIP'
         video={video}
         fixedHeight={fixedHeight}
         isMobile={isMobile}

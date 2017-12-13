@@ -29,9 +29,10 @@ function ContactBlock({ page, screenPosition }) {
     }
   } else if (page === 'work') {
     content = {
-      sectionTitle: 'Make change happen',
+      sectionTitle: 'GOT SOMETHING IN MIND?',
       title: 'Talk to ustwo ',
-      email: 'work@ustwo.com'
+      email: "We'd love to hear from you",
+      link: true
     }
   } else if (page === 'home') {
     content = {

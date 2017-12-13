@@ -4,21 +4,21 @@ import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
 import ContactFloating from 'app/components/contact-floating';
 
-function PageWorkWaysOfWorking({ footer, studios, currentPage }) {
+function PageChangeTransform({ footer, studios, currentPage }) {
   return (
-    <div className="work-ways-of-working">
-      <WorkCapability data={workWaysOfWorkingData} />
+    <div className="work-change-and-transform">
+      <WorkCapability data={woekChangeTransform} />
       <ContactFloating buttonFlavour="work" darkStyle />
       <Footer data={footer} studios={studios} currentPage={currentPage}/>
     </div>
   );
 }
 
-export default PageWorkWaysOfWorking;
+export default PageChangeTransform;
 
-const workWaysOfWorkingData = {
+const woekChangeTransform = {
   name: 'working',
-  title: 'Ways of Working',
+  title: 'Change & Transform',
   blocks: [{
     title: 'From discovery to transformation',
     text: 'We build teams with the perfect mix of business-value and empathic-design expertise. Our approach creates a great culture, upgrades the ways your business does digital and unites everyone to achieve lasting change.',

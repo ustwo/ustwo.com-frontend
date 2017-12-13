@@ -1,13 +1,8 @@
 .studio-block {
   background: #fff;
-  @include box-shadow();
-  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
+  margin-bottom: 5px;
 
   h3 {
     margin-top: 0;
@@ -22,6 +17,7 @@
 .studio-block-info {
   padding: 20px;
   order: 2;
+  color: white;
 }
 
 .studio-block-blurb {
@@ -35,13 +31,8 @@
 
 @media screen and (min-width: $bp-medium) {
   .studio-block {
-    margin-bottom: 40px;
     min-height: 320px;
     flex-direction: row;
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
 
     > div {
       width: 50%;
@@ -71,5 +62,20 @@
     .studio-block-photo {
       order: 1;
     }
+  }
+}
+
+.studio-block {
+  &.studio-london {
+    @include page-background-colour(london);
+  }
+  &.studio-malmo {
+    @include page-background-colour(malmo);
+  }
+  &.studio-new-york {
+    @include page-background-colour(newyork);
+  }
+  &.studio-sydney {
+    @include page-background-colour(sydney);
   }
 }

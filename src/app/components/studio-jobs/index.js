@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import find from 'lodash/collection/find';
 import kebabCase from 'lodash/string/kebabCase';
-
+import StudioBlock from 'app/components/studio-block';
 import Flux from 'app/flux';
 import JobItem from 'app/components/job-item';
 import Rimage from 'app/components/rimage';
@@ -77,6 +77,7 @@ const StudioJobs = React.createClass({
     return (
       <div className={classes}>
         <div className="tab-content" id={`tab-content-${id}`}>
+          <StudioBlock studio={studio} />
           {this.renderJobsList()}
         </div>
       </div>

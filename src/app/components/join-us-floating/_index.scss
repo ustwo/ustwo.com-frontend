@@ -1,0 +1,26 @@
+.join-us-floating {
+  @include core-layout();
+  @include core-vertical-padding();
+  background: rgba(0,0,0,.04);
+
+  .join-us-floating-inner {
+    p {
+      max-width: 500px;
+      margin: 0 auto 30px auto;
+      text-align: left;
+
+      @media screen and (min-width: $bp-tablet) {
+        text-align: center;
+        font-size: 20px;
+      }
+    }
+  }
+
+  &.darkStyle {
+    background: rgba(0,0,0,.1);
+
+    .join-us-floating-inner {
+      color: $lightGrey;
+    }
+  }
+}

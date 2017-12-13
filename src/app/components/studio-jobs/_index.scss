@@ -159,37 +159,3 @@
     }
   }
 }
-
-.studio-jobs {
-  &:before {
-    content: "";
-    width: 100%;
-    height: 5px;
-    display: block;
-  }
-
-  &.london-jobs {
-    &:before,
-    .studio-info {
-      @include page-background-colour(london);
-    }
-  }
-  &.malmo-jobs {
-    &:before,
-    .studio-info {
-      @include page-background-colour(malmo);
-    }
-  }
-  &.new-york-jobs {
-    &:before,
-    .studio-info {
-      @include page-background-colour(newyork);
-    }
-  }
-  &.sydney-jobs {
-    &:before,
-    .studio-info {
-      @include page-background-colour(sydney);
-    }
-  }
-}

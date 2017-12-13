@@ -24,7 +24,7 @@ class PageWork extends Component {
     super(props);
 
     this.state = {
-      caseStudyFilter: 'all',
+      caseStudyFilter: 'client-work',
       numberOfCaseStudiesShowing: 12
     }
   }
@@ -103,8 +103,6 @@ class PageWork extends Component {
 
           {this.renderTestimonialCarousel()}
 
-          <ContactFloating buttonFlavour="work" />
-
           <div className="page-work-controls" ref={(ref) => this.workAnchor = ref}>
             {this.renderWorkItemFilter()}
           </div>
@@ -156,7 +154,7 @@ const workContent = {
     text: 'ustwo collaborates with clients, healthcare professionals and academic experts to create lasting, meaningful digital health solutions.',
     slug: '/work/ustwo-health'
   }],
-  clients: ['Adidas', 'Android', 'BMW Group', 'Co-op', 'Ford', 'Foursquare', 'Google', 'NBC', 'Nike', 'Qantas', 'Samsung', 'Sky', 'Sony', 'Zara']
+  clients: ['Android', 'Barclays', 'BMW Group', 'Co-op', 'Ford', 'Foursquare', 'Google', 'NBC', 'Nike', 'Qantas', 'Samsung', 'Sky', 'Sony', 'Zara']
 }
 
 const featuredCaseStudy = {

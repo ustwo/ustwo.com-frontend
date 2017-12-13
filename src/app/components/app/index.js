@@ -39,7 +39,7 @@ const pageMap = {
   'work/discovery-strategy': require('app/components/work-discovery-strategy'),
   'work/design-build': require('app/components/work-design-build'),
   'work/launch-scale': require('app/components/work-launch-scale'),
-  'work/ways-of-working': require('app/components/work-ways-of-working'),
+  'work/change-transform': require('app/components/work-change-transform'),
   'auto': require('app/components/auto'),
   'auto/humanisingautonomy': require('app/components/auto-humanising-autonomy'),
   'blog': require('app/components/blog'),

@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import ScrollWrapper from 'app/components/scroll-wrapper';
 import AboutHero from 'app/components/about-hero';
 import ContactFloating from 'app/components/contact-floating';
+import JoinUsFloating from 'app/components/join-us-floating';
 import SubContentSections from 'app/components/sub-content-sections';
 import ContactBlock from 'app/components/contact-block';
 import Footer from 'app/components/footer';
@@ -72,9 +73,7 @@ function pageAboutUs({ page, className, loaded, isMobile, footer, studios, curre
           </div>
         </ContentWrapper>
 
-        <ContentWrapper className="content-wrapper-studios">
-          {renderStudioBlocks(studios)}
-        </ContentWrapper>
+        <JoinUsFloating buttonFlavour="join" />
 
         <ContentWrapper className="content-wrapper-manifesto">
           <div className="content-wrapper-statement">
@@ -105,37 +104,38 @@ export default pageAboutUs;
 
 const aboutContent = {
   what: [
-    'We learn through making, then apply everything we know to create game-changing digital products and services for clients.',
-    'We always do it collaboratively through expertly coached teamwork. You and us, working together, discovering answers to the biggest questions your business faces - then rapidly bringing them to life.',
-    'That’s the ustwo way.'
+    "We work with businesses and organisations of all shapes and sizes, from early-stage startups to the world’s leading brands, to create digital products and services and solve the most pressing challenges they face today and in the future. ",
+    "Through our company builder and accelerator arm, we also develop our own products and invest in ventures – all with the same goal of creating meaningful impact on the world.",
+    "Whether it's innovative experiences for clients or launching businesses that redefine and push the boundaries of conventional industries, ustwo is constantly challenging the definition of what it means to be a digital product studio."
   ],
   who: [
-    'Founded by Mills and Sinx back in 2004, our mission was to build a studio where like-minded, passionate people could work under one roof, share unique ideas and bring them to life.',
-    'Whether we’re doing innovative work for clients, bringing our own ideas to award-winning life, or launching disruptive new businesses, ustwo has never done normal. Over the last 12 years we’ve grown, and there are now four unique ustwo studios around the world – in London, New York, Malmö and Sydney.'
+    "Founded by Mills and Sinx back in 2004, our mission is to build a studio where like-minded, passionate people can work under one roof, share unique ideas and bring them to life.",
+    "Over the last 13 years we’ve grown, and there are now four unique ustwo studios around the world across London, New York, Malmö and Sydney, in addition to ustwo Games, and ustwo Adventures, our startup fund/incubator.",
+    "Whether we’re doing innovative work for clients, bringing our own ideas to award-winning life, or launching disruptive new businesses, ustwo has never done normal."
   ],
   process: [{
     name: 'discovery',
     title: 'Discovery & Strategy',
     image: '/images/illustration-discovery.svg',
-    text: 'Innovate and get ahead. Define your business goals and validate opportunities with fresh understanding of what your customers need most.',
+    text: 'Innovate and get ahead. Define new propositions and validate opportunities with a fresh understanding of what your customers need most.',
     url: '/work/discovery-strategy'
   },{
     name: 'design',
-    title: 'Design & Build',
+    title: 'Design & Delivery',
     image: '/images/illustration-design-and-build.svg',
-    text: 'Turn your vision into reality. Exceptional software development, engineering and execution sets your company apart.',
+    text: 'Turn your vision into reality. World-class design is matched with exceptional software development and execution to set your company apart.',
     url: '/work/design-build'
   },{
     name: 'launch',
     title: 'Launch & Scale',
     image: '/images/illustration-launch-and-scale.svg',
-    text: "Ship your product and stay responsive to customers’ changing needs. Your product is out in the world: it's time to grow, evolve and deliver ROI.",
+    text: "Ship your product and stay responsive. Your product is out in the world: it's time to grow, evolve, and adapt to customers’ changing needs.",
     url: '/work/launch-scale'
   },{
     name: 'working',
-    title: 'Ways of Working',
-    image: '/images/illustration-ways-of-working.svg',
-    text: 'Make products that really mean something to your customers. Our teams bake transformative ways of working into your business along the way.',
-    url: '/work/ways-of-working'
+    title: 'Change & Transform',
+    image: '/images/illustration-change-and-transform.svg',
+    text: 'Build capability through doing. Our teams bake transformative ways of working into your business and teams every step of the way so you can sustain the impact you make.',
+    url: '/work/change-and-transform'
   }]
 }

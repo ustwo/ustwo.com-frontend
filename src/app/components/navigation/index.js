@@ -19,7 +19,7 @@ class Navigation extends Component {
       active: false,
       navHeight: 0,
       paused: true,
-      capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'ways-of-working']
+      capabilityPages: ['discovery-strategy', 'design-build', 'launch-scale', 'change-and-transform']
     }
   }
 
@@ -61,7 +61,7 @@ class Navigation extends Component {
       case 'discovery-strategy':
       case 'design-build':
       case 'launch-scale':
-      case 'ways-of-working':
+      case 'change-and-transform':
         navigateTo = '/about-us';
         break;
       case 'case-study':

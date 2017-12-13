@@ -12,7 +12,7 @@ function onClickContactButton() {
 function ContactButton({ flavour }) {
   return (
     <a
-      href="/contact"
+      href="/contact-us"
       onClick={onClickContactButton()}
       className={`contact-button flavour-${flavour}`}
     >
