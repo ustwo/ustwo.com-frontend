@@ -70,7 +70,7 @@ function pageAboutUs({ page, className, loaded, isMobile, footer, studios, curre
             <h2>Who we are</h2>
             <hr className="hr hr-about" />
             <p>Founded by Mills and Sinx back in 2004, our mission is to build a studio where like-minded, passionate people can work under one roof, share unique ideas and bring them to life.</p>
-            <p>Over the last 13 years we’ve grown, and there are now four unique ustwo studios around the world across London, New York, Malmö and Sydney, in addition to <a href="https://ustwogames.co.uk">ustwo Games</a>, and <a href="http://https://adventure.ustwo.com/">ustwo Adventures</a>, our startup fund/incubator.</p>
+            <p>Over the last 13 years we’ve grown, and there are now four unique ustwo studios around the world across London, New York, Malmö and Sydney, in addition to <a href="https://ustwogames.co.uk/">ustwo Games</a>, and <a href="https://adventure.ustwo.com/">ustwo Adventure</a>, our startup fund/incubator.</p>
             <p>Whether we’re doing innovative work for clients, bringing our own ideas to award-winning life, or launching disruptive new businesses, ustwo has never done normal.</p>
           </div>
         </ContentWrapper>
