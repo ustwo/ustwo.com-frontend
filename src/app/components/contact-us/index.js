@@ -71,7 +71,7 @@ function pageContactUs({ page, currentParams, studios, currentPage, footer, moda
             <h2>New Business</h2>
             <hr className="hr hr-contact" />
             <p>Have a project or an idea you'd like to collaborate with ustwo on? Interested in what ustwo can do for you?</p>
-            <p>Speak to one of our client business team from the region or studio nearest to you:</p>
+            <p>Get in touch at <a href="mailto:work@ustwo.com">work@ustwo.com</a> or speak directly to one of our client business team from the region or studio nearest to you:</p>
           </div>
         </ContentWrapper>
 
@@ -158,7 +158,7 @@ const contactContent = {
       email: 'hello.sydney@ustwo.com',
     },{
       studio: 'Tokyo',
-      name: 'Mayu Nakamura',
+      name: 'Mayu Nakamura 中村 麻由',
       title: 'Senior Interaction Designer',
       email: 'hello.tokyo@ustwo.com',
     }]
