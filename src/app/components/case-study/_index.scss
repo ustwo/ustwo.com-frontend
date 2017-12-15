@@ -26,10 +26,42 @@
   .page-content-wrapper {
     @include core-vertical-padding;
     padding-top: 0 !important;
+
+    @media screen and (min-width: $bp-huge) {
+      max-width: $post-max-width;
+      margin: 0 auto;
+    }
   }
 }
 
 
+.page-case-study .single-column {
+  &.intro {
+    padding: 118px 6.25% 55px;
+  }
+
+  @media screen and (min-width: $bp-small) {
+    &.intro {
+      padding: 168px 6.25% 100px;
+    }
+  }
+
+  @media screen and (min-width: $bp-medium) {
+    &.intro {
+      padding: 168px 6.25% 100px;
+    }
+  }
+  @media screen and (min-width: $bp-large) {
+    &.intro {
+      padding: 120px 6.25% 100px;
+    }
+  }
+  @media screen and (min-width: $bp-large) {
+    &.intro {
+      padding: 120px 6.25% 100px;
+    }
+  }
+}
 
 
 // The following is a quick hack to make ustwo auto look nice before we move it
