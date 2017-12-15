@@ -5,7 +5,8 @@
  *  TODO: Sort mess with multiple selectors about line 90 (.title, .excerpt, .meta etc)
  */
 
-.page-post {
+.page-post,
+.page-case-study {
   $category-tag-height: $category-tag-height;
 
   .hero-image {
@@ -246,7 +247,7 @@
     }
 
     .content-container {
-      max-width: 1200px;
+      max-width: $post-max-width;
       margin-top: -100px;
       margin-left: auto;
       margin-right: auto;
