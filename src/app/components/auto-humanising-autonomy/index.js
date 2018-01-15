@@ -290,6 +290,13 @@ const autoHumanisingAutonomyContent = {
     uri: '/blog/introducing-ustwo-av-concept',
     image: '/images/auto/auto-roo.jpg'
   },{
+    title: 'Leading Change',
+    subtitle: 'How we succeed',
+    author: 'Book Chapter 16',
+    excerpt: 'Seven key principles that can help shape a successful digital strategy in the face of constant change.',
+    uri: '/blog/how-we-succeed',
+    image: '/images/auto/article-whywefail.jpg'
+  },{
     title: '9 things we learned at web summit',
     subtitle: 'ustwo Auto talk user-centred design for driverless cars.',
     author: '',

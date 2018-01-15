@@ -18,18 +18,18 @@
   }
 
   .single-column + .video {
-    max-width: 1200px;
+    // max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
   }
 
   .page-content-wrapper {
-    @include core-vertical-padding;
-    padding-top: 0 !important;
-
     @media screen and (min-width: $bp-huge) {
-      max-width: $post-max-width;
-      margin: 0 auto;
+      & > img:not(:first-of-type),
+      & > .video {
+        max-width: $post-max-width;
+        margin: 0 auto;
+      }
     }
   }
 }
