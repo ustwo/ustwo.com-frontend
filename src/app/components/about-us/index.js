@@ -81,7 +81,7 @@ function pageAboutUs({ page, className, loaded, isMobile, footer, studios, curre
             <hr className="hr hr-about" />
             <p>We believe diverse teams help us make better products, so we actively hire for cultural growth, welcoming people of all ages, stories and backgrounds.
             If you want to know more, check out our Manifesto here and some of the roles we’re hiring for across the globe down below. Welcome to the Fampany.</p>
-            <a href="https://usweb-cdn.ustwo.com/ustwo-production/uploads/2017/12/ustwo_cultural_manifesto_dec17.pdf">Read our Manifesto (47Mb)</a>
+            <a href="https://usweb-cdn.ustwo.com/ustwo-production/uploads/2018/02/ustwo-manifesto.pdf">Read our Manifesto (47Mb)</a>
           </div>
         </ContentWrapper>
 
