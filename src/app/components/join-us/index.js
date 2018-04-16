@@ -114,13 +114,6 @@ const PageJoinUs = React.createClass({
             </div>
           </ContentWrapper>
 
-          <ScrollWrapper
-            component={<ContactBlock page={page ? page.slug : 'home'} />}
-            documentScrollPosition={documentScrollPosition}
-            viewportDimensions={viewportDimensions}
-            requireScreenPosition={true}
-            className="scroll-wrapper-contact-block"
-          />
           <Footer data={footer} studios={studios} currentPage={currentPage}/>
 
         </div>

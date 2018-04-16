@@ -23,9 +23,10 @@ function ContactBlock({ page, screenPosition }) {
     }
   } else if (page === 'join-us') {
     content = {
-      sectionTitle: 'GOT A GENERAL JOB-RELATED QUESTION?',
-      title: 'Talk to ustwo ',
-      email: 'careers@ustwo.com'
+      sectionTitle: 'Get in touch',
+      title: 'WE’D LOVE TO HEAR FROM YOU',
+      email: "hello@ustwo.com",
+      link: true
     }
   } else if (page === 'work') {
     content = {
